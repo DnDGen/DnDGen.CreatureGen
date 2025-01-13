@@ -112,22 +112,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 mockLanguageGenerator.Object,
                 mockDemographicsGenerator.Object);
 
-            feats = new List<Feat>();
-            abilities = new Dictionary<string, Ability>();
-            skills = new List<Skill>();
+            feats = [];
+            abilities = [];
+            skills = [];
             creatureData = new CreatureDataSelection();
             hitPoints = new HitPoints();
-            types = new List<string>();
-            specialQualities = new List<Feat>();
-            attacks = new List<Attack>();
+            types = [];
+            specialQualities = [];
+            attacks = [];
             armorClass = new ArmorClass();
-            speeds = new Dictionary<string, Measurement>();
+            speeds = [];
             equipment = new Equipment();
             magic = new Magic();
-            languages = new List<string>();
+            languages = [];
             demographics = new Demographics();
 
             alignment = new Alignment("creature alignment");
+            demographics.Gender = "my gender";
 
             creatureData.Size = "size";
             creatureData.CasterLevel = 1029;
@@ -185,7 +186,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockAlignmentGenerator.Setup(g => g.Generate(creatureName, templateNames, alignmentFilter)).Returns(alignment);
 
             mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), hitPoints)).Returns(753);
-            mockAttacksGenerator.Setup(g => g.GenerateAttacks(creatureName, creatureData.Size, creatureData.Size, 753, abilities, hitPoints.RoundedHitDiceQuantity)).Returns(attacks);
+            mockAttacksGenerator.Setup(g => g.GenerateAttacks(creatureName, creatureData.Size, creatureData.Size, 753, abilities, hitPoints.RoundedHitDiceQuantity, demographics.Gender)).Returns(attacks);
             mockAttacksGenerator.Setup(g => g.ApplyAttackBonuses(attacks, feats, abilities)).Returns(attacks);
 
             mockFeatsGenerator
@@ -474,7 +475,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints)).Returns(999);
             mockAttacksGenerator
-                .Setup(g => g.GenerateAttacks(creatureName, creatureData.Size, advancement.Size, 999, abilities, advancedHitPoints.RoundedHitDiceQuantity))
+                .Setup(g => g.GenerateAttacks(creatureName, creatureData.Size, advancement.Size, 999, abilities, advancedHitPoints.RoundedHitDiceQuantity, demographics.Gender))
                 .Returns(attacks);
 
             var advancedNaturalArmor = creatureData.NaturalArmor + advancement.NaturalArmorAdjustment;

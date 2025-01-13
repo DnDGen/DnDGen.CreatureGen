@@ -6,5 +6,6 @@ namespace DnDGen.CreatureGen.Generators.Creatures
     {
         Demographics Generate(string creatureName);
         Measurement GenerateWingspan(string creatureName, string baseKey);
+        Demographics Update(Demographics source, string template);
     }
 }

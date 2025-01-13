@@ -337,7 +337,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 creature.Size,
                 creature.BaseAttackBonus,
                 creature.Abilities,
-                creature.HitPoints.RoundedHitDiceQuantity);
+                creature.HitPoints.RoundedHitDiceQuantity,
+                creature.Demographics.Gender);
 
             creature.Feats = featsGenerator.GenerateFeats(
                 creature.HitPoints,

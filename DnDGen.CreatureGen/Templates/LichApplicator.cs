@@ -295,7 +295,8 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Size,
                 creature.BaseAttackBonus,
                 creature.Abilities,
-                creature.HitPoints.RoundedHitDiceQuantity);
+                creature.HitPoints.RoundedHitDiceQuantity,
+                creature.Demographics.Gender);
 
             var allFeats = creature.Feats.Union(creature.SpecialQualities);
             lichAttacks = attacksGenerator.ApplyAttackBonuses(lichAttacks, allFeats, creature.Abilities);

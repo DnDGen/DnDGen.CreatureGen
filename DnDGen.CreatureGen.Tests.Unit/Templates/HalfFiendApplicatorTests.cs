@@ -115,7 +115,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(attacks);
             mockAttacksGenerator
                 .Setup(g => g.ApplyAttackBonuses(
@@ -209,7 +209,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(attacks);
             mockAttacksGenerator
                 .Setup(g => g.ApplyAttackBonuses(
@@ -252,7 +252,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(attacks);
             mockAttacksGenerator
                 .Setup(g => g.ApplyAttackBonuses(
@@ -520,7 +520,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(newAttacks);
 
             mockAttacksGenerator
@@ -574,7 +574,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(newAttacks);
 
             var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
@@ -707,7 +707,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(newAttacks);
 
             var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
@@ -841,7 +841,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(newAttacks);
 
             mockAttacksGenerator
@@ -922,7 +922,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(newAttacks);
 
             mockAttacksGenerator
@@ -1005,7 +1005,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(newAttacks);
 
             mockAttacksGenerator
@@ -1102,7 +1102,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(newAttacks);
 
             mockAttacksGenerator
@@ -1183,7 +1183,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(newAttacks);
 
             mockAttacksGenerator
@@ -1266,7 +1266,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(newAttacks);
 
             mockAttacksGenerator
@@ -1398,7 +1398,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(newAttacks);
 
             mockAttacksGenerator
@@ -1592,7 +1592,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(newAttacks);
 
             mockAttacksGenerator
@@ -1764,7 +1764,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(attacks);
             mockAttacksGenerator
                 .Setup(g => g.ApplyAttackBonuses(
@@ -1807,7 +1807,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(attacks);
             mockAttacksGenerator
                 .Setup(g => g.ApplyAttackBonuses(
@@ -2047,7 +2047,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(newAttacks);
 
             mockAttacksGenerator
@@ -2137,7 +2137,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(newAttacks);
 
             mockAttacksGenerator
@@ -2331,7 +2331,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(newAttacks);
 
             mockAttacksGenerator

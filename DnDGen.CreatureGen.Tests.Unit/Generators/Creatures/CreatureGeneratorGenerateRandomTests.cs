@@ -1381,7 +1381,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
-            mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
+            mockAttacksGenerator
+                .Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity, demographics.Gender))
+                .Returns(advancedAttacks);
 
             var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
             mockSkillsGenerator
@@ -1560,7 +1562,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
-            mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
+            mockAttacksGenerator
+                .Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity, demographics.Gender))
+                .Returns(advancedAttacks);
 
             var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
             mockSkillsGenerator
@@ -1671,7 +1675,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
-            mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
+            mockAttacksGenerator
+                .Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity, demographics.Gender))
+                .Returns(advancedAttacks);
 
             var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
             mockSkillsGenerator
@@ -1747,7 +1753,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
-            mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
+            mockAttacksGenerator
+                .Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity, demographics.Gender))
+                .Returns(advancedAttacks);
 
             var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
             mockSkillsGenerator
@@ -1871,7 +1879,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
-            mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
+            mockAttacksGenerator
+                .Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity, demographics.Gender))
+                .Returns(advancedAttacks);
 
             var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
             mockSkillsGenerator
@@ -2038,7 +2048,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
-            mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
+            mockAttacksGenerator
+                .Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity, demographics.Gender))
+                .Returns(advancedAttacks);
 
             var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
             mockSkillsGenerator
@@ -2307,7 +2319,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
-            mockAttacksGenerator.Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
+            mockAttacksGenerator
+                .Setup(s => s.GenerateAttacks("creature", creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity, demographics.Gender))
+                .Returns(advancedAttacks);
 
             var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
             mockSkillsGenerator

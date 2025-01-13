@@ -308,7 +308,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(creature.Demographics.Weight, Is.Not.Null, message);
             Assert.That(creature.Demographics.Weight.Unit, Is.EqualTo("pounds"), message);
 
-            if (creature.Type.SubTypes.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
+            if (creature.Type.SubTypes.Contains(CreatureConstants.Types.Subtypes.Incorporeal) || creature.Name == CreatureConstants.LanternArchon)
                 Assert.That(creature.Demographics.Weight.Value, Is.Zero, message);
             else
                 Assert.That(creature.Demographics.Weight.Value, Is.Positive, message);

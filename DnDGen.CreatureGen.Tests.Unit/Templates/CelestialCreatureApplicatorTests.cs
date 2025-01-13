@@ -130,7 +130,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -154,7 +155,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -184,7 +186,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var filters = new Filters();
@@ -227,7 +230,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -285,7 +289,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -313,7 +318,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -372,7 +378,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -404,7 +411,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var specialQualities = new[]
@@ -468,7 +476,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var specialQualities = new[]
@@ -534,7 +543,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var specialQualities = new[]
@@ -600,7 +610,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var specialQualities = new[]
@@ -666,7 +677,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var specialQualities = new[]
@@ -735,7 +747,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var specialQualities = new[]
@@ -804,7 +817,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var specialQualities = new[]
@@ -873,7 +887,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
@@ -939,7 +954,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
@@ -1009,7 +1025,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var specialQualities = new[]
@@ -1076,7 +1093,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var specialQualities = new[]
@@ -1134,7 +1152,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -1186,7 +1205,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -1215,7 +1235,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -1276,7 +1297,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -1302,7 +1324,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var filters = new Filters { Alignment = "preset Good" };
@@ -1334,7 +1357,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -1405,7 +1429,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1429,7 +1454,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1459,7 +1485,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var filters = new Filters();
@@ -1502,7 +1529,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1560,7 +1588,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1588,7 +1617,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1647,7 +1677,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1679,7 +1710,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var specialQualities = new[]
@@ -1743,7 +1775,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var specialQualities = new[]
@@ -1809,7 +1842,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var specialQualities = new[]
@@ -1875,7 +1909,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var specialQualities = new[]
@@ -1941,7 +1976,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var specialQualities = new[]
@@ -2010,7 +2046,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var specialQualities = new[]
@@ -2079,7 +2116,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var specialQualities = new[]
@@ -2148,7 +2186,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
@@ -2214,7 +2253,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns([smiteEvil]);
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
@@ -2284,7 +2324,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var specialQualities = new[]
@@ -2351,7 +2392,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var specialQualities = new[]
@@ -2409,7 +2451,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -2447,7 +2490,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -2476,7 +2520,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -2508,7 +2553,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -2534,7 +2580,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var filters = new Filters { Alignment = "preset Good" };
@@ -2566,7 +2613,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -2598,7 +2646,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -2632,7 +2681,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -2665,7 +2715,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -2699,7 +2750,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -2733,7 +2785,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -2766,7 +2819,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -2791,7 +2845,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var newMagic = new Magic();
@@ -2823,7 +2878,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(new[] { smiteEvil });
 
             var newMagic = new Magic();

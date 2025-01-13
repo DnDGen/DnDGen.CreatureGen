@@ -138,7 +138,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
 
             mockAttacksGenerator
@@ -249,7 +249,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
 
             var filters = new Filters();
@@ -493,7 +493,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -540,7 +540,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -610,7 +610,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
 
             skeletonAttacks[0].Damages[0].Roll = damage;
@@ -755,7 +755,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
 
             skeletonAttacks[0].Damages[0].Roll = damage;
@@ -1001,7 +1001,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -1037,7 +1037,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    20))
+                    20,
+                    baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
 
             var message = new StringBuilder();
@@ -1167,7 +1168,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
 
             var filters = new Filters();
@@ -1413,7 +1414,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1460,7 +1461,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1530,7 +1531,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
 
             skeletonAttacks[0].Damages[0].Roll = damage;
@@ -1675,7 +1676,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
 
             skeletonAttacks[0].Damages[0].Roll = damage;
@@ -1903,7 +1904,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1940,7 +1941,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    20))
+                    20,
+                    baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
 
             var message = new StringBuilder();

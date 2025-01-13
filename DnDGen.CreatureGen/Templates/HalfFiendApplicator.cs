@@ -368,7 +368,8 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Size,
                 creature.BaseAttackBonus,
                 creature.Abilities,
-                creature.HitPoints.RoundedHitDiceQuantity);
+                creature.HitPoints.RoundedHitDiceQuantity,
+                creature.Demographics.Gender);
 
             var allFeats = creature.Feats.Union(creature.SpecialQualities);
             attacks = attacksGenerator.ApplyAttackBonuses(attacks, allFeats, creature.Abilities);

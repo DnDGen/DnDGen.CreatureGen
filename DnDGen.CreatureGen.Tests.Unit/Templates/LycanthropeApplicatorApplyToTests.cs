@@ -422,7 +422,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     animalData.Size,
                     baseCreature.BaseAttackBonus + animalBaseAttack,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + hitDie.RoundedQuantity))
+                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + hitDie.RoundedQuantity, baseCreature.Demographics.Gender))
                 .Returns(animalAttacks);
 
             mockAttacksGenerator
@@ -1015,7 +1015,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     biggerSize,
                     baseCreature.BaseAttackBonus + animalBaseAttack,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity))
+                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity, baseCreature.Demographics.Gender))
                 .Returns(lycanthropeAttacks);
 
             mockAttacksGenerator
@@ -1061,7 +1061,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     biggerSize,
                     baseCreature.BaseAttackBonus + animalBaseAttack,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity))
+                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity, baseCreature.Demographics.Gender))
                 .Returns(lycanthropeAttacks);
 
             mockAttacksGenerator
@@ -1094,7 +1094,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     baseCreature.BaseAttackBonus + animalBaseAttack,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity))
+                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity, baseCreature.Demographics.Gender))
                 .Returns(lycanthropeAttacks);
 
             mockAttacksGenerator
@@ -1140,7 +1140,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     baseCreature.BaseAttackBonus + animalBaseAttack,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity))
+                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity, baseCreature.Demographics.Gender))
                 .Returns(lycanthropeAttacks);
 
             mockAttacksGenerator
@@ -1178,7 +1178,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus + animalBaseAttack,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity))
+                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity, baseCreature.Demographics.Gender))
                 .Returns(lycanthropeAttacks);
 
             mockAttacksGenerator

@@ -40,6 +40,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             indices[DataIndexConstants.AttackData.SaveIndex] = "Save";
             indices[DataIndexConstants.AttackData.DamageBonusMultiplierIndex] = "Damage Bonus Multiplier";
             indices[DataIndexConstants.AttackData.SaveDcBonusIndex] = "Save DC Bonus Multiplier";
+            indices[DataIndexConstants.AttackData.RequiredGenderIndex] = "Required Gender";
         }
 
         [SetUp]

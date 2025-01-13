@@ -29,6 +29,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IAdjustmentsSelector adjustmentSelector;
         private readonly ICreatureDataSelector creatureDataSelector;
         private readonly ICreaturePrototypeFactory prototypeFactory;
+        private readonly IDemographicsGenerator demographicsGenerator;
 
         public CelestialCreatureApplicator(
             IAttacksGenerator attackGenerator,
@@ -37,7 +38,8 @@ namespace DnDGen.CreatureGen.Templates
             IMagicGenerator magicGenerator,
             IAdjustmentsSelector adjustmentSelector,
             ICreatureDataSelector creatureDataSelector,
-            ICreaturePrototypeFactory prototypeFactory)
+            ICreaturePrototypeFactory prototypeFactory,
+            IDemographicsGenerator demographicsGenerator)
         {
             this.attackGenerator = attackGenerator;
             this.featGenerator = featGenerator;
@@ -46,6 +48,7 @@ namespace DnDGen.CreatureGen.Templates
             this.adjustmentSelector = adjustmentSelector;
             this.creatureDataSelector = creatureDataSelector;
             this.prototypeFactory = prototypeFactory;
+            this.demographicsGenerator = demographicsGenerator;
 
             creatureTypes = new[]
             {
@@ -157,14 +160,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var skin = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.CelestialCreature);
-            var hair = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.CelestialCreature);
-            var eyes = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.CelestialCreature);
-            var other = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.CelestialCreature);
-            creature.Demographics.Skin += " " + skin;
-            creature.Demographics.Hair += " " + hair;
-            creature.Demographics.Eyes += " " + eyes;
-            creature.Demographics.Other += " " + other;
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, CreatureConstants.Templates.CelestialCreature);
         }
 
         private void UpdateCreatureAbilities(Creature creature)
@@ -268,7 +264,8 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Size,
                 creature.BaseAttackBonus,
                 creature.Abilities,
-                creature.HitPoints.RoundedHitDiceQuantity);
+                creature.HitPoints.RoundedHitDiceQuantity,
+                creature.Demographics.Gender);
 
             var smiteEvil = attacks.First(a => a.Name == "Smite Evil");
             smiteEvil.Damages.Add(new Damage

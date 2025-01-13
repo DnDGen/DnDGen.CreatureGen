@@ -171,5 +171,38 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             return wingspan;
         }
+
+        private string GetAppearanceSeparator(string appearance) => appearance.EndsWith('.') ? " " : ". ";
+
+        public Demographics Update(Demographics source, string template)
+        {
+            var skin = collectionsSelector.SelectRandomFrom(
+                Config.Name,
+                TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Skin),
+                template);
+            var hair = collectionsSelector.SelectRandomFrom(
+                Config.Name,
+                TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Hair),
+                template);
+            var eyes = collectionsSelector.SelectRandomFrom(
+                Config.Name,
+                TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Eyes),
+                template);
+            var other = collectionsSelector.SelectRandomFrom(
+                Config.Name,
+                TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Other),
+                template);
+            source.Skin += GetAppearanceSeparator(source.Skin) + skin;
+            source.Hair += GetAppearanceSeparator(source.Hair) + hair;
+            source.Eyes += GetAppearanceSeparator(source.Eyes) + eyes;
+            source.Other += GetAppearanceSeparator(source.Other) + other;
+
+            source.Skin = source.Skin.Trim();
+            source.Hair = source.Hair.Trim();
+            source.Eyes = source.Eyes.Trim();
+            source.Other = source.Other.Trim();
+
+            return source;
+        }
     }
 }

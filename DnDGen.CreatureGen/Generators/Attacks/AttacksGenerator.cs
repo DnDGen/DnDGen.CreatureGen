@@ -77,7 +77,8 @@ namespace DnDGen.CreatureGen.Generators.Attacks
             string size,
             int baseAttackBonus,
             Dictionary<string, Ability> abilities,
-            int hitDiceQuantity)
+            int hitDiceQuantity,
+            string gender)
         {
             var attackSelections = attackSelector.Select(creatureName, originalSize, size);
             var sizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, size);
@@ -85,8 +86,8 @@ namespace DnDGen.CreatureGen.Generators.Attacks
 
             foreach (var attackSelection in attackSelections)
             {
-                //TODO: Male Spider Eater should not have Implant attack
-                //Find way to specify and assess gender requirement
+                if (!attackSelection.RequirementsMet(gender))
+                    continue;
 
                 var attack = new Attack();
                 attacks.Add(attack);

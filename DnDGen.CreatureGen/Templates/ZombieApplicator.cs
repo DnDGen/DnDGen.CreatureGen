@@ -370,7 +370,8 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Size,
                 creature.BaseAttackBonus,
                 creature.Abilities,
-                creature.HitPoints.RoundedHitDiceQuantity);
+                creature.HitPoints.RoundedHitDiceQuantity,
+                creature.Demographics.Gender);
 
             zombieAttacks = attacksGenerator.ApplyAttackBonuses(zombieAttacks, creature.SpecialQualities, creature.Abilities);
             var newSlam = zombieAttacks.First(a => a.Name == "Slam");

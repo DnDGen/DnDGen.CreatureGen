@@ -11,7 +11,7 @@ namespace DnDGen.CreatureGen.Generators.Attacks
     {
         int GenerateBaseAttackBonus(CreatureType creatureType, HitPoints hitPoints);
         int? GenerateGrappleBonus(string creature, string size, int baseAttackBonus, Ability strength);
-        IEnumerable<Attack> GenerateAttacks(string creatureName, string originalSize, string size, int baseAttackBonus, Dictionary<string, Ability> abilities, int hitDiceQuantity);
+        IEnumerable<Attack> GenerateAttacks(string creatureName, string originalSize, string size, int baseAttackBonus, Dictionary<string, Ability> abilities, int hitDiceQuantity, string gender);
         IEnumerable<Attack> ApplyAttackBonuses(IEnumerable<Attack> attacks, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities);
     }
 }

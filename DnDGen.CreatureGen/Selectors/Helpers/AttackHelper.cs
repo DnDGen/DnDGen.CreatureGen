@@ -23,7 +23,8 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
             bool isSpecial,
             string save = null,
             string saveAbility = null,
-            int saveDcBonus = 0)
+            int saveDcBonus = 0,
+            string requiredGender = null)
         {
             var data = DataIndexConstants.AttackData.InitializeData();
 
@@ -41,6 +42,7 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
             data[DataIndexConstants.AttackData.SaveAbilityIndex] = saveAbility ?? string.Empty;
             data[DataIndexConstants.AttackData.AttackTypeIndex] = attackType;
             data[DataIndexConstants.AttackData.SaveDcBonusIndex] = saveDcBonus.ToString();
+            data[DataIndexConstants.AttackData.RequiredGenderIndex] = requiredGender ?? string.Empty;
 
             return data;
         }

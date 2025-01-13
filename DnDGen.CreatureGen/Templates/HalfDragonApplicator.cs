@@ -201,8 +201,6 @@ namespace DnDGen.CreatureGen.Templates
                 .Union(new[] { CreatureConstants.Types.Subtypes.Augmented, creatureType });
         }
 
-        private string GetAppearanceSeparator(string appearance) => appearance.EndsWith('.') ? " " : ". ";
-
         private void UpdateCreatureSpeeds(Creature creature)
         {
             var sizes = SizeConstants.GetOrdered();
@@ -368,7 +366,8 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Size,
                 creature.BaseAttackBonus,
                 creature.Abilities,
-                creature.HitPoints.RoundedHitDiceQuantity);
+                creature.HitPoints.RoundedHitDiceQuantity,
+                creature.Demographics.Gender);
 
             var allFeats = creature.Feats.Union(creature.SpecialQualities);
             attacks = attacksGenerator.ApplyAttackBonuses(attacks, allFeats, creature.Abilities);

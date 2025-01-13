@@ -26,33 +26,39 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public string SaveAbility { get; set; }
         public string AttackType { get; set; }
         public int SaveDcBonus { get; set; }
+        public string RequiredGender { get; set; }
 
         public AttackSelection()
         {
-            Damages = new List<Damage>();
+            Damages = [];
             DamageEffect = string.Empty;
             Name = string.Empty;
         }
+
+        public bool RequirementsMet(string gender) => string.IsNullOrEmpty(RequiredGender) || RequiredGender == gender;
 
         public static AttackSelection From(string rawData)
         {
             var helper = new AttackHelper();
             var data = helper.ParseEntry(rawData);
 
-            var selection = new AttackSelection();
-            selection.IsMelee = Convert.ToBoolean(data[DataIndexConstants.AttackData.IsMeleeIndex]);
-            selection.IsNatural = Convert.ToBoolean(data[DataIndexConstants.AttackData.IsNaturalIndex]);
-            selection.IsPrimary = Convert.ToBoolean(data[DataIndexConstants.AttackData.IsPrimaryIndex]);
-            selection.IsSpecial = Convert.ToBoolean(data[DataIndexConstants.AttackData.IsSpecialIndex]);
-            selection.Name = data[DataIndexConstants.AttackData.NameIndex];
-            selection.DamageEffect = data[DataIndexConstants.AttackData.DamageEffectIndex];
-            selection.DamageBonusMultiplier = Convert.ToDouble(data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex]);
-            selection.FrequencyQuantity = Convert.ToInt32(data[DataIndexConstants.AttackData.FrequencyQuantityIndex]);
-            selection.FrequencyTimePeriod = data[DataIndexConstants.AttackData.FrequencyTimePeriodIndex];
-            selection.Save = data[DataIndexConstants.AttackData.SaveIndex];
-            selection.SaveAbility = data[DataIndexConstants.AttackData.SaveAbilityIndex];
-            selection.AttackType = data[DataIndexConstants.AttackData.AttackTypeIndex];
-            selection.SaveDcBonus = Convert.ToInt32(data[DataIndexConstants.AttackData.SaveDcBonusIndex]);
+            var selection = new AttackSelection
+            {
+                IsMelee = Convert.ToBoolean(data[DataIndexConstants.AttackData.IsMeleeIndex]),
+                IsNatural = Convert.ToBoolean(data[DataIndexConstants.AttackData.IsNaturalIndex]),
+                IsPrimary = Convert.ToBoolean(data[DataIndexConstants.AttackData.IsPrimaryIndex]),
+                IsSpecial = Convert.ToBoolean(data[DataIndexConstants.AttackData.IsSpecialIndex]),
+                Name = data[DataIndexConstants.AttackData.NameIndex],
+                DamageEffect = data[DataIndexConstants.AttackData.DamageEffectIndex],
+                DamageBonusMultiplier = Convert.ToDouble(data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex]),
+                FrequencyQuantity = Convert.ToInt32(data[DataIndexConstants.AttackData.FrequencyQuantityIndex]),
+                FrequencyTimePeriod = data[DataIndexConstants.AttackData.FrequencyTimePeriodIndex],
+                Save = data[DataIndexConstants.AttackData.SaveIndex],
+                SaveAbility = data[DataIndexConstants.AttackData.SaveAbilityIndex],
+                AttackType = data[DataIndexConstants.AttackData.AttackTypeIndex],
+                SaveDcBonus = Convert.ToInt32(data[DataIndexConstants.AttackData.SaveDcBonusIndex]),
+                RequiredGender = data[DataIndexConstants.AttackData.RequiredGenderIndex],
+            };
 
             var damageHelper = new DamageHelper();
             var damageEntries = damageHelper.ParseEntries(data[DataIndexConstants.AttackData.DamageDataIndex]);

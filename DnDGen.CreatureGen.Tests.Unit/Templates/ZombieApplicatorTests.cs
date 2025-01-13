@@ -142,7 +142,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     zombieBaseAttack,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             mockAttacksGenerator
@@ -261,7 +261,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     zombieBaseAttack,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             var filters = new Filters();
@@ -486,7 +486,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    newRounded))
+                    newRounded, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -528,7 +528,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    newRounded))
+                    newRounded, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -579,7 +579,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    newRounded))
+                    newRounded, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -621,7 +621,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    newRounded))
+                    newRounded, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -684,7 +684,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -731,7 +731,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -801,7 +801,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             zombieAttacks[0].Damages[0].Roll = damage;
@@ -947,7 +947,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             zombieAttacks[0].Damages[0].Roll = damage;
@@ -1179,7 +1179,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    newRounded))
+                    newRounded, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -1218,7 +1218,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    20))
+                    20, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             var message = new StringBuilder();
@@ -1348,7 +1348,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     zombieBaseAttack,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             var filters = new Filters();
@@ -1587,7 +1587,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1634,7 +1634,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1704,7 +1704,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             zombieAttacks[0].Damages[0].Roll = damage;
@@ -1850,7 +1850,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             zombieAttacks[0].Damages[0].Roll = damage;
@@ -2082,7 +2082,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    newRounded))
+                    newRounded, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -2122,7 +2122,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    20))
+                    20, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             var message = new StringBuilder();

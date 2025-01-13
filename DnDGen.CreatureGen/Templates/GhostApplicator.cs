@@ -324,7 +324,8 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Size,
                 creature.BaseAttackBonus,
                 creature.Abilities,
-                creature.HitPoints.RoundedHitDiceQuantity);
+                creature.HitPoints.RoundedHitDiceQuantity,
+                creature.Demographics.Gender);
 
             var manifestation = ghostAttacks.First(a => a.Name == "Manifestation");
             var newAttacks = new List<Attack> { manifestation };
