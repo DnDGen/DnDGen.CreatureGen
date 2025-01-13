@@ -29,25 +29,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         public void AbilityAdjustmentsNames()
         {
             var creatures = CreatureConstants.GetAll();
+            var allAges = typesAndAmountsSelector.SelectAll(TableNameConstants.TypeAndAmount.AgeRolls);
+            var ages = allAges.Values.SelectMany(v => v.Select(t => t.Type)).Distinct();
             var names = creatures
-                .Union(
-                [
-                    GroupConstants.All,
-                    AgeConstants.Categories.Adulthood,
-                    AgeConstants.Categories.MiddleAge,
-                    AgeConstants.Categories.Old,
-                    AgeConstants.Categories.Venerable,
-                    AgeConstants.Categories.Construct,
-                    AgeConstants.Categories.Swarm,
-                    AgeConstants.Categories.Undead,
-                ]);
+                .Union(ages)
+                .Union([GroupConstants.All]);
 
-            Assert.Fail("TODO: Instead of manually specifying the age categories, grt the ages from the age table, compress to distinct entries, and use that");
-
+            Assert.That(AbilityAdjustmentsTestData.Keys, Is.EquivalentTo(names), "TEST DATA");
             AssertCollectionNames(names);
         }
 
-        [TestCaseSource(nameof(AbilityAdjustmentsTestData))]
+        [TestCaseSource(nameof(AbilityAdjustmentsTestCases))]
         public void AbilityAdjustment(string name, Dictionary<string, int> typesAndAmounts)
         {
             Assert.That(typesAndAmounts, Is.Not.Empty, $"{name}'s test was not set up");
@@ -77,35 +69,63 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             }
         }
 
-        public static IEnumerable AbilityAdjustmentsTestData
+        private static Dictionary<string, int> InitializeToZero()
+        {
+            var adjustments = new Dictionary<string, int>
+            {
+                [AbilityConstants.Charisma] = 0,
+                [AbilityConstants.Constitution] = 0,
+                [AbilityConstants.Dexterity] = 0,
+                [AbilityConstants.Intelligence] = 0,
+                [AbilityConstants.Strength] = 0,
+                [AbilityConstants.Wisdom] = 0
+            };
+
+            return adjustments;
+        }
+
+        public static Dictionary<string, Dictionary<string, int>> AbilityAdjustmentsTestData
         {
             get
             {
                 var testCases = new Dictionary<string, Dictionary<string, int>>
                 {
-                    [GroupConstants.All] = new Dictionary<string, int>(),
-                    [AgeConstants.Categories.Adulthood] = new Dictionary<string, int>(),
-                    [AgeConstants.Categories.MiddleAge] = new Dictionary<string, int>(),
-                    [AgeConstants.Categories.Old] = new Dictionary<string, int>(),
-                    [AgeConstants.Categories.Venerable] = new Dictionary<string, int>(),
-                    [AgeConstants.Categories.Construct] = new Dictionary<string, int>(),
-                    [AgeConstants.Categories.Swarm] = new Dictionary<string, int>(),
-                    [AgeConstants.Categories.Undead] = new Dictionary<string, int>(),
+                    [GroupConstants.All] = InitializeToZero(),
+                    [AgeConstants.Categories.Adulthood] = InitializeToZero(),
+                    [AgeConstants.Categories.MiddleAge] = InitializeToZero(),
+                    [AgeConstants.Categories.Old] = InitializeToZero(),
+                    [AgeConstants.Categories.Venerable] = InitializeToZero(),
+                    [AgeConstants.Categories.Construct] = InitializeToZero(),
+                    [AgeConstants.Categories.Swarm] = InitializeToZero(),
+                    [AgeConstants.Categories.Undead] = InitializeToZero(),
+                    [AgeConstants.Categories.Maximum] = InitializeToZero(),
+                    [AgeConstants.Categories.Arrowhawk.Juvenile] = InitializeToZero(),
+                    [AgeConstants.Categories.Arrowhawk.Adult] = InitializeToZero(),
+                    [AgeConstants.Categories.Arrowhawk.Elder] = InitializeToZero(),
+                    [AgeConstants.Categories.BlackPudding.Elder] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.Wyrmling] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.VeryYoung] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.Young] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.Juvenile] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.YoungAdult] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.Adult] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.MatureAdult] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.Old] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.VeryOld] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.Ancient] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.Wyrm] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.GreatWyrm] = InitializeToZero(),
+                    [AgeConstants.Categories.Salamander.Flamebrother] = InitializeToZero(),
+                    [AgeConstants.Categories.Salamander.Average] = InitializeToZero(),
+                    [AgeConstants.Categories.Salamander.Noble] = InitializeToZero(),
+                    [AgeConstants.Categories.Tojanida.Juvenile] = InitializeToZero(),
+                    [AgeConstants.Categories.Tojanida.Adult] = InitializeToZero(),
+                    [AgeConstants.Categories.Tojanida.Elder] = InitializeToZero(),
+                    [AgeConstants.Categories.Xorn.Minor] = InitializeToZero(),
+                    [AgeConstants.Categories.Xorn.Average] = InitializeToZero(),
+                    [AgeConstants.Categories.Xorn.Elder] = InitializeToZero(),
                 };
 
-                testCases[GroupConstants.All][AbilityConstants.Charisma] = 0;
-                testCases[GroupConstants.All][AbilityConstants.Constitution] = 0;
-                testCases[GroupConstants.All][AbilityConstants.Dexterity] = 0;
-                testCases[GroupConstants.All][AbilityConstants.Intelligence] = 0;
-                testCases[GroupConstants.All][AbilityConstants.Strength] = 0;
-                testCases[GroupConstants.All][AbilityConstants.Wisdom] = 0;
-
-                testCases[AgeConstants.Categories.Adulthood][AbilityConstants.Charisma] = 0;
-                testCases[AgeConstants.Categories.Adulthood][AbilityConstants.Constitution] = 0;
-                testCases[AgeConstants.Categories.Adulthood][AbilityConstants.Dexterity] = 0;
-                testCases[AgeConstants.Categories.Adulthood][AbilityConstants.Intelligence] = 0;
-                testCases[AgeConstants.Categories.Adulthood][AbilityConstants.Strength] = 0;
-                testCases[AgeConstants.Categories.Adulthood][AbilityConstants.Wisdom] = 0;
                 testCases[AgeConstants.Categories.MiddleAge][AbilityConstants.Charisma] = 1;
                 testCases[AgeConstants.Categories.MiddleAge][AbilityConstants.Constitution] = -1;
                 testCases[AgeConstants.Categories.MiddleAge][AbilityConstants.Dexterity] = -1;
@@ -124,24 +144,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 testCases[AgeConstants.Categories.Venerable][AbilityConstants.Intelligence] = 1 + 1 + 1;
                 testCases[AgeConstants.Categories.Venerable][AbilityConstants.Strength] = -1 + -2 + -3;
                 testCases[AgeConstants.Categories.Venerable][AbilityConstants.Wisdom] = 1 + 1 + 1;
-                testCases[AgeConstants.Categories.Construct][AbilityConstants.Charisma] = 0;
-                testCases[AgeConstants.Categories.Construct][AbilityConstants.Constitution] = 0;
-                testCases[AgeConstants.Categories.Construct][AbilityConstants.Dexterity] = 0;
-                testCases[AgeConstants.Categories.Construct][AbilityConstants.Intelligence] = 0;
-                testCases[AgeConstants.Categories.Construct][AbilityConstants.Strength] = 0;
-                testCases[AgeConstants.Categories.Construct][AbilityConstants.Wisdom] = 0;
-                testCases[AgeConstants.Categories.Swarm][AbilityConstants.Charisma] = 0;
-                testCases[AgeConstants.Categories.Swarm][AbilityConstants.Constitution] = 0;
-                testCases[AgeConstants.Categories.Swarm][AbilityConstants.Dexterity] = 0;
-                testCases[AgeConstants.Categories.Swarm][AbilityConstants.Intelligence] = 0;
-                testCases[AgeConstants.Categories.Swarm][AbilityConstants.Strength] = 0;
-                testCases[AgeConstants.Categories.Swarm][AbilityConstants.Wisdom] = 0;
-                testCases[AgeConstants.Categories.Undead][AbilityConstants.Charisma] = 0;
-                testCases[AgeConstants.Categories.Undead][AbilityConstants.Constitution] = 0;
-                testCases[AgeConstants.Categories.Undead][AbilityConstants.Dexterity] = 0;
-                testCases[AgeConstants.Categories.Undead][AbilityConstants.Intelligence] = 0;
-                testCases[AgeConstants.Categories.Undead][AbilityConstants.Strength] = 0;
-                testCases[AgeConstants.Categories.Undead][AbilityConstants.Wisdom] = 0;
 
                 var creatures = CreatureConstants.GetAll();
 
@@ -3851,12 +3853,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 testCases[CreatureConstants.Zelekhut][AbilityConstants.Strength] = 10;
                 testCases[CreatureConstants.Zelekhut][AbilityConstants.Wisdom] = 6;
 
-                foreach (var testCase in testCases)
-                {
-                    yield return new TestCaseData(testCase.Key, testCase.Value);
-                }
+                return testCases;
             }
         }
+
+        public static IEnumerable AbilityAdjustmentsTestCases => AbilityAdjustmentsTestData.Select(d => new TestCaseData(d.Key, d.Value));
 
         [TestCase(CreatureConstants.Types.Construct, AbilityConstants.Constitution)]
         [TestCase(CreatureConstants.Types.Undead, AbilityConstants.Constitution)]

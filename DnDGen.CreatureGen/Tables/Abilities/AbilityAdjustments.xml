@@ -5685,6 +5685,15 @@
 		<entry>Strength@-6</entry>
 	</collection>
 	<collection>
+		<name>Maximum</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
 		<name>Construct</name>
 		<entry>Charisma@0</entry>
 		<entry>Constitution@0</entry>
@@ -5704,6 +5713,231 @@
 	</collection>
 	<collection>
 		<name>Swarm</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Juvenile (Arrowhawk)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Adult (Arrowhawk)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Elder (Arrowhawk)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Juvenile (Tojanida)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Adult (Tojanida)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Elder (Tojanida)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Elder (Black Pudding)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Flamebrother (Salamander)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Average (Salamander)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Noble (Salamander)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Minor (Xorn)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Average (Xorn)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Elder (Xorn)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Wyrmling (Dragon)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Very Young (Dragon)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Young (Dragon)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Juvenile (Dragon)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Young Adult (Dragon)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Adult (Dragon)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Mature Adult (Dragon)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Old (Dragon)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Very Old (Dragon)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Ancient (Dragon)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Wyrm (Dragon)</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Great Wyrm (Dragon)</name>
 		<entry>Charisma@0</entry>
 		<entry>Constitution@0</entry>
 		<entry>Dexterity@0</entry>

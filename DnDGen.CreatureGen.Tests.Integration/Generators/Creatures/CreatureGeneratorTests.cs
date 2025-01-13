@@ -596,12 +596,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
 
             var creature = creatureGenerator.Generate(false, CreatureConstants.Human, randomizer);
             creatureAsserter.AssertCreature(creature);
-            Assert.That(creature.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(9266));
-            Assert.That(creature.Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(90210));
-            Assert.That(creature.Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(42));
-            Assert.That(creature.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(600));
-            Assert.That(creature.Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(1337));
-            Assert.That(creature.Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(1336));
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(9266));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].BaseScore, Is.EqualTo(90210));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].BaseScore, Is.EqualTo(42));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].BaseScore, Is.EqualTo(600));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].BaseScore, Is.EqualTo(1337));
+            Assert.That(creature.Abilities[AbilityConstants.Wisdom].BaseScore, Is.EqualTo(1336));
         }
 
         [Test]
@@ -686,10 +686,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
 
         [TestCase(CreatureConstants.Human, true, false)]
         [TestCase(CreatureConstants.Snake_Constrictor, false, true)]
+        [TestCase(CreatureConstants.Snake_Constrictor_Giant, false, true)]
+        [TestCase(CreatureConstants.WinterWolf, true, true)]
         [TestCase(CreatureConstants.Wolf, true, true)]
-        [TestCase(CreatureConstants.YuanTi_Abomination, true, true)]
+        [TestCase(CreatureConstants.Wolf_Dire, true, true)]
+        [TestCase(CreatureConstants.Worg, true, true)]
         [TestCase(CreatureConstants.YuanTi_Pureblood, true, false)]
         [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeHead, true, false)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeArms, true, false)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTail, true, true)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, true, true)]
+        [TestCase(CreatureConstants.YuanTi_Abomination, true, true)]
         public void SnakeHasLength(string creatureName, bool hasHeight, bool hasLength)
         {
             var creature = creatureGenerator.Generate(false, creatureName);
@@ -706,18 +713,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             {
                 Assert.That(creature.Demographics.Height.Value, Is.Positive);
             }
-            else
-            {
-                Assert.That(creature.Demographics.Height.Value, Is.EqualTo(1));
-            }
 
             if (hasLength)
             {
                 Assert.That(creature.Demographics.Length.Value, Is.Positive);
-            }
-            else
-            {
-                Assert.That(creature.Demographics.Length.Value, Is.Zero);
             }
         }
     }

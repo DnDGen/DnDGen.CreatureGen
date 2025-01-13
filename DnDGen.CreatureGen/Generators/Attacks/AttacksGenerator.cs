@@ -71,7 +71,13 @@ namespace DnDGen.CreatureGen.Generators.Attacks
             return baseAttackBonus + strength.Modifier + sizeModifier + creatureModifier;
         }
 
-        public IEnumerable<Attack> GenerateAttacks(string creatureName, string originalSize, string size, int baseAttackBonus, Dictionary<string, Ability> abilities, int hitDiceQuantity)
+        public IEnumerable<Attack> GenerateAttacks(
+            string creatureName,
+            string originalSize,
+            string size,
+            int baseAttackBonus,
+            Dictionary<string, Ability> abilities,
+            int hitDiceQuantity)
         {
             var attackSelections = attackSelector.Select(creatureName, originalSize, size);
             var sizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, size);
@@ -79,6 +85,9 @@ namespace DnDGen.CreatureGen.Generators.Attacks
 
             foreach (var attackSelection in attackSelections)
             {
+                //TODO: Male Spider Eater should not have Implant attack
+                //Find way to specify and assess gender requirement
+
                 var attack = new Attack();
                 attacks.Add(attack);
 
@@ -92,17 +101,20 @@ namespace DnDGen.CreatureGen.Generators.Attacks
                 attack.IsSpecial = attackSelection.IsSpecial;
                 attack.AttackType = attackSelection.AttackType;
 
-                attack.Frequency = new Frequency();
-                attack.Frequency.Quantity = attackSelection.FrequencyQuantity;
-                attack.Frequency.TimePeriod = attackSelection.FrequencyTimePeriod;
+                attack.Frequency = new Frequency
+                {
+                    Quantity = attackSelection.FrequencyQuantity,
+                    TimePeriod = attackSelection.FrequencyTimePeriod
+                };
 
                 if (!string.IsNullOrEmpty(attackSelection.SaveAbility) || !string.IsNullOrEmpty(attackSelection.Save))
                 {
-                    attack.Save = new SaveDieCheck();
-                    attack.Save.BaseValue = 10 + attackSelection.SaveDcBonus;
-                    attack.Save.Save = attackSelection.Save;
+                    attack.Save = new SaveDieCheck
+                    {
+                        BaseValue = 10 + attackSelection.SaveDcBonus,
+                        Save = attackSelection.Save
+                    };
 
-                    //if (attack.IsNatural)
                     if (attack.IsNatural && !string.IsNullOrEmpty(attackSelection.SaveAbility))
                     {
                         attack.Save.BaseAbility = abilities[attackSelection.SaveAbility];

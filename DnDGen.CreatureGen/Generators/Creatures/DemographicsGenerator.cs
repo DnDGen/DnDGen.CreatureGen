@@ -100,6 +100,12 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 Description = ageRoll.Type
             };
 
+            var months = dice.Roll("(1d12-1)/12").AsSum<double>();
+            age.Value += months;
+
+            if (age.Value == 0)
+                age.Value += 1 / 12d;
+
             return age;
         }
 
@@ -130,7 +136,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             };
 
             if (age.Value > maxAge.Value)
-                maxAge.Value = age.Value;
+                maxAge.Value = age.Value < 1 ? age.Value : Math.Floor(age.Value);
 
             var descriptions = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, creatureName);
             maxAge.Description = descriptions.Single();

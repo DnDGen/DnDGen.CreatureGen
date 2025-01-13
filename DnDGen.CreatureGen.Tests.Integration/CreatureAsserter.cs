@@ -307,7 +307,12 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(creature.Demographics.MaximumAge.Description, Is.Not.Empty, message);
             Assert.That(creature.Demographics.Weight, Is.Not.Null, message);
             Assert.That(creature.Demographics.Weight.Unit, Is.EqualTo("pounds"), message);
-            Assert.That(creature.Demographics.Weight.Value, Is.Positive, message);
+
+            if (creature.Type.SubTypes.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
+                Assert.That(creature.Demographics.Weight.Value, Is.Zero, message);
+            else
+                Assert.That(creature.Demographics.Weight.Value, Is.Positive, message);
+
             Assert.That(creature.Demographics.Weight.Description, Is.Not.Empty, message);
         }
 

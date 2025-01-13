@@ -32,6 +32,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockDice
                 .Setup(d => d.Describe(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<string[]>()))
                 .Returns((string r, int v, string[] descriptions) => descriptions[descriptions.Length / 2]);
+
+            mockDice
+                .Setup(d => d.Roll("(1d12-1)/12").AsSum<double>())
+                .Returns(0.5);
         }
 
         [Test]
@@ -43,11 +47,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var ageRolls = new List<TypeAndAmountSelection>
             {
-                new TypeAndAmountSelection { Type = AgeConstants.Categories.Adulthood, Amount = 9266, RawAmount = "raw 9266" },
-                new TypeAndAmountSelection { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" },
-                new TypeAndAmountSelection { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" },
-                new TypeAndAmountSelection { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" },
-                new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" }
+                new() { Type = AgeConstants.Categories.Adulthood, Amount = 9266, RawAmount = "raw 9266" },
+                new() { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" },
+                new() { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" },
+                new() { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" },
+                new() { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" }
             };
 
             mockTypeAndAmountSelector
@@ -115,7 +119,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
             Assert.That(demographics.Age, Is.Not.Null);
-            Assert.That(demographics.Age.Value, Is.EqualTo(9266));
+            Assert.That(demographics.Age.Value, Is.EqualTo(9266.5));
             Assert.That(demographics.Age.Unit, Is.EqualTo("years"));
             Assert.That(demographics.Age.Description, Is.EqualTo(AgeConstants.Categories.Adulthood));
             Assert.That(demographics.Gender, Is.EqualTo("my gender"));
@@ -213,7 +217,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
             Assert.That(demographics.Age, Is.Not.Null);
-            Assert.That(demographics.Age.Value, Is.EqualTo(9266));
+            Assert.That(demographics.Age.Value, Is.EqualTo(9266.5));
             Assert.That(demographics.Age.Unit, Is.EqualTo("years"));
             Assert.That(demographics.Age.Description, Is.EqualTo("my only age description"));
             Assert.That(demographics.Gender, Is.EqualTo("my gender"));
@@ -314,7 +318,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
             Assert.That(demographics.Age, Is.Not.Null);
-            Assert.That(demographics.Age.Value, Is.EqualTo(ageRolls[index].Amount));
+            Assert.That(demographics.Age.Value, Is.EqualTo(ageRolls[index].Amount + 0.5));
             Assert.That(demographics.Age.Unit, Is.EqualTo("years"));
             Assert.That(demographics.Age.Description, Is.EqualTo(ageRolls[index].Type));
             Assert.That(demographics.Gender, Is.EqualTo("my gender"));
@@ -428,7 +432,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
             Assert.That(demographics.Age, Is.Not.Null);
-            Assert.That(demographics.Age.Value, Is.EqualTo(ageRolls[index].Amount));
+            Assert.That(demographics.Age.Value, Is.EqualTo(ageRolls[index].Amount + 0.5));
             Assert.That(demographics.Age.Unit, Is.EqualTo("years"));
             Assert.That(demographics.Age.Description, Is.EqualTo(ageRolls[index].Type));
             Assert.That(demographics.Gender, Is.EqualTo("my gender"));
@@ -561,7 +565,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
             Assert.That(demographics.Age, Is.Not.Null);
-            Assert.That(demographics.Age.Value, Is.EqualTo(9266));
+            Assert.That(demographics.Age.Value, Is.EqualTo(9266.5));
             Assert.That(demographics.Age.Unit, Is.EqualTo("years"));
             Assert.That(demographics.Age.Description, Is.EqualTo(AgeConstants.Categories.Adulthood));
             Assert.That(demographics.Gender, Is.EqualTo("my gender"));
@@ -580,6 +584,453 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(demographics.MaximumAge, Is.Not.Null);
             Assert.That(demographics.MaximumAge.Unit, Is.EqualTo("years"));
             Assert.That(demographics.MaximumAge.Value, Is.EqualTo(9266));
+            Assert.That(demographics.MaximumAge.Description, Is.EqualTo("This is how I die"));
+            Assert.That(demographics.Weight, Is.Not.Null);
+            Assert.That(demographics.Weight.Unit, Is.EqualTo("pounds"));
+            Assert.That(demographics.Weight.Value, Is.EqualTo(8245 + 783 * 420));
+            Assert.That(demographics.Weight.Description, Is.EqualTo("Average"));
+            Assert.That(demographics.Skin, Is.EqualTo("my random skin"));
+            Assert.That(demographics.Hair, Is.EqualTo("my random hair"));
+            Assert.That(demographics.Eyes, Is.EqualTo("my random eyes"));
+            Assert.That(demographics.Other, Is.EqualTo("my random other"));
+        }
+
+        [Test]
+        public void Generate_ReturnsDemographics_WhenAgeIsGreaterThanMaximumAge_MaximumAgeIsZero()
+        {
+            mockCollectionsSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
+                .Returns("my gender");
+
+            var ageRolls = new List<TypeAndAmountSelection>();
+            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Adulthood, Amount = 0, RawAmount = "raw 0" });
+            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 0, RawAmount = "raw 0" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Returns(ageRolls);
+
+            mockDice
+                .Setup(d => d.Roll("(1d12-1)/12").AsSum<double>())
+                .Returns(0.2022);
+
+            mockCollectionsSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => !c.Any()),
+                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => !c.Any()),
+                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => !c.Any())))
+                .Returns(ageRolls[0]);
+
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
+                .Returns(new[] { "This is how I die" });
+
+            var heightRolls = new List<TypeAndAmountSelection>();
+            heightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" });
+            heightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" });
+            heightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 783, RawAmount = "raw 783" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Returns(heightRolls);
+
+            var lengthRolls = new List<TypeAndAmountSelection>();
+            lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
+            lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
+            lengthRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 227, RawAmount = "raw 227" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Returns(lengthRolls);
+
+            var weightRolls = new List<TypeAndAmountSelection>();
+            weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
+            weightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" });
+            weightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Returns(weightRolls);
+
+            var wingspanRolls = new List<TypeAndAmountSelection>();
+            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
+            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
+            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Returns(wingspanRolls);
+
+            SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
+
+            var demographics = generator.Generate("my creature");
+            Assert.That(demographics, Is.Not.Null);
+            Assert.That(demographics.Age, Is.Not.Null);
+            Assert.That(demographics.Age.Value, Is.EqualTo(0.2022));
+            Assert.That(demographics.Age.Unit, Is.EqualTo("years"));
+            Assert.That(demographics.Age.Description, Is.EqualTo(AgeConstants.Categories.Adulthood));
+            Assert.That(demographics.Gender, Is.EqualTo("my gender"));
+            Assert.That(demographics.Height, Is.Not.Null);
+            Assert.That(demographics.Height.Value, Is.EqualTo(42 + 783));
+            Assert.That(demographics.Height.Unit, Is.EqualTo("inches"));
+            Assert.That(demographics.Height.Description, Is.EqualTo("Average"));
+            Assert.That(demographics.Length, Is.Not.Null);
+            Assert.That(demographics.Length.Value, Is.EqualTo(922 + 227));
+            Assert.That(demographics.Length.Unit, Is.EqualTo("inches"));
+            Assert.That(demographics.Length.Description, Is.EqualTo("Average"));
+            Assert.That(demographics.Wingspan, Is.Not.Null);
+            Assert.That(demographics.Wingspan.Value, Is.EqualTo(123 + 345));
+            Assert.That(demographics.Wingspan.Unit, Is.EqualTo("inches"));
+            Assert.That(demographics.Wingspan.Description, Is.EqualTo("Average"));
+            Assert.That(demographics.MaximumAge, Is.Not.Null);
+            Assert.That(demographics.MaximumAge.Unit, Is.EqualTo("years"));
+            Assert.That(demographics.MaximumAge.Value, Is.EqualTo(0.2022));
+            Assert.That(demographics.MaximumAge.Description, Is.EqualTo("This is how I die"));
+            Assert.That(demographics.Weight, Is.Not.Null);
+            Assert.That(demographics.Weight.Unit, Is.EqualTo("pounds"));
+            Assert.That(demographics.Weight.Value, Is.EqualTo(8245 + 783 * 420));
+            Assert.That(demographics.Weight.Description, Is.EqualTo("Average"));
+            Assert.That(demographics.Skin, Is.EqualTo("my random skin"));
+            Assert.That(demographics.Hair, Is.EqualTo("my random hair"));
+            Assert.That(demographics.Eyes, Is.EqualTo("my random eyes"));
+            Assert.That(demographics.Other, Is.EqualTo("my random other"));
+        }
+
+        [Test]
+        public void Generate_ReturnsDemographics_WithShortAge()
+        {
+            mockCollectionsSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
+                .Returns("my gender");
+
+            var ageRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = AgeConstants.Categories.Adulthood, Amount = 0, RawAmount = "raw 0" },
+                new() { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" },
+                new() { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" },
+                new() { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" },
+                new() { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" }
+            };
+
+            mockDice
+                .Setup(d => d.Roll("(1d12-1)/12").AsSum<double>())
+                .Returns(0.922);
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Returns(ageRolls);
+
+            mockCollectionsSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1]),
+                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[2]),
+                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[3])))
+                .Returns(ageRolls[0]);
+
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
+                .Returns(["This is how I die"]);
+
+            var heightRolls = new List<TypeAndAmountSelection>
+            {
+                new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
+                new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
+                new TypeAndAmountSelection { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Returns(heightRolls);
+
+            var lengthRolls = new List<TypeAndAmountSelection>
+            {
+                new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" },
+                new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" },
+                new TypeAndAmountSelection { Type = "my creature", Amount = 227, RawAmount = "raw 227" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Returns(lengthRolls);
+
+            var weightRolls = new List<TypeAndAmountSelection>
+            {
+                new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" },
+                new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" },
+                new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Returns(weightRolls);
+
+            var wingspanRolls = new List<TypeAndAmountSelection>
+            {
+                new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" },
+                new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" },
+                new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Returns(wingspanRolls);
+
+            SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
+
+            var demographics = generator.Generate("my creature");
+            Assert.That(demographics, Is.Not.Null);
+            Assert.That(demographics.Age, Is.Not.Null);
+            Assert.That(demographics.Age.Value, Is.EqualTo(0.922));
+            Assert.That(demographics.Age.Unit, Is.EqualTo("years"));
+            Assert.That(demographics.Age.Description, Is.EqualTo(AgeConstants.Categories.Adulthood));
+            Assert.That(demographics.Gender, Is.EqualTo("my gender"));
+            Assert.That(demographics.Height, Is.Not.Null);
+            Assert.That(demographics.Height.Value, Is.EqualTo(42 + 783));
+            Assert.That(demographics.Height.Unit, Is.EqualTo("inches"));
+            Assert.That(demographics.Height.Description, Is.EqualTo("Average"));
+            Assert.That(demographics.Length, Is.Not.Null);
+            Assert.That(demographics.Length.Value, Is.EqualTo(922 + 227));
+            Assert.That(demographics.Length.Unit, Is.EqualTo("inches"));
+            Assert.That(demographics.Length.Description, Is.EqualTo("Average"));
+            Assert.That(demographics.Wingspan, Is.Not.Null);
+            Assert.That(demographics.Wingspan.Value, Is.EqualTo(123 + 345));
+            Assert.That(demographics.Wingspan.Unit, Is.EqualTo("inches"));
+            Assert.That(demographics.Wingspan.Description, Is.EqualTo("Average"));
+            Assert.That(demographics.MaximumAge, Is.Not.Null);
+            Assert.That(demographics.MaximumAge.Unit, Is.EqualTo("years"));
+            Assert.That(demographics.MaximumAge.Value, Is.EqualTo(90210));
+            Assert.That(demographics.MaximumAge.Description, Is.EqualTo("This is how I die"));
+            Assert.That(demographics.Weight, Is.Not.Null);
+            Assert.That(demographics.Weight.Unit, Is.EqualTo("pounds"));
+            Assert.That(demographics.Weight.Value, Is.EqualTo(8245 + 783 * 420));
+            Assert.That(demographics.Weight.Description, Is.EqualTo("Average"));
+            Assert.That(demographics.Skin, Is.EqualTo("my random skin"));
+            Assert.That(demographics.Hair, Is.EqualTo("my random hair"));
+            Assert.That(demographics.Eyes, Is.EqualTo("my random eyes"));
+            Assert.That(demographics.Other, Is.EqualTo("my random other"));
+        }
+
+        [Test]
+        public void Generate_ReturnsDemographics_WithShortAge_NoMonthsRolled()
+        {
+            mockCollectionsSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
+                .Returns("my gender");
+
+            var ageRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = AgeConstants.Categories.Adulthood, Amount = 0, RawAmount = "raw 0" },
+                new() { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" },
+                new() { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" },
+                new() { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" },
+                new() { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" }
+            };
+
+            mockDice
+                .Setup(d => d.Roll("(1d12-1)/12").AsSum<double>())
+                .Returns(0);
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Returns(ageRolls);
+
+            mockCollectionsSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1]),
+                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[2]),
+                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[3])))
+                .Returns(ageRolls[0]);
+
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
+                .Returns(["This is how I die"]);
+
+            var heightRolls = new List<TypeAndAmountSelection>
+            {
+                new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
+                new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
+                new TypeAndAmountSelection { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Returns(heightRolls);
+
+            var lengthRolls = new List<TypeAndAmountSelection>
+            {
+                new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" },
+                new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" },
+                new TypeAndAmountSelection { Type = "my creature", Amount = 227, RawAmount = "raw 227" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Returns(lengthRolls);
+
+            var weightRolls = new List<TypeAndAmountSelection>
+            {
+                new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" },
+                new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" },
+                new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Returns(weightRolls);
+
+            var wingspanRolls = new List<TypeAndAmountSelection>
+            {
+                new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" },
+                new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" },
+                new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Returns(wingspanRolls);
+
+            SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
+
+            var demographics = generator.Generate("my creature");
+            Assert.That(demographics, Is.Not.Null);
+            Assert.That(demographics.Age, Is.Not.Null);
+            Assert.That(demographics.Age.Value, Is.EqualTo(1 / 12d));
+            Assert.That(demographics.Age.Unit, Is.EqualTo("years"));
+            Assert.That(demographics.Age.Description, Is.EqualTo(AgeConstants.Categories.Adulthood));
+            Assert.That(demographics.Gender, Is.EqualTo("my gender"));
+            Assert.That(demographics.Height, Is.Not.Null);
+            Assert.That(demographics.Height.Value, Is.EqualTo(42 + 783));
+            Assert.That(demographics.Height.Unit, Is.EqualTo("inches"));
+            Assert.That(demographics.Height.Description, Is.EqualTo("Average"));
+            Assert.That(demographics.Length, Is.Not.Null);
+            Assert.That(demographics.Length.Value, Is.EqualTo(922 + 227));
+            Assert.That(demographics.Length.Unit, Is.EqualTo("inches"));
+            Assert.That(demographics.Length.Description, Is.EqualTo("Average"));
+            Assert.That(demographics.Wingspan, Is.Not.Null);
+            Assert.That(demographics.Wingspan.Value, Is.EqualTo(123 + 345));
+            Assert.That(demographics.Wingspan.Unit, Is.EqualTo("inches"));
+            Assert.That(demographics.Wingspan.Description, Is.EqualTo("Average"));
+            Assert.That(demographics.MaximumAge, Is.Not.Null);
+            Assert.That(demographics.MaximumAge.Unit, Is.EqualTo("years"));
+            Assert.That(demographics.MaximumAge.Value, Is.EqualTo(90210));
+            Assert.That(demographics.MaximumAge.Description, Is.EqualTo("This is how I die"));
+            Assert.That(demographics.Weight, Is.Not.Null);
+            Assert.That(demographics.Weight.Unit, Is.EqualTo("pounds"));
+            Assert.That(demographics.Weight.Value, Is.EqualTo(8245 + 783 * 420));
+            Assert.That(demographics.Weight.Description, Is.EqualTo("Average"));
+            Assert.That(demographics.Skin, Is.EqualTo("my random skin"));
+            Assert.That(demographics.Hair, Is.EqualTo("my random hair"));
+            Assert.That(demographics.Eyes, Is.EqualTo("my random eyes"));
+            Assert.That(demographics.Other, Is.EqualTo("my random other"));
+        }
+
+        [Test]
+        public void Generate_ReturnsDemographics_WithRegularAge_NoMonthsRolled()
+        {
+            mockCollectionsSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
+                .Returns("my gender");
+
+            var ageRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = AgeConstants.Categories.Adulthood, Amount = 9266, RawAmount = "raw 9266" },
+                new() { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" },
+                new() { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" },
+                new() { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" },
+                new() { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" }
+            };
+
+            mockDice
+                .Setup(d => d.Roll("(1d12-1)/12").AsSum<double>())
+                .Returns(0);
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Returns(ageRolls);
+
+            mockCollectionsSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1]),
+                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[2]),
+                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[3])))
+                .Returns(ageRolls[0]);
+
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
+                .Returns(["This is how I die"]);
+
+            var heightRolls = new List<TypeAndAmountSelection>
+            {
+                new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
+                new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
+                new TypeAndAmountSelection { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Returns(heightRolls);
+
+            var lengthRolls = new List<TypeAndAmountSelection>
+            {
+                new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" },
+                new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" },
+                new TypeAndAmountSelection { Type = "my creature", Amount = 227, RawAmount = "raw 227" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Returns(lengthRolls);
+
+            var weightRolls = new List<TypeAndAmountSelection>
+            {
+                new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" },
+                new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" },
+                new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Returns(weightRolls);
+
+            var wingspanRolls = new List<TypeAndAmountSelection>
+            {
+                new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" },
+                new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" },
+                new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Returns(wingspanRolls);
+
+            SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
+
+            var demographics = generator.Generate("my creature");
+            Assert.That(demographics, Is.Not.Null);
+            Assert.That(demographics.Age, Is.Not.Null);
+            Assert.That(demographics.Age.Value, Is.EqualTo(9266));
+            Assert.That(demographics.Age.Unit, Is.EqualTo("years"));
+            Assert.That(demographics.Age.Description, Is.EqualTo(AgeConstants.Categories.Adulthood));
+            Assert.That(demographics.Gender, Is.EqualTo("my gender"));
+            Assert.That(demographics.Height, Is.Not.Null);
+            Assert.That(demographics.Height.Value, Is.EqualTo(42 + 783));
+            Assert.That(demographics.Height.Unit, Is.EqualTo("inches"));
+            Assert.That(demographics.Height.Description, Is.EqualTo("Average"));
+            Assert.That(demographics.Length, Is.Not.Null);
+            Assert.That(demographics.Length.Value, Is.EqualTo(922 + 227));
+            Assert.That(demographics.Length.Unit, Is.EqualTo("inches"));
+            Assert.That(demographics.Length.Description, Is.EqualTo("Average"));
+            Assert.That(demographics.Wingspan, Is.Not.Null);
+            Assert.That(demographics.Wingspan.Value, Is.EqualTo(123 + 345));
+            Assert.That(demographics.Wingspan.Unit, Is.EqualTo("inches"));
+            Assert.That(demographics.Wingspan.Description, Is.EqualTo("Average"));
+            Assert.That(demographics.MaximumAge, Is.Not.Null);
+            Assert.That(demographics.MaximumAge.Unit, Is.EqualTo("years"));
+            Assert.That(demographics.MaximumAge.Value, Is.EqualTo(90210));
             Assert.That(demographics.MaximumAge.Description, Is.EqualTo("This is how I die"));
             Assert.That(demographics.Weight, Is.Not.Null);
             Assert.That(demographics.Weight.Unit, Is.EqualTo("pounds"));
@@ -676,7 +1127,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
             Assert.That(demographics.Age, Is.Not.Null);
-            Assert.That(demographics.Age.Value, Is.EqualTo(9266));
+            Assert.That(demographics.Age.Value, Is.EqualTo(9266.5));
             Assert.That(demographics.Age.Unit, Is.EqualTo("years"));
             Assert.That(demographics.Age.Description, Is.EqualTo(AgeConstants.Categories.Adulthood));
             Assert.That(demographics.Gender, Is.EqualTo("my gender"));
@@ -791,7 +1242,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
             Assert.That(demographics.Age, Is.Not.Null);
-            Assert.That(demographics.Age.Value, Is.EqualTo(9266));
+            Assert.That(demographics.Age.Value, Is.EqualTo(9266.5));
             Assert.That(demographics.Age.Unit, Is.EqualTo("years"));
             Assert.That(demographics.Age.Description, Is.EqualTo(AgeConstants.Categories.Adulthood));
             Assert.That(demographics.Gender, Is.EqualTo("my gender"));
@@ -906,7 +1357,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
             Assert.That(demographics.Age, Is.Not.Null);
-            Assert.That(demographics.Age.Value, Is.EqualTo(9266));
+            Assert.That(demographics.Age.Value, Is.EqualTo(9266.5));
             Assert.That(demographics.Age.Unit, Is.EqualTo("years"));
             Assert.That(demographics.Age.Description, Is.EqualTo(AgeConstants.Categories.Adulthood));
             Assert.That(demographics.Gender, Is.EqualTo("my gender"));
@@ -1007,7 +1458,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
             Assert.That(demographics.Age, Is.Not.Null);
-            Assert.That(demographics.Age.Value, Is.EqualTo(9266));
+            Assert.That(demographics.Age.Value, Is.EqualTo(9266.5));
             Assert.That(demographics.Age.Unit, Is.EqualTo("years"));
             Assert.That(demographics.Age.Description, Is.EqualTo(AgeConstants.Categories.Adulthood));
             Assert.That(demographics.Gender, Is.EqualTo("my gender"));
@@ -1108,7 +1559,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
             Assert.That(demographics.Age, Is.Not.Null);
-            Assert.That(demographics.Age.Value, Is.EqualTo(9266));
+            Assert.That(demographics.Age.Value, Is.EqualTo(9266.5));
             Assert.That(demographics.Age.Unit, Is.EqualTo("years"));
             Assert.That(demographics.Age.Description, Is.EqualTo(AgeConstants.Categories.Adulthood));
             Assert.That(demographics.Gender, Is.EqualTo("my gender"));
@@ -1209,7 +1660,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
             Assert.That(demographics.Age, Is.Not.Null);
-            Assert.That(demographics.Age.Value, Is.EqualTo(9266));
+            Assert.That(demographics.Age.Value, Is.EqualTo(9266.5));
             Assert.That(demographics.Age.Unit, Is.EqualTo("years"));
             Assert.That(demographics.Age.Description, Is.EqualTo(AgeConstants.Categories.Adulthood));
             Assert.That(demographics.Gender, Is.EqualTo("my gender"));
@@ -1324,7 +1775,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
             Assert.That(demographics.Age, Is.Not.Null);
-            Assert.That(demographics.Age.Value, Is.EqualTo(9266));
+            Assert.That(demographics.Age.Value, Is.EqualTo(9266.5));
             Assert.That(demographics.Age.Unit, Is.EqualTo("years"));
             Assert.That(demographics.Age.Description, Is.EqualTo(AgeConstants.Categories.Adulthood));
             Assert.That(demographics.Gender, Is.EqualTo("my gender"));
@@ -1425,7 +1876,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
             Assert.That(demographics.Age, Is.Not.Null);
-            Assert.That(demographics.Age.Value, Is.EqualTo(9266));
+            Assert.That(demographics.Age.Value, Is.EqualTo(9266.5));
             Assert.That(demographics.Age.Unit, Is.EqualTo("years"));
             Assert.That(demographics.Age.Description, Is.EqualTo(AgeConstants.Categories.Adulthood));
             Assert.That(demographics.Gender, Is.EqualTo("my gender"));
@@ -1607,7 +2058,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
             Assert.That(demographics.Age, Is.Not.Null);
-            Assert.That(demographics.Age.Value, Is.EqualTo(9266));
+            Assert.That(demographics.Age.Value, Is.EqualTo(9266.5));
             Assert.That(demographics.Age.Unit, Is.EqualTo("years"));
             Assert.That(demographics.Age.Description, Is.EqualTo(AgeConstants.Categories.Adulthood));
             Assert.That(demographics.Gender, Is.EqualTo("my gender"));
