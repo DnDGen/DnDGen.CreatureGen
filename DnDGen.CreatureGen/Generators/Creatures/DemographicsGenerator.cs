@@ -176,10 +176,6 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public Demographics Update(Demographics source, string template)
         {
-            var skin = collectionsSelector.SelectRandomFrom(
-                Config.Name,
-                TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Skin),
-                template);
             var hair = collectionsSelector.SelectRandomFrom(
                 Config.Name,
                 TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Hair),
@@ -192,7 +188,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 Config.Name,
                 TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Other),
                 template);
-            source.Skin += GetAppearanceSeparator(source.Skin) + skin;
+            source.Skin = UpdateAppearance(source.Skin, TableNameConstants.Collection.AppearanceCategories.Skin, template);
             source.Hair += GetAppearanceSeparator(source.Hair) + hair;
             source.Eyes += GetAppearanceSeparator(source.Eyes) + eyes;
             source.Other += GetAppearanceSeparator(source.Other) + other;
@@ -203,6 +199,17 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             source.Other = source.Other.Trim();
 
             return source;
+        }
+
+        private string UpdateAppearance(string source, string category, string template)
+        {
+            var templateAppearance = collectionsSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances(category), template);
+            if (string.IsNullOrEmpty(templateAppearance))
+                return source;
+
+            var separator = GetAppearanceSeparator(source);
+            var newAppearance = source + separator + templateAppearance;
+            return newAppearance.Trim();
         }
     }
 }

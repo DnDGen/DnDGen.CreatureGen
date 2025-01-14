@@ -2087,5 +2087,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(demographics.Eyes, Is.EqualTo("my gendered random eyes"));
             Assert.That(demographics.Other, Is.EqualTo("my gendered random other"));
         }
+
+        [Test]
+        public void Update_TESTS()
+        {
+            Assert.Fail("TODO: write tests for the Update method");
+        }
     }
 }
