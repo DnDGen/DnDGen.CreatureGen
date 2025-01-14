@@ -60,8 +60,8 @@ namespace DnDGen.CreatureGen.Templates
             this.prototypeFactory = prototypeFactory;
             this.demographicsGenerator = demographicsGenerator;
 
-            creatureTypes = new[]
-            {
+            creatureTypes =
+            [
                 CreatureConstants.Types.Aberration,
                 CreatureConstants.Types.Animal,
                 CreatureConstants.Types.Dragon,
@@ -74,7 +74,7 @@ namespace DnDGen.CreatureGen.Templates
                 CreatureConstants.Types.Ooze,
                 CreatureConstants.Types.Plant,
                 CreatureConstants.Types.Vermin,
-            };
+            ];
         }
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
@@ -172,29 +172,12 @@ namespace DnDGen.CreatureGen.Templates
         {
             return new[] { CreatureConstants.Types.Outsider }
                 .Union(subtypes)
-                .Union(new[] { CreatureConstants.Types.Subtypes.Native, CreatureConstants.Types.Subtypes.Augmented, creatureType });
+                .Union([CreatureConstants.Types.Subtypes.Native, CreatureConstants.Types.Subtypes.Augmented, creatureType]);
         }
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var skin = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.HalfCelestial);
-            var hair = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.HalfCelestial);
-            var eyes = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.HalfCelestial);
-            var other = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.HalfCelestial);
-            creature.Demographics.Skin += " " + skin;
-            creature.Demographics.Hair += " " + hair;
-            creature.Demographics.Eyes += " " + eyes;
-            creature.Demographics.Other += " " + other;
-
-            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.HalfCelestial);
-            var maxAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Maximum);
-            var multiplier = maxAgeRoll.Amount / creature.Demographics.MaximumAge.Value / 2;
-
-            creature.Demographics.Age.Value *= multiplier;
-            creature.Demographics.MaximumAge.Value = AgeConstants.Ageless;
-            creature.Demographics.Wingspan = demographicsGenerator.GenerateWingspan(CreatureConstants.Templates.HalfCelestial, creature.Size);
-
-            //TODO: It would be better to generate the wingspan as equal to the creature height/length...
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, CreatureConstants.Templates.HalfCelestial, creature.Size, true);
         }
 
         private void UpdateCreatureSpeeds(Creature creature)
@@ -272,8 +255,10 @@ namespace DnDGen.CreatureGen.Templates
 
         private Alignment UpdateCreatureAlignment(string alignment)
         {
-            var newAlignment = new Alignment(alignment);
-            newAlignment.Goodness = AlignmentConstants.Good;
+            var newAlignment = new Alignment(alignment)
+            {
+                Goodness = AlignmentConstants.Good
+            };
 
             return newAlignment;
         }

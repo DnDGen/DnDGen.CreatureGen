@@ -31,6 +31,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IEnumerable<string> creatureTypes;
         private readonly ICreaturePrototypeFactory prototypeFactory;
         private readonly ITypeAndAmountSelector typeAndAmountSelector;
+        private readonly IDemographicsGenerator demographicsGenerator;
 
         private const int MinimumVampireHitDice = 5;
 
@@ -42,7 +43,8 @@ namespace DnDGen.CreatureGen.Templates
             ICreatureDataSelector creatureDataSelector,
             IAdjustmentsSelector adjustmentSelector,
             ICreaturePrototypeFactory prototypeFactory,
-            ITypeAndAmountSelector typeAndAmountSelector)
+            ITypeAndAmountSelector typeAndAmountSelector,
+            IDemographicsGenerator demographicsGenerator)
         {
             this.dice = dice;
             this.attacksGenerator = attacksGenerator;
@@ -52,12 +54,13 @@ namespace DnDGen.CreatureGen.Templates
             this.adjustmentSelector = adjustmentSelector;
             this.prototypeFactory = prototypeFactory;
             this.typeAndAmountSelector = typeAndAmountSelector;
+            this.demographicsGenerator = demographicsGenerator;
 
-            creatureTypes = new[]
-            {
+            creatureTypes =
+            [
                 CreatureConstants.Types.Humanoid,
                 CreatureConstants.Types.MonstrousHumanoid,
-            };
+            ];
         }
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
@@ -145,21 +148,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var skin = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.Vampire);
-            var hair = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.Vampire);
-            var eyes = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.Vampire);
-            var other = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.Vampire);
-            creature.Demographics.Skin += " " + skin;
-            creature.Demographics.Hair += " " + hair;
-            creature.Demographics.Eyes += " " + eyes;
-            creature.Demographics.Other += " " + other;
-
-            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Vampire);
-            var undeadAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Undead);
-
-            creature.Demographics.Age.Value += undeadAgeRoll.Amount;
-            creature.Demographics.Age.Description = AgeConstants.Categories.Undead;
-            creature.Demographics.MaximumAge.Value = AgeConstants.Ageless;
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, CreatureConstants.Templates.Lich, creature.Size, false);
         }
 
         private void UpdateCreatureInitiativeBonus(Creature creature)

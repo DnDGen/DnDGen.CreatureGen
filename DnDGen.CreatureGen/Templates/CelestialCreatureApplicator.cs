@@ -160,7 +160,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            creature.Demographics = demographicsGenerator.Update(creature.Demographics, CreatureConstants.Templates.CelestialCreature);
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, CreatureConstants.Templates.CelestialCreature, creature.Size, false);
         }
 
         private void UpdateCreatureAbilities(Creature creature)

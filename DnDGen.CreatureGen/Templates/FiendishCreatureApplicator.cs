@@ -161,7 +161,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            creature.Demographics = demographicsGenerator.Update(creature.Demographics, CreatureConstants.Templates.FiendishCreature);
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, CreatureConstants.Templates.FiendishCreature, creature.Size, false);
         }
 
         private void UpdateCreatureAbilities(Creature creature)

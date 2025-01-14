@@ -14,6 +14,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(AgeConstants.Categories.Swarm, "Swarm")]
         [TestCase(AgeConstants.Categories.Undead, "Undead")]
         [TestCase(AgeConstants.Categories.Construct, "Construct")]
+        [TestCase(AgeConstants.Categories.Multiplier, "Multiplier")]
         [TestCase(AgeConstants.Categories.Arrowhawk.Juvenile, "Juvenile (Arrowhawk)")]
         [TestCase(AgeConstants.Categories.Arrowhawk.Adult, "Adult (Arrowhawk)")]
         [TestCase(AgeConstants.Categories.Arrowhawk.Elder, "Elder (Arrowhawk)")]

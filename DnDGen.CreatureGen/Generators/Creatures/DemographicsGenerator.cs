@@ -172,38 +172,60 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return wingspan;
         }
 
-        private string GetAppearanceSeparator(string appearance) => appearance.EndsWith('.') ? " " : ". ";
+        public static string GetAppearanceSeparator(string appearance) => appearance.EndsWith('.') ? " " : ". ";
 
-        public Demographics Update(Demographics source, string template)
+        public Demographics Update(Demographics source, string template, string size, bool addWingspan = false, bool overwriteAppearance = false)
         {
-            var hair = collectionsSelector.SelectRandomFrom(
-                Config.Name,
-                TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Hair),
-                template);
-            var eyes = collectionsSelector.SelectRandomFrom(
-                Config.Name,
-                TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Eyes),
-                template);
-            var other = collectionsSelector.SelectRandomFrom(
-                Config.Name,
-                TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Other),
-                template);
-            source.Skin = UpdateAppearance(source.Skin, TableNameConstants.Collection.AppearanceCategories.Skin, template);
-            source.Hair += GetAppearanceSeparator(source.Hair) + hair;
-            source.Eyes += GetAppearanceSeparator(source.Eyes) + eyes;
-            source.Other += GetAppearanceSeparator(source.Other) + other;
+            source.Skin = UpdateAppearance(source.Skin, TableNameConstants.Collection.AppearanceCategories.Skin, template, overwriteAppearance);
+            source.Hair = UpdateAppearance(source.Hair, TableNameConstants.Collection.AppearanceCategories.Hair, template, overwriteAppearance);
+            source.Eyes = UpdateAppearance(source.Eyes, TableNameConstants.Collection.AppearanceCategories.Eyes, template, overwriteAppearance);
+            source.Other = UpdateAppearance(source.Other, TableNameConstants.Collection.AppearanceCategories.Other, template, overwriteAppearance);
 
-            source.Skin = source.Skin.Trim();
-            source.Hair = source.Hair.Trim();
-            source.Eyes = source.Eyes.Trim();
-            source.Other = source.Other.Trim();
+            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, template);
+            var maxAgeRoll = ageRolls.First(r => r.Type == AgeConstants.Categories.Maximum);
+            var ageRoll = ageRolls.First(r => r.Type != AgeConstants.Categories.Maximum);
+
+            if (ageRoll.Type == AgeConstants.Categories.Multiplier)
+            {
+                source.Age.Value *= ageRoll.Amount;
+            }
+            else if (ageRoll.Amount > 0)
+            {
+                source.Age.Value += ageRoll.Amount;
+                source.Age.Description = ageRoll.Type;
+            }
+
+            //INFO: If template age category is multiplier, it also applies to the Maximum age
+            if (ageRoll.Type == AgeConstants.Categories.Multiplier)
+            {
+                source.Age.Value *= ageRoll.Amount;
+                source.MaximumAge.Value *= ageRoll.Amount;
+            }
+            else if (maxAgeRoll.Amount == AgeConstants.Ageless)
+            {
+                source.MaximumAge.Value = maxAgeRoll.Amount;
+                source.MaximumAge.Description = maxAgeRoll.Type;
+            }
+            else if (maxAgeRoll.Amount > 0)
+            {
+                source.MaximumAge.Value += maxAgeRoll.Amount;
+                source.MaximumAge.Description = maxAgeRoll.Type;
+            }
+
+            if (addWingspan && source.Wingspan.Value == 0)
+            {
+                source.Wingspan = GenerateWingspan(template, size);
+            }
 
             return source;
         }
 
-        private string UpdateAppearance(string source, string category, string template)
+        private string UpdateAppearance(string source, string category, string template, bool overwrite)
         {
             var templateAppearance = collectionsSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances(category), template);
+            if (overwrite)
+                return templateAppearance;
+
             if (string.IsNullOrEmpty(templateAppearance))
                 return source;
 

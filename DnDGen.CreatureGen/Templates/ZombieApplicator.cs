@@ -33,7 +33,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IHitPointsGenerator hitPointsGenerator;
         private readonly IEnumerable<string> invalidSubtypes;
         private readonly ICreaturePrototypeFactory prototypeFactory;
-        private readonly ITypeAndAmountSelector typeAndAmountSelector;
+        private readonly IDemographicsGenerator demographicsGenerator;
 
         public ZombieApplicator(
             ICollectionSelector collectionSelector,
@@ -44,7 +44,7 @@ namespace DnDGen.CreatureGen.Templates
             ISavesGenerator savesGenerator,
             IHitPointsGenerator hitPointsGenerator,
             ICreaturePrototypeFactory prototypeFactory,
-            ITypeAndAmountSelector typeAndAmountSelector)
+            IDemographicsGenerator demographicsGenerator)
         {
             this.collectionSelector = collectionSelector;
             this.adjustmentSelector = adjustmentSelector;
@@ -54,10 +54,10 @@ namespace DnDGen.CreatureGen.Templates
             this.savesGenerator = savesGenerator;
             this.hitPointsGenerator = hitPointsGenerator;
             this.prototypeFactory = prototypeFactory;
-            this.typeAndAmountSelector = typeAndAmountSelector;
+            this.demographicsGenerator = demographicsGenerator;
 
-            creatureTypes = new[]
-            {
+            creatureTypes =
+            [
                 CreatureConstants.Types.Aberration,
                 CreatureConstants.Types.Animal,
                 CreatureConstants.Types.Dragon,
@@ -68,10 +68,10 @@ namespace DnDGen.CreatureGen.Templates
                 CreatureConstants.Types.MagicalBeast,
                 CreatureConstants.Types.MonstrousHumanoid,
                 CreatureConstants.Types.Vermin,
-            };
+            ];
 
-            invalidSubtypes = new[]
-            {
+            invalidSubtypes =
+            [
                 CreatureConstants.Types.Subtypes.Angel,
                 CreatureConstants.Types.Subtypes.Archon,
                 CreatureConstants.Types.Subtypes.Chaotic,
@@ -88,7 +88,7 @@ namespace DnDGen.CreatureGen.Templates
                 CreatureConstants.Types.Subtypes.Orc,
                 CreatureConstants.Types.Subtypes.Reptilian,
                 CreatureConstants.Types.Subtypes.Shapechanger,
-            };
+            ];
         }
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
@@ -192,21 +192,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var skin = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.Zombie);
-            var hair = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.Zombie);
-            var eyes = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.Zombie);
-            var other = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.Zombie);
-            creature.Demographics.Skin += " " + skin;
-            creature.Demographics.Hair += " " + hair;
-            creature.Demographics.Eyes += " " + eyes;
-            creature.Demographics.Other += " " + other;
-
-            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Zombie);
-            var undeadAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Undead);
-
-            creature.Demographics.Age.Value += undeadAgeRoll.Amount;
-            creature.Demographics.Age.Description = AgeConstants.Categories.Undead;
-            creature.Demographics.MaximumAge.Value = AgeConstants.Ageless;
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, CreatureConstants.Templates.Skeleton, creature.Size);
         }
 
         private void UpdateCreatureHitPoints(Creature creature)

@@ -162,29 +162,14 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var skin = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), DragonSpecies);
-            var hair = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), DragonSpecies);
-            var eyes = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), DragonSpecies);
-            var other = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), DragonSpecies);
-            creature.Demographics.Skin += GetAppearanceSeparator(creature.Demographics.Skin) + skin;
-            creature.Demographics.Hair += GetAppearanceSeparator(creature.Demographics.Hair) + hair;
-            creature.Demographics.Eyes += GetAppearanceSeparator(creature.Demographics.Eyes) + eyes;
-            creature.Demographics.Other += GetAppearanceSeparator(creature.Demographics.Other) + other;
+            var addWings = IsAtLeastLarge(creature.Size) && creature.Speeds.ContainsKey(SpeedConstants.Land);
 
-            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, DragonSpecies);
-            var maxAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Maximum);
-            var multiplier = maxAgeRoll.Amount / creature.Demographics.MaximumAge.Value / 2;
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, DragonSpecies, creature.Size, addWings);
 
-            creature.Demographics.Age.Value *= multiplier;
-            creature.Demographics.MaximumAge.Value *= multiplier;
-
-            var sizes = SizeConstants.GetOrdered();
-            var largeIndex = Array.IndexOf(sizes, SizeConstants.Large);
-            var sizeIndex = Array.IndexOf(sizes, creature.Size);
-
-            if (sizeIndex >= largeIndex && creature.Speeds.ContainsKey(SpeedConstants.Land))
+            if (addWings && !creature.Demographics.Other.Contains("wing", StringComparison.OrdinalIgnoreCase))
             {
-                creature.Demographics.Wingspan = demographicsGenerator.GenerateWingspan(DragonSpecies, creature.Size);
+                var separator = DemographicsGenerator.GetAppearanceSeparator(creature.Demographics.Other);
+                creature.Demographics.Other += $"{separator}Has dragon wings.";
             }
         }
 
@@ -194,23 +179,25 @@ namespace DnDGen.CreatureGen.Templates
             creature.Type = new CreatureType(adjustedTypes);
         }
 
+        private bool IsAtLeastLarge(string size)
+        {
+            var sizes = SizeConstants.GetOrdered();
+            var largeIndex = Array.IndexOf(sizes, SizeConstants.Large);
+            var sizeIndex = Array.IndexOf(sizes, size);
+            return sizeIndex >= largeIndex;
+        }
+
         private IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
         {
             return new[] { CreatureConstants.Types.Dragon }
                 .Union(subtypes)
-                .Union(new[] { CreatureConstants.Types.Subtypes.Augmented, creatureType });
+                .Union([CreatureConstants.Types.Subtypes.Augmented, creatureType]);
         }
 
         private void UpdateCreatureSpeeds(Creature creature)
         {
-            var sizes = SizeConstants.GetOrdered();
-            var largeIndex = Array.IndexOf(sizes, SizeConstants.Large);
-            var sizeIndex = Array.IndexOf(sizes, creature.Size);
-
-            if (sizeIndex >= largeIndex && creature.Speeds.ContainsKey(SpeedConstants.Land))
+            if (IsAtLeastLarge(creature.Size) && creature.Speeds.ContainsKey(SpeedConstants.Land))
             {
-                creature.Demographics.Other += $"{GetAppearanceSeparator(creature.Demographics.Other)}Has dragon wings.";
-
                 if (!creature.Speeds.ContainsKey(SpeedConstants.Fly))
                 {
                     var dragonSpeeds = speedsGenerator.Generate(DragonSpecies);

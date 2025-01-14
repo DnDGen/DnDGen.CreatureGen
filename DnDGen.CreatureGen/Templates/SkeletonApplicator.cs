@@ -32,7 +32,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IEnumerable<string> creatureTypes;
         private readonly IEnumerable<string> invalidSubtypes;
         private readonly ICreaturePrototypeFactory prototypeFactory;
-        private readonly ITypeAndAmountSelector typeAndAmountSelector;
+        private readonly IDemographicsGenerator demographicsGenerator;
 
         public SkeletonApplicator(
             ICollectionSelector collectionSelector,
@@ -42,7 +42,7 @@ namespace DnDGen.CreatureGen.Templates
             IFeatsGenerator featsGenerator,
             ISavesGenerator savesGenerator,
             ICreaturePrototypeFactory prototypeFactory,
-            ITypeAndAmountSelector typeAndAmountSelector)
+            IDemographicsGenerator demographicsGenerator)
         {
             this.collectionSelector = collectionSelector;
             this.adjustmentSelector = adjustmentSelector;
@@ -51,10 +51,10 @@ namespace DnDGen.CreatureGen.Templates
             this.featsGenerator = featsGenerator;
             this.savesGenerator = savesGenerator;
             this.prototypeFactory = prototypeFactory;
-            this.typeAndAmountSelector = typeAndAmountSelector;
+            this.demographicsGenerator = demographicsGenerator;
 
-            creatureTypes = new[]
-            {
+            creatureTypes =
+            [
                 CreatureConstants.Types.Aberration,
                 CreatureConstants.Types.Animal,
                 CreatureConstants.Types.Dragon,
@@ -65,10 +65,10 @@ namespace DnDGen.CreatureGen.Templates
                 CreatureConstants.Types.MagicalBeast,
                 CreatureConstants.Types.MonstrousHumanoid,
                 CreatureConstants.Types.Vermin,
-            };
+            ];
 
-            invalidSubtypes = new[]
-            {
+            invalidSubtypes =
+            [
                 CreatureConstants.Types.Subtypes.Angel,
                 CreatureConstants.Types.Subtypes.Archon,
                 CreatureConstants.Types.Subtypes.Chaotic,
@@ -85,7 +85,7 @@ namespace DnDGen.CreatureGen.Templates
                 CreatureConstants.Types.Subtypes.Orc,
                 CreatureConstants.Types.Subtypes.Reptilian,
                 CreatureConstants.Types.Subtypes.Shapechanger,
-            };
+            ];
         }
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
@@ -189,21 +189,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var skin = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.Skeleton);
-            var hair = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.Skeleton);
-            var eyes = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.Skeleton);
-            var other = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.Skeleton);
-            creature.Demographics.Skin = skin;
-            creature.Demographics.Hair = hair;
-            creature.Demographics.Eyes = eyes;
-            creature.Demographics.Other = other;
-
-            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Skeleton);
-            var undeadAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Undead);
-
-            creature.Demographics.Age.Value += undeadAgeRoll.Amount;
-            creature.Demographics.Age.Description = AgeConstants.Categories.Undead;
-            creature.Demographics.MaximumAge.Value = AgeConstants.Ageless;
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, CreatureConstants.Templates.Skeleton, creature.Size, false, true);
         }
 
         private void UpdateCreatureHitPoints(Creature creature)

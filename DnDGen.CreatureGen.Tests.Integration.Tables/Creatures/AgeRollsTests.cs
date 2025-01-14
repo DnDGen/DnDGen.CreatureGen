@@ -100,7 +100,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
                 foreach (var creature in creatures)
                 {
-                    testCases[creature] = new Dictionary<string, string>();
+                    testCases[creature] = [];
                 }
 
                 //Source: http://people.wku.edu/charles.plemons/ad&d/races/age.html
@@ -2561,6 +2561,101 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.YuanTi_Abomination][AgeConstants.Categories.Maximum] = GetMaximumRoll(80, 120);
                 testCases[CreatureConstants.Zelekhut][AgeConstants.Categories.Construct] = outsiderAgeRoll;
                 testCases[CreatureConstants.Zelekhut][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
+
+                var templates = CreatureConstants.Templates.GetAll();
+
+                foreach (var template in templates)
+                {
+                    testCases[template] = [];
+                }
+
+                //Source: https://www.d20srd.org/srd/monsters/celestialCreature.htm
+                testCases[CreatureConstants.Templates.CelestialCreature][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.CelestialCreature][AgeConstants.Categories.Maximum] = "0";
+                //Source: https://www.d20srd.org/srd/monsters/fiendishCreature.htm
+                testCases[CreatureConstants.Templates.FiendishCreature][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.FiendishCreature][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Ghost][AgeConstants.Categories.Undead] = undeadAgeRoll;
+                testCases[CreatureConstants.Templates.Ghost][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
+                //Source: https://www.d20srd.org/srd/monsters/halfCelestial.htm
+                //https://forgottenrealms.fandom.com/wiki/Half-celestial
+                testCases[CreatureConstants.Templates.HalfCelestial][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.HalfCelestial][AgeConstants.Categories.Maximum] = "0";
+                //Source: https://forums.giantitp.com/archive/index.php/t-230831.html
+                //https://www.d20srd.org/srd/description.htm#age
+                //https://www.d20srd.org/srd/monsters/dragonTrue.htm
+                //From the description, I assume that being Half-Dragon doubles your age, maintaining existing age category
+                testCases[CreatureConstants.Templates.HalfDragon_Black][AgeConstants.Categories.Multiplier] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_Black][AgeConstants.Categories.Maximum] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_Blue][AgeConstants.Categories.Multiplier] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_Blue][AgeConstants.Categories.Maximum] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_Bronze][AgeConstants.Categories.Multiplier] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_Bronze][AgeConstants.Categories.Maximum] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_Brass][AgeConstants.Categories.Multiplier] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_Brass][AgeConstants.Categories.Maximum] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_Copper][AgeConstants.Categories.Multiplier] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_Copper][AgeConstants.Categories.Maximum] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_Gold][AgeConstants.Categories.Multiplier] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_Gold][AgeConstants.Categories.Maximum] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_Green][AgeConstants.Categories.Multiplier] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_Green][AgeConstants.Categories.Maximum] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_Red][AgeConstants.Categories.Multiplier] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_Red][AgeConstants.Categories.Maximum] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_Silver][AgeConstants.Categories.Multiplier] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_Silver][AgeConstants.Categories.Maximum] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_White][AgeConstants.Categories.Multiplier] = "2";
+                testCases[CreatureConstants.Templates.HalfDragon_White][AgeConstants.Categories.Maximum] = "2";
+                //Source: https://www.d20srd.org/srd/monsters/halfFiend.htm
+                testCases[CreatureConstants.Templates.HalfFiend][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.HalfFiend][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lich][AgeConstants.Categories.Undead] = undeadAgeRoll;
+                testCases[CreatureConstants.Templates.Lich][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Afflicted][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Afflicted][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Natural][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Natural][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Skeleton][AgeConstants.Categories.Undead] = undeadAgeRoll;
+                testCases[CreatureConstants.Templates.Skeleton][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
+                testCases[CreatureConstants.Templates.Vampire][AgeConstants.Categories.Undead] = undeadAgeRoll;
+                testCases[CreatureConstants.Templates.Vampire][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
+                testCases[CreatureConstants.Templates.Zombie][AgeConstants.Categories.Undead] = undeadAgeRoll;
+                testCases[CreatureConstants.Templates.Zombie][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
 
                 foreach (var testCase in testCases)
                 {

@@ -30,6 +30,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly ITypeAndAmountSelector typeAndAmountSelector;
         private readonly IAdjustmentsSelector adjustmentSelector;
         private readonly ICreaturePrototypeFactory prototypeFactory;
+        private readonly IDemographicsGenerator demographicsGenerator;
 
         private const int PhylacterySpellCasterLevel = 11;
 
@@ -41,7 +42,8 @@ namespace DnDGen.CreatureGen.Templates
             IFeatsGenerator featsGenerator,
             ITypeAndAmountSelector typeAndAmountSelector,
             IAdjustmentsSelector adjustmentSelector,
-            ICreaturePrototypeFactory prototypeFactory)
+            ICreaturePrototypeFactory prototypeFactory,
+            IDemographicsGenerator demographicsGenerator)
         {
             this.collectionSelector = collectionSelector;
             this.creatureDataSelector = creatureDataSelector;
@@ -51,16 +53,17 @@ namespace DnDGen.CreatureGen.Templates
             this.typeAndAmountSelector = typeAndAmountSelector;
             this.adjustmentSelector = adjustmentSelector;
             this.prototypeFactory = prototypeFactory;
+            this.demographicsGenerator = demographicsGenerator;
         }
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
-                new[] { creature.Alignment.Full },
+                [creature.Alignment.Full],
                 creature.ChallengeRating,
                 creature.LevelAdjustment,
-                new[] { creature.CasterLevel, creature.Magic.CasterLevel },
+                [creature.CasterLevel, creature.Magic.CasterLevel],
                 filters);
             if (!compatibility.Compatible)
             {
@@ -137,21 +140,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var skin = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.Lich);
-            var hair = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.Lich);
-            var eyes = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.Lich);
-            var other = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.Lich);
-            creature.Demographics.Skin += " " + skin;
-            creature.Demographics.Hair += " " + hair;
-            creature.Demographics.Eyes += " " + eyes;
-            creature.Demographics.Other += " " + other;
-
-            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Lich);
-            var undeadAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Undead);
-
-            creature.Demographics.Age.Value += undeadAgeRoll.Amount;
-            creature.Demographics.Age.Description = AgeConstants.Categories.Undead;
-            creature.Demographics.MaximumAge.Value = AgeConstants.Ageless;
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, CreatureConstants.Templates.Lich, creature.Size, false);
         }
 
         private void UpdateCreatureHitPoints(Creature creature)
@@ -282,10 +271,10 @@ namespace DnDGen.CreatureGen.Templates
             return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
         }
 
-        private IEnumerable<string> GetChallengeRatings(string challengeRating) => new[]
-        {
+        private IEnumerable<string> GetChallengeRatings(string challengeRating) =>
+        [
             UpdateCreatureChallengeRating(challengeRating),
-        };
+        ];
 
         private void UpdateCreatureAttacks(Creature creature)
         {

@@ -14,6 +14,7 @@
             public const string Swarm = "Swarm";
             public const string Undead = "Undead";
             public const string Construct = "Construct";
+            public const string Multiplier = "Multiplier";
 
             public static class Dragon
             {

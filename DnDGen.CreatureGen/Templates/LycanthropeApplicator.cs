@@ -41,6 +41,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IEnumerable<string> creatureTypes;
         private readonly IAdjustmentsSelector adjustmentSelector;
         private readonly ICreaturePrototypeFactory prototypeFactory;
+        private readonly IDemographicsGenerator demographicsGenerator;
 
         public LycanthropeApplicator(
             ICollectionSelector collectionSelector,
@@ -54,7 +55,8 @@ namespace DnDGen.CreatureGen.Templates
             ISkillsGenerator skillsGenerator,
             ISpeedsGenerator speedsGenerator,
             IAdjustmentsSelector adjustmentSelector,
-            ICreaturePrototypeFactory prototypeFactory)
+            ICreaturePrototypeFactory prototypeFactory,
+            IDemographicsGenerator demographicsGenerator)
         {
             this.collectionSelector = collectionSelector;
             this.creatureDataSelector = creatureDataSelector;
@@ -68,12 +70,13 @@ namespace DnDGen.CreatureGen.Templates
             this.speedsGenerator = speedsGenerator;
             this.adjustmentSelector = adjustmentSelector;
             this.prototypeFactory = prototypeFactory;
+            this.demographicsGenerator = demographicsGenerator;
 
-            creatureTypes = new[]
-            {
+            creatureTypes =
+            [
                 CreatureConstants.Types.Giant,
                 CreatureConstants.Types.Humanoid,
-            };
+            ];
         }
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
@@ -173,14 +176,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var skin = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), LycanthropeSpecies);
-            var hair = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), LycanthropeSpecies);
-            var eyes = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), LycanthropeSpecies);
-            var other = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), LycanthropeSpecies);
-            creature.Demographics.Skin += " " + skin;
-            creature.Demographics.Hair += " " + hair;
-            creature.Demographics.Eyes += " " + eyes;
-            creature.Demographics.Other += " " + other;
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, LycanthropeSpecies, creature.Size, false);
         }
 
         private void UpdateCreatureType(CreaturePrototype creature)

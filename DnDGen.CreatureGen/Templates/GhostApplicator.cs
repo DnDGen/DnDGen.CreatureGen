@@ -32,6 +32,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly ICreatureDataSelector creatureDataSelector;
         private readonly IAdjustmentsSelector adjustmentSelector;
         private readonly ICreaturePrototypeFactory prototypeFactory;
+        private readonly IDemographicsGenerator demographicsGenerator;
 
         public GhostApplicator(
             Dice dice,
@@ -43,7 +44,8 @@ namespace DnDGen.CreatureGen.Templates
             ITypeAndAmountSelector typeAndAmountSelector,
             ICreatureDataSelector creatureDataSelector,
             IAdjustmentsSelector adjustmentSelector,
-            ICreaturePrototypeFactory prototypeFactory)
+            ICreaturePrototypeFactory prototypeFactory,
+            IDemographicsGenerator demographicsGenerator)
         {
             this.dice = dice;
             this.speedsGenerator = speedsGenerator;
@@ -55,9 +57,10 @@ namespace DnDGen.CreatureGen.Templates
             this.creatureDataSelector = creatureDataSelector;
             this.adjustmentSelector = adjustmentSelector;
             this.prototypeFactory = prototypeFactory;
+            this.demographicsGenerator = demographicsGenerator;
 
-            creatureTypes = new[]
-            {
+            creatureTypes =
+            [
                 CreatureConstants.Types.Aberration,
                 CreatureConstants.Types.Animal,
                 CreatureConstants.Types.Dragon,
@@ -66,7 +69,7 @@ namespace DnDGen.CreatureGen.Templates
                 CreatureConstants.Types.MagicalBeast,
                 CreatureConstants.Types.MonstrousHumanoid,
                 CreatureConstants.Types.Plant,
-            };
+            ];
         }
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
@@ -147,26 +150,16 @@ namespace DnDGen.CreatureGen.Templates
         {
             return new[] { CreatureConstants.Types.Undead }
                 .Union(subtypes)
-                .Union(new[] { CreatureConstants.Types.Subtypes.Incorporeal, CreatureConstants.Types.Subtypes.Augmented, creatureType });
+                .Union([CreatureConstants.Types.Subtypes.Incorporeal, CreatureConstants.Types.Subtypes.Augmented, creatureType]);
         }
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var skin = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.Ghost);
-            var hair = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.Ghost);
-            var eyes = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.Ghost);
-            var other = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.Ghost);
-            creature.Demographics.Skin += " " + skin;
-            creature.Demographics.Hair += " " + hair;
-            creature.Demographics.Eyes += " " + eyes;
-            creature.Demographics.Other += " " + other;
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, CreatureConstants.Templates.Ghost, creature.Size, false);
 
-            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Ghost);
-            var undeadAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Undead);
-
-            creature.Demographics.Age.Value += undeadAgeRoll.Amount;
-            creature.Demographics.Age.Description = AgeConstants.Categories.Undead;
-            creature.Demographics.MaximumAge.Value = AgeConstants.Ageless;
+            //As Ghosts are Incorporeal, they have no weight.
+            //Will leave the weight description as-is, to inform what the ghost might have looked like in life.
+            creature.Demographics.Weight.Value = 0;
         }
 
         private void UpdateCreatureAbilities(Creature creature)

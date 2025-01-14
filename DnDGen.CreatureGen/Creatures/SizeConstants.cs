@@ -14,8 +14,8 @@
 
         public static string[] GetOrdered()
         {
-            return new[]
-            {
+            return
+            [
                 Fine,
                 Diminutive,
                 Tiny,
@@ -25,7 +25,7 @@
                 Huge,
                 Gargantuan,
                 Colossal
-            };
+            ];
         }
     }
 }

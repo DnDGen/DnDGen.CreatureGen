@@ -173,22 +173,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var skin = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.HalfFiend);
-            var hair = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.HalfFiend);
-            var eyes = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.HalfFiend);
-            var other = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.HalfFiend);
-            creature.Demographics.Skin += " " + skin;
-            creature.Demographics.Hair += " " + hair;
-            creature.Demographics.Eyes += " " + eyes;
-            creature.Demographics.Other += " " + other;
-
-            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.HalfFiend);
-            var maxAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Maximum);
-            var multiplier = maxAgeRoll.Amount / creature.Demographics.MaximumAge.Value / 2;
-
-            creature.Demographics.Age.Value *= multiplier;
-            creature.Demographics.MaximumAge.Value = AgeConstants.Ageless;
-            creature.Demographics.Wingspan = demographicsGenerator.GenerateWingspan(CreatureConstants.Templates.HalfFiend, creature.Size);
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, CreatureConstants.Templates.HalfFiend, creature.Size, true);
         }
 
         private void UpdateCreatureSpeeds(Creature creature)
