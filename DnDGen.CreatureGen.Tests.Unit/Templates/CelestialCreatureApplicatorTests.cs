@@ -40,6 +40,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<ICreatureDataSelector> mockCreatureDataSelector;
         private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
+        private Mock<IDemographicsGenerator> mockDemographicsGenerator;
 
         [SetUp]
         public void SetUp()
@@ -51,6 +52,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
             mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
+            mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
             applicator = new CelestialCreatureApplicator(
                 mockAttackGenerator.Object,
@@ -59,12 +61,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockMagicGenerator.Object,
                 mockAdjustmentSelector.Object,
                 mockCreatureDataSelector.Object,
-                mockPrototypeFactory.Object);
+                mockPrototypeFactory.Object,
+                mockDemographicsGenerator.Object);
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
                 .WithCreatureType(CreatureConstants.Types.Humanoid)
                 .Build();
+
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.CelestialCreature, baseCreature.Size, false, false))
+                .Returns(baseCreature.Demographics);
         }
 
         [Test]
@@ -259,23 +266,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_DemographicsAreAdjusted()
         {
-            baseCreature.Demographics.Skin = "I look like a potato skin.";
-            baseCreature.Demographics.Hair = "I look like a potato hair.";
-            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
-            baseCreature.Demographics.Other = "I look like a potato other.";
-
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.CelestialCreature))
-                .Returns("I am the prettiest princess skin.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.CelestialCreature))
-                .Returns("I am the prettiest princess hair.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.CelestialCreature))
-                .Returns("I am the prettiest princess eyes.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.CelestialCreature))
-                .Returns("I am the prettiest princess other.");
+            var templateDemographics = new Demographics
+            {
+                Skin = "glowing",
+                Gender = "heavenly gender"
+            };
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.CelestialCreature, baseCreature.Size, false, false))
+                .Returns(templateDemographics);
 
             var smiteEvil = new Attack
             {
@@ -290,15 +288,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity,
-                    baseCreature.Demographics.Gender))
-                .Returns(new[] { smiteEvil });
+                    templateDemographics.Gender))
+                .Returns([smiteEvil]);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the prettiest princess skin."));
-            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the prettiest princess hair."));
-            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the prettiest princess eyes."));
-            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the prettiest princess other."));
+            Assert.That(creature.Demographics, Is.EqualTo(templateDemographics));
         }
 
         [Test]
@@ -320,7 +315,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity,
                     baseCreature.Demographics.Gender))
-                .Returns(new[] { smiteEvil });
+                .Returns([smiteEvil]);
+
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.CelestialCreature, "my size", false, false))
+                .Returns(baseCreature.Demographics);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1558,23 +1557,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_DemographicsAreAdjusted()
         {
-            baseCreature.Demographics.Skin = "I look like a potato skin.";
-            baseCreature.Demographics.Hair = "I look like a potato hair.";
-            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
-            baseCreature.Demographics.Other = "I look like a potato other.";
-
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.CelestialCreature))
-                .Returns("I am the prettiest princess skin.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.CelestialCreature))
-                .Returns("I am the prettiest princess hair.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.CelestialCreature))
-                .Returns("I am the prettiest princess eyes.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.CelestialCreature))
-                .Returns("I am the prettiest princess other.");
+            var templateDemographics = new Demographics
+            {
+                Skin = "glowing",
+                Gender = "heavenly gender"
+            };
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.CelestialCreature, baseCreature.Size, false, false))
+                .Returns(templateDemographics);
 
             var smiteEvil = new Attack
             {
@@ -1589,15 +1579,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity,
-                    baseCreature.Demographics.Gender))
-                .Returns(new[] { smiteEvil });
+                    templateDemographics.Gender))
+                .Returns([smiteEvil]);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the prettiest princess skin."));
-            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the prettiest princess hair."));
-            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the prettiest princess eyes."));
-            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the prettiest princess other."));
+            Assert.That(creature.Demographics, Is.EqualTo(templateDemographics));
         }
 
         [Test]
@@ -1619,7 +1606,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity,
                     baseCreature.Demographics.Gender))
-                .Returns(new[] { smiteEvil });
+                .Returns([smiteEvil]);
+
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.CelestialCreature, "my size", false, false))
+                .Returns(baseCreature.Demographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));

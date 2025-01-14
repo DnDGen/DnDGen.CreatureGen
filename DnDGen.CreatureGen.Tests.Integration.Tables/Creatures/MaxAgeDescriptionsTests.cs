@@ -680,7 +680,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void MaxAgeDescription(string creature, string maxAgeDescription)
         {
             Assert.That(maxAgeDescription, Is.Not.Empty, creature);
-            AssertDistinctCollection(creature, new[] { maxAgeDescription });
+            AssertDistinctCollection(creature, [maxAgeDescription]);
         }
     }
 }

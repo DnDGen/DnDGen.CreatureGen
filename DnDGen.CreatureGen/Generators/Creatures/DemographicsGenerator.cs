@@ -66,10 +66,10 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             demographics.Weight.Description = dice.Describe(rawWeightRoll, (int)demographics.Weight.Value, weightDescriptions);
 
             demographics.Wingspan = GenerateWingspan(creatureName, demographics.Gender);
-            demographics.Skin = GetRandomAppearance(creatureName, demographics.Gender, "Skin");
-            demographics.Hair = GetRandomAppearance(creatureName, demographics.Gender, "Hair");
-            demographics.Eyes = GetRandomAppearance(creatureName, demographics.Gender, "Eyes");
-            demographics.Other = GetRandomAppearance(creatureName, demographics.Gender, "Other");
+            demographics.Skin = GetRandomAppearance(creatureName, demographics.Gender, TableNameConstants.Collection.AppearanceCategories.Skin);
+            demographics.Hair = GetRandomAppearance(creatureName, demographics.Gender, TableNameConstants.Collection.AppearanceCategories.Hair);
+            demographics.Eyes = GetRandomAppearance(creatureName, demographics.Gender, TableNameConstants.Collection.AppearanceCategories.Eyes);
+            demographics.Other = GetRandomAppearance(creatureName, demographics.Gender, TableNameConstants.Collection.AppearanceCategories.Other);
 
             return demographics;
         }
@@ -79,7 +79,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var collectionName = creatureName;
             var tableName = TableNameConstants.Collection.Appearances(category);
 
-            if (collectionsSelector.IsCollection(Config.Name, tableName, creatureName + gender + Rarity.Common.ToString()))
+            if (!string.IsNullOrEmpty(gender) && collectionsSelector.IsCollection(Config.Name, tableName, creatureName + gender + Rarity.Common.ToString()))
                 collectionName += gender;
 
             var common = collectionsSelector.SelectFrom(Config.Name, tableName, collectionName + Rarity.Common.ToString());
@@ -172,7 +172,16 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return wingspan;
         }
 
-        public static string GetAppearanceSeparator(string appearance) => appearance.EndsWith('.') ? " " : ". ";
+        public static string GetAppearanceSeparator(string appearance)
+        {
+            if (string.IsNullOrWhiteSpace(appearance))
+                return string.Empty;
+
+            if (appearance.EndsWith('.'))
+                return " ";
+
+            return ". ";
+        }
 
         public Demographics Update(Demographics source, string template, string size, bool addWingspan = false, bool overwriteAppearance = false)
         {
@@ -198,18 +207,12 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             //INFO: If template age category is multiplier, it also applies to the Maximum age
             if (ageRoll.Type == AgeConstants.Categories.Multiplier)
             {
-                source.Age.Value *= ageRoll.Amount;
                 source.MaximumAge.Value *= ageRoll.Amount;
             }
             else if (maxAgeRoll.Amount == AgeConstants.Ageless)
             {
                 source.MaximumAge.Value = maxAgeRoll.Amount;
-                source.MaximumAge.Description = maxAgeRoll.Type;
-            }
-            else if (maxAgeRoll.Amount > 0)
-            {
-                source.MaximumAge.Value += maxAgeRoll.Amount;
-                source.MaximumAge.Description = maxAgeRoll.Type;
+                source.MaximumAge.Description = ageRoll.Type;
             }
 
             if (addWingspan && source.Wingspan.Value == 0)
@@ -222,7 +225,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         private string UpdateAppearance(string source, string category, string template, bool overwrite)
         {
-            var templateAppearance = collectionsSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances(category), template);
+            var templateAppearance = GetRandomAppearance(template, string.Empty, category);
             if (overwrite)
                 return templateAppearance;
 

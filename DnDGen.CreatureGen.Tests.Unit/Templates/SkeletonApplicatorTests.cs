@@ -10,7 +10,6 @@ using DnDGen.CreatureGen.Generators.Defenses;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Selectors.Collections;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
@@ -44,7 +43,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private IEnumerable<Feat> skeletonQualities;
         private int skeletonBaseAttack;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
-        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<IDemographicsGenerator> mockDemographicsGenerator;
 
         [SetUp]
         public void Setup()
@@ -56,7 +55,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockSavesGenerator = new Mock<ISavesGenerator>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
-            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
             applicator = new SkeletonApplicator(
                 mockCollectionSelector.Object,
@@ -66,7 +65,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockFeatsGenerator.Object,
                 mockSavesGenerator.Object,
                 mockPrototypeFactory.Object,
-                mockTypeAndAmountSelector.Object);
+                mockDemographicsGenerator.Object);
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
@@ -154,12 +153,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton))
                 .Returns(new[] { "my wrong creature", baseCreature.Name, "my other creature" });
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Undead, Amount = 1000, RawAmount = "raw 1000" });
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Skeleton))
-                .Returns(ageRolls);
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Skeleton, baseCreature.Size, false, true))
+                .Returns(baseCreature.Demographics);
         }
 
         [Test]
@@ -356,54 +352,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_DemographicsAdjusted()
         {
-            baseCreature.Demographics.Skin = "I look like a potato skin.";
-            baseCreature.Demographics.Hair = "I look like a potato hair.";
-            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
-            baseCreature.Demographics.Other = "I look like a potato other.";
-            baseCreature.Demographics.Age.Value = 42;
-            baseCreature.Demographics.MaximumAge.Value = 600;
-
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(
-                    Config.Name,
-                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Skin),
-                    CreatureConstants.Templates.Skeleton))
-                .Returns("I am spooky and scary skin.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(
-                    Config.Name,
-                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Hair),
-                    CreatureConstants.Templates.Skeleton))
-                .Returns("I am spooky and scary hair.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(
-                    Config.Name,
-                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Eyes),
-                    CreatureConstants.Templates.Skeleton))
-                .Returns("I am spooky and scary eyes.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(
-                    Config.Name,
-                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Other),
-                    CreatureConstants.Templates.Skeleton))
-                .Returns("I am spooky and scary other.");
-
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Undead, Amount = 9266, RawAmount = "raw 9266" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = AgeConstants.Ageless, RawAmount = AgeConstants.Ageless.ToString() });
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Skeleton))
-                .Returns(ageRolls);
+            var skeletonDemographics = new Demographics
+            {
+                Hair = "skull",
+                Other = "spooky scary"
+            };
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Skeleton, baseCreature.Size, false, true))
+                .Returns(skeletonDemographics);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 + 9266));
-            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
-            Assert.That(creature.Demographics.Skin, Is.EqualTo("I am spooky and scary skin."));
-            Assert.That(creature.Demographics.Hair, Is.EqualTo("I am spooky and scary hair."));
-            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I am spooky and scary eyes."));
-            Assert.That(creature.Demographics.Other, Is.EqualTo("I am spooky and scary other."));
+            Assert.That(creature.Demographics, Is.EqualTo(skeletonDemographics));
         }
 
         [TestCase(4)]
@@ -1275,56 +1235,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_DemographicsAdjusted()
         {
-            baseCreature.Demographics.Skin = "I look like a potato skin.";
-            baseCreature.Demographics.Hair = "I look like a potato hair.";
-            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
-            baseCreature.Demographics.Other = "I look like a potato other.";
-            baseCreature.Demographics.Age.Value = 42;
-            baseCreature.Demographics.MaximumAge.Value = 600;
-
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(
-                    Config.Name,
-                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Skin),
-                    CreatureConstants.Templates.Skeleton))
-                .Returns("I am spooky and scary skin.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(
-                    Config.Name,
-                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Hair),
-                    CreatureConstants.Templates.Skeleton))
-                .Returns("I am spooky and scary hair.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(
-                    Config.Name,
-                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Eyes),
-                    CreatureConstants.Templates.Skeleton))
-                .Returns("I am spooky and scary eyes.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(
-                    Config.Name,
-                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Other),
-                    CreatureConstants.Templates.Skeleton))
-                .Returns("I am spooky and scary other.");
-
-            var ageRolls = new List<TypeAndAmountSelection>
+            var skeletonDemographics = new Demographics
             {
-                new TypeAndAmountSelection { Type = AgeConstants.Categories.Undead, Amount = 9266, RawAmount = "raw 9266" },
-                new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = AgeConstants.Ageless, RawAmount = AgeConstants.Ageless.ToString() }
+                Hair = "skull",
+                Other = "spooky scary"
             };
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Skeleton))
-                .Returns(ageRolls);
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Skeleton, baseCreature.Size, false, true))
+                .Returns(skeletonDemographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 + 9266));
-            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
-            Assert.That(creature.Demographics.Skin, Is.EqualTo("I am spooky and scary skin."));
-            Assert.That(creature.Demographics.Hair, Is.EqualTo("I am spooky and scary hair."));
-            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I am spooky and scary eyes."));
-            Assert.That(creature.Demographics.Other, Is.EqualTo("I am spooky and scary other."));
+            Assert.That(creature.Demographics, Is.EqualTo(skeletonDemographics));
         }
 
         [TestCase(4)]

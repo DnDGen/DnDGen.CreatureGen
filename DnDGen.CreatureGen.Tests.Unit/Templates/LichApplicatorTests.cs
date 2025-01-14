@@ -42,6 +42,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
+        private Mock<IDemographicsGenerator> mockDemographicsGenerator;
 
         [SetUp]
         public void Setup()
@@ -54,6 +55,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
             mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
+            mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
@@ -69,7 +71,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockFeatsGenerator.Object,
                 mockTypeAndAmountSelector.Object,
                 mockAdjustmentSelector.Object,
-                mockPrototypeFactory.Object);
+                mockPrototypeFactory.Object,
+                mockDemographicsGenerator.Object);
 
             mockDice
                 .Setup(d => d
@@ -84,12 +87,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .AsPotentialAverage())
                 .Returns(90210);
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Undead, Amount = 1000, RawAmount = "raw 1000" });
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Lich))
-                .Returns(ageRolls);
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Lich, baseCreature.Size, false, false))
+                .Returns(baseCreature.Demographics);
         }
 
         [Test]

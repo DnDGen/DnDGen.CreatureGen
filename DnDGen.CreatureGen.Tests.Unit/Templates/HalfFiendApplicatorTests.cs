@@ -115,7 +115,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(attacks);
             mockAttacksGenerator
                 .Setup(g => g.ApplyAttackBonuses(
@@ -124,12 +125,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities))
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 100_000, RawAmount = "raw 100,000" });
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.HalfFiend))
-                .Returns(ageRolls);
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.HalfFiend, baseCreature.Size, true, false))
+                .Returns(baseCreature.Demographics);
         }
 
         [Test]
@@ -305,49 +303,40 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_DemographicsAdjusted()
         {
-            baseCreature.Demographics.Skin = "I look like a potato skin.";
-            baseCreature.Demographics.Hair = "I look like a potato hair.";
-            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
-            baseCreature.Demographics.Other = "I look like a potato other.";
-            baseCreature.Demographics.Age.Value = 42;
-            baseCreature.Demographics.MaximumAge.Value = 600;
-
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.HalfFiend))
-                .Returns("I am the ugliest urchin skin.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.HalfFiend))
-                .Returns("I am the ugliest urchin hair.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.HalfFiend))
-                .Returns("I am the ugliest urchin eyes.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.HalfFiend))
-                .Returns("I am the ugliest urchin other.");
-
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = "my only age description", Amount = 9266, RawAmount = "raw 9266" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.HalfFiend))
-                .Returns(ageRolls);
-
-            var multiplier = 90210 / 600d / 2;
-
-            var wingspan = new Measurement("inches") { Value = 1337, Description = "Batty" };
+            var templateDemographics = new Demographics
+            {
+                Skin = "fiery",
+                Gender = "hellish gender"
+            };
             mockDemographicsGenerator
-                .Setup(g => g.GenerateWingspan(CreatureConstants.Templates.HalfFiend, baseCreature.Size))
-                .Returns(wingspan);
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.HalfFiend, baseCreature.Size, true, false))
+                .Returns(templateDemographics);
+
+            var smiteGood = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            var newAttacks = new[] { smiteGood, new Attack { Name = "other attack" } };
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    templateDemographics.Gender))
+                .Returns(newAttacks);
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    newAttacks,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    baseCreature.Abilities))
+                .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
             var creature = applicator.ApplyTo(baseCreature, false);
-            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the ugliest urchin skin."));
-            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the ugliest urchin hair."));
-            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the ugliest urchin eyes."));
-            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the ugliest urchin other."));
-            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
-            Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
-            Assert.That(creature.Demographics.Wingspan, Is.EqualTo(wingspan));
+            Assert.That(creature.Demographics, Is.EqualTo(templateDemographics));
         }
 
         [Test]
@@ -1860,49 +1849,40 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_DemographicsAdjusted()
         {
-            baseCreature.Demographics.Skin = "I look like a potato skin.";
-            baseCreature.Demographics.Hair = "I look like a potato hair.";
-            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
-            baseCreature.Demographics.Other = "I look like a potato other.";
-            baseCreature.Demographics.Age.Value = 42;
-            baseCreature.Demographics.MaximumAge.Value = 600;
-
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.HalfFiend))
-                .Returns("I am the ugliest urchin skin.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.HalfFiend))
-                .Returns("I am the ugliest urchin hair.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.HalfFiend))
-                .Returns("I am the ugliest urchin eyes.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.HalfFiend))
-                .Returns("I am the ugliest urchin other.");
-
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = "my only age description", Amount = 9266, RawAmount = "raw 9266" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.HalfFiend))
-                .Returns(ageRolls);
-
-            var multiplier = 90210 / 600d / 2;
-
-            var wingspan = new Measurement("inches") { Value = 1337, Description = "Batty" };
+            var templateDemographics = new Demographics
+            {
+                Skin = "fiery",
+                Gender = "hellish gender"
+            };
             mockDemographicsGenerator
-                .Setup(g => g.GenerateWingspan(CreatureConstants.Templates.HalfFiend, baseCreature.Size))
-                .Returns(wingspan);
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.HalfFiend, baseCreature.Size, true, false))
+                .Returns(templateDemographics);
+
+            var smiteGood = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            var newAttacks = new[] { smiteGood, new Attack { Name = "other attack" } };
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    templateDemographics.Gender))
+                .Returns(newAttacks);
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    newAttacks,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    baseCreature.Abilities))
+                .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
-            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the ugliest urchin skin."));
-            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the ugliest urchin hair."));
-            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the ugliest urchin eyes."));
-            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the ugliest urchin other."));
-            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
-            Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
-            Assert.That(creature.Demographics.Wingspan, Is.EqualTo(wingspan));
+            Assert.That(creature.Demographics, Is.EqualTo(templateDemographics));
         }
 
         [Test]

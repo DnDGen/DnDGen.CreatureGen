@@ -46,6 +46,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<ISpeedsGenerator> mockSpeedsGenerator;
         private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
+        private Mock<IDemographicsGenerator> mockDemographicsGenerator;
         private HitPoints animalHitPoints;
         private Random random;
         private CreatureDataSelection animalData;
@@ -76,6 +77,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockSpeedsGenerator = new Mock<ISpeedsGenerator>();
             mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
+            mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
             applicator = new LycanthropeApplicator(
                 mockCollectionSelector.Object,
@@ -89,7 +91,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockSkillsGenerator.Object,
                 mockSpeedsGenerator.Object,
                 mockAdjustmentSelector.Object,
-                mockPrototypeFactory.Object);
+                mockPrototypeFactory.Object,
+                mockDemographicsGenerator.Object);
             applicator.LycanthropeSpecies = "my lycanthrope";
             applicator.AnimalSpecies = "my animal";
 
@@ -119,6 +122,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             baseAverage = baseCreature.HitPoints.HitDice[0].RoundedQuantity * baseCreature.HitPoints.HitDice[0].HitDie / 2d + baseCreature.HitPoints.HitDice[0].RoundedQuantity;
             SetUpRoll(baseCreature.HitPoints.HitDice[0], baseAverage);
+
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, applicator.LycanthropeSpecies, baseCreature.Size, false, false))
+                .Returns(baseCreature.Demographics);
         }
 
         [Test]

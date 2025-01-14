@@ -35,6 +35,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<ISpeedsGenerator> mockSpeedsGenerator;
         private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
+        private Mock<IDemographicsGenerator> mockDemographicsGenerator;
 
         [SetUp]
         public void Setup()
@@ -51,6 +52,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockSpeedsGenerator = new Mock<ISpeedsGenerator>();
             mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
+            mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
             applicator = new LycanthropeApplicator(
                 mockCollectionSelector.Object,
@@ -64,7 +66,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockSkillsGenerator.Object,
                 mockSpeedsGenerator.Object,
                 mockAdjustmentSelector.Object,
-                mockPrototypeFactory.Object);
+                mockPrototypeFactory.Object,
+                mockDemographicsGenerator.Object);
             applicator.LycanthropeSpecies = "my lycanthrope";
             applicator.AnimalSpecies = "my animal";
         }

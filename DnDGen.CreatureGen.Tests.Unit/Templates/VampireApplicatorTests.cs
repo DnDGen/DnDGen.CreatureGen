@@ -40,6 +40,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
         private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<IDemographicsGenerator> mockDemographicsGenerator;
 
         [SetUp]
         public void Setup()
@@ -52,6 +53,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
             mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
             applicator = new VampireApplicator(
                 mockDice.Object,
@@ -61,7 +63,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockCreatureDataSelector.Object,
                 mockAdjustmentSelector.Object,
                 mockPrototypeFactory.Object,
-                mockTypeAndAmountSelector.Object);
+                mockTypeAndAmountSelector.Object,
+                mockDemographicsGenerator.Object);
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
@@ -82,12 +85,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .AsPotentialAverage())
                 .Returns(90210);
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Undead, Amount = 1000, RawAmount = "raw 1000" });
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Vampire))
-                .Returns(ageRolls);
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Vampire, baseCreature.Size, false, false))
+                .Returns(baseCreature.Demographics);
         }
 
         [Test]

@@ -43,6 +43,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<ICreatureDataSelector> mockCreatureDataSelector;
         private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
+        private Mock<IDemographicsGenerator> mockDemographicsGenerator;
 
         [SetUp]
         public void SetUp()
@@ -57,6 +58,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
             mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
+            mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
             applicator = new GhostApplicator(
                 mockDice.Object,
@@ -68,7 +70,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockTypeAndAmountSelector.Object,
                 mockCreatureDataSelector.Object,
                 mockAdjustmentSelector.Object,
-                mockPrototypeFactory.Object);
+                mockPrototypeFactory.Object,
+                mockDemographicsGenerator.Object);
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
@@ -123,7 +126,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(ghostAttacks);
 
             var count = 0;
@@ -131,12 +135,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<Attack>>()))
                 .Returns((IEnumerable<Attack> aa) => aa.ElementAt(count++ % aa.Count()));
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Undead, Amount = 1000, RawAmount = "raw 1000" });
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Ghost))
-                .Returns(ageRolls);
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Ghost, baseCreature.Size, false, false))
+                .Returns(baseCreature.Demographics);
         }
 
         [Test]
@@ -329,44 +330,45 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_DemographicsAdjusted()
         {
-            baseCreature.Demographics.Skin = "I look like a potato skin.";
-            baseCreature.Demographics.Hair = "I look like a potato hair.";
-            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
-            baseCreature.Demographics.Other = "I look like a potato other.";
-            baseCreature.Demographics.Age.Value = 42;
-            baseCreature.Demographics.MaximumAge.Value = 600;
-
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.Ghost))
-                .Returns("I am the meanest boi skin.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.Ghost))
-                .Returns("I am the meanest boi hair.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.Ghost))
-                .Returns("I am the meanest boi eyes.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.Ghost))
-                .Returns("I am the meanest boi other.");
-
-            var ageRolls = new List<TypeAndAmountSelection>
+            var templateDemographics = new Demographics
             {
-                new TypeAndAmountSelection { Type = AgeConstants.Categories.Undead, Amount = 9266, RawAmount = "raw 9266" },
-                new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = AgeConstants.Ageless, RawAmount = AgeConstants.Ageless.ToString() }
+                Skin = "see-through",
+                Gender = "haunted gender",
+                Weight = new Measurement("pounds") { Value = 9, Description = "heavy-set" },
+            };
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Ghost, baseCreature.Size, false, false))
+                .Returns(templateDemographics);
+
+            var ghostAttacks = new[]
+            {
+                new Attack { Name = "spoopy", IsSpecial = true },
+                new Attack { Name = "Manifestation", IsSpecial = true },
+                new Attack { Name = "spooky", IsSpecial = true },
+                new Attack { Name = "scary", IsSpecial = true },
+                new Attack { Name = "skeletons", IsSpecial = true },
+                new Attack { Name = "shout", IsSpecial = true },
+                new Attack { Name = "starkly", IsSpecial = true },
+                new Attack { Name = "thrilling", IsSpecial = true },
+                new Attack { Name = "screams", IsSpecial = true },
             };
 
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Ghost))
-                .Returns(ageRolls);
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Ghost,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    templateDemographics.Gender))
+                .Returns(ghostAttacks);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 + 9266));
-            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
-            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the meanest boi skin."));
-            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the meanest boi hair."));
-            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the meanest boi eyes."));
-            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the meanest boi other."));
+            Assert.That(creature.Demographics, Is.EqualTo(templateDemographics));
+            Assert.That(creature.Demographics.Weight.Value, Is.Zero);
+            Assert.That(creature.Demographics.Weight.Description, Is.EqualTo("heavy-set"));
         }
 
         [Test]
@@ -1470,11 +1472,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public async Task ApplyToAsync_CreatureTypeIsAdjusted(string original, string adjusted)
         {
             baseCreature.Type.Name = original;
-            baseCreature.Type.SubTypes = new[]
-            {
+            baseCreature.Type.SubTypes =
+            [
                 "subtype 1",
                 "subtype 2",
-            };
+            ];
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1490,42 +1492,45 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_DemographicsAdjusted()
         {
-            baseCreature.Demographics.Skin = "I look like a potato skin.";
-            baseCreature.Demographics.Hair = "I look like a potato hair.";
-            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
-            baseCreature.Demographics.Other = "I look like a potato other.";
-            baseCreature.Demographics.Age.Value = 42;
-            baseCreature.Demographics.MaximumAge.Value = 600;
+            var templateDemographics = new Demographics
+            {
+                Skin = "see-through",
+                Gender = "haunted gender",
+                Weight = new Measurement("pounds") { Value = 9, Description = "heavy-set" },
+            };
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Ghost, baseCreature.Size, false, false))
+                .Returns(templateDemographics);
 
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.Ghost))
-                .Returns("I am the meanest boi skin.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.Ghost))
-                .Returns("I am the meanest boi hair.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.Ghost))
-                .Returns("I am the meanest boi eyes.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.Ghost))
-                .Returns("I am the meanest boi other.");
+            var ghostAttacks = new[]
+            {
+                new Attack { Name = "spoopy", IsSpecial = true },
+                new Attack { Name = "Manifestation", IsSpecial = true },
+                new Attack { Name = "spooky", IsSpecial = true },
+                new Attack { Name = "scary", IsSpecial = true },
+                new Attack { Name = "skeletons", IsSpecial = true },
+                new Attack { Name = "shout", IsSpecial = true },
+                new Attack { Name = "starkly", IsSpecial = true },
+                new Attack { Name = "thrilling", IsSpecial = true },
+                new Attack { Name = "screams", IsSpecial = true },
+            };
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Undead, Amount = 9266, RawAmount = "raw 9266" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = AgeConstants.Ageless, RawAmount = AgeConstants.Ageless.ToString() });
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Ghost))
-                .Returns(ageRolls);
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Ghost,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    templateDemographics.Gender))
+                .Returns(ghostAttacks);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 + 9266));
-            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
-            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the meanest boi skin."));
-            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the meanest boi hair."));
-            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the meanest boi eyes."));
-            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the meanest boi other."));
+            Assert.That(creature.Demographics, Is.EqualTo(templateDemographics));
+            Assert.That(creature.Demographics.Weight.Value, Is.Zero);
+            Assert.That(creature.Demographics.Weight.Description, Is.EqualTo("heavy-set"));
         }
 
         [Test]

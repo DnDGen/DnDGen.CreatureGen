@@ -103,15 +103,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
-                .Returns(new[] { smiteEvil, new Attack { Name = "other attack" } });
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
+                .Returns([smiteEvil, new Attack { Name = "other attack" }]);
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 100_000, RawAmount = "raw 100,000" });
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.HalfCelestial))
-                .Returns(ageRolls);
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.HalfCelestial, baseCreature.Size, true, false))
+                .Returns(baseCreature.Demographics);
         }
 
         [Test]
@@ -261,49 +259,34 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_DemographicsAdjusted()
         {
-            baseCreature.Demographics.Skin = "I look like a potato skin.";
-            baseCreature.Demographics.Hair = "I look like a potato hair.";
-            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
-            baseCreature.Demographics.Other = "I look like a potato other.";
-            baseCreature.Demographics.Age.Value = 42;
-            baseCreature.Demographics.MaximumAge.Value = 600;
-
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.HalfCelestial))
-                .Returns("I am the prettiest princess skin.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.HalfCelestial))
-                .Returns("I am the prettiest princess hair.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.HalfCelestial))
-                .Returns("I am the prettiest princess eyes.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.HalfCelestial))
-                .Returns("I am the prettiest princess other.");
-
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = "my only age description", Amount = 9266, RawAmount = "raw 9266" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.HalfCelestial))
-                .Returns(ageRolls);
-
-            var multiplier = 90210 / 600d / 2;
-
-            var wingspan = new Measurement("inches") { Value = 1337, Description = "Feathery" };
+            var templateDemographics = new Demographics
+            {
+                Skin = "glowing",
+                Gender = "heavenly gender"
+            };
             mockDemographicsGenerator
-                .Setup(g => g.GenerateWingspan(CreatureConstants.Templates.HalfCelestial, baseCreature.Size))
-                .Returns(wingspan);
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.HalfCelestial, baseCreature.Size, true, false))
+                .Returns(templateDemographics);
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfCelestial,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    templateDemographics.Gender))
+                .Returns([smiteEvil, new Attack { Name = "other attack" }]);
 
             var creature = applicator.ApplyTo(baseCreature, false);
-            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the prettiest princess skin."));
-            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the prettiest princess hair."));
-            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the prettiest princess eyes."));
-            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the prettiest princess other."));
-            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
-            Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
-            Assert.That(creature.Demographics.Wingspan, Is.EqualTo(wingspan));
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Demographics, Is.EqualTo(templateDemographics));
         }
 
         [Test]
@@ -922,11 +905,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public async Task ApplyToAsync_CreatureTypeIsAdjusted(string original)
         {
             baseCreature.Type.Name = original;
-            baseCreature.Type.SubTypes = new[]
-            {
+            baseCreature.Type.SubTypes =
+            [
                 "subtype 1",
                 "subtype 2",
-            };
+            ];
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -942,49 +925,34 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_DemographicsAdjusted()
         {
-            baseCreature.Demographics.Skin = "I look like a potato skin.";
-            baseCreature.Demographics.Hair = "I look like a potato hair.";
-            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
-            baseCreature.Demographics.Other = "I look like a potato other.";
-            baseCreature.Demographics.Age.Value = 42;
-            baseCreature.Demographics.MaximumAge.Value = 600;
-
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.HalfCelestial))
-                .Returns("I am the prettiest princess skin.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.HalfCelestial))
-                .Returns("I am the prettiest princess hair.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.HalfCelestial))
-                .Returns("I am the prettiest princess eyes.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.HalfCelestial))
-                .Returns("I am the prettiest princess other.");
-
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = "my only age description", Amount = 9266, RawAmount = "raw 9266" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.HalfCelestial))
-                .Returns(ageRolls);
-
-            var multiplier = 90210 / 600d / 2;
-
-            var wingspan = new Measurement("inches") { Value = 1337, Description = "Feathery" };
+            var templateDemographics = new Demographics
+            {
+                Skin = "glowing",
+                Gender = "heavenly gender"
+            };
             mockDemographicsGenerator
-                .Setup(g => g.GenerateWingspan(CreatureConstants.Templates.HalfCelestial, baseCreature.Size))
-                .Returns(wingspan);
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.HalfCelestial, baseCreature.Size, true, false))
+                .Returns(templateDemographics);
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfCelestial,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    templateDemographics.Gender))
+                .Returns([smiteEvil, new Attack { Name = "other attack" }]);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
-            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the prettiest princess skin."));
-            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the prettiest princess hair."));
-            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the prettiest princess eyes."));
-            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the prettiest princess other."));
-            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
-            Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
-            Assert.That(creature.Demographics.Wingspan, Is.EqualTo(wingspan));
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Demographics, Is.EqualTo(templateDemographics));
         }
 
         [Test]

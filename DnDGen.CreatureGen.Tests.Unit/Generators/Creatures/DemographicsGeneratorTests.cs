@@ -7,6 +7,7 @@ using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using Moq;
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -1907,77 +1908,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateWingspan_ReturnsWingspan()
-        {
-            var wingspanRolls = new List<TypeAndAmountSelection>();
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my base key", Amount = 123, RawAmount = "raw 123" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other base key", Amount = 234, RawAmount = "raw 234" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" });
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
-                .Returns(wingspanRolls);
-
-            var wingspan = generator.GenerateWingspan("my creature", "my base key");
-            Assert.That(wingspan, Is.Not.Null);
-            Assert.That(wingspan.Value, Is.EqualTo(123 + 345));
-            Assert.That(wingspan.Unit, Is.EqualTo("inches"));
-            Assert.That(wingspan.Description, Is.EqualTo("Average"));
-        }
-
-        [TestCase(335, "Very Narrow", 0)]
-        [TestCase(338, "Very Narrow", 0)]
-        [TestCase(339, "Narrow", 1)]
-        [TestCase(342, "Narrow", 1)]
-        [TestCase(343, "Average", 2)]
-        [TestCase(345, "Average", 2)]
-        [TestCase(346, "Average", 2)]
-        [TestCase(347, "Broad", 3)]
-        [TestCase(350, "Broad", 3)]
-        [TestCase(351, "Very Broad", 4)]
-        [TestCase(355, "Very Broad", 4)]
-        public void GenerateWingspan_ReturnsWingspan_WithDescription(int roll, string description, int index)
-        {
-            var wingspanRolls = new List<TypeAndAmountSelection>();
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my base key", Amount = 123, RawAmount = "raw 123" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other base key", Amount = 234, RawAmount = "raw 234" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = roll, RawAmount = "raw 345" });
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
-                .Returns(wingspanRolls);
-
-            mockDice
-                .Setup(d => d.Describe("raw 123+raw 345", 123 + roll, It.IsAny<string[]>()))
-                .Returns((string r, int v, string[] descriptions) => descriptions[index]);
-
-            var wingspan = generator.GenerateWingspan("my creature", "my base key");
-            Assert.That(wingspan, Is.Not.Null);
-            Assert.That(wingspan.Value, Is.EqualTo(123 + roll));
-            Assert.That(wingspan.Unit, Is.EqualTo("inches"));
-            Assert.That(wingspan.Description, Is.EqualTo(description));
-        }
-
-        [Test]
-        public void GenerateWingspan_ReturnsWingspan_WithNoWingspan()
-        {
-            var wingspanRolls = new List<TypeAndAmountSelection>();
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my base key", Amount = 0, RawAmount = "raw 0" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other base key", Amount = 0, RawAmount = "raw 0" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 0, RawAmount = "raw 0" });
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
-                .Returns(wingspanRolls);
-
-            var wingspan = generator.GenerateWingspan("my creature", "my base key");
-            Assert.That(wingspan, Is.Not.Null);
-            Assert.That(wingspan.Value, Is.Zero);
-            Assert.That(wingspan.Unit, Is.EqualTo("inches"));
-            Assert.That(wingspan.Description, Is.EqualTo("Average"));
-        }
-
-        [Test]
         public void Generate_ReturnsDemographics_WithGenderSpecificAppearance()
         {
             mockCollectionsSelector
@@ -2089,9 +2019,523 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void Update_TESTS()
+        public void GenerateWingspan_ReturnsWingspan()
         {
-            Assert.Fail("TODO: write tests for the Update method");
+            var wingspanRolls = new List<TypeAndAmountSelection>();
+            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my base key", Amount = 123, RawAmount = "raw 123" });
+            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other base key", Amount = 234, RawAmount = "raw 234" });
+            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Returns(wingspanRolls);
+
+            var wingspan = generator.GenerateWingspan("my creature", "my base key");
+            Assert.That(wingspan, Is.Not.Null);
+            Assert.That(wingspan.Value, Is.EqualTo(123 + 345));
+            Assert.That(wingspan.Unit, Is.EqualTo("inches"));
+            Assert.That(wingspan.Description, Is.EqualTo("Average"));
+        }
+
+        [TestCase(335, "Very Narrow", 0)]
+        [TestCase(338, "Very Narrow", 0)]
+        [TestCase(339, "Narrow", 1)]
+        [TestCase(342, "Narrow", 1)]
+        [TestCase(343, "Average", 2)]
+        [TestCase(345, "Average", 2)]
+        [TestCase(346, "Average", 2)]
+        [TestCase(347, "Broad", 3)]
+        [TestCase(350, "Broad", 3)]
+        [TestCase(351, "Very Broad", 4)]
+        [TestCase(355, "Very Broad", 4)]
+        public void GenerateWingspan_ReturnsWingspan_WithDescription(int roll, string description, int index)
+        {
+            var wingspanRolls = new List<TypeAndAmountSelection>();
+            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my base key", Amount = 123, RawAmount = "raw 123" });
+            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other base key", Amount = 234, RawAmount = "raw 234" });
+            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = roll, RawAmount = "raw 345" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Returns(wingspanRolls);
+
+            mockDice
+                .Setup(d => d.Describe("raw 123+raw 345", 123 + roll, It.IsAny<string[]>()))
+                .Returns((string r, int v, string[] descriptions) => descriptions[index]);
+
+            var wingspan = generator.GenerateWingspan("my creature", "my base key");
+            Assert.That(wingspan, Is.Not.Null);
+            Assert.That(wingspan.Value, Is.EqualTo(123 + roll));
+            Assert.That(wingspan.Unit, Is.EqualTo("inches"));
+            Assert.That(wingspan.Description, Is.EqualTo(description));
+        }
+
+        [Test]
+        public void GenerateWingspan_ReturnsWingspan_WithNoWingspan()
+        {
+            var wingspanRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my base key", Amount = 0, RawAmount = "raw 0" },
+                new() { Type = "my other base key", Amount = 0, RawAmount = "raw 0" },
+                new() { Type = "my creature", Amount = 0, RawAmount = "raw 0" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Returns(wingspanRolls);
+
+            var wingspan = generator.GenerateWingspan("my creature", "my base key");
+            Assert.That(wingspan, Is.Not.Null);
+            Assert.That(wingspan.Value, Is.Zero);
+            Assert.That(wingspan.Unit, Is.EqualTo("inches"));
+            Assert.That(wingspan.Description, Is.EqualTo("Average"));
+        }
+
+        [TestCase("", "")]
+        [TestCase(" ", "")]
+        [TestCase("my appearance", ". ")]
+        [TestCase("my appearance.", " ")]
+        [TestCase("my appearance. but period in the middle", ". ")]
+        [TestCase("my appearance. but period in the middle. and the end.", " ")]
+        public void GetAppearanceSeparator_ReturnsExpected(string input, string expected)
+        {
+            var separator = DemographicsGenerator.GetAppearanceSeparator(input);
+            Assert.That(separator, Is.EqualTo(expected));
+        }
+
+        private static IEnumerable AppearanceTestCases
+        {
+            get
+            {
+                yield return new TestCaseData("", false, "", "");
+                yield return new TestCaseData("", false, "", "");
+                yield return new TestCaseData("", false, "template appearance", "template appearance");
+                yield return new TestCaseData("", true, "", "");
+                yield return new TestCaseData("", true, "template appearance", "template appearance");
+                yield return new TestCaseData("my appearance", false, "", "my appearance");
+                yield return new TestCaseData("my appearance", false, "template appearance", "my appearance. template appearance");
+                yield return new TestCaseData("my appearance", true, "", "");
+                yield return new TestCaseData("my appearance", true, "template appearance", "template appearance");
+                yield return new TestCaseData("my appearance.", false, "", "my appearance.");
+                yield return new TestCaseData("my appearance.", false, "template appearance", "my appearance. template appearance");
+                yield return new TestCaseData("my appearance.", true, "", "");
+                yield return new TestCaseData("my appearance.", true, "template appearance", "template appearance");
+            }
+        }
+
+        [TestCaseSource(nameof(AppearanceTestCases))]
+        public void Update_UpdatesSkin(string appearance, bool overwrite, string templateAppearance, string expected)
+        {
+            SetupTemplateDefaults("my template");
+            SetupAppearance("my template", TableNameConstants.Collection.AppearanceCategories.Skin, templateAppearance);
+
+            var demographics = new Demographics
+            {
+                Skin = appearance
+            };
+
+            var updated = generator.Update(demographics, "my template", "my size", overwriteAppearance: overwrite);
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Skin, Is.EqualTo(expected));
+        }
+
+        [TestCaseSource(nameof(AppearanceTestCases))]
+        public void Update_UpdatesHair(string appearance, bool overwrite, string templateAppearance, string expected)
+        {
+            SetupTemplateDefaults("my template");
+            SetupAppearance("my template", TableNameConstants.Collection.AppearanceCategories.Hair, templateAppearance);
+
+            var demographics = new Demographics
+            {
+                Hair = appearance
+            };
+
+            var updated = generator.Update(demographics, "my template", "my size", overwriteAppearance: overwrite);
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Hair, Is.EqualTo(expected));
+        }
+
+        [TestCaseSource(nameof(AppearanceTestCases))]
+        public void Update_UpdatesEyes(string appearance, bool overwrite, string templateAppearance, string expected)
+        {
+            SetupTemplateDefaults("my template");
+            SetupAppearance("my template", TableNameConstants.Collection.AppearanceCategories.Eyes, templateAppearance);
+
+            var demographics = new Demographics
+            {
+                Eyes = appearance
+            };
+
+            var updated = generator.Update(demographics, "my template", "my size", overwriteAppearance: overwrite);
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Eyes, Is.EqualTo(expected));
+        }
+
+        [TestCaseSource(nameof(AppearanceTestCases))]
+        public void Update_UpdatesOther(string appearance, bool overwrite, string templateAppearance, string expected)
+        {
+            SetupTemplateDefaults("my template");
+            SetupAppearance("my template", TableNameConstants.Collection.AppearanceCategories.Other, templateAppearance);
+
+            var demographics = new Demographics
+            {
+                Other = appearance
+            };
+
+            var updated = generator.Update(demographics, "my template", "my size", overwriteAppearance: overwrite);
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Other, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void Update_UpdatesAppearances()
+        {
+            SetupTemplateDefaults("my template");
+            SetupAppearance("my template", "template skin", "template hair", "template eyes", "template other");
+
+            var demographics = new Demographics
+            {
+                Skin = "my skin",
+                Hair = "my hair",
+                Eyes = "my eyes",
+                Other = "my other",
+            };
+
+            var updated = generator.Update(demographics, "my template", "my size");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Skin, Is.EqualTo("my skin. template skin"));
+            Assert.That(updated.Hair, Is.EqualTo("my hair. template hair"));
+            Assert.That(updated.Eyes, Is.EqualTo("my eyes. template eyes"));
+            Assert.That(updated.Other, Is.EqualTo("my other. template other"));
+        }
+
+        private void SetupTemplateDefaults(string template)
+        {
+            SetupAppearance(template, string.Empty, string.Empty, string.Empty, string.Empty);
+
+            var ageRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = AgeConstants.Categories.Adulthood, Amount = 0, RawAmount = "raw 0" },
+                new() { Type = AgeConstants.Categories.Maximum, Amount = 0, RawAmount = "raw 0" }
+            };
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, template))
+                .Returns(ageRolls);
+        }
+
+        [Test]
+        public void Update_UpdatesAge_Multiplier()
+        {
+            SetupTemplateDefaults("my template");
+
+            var ageRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = AgeConstants.Categories.Multiplier, Amount = 42, RawAmount = "raw 42" },
+                new() { Type = AgeConstants.Categories.Maximum, Amount = 0, RawAmount = "raw 0" }
+            };
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my template"))
+                .Returns(ageRolls);
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+            };
+
+            var updated = generator.Update(demographics, "my template", "my size");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Age.Value, Is.EqualTo(9266.90210 * 42));
+            Assert.That(updated.Age.Description, Is.EqualTo("my age category"));
+        }
+
+        [Test]
+        public void Update_UpdatesAge_Additive()
+        {
+            SetupTemplateDefaults("my template");
+
+            var ageRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "template age category", Amount = 42, RawAmount = "raw 42" },
+                new() { Type = AgeConstants.Categories.Maximum, Amount = 0, RawAmount = "raw 0" }
+            };
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my template"))
+                .Returns(ageRolls);
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+            };
+
+            var updated = generator.Update(demographics, "my template", "my size");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Age.Value, Is.EqualTo(9266.90210 + 42));
+            Assert.That(updated.Age.Description, Is.EqualTo("template age category"));
+        }
+
+        [Test]
+        public void Update_UpdatesMaxAge_Multiplier()
+        {
+            SetupTemplateDefaults("my template");
+
+            var ageRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = AgeConstants.Categories.Multiplier, Amount = 42, RawAmount = "raw 42" },
+                new() { Type = AgeConstants.Categories.Maximum, Amount = 0, RawAmount = "raw 0" }
+            };
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my template"))
+                .Returns(ageRolls);
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+            };
+
+            var updated = generator.Update(demographics, "my template", "my size");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.MaximumAge.Value, Is.EqualTo(600 * 42));
+            Assert.That(updated.MaximumAge.Description, Is.EqualTo("gonna die"));
+        }
+
+        [Test]
+        public void Update_UpdatesMaxAge_Ageless()
+        {
+            SetupTemplateDefaults("my template");
+
+            var ageRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "template age category", Amount = 42, RawAmount = "raw 42" },
+                new() { Type = AgeConstants.Categories.Maximum, Amount = AgeConstants.Ageless, RawAmount = "raw ageless" }
+            };
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my template"))
+                .Returns(ageRolls);
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+            };
+
+            var updated = generator.Update(demographics, "my template", "my size");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
+            Assert.That(updated.MaximumAge.Description, Is.EqualTo("template age category"));
+        }
+
+        [Test]
+        public void Update_AddsWingspan()
+        {
+            SetupTemplateDefaults("my template");
+
+            var wingspanRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my size", Amount = 123, RawAmount = "raw 123" },
+                new() { Type = "my other base key", Amount = 234, RawAmount = "raw 234" },
+                new() { Type = "my template", Amount = 345, RawAmount = "raw 345" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my template"))
+                .Returns(wingspanRolls);
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+            };
+            var updated = generator.Update(demographics, "my template", "my size", true);
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Wingspan, Is.Not.Null);
+            Assert.That(updated.Wingspan.Value, Is.EqualTo(123 + 345));
+            Assert.That(updated.Wingspan.Unit, Is.EqualTo("inches"));
+            Assert.That(updated.Wingspan.Description, Is.EqualTo("Average"));
+        }
+
+        [TestCase(335, "Very Narrow", 0)]
+        [TestCase(338, "Very Narrow", 0)]
+        [TestCase(339, "Narrow", 1)]
+        [TestCase(342, "Narrow", 1)]
+        [TestCase(343, "Average", 2)]
+        [TestCase(345, "Average", 2)]
+        [TestCase(346, "Average", 2)]
+        [TestCase(347, "Broad", 3)]
+        [TestCase(350, "Broad", 3)]
+        [TestCase(351, "Very Broad", 4)]
+        [TestCase(355, "Very Broad", 4)]
+        public void Update_AddsWingspan_WithDescription(int roll, string description, int index)
+        {
+            SetupTemplateDefaults("my template");
+
+            var wingspanRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my size", Amount = 123, RawAmount = "raw 123" },
+                new() { Type = "my other base key", Amount = 234, RawAmount = "raw 234" },
+                new() { Type = "my template", Amount = roll, RawAmount = "raw 345" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my template"))
+                .Returns(wingspanRolls);
+
+            mockDice
+                .Setup(d => d.Describe("raw 123+raw 345", 123 + roll, It.IsAny<string[]>()))
+                .Returns((string r, int v, string[] descriptions) => descriptions[index]);
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+            };
+            var updated = generator.Update(demographics, "my template", "my size", true);
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Wingspan, Is.Not.Null);
+            Assert.That(updated.Wingspan.Value, Is.EqualTo(123 + roll));
+            Assert.That(updated.Wingspan.Unit, Is.EqualTo("inches"));
+            Assert.That(updated.Wingspan.Description, Is.EqualTo(description));
+        }
+
+        [Test]
+        public void Update_AddsWingspan_WithNoWingspan()
+        {
+            SetupTemplateDefaults("my template");
+
+            var wingspanRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my size", Amount = 0, RawAmount = "raw 0" },
+                new() { Type = "my other base key", Amount = 0, RawAmount = "raw 0" },
+                new() { Type = "my template", Amount = 0, RawAmount = "raw 0" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my template"))
+                .Returns(wingspanRolls);
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+            };
+            var updated = generator.Update(demographics, "my template", "my size", true);
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Wingspan, Is.Not.Null);
+            Assert.That(updated.Wingspan.Value, Is.Zero);
+            Assert.That(updated.Wingspan.Unit, Is.EqualTo("inches"));
+            Assert.That(updated.Wingspan.Description, Is.EqualTo("Average"));
+        }
+
+        [Test]
+        public void Update_DoNotAddWingspan()
+        {
+            SetupTemplateDefaults("my template");
+
+            var wingspanRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my size", Amount = 123, RawAmount = "raw 123" },
+                new() { Type = "my other base key", Amount = 234, RawAmount = "raw 234" },
+                new() { Type = "my template", Amount = 345, RawAmount = "raw 345" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my template"))
+                .Returns(wingspanRolls);
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+            };
+            var updated = generator.Update(demographics, "my template", "my size", false);
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Wingspan, Is.Not.Null);
+            Assert.That(updated.Wingspan.Value, Is.Zero);
+            Assert.That(updated.Wingspan.Unit, Is.EqualTo("inches"));
+            Assert.That(updated.Wingspan.Description, Is.EqualTo(""));
+        }
+
+        [Test]
+        public void Update_DoNotAddWingspan_AlreadyHasWingspan()
+        {
+            SetupTemplateDefaults("my template");
+
+            var wingspanRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my size", Amount = 123, RawAmount = "raw 123" },
+                new() { Type = "my other base key", Amount = 234, RawAmount = "raw 234" },
+                new() { Type = "my template", Amount = 345, RawAmount = "raw 345" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my template"))
+                .Returns(wingspanRolls);
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Wingspan = new Measurement("inches") { Value = 1336, Description = "impressive" },
+            };
+            var updated = generator.Update(demographics, "my template", "my size", true);
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Wingspan, Is.Not.Null);
+            Assert.That(updated.Wingspan.Value, Is.EqualTo(1336));
+            Assert.That(updated.Wingspan.Unit, Is.EqualTo("inches"));
+            Assert.That(updated.Wingspan.Description, Is.EqualTo("impressive"));
+        }
+
+        [Test]
+        public void Update_AllProperties()
+        {
+            SetupTemplateDefaults("my template");
+            SetupAppearance("my template", "template skin", "template hair", "template eyes", "template other");
+
+            var wingspanRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my size", Amount = 0, RawAmount = "raw 0" },
+                new() { Type = "my other base key", Amount = 0, RawAmount = "raw 0" },
+                new() { Type = "my template", Amount = 0, RawAmount = "raw 0" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my template"))
+                .Returns(wingspanRolls);
+
+            var ageRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "template age category", Amount = 42, RawAmount = "raw 42" },
+                new() { Type = AgeConstants.Categories.Maximum, Amount = AgeConstants.Ageless, RawAmount = "raw ageless" }
+            };
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my template"))
+                .Returns(ageRolls);
+
+            var demographics = new Demographics
+            {
+                Skin = "my skin",
+                Hair = "my hair",
+                Eyes = "my eyes",
+                Other = "my other",
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+            };
+            var updated = generator.Update(demographics, "my template", "my size", true);
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Skin, Is.EqualTo("my skin. template skin"));
+            Assert.That(updated.Hair, Is.EqualTo("my hair. template hair"));
+            Assert.That(updated.Eyes, Is.EqualTo("my eyes. template eyes"));
+            Assert.That(updated.Other, Is.EqualTo("my other. template other"));
+            Assert.That(updated.Age.Value, Is.EqualTo(9266.90210 + 42));
+            Assert.That(updated.Age.Description, Is.EqualTo("template age category"));
+            Assert.That(updated.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
+            Assert.That(updated.MaximumAge.Description, Is.EqualTo("template age category"));
+            Assert.That(updated.Wingspan, Is.Not.Null);
+            Assert.That(updated.Wingspan.Value, Is.Zero);
+            Assert.That(updated.Wingspan.Unit, Is.EqualTo("inches"));
+            Assert.That(updated.Wingspan.Description, Is.EqualTo("Average"));
         }
     }
 }
