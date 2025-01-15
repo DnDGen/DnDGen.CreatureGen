@@ -25,7 +25,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void AgeRollsNames()
         {
             var creatures = CreatureConstants.GetAll();
-            AssertCollectionNames(creatures);
+            var templates = CreatureConstants.Templates.GetAll();
+
+            var names = creatures.Union(templates);
+            AssertCollectionNames(names);
         }
 
         [TestCaseSource(nameof(CreatureAgeRollsData))]
@@ -2638,10 +2641,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted][AgeConstants.Categories.Maximum] = "0";
                 testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural][AgeConstants.Categories.Adulthood] = "0";
                 testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural][AgeConstants.Categories.Maximum] = "0";
                 testCases[CreatureConstants.Templates.Lycanthrope_Rat_Afflicted][AgeConstants.Categories.Adulthood] = "0";
                 testCases[CreatureConstants.Templates.Lycanthrope_Rat_Afflicted][AgeConstants.Categories.Maximum] = "0";
                 testCases[CreatureConstants.Templates.Lycanthrope_Rat_Natural][AgeConstants.Categories.Adulthood] = "0";
                 testCases[CreatureConstants.Templates.Lycanthrope_Rat_Natural][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural][AgeConstants.Categories.Maximum] = "0";
                 testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted][AgeConstants.Categories.Adulthood] = "0";
                 testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted][AgeConstants.Categories.Maximum] = "0";
                 testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural][AgeConstants.Categories.Adulthood] = "0";
@@ -2650,6 +2661,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted][AgeConstants.Categories.Maximum] = "0";
                 testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural][AgeConstants.Categories.Adulthood] = "0";
                 testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural][AgeConstants.Categories.Maximum] = "0";
+                testCases[CreatureConstants.Templates.None][AgeConstants.Categories.Adulthood] = "0";
+                testCases[CreatureConstants.Templates.None][AgeConstants.Categories.Maximum] = "0";
                 testCases[CreatureConstants.Templates.Skeleton][AgeConstants.Categories.Undead] = undeadAgeRoll;
                 testCases[CreatureConstants.Templates.Skeleton][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 testCases[CreatureConstants.Templates.Vampire][AgeConstants.Categories.Undead] = undeadAgeRoll;

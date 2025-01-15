@@ -44,10 +44,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        [Ignore("Creatures with no filters are always compatible for None template")]
         public void ApplyTo_ThrowsException_WhenCreatureNotCompatible()
         {
-            Assert.Fail("not yet written");
+            Assert.Pass("Creatures with no filters are always compatible for None template");
         }
 
         [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, "wrong alignment", "Alignment filter 'wrong alignment' is not valid")]
@@ -308,10 +307,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        [Ignore("Creatures with no filters are always compatible for None template")]
         public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible()
         {
-            Assert.Fail("not yet written");
+            await Task.Run(() => Assert.Pass("Creatures with no filters are always compatible for None template"));
         }
 
         [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, "wrong alignment", "Alignment filter 'wrong alignment' is not valid")]
@@ -348,7 +346,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             filters.ChallengeRating = challengeRating;
             filters.Alignment = alignment;
 
-            Assert.That(async () => await templateApplicator.ApplyToAsync(clone, asCharacter, filters),
+            await Assert.ThatAsync(async () => await templateApplicator.ApplyToAsync(clone, asCharacter, filters),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 

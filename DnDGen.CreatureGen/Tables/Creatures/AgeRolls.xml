@@ -4093,4 +4093,224 @@
 	  <entry>Construct@(1d100-1)*10000+(1d100-1)*100+1d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
+	<collection>
+		<name>Celestial Creature</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Fiendish Creature</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Ghost</name>
+		<entry>Undead@(1d100-1)*100+1d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Half-Celestial</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Black)</name>
+		<entry>Multiplier@2</entry>
+		<entry>Maximum@2</entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Blue)</name>
+		<entry>Multiplier@2</entry>
+		<entry>Maximum@2</entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Brass)</name>
+		<entry>Multiplier@2</entry>
+		<entry>Maximum@2</entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Bronze)</name>
+		<entry>Multiplier@2</entry>
+		<entry>Maximum@2</entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Copper)</name>
+		<entry>Multiplier@2</entry>
+		<entry>Maximum@2</entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Gold)</name>
+		<entry>Multiplier@2</entry>
+		<entry>Maximum@2</entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Green)</name>
+		<entry>Multiplier@2</entry>
+		<entry>Maximum@2</entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Red)</name>
+		<entry>Multiplier@2</entry>
+		<entry>Maximum@2</entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Silver)</name>
+		<entry>Multiplier@2</entry>
+		<entry>Maximum@2</entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (White)</name>
+		<entry>Multiplier@2</entry>
+		<entry>Maximum@2</entry>
+	</collection>
+	<collection>
+		<name>Half-Fiend</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lich</name>
+		<entry>Undead@(1d100-1)*100+1d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Afflicted)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Natural)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Boar (Wereboar, Afflicted)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Boar (Wereboar, Natural)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Natural)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Wolf (Werewolf, Afflicted)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Wolf (Werewolf, Natural)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
+	<collection>
+		<name>Vampire</name>
+		<entry>Undead@(1d100-1)*100+1d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Skeleton</name>
+		<entry>Undead@(1d100-1)*100+1d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Zombie</name>
+		<entry>Undead@(1d100-1)*100+1d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>None</name>
+		<entry>Adulthood@0</entry>
+		<entry>Maximum@0</entry>
+	</collection>
 </collections>

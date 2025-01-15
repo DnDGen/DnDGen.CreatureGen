@@ -893,7 +893,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             if (alignment != null)
                 message.AppendLine($"\tAlignment: {alignment}");
 
-            Assert.That(async () => await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters),
+            await Assert.ThatAsync(async () => await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 

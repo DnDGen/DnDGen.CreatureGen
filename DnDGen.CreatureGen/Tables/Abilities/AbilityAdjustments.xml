@@ -5945,4 +5945,13 @@
 		<entry>Strength@0</entry>
 		<entry>Wisdom@0</entry>
 	</collection>
+	<collection>
+		<name>Multiplier</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
 </collections>

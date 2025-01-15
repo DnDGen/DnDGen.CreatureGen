@@ -56,7 +56,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             message.AppendLine("\tCreature: creature");
             message.AppendLine("\tTemplate: template");
 
-            Assert.That(async () => await creatureGenerator.GenerateAsync(asCharacter, "creature", null, "template"),
+            await Assert.ThatAsync(async () => await creatureGenerator.GenerateAsync(asCharacter, "creature", null, "template"),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
@@ -80,7 +80,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             message.AppendLine("\tCreature: creature");
             message.AppendLine("\tTemplate: template, other template");
 
-            Assert.That(async () => await creatureGenerator.GenerateAsync(asCharacter, "creature", null, "template", "other template"),
+            await Assert.ThatAsync(async () => await creatureGenerator.GenerateAsync(asCharacter, "creature", null, "template", "other template"),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 

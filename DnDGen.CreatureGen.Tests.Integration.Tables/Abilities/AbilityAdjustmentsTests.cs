@@ -99,6 +99,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                     [AgeConstants.Categories.Swarm] = InitializeToZero(),
                     [AgeConstants.Categories.Undead] = InitializeToZero(),
                     [AgeConstants.Categories.Maximum] = InitializeToZero(),
+                    [AgeConstants.Categories.Multiplier] = InitializeToZero(),
                     [AgeConstants.Categories.Arrowhawk.Juvenile] = InitializeToZero(),
                     [AgeConstants.Categories.Arrowhawk.Adult] = InitializeToZero(),
                     [AgeConstants.Categories.Arrowhawk.Elder] = InitializeToZero(),

@@ -137,7 +137,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
 
             mockAttacksGenerator
@@ -355,11 +356,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var skeletonDemographics = new Demographics
             {
                 Hair = "skull",
-                Other = "spooky scary"
+                Other = "spooky scary",
+                Gender = "boney gender",
             };
             mockDemographicsGenerator
                 .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Skeleton, baseCreature.Size, false, true))
                 .Returns(skeletonDemographics);
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Skeleton,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    42,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    skeletonDemographics.Gender))
+                .Returns(skeletonAttacks);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -453,8 +466,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
+
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Skeleton, baseCreature.Size, false, true))
+                .Returns(baseCreature.Demographics);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -502,6 +520,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
+
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Skeleton, baseCreature.Size, false, true))
+                .Returns(baseCreature.Demographics);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -582,6 +604,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockDice
                 .Setup(d => d.Roll(damage).AsPotentialMaximum<int>(true))
                 .Returns(1337);
+
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Skeleton, baseCreature.Size, false, true))
+                .Returns(baseCreature.Demographics);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -727,6 +753,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockDice
                 .Setup(d => d.Roll(damage).AsPotentialMaximum<int>(true))
                 .Returns(1336);
+
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Skeleton, baseCreature.Size, false, true))
+                .Returns(baseCreature.Demographics);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1053,7 +1083,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             message.AppendLine($"\tCreature: {baseCreature.Name}");
             message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Skeleton}");
 
-            Assert.That(async () => await applicator.ApplyToAsync(baseCreature, false),
+            await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, false),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
@@ -1084,7 +1114,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             filters.ChallengeRating = challengeRating;
             filters.Alignment = alignment;
 
-            Assert.That(async () => await applicator.ApplyToAsync(baseCreature, asCharacter, filters),
+            await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, asCharacter, filters),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
@@ -1238,11 +1268,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var skeletonDemographics = new Demographics
             {
                 Hair = "skull",
-                Other = "spooky scary"
+                Other = "spooky scary",
+                Gender = "boney gender",
             };
             mockDemographicsGenerator
                 .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Skeleton, baseCreature.Size, false, true))
                 .Returns(skeletonDemographics);
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Skeleton,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    42,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    skeletonDemographics.Gender))
+                .Returns(skeletonAttacks);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1339,6 +1381,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
 
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Skeleton, baseCreature.Size, false, true))
+                .Returns(baseCreature.Demographics);
+
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(bonus));
@@ -1385,6 +1431,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
+
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Skeleton, baseCreature.Size, false, true))
+                .Returns(baseCreature.Demographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1465,6 +1515,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockDice
                 .Setup(d => d.Roll(damage).AsPotentialMaximum<int>(true))
                 .Returns(1337);
+
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Skeleton, baseCreature.Size, false, true))
+                .Returns(baseCreature.Demographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1610,6 +1664,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockDice
                 .Setup(d => d.Roll(damage).AsPotentialMaximum<int>(true))
                 .Returns(1336);
+
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Skeleton, baseCreature.Size, false, true))
+                .Returns(baseCreature.Demographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1874,7 +1932,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             message.AppendLine($"\tCreature: {baseCreature.Name}");
             message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Skeleton}");
 
-            Assert.That(async () => await applicator.ApplyToAsync(baseCreature, false),
+            await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, false),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 

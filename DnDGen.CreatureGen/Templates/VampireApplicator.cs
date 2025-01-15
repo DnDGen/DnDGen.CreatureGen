@@ -143,12 +143,12 @@ namespace DnDGen.CreatureGen.Templates
         {
             return new[] { CreatureConstants.Types.Undead }
                 .Union(subtypes)
-                .Union(new[] { CreatureConstants.Types.Subtypes.Augmented, creatureType });
+                .Union([CreatureConstants.Types.Subtypes.Augmented, creatureType]);
         }
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            creature.Demographics = demographicsGenerator.Update(creature.Demographics, CreatureConstants.Templates.Lich, creature.Size, false);
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, CreatureConstants.Templates.Vampire, creature.Size);
         }
 
         private void UpdateCreatureInitiativeBonus(Creature creature)

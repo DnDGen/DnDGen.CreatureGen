@@ -176,7 +176,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            creature.Demographics = demographicsGenerator.Update(creature.Demographics, LycanthropeSpecies, creature.Size, false);
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, LycanthropeSpecies, creature.Size);
         }
 
         private void UpdateCreatureType(CreaturePrototype creature)

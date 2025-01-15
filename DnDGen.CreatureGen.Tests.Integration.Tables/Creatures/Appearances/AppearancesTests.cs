@@ -57,6 +57,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
         protected IEnumerable<string> GetCollectionCreatureKeys()
         {
             return CreatureConstants.GetAll()
+                .Union(CreatureConstants.Templates.GetAll())
                 .Union(
                 [
                     CreatureConstants.Bison + GenderConstants.Male,

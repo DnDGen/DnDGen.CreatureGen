@@ -29,6 +29,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void OtherAppearances(string creature)
         {
             var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, creature);

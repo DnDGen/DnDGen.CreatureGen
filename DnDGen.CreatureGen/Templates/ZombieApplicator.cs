@@ -192,7 +192,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            creature.Demographics = demographicsGenerator.Update(creature.Demographics, CreatureConstants.Templates.Skeleton, creature.Size);
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, CreatureConstants.Templates.Zombie, creature.Size);
         }
 
         private void UpdateCreatureHitPoints(Creature creature)

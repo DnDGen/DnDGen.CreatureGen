@@ -105,14 +105,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             animalHitPoints = new HitPoints();
             random = new Random();
             animalData = new CreatureDataSelection();
-            animalSkills = new List<Skill>();
-            animalAttacks = new List<Attack>();
-            animalSpecialQualities = new List<Feat>();
-            animalFeats = new List<Feat>();
-            animalSaves = new Dictionary<string, Save>();
-            animalSpeeds = new Dictionary<string, Measurement>();
-            rollSequences = new Dictionary<string, ISetupSequentialResult<IEnumerable<int>>>();
-            averageSequences = new Dictionary<string, ISetupSequentialResult<double>>();
+            animalSkills = [];
+            animalAttacks = [];
+            animalSpecialQualities = [];
+            animalFeats = [];
+            animalSaves = [];
+            animalSpeeds = [];
+            rollSequences = [];
+            averageSequences = [];
 
             mockHitPointsGenerator
                 .Setup(g => g.RegenerateWith(baseCreature.HitPoints, It.IsAny<IEnumerable<Feat>>()))
@@ -254,7 +254,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     animalData.Size,
                     baseCreature.BaseAttackBonus + animalBaseAttack,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + hitDie.RoundedQuantity, baseCreature.Demographics.Gender))
+                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + hitDie.RoundedQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(animalAttacks);
 
             mockAttacksGenerator
@@ -541,7 +542,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             message.AppendLine($"\tCreature: {baseCreature.Name}");
             message.AppendLine($"\tTemplate: my lycanthrope");
 
-            Assert.That(async () => await applicator.ApplyToAsync(baseCreature, false),
+            await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, false),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
@@ -576,7 +577,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             filters.ChallengeRating = challengeRating;
             filters.Alignment = alignment;
 
-            Assert.That(async () => await applicator.ApplyToAsync(baseCreature, asCharacter, filters),
+            await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, asCharacter, filters),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
@@ -642,44 +643,32 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_ReturnsCreature_WithAdjustedDemographics()
         {
-            baseCreature.Demographics.Skin = "I look like a potato skin.";
-            baseCreature.Demographics.Hair = "I look like a potato hair.";
-            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
-            baseCreature.Demographics.Other = "I look like a potato other.";
-
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(
-                    Config.Name,
-                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Skin),
-                    "my lycanthrope"))
-                .Returns("I am the furriest boi skin.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(
-                    Config.Name,
-                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Hair),
-                    "my lycanthrope"))
-                .Returns("I am the furriest boi hair.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(
-                    Config.Name,
-                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Eyes),
-                    "my lycanthrope"))
-                .Returns("I am the furriest boi eyes.");
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(
-                    Config.Name,
-                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Other),
-                    "my lycanthrope"))
-                .Returns("I am the furriest boi other.");
+            var templateDemographics = new Demographics
+            {
+                Skin = "furry",
+                Gender = "wild gender"
+            };
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, applicator.LycanthropeSpecies, baseCreature.Size, false, false))
+                .Returns(templateDemographics);
 
             SetUpAnimal("my animal");
 
+            var hitDie = animalHitPoints.HitDice.Last();
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    "my animal",
+                    animalData.Size,
+                    animalData.Size,
+                    baseCreature.BaseAttackBonus + animalBaseAttack,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + hitDie.RoundedQuantity,
+                    templateDemographics.Gender))
+                .Returns(animalAttacks);
+
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the furriest boi skin."));
-            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the furriest boi hair."));
-            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the furriest boi eyes."));
-            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the furriest boi other."));
+            Assert.That(creature.Demographics, Is.EqualTo(templateDemographics));
         }
 
         [Test]
@@ -1125,6 +1114,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
 
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, applicator.LycanthropeSpecies, baseCreature.Size, false, false))
+                .Returns(baseCreature.Demographics);
+
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(lycanthropeAttacks));
@@ -1158,6 +1151,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
 
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, applicator.LycanthropeSpecies, baseCreature.Size, false, false))
+                .Returns(baseCreature.Demographics);
+
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(lycanthropeAttacks));
@@ -1184,12 +1181,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     size,
                     baseCreature.BaseAttackBonus + animalBaseAttack,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity, baseCreature.Demographics.Gender))
+                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(lycanthropeAttacks);
 
             mockAttacksGenerator
                 .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
+
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, applicator.LycanthropeSpecies, baseCreature.Size, false, false))
+                .Returns(baseCreature.Demographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1229,6 +1231,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                             .Union(animalSpecialQualities))),
                     baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
+
+            mockDemographicsGenerator
+                .Setup(s => s.Update(baseCreature.Demographics, applicator.LycanthropeSpecies, baseCreature.Size, false, false))
+                .Returns(baseCreature.Demographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
