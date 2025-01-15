@@ -84,6 +84,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                     CreatureConstants.TrumpetArchon + GenderConstants.Female,
                     CreatureConstants.TrumpetArchon + GenderConstants.Male,
                     CreatureConstants.Unicorn + GenderConstants.Male,
+                    CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted + GenderConstants.Male,
+                    CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural + GenderConstants.Male,
+                    CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted + GenderConstants.Male,
+                    CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural + GenderConstants.Male,
+                    CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted + GenderConstants.Male,
+                    CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural + GenderConstants.Male,
+                    CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted + GenderConstants.Male,
+                    CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural + GenderConstants.Male,
+                    CreatureConstants.Templates.Lycanthrope_Rat_Afflicted + GenderConstants.Male,
+                    CreatureConstants.Templates.Lycanthrope_Rat_Natural + GenderConstants.Male,
+                    CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted + GenderConstants.Male,
+                    CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural + GenderConstants.Male,
                 ]);
         }
 
@@ -4578,8 +4590,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                         .Select(s => $"{s} with distinctly-patterned scales"),
                 commonEyes: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Common]
                         .Select(e => e.Replace("eyes", "snake-like eyes")),
-                commonOther: new[] { "Snake head" },
-                uncommonOther: new[] { "Snake head with hood like a cobra" }
+                commonOther: ["Snake head"],
+                uncommonOther: ["Snake head with hood like a cobra"]
             );
             appearances[CreatureConstants.YuanTi_Halfblood_SnakeTail] = GetAppearances(
                 commonSkin: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Common]
@@ -4588,7 +4600,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                 uncommonHair: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Uncommon],
                 commonEyes: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Common]
                         .Select(e => e.Replace("eyes", "snake-like eyes")),
-                commonOther: new[] { "Snake tail instead of human legs, fangs and forked tongue" }
+                commonOther: ["Snake tail instead of human legs, fangs and forked tongue"]
             );
             appearances[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] = GetAppearances(
                 commonSkin: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Common]
@@ -4597,7 +4609,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                 uncommonHair: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Uncommon],
                 commonEyes: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Common]
                         .Select(e => e.Replace("eyes", "snake-like eyes")),
-                commonOther: new[] { "Snake tail and human legs, fangs and forked tongue" }
+                commonOther: ["Snake tail and human legs, fangs and forked tongue"]
             );
             //Source: https://forgottenrealms.fandom.com/wiki/Yuan-ti_abomination
             appearances[CreatureConstants.YuanTi_Abomination] = GetAppearances(
@@ -4611,6 +4623,250 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                 "Looks like a mechanical centaur, with skin as white as alabaster and clad in golden plate armor. A pair of golden metallic wings unfold from its back when needed.",
                 "Looks like a clockwork centaur, with skin as white as alabaster and clad in golden plate armor. A pair of golden metallic wings unfold from its back when needed.",
             ];
+
+            //Source: https://www.d20srd.org/srd/monsters/celestialCreature.htm
+            //https://forgottenrealms.fandom.com/wiki/Celestial_creature#Description
+            appearances[CreatureConstants.Templates.CelestialCreature] = GetAppearances(
+                commonSkin: ["Gold skin", "Silver skin", "Platinum skin"],
+                uncommonSkin: ["Copper skin", "Pristine white skin"],
+                commonOther: ["More regal and more beautiful than the earthly counterpart"]
+            );
+            //Source: https://www.d20srd.org/srd/monsters/fiendishCreature.htm
+            //https://forgottenrealms.fandom.com/wiki/Fiendish_creature#Description
+            //https://www.reddit.com/r/Pathfinder_RPG/comments/2lt7rw/what_exactly_do_celestial_and_fiendish_creatures/?rdt=42903
+            appearances[CreatureConstants.Templates.FiendishCreature] = GetAppearances(
+                commonSkin: ["Red skin", "Dark red skin", "Black skin"],
+                uncommonOther: ["Sulfur smell", "Mangy appearance", "Diseased appearance"]
+            );
+            //Source: https://www.d20srd.org/srd/monsters/ghost.htm
+            //https://forgottenrealms.fandom.com/wiki/Ghost#Description
+            appearances[CreatureConstants.Templates.Ghost] = GetAppearances(
+                commonSkin: ["Transluscent white skin (and body)"],
+                uncommonOther: ["The ghost's appearance reflects how it died", "The ghost's appearance reflects its alignment", "Adorned in chains and weights"]
+            );
+            //Source: https://www.d20srd.org/srd/monsters/halfCelestial.htm
+            //https://forgottenrealms.fandom.com/wiki/Half-celestial#Description
+            appearances[CreatureConstants.Templates.HalfCelestial] = GetAppearances(
+                commonSkin: ["Golden skin"],
+                uncommonEyes: ["Sparkling eyes"],
+                commonOther: ["Angelic feathered wings"]
+            );
+            //Source: https://www.d20srd.org/srd/monsters/halfDragon.htm
+            appearances[CreatureConstants.Templates.HalfDragon_Black] = GetAppearances(
+                commonSkin: ["Black scales"],
+                commonEyes: ["Reptilian eyes"],
+                commonOther: ["Elongated features, exaggerated teeth, claws"]
+            );
+            appearances[CreatureConstants.Templates.HalfDragon_Blue] = GetAppearances(
+                commonSkin: ["Blue scales"],
+                commonEyes: ["Reptilian eyes"],
+                commonOther: ["Elongated features, exaggerated teeth, claws"]
+            );
+            appearances[CreatureConstants.Templates.HalfDragon_Brass] = GetAppearances(
+                commonSkin: ["Brass scales"],
+                commonEyes: ["Reptilian eyes"],
+                commonOther: ["Elongated features, exaggerated teeth, claws"]
+            );
+            appearances[CreatureConstants.Templates.HalfDragon_Bronze] = GetAppearances(
+                commonSkin: ["Bronze scales"],
+                commonEyes: ["Reptilian eyes"],
+                commonOther: ["Elongated features, exaggerated teeth, claws"]
+            );
+            appearances[CreatureConstants.Templates.HalfDragon_Copper] = GetAppearances(
+                commonSkin: ["Copper scales"],
+                commonEyes: ["Reptilian eyes"],
+                commonOther: ["Elongated features, exaggerated teeth, claws"]
+            );
+            appearances[CreatureConstants.Templates.HalfDragon_Gold] = GetAppearances(
+                commonSkin: ["Gold scales"],
+                commonEyes: ["Reptilian eyes"],
+                commonOther: ["Elongated features, exaggerated teeth, claws"]
+            );
+            appearances[CreatureConstants.Templates.HalfDragon_Green] = GetAppearances(
+                commonSkin: ["Green scales"],
+                commonEyes: ["Reptilian eyes"],
+                commonOther: ["Elongated features, exaggerated teeth, claws"]
+            );
+            appearances[CreatureConstants.Templates.HalfDragon_Red] = GetAppearances(
+                commonSkin: ["Red scales"],
+                commonEyes: ["Reptilian eyes"],
+                commonOther: ["Elongated features, exaggerated teeth, claws"]
+            );
+            appearances[CreatureConstants.Templates.HalfDragon_Silver] = GetAppearances(
+                commonSkin: ["Silver scales"],
+                commonEyes: ["Reptilian eyes"],
+                commonOther: ["Elongated features, exaggerated teeth, claws"]
+            );
+            appearances[CreatureConstants.Templates.HalfDragon_White] = GetAppearances(
+                commonSkin: ["White scales"],
+                commonEyes: ["Reptilian eyes"],
+                commonOther: ["Elongated features, exaggerated teeth, claws"]
+            );
+            //Source: https://www.d20srd.org/srd/monsters/halfFiend.htm
+            appearances[CreatureConstants.Templates.HalfFiend] = GetAppearances(
+                uncommonSkin: ["Dark red scales", "Black scales"],
+                uncommonEyes: ["Glowing red eyes"],
+                commonOther: ["Bat wings", "Bat wings, horns", "Bat wings, a fetid odor"],
+                uncommonOther: ["Bat wings, horns, and a fetid odor"]
+            );
+            //Source: https://www.d20srd.org/srd/monsters/lich.htm
+            //https://forgottenrealms.fandom.com/wiki/Lich#Description
+            appearances[CreatureConstants.Templates.Lich] = GetAppearances(
+                commonSkin: ["Withered flesh stretched tight across horribly visible bones"],
+                commonHair: ["Hair long ago lost to decay"],
+                uncommonHair: ["A hint of the mortal hair remains"],
+                commonEyes: ["Eyes long ago lost to decay, but bright pinpoints of crimson light burn on in the empty sockets"],
+                uncommonEyes: ["Eyes rotting in their sockets"],
+                commonOther: ["Gaunt and skeletal"]
+            );
+            //Source: https://www.d20srd.org/srd/monsters/lycanthrope.htm
+            appearances[CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted] = GetAppearances(
+                commonHair: ["Thick black hair", "Thick reddish hair", "Thick blond hair"],
+                commonOther: ["Stout, well-muscled, hairy"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural] = GetAppearances(
+                commonHair: ["Thick black hair", "Thick reddish hair", "Thick blond hair"],
+                commonOther: ["Stout, well-muscled, hairy"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted] = GetAppearances(
+                commonHair: ["Thick brown hair"],
+                commonOther: ["Stout, well-muscled, hairy"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural] = GetAppearances(
+                commonHair: ["Thick brown hair"],
+                commonOther: ["Stout, well-muscled, hairy"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted] = GetAppearances(
+                commonHair: ["Thick brown hair"],
+                commonOther: ["Stout, well-muscled, hairy"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural] = GetAppearances(
+                commonHair: ["Thick brown hair"],
+                commonOther: ["Stout, well-muscled, hairy"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted] = GetAppearances(
+                commonHair: ["Thick ivory hair"],
+                commonOther: ["Stout, well-muscled, hairy"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural] = GetAppearances(
+                commonHair: ["Thick ivory hair"],
+                commonOther: ["Stout, well-muscled, hairy"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted + GenderConstants.Male] = GetAppearances(
+                commonHair: ["Thick black hair and beard", "Thick reddish hair and beard", "Thick blond hair and beard"],
+                uncommonHair: ["Thick black hair, no facial hair", "Thick reddish hair, no facial hair", "Thick blond hair, no facial hair"],
+                commonOther: ["Stout, well-muscled, hairy"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural + GenderConstants.Male] = GetAppearances(
+                commonHair: ["Thick black hair and beard", "Thick reddish hair and beard", "Thick blond hair and beard"],
+                uncommonHair: ["Thick black hair, no facial hair", "Thick reddish hair, no facial hair", "Thick blond hair, no facial hair"],
+                commonOther: ["Stout, well-muscled, hairy"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted + GenderConstants.Male] = GetAppearances(
+                commonHair: ["Thick brown hair and beard"],
+                uncommonHair: ["Thick brown hair, no facial hair"],
+                commonOther: ["Stout, well-muscled, hairy"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural + GenderConstants.Male] = GetAppearances(
+                commonHair: ["Thick brown hair and beard"],
+                uncommonHair: ["Thick brown hair, no facial hair"],
+                commonOther: ["Stout, well-muscled, hairy"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted + GenderConstants.Male] = GetAppearances(
+                commonHair: ["Thick brown hair and beard"],
+                uncommonHair: ["Thick brown hair, no facial hair"],
+                commonOther: ["Stout, well-muscled, hairy"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural + GenderConstants.Male] = GetAppearances(
+                commonHair: ["Thick brown hair and beard"],
+                uncommonHair: ["Thick brown hair, no facial hair"],
+                commonOther: ["Stout, well-muscled, hairy"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted + GenderConstants.Male] = GetAppearances(
+                commonHair: ["Thick ivory hair and beard"],
+                uncommonHair: ["Thick ivory hair, no facial hair"],
+                commonOther: ["Stout, well-muscled, hairy"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural + GenderConstants.Male] = GetAppearances(
+                commonHair: ["Thick ivory hair and beard"],
+                uncommonHair: ["Thick ivory hair, no facial hair"],
+                commonOther: ["Stout, well-muscled, hairy"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted] = GetAppearances(
+                commonOther: ["Stocky and muscular"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Boar_Natural] = GetAppearances(
+                commonOther: ["Stocky and muscular"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted] = GetAppearances(
+                commonHair: ["Coarser, stiffer hair"],
+                commonOther: ["Stocky and muscular"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural] = GetAppearances(
+                commonHair: ["Coarser, stiffer hair"],
+                commonOther: ["Stocky and muscular"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Rat_Afflicted] = GetAppearances(
+                commonEyes: ["Eyes constantly dart around"],
+                commonOther: ["Thin and wiry"],
+                uncommonOther: ["Thin and wiry, nose and mouth twitch when excited"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Rat_Natural] = GetAppearances(
+                commonEyes: ["Eyes constantly dart around"],
+                commonOther: ["Thin and wiry"],
+                uncommonOther: ["Thin and wiry, nose and mouth twitch when excited"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted] = GetAppearances(
+                commonEyes: ["Eyes constantly dart around"],
+                commonOther: ["Thin and wiry"],
+                uncommonOther: ["Thin and wiry, nose and mouth twitch when excited"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural] = GetAppearances(
+                commonEyes: ["Eyes constantly dart around"],
+                commonOther: ["Thin and wiry"],
+                uncommonOther: ["Thin and wiry, nose and mouth twitch when excited"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Rat_Afflicted + GenderConstants.Male] = GetAppearances(
+                commonEyes: ["Eyes constantly dart around"],
+                commonHair: ["Thin, ragged mustache"],
+                uncommonHair: ["No facial hair"],
+                commonOther: ["Thin and wiry"],
+                uncommonOther: ["Thin and wiry, nose and mouth twitch when excited"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Rat_Natural + GenderConstants.Male] = GetAppearances(
+                commonEyes: ["Eyes constantly dart around"],
+                commonHair: ["Thin, ragged mustache"],
+                uncommonHair: ["No facial hair"],
+                commonOther: ["Thin and wiry"],
+                uncommonOther: ["Thin and wiry, nose and mouth twitch when excited"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted + GenderConstants.Male] = GetAppearances(
+                commonEyes: ["Eyes constantly dart around"],
+                commonHair: ["Thin, ragged mustache"],
+                uncommonHair: ["No facial hair"],
+                commonOther: ["Thin and wiry"],
+                uncommonOther: ["Thin and wiry, nose and mouth twitch when excited"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural + GenderConstants.Male] = GetAppearances(
+                commonEyes: ["Eyes constantly dart around"],
+                commonHair: ["Thin, ragged mustache"],
+                uncommonHair: ["No facial hair"],
+                commonOther: ["Thin and wiry"],
+                uncommonOther: ["Thin and wiry, nose and mouth twitch when excited"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted] = GetAppearances(
+                commonOther: ["Sleekly muscular"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Tiger_Natural] = GetAppearances(
+                commonOther: ["Sleekly muscular"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted] = GetAppearances(
+                commonOther: ["Sleekly muscular"]
+            );
+            appearances[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural] = GetAppearances(
+                commonOther: ["Sleekly muscular"]
+            );
+            //Werewolves are indistinguishable from non-lycanthropes
 
             return appearances;
         }

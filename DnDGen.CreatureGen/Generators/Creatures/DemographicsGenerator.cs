@@ -220,6 +220,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 source.Wingspan = GenerateWingspan(template, size);
             }
 
+            throw new NotImplementedException("TODO: Some templates adjust the height. Wererats are shorter than average. Weretigers are taller than average");
+
             return source;
         }
 
