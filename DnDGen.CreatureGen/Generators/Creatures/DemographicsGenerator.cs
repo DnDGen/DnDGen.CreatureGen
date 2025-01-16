@@ -183,13 +183,47 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return ". ";
         }
 
-        public Demographics Update(Demographics source, string template, string size, bool addWingspan = false, bool overwriteAppearance = false)
+        public Demographics Update(Demographics source, string creature, string template, bool addWingspan = false, string size = "", bool overwriteAppearance = false)
+        {
+            UpdateAppearance(source, template, overwriteAppearance);
+            UpdateAge(source, template);
+
+            if (addWingspan && source.Wingspan.Value == 0)
+            {
+                source.Wingspan = GenerateWingspan(template, size);
+            }
+
+            UpdateHeight(source, creature, template);
+            UpdateLength(source, creature, template);
+            UpdateWeight(source, creature, template);
+
+            return source;
+        }
+
+        private void UpdateAppearance(Demographics source, string template, bool overwriteAppearance)
         {
             source.Skin = UpdateAppearance(source.Skin, TableNameConstants.Collection.AppearanceCategories.Skin, template, overwriteAppearance);
             source.Hair = UpdateAppearance(source.Hair, TableNameConstants.Collection.AppearanceCategories.Hair, template, overwriteAppearance);
             source.Eyes = UpdateAppearance(source.Eyes, TableNameConstants.Collection.AppearanceCategories.Eyes, template, overwriteAppearance);
             source.Other = UpdateAppearance(source.Other, TableNameConstants.Collection.AppearanceCategories.Other, template, overwriteAppearance);
+        }
 
+        private string UpdateAppearance(string source, string category, string template, bool overwrite)
+        {
+            var templateAppearance = GetRandomAppearance(template, string.Empty, category);
+            if (overwrite)
+                return templateAppearance;
+
+            if (string.IsNullOrEmpty(templateAppearance))
+                return source;
+
+            var separator = GetAppearanceSeparator(source);
+            var newAppearance = source + separator + templateAppearance;
+            return newAppearance.Trim();
+        }
+
+        private void UpdateAge(Demographics source, string template)
+        {
             var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, template);
             var maxAgeRoll = ageRolls.First(r => r.Type == AgeConstants.Categories.Maximum);
             var ageRoll = ageRolls.First(r => r.Type != AgeConstants.Categories.Maximum);
@@ -214,29 +248,82 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 source.MaximumAge.Value = maxAgeRoll.Amount;
                 source.MaximumAge.Description = ageRoll.Type;
             }
-
-            if (addWingspan && source.Wingspan.Value == 0)
-            {
-                source.Wingspan = GenerateWingspan(template, size);
-            }
-
-            throw new NotImplementedException("TODO: Some templates adjust the height. Wererats are shorter than average. Weretigers are taller than average");
-
-            return source;
         }
 
-        private string UpdateAppearance(string source, string category, string template, bool overwrite)
+        private void UpdateHeight(Demographics source, string creature, string template)
+            => UpdateMeasurement(source.Height, TableNameConstants.TypeAndAmount.Heights, creature, template, source.Gender, heightDescriptions);
+
+        private void UpdateLength(Demographics source, string creature, string template)
+            => UpdateMeasurement(source.Length, TableNameConstants.TypeAndAmount.Lengths, creature, template, source.Gender, lengthDescriptions);
+
+        private void UpdateMeasurement(Measurement measurement, string tablename, string creature, string template, string gender, string[] descriptions)
         {
-            var templateAppearance = GetRandomAppearance(template, string.Empty, category);
-            if (overwrite)
-                return templateAppearance;
+            if (measurement.Value == 0)
+                return;
 
-            if (string.IsNullOrEmpty(templateAppearance))
-                return source;
+            var templateMeasurements = typeAndAmountSelector.Select(tablename, template);
+            var templateModifier = templateMeasurements.First();
 
-            var separator = GetAppearanceSeparator(source);
-            var newAppearance = source + separator + templateAppearance;
-            return newAppearance.Trim();
+            if (templateModifier.Amount == 0)
+                return;
+
+            var creatureMeasurements = typeAndAmountSelector.Select(tablename, creature);
+            var creatureBase = creatureMeasurements.First(h => h.Type == gender);
+            var creatureModifier = creatureMeasurements.First(h => h.Type == creature);
+            var rawCreatureRoll = $"{creatureBase.RawAmount}+{creatureModifier.RawAmount}";
+
+            if (templateModifier.Amount < 0)
+                measurement.Value -= GetBelowAverageDecrease(measurement.Value, rawCreatureRoll);
+            else if (templateModifier.Amount > 0)
+                measurement.Value += GetAboveAverageIncrease(measurement.Value, rawCreatureRoll);
+
+            measurement.Description = dice.Describe(rawCreatureRoll, (int)measurement.Value, descriptions);
+        }
+
+        private void UpdateWeight(Demographics source, string creature, string template)
+        {
+            if (source.Weight.Value == 0)
+                return;
+
+            var templateMeasurements = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Weights, template);
+            var templateModifier = templateMeasurements.First();
+
+            if (templateModifier.Amount == 0)
+                return;
+
+            var heights = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Heights, creature);
+            var lengths = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Lengths, creature);
+            var heightModifier = heights.First(h => h.Type == creature);
+            var lengthModifier = lengths.First(h => h.Type == creature);
+
+            var weights = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Weights, creature);
+            var baseWeight = weights.First(h => h.Type == source.Gender);
+            var weightModifier = weights.First(h => h.Type == creature);
+
+            var multiplier = heightModifier.RawAmount;
+            if (source.Height.Value < source.Length.Value)
+                multiplier = lengthModifier.RawAmount;
+
+            var rawCreatureRoll = $"{baseWeight.RawAmount}+{multiplier}*{weightModifier.RawAmount}";
+
+            if (templateModifier.Amount < 0)
+                source.Weight.Value -= GetBelowAverageDecrease(source.Weight.Value, rawCreatureRoll);
+            else if (templateModifier.Amount > 0)
+                source.Weight.Value += GetAboveAverageIncrease(source.Weight.Value, rawCreatureRoll);
+
+            source.Weight.Description = dice.Describe(rawCreatureRoll, (int)source.Weight.Value, weightDescriptions);
+        }
+
+        private double GetBelowAverageDecrease(double originalValue, string rawRoll)
+        {
+            var minimum = dice.Roll(rawRoll).AsPotentialMinimum();
+            return (originalValue - minimum) / 2;
+        }
+
+        private double GetAboveAverageIncrease(double originalValue, string rawRoll)
+        {
+            var maximum = dice.Roll(rawRoll).AsPotentialMaximum();
+            return (maximum - originalValue) / 2;
         }
     }
 }
