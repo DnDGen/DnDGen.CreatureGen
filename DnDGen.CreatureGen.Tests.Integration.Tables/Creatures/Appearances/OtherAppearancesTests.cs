@@ -29,8 +29,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void OtherAppearances(string creature)
+        public void CreatureOtherAppearances(string creature)
         {
             var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, creature);
             var creatureKeys = GetCollectionCreatureKeys();
@@ -43,6 +42,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
             {
                 AssertCreatureAppearance(TableNameConstants.Collection.AppearanceCategories.Other, key);
             }
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
+        public void TemplateOtherAppearances(string template)
+        {
+            var creatureKeys = GetCollectionCreatureKeys();
+            Assert.That(creatureKeys, Contains.Item(template));
+            AssertCreatureAppearance(TableNameConstants.Collection.AppearanceCategories.Other, template);
         }
 
         [Test]

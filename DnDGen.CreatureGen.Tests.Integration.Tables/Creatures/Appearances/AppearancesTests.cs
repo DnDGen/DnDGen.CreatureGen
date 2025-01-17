@@ -4867,6 +4867,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                 commonOther: ["Sleekly muscular"]
             );
             //Werewolves are indistinguishable from non-lycanthropes
+            //Source: https://www.d20srd.org/srd/monsters/skeleton.htm
+            appearances[CreatureConstants.Templates.Skeleton] = GetAppearances(
+                commonOther: ["Animated bones of the dead."]
+            );
+            //Source: https://www.d20srd.org/srd/monsters/vampire.htm
+            //https://forgottenrealms.fandom.com/wiki/Vampire#Description
+            appearances[CreatureConstants.Templates.Vampire] = GetAppearances(
+                commonSkin: ["Skin paler than it was in life."],
+                commonEyes: ["Red eyes."],
+                commonOther: ["Features are hardened and feral, with the predatory look of a wolf. Casts no shadows, and throws no reflections in mirrors."]
+            );
+            //Source: https://www.d20srd.org/srd/monsters/zombie.htm
+            //https://forgottenrealms.fandom.com/wiki/Zombie#Description
+            appearances[CreatureConstants.Templates.Zombie] = GetAppearances(
+                commonOther: ["Reanimated, rotting corpse."],
+                uncommonOther: ["Reanimated preserved corpse, with less rotting than most zombies."]
+            );
 
             return appearances;
         }

@@ -23,7 +23,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-            wingspanRolls = GetCreatureWingspans();
+            wingspanRolls = GetWingspanRolls();
         }
 
         [SetUp]
@@ -37,7 +37,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void WingspansNames()
         {
             var creatures = CreatureConstants.GetAll();
-            AssertCollectionNames(creatures);
+            var templates = CreatureConstants.Templates.GetAll();
+            var names = creatures.Union(templates);
+            AssertCollectionNames(names);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
@@ -46,7 +48,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(wingspanRolls, Contains.Key(name));
 
             var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, name);
-            Assert.That(wingspanRolls[name].Keys, Is.EquivalentTo(genders.Union(new[] { name })).And.Not.Empty, $"TEST DATA: {name}");
+            Assert.That(wingspanRolls[name].Keys, Is.EquivalentTo(genders.Union([name])), $"TEST DATA: {name}");
 
             foreach (var roll in wingspanRolls[name].Values)
             {
@@ -57,14 +59,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertTypesAndAmounts(name, wingspanRolls[name]);
         }
 
-        public Dictionary<string, Dictionary<string, string>> GetCreatureWingspans()
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
+        public void TemplateWingspans(string name)
+        {
+            Assert.That(wingspanRolls, Contains.Key(name));
+
+            var sizes = SizeConstants.GetOrdered();
+            Assert.That(wingspanRolls[name].Keys, Is.EquivalentTo(sizes.Union([name])), $"TEST DATA: {name}");
+
+            foreach (var roll in wingspanRolls[name].Values)
+            {
+                var isValid = dice.Roll(roll).IsValid();
+                Assert.That(isValid, Is.True, roll);
+            }
+
+            AssertTypesAndAmounts(name, wingspanRolls[name]);
+        }
+
+        public Dictionary<string, Dictionary<string, string>> GetWingspanRolls()
         {
             var creatures = CreatureConstants.GetAll();
             var wingspans = new Dictionary<string, Dictionary<string, string>>();
 
             foreach (var creature in creatures)
             {
-                wingspans[creature] = new Dictionary<string, string>();
+                wingspans[creature] = [];
             }
 
             //INFO: When wingspan is not readily available, assuming it is equal to height/length

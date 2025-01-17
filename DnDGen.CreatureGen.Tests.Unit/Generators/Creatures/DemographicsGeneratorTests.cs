@@ -16,6 +16,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
     [TestFixture]
     internal class DemographicsGeneratorTests
     {
+        private const int BaseMaleHumanHeight_58 = 4 * 12 + 10;
+        private const int BaseFemaleHumanHeight_53 = 4 * 12 + 5;
+        private const int MinMaleHumanHeight_60 = BaseMaleHumanHeight_58 + 2;
+        private const int MaxMaleHumanHeight_78 = BaseMaleHumanHeight_58 + 2 * 10;
+        private const int AvgMaleHumanHeight_69 = (MaxMaleHumanHeight_78 + MinMaleHumanHeight_60) / 2;
+        private const int MinFemaleHumanHeight_55 = BaseFemaleHumanHeight_53 + 2;
+        private const int MaxFemaleHumanHeight_73 = BaseFemaleHumanHeight_53 + 2 * 10;
+        private const int AvgFemaleHumanHeight_64 = (MaxFemaleHumanHeight_73 + MinFemaleHumanHeight_55) / 2;
+
+        private const int BaseMaleHumanWeight_120 = 120;
+        private const int BaseFemaleHumanWeight_85 = 85;
+        private const int MinMaleHumanWeight_124 = BaseMaleHumanWeight_120 + 2 * 2;
+        private const int MaxMaleHumanWeight_280 = BaseMaleHumanWeight_120 + 2 * 10 * 2 * 4;
+        private const int AvgMaleHumanWeight_202 = (MaxMaleHumanWeight_280 + MinMaleHumanWeight_124) / 2;
+        private const int MinFemaleHumanWeight_89 = BaseFemaleHumanWeight_85 + 2 * 2;
+        private const int MaxFemaleHumanWeight_245 = BaseFemaleHumanWeight_85 + 2 * 10 * 2 * 4;
+        private const int AvgFemaleHumanWeight_167 = (MaxFemaleHumanWeight_245 + MinFemaleHumanWeight_89) / 2;
+
         private IDemographicsGenerator generator;
         private Mock<ICollectionSelector> mockCollectionsSelector;
         private Mock<Dice> mockDice;
@@ -2221,6 +2239,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, template))
                 .Returns(ageRolls);
+
+            var templateHeights = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = 0, RawAmount = "raw 0" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my template"))
+                .Returns(templateHeights);
+
+            var templateLengths = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = 0, RawAmount = "raw 0" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my template"))
+                .Returns(templateLengths);
+
+            var templateWeights = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = 0, RawAmount = "raw 0" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Returns(templateWeights);
         }
 
         [Test]
@@ -2516,6 +2561,34 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
+        public void Update_UpdatesHeight_NoChange_NoHeight()
+        {
+            SetupTemplateDefaults("my template");
+
+            var templateHeights = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = 1, RawAmount = "raw 0" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my template"))
+                .Returns(templateHeights);
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Height = new Measurement("inches") { Value = 0, Description = "eh" },
+            };
+            var updated = generator.Update(demographics, "my creature", "my template");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Height, Is.Not.Null);
+            Assert.That(updated.Height.Value, Is.EqualTo(0));
+            Assert.That(updated.Height.Unit, Is.EqualTo("inches"));
+            Assert.That(updated.Height.Description, Is.EqualTo("eh"));
+        }
+
+        [Test]
         public void Update_UpdatesHeight_Increase()
         {
             SetupTemplateDefaults("my template");
@@ -2562,46 +2635,804 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(updated.Height.Description, Is.EqualTo("eh+"));
         }
 
+        [TestCase(MinMaleHumanHeight_60, MaxMaleHumanHeight_78, AvgMaleHumanHeight_69)]
+        [TestCase(MinMaleHumanHeight_60 + 1, MaxMaleHumanHeight_78, 69)]
+        [TestCase(65, MaxMaleHumanHeight_78, 71)]
+        [TestCase(70, MaxMaleHumanHeight_78, 74)]
+        [TestCase(75, MaxMaleHumanHeight_78, 77)]
+        [TestCase(MaxMaleHumanHeight_78 - 1, MaxMaleHumanHeight_78, 77)]
+        [TestCase(MaxMaleHumanHeight_78, MaxMaleHumanHeight_78, MaxMaleHumanHeight_78)]
+        [TestCase(MinFemaleHumanHeight_55, MaxFemaleHumanHeight_73, 64)]
+        [TestCase(MinFemaleHumanHeight_55 + 1, MaxFemaleHumanHeight_73, 64)]
+        [TestCase(60, MaxFemaleHumanHeight_73, 66)]
+        [TestCase(65, MaxFemaleHumanHeight_73, 69)]
+        [TestCase(70, MaxFemaleHumanHeight_73, 72)]
+        [TestCase(MaxFemaleHumanHeight_73 - 1, MaxFemaleHumanHeight_73, 72)]
+        [TestCase(MaxFemaleHumanHeight_73, MaxFemaleHumanHeight_73, MaxFemaleHumanHeight_73)]
+        public void Update_UpdatesHeight_Increase_Human(int height, int max, int expectedHeight)
+        {
+            SetupTemplateDefaults("my template");
+
+            var templateHeights = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = 1, RawAmount = "raw 1" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my template"))
+                .Returns(templateHeights);
+
+            var heightRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", RawAmount = "raw 42" },
+                new() { Type = "my creature", RawAmount = "raw 783" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Returns(heightRolls);
+
+            mockDice
+                .Setup(d => d.Roll("raw 42+raw 783").AsPotentialMaximum<int>(true))
+                .Returns(max);
+            mockDice
+                .Setup(d => d.Describe("raw 42+raw 783", expectedHeight, It.IsAny<string[]>()))
+                .Returns("eh+");
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Height = new Measurement("inches") { Value = height, Description = "eh" },
+                Gender = "my gender",
+            };
+            var updated = generator.Update(demographics, "my creature", "my template");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Height, Is.Not.Null);
+            Assert.That(updated.Height.Value, Is.EqualTo(expectedHeight));
+            Assert.That(updated.Height.Unit, Is.EqualTo("inches"));
+            Assert.That(updated.Height.Description, Is.EqualTo("eh+"));
+        }
+
         [Test]
         public void Update_UpdatesHeight_Decrease()
         {
-            Assert.Fail("not yet written");
+            SetupTemplateDefaults("my template");
+
+            var templateHeights = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = -1, RawAmount = "raw 1" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my template"))
+                .Returns(templateHeights);
+
+            var heightRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
+                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
+                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Returns(heightRolls);
+
+            mockDice
+                .Setup(d => d.Roll("raw 42+raw 783").AsPotentialMinimum<int>())
+                .Returns(42 + 7);
+            mockDice
+                .Setup(d => d.Describe("raw 42+raw 783", 96 - 24, It.IsAny<string[]>()))
+                .Returns("eh-");
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Height = new Measurement("inches") { Value = 96, Description = "eh" },
+                Gender = "my gender",
+            };
+            var updated = generator.Update(demographics, "my creature", "my template");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Height, Is.Not.Null);
+            Assert.That(updated.Height.Value, Is.EqualTo(96 - 24));
+            Assert.That(updated.Height.Unit, Is.EqualTo("inches"));
+            Assert.That(updated.Height.Description, Is.EqualTo("eh-"));
+        }
+
+        [TestCase(MinMaleHumanHeight_60, MinMaleHumanHeight_60, MinMaleHumanHeight_60)]
+        [TestCase(MinMaleHumanHeight_60 + 1, MinMaleHumanHeight_60, 61)]
+        [TestCase(65, MinMaleHumanHeight_60, 63)]
+        [TestCase(70, MinMaleHumanHeight_60, 65)]
+        [TestCase(75, MinMaleHumanHeight_60, 67)]
+        [TestCase(MaxMaleHumanHeight_78 - 1, MinMaleHumanHeight_60, 69)]
+        [TestCase(MaxMaleHumanHeight_78, MinMaleHumanHeight_60, AvgMaleHumanHeight_69)]
+        [TestCase(MinFemaleHumanHeight_55, MinFemaleHumanHeight_55, MinFemaleHumanHeight_55)]
+        [TestCase(MinFemaleHumanHeight_55 + 1, MinFemaleHumanHeight_55, 56)]
+        [TestCase(60, MinFemaleHumanHeight_55, 58)]
+        [TestCase(65, MinFemaleHumanHeight_55, 60)]
+        [TestCase(70, MinFemaleHumanHeight_55, 62)]
+        [TestCase(MaxFemaleHumanHeight_73 - 1, MinFemaleHumanHeight_55, 64)]
+        [TestCase(MaxFemaleHumanHeight_73, MinFemaleHumanHeight_55, AvgFemaleHumanHeight_64)]
+        public void Update_UpdatesHeight_Decrease_Human(int height, int min, int expectedHeight)
+        {
+            SetupTemplateDefaults("my template");
+
+            var templateHeights = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = -1, RawAmount = "raw 1" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my template"))
+                .Returns(templateHeights);
+
+            var heightRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", RawAmount = "raw 42" },
+                new() { Type = "my creature", RawAmount = "raw 783" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Returns(heightRolls);
+
+            mockDice
+                .Setup(d => d.Roll("raw 42+raw 783").AsPotentialMinimum<int>())
+                .Returns(min);
+            mockDice
+                .Setup(d => d.Describe("raw 42+raw 783", expectedHeight, It.IsAny<string[]>()))
+                .Returns("eh-");
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Height = new Measurement("inches") { Value = height, Description = "eh" },
+                Gender = "my gender",
+            };
+            var updated = generator.Update(demographics, "my creature", "my template");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Height, Is.Not.Null);
+            Assert.That(updated.Height.Value, Is.EqualTo(expectedHeight));
+            Assert.That(updated.Height.Unit, Is.EqualTo("inches"));
+            Assert.That(updated.Height.Description, Is.EqualTo("eh-"));
         }
 
         [Test]
         public void Update_UpdatesLength_NoChange()
         {
-            Assert.Fail("not yet written");
+            SetupTemplateDefaults("my template");
+
+            var templateLengths = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = 0, RawAmount = "raw 0" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my template"))
+                .Returns(templateLengths);
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Length = new Measurement("inches") { Value = 96, Description = "eh" },
+            };
+            var updated = generator.Update(demographics, "my creature", "my template");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Length, Is.Not.Null);
+            Assert.That(updated.Length.Value, Is.EqualTo(96));
+            Assert.That(updated.Length.Unit, Is.EqualTo("inches"));
+            Assert.That(updated.Length.Description, Is.EqualTo("eh"));
+        }
+
+        [Test]
+        public void Update_UpdatesLength_NoChange_NoLength()
+        {
+            SetupTemplateDefaults("my template");
+
+            var templateLengths = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = 1, RawAmount = "raw 0" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my template"))
+                .Returns(templateLengths);
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Length = new Measurement("inches") { Value = 0, Description = "eh" },
+            };
+            var updated = generator.Update(demographics, "my creature", "my template");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Length, Is.Not.Null);
+            Assert.That(updated.Length.Value, Is.EqualTo(0));
+            Assert.That(updated.Length.Unit, Is.EqualTo("inches"));
+            Assert.That(updated.Length.Description, Is.EqualTo("eh"));
         }
 
         [Test]
         public void Update_UpdatesLength_Increase()
         {
-            Assert.Fail("not yet written");
+            SetupTemplateDefaults("my template");
+
+            var templateLengths = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = 1, RawAmount = "raw 1" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my template"))
+                .Returns(templateLengths);
+
+            var lengthRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
+                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
+                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Returns(lengthRolls);
+
+            mockDice
+                .Setup(d => d.Roll("raw 42+raw 783").AsPotentialMaximum<int>(true))
+                .Returns(42 + 783);
+            mockDice
+                .Setup(d => d.Describe("raw 42+raw 783", 96 + 364, It.IsAny<string[]>()))
+                .Returns("eh+");
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Length = new Measurement("inches") { Value = 96, Description = "eh" },
+                Gender = "my gender",
+            };
+            var updated = generator.Update(demographics, "my creature", "my template");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Length, Is.Not.Null);
+            Assert.That(updated.Length.Value, Is.EqualTo(96 + 364));
+            Assert.That(updated.Length.Unit, Is.EqualTo("inches"));
+            Assert.That(updated.Length.Description, Is.EqualTo("eh+"));
         }
 
         [Test]
         public void Update_UpdatesLength_Decrease()
         {
-            Assert.Fail("not yet written");
+            SetupTemplateDefaults("my template");
+
+            var templateLengths = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = -1, RawAmount = "raw 1" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my template"))
+                .Returns(templateLengths);
+
+            var lengthRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
+                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
+                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Returns(lengthRolls);
+
+            mockDice
+                .Setup(d => d.Roll("raw 42+raw 783").AsPotentialMinimum<int>())
+                .Returns(42 + 7);
+            mockDice
+                .Setup(d => d.Describe("raw 42+raw 783", 96 - 24, It.IsAny<string[]>()))
+                .Returns("eh-");
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Length = new Measurement("inches") { Value = 96, Description = "eh" },
+                Gender = "my gender",
+            };
+            var updated = generator.Update(demographics, "my creature", "my template");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Length, Is.Not.Null);
+            Assert.That(updated.Length.Value, Is.EqualTo(96 - 24));
+            Assert.That(updated.Length.Unit, Is.EqualTo("inches"));
+            Assert.That(updated.Length.Description, Is.EqualTo("eh-"));
         }
 
         [Test]
         public void Update_UpdatesWeight_NoChange()
         {
-            Assert.Fail("not yet written");
+            SetupTemplateDefaults("my template");
+
+            var templateWeights = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = 0, RawAmount = "raw 0" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Returns(templateWeights);
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Weight = new Measurement("pounds") { Value = 96, Description = "eh" },
+            };
+            var updated = generator.Update(demographics, "my creature", "my template");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Weight, Is.Not.Null);
+            Assert.That(updated.Weight.Value, Is.EqualTo(96));
+            Assert.That(updated.Weight.Unit, Is.EqualTo("pounds"));
+            Assert.That(updated.Weight.Description, Is.EqualTo("eh"));
         }
 
         [Test]
-        public void Update_UpdatesWeight_Increase()
+        public void Update_UpdatesWeight_NoChange_NoWeight()
         {
-            Assert.Fail("not yet written");
+            SetupTemplateDefaults("my template");
+
+            var templateWeights = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = 1, RawAmount = "raw 0" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Returns(templateWeights);
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Weight = new Measurement("pounds") { Value = 0, Description = "eh" },
+            };
+            var updated = generator.Update(demographics, "my creature", "my template");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Weight, Is.Not.Null);
+            Assert.That(updated.Weight.Value, Is.EqualTo(0));
+            Assert.That(updated.Weight.Unit, Is.EqualTo("pounds"));
+            Assert.That(updated.Weight.Description, Is.EqualTo("eh"));
         }
 
         [Test]
-        public void Update_UpdatesWeight_Decrease()
+        public void Update_UpdatesWeight_Increase_ByHeight()
         {
-            Assert.Fail("not yet written");
+            SetupTemplateDefaults("my template");
+
+            var templateWeights = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = 1, RawAmount = "raw 1" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Returns(templateWeights);
+
+            var heightRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", Amount = 45, RawAmount = "raw 42" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Returns(heightRolls);
+
+            var weightRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
+                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
+                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Returns(weightRolls);
+
+            mockDice
+                .Setup(d => d.Roll("raw 42+37*raw 783").AsPotentialMaximum<int>(true))
+                .Returns(42 + 37 * 783);
+            mockDice
+                .Setup(d => d.Describe("raw 42+37*raw 783", 96 + 14458, It.IsAny<string[]>()))
+                .Returns("eh+");
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Height = new Measurement("inches") { Value = 82, Description = "eh" },
+                Length = new Measurement("inches") { Value = 9, Description = "eh" },
+                Weight = new Measurement("pounds") { Value = 96, Description = "eh" },
+                Gender = "my gender",
+            };
+            var updated = generator.Update(demographics, "my creature", "my template");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Weight, Is.Not.Null);
+            Assert.That(updated.Weight.Value, Is.EqualTo(96 + 14458));
+            Assert.That(updated.Weight.Unit, Is.EqualTo("pounds"));
+            Assert.That(updated.Weight.Description, Is.EqualTo("eh+"));
+        }
+
+        [TestCase(BaseMaleHumanHeight_58, MinMaleHumanHeight_60, MinMaleHumanWeight_124, MaxMaleHumanWeight_280, AvgMaleHumanWeight_202)]
+        [TestCase(BaseMaleHumanHeight_58, MinMaleHumanHeight_60, MinMaleHumanWeight_124 + 1, MaxMaleHumanWeight_280, AvgMaleHumanWeight_202 + 1)]
+        [TestCase(BaseMaleHumanHeight_58, MinMaleHumanHeight_60, AvgMaleHumanWeight_202 - 1, MaxMaleHumanWeight_280, 241)]
+        [TestCase(BaseMaleHumanHeight_58, MinMaleHumanHeight_60, AvgMaleHumanWeight_202, MaxMaleHumanWeight_280, 241)]
+        [TestCase(BaseMaleHumanHeight_58, MinMaleHumanHeight_60, AvgMaleHumanWeight_202 + 1, MaxMaleHumanWeight_280, 241)]
+        [TestCase(BaseMaleHumanHeight_58, MinMaleHumanHeight_60, MaxMaleHumanWeight_280 - 1, MaxMaleHumanWeight_280, MaxMaleHumanWeight_280 - 1)]
+        [TestCase(BaseMaleHumanHeight_58, MinMaleHumanHeight_60, MaxMaleHumanWeight_280, MaxMaleHumanWeight_280, MaxMaleHumanWeight_280)]
+        [TestCase(BaseMaleHumanHeight_58, AvgMaleHumanHeight_69, MinMaleHumanWeight_124, MaxMaleHumanWeight_280, AvgMaleHumanWeight_202)]
+        [TestCase(BaseMaleHumanHeight_58, AvgMaleHumanHeight_69, MinMaleHumanWeight_124 + 1, MaxMaleHumanWeight_280, AvgMaleHumanWeight_202 + 1)]
+        [TestCase(BaseMaleHumanHeight_58, AvgMaleHumanHeight_69, AvgMaleHumanWeight_202 - 1, MaxMaleHumanWeight_280, 241)]
+        [TestCase(BaseMaleHumanHeight_58, AvgMaleHumanHeight_69, AvgMaleHumanWeight_202, MaxMaleHumanWeight_280, 241)]
+        [TestCase(BaseMaleHumanHeight_58, AvgMaleHumanHeight_69, AvgMaleHumanWeight_202 + 1, MaxMaleHumanWeight_280, 241)]
+        [TestCase(BaseMaleHumanHeight_58, AvgMaleHumanHeight_69, MaxMaleHumanWeight_280 - 1, MaxMaleHumanWeight_280, MaxMaleHumanWeight_280 - 1)]
+        [TestCase(BaseMaleHumanHeight_58, AvgMaleHumanHeight_69, MaxMaleHumanWeight_280, MaxMaleHumanWeight_280, MaxMaleHumanWeight_280)]
+        [TestCase(BaseMaleHumanHeight_58, MaxMaleHumanHeight_78, MinMaleHumanWeight_124, MaxMaleHumanWeight_280, AvgMaleHumanWeight_202)]
+        [TestCase(BaseMaleHumanHeight_58, MaxMaleHumanHeight_78, MinMaleHumanWeight_124 + 1, MaxMaleHumanWeight_280, AvgMaleHumanWeight_202 + 1)]
+        [TestCase(BaseMaleHumanHeight_58, MaxMaleHumanHeight_78, AvgMaleHumanWeight_202 - 1, MaxMaleHumanWeight_280, 241)]
+        [TestCase(BaseMaleHumanHeight_58, MaxMaleHumanHeight_78, AvgMaleHumanWeight_202, MaxMaleHumanWeight_280, 241)]
+        [TestCase(BaseMaleHumanHeight_58, MaxMaleHumanHeight_78, AvgMaleHumanWeight_202 + 1, MaxMaleHumanWeight_280, 241)]
+        [TestCase(BaseMaleHumanHeight_58, MaxMaleHumanHeight_78, MaxMaleHumanWeight_280 - 1, MaxMaleHumanWeight_280, MaxMaleHumanWeight_280 - 1)]
+        [TestCase(BaseMaleHumanHeight_58, MaxMaleHumanHeight_78, MaxMaleHumanWeight_280, MaxMaleHumanWeight_280, MaxMaleHumanWeight_280)]
+        [TestCase(BaseFemaleHumanHeight_53, MinFemaleHumanHeight_55, MinFemaleHumanWeight_89, MaxFemaleHumanWeight_245, AvgFemaleHumanWeight_167)]
+        [TestCase(BaseFemaleHumanHeight_53, MinFemaleHumanHeight_55, MinFemaleHumanWeight_89 + 1, MaxFemaleHumanWeight_245, AvgFemaleHumanWeight_167 + 1)]
+        [TestCase(BaseFemaleHumanHeight_53, MinFemaleHumanHeight_55, AvgFemaleHumanWeight_167 - 1, MaxFemaleHumanWeight_245, 206)]
+        [TestCase(BaseFemaleHumanHeight_53, MinFemaleHumanHeight_55, AvgFemaleHumanWeight_167, MaxFemaleHumanWeight_245, 206)]
+        [TestCase(BaseFemaleHumanHeight_53, MinFemaleHumanHeight_55, AvgFemaleHumanWeight_167 + 1, MaxFemaleHumanWeight_245, 206)]
+        [TestCase(BaseFemaleHumanHeight_53, MinFemaleHumanHeight_55, MaxFemaleHumanWeight_245 - 1, MaxFemaleHumanWeight_245, MaxFemaleHumanWeight_245 - 1)]
+        [TestCase(BaseFemaleHumanHeight_53, MinFemaleHumanHeight_55, MaxFemaleHumanWeight_245, MaxFemaleHumanWeight_245, MaxFemaleHumanWeight_245)]
+        [TestCase(BaseFemaleHumanHeight_53, AvgFemaleHumanHeight_64, MinFemaleHumanWeight_89, MaxFemaleHumanWeight_245, AvgFemaleHumanWeight_167)]
+        [TestCase(BaseFemaleHumanHeight_53, AvgFemaleHumanHeight_64, MinFemaleHumanWeight_89 + 1, MaxFemaleHumanWeight_245, AvgFemaleHumanWeight_167 + 1)]
+        [TestCase(BaseFemaleHumanHeight_53, AvgFemaleHumanHeight_64, AvgFemaleHumanWeight_167 - 1, MaxFemaleHumanWeight_245, 206)]
+        [TestCase(BaseFemaleHumanHeight_53, AvgFemaleHumanHeight_64, AvgFemaleHumanWeight_167, MaxFemaleHumanWeight_245, 206)]
+        [TestCase(BaseFemaleHumanHeight_53, AvgFemaleHumanHeight_64, AvgFemaleHumanWeight_167 + 1, MaxFemaleHumanWeight_245, 206)]
+        [TestCase(BaseFemaleHumanHeight_53, AvgFemaleHumanHeight_64, MaxFemaleHumanWeight_245 - 1, MaxFemaleHumanWeight_245, MaxFemaleHumanWeight_245 - 1)]
+        [TestCase(BaseFemaleHumanHeight_53, AvgFemaleHumanHeight_64, MaxFemaleHumanWeight_245, MaxFemaleHumanWeight_245, MaxFemaleHumanWeight_245)]
+        [TestCase(BaseFemaleHumanHeight_53, MaxFemaleHumanHeight_73, MinFemaleHumanWeight_89, MaxFemaleHumanWeight_245, AvgFemaleHumanWeight_167)]
+        [TestCase(BaseFemaleHumanHeight_53, MaxFemaleHumanHeight_73, MinFemaleHumanWeight_89 + 1, MaxFemaleHumanWeight_245, AvgFemaleHumanWeight_167 + 1)]
+        [TestCase(BaseFemaleHumanHeight_53, MaxFemaleHumanHeight_73, AvgFemaleHumanWeight_167 - 1, MaxFemaleHumanWeight_245, 206)]
+        [TestCase(BaseFemaleHumanHeight_53, MaxFemaleHumanHeight_73, AvgFemaleHumanWeight_167, MaxFemaleHumanWeight_245, 206)]
+        [TestCase(BaseFemaleHumanHeight_53, MaxFemaleHumanHeight_73, AvgFemaleHumanWeight_167 + 1, MaxFemaleHumanWeight_245, 206)]
+        [TestCase(BaseFemaleHumanHeight_53, MaxFemaleHumanHeight_73, MaxFemaleHumanWeight_245 - 1, MaxFemaleHumanWeight_245, MaxFemaleHumanWeight_245 - 1)]
+        [TestCase(BaseFemaleHumanHeight_53, MaxFemaleHumanHeight_73, MaxFemaleHumanWeight_245, MaxFemaleHumanWeight_245, MaxFemaleHumanWeight_245)]
+        public void Update_UpdatesWeight_Increase_Human(int baseHeight, int height, int weight, int max, int expectedWeight)
+        {
+            SetupTemplateDefaults("my template");
+
+            var templateWeights = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = 1, RawAmount = "raw 1" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Returns(templateWeights);
+
+            var heightRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", Amount = baseHeight, RawAmount = "raw 42" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Returns(heightRolls);
+
+            var weightRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
+                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
+                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Returns(weightRolls);
+
+            mockDice
+                .Setup(d => d.Roll($"raw 42+{height - baseHeight}*raw 783").AsPotentialMaximum<int>(true))
+                .Returns(max);
+            mockDice
+                .Setup(d => d.Describe($"raw 42+{height - baseHeight}*raw 783", expectedWeight, It.IsAny<string[]>()))
+                .Returns("eh+");
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Height = new Measurement("inches") { Value = height, Description = "eh" },
+                Weight = new Measurement("pounds") { Value = weight, Description = "eh" },
+                Gender = "my gender",
+            };
+            var updated = generator.Update(demographics, "my creature", "my template");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Weight, Is.Not.Null);
+            Assert.That(updated.Weight.Value, Is.EqualTo(expectedWeight));
+            Assert.That(updated.Weight.Unit, Is.EqualTo("pounds"));
+            Assert.That(updated.Weight.Description, Is.EqualTo("eh+"));
+        }
+
+        [Test]
+        public void Update_UpdatesWeight_Increase_ByLength()
+        {
+            SetupTemplateDefaults("my template");
+
+            var templateWeights = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = 1, RawAmount = "raw 1" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Returns(templateWeights);
+
+            var lengthRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", Amount = 45, RawAmount = "raw 42" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Returns(lengthRolls);
+
+            var weightRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
+                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
+                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Returns(weightRolls);
+
+            mockDice
+                .Setup(d => d.Roll("raw 42+37*raw 783").AsPotentialMaximum<int>(true))
+                .Returns(42 + 37 * 783);
+            mockDice
+                .Setup(d => d.Describe("raw 42+37*raw 783", 96 + 14458, It.IsAny<string[]>()))
+                .Returns("eh+");
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Height = new Measurement("inches") { Value = 9, Description = "eh" },
+                Length = new Measurement("inches") { Value = 82, Description = "eh" },
+                Weight = new Measurement("pounds") { Value = 96, Description = "eh" },
+                Gender = "my gender",
+            };
+            var updated = generator.Update(demographics, "my creature", "my template");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Weight, Is.Not.Null);
+            Assert.That(updated.Weight.Value, Is.EqualTo(96 + 14458));
+            Assert.That(updated.Weight.Unit, Is.EqualTo("pounds"));
+            Assert.That(updated.Weight.Description, Is.EqualTo("eh+"));
+        }
+
+        [Test]
+        public void Update_UpdatesWeight_Decrease_ByHeight()
+        {
+            SetupTemplateDefaults("my template");
+
+            var templateWeights = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = -1, RawAmount = "raw 1" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Returns(templateWeights);
+
+            var heightRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", Amount = 45, RawAmount = "raw 42" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Returns(heightRolls);
+
+            var weightRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
+                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
+                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Returns(weightRolls);
+
+            mockDice
+                .Setup(d => d.Roll("raw 42+37*raw 783").AsPotentialMinimum<int>())
+                .Returns(42 + 37);
+            mockDice
+                .Setup(d => d.Describe("raw 42+37*raw 783", 96 - 8, It.IsAny<string[]>()))
+                .Returns("eh-");
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Height = new Measurement("inches") { Value = 82, Description = "eh" },
+                Length = new Measurement("inches") { Value = 9, Description = "eh" },
+                Weight = new Measurement("pounds") { Value = 96, Description = "eh" },
+                Gender = "my gender",
+            };
+            var updated = generator.Update(demographics, "my creature", "my template");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Weight, Is.Not.Null);
+            Assert.That(updated.Weight.Value, Is.EqualTo(96 - 8));
+            Assert.That(updated.Weight.Unit, Is.EqualTo("pounds"));
+            Assert.That(updated.Weight.Description, Is.EqualTo("eh-"));
+        }
+
+        [TestCase(BaseMaleHumanHeight_58, MinMaleHumanHeight_60, MinMaleHumanWeight_124, MinMaleHumanWeight_124, MinMaleHumanWeight_124)]
+        [TestCase(BaseMaleHumanHeight_58, MinMaleHumanHeight_60, MinMaleHumanWeight_124 + 1, MinMaleHumanWeight_124, MinMaleHumanWeight_124 + 1)]
+        [TestCase(BaseMaleHumanHeight_58, MinMaleHumanHeight_60, AvgMaleHumanWeight_202 - 1, MinMaleHumanWeight_124, 241)]
+        [TestCase(BaseMaleHumanHeight_58, MinMaleHumanHeight_60, AvgMaleHumanWeight_202, MinMaleHumanWeight_124, 241)]
+        [TestCase(BaseMaleHumanHeight_58, MinMaleHumanHeight_60, AvgMaleHumanWeight_202 + 1, MinMaleHumanWeight_124, 241)]
+        [TestCase(BaseMaleHumanHeight_58, MinMaleHumanHeight_60, MaxMaleHumanWeight_280 - 1, MinMaleHumanWeight_124, AvgMaleHumanWeight_202 - 1)]
+        [TestCase(BaseMaleHumanHeight_58, MinMaleHumanHeight_60, MaxMaleHumanWeight_280, MinMaleHumanWeight_124, AvgMaleHumanWeight_202)]
+        [TestCase(BaseMaleHumanHeight_58, AvgMaleHumanHeight_69, MinMaleHumanWeight_124, MinMaleHumanWeight_124, MinMaleHumanWeight_124)]
+        [TestCase(BaseMaleHumanHeight_58, AvgMaleHumanHeight_69, MinMaleHumanWeight_124 + 1, MinMaleHumanWeight_124, MinMaleHumanWeight_124 + 1)]
+        [TestCase(BaseMaleHumanHeight_58, AvgMaleHumanHeight_69, AvgMaleHumanWeight_202 - 1, MinMaleHumanWeight_124, 241)]
+        [TestCase(BaseMaleHumanHeight_58, AvgMaleHumanHeight_69, AvgMaleHumanWeight_202, MinMaleHumanWeight_124, 241)]
+        [TestCase(BaseMaleHumanHeight_58, AvgMaleHumanHeight_69, AvgMaleHumanWeight_202 + 1, MinMaleHumanWeight_124, 241)]
+        [TestCase(BaseMaleHumanHeight_58, AvgMaleHumanHeight_69, MaxMaleHumanWeight_280 - 1, MinMaleHumanWeight_124, AvgMaleHumanWeight_202 - 1)]
+        [TestCase(BaseMaleHumanHeight_58, AvgMaleHumanHeight_69, MaxMaleHumanWeight_280, MinMaleHumanWeight_124, AvgMaleHumanWeight_202)]
+        [TestCase(BaseMaleHumanHeight_58, MaxMaleHumanHeight_78, MinMaleHumanWeight_124, MinMaleHumanWeight_124, MinMaleHumanWeight_124)]
+        [TestCase(BaseMaleHumanHeight_58, MaxMaleHumanHeight_78, MinMaleHumanWeight_124 + 1, MinMaleHumanWeight_124, MinMaleHumanWeight_124 + 1)]
+        [TestCase(BaseMaleHumanHeight_58, MaxMaleHumanHeight_78, AvgMaleHumanWeight_202 - 1, MinMaleHumanWeight_124, 241)]
+        [TestCase(BaseMaleHumanHeight_58, MaxMaleHumanHeight_78, AvgMaleHumanWeight_202, MinMaleHumanWeight_124, 241)]
+        [TestCase(BaseMaleHumanHeight_58, MaxMaleHumanHeight_78, AvgMaleHumanWeight_202 + 1, MinMaleHumanWeight_124, 241)]
+        [TestCase(BaseMaleHumanHeight_58, MaxMaleHumanHeight_78, MaxMaleHumanWeight_280 - 1, MinMaleHumanWeight_124, AvgMaleHumanWeight_202 - 1)]
+        [TestCase(BaseMaleHumanHeight_58, MaxMaleHumanHeight_78, MaxMaleHumanWeight_280, MinMaleHumanWeight_124, AvgMaleHumanWeight_202)]
+        [TestCase(BaseFemaleHumanHeight_53, MinFemaleHumanHeight_55, MinFemaleHumanWeight_89, MinFemaleHumanWeight_89, MinFemaleHumanWeight_89)]
+        [TestCase(BaseFemaleHumanHeight_53, MinFemaleHumanHeight_55, MinFemaleHumanWeight_89 + 1, MinFemaleHumanWeight_89, MinFemaleHumanWeight_89 + 1)]
+        [TestCase(BaseFemaleHumanHeight_53, MinFemaleHumanHeight_55, AvgFemaleHumanWeight_167 - 1, MinFemaleHumanWeight_89, 206)]
+        [TestCase(BaseFemaleHumanHeight_53, MinFemaleHumanHeight_55, AvgFemaleHumanWeight_167, MinFemaleHumanWeight_89, 206)]
+        [TestCase(BaseFemaleHumanHeight_53, MinFemaleHumanHeight_55, AvgFemaleHumanWeight_167 + 1, MinFemaleHumanWeight_89, 206)]
+        [TestCase(BaseFemaleHumanHeight_53, MinFemaleHumanHeight_55, MaxFemaleHumanWeight_245 - 1, MinFemaleHumanWeight_89, AvgFemaleHumanWeight_167 - 1)]
+        [TestCase(BaseFemaleHumanHeight_53, MinFemaleHumanHeight_55, MaxFemaleHumanWeight_245, MinFemaleHumanWeight_89, AvgFemaleHumanWeight_167)]
+        [TestCase(BaseFemaleHumanHeight_53, AvgFemaleHumanHeight_64, MinFemaleHumanWeight_89, MinFemaleHumanWeight_89, MinFemaleHumanWeight_89)]
+        [TestCase(BaseFemaleHumanHeight_53, AvgFemaleHumanHeight_64, MinFemaleHumanWeight_89 + 1, MinFemaleHumanWeight_89, MinFemaleHumanWeight_89 + 1)]
+        [TestCase(BaseFemaleHumanHeight_53, AvgFemaleHumanHeight_64, AvgFemaleHumanWeight_167 - 1, MinFemaleHumanWeight_89, 206)]
+        [TestCase(BaseFemaleHumanHeight_53, AvgFemaleHumanHeight_64, AvgFemaleHumanWeight_167, MinFemaleHumanWeight_89, 206)]
+        [TestCase(BaseFemaleHumanHeight_53, AvgFemaleHumanHeight_64, AvgFemaleHumanWeight_167 + 1, MinFemaleHumanWeight_89, 206)]
+        [TestCase(BaseFemaleHumanHeight_53, AvgFemaleHumanHeight_64, MaxFemaleHumanWeight_245 - 1, MinFemaleHumanWeight_89, AvgFemaleHumanWeight_167 - 1)]
+        [TestCase(BaseFemaleHumanHeight_53, AvgFemaleHumanHeight_64, MaxFemaleHumanWeight_245, MinFemaleHumanWeight_89, AvgFemaleHumanWeight_167)]
+        [TestCase(BaseFemaleHumanHeight_53, MaxFemaleHumanHeight_73, MinFemaleHumanWeight_89, MinFemaleHumanWeight_89, MinFemaleHumanWeight_89)]
+        [TestCase(BaseFemaleHumanHeight_53, MaxFemaleHumanHeight_73, MinFemaleHumanWeight_89 + 1, MinFemaleHumanWeight_89, MinFemaleHumanWeight_89 + 1)]
+        [TestCase(BaseFemaleHumanHeight_53, MaxFemaleHumanHeight_73, AvgFemaleHumanWeight_167 - 1, MinFemaleHumanWeight_89, 206)]
+        [TestCase(BaseFemaleHumanHeight_53, MaxFemaleHumanHeight_73, AvgFemaleHumanWeight_167, MinFemaleHumanWeight_89, 206)]
+        [TestCase(BaseFemaleHumanHeight_53, MaxFemaleHumanHeight_73, AvgFemaleHumanWeight_167 + 1, MinFemaleHumanWeight_89, 206)]
+        [TestCase(BaseFemaleHumanHeight_53, MaxFemaleHumanHeight_73, MaxFemaleHumanWeight_245 - 1, MinFemaleHumanWeight_89, AvgFemaleHumanWeight_167 + 1)]
+        [TestCase(BaseFemaleHumanHeight_53, MaxFemaleHumanHeight_73, MaxFemaleHumanWeight_245, MinFemaleHumanWeight_89, AvgFemaleHumanWeight_167)]
+        public void Update_UpdatesWeight_Decrease_Human(int baseHeight, int height, int weight, int min, int expectedWeight)
+        {
+            SetupTemplateDefaults("my template");
+
+            var templateWeights = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = -1, RawAmount = "raw 1" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Returns(templateWeights);
+
+            var heightRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", Amount = 45, RawAmount = "raw 42" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Returns(heightRolls);
+
+            var weightRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
+                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
+                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Returns(weightRolls);
+
+            mockDice
+                .Setup(d => d.Roll("raw 42+37*raw 783").AsPotentialMinimum<int>())
+                .Returns(42 + 37);
+            mockDice
+                .Setup(d => d.Describe("raw 42+37*raw 783", 96 - 8, It.IsAny<string[]>()))
+                .Returns("eh-");
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Height = new Measurement("inches") { Value = 82, Description = "eh" },
+                Length = new Measurement("inches") { Value = 9, Description = "eh" },
+                Weight = new Measurement("pounds") { Value = 96, Description = "eh" },
+                Gender = "my gender",
+            };
+            var updated = generator.Update(demographics, "my creature", "my template");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Weight, Is.Not.Null);
+            Assert.That(updated.Weight.Value, Is.EqualTo(96 - 8));
+            Assert.That(updated.Weight.Unit, Is.EqualTo("pounds"));
+            Assert.That(updated.Weight.Description, Is.EqualTo("eh-"));
+        }
+
+        [Test]
+        public void Update_UpdatesWeight_Decrease_ByLength()
+        {
+            SetupTemplateDefaults("my template");
+
+            var templateWeights = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = -1, RawAmount = "raw 1" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Returns(templateWeights);
+
+            var lengthRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", Amount = 45, RawAmount = "raw 42" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Returns(lengthRolls);
+
+            var weightRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
+                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
+                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Returns(weightRolls);
+
+            mockDice
+                .Setup(d => d.Roll("raw 42+37*raw 783").AsPotentialMinimum<int>())
+                .Returns(42 + 37);
+            mockDice
+                .Setup(d => d.Describe("raw 42+37*raw 783", 96 - 8, It.IsAny<string[]>()))
+                .Returns("eh-");
+
+            var demographics = new Demographics
+            {
+                Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
+                MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Height = new Measurement("inches") { Value = 9, Description = "eh" },
+                Length = new Measurement("inches") { Value = 82, Description = "eh" },
+                Weight = new Measurement("pounds") { Value = 96, Description = "eh" },
+                Gender = "my gender",
+            };
+            var updated = generator.Update(demographics, "my creature", "my template");
+            Assert.That(updated, Is.EqualTo(demographics));
+            Assert.That(updated.Weight, Is.Not.Null);
+            Assert.That(updated.Weight.Value, Is.EqualTo(96 - 8));
+            Assert.That(updated.Weight.Unit, Is.EqualTo("pounds"));
+            Assert.That(updated.Weight.Description, Is.EqualTo("eh-"));
         }
 
         [Test]
@@ -2612,9 +3443,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var wingspanRolls = new List<TypeAndAmountSelection>
             {
-                new() { Type = "my size", Amount = 0, RawAmount = "raw 0" },
-                new() { Type = "my other base key", Amount = 0, RawAmount = "raw 0" },
-                new() { Type = "my template", Amount = 0, RawAmount = "raw 0" }
+                new() { Type = "my size", Amount = 2022, RawAmount = "raw 2022" },
+                new() { Type = "my template", Amount = 227, RawAmount = "raw 227" }
             };
 
             mockTypeAndAmountSelector
@@ -2630,7 +3460,83 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my template"))
                 .Returns(ageRolls);
 
-            Assert.Fail("Set up height, length, and weight changes");
+            var templateHeights = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = 1, RawAmount = "raw 1" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my template"))
+                .Returns(templateHeights);
+
+            var heightRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
+                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Returns(heightRolls);
+
+            mockDice
+                .Setup(d => d.Roll("raw 42+raw 783").AsPotentialMaximum<int>(true))
+                .Returns(42 + 783);
+            mockDice
+                .Setup(d => d.Describe("raw 42+raw 783", 96 + 364, It.IsAny<string[]>()))
+                .Returns("eh+");
+
+            var templateLengths = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = -1, RawAmount = "raw 1" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my template"))
+                .Returns(templateLengths);
+
+            var lengthRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", Amount = 9, RawAmount = "raw 9" },
+                new() { Type = "my creature", Amount = 22, RawAmount = "raw 22" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Returns(lengthRolls);
+
+            mockDice
+                .Setup(d => d.Roll("raw 9+raw 22").AsPotentialMinimum<int>())
+                .Returns(9 + 2);
+            mockDice
+                .Setup(d => d.Describe("raw 9+raw 22", 82 - 36, It.IsAny<string[]>()))
+                .Returns("eh-");
+
+            var templateWeights = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my template", Amount = 1, RawAmount = "raw 1" },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Returns(templateWeights);
+
+            var weightRolls = new List<TypeAndAmountSelection>
+            {
+                new() { Type = "my gender", Amount = 123, RawAmount = "raw 123" },
+                new() { Type = "my creature", Amount = 234, RawAmount = "raw 234" }
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Returns(weightRolls);
+
+            mockDice
+                .Setup(d => d.Roll("raw 123+418*raw 234").AsPotentialMaximum<int>(true))
+                .Returns(123 + 37 * 234);
+            mockDice
+                .Setup(d => d.Describe("raw 123+418*raw 234", 4413, It.IsAny<string[]>()))
+                .Returns("eh++");
 
             var demographics = new Demographics
             {
@@ -2640,6 +3546,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Other = "my other",
                 Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
                 MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Height = new Measurement("inches") { Value = 96, Description = "eh" },
+                Length = new Measurement("inches") { Value = 82, Description = "eh" },
+                Weight = new Measurement("pounds") { Value = 45, Description = "eh" },
+                Gender = "my gender",
             };
             var updated = generator.Update(demographics, "my creature", "my template", true, "my size");
             Assert.That(updated, Is.EqualTo(demographics));
@@ -2652,11 +3562,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(updated.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
             Assert.That(updated.MaximumAge.Description, Is.EqualTo("template age category"));
             Assert.That(updated.Wingspan, Is.Not.Null);
-            Assert.That(updated.Wingspan.Value, Is.Zero);
+            Assert.That(updated.Wingspan.Value, Is.EqualTo(2249));
             Assert.That(updated.Wingspan.Unit, Is.EqualTo("inches"));
             Assert.That(updated.Wingspan.Description, Is.EqualTo("Average"));
-
-            Assert.Fail("Assert height, length, and weight changes");
+            Assert.That(updated.Height, Is.Not.Null);
+            Assert.That(updated.Height.Value, Is.EqualTo(96 + 364));
+            Assert.That(updated.Height.Unit, Is.EqualTo("inches"));
+            Assert.That(updated.Height.Description, Is.EqualTo("eh+"));
+            Assert.That(updated.Length, Is.Not.Null);
+            Assert.That(updated.Length.Value, Is.EqualTo(82 - 36));
+            Assert.That(updated.Length.Unit, Is.EqualTo("inches"));
+            Assert.That(updated.Length.Description, Is.EqualTo("eh-"));
+            Assert.That(updated.Weight, Is.Not.Null);
+            Assert.That(updated.Weight.Value, Is.EqualTo(4413));
+            Assert.That(updated.Weight.Unit, Is.EqualTo("pounds"));
+            Assert.That(updated.Weight.Description, Is.EqualTo("eh++"));
         }
     }
 }

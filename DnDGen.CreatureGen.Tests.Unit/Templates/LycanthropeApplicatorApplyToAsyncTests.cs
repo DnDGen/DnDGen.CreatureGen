@@ -125,7 +125,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             SetUpRoll(baseCreature.HitPoints.HitDice[0], baseAverage);
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.LycanthropeSpecies, baseCreature.Size, false, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.LycanthropeSpecies, false, string.Empty, false))
                 .Returns(baseCreature.Demographics);
         }
 
@@ -649,7 +649,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Gender = "wild gender"
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.LycanthropeSpecies, baseCreature.Size, false, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.LycanthropeSpecies, false, string.Empty, false))
                 .Returns(templateDemographics);
 
             SetUpAnimal("my animal");
@@ -1114,10 +1114,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
 
-            mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.LycanthropeSpecies, baseCreature.Size, false, false))
-                .Returns(baseCreature.Demographics);
-
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(lycanthropeAttacks));
@@ -1150,10 +1146,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAttacksGenerator
                 .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
-
-            mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.LycanthropeSpecies, baseCreature.Size, false, false))
-                .Returns(baseCreature.Demographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1188,10 +1180,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAttacksGenerator
                 .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
-
-            mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.LycanthropeSpecies, baseCreature.Size, false, false))
-                .Returns(baseCreature.Demographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1231,10 +1219,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                             .Union(animalSpecialQualities))),
                     baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
-
-            mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.LycanthropeSpecies, baseCreature.Size, false, false))
-                .Returns(baseCreature.Demographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));

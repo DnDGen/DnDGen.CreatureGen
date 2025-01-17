@@ -45,7 +45,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void WeightsNames()
         {
             var creatures = CreatureConstants.GetAll();
-            AssertCollectionNames(creatures);
+            var templates = CreatureConstants.Templates.GetAll();
+            var names = creatures.Union(templates);
+            AssertCollectionNames(names);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
@@ -55,7 +57,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             var rolls = creatureWeightRolls[name];
             var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, name);
-            Assert.That(rolls.Keys, Is.EquivalentTo(genders.Union([name])).And.Not.Empty, $"TEST DATA: {name}");
+            Assert.That(rolls.Keys, Is.EquivalentTo(genders.Union([name])), $"TEST DATA: {name}");
+
+            foreach (var roll in rolls.Values)
+            {
+                Assert.That(roll, Is.Not.Empty.And.Not.Contain("NO VALID WEIGHT ROLL"));
+
+                var isValid = dice.Roll(roll).IsValid();
+                Assert.That(isValid, Is.True, roll);
+            }
+
+            AssertTypesAndAmounts(name, rolls);
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
+        public void TemplateLengths(string name)
+        {
+            Assert.That(creatureWeightRolls, Contains.Key(name));
+
+            var rolls = creatureWeightRolls[name];
+            Assert.That(rolls.Keys, Is.EquivalentTo([name]), $"TEST DATA: {name}");
 
             foreach (var roll in rolls.Values)
             {
@@ -140,7 +161,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var creature in creatures)
             {
-                weights[creature] = new Dictionary<string, (int Lower, int Upper)>();
+                weights[creature] = [];
             }
 
             //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
@@ -1769,7 +1790,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             foreach (var kvp in creatureWeightRanges)
             {
                 var creature = kvp.Key;
-                weights[creature] = new Dictionary<string, string>();
+                weights[creature] = [];
 
                 if (!kvp.Value.Values.Any())
                 {

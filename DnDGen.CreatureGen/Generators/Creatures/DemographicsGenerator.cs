@@ -45,7 +45,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var heightModifier = heights.First(h => h.Type == creatureName);
 
             demographics.Height.Value = baseHeight.Amount + heightModifier.Amount;
-            var rawHeightRoll = $"{baseHeight.RawAmount}+{heightModifier.RawAmount}";
+            var rawHeightRoll = GetRoll(baseHeight.RawAmount, heightModifier.RawAmount);
             demographics.Height.Description = dice.Describe(rawHeightRoll, (int)demographics.Height.Value, heightDescriptions);
 
             var lengths = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Lengths, creatureName);
@@ -53,7 +53,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var lengthModifier = lengths.First(h => h.Type == creatureName);
 
             demographics.Length.Value = baseLength.Amount + lengthModifier.Amount;
-            var rawLengthRoll = $"{baseLength.RawAmount}+{lengthModifier.RawAmount}";
+            var rawLengthRoll = GetRoll(baseLength.RawAmount, lengthModifier.RawAmount);
             demographics.Length.Description = dice.Describe(rawLengthRoll, (int)demographics.Length.Value, lengthDescriptions);
 
             var weights = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Weights, creatureName);
@@ -62,7 +62,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var multiplier = Math.Max(heightModifier.Amount, lengthModifier.Amount);
 
             demographics.Weight.Value = baseWeight.Amount + multiplier * weightModifier.Amount;
-            var rawWeightRoll = $"{baseWeight.RawAmount}+{multiplier}*{weightModifier.RawAmount}";
+            var rawWeightRoll = GetMultipliedRoll(baseWeight.RawAmount, multiplier, weightModifier.RawAmount);
             demographics.Weight.Description = dice.Describe(rawWeightRoll, (int)demographics.Weight.Value, weightDescriptions);
 
             demographics.Wingspan = GenerateWingspan(creatureName, demographics.Gender);
@@ -73,6 +73,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             return demographics;
         }
+
+        private string GetRoll(string baseAmount, string modifier) => $"{baseAmount}+{modifier}";
+        private string GetMultipliedRoll(string baseAmount, double multiplier, string modifier) => $"{baseAmount}+{multiplier}*{modifier}";
 
         private string GetRandomAppearance(string creatureName, string gender, string category)
         {
@@ -166,7 +169,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 Value = baseWingspan.Amount + wingspanModifier.Amount
             };
 
-            var rawWingspanRoll = $"{baseWingspan.RawAmount}+{wingspanModifier.RawAmount}";
+            var rawWingspanRoll = GetRoll(baseWingspan.RawAmount, wingspanModifier.RawAmount);
             wingspan.Description = dice.Describe(rawWingspanRoll, (int)wingspan.Value, wingspanDescriptions);
 
             return wingspan;
@@ -270,7 +273,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var creatureMeasurements = typeAndAmountSelector.Select(tablename, creature);
             var creatureBase = creatureMeasurements.First(h => h.Type == gender);
             var creatureModifier = creatureMeasurements.First(h => h.Type == creature);
-            var rawCreatureRoll = $"{creatureBase.RawAmount}+{creatureModifier.RawAmount}";
+            var rawCreatureRoll = GetRoll(creatureBase.RawAmount, creatureModifier.RawAmount);
 
             if (templateModifier.Amount < 0)
                 measurement.Value -= GetBelowAverageDecrease(measurement.Value, rawCreatureRoll);
@@ -291,20 +294,16 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             if (templateModifier.Amount == 0)
                 return;
 
-            var heights = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Heights, creature);
-            var lengths = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Lengths, creature);
-            var heightModifier = heights.First(h => h.Type == creature);
-            var lengthModifier = lengths.First(h => h.Type == creature);
+            var multiplier = 0d;
+            if (source.Height.Value >= source.Length.Value)
+                multiplier = GetMultiplier(TableNameConstants.TypeAndAmount.Heights, creature, source.Gender, source.Height.Value);
+            else
+                multiplier = GetMultiplier(TableNameConstants.TypeAndAmount.Lengths, creature, source.Gender, source.Length.Value);
 
             var weights = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Weights, creature);
             var baseWeight = weights.First(h => h.Type == source.Gender);
             var weightModifier = weights.First(h => h.Type == creature);
-
-            var multiplier = heightModifier.RawAmount;
-            if (source.Height.Value < source.Length.Value)
-                multiplier = lengthModifier.RawAmount;
-
-            var rawCreatureRoll = $"{baseWeight.RawAmount}+{multiplier}*{weightModifier.RawAmount}";
+            var rawCreatureRoll = GetMultipliedRoll(baseWeight.RawAmount, multiplier, weightModifier.RawAmount);
 
             if (templateModifier.Amount < 0)
                 source.Weight.Value -= GetBelowAverageDecrease(source.Weight.Value, rawCreatureRoll);
@@ -314,16 +313,23 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             source.Weight.Description = dice.Describe(rawCreatureRoll, (int)source.Weight.Value, weightDescriptions);
         }
 
-        private double GetBelowAverageDecrease(double originalValue, string rawRoll)
+        private double GetMultiplier(string tablename, string creature, string gender, double baseValue)
         {
-            var minimum = dice.Roll(rawRoll).AsPotentialMinimum();
-            return (originalValue - minimum) / 2;
+            var measurements = typeAndAmountSelector.Select(tablename, creature);
+            var baseMeasurement = measurements.First(h => h.Type == gender);
+            return baseValue - baseMeasurement.Amount;
         }
 
-        private double GetAboveAverageIncrease(double originalValue, string rawRoll)
+        private int GetBelowAverageDecrease(double originalValue, string rawRoll)
+        {
+            var minimum = dice.Roll(rawRoll).AsPotentialMinimum();
+            return Convert.ToInt32((originalValue - minimum) / 2);
+        }
+
+        private int GetAboveAverageIncrease(double originalValue, string rawRoll)
         {
             var maximum = dice.Roll(rawRoll).AsPotentialMaximum();
-            return (maximum - originalValue) / 2;
+            return Convert.ToInt32((maximum - originalValue) / 2);
         }
     }
 }

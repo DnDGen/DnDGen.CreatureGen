@@ -88,7 +88,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(90210);
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Lich, baseCreature.Size, false, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Lich, false, string.Empty, false))
                 .Returns(baseCreature.Demographics);
         }
 
@@ -250,7 +250,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Gender = "mean gender",
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Lich, baseCreature.Size, false, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Lich, false, string.Empty, false))
                 .Returns(templateDemographics);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -960,7 +960,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Gender = "mean gender",
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.Lich, baseCreature.Size, false, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Lich, false, string.Empty, false))
                 .Returns(templateDemographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);

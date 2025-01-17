@@ -70,7 +70,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Build();
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.FiendishCreature, baseCreature.Size, false, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.FiendishCreature, false, string.Empty, false))
                 .Returns(baseCreature.Demographics);
         }
 
@@ -246,7 +246,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Gender = "hellish gender"
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.FiendishCreature, baseCreature.Size, false, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.FiendishCreature, false, string.Empty, false))
                 .Returns(templateDemographics);
 
             var smiteGood = new Attack
@@ -289,10 +289,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns([smiteGood]);
-
-            mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.FiendishCreature, "my size", false, false))
-                .Returns(baseCreature.Demographics);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1484,7 +1480,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Gender = "hellish gender"
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.FiendishCreature, baseCreature.Size, false, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.FiendishCreature, false, string.Empty, false))
                 .Returns(templateDemographics);
 
             var smiteGood = new Attack
@@ -1527,10 +1523,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
                 .Returns([smiteGood]);
-
-            mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, CreatureConstants.Templates.FiendishCreature, "my size", false, false))
-                .Returns(baseCreature.Demographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));

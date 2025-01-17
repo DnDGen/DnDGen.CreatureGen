@@ -9133,4 +9133,434 @@
   <collection>
     <name>Yuan-ti PurebloodRare</name>
   </collection>
+	<collection>
+		<name>Celestial CreatureCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Celestial CreatureUncommon</name>
+	</collection>
+	<collection>
+		<name>Celestial CreatureRare</name>
+	</collection>
+	<collection>
+		<name>Fiendish CreatureCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Fiendish CreatureUncommon</name>
+	</collection>
+	<collection>
+		<name>Fiendish CreatureRare</name>
+	</collection>
+	<collection>
+		<name>Half-CelestialCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Half-CelestialUncommon</name>
+	</collection>
+	<collection>
+		<name>Half-CelestialRare</name>
+	</collection>
+	<collection>
+		<name>Half-FiendCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Half-FiendUncommon</name>
+	</collection>
+	<collection>
+		<name>Half-FiendRare</name>
+	</collection>
+	<collection>
+		<name>GhostCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>GhostUncommon</name>
+	</collection>
+	<collection>
+		<name>GhostRare</name>
+	</collection>
+	<collection>
+		<name>LichCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>LichUncommon</name>
+	</collection>
+	<collection>
+		<name>LichRare</name>
+	</collection>
+	<collection>
+		<name>VampireCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>VampireUncommon</name>
+	</collection>
+	<collection>
+		<name>VampireRare</name>
+	</collection>
+	<collection>
+		<name>SkeletonCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>SkeletonUncommon</name>
+	</collection>
+	<collection>
+		<name>SkeletonRare</name>
+	</collection>
+	<collection>
+		<name>ZombieCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>ZombieUncommon</name>
+	</collection>
+	<collection>
+		<name>ZombieRare</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Black)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Black)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Black)Rare</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Blue)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Blue)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Blue)Rare</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Brass)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Brass)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Brass)Rare</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Bronze)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Bronze)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Bronze)Rare</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Copper)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Copper)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Copper)Rare</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Gold)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Gold)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Gold)Rare</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Green)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Green)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Green)Rare</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Red)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Red)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Red)Rare</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Silver)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Silver)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Silver)Rare</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (White)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (White)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Half-Dragon (White)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Natural)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Natural)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Natural)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Boar (Wereboar, Afflicted)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Boar (Wereboar, Afflicted)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Boar (Wereboar, Afflicted)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Boar (Wereboar, Natural)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Boar (Wereboar, Natural)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Boar (Wereboar, Natural)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Wolf (Werewolf, Afflicted)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Wolf (Werewolf, Afflicted)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Wolf (Werewolf, Afflicted)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Wolf (Werewolf, Natural)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Wolf (Werewolf, Natural)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Wolf (Werewolf, Natural)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Afflicted)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Afflicted)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Afflicted)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Natural)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Natural)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Natural)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)Rare</name>
+	</collection>
 </collections>

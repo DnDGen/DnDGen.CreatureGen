@@ -177,7 +177,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            creature.Demographics = demographicsGenerator.Update(creature.Demographics, CreatureConstants.Templates.HalfCelestial, creature.Size, true);
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, creature.Name, CreatureConstants.Templates.HalfCelestial, true, creature.Size);
         }
 
         private void UpdateCreatureSpeeds(Creature creature)

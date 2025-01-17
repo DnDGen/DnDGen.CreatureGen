@@ -124,7 +124,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string a, string t, string c) => [$"other alignment", $"{c.Replace(GroupConstants.Exploded, string.Empty)}y scaley", "preset alignment"]);
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.DragonSpecies, baseCreature.Size, false, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.DragonSpecies, false, baseCreature.Size, false))
                 .Returns(baseCreature.Demographics);
         }
 
@@ -320,7 +320,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Other = "my base creature other appearance"
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.DragonSpecies, baseCreature.Size, true, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.DragonSpecies, true, baseCreature.Size, false))
                 .Returns(templateDemographics);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -343,7 +343,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Other = other
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.DragonSpecies, baseCreature.Size, true, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.DragonSpecies, true, baseCreature.Size, false))
                 .Returns(templateDemographics);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -367,7 +367,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Other = other
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.DragonSpecies, baseCreature.Size, true, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.DragonSpecies, true, baseCreature.Size, false))
                 .Returns(templateDemographics);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -390,7 +390,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Other = "my base creature other appearance",
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.DragonSpecies, baseCreature.Size, false, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.DragonSpecies, false, baseCreature.Size, false))
                 .Returns(templateDemographics);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -414,7 +414,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Other = "my base creature other appearance",
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.DragonSpecies, baseCreature.Size, true, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.DragonSpecies, true, baseCreature.Size, false))
                 .Returns(templateDemographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -437,7 +437,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Other = other
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.DragonSpecies, baseCreature.Size, true, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.DragonSpecies, true, baseCreature.Size, false))
                 .Returns(templateDemographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -461,7 +461,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Other = other
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.DragonSpecies, baseCreature.Size, true, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.DragonSpecies, true, baseCreature.Size, false))
                 .Returns(templateDemographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -484,7 +484,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Other = "my base creature other appearance",
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.DragonSpecies, baseCreature.Size, false, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.DragonSpecies, false, baseCreature.Size, false))
                 .Returns(templateDemographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -581,7 +581,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Demographics.Other = "I look like a potato other.";
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.DragonSpecies, baseCreature.Size, true, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.DragonSpecies, true, baseCreature.Size, false))
                 .Returns(baseCreature.Demographics);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -639,10 +639,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Size = size;
             baseCreature.Speeds[SpeedConstants.Land].Value = 42;
-            baseCreature.Demographics.Other = "I look like a potato other.";
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.DragonSpecies, baseCreature.Size, false, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.DragonSpecies, false, baseCreature.Size, false))
                 .Returns(baseCreature.Demographics);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -680,7 +679,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Swim] = new Measurement("feet per round") { Value = 42 };
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.DragonSpecies, baseCreature.Size, false, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.DragonSpecies, false, baseCreature.Size, false))
                 .Returns(baseCreature.Demographics);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -699,7 +698,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "so-so maneuverability" };
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.DragonSpecies, baseCreature.Size, true, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.DragonSpecies, true, baseCreature.Size, false))
                 .Returns(baseCreature.Demographics);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -720,7 +719,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Swim] = new Measurement("feet per round") { Value = 42 };
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.DragonSpecies, baseCreature.Size, false, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.DragonSpecies, false, baseCreature.Size, false))
                 .Returns(baseCreature.Demographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -739,7 +738,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "so-so maneuverability" };
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.DragonSpecies, baseCreature.Size, true, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.DragonSpecies, true, baseCreature.Size, false))
                 .Returns(baseCreature.Demographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1712,7 +1711,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Land].Value = landSpeed;
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.DragonSpecies, baseCreature.Size, true, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.DragonSpecies, true, baseCreature.Size, false))
                 .Returns(baseCreature.Demographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1730,7 +1729,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Land].Value = 42;
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, applicator.DragonSpecies, baseCreature.Size, false, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.DragonSpecies, false, baseCreature.Size, false))
                 .Returns(baseCreature.Demographics);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);

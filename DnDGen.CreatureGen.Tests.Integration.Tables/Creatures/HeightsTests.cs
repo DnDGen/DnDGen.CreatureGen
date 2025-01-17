@@ -1,10 +1,10 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -36,14 +36,36 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void HeightsNames()
         {
             var creatures = CreatureConstants.GetAll();
-            AssertCollectionNames(creatures);
+            var templates = CreatureConstants.Templates.GetAll();
+            var names = creatures.Union(templates);
+            AssertCollectionNames(names);
         }
 
-        [TestCaseSource(nameof(CreatureHeightsData))]
-        public void CreatureHeights(string name, Dictionary<string, string> typesAndRolls)
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
+        public void CreatureHeights(string name)
         {
+            Assert.That(creatureHeights, Contains.Key(name));
+
+            var typesAndRolls = creatureHeights[name];
             var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, name);
-            Assert.That(typesAndRolls.Keys, Is.EquivalentTo(genders.Union(new[] { name })).And.Not.Empty, $"TEST DATA: {name}");
+            Assert.That(typesAndRolls.Keys, Is.EquivalentTo(genders.Union([name])).And.Not.Empty, $"TEST DATA: {name}");
+
+            foreach (var roll in typesAndRolls.Values)
+            {
+                var isValid = dice.Roll(roll).IsValid();
+                Assert.That(isValid, Is.True, roll);
+            }
+
+            AssertTypesAndAmounts(name, typesAndRolls);
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
+        public void TemplateHeights(string name)
+        {
+            Assert.That(creatureHeights, Contains.Key(name));
+
+            var typesAndRolls = creatureHeights[name];
+            Assert.That(typesAndRolls.Keys, Is.EquivalentTo([name]), $"TEST DATA: {name}");
 
             foreach (var roll in typesAndRolls.Values)
             {
@@ -61,7 +83,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var creature in creatures)
             {
-                heights[creature] = new Dictionary<string, string>();
+                heights[creature] = [];
             }
 
             //Source: https://forgottenrealms.fandom.com/wiki/Aasimar
@@ -2209,8 +2231,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             return heights;
         }
-
-        public static IEnumerable CreatureHeightsData => GetCreatureHeights().Select(t => new TestCaseData(t.Key, t.Value));
 
         private static string GetBaseFromAverage(int average) => GetBaseFromRange(average * 9 / 10, average * 11 / 10);
         private static string GetBaseFromAverage(int average, int altAverage) => GetBaseFromRange(average - altAverage / 10, average + altAverage / 10);
