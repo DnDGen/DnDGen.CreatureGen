@@ -11200,6 +11200,86 @@
 		<name>Lycanthrope, Polar Bear (Werebear, Natural)Rare</name>
 	</collection>
 	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Afflicted)MaleCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Afflicted)MaleUncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Afflicted)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Natural)MaleCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Natural)MaleUncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Natural)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)MaleCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)MaleUncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)MaleCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)MaleUncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)MaleCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)MaleUncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)MaleCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)MaleUncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)MaleCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)MaleUncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)MaleCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)MaleUncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)MaleRare</name>
+	</collection>
+	<collection>
 		<name>Lycanthrope, Boar (Wereboar, Afflicted)Common</name>
 		<entry></entry>
 	</collection>
@@ -11321,7 +11401,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Rat (Wererat, Afflicted)Common</name>
-		<entry></entry>
+		<entry>Eyes constantly dart around</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Rat (Wererat, Afflicted)Uncommon</name>
@@ -11331,7 +11411,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Rat (Wererat, Natural)Common</name>
-		<entry></entry>
+		<entry>Eyes constantly dart around</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Rat (Wererat, Natural)Uncommon</name>
@@ -11341,7 +11421,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)Common</name>
-		<entry></entry>
+		<entry>Eyes constantly dart around</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)Uncommon</name>
@@ -11351,12 +11431,62 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Rat (Wererat, Natural)Common</name>
-		<entry></entry>
+		<entry>Eyes constantly dart around</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Rat (Wererat, Natural)Uncommon</name>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Rat (Wererat, Natural)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)MaleCommon</name>
+		<entry>Eyes constantly dart around</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)MaleUncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Natural)MaleCommon</name>
+		<entry>Eyes constantly dart around</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Natural)MaleUncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Natural)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)MaleCommon</name>
+		<entry>Eyes constantly dart around</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)MaleUncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)MaleCommon</name>
+		<entry>Eyes constantly dart around</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)MaleUncommon</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)MaleRare</name>
+	</collection>
+	<collection>
+		<name>NoneCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>NoneUncommon</name>
+	</collection>
+	<collection>
+		<name>NoneRare</name>
 	</collection>
 </collections>

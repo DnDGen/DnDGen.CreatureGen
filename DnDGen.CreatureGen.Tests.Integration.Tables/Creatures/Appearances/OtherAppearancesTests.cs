@@ -1,4 +1,5 @@
-﻿using DnDGen.CreatureGen.Tables;
+﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -47,9 +48,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void TemplateOtherAppearances(string template)
         {
+            var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, CreatureConstants.Human);
             var creatureKeys = GetCollectionCreatureKeys();
+            var keys = genders
+                .Select(g => template + g)
+                .Concat([template])
+                .Intersect(creatureKeys);
+
             Assert.That(creatureKeys, Contains.Item(template));
-            AssertCreatureAppearance(TableNameConstants.Collection.AppearanceCategories.Other, template);
+            foreach (var key in keys)
+            {
+                AssertCreatureAppearance(TableNameConstants.Collection.AppearanceCategories.Other, key);
+            }
         }
 
         [Test]

@@ -44,7 +44,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreatureHeights(string name)
         {
-            Assert.That(creatureHeights, Contains.Key(name));
+            Assert.That(creatureHeights, Contains.Key(name), $"TEST DATA: {name}");
 
             var typesAndRolls = creatureHeights[name];
             var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, name);
@@ -62,7 +62,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void TemplateHeights(string name)
         {
-            Assert.That(creatureHeights, Contains.Key(name));
+            Assert.That(creatureHeights, Contains.Key(name), $"TEST DATA: {name}");
 
             var typesAndRolls = creatureHeights[name];
             Assert.That(typesAndRolls.Keys, Is.EquivalentTo([name]), $"TEST DATA: {name}");
@@ -70,7 +70,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             foreach (var roll in typesAndRolls.Values)
             {
                 var isValid = dice.Roll(roll).IsValid();
-                Assert.That(isValid, Is.True, roll);
+                Assert.That(isValid, Is.True, roll, $"TEST DATA: {name}");
+                Assert.That(roll, Is.AnyOf(["-1", "0", "1"]), $"TEST DATA: {name}");
             }
 
             AssertTypesAndAmounts(name, typesAndRolls);
@@ -2228,6 +2229,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Zelekhut using centaur stats
             heights[CreatureConstants.Zelekhut][GenderConstants.Agender] = GetBaseFromRange(7 * 12, 9 * 12);
             heights[CreatureConstants.Zelekhut][CreatureConstants.Zelekhut] = GetMultiplierFromRange(7 * 12, 9 * 12);
+
+            var templates = CreatureConstants.Templates.GetAll();
+            const string BelowAverage = "-1";
+            const string NoChange = "0";
+            const string AboveAverage = "1";
+            foreach (var template in templates)
+            {
+                heights[template] = [];
+                heights[template][template] = NoChange;
+            }
+
+            heights[CreatureConstants.Templates.Lycanthrope_Rat_Afflicted][CreatureConstants.Templates.Lycanthrope_Rat_Afflicted] = BelowAverage;
+            heights[CreatureConstants.Templates.Lycanthrope_Rat_Natural][CreatureConstants.Templates.Lycanthrope_Rat_Natural] = BelowAverage;
+            heights[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted][CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted] = BelowAverage;
+            heights[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural][CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural] = BelowAverage;
+            heights[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted][CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted] = AboveAverage;
+            heights[CreatureConstants.Templates.Lycanthrope_Tiger_Natural][CreatureConstants.Templates.Lycanthrope_Tiger_Natural] = AboveAverage;
+            heights[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted][CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted] = AboveAverage;
+            heights[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural][CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural] = AboveAverage;
 
             return heights;
         }

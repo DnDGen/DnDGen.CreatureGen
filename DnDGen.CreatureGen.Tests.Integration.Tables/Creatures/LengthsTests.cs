@@ -44,7 +44,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreatureLengths(string name)
         {
-            Assert.That(creatureLengths, Contains.Key(name));
+            Assert.That(creatureLengths, Contains.Key(name), $"TEST DATA: {name}");
 
             var typesAndRolls = creatureLengths[name];
             var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, name);
@@ -53,7 +53,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             foreach (var roll in typesAndRolls.Values)
             {
                 var isValid = dice.Roll(roll).IsValid();
-                Assert.That(isValid, Is.True, roll);
+                Assert.That(isValid, Is.True, roll, $"TEST DATA: {name}");
             }
 
             AssertTypesAndAmounts(name, typesAndRolls);
@@ -62,7 +62,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void TemplateLengths(string name)
         {
-            Assert.That(creatureLengths, Contains.Key(name));
+            Assert.That(creatureLengths, Contains.Key(name), $"TEST DATA: {name}");
 
             var typesAndRolls = creatureLengths[name];
             Assert.That(typesAndRolls.Keys, Is.EquivalentTo([name]), $"TEST DATA: {name}");
@@ -70,7 +70,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             foreach (var roll in typesAndRolls.Values)
             {
                 var isValid = dice.Roll(roll).IsValid();
-                Assert.That(isValid, Is.True, roll);
+                Assert.That(isValid, Is.True, roll, $"TEST DATA: {name}");
+                Assert.That(roll, Is.AnyOf(["-1", "0", "1"]), $"TEST DATA: {name}");
             }
 
             AssertTypesAndAmounts(name, typesAndRolls);
@@ -2106,6 +2107,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Zelekhut - using Centaur
             lengths[CreatureConstants.Zelekhut][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
             lengths[CreatureConstants.Zelekhut][CreatureConstants.Zelekhut] = GetMultiplierFromAverage(8 * 12);
+
+            var templates = CreatureConstants.Templates.GetAll();
+            const string BelowAverage = "-1";
+            const string NoChange = "0";
+            const string AboveAverage = "1";
+            foreach (var template in templates)
+            {
+                lengths[template] = [];
+                lengths[template][template] = NoChange;
+            }
+
+            lengths[CreatureConstants.Templates.Lycanthrope_Rat_Afflicted][CreatureConstants.Templates.Lycanthrope_Rat_Afflicted] = BelowAverage;
+            lengths[CreatureConstants.Templates.Lycanthrope_Rat_Natural][CreatureConstants.Templates.Lycanthrope_Rat_Natural] = BelowAverage;
+            lengths[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted][CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted] = BelowAverage;
+            lengths[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural][CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural] = BelowAverage;
+            lengths[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted][CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted] = AboveAverage;
+            lengths[CreatureConstants.Templates.Lycanthrope_Tiger_Natural][CreatureConstants.Templates.Lycanthrope_Tiger_Natural] = AboveAverage;
+            lengths[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted][CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted] = AboveAverage;
+            lengths[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural][CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural] = AboveAverage;
 
             return lengths;
         }

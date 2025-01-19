@@ -9111,10 +9111,11 @@
 	</collection>
 	<collection>
 		<name>LichCommon</name>
-		<entry></entry>
+		<entry>Hair long ago lost to decay</entry>
 	</collection>
 	<collection>
 		<name>LichUncommon</name>
+		<entry>A hint of the mortal hair remains</entry>
 	</collection>
 	<collection>
 		<name>LichRare</name>
@@ -9251,7 +9252,9 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Common</name>
-		<entry></entry>
+		<entry>Thick black hair</entry>
+		<entry>Thick blond hair</entry>
+		<entry>Thick reddish hair</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Uncommon</name>
@@ -9261,7 +9264,9 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Natural)Common</name>
-		<entry></entry>
+		<entry>Thick black hair</entry>
+		<entry>Thick blond hair</entry>
+		<entry>Thick reddish hair</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Natural)Uncommon</name>
@@ -9271,7 +9276,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)Common</name>
-		<entry></entry>
+		<entry>Thick brown hair</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)Uncommon</name>
@@ -9281,7 +9286,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Brown Bear (Werebear, Natural)Common</name>
-		<entry></entry>
+		<entry>Thick brown hair</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Brown Bear (Werebear, Natural)Uncommon</name>
@@ -9291,7 +9296,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)Common</name>
-		<entry></entry>
+		<entry>Thick brown hair</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)Uncommon</name>
@@ -9301,7 +9306,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)Common</name>
-		<entry></entry>
+		<entry>Thick brown hair</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)Uncommon</name>
@@ -9311,7 +9316,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)Common</name>
-		<entry></entry>
+		<entry>Thick ivory hair</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)Uncommon</name>
@@ -9321,13 +9326,109 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Polar Bear (Werebear, Natural)Common</name>
-		<entry></entry>
+		<entry>Thick ivory hair</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Polar Bear (Werebear, Natural)Uncommon</name>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Polar Bear (Werebear, Natural)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Afflicted)MaleCommon</name>
+		<entry>Thick black hair and beard</entry>
+		<entry>Thick blond hair and beard</entry>
+		<entry>Thick reddish hair and beard</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Afflicted)MaleUncommon</name>
+		<entry>Thick black hair, no facial hair</entry>
+		<entry>Thick blond hair, no facial hair</entry>
+		<entry>Thick reddish hair, no facial hair</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Afflicted)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Natural)MaleCommon</name>
+		<entry>Thick black hair and beard</entry>
+		<entry>Thick blond hair and beard</entry>
+		<entry>Thick reddish hair and beard</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Natural)MaleUncommon</name>
+		<entry>Thick black hair, no facial hair</entry>
+		<entry>Thick blond hair, no facial hair</entry>
+		<entry>Thick reddish hair, no facial hair</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Natural)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)MaleCommon</name>
+		<entry>Thick brown hair and beard</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)MaleUncommon</name>
+		<entry>Thick brown hair, no facial hair</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)MaleCommon</name>
+		<entry>Thick brown hair and beard</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)MaleUncommon</name>
+		<entry>Thick brown hair, no facial hair</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)MaleCommon</name>
+		<entry>Thick brown hair and beard</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)MaleUncommon</name>
+		<entry>Thick brown hair, no facial hair</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)MaleCommon</name>
+		<entry>Thick brown hair and beard</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)MaleUncommon</name>
+		<entry>Thick brown hair, no facial hair</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)MaleCommon</name>
+		<entry>Thick ivory hair and beard</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)MaleUncommon</name>
+		<entry>Thick ivory hair, no facial hair</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)MaleCommon</name>
+		<entry>Thick ivory hair and beard</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)MaleUncommon</name>
+		<entry>Thick ivory hair, no facial hair</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)MaleRare</name>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Boar (Wereboar, Afflicted)Common</name>
@@ -9351,7 +9452,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)Common</name>
-		<entry></entry>
+		<entry>Coarser, stiffer hair</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)Uncommon</name>
@@ -9361,7 +9462,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)Common</name>
-		<entry></entry>
+		<entry>Coarser, stiffer hair</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)Uncommon</name>
@@ -9488,5 +9589,59 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Rat (Wererat, Natural)Rare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)MaleCommon</name>
+		<entry>Thin, ragged mustache</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)MaleUncommon</name>
+		<entry>No facial hair</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Natural)MaleCommon</name>
+		<entry>Thin, ragged mustache</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Natural)MaleUncommon</name>
+		<entry>No facial hair</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Natural)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)MaleCommon</name>
+		<entry>Thin, ragged mustache</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)MaleUncommon</name>
+		<entry>No facial hair</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)MaleRare</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)MaleCommon</name>
+		<entry>Thin, ragged mustache</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)MaleUncommon</name>
+		<entry>No facial hair</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)MaleRare</name>
+	</collection>
+	<collection>
+		<name>NoneCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>NoneUncommon</name>
+	</collection>
+	<collection>
+		<name>NoneRare</name>
 	</collection>
 </collections>

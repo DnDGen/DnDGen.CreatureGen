@@ -53,7 +53,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreatureWeights(string name)
         {
-            Assert.That(creatureWeightRolls, Contains.Key(name));
+            Assert.That(creatureWeightRolls, Contains.Key(name), $"TEST DATA: {name}");
 
             var rolls = creatureWeightRolls[name];
             var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, name);
@@ -64,7 +64,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 Assert.That(roll, Is.Not.Empty.And.Not.Contain("NO VALID WEIGHT ROLL"));
 
                 var isValid = dice.Roll(roll).IsValid();
-                Assert.That(isValid, Is.True, roll);
+                Assert.That(isValid, Is.True, roll, $"TEST DATA: {name}");
             }
 
             AssertTypesAndAmounts(name, rolls);
@@ -73,7 +73,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void TemplateLengths(string name)
         {
-            Assert.That(creatureWeightRolls, Contains.Key(name));
+            Assert.That(creatureWeightRolls, Contains.Key(name), $"TEST DATA: {name}");
 
             var rolls = creatureWeightRolls[name];
             Assert.That(rolls.Keys, Is.EquivalentTo([name]), $"TEST DATA: {name}");
@@ -83,7 +83,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 Assert.That(roll, Is.Not.Empty.And.Not.Contain("NO VALID WEIGHT ROLL"));
 
                 var isValid = dice.Roll(roll).IsValid();
-                Assert.That(isValid, Is.True, roll);
+                Assert.That(isValid, Is.True, roll, $"TEST DATA: {name}");
+                Assert.That(roll, Is.AnyOf(["-1", "0", "1"]), $"TEST DATA: {name}");
             }
 
             AssertTypesAndAmounts(name, rolls);
@@ -1896,6 +1897,33 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Wraith][CreatureConstants.Wraith] = "0";
             weights[CreatureConstants.Wraith_Dread][GenderConstants.Agender] = "0";
             weights[CreatureConstants.Wraith_Dread][CreatureConstants.Wraith_Dread] = "0";
+
+            var templates = CreatureConstants.Templates.GetAll();
+            const string BelowAverage = "-1";
+            const string NoChange = "0";
+            const string AboveAverage = "1";
+            foreach (var template in templates)
+            {
+                weights[template] = [];
+                weights[template][template] = NoChange;
+            }
+
+            weights[CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted][CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted] = AboveAverage;
+            weights[CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural][CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural] = AboveAverage;
+            weights[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted][CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted] = AboveAverage;
+            weights[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural][CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural] = AboveAverage;
+            weights[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted][CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted] = AboveAverage;
+            weights[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural][CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural] = AboveAverage;
+            weights[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted][CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted] = AboveAverage;
+            weights[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural][CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural] = AboveAverage;
+            weights[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted][CreatureConstants.Templates.Lycanthrope_Boar_Afflicted] = AboveAverage;
+            weights[CreatureConstants.Templates.Lycanthrope_Boar_Natural][CreatureConstants.Templates.Lycanthrope_Boar_Natural] = AboveAverage;
+            weights[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted][CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted] = AboveAverage;
+            weights[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural][CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural] = AboveAverage;
+            weights[CreatureConstants.Templates.Lycanthrope_Rat_Afflicted][CreatureConstants.Templates.Lycanthrope_Rat_Afflicted] = BelowAverage;
+            weights[CreatureConstants.Templates.Lycanthrope_Rat_Natural][CreatureConstants.Templates.Lycanthrope_Rat_Natural] = BelowAverage;
+            weights[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted][CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted] = BelowAverage;
+            weights[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural][CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural] = BelowAverage;
 
             return weights;
         }

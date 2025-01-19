@@ -205,15 +205,15 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         private void UpdateAppearance(Demographics source, string template, bool overwriteAppearance)
         {
-            source.Skin = UpdateAppearance(source.Skin, TableNameConstants.Collection.AppearanceCategories.Skin, template, overwriteAppearance);
-            source.Hair = UpdateAppearance(source.Hair, TableNameConstants.Collection.AppearanceCategories.Hair, template, overwriteAppearance);
-            source.Eyes = UpdateAppearance(source.Eyes, TableNameConstants.Collection.AppearanceCategories.Eyes, template, overwriteAppearance);
-            source.Other = UpdateAppearance(source.Other, TableNameConstants.Collection.AppearanceCategories.Other, template, overwriteAppearance);
+            source.Skin = UpdateAppearance(source.Skin, TableNameConstants.Collection.AppearanceCategories.Skin, template, overwriteAppearance, source.Gender);
+            source.Hair = UpdateAppearance(source.Hair, TableNameConstants.Collection.AppearanceCategories.Hair, template, overwriteAppearance, source.Gender);
+            source.Eyes = UpdateAppearance(source.Eyes, TableNameConstants.Collection.AppearanceCategories.Eyes, template, overwriteAppearance, source.Gender);
+            source.Other = UpdateAppearance(source.Other, TableNameConstants.Collection.AppearanceCategories.Other, template, overwriteAppearance, source.Gender);
         }
 
-        private string UpdateAppearance(string source, string category, string template, bool overwrite)
+        private string UpdateAppearance(string source, string category, string template, bool overwrite, string gender)
         {
-            var templateAppearance = GetRandomAppearance(template, string.Empty, category);
+            var templateAppearance = GetRandomAppearance(template, gender, category);
             if (overwrite)
                 return templateAppearance;
 
