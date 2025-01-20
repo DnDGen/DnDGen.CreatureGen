@@ -4636,7 +4636,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
             //https://www.reddit.com/r/Pathfinder_RPG/comments/2lt7rw/what_exactly_do_celestial_and_fiendish_creatures/?rdt=42903
             appearances[CreatureConstants.Templates.FiendishCreature] = GetAppearances(
                 commonSkin: ["Red skin", "Dark red skin", "Black skin"],
-                uncommonOther: ["Sulfur smell", "Mangy appearance", "Diseased appearance"]
+                uncommonOther: ["Sulfur smell", "Mangy appearance", "Diseased appearance"],
+                rareOther: ["Diseased appearance, sulfur smell", "Mangy appearance, sulfur smell"]
             );
             //Source: https://www.d20srd.org/srd/monsters/ghost.htm
             //https://forgottenrealms.fandom.com/wiki/Ghost#Description

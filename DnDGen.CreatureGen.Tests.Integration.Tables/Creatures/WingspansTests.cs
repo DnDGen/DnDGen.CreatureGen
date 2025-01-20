@@ -1924,6 +1924,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Zelekhut][GenderConstants.Agender] = GetBaseFromAtLeast(25 * 12);
             wingspans[CreatureConstants.Zelekhut][CreatureConstants.Zelekhut] = GetMultiplierFromAtLeast(25 * 12);
 
+            var templates = CreatureConstants.Templates.GetAll();
+            var sizes = SizeConstants.GetOrdered();
+
+            foreach (var template in templates)
+            {
+                wingspans[template] = [];
+                //TODO: Uncomment when I've added the actual wingspans for templates that need it
+                //wingspans[template][template] = "0";
+
+                foreach (var size in sizes)
+                {
+                    //wingspans[template][size] = "0";
+                }
+            }
+
+
+
             return wingspans;
         }
 

@@ -3789,51 +3789,51 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Afflicted)</name>
-		<entry>Lycanthrope, Black Bear (Werebear, Afflicted)@0</entry>
+		<entry>Lycanthrope, Black Bear (Werebear, Afflicted)@1</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Natural)</name>
-		<entry>Lycanthrope, Black Bear (Werebear, Natural)@0</entry>
+		<entry>Lycanthrope, Black Bear (Werebear, Natural)@1</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
-		<entry>Lycanthrope, Brown Bear (Werebear, Afflicted)@0</entry>
+		<entry>Lycanthrope, Brown Bear (Werebear, Afflicted)@1</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
-		<entry>Lycanthrope, Brown Bear (Werebear, Natural)@0</entry>
+		<entry>Lycanthrope, Brown Bear (Werebear, Natural)@1</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)</name>
-		<entry>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)@0</entry>
+		<entry>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)@1</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)</name>
-		<entry>Lycanthrope, Dire Bear (Dire Werebear, Natural)@0</entry>
+		<entry>Lycanthrope, Dire Bear (Dire Werebear, Natural)@1</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)</name>
-		<entry>Lycanthrope, Polar Bear (Werebear, Afflicted)@0</entry>
+		<entry>Lycanthrope, Polar Bear (Werebear, Afflicted)@1</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Polar Bear (Werebear, Natural)</name>
-		<entry>Lycanthrope, Polar Bear (Werebear, Natural)@0</entry>
+		<entry>Lycanthrope, Polar Bear (Werebear, Natural)@1</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Boar (Wereboar, Afflicted)</name>
-		<entry>Lycanthrope, Boar (Wereboar, Afflicted)@0</entry>
+		<entry>Lycanthrope, Boar (Wereboar, Afflicted)@1</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Boar (Wereboar, Natural)</name>
-		<entry>Lycanthrope, Boar (Wereboar, Natural)@0</entry>
+		<entry>Lycanthrope, Boar (Wereboar, Natural)@1</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)</name>
-		<entry>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)@0</entry>
+		<entry>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)@1</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)</name>
-		<entry>Lycanthrope, Dire Boar (Dire Wereboar, Natural)@0</entry>
+		<entry>Lycanthrope, Dire Boar (Dire Wereboar, Natural)@1</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Rat (Wererat, Afflicted)</name>
@@ -3853,19 +3853,19 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
-		<entry>Lycanthrope, Tiger (Weretiger, Afflicted)@1</entry>
+		<entry>Lycanthrope, Tiger (Weretiger, Afflicted)@0</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Tiger (Weretiger, Natural)</name>
-		<entry>Lycanthrope, Tiger (Weretiger, Natural)@1</entry>
+		<entry>Lycanthrope, Tiger (Weretiger, Natural)@0</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)</name>
-		<entry>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)@1</entry>
+		<entry>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)@0</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)</name>
-		<entry>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)@1</entry>
+		<entry>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)@0</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Wolf (Werewolf, Afflicted)</name>

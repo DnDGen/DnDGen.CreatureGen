@@ -71,7 +71,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void TemplateLengths(string name)
+        public void TemplateWeights(string name)
         {
             Assert.That(creatureWeightRolls, Contains.Key(name), $"TEST DATA: {name}");
 
@@ -2044,7 +2044,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             if (!heights.ContainsKey(creature) || !heights[creature].ContainsKey(creature)
                 || !lengths.ContainsKey(creature) || !lengths[creature].ContainsKey(creature))
             {
-                return new Dictionary<string, string>();
+                return [];
             }
 
             var heightRoll = ParseRoll(heights[creature][creature]);

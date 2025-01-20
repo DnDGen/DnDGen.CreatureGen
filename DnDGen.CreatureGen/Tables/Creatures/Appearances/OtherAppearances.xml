@@ -9135,7 +9135,7 @@
   </collection>
 	<collection>
 		<name>Celestial CreatureCommon</name>
-		<entry></entry>
+		<entry>More regal and more beautiful than the earthly counterpart</entry>
 	</collection>
 	<collection>
 		<name>Celestial CreatureUncommon</name>
@@ -9149,13 +9149,18 @@
 	</collection>
 	<collection>
 		<name>Fiendish CreatureUncommon</name>
+		<entry>Diseased appearance</entry>
+		<entry>Mangy appearance</entry>
+		<entry>Sulfur smell</entry>
 	</collection>
 	<collection>
 		<name>Fiendish CreatureRare</name>
+		<entry>Diseased appearance, sulfur smell</entry>
+		<entry>Mangy appearance, sulfur smell</entry>
 	</collection>
 	<collection>
 		<name>Half-CelestialCommon</name>
-		<entry></entry>
+		<entry>Angelic feathered wings</entry>
 	</collection>
 	<collection>
 		<name>Half-CelestialUncommon</name>
@@ -9165,10 +9170,13 @@
 	</collection>
 	<collection>
 		<name>Half-FiendCommon</name>
-		<entry></entry>
+		<entry>Bat wings</entry>
+		<entry>Bat wings, a fetid odor</entry>
+		<entry>Bat wings, horns</entry>
 	</collection>
 	<collection>
 		<name>Half-FiendUncommon</name>
+		<entry>Bat wings, horns, and a fetid odor</entry>
 	</collection>
 	<collection>
 		<name>Half-FiendRare</name>
@@ -9179,13 +9187,16 @@
 	</collection>
 	<collection>
 		<name>GhostUncommon</name>
+		<entry>Adorned in chains and weights</entry>
+		<entry>The ghost's appearance reflects how it died</entry>
+		<entry>The ghost's appearance reflects its alignment</entry>
 	</collection>
 	<collection>
 		<name>GhostRare</name>
 	</collection>
 	<collection>
 		<name>LichCommon</name>
-		<entry></entry>
+		<entry>Gaunt and skeletal</entry>
 	</collection>
 	<collection>
 		<name>LichUncommon</name>
@@ -9195,7 +9206,7 @@
 	</collection>
 	<collection>
 		<name>VampireCommon</name>
-		<entry></entry>
+		<entry>Features are hardened and feral, with the predatory look of a wolf. Casts no shadows, and throws no reflections in mirrors.</entry>
 	</collection>
 	<collection>
 		<name>VampireUncommon</name>
@@ -9205,7 +9216,7 @@
 	</collection>
 	<collection>
 		<name>SkeletonCommon</name>
-		<entry></entry>
+		<entry>Animated bones of the dead.</entry>
 	</collection>
 	<collection>
 		<name>SkeletonUncommon</name>
@@ -9215,17 +9226,18 @@
 	</collection>
 	<collection>
 		<name>ZombieCommon</name>
-		<entry></entry>
+		<entry>Reanimated, rotting corpse.</entry>
 	</collection>
 	<collection>
 		<name>ZombieUncommon</name>
+		<entry>Reanimated preserved corpse, with less rotting than most zombies.</entry>
 	</collection>
 	<collection>
 		<name>ZombieRare</name>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Black)Common</name>
-		<entry></entry>
+		<entry>Elongated features, exaggerated teeth, claws</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Black)Uncommon</name>
@@ -9235,7 +9247,7 @@
 	</collection>
 	<collection>
 		<name>Half-Dragon (Blue)Common</name>
-		<entry></entry>
+		<entry>Elongated features, exaggerated teeth, claws</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Blue)Uncommon</name>
@@ -9245,7 +9257,7 @@
 	</collection>
 	<collection>
 		<name>Half-Dragon (Brass)Common</name>
-		<entry></entry>
+		<entry>Elongated features, exaggerated teeth, claws</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Brass)Uncommon</name>
@@ -9255,7 +9267,7 @@
 	</collection>
 	<collection>
 		<name>Half-Dragon (Bronze)Common</name>
-		<entry></entry>
+		<entry>Elongated features, exaggerated teeth, claws</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Bronze)Uncommon</name>
@@ -9265,7 +9277,7 @@
 	</collection>
 	<collection>
 		<name>Half-Dragon (Copper)Common</name>
-		<entry></entry>
+		<entry>Elongated features, exaggerated teeth, claws</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Copper)Uncommon</name>
@@ -9275,7 +9287,7 @@
 	</collection>
 	<collection>
 		<name>Half-Dragon (Gold)Common</name>
-		<entry></entry>
+		<entry>Elongated features, exaggerated teeth, claws</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Gold)Uncommon</name>
@@ -9285,7 +9297,7 @@
 	</collection>
 	<collection>
 		<name>Half-Dragon (Green)Common</name>
-		<entry></entry>
+		<entry>Elongated features, exaggerated teeth, claws</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Green)Uncommon</name>
@@ -9295,7 +9307,7 @@
 	</collection>
 	<collection>
 		<name>Half-Dragon (Red)Common</name>
-		<entry></entry>
+		<entry>Elongated features, exaggerated teeth, claws</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Red)Uncommon</name>
@@ -9305,7 +9317,7 @@
 	</collection>
 	<collection>
 		<name>Half-Dragon (Silver)Common</name>
-		<entry></entry>
+		<entry>Elongated features, exaggerated teeth, claws</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Silver)Uncommon</name>
@@ -9315,7 +9327,7 @@
 	</collection>
 	<collection>
 		<name>Half-Dragon (White)Common</name>
-		<entry></entry>
+		<entry>Elongated features, exaggerated teeth, claws</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (White)Uncommon</name>
@@ -9325,7 +9337,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Common</name>
-		<entry></entry>
+		<entry>Stout, well-muscled, hairy</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Uncommon</name>
@@ -9335,7 +9347,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Natural)Common</name>
-		<entry></entry>
+		<entry>Stout, well-muscled, hairy</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Natural)Uncommon</name>
@@ -9345,7 +9357,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)Common</name>
-		<entry></entry>
+		<entry>Stout, well-muscled, hairy</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)Uncommon</name>
@@ -9355,7 +9367,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Brown Bear (Werebear, Natural)Common</name>
-		<entry></entry>
+		<entry>Stout, well-muscled, hairy</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Brown Bear (Werebear, Natural)Uncommon</name>
@@ -9365,7 +9377,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)Common</name>
-		<entry></entry>
+		<entry>Stout, well-muscled, hairy</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)Uncommon</name>
@@ -9375,7 +9387,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)Common</name>
-		<entry></entry>
+		<entry>Stout, well-muscled, hairy</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)Uncommon</name>
@@ -9385,7 +9397,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)Common</name>
-		<entry></entry>
+		<entry>Stout, well-muscled, hairy</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)Uncommon</name>
@@ -9395,7 +9407,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Polar Bear (Werebear, Natural)Common</name>
-		<entry></entry>
+		<entry>Stout, well-muscled, hairy</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Polar Bear (Werebear, Natural)Uncommon</name>
@@ -9405,7 +9417,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Afflicted)MaleCommon</name>
-		<entry></entry>
+		<entry>Stout, well-muscled, hairy</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Afflicted)MaleUncommon</name>
@@ -9415,7 +9427,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Natural)MaleCommon</name>
-		<entry></entry>
+		<entry>Stout, well-muscled, hairy</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Natural)MaleUncommon</name>
@@ -9425,7 +9437,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)MaleCommon</name>
-		<entry></entry>
+		<entry>Stout, well-muscled, hairy</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)MaleUncommon</name>
@@ -9435,7 +9447,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Brown Bear (Werebear, Natural)MaleCommon</name>
-		<entry></entry>
+		<entry>Stout, well-muscled, hairy</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Brown Bear (Werebear, Natural)MaleUncommon</name>
@@ -9445,7 +9457,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)MaleCommon</name>
-		<entry></entry>
+		<entry>Stout, well-muscled, hairy</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)MaleUncommon</name>
@@ -9455,7 +9467,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)MaleCommon</name>
-		<entry></entry>
+		<entry>Stout, well-muscled, hairy</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)MaleUncommon</name>
@@ -9465,7 +9477,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)MaleCommon</name>
-		<entry></entry>
+		<entry>Stout, well-muscled, hairy</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)MaleUncommon</name>
@@ -9475,7 +9487,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Polar Bear (Werebear, Natural)MaleCommon</name>
-		<entry></entry>
+		<entry>Stout, well-muscled, hairy</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Polar Bear (Werebear, Natural)MaleUncommon</name>
@@ -9485,7 +9497,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Boar (Wereboar, Afflicted)Common</name>
-		<entry></entry>
+		<entry>Stocky and muscular</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Boar (Wereboar, Afflicted)Uncommon</name>
@@ -9495,7 +9507,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Boar (Wereboar, Natural)Common</name>
-		<entry></entry>
+		<entry>Stocky and muscular</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Boar (Wereboar, Natural)Uncommon</name>
@@ -9505,7 +9517,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)Common</name>
-		<entry></entry>
+		<entry>Stocky and muscular</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)Uncommon</name>
@@ -9515,7 +9527,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)Common</name>
-		<entry></entry>
+		<entry>Stocky and muscular</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)Uncommon</name>
@@ -9565,7 +9577,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Tiger (Weretiger, Afflicted)Common</name>
-		<entry></entry>
+		<entry>Sleekly muscular</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Tiger (Weretiger, Afflicted)Uncommon</name>
@@ -9575,7 +9587,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Tiger (Weretiger, Natural)Common</name>
-		<entry></entry>
+		<entry>Sleekly muscular</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Tiger (Weretiger, Natural)Uncommon</name>
@@ -9585,7 +9597,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)Common</name>
-		<entry></entry>
+		<entry>Sleekly muscular</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)Uncommon</name>
@@ -9595,7 +9607,7 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)Common</name>
-		<entry></entry>
+		<entry>Sleekly muscular</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)Uncommon</name>
@@ -9605,80 +9617,88 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Rat (Wererat, Afflicted)Common</name>
-		<entry>Eyes constantly dart around</entry>
+		<entry>Thin and wiry</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Rat (Wererat, Afflicted)Uncommon</name>
+		<entry>Thin and wiry, nose and mouth twitch when excited</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Rat (Wererat, Afflicted)Rare</name>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Rat (Wererat, Natural)Common</name>
-		<entry>Eyes constantly dart around</entry>
+		<entry>Thin and wiry</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Rat (Wererat, Natural)Uncommon</name>
+		<entry>Thin and wiry, nose and mouth twitch when excited</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Rat (Wererat, Natural)Rare</name>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)Common</name>
-		<entry>Eyes constantly dart around</entry>
+		<entry>Thin and wiry</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)Uncommon</name>
+		<entry>Thin and wiry, nose and mouth twitch when excited</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)Rare</name>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Rat (Wererat, Natural)Common</name>
-		<entry>Eyes constantly dart around</entry>
+		<entry>Thin and wiry</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Rat (Wererat, Natural)Uncommon</name>
+		<entry>Thin and wiry, nose and mouth twitch when excited</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Rat (Wererat, Natural)Rare</name>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Rat (Wererat, Afflicted)MaleCommon</name>
-		<entry>Eyes constantly dart around</entry>
+		<entry>Thin and wiry</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Rat (Wererat, Afflicted)MaleUncommon</name>
+		<entry>Thin and wiry, nose and mouth twitch when excited</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Rat (Wererat, Afflicted)MaleRare</name>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Rat (Wererat, Natural)MaleCommon</name>
-		<entry>Eyes constantly dart around</entry>
+		<entry>Thin and wiry</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Rat (Wererat, Natural)MaleUncommon</name>
+		<entry>Thin and wiry, nose and mouth twitch when excited</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Rat (Wererat, Natural)MaleRare</name>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)MaleCommon</name>
-		<entry>Eyes constantly dart around</entry>
+		<entry>Thin and wiry</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)MaleUncommon</name>
+		<entry>Thin and wiry, nose and mouth twitch when excited</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)MaleRare</name>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Rat (Wererat, Natural)MaleCommon</name>
-		<entry>Eyes constantly dart around</entry>
+		<entry>Thin and wiry</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Rat (Wererat, Natural)MaleUncommon</name>
+		<entry>Thin and wiry, nose and mouth twitch when excited</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Dire Rat (Wererat, Natural)MaleRare</name>
