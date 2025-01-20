@@ -158,10 +158,13 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return maxAgeRoll.Amount;
         }
 
-        public Measurement GenerateWingspan(string creatureName, string baseKey)
+        private Measurement GenerateWingspan(string creatureName, string gender)
+            => GenerateWingspan(TableNameConstants.TypeAndAmount.Wingspans, creatureName, gender);
+
+        private Measurement GenerateWingspan(string tablename, string creatureName, string gender)
         {
-            var wingspans = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Wingspans, creatureName);
-            var baseWingspan = wingspans.First(h => h.Type == baseKey);
+            var wingspans = typeAndAmountSelector.Select(tablename, creatureName);
+            var baseWingspan = wingspans.First(h => h.Type == gender);
             var wingspanModifier = wingspans.First(h => h.Type == creatureName);
 
             var wingspan = new Measurement("inches")
@@ -173,6 +176,15 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             wingspan.Description = dice.Describe(rawWingspanRoll, (int)wingspan.Value, wingspanDescriptions);
 
             return wingspan;
+        }
+
+        private Measurement GenerateTemplateWingspan(Demographics source, string creatureName, string gender)
+        {
+            var tablename = TableNameConstants.TypeAndAmount.Heights;
+            if (source.Length.Value > source.Height.Value)
+                tablename = TableNameConstants.TypeAndAmount.Lengths;
+
+            return GenerateWingspan(tablename, creatureName, gender);
         }
 
         public static string GetAppearanceSeparator(string appearance)
@@ -190,15 +202,12 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         {
             UpdateAppearance(source, template, overwriteAppearance);
             UpdateAge(source, template);
-
-            if (addWingspan && source.Wingspan.Value == 0)
-            {
-                source.Wingspan = GenerateWingspan(template, size);
-            }
-
             UpdateHeight(source, creature, template);
             UpdateLength(source, creature, template);
             UpdateWeight(source, creature, template);
+
+            if (addWingspan && source.Wingspan.Value == 0)
+                source.Wingspan = GenerateTemplateWingspan(source, creature, size);
 
             return source;
         }

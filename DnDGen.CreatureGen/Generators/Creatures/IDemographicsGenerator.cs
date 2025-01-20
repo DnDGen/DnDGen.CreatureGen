@@ -5,7 +5,6 @@ namespace DnDGen.CreatureGen.Generators.Creatures
     public interface IDemographicsGenerator
     {
         Demographics Generate(string creatureName);
-        Measurement GenerateWingspan(string creatureName, string baseKey);
         Demographics Update(Demographics source, string creature, string template, bool addWingspan = false, string size = "", bool overwriteAppearance = false);
     }
 }
