@@ -108,7 +108,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns([smiteEvil, new Attack { Name = "other attack" }]);
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfCelestial, true, baseCreature.Size, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfCelestial, true, false))
                 .Returns(baseCreature.Demographics);
         }
 
@@ -265,7 +265,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Gender = "heavenly gender"
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfCelestial, true, baseCreature.Size, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfCelestial, true, false))
                 .Returns(templateDemographics);
 
             var smiteEvil = new Attack
@@ -931,7 +931,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Gender = "heavenly gender"
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfCelestial, true, baseCreature.Size, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfCelestial, true, false))
                 .Returns(templateDemographics);
 
             var smiteEvil = new Attack

@@ -2036,79 +2036,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(demographics.Other, Is.EqualTo("my gendered random other"));
         }
 
-        [Test]
-        public void GenerateWingspan_ReturnsWingspan()
-        {
-            var wingspanRolls = new List<TypeAndAmountSelection>();
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my base key", Amount = 123, RawAmount = "raw 123" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other base key", Amount = 234, RawAmount = "raw 234" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" });
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
-                .Returns(wingspanRolls);
-
-            var wingspan = generator.GenerateWingspan("my creature", "my base key");
-            Assert.That(wingspan, Is.Not.Null);
-            Assert.That(wingspan.Value, Is.EqualTo(123 + 345));
-            Assert.That(wingspan.Unit, Is.EqualTo("inches"));
-            Assert.That(wingspan.Description, Is.EqualTo("Average"));
-        }
-
-        [TestCase(335, "Very Narrow", 0)]
-        [TestCase(338, "Very Narrow", 0)]
-        [TestCase(339, "Narrow", 1)]
-        [TestCase(342, "Narrow", 1)]
-        [TestCase(343, "Average", 2)]
-        [TestCase(345, "Average", 2)]
-        [TestCase(346, "Average", 2)]
-        [TestCase(347, "Broad", 3)]
-        [TestCase(350, "Broad", 3)]
-        [TestCase(351, "Very Broad", 4)]
-        [TestCase(355, "Very Broad", 4)]
-        public void GenerateWingspan_ReturnsWingspan_WithDescription(int roll, string description, int index)
-        {
-            var wingspanRolls = new List<TypeAndAmountSelection>();
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my base key", Amount = 123, RawAmount = "raw 123" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other base key", Amount = 234, RawAmount = "raw 234" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = roll, RawAmount = "raw 345" });
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
-                .Returns(wingspanRolls);
-
-            mockDice
-                .Setup(d => d.Describe("raw 123+raw 345", 123 + roll, It.IsAny<string[]>()))
-                .Returns((string r, int v, string[] descriptions) => descriptions[index]);
-
-            var wingspan = generator.GenerateWingspan("my creature", "my base key");
-            Assert.That(wingspan, Is.Not.Null);
-            Assert.That(wingspan.Value, Is.EqualTo(123 + roll));
-            Assert.That(wingspan.Unit, Is.EqualTo("inches"));
-            Assert.That(wingspan.Description, Is.EqualTo(description));
-        }
-
-        [Test]
-        public void GenerateWingspan_ReturnsWingspan_WithNoWingspan()
-        {
-            var wingspanRolls = new List<TypeAndAmountSelection>
-            {
-                new() { Type = "my base key", Amount = 0, RawAmount = "raw 0" },
-                new() { Type = "my other base key", Amount = 0, RawAmount = "raw 0" },
-                new() { Type = "my creature", Amount = 0, RawAmount = "raw 0" }
-            };
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
-                .Returns(wingspanRolls);
-
-            var wingspan = generator.GenerateWingspan("my creature", "my base key");
-            Assert.That(wingspan, Is.Not.Null);
-            Assert.That(wingspan.Value, Is.Zero);
-            Assert.That(wingspan.Unit, Is.EqualTo("inches"));
-            Assert.That(wingspan.Description, Is.EqualTo("Average"));
-        }
-
         [TestCase("", "")]
         [TestCase(" ", "")]
         [TestCase("my appearance", ". ")]
@@ -2373,27 +2300,30 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void Update_AddsWingspan()
+        public void Update_AddsWingspan_ByHeight()
         {
             SetupTemplateDefaults("my template");
 
             var wingspanRolls = new List<TypeAndAmountSelection>
             {
-                new() { Type = "my size", Amount = 123, RawAmount = "raw 123" },
-                new() { Type = "my other base key", Amount = 234, RawAmount = "raw 234" },
-                new() { Type = "my template", Amount = 345, RawAmount = "raw 345" }
+                new() { Type = "my gender", Amount = 123, RawAmount = "raw 123" },
+                new() { Type = "my other gender", Amount = 234, RawAmount = "raw 234" },
+                new() { Type = "my creature", Amount = 345, RawAmount = "raw 345" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my template"))
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(wingspanRolls);
 
             var demographics = new Demographics
             {
                 Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
                 MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Height = new Measurement("inches") { Value = 1337 },
+                Length = new Measurement("inches") { Value = 42 },
+                Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template", true, "my size");
+            var updated = generator.Update(demographics, "my creature", "my template", true);
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Wingspan, Is.Not.Null);
             Assert.That(updated.Wingspan.Value, Is.EqualTo(123 + 345));
@@ -2418,13 +2348,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var wingspanRolls = new List<TypeAndAmountSelection>
             {
-                new() { Type = "my size", Amount = 123, RawAmount = "raw 123" },
-                new() { Type = "my other base key", Amount = 234, RawAmount = "raw 234" },
-                new() { Type = "my template", Amount = roll, RawAmount = "raw 345" }
+                new() { Type = "my gender", Amount = 123, RawAmount = "raw 123" },
+                new() { Type = "my other gender", Amount = 234, RawAmount = "raw 234" },
+                new() { Type = "my creature", Amount = roll, RawAmount = "raw 345" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my template"))
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(wingspanRolls);
 
             mockDice
@@ -2435,8 +2365,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             {
                 Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
                 MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Height = new Measurement("inches") { Value = 1337 },
+                Length = new Measurement("inches") { Value = 42 },
+                Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template", true, "my size");
+            var updated = generator.Update(demographics, "my creature", "my template", true);
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Wingspan, Is.Not.Null);
             Assert.That(updated.Wingspan.Value, Is.EqualTo(123 + roll));
@@ -2445,30 +2378,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void Update_AddsWingspan_WithNoWingspan()
+        public void Update_AddsWingspan_ByLength()
         {
             SetupTemplateDefaults("my template");
 
             var wingspanRolls = new List<TypeAndAmountSelection>
             {
-                new() { Type = "my size", Amount = 0, RawAmount = "raw 0" },
-                new() { Type = "my other base key", Amount = 0, RawAmount = "raw 0" },
-                new() { Type = "my template", Amount = 0, RawAmount = "raw 0" }
+                new() { Type = "my gender", Amount = 123, RawAmount = "raw 123" },
+                new() { Type = "my other gender", Amount = 234, RawAmount = "raw 234" },
+                new() { Type = "my creature", Amount = 345, RawAmount = "raw 345" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my template"))
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(wingspanRolls);
 
             var demographics = new Demographics
             {
                 Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
                 MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
+                Height = new Measurement("inches") { Value = 42 },
+                Length = new Measurement("inches") { Value = 1337 },
+                Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template", true, "my size");
+            var updated = generator.Update(demographics, "my creature", "my template", true);
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Wingspan, Is.Not.Null);
-            Assert.That(updated.Wingspan.Value, Is.Zero);
+            Assert.That(updated.Wingspan.Value, Is.EqualTo(123 + 345));
             Assert.That(updated.Wingspan.Unit, Is.EqualTo("inches"));
             Assert.That(updated.Wingspan.Description, Is.EqualTo("Average"));
         }
@@ -2523,8 +2459,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
                 MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
                 Wingspan = new Measurement("inches") { Value = 1336, Description = "impressive" },
+                Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template", true, "my size");
+            var updated = generator.Update(demographics, "my creature", "my template", true);
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Wingspan, Is.Not.Null);
             Assert.That(updated.Wingspan.Value, Is.EqualTo(1336));
@@ -3551,7 +3488,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Weight = new Measurement("pounds") { Value = 45, Description = "eh" },
                 Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template", true, "my size");
+            var updated = generator.Update(demographics, "my creature", "my template", true);
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Skin, Is.EqualTo("my skin. template skin"));
             Assert.That(updated.Hair, Is.EqualTo("my hair. template hair"));
@@ -3562,7 +3499,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(updated.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
             Assert.That(updated.MaximumAge.Description, Is.EqualTo("template age category"));
             Assert.That(updated.Wingspan, Is.Not.Null);
-            Assert.That(updated.Wingspan.Value, Is.EqualTo(2249));
+            Assert.That(updated.Wingspan.Value, Is.EqualTo(42 + 783));
             Assert.That(updated.Wingspan.Unit, Is.EqualTo("inches"));
             Assert.That(updated.Wingspan.Description, Is.EqualTo("Average"));
             Assert.That(updated.Height, Is.Not.Null);

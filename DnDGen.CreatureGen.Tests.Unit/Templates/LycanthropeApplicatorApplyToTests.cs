@@ -124,7 +124,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             SetUpRoll(baseCreature.HitPoints.HitDice[0], baseAverage);
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.LycanthropeSpecies, false, string.Empty, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.LycanthropeSpecies, false, false))
                 .Returns(baseCreature.Demographics);
         }
 
@@ -261,7 +261,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Gender = "wild gender"
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.LycanthropeSpecies, false, string.Empty, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, applicator.LycanthropeSpecies, false, false))
                 .Returns(templateDemographics);
 
             SetUpAnimal("my animal");

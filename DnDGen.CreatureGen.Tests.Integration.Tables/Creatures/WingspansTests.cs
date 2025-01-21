@@ -37,9 +37,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void WingspansNames()
         {
             var creatures = CreatureConstants.GetAll();
-            var templates = CreatureConstants.Templates.GetAll();
-            var names = creatures.Union(templates);
-            AssertCollectionNames(names);
+            AssertCollectionNames(creatures);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
@@ -49,23 +47,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, name);
             Assert.That(wingspanRolls[name].Keys, Is.EquivalentTo(genders.Union([name])), $"TEST DATA: {name}");
-
-            foreach (var roll in wingspanRolls[name].Values)
-            {
-                var isValid = dice.Roll(roll).IsValid();
-                Assert.That(isValid, Is.True, roll);
-            }
-
-            AssertTypesAndAmounts(name, wingspanRolls[name]);
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void TemplateWingspans(string name)
-        {
-            Assert.That(wingspanRolls, Contains.Key(name));
-
-            var sizes = SizeConstants.GetOrdered();
-            Assert.That(wingspanRolls[name].Keys, Is.EquivalentTo(sizes.Union([name])), $"TEST DATA: {name}");
 
             foreach (var roll in wingspanRolls[name].Values)
             {
@@ -1923,23 +1904,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Zelekhut using Griffon stats
             wingspans[CreatureConstants.Zelekhut][GenderConstants.Agender] = GetBaseFromAtLeast(25 * 12);
             wingspans[CreatureConstants.Zelekhut][CreatureConstants.Zelekhut] = GetMultiplierFromAtLeast(25 * 12);
-
-            var templates = CreatureConstants.Templates.GetAll();
-            var sizes = SizeConstants.GetOrdered();
-
-            foreach (var template in templates)
-            {
-                wingspans[template] = [];
-                //TODO: Uncomment when I've added the actual wingspans for templates that need it
-                //wingspans[template][template] = "0";
-
-                foreach (var size in sizes)
-                {
-                    //wingspans[template][size] = "0";
-                }
-            }
-
-
 
             return wingspans;
         }

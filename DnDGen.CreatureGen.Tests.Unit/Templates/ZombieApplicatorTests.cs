@@ -164,10 +164,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockCollectionSelector
                 .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton))
-                .Returns(new[] { "my wrong creature", baseCreature.Name, "my other creature" });
+                .Returns(["my wrong creature", baseCreature.Name, "my other creature"]);
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Zombie, false, string.Empty, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Zombie, false, false))
                 .Returns(baseCreature.Demographics);
         }
 
@@ -372,7 +372,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Gender = "decaying gender",
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Zombie, false, string.Empty, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Zombie, false, false))
                 .Returns(zombieDemographics);
 
             mockAttacksGenerator
@@ -1437,7 +1437,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Gender = "decaying gender",
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Zombie, false, string.Empty, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Zombie, false, false))
                 .Returns(zombieDemographics);
 
             mockAttacksGenerator

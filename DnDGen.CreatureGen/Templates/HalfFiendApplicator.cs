@@ -168,12 +168,12 @@ namespace DnDGen.CreatureGen.Templates
         {
             return new[] { CreatureConstants.Types.Outsider }
                 .Union(subtypes)
-                .Union(new[] { CreatureConstants.Types.Subtypes.Native, CreatureConstants.Types.Subtypes.Augmented, creatureType });
+                .Union([CreatureConstants.Types.Subtypes.Native, CreatureConstants.Types.Subtypes.Augmented, creatureType]);
         }
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            creature.Demographics = demographicsGenerator.Update(creature.Demographics, creature.Name, CreatureConstants.Templates.HalfFiend, true, creature.Size);
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, creature.Name, CreatureConstants.Templates.HalfFiend, true);
         }
 
         private void UpdateCreatureSpeeds(Creature creature)

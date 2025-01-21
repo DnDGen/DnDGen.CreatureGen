@@ -303,7 +303,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(creature.Demographics.Height.Value + creature.Demographics.Length.Value, Is.Positive, message);
             Assert.That(creature.Demographics.MaximumAge, Is.Not.Null, message);
             Assert.That(creature.Demographics.MaximumAge.Unit, Is.EqualTo("years"), message);
-            Assert.That(creature.Demographics.MaximumAge.Value, Is.Positive, message);
+            Assert.That(creature.Demographics.MaximumAge.Value, Is.Positive.Or.EqualTo(AgeConstants.Ageless), message);
             Assert.That(creature.Demographics.MaximumAge.Description, Is.Not.Empty, message);
             Assert.That(creature.Demographics.Weight, Is.Not.Null, message);
             Assert.That(creature.Demographics.Weight.Unit, Is.EqualTo("pounds"), message);

@@ -179,9 +179,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void CanGenerateHumanTemplate(string template)
+        public void CanGenerateTemplate(string template)
         {
-            var creature = creatureGenerator.Generate(false, CreatureConstants.Human, null, template);
+            var creatureName = CreatureConstants.Human;
+            if (template == CreatureConstants.Templates.Lycanthrope_Rat_Afflicted
+                || template == CreatureConstants.Templates.Lycanthrope_Rat_Natural)
+            {
+                creatureName = CreatureConstants.Kobold;
+            }
+
+            var creature = creatureGenerator.Generate(false, creatureName, null, template);
             creatureAsserter.AssertCreature(creature);
 
             if (template != CreatureConstants.Templates.None)
@@ -191,14 +198,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void CanGenerateHumanTemplateAsCharacter(string template)
+        public void CanGenerateTemplateAsCharacter(string template)
         {
-            if (template == CreatureConstants.Templates.Skeleton || template == CreatureConstants.Templates.Zombie)
+            var creatureName = CreatureConstants.Human;
+            if (template == CreatureConstants.Templates.Lycanthrope_Rat_Afflicted
+                || template == CreatureConstants.Templates.Lycanthrope_Rat_Natural)
             {
-                Assert.Pass($"Template {template} cannot be a character");
+                creatureName = CreatureConstants.Kobold;
+            }
+            else if (template == CreatureConstants.Templates.Skeleton || template == CreatureConstants.Templates.Zombie)
+            {
+                Assert.Ignore($"Template {template} cannot be a character");
             }
 
-            var creature = creatureGenerator.Generate(true, CreatureConstants.Human, null, template);
+            var creature = creatureGenerator.Generate(true, creatureName, null, template);
             creatureAsserter.AssertCreatureAsCharacter(creature);
 
             if (template != CreatureConstants.Templates.None)
@@ -361,6 +374,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(false, CreatureConstants.Kobold)]
         [TestCase(true, CreatureConstants.Kobold)]
         [TestCase(false, CreatureConstants.Kobold, CreatureConstants.Templates.Zombie)]
+        [TestCase(true, CreatureConstants.Kobold, CreatureConstants.Templates.Lycanthrope_Rat_Afflicted)]
+        [TestCase(false, CreatureConstants.Kobold, CreatureConstants.Templates.Lycanthrope_Rat_Afflicted)]
+        [TestCase(true, CreatureConstants.Kobold, CreatureConstants.Templates.Lycanthrope_Rat_Natural)]
+        [TestCase(false, CreatureConstants.Kobold, CreatureConstants.Templates.Lycanthrope_Rat_Natural)]
         [TestCase(true, CreatureConstants.Lammasu)]
         [TestCase(false, CreatureConstants.Lammasu)]
         [TestCase(false, CreatureConstants.Lammasu, CreatureConstants.Templates.HalfDragon_Gold)]

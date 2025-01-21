@@ -178,13 +178,13 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return wingspan;
         }
 
-        private Measurement GenerateTemplateWingspan(Demographics source, string creatureName, string gender)
+        private Measurement GenerateTemplateWingspan(Demographics source, string creatureName)
         {
             var tablename = TableNameConstants.TypeAndAmount.Heights;
             if (source.Length.Value > source.Height.Value)
                 tablename = TableNameConstants.TypeAndAmount.Lengths;
 
-            return GenerateWingspan(tablename, creatureName, gender);
+            return GenerateWingspan(tablename, creatureName, source.Gender);
         }
 
         public static string GetAppearanceSeparator(string appearance)
@@ -198,7 +198,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return ". ";
         }
 
-        public Demographics Update(Demographics source, string creature, string template, bool addWingspan = false, string size = "", bool overwriteAppearance = false)
+        public Demographics Update(Demographics source, string creature, string template, bool addWingspan = false, bool overwriteAppearance = false)
         {
             UpdateAppearance(source, template, overwriteAppearance);
             UpdateAge(source, template);
@@ -207,7 +207,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             UpdateWeight(source, creature, template);
 
             if (addWingspan && source.Wingspan.Value == 0)
-                source.Wingspan = GenerateTemplateWingspan(source, creature, size);
+                source.Wingspan = GenerateTemplateWingspan(source, creature);
 
             return source;
         }

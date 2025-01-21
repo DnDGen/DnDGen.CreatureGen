@@ -126,7 +126,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfFiend, true, baseCreature.Size, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfFiend, true, false))
                 .Returns(baseCreature.Demographics);
         }
 
@@ -309,7 +309,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Gender = "hellish gender"
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfFiend, true, baseCreature.Size, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfFiend, true, false))
                 .Returns(templateDemographics);
 
             var smiteGood = new Attack
@@ -1857,7 +1857,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Gender = "hellish gender"
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfFiend, true, baseCreature.Size, false))
+                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfFiend, true, false))
                 .Returns(templateDemographics);
 
             var smiteGood = new Attack
