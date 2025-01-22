@@ -5,9 +5,15 @@ using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
+using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.RollGen;
 using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Text;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
 {
@@ -16,12 +22,28 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
     {
         private CreatureAsserter creatureAsserter;
         private ICreatureGenerator creatureGenerator;
+        private Stopwatch stopwatch;
+        private ICollectionSelector collectionSelector;
+        private Dictionary<string, (string Ability, int Minimum)> templateAbilityMinimums;
+        private Dice dice;
+
+        private const int generationTimeLimitInSeconds = 5;
 
         [SetUp]
         public void Setup()
         {
             creatureAsserter = GetNewInstanceOf<CreatureAsserter>();
             creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
+            stopwatch = new Stopwatch();
+            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
+            dice = GetNewInstanceOf<Dice>();
+
+            templateAbilityMinimums = new Dictionary<string, (string Ability, int Minimum)>
+            {
+                [CreatureConstants.Templates.Ghost] = (AbilityConstants.Charisma, 6),
+                [CreatureConstants.Templates.HalfCelestial] = (AbilityConstants.Intelligence, 4),
+                [CreatureConstants.Templates.HalfFiend] = (AbilityConstants.Intelligence, 4)
+            };
         }
 
         [TestCase(CreatureConstants.Androsphinx)]
@@ -581,19 +603,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             Assert.That(skillNames, Contains.Item(SkillConstants.Concentration));
         }
 
-        [TestCase(AbilityConstants.RandomizerRolls.Best, 16, 18)]
+        [TestCase(AbilityConstants.RandomizerRolls.Heroic, 15, 18)]
         [TestCase(AbilityConstants.RandomizerRolls.BestOfFour, 3, 18)]
         [TestCase(AbilityConstants.RandomizerRolls.Default, 10, 11)]
-        [TestCase(AbilityConstants.RandomizerRolls.Good, 12, 15)]
+        [TestCase(AbilityConstants.RandomizerRolls.Average, 10, 13)]
+        [TestCase(AbilityConstants.RandomizerRolls.Good, 13, 16)]
         [TestCase(AbilityConstants.RandomizerRolls.OnesAsSixes, 6, 18)]
-        [TestCase(AbilityConstants.RandomizerRolls.Poor, 4, 9)]
+        [TestCase(AbilityConstants.RandomizerRolls.Poor, 3, 9)]
         [TestCase(AbilityConstants.RandomizerRolls.Raw, 3, 18)]
         [TestCase(AbilityConstants.RandomizerRolls.Wild, 2, 20)]
         [TestCase("42d600+9266", 42 + 9266, 42 * 600 + 9266)]
         public void Generate_HumanWithAbilityRandomizer(string roll, int lower, int upper)
         {
-            var randomizer = new AbilityRandomizer();
-            randomizer.Roll = roll;
+            var randomizer = new AbilityRandomizer
+            {
+                Roll = roll
+            };
 
             var creature = creatureGenerator.Generate(false, CreatureConstants.Human, randomizer);
             creatureAsserter.AssertCreature(creature);
@@ -735,6 +760,162 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             {
                 Assert.That(creature.Demographics.Length.Value, Is.Positive);
             }
+        }
+
+        //INFO: Too many problematic test cases for Repeat to be time-efficient
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
+        public void BUG_GenerateProblematicCreature(bool asCharacter, string creatureName, params string[] templates)
+        {
+            var randomizer = GetAbilityRandomizer(templates);
+            GenerateAndAssertCreature(creatureName, asCharacter, randomizer, templates);
+        }
+
+        //INFO: Too many problematic test cases for Repeat to be time-efficient
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
+        public void BUG_GenerateProblematicCreature_DefaultAbilities(bool asCharacter, string creatureName, params string[] templates)
+        {
+            GenerateAndAssertCreature(creatureName, asCharacter, null, templates);
+        }
+
+        //INFO: Too many problematic test cases for Repeat to be time-efficient
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
+        public void BUG_GenerateProblematicCreature_ProblematicAbilities(bool asCharacter, string creatureName, params string[] templates)
+        {
+            var randomizer = GetAbilityRandomizer(templates, [AbilityConstants.RandomizerRolls.Poor, AbilityConstants.RandomizerRolls.Wild]);
+            GenerateAndAssertCreature(creatureName, asCharacter, randomizer, templates);
+        }
+
+        private Creature GenerateAndAssertCreature(string creatureName, bool asCharacter, AbilityRandomizer randomizer, params string[] templates)
+        {
+            stopwatch.Restart();
+            var creature = creatureGenerator.Generate(asCharacter, creatureName, randomizer, templates);
+            stopwatch.Stop();
+
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(generationTimeLimitInSeconds).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
+            Assert.That(creature.Name, Is.EqualTo(creatureName), creature.Summary);
+            Assert.That(creature.Templates, Is.EqualTo(templates.Where(t => t != CreatureConstants.Templates.None)), creature.Summary);
+
+            if (asCharacter)
+                creatureAsserter.AssertCreatureAsCharacter(creature);
+            else
+                creatureAsserter.AssertCreature(creature);
+
+            return creature;
+        }
+
+        private AbilityRandomizer GetAbilityRandomizer(string[] templates, string[] rolls = null)
+        {
+            rolls ??=
+            [
+                AbilityConstants.RandomizerRolls.Heroic,
+                AbilityConstants.RandomizerRolls.BestOfFour,
+                AbilityConstants.RandomizerRolls.Default,
+                AbilityConstants.RandomizerRolls.Average,
+                AbilityConstants.RandomizerRolls.Good,
+                AbilityConstants.RandomizerRolls.OnesAsSixes,
+                AbilityConstants.RandomizerRolls.Poor,
+                AbilityConstants.RandomizerRolls.Raw,
+                AbilityConstants.RandomizerRolls.Wild,
+            ];
+
+            var randomizer = new AbilityRandomizer
+            {
+                Roll = collectionSelector.SelectRandomFrom(rolls)
+            };
+
+            //HACK: This is just to avoid the issue when a randomly-rolled ability
+            //(especially with "Poor" or "Wild") ends up much lower than normally would be with the "Default" roll,
+            //and the template requires an ability to be a minimum value
+            if (templates.Any(t => t != null && templateAbilityMinimums.ContainsKey(t)))
+            {
+                foreach (var template in templates.Where(templateAbilityMinimums.ContainsKey))
+                {
+                    if (!randomizer.AbilityAdvancements.ContainsKey(templateAbilityMinimums[template].Ability))
+                    {
+                        randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability] = 0;
+                    }
+
+                    var newMin = Math.Max(randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability], templateAbilityMinimums[template].Minimum);
+                    randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability] = newMin;
+                    randomizer.PriorityAbility = templateAbilityMinimums[template].Ability;
+                }
+            }
+
+            return randomizer;
+        }
+
+        //INFO: Too many problematic test cases for Repeat to be time-efficient
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
+        public void BUG_GenerateCreatureWithProblematicFilters(string type, bool asCharacter, string template, string challengeRating, string alignment)
+        {
+            var randomizer = GetAbilityRandomizer([template]);
+            GenerateAndAssertRandomCreature(asCharacter, type, challengeRating, alignment, randomizer, template);
+        }
+
+        //INFO: Too many problematic test cases for Repeat to be time-efficient
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
+        public void BUG_GenerateCreatureWithProblematicFilters_DefaultAbilities(string type, bool asCharacter, string template, string challengeRating, string alignment)
+        {
+            GenerateAndAssertRandomCreature(asCharacter, type, challengeRating, alignment, null, template);
+        }
+
+        //INFO: Too many problematic test cases for Repeat to be time-efficient
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
+        public void BUG_GenerateCreatureWithProblematicFilters_ProblematicAbilities(string type, bool asCharacter, string template, string challengeRating, string alignment)
+        {
+            var randomizer = GetAbilityRandomizer([template], [AbilityConstants.RandomizerRolls.Poor, AbilityConstants.RandomizerRolls.Wild]);
+            GenerateAndAssertRandomCreature(asCharacter, type, challengeRating, alignment, randomizer, template);
+        }
+
+        private Creature GenerateAndAssertRandomCreature(
+            bool asCharacter,
+            string type,
+            string challengeRating,
+            string alignment,
+            AbilityRandomizer randomizer,
+            params string[] templates)
+        {
+            var filters = new Filters();
+            filters.Templates.AddRange(templates);
+            filters.Type = type;
+            filters.ChallengeRating = challengeRating;
+            filters.Alignment = alignment;
+
+            stopwatch.Restart();
+            var creature = creatureGenerator.GenerateRandom(asCharacter, randomizer, filters);
+            stopwatch.Stop();
+
+            var message = new StringBuilder();
+            var joinedTemplates = string.Join(", ", templates);
+            var messageTemplate = templates.Any() ? (!string.IsNullOrEmpty(joinedTemplates) ? joinedTemplates : "(None)") : "Null";
+
+            message.AppendLine($"Creature: {creature.Summary}");
+            message.AppendLine($"As Character: {asCharacter}");
+            message.AppendLine($"Template: {messageTemplate}");
+            message.AppendLine($"Type: {type ?? "Null"}");
+            message.AppendLine($"CR: {challengeRating ?? "Null"}");
+            message.AppendLine($"Alignment: {alignment ?? "Null"}");
+
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(generationTimeLimitInSeconds).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), message.ToString());
+
+            if (templates.Any(t => !string.IsNullOrEmpty(t)))
+                Assert.That(creature.Templates, Is.EqualTo(templates.Where(t => t != CreatureConstants.Templates.None)), message.ToString());
+
+            if (type != null)
+                creatureAsserter.AssertCreatureIsType(creature, type, message.ToString());
+
+            if (challengeRating != null)
+                Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), message.ToString());
+
+            if (alignment != null)
+                Assert.That(creature.Alignment.Full, Is.EqualTo(alignment), message.ToString());
+
+            if (asCharacter)
+                creatureAsserter.AssertCreatureAsCharacter(creature, message.ToString());
+            else
+                creatureAsserter.AssertCreature(creature, message.ToString());
+
+            return creature;
         }
     }
 }

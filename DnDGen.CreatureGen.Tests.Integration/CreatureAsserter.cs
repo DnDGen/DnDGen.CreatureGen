@@ -666,6 +666,27 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
+        public void AssertCreatureIsType(Creature creature, string type, string message = null)
+        {
+            message ??= creature.Summary;
+
+            var types = CreatureConstants.Types.GetAll();
+            if (!types.Contains(type))
+            {
+                Assert.That(creature.Type.SubTypes, Contains.Item(type), message);
+                return;
+            }
+
+            if (!creature.Templates.Any())
+            {
+                Assert.That(creature.Type.Name, Is.EqualTo(type), message);
+                return;
+            }
+
+            var allTypes = creature.Type.SubTypes.Union([creature.Type.Name]).ToArray();
+            Assert.That(type, Is.AnyOf(allTypes), message);
+        }
+
         public void AssertCreatureAsCharacter(Creature creature, string message = null)
         {
             message ??= creature.Summary;

@@ -81,7 +81,7 @@ namespace DnDGen.CreatureGen.Templates
         {
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
-                new[] { creature.Alignment.Full },
+                [creature.Alignment.Full],
                 creature.Abilities[AbilityConstants.Intelligence],
                 creature.ChallengeRating,
                 creature.HitPoints.RoundedHitDiceQuantity,
@@ -95,7 +95,7 @@ namespace DnDGen.CreatureGen.Templates
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
-                    creature.Templates.Union(new[] { CreatureConstants.Templates.HalfCelestial }).ToArray());
+                    creature.Templates.Union([CreatureConstants.Templates.HalfCelestial]).ToArray());
             }
 
             // Template

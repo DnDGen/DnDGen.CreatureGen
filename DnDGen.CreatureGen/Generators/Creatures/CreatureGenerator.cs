@@ -253,10 +253,12 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         private Creature GeneratePrototype(string creatureName, bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters)
         {
-            var templates = filters?.CleanTemplates ?? new List<string>();
+            var templates = filters?.CleanTemplates ?? [];
 
-            var creature = new Creature();
-            creature.Name = creatureName;
+            var creature = new Creature
+            {
+                Name = creatureName
+            };
 
             var creatureData = creatureDataSelector.SelectFor(creatureName);
             creature.Size = creatureData.Size;

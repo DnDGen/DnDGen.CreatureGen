@@ -92,9 +92,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var rolls = new[]
             {
-                AbilityConstants.RandomizerRolls.Best,
+                AbilityConstants.RandomizerRolls.Heroic,
                 AbilityConstants.RandomizerRolls.BestOfFour,
                 AbilityConstants.RandomizerRolls.Default,
+                AbilityConstants.RandomizerRolls.Average,
                 AbilityConstants.RandomizerRolls.Good,
                 AbilityConstants.RandomizerRolls.OnesAsSixes,
                 AbilityConstants.RandomizerRolls.Poor,
@@ -341,7 +342,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 Assert.That(creature.Templates, Is.EqualTo(templates.Where(t => t != CreatureConstants.Templates.None)), message.ToString());
 
             if (type != null)
-                AssertCreatureIsType(creature, type, message.ToString());
+                creatureAsserter.AssertCreatureIsType(creature, type, message.ToString());
 
             if (challengeRating != null)
                 Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), message.ToString());
@@ -353,27 +354,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 creatureAsserter.AssertCreatureAsCharacter(creature, message.ToString());
             else
                 creatureAsserter.AssertCreature(creature, message.ToString());
-        }
-
-        private void AssertCreatureIsType(Creature creature, string type, string message = null)
-        {
-            message ??= creature.Summary;
-
-            var types = CreatureConstants.Types.GetAll();
-            if (!types.Contains(type))
-            {
-                Assert.That(creature.Type.SubTypes, Contains.Item(type), message);
-                return;
-            }
-
-            if (!creature.Templates.Any())
-            {
-                Assert.That(creature.Type.Name, Is.EqualTo(type), message);
-                return;
-            }
-
-            var allTypes = creature.Type.SubTypes.Union(new[] { creature.Type.Name });
-            Assert.That(new[] { type }, Is.SubsetOf(allTypes), message);
         }
 
         [Test]
@@ -409,22 +389,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             AssertRandomCreature(creature, asCharacter, type, challengeRating, alignment, template);
 
             return creature;
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
-        [Repeat(100)]
-        //[Ignore("Only use this for debugging")]
-        public void BUG_StressSpecificProblematicCreature(bool asCharacter, string creatureName, params string[] templates)
-        {
-            stressor.Stress(() => GenerateAndAssertCreature(creatureName, asCharacter, false, templates));
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
-        [Repeat(100)]
-        [Ignore("Only use this for debugging")]
-        public void BUG_StressSpecificProblematicFilters(string type, bool asCharacter, string template, string challengeRating, string alignment)
-        {
-            stressor.Stress(() => GenerateAndAssertRandomCreature(asCharacter, type, challengeRating, alignment, false, template));
         }
 
         [Test]

@@ -19,6 +19,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
         public static IEnumerable<(bool AsCharacter, string Creature, string[] Templates)> ProblematicCreatures =>
             [
                 (false, CreatureConstants.Chimera_White, [CreatureConstants.Templates.Skeleton]),
+                (false, CreatureConstants.Chimera_Green, [CreatureConstants.Templates.HalfCelestial]),
                 (false, CreatureConstants.Criosphinx, [CreatureConstants.Templates.Zombie]),
                 (false, CreatureConstants.DisplacerBeast_PackLord, [CreatureConstants.Templates.HalfFiend]),
                 (false, CreatureConstants.Dragon_Brass_Young, [CreatureConstants.Templates.Ghost]),
@@ -30,6 +31,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
                 (false, CreatureConstants.Elemental_Air_Small, [CreatureConstants.Templates.HalfCelestial]),
                 (true, CreatureConstants.Gargoyle, [CreatureConstants.Templates.HalfCelestial]),
                 (false, CreatureConstants.Gargoyle_Kapoacinth, [CreatureConstants.Templates.Ghost]),
+                (true, CreatureConstants.Gargoyle_Kapoacinth, [CreatureConstants.Templates.HalfCelestial]),
+                (false, CreatureConstants.GibberingMouther, [CreatureConstants.Templates.HalfCelestial]),
+                (false, CreatureConstants.GibberingMouther, [CreatureConstants.Templates.HalfFiend]),
                 (true, CreatureConstants.Gnoll, [CreatureConstants.Templates.Ghost]),
                 (true, CreatureConstants.GrayRender, []),
                 (false, CreatureConstants.Hieracosphinx, [CreatureConstants.Templates.Skeleton]),
@@ -99,6 +103,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
             (false, new Filters
                 {
                     Templates = [CreatureConstants.Templates.HalfCelestial],
+                    Type = CreatureConstants.Types.Aberration
+                }),
+            (false, new Filters
+                {
+                    Templates = [CreatureConstants.Templates.HalfCelestial],
                     Type = CreatureConstants.Types.Subtypes.Native
                 }),
             (true, new Filters
@@ -112,6 +121,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
                     Templates = [CreatureConstants.Templates.HalfCelestial],
                     Type = CreatureConstants.Types.Subtypes.Reptilian,
                     ChallengeRating = ChallengeRatingConstants.CR2
+                }),
+            (false, new Filters
+                {
+                    Templates = [CreatureConstants.Templates.HalfFiend],
+                    Type = CreatureConstants.Types.Aberration
                 }),
             (false, new Filters
                 {

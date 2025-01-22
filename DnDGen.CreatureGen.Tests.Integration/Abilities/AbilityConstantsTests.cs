@@ -15,12 +15,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Abilities
             dice = GetNewInstanceOf<Dice>();
         }
 
-        [TestCase(AbilityConstants.RandomizerRolls.Best, 16, 18)]
+        [TestCase(AbilityConstants.RandomizerRolls.Heroic, 15, 18)]
         [TestCase(AbilityConstants.RandomizerRolls.BestOfFour, 3, 18)]
         [TestCase(AbilityConstants.RandomizerRolls.Default, 10, 11)]
-        [TestCase(AbilityConstants.RandomizerRolls.Good, 12, 15)]
+        [TestCase(AbilityConstants.RandomizerRolls.Average, 10, 13)]
+        [TestCase(AbilityConstants.RandomizerRolls.Good, 13, 16)]
         [TestCase(AbilityConstants.RandomizerRolls.OnesAsSixes, 6, 18)]
-        [TestCase(AbilityConstants.RandomizerRolls.Poor, 4, 9)]
+        [TestCase(AbilityConstants.RandomizerRolls.Poor, 3, 9)]
         [TestCase(AbilityConstants.RandomizerRolls.Raw, 3, 18)]
         [TestCase(AbilityConstants.RandomizerRolls.Wild, 2, 20)]
         public void RandomizerRoll_FitsRange(string roll, int lower, int upper)

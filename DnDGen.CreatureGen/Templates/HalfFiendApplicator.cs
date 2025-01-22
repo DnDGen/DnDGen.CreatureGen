@@ -64,8 +64,8 @@ namespace DnDGen.CreatureGen.Templates
             this.prototypeFactory = prototypeFactory;
             this.demographicsGenerator = demographicsGenerator;
 
-            creatureTypes = new[]
-            {
+            creatureTypes =
+            [
                 CreatureConstants.Types.Aberration,
                 CreatureConstants.Types.Animal,
                 CreatureConstants.Types.Dragon,
@@ -78,14 +78,14 @@ namespace DnDGen.CreatureGen.Templates
                 CreatureConstants.Types.Ooze,
                 CreatureConstants.Types.Plant,
                 CreatureConstants.Types.Vermin,
-            };
+            ];
         }
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
-                new[] { creature.Alignment.Full },
+                [creature.Alignment.Full],
                 creature.Abilities[AbilityConstants.Intelligence],
                 creature.ChallengeRating,
                 creature.HitPoints.RoundedHitDiceQuantity,
@@ -99,7 +99,7 @@ namespace DnDGen.CreatureGen.Templates
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
-                    creature.Templates.Union(new[] { CreatureConstants.Templates.HalfFiend }).ToArray());
+                    creature.Templates.Union([CreatureConstants.Templates.HalfFiend]).ToArray());
             }
 
             // Template
