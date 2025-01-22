@@ -92,7 +92,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
 
             Assert.That(creature.Magic, Is.Not.Null);
             Assert.That(creature.Magic.Caster, Is.Not.Empty);
-            creatureAsserter.VerifyMagic(creature, creature.Summary);
+            creatureAsserter.AssertMagic(creature, creature.Summary);
         }
 
         [TestCase(CreatureConstants.Human)]
@@ -873,10 +873,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             string challengeRating,
             string alignment,
             AbilityRandomizer randomizer,
-            params string[] templates)
+            string template)
         {
             var filters = new Filters();
-            filters.Templates.AddRange(templates);
+            filters.Templates.Add(template);
             filters.Type = type;
             filters.ChallengeRating = challengeRating;
             filters.Alignment = alignment;
@@ -886,8 +886,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             stopwatch.Stop();
 
             var message = new StringBuilder();
-            var joinedTemplates = string.Join(", ", templates);
-            var messageTemplate = templates.Any() ? (!string.IsNullOrEmpty(joinedTemplates) ? joinedTemplates : "(None)") : "Null";
+            var messageTemplate = !string.IsNullOrEmpty(template) ? template : "(None)";
 
             message.AppendLine($"Creature: {creature.Summary}");
             message.AppendLine($"As Character: {asCharacter}");
@@ -898,8 +897,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
 
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(generationTimeLimitInSeconds).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), message.ToString());
 
-            if (templates.Any(t => !string.IsNullOrEmpty(t)))
-                Assert.That(creature.Templates, Is.EqualTo(templates.Where(t => t != CreatureConstants.Templates.None)), message.ToString());
+            if (!string.IsNullOrEmpty(template) && template != CreatureConstants.Templates.None)
+                Assert.That(creature.Templates, Is.EqualTo([template]), message.ToString());
+            else if (template == CreatureConstants.Templates.None)
+                Assert.That(creature.Templates, Is.Empty, message.ToString());
 
             if (type != null)
                 creatureAsserter.AssertCreatureIsType(creature, type, message.ToString());

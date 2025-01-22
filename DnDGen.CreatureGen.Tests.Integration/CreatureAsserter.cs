@@ -26,13 +26,13 @@ namespace DnDGen.CreatureGen.Tests.Integration
         {
             this.creatureVerifier = creatureVerifier;
 
-            skillsWithFoci = new[]
-            {
+            skillsWithFoci =
+            [
                 SkillConstants.Craft,
                 SkillConstants.Knowledge,
                 SkillConstants.Perform,
                 SkillConstants.Profession,
-            };
+            ];
         }
 
         public void AssertCreature(Creature creature, string message = null)
@@ -58,24 +58,25 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 Assert.That(isValid, Is.True, verifierMessage.ToString());
             }
 
-            VerifySummary(creature, message);
-            VerifyDemographics(creature, message);
-            VerifyAlignment(creature, message);
-            VerifyStatistics(creature, message);
-            VerifyAbilities(creature, message);
-            VerifySkills(creature, message);
-            VerifyFeats(creature, message);
-            VerifyCombat(creature, message);
-            VerifyEquipment(creature, message);
-            VerifyMagic(creature, message);
+            AssertSummary(creature, message);
+            AssertDemographics(creature, message);
+            AssertAlignment(creature, message);
+            AssertChallengeRating(creature, message);
+            AssertSize(creature, message);
+            AssertSpeeds(creature, message);
+            AssertAbilities(creature, message);
+            AssertSkills(creature, message);
+            AssertFeats(creature, message);
+            AssertCombat(creature, message);
+            AssertEquipment(creature, message);
+            AssertMagic(creature, message);
 
-            Assert.That(creature.ChallengeRating, Is.Not.Empty, message);
             Assert.That(creature.CasterLevel, Is.Not.Negative, message);
             Assert.That(creature.NumberOfHands, Is.Not.Negative, message);
             Assert.That(creature.Languages, Is.Empty.Or.Unique, message);
         }
 
-        public void VerifyMagic(Creature creature, string message)
+        public void AssertMagic(Creature creature, string message)
         {
             Assert.That(creature.Magic, Is.Not.Null, message);
 
@@ -189,7 +190,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void VerifyEquipment(Creature creature, string message)
+        private void AssertEquipment(Creature creature, string message)
         {
             Assert.That(creature.Equipment, Is.Not.Null, message);
 
@@ -271,7 +272,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void VerifySummary(Creature creature, string message)
+        private void AssertSummary(Creature creature, string message)
         {
             Assert.That(creature.Name, Is.Not.Empty, message);
             Assert.That(creature.Templates, Is.Not.Null, message);
@@ -284,7 +285,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void VerifyDemographics(Creature creature, string message)
+        private void AssertDemographics(Creature creature, string message)
         {
             Assert.That(creature.Demographics, Is.Not.Null, message);
             Assert.That(creature.Demographics.Age, Is.Not.Null, message);
@@ -322,7 +323,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(appearance, Is.Not.Empty, message);
         }
 
-        private void VerifyAlignment(Creature creature, string message)
+        private void AssertAlignment(Creature creature, string message)
         {
             Assert.That(creature.Alignment, Is.Not.Null, message);
 
@@ -337,13 +338,18 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void VerifyStatistics(Creature creature, string message)
+        private void AssertChallengeRating(Creature creature, string message)
         {
             var ordered = ChallengeRatingConstants.GetOrdered();
             var numbers = Enumerable.Range(1, 100).Select(i => i.ToString());
             var challengeRatings = ordered.Union(numbers);
 
             Assert.That(challengeRatings, Contains.Item(creature.ChallengeRating), message);
+            Assert.That(creature.ChallengeRating, Is.Not.Empty, message);
+        }
+
+        private void AssertSize(Creature creature, string message)
+        {
             Assert.That(creature.Size, Is.EqualTo(SizeConstants.Large)
                 .Or.EqualTo(SizeConstants.Colossal)
                 .Or.EqualTo(SizeConstants.Gargantuan)
@@ -352,19 +358,17 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 .Or.EqualTo(SizeConstants.Diminutive)
                 .Or.EqualTo(SizeConstants.Medium)
                 .Or.EqualTo(SizeConstants.Small), message);
-
-            VerifySpeeds(creature, message);
         }
 
-        private void VerifySpeeds(Creature creature, string message)
+        private void AssertSpeeds(Creature creature, string message)
         {
             foreach (var speedKVP in creature.Speeds)
             {
-                VerifySpeed(speedKVP.Value, message, speedKVP.Key);
+                AssertSpeed(speedKVP.Value, message, speedKVP.Key);
             }
         }
 
-        private void VerifySpeed(Measurement speed, string creatureSummary, string name)
+        private void AssertSpeed(Measurement speed, string creatureSummary, string name)
         {
             var message = $"{creatureSummary}\nSpeed: {name}";
             Assert.That(speed.Value, Is.Not.Negative, message);
@@ -385,7 +389,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void VerifyAbilities(Creature creature, string message)
+        private void AssertAbilities(Creature creature, string message)
         {
             Assert.That(creature.Abilities.Keys, Contains.Item(AbilityConstants.Charisma), message);
             Assert.That(creature.Abilities.Keys, Contains.Item(AbilityConstants.Constitution), message);
@@ -403,7 +407,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void VerifySkills(Creature creature, string message)
+        private void AssertSkills(Creature creature, string message)
         {
             if (!creature.Skills.Any())
             {
@@ -435,7 +439,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(skillNamesAndFoci, Is.Unique, message);
         }
 
-        private void VerifyFeats(Creature creature, string message)
+        private void AssertFeats(Creature creature, string message)
         {
             Assert.That(creature.Feats, Is.Not.Null, message);
             Assert.That(creature.SpecialQualities, Is.Not.Null, message);
@@ -475,7 +479,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void VerifyCombat(Creature creature, string message)
+        private void AssertCombat(Creature creature, string message)
         {
             Assert.That(creature.BaseAttackBonus, Is.Not.Negative, message);
 

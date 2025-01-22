@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net6.0</TargetFrameworks>
     <TargetFrameworks>net8.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Karl M. Speer</Authors>
@@ -14,9 +13,8 @@
     <RepositoryUrl>https://github.com/DnDGen/CreatureGen</RepositoryUrl>
     <PackageTags>creature generator dice dungeons dragons d20 dnd 3.5 gen</PackageTags>
     <PackageReleaseNotes>
-      0.1.0: Initial Release
-      0.2.0: Issue #35 - Creatures as characters
-      0.3.0: Random creatures, ability randomizer, livestock, multiple templates, .Net 6
+      1.0.0: Full release!
+	  * #15 - Demographics (Age, Height, Weight, Appearnace, etc.)
     </PackageReleaseNotes>
     <Version>0.3.0</Version>
   </PropertyGroup>
