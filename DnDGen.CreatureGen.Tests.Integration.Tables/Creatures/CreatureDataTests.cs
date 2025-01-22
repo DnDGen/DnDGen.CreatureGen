@@ -1,6 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System;
@@ -50,139 +49,66 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Angel_AstralDeva, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR14, 8, true, 12, 15, 2)]
         [TestCase(CreatureConstants.Angel_Planetar, SizeConstants.Large, 10, 10, ChallengeRatingConstants.CR16, null, true, 17, 19, 2)]
         [TestCase(CreatureConstants.Angel_Solar, SizeConstants.Large, 10, 10, ChallengeRatingConstants.CR23, null, true, 20, 21, 2)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 2)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 2)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 2)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 2)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 2)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 2)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 2)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Colossal, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Sheetlike, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Wooden, SizeConstants.Colossal, 30, 20, ChallengeRatingConstants.CR10, null, false, 0, 12, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Flexible, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Sheetlike, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Wooden, SizeConstants.Gargantuan, 20, 15, ChallengeRatingConstants.CR7, null, false, 0, 8, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_Flexible, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_Sheetlike, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_Wheels_Wooden, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_Wooden, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR5, null, false, 0, 6, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Large, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_Flexible, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_Sheetlike, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_Wheels_Wooden, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_Wooden, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 5, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_Flexible, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_MultipleLegs, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_Sheetlike, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_TwoLegs, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_Wheels_Wooden, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_Wooden, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Small, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_Flexible, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_MultipleLegs, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_Sheetlike, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_TwoLegs, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_Wheels_Wooden, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_Wooden, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_Flexible, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_MultipleLegs, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_Sheetlike, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_TwoLegs, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_Wooden, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0)]
         [TestCase(CreatureConstants.Ankheg, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 9, 0)]
         [TestCase(CreatureConstants.Annis, SizeConstants.Large, 10, 10, ChallengeRatingConstants.CR6, 0, true, 8, 10, 2)]
         [TestCase(CreatureConstants.Ant_Giant_Queen, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR2, null, false, 0, 9, 0)]
@@ -223,16 +149,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Beholder_Gauth, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR6, null, false, 8, 7, 0)]
         [TestCase(CreatureConstants.Belker, SizeConstants.Large, 10, 10, ChallengeRatingConstants.CR6, null, false, 0, 8, 0)]
         [TestCase(CreatureConstants.Bison, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.Bison_Goat, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.Bison_MilkCow, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.Bison_Ox, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
-        [TestCase(CreatureConstants.Bison_Sheep, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
-        [TestCase(CreatureConstants.Bison_Llama, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
         [TestCase(CreatureConstants.BlackPudding, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR7, null, false, 0, 0, 0)]
         [TestCase(CreatureConstants.BlackPudding_Elder, SizeConstants.Gargantuan, 20, 20, ChallengeRatingConstants.CR12, null, false, 0, 0, 0)]
         [TestCase(CreatureConstants.BlinkDog, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, 2, false, 8, 3, 0)]
         [TestCase(CreatureConstants.Boar, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 6, 0)]
-        [TestCase(CreatureConstants.Boar_Pig, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 6, 0)]
         [TestCase(CreatureConstants.Boar_Dire, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR4, null, false, 0, 6, 0)]
         [TestCase(CreatureConstants.Bodak, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR8, null, false, 0, 8, 2)]
         [TestCase(CreatureConstants.BombardierBeetle_Giant, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, null, false, 0, 6, 0)]
@@ -641,10 +561,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Rat_Dire, SizeConstants.Small, 5, 5, ChallengeRatingConstants.CR1_3rd, null, false, 0, 1, 0)]
         [TestCase(CreatureConstants.Rat_Swarm, SizeConstants.Tiny, 10, 0, ChallengeRatingConstants.CR2, null, false, 0, 0, 0)]
         [TestCase(CreatureConstants.Raven, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_6th, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.Raven_Chicken, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_6th, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.Raven_Turkey, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_6th, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.Raven_Peacock, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_6th, null, false, 0, 0, 0)]
-        [TestCase(CreatureConstants.Raven_Pheasant, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_6th, null, false, 0, 0, 0)]
         [TestCase(CreatureConstants.Ravid, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR5, null, false, 20, 15, 1)]
         [TestCase(CreatureConstants.RazorBoar, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR10, null, false, 0, 17, 0)]
         [TestCase(CreatureConstants.Remorhaz, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR7, null, false, 0, 11, 0)]
@@ -844,6 +760,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(actualSpace, Is.Positive, creature);
 
             //Valid Level Adjustment
+            var characters = CreatureConstants.GetAllCharacters();
+
             Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.LevelAdjustment), creature);
 
             if (!string.IsNullOrEmpty(data[DataIndexConstants.CreatureData.LevelAdjustment]))
@@ -851,11 +769,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 Assert.That(int.TryParse(data[DataIndexConstants.CreatureData.LevelAdjustment], out var actualLevelAdjustment), Is.True, creature);
                 Assert.That(levelAdjustment, Is.Not.Negative, creature);
                 Assert.That(actualLevelAdjustment, Is.Not.Negative, creature);
+                Assert.That(characters, Contains.Item(creature));
             }
             else
             {
                 Assert.That(levelAdjustment, Is.Null, creature);
                 Assert.That(data[DataIndexConstants.CreatureData.LevelAdjustment], Is.Empty, creature);
+                Assert.That(characters, Does.Not.Contains(creature), creature);
             }
 
             //Valid Can Use Equipment
@@ -882,59 +802,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(actualNumberOfHands, Is.Not.Negative, creature);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreaturesOfTypeCanUseEquipment(string creature)
+        [TestCase(CreatureConstants.Types.Animal, false)]
+        [TestCase(CreatureConstants.Types.Fey, true)]
+        [TestCase(CreatureConstants.Types.Giant, true)]
+        [TestCase(CreatureConstants.Types.Humanoid, true)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid, true)]
+        [TestCase(CreatureConstants.Types.Ooze, false)]
+        [TestCase(CreatureConstants.Types.Vermin, false)]
+        public void CreaturesOfTypeCanUseEquipment(string creatureType, bool useEquipment)
         {
-            var equipmentTypes = new[]
-            {
-                CreatureConstants.Types.Fey,
-                CreatureConstants.Types.Giant,
-                CreatureConstants.Types.Humanoid,
-                CreatureConstants.Types.MonstrousHumanoid,
-            };
-            var noEquipmentTypes = new[]
-            {
-                CreatureConstants.Types.Animal,
-                CreatureConstants.Types.Ooze,
-                CreatureConstants.Types.Vermin,
-            };
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
-            var creatureType = types.First();
+            var creatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, creatureType);
+            var templates = CreatureConstants.Templates.GetAll();
 
-            if (equipmentTypes.Contains(creatureType))
+            foreach (var creature in creatures.Except(templates))
             {
+                Assert.That(table, Contains.Key(creature));
+
                 var data = table[creature].ToArray();
-
                 Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.CanUseEquipment), creature);
-                Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString), creature);
-            }
-            else if (noEquipmentTypes.Contains(creatureType))
-            {
-                var data = table[creature].ToArray();
-
-                Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.CanUseEquipment), creature);
-                Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.FalseString), creature);
-            }
-            else
-            {
-                Assert.Pass($"{creature} may or may not use equipment based on type");
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void AllCreaturesWithLevelAdjustmentCanBeCharacters(string creature)
-        {
-            var data = table[creature].ToArray();
-            var characters = CreatureConstants.GetAllCharacters();
-
-            Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.LevelAdjustment), creature);
-            if (string.IsNullOrEmpty(data[DataIndexConstants.CreatureData.LevelAdjustment]))
-            {
-                Assert.That(characters, Does.Not.Contains(creature));
-            }
-            else
-            {
-                Assert.That(characters, Contains.Item(creature));
+                Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(useEquipment.ToString()), creature);
             }
         }
     }

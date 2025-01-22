@@ -23,15 +23,15 @@
   </collection>
   <collection>
     <name>Adult Arrowhawk</name>
-    <entry>Medium,5,5@2d4-1</entry>
+    <entry>Medium,5,5@1d6+1d2-1</entry>
   </collection>
   <collection>
     <name>Adult Tojanida</name>
-    <entry>Medium,5,5@2d4-1</entry>
+    <entry>Medium,5,5@1d6+1d2-1</entry>
   </collection>
   <collection>
     <name>Air Elemental, Elder</name>
-    <entry>Huge,15,15@1d20+2d3-2</entry>
+    <entry>Huge,15,15@(1d12-1)*2+1d2</entry>
   </collection>
   <collection>
     <name>Air Elemental, Greater</name>
@@ -43,7 +43,7 @@
   </collection>
   <collection>
     <name>Air Elemental, Large</name>
-    <entry>Large,10,10@2d4-1</entry>
+    <entry>Large,10,10@1d6+1d2-1</entry>
   </collection>
   <collection>
     <name>Air Elemental, Medium</name>
@@ -65,430 +65,220 @@
   <collection>
     <name>Androsphinx</name>
     <entry>Large,10,5@1d6</entry>
-    <entry>Huge,15,10@1d12+2d4+4</entry>
+    <entry>Huge,15,10@(1d6-1)*3+1d3+6</entry>
   </collection>
   <collection>
     <name>Angel, Astral Deva</name>
     <entry>Medium,5,5@1d6</entry>
-    <entry>Large,10,10@1d12+2d4+4</entry>
+    <entry>Large,10,10@(1d6-1)*3+1d3+6</entry>
   </collection>
   <collection>
     <name>Angel, Planetar</name>
-    <entry>Large,10,10@2d4-1</entry>
-    <entry>Huge,15,15@1d20+1d2+6</entry>
+    <entry>Large,10,10@1d6+1d2-1</entry>
+    <entry>Huge,15,15@(1d3-1)*7+1d6+1d2+6</entry>
   </collection>
   <collection>
     <name>Angel, Solar</name>
-    <entry>Large,10,10@2d6-1</entry>
-    <entry>Huge,15,15@1d20+1d12+1d3+9</entry>
+    <entry>Large,10,10@1d10+1d2-1</entry>
+    <entry>Huge,15,15@(1d3-1)*11+1d10+1d2+10</entry>
   </collection>
   <collection>
     <name>Animal</name>
     <entry>Animal@3</entry>
   </collection>
-  <collection>
-    <name>Animated Object, Anvil, Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Tiny</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Tiny</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Tiny</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Tiny</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Tiny</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Tiny</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Tiny</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Tiny</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Tiny</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Tiny</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Tiny</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Tiny</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Tiny</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Tiny</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Tiny</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Tiny</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Tiny</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Tiny</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Colossal</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Gargantuan</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Huge</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Large</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Medium</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Small</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Tiny</name>
-  </collection>
+	<collection>
+		<name>Animated Object, Colossal</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Flexible)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Sheetlike)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Two Legs)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Two Legs, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Wheels, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Flexible)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Sheetlike)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Two Legs)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Two Legs, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Wheels, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Flexible)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Sheetlike)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Two Legs)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Two Legs, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Wheels, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Flexible)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Sheetlike)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Two Legs)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Two Legs, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Wheels, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Flexible)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (More Than Two Legs)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (More Than Two Legs, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Sheetlike)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Two Legs)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Two Legs, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Wheels, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Small</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Flexible)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (More Than Two Legs)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (More Than Two Legs, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Sheetlike)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Two Legs)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Two Legs, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Wheels, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Flexible)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (More Than Two Legs)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (More Than Two Legs, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Sheetlike)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Two Legs)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Two Legs, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Wheels, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Wooden)</name>
+	</collection>
   <collection>
     <name>Ankheg</name>
     <entry>Large,10,5@1</entry>
-    <entry>Huge,15,10@2d3</entry>
+    <entry>Huge,15,10@1d4+1d2</entry>
   </collection>
   <collection>
     <name>Annis</name>
@@ -506,33 +296,33 @@
   <collection>
     <name>Assassin Vine</name>
     <entry>Huge,15,15@1d12</entry>
-    <entry>Gargantuan,20,20@3d6+10</entry>
-    <entry>Colossal,30,30@3d20+2d6+24</entry>
+    <entry>Gargantuan,20,20@(1d8-1)*2+1d2+12</entry>
+    <entry>Colossal,30,30@(1d4-1)*17+1d12+1d6+27</entry>
   </collection>
   <collection>
     <name>Athach</name>
-    <entry>Huge,15,15@1d12+1d3-1</entry>
+    <entry>Huge,15,15@(1d2-1)*7+1d6+1d2-1</entry>
   </collection>
   <collection>
     <name>Average Salamander</name>
-    <entry>Medium,5,5@2d3-1</entry>
+    <entry>Medium,5,5@1d4+1d2-1</entry>
   </collection>
   <collection>
     <name>Average Xorn</name>
-    <entry>Medium,5,5@2d4-1</entry>
+    <entry>Medium,5,5@1d6+1d2-1</entry>
   </collection>
   <collection>
     <name>Avoral</name>
-    <entry>Medium,5,5@2d4-1</entry>
-    <entry>Large,10,5@2d4+6</entry>
+    <entry>Medium,5,5@1d6+1d2-1</entry>
+    <entry>Large,10,5@1d6+1d2+6</entry>
   </collection>
   <collection>
     <name>Azer</name>
   </collection>
   <collection>
     <name>Babau</name>
-    <entry>Large,10,5@2d4-1</entry>
-    <entry>Huge,15,10@2d4+6</entry>
+    <entry>Large,10,5@1d6+1d2-1</entry>
+    <entry>Huge,15,10@1d6+1d2+6</entry>
   </collection>
   <collection>
     <name>Baboon</name>
@@ -545,12 +335,12 @@
   <collection>
     <name>Baleen Whale</name>
     <entry>Gargantuan,20,15@1d6</entry>
-    <entry>Colossal,30,20@1d12+2d4+4</entry>
+    <entry>Colossal,30,20@(1d6-1)*3+1d3+6</entry>
   </collection>
   <collection>
     <name>Balor</name>
     <entry>Large,10,10@1d10</entry>
-    <entry>Huge,15,15@1d20+2d6+8</entry>
+    <entry>Huge,15,15@(1d10-1)*3+1d3+10</entry>
   </collection>
   <collection>
     <name>Barbed Devil (Hamatula)</name>
@@ -575,52 +365,32 @@
   <collection>
     <name>Bearded Devil (Barbazu)</name>
     <entry>Medium,5,5@1d3</entry>
-    <entry>Large,10,10@1d8+1d2+2</entry>
+    <entry>Large,10,10@(1d3-1)*3+1d3+3</entry>
   </collection>
   <collection>
     <name>Bebilith</name>
     <entry>Huge,15,10@1d6</entry>
-    <entry>Gargantuan,20,15@1d12+2d4+4</entry>
+    <entry>Gargantuan,20,15@(1d6-1)*3+1d3+6</entry>
   </collection>
   <collection>
     <name>Behir</name>
     <entry>Huge,15,10@1d4</entry>
-    <entry>Gargantuan,20,15@1d12+1d3+3</entry>
+    <entry>Gargantuan,20,15@(1d2-1)*7+1d6+1d2+3</entry>
   </collection>
   <collection>
     <name>Beholder</name>
-    <entry>Large,10,5@2d3-1</entry>
+    <entry>Large,10,5@1d4+1d2-1</entry>
     <entry>Huge,15,10@1d12+1d6+4</entry>
   </collection>
   <collection>
     <name>Belker</name>
     <entry>Large,10,10@1d3</entry>
-    <entry>Huge,15,15@2d6+2</entry>
+    <entry>Huge,15,15@1d10+1d2+2</entry>
   </collection>
   <collection>
     <name>Bison</name>
     <entry>Large,10,5@1d2</entry>
   </collection>
-	<collection>
-		<name>Goat</name>
-		<entry>Medium,5,5@1d2</entry>
-	</collection>
-	<collection>
-		<name>Llama</name>
-		<entry>Large,10,5@1d2</entry>
-	</collection>
-	<collection>
-		<name>Milk Cow</name>
-		<entry>Large,10,5@1d2</entry>
-	</collection>
-	<collection>
-		<name>Ox</name>
-		<entry>Large,10,5@1d2</entry>
-	</collection>
-	<collection>
-		<name>Sheep</name>
-		<entry>Medium,5,5@1d2</entry>
-	</collection>
   <collection>
     <name>Black Bear</name>
     <entry>Medium,5,5@1d2</entry>
@@ -635,7 +405,7 @@
   </collection>
   <collection>
     <name>Black Dragon, Great Wyrm</name>
-    <entry>Gargantuan,20,15@3d20+1d6-3</entry>
+    <entry>Gargantuan,20,15@(1d3-1)*21+(1d3-1)*7+1d6+1d2-1</entry>
   </collection>
   <collection>
     <name>Black Dragon, Juvenile</name>
@@ -675,12 +445,12 @@
   </collection>
   <collection>
     <name>Black Pudding</name>
-    <entry>Huge,15,10@2d3-1</entry>
+    <entry>Huge,15,10@1d4+1d2-1</entry>
   </collection>
   <collection>
     <name>Blink Dog</name>
     <entry>Medium,5,5@1d3</entry>
-    <entry>Large,10,5@2d3+2</entry>
+    <entry>Large,10,5@1d4+1d2+2</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Adult</name>
@@ -739,14 +509,10 @@
     <name>Boar</name>
     <entry>Medium,5,5@1d2</entry>
   </collection>
-	<collection>
-		<name>Pig</name>
-		<entry>Medium,5,5@1d2</entry>
-	</collection>
   <collection>
     <name>Bodak</name>
     <entry>Medium,5,5@1d4</entry>
-    <entry>Large,10,10@1d12+1d3+3</entry>
+    <entry>Large,10,10@(1d2-1)*7+1d6+1d2+3</entry>
   </collection>
   <collection>
     <name>Bone Devil (Osyluth)</name>
@@ -768,7 +534,7 @@
   </collection>
   <collection>
     <name>Brass Dragon, Great Wyrm</name>
-    <entry>Gargantuan,20,15@3d20+1d6-3</entry>
+    <entry>Gargantuan,20,15@(1d3-1)*21+(1d3-1)*7+1d6+1d2-1</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Juvenile</name>
@@ -863,13 +629,13 @@
   </collection>
   <collection>
     <name>Bulette</name>
-    <entry>Huge,15,10@2d4-1</entry>
-    <entry>Gargantuan,20,15@2d6+6</entry>
+    <entry>Huge,15,10@1d6+1d2-1</entry>
+    <entry>Gargantuan,20,15@1d10+1d2+6</entry>
   </collection>
   <collection>
     <name>Cachalot Whale</name>
     <entry>Gargantuan,20,15@1d6</entry>
-    <entry>Colossal,30,20@1d12+2d4+4</entry>
+    <entry>Colossal,30,20@(1d6-1)*3+1d3+6</entry>
   </collection>
   <collection>
     <name>Camel, Bactrian (Two-Humped)</name>
@@ -907,27 +673,27 @@
   <collection>
     <name>Chimera (Black Dragon head)</name>
     <entry>Large,10,5@1d4</entry>
-    <entry>Huge,15,10@1d12+1d3+3</entry>
+    <entry>Huge,15,10@(1d2-1)*7+1d6+1d2+3</entry>
   </collection>
   <collection>
     <name>Chimera (Blue Dragon head)</name>
     <entry>Large,10,5@1d4</entry>
-    <entry>Huge,15,10@1d12+1d3+3</entry>
+    <entry>Huge,15,10@(1d2-1)*7+1d6+1d2+3</entry>
   </collection>
   <collection>
     <name>Chimera (Green Dragon head)</name>
     <entry>Large,10,5@1d4</entry>
-    <entry>Huge,15,10@1d12+1d3+3</entry>
+    <entry>Huge,15,10@(1d2-1)*7+1d6+1d2+3</entry>
   </collection>
   <collection>
     <name>Chimera (Red Dragon head)</name>
     <entry>Large,10,5@1d4</entry>
-    <entry>Huge,15,10@1d12+1d3+3</entry>
+    <entry>Huge,15,10@(1d2-1)*7+1d6+1d2+3</entry>
   </collection>
   <collection>
     <name>Chimera (White Dragon head)</name>
     <entry>Large,10,5@1d4</entry>
-    <entry>Huge,15,10@1d12+1d3+3</entry>
+    <entry>Huge,15,10@(1d2-1)*7+1d6+1d2+3</entry>
   </collection>
   <collection>
     <name>Choker</name>
@@ -936,18 +702,18 @@
   </collection>
   <collection>
     <name>Chuul</name>
-    <entry>Large,10,5@2d3-1</entry>
+    <entry>Large,10,5@1d4+1d2-1</entry>
     <entry>Huge,15,10@1d12+1d6+4</entry>
   </collection>
   <collection>
     <name>Clay Golem</name>
-    <entry>Large,10,10@2d4-1</entry>
-    <entry>Huge,15,15@2d8+6</entry>
+    <entry>Large,10,10@1d6+1d2-1</entry>
+    <entry>Huge,15,15@(1d3-1)*5+1d4+1d2+6</entry>
   </collection>
   <collection>
     <name>Cloaker</name>
     <entry>Large,10,10@1d3</entry>
-    <entry>Huge,15,15@1d8+1d2+2</entry>
+    <entry>Huge,15,15@(1d3-1)*3+1d3+3</entry>
   </collection>
   <collection>
     <name>Cloud Giant</name>
@@ -955,12 +721,12 @@
   <collection>
     <name>Cockatrice</name>
     <entry>Small,5,5@1d3</entry>
-    <entry>Medium,5,5@2d4+2</entry>
+    <entry>Medium,5,5@1d6+1d2+2</entry>
   </collection>
   <collection>
     <name>Constrictor Snake</name>
     <entry>Medium,5,5@1d2</entry>
-    <entry>Large,10,5@2d3+1</entry>
+    <entry>Large,10,5@1d4+1d2+1</entry>
   </collection>
   <collection>
     <name>Construct</name>
@@ -976,7 +742,7 @@
   </collection>
   <collection>
     <name>Copper Dragon, Great Wyrm</name>
-    <entry>Gargantuan,20,15@3d20+2d3-4</entry>
+    <entry>Gargantuan,20,15@(1d2-1)*31+1d20+1d12-1</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Juvenile</name>
@@ -1017,12 +783,12 @@
   <collection>
     <name>Couatl</name>
     <entry>Large,10,5@1d4</entry>
-    <entry>Huge,15,10@1d12+1d3+3</entry>
+    <entry>Huge,15,10@(1d2-1)*7+1d6+1d2+3</entry>
   </collection>
   <collection>
     <name>Criosphinx</name>
-    <entry>Large,10,5@2d3-1</entry>
-    <entry>Huge,15,10@2d8+4</entry>
+    <entry>Large,10,5@1d4+1d2-1</entry>
+    <entry>Huge,15,10@(1d3-1)*5+1d4+1d2+4</entry>
   </collection>
   <collection>
     <name>Crocodile</name>
@@ -1031,7 +797,7 @@
   <collection>
     <name>Dark Naga</name>
     <entry>Large,10,5@1d4</entry>
-    <entry>Huge,15,10@1d12+1d3+3</entry>
+    <entry>Huge,15,10@(1d2-1)*7+1d6+1d2+3</entry>
   </collection>
   <collection>
     <name>Darkmantle</name>
@@ -1039,8 +805,8 @@
   </collection>
   <collection>
     <name>Death Slaad</name>
-    <entry>Medium,5,5@2d4-1</entry>
-    <entry>Large,10,10@2d12+6</entry>
+    <entry>Medium,5,5@1d6+1d2-1</entry>
+    <entry>Large,10,10@1d20+1d4+6</entry>
   </collection>
   <collection>
     <name>Deep Dwarf</name>
@@ -1054,8 +820,8 @@
   </collection>
   <collection>
     <name>Delver</name>
-    <entry>Huge,15,10@2d8-1</entry>
-    <entry>Gargantuan,20,15@2d8+14</entry>
+    <entry>Huge,15,10@(1d3-1)*5+1d4+1d2-1</entry>
+    <entry>Gargantuan,20,15@(1d3-1)*5+1d4+1d2+14</entry>
   </collection>
   <collection>
     <name>Derro</name>
@@ -1097,8 +863,8 @@
   </collection>
   <collection>
     <name>Dire Boar</name>
-    <entry>Large,10,5@1d8+1d2-1</entry>
-    <entry>Huge,15,10@2d3+8</entry>
+    <entry>Large,10,5@(1d3-1)*3+1d3</entry>
+    <entry>Huge,15,10@1d4+1d2+8</entry>
   </collection>
   <collection>
     <name>Dire Lion</name>
@@ -1112,13 +878,13 @@
   </collection>
   <collection>
     <name>Dire Shark</name>
-    <entry>Huge,15,10@1d12+1d3-1</entry>
-    <entry>Gargantuan,20,15@1d20+1d3+13</entry>
+    <entry>Huge,15,10@(1d2-1)*7+1d6+1d2-1</entry>
+    <entry>Gargantuan,20,15@(1d2-1)*11+1d10+1d2+13</entry>
   </collection>
   <collection>
     <name>Dire Tiger</name>
-    <entry>Large,10,5@3d6-2</entry>
-    <entry>Huge,15,10@3d6+14</entry>
+    <entry>Large,10,5@(1d8-1)*2+1d2</entry>
+    <entry>Huge,15,10@(1d8-1)*2+1d2+16</entry>
   </collection>
   <collection>
     <name>Dire Weasel</name>
@@ -1136,7 +902,7 @@
   <collection>
     <name>Displacer Beast</name>
     <entry>Large,10,5@1d3</entry>
-    <entry>Huge,15,10@1d8+1d2+2</entry>
+    <entry>Huge,15,10@(1d3-1)*3+1d3+3</entry>
   </collection>
   <collection>
     <name>Displacer Beast Pack Lord</name>
@@ -1144,7 +910,7 @@
   <collection>
     <name>Djinni</name>
     <entry>Large,10,10@1d3</entry>
-    <entry>Huge,15,15@2d6+2</entry>
+    <entry>Huge,15,15@1d10+1d2+2</entry>
   </collection>
   <collection>
     <name>Dog</name>
@@ -1170,11 +936,11 @@
   <collection>
     <name>Dragonne</name>
     <entry>Large,10,5@1d3</entry>
-    <entry>Huge,15,10@2d8+2</entry>
+    <entry>Huge,15,10@(1d3-1)*5+1d4+1d2+2</entry>
   </collection>
   <collection>
     <name>Dread Wraith</name>
-    <entry>Large,10,10@3d6-2</entry>
+    <entry>Large,10,10@(1d8-1)*2+1d2</entry>
   </collection>
   <collection>
     <name>Dretch</name>
@@ -1203,7 +969,7 @@
   </collection>
   <collection>
     <name>Earth Elemental, Elder</name>
-    <entry>Huge,15,15@1d20+2d3-2</entry>
+    <entry>Huge,15,15@(1d12-1)*2+1d2</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Greater</name>
@@ -1215,7 +981,7 @@
   </collection>
   <collection>
     <name>Earth Elemental, Large</name>
-    <entry>Large,10,10@2d4-1</entry>
+    <entry>Large,10,10@1d6+1d2-1</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Medium</name>
@@ -1232,8 +998,8 @@
   </collection>
   <collection>
     <name>Efreeti</name>
-    <entry>Large,10,10@2d3-1</entry>
-    <entry>Huge,15,15@2d8+4</entry>
+    <entry>Large,10,10@1d4+1d2-1</entry>
+    <entry>Huge,15,15@(1d3-1)*5+1d4+1d2+4</entry>
   </collection>
   <collection>
     <name>Eight-Headed Cryohydra</name>
@@ -1251,19 +1017,19 @@
   </collection>
   <collection>
     <name>Elder Arrowhawk</name>
-    <entry>Large,10,5@1d8+1d2-1</entry>
+    <entry>Large,10,5@(1d3-1)*3+1d3</entry>
   </collection>
   <collection>
     <name>Elder Black Pudding</name>
   </collection>
   <collection>
     <name>Elder Tojanida</name>
-    <entry>Large,10,5@1d8+1d2-1</entry>
+    <entry>Large,10,5@(1d3-1)*3+1d3</entry>
   </collection>
   <collection>
     <name>Elder Xorn</name>
     <entry>Large,10,10@1d6</entry>
-    <entry>Huge,15,15@1d20+2d3+4</entry>
+    <entry>Huge,15,15@(1d12-1)*2+1d2+6</entry>
   </collection>
   <collection>
     <name>Elemental</name>
@@ -1271,7 +1037,7 @@
   </collection>
   <collection>
     <name>Elephant</name>
-    <entry>Huge,15,10@2d6-1</entry>
+    <entry>Huge,15,10@1d10+1d2-1</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Cryohydra</name>
@@ -1284,7 +1050,7 @@
   </collection>
   <collection>
     <name>Erinyes</name>
-    <entry>Medium,5,5@1d8+1d2-1</entry>
+    <entry>Medium,5,5@(1d3-1)*3+1d3</entry>
   </collection>
   <collection>
     <name>Ethereal Filcher</name>
@@ -1310,7 +1076,7 @@
   </collection>
   <collection>
     <name>Fire Elemental, Elder</name>
-    <entry>Huge,15,15@1d20+2d3-2</entry>
+    <entry>Huge,15,15@(1d12-1)*2+1d2</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Greater</name>
@@ -1322,7 +1088,7 @@
   </collection>
   <collection>
     <name>Fire Elemental, Large</name>
-    <entry>Large,10,10@2d4-1</entry>
+    <entry>Large,10,10@1d6+1d2-1</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Medium</name>
@@ -1355,8 +1121,8 @@
   </collection>
   <collection>
     <name>Flesh Golem</name>
-    <entry>Large,10,10@1d8+1d2-1</entry>
-    <entry>Huge,15,15@1d8+1d2+8</entry>
+    <entry>Large,10,10@(1d3-1)*3+1d3</entry>
+    <entry>Huge,15,15@(1d3-1)*3+1d3+9</entry>
   </collection>
   <collection>
     <name>Forest Gnome</name>
@@ -1390,8 +1156,8 @@
   </collection>
   <collection>
     <name>Frost Worm</name>
-    <entry>Huge,15,10@2d4-1</entry>
-    <entry>Gargantuan,20,15@1d20+1d2+6</entry>
+    <entry>Huge,15,10@1d6+1d2-1</entry>
+    <entry>Gargantuan,20,15@(1d3-1)*7+1d6+1d2+6</entry>
   </collection>
   <collection>
     <name>Gargoyle</name>
@@ -1410,8 +1176,8 @@
   </collection>
   <collection>
     <name>Ghaele</name>
-    <entry>Medium,5,5@2d3-1</entry>
-    <entry>Large,10,10@2d8+4</entry>
+    <entry>Medium,5,5@1d4+1d2-1</entry>
+    <entry>Large,10,10@(1d3-1)*5+1d4+1d2+4</entry>
   </collection>
   <collection>
     <name>Ghast</name>
@@ -1452,12 +1218,12 @@
   </collection>
   <collection>
     <name>Giant Constrictor Snake</name>
-    <entry>Huge,15,10@2d3-1</entry>
+    <entry>Huge,15,10@1d4+1d2-1</entry>
     <entry>Gargantuan,20,15@1d12+1d6+4</entry>
   </collection>
   <collection>
     <name>Giant Crocodile</name>
-    <entry>Huge,15,10@2d4-1</entry>
+    <entry>Huge,15,10@1d6+1d2-1</entry>
   </collection>
   <collection>
     <name>Giant Eagle</name>
@@ -1486,17 +1252,17 @@
   <collection>
     <name>Giant Squid</name>
     <entry>Huge,15,15@1d6</entry>
-    <entry>Gargantuan,20,20@1d12+2d4+4</entry>
+    <entry>Gargantuan,20,20@(1d6-1)*3+1d3+6</entry>
   </collection>
   <collection>
     <name>Giant Stag Beetle</name>
     <entry>Large,10,5@1d3</entry>
-    <entry>Huge,15,10@2d6+2</entry>
+    <entry>Huge,15,10@1d10+1d2+2</entry>
   </collection>
   <collection>
     <name>Giant Wasp</name>
     <entry>Large,10,5@1d3</entry>
-    <entry>Huge,15,10@2d4+2</entry>
+    <entry>Huge,15,10@1d6+1d2+2</entry>
   </collection>
   <collection>
     <name>Gibbering Mouther</name>
@@ -1505,7 +1271,7 @@
   <collection>
     <name>Girallon</name>
     <entry>Large,10,10@1d3</entry>
-    <entry>Huge,15,15@2d6+2</entry>
+    <entry>Huge,15,15@1d10+1d2+2</entry>
   </collection>
   <collection>
     <name>Githyanki</name>
@@ -1516,7 +1282,7 @@
   <collection>
     <name>Glabrezu</name>
     <entry>Huge,15,15@1d6</entry>
-    <entry>Gargantuan,20,20@1d12+2d4+4</entry>
+    <entry>Gargantuan,20,20@(1d6-1)*3+1d3+6</entry>
   </collection>
   <collection>
     <name>Gnoll</name>
@@ -1574,8 +1340,8 @@
   </collection>
   <collection>
     <name>Gorgon</name>
-    <entry>Large,10,5@2d4-1</entry>
-    <entry>Huge,15,10@1d8+1d2+6</entry>
+    <entry>Large,10,5@1d6+1d2-1</entry>
+    <entry>Huge,15,10@(1d3-1)*3+1d3+7</entry>
   </collection>
   <collection>
     <name>Gray Elf</name>
@@ -1587,17 +1353,17 @@
   </collection>
   <collection>
     <name>Gray Render</name>
-    <entry>Large,10,10@2d3-1</entry>
-    <entry>Huge,15,15@2d8+4</entry>
+    <entry>Large,10,10@1d4+1d2-1</entry>
+    <entry>Huge,15,15@(1d3-1)*5+1d4+1d2+4</entry>
   </collection>
   <collection>
     <name>Gray Slaad</name>
-    <entry>Medium,5,5@2d3-1</entry>
-    <entry>Large,10,10@2d8+4</entry>
+    <entry>Medium,5,5@1d4+1d2-1</entry>
+    <entry>Large,10,10@(1d3-1)*5+1d4+1d2+4</entry>
   </collection>
   <collection>
     <name>Greater Barghest</name>
-    <entry>Large,10,5@1d8+1d2-1</entry>
+    <entry>Large,10,5@(1d3-1)*3+1d3</entry>
   </collection>
   <collection>
     <name>Greater Shadow</name>
@@ -1615,7 +1381,7 @@
   </collection>
   <collection>
     <name>Green Dragon, Great Wyrm</name>
-    <entry>Gargantuan,20,15@3d20+2d3-4</entry>
+    <entry>Gargantuan,20,15@(1d2-1)*31+1d20+1d12-1</entry>
   </collection>
   <collection>
     <name>Green Dragon, Juvenile</name>
@@ -1669,7 +1435,7 @@
   <collection>
     <name>Griffon</name>
     <entry>Large,10,5@1d3</entry>
-    <entry>Huge,15,10@2d6+2</entry>
+    <entry>Huge,15,10@1d10+1d2+2</entry>
   </collection>
   <collection>
     <name>Grig</name>
@@ -1684,7 +1450,7 @@
   </collection>
   <collection>
     <name>Guardian Naga</name>
-    <entry>Large,10,5@2d3-1</entry>
+    <entry>Large,10,5@1d4+1d2-1</entry>
     <entry>Huge,15,10@1d12+1d6+4</entry>
   </collection>
   <collection>
@@ -1718,19 +1484,19 @@
   <collection>
     <name>Hellcat (Bezekira)</name>
     <entry>Large,10,5@1d2</entry>
-    <entry>Huge,15,10@1d12+1d3+1</entry>
+    <entry>Huge,15,10@(1d2-1)*7+1d6+1d2+1</entry>
   </collection>
   <collection>
     <name>Hellwasp Swarm</name>
   </collection>
   <collection>
     <name>Hezrou</name>
-    <entry>Large,10,10@2d3-1</entry>
-    <entry>Huge,15,15@2d8+4</entry>
+    <entry>Large,10,10@1d4+1d2-1</entry>
+    <entry>Huge,15,15@(1d3-1)*5+1d4+1d2+4</entry>
   </collection>
   <collection>
     <name>Hieracosphinx</name>
-    <entry>Large,10,5@2d3-1</entry>
+    <entry>Large,10,5@1d4+1d2-1</entry>
     <entry>Huge,15,10@1d12+1d2+4</entry>
   </collection>
   <collection>
@@ -1756,18 +1522,18 @@
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)</name>
-    <entry>Large,10,10@2d3-1</entry>
+    <entry>Large,10,10@1d4+1d2-1</entry>
     <entry>Huge,15,15@1d20+1d6+4</entry>
   </collection>
   <collection>
     <name>Hound Archon</name>
     <entry>Medium,5,5@1d3</entry>
-    <entry>Large,10,10@1d8+1d2+2</entry>
+    <entry>Large,10,10@(1d3-1)*3+1d3+3</entry>
   </collection>
   <collection>
     <name>Howler</name>
     <entry>Large,10,5@1d3</entry>
-    <entry>Huge,15,10@1d8+1d2+2</entry>
+    <entry>Huge,15,10@(1d3-1)*3+1d3+3</entry>
   </collection>
   <collection>
     <name>Human</name>
@@ -1783,8 +1549,8 @@
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
-    <entry>Large,10,10@1d12+1d3-1</entry>
-    <entry>Huge,15,15@1d12+1d3+13</entry>
+    <entry>Large,10,10@(1d2-1)*7+1d6+1d2-1</entry>
+    <entry>Huge,15,15@(1d2-1)*7+1d6+1d2+13</entry>
   </collection>
   <collection>
     <name>Ice Mephit</name>
@@ -1803,12 +1569,12 @@
   <collection>
     <name>Iron Golem</name>
     <entry>Large,10,10@1d6</entry>
-    <entry>Huge,15,15@1d20+2d6+4</entry>
+    <entry>Huge,15,15@(1d10-1)*3+1d3+6</entry>
   </collection>
   <collection>
     <name>Janni</name>
     <entry>Medium,5,5@1d3</entry>
-    <entry>Large,10,10@1d8+1d2+2</entry>
+    <entry>Large,10,10@(1d3-1)*3+1d3+3</entry>
   </collection>
   <collection>
     <name>Juvenile Arrowhawk</name>
@@ -1828,13 +1594,13 @@
   </collection>
   <collection>
     <name>Kolyarut</name>
-    <entry>Medium,5,5@1d8+1d2-1</entry>
+    <entry>Medium,5,5@(1d3-1)*3+1d3</entry>
     <entry>Large,10,10@1d12+1d6+8</entry>
   </collection>
   <collection>
     <name>Kraken</name>
     <entry>Gargantuan,20,15@1d12</entry>
-    <entry>Colossal,30,20@3d10+10</entry>
+    <entry>Colossal,30,20@(1d4-1)*7+1d6+1d2+11</entry>
   </collection>
   <collection>
     <name>Krenshar</name>
@@ -1851,12 +1617,12 @@
   <collection>
     <name>Lamia</name>
     <entry>Large,10,5@1d4</entry>
-    <entry>Huge,15,10@1d12+1d3+3</entry>
+    <entry>Huge,15,10@(1d2-1)*7+1d6+1d2+3</entry>
   </collection>
   <collection>
     <name>Lammasu</name>
     <entry>Large,10,5@1d3</entry>
-    <entry>Huge,15,10@2d6+2</entry>
+    <entry>Huge,15,10@1d10+1d2+2</entry>
   </collection>
   <collection>
     <name>Lantern Archon</name>
@@ -1869,7 +1635,7 @@
   <collection>
     <name>Leonal</name>
     <entry>Medium,5,5@1d6</entry>
-    <entry>Large,10,10@1d12+2d4+4</entry>
+    <entry>Large,10,10@(1d6-1)*3+1d3+6</entry>
   </collection>
   <collection>
     <name>Leopard</name>
@@ -1887,7 +1653,7 @@
   <collection>
     <name>Lillend</name>
     <entry>Large,10,10@1d3</entry>
-    <entry>Huge,15,15@2d6+2</entry>
+    <entry>Huge,15,15@1d10+1d2+2</entry>
   </collection>
   <collection>
     <name>Lion</name>
@@ -1922,7 +1688,7 @@
   <collection>
     <name>Malenti</name>
     <entry>Medium,5,5@1d3</entry>
-    <entry>Large,10,10@2d3+2</entry>
+    <entry>Large,10,10@1d4+1d2+2</entry>
   </collection>
   <collection>
     <name>Manta Ray</name>
@@ -1936,7 +1702,7 @@
   <collection>
     <name>Marilith</name>
     <entry>Large,10,10@1d4</entry>
-    <entry>Huge,15,15@3d10+2</entry>
+    <entry>Huge,15,15@(1d4-1)*7+1d6+1d2+3</entry>
   </collection>
   <collection>
     <name>Marut</name>
@@ -1960,7 +1726,7 @@
   <collection>
     <name>Mimic</name>
     <entry>Large,10,10@1d3</entry>
-    <entry>Huge,15,15@2d6+2</entry>
+    <entry>Huge,15,15@1d10+1d2+2</entry>
   </collection>
   <collection>
     <name>Mind Flayer (Illithid)</name>
@@ -1974,8 +1740,8 @@
   </collection>
   <collection>
     <name>Mohrg</name>
-    <entry>Medium,5,5@2d4-1</entry>
-    <entry>Large,10,10@2d4+6</entry>
+    <entry>Medium,5,5@1d6+1d2-1</entry>
+    <entry>Large,10,10@1d6+1d2+6</entry>
   </collection>
   <collection>
     <name>Monkey</name>
@@ -1987,15 +1753,15 @@
   </collection>
   <collection>
     <name>Monstrous Centipede, Colossal</name>
-    <entry>Colossal,30,20@1d20+2d3-2</entry>
+    <entry>Colossal,30,20@(1d12-1)*2+1d2</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Gargantuan</name>
-    <entry>Gargantuan,20,15@2d6-1</entry>
+    <entry>Gargantuan,20,15@1d10+1d2-1</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Huge</name>
-    <entry>Huge,15,10@2d3-1</entry>
+    <entry>Huge,15,10@1d4+1d2-1</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Large</name>
@@ -2020,11 +1786,11 @@
   </collection>
   <collection>
     <name>Monstrous Scorpion, Gargantuan</name>
-    <entry>Gargantuan,20,15@2d10-1</entry>
+    <entry>Gargantuan,20,15@1d12+1d8-1</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Huge</name>
-    <entry>Huge,15,10@1d8+1d2-1</entry>
+    <entry>Huge,15,10@(1d3-1)*3+1d3</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Large</name>
@@ -2042,15 +1808,15 @@
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Colossal</name>
-    <entry>Colossal,40,30@3d10-2</entry>
+    <entry>Colossal,40,30@(1d4-1)*7+1d6+1d2-1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Gargantuan</name>
-    <entry>Gargantuan,20,15@2d8-1</entry>
+    <entry>Gargantuan,20,15@(1d3-1)*5+1d4+1d2-1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Huge</name>
-    <entry>Huge,15,10@2d4-1</entry>
+    <entry>Huge,15,10@1d6+1d2-1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Large</name>
@@ -2068,15 +1834,15 @@
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Colossal</name>
-    <entry>Colossal,40,30@3d10-2</entry>
+    <entry>Colossal,40,30@(1d4-1)*7+1d6+1d2-1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
-    <entry>Gargantuan,20,15@2d8-1</entry>
+    <entry>Gargantuan,20,15@(1d3-1)*5+1d4+1d2-1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Huge</name>
-    <entry>Huge,15,10@2d4-1</entry>
+    <entry>Huge,15,10@1d6+1d2-1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Large</name>
@@ -2106,12 +1872,12 @@
   <collection>
     <name>Nalfeshnee</name>
     <entry>Huge,15,15@1d6</entry>
-    <entry>Gargantuan,20,20@1d20+1d3+5</entry>
+    <entry>Gargantuan,20,20@(1d2-1)*11+1d10+1d2+5</entry>
   </collection>
   <collection>
     <name>Nessian Warhound</name>
-    <entry>Large,10,10@2d3-1</entry>
-    <entry>Huge,15,15@2d4+4</entry>
+    <entry>Large,10,10@1d4+1d2-1</entry>
+    <entry>Huge,15,15@1d6+1d2+4</entry>
   </collection>
   <collection>
     <name>Night Hag</name>
@@ -2132,12 +1898,12 @@
   <collection>
     <name>Nightwalker</name>
     <entry>Huge,15,15@1d10</entry>
-    <entry>Gargantuan,20,20@2d6+9</entry>
+    <entry>Gargantuan,20,20@1d10+1d2+9</entry>
   </collection>
   <collection>
     <name>Nightwing</name>
     <entry>Huge,15,10@1d8</entry>
-    <entry>Gargantuan,20,15@1d8+1d2+7</entry>
+    <entry>Gargantuan,20,15@(1d3-1)*3+1d3+8</entry>
   </collection>
   <collection>
     <name>Nine-Headed Cryohydra</name>
@@ -2154,13 +1920,13 @@
   </collection>
   <collection>
     <name>Noble Djinni</name>
-    <entry>Large,10,10@2d3-1</entry>
-    <entry>Huge,15,15@2d8+4</entry>
+    <entry>Large,10,10@1d4+1d2-1</entry>
+    <entry>Huge,15,15@(1d3-1)*5+1d4+1d2+4</entry>
   </collection>
   <collection>
     <name>Noble Salamander</name>
     <entry>Large,10,10@1d6</entry>
-    <entry>Huge,15,15@1d20+2d3+4</entry>
+    <entry>Huge,15,15@(1d12-1)*2+1d2+6</entry>
   </collection>
   <collection>
     <name>Nymph</name>
@@ -2169,7 +1935,7 @@
   <collection>
     <name>Ochre Jelly</name>
     <entry>Large,10,5@1d3</entry>
-    <entry>Huge,15,10@1d8+1d2+2</entry>
+    <entry>Huge,15,10@(1d3-1)*3+1d3+3</entry>
   </collection>
   <collection>
     <name>Octopus</name>
@@ -2196,7 +1962,7 @@
   <collection>
     <name>Orca Whale</name>
     <entry>Huge,15,10@1d4</entry>
-    <entry>Gargantuan,20,15@1d12+1d3+3</entry>
+    <entry>Gargantuan,20,15@(1d2-1)*7+1d6+1d2+3</entry>
   </collection>
   <collection>
     <name>Otyugh</name>
@@ -2214,7 +1980,7 @@
   <collection>
     <name>Owlbear</name>
     <entry>Large,10,5@1d3</entry>
-    <entry>Huge,15,10@2d4+2</entry>
+    <entry>Huge,15,10@1d6+1d2+2</entry>
   </collection>
   <collection>
     <name>Pegasus</name>
@@ -2228,17 +1994,17 @@
   <collection>
     <name>Phase Spider</name>
     <entry>Large,10,5@1d3</entry>
-    <entry>Huge,15,10@2d4+2</entry>
+    <entry>Huge,15,10@1d6+1d2+2</entry>
   </collection>
   <collection>
     <name>Phasm</name>
     <entry>Huge,15,15@1d6</entry>
-    <entry>Gargantuan,20,20@1d20+2d3+4</entry>
+    <entry>Gargantuan,20,20@(1d12-1)*2+1d2+6</entry>
   </collection>
   <collection>
     <name>Pit Fiend</name>
-    <entry>Large,10,10@1d12+2d4-2</entry>
-    <entry>Huge,15,15@1d12+2d4+16</entry>
+    <entry>Large,10,10@(1d6-1)*3+1d3</entry>
+    <entry>Huge,15,15@(1d6-1)*3+1d3+18</entry>
   </collection>
   <collection>
     <name>Pixie</name>
@@ -2269,8 +2035,8 @@
   </collection>
   <collection>
     <name>Purple Worm</name>
-    <entry>Gargantuan,20,15@3d6-2</entry>
-    <entry>Colossal,30,20@3d6+14</entry>
+    <entry>Gargantuan,20,15@(1d8-1)*2+1d2</entry>
+    <entry>Colossal,30,20@(1d8-1)*2+1d2+16</entry>
   </collection>
   <collection>
     <name>Quasit</name>
@@ -2293,27 +2059,15 @@
   <collection>
     <name>Raven</name>
   </collection>
-	<collection>
-		<name>Chicken</name>
-	</collection>
-	<collection>
-		<name>Turkey</name>
-	</collection>
-	<collection>
-		<name>Peacock</name>
-	</collection>
-	<collection>
-		<name>Pheasant</name>
-	</collection>
   <collection>
     <name>Ravid</name>
     <entry>Medium,5,5@1</entry>
-    <entry>Large,10,5@2d3</entry>
+    <entry>Large,10,5@1d4+1d2</entry>
   </collection>
   <collection>
     <name>Razor Boar</name>
-    <entry>Large,10,5@2d8-1</entry>
-    <entry>Huge,15,10@2d8+14</entry>
+    <entry>Large,10,5@(1d3-1)*5+1d4+1d2-1</entry>
+    <entry>Huge,15,10@(1d3-1)*5+1d4+1d2+14</entry>
   </collection>
   <collection>
     <name>Red Dragon, Adult</name>
@@ -2325,7 +2079,7 @@
   </collection>
   <collection>
     <name>Red Dragon, Great Wyrm</name>
-    <entry>Colossal,30,20@3d20+1d3-3</entry>
+    <entry>Colossal,30,20@(1d20-1)*3+1d3</entry>
   </collection>
   <collection>
     <name>Red Dragon, Juvenile</name>
@@ -2366,17 +2120,17 @@
   <collection>
     <name>Red Slaad</name>
     <entry>Large,10,10@1d3</entry>
-    <entry>Huge,15,15@2d6+2</entry>
+    <entry>Huge,15,15@1d10+1d2+2</entry>
   </collection>
   <collection>
     <name>Remorhaz</name>
-    <entry>Huge,15,10@2d4-1</entry>
-    <entry>Gargantuan,20,15@2d4+6</entry>
+    <entry>Huge,15,10@1d6+1d2-1</entry>
+    <entry>Gargantuan,20,15@1d6+1d2+6</entry>
   </collection>
   <collection>
     <name>Retriever</name>
-    <entry>Huge,15,10@2d3-1</entry>
-    <entry>Gargantuan,20,15@2d8+4</entry>
+    <entry>Huge,15,10@1d4+1d2-1</entry>
+    <entry>Gargantuan,20,15@(1d3-1)*5+1d4+1d2+4</entry>
   </collection>
   <collection>
     <name>Rhinoceras</name>
@@ -2385,31 +2139,31 @@
   </collection>
   <collection>
     <name>Roc</name>
-    <entry>Gargantuan,20,15@1d12+1d3-1</entry>
-    <entry>Colossal,30,20@1d20+1d3+13</entry>
+    <entry>Gargantuan,20,15@(1d2-1)*7+1d6+1d2-1</entry>
+    <entry>Colossal,30,20@(1d2-1)*11+1d10+1d2+13</entry>
   </collection>
   <collection>
     <name>Rock Gnome</name>
   </collection>
   <collection>
     <name>Roper</name>
-    <entry>Large,10,10@2d3-1</entry>
-    <entry>Huge,15,15@2d8+4</entry>
+    <entry>Large,10,10@1d4+1d2-1</entry>
+    <entry>Huge,15,15@(1d3-1)*5+1d4+1d2+4</entry>
   </collection>
   <collection>
     <name>Rust Monster</name>
     <entry>Medium,5,5@1d3</entry>
-    <entry>Large,10,5@2d4+2</entry>
+    <entry>Large,10,5@1d6+1d2+2</entry>
   </collection>
   <collection>
     <name>Sahuagin</name>
     <entry>Medium,5,5@1d3</entry>
-    <entry>Large,10,10@2d3+2</entry>
+    <entry>Large,10,10@1d4+1d2+2</entry>
   </collection>
   <collection>
     <name>Sahuagin Mutant</name>
     <entry>Medium,5,5@1d3</entry>
-    <entry>Large,10,10@2d3+2</entry>
+    <entry>Large,10,10@1d4+1d2+2</entry>
   </collection>
   <collection>
     <name>Salt Mephit</name>
@@ -2418,11 +2172,11 @@
   </collection>
   <collection>
     <name>Satyr</name>
-    <entry>Medium,5,5@2d3-1</entry>
+    <entry>Medium,5,5@1d4+1d2-1</entry>
   </collection>
   <collection>
     <name>Satyr with pipes</name>
-    <entry>Medium,5,5@2d3-1</entry>
+    <entry>Medium,5,5@1d4+1d2-1</entry>
   </collection>
   <collection>
     <name>Scorpionfolk</name>
@@ -2433,7 +2187,7 @@
   <collection>
     <name>Sea Cat</name>
     <entry>Large,10,5@1d3</entry>
-    <entry>Huge,15,10@1d8+1d2+2</entry>
+    <entry>Huge,15,10@(1d3-1)*3+1d3+3</entry>
   </collection>
   <collection>
     <name>Sea Hag</name>
@@ -2463,7 +2217,7 @@
   </collection>
   <collection>
     <name>Shark, Huge</name>
-    <entry>Huge,15,10@2d4-1</entry>
+    <entry>Huge,15,10@1d6+1d2-1</entry>
   </collection>
   <collection>
     <name>Shark, Large</name>
@@ -2475,8 +2229,8 @@
   </collection>
   <collection>
     <name>Shield Guardian</name>
-    <entry>Large,10,10@1d8+1d2-1</entry>
-    <entry>Huge,15,15@1d20+1d2+8</entry>
+    <entry>Large,10,10@(1d3-1)*3+1d3</entry>
+    <entry>Huge,15,15@(1d3-1)*7+1d6+1d2+8</entry>
   </collection>
   <collection>
     <name>Shocker Lizard</name>
@@ -2497,7 +2251,7 @@
   </collection>
   <collection>
     <name>Silver Dragon, Great Wyrm</name>
-    <entry>Colossal,30,20@3d20+1d3-3</entry>
+    <entry>Colossal,30,20@(1d20-1)*3+1d3</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Juvenile</name>
@@ -2551,7 +2305,7 @@
   </collection>
   <collection>
     <name>Spectre</name>
-    <entry>Medium,5,5@2d4-1</entry>
+    <entry>Medium,5,5@1d6+1d2-1</entry>
   </collection>
   <collection>
     <name>Spider Eater</name>
@@ -2563,12 +2317,12 @@
   <collection>
     <name>Spirit Naga</name>
     <entry>Large,10,5@1d4</entry>
-    <entry>Huge,15,10@1d12+1d3+3</entry>
+    <entry>Huge,15,10@(1d2-1)*7+1d6+1d2+3</entry>
   </collection>
   <collection>
     <name>Squid</name>
     <entry>Medium,5,5@1d3</entry>
-    <entry>Large,10,5@2d3+2</entry>
+    <entry>Large,10,5@1d4+1d2+2</entry>
   </collection>
   <collection>
     <name>Steam Mephit</name>
@@ -2586,8 +2340,8 @@
   </collection>
   <collection>
     <name>Stone Golem</name>
-    <entry>Large,10,10@2d4-1</entry>
-    <entry>Huge,15,15@1d20+1d2+6</entry>
+    <entry>Large,10,10@1d6+1d2-1</entry>
+    <entry>Huge,15,15@(1d3-1)*7+1d6+1d2+6</entry>
   </collection>
   <collection>
     <name>Storm Giant</name>
@@ -2604,7 +2358,7 @@
   </collection>
   <collection>
     <name>Tarrasque</name>
-    <entry>Colossal,30,20@2d20+1d12+1d3-3</entry>
+    <entry>Colossal,30,20@(1d4-1)*13+1d12+1d2-1</entry>
   </collection>
   <collection>
     <name>Ten-Headed Cryohydra</name>
@@ -2617,8 +2371,8 @@
   </collection>
   <collection>
     <name>Tendriculos</name>
-    <entry>Huge,15,15@2d4-1</entry>
-    <entry>Gargantuan,20,20@2d6+6</entry>
+    <entry>Huge,15,15@1d6+1d2-1</entry>
+    <entry>Gargantuan,20,20@1d10+1d2+6</entry>
   </collection>
   <collection>
     <name>Thoqqua</name>
@@ -2635,20 +2389,20 @@
   <collection>
     <name>Titan</name>
     <entry>Huge,15,15@1d10</entry>
-    <entry>Gargantuan,20,20@1d20+2d6+8</entry>
+    <entry>Gargantuan,20,20@(1d10-1)*3+1d3+10</entry>
   </collection>
   <collection>
     <name>Toad</name>
   </collection>
   <collection>
     <name>Treant</name>
-    <entry>Huge,15,15@1d8+1d2-1</entry>
-    <entry>Gargantuan,20,20@2d3+8</entry>
+    <entry>Huge,15,15@(1d3-1)*3+1d3</entry>
+    <entry>Gargantuan,20,20@1d4+1d2+8</entry>
   </collection>
   <collection>
     <name>Triceratops</name>
-    <entry>Huge,15,10@3d6-2</entry>
-    <entry>Gargantuan,20,15@3d6+14</entry>
+    <entry>Huge,15,10@(1d8-1)*2+1d2</entry>
+    <entry>Gargantuan,20,15@(1d8-1)*2+1d2+16</entry>
   </collection>
   <collection>
     <name>Triton</name>
@@ -2666,7 +2420,7 @@
   <collection>
     <name>Trumpet Archon</name>
     <entry>Medium,5,5@1d6</entry>
-    <entry>Large,10,10@1d12+2d4+4</entry>
+    <entry>Large,10,10@(1d6-1)*3+1d3+6</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Cryohydra</name>
@@ -2679,8 +2433,8 @@
   </collection>
   <collection>
     <name>Tyrannosaurus</name>
-    <entry>Huge,15,10@1d12+2d4-2</entry>
-    <entry>Gargantuan,20,15@1d12+2d4+16</entry>
+    <entry>Huge,15,10@(1d6-1)*3+1d3</entry>
+    <entry>Gargantuan,20,15@(1d6-1)*3+1d3+18</entry>
   </collection>
   <collection>
     <name>Umber Hulk</name>
@@ -2729,14 +2483,14 @@
   <collection>
     <name>Vrock</name>
     <entry>Large,10,10@1d4</entry>
-    <entry>Huge,15,15@3d6+2</entry>
+    <entry>Huge,15,15@(1d8-1)*2+1d2+4</entry>
   </collection>
   <collection>
     <name>Warpony</name>
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
-    <entry>Huge,15,15@1d20+2d3-2</entry>
+    <entry>Huge,15,15@(1d12-1)*2+1d2</entry>
   </collection>
   <collection>
     <name>Water Elemental, Greater</name>
@@ -2748,7 +2502,7 @@
   </collection>
   <collection>
     <name>Water Elemental, Large</name>
-    <entry>Large,10,10@2d4-1</entry>
+    <entry>Large,10,10@1d6+1d2-1</entry>
   </collection>
   <collection>
     <name>Water Elemental, Medium</name>
@@ -2766,7 +2520,7 @@
   <collection>
     <name>Water Naga</name>
     <entry>Large,10,5@1d3</entry>
-    <entry>Huge,15,10@2d6+2</entry>
+    <entry>Huge,15,10@1d10+1d2+2</entry>
   </collection>
   <collection>
     <name>Weasel</name>
@@ -2781,7 +2535,7 @@
   </collection>
   <collection>
     <name>White Dragon, Great Wyrm</name>
-    <entry>Gargantuan,20,15@3d20+2d4-4</entry>
+    <entry>Gargantuan,20,15@(1d8-1)*8+1d8</entry>
   </collection>
   <collection>
     <name>White Dragon, Juvenile</name>
@@ -2828,12 +2582,12 @@
   </collection>
   <collection>
     <name>Will-O'-Wisp</name>
-    <entry>Small,5,5@1d8+1d2-1</entry>
+    <entry>Small,5,5@(1d3-1)*3+1d3</entry>
   </collection>
   <collection>
     <name>Winter Wolf</name>
     <entry>Large,10,5@1d3</entry>
-    <entry>Huge,15,10@1d8+1d2+2</entry>
+    <entry>Huge,15,10@(1d3-1)*3+1d3+3</entry>
   </collection>
   <collection>
     <name>Wolf</name>
@@ -2854,17 +2608,17 @@
   </collection>
   <collection>
     <name>Wraith</name>
-    <entry>Medium,5,5@2d3-1</entry>
+    <entry>Medium,5,5@1d4+1d2-1</entry>
   </collection>
   <collection>
     <name>Wyvern</name>
     <entry>Huge,15,10@1d3</entry>
-    <entry>Gargantuan,20,15@2d6+2</entry>
+    <entry>Gargantuan,20,15@1d10+1d2+2</entry>
   </collection>
   <collection>
     <name>Xill</name>
     <entry>Medium,5,5@1d3</entry>
-    <entry>Large,10,10@2d4+2</entry>
+    <entry>Large,10,10@1d6+1d2+2</entry>
   </collection>
   <collection>
     <name>Yeth Hound</name>

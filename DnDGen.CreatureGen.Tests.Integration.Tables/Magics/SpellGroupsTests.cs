@@ -103,7 +103,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         [TestCase(SpellConstants.Domains.Water)]
         public void SpellGroupMatchesSpellLevels(string group)
         {
-            var spellLevels = collectionMapper.Map(TableNameConstants.TypeAndAmount.SpellLevels);
+            var spellLevels = collectionMapper.Map(Config.Name, TableNameConstants.TypeAndAmount.SpellLevels);
             Assert.That(spellLevels, Contains.Key(group));
 
             var spells = spellLevels[group]
@@ -116,7 +116,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreatureWithoutCasterHasNoProhibitedSpells(string creature)
         {
-            var casters = collectionMapper.Map(TableNameConstants.TypeAndAmount.Casters);
+            var casters = collectionMapper.Map(Config.Name, TableNameConstants.TypeAndAmount.Casters);
             Assert.That(casters, Contains.Key(creature));
 
             if (!casters[creature].Any())

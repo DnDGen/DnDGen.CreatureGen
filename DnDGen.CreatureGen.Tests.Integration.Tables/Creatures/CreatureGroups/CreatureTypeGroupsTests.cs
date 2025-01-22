@@ -434,13 +434,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Bat_Swarm,
                 CreatureConstants.Groups.Bear,
                 CreatureConstants.Bison,
-                CreatureConstants.Bison_Goat,
-                CreatureConstants.Bison_Llama,
-                CreatureConstants.Bison_MilkCow,
-                CreatureConstants.Bison_Ox,
-                CreatureConstants.Bison_Sheep,
                 CreatureConstants.Boar,
-                CreatureConstants.Boar_Pig,
                 CreatureConstants.Boar_Dire,
                 CreatureConstants.Camel_Bactrian,
                 CreatureConstants.Camel_Dromedary,
@@ -475,10 +469,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Rat_Dire,
                 CreatureConstants.Rat_Swarm,
                 CreatureConstants.Raven,
-                CreatureConstants.Raven_Chicken,
-                CreatureConstants.Raven_Turkey,
-                CreatureConstants.Raven_Pheasant,
-                CreatureConstants.Raven_Peacock,
                 CreatureConstants.Rhinoceras,
                 CreatureConstants.Roc,
                 CreatureConstants.Snake_Constrictor,
@@ -677,21 +667,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreatureTypeMatchesCreatureGroupType(string creature)
         {
-            var types = collectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
+            var types = collectionMapper.Map(Config.Name, TableNameConstants.Collection.CreatureTypes);
             Assert.That(types.Keys, Contains.Item(creature));
             Assert.That(types[creature], Is.Not.Empty);
 
             var type = types[creature].First();
             Assert.That(table.Keys, Contains.Item(type), "Table keys");
 
-            var creaturesOfType = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
+            var creaturesOfType = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, type);
             Assert.That(creaturesOfType, Contains.Item(creature), type);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreatureSubtypesMatchCreatureGroupSubtypes(string creature)
         {
-            var types = collectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
+            var types = collectionMapper.Map(Config.Name, TableNameConstants.Collection.CreatureTypes);
             Assert.That(types.Keys, Contains.Item(creature));
             Assert.That(types[creature], Is.Not.Empty);
 
@@ -702,7 +692,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             foreach (var subtype in subtypes)
             {
                 Assert.That(table.Keys, Contains.Item(subtype), "Table keys");
-                var creaturesOfSubtype = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, subtype);
+                var creaturesOfSubtype = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, subtype);
 
                 Assert.That(creaturesOfSubtype, Contains.Item(creature), subtype);
             }

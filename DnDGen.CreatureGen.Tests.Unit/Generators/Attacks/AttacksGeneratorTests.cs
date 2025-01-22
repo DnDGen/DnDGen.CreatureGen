@@ -119,7 +119,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         public void GenerateBaseAttackBonus(int hitDiceQuantity, string bonusQuality, int bonus)
         {
             hitPoints.HitDice.Add(new HitDice { Quantity = hitDiceQuantity });
-            mockCollectionSelector.Setup(s => s.FindCollectionOf(TableNameConstants.Collection.CreatureGroups, creatureType.Name,
+            mockCollectionSelector.Setup(s => s.FindCollectionOf(Config.Name, TableNameConstants.Collection.CreatureGroups, creatureType.Name,
                 GroupConstants.GoodBaseAttack,
                 GroupConstants.AverageBaseAttack,
                 GroupConstants.PoorBaseAttack)).Returns(bonusQuality);
@@ -201,7 +201,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 90210);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 90210, "gender");
             Assert.That(generatedAttacks, Is.Not.Empty);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()));
             Assert.That(generatedAttacks.Count, Is.EqualTo(1));
@@ -225,6 +225,133 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(attack.Frequency.Quantity, Is.EqualTo(42));
             Assert.That(attack.Frequency.TimePeriod, Is.EqualTo("time period"));
 
+            Assert.That(attack.Save, Is.Null);
+        }
+
+        [Test]
+        public void GenerateAttack_IgnoreAttacksThatDoNotMeetRequirements()
+        {
+            var attacks = new List<AttackSelection>();
+            attacks.Add(new AttackSelection()
+            {
+                Name = "good attack",
+                Damages = new List<Damage>
+                {
+                    new Damage { Roll = "my roll", Type = "my damage type", Condition = "my condition" },
+                    new Damage { Roll = "my other roll", Type = "my other damage type", Condition = "my other condition" },
+                },
+                DamageEffect = "damage effect",
+                AttackType = "attack type",
+                FrequencyQuantity = 42,
+                FrequencyTimePeriod = "time period",
+            });
+            attacks.Add(new AttackSelection()
+            {
+                Name = "gendered attack",
+                Damages = new List<Damage>
+                {
+                    new Damage { Roll = "my gendered roll", Type = "my gendered damage type", Condition = "my gendered condition" },
+                    new Damage { Roll = "my other gendered roll", Type = "my other gendered damage type", Condition = "my other gendered condition" },
+                },
+                DamageEffect = "gendered damage effect",
+                AttackType = "gendered attack type",
+                FrequencyQuantity = 600,
+                FrequencyTimePeriod = "gendered time period",
+                RequiredGender = "required gender"
+            });
+
+            mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
+
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 90210, "gender");
+            Assert.That(generatedAttacks, Is.Not.Empty);
+            Assert.That(generatedAttacks.Count, Is.EqualTo(1));
+
+            var attack = generatedAttacks.Single();
+            Assert.That(attack.Name, Is.EqualTo("good attack"));
+            Assert.That(attack.Damages, Has.Count.EqualTo(2));
+            Assert.That(attack.Damages[0].Roll, Is.EqualTo("my roll"));
+            Assert.That(attack.Damages[0].Type, Is.EqualTo("my damage type"));
+            Assert.That(attack.Damages[0].Condition, Is.EqualTo("my condition"));
+            Assert.That(attack.Damages[1].Roll, Is.EqualTo("my other roll"));
+            Assert.That(attack.Damages[1].Type, Is.EqualTo("my other damage type"));
+            Assert.That(attack.Damages[1].Condition, Is.EqualTo("my other condition"));
+            Assert.That(attack.DamageEffect, Is.EqualTo("damage effect"));
+            Assert.That(attack.AttackType, Is.EqualTo("attack type"));
+            Assert.That(attack.Frequency, Is.Not.Null);
+            Assert.That(attack.Frequency.Quantity, Is.EqualTo(42));
+            Assert.That(attack.Frequency.TimePeriod, Is.EqualTo("time period"));
+
+            Assert.That(attack.Save, Is.Null);
+        }
+
+        [Test]
+        public void GenerateAttack_AddAttacksThatMeetRequirements()
+        {
+            var attacks = new List<AttackSelection>();
+            attacks.Add(new AttackSelection()
+            {
+                Name = "good attack",
+                Damages = new List<Damage>
+                {
+                    new Damage { Roll = "my roll", Type = "my damage type", Condition = "my condition" },
+                    new Damage { Roll = "my other roll", Type = "my other damage type", Condition = "my other condition" },
+                },
+                DamageEffect = "damage effect",
+                AttackType = "attack type",
+                FrequencyQuantity = 42,
+                FrequencyTimePeriod = "time period",
+            });
+            attacks.Add(new AttackSelection()
+            {
+                Name = "gendered attack",
+                Damages = new List<Damage>
+                {
+                    new Damage { Roll = "my gendered roll", Type = "my gendered damage type", Condition = "my gendered condition" },
+                    new Damage { Roll = "my other gendered roll", Type = "my other gendered damage type", Condition = "my other gendered condition" },
+                },
+                DamageEffect = "gendered damage effect",
+                AttackType = "gendered attack type",
+                FrequencyQuantity = 600,
+                FrequencyTimePeriod = "gendered time period",
+                RequiredGender = "required gender"
+            });
+
+            mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
+
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 90210, "required gender");
+            Assert.That(generatedAttacks, Is.Not.Empty);
+            Assert.That(generatedAttacks.Count, Is.EqualTo(2));
+
+            var attack = generatedAttacks.First();
+            Assert.That(attack.Name, Is.EqualTo("good attack"));
+            Assert.That(attack.Damages, Has.Count.EqualTo(2));
+            Assert.That(attack.Damages[0].Roll, Is.EqualTo("my roll"));
+            Assert.That(attack.Damages[0].Type, Is.EqualTo("my damage type"));
+            Assert.That(attack.Damages[0].Condition, Is.EqualTo("my condition"));
+            Assert.That(attack.Damages[1].Roll, Is.EqualTo("my other roll"));
+            Assert.That(attack.Damages[1].Type, Is.EqualTo("my other damage type"));
+            Assert.That(attack.Damages[1].Condition, Is.EqualTo("my other condition"));
+            Assert.That(attack.DamageEffect, Is.EqualTo("damage effect"));
+            Assert.That(attack.AttackType, Is.EqualTo("attack type"));
+            Assert.That(attack.Frequency, Is.Not.Null);
+            Assert.That(attack.Frequency.Quantity, Is.EqualTo(42));
+            Assert.That(attack.Frequency.TimePeriod, Is.EqualTo("time period"));
+            Assert.That(attack.Save, Is.Null);
+
+            attack = generatedAttacks.Last();
+            Assert.That(attack.Name, Is.EqualTo("gendered attack"));
+            Assert.That(attack.Damages, Has.Count.EqualTo(2));
+            Assert.That(attack.Damages[0].Roll, Is.EqualTo("my gendered roll"));
+            Assert.That(attack.Damages[0].Type, Is.EqualTo("my gendered damage type"));
+            Assert.That(attack.Damages[0].Condition, Is.EqualTo("my gendered condition"));
+            Assert.That(attack.Damages[1].Roll, Is.EqualTo("my other gendered roll"));
+            Assert.That(attack.Damages[1].Type, Is.EqualTo("my other gendered damage type"));
+            Assert.That(attack.Damages[1].Condition, Is.EqualTo("my other gendered condition"));
+            Assert.That(attack.DamageEffect, Is.EqualTo("gendered damage effect"));
+            Assert.That(attack.AttackType, Is.EqualTo("gendered attack type"));
+            Assert.That(attack.Frequency, Is.Not.Null);
+            Assert.That(attack.Frequency.Quantity, Is.EqualTo(600));
+            Assert.That(attack.Frequency.TimePeriod, Is.EqualTo("gendered time period"));
             Assert.That(attack.Save, Is.Null);
         }
 
@@ -302,7 +429,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             Assert.That(generatedAttacks, Is.Not.Empty);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()));
             Assert.That(generatedAttacks.Count, Is.EqualTo(1));
@@ -358,7 +485,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             Assert.That(generatedAttacks, Is.Not.Empty);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()));
             Assert.That(generatedAttacks.Count, Is.EqualTo(1));
@@ -414,7 +541,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             Assert.That(generatedAttacks, Is.Not.Empty);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()));
             Assert.That(generatedAttacks.Count, Is.EqualTo(1));
@@ -667,7 +794,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, hitDice);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, hitDice, "gender");
             Assert.That(generatedAttacks, Is.Not.Empty);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()));
             Assert.That(generatedAttacks.Count, Is.EqualTo(1));
@@ -702,7 +829,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             Assert.That(generatedAttacks, Is.Not.Empty);
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()));
             Assert.That(generatedAttacks.Count, Is.EqualTo(2));
@@ -723,7 +850,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             Assert.That(generatedAttacks, Is.Empty);
         }
 
@@ -735,7 +862,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.BaseAttackBonus, Is.EqualTo(9266));
@@ -749,7 +876,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
@@ -763,7 +890,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
@@ -779,7 +906,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Dexterity]));
@@ -794,7 +921,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
             mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(90210);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.SizeModifier, Is.EqualTo(90210));
@@ -809,7 +936,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
             mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(90210);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             var generatedAttack = generatedAttacks.Single();
 
             Assert.That(generatedAttack.BaseAttackBonus, Is.EqualTo(9266));
@@ -990,7 +1117,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
@@ -1021,7 +1148,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
@@ -1051,7 +1178,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
@@ -1114,7 +1241,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attackSelections);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             Assert.That(generatedAttacks.Count, Is.EqualTo(attackSelections.Count()).And.EqualTo(4));
 
             var attacks = generatedAttacks.ToArray();
@@ -1165,7 +1292,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attackSelections);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             Assert.That(generatedAttacks.Count, Is.EqualTo(attackSelections.Count()).And.EqualTo(1));
 
             var attacks = generatedAttacks.ToArray();
@@ -1207,7 +1334,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attackSelections);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             Assert.That(generatedAttacks.Count, Is.EqualTo(attackSelections.Count()).And.EqualTo(2));
 
             var attacks = generatedAttacks.ToArray();
@@ -1251,7 +1378,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attackSelections);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             Assert.That(generatedAttacks.Count, Is.EqualTo(attackSelections.Count()).And.EqualTo(2));
 
             var attacks = generatedAttacks.ToArray();
@@ -1284,7 +1411,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
@@ -1321,7 +1448,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
-            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600, "gender");
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();

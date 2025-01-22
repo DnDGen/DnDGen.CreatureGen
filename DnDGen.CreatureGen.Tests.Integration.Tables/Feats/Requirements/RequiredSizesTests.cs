@@ -7,6 +7,7 @@ using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 {
@@ -51,6 +52,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             AssertCollection(name, sizes);
         }
 
+        [Test]
+        public void NoSizeRequirements()
+        {
+            var names = GetNames();
+            var monsters = RequiredSizesTestData.GetMonsterSizeRequirementNames();
+            var specialQualities = RequiredSizesTestData.GetSpecialQualitiesSizeRequirementNames();
+
+            var emptyRequirements = names.Except(monsters).Except(specialQualities);
+
+            foreach (var requirement in emptyRequirements)
+            {
+                var empty = new string[0];
+                AssertCollection(requirement, empty);
+            }
+        }
+
         public class RequiredSizesTestData
         {
             public static IEnumerable Feats
@@ -58,12 +75,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 get
                 {
                     var testCases = new Dictionary<string, string[]>();
-                    var feats = FeatConstants.All();
-
-                    foreach (var feat in feats)
-                    {
-                        testCases[feat] = new string[0];
-                    }
 
                     foreach (var testCase in testCases)
                     {
@@ -77,12 +88,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 get
                 {
                     var testCases = new Dictionary<string, string[]>();
-                    var feats = FeatConstants.Metamagic.All();
-
-                    foreach (var feat in feats)
-                    {
-                        testCases[feat] = new string[0];
-                    }
 
                     foreach (var testCase in testCases)
                     {
@@ -96,7 +101,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 get
                 {
                     var testCases = new Dictionary<string, string[]>();
-                    var feats = FeatConstants.Monster.All();
+                    var feats = GetMonsterSizeRequirementNames();
 
                     foreach (var feat in feats)
                     {
@@ -113,17 +118,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 }
             }
 
+            public static IEnumerable<string> GetMonsterSizeRequirementNames()
+            {
+                return new[]
+                {
+                    FeatConstants.Monster.AwesomeBlow,
+                    FeatConstants.Monster.Snatch,
+                };
+            }
+
             public static IEnumerable Craft
             {
                 get
                 {
                     var testCases = new Dictionary<string, string[]>();
-                    var feats = FeatConstants.MagicItemCreation.All();
-
-                    foreach (var feat in feats)
-                    {
-                        testCases[feat] = new string[0];
-                    }
 
                     foreach (var testCase in testCases)
                     {
@@ -138,7 +146,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 {
                     var testCases = new Dictionary<string, string[]>();
                     var helper = new SpecialQualityHelper();
-                    var keys = SpecialQualityTestData.GetRequirementKeys();
+                    var keys = GetSpecialQualitiesSizeRequirementNames();
 
                     foreach (var key in keys)
                     {
@@ -160,6 +168,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                         yield return new TestCaseData(testCase.Key, testCase.Value);
                     }
                 }
+            }
+
+            public static IEnumerable<string> GetSpecialQualitiesSizeRequirementNames()
+            {
+                var helper = new SpecialQualityHelper();
+
+                return new[]
+                {
+                    helper.BuildKeyFromSections(CreatureConstants.Giant_Cloud, FeatConstants.SpecialQualities.OversizedWeapon, SizeConstants.Gargantuan, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.OversizedWeapon, SizeConstants.Gargantuan, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.OversizedWeapon, SizeConstants.Colossal, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Types.Subtypes.Swarm, FeatConstants.SpecialQualities.HalfDamage, AttributeConstants.DamageTypes.Piercing, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Types.Subtypes.Swarm, FeatConstants.SpecialQualities.HalfDamage, AttributeConstants.DamageTypes.Slashing, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Types.Subtypes.Swarm, FeatConstants.SpecialQualities.Immunity, "Weapon damage", 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Types.Subtypes.Swarm, FeatConstants.SpecialQualities.Vulnerability, "High winds", 0.ToString()),
+                };
             }
         }
     }

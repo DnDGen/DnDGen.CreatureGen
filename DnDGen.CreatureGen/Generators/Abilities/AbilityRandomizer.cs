@@ -1,7 +1,5 @@
 ﻿using DnDGen.CreatureGen.Abilities;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DnDGen.CreatureGen.Generators.Abilities
 {
@@ -15,8 +13,8 @@ namespace DnDGen.CreatureGen.Generators.Abilities
         public AbilityRandomizer()
         {
             Roll = AbilityConstants.RandomizerRolls.Default;
-            SetRolls = new Dictionary<string, int>();
-            AbilityAdvancements = new Dictionary<string, int>();
+            SetRolls = [];
+            AbilityAdvancements = [];
         }
     }
 }

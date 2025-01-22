@@ -5,7 +5,6 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Helpers;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
@@ -41,6 +40,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             indices[DataIndexConstants.AttackData.SaveIndex] = "Save";
             indices[DataIndexConstants.AttackData.DamageBonusMultiplierIndex] = "Damage Bonus Multiplier";
             indices[DataIndexConstants.AttackData.SaveDcBonusIndex] = "Save DC Bonus Multiplier";
+            indices[DataIndexConstants.AttackData.RequiredGenderIndex] = "Required Gender";
         }
 
         [SetUp]
@@ -93,6 +93,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertDiseaseAttacksHaveCorrectDamageTypes(entries);
 
             AssertData(creature, entries);
+
+            var templates = CreatureConstants.Templates.GetAll();
+            if (templates.Contains(creature))
+            {
+                Assert.Pass("The following assertions only apply to creatures, not templates");
+            }
+
+            CreatureWithSpellLikeAbilityAttack_HasSpellLikeAbilitySpecialQuality(creature);
+            CreatureWithPsionicAttack_HasPsionicSpecialQuality(creature);
+            CreatureWithSpellsAttack_HasMagicSpells(creature);
+            CreatureWithUnnaturalAttack_CanUseEquipment(creature);
         }
 
         private void AssertCreatureEffectDoesNotHaveDamage(List<string[]> entries)
@@ -266,8 +277,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreatureWithSpellLikeAbilityAttack_HasSpellLikeAbilitySpecialQuality(string creature)
+        private void CreatureWithSpellLikeAbilityAttack_HasSpellLikeAbilitySpecialQuality(string creature)
         {
             Assert.That(table, Contains.Key(creature));
 
@@ -292,7 +302,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
         private CreatureType GetCreatureType(string creatureName)
         {
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creatureName);
+            var types = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, creatureName);
             return new CreatureType(types);
         }
 
@@ -313,8 +323,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(keys, Is.Unique);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreatureWithPsionicAttack_HasPsionicSpecialQuality(string creature)
+        private void CreatureWithPsionicAttack_HasPsionicSpecialQuality(string creature)
         {
             Assert.That(table, Contains.Key(creature));
 
@@ -334,8 +343,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(hasPsionicAttack, Is.EqualTo(hasPsionicSpecialQuality));
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreatureWithSpellsAttack_HasMagicSpells(string creature)
+        private void CreatureWithSpellsAttack_HasMagicSpells(string creature)
         {
             Assert.That(table, Contains.Key(creature));
 
@@ -349,7 +357,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 .Select(helper.ParseEntry)
                 .Any(d => d[DataIndexConstants.AttackData.NameIndex] == "Spells");
 
-            var caster = collectionSelector.SelectFrom(TableNameConstants.TypeAndAmount.Casters, creature);
+            var caster = collectionSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, creature);
 
             if (hasSpellsAttack)
             {
@@ -361,8 +369,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreatureWithUnnaturalAttack_CanUseEquipment(string creature)
+        private void CreatureWithUnnaturalAttack_CanUseEquipment(string creature)
         {
             Assert.That(table, Contains.Key(creature));
 

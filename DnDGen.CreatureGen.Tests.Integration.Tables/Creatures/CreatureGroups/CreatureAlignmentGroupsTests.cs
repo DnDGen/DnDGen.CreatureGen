@@ -38,7 +38,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         {
             var allCreatures = CreatureConstants.GetAll();
             var entries = new List<string>();
-            var allAlignmentGroups = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
+            var allAlignmentGroups = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
 
             foreach (var creature in allCreatures)
             {

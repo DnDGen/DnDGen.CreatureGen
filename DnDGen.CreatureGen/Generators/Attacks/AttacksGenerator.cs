@@ -31,7 +31,11 @@ namespace DnDGen.CreatureGen.Generators.Attacks
             if (hitPoints.RoundedHitDiceQuantity == 0)
                 return 0;
 
-            var baseAttackQuality = collectionSelector.FindCollectionOf(TableNameConstants.Collection.CreatureGroups, creatureType.Name, GroupConstants.GoodBaseAttack, GroupConstants.AverageBaseAttack, GroupConstants.PoorBaseAttack);
+            var baseAttackQuality = collectionSelector.FindCollectionOf(
+                Config.Name,
+                TableNameConstants.Collection.CreatureGroups,
+                creatureType.Name,
+                GroupConstants.GoodBaseAttack, GroupConstants.AverageBaseAttack, GroupConstants.PoorBaseAttack);
 
             switch (baseAttackQuality)
             {
@@ -67,7 +71,14 @@ namespace DnDGen.CreatureGen.Generators.Attacks
             return baseAttackBonus + strength.Modifier + sizeModifier + creatureModifier;
         }
 
-        public IEnumerable<Attack> GenerateAttacks(string creatureName, string originalSize, string size, int baseAttackBonus, Dictionary<string, Ability> abilities, int hitDiceQuantity)
+        public IEnumerable<Attack> GenerateAttacks(
+            string creatureName,
+            string originalSize,
+            string size,
+            int baseAttackBonus,
+            Dictionary<string, Ability> abilities,
+            int hitDiceQuantity,
+            string gender)
         {
             var attackSelections = attackSelector.Select(creatureName, originalSize, size);
             var sizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, size);
@@ -75,6 +86,9 @@ namespace DnDGen.CreatureGen.Generators.Attacks
 
             foreach (var attackSelection in attackSelections)
             {
+                if (!attackSelection.RequirementsMet(gender))
+                    continue;
+
                 var attack = new Attack();
                 attacks.Add(attack);
 
@@ -88,17 +102,20 @@ namespace DnDGen.CreatureGen.Generators.Attacks
                 attack.IsSpecial = attackSelection.IsSpecial;
                 attack.AttackType = attackSelection.AttackType;
 
-                attack.Frequency = new Frequency();
-                attack.Frequency.Quantity = attackSelection.FrequencyQuantity;
-                attack.Frequency.TimePeriod = attackSelection.FrequencyTimePeriod;
+                attack.Frequency = new Frequency
+                {
+                    Quantity = attackSelection.FrequencyQuantity,
+                    TimePeriod = attackSelection.FrequencyTimePeriod
+                };
 
                 if (!string.IsNullOrEmpty(attackSelection.SaveAbility) || !string.IsNullOrEmpty(attackSelection.Save))
                 {
-                    attack.Save = new SaveDieCheck();
-                    attack.Save.BaseValue = 10 + attackSelection.SaveDcBonus;
-                    attack.Save.Save = attackSelection.Save;
+                    attack.Save = new SaveDieCheck
+                    {
+                        BaseValue = 10 + attackSelection.SaveDcBonus,
+                        Save = attackSelection.Save
+                    };
 
-                    //if (attack.IsNatural)
                     if (attack.IsNatural && !string.IsNullOrEmpty(attackSelection.SaveAbility))
                     {
                         attack.Save.BaseAbility = abilities[attackSelection.SaveAbility];

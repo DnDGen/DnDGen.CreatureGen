@@ -215,7 +215,7 @@ namespace DnDGen.CreatureGen.Generators.Items
 
             //Generate weapons and attacks
             var unnaturalAttacks = attacks.Where(a => !a.IsNatural);
-            var weaponProficiencyFeatNames = collectionSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency);
+            var weaponProficiencyFeatNames = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency);
             var weaponProficiencyFeats = feats.Where(f => weaponProficiencyFeatNames.Contains(f.Name));
 
             var weapons = new List<Weapon>();
@@ -272,7 +272,7 @@ namespace DnDGen.CreatureGen.Generators.Items
 
                         weapons.Add(weapon);
 
-                        attack.Name = weapon.Description;
+                        attack.Name = weapon.Summary;
                         attack.Damages.AddRange(weapon.Damages);
 
                         //Is not proficient with the weapon
@@ -389,7 +389,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                         }
 
                         //Set up the attack
-                        attack.Name = weapon.Description;
+                        attack.Name = weapon.Summary;
                         attack.Damages.AddRange(weapon.Damages);
 
                         if (!proficientRangedWeaponNames.Common.Any(weapon.NameMatches)
@@ -437,7 +437,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                 equipment.Weapons = weapons;
             }
 
-            var armorProficiencyFeatNames = collectionSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.ArmorProficiency);
+            var armorProficiencyFeatNames = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.ArmorProficiency);
             var armorProficiencyFeats = feats.Where(f => armorProficiencyFeatNames.Contains(f.Name));
 
             if (armorProficiencyFeats.Any())
@@ -674,7 +674,7 @@ namespace DnDGen.CreatureGen.Generators.Items
         private IEnumerable<Item> GetPredeterminedItems(string creatureName, string size, string weaponSize)
         {
             var setItems = new List<Item>();
-            var setTreasure = collectionSelector.SelectFrom(TableNameConstants.Collection.PredeterminedItems, creatureName);
+            var setTreasure = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, creatureName);
             var setItemTemplates = GetTemplates(setTreasure, size, weaponSize);
 
             foreach (var template in setItemTemplates)

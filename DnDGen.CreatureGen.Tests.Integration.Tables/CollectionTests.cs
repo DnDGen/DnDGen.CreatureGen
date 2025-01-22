@@ -19,14 +19,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
         {
             collectionMapper = GetNewInstanceOf<CollectionMapper>();
 
-            table = collectionMapper.Map(tableName);
-            indices = new Dictionary<int, string>();
+            table = collectionMapper.Map(Config.Name, tableName);
+            indices = [];
         }
 
         protected void AssertCollectionNames(IEnumerable<string> names)
         {
-            AssertUniqueCollection(names);
-            AssertCollection(table.Keys, names);
+            AssertUniqueCollection(names, "Collection Names");
+            AssertCollection(table.Keys, names, "Table Keys");
         }
 
         protected IEnumerable<string> GetCollection(string name)
@@ -34,13 +34,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
             return table[name];
         }
 
-        protected void AssertUniqueCollection(IEnumerable<string> collection)
+        protected void AssertUniqueCollection(IEnumerable<string> collection, string message)
         {
-            Assert.That(collection, Is.Unique);
+            Assert.That(collection, Is.Unique, message);
         }
 
         protected virtual void PopulateIndices(IEnumerable<string> collection)
         {
+            indices = [];
+
             for (var i = 0; i < collection.Count(); i++)
                 indices[i] = string.Empty;
         }
@@ -48,12 +50,32 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
         public void AssertCollection(string name, params string[] collection)
         {
             Assert.That(table, Contains.Key(name));
-            AssertCollection(table[name], collection);
+            AssertCollection(table[name], collection, name);
         }
 
-        private void AssertCollection(IEnumerable<string> source, IEnumerable<string> expected)
+        private void AssertCollection(IEnumerable<string> source, IEnumerable<string> expected, string message)
         {
-            Assert.That(source.OrderBy(s => s), Is.EquivalentTo(expected.OrderBy(e => e)));
+            Assert.That(source.OrderBy(s => s), Is.EquivalentTo(expected.OrderBy(e => e)), message);
+        }
+
+        public void AssertWeightedCollection(string name, params string[] collection)
+        {
+            Assert.That(table, Contains.Key(name));
+            AssertWeightedCollection(table[name], collection, name);
+        }
+
+        private void AssertWeightedCollection(IEnumerable<string> source, IEnumerable<string> expected, string message)
+        {
+            var distinctSource = source.Distinct();
+            var distinctExpected = expected.Distinct();
+            AssertCollection(distinctSource, distinctExpected, $"{message}: Distinct appearances");
+
+            foreach (var sourceItem in distinctSource)
+            {
+                var sourceCount = source.Count(s => s == sourceItem);
+                var expectedCount = expected.Count(s => s == sourceItem);
+                Assert.That(sourceCount, Is.EqualTo(expectedCount), $"{message}: {sourceItem}");
+            }
         }
 
         public void AssertOrderedCollection(string name, params string[] collection)
@@ -64,12 +86,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
 
         protected void AssertOrderedCollection(IEnumerable<string> actual, IEnumerable<string> expected, string metaKey = "")
         {
-            PopulateIndices(actual);
             var expectedArray = expected.ToArray();
             var actualArray = actual.ToArray();
 
-            Assert.That(actualArray, Has.Length.EqualTo(expectedArray.Length)
-                .And.Length.EqualTo(indices.Count));
+            var shorter = actualArray.Length < expectedArray.Length ? actual : expected;
+            PopulateIndices(shorter);
 
             foreach (var index in indices.Keys.OrderBy(k => k))
             {
@@ -86,13 +107,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
 
                 Assert.That(actualItem, Is.EqualTo(expectedItem), message);
             }
+
+            Assert.That(expectedArray.Except(actualArray), Is.Empty, $"Add to XML: Key {metaKey}");
+            Assert.That(actualArray.Except(expectedArray), Is.Empty, $"Remove from XML: Key {metaKey}");
         }
 
         public virtual void AssertDistinctCollection(string name, params string[] collection)
         {
-            AssertUniqueCollection(collection);
+            AssertUniqueCollection(collection, $"{name}: Expected");
             AssertCollection(name, collection);
-            AssertUniqueCollection(table[name]);
+            AssertUniqueCollection(table[name], $"{name}: Actual");
         }
     }
 }

@@ -329,139 +329,69 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Achaierai, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil)]
         [TestCase(CreatureConstants.Allip, AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil)]
         [TestCase(CreatureConstants.Androsphinx, AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticGood)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Flexible, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Sheetlike, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Flexible, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Sheetlike, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_Flexible, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_Sheetlike, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_Wheels_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Large, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_Flexible, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_Sheetlike, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_Wheels_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_Flexible, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_MultipleLegs, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_Sheetlike, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_TwoLegs, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_Wheels_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Small, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_Flexible, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_MultipleLegs, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_Sheetlike, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_TwoLegs, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_Wheels_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_Flexible, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_MultipleLegs, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_Sheetlike, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_TwoLegs, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_Wooden, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Ankheg, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Annis, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Ant_Giant_Queen, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
@@ -1055,16 +985,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.YuanTi_Pureblood, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Zelekhut, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral)]
-        [TestCase(CreatureConstants.Bison_Goat, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.Bison_MilkCow, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.Bison_Ox, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.Bison_Sheep, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.Bison_Llama, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.Raven_Chicken, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.Raven_Turkey, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.Raven_Peacock, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.Raven_Pheasant, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
-        [TestCase(CreatureConstants.Boar_Pig, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Templates.CelestialCreature, AlignmentConstants.Modifiers.Any + AlignmentConstants.Good)]
         [TestCase(CreatureConstants.Templates.FiendishCreature, AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil)]
         [TestCase(CreatureConstants.Templates.Ghost, AlignmentConstants.Modifiers.Any)]
@@ -1081,16 +1001,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Templates.HalfDragon_White, CreatureConstants.Dragon_White_Adult)]
         [TestCase(CreatureConstants.Templates.HalfFiend, AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil)]
         [TestCase(CreatureConstants.Templates.Lich, AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Afflicted, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Natural, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Afflicted, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Natural, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Natural, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted, AlignmentConstants.Modifiers.Any)]
@@ -1131,7 +1061,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         public void UsuallyAlignmentHasMajority(string alignment)
         {
             var group = AlignmentConstants.Modifiers.Usually + alignment;
-            var weightedAlignments = collectionSelector.ExplodeAndPreserveDuplicates(tableName, group);
+            var weightedAlignments = collectionSelector.ExplodeAndPreserveDuplicates(Config.Name, tableName, group);
 
             var alignmentCount = weightedAlignments.Count(a => a == alignment);
             var halfCount = weightedAlignments.Count() / 2;
@@ -1150,7 +1080,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         public void OftenAlignmentIsMode(string alignment)
         {
             var group = AlignmentConstants.Modifiers.Often + alignment;
-            var weightedAlignments = collectionSelector.ExplodeAndPreserveDuplicates(tableName, group);
+            var weightedAlignments = collectionSelector.ExplodeAndPreserveDuplicates(Config.Name, tableName, group);
 
             var modeCount = weightedAlignments
                 .GroupBy(a => a)
@@ -1168,11 +1098,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Types.Vermin)]
         public void AllCreaturesOfTypeAreTrueNeutral(string creatureType)
         {
-            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var creatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, creatureType);
 
             foreach (var creature in creatures)
             {
-                var alignments = collectionSelector.ExplodeAndPreserveDuplicates(tableName, creature);
+                var alignments = collectionSelector.ExplodeAndPreserveDuplicates(Config.Name, tableName, creature);
                 Assert.That(alignments, Has.Count.EqualTo(1).And.Contains(AlignmentConstants.TrueNeutral), creature);
             }
         }
@@ -1181,7 +1111,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void AllCreaturesHaveValidExplodedAlignment(string creature)
         {
-            var alignments = collectionSelector.Explode(tableName, creature);
+            var alignments = collectionSelector.Explode(Config.Name, tableName, creature);
             Assert.That(alignments, Is.Not.Empty, creature);
             Assert.That(alignments, Is.SubsetOf(table[GroupConstants.All]), creature);
 
@@ -1337,6 +1267,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.LawfulEvil,
             AlignmentConstants.NeutralEvil,
             AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted,
             AlignmentConstants.LawfulGood,
             AlignmentConstants.NeutralGood,
@@ -1357,7 +1307,57 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.LawfulEvil,
             AlignmentConstants.NeutralEvil,
             AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Natural,
             AlignmentConstants.LawfulGood,
             AlignmentConstants.NeutralGood,
             AlignmentConstants.ChaoticGood,
@@ -1387,7 +1387,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.LawfulEvil,
             AlignmentConstants.NeutralEvil,
             AlignmentConstants.ChaoticEvil)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Natural,
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Natural,
             AlignmentConstants.LawfulGood,
             AlignmentConstants.NeutralGood,
             AlignmentConstants.ChaoticGood,
@@ -1437,7 +1447,37 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.LawfulEvil,
             AlignmentConstants.NeutralEvil,
             AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural,
             AlignmentConstants.LawfulGood,
             AlignmentConstants.NeutralGood,
             AlignmentConstants.ChaoticGood,
@@ -1458,16 +1498,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.NeutralEvil,
             AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural,
-            AlignmentConstants.LawfulGood,
-            AlignmentConstants.NeutralGood,
-            AlignmentConstants.ChaoticGood,
-            AlignmentConstants.LawfulNeutral,
-            AlignmentConstants.TrueNeutral,
-            AlignmentConstants.ChaoticNeutral,
-            AlignmentConstants.LawfulEvil,
-            AlignmentConstants.NeutralEvil,
-            AlignmentConstants.ChaoticEvil)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural,
             AlignmentConstants.LawfulGood,
             AlignmentConstants.NeutralGood,
             AlignmentConstants.ChaoticGood,

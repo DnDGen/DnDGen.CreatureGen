@@ -92,7 +92,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         [TestCase(SaveConstants.Will, CreatureConstants.Templates.Zombie)]
         public void SaveGroupContainsCreature(string save, string creature)
         {
-            var saveGroup = collectionSelector.Explode(tableName, save);
+            var saveGroup = collectionSelector.Explode(Config.Name, tableName, save);
             Assert.That(saveGroup, Contains.Item(creature));
         }
     }

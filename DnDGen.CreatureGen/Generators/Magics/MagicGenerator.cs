@@ -45,7 +45,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
             magic.Caster = caster.Type;
             magic.CasterLevel = caster.Amount;
 
-            var spellAbility = collectionsSelector.SelectFrom(TableNameConstants.Collection.AbilityGroups, $"{magic.Caster}:Spellcaster").Single();
+            var spellAbility = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AbilityGroups, $"{magic.Caster}:Spellcaster").Single();
             magic.CastingAbility = abilities[spellAbility];
 
             var domainTypesAndAmounts = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.SpellDomains, creatureName);
@@ -77,7 +77,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
             if (equipment.Armor == null && equipment.Shield == null)
                 return magic;
 
-            var arcaneSpellcasters = collectionsSelector.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane);
+            var arcaneSpellcasters = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane);
             if (!arcaneSpellcasters.Contains(magic.Caster))
                 return magic;
 
@@ -99,7 +99,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
             magic.SpellsPerDay = spellsGenerator.GeneratePerDay(magic.Caster, magic.CasterLevel, magic.CastingAbility, magic.Domains.ToArray());
             magic.KnownSpells = spellsGenerator.GenerateKnown(creature, magic.Caster, magic.CasterLevel, alignment, magic.CastingAbility, magic.Domains.ToArray());
 
-            var classesThatPrepareSpells = collectionsSelector.SelectFrom(TableNameConstants.Collection.CasterGroups, GroupConstants.PreparesSpells);
+            var classesThatPrepareSpells = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, GroupConstants.PreparesSpells);
             if (classesThatPrepareSpells.Contains(magic.Caster))
             {
                 magic.PreparedSpells = spellsGenerator.GeneratePrepared(magic.KnownSpells, magic.SpellsPerDay, magic.Domains.ToArray());

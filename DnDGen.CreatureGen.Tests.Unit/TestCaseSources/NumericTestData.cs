@@ -26,9 +26,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.TestCaseSources
         public static IEnumerable<int> PositiveValues => NonNegativeValues.Where(v => v > 0);
         public static IEnumerable<int> NonPositiveValues => NonNegativeValues.Select(n => n * -1);
 
-        public static IEnumerable AllValues => AllTestValues.Select(v => new TestCaseData(v));
-        public static IEnumerable AllPositiveValues => PositiveValues.Select(v => new TestCaseData(v));
-        public static IEnumerable AllNonPositiveValues => NonPositiveValues.Select(v => new TestCaseData(v));
+        public static IEnumerable AllValuesTestCases => AllTestValues.Select(v => new TestCaseData(v));
+        public static IEnumerable AllPositiveValuesTestCases => PositiveValues.Select(v => new TestCaseData(v));
+        public static IEnumerable AllNonPositiveValuesTestCases => NonPositiveValues.Select(v => new TestCaseData(v));
 
         public static IEnumerable ValueLessThanPositiveRequirement
         {
@@ -57,24 +57,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.TestCaseSources
                     foreach (var value in values)
                     {
                         yield return new TestCaseData(requirement, value);
-                    }
-                }
-            }
-        }
-
-        public static IEnumerable SumOfValuesLessThanPositiveRequirement
-        {
-            get
-            {
-                foreach (var requirement in PositiveValues)
-                {
-                    foreach (var value1 in PositiveValues)
-                    {
-                        foreach (var value2 in AllTestValues)
-                        {
-                            if (value1 + value2 < requirement)
-                                yield return new TestCaseData(requirement, value1, value2);
-                        }
                     }
                 }
             }

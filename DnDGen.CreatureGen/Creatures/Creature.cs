@@ -25,6 +25,7 @@ namespace DnDGen.CreatureGen.Creatures
         public HitPoints HitPoints { get; set; }
         public IEnumerable<string> Languages { get; set; }
         public bool IsAdvanced { get; set; }
+        public Demographics Demographics { get; set; }
 
         public int InitiativeBonus { get; set; }
         public int TotalInitiativeBonus
@@ -142,6 +143,7 @@ namespace DnDGen.CreatureGen.Creatures
             Equipment = new Equipment();
             Magic = new Magic();
             Languages = new List<string>();
+            Demographics = new Demographics();
         }
     }
 }

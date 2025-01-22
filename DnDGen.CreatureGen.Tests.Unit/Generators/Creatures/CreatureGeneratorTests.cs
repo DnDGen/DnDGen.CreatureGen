@@ -52,6 +52,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         protected Mock<IEquipmentGenerator> mockEquipmentGenerator;
         protected Mock<IMagicGenerator> mockMagicGenerator;
         protected Mock<ILanguageGenerator> mockLanguageGenerator;
+        protected Mock<IDemographicsGenerator> mockDemographicsGenerator;
 
         protected Dictionary<string, Ability> abilities;
         protected List<Skill> skills;
@@ -67,6 +68,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         protected Equipment equipment;
         protected Magic magic;
         protected List<string> languages;
+        protected Demographics demographics;
 
         [SetUp]
         public void GeneratorSetup()
@@ -88,6 +90,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockEquipmentGenerator = new Mock<IEquipmentGenerator>();
             mockMagicGenerator = new Mock<IMagicGenerator>();
             mockLanguageGenerator = new Mock<ILanguageGenerator>();
+            mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
             creatureGenerator = new CreatureGenerator(
                 mockAlignmentGenerator.Object,
@@ -106,23 +109,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 mockSpeedsGenerator.Object,
                 mockEquipmentGenerator.Object,
                 mockMagicGenerator.Object,
-                mockLanguageGenerator.Object);
+                mockLanguageGenerator.Object,
+                mockDemographicsGenerator.Object);
 
-            feats = new List<Feat>();
-            abilities = new Dictionary<string, Ability>();
-            skills = new List<Skill>();
+            feats = [];
+            abilities = [];
+            skills = [];
             creatureData = new CreatureDataSelection();
             hitPoints = new HitPoints();
-            types = new List<string>();
-            specialQualities = new List<Feat>();
-            attacks = new List<Attack>();
+            types = [];
+            specialQualities = [];
+            attacks = [];
             armorClass = new ArmorClass();
-            speeds = new Dictionary<string, Measurement>();
+            speeds = [];
             equipment = new Equipment();
             magic = new Magic();
-            languages = new List<string>();
+            languages = [];
+            demographics = new Demographics();
 
             alignment = new Alignment("creature alignment");
+            demographics.Gender = "my gender";
 
             creatureData.Size = "size";
             creatureData.CasterLevel = 1029;
@@ -156,7 +162,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockCollectionSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> c) => c.First());
             mockCollectionSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<TypeAndAmountSelection>>())).Returns((IEnumerable<TypeAndAmountSelection> c) => c.First());
             mockCollectionSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<(string, string)>>())).Returns((IEnumerable<(string, string)> c) => c.First());
-            mockCollectionSelector.Setup(s => s.FindCollectionOf(TableNameConstants.Collection.CreatureGroups, types[0],
+            mockCollectionSelector.Setup(s => s.FindCollectionOf(Config.Name, TableNameConstants.Collection.CreatureGroups, types[0],
                 GroupConstants.GoodBaseAttack,
                 GroupConstants.AverageBaseAttack,
                 GroupConstants.PoorBaseAttack)).Returns(GroupConstants.PoorBaseAttack);
@@ -174,13 +180,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
             mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, group))
+                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
 
             mockAlignmentGenerator.Setup(g => g.Generate(creatureName, templateNames, alignmentFilter)).Returns(alignment);
 
             mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), hitPoints)).Returns(753);
-            mockAttacksGenerator.Setup(g => g.GenerateAttacks(creatureName, creatureData.Size, creatureData.Size, 753, abilities, hitPoints.RoundedHitDiceQuantity)).Returns(attacks);
+            mockAttacksGenerator.Setup(g => g.GenerateAttacks(creatureName, creatureData.Size, creatureData.Size, 753, abilities, hitPoints.RoundedHitDiceQuantity, demographics.Gender)).Returns(attacks);
             mockAttacksGenerator.Setup(g => g.ApplyAttackBonuses(attacks, feats, abilities)).Returns(attacks);
 
             mockFeatsGenerator
@@ -347,15 +353,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             if (randomizer == null)
             {
                 mockAbilitiesGenerator
-                    .Setup(g => g.GenerateFor(creatureName, It.Is<AbilityRandomizer>(r => r.Roll == AbilityConstants.RandomizerRolls.Default
-                        && r.PriorityAbility == null
-                        && !r.AbilityAdvancements.Any()
-                        && !r.SetRolls.Any())))
+                    .Setup(g => g.GenerateFor(
+                        creatureName,
+                        It.Is<AbilityRandomizer>(r => r.Roll == AbilityConstants.RandomizerRolls.Default
+                            && r.PriorityAbility == null
+                            && !r.AbilityAdvancements.Any()
+                            && !r.SetRolls.Any()),
+                        demographics))
                     .Returns(abilities);
             }
             else
             {
-                mockAbilitiesGenerator.Setup(g => g.GenerateFor(creatureName, randomizer)).Returns(abilities);
+                mockAbilitiesGenerator.Setup(g => g.GenerateFor(creatureName, randomizer, demographics)).Returns(abilities);
             }
 
             mockAbilitiesGenerator.Setup(g => g.SetMaxBonuses(abilities, equipment)).Returns(abilities);
@@ -370,8 +379,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     asCharacter))
                 .Returns(hitPoints);
 
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, creatureName)).Returns(types);
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AerialManeuverability, creatureName)).Returns(new[] { string.Empty });
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, creatureName)).Returns(types);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AerialManeuverability, creatureName)).Returns(new[] { string.Empty });
             mockArmorClassGenerator
                 .Setup(g => g.GenerateWith(
                     abilities,
@@ -411,17 +420,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     skills))
                 .Returns(languages);
 
+            mockDemographicsGenerator.Setup(g => g.Generate(creatureName)).Returns(demographics);
+
             return templateApplicators;
         }
 
-        protected HitPoints SetUpCreatureAdvancement(bool asCharacter, string creatureName, string challengeRatingFilter, int advancementAmount = 1337, params string[] templates)
+        protected HitPoints SetUpCreatureAdvancement(
+            bool asCharacter,
+            string creatureName,
+            string challengeRatingFilter,
+            int advancementAmount = 1337,
+            string advancedSize = "advanced size",
+            params string[] templates)
         {
             mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName, challengeRatingFilter)).Returns(true);
 
             var advancement = new AdvancementSelection();
             advancement.AdditionalHitDice = advancementAmount;
             advancement.Reach = 98.76;
-            advancement.Size = "advanced size";
+            advancement.Size = advancedSize ?? "advanced size";
             advancement.Space = 54.32;
             advancement.AdjustedChallengeRating = "adjusted challenge rating";
             advancement.CasterLevelAdjustment = 6331;
@@ -430,9 +447,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             advancement.NaturalArmorAdjustment = 8245;
             advancement.StrengthAdjustment = 3456;
 
-            var nonEmptyTemplates = templates.Where(t => !string.IsNullOrEmpty(t));
             mockAdvancementSelector
-                .Setup(s => s.SelectRandomFor(creatureName, nonEmptyTemplates, It.Is<CreatureType>(c => c.Name == types[0]), creatureData.Size, creatureData.ChallengeRating))
+                .Setup(s => s.SelectRandomFor(
+                    creatureName,
+                    It.Is<IEnumerable<string>>(tt => tt.IsEquivalentTo(templates.Where(t => !string.IsNullOrEmpty(t)))),
+                    It.Is<CreatureType>(c => c.Name == types[0]),
+                    creatureData.Size,
+                    creatureData.ChallengeRating))
                 .Returns(advancement);
 
             var advancedHitPoints = new HitPoints();
@@ -446,7 +467,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     creatureName,
                     It.Is<CreatureType>(c => c.Name == types[0]),
                     abilities[AbilityConstants.Constitution],
-                    "advanced size",
+                    advancement.Size,
                     advancementAmount,
                     asCharacter))
                 .Returns(advancedHitPoints);
@@ -454,7 +475,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints)).Returns(999);
             mockAttacksGenerator
-                .Setup(g => g.GenerateAttacks(creatureName, creatureData.Size, advancement.Size, 999, abilities, advancedHitPoints.RoundedHitDiceQuantity))
+                .Setup(g => g.GenerateAttacks(creatureName, creatureData.Size, advancement.Size, 999, abilities, advancedHitPoints.RoundedHitDiceQuantity, demographics.Gender))
                 .Returns(attacks);
 
             var advancedNaturalArmor = creatureData.NaturalArmor + advancement.NaturalArmorAdjustment;

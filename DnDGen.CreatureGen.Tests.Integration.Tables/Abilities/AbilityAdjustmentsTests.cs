@@ -2,7 +2,6 @@
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System.Collections;
@@ -30,12 +29,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         public void AbilityAdjustmentsNames()
         {
             var creatures = CreatureConstants.GetAll();
-            var names = creatures.Union(new[] { GroupConstants.All });
+            var allAges = typesAndAmountsSelector.SelectAll(TableNameConstants.TypeAndAmount.AgeRolls);
+            var ages = allAges.Values.SelectMany(v => v.Select(t => t.Type)).Distinct();
+            var names = creatures
+                .Union(ages)
+                .Union([GroupConstants.All]);
 
+            Assert.That(AbilityAdjustmentsTestData.Keys, Is.EquivalentTo(names), "TEST DATA");
             AssertCollectionNames(names);
         }
 
-        [TestCaseSource(nameof(AbilityAdjustmentsTestData))]
+        [TestCaseSource(nameof(AbilityAdjustmentsTestCases))]
         public void AbilityAdjustment(string name, Dictionary<string, int> typesAndAmounts)
         {
             Assert.That(typesAndAmounts, Is.Not.Empty, $"{name}'s test was not set up");
@@ -55,30 +59,98 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             Assert.That(typesAndAmounts, Is.Not.Empty);
             Assert.That(typesAndAmounts.Keys, Is.Unique.And.SubsetOf(allAbilities));
 
+            var creatures = CreatureConstants.GetAll();
+            if (!creatures.Contains(name))
+                Assert.Pass();
+
             foreach (var kvp in typesAndAmounts)
             {
                 Assert.That(kvp.Value % 2, Is.Zero, $"{name} {kvp.Key} {kvp.Value}");
             }
         }
 
-        public static IEnumerable AbilityAdjustmentsTestData
+        private static Dictionary<string, int> InitializeToZero()
+        {
+            var adjustments = new Dictionary<string, int>
+            {
+                [AbilityConstants.Charisma] = 0,
+                [AbilityConstants.Constitution] = 0,
+                [AbilityConstants.Dexterity] = 0,
+                [AbilityConstants.Intelligence] = 0,
+                [AbilityConstants.Strength] = 0,
+                [AbilityConstants.Wisdom] = 0
+            };
+
+            return adjustments;
+        }
+
+        public static Dictionary<string, Dictionary<string, int>> AbilityAdjustmentsTestData
         {
             get
             {
-                var testCases = new Dictionary<string, Dictionary<string, int>>();
-                testCases[GroupConstants.All] = new Dictionary<string, int>();
-                testCases[GroupConstants.All][AbilityConstants.Charisma] = 0;
-                testCases[GroupConstants.All][AbilityConstants.Constitution] = 0;
-                testCases[GroupConstants.All][AbilityConstants.Dexterity] = 0;
-                testCases[GroupConstants.All][AbilityConstants.Intelligence] = 0;
-                testCases[GroupConstants.All][AbilityConstants.Strength] = 0;
-                testCases[GroupConstants.All][AbilityConstants.Wisdom] = 0;
+                var testCases = new Dictionary<string, Dictionary<string, int>>
+                {
+                    [GroupConstants.All] = InitializeToZero(),
+                    [AgeConstants.Categories.Adulthood] = InitializeToZero(),
+                    [AgeConstants.Categories.MiddleAge] = InitializeToZero(),
+                    [AgeConstants.Categories.Old] = InitializeToZero(),
+                    [AgeConstants.Categories.Venerable] = InitializeToZero(),
+                    [AgeConstants.Categories.Construct] = InitializeToZero(),
+                    [AgeConstants.Categories.Swarm] = InitializeToZero(),
+                    [AgeConstants.Categories.Undead] = InitializeToZero(),
+                    [AgeConstants.Categories.Maximum] = InitializeToZero(),
+                    [AgeConstants.Categories.Multiplier] = InitializeToZero(),
+                    [AgeConstants.Categories.Arrowhawk.Juvenile] = InitializeToZero(),
+                    [AgeConstants.Categories.Arrowhawk.Adult] = InitializeToZero(),
+                    [AgeConstants.Categories.Arrowhawk.Elder] = InitializeToZero(),
+                    [AgeConstants.Categories.BlackPudding.Elder] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.Wyrmling] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.VeryYoung] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.Young] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.Juvenile] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.YoungAdult] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.Adult] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.MatureAdult] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.Old] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.VeryOld] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.Ancient] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.Wyrm] = InitializeToZero(),
+                    [AgeConstants.Categories.Dragon.GreatWyrm] = InitializeToZero(),
+                    [AgeConstants.Categories.Salamander.Flamebrother] = InitializeToZero(),
+                    [AgeConstants.Categories.Salamander.Average] = InitializeToZero(),
+                    [AgeConstants.Categories.Salamander.Noble] = InitializeToZero(),
+                    [AgeConstants.Categories.Tojanida.Juvenile] = InitializeToZero(),
+                    [AgeConstants.Categories.Tojanida.Adult] = InitializeToZero(),
+                    [AgeConstants.Categories.Tojanida.Elder] = InitializeToZero(),
+                    [AgeConstants.Categories.Xorn.Minor] = InitializeToZero(),
+                    [AgeConstants.Categories.Xorn.Average] = InitializeToZero(),
+                    [AgeConstants.Categories.Xorn.Elder] = InitializeToZero(),
+                };
+
+                testCases[AgeConstants.Categories.MiddleAge][AbilityConstants.Charisma] = 1;
+                testCases[AgeConstants.Categories.MiddleAge][AbilityConstants.Constitution] = -1;
+                testCases[AgeConstants.Categories.MiddleAge][AbilityConstants.Dexterity] = -1;
+                testCases[AgeConstants.Categories.MiddleAge][AbilityConstants.Intelligence] = 1;
+                testCases[AgeConstants.Categories.MiddleAge][AbilityConstants.Strength] = -1;
+                testCases[AgeConstants.Categories.MiddleAge][AbilityConstants.Wisdom] = 1;
+                testCases[AgeConstants.Categories.Old][AbilityConstants.Charisma] = 1 + 1;
+                testCases[AgeConstants.Categories.Old][AbilityConstants.Constitution] = -1 + -2;
+                testCases[AgeConstants.Categories.Old][AbilityConstants.Dexterity] = -1 + -2;
+                testCases[AgeConstants.Categories.Old][AbilityConstants.Intelligence] = 1 + 1;
+                testCases[AgeConstants.Categories.Old][AbilityConstants.Strength] = -1 + -2;
+                testCases[AgeConstants.Categories.Old][AbilityConstants.Wisdom] = 1 + 1;
+                testCases[AgeConstants.Categories.Venerable][AbilityConstants.Charisma] = 1 + 1 + 1;
+                testCases[AgeConstants.Categories.Venerable][AbilityConstants.Constitution] = -1 + -2 + -3;
+                testCases[AgeConstants.Categories.Venerable][AbilityConstants.Dexterity] = -1 + -2 + -3;
+                testCases[AgeConstants.Categories.Venerable][AbilityConstants.Intelligence] = 1 + 1 + 1;
+                testCases[AgeConstants.Categories.Venerable][AbilityConstants.Strength] = -1 + -2 + -3;
+                testCases[AgeConstants.Categories.Venerable][AbilityConstants.Wisdom] = 1 + 1 + 1;
 
                 var creatures = CreatureConstants.GetAll();
 
                 foreach (var creature in creatures)
                 {
-                    testCases[creature] = new Dictionary<string, int>();
+                    testCases[creature] = [];
                 }
 
                 testCases[CreatureConstants.Aasimar][AbilityConstants.Charisma] = 0;
@@ -127,538 +199,258 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 testCases[CreatureConstants.Angel_Solar][AbilityConstants.Intelligence] = 12;
                 testCases[CreatureConstants.Angel_Solar][AbilityConstants.Strength] = 18;
                 testCases[CreatureConstants.Angel_Solar][AbilityConstants.Wisdom] = 14;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Box_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Box_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Box_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Box_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chain_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chain_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Chain_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Chain_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chair_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chair_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Chair_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Chair_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rope_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rope_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Rope_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Rope_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rug_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rug_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Rug_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Rug_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Sled_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Sled_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Sled_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Sled_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Stool_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Stool_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Stool_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Stool_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Table_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Table_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Table_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Table_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Colossal][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Colossal][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Colossal][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Colossal][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Box_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Box_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Box_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Box_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chain_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chain_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Chain_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Chain_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chair_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chair_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Chair_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Chair_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rope_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rope_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Rope_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Rope_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rug_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rug_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Rug_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Rug_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Sled_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Sled_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Sled_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Sled_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Stool_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Stool_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Stool_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Stool_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Table_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Table_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Table_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Table_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Gargantuan][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Gargantuan][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Gargantuan][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Gargantuan][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Anvil_Tiny][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Tiny][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Tiny][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Box_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Box_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Box_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Box_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Box_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Box_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Box_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Box_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Box_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Box_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Box_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Box_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Box_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Box_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Box_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Box_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Box_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Box_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Box_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Box_Tiny][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Carpet_Tiny][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Carriage_Tiny][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chain_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chain_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Chain_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Chain_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chain_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chain_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Chain_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Chain_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chain_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chain_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Chain_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Chain_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chain_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chain_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Chain_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Chain_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chain_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chain_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Chain_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Chain_Tiny][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chair_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chair_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Chair_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Chair_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chair_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chair_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Chair_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Chair_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chair_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chair_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Chair_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Chair_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chair_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chair_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Chair_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Chair_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chair_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Chair_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Chair_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Chair_Tiny][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Clothes_Tiny][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Ladder_Tiny][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rope_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rope_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Rope_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Rope_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rope_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rope_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Rope_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Rope_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rope_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rope_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Rope_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Rope_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rope_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rope_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Rope_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Rope_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rope_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rope_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Rope_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Rope_Tiny][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rug_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rug_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Rug_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Rug_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rug_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rug_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Rug_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Rug_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rug_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rug_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Rug_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Rug_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rug_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rug_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Rug_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Rug_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rug_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Rug_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Rug_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Rug_Tiny][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Sled_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Sled_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Sled_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Sled_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Sled_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Sled_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Sled_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Sled_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Sled_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Sled_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Sled_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Sled_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Sled_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Sled_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Sled_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Sled_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Sled_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Sled_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Sled_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Sled_Tiny][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Tiny][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Tiny][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Stool_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Stool_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Stool_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Stool_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Stool_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Stool_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Stool_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Stool_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Stool_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Stool_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Stool_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Stool_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Stool_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Stool_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Stool_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Stool_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Stool_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Stool_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Stool_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Stool_Tiny][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Table_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Table_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Table_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Table_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Table_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Table_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Table_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Table_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Table_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Table_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Table_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Table_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Table_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Table_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Table_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Table_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Table_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Table_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Table_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Table_Tiny][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Tiny][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Huge][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Huge][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Huge][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Huge][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Large][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Large][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Large][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Large][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Medium][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Medium][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Medium][AbilityConstants.Strength] = 2;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Medium][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Small][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Small][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Small][AbilityConstants.Strength] = 0;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Small][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Tiny][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Tiny][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Tiny][AbilityConstants.Strength] = -2;
-                testCases[CreatureConstants.AnimatedObject_Wagon_Tiny][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal][AbilityConstants.Dexterity] = -6;
+                testCases[CreatureConstants.AnimatedObject_Colossal][AbilityConstants.Strength] = 18;
+                testCases[CreatureConstants.AnimatedObject_Colossal][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Flexible][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Flexible][AbilityConstants.Dexterity] = -6;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Flexible][AbilityConstants.Strength] = 18;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Flexible][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][AbilityConstants.Dexterity] = -6;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][AbilityConstants.Strength] = 18;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][AbilityConstants.Dexterity] = -6;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][AbilityConstants.Strength] = 18;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Sheetlike][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Sheetlike][AbilityConstants.Dexterity] = -6;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Sheetlike][AbilityConstants.Strength] = 18;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Sheetlike][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_TwoLegs][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_TwoLegs][AbilityConstants.Dexterity] = -6;
+                testCases[CreatureConstants.AnimatedObject_Colossal_TwoLegs][AbilityConstants.Strength] = 18;
+                testCases[CreatureConstants.AnimatedObject_Colossal_TwoLegs][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden][AbilityConstants.Dexterity] = -6;
+                testCases[CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden][AbilityConstants.Strength] = 18;
+                testCases[CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden][AbilityConstants.Dexterity] = -6;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden][AbilityConstants.Strength] = 18;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Wooden][AbilityConstants.Dexterity] = -6;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Wooden][AbilityConstants.Strength] = 18;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan][AbilityConstants.Dexterity] = -4;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan][AbilityConstants.Strength] = 14;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Flexible][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Flexible][AbilityConstants.Dexterity] = -4;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Flexible][AbilityConstants.Strength] = 14;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Flexible][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][AbilityConstants.Dexterity] = -4;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][AbilityConstants.Strength] = 14;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][AbilityConstants.Dexterity] = -4;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][AbilityConstants.Strength] = 14;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike][AbilityConstants.Dexterity] = -4;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike][AbilityConstants.Strength] = 14;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs][AbilityConstants.Dexterity] = -4;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs][AbilityConstants.Strength] = 14;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden][AbilityConstants.Dexterity] = -4;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden][AbilityConstants.Strength] = 14;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden][AbilityConstants.Dexterity] = -4;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden][AbilityConstants.Strength] = 14;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Wooden][AbilityConstants.Dexterity] = -4;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Wooden][AbilityConstants.Strength] = 14;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge][AbilityConstants.Dexterity] = -2;
+                testCases[CreatureConstants.AnimatedObject_Huge][AbilityConstants.Strength] = 10;
+                testCases[CreatureConstants.AnimatedObject_Huge][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_Flexible][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_Flexible][AbilityConstants.Dexterity] = -2;
+                testCases[CreatureConstants.AnimatedObject_Huge_Flexible][AbilityConstants.Strength] = 10;
+                testCases[CreatureConstants.AnimatedObject_Huge_Flexible][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs][AbilityConstants.Dexterity] = -2;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs][AbilityConstants.Strength] = 10;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][AbilityConstants.Dexterity] = -2;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][AbilityConstants.Strength] = 10;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_Sheetlike][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_Sheetlike][AbilityConstants.Dexterity] = -2;
+                testCases[CreatureConstants.AnimatedObject_Huge_Sheetlike][AbilityConstants.Strength] = 10;
+                testCases[CreatureConstants.AnimatedObject_Huge_Sheetlike][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_TwoLegs][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_TwoLegs][AbilityConstants.Dexterity] = -2;
+                testCases[CreatureConstants.AnimatedObject_Huge_TwoLegs][AbilityConstants.Strength] = 10;
+                testCases[CreatureConstants.AnimatedObject_Huge_TwoLegs][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden][AbilityConstants.Dexterity] = -2;
+                testCases[CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden][AbilityConstants.Strength] = 10;
+                testCases[CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_Wheels_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_Wheels_Wooden][AbilityConstants.Dexterity] = -2;
+                testCases[CreatureConstants.AnimatedObject_Huge_Wheels_Wooden][AbilityConstants.Strength] = 10;
+                testCases[CreatureConstants.AnimatedObject_Huge_Wheels_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_Wooden][AbilityConstants.Dexterity] = -2;
+                testCases[CreatureConstants.AnimatedObject_Huge_Wooden][AbilityConstants.Strength] = 10;
+                testCases[CreatureConstants.AnimatedObject_Huge_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large][AbilityConstants.Strength] = 6;
+                testCases[CreatureConstants.AnimatedObject_Large][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_Flexible][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_Flexible][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_Flexible][AbilityConstants.Strength] = 6;
+                testCases[CreatureConstants.AnimatedObject_Large_Flexible][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs][AbilityConstants.Strength] = 6;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][AbilityConstants.Strength] = 6;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_Sheetlike][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_Sheetlike][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_Sheetlike][AbilityConstants.Strength] = 6;
+                testCases[CreatureConstants.AnimatedObject_Large_Sheetlike][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_TwoLegs][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_TwoLegs][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_TwoLegs][AbilityConstants.Strength] = 6;
+                testCases[CreatureConstants.AnimatedObject_Large_TwoLegs][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden][AbilityConstants.Strength] = 6;
+                testCases[CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_Wheels_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_Wheels_Wooden][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_Wheels_Wooden][AbilityConstants.Strength] = 6;
+                testCases[CreatureConstants.AnimatedObject_Large_Wheels_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_Wooden][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_Wooden][AbilityConstants.Strength] = 6;
+                testCases[CreatureConstants.AnimatedObject_Large_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Medium][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Medium][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Medium][AbilityConstants.Strength] = 2;
+                testCases[CreatureConstants.AnimatedObject_Medium][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Medium_Flexible][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Medium_Flexible][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Medium_Flexible][AbilityConstants.Strength] = 2;
+                testCases[CreatureConstants.AnimatedObject_Medium_Flexible][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Medium_MultipleLegs][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Medium_MultipleLegs][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Medium_MultipleLegs][AbilityConstants.Strength] = 2;
+                testCases[CreatureConstants.AnimatedObject_Medium_MultipleLegs][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden][AbilityConstants.Strength] = 2;
+                testCases[CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Medium_Sheetlike][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Medium_Sheetlike][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Medium_Sheetlike][AbilityConstants.Strength] = 2;
+                testCases[CreatureConstants.AnimatedObject_Medium_Sheetlike][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Medium_TwoLegs][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Medium_TwoLegs][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Medium_TwoLegs][AbilityConstants.Strength] = 2;
+                testCases[CreatureConstants.AnimatedObject_Medium_TwoLegs][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden][AbilityConstants.Strength] = 2;
+                testCases[CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Medium_Wheels_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Medium_Wheels_Wooden][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Medium_Wheels_Wooden][AbilityConstants.Strength] = 2;
+                testCases[CreatureConstants.AnimatedObject_Medium_Wheels_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Medium_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Medium_Wooden][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Medium_Wooden][AbilityConstants.Strength] = 2;
+                testCases[CreatureConstants.AnimatedObject_Medium_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Small][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Small][AbilityConstants.Dexterity] = 2;
+                testCases[CreatureConstants.AnimatedObject_Small][AbilityConstants.Strength] = 0;
+                testCases[CreatureConstants.AnimatedObject_Small][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Small_Flexible][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Small_Flexible][AbilityConstants.Dexterity] = 2;
+                testCases[CreatureConstants.AnimatedObject_Small_Flexible][AbilityConstants.Strength] = 0;
+                testCases[CreatureConstants.AnimatedObject_Small_Flexible][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Small_MultipleLegs][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Small_MultipleLegs][AbilityConstants.Dexterity] = 2;
+                testCases[CreatureConstants.AnimatedObject_Small_MultipleLegs][AbilityConstants.Strength] = 0;
+                testCases[CreatureConstants.AnimatedObject_Small_MultipleLegs][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden][AbilityConstants.Dexterity] = 2;
+                testCases[CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden][AbilityConstants.Strength] = 0;
+                testCases[CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Small_Sheetlike][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Small_Sheetlike][AbilityConstants.Dexterity] = 2;
+                testCases[CreatureConstants.AnimatedObject_Small_Sheetlike][AbilityConstants.Strength] = 0;
+                testCases[CreatureConstants.AnimatedObject_Small_Sheetlike][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Small_TwoLegs][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Small_TwoLegs][AbilityConstants.Dexterity] = 2;
+                testCases[CreatureConstants.AnimatedObject_Small_TwoLegs][AbilityConstants.Strength] = 0;
+                testCases[CreatureConstants.AnimatedObject_Small_TwoLegs][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden][AbilityConstants.Dexterity] = 2;
+                testCases[CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden][AbilityConstants.Strength] = 0;
+                testCases[CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Small_Wheels_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Small_Wheels_Wooden][AbilityConstants.Dexterity] = 2;
+                testCases[CreatureConstants.AnimatedObject_Small_Wheels_Wooden][AbilityConstants.Strength] = 0;
+                testCases[CreatureConstants.AnimatedObject_Small_Wheels_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Small_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Small_Wooden][AbilityConstants.Dexterity] = 2;
+                testCases[CreatureConstants.AnimatedObject_Small_Wooden][AbilityConstants.Strength] = 0;
+                testCases[CreatureConstants.AnimatedObject_Small_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Tiny][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Tiny][AbilityConstants.Dexterity] = 4;
+                testCases[CreatureConstants.AnimatedObject_Tiny][AbilityConstants.Strength] = -2;
+                testCases[CreatureConstants.AnimatedObject_Tiny][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Flexible][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Flexible][AbilityConstants.Dexterity] = 4;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Flexible][AbilityConstants.Strength] = -2;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Flexible][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Tiny_MultipleLegs][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Tiny_MultipleLegs][AbilityConstants.Dexterity] = 4;
+                testCases[CreatureConstants.AnimatedObject_Tiny_MultipleLegs][AbilityConstants.Strength] = -2;
+                testCases[CreatureConstants.AnimatedObject_Tiny_MultipleLegs][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden][AbilityConstants.Dexterity] = 4;
+                testCases[CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden][AbilityConstants.Strength] = -2;
+                testCases[CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Sheetlike][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Sheetlike][AbilityConstants.Dexterity] = 4;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Sheetlike][AbilityConstants.Strength] = -2;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Sheetlike][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Tiny_TwoLegs][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Tiny_TwoLegs][AbilityConstants.Dexterity] = 4;
+                testCases[CreatureConstants.AnimatedObject_Tiny_TwoLegs][AbilityConstants.Strength] = -2;
+                testCases[CreatureConstants.AnimatedObject_Tiny_TwoLegs][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden][AbilityConstants.Dexterity] = 4;
+                testCases[CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden][AbilityConstants.Strength] = -2;
+                testCases[CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden][AbilityConstants.Dexterity] = 4;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden][AbilityConstants.Strength] = -2;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Wooden][AbilityConstants.Dexterity] = 4;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Wooden][AbilityConstants.Strength] = -2;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Wooden][AbilityConstants.Wisdom] = -10;
                 testCases[CreatureConstants.Ankheg][AbilityConstants.Charisma] = -4;
                 testCases[CreatureConstants.Ankheg][AbilityConstants.Constitution] = 6;
                 testCases[CreatureConstants.Ankheg][AbilityConstants.Dexterity] = 0;
@@ -894,36 +686,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 testCases[CreatureConstants.Bison][AbilityConstants.Intelligence] = -8;
                 testCases[CreatureConstants.Bison][AbilityConstants.Strength] = 12;
                 testCases[CreatureConstants.Bison][AbilityConstants.Wisdom] = 0;
-                testCases[CreatureConstants.Bison_Goat][AbilityConstants.Charisma] = -6;
-                testCases[CreatureConstants.Bison_Goat][AbilityConstants.Constitution] = 2;
-                testCases[CreatureConstants.Bison_Goat][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.Bison_Goat][AbilityConstants.Intelligence] = -8;
-                testCases[CreatureConstants.Bison_Goat][AbilityConstants.Strength] = 4;
-                testCases[CreatureConstants.Bison_Goat][AbilityConstants.Wisdom] = 0;
-                testCases[CreatureConstants.Bison_Llama][AbilityConstants.Charisma] = -6;
-                testCases[CreatureConstants.Bison_Llama][AbilityConstants.Constitution] = 6;
-                testCases[CreatureConstants.Bison_Llama][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.Bison_Llama][AbilityConstants.Intelligence] = -8;
-                testCases[CreatureConstants.Bison_Llama][AbilityConstants.Strength] = 12;
-                testCases[CreatureConstants.Bison_Llama][AbilityConstants.Wisdom] = 0;
-                testCases[CreatureConstants.Bison_MilkCow][AbilityConstants.Charisma] = -6;
-                testCases[CreatureConstants.Bison_MilkCow][AbilityConstants.Constitution] = 6;
-                testCases[CreatureConstants.Bison_MilkCow][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.Bison_MilkCow][AbilityConstants.Intelligence] = -8;
-                testCases[CreatureConstants.Bison_MilkCow][AbilityConstants.Strength] = 12;
-                testCases[CreatureConstants.Bison_MilkCow][AbilityConstants.Wisdom] = 0;
-                testCases[CreatureConstants.Bison_Ox][AbilityConstants.Charisma] = -6;
-                testCases[CreatureConstants.Bison_Ox][AbilityConstants.Constitution] = 6;
-                testCases[CreatureConstants.Bison_Ox][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.Bison_Ox][AbilityConstants.Intelligence] = -8;
-                testCases[CreatureConstants.Bison_Ox][AbilityConstants.Strength] = 12;
-                testCases[CreatureConstants.Bison_Ox][AbilityConstants.Wisdom] = 0;
-                testCases[CreatureConstants.Bison_Sheep][AbilityConstants.Charisma] = -6;
-                testCases[CreatureConstants.Bison_Sheep][AbilityConstants.Constitution] = 2;
-                testCases[CreatureConstants.Bison_Sheep][AbilityConstants.Dexterity] = 2;
-                testCases[CreatureConstants.Bison_Sheep][AbilityConstants.Intelligence] = -8;
-                testCases[CreatureConstants.Bison_Sheep][AbilityConstants.Strength] = 4;
-                testCases[CreatureConstants.Bison_Sheep][AbilityConstants.Wisdom] = 0;
                 testCases[CreatureConstants.BlackPudding][AbilityConstants.Charisma] = -10;
                 testCases[CreatureConstants.BlackPudding][AbilityConstants.Constitution] = 12;
                 testCases[CreatureConstants.BlackPudding][AbilityConstants.Dexterity] = -10;
@@ -946,12 +708,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 testCases[CreatureConstants.Boar][AbilityConstants.Intelligence] = -8;
                 testCases[CreatureConstants.Boar][AbilityConstants.Strength] = 4;
                 testCases[CreatureConstants.Boar][AbilityConstants.Wisdom] = 2;
-                testCases[CreatureConstants.Boar_Pig][AbilityConstants.Charisma] = -6;
-                testCases[CreatureConstants.Boar_Pig][AbilityConstants.Constitution] = 6;
-                testCases[CreatureConstants.Boar_Pig][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.Boar_Pig][AbilityConstants.Intelligence] = -8;
-                testCases[CreatureConstants.Boar_Pig][AbilityConstants.Strength] = 4;
-                testCases[CreatureConstants.Boar_Pig][AbilityConstants.Wisdom] = 2;
                 testCases[CreatureConstants.Boar_Dire][AbilityConstants.Charisma] = -2;
                 testCases[CreatureConstants.Boar_Dire][AbilityConstants.Constitution] = 6;
                 testCases[CreatureConstants.Boar_Dire][AbilityConstants.Dexterity] = 0;
@@ -3374,30 +3130,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 testCases[CreatureConstants.Raven][AbilityConstants.Intelligence] = -8;
                 testCases[CreatureConstants.Raven][AbilityConstants.Strength] = -10;
                 testCases[CreatureConstants.Raven][AbilityConstants.Wisdom] = 4;
-                testCases[CreatureConstants.Raven_Chicken][AbilityConstants.Charisma] = -4;
-                testCases[CreatureConstants.Raven_Chicken][AbilityConstants.Constitution] = 0;
-                testCases[CreatureConstants.Raven_Chicken][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.Raven_Chicken][AbilityConstants.Intelligence] = -8;
-                testCases[CreatureConstants.Raven_Chicken][AbilityConstants.Strength] = -10;
-                testCases[CreatureConstants.Raven_Chicken][AbilityConstants.Wisdom] = 4;
-                testCases[CreatureConstants.Raven_Turkey][AbilityConstants.Charisma] = -4;
-                testCases[CreatureConstants.Raven_Turkey][AbilityConstants.Constitution] = 0;
-                testCases[CreatureConstants.Raven_Turkey][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.Raven_Turkey][AbilityConstants.Intelligence] = -8;
-                testCases[CreatureConstants.Raven_Turkey][AbilityConstants.Strength] = -10;
-                testCases[CreatureConstants.Raven_Turkey][AbilityConstants.Wisdom] = 4;
-                testCases[CreatureConstants.Raven_Peacock][AbilityConstants.Charisma] = -4;
-                testCases[CreatureConstants.Raven_Peacock][AbilityConstants.Constitution] = 0;
-                testCases[CreatureConstants.Raven_Peacock][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.Raven_Peacock][AbilityConstants.Intelligence] = -8;
-                testCases[CreatureConstants.Raven_Peacock][AbilityConstants.Strength] = -10;
-                testCases[CreatureConstants.Raven_Peacock][AbilityConstants.Wisdom] = 4;
-                testCases[CreatureConstants.Raven_Pheasant][AbilityConstants.Charisma] = -4;
-                testCases[CreatureConstants.Raven_Pheasant][AbilityConstants.Constitution] = 0;
-                testCases[CreatureConstants.Raven_Pheasant][AbilityConstants.Dexterity] = 4;
-                testCases[CreatureConstants.Raven_Pheasant][AbilityConstants.Intelligence] = -8;
-                testCases[CreatureConstants.Raven_Pheasant][AbilityConstants.Strength] = -10;
-                testCases[CreatureConstants.Raven_Pheasant][AbilityConstants.Wisdom] = 4;
                 testCases[CreatureConstants.Ravid][AbilityConstants.Charisma] = 4;
                 testCases[CreatureConstants.Ravid][AbilityConstants.Constitution] = 2;
                 testCases[CreatureConstants.Ravid][AbilityConstants.Dexterity] = 0;
@@ -4122,77 +3854,73 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 testCases[CreatureConstants.Zelekhut][AbilityConstants.Strength] = 10;
                 testCases[CreatureConstants.Zelekhut][AbilityConstants.Wisdom] = 6;
 
-                foreach (var testCase in testCases)
-                {
-                    yield return new TestCaseData(testCase.Key, testCase.Value);
-                }
+                return testCases;
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void Type_DoesNotHaveAbility(string creature)
+        public static IEnumerable AbilityAdjustmentsTestCases => AbilityAdjustmentsTestData.Select(d => new TestCaseData(d.Key, d.Value));
+
+        [TestCase(CreatureConstants.Types.Construct, AbilityConstants.Constitution)]
+        [TestCase(CreatureConstants.Types.Undead, AbilityConstants.Constitution)]
+        [TestCase(CreatureConstants.Types.Subtypes.Incorporeal, AbilityConstants.Strength)]
+        [TestCase(CreatureConstants.Types.Ooze, AbilityConstants.Intelligence)]
+        [TestCase(CreatureConstants.Types.Vermin, AbilityConstants.Intelligence)]
+        public void Type_DoesNotHaveAbility(string creatureType, string ability)
         {
-            var typesWithoutConstitution = new[] { CreatureConstants.Types.Construct, CreatureConstants.Types.Undead };
-            var typesWithoutStrength = new[] { CreatureConstants.Types.Subtypes.Incorporeal };
-            var typesWithoutIntelligence = new[] { CreatureConstants.Types.Ooze, CreatureConstants.Types.Vermin };
-            var typesWithAllAbilities = new[]
-            {
-                CreatureConstants.Types.Aberration,
-                CreatureConstants.Types.Animal,
-                CreatureConstants.Types.Dragon,
-                CreatureConstants.Types.Elemental,
-                CreatureConstants.Types.Fey,
-                CreatureConstants.Types.Giant,
-                CreatureConstants.Types.Humanoid,
-                CreatureConstants.Types.MagicalBeast,
-                CreatureConstants.Types.MonstrousHumanoid,
-            };
+            var creatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, creatureType);
+            var abilities = typesAndAmountsSelector.SelectAll(tableName);
 
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
-            var abilities = typesAndAmountsSelector.Select(tableName, creature);
-            var abilityNames = abilities.Select(a => a.Type);
-
-            if (typesWithoutConstitution.Intersect(types).Any())
+            foreach (var creature in creatures)
             {
-                Assert.That(abilityNames, Does.Not.Contains(AbilityConstants.Constitution), creature);
+                Assert.That(abilities, Contains.Key(creature), creature);
+
+                var abilityNames = abilities[creature].Select(a => a.Type);
+                Assert.That(abilityNames, Does.Not.Contain(ability), creature);
             }
+        }
 
-            if (typesWithoutStrength.Intersect(types).Any())
+        [TestCase(CreatureConstants.Types.Aberration)]
+        [TestCase(CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Types.Dragon)]
+        [TestCase(CreatureConstants.Types.Elemental)]
+        [TestCase(CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
+        public void Type_HasAllAbilities(string creatureType)
+        {
+            var creatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, creatureType);
+            var abilities = typesAndAmountsSelector.SelectAll(tableName);
+            var templates = CreatureConstants.Templates.GetAll();
+
+            //INFO: Templates handle typing differently, so we want to ignore those for this test
+            foreach (var creature in creatures.Except(templates))
             {
-                Assert.That(abilityNames, Does.Not.Contains(AbilityConstants.Strength), creature);
-            }
+                Assert.That(abilities, Contains.Key(creature), creature);
+                Assert.That(abilities, Contains.Key(GroupConstants.All), creature);
 
-            if (typesWithoutIntelligence.Intersect(types).Any())
-            {
-                Assert.That(abilityNames, Does.Not.Contains(AbilityConstants.Intelligence), creature);
-            }
-
-            if (typesWithAllAbilities.Intersect(types).Any())
-            {
-                var allAbilities = typesAndAmountsSelector.Select(tableName, GroupConstants.All);
-                var allAbilitiesNames = allAbilities.Select(a => a.Type);
-
+                var abilityNames = abilities[creature].Select(a => a.Type);
+                var allAbilitiesNames = abilities[GroupConstants.All].Select(a => a.Type);
                 Assert.That(abilityNames, Is.EquivalentTo(allAbilitiesNames), creature);
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void AnimalsHaveLowIntelligence(string creature)
+        [Test]
+        public void AnimalsHaveLowIntelligence()
         {
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
+            var animals = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
+            var abilities = typesAndAmountsSelector.SelectAll(tableName);
 
-            if (types.First() == CreatureConstants.Types.Animal)
+            foreach (var animal in animals)
             {
-                var abilities = typesAndAmountsSelector.Select(tableName, creature);
-                var abilityNames = abilities.Select(a => a.Type);
-                Assert.That(abilityNames, Contains.Item(AbilityConstants.Intelligence), creature);
+                Assert.That(abilities, Contains.Key(animal), animal);
 
-                var intelligence = abilities.Single(a => a.Type == AbilityConstants.Intelligence);
-                Assert.That(intelligence.Amount, Is.EqualTo(-8).Or.EqualTo(-10), creature);
-            }
-            else
-            {
-                Assert.Pass($"{creature} is not an Animal");
+                var abilityNames = abilities[animal].Select(a => a.Type);
+                Assert.That(abilityNames, Contains.Item(AbilityConstants.Intelligence), animal);
+
+                var intelligence = abilities[animal].Single(a => a.Type == AbilityConstants.Intelligence);
+                Assert.That(intelligence.Amount, Is.EqualTo(-8).Or.EqualTo(-10), animal);
             }
         }
     }

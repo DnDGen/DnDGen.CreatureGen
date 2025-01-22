@@ -41,271 +41,69 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Angel_Solar][None] = 0;
 
-                testCases[CreatureConstants.AnimatedObject_Anvil_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Anvil_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Anvil_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Anvil_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Anvil_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Anvil_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Anvil_Colossal][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Block_Stone_Colossal][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Block_Wood_Colossal][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Box_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Box_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Box_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Box_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Box_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Box_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Box_Colossal][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Carpet_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Carpet_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Carpet_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Carpet_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Carpet_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Carpet_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Carpet_Colossal][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Carriage_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Carriage_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Carriage_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Carriage_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Carriage_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Carriage_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Carriage_Colossal][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Chain_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Chain_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Chain_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Chain_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Chain_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Chain_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Chain_Colossal][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Chair_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Chair_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Chair_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Chair_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Chair_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Chair_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Chair_Colossal][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Clothes_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Clothes_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Clothes_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Clothes_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Clothes_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Clothes_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Clothes_Colossal][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Ladder_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Ladder_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Ladder_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Ladder_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Ladder_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Ladder_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Ladder_Colossal][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Rope_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Rope_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Rope_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Rope_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Rope_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Rope_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Rope_Colossal][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Rug_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Rug_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Rug_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Rug_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Rug_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Rug_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Rug_Colossal][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Sled_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Sled_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Sled_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Sled_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Sled_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Sled_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Sled_Colossal][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Statue_Animal_Colossal][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Colossal][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Stool_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Stool_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Stool_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Stool_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Stool_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Stool_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Stool_Colossal][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Table_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Table_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Table_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Table_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Table_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Table_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Table_Colossal][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Tapestry_Colossal][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Wagon_Tiny][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Wagon_Small][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Wagon_Medium][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Wagon_Large][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Wagon_Huge][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Wagon_Gargantuan][None] = 0;
-
-                testCases[CreatureConstants.AnimatedObject_Wagon_Colossal][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Colossal][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Flexible][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Sheetlike][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Colossal_TwoLegs][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Colossal_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Flexible][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Huge][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Huge_Flexible][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Huge_Sheetlike][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Huge_TwoLegs][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Huge_Wheels_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Huge_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_Flexible][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_Sheetlike][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_TwoLegs][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_Wheels_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Medium][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Medium_Flexible][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Medium_MultipleLegs][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Medium_Sheetlike][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Medium_TwoLegs][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Medium_Wheels_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Medium_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Small][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Small_Flexible][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Small_MultipleLegs][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Small_Sheetlike][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Small_TwoLegs][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Small_Wheels_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Small_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Tiny][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Flexible][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Tiny_MultipleLegs][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Sheetlike][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Tiny_TwoLegs][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden][None] = 0;
+                testCases[CreatureConstants.AnimatedObject_Tiny_Wooden][None] = 0;
 
                 testCases[CreatureConstants.Ankheg][None] = 0;
 
@@ -387,16 +185,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Bison][None] = 0;
 
-                testCases[CreatureConstants.Bison_Goat][None] = 0;
-
-                testCases[CreatureConstants.Bison_Sheep][None] = 0;
-
-                testCases[CreatureConstants.Bison_Llama][None] = 0;
-
-                testCases[CreatureConstants.Bison_MilkCow][None] = 0;
-
-                testCases[CreatureConstants.Bison_Ox][None] = 0;
-
                 testCases[CreatureConstants.BlackPudding][None] = 0;
 
                 testCases[CreatureConstants.BlackPudding_Elder][None] = 0;
@@ -404,8 +192,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
                 testCases[CreatureConstants.BlinkDog][None] = 0;
 
                 testCases[CreatureConstants.Boar][None] = 0;
-
-                testCases[CreatureConstants.Boar_Pig][None] = 0;
 
                 testCases[CreatureConstants.Boar_Dire][None] = 0;
 
@@ -1226,14 +1012,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Raven][None] = 0;
 
-                testCases[CreatureConstants.Raven_Chicken][None] = 0;
-
-                testCases[CreatureConstants.Raven_Turkey][None] = 0;
-
-                testCases[CreatureConstants.Raven_Peacock][None] = 0;
-
-                testCases[CreatureConstants.Raven_Pheasant][None] = 0;
-
                 testCases[CreatureConstants.Ravid][None] = 0;
 
                 testCases[CreatureConstants.RazorBoar][None] = 0;
@@ -1659,17 +1437,27 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
                 testCases[CreatureConstants.Templates.HalfDragon_Silver][None] = 0;
                 testCases[CreatureConstants.Templates.HalfDragon_White][None] = 0;
                 testCases[CreatureConstants.Templates.HalfFiend][None] = 0;
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted][None] = 0;
                 testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted][None] = 0;
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted][None] = 0;
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted][None] = 0;
                 testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted][None] = 0;
                 testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted][None] = 0;
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Afflicted][None] = 0;
                 testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted][None] = 0;
                 testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted][None] = 0;
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted][None] = 0;
                 testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted][None] = 0;
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural][None] = 0;
                 testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural][None] = 0;
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural][None] = 0;
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural][None] = 0;
                 testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural][None] = 0;
                 testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural][None] = 0;
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Natural][None] = 0;
                 testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural][None] = 0;
                 testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural][None] = 0;
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural][None] = 0;
                 testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural][None] = 0;
                 testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted][None] = 0;
                 testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural][None] = 0;

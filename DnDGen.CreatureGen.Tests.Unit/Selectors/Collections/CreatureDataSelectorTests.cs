@@ -34,7 +34,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             data[DataIndexConstants.CreatureData.NumberOfHands] = "1336";
 
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureData, Creature))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureData, Creature))
                 .Returns(data);
         }
 
@@ -153,7 +153,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             data["my other creature"] = otherCreatureData;
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureData))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData))
                 .Returns(data);
 
             var allData = creatureDataSelector.SelectAll();

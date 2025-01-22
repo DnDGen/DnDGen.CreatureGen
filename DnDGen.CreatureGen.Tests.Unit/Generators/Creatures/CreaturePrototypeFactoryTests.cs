@@ -127,7 +127,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             types["creature 7"] = new[] { "creature type 4" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
@@ -141,7 +141,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             alignments["creature 7"] = new[] { AlignmentConstants.TrueNeutral, AlignmentConstants.NeutralGood, AlignmentConstants.TrueNeutral };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
 
             var abilities = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
@@ -531,7 +531,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             types["creature 7"] = new[] { "creature type 4" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
@@ -545,7 +545,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             alignments["creature 7"] = new[] { AlignmentConstants.TrueNeutral, AlignmentConstants.NeutralGood, AlignmentConstants.TrueNeutral };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
 
             var abilities = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
@@ -889,14 +889,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             types["creature 1"] = new[] { "my creature type" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["creature 1"] = new[] { AlignmentConstants.ChaoticEvil };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
 
             var abilities = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();

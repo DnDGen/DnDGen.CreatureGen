@@ -11,7 +11,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CharacterGen.Tests.Unit.Generators.Magics
+namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
 {
     [TestFixture]
     public class SpellsGeneratorTests
@@ -62,7 +62,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             alignment.Goodness = "goodly";
             alignment.Lawfulness = "lawly";
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Divine)).Returns(divineCasters);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Divine)).Returns(divineCasters);
 
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellsPerDay, $"{caster}:{casterLevel}"))
@@ -72,9 +72,9 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.KnownSpells, $"{caster}:{casterLevel}"))
                 .Returns(spellsKnownForClass);
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, caster)).Returns(classSpells);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "domain 1")).Returns(new[] { classSpells[0], classSpells[2] });
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "domain 2")).Returns(new[] { classSpells[1], classSpells[3] });
+            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, caster)).Returns(classSpells);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "domain 1")).Returns(new[] { classSpells[0], classSpells[2] });
+            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "domain 2")).Returns(new[] { classSpells[1], classSpells[3] });
 
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, caster))
@@ -412,7 +412,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "special domain"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "special domain"))
                 .Returns(new[] { "spell 5", "other special domain spell" });
 
             var specialDomainSpellLevels = new List<TypeAndAmountSelection>();
@@ -443,7 +443,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellLevels.Add(new TypeAndAmountSelection { Type = classSpells[4], Amount = 0, });
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "creature:Prohibited"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "creature:Prohibited"))
                 .Returns(new[] { "other forbidden spell", classSpells[4] });
 
             spellsKnownForClass.Clear();
@@ -470,7 +470,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellLevels.Add(new TypeAndAmountSelection { Type = classSpells[4], Amount = 0, });
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "specialist field:Prohibited"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "specialist field:Prohibited"))
                 .Returns(new[] { "other forbidden spell", classSpells[4] });
 
             spellsKnownForClass.Clear();
@@ -497,7 +497,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellLevels.Add(new TypeAndAmountSelection { Type = classSpells[4], Amount = 0, });
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "goodly:Prohibited"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "goodly:Prohibited"))
                 .Returns(new[] { "other forbidden spell", classSpells[4] });
 
             spellsKnownForClass.Clear();
@@ -524,7 +524,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellLevels.Add(new TypeAndAmountSelection { Type = classSpells[4], Amount = 0, });
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "lawly:Prohibited"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "lawly:Prohibited"))
                 .Returns(new[] { "other forbidden spell", classSpells[4] });
 
             spellsKnownForClass.Clear();
@@ -593,7 +593,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "special domain"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "special domain"))
                 .Returns(new[] { "spell 5", "other special domain spell" });
 
             var specialDomainSpellLevels = new List<TypeAndAmountSelection>();
@@ -624,7 +624,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 0, });
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "special domain"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "special domain"))
                 .Returns(new[] { "spell 5", "other special domain spell" });
 
             var specialDomainSpellLevels = new List<TypeAndAmountSelection>();
@@ -673,7 +673,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 0, });
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "special domain"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "special domain"))
                 .Returns(new[] { "spell 5", "other special domain spell" });
 
             var specialDomainSpellLevels = new List<TypeAndAmountSelection>();
@@ -698,7 +698,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellLevels.Add(new TypeAndAmountSelection { Type = classSpells[4], Amount = 1, });
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "special domain"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "special domain"))
                 .Returns(new[] { "other special domain spell", classSpells[4] });
 
             var specialDomainSpellLevels = new List<TypeAndAmountSelection>();
@@ -726,7 +726,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             spellLevels.Add(new TypeAndAmountSelection { Type = classSpells[4], Amount = 1, });
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "special domain"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "special domain"))
                 .Returns(new[] { classSpells[3] });
 
             var specialDomainSpellLevels = new List<TypeAndAmountSelection>();
@@ -750,7 +750,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
         public void RandomKnownSpellsAreNotProhibitedSpells_ProhibitedByDomain()
         {
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "domain 2:Prohibited"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "domain 2:Prohibited"))
                 .Returns(new[] { classSpells[0], classSpells[2] });
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "domain 2");
@@ -769,7 +769,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
         public void RandomKnownSpellsAreNotProhibitedSpells_ProhibitedByCreature()
         {
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "creature:Prohibited"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "creature:Prohibited"))
                 .Returns(new[] { classSpells[0], classSpells[2] });
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "domain 2");
@@ -788,7 +788,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
         public void RandomKnownSpellsAreNotProhibitedSpells_ProhibitedByAlignmentGoodness()
         {
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "goodly:Prohibited"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "goodly:Prohibited"))
                 .Returns(new[] { classSpells[0], classSpells[2] });
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "domain 2");
@@ -807,7 +807,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
         public void RandomKnownSpellsAreNotProhibitedSpells_ProhibitedByAlignmentLawfulness()
         {
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "lawly:Prohibited"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "lawly:Prohibited"))
                 .Returns(new[] { classSpells[0], classSpells[2] });
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "domain 2");
@@ -829,7 +829,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             selection.Amount = 0;
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "special domain"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "special domain"))
                 .Returns(new[] { "spell 5", "other special domain spell" });
 
             var specialDomainSpellLevels = new List<TypeAndAmountSelection>();
@@ -906,7 +906,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             otherClassSpells.Add("other spell 5");
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "other class name"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "other class name"))
                 .Returns(otherClassSpells);
 
             var otherSpellLevels = new List<TypeAndAmountSelection>();
@@ -921,7 +921,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Returns(otherSpellLevels);
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "special domain"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "special domain"))
                 .Returns(new[] { "other special domain spell", otherClassSpells[4] });
 
             var specialDomainSpellLevels = new List<TypeAndAmountSelection>();
@@ -1001,18 +1001,24 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
         [Test]
         public void GetRandomPreparedSpecialistSpells()
         {
-            var knownSpells = new List<Spell>();
-            knownSpells.Add(new Spell { Name = classSpells[0], Level = 0 });
-            knownSpells.Add(new Spell { Name = classSpells[1], Level = 0 });
-            knownSpells.Add(new Spell { Name = "other cantrip", Level = 0 });
-            knownSpells.Add(new Spell { Name = classSpells[2], Level = 1 });
-            knownSpells.Add(new Spell { Name = "other spell", Level = 1 });
+            var knownSpells = new List<Spell>
+            {
+                new Spell { Name = classSpells[0], Level = 0 },
+                new Spell { Name = classSpells[1], Level = 0 },
+                new Spell { Name = "other cantrip", Level = 0 },
+                new Spell { Name = classSpells[2], Level = 1 },
+                new Spell { Name = "other spell", Level = 1 }
+            };
 
-            var spellsPerDay = new List<SpellQuantity>();
-            spellsPerDay.Add(new SpellQuantity { Level = 0, Quantity = 2 });
-            spellsPerDay.Add(new SpellQuantity { Level = 1, Quantity = 1, HasDomainSpell = true });
+            var spellsPerDay = new List<SpellQuantity>
+            {
+                new SpellQuantity { Level = 0, Quantity = 2 },
+                new SpellQuantity { Level = 1, Quantity = 1, HasDomainSpell = true }
+            };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SpellGroups, "domain 2")).Returns(new[] { classSpells[1], classSpells[3], "other spell" });
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "domain 2"))
+                .Returns([classSpells[1], classSpells[3], "other spell"]);
 
             var spellsPrepared = spellsGenerator.GeneratePrepared(knownSpells, spellsPerDay, "domain 2");
             Assert.That(spellsPrepared.Count(), Is.EqualTo(4));

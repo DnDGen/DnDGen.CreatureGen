@@ -261,7 +261,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats
         [TestCase(SkillConstants.Profession)]
         public void FeatFociForSkillsContainsAllFoci(string skill)
         {
-            var skillGroups = collectionMapper.Map(TableNameConstants.Collection.SkillGroups);
+            var skillGroups = collectionMapper.Map(Config.Name, TableNameConstants.Collection.SkillGroups);
             var skillFoci = skillGroups[skill];
 
             var featFoci = skillFoci.Select(f => SkillConstants.Build(skill, f));

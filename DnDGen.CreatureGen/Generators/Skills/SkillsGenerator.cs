@@ -59,11 +59,11 @@ namespace DnDGen.CreatureGen.Generators.Skills
 
         private IEnumerable<string> GetUntrainedSkillsNames(bool canUseEquipment)
         {
-            var untrainedSkillNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.Untrained);
+            var untrainedSkillNames = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, GroupConstants.Untrained);
 
             if (!canUseEquipment)
             {
-                var unnaturalSkills = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.Unnatural);
+                var unnaturalSkills = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, GroupConstants.Unnatural);
                 untrainedSkillNames = untrainedSkillNames.Except(unnaturalSkills);
             }
 
@@ -72,14 +72,14 @@ namespace DnDGen.CreatureGen.Generators.Skills
 
         private IEnumerable<string> GetCreatureSkillNames(string creatureName, CreatureType creatureType)
         {
-            var creatureSkillNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, creatureName);
-            var creatureTypeSkillNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, creatureType.Name);
+            var creatureSkillNames = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, creatureName);
+            var creatureTypeSkillNames = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, creatureType.Name);
 
             creatureSkillNames = creatureSkillNames.Union(creatureTypeSkillNames);
 
             foreach (var subtype in creatureType.SubTypes)
             {
-                var subtypeSkillNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, subtype);
+                var subtypeSkillNames = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, subtype);
                 creatureSkillNames = creatureSkillNames.Union(subtypeSkillNames);
             }
 
@@ -193,7 +193,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
             {
                 var skill = collectionsSelector.SelectRandomFrom(creatureSkills, untrainedSkills);
                 var availableRanks = Math.Min(skill.RankCap - skill.Ranks, points);
-                var rankRoll = RollHelper.GetRollWithMostEvenDistribution(1, availableRanks);
+                var rankRoll = RollHelper.GetRollWithMostEvenDistribution(1, availableRanks, allowNonstandardDice: true);
                 var ranks = dice.Roll(rankRoll).AsSum();
 
                 skill.Ranks += ranks;
@@ -235,7 +235,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
             if (skillSelection.RandomFociQuantity == 0)
                 return new[] { skillSelection };
 
-            var skillFoci = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, skillSelection.SkillName).ToList();
+            var skillFoci = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, skillSelection.SkillName).ToList();
 
             if (skillSelection.RandomFociQuantity >= skillFoci.Count)
             {
@@ -274,7 +274,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
             bool includeFirstHitDieBonus)
         {
             var skills = new List<Skill>();
-            var skillsWithArmorCheckPenalties = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.ArmorCheckPenalty);
+            var skillsWithArmorCheckPenalties = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, GroupConstants.ArmorCheckPenalty);
 
             foreach (var skillSelection in skillSelections)
             {
@@ -314,7 +314,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
 
         public IEnumerable<Skill> ApplyBonusesFromFeats(IEnumerable<Skill> skills, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities)
         {
-            var allSkills = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.All);
+            var allSkills = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, GroupConstants.All);
 
             foreach (var feat in feats)
             {
@@ -342,7 +342,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
                 }
                 else
                 {
-                    var skillsToReceiveBonus = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, feat.Name);
+                    var skillsToReceiveBonus = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, feat.Name);
 
                     foreach (var skillName in skillsToReceiveBonus)
                     {

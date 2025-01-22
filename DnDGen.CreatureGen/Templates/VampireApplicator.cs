@@ -30,6 +30,8 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IAdjustmentsSelector adjustmentSelector;
         private readonly IEnumerable<string> creatureTypes;
         private readonly ICreaturePrototypeFactory prototypeFactory;
+        private readonly ITypeAndAmountSelector typeAndAmountSelector;
+        private readonly IDemographicsGenerator demographicsGenerator;
 
         private const int MinimumVampireHitDice = 5;
 
@@ -40,7 +42,9 @@ namespace DnDGen.CreatureGen.Templates
             ICollectionSelector collectionSelector,
             ICreatureDataSelector creatureDataSelector,
             IAdjustmentsSelector adjustmentSelector,
-            ICreaturePrototypeFactory prototypeFactory)
+            ICreaturePrototypeFactory prototypeFactory,
+            ITypeAndAmountSelector typeAndAmountSelector,
+            IDemographicsGenerator demographicsGenerator)
         {
             this.dice = dice;
             this.attacksGenerator = attacksGenerator;
@@ -49,12 +53,14 @@ namespace DnDGen.CreatureGen.Templates
             this.creatureDataSelector = creatureDataSelector;
             this.adjustmentSelector = adjustmentSelector;
             this.prototypeFactory = prototypeFactory;
+            this.typeAndAmountSelector = typeAndAmountSelector;
+            this.demographicsGenerator = demographicsGenerator;
 
-            creatureTypes = new[]
-            {
+            creatureTypes =
+            [
                 CreatureConstants.Types.Humanoid,
                 CreatureConstants.Types.MonstrousHumanoid,
-            };
+            ];
         }
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
@@ -83,6 +89,9 @@ namespace DnDGen.CreatureGen.Templates
 
             //Type
             UpdateCreatureType(creature);
+
+            // Demographics
+            UpdateCreatureDemographics(creature);
 
             // Level Adjustment
             UpdateCreatureLevelAdjustment(creature);
@@ -134,7 +143,12 @@ namespace DnDGen.CreatureGen.Templates
         {
             return new[] { CreatureConstants.Types.Undead }
                 .Union(subtypes)
-                .Union(new[] { CreatureConstants.Types.Subtypes.Augmented, creatureType });
+                .Union([CreatureConstants.Types.Subtypes.Augmented, creatureType]);
+        }
+
+        private void UpdateCreatureDemographics(Creature creature)
+        {
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, creature.Name, CreatureConstants.Templates.Vampire);
         }
 
         private void UpdateCreatureInitiativeBonus(Creature creature)
@@ -280,7 +294,8 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Size,
                 creature.BaseAttackBonus,
                 creature.Abilities,
-                creature.HitPoints.RoundedHitDiceQuantity);
+                creature.HitPoints.RoundedHitDiceQuantity,
+                creature.Demographics.Gender);
 
             var allFeats = creature.Feats.Union(creature.SpecialQualities);
             vampireAttacks = attacksGenerator.ApplyAttackBonuses(vampireAttacks, allFeats, creature.Abilities);
@@ -370,6 +385,10 @@ namespace DnDGen.CreatureGen.Templates
             var typeTask = Task.Run(() => UpdateCreatureType(creature));
             tasks.Add(typeTask);
 
+            // Demographics
+            var demographicsTask = Task.Run(() => UpdateCreatureDemographics(creature));
+            tasks.Add(demographicsTask);
+
             // Level Adjustment
             var levelAdjustmentTask = Task.Run(() => UpdateCreatureLevelAdjustment(creature));
             tasks.Add(levelAdjustmentTask);
@@ -428,8 +447,8 @@ namespace DnDGen.CreatureGen.Templates
             var filteredBaseCreatures = sourceCreatures;
             var allData = creatureDataSelector.SelectAll();
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
-            var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
-            var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
+            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
+            var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
 
             if (!string.IsNullOrEmpty(filters?.ChallengeRating))
             {

@@ -70,68 +70,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
                 entries.Clear();
 
             AssertData(creature, entries);
-        }
 
-        [Test]
-        public void AllSpecialQualityKeysUnique()
-        {
-            var keys = new List<string>();
-
-            foreach (var kvp in table)
-            {
-                foreach (var value in kvp.Value)
-                {
-                    var isValid = helper.ValidateEntry(value);
-                    Assert.That(isValid, Is.True, kvp.Key);
-
-                    var key = helper.BuildKey(kvp.Key, value);
-                    keys.Add(key);
-                }
-            }
-
-            Assert.That(keys, Is.Unique);
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void BonusFeatsHaveCorrectData(string creature)
-        {
-            Assert.That(table, Contains.Key(creature));
-
+            //Bonus Feats Have Correct Data
             var feats = featsSelector.SelectFeats();
-            var datas = table[creature]
-                .Select(helper.ParseEntry)
-                .Where(d => feats.Any(f => f.Feat == d[DataIndexConstants.SpecialQualityData.FeatNameIndex]));
+            var bonusFeatsData = entries.Where(d => feats.Any(f => f.Feat == d[DataIndexConstants.SpecialQualityData.FeatNameIndex]));
 
-            var testCaseSpecialQualityDatas = GetTestCaseData(creature);
-
-            foreach (var data in datas)
+            foreach (var data in bonusFeatsData)
             {
                 var matchingFeat = feats.First(f => f.Feat == data[DataIndexConstants.SpecialQualityData.FeatNameIndex]);
-
-                Assert.That(testCaseSpecialQualityDatas.Any(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == matchingFeat.Feat), Is.True, $"TEST CASE: {matchingFeat.Feat}");
-                var testCaseData = testCaseSpecialQualityDatas.First(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == matchingFeat.Feat);
-
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(matchingFeat.Frequency.Quantity.ToString()), $"TEST CASE: {matchingFeat.Feat} - Frequency Quantity");
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(matchingFeat.Frequency.TimePeriod), $"TEST CASE: {matchingFeat.Feat} - Frequency Time Period");
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(matchingFeat.Power.ToString()), $"TEST CASE: {matchingFeat.Feat} - Power");
 
                 Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(matchingFeat.Frequency.Quantity.ToString()), $"XML: {matchingFeat.Feat} - Frequency Quantit");
                 Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(matchingFeat.Frequency.TimePeriod), $"XML: {matchingFeat.Feat} - Frequency Time Period");
                 Assert.That(data[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(matchingFeat.Power.ToString()), $"XML: {matchingFeat.Feat} - Power");
             }
-        }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void ProficiencyFeatsHaveCorrectFoci(string creature)
-        {
-            Assert.That(table, Contains.Key(creature));
-
+            //Proficiency Feats Have Correct Foci
             var proficiencyFeats = new[]
             {
                 FeatConstants.WeaponProficiency_Exotic,
@@ -139,27 +92,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
                 FeatConstants.WeaponProficiency_Simple,
             };
 
-            var datas = table[creature]
-                .Select(helper.ParseEntry)
+            var proficiencyFeatsData = entries
                 .Where(d => proficiencyFeats.Contains(d[DataIndexConstants.SpecialQualityData.FeatNameIndex]))
                 .Where(d => d[DataIndexConstants.SpecialQualityData.FocusIndex] != GroupConstants.All);
 
-            var testCaseSpecialQualityDatas = GetTestCaseData(creature);
-
-            var weaponFamiliarityData = testCaseSpecialQualityDatas.Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.WeaponFamiliarity);
+            var weaponFamiliarityData = entries
+                .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.WeaponFamiliarity);
             var weaponFamiliarityFoci = weaponFamiliarityData.Select(d => d[DataIndexConstants.SpecialQualityData.FocusIndex]);
 
-            foreach (var data in datas)
+            foreach (var data in proficiencyFeatsData)
             {
                 var featName = data[DataIndexConstants.SpecialQualityData.FeatNameIndex];
                 var focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
 
-                var featFoci = collectionMapper.Map(TableNameConstants.Collection.FeatFoci);
+                var featFoci = collectionMapper.Map(Config.Name, TableNameConstants.Collection.FeatFoci);
                 var proficiencyFoci = featFoci[featName];
-
-                var testCaseData = testCaseSpecialQualityDatas.First(d =>
-                    d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == featName
-                    && d[DataIndexConstants.SpecialQualityData.FocusIndex] == focus);
 
                 if (weaponFamiliarityFoci.Contains(focus) && featName == FeatConstants.WeaponProficiency_Martial)
                 {
@@ -167,19 +114,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
                     proficiencyFoci = proficiencyFoci.Union(new[] { focus });
                 }
 
-                Assert.That(proficiencyFoci, Contains.Item(testCaseData[DataIndexConstants.SpecialQualityData.FocusIndex]), $"TEST CASE: {featName}");
                 Assert.That(proficiencyFoci, Contains.Item(focus), $"XML: {featName}");
             }
-        }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void FeatsFocusingOnWeaponsOrArmorRequireEquipment(string creature)
-        {
-            Assert.That(table, Contains.Key(creature));
-
+            //Feats Focusing On Weapons Or Armor Require Equipment
             var weaponAndArmorFeats = new[]
             {
                 FeatConstants.ArmorProficiency_Heavy,
@@ -203,24 +141,167 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
                 FeatConstants.SpecialQualities.WeaponFamiliarity,
             };
 
-            var datas = table[creature]
-                .Select(helper.ParseEntry)
-                .Where(d => weaponAndArmorFeats.Contains(d[DataIndexConstants.SpecialQualityData.FeatNameIndex]));
+            var weaponArmorFeatsData = entries.Where(d => weaponAndArmorFeats.Contains(d[DataIndexConstants.SpecialQualityData.FeatNameIndex]));
 
-            var testCaseSpecialQualityDatas = GetTestCaseData(creature);
-
-            foreach (var data in datas)
+            foreach (var data in weaponArmorFeatsData)
             {
                 var featName = data[DataIndexConstants.SpecialQualityData.FeatNameIndex];
 
-                var testCaseData = testCaseSpecialQualityDatas.First(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == featName);
-
-                var requiresEquipment = Convert.ToBoolean(testCaseData[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex]);
-                Assert.That(requiresEquipment, Is.True, $"TEST CASE: {featName}");
-
-                requiresEquipment = Convert.ToBoolean(data[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex]);
+                var requiresEquipment = Convert.ToBoolean(data[DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex]);
                 Assert.That(requiresEquipment, Is.True, $"XML: {featName}");
             }
+
+            //Fast Healing Has Correct Frequency
+            var fastHealingData = entries.FirstOrDefault(e => e[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.FastHealing);
+            if (fastHealingData != null)
+            {
+                Assert.That(fastHealingData[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()), "XML: Frequency Quantity");
+                Assert.That(fastHealingData[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Round), "XML: Frequency Time Period");
+            }
+
+            //Regeneration Has Correct Frequency
+            var regenerationData = entries.FirstOrDefault(e => e[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Regeneration);
+            if (regenerationData != null)
+            {
+                Assert.That(regenerationData[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()), "XML: Frequency Quantity");
+                Assert.That(regenerationData[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Round), "XML: Frequency Time Period");
+            }
+
+            //Damage Reduction Has Correct Data
+            var damageReductiondatas = entries.Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.DamageReduction);
+
+            foreach (var data in damageReductiondatas)
+            {
+                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()), "XML: Frequency Quantity");
+                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Hit), "XML: Frequency Time Period");
+                Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty, "XML: Focus");
+                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Positive, "XML: Power");
+            }
+
+            //Immunity Has Correct Data
+            var immunityDatas = entries.Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Immunity);
+
+            foreach (var data in immunityDatas)
+            {
+                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(0.ToString()), "XML: Frequency Quantity");
+                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Empty, "XML: Frequency Time Period");
+                Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty, "XML: Focus");
+                Assert.That(data[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(0.ToString()), "XML: Power");
+            }
+
+            //Change Shape Has Correct Data
+            var changeShapeDatas = entries.Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.ChangeShape);
+
+            foreach (var data in changeShapeDatas)
+            {
+                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]), Is.Not.Negative, "XML: Frequency Quantity");
+                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Not.Empty, "XML: Frequency Time Period");
+                Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty, "XML: Focus");
+                Assert.That(data[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(0.ToString()), "XML: Power");
+            }
+
+            //Spell-Like Ability Has Correct Data
+            var spellLikeAbilityDatas = entries.Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility);
+
+            foreach (var data in spellLikeAbilityDatas)
+            {
+                var focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
+
+                Assert.That(focus, Is.Not.Empty, "XML: Focus");
+                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]), Is.Not.Negative, $"XML: {focus} - Frequency Quantity");
+                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Not.Empty, focus, $"XML: {focus} - Frequency Time Period");
+                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Zero, focus, $"XML: {focus} - Power");
+            }
+
+            //Psionic Has Correct Data
+            var psionicDatas = entries.Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Psionic);
+
+            foreach (var data in psionicDatas)
+            {
+                var focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
+
+                Assert.That(focus, Is.Not.Empty, "XML: Focus");
+                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]), Is.Not.Negative, $"XML: {focus} - Frequency Quantity");
+                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Not.Empty, focus, $"XML: {focus} - Frequency Time Period");
+                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Zero, focus, $"XML: {focus} - Power");
+            }
+
+            //Energy Resistance Has Correct Data
+            var energies = new[]
+            {
+                FeatConstants.Foci.Elements.Acid,
+                FeatConstants.Foci.Elements.Cold,
+                FeatConstants.Foci.Elements.Electricity,
+                FeatConstants.Foci.Elements.Fire,
+                FeatConstants.Foci.Elements.Sonic,
+            };
+
+            var energyResistanceDatas = entries.Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.EnergyResistance);
+
+            foreach (var data in energyResistanceDatas)
+            {
+                var focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
+                Assert.That(focus, Is.Not.Empty, "XML: Focus");
+                Assert.That(energies, Contains.Item(focus), $"XML: Focus");
+                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()), $"XML: {focus} - Frequency Quantity");
+                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Round), $"XML: {focus} - Frequency Time Period");
+                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Positive, $"XML: {focus} - Power");
+                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]) % 5, Is.Zero, $"XML: {focus} - Power");
+            }
+
+            //Creatures That Can Change Shape Into Humanoid Can Use Equipment
+            var allCreatures = CreatureConstants.GetAll();
+            if (allCreatures.Contains(creature))
+            {
+                var changeShapeFeats = new[]
+                {
+                    FeatConstants.SpecialQualities.ChangeShape,
+                    FeatConstants.SpecialQualities.AlternateForm,
+                };
+
+                changeShapeDatas = entries.Where(d => changeShapeFeats.Contains(d[DataIndexConstants.SpecialQualityData.FeatNameIndex]));
+
+                var humanoids = new[]
+                {
+                    CreatureConstants.Goblin, //For Barghest
+                    CreatureConstants.Types.Giant,
+                    CreatureConstants.Types.Humanoid,
+                    CreatureConstants.Types.MonstrousHumanoid,
+                };
+
+                var creatureData = creatureDataSelector.SelectFor(creature);
+
+                foreach (var data in changeShapeDatas)
+                {
+                    var focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
+                    var changesIntoHumanoid = humanoids.Any(h => focus.ToLower().Contains(h.ToLower()));
+
+                    if (changesIntoHumanoid)
+                    {
+                        Assert.That(creatureData.CanUseEquipment, Is.True, $"XML: {focus}");
+                    }
+                }
+            }
+        }
+
+        [Test]
+        public void AllSpecialQualityKeysUnique()
+        {
+            var keys = new List<string>();
+
+            foreach (var kvp in table)
+            {
+                foreach (var value in kvp.Value)
+                {
+                    var isValid = helper.ValidateEntry(value);
+                    Assert.That(isValid, Is.True, kvp.Key);
+
+                    var key = helper.BuildKey(kvp.Key, value);
+                    keys.Add(key);
+                }
+            }
+
+            Assert.That(keys, Is.Unique);
         }
 
         private IEnumerable<string[]> GetTestCaseData(string creature)
@@ -238,290 +319,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void FastHealingHasCorrectFrequency(string creature)
-        {
-            Assert.That(table, Contains.Key(creature));
-
-            var collection = table[creature];
-            var testCaseSpecialQualityDatas = GetTestCaseData(creature);
-
-            foreach (var entry in collection)
-            {
-                var data = helper.ParseEntry(entry);
-
-                if (data[DataIndexConstants.SpecialQualityData.FeatNameIndex] != FeatConstants.SpecialQualities.FastHealing)
-                    continue;
-
-                var testCaseData = testCaseSpecialQualityDatas.First(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.FastHealing);
-
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()), "TEST CASE: Frequency Quantity");
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Round), "TEST CASE: Frequency Time Period");
-
-                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()), "XML: Frequency Quantity");
-                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Round), "XML: Frequency Time Period");
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void RegenerationHasCorrectFrequency(string creature)
-        {
-            Assert.That(table, Contains.Key(creature));
-
-            var collection = table[creature];
-            var testCaseSpecialQualityDatas = GetTestCaseData(creature);
-
-            foreach (var entry in collection)
-            {
-                var data = helper.ParseEntry(entry);
-
-                if (data[DataIndexConstants.SpecialQualityData.FeatNameIndex] != FeatConstants.SpecialQualities.Regeneration)
-                    continue;
-
-                var testCaseData = testCaseSpecialQualityDatas.First(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Regeneration);
-
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()), "TEST CASE: Frequency Quantity");
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Round), "TEST CASE: Frequency Time Period");
-
-                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()), "XML: Frequency Quantity");
-                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Round), "XML: Frequency Time Period");
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void DamageReductionHasCorrectData(string creature)
-        {
-            Assert.That(table, Contains.Key(creature));
-
-            var datas = table[creature]
-                .Select(helper.ParseEntry)
-                .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.DamageReduction);
-
-            var testCaseSpecialQualityDatas = GetTestCaseData(creature);
-
-            foreach (var data in datas)
-            {
-                Assert.That(testCaseSpecialQualityDatas.Any(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.DamageReduction), Is.True, $"TEST CASE: No Damage Reduction in test case");
-                var testCaseData = testCaseSpecialQualityDatas.First(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.DamageReduction);
-
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()), "TEST CASE: Frequency Quantity");
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Hit), "TEST CASE: Frequency Time Period");
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty, "TEST CASE: Focus");
-                Assert.That(Convert.ToInt32(testCaseData[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Positive, "TEST CASE: Power");
-
-                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()), "XML: Frequency Quantity");
-                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Hit), "XML: Frequency Time Period");
-                Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty, "XML: Focus");
-                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Positive, "XML: Power");
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void ImmunityHasCorrectData(string creature)
-        {
-            Assert.That(table, Contains.Key(creature));
-
-            var datas = table[creature]
-                .Select(helper.ParseEntry)
-                .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Immunity);
-
-            var testCaseSpecialQualityDatas = GetTestCaseData(creature);
-
-            foreach (var data in datas)
-            {
-                Assert.That(testCaseSpecialQualityDatas.Any(d =>
-                    d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Immunity
-                    && d[DataIndexConstants.SpecialQualityData.FocusIndex] == data[DataIndexConstants.SpecialQualityData.FocusIndex]
-                ), Is.True, $"TEST CASE: No Immunity to {data[DataIndexConstants.SpecialQualityData.FocusIndex]} in test case");
-
-                var testCaseData = testCaseSpecialQualityDatas.First(d =>
-                    d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Immunity
-                    && d[DataIndexConstants.SpecialQualityData.FocusIndex] == data[DataIndexConstants.SpecialQualityData.FocusIndex]);
-
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(0.ToString()), "TEST CASE: Frequency Quantity");
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Empty, "TEST CASE: Frequency Time Period");
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty, "TEST CASE: Focus");
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(0.ToString()), "TEST CASE: Power");
-
-                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(0.ToString()), "XML: Frequency Quantity");
-                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Empty, "XML: Frequency Time Period");
-                Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty, "XML: Focus");
-                Assert.That(data[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(0.ToString()), "XML: Power");
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void ChangeShapeHasCorrectData(string creature)
-        {
-            Assert.That(table, Contains.Key(creature));
-
-            var datas = table[creature]
-                .Select(helper.ParseEntry)
-                .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.ChangeShape);
-
-            var testCaseSpecialQualityDatas = GetTestCaseData(creature);
-
-            foreach (var data in datas)
-            {
-                var testCaseData = testCaseSpecialQualityDatas.First(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.ChangeShape);
-
-                Assert.That(Convert.ToInt32(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]), Is.Not.Negative, "TEST CASE: Frequency Quantity");
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Not.Empty, "TEST CASE: Frequency Time Period");
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty, "TEST CASE: Focus");
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(0.ToString()), "TEST CASE: Power");
-
-                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]), Is.Not.Negative, "XML: Frequency Quantity");
-                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Not.Empty, "XML: Frequency Time Period");
-                Assert.That(data[DataIndexConstants.SpecialQualityData.FocusIndex], Is.Not.Empty, "XML: Focus");
-                Assert.That(data[DataIndexConstants.SpecialQualityData.PowerIndex], Is.EqualTo(0.ToString()), "XML: Power");
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void SpellLikeAbilityHasCorrectData(string creature)
-        {
-            Assert.That(table, Contains.Key(creature));
-
-            var datas = table[creature]
-                .Select(helper.ParseEntry)
-                .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility);
-
-            var testCaseSpecialQualityDatas = GetTestCaseData(creature);
-
-            foreach (var data in datas)
-            {
-                Assert.That(testCaseSpecialQualityDatas.Any(d =>
-                    d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility
-                    && d[DataIndexConstants.SpecialQualityData.FocusIndex] == data[DataIndexConstants.SpecialQualityData.FocusIndex]), Is.True, $"TEST CASE: Spell-Like Ability - {data[DataIndexConstants.SpecialQualityData.FocusIndex]}");
-
-                var testCaseData = testCaseSpecialQualityDatas.First(d =>
-                    d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility
-                    && d[DataIndexConstants.SpecialQualityData.FocusIndex] == data[DataIndexConstants.SpecialQualityData.FocusIndex]);
-
-                var focus = testCaseData[DataIndexConstants.SpecialQualityData.FocusIndex];
-
-                Assert.That(focus, Is.Not.Empty, "TEST CASE: Focus");
-                Assert.That(Convert.ToInt32(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]), Is.Not.Negative, $"TEST CASE: {focus} - Frequency Quantity");
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Not.Empty, focus, $"TEST CASE: {focus} - Frequency Time Period");
-                Assert.That(Convert.ToInt32(testCaseData[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Zero, focus, $"TEST CASE: {focus} - Power");
-
-                focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
-
-                Assert.That(focus, Is.Not.Empty, "XML: Focus");
-                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]), Is.Not.Negative, $"XML: {focus} - Frequency Quantity");
-                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Not.Empty, focus, $"XML: {focus} - Frequency Time Period");
-                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Zero, focus, $"XML: {focus} - Power");
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void PsionicHasCorrectData(string creature)
-        {
-            Assert.That(table, Contains.Key(creature));
-
-            var datas = table[creature]
-                .Select(helper.ParseEntry)
-                .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Psionic);
-
-            var testCaseSpecialQualityDatas = GetTestCaseData(creature);
-
-            foreach (var data in datas)
-            {
-                Assert.That(testCaseSpecialQualityDatas.Any(d =>
-                    d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Psionic
-                    && d[DataIndexConstants.SpecialQualityData.FocusIndex] == data[DataIndexConstants.SpecialQualityData.FocusIndex]), Is.True, $"TEST CASE: Psionic - {data[DataIndexConstants.SpecialQualityData.FocusIndex]}");
-
-                var testCaseData = testCaseSpecialQualityDatas.First(d =>
-                    d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.Psionic
-                    && d[DataIndexConstants.SpecialQualityData.FocusIndex] == data[DataIndexConstants.SpecialQualityData.FocusIndex]);
-
-                var focus = testCaseData[DataIndexConstants.SpecialQualityData.FocusIndex];
-
-                Assert.That(focus, Is.Not.Empty, "TEST CASE: Focus");
-                Assert.That(Convert.ToInt32(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]), Is.Not.Negative, $"TEST CASE: {focus} - Frequency Quantity");
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Not.Empty, focus, $"TEST CASE: {focus} - Frequency Time Period");
-                Assert.That(Convert.ToInt32(testCaseData[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Zero, focus, $"TEST CASE: {focus} - Power");
-
-                focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
-
-                Assert.That(focus, Is.Not.Empty, "XML: Focus");
-                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex]), Is.Not.Negative, $"XML: {focus} - Frequency Quantity");
-                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.Not.Empty, focus, $"XML: {focus} - Frequency Time Period");
-                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Zero, focus, $"XML: {focus} - Power");
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void EnergyResistanceHasCorrectData(string creature)
-        {
-            Assert.That(table, Contains.Key(creature));
-
-            var energies = new[]
-            {
-                FeatConstants.Foci.Elements.Acid,
-                FeatConstants.Foci.Elements.Cold,
-                FeatConstants.Foci.Elements.Electricity,
-                FeatConstants.Foci.Elements.Fire,
-                FeatConstants.Foci.Elements.Sonic,
-            };
-
-            var datas = table[creature]
-                .Select(helper.ParseEntry)
-                .Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.EnergyResistance);
-
-            var testCaseSpecialQualityDatas = GetTestCaseData(creature);
-
-            foreach (var data in datas)
-            {
-                var testCaseData = testCaseSpecialQualityDatas.First(d =>
-                    d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == FeatConstants.SpecialQualities.EnergyResistance
-                    && d[DataIndexConstants.SpecialQualityData.FocusIndex] == data[DataIndexConstants.SpecialQualityData.FocusIndex]);
-
-                var focus = testCaseData[DataIndexConstants.SpecialQualityData.FocusIndex];
-                Assert.That(focus, Is.Not.Empty, "TEST CASE: Focus");
-                Assert.That(energies, Contains.Item(focus), $"TEST CASE: Focus");
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()), $"TEST CASE: {focus} - Frequency Quantity");
-                Assert.That(testCaseData[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Round), $"TEST CASE: {focus} - Frequency Time Period");
-                Assert.That(Convert.ToInt32(testCaseData[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Positive, $"TEST CASE: {focus} - Power");
-                Assert.That(Convert.ToInt32(testCaseData[DataIndexConstants.SpecialQualityData.PowerIndex]) % 5, Is.Zero, $"TEST CASE: {focus} - Power");
-
-                focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
-                Assert.That(focus, Is.Not.Empty, "XML: Focus");
-                Assert.That(energies, Contains.Item(focus), $"XML: Focus");
-                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()), $"XML: {focus} - Frequency Quantity");
-                Assert.That(data[DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Round), $"XML: {focus} - Frequency Time Period");
-                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]), Is.Positive, $"XML: {focus} - Power");
-                Assert.That(Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.PowerIndex]) % 5, Is.Zero, $"XML: {focus} - Power");
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void NoOverlapBetweenCreatureAndCreatureTypes(string creature)
         {
-            var types = collectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
+            var types = collectionMapper.Map(Config.Name, TableNameConstants.Collection.CreatureTypes);
             var creatureTypes = types[creature].Except(new[] { creature }); //INFO: In case creature name duplicates as type, such as Gnoll
 
             Assert.That(table.Keys, Is.SupersetOf(creatureTypes));
@@ -545,57 +345,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
 
                 overlap = table[creatureType].Intersect(table[creature]);
                 Assert.That(overlap, Is.Empty, $"XML v XML: {creature} - {creatureType}");
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreaturesThatCanChangeShapeIntoHumanoidCanUseEquipment(string creature)
-        {
-            Assert.That(table, Contains.Key(creature));
-
-            var changeShapeFeats = new[]
-            {
-                FeatConstants.SpecialQualities.ChangeShape,
-                FeatConstants.SpecialQualities.AlternateForm,
-            };
-
-            var datas = table[creature]
-                .Select(helper.ParseEntry)
-                .Where(d => changeShapeFeats.Contains(d[DataIndexConstants.SpecialQualityData.FeatNameIndex]));
-
-            var testCaseSpecialQualityDatas = GetTestCaseData(creature);
-
-            var humanoids = new[]
-            {
-                CreatureConstants.Goblin, //For Barghest
-                CreatureConstants.Types.Giant,
-                CreatureConstants.Types.Humanoid,
-                CreatureConstants.Types.MonstrousHumanoid,
-            };
-
-            var creatureData = creatureDataSelector.SelectFor(creature);
-
-            foreach (var data in datas)
-            {
-                var featName = data[DataIndexConstants.SpecialQualityData.FeatNameIndex];
-
-                var testCaseData = testCaseSpecialQualityDatas.First(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] == featName);
-
-                var focus = testCaseData[DataIndexConstants.SpecialQualityData.FocusIndex];
-                var changesIntoHumanoid = humanoids.Any(h => focus.ToLower().Contains(h.ToLower()));
-
-                if (changesIntoHumanoid)
-                {
-                    Assert.That(creatureData.CanUseEquipment, Is.True, $"TEST CASE: {focus}");
-                }
-
-                focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
-                changesIntoHumanoid = humanoids.Any(h => focus.ToLower().Contains(h.ToLower()));
-
-                if (changesIntoHumanoid)
-                {
-                    Assert.That(creatureData.CanUseEquipment, Is.True, $"XML: {focus}");
-                }
             }
         }
     }

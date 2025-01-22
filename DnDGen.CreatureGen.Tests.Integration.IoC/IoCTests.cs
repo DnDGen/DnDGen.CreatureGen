@@ -9,27 +9,30 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC
         {
             var first = GetNewInstanceOf<T>();
             var second = GetNewInstanceOf<T>();
-            Assert.That(first, Is.Not.EqualTo(second));
+            Assert.That(first, Is.Not.SameAs(second));
         }
+
         protected void AssertSingleton<T>()
         {
             var first = GetNewInstanceOf<T>();
             var second = GetNewInstanceOf<T>();
-            Assert.That(first, Is.EqualTo(second));
+            Assert.That(first, Is.SameAs(second));
         }
 
         protected void AssertNotSingleton<T>(string name)
         {
             var first = GetNewInstanceOf<T>(name);
             var second = GetNewInstanceOf<T>(name);
-            Assert.That(first, Is.Not.EqualTo(second));
+            Assert.That(first, Is.Not.SameAs(second));
         }
 
-        protected void AssertNamedIsInstanceOf<I, T>(string name)
+        protected I AssertNamedIsInstanceOf<I, T>(string name)
             where T : I
         {
             var item = GetNewInstanceOf<I>(name);
             Assert.That(item, Is.InstanceOf<T>());
+
+            return item;
         }
     }
 }

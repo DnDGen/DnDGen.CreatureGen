@@ -23,8 +23,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
 
         private void AssertData(string name, IEnumerable<string> entries)
         {
-            AssertUniqueCollection(entries);
-            AssertUniqueCollection(entries.Select(e => helper.BuildKey(name, e)));
+            AssertUniqueCollection(entries, $"{name}: Expected Data Entries");
+            AssertUniqueCollection(entries.Select(e => helper.BuildKey(name, e)), $"{name}: Expected Data Entry Keys");
 
             Assert.That(table, Contains.Key(name));
             var isValid = entries.All(helper.ValidateEntry) && table[name].All(helper.ValidateEntry);
@@ -42,7 +42,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
                 .OrderBy(d => helper.BuildKey(name, d))
                 .ToArray();
 
-            AssertUniqueCollection(table[name].Select(e => helper.BuildKey(name, e)));
+            AssertUniqueCollection(table[name].Select(e => helper.BuildKey(name, e)), $"{name}: Actual Data Entry Keys");
 
             var actualKeys = actual.Select(d => helper.BuildKey(name, d));
             var expectedKeys = expected.Select(d => helper.BuildKey(name, d));
@@ -58,7 +58,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
                 AssertOrderedCollection(actual[i], expected[i], actualKey);
             }
 
-            AssertUniqueCollection(table[name]);
+            AssertUniqueCollection(table[name], $"{name}: Actual Data Entries");
         }
     }
 }

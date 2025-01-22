@@ -13,7 +13,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CharacterGen.Tests.Unit.Generators.Magics
+namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
 {
     [TestFixture]
     public class MagicGeneratorTests
@@ -68,10 +68,12 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
                 .Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.ArcaneSpellFailures, It.IsAny<string>()))
                 .Returns((string table, string name) => arcaneSpellFailures[name]);
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CasterGroups, GroupConstants.PreparesSpells))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, GroupConstants.PreparesSpells))
                 .Returns(classesThatPrepareSpells);
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AbilityGroups, $"{caster.Type}:Spellcaster")).Returns(new[] { "casting ability" });
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AbilityGroups, $"{caster.Type}:Spellcaster"))
+                .Returns(["casting ability"]);
         }
 
         [Test]
@@ -346,7 +348,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             arcaneSpellFailures[equipment.Armor.Name] = 9266;
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane))
                 .Returns(new[] { "other class", "wrong class" });
 
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
@@ -361,7 +363,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             arcaneSpellFailures[equipment.Armor.Name] = 9266;
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane))
                 .Returns(new[] { "other class", caster.Type, "wrong class" });
 
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
@@ -377,7 +379,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             arcaneSpellFailures[string.Empty] = 9266;
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane))
                 .Returns(new[] { caster.Type });
 
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
@@ -394,7 +396,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             equipment.Armor.Name = "armor";
             arcaneSpellFailures[equipment.Armor.Name] = 9266;
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane)).Returns(new[] { caster.Type });
+            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane)).Returns([caster.Type]);
 
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
@@ -412,7 +414,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             equipment.Shield.Attributes = new[] { AttributeConstants.Shield };
             arcaneSpellFailures[equipment.Shield.Name] = 9266;
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane)).Returns(new[] { caster.Type });
+            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane)).Returns([caster.Type]);
 
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
@@ -435,7 +437,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             arcaneSpellFailures[equipment.Armor.Name] = 9266;
             arcaneSpellFailures[equipment.Shield.Name] = 90210;
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane)).Returns(new[] { caster.Type });
+            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane)).Returns([caster.Type]);
 
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
@@ -452,7 +454,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             equipment.Armor.Traits.Add(TraitConstants.SpecialMaterials.Mithral);
             arcaneSpellFailures[equipment.Armor.Name] = 9266;
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane)).Returns(new[] { caster.Type });
+            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane)).Returns([caster.Type]);
 
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
@@ -469,7 +471,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             equipment.Armor.Traits.Add(TraitConstants.SpecialMaterials.Mithral);
             arcaneSpellFailures[equipment.Armor.Name] = 5;
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane)).Returns(new[] { caster.Type });
+            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane)).Returns([caster.Type]);
 
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
@@ -492,7 +494,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             equipment.Shield.Attributes = new[] { AttributeConstants.Shield };
             arcaneSpellFailures[equipment.Shield.Name] = 5;
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane)).Returns(new[] { caster.Type });
+            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane)).Returns([caster.Type]);
 
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
@@ -511,7 +513,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             equipment.Shield.Traits.Add(TraitConstants.SpecialMaterials.Mithral);
             arcaneSpellFailures[equipment.Shield.Name] = 9266;
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane)).Returns(new[] { caster.Type });
+            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane)).Returns([caster.Type]);
 
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
@@ -530,7 +532,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             equipment.Shield.Traits.Add(TraitConstants.SpecialMaterials.Mithral);
             arcaneSpellFailures[equipment.Shield.Name] = 5;
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane)).Returns(new[] { caster.Type });
+            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane)).Returns([caster.Type]);
 
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));
@@ -553,7 +555,7 @@ namespace CharacterGen.Tests.Unit.Generators.Magics
             equipment.Shield.Traits.Add(TraitConstants.SpecialMaterials.Mithral);
             arcaneSpellFailures[equipment.Shield.Name] = 5;
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane)).Returns(new[] { caster.Type });
+            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Arcane)).Returns([caster.Type]);
 
             var magic = magicGenerator.GenerateWith("creature", alignment, abilities, equipment);
             Assert.That(magic.Caster, Is.EqualTo("class name"));

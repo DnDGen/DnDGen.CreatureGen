@@ -192,5 +192,30 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(selection.SaveAbility, Is.Empty);
             Assert.That(selection.SaveDcBonus, Is.Zero);
         }
+
+        [TestCase(null)]
+        [TestCase("")]
+        public void RequirementsMet_ReturnsTrue_WhenNoRequiredGender(string requiredGender)
+        {
+            selection.RequiredGender = requiredGender;
+            var met = selection.RequirementsMet("whatever");
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        public void RequirementsMet_ReturnsTrue_WhenRequiredGenderMatches()
+        {
+            selection.RequiredGender = "my required gender";
+            var met = selection.RequirementsMet("my required gender");
+            Assert.That(met, Is.True);
+        }
+
+        [Test]
+        public void RequirementsMet_ReturnsFalse_WhenRequiredGenderDoesNotMatch()
+        {
+            selection.RequiredGender = "my required gender";
+            var met = selection.RequirementsMet("wrong gender");
+            Assert.That(met, Is.False);
+        }
     }
 }

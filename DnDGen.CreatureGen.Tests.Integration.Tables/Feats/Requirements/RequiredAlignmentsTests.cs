@@ -8,6 +8,7 @@ using DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 {
@@ -52,6 +53,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             AssertCollection(name, alignments);
         }
 
+        [Test]
+        public void NoAlignmentRequirements()
+        {
+            var names = GetNames();
+            var specialQualities = RequiredAlignmentsTestData.GetSpecialQualitiesAlignmentRequirementNames();
+
+            var emptyRequirements = names.Except(specialQualities);
+
+            foreach (var requirement in emptyRequirements)
+            {
+                var empty = new string[0];
+                AssertCollection(requirement, empty);
+            }
+        }
+
         public class RequiredAlignmentsTestData
         {
             public static IEnumerable Feats
@@ -59,12 +75,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 get
                 {
                     var testCases = new Dictionary<string, string[]>();
-                    var feats = FeatConstants.All();
-
-                    foreach (var feat in feats)
-                    {
-                        testCases[feat] = new string[0];
-                    }
 
                     foreach (var testCase in testCases)
                     {
@@ -78,12 +88,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 get
                 {
                     var testCases = new Dictionary<string, string[]>();
-                    var feats = FeatConstants.Metamagic.All();
-
-                    foreach (var feat in feats)
-                    {
-                        testCases[feat] = new string[0];
-                    }
 
                     foreach (var testCase in testCases)
                     {
@@ -97,12 +101,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 get
                 {
                     var testCases = new Dictionary<string, string[]>();
-                    var feats = FeatConstants.Monster.All();
-
-                    foreach (var feat in feats)
-                    {
-                        testCases[feat] = new string[0];
-                    }
 
                     foreach (var testCase in testCases)
                     {
@@ -116,12 +114,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 get
                 {
                     var testCases = new Dictionary<string, string[]>();
-                    var feats = FeatConstants.MagicItemCreation.All();
-
-                    foreach (var feat in feats)
-                    {
-                        testCases[feat] = new string[0];
-                    }
 
                     foreach (var testCase in testCases)
                     {
@@ -136,7 +128,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 {
                     var testCases = new Dictionary<string, string[]>();
                     var helper = new SpecialQualityHelper();
-                    var keys = SpecialQualityTestData.GetRequirementKeys();
+                    var keys = GetSpecialQualitiesAlignmentRequirementNames();
 
                     foreach (var key in keys)
                     {
@@ -157,6 +149,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                         yield return new TestCaseData(testCase.Key, testCase.Value);
                     }
                 }
+            }
+
+            public static IEnumerable<string> GetSpecialQualitiesAlignmentRequirementNames()
+            {
+                var helper = new SpecialQualityHelper();
+
+                return new[]
+                {
+                    helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.BestowCurse, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CrushingHand, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Daylight, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DeeperDarkness, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.HolySmite, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.RemoveCurse, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Restoration_Greater, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Titan, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.UnholyBlight, 0.ToString()),
+                };
             }
         }
     }

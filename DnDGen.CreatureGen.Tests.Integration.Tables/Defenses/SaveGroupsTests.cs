@@ -35,9 +35,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreatureSaveGroupHasStrongSaves(string creature)
         {
-            var fortitude = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, SaveConstants.Fortitude);
-            var reflex = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, SaveConstants.Reflex);
-            var will = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, SaveConstants.Will);
+            var fortitude = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, SaveConstants.Fortitude);
+            var reflex = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, SaveConstants.Reflex);
+            var will = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, SaveConstants.Will);
 
             var strongSaves = new List<string>();
             if (fortitude.Contains(creature))
@@ -54,9 +54,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void TemplateSaveGroupHasStrongSaves(string template)
         {
-            var fortitude = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, SaveConstants.Fortitude);
-            var reflex = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, SaveConstants.Reflex);
-            var will = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, SaveConstants.Will);
+            var fortitude = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, SaveConstants.Fortitude);
+            var reflex = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, SaveConstants.Reflex);
+            var will = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, SaveConstants.Will);
 
             var strongSaves = new List<string>();
             if (fortitude.Contains(template))

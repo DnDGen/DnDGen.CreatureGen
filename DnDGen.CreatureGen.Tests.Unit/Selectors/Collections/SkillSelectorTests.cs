@@ -39,7 +39,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             skillData[DataIndexConstants.SkillSelectionData.RandomFociQuantityIndex] = "9266";
             skillData[DataIndexConstants.SkillSelectionData.SkillNameIndex] = "skill name";
 
-            mockInnerSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillData, "skill")).Returns(skillData);
+            mockInnerSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillData, "skill")).Returns(skillData);
 
             var selection = skillSelector.SelectFor("skill");
             Assert.That(selection.BaseAbilityName, Is.EqualTo("base stat"));

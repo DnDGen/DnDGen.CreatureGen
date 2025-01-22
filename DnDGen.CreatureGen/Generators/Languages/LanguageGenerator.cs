@@ -22,10 +22,10 @@ namespace DnDGen.CreatureGen.Generators.Languages
         {
             var languages = new List<string>();
 
-            var automaticLanguages = collectionsSelector.SelectFrom(TableNameConstants.Collection.LanguageGroups, creature + LanguageConstants.Groups.Automatic);
+            var automaticLanguages = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.LanguageGroups, creature + LanguageConstants.Groups.Automatic);
             languages.AddRange(automaticLanguages);
 
-            var bonusLanguages = collectionsSelector.SelectFrom(TableNameConstants.Collection.LanguageGroups, creature + LanguageConstants.Groups.Bonus);
+            var bonusLanguages = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.LanguageGroups, creature + LanguageConstants.Groups.Bonus);
             var remainingBonusLanguages = bonusLanguages.Except(languages);
             var numberOfBonusLanguages = abilities[AbilityConstants.Intelligence].Modifier;
 

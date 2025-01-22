@@ -35,14 +35,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             var creatureSubtypes = CreatureConstants.Types.Subtypes.GetAll();
 
             //INFO: Skills are here for groups of foci - therefore skills with explicit foci are not needed as names
-            var featFoci = collectionMapper.Map(TableNameConstants.Collection.FeatFoci);
-            var skillKeys = featFoci[GroupConstants.Skills].Where(s => !s.Contains("/")).Union(new[]
-            {
+            var featFoci = collectionMapper.Map(Config.Name, TableNameConstants.Collection.FeatFoci);
+            var skillKeys = featFoci[GroupConstants.Skills].Where(s => !s.Contains("/")).Union(
+            [
                 SkillConstants.Craft,
                 SkillConstants.Knowledge,
                 SkillConstants.Perform,
                 SkillConstants.Profession,
-            });
+            ]);
 
             var feats = FeatConstants.All()
                 .Union(FeatConstants.Metamagic.All())
@@ -322,139 +322,69 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Search,
             SkillConstants.Spellcraft,
             SkillConstants.Survival)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Anvil_Tiny)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Stone_Tiny)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Block_Wood_Tiny)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Box_Tiny)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Carpet_Tiny)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Carriage_Tiny)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Chain_Tiny)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Chair_Tiny)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Clothes_Tiny)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Ladder_Tiny)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Rope_Tiny)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Rug_Tiny)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Sled_Tiny)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Animal_Tiny)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Tiny)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Stool_Tiny)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Table_Tiny)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Tapestry_Tiny)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Colossal)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Gargantuan)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Huge)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Large)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Medium)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Small)]
-        [TestCase(CreatureConstants.AnimatedObject_Wagon_Tiny)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Flexible)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Sheetlike)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Flexible)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Sheetlike)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_Flexible)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_Sheetlike)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_Wheels_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Large)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_Flexible)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_Sheetlike)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_Wheels_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_Flexible)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_MultipleLegs)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_Sheetlike)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_TwoLegs)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_Wheels_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Small)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_Flexible)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_MultipleLegs)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_Sheetlike)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_TwoLegs)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_Wheels_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_Flexible)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_MultipleLegs)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_Sheetlike)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_TwoLegs)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_Wooden)]
         [TestCase(CreatureConstants.Ankheg,
             SkillConstants.Climb,
             SkillConstants.Listen,
@@ -692,21 +622,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.Bison,
             SkillConstants.Listen,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Bison_Goat,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Bison_Llama,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Bison_MilkCow,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Bison_Ox,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Bison_Sheep,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
         [TestCase(CreatureConstants.BlackPudding, SkillConstants.Climb)]
         [TestCase(CreatureConstants.BlackPudding_Elder, SkillConstants.Climb)]
         [TestCase(CreatureConstants.BlinkDog,
@@ -716,9 +631,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Boar,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Boar_Pig,
             SkillConstants.Listen,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Boar_Dire,
@@ -3631,18 +3543,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.Raven,
             SkillConstants.Listen,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Raven_Chicken,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Raven_Turkey,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Raven_Peacock,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Raven_Pheasant,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
         [TestCase(CreatureConstants.Ravid,
             SkillConstants.EscapeArtist,
             SkillConstants.Hide,
@@ -4724,7 +4624,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void NoDuplicationOfSkillsBetweenTypeAndCreature(string creature)
         {
-            var creatureTypes = collectionSelector.Explode(TableNameConstants.Collection.CreatureTypes, creature);
+            var creatureTypes = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureTypes, creature);
             creatureTypes = creatureTypes.Except(new[] { creature });
 
             Assert.That(table.Keys, Contains.Item(creature)
@@ -4743,7 +4643,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         public void CreatureTypeSkillsContainSkillsCommonToAllCreatures(string creatureType)
         {
-            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var creatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, creatureType);
 
             //INFO: Excluding templates, since they have special rules
             var templates = CreatureConstants.Templates.GetAll();

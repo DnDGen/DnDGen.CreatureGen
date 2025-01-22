@@ -81,7 +81,7 @@ namespace DnDGen.CreatureGen.Generators.Defenses
             if (hitPoints.RoundedHitDiceQuantity == 0)
                 return 0;
 
-            var strongSaves = collectionsSelector.SelectFrom(TableNameConstants.Collection.SaveGroups, creatureName);
+            var strongSaves = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SaveGroups, creatureName);
             if (strongSaves.Contains(saveName))
                 return hitPoints.RoundedHitDiceQuantity / 2 + 2;
 
@@ -112,7 +112,7 @@ namespace DnDGen.CreatureGen.Generators.Defenses
 
         private Save GetFeatSavingThrowBonuses(Save save, IEnumerable<Feat> feats, string saveName, Dictionary<string, Ability> abilities)
         {
-            var saveFeatNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, saveName);
+            var saveFeatNames = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, saveName);
             var saveFeats = feats.Where(f => saveFeatNames.Contains(f.Name));
 
             foreach (var feat in saveFeats)

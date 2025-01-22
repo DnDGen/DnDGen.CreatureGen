@@ -50,10 +50,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Languages
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(index++ % ss.Count()));
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.LanguageGroups, creature + LanguageConstants.Groups.Automatic))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.LanguageGroups, creature + LanguageConstants.Groups.Automatic))
                 .Returns(automaticLanguages);
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.LanguageGroups, creature + LanguageConstants.Groups.Bonus))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.LanguageGroups, creature + LanguageConstants.Groups.Bonus))
                 .Returns(bonusLanguages);
         }
 

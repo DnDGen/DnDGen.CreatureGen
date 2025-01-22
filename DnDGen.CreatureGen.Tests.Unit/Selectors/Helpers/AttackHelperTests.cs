@@ -47,7 +47,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
             Assert.That(data[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.AttackData.SaveIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.AttackData.SaveDcBonusIndex], Is.EqualTo(0.ToString()));
-            Assert.That(data.Length, Is.EqualTo(14));
+            Assert.That(data[DataIndexConstants.AttackData.RequiredGenderIndex], Is.Empty);
+            Assert.That(data.Length, Is.EqualTo(15));
         }
 
         [Test]
@@ -66,7 +67,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
                 true,
                 true,
                 true,
-                true);
+                true,
+                requiredGender: "my gender");
             Assert.That(data[DataIndexConstants.AttackData.NameIndex], Is.EqualTo("attack name"));
             Assert.That(data[DataIndexConstants.AttackData.DamageDataIndex], Is.EqualTo(damageEntry));
             Assert.That(data[DataIndexConstants.AttackData.DamageEffectIndex], Is.EqualTo("damage effect"));
@@ -81,7 +83,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
             Assert.That(data[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.AttackData.SaveIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.AttackData.SaveDcBonusIndex], Is.EqualTo(0.ToString()));
-            Assert.That(data.Length, Is.EqualTo(14));
+            Assert.That(data[DataIndexConstants.AttackData.RequiredGenderIndex], Is.EqualTo("my gender"));
+            Assert.That(data.Length, Is.EqualTo(15));
         }
 
         [Test]
@@ -106,7 +109,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
                 true,
                 true,
                 true,
-                true);
+                true,
+                requiredGender: "my gender");
             Assert.That(data[DataIndexConstants.AttackData.NameIndex], Is.EqualTo("attack name"));
             Assert.That(data[DataIndexConstants.AttackData.DamageDataIndex], Is.EqualTo(damageDataEntry));
             Assert.That(data[DataIndexConstants.AttackData.DamageEffectIndex], Is.EqualTo("damage effect"));
@@ -121,7 +125,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
             Assert.That(data[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.AttackData.SaveIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.AttackData.SaveDcBonusIndex], Is.EqualTo(0.ToString()));
-            Assert.That(data.Length, Is.EqualTo(14));
+            Assert.That(data[DataIndexConstants.AttackData.RequiredGenderIndex], Is.EqualTo("my gender"));
+            Assert.That(data.Length, Is.EqualTo(15));
         }
 
         [TestCase(true, true, true, true)]
@@ -156,7 +161,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
                 melee,
                 natural,
                 primary,
-                special);
+                special,
+                requiredGender: "my gender");
             Assert.That(data[DataIndexConstants.AttackData.NameIndex], Is.EqualTo("attack name"));
             Assert.That(data[DataIndexConstants.AttackData.DamageDataIndex], Is.EqualTo(damageEntry));
             Assert.That(data[DataIndexConstants.AttackData.DamageEffectIndex], Is.EqualTo("damage effect"));
@@ -171,7 +177,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
             Assert.That(data[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.AttackData.SaveIndex], Is.Empty);
             Assert.That(data[DataIndexConstants.AttackData.SaveDcBonusIndex], Is.EqualTo(0.ToString()));
-            Assert.That(data.Length, Is.EqualTo(14));
+            Assert.That(data[DataIndexConstants.AttackData.RequiredGenderIndex], Is.EqualTo("my gender"));
+            Assert.That(data.Length, Is.EqualTo(15));
         }
 
         [TestCase(true, true, true, true)]
@@ -209,7 +216,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
                 special,
                 "my save",
                 "save ability",
-                1336);
+                1336,
+                "my gender");
             Assert.That(data[DataIndexConstants.AttackData.NameIndex], Is.EqualTo("attack name"));
             Assert.That(data[DataIndexConstants.AttackData.DamageDataIndex], Is.EqualTo(damageEntry));
             Assert.That(data[DataIndexConstants.AttackData.DamageEffectIndex], Is.EqualTo("damage effect"));
@@ -224,7 +232,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
             Assert.That(data[DataIndexConstants.AttackData.SaveAbilityIndex], Is.EqualTo("save ability"));
             Assert.That(data[DataIndexConstants.AttackData.SaveIndex], Is.EqualTo("my save"));
             Assert.That(data[DataIndexConstants.AttackData.SaveDcBonusIndex], Is.EqualTo(1336.ToString()));
-            Assert.That(data.Length, Is.EqualTo(14));
+            Assert.That(data[DataIndexConstants.AttackData.RequiredGenderIndex], Is.EqualTo("my gender"));
+            Assert.That(data.Length, Is.EqualTo(15));
         }
 
         [Test]
@@ -308,8 +317,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         [TestCase(11, false)]
         [TestCase(12, false)]
         [TestCase(13, false)]
-        [TestCase(14, true)]
-        [TestCase(15, false)]
+        [TestCase(14, false)]
+        [TestCase(15, true)]
         [TestCase(16, false)]
         [TestCase(17, false)]
         [TestCase(18, false)]

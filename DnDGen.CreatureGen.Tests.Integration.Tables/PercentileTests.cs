@@ -19,7 +19,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
         {
             percentileMapper = GetNewInstanceOf<PercentileMapper>();
 
-            table = percentileMapper.Map(tableName);
+            table = percentileMapper.Map(Config.Name, tableName);
         }
 
         public abstract void TableIsComplete();

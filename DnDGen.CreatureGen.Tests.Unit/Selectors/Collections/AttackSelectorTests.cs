@@ -59,7 +59,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 GetData("name", damageData, "effect", 4.2, 9266, "time period", "attack type", isNatural, isMelee, isPrimary, isSpecial, "save", "save ability", 90210)
             };
 
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
 
             var attacks = attackSelector.Select("creature", "original size", "advanced size");
             Assert.That(attacks, Is.Not.Empty);
@@ -110,7 +110,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 GetData("name", damageData, "effect", 4.2, 9266, "time period", "attack type", isNatural, isMelee, isPrimary, isSpecial)
             };
 
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
 
             var attacks = attackSelector.Select("creature", "original size", "advanced size");
             Assert.That(attacks, Is.Not.Empty);
@@ -178,7 +178,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 GetData("name", string.Empty, "effect", 4.2, 9266, "time period", "attack type")
             };
 
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
 
             var attacks = attackSelector.Select("creature", "original size", "advanced size");
             Assert.That(attacks, Is.Not.Empty);
@@ -211,7 +211,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 GetData("name", damageData, "effect", 4.2, 9266, "time period", "attack type")
             };
 
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
 
             var attacks = attackSelector.Select("creature", "original size", "advanced size");
             Assert.That(attacks, Is.Not.Empty);
@@ -253,7 +253,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 GetData("third name", string.Empty, string.Empty, 0, 1336, "third time period", "third attack type", true, true, true, false, "my save", "my save ability", 96),
             };
 
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
 
             var attacks = attackSelector.Select("creature", "original size", "advanced size").ToArray();
             Assert.That(attacks, Is.Not.Empty.And.Length.EqualTo(3));
@@ -682,7 +682,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 GetData("name", damageData, string.Empty, 0, 9266, "time period", "attack type", isNatural: true)
             };
 
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
 
             var attacks = attackSelector.Select("creature", originalSize, advancedSize);
             Assert.That(attacks, Is.Not.Empty);
@@ -705,7 +705,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 GetData("name", originalDamageData, string.Empty, 0, 9266, "time period", "attack type", isNatural: true)
             };
 
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
 
             var attacks = attackSelector.Select("creature", SizeConstants.Fine, SizeConstants.Colossal);
             Assert.That(attacks, Is.Not.Empty);
@@ -775,7 +775,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 GetData("name", damageData, string.Empty, 0, 9266, "time period", "attack type", isNatural: true)
             };
 
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
 
             var attacks = attackSelector.Select("creature", SizeConstants.Fine, SizeConstants.Colossal);
             Assert.That(attacks, Is.Not.Empty);
@@ -800,7 +800,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 GetData("name", damageData, string.Empty, 0, 9266, "time period", "attack type", isNatural: false)
             };
 
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
 
             var attacks = attackSelector.Select("creature", SizeConstants.Fine, SizeConstants.Colossal);
             Assert.That(attacks, Is.Not.Empty);
@@ -825,7 +825,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 GetData("name", damageData, "1d2", 1, 9266, "time period", "attack type", isNatural: true)
             };
 
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, "creature")).Returns(attackData);
 
             var attacks = attackSelector.Select("creature", SizeConstants.Fine, SizeConstants.Colossal);
             Assert.That(attacks, Is.Not.Empty);

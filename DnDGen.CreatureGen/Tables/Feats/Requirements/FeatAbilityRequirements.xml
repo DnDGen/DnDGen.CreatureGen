@@ -2107,21 +2107,6 @@
   <collection>
     <name>BisonScent0</name>
   </collection>
-	<collection>
-		<name>GoatScent0</name>
-	</collection>
-	<collection>
-		<name>SheepScent0</name>
-	</collection>
-	<collection>
-		<name>LlamaScent0</name>
-	</collection>
-	<collection>
-		<name>Milk CowScent0</name>
-	</collection>
-	<collection>
-		<name>OxScent0</name>
-	</collection>
   <collection>
     <name>Black BearScent0</name>
   </collection>
@@ -2782,9 +2767,6 @@
   <collection>
     <name>BoarScent0</name>
   </collection>
-	<collection>
-		<name>PigScent0</name>
-	</collection>
   <collection>
     <name>BodakDamage ReductionVulnerable to cold iron weapons10</name>
   </collection>
@@ -8728,18 +8710,6 @@
   <collection>
     <name>RavenWeapon Finesse0</name>
   </collection>
-	<collection>
-		<name>ChickenWeapon Finesse0</name>
-	</collection>
-	<collection>
-		<name>TurkeyWeapon Finesse0</name>
-	</collection>
-	<collection>
-		<name>PeacockWeapon Finesse0</name>
-	</collection>
-	<collection>
-		<name>PheasantWeapon Finesse0</name>
-	</collection>
   <collection>
     <name>RavidFlight0</name>
   </collection>
@@ -11823,23 +11793,77 @@
   <collection>
     <name>VampireLightning Reflexes2</name>
   </collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Alternate FormBlack bear or bear-humanoid hybrid0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Lycanthropic EmpathyBears and dire bears4</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Damage Reduction: in Animal or Hybrid formVulnerable to silver5</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Low-Light Vision0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Scent0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Iron Will2</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)Alternate FormBrown bear or bear-humanoid hybrid0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)Lycanthropic EmpathyBears and dire bears4</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)Damage Reduction: in Animal or Hybrid formVulnerable to silver5</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)Low-Light Vision0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)Scent0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)Iron Will2</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)Alternate FormDire bear or bear-humanoid hybrid0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)Lycanthropic EmpathyBears and dire bears4</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)Damage Reduction: in Animal or Hybrid formVulnerable to silver5</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)Low-Light Vision0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)Scent0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)Iron Will2</name>
+	</collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)Alternate FormBrown bear or bear-humanoid hybrid0</name>
+    <name>Lycanthrope, Polar Bear (Werebear, Afflicted)Alternate FormPolar bear or bear-humanoid hybrid0</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)Lycanthropic EmpathyBears and dire bears4</name>
+    <name>Lycanthrope, Polar Bear (Werebear, Afflicted)Lycanthropic EmpathyBears and dire bears4</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)Damage Reduction: in Animal or Hybrid formVulnerable to silver5</name>
+    <name>Lycanthrope, Polar Bear (Werebear, Afflicted)Damage Reduction: in Animal or Hybrid formVulnerable to silver5</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)Low-Light Vision0</name>
+    <name>Lycanthrope, Polar Bear (Werebear, Afflicted)Low-Light Vision0</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)Scent0</name>
+    <name>Lycanthrope, Polar Bear (Werebear, Afflicted)Scent0</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)Iron Will2</name>
+    <name>Lycanthrope, Polar Bear (Werebear, Afflicted)Iron Will2</name>
   </collection>
   <collection>
     <name>Lycanthrope, Boar (Wereboar, Afflicted)Alternate FormBoar or boar-humanoid hybrid0</name>
@@ -11877,6 +11901,24 @@
   <collection>
     <name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)Iron Will2</name>
   </collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)Alternate FormRat or bipedal rat-humanoid hybrid0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)Lycanthropic EmpathyRats and dire rats4</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)Damage Reduction: in Animal or Hybrid formVulnerable to silver5</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)Low-Light Vision0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)Scent0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)Iron Will2</name>
+	</collection>
   <collection>
     <name>Lycanthrope, Dire Rat (Wererat, Afflicted)Alternate FormDire rat or bipedal rat-humanoid hybrid0</name>
   </collection>
@@ -11913,6 +11955,24 @@
   <collection>
     <name>Lycanthrope, Tiger (Weretiger, Afflicted)Iron Will2</name>
   </collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)Alternate FormDire Tiger or bipedal tiger-humanoid hybrid0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)Lycanthropic EmpathyTigers and dire tigers4</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)Damage Reduction: in Animal or Hybrid formVulnerable to silver5</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)Low-Light Vision0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)Scent0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)Iron Will2</name>
+	</collection>
   <collection>
     <name>Lycanthrope, Wolf (Werewolf, Afflicted)Alternate FormWolf or wolf-humanoid hybrid0</name>
   </collection>
@@ -11949,23 +12009,77 @@
   <collection>
     <name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)Iron Will2</name>
   </collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Natural)Alternate FormBlack bear or bear-humanoid hybrid0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Natural)Lycanthropic EmpathyBears and dire bears4</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Natural)Damage Reduction: in Animal or Hybrid formVulnerable to silver10</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Natural)Low-Light Vision0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Natural)Scent0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Natural)Iron Will2</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)Alternate FormBrown bear or bear-humanoid hybrid0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)Lycanthropic EmpathyBears and dire bears4</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)Damage Reduction: in Animal or Hybrid formVulnerable to silver10</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)Low-Light Vision0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)Scent0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)Iron Will2</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)Alternate FormDire bear or bear-humanoid hybrid0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)Lycanthropic EmpathyBears and dire bears4</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)Damage Reduction: in Animal or Hybrid formVulnerable to silver10</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)Low-Light Vision0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)Scent0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)Iron Will2</name>
+	</collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Natural)Alternate FormBrown bear or bear-humanoid hybrid0</name>
+    <name>Lycanthrope, Polar Bear (Werebear, Natural)Alternate FormPolar bear or bear-humanoid hybrid0</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Natural)Lycanthropic EmpathyBears and dire bears4</name>
+    <name>Lycanthrope, Polar Bear (Werebear, Natural)Lycanthropic EmpathyBears and dire bears4</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Natural)Damage Reduction: in Animal or Hybrid formVulnerable to silver10</name>
+    <name>Lycanthrope, Polar Bear (Werebear, Natural)Damage Reduction: in Animal or Hybrid formVulnerable to silver10</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Natural)Low-Light Vision0</name>
+    <name>Lycanthrope, Polar Bear (Werebear, Natural)Low-Light Vision0</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Natural)Scent0</name>
+    <name>Lycanthrope, Polar Bear (Werebear, Natural)Scent0</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Natural)Iron Will2</name>
+    <name>Lycanthrope, Polar Bear (Werebear, Natural)Iron Will2</name>
   </collection>
   <collection>
     <name>Lycanthrope, Boar (Wereboar, Natural)Alternate FormBoar or boar-humanoid hybrid0</name>
@@ -12004,40 +12118,76 @@
     <name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)Iron Will2</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Natural)Alternate FormDire rat or bipedal rat-humanoid hybrid0</name>
+    <name>Lycanthrope, Rat (Wererat, Natural)Alternate FormRat or bipedal rat-humanoid hybrid0</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Natural)Lycanthropic EmpathyRats and dire rats4</name>
+    <name>Lycanthrope, Rat (Wererat, Natural)Lycanthropic EmpathyRats and dire rats4</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Natural)Damage Reduction: in Animal or Hybrid formVulnerable to silver10</name>
+    <name>Lycanthrope, Rat (Wererat, Natural)Damage Reduction: in Animal or Hybrid formVulnerable to silver10</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Natural)Low-Light Vision0</name>
+    <name>Lycanthrope, Rat (Wererat, Natural)Low-Light Vision0</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Natural)Scent0</name>
+    <name>Lycanthrope, Rat (Wererat, Natural)Scent0</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Natural)Iron Will2</name>
+    <name>Lycanthrope, Rat (Wererat, Natural)Iron Will2</name>
+  </collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)Alternate FormDire rat or bipedal rat-humanoid hybrid0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)Lycanthropic EmpathyRats and dire rats4</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)Damage Reduction: in Animal or Hybrid formVulnerable to silver10</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)Low-Light Vision0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)Scent0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)Iron Will2</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)Alternate FormTiger or bipedal tiger-humanoid hybrid0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)Lycanthropic EmpathyTigers and dire tigers4</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)Damage Reduction: in Animal or Hybrid formVulnerable to silver10</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)Low-Light Vision0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)Scent0</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)Iron Will2</name>
+	</collection>
+  <collection>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)Alternate FormDire Tiger or bipedal tiger-humanoid hybrid0</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Natural)Alternate FormTiger or bipedal tiger-humanoid hybrid0</name>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)Lycanthropic EmpathyTigers and dire tigers4</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Natural)Lycanthropic EmpathyTigers and dire tigers4</name>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)Damage Reduction: in Animal or Hybrid formVulnerable to silver10</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Natural)Damage Reduction: in Animal or Hybrid formVulnerable to silver10</name>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)Low-Light Vision0</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Natural)Low-Light Vision0</name>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)Scent0</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Natural)Scent0</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Natural)Iron Will2</name>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)Iron Will2</name>
   </collection>
   <collection>
     <name>Lycanthrope, Wolf (Werewolf, Natural)Alternate FormWolf or wolf-humanoid hybrid0</name>

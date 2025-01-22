@@ -39,7 +39,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 
         public CreatureDataSelection SelectFor(string creatureName)
         {
-            var data = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureData, creatureName);
+            var data = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureData, creatureName);
             var selection = Parse(data);
 
             return selection;
@@ -47,7 +47,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 
         public Dictionary<string, CreatureDataSelection> SelectAll()
         {
-            var data = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureData);
+            var data = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
             var selections = data.ToDictionary(kvp => kvp.Key, kvp => Parse(kvp.Value));
 
             return selections;

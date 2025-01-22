@@ -70,7 +70,7 @@ namespace DnDGen.CreatureGen.Templates
                     creature.Templates.Union(new[] { CreatureConstants.Templates.None }).ToArray());
             }
 
-            return creature;
+            return await Task.FromResult(creature);
         }
 
         private bool IsCompatible(
@@ -121,8 +121,8 @@ namespace DnDGen.CreatureGen.Templates
             var filteredBaseCreatures = sourceCreatures;
             var allData = creatureDataSelector.SelectAll();
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
-            var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
-            var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
+            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
+            var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
 
             if (!string.IsNullOrEmpty(filters?.ChallengeRating))
             {
@@ -137,7 +137,7 @@ namespace DnDGen.CreatureGen.Templates
 
             if (!string.IsNullOrEmpty(filters?.Alignment))
             {
-                var alignmentCreatures = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureGroups, filters.Alignment);
+                var alignmentCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, filters.Alignment);
                 filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
             }
 

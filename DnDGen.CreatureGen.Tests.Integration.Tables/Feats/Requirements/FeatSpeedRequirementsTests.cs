@@ -42,6 +42,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             AssertTypesAndAmounts(name, typesAndAmounts);
         }
 
+        [Test]
+        public void NoSpeedRequirements()
+        {
+            var names = GetNames();
+            var monsters = SpeedRequirementsTestData.GetMonsterSpeedRequirementNames();
+
+            var emptyRequirements = names.Except(monsters);
+
+            foreach (var requirement in emptyRequirements)
+            {
+                var empty = new Dictionary<string, int>();
+                AssertTypesAndAmounts(requirement, empty);
+            }
+        }
+
         public class SpeedRequirementsTestData
         {
             public static IEnumerable Feats
@@ -49,12 +64,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 get
                 {
                     var testCases = new Dictionary<string, Dictionary<string, int>>();
-                    var feats = FeatConstants.All();
-
-                    foreach (var feat in feats)
-                    {
-                        testCases[feat] = new Dictionary<string, int>();
-                    }
 
                     foreach (var testCase in testCases)
                     {
@@ -68,12 +77,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 get
                 {
                     var testCases = new Dictionary<string, Dictionary<string, int>>();
-                    var feats = FeatConstants.Metamagic.All();
-
-                    foreach (var feat in feats)
-                    {
-                        testCases[feat] = new Dictionary<string, int>();
-                    }
 
                     foreach (var testCase in testCases)
                     {
@@ -87,7 +90,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 get
                 {
                     var testCases = new Dictionary<string, Dictionary<string, int>>();
-                    var feats = FeatConstants.Monster.All();
+                    var feats = GetMonsterSpeedRequirementNames();
 
                     foreach (var feat in feats)
                     {
@@ -106,17 +109,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 }
             }
 
+            public static IEnumerable<string> GetMonsterSpeedRequirementNames()
+            {
+                return new[]
+                {
+                    FeatConstants.Monster.FlybyAttack,
+                    FeatConstants.Monster.FlybyAttack_Improved,
+                    FeatConstants.Monster.Hover,
+                    FeatConstants.Monster.Wingover,
+                };
+            }
+
             public static IEnumerable Craft
             {
                 get
                 {
                     var testCases = new Dictionary<string, Dictionary<string, int>>();
-                    var feats = FeatConstants.MagicItemCreation.All();
-
-                    foreach (var feat in feats)
-                    {
-                        testCases[feat] = new Dictionary<string, int>();
-                    }
 
                     foreach (var testCase in testCases)
                     {

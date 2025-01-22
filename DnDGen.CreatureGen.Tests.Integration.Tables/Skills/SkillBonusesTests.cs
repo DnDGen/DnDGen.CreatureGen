@@ -19,7 +19,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
 
-            var foci = collectionMapper.Map(TableNameConstants.Collection.FeatFoci);
+            var foci = collectionMapper.Map(Config.Name, TableNameConstants.Collection.FeatFoci);
             var skills = foci[GroupConstants.Skills];
 
             var nonFociSkills = new[]

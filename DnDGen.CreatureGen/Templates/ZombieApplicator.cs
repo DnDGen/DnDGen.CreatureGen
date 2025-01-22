@@ -33,6 +33,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IHitPointsGenerator hitPointsGenerator;
         private readonly IEnumerable<string> invalidSubtypes;
         private readonly ICreaturePrototypeFactory prototypeFactory;
+        private readonly IDemographicsGenerator demographicsGenerator;
 
         public ZombieApplicator(
             ICollectionSelector collectionSelector,
@@ -42,7 +43,8 @@ namespace DnDGen.CreatureGen.Templates
             IFeatsGenerator featsGenerator,
             ISavesGenerator savesGenerator,
             IHitPointsGenerator hitPointsGenerator,
-            ICreaturePrototypeFactory prototypeFactory)
+            ICreaturePrototypeFactory prototypeFactory,
+            IDemographicsGenerator demographicsGenerator)
         {
             this.collectionSelector = collectionSelector;
             this.adjustmentSelector = adjustmentSelector;
@@ -52,9 +54,10 @@ namespace DnDGen.CreatureGen.Templates
             this.savesGenerator = savesGenerator;
             this.hitPointsGenerator = hitPointsGenerator;
             this.prototypeFactory = prototypeFactory;
+            this.demographicsGenerator = demographicsGenerator;
 
-            creatureTypes = new[]
-            {
+            creatureTypes =
+            [
                 CreatureConstants.Types.Aberration,
                 CreatureConstants.Types.Animal,
                 CreatureConstants.Types.Dragon,
@@ -65,10 +68,10 @@ namespace DnDGen.CreatureGen.Templates
                 CreatureConstants.Types.MagicalBeast,
                 CreatureConstants.Types.MonstrousHumanoid,
                 CreatureConstants.Types.Vermin,
-            };
+            ];
 
-            invalidSubtypes = new[]
-            {
+            invalidSubtypes =
+            [
                 CreatureConstants.Types.Subtypes.Angel,
                 CreatureConstants.Types.Subtypes.Archon,
                 CreatureConstants.Types.Subtypes.Chaotic,
@@ -85,12 +88,12 @@ namespace DnDGen.CreatureGen.Templates
                 CreatureConstants.Types.Subtypes.Orc,
                 CreatureConstants.Types.Subtypes.Reptilian,
                 CreatureConstants.Types.Subtypes.Shapechanger,
-            };
+            ];
         }
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
-            var hasSkeleton = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
+            var hasSkeleton = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
                 hasSkeleton,
@@ -116,6 +119,9 @@ namespace DnDGen.CreatureGen.Templates
 
             //Type
             UpdateCreatureType(creature);
+
+            // Demographics
+            UpdateCreatureDemographics(creature);
 
             //Abilities
             UpdateCreatureAbilities(creature);
@@ -182,6 +188,11 @@ namespace DnDGen.CreatureGen.Templates
             return new[] { CreatureConstants.Types.Undead }
                 .Union(subtypes)
                 .Except(invalidSubtypes);
+        }
+
+        private void UpdateCreatureDemographics(Creature creature)
+        {
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, creature.Name, CreatureConstants.Templates.Zombie);
         }
 
         private void UpdateCreatureHitPoints(Creature creature)
@@ -345,7 +356,8 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Size,
                 creature.BaseAttackBonus,
                 creature.Abilities,
-                creature.HitPoints.RoundedHitDiceQuantity);
+                creature.HitPoints.RoundedHitDiceQuantity,
+                creature.Demographics.Gender);
 
             zombieAttacks = attacksGenerator.ApplyAttackBonuses(zombieAttacks, creature.SpecialQualities, creature.Abilities);
             var newSlam = zombieAttacks.First(a => a.Name == "Slam");
@@ -427,10 +439,10 @@ namespace DnDGen.CreatureGen.Templates
             var featNamesToKeep = new List<string>();
             featNamesToKeep.Add(FeatConstants.SpecialQualities.AttackBonus);
 
-            var weaponProficiencies = collectionSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency);
+            var weaponProficiencies = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency);
             featNamesToKeep.AddRange(weaponProficiencies);
 
-            var armorProficiencies = collectionSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.ArmorProficiency);
+            var armorProficiencies = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.ArmorProficiency);
             featNamesToKeep.AddRange(armorProficiencies);
 
             var zombieQualities = featsGenerator.GenerateSpecialQualities(
@@ -457,7 +469,7 @@ namespace DnDGen.CreatureGen.Templates
 
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
-            var hasSkeleton = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
+            var hasSkeleton = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
                 hasSkeleton,
@@ -487,6 +499,10 @@ namespace DnDGen.CreatureGen.Templates
             //Type
             var typeTask = Task.Run(() => UpdateCreatureType(creature));
             tasks.Add(typeTask);
+
+            // Demographics
+            var demographicsTask = Task.Run(() => UpdateCreatureDemographics(creature));
+            tasks.Add(demographicsTask);
 
             //Abilities
             var abilityTask = Task.Run(() => UpdateCreatureAbilities(creature));
@@ -574,8 +590,8 @@ namespace DnDGen.CreatureGen.Templates
 
             var filteredBaseCreatures = sourceCreatures;
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
-            var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
-            var hasSkeleton = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
+            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
+            var hasSkeleton = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
 
             if (!string.IsNullOrEmpty(filters?.ChallengeRating))
             {
@@ -717,7 +733,7 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, bool asCharacter, Filters filters = null)
         {
-            var hasSkeleton = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
+            var hasSkeleton = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
             var compatiblePrototypes = sourceCreatures
                 .Where(p => IsCompatible(
                     p.Type.AllTypes,

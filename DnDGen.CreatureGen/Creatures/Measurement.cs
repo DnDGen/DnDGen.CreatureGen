@@ -14,7 +14,7 @@ namespace DnDGen.CreatureGen.Creatures
         {
             Description = string.Empty;
             Unit = unit;
-            Bonuses = new List<Bonus>();
+            Bonuses = [];
         }
 
         public void AddBonus(int value, string condition)

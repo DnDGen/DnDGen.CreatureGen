@@ -30,6 +30,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly ITypeAndAmountSelector typeAndAmountSelector;
         private readonly IAdjustmentsSelector adjustmentSelector;
         private readonly ICreaturePrototypeFactory prototypeFactory;
+        private readonly IDemographicsGenerator demographicsGenerator;
 
         private const int PhylacterySpellCasterLevel = 11;
 
@@ -41,7 +42,8 @@ namespace DnDGen.CreatureGen.Templates
             IFeatsGenerator featsGenerator,
             ITypeAndAmountSelector typeAndAmountSelector,
             IAdjustmentsSelector adjustmentSelector,
-            ICreaturePrototypeFactory prototypeFactory)
+            ICreaturePrototypeFactory prototypeFactory,
+            IDemographicsGenerator demographicsGenerator)
         {
             this.collectionSelector = collectionSelector;
             this.creatureDataSelector = creatureDataSelector;
@@ -51,16 +53,17 @@ namespace DnDGen.CreatureGen.Templates
             this.typeAndAmountSelector = typeAndAmountSelector;
             this.adjustmentSelector = adjustmentSelector;
             this.prototypeFactory = prototypeFactory;
+            this.demographicsGenerator = demographicsGenerator;
         }
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
-                new[] { creature.Alignment.Full },
+                [creature.Alignment.Full],
                 creature.ChallengeRating,
                 creature.LevelAdjustment,
-                new[] { creature.CasterLevel, creature.Magic.CasterLevel },
+                [creature.CasterLevel, creature.Magic.CasterLevel],
                 filters);
             if (!compatibility.Compatible)
             {
@@ -79,6 +82,9 @@ namespace DnDGen.CreatureGen.Templates
 
             //Type
             UpdateCreatureType(creature);
+
+            // Demographics
+            UpdateCreatureDemographics(creature);
 
             // Level Adjustment
             UpdateCreatureLevelAdjustment(creature);
@@ -129,7 +135,12 @@ namespace DnDGen.CreatureGen.Templates
         {
             return new[] { CreatureConstants.Types.Undead }
                 .Union(subtypes)
-                .Union(new[] { CreatureConstants.Types.Subtypes.Augmented, creatureType });
+                .Union([CreatureConstants.Types.Subtypes.Augmented, creatureType]);
+        }
+
+        private void UpdateCreatureDemographics(Creature creature)
+        {
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, creature.Name, CreatureConstants.Templates.Lich);
         }
 
         private void UpdateCreatureHitPoints(Creature creature)
@@ -151,10 +162,11 @@ namespace DnDGen.CreatureGen.Templates
             }
 
             var automaticLanguage = collectionSelector.SelectRandomFrom(
+                Config.Name,
                 TableNameConstants.Collection.LanguageGroups,
                 CreatureConstants.Templates.Lich + LanguageConstants.Groups.Automatic);
 
-            creature.Languages = creature.Languages.Union(new[] { automaticLanguage });
+            creature.Languages = creature.Languages.Union([automaticLanguage]);
         }
 
         private void UpdateCreatureLevelAdjustment(Creature creature)
@@ -259,10 +271,10 @@ namespace DnDGen.CreatureGen.Templates
             return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
         }
 
-        private IEnumerable<string> GetChallengeRatings(string challengeRating) => new[]
-        {
+        private IEnumerable<string> GetChallengeRatings(string challengeRating) =>
+        [
             UpdateCreatureChallengeRating(challengeRating),
-        };
+        ];
 
         private void UpdateCreatureAttacks(Creature creature)
         {
@@ -272,7 +284,8 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Size,
                 creature.BaseAttackBonus,
                 creature.Abilities,
-                creature.HitPoints.RoundedHitDiceQuantity);
+                creature.HitPoints.RoundedHitDiceQuantity,
+                creature.Demographics.Gender);
 
             var allFeats = creature.Feats.Union(creature.SpecialQualities);
             lichAttacks = attacksGenerator.ApplyAttackBonuses(lichAttacks, allFeats, creature.Abilities);
@@ -336,6 +349,10 @@ namespace DnDGen.CreatureGen.Templates
             var typeTask = Task.Run(() => UpdateCreatureType(creature));
             tasks.Add(typeTask);
 
+            // Demographics
+            var demographicsTask = Task.Run(() => UpdateCreatureDemographics(creature));
+            tasks.Add(demographicsTask);
+
             // Level Adjustment
             var levelAdjustmentTask = Task.Run(() => UpdateCreatureLevelAdjustment(creature));
             tasks.Add(levelAdjustmentTask);
@@ -389,9 +406,9 @@ namespace DnDGen.CreatureGen.Templates
             var filteredBaseCreatures = sourceCreatures;
             var allData = creatureDataSelector.SelectAll();
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
-            var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
+            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
             var allSpellcasters = typeAndAmountSelector.SelectAll(TableNameConstants.TypeAndAmount.Casters);
-            var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
+            var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
 
             if (!string.IsNullOrEmpty(filters?.ChallengeRating))
             {

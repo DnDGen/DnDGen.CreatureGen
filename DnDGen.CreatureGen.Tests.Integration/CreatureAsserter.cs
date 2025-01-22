@@ -26,13 +26,13 @@ namespace DnDGen.CreatureGen.Tests.Integration
         {
             this.creatureVerifier = creatureVerifier;
 
-            skillsWithFoci = new[]
-            {
+            skillsWithFoci =
+            [
                 SkillConstants.Craft,
                 SkillConstants.Knowledge,
                 SkillConstants.Perform,
                 SkillConstants.Profession,
-            };
+            ];
         }
 
         public void AssertCreature(Creature creature, string message = null)
@@ -58,23 +58,25 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 Assert.That(isValid, Is.True, verifierMessage.ToString());
             }
 
-            VerifySummary(creature, message);
-            VerifyAlignment(creature, message);
-            VerifyStatistics(creature, message);
-            VerifyAbilities(creature, message);
-            VerifySkills(creature, message);
-            VerifyFeats(creature, message);
-            VerifyCombat(creature, message);
-            VerifyEquipment(creature, message);
-            VerifyMagic(creature, message);
+            AssertSummary(creature, message);
+            AssertDemographics(creature, message);
+            AssertAlignment(creature, message);
+            AssertChallengeRating(creature, message);
+            AssertSize(creature, message);
+            AssertSpeeds(creature, message);
+            AssertAbilities(creature, message);
+            AssertSkills(creature, message);
+            AssertFeats(creature, message);
+            AssertCombat(creature, message);
+            AssertEquipment(creature, message);
+            AssertMagic(creature, message);
 
-            Assert.That(creature.ChallengeRating, Is.Not.Empty, message);
             Assert.That(creature.CasterLevel, Is.Not.Negative, message);
             Assert.That(creature.NumberOfHands, Is.Not.Negative, message);
             Assert.That(creature.Languages, Is.Empty.Or.Unique, message);
         }
 
-        public void VerifyMagic(Creature creature, string message)
+        public void AssertMagic(Creature creature, string message)
         {
             Assert.That(creature.Magic, Is.Not.Null, message);
 
@@ -188,7 +190,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void VerifyEquipment(Creature creature, string message)
+        private void AssertEquipment(Creature creature, string message)
         {
             Assert.That(creature.Equipment, Is.Not.Null, message);
 
@@ -209,19 +211,19 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
             if (creature.Equipment.Armor != null)
             {
-                var armorMessage = $"{message}\nArmor: {creature.Equipment.Armor.Description}";
+                var armorMessage = $"{message}\nArmor: {creature.Equipment.Armor.Summary}";
                 Assert.That(creature.Equipment.Armor.ArmorBonus, Is.Positive, armorMessage);
                 Assert.That(armorNames, Contains.Item(creature.Equipment.Armor.Name), armorMessage);
             }
 
             if (creature.Equipment.Shield != null)
             {
-                var shieldMessage = $"{message}\nShield: {creature.Equipment.Shield.Description}";
+                var shieldMessage = $"{message}\nShield: {creature.Equipment.Shield.Summary}";
                 Assert.That(creature.Equipment.Shield.ArmorBonus, Is.Positive, shieldMessage);
                 Assert.That(shieldNames, Contains.Item(creature.Equipment.Shield.Name), shieldMessage);
             }
 
-            var unnaturalAttacks = creature.Attacks.Where(a => !a.IsNatural && creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Description)));
+            var unnaturalAttacks = creature.Attacks.Where(a => !a.IsNatural && creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Summary)));
 
             foreach (var attack in unnaturalAttacks)
             {
@@ -230,16 +232,16 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 //INFO: Lycanthropes have a modifed name for the attack based on their form
                 if (creature.Templates.Any(t => t.Contains("Lycanthrope")))
                 {
-                    weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith($"{w.Description} ("));
+                    weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith($"{w.Summary} ("));
                 }
                 else
                 {
-                    weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name == w.Description);
+                    weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name == w.Summary);
                 }
 
                 Assert.That(weapon, Is.Not.Null, $"{message}\nAttack: {attack.Name}");
 
-                var weaponMessage = $"{message}\nWeapon: {weapon.Description}";
+                var weaponMessage = $"{message}\nWeapon: {weapon.Summary}";
                 Assert.That(weapon.DamageDescription, Is.Not.Empty, weaponMessage);
                 Assert.That(weaponNames, Contains.Item(weapon.Name), weaponMessage);
 
@@ -270,7 +272,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void VerifySummary(Creature creature, string message)
+        private void AssertSummary(Creature creature, string message)
         {
             Assert.That(creature.Name, Is.Not.Empty, message);
             Assert.That(creature.Templates, Is.Not.Null, message);
@@ -283,7 +285,45 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void VerifyAlignment(Creature creature, string message)
+        private void AssertDemographics(Creature creature, string message)
+        {
+            Assert.That(creature.Demographics, Is.Not.Null, message);
+            Assert.That(creature.Demographics.Age, Is.Not.Null, message);
+            Assert.That(creature.Demographics.Age.Unit, Is.EqualTo("years"), message);
+            Assert.That(creature.Demographics.Age.Value, Is.Positive, message);
+            Assert.That(creature.Demographics.Age.Description, Is.Not.Empty, message);
+            Assert.That(creature.Demographics.Gender, Is.Not.Empty, message);
+            Assert.That(creature.Demographics.Height, Is.Not.Null, message);
+            Assert.That(creature.Demographics.Height.Unit, Is.EqualTo("inches"), message);
+            Assert.That(creature.Demographics.Height.Value, Is.Not.Negative, message);
+            Assert.That(creature.Demographics.Height.Description, Is.Not.Empty, message);
+            Assert.That(creature.Demographics.Length, Is.Not.Null, message);
+            Assert.That(creature.Demographics.Length.Unit, Is.EqualTo("inches"), message);
+            Assert.That(creature.Demographics.Length.Value, Is.Not.Negative, message);
+            Assert.That(creature.Demographics.Length.Description, Is.Not.Empty, message);
+            Assert.That(creature.Demographics.Height.Value + creature.Demographics.Length.Value, Is.Positive, message);
+            Assert.That(creature.Demographics.MaximumAge, Is.Not.Null, message);
+            Assert.That(creature.Demographics.MaximumAge.Unit, Is.EqualTo("years"), message);
+            Assert.That(creature.Demographics.MaximumAge.Value, Is.Positive.Or.EqualTo(AgeConstants.Ageless), message);
+            Assert.That(creature.Demographics.MaximumAge.Description, Is.Not.Empty, message);
+            Assert.That(creature.Demographics.Weight, Is.Not.Null, message);
+            Assert.That(creature.Demographics.Weight.Unit, Is.EqualTo("pounds"), message);
+
+            if (creature.Type.SubTypes.Contains(CreatureConstants.Types.Subtypes.Incorporeal) || creature.Name == CreatureConstants.LanternArchon)
+                Assert.That(creature.Demographics.Weight.Value, Is.Zero, message);
+            else
+                Assert.That(creature.Demographics.Weight.Value, Is.Positive, message);
+
+            Assert.That(creature.Demographics.Weight.Description, Is.Not.Empty, message);
+
+            var appearance = creature.Demographics.Skin;
+            appearance += creature.Demographics.Hair;
+            appearance += creature.Demographics.Eyes;
+            appearance += creature.Demographics.Other;
+            Assert.That(appearance, Is.Not.Empty, message);
+        }
+
+        private void AssertAlignment(Creature creature, string message)
         {
             Assert.That(creature.Alignment, Is.Not.Null, message);
 
@@ -298,13 +338,18 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void VerifyStatistics(Creature creature, string message)
+        private void AssertChallengeRating(Creature creature, string message)
         {
             var ordered = ChallengeRatingConstants.GetOrdered();
             var numbers = Enumerable.Range(1, 100).Select(i => i.ToString());
             var challengeRatings = ordered.Union(numbers);
 
             Assert.That(challengeRatings, Contains.Item(creature.ChallengeRating), message);
+            Assert.That(creature.ChallengeRating, Is.Not.Empty, message);
+        }
+
+        private void AssertSize(Creature creature, string message)
+        {
             Assert.That(creature.Size, Is.EqualTo(SizeConstants.Large)
                 .Or.EqualTo(SizeConstants.Colossal)
                 .Or.EqualTo(SizeConstants.Gargantuan)
@@ -313,19 +358,17 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 .Or.EqualTo(SizeConstants.Diminutive)
                 .Or.EqualTo(SizeConstants.Medium)
                 .Or.EqualTo(SizeConstants.Small), message);
-
-            VerifySpeeds(creature, message);
         }
 
-        private void VerifySpeeds(Creature creature, string message)
+        private void AssertSpeeds(Creature creature, string message)
         {
             foreach (var speedKVP in creature.Speeds)
             {
-                VerifySpeed(speedKVP.Value, message, speedKVP.Key);
+                AssertSpeed(speedKVP.Value, message, speedKVP.Key);
             }
         }
 
-        private void VerifySpeed(Measurement speed, string creatureSummary, string name)
+        private void AssertSpeed(Measurement speed, string creatureSummary, string name)
         {
             var message = $"{creatureSummary}\nSpeed: {name}";
             Assert.That(speed.Value, Is.Not.Negative, message);
@@ -346,7 +389,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void VerifyAbilities(Creature creature, string message)
+        private void AssertAbilities(Creature creature, string message)
         {
             Assert.That(creature.Abilities.Keys, Contains.Item(AbilityConstants.Charisma), message);
             Assert.That(creature.Abilities.Keys, Contains.Item(AbilityConstants.Constitution), message);
@@ -364,7 +407,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void VerifySkills(Creature creature, string message)
+        private void AssertSkills(Creature creature, string message)
         {
             if (!creature.Skills.Any())
             {
@@ -396,7 +439,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(skillNamesAndFoci, Is.Unique, message);
         }
 
-        private void VerifyFeats(Creature creature, string message)
+        private void AssertFeats(Creature creature, string message)
         {
             Assert.That(creature.Feats, Is.Not.Null, message);
             Assert.That(creature.SpecialQualities, Is.Not.Null, message);
@@ -436,7 +479,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void VerifyCombat(Creature creature, string message)
+        private void AssertCombat(Creature creature, string message)
         {
             Assert.That(creature.BaseAttackBonus, Is.Not.Negative, message);
 
@@ -506,9 +549,9 @@ namespace DnDGen.CreatureGen.Tests.Integration
         {
             var attackMessage = $"{message}\nAttack: {attack.Name}";
             var meleeEquipmentAttacks = creature.Attacks.Where(a => a.IsMelee
-                && (creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Description)) || a.Name.StartsWith(AttributeConstants.Melee)));
+                && (creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Summary)) || a.Name.StartsWith(AttributeConstants.Melee)));
             var rangedEquipmentAttacks = creature.Attacks.Where(a => !a.IsMelee
-                && (creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Description)) || a.Name.StartsWith(AttributeConstants.Ranged)));
+                && (creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Summary)) || a.Name.StartsWith(AttributeConstants.Ranged)));
 
             Assert.That(attack.Name, Is.Not.Empty, attackMessage);
             Assert.That(attack.AttackType, Is.Not.Empty, attackMessage);
@@ -577,30 +620,30 @@ namespace DnDGen.CreatureGen.Tests.Integration
             //INFO: Lycanthropes have a modifed name for the attack based on their form
             if (creature.Templates.Any(t => t.Contains("Lycanthrope")))
             {
-                weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith($"{w.Description} ("));
+                weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith($"{w.Summary} ("));
             }
             else
             {
-                weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name == w.Description);
+                weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name == w.Summary);
             }
 
             if (weapon != null)
             {
                 Assert.That(attack.Damages,
                     Is.Not.Empty.And.Count.EqualTo(weapon.Damages.Count),
-                    $"{attackMessage}\nWeapon: {weapon.Description} ({weapon.DamageDescription})\nAttack Damage: {attack.DamageDescription}");
+                    $"{attackMessage}\nWeapon: {weapon.Summary} ({weapon.DamageDescription})\nAttack Damage: {attack.DamageDescription}");
 
                 for (var i = 0; i < weapon.Damages.Count; i++)
                 {
                     if (i == 0)
                     {
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Roll), $"{attackMessage}\nWeapon: {weapon.Description}");
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Type), $"{attackMessage}\nWeapon: {weapon.Description}");
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Condition), $"{attackMessage}\nWeapon: {weapon.Description}");
+                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Roll), $"{attackMessage}\nWeapon: {weapon.Summary}");
+                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Type), $"{attackMessage}\nWeapon: {weapon.Summary}");
+                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Condition), $"{attackMessage}\nWeapon: {weapon.Summary}");
                     }
                     else
                     {
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Description), $"{attackMessage}\nWeapon: {weapon.Description}");
+                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Description), $"{attackMessage}\nWeapon: {weapon.Summary}");
                     }
                 }
 
@@ -631,6 +674,27 @@ namespace DnDGen.CreatureGen.Tests.Integration
                     .Or.EqualTo("Positive energy")
                     .Or.EqualTo("Ability points (of ghost's choosing)"), $"{attackMessage}\nDamage: {damage.Description}");
             }
+        }
+
+        public void AssertCreatureIsType(Creature creature, string type, string message = null)
+        {
+            message ??= creature.Summary;
+
+            var types = CreatureConstants.Types.GetAll();
+            if (!types.Contains(type))
+            {
+                Assert.That(creature.Type.SubTypes, Contains.Item(type), message);
+                return;
+            }
+
+            if (!creature.Templates.Any())
+            {
+                Assert.That(creature.Type.Name, Is.EqualTo(type), message);
+                return;
+            }
+
+            var allTypes = creature.Type.SubTypes.Union([creature.Type.Name]).ToArray();
+            Assert.That(type, Is.AnyOf(allTypes), message);
         }
 
         public void AssertCreatureAsCharacter(Creature creature, string message = null)
@@ -669,20 +733,30 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
             var lycanthropes = new[]
             {
+                CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural,
                 CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted,
                 CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural,
+                CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural,
+                CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural,
                 CreatureConstants.Templates.Lycanthrope_Boar_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Boar_Natural,
                 CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted,
                 CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural,
-                CreatureConstants.Templates.Lycanthrope_Boar_Natural,
+                CreatureConstants.Templates.Lycanthrope_Rat_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Rat_Natural,
                 CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted,
                 CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural,
                 CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted,
                 CreatureConstants.Templates.Lycanthrope_Tiger_Natural,
+                CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural,
                 CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Wolf_Natural,
                 CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted,
                 CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural,
-                CreatureConstants.Templates.Lycanthrope_Wolf_Natural,
             };
 
             if (creature.Type.Name == CreatureConstants.Types.Humanoid

@@ -25,67 +25,77 @@ namespace DnDGen.CreatureGen.Verifiers
             IEnumerable<string> baseCreatures = new[] { creature };
             if (string.IsNullOrEmpty(creature))
             {
-                baseCreatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
+                baseCreatures = collectionsSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
             }
 
             if (asCharacter)
             {
-                var characters = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
+                var characters = collectionsSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
                 baseCreatures = baseCreatures.Intersect(characters);
             }
 
-            if (!baseCreatures.Any())
+            var compatible = baseCreatures.Any();
+            if (!compatible)
                 return false;
 
             if (filters?.CleanTemplates?.Any() == true)
             {
-                var applicator = factory.Build<TemplateApplicator>(filters.CleanTemplates[0]);
-
-                if (filters.CleanTemplates.Count == 1)
+                //INFO: Humans should be compatible with all templates
+                //This is a shortcut to validate that multiple templates are compatible with each other
+                //If we are also filtering to challenge rating or creature type, we cannot use this shortcut
+                if (baseCreatures.Contains(CreatureConstants.Human) && filters.ChallengeRating == null && filters.Type == null)
                 {
-                    var compatibleCreatures = applicator.GetCompatibleCreatures(baseCreatures, asCharacter, filters);
-                    return compatibleCreatures.Any();
+                    baseCreatures = [CreatureConstants.Human];
                 }
 
-                var prototypes = applicator.GetCompatiblePrototypes(baseCreatures, asCharacter);
-
-                for (var i = 1; i < filters.CleanTemplates.Count; i++)
-                {
-                    applicator = factory.Build<TemplateApplicator>(filters.CleanTemplates[i]);
-
-                    //INFO: We only want to apply filters on the last template, once all other templates have been applied
-                    if (i == filters.CleanTemplates.Count - 1)
-                    {
-                        prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter, filters);
-                    }
-                    else
-                    {
-                        prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter);
-                    }
-                }
-
-                return prototypes.Any();
+                compatible = TemplatesAreCompatible(filters.CleanTemplates, baseCreatures, asCharacter, filters);
+                return compatible;
             }
 
             //INFO: We can cheat and use the None template applicator
-            var noneApplicator = factory.Build<TemplateApplicator>(CreatureConstants.Templates.None);
-
-            var nonTemplateCreatures = noneApplicator.GetCompatibleCreatures(baseCreatures, asCharacter, filters);
-            if (nonTemplateCreatures.Any())
+            compatible = TemplatesAreCompatible([CreatureConstants.Templates.None], baseCreatures, asCharacter, filters);
+            if (compatible)
                 return true;
 
-            var templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
-
+            var templates = collectionsSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
             foreach (var otherTemplate in templates)
             {
-                var templateApplicator = factory.Build<TemplateApplicator>(otherTemplate);
-
-                var filteredBaseCreatures = templateApplicator.GetCompatibleCreatures(baseCreatures, asCharacter, filters);
-                if (filteredBaseCreatures.Any())
+                compatible = TemplatesAreCompatible([otherTemplate], baseCreatures, asCharacter, filters);
+                if (compatible)
                     return true;
             }
 
             return false;
+        }
+
+        private bool TemplatesAreCompatible(List<string> templates, IEnumerable<string> creatures, bool asCharacter, Filters filters = null)
+        {
+            var applicator = factory.Build<TemplateApplicator>(templates[0]);
+
+            if (templates.Count == 1)
+            {
+                var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, asCharacter, filters);
+                return compatibleCreatures.Any();
+            }
+
+            var prototypes = applicator.GetCompatiblePrototypes(creatures, asCharacter);
+
+            for (var i = 1; i < templates.Count; i++)
+            {
+                applicator = factory.Build<TemplateApplicator>(templates[i]);
+
+                //INFO: We only want to apply filters on the last template, once all other templates have been applied
+                if (i == filters.CleanTemplates.Count - 1)
+                {
+                    prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter, filters);
+                }
+                else
+                {
+                    prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter);
+                }
+            }
+
+            return prototypes.Any();
         }
     }
 }

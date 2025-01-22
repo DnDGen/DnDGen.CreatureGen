@@ -32,6 +32,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly ICreatureDataSelector creatureDataSelector;
         private readonly IAdjustmentsSelector adjustmentSelector;
         private readonly ICreaturePrototypeFactory prototypeFactory;
+        private readonly IDemographicsGenerator demographicsGenerator;
 
         public GhostApplicator(
             Dice dice,
@@ -43,7 +44,8 @@ namespace DnDGen.CreatureGen.Templates
             ITypeAndAmountSelector typeAndAmountSelector,
             ICreatureDataSelector creatureDataSelector,
             IAdjustmentsSelector adjustmentSelector,
-            ICreaturePrototypeFactory prototypeFactory)
+            ICreaturePrototypeFactory prototypeFactory,
+            IDemographicsGenerator demographicsGenerator)
         {
             this.dice = dice;
             this.speedsGenerator = speedsGenerator;
@@ -55,9 +57,10 @@ namespace DnDGen.CreatureGen.Templates
             this.creatureDataSelector = creatureDataSelector;
             this.adjustmentSelector = adjustmentSelector;
             this.prototypeFactory = prototypeFactory;
+            this.demographicsGenerator = demographicsGenerator;
 
-            creatureTypes = new[]
-            {
+            creatureTypes =
+            [
                 CreatureConstants.Types.Aberration,
                 CreatureConstants.Types.Animal,
                 CreatureConstants.Types.Dragon,
@@ -66,7 +69,7 @@ namespace DnDGen.CreatureGen.Templates
                 CreatureConstants.Types.MagicalBeast,
                 CreatureConstants.Types.MonstrousHumanoid,
                 CreatureConstants.Types.Plant,
-            };
+            ];
         }
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
@@ -94,6 +97,9 @@ namespace DnDGen.CreatureGen.Templates
 
             //Type
             UpdateCreatureType(creature);
+
+            // Demographics
+            UpdateCreatureDemographics(creature);
 
             //Abilities
             UpdateCreatureAbilities(creature);
@@ -144,7 +150,16 @@ namespace DnDGen.CreatureGen.Templates
         {
             return new[] { CreatureConstants.Types.Undead }
                 .Union(subtypes)
-                .Union(new[] { CreatureConstants.Types.Subtypes.Incorporeal, CreatureConstants.Types.Subtypes.Augmented, creatureType });
+                .Union([CreatureConstants.Types.Subtypes.Incorporeal, CreatureConstants.Types.Subtypes.Augmented, creatureType]);
+        }
+
+        private void UpdateCreatureDemographics(Creature creature)
+        {
+            creature.Demographics = demographicsGenerator.Update(creature.Demographics, creature.Name, CreatureConstants.Templates.Ghost);
+
+            //As Ghosts are Incorporeal, they have no weight.
+            //Will leave the weight description as-is, to inform what the ghost might have looked like in life.
+            creature.Demographics.Weight.Value = 0;
         }
 
         private void UpdateCreatureAbilities(Creature creature)
@@ -302,7 +317,8 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Size,
                 creature.BaseAttackBonus,
                 creature.Abilities,
-                creature.HitPoints.RoundedHitDiceQuantity);
+                creature.HitPoints.RoundedHitDiceQuantity,
+                creature.Demographics.Gender);
 
             var manifestation = ghostAttacks.First(a => a.Name == "Manifestation");
             var newAttacks = new List<Attack> { manifestation };
@@ -386,6 +402,10 @@ namespace DnDGen.CreatureGen.Templates
             var typeTask = Task.Run(() => UpdateCreatureType(creature));
             tasks.Add(typeTask);
 
+            // Demographics
+            var demographicsTask = Task.Run(() => UpdateCreatureDemographics(creature));
+            tasks.Add(demographicsTask);
+
             //Abilities
             var abilityTask = Task.Run(() => UpdateCreatureAbilities(creature));
             tasks.Add(abilityTask);
@@ -442,8 +462,8 @@ namespace DnDGen.CreatureGen.Templates
 
             var allData = creatureDataSelector.SelectAll();
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
-            var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
-            var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
+            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
+            var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
 
             if (!string.IsNullOrEmpty(filters?.ChallengeRating))
             {
@@ -467,7 +487,7 @@ namespace DnDGen.CreatureGen.Templates
             {
                 //INFO: Ghosts do not change the base creature's alignment
                 //So as long as the base creature's alignment fits, we are good
-                var alignmentCreatures = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureGroups, filters.Alignment);
+                var alignmentCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, filters.Alignment);
                 filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
             }
 

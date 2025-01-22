@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-	  <TargetFrameworks>net6.0</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Karl M. Speer</Authors>
     <Company>DnDGen</Company>
@@ -14,19 +13,16 @@
     <RepositoryUrl>https://github.com/DnDGen/CreatureGen</RepositoryUrl>
     <PackageTags>creature generator dice dungeons dragons d20 dnd 3.5 gen</PackageTags>
     <PackageReleaseNotes>
-      0.1.0: Initial Release
-      0.2.0: Issue #35 - Creatures as characters
-      0.3.0: Random creatures, ability randomizer, livestock, multiple templates, .Net 6
+      1.0.0: Full release!
+	  * #15 - Demographics (Age, Height, Weight, Appearnace, etc.)
     </PackageReleaseNotes>
     <Version>0.3.0</Version>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="Generators\Magic\**" />
     <EmbeddedResource Remove="Generators\Magic\**" />
     <None Remove="Generators\Magic\**" />
   </ItemGroup>
-
   <ItemGroup>
     <None Remove="Tables\Abilities\AbilityAdjustments.xml" />
     <None Remove="Tables\Abilities\AbilityGroups.xml" />
@@ -35,10 +31,17 @@
     <None Remove="Tables\Attacks\GrappleBonuses.xml" />
     <None Remove="Tables\Creatures\Advancements.xml" />
     <None Remove="Tables\Creatures\AerialManeuverability.xml" />
+    <None Remove="Tables\Creatures\AgeRolls.xml" />
     <None Remove="Tables\Creatures\CreatureData.xml" />
     <None Remove="Tables\Creatures\CreatureGroups.xml" />
     <None Remove="Tables\Creatures\CreatureTypes.xml" />
+    <None Remove="Tables\Creatures\Genders.xml" />
+    <None Remove="Tables\Creatures\Heights.xml" />
+    <None Remove="Tables\Creatures\Lengths.xml" />
+    <None Remove="Tables\Creatures\MaxAgeDescriptions.xml" />
     <None Remove="Tables\Creatures\Speeds.xml" />
+    <None Remove="Tables\Creatures\Weights.xml" />
+    <None Remove="Tables\Creatures\Wingspans.xml" />
     <None Remove="Tables\Defenses\ArmorClassBonuses.xml" />
     <None Remove="Tables\Defenses\HitDice.xml" />
     <None Remove="Tables\Defenses\SaveBonuses.xml" />
@@ -71,10 +74,10 @@
     <None Remove="Tables\Skills\SkillPoints.xml" />
     <None Include="18531-twenty-sided-dice-vector-thumb.png">
       <Pack>True</Pack>
-      <PackagePath></PackagePath>
+      <PackagePath>
+      </PackagePath>
     </None>
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Include="Tables\Abilities\AbilityGroups.xml">
       <SubType>Designer</SubType>
@@ -90,7 +93,23 @@
     <EmbeddedResource Include="Tables\Creatures\Advancements.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\Appearances\HairAppearances.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\Appearances\EyesAppearances.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\Appearances\OtherAppearances.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\Appearances\SkinAppearances.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\MaxAgeDescriptions.xml" />
     <EmbeddedResource Include="Tables\Creatures\AerialManeuverability.xml" />
+    <EmbeddedResource Include="Tables\Creatures\Genders.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tables\Creatures\CreatureData.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -100,6 +119,11 @@
     <EmbeddedResource Include="Tables\Creatures\CreatureTypes.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\AgeRolls.xml" />
+    <EmbeddedResource Include="Tables\Creatures\Lengths.xml" />
+    <EmbeddedResource Include="Tables\Creatures\Wingspans.xml" />
+    <EmbeddedResource Include="Tables\Creatures\Heights.xml" />
+    <EmbeddedResource Include="Tables\Creatures\Weights.xml" />
     <EmbeddedResource Include="Tables\Creatures\Speeds.xml" />
     <EmbeddedResource Include="Tables\Defenses\SaveGroups.xml" />
     <EmbeddedResource Include="Tables\Defenses\ArmorClassBonuses.xml">
@@ -164,11 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Skills\SkillPoints.xml" />
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="DnDGen.Infrastructure" Version="4.2.4" />
-    <PackageReference Include="DnDGen.RollGen" Version="15.3.0" />
-    <PackageReference Include="DnDGen.TreasureGen" Version="10.3.4" />
+    <PackageReference Include="DnDGen.Infrastructure" Version="6.0.1" />
+    <PackageReference Include="DnDGen.RollGen" Version="16.0.1" />
+    <PackageReference Include="DnDGen.TreasureGen" Version="12.0.0" />
   </ItemGroup>
-
 </Project>

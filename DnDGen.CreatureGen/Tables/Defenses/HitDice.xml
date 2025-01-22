@@ -81,538 +81,258 @@
     <name>Animal</name>
     <entry>8</entry>
   </collection>
-  <collection>
-    <name>Animated Object, Anvil, Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Tiny</name>
-    <entry>0.5</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Tiny</name>
-    <entry>0.5</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Tiny</name>
-    <entry>0.5</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Tiny</name>
-    <entry>0.5</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Tiny</name>
-    <entry>0.5</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Tiny</name>
-    <entry>0.5</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Tiny</name>
-    <entry>0.5</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Tiny</name>
-    <entry>0.5</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Tiny</name>
-    <entry>0.5</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Tiny</name>
-    <entry>0.5</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Tiny</name>
-    <entry>0.5</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Tiny</name>
-    <entry>0.5</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Tiny</name>
-    <entry>0.5</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Tiny</name>
-    <entry>0.5</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Tiny</name>
-    <entry>0.5</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Tiny</name>
-    <entry>0.5</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Tiny</name>
-    <entry>0.5</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Tiny</name>
-    <entry>0.5</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Colossal</name>
-    <entry>32</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Gargantuan</name>
-    <entry>16</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Huge</name>
-    <entry>8</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Large</name>
-    <entry>4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Medium</name>
-    <entry>2</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Small</name>
-    <entry>1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Tiny</name>
-    <entry>0.5</entry>
-  </collection>
+	<collection>
+		<name>Animated Object, Colossal</name>
+		<entry>32</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Flexible)</name>
+		<entry>32</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs)</name>
+		<entry>32</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Wooden)</name>
+		<entry>32</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Sheetlike)</name>
+		<entry>32</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Two Legs)</name>
+		<entry>32</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Two Legs, Wooden)</name>
+		<entry>32</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Wheels, Wooden)</name>
+		<entry>32</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Wooden)</name>
+		<entry>32</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan</name>
+		<entry>16</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Flexible)</name>
+		<entry>16</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs)</name>
+		<entry>16</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)</name>
+		<entry>16</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Sheetlike)</name>
+		<entry>16</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Two Legs)</name>
+		<entry>16</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Two Legs, Wooden)</name>
+		<entry>16</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Wheels, Wooden)</name>
+		<entry>16</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Wooden)</name>
+		<entry>16</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge</name>
+		<entry>8</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Flexible)</name>
+		<entry>8</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs)</name>
+		<entry>8</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Wooden)</name>
+		<entry>8</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Sheetlike)</name>
+		<entry>8</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Two Legs)</name>
+		<entry>8</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Two Legs, Wooden)</name>
+		<entry>8</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Wheels, Wooden)</name>
+		<entry>8</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Wooden)</name>
+		<entry>8</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large</name>
+		<entry>4</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Flexible)</name>
+		<entry>4</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs)</name>
+		<entry>4</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Wooden)</name>
+		<entry>4</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Sheetlike)</name>
+		<entry>4</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Two Legs)</name>
+		<entry>4</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Two Legs, Wooden)</name>
+		<entry>4</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Wheels, Wooden)</name>
+		<entry>4</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Wooden)</name>
+		<entry>4</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium</name>
+		<entry>2</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Flexible)</name>
+		<entry>2</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (More Than Two Legs)</name>
+		<entry>2</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (More Than Two Legs, Wooden)</name>
+		<entry>2</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Sheetlike)</name>
+		<entry>2</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Two Legs)</name>
+		<entry>2</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Two Legs, Wooden)</name>
+		<entry>2</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Wheels, Wooden)</name>
+		<entry>2</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Wooden)</name>
+		<entry>2</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small</name>
+		<entry>1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Flexible)</name>
+		<entry>1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (More Than Two Legs)</name>
+		<entry>1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (More Than Two Legs, Wooden)</name>
+		<entry>1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Sheetlike)</name>
+		<entry>1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Two Legs)</name>
+		<entry>1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Two Legs, Wooden)</name>
+		<entry>1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Wheels, Wooden)</name>
+		<entry>1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Wooden)</name>
+		<entry>1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny</name>
+		<entry>0.5</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Flexible)</name>
+		<entry>0.5</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (More Than Two Legs)</name>
+		<entry>0.5</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (More Than Two Legs, Wooden)</name>
+		<entry>0.5</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Sheetlike)</name>
+		<entry>0.5</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Two Legs)</name>
+		<entry>0.5</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Two Legs, Wooden)</name>
+		<entry>0.5</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Wheels, Wooden)</name>
+		<entry>0.5</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Wooden)</name>
+		<entry>0.5</entry>
+	</collection>
   <collection>
     <name>Ankheg</name>
     <entry>3</entry>
@@ -721,26 +441,6 @@
     <name>Bison</name>
     <entry>5</entry>
   </collection>
-	<collection>
-		<name>Goat</name>
-		<entry>5</entry>
-	</collection>
-	<collection>
-		<name>Sheep</name>
-		<entry>5</entry>
-	</collection>
-	<collection>
-		<name>Llama</name>
-		<entry>5</entry>
-	</collection>
-	<collection>
-		<name>Milk Cow</name>
-		<entry>5</entry>
-	</collection>
-	<collection>
-		<name>Ox</name>
-		<entry>5</entry>
-	</collection>
   <collection>
     <name>Black Bear</name>
     <entry>3</entry>
@@ -857,10 +557,6 @@
     <name>Boar</name>
     <entry>3</entry>
   </collection>
-	<collection>
-		<name>Pig</name>
-		<entry>3</entry>
-	</collection>
   <collection>
     <name>Bodak</name>
     <entry>9</entry>
@@ -2373,22 +2069,6 @@
     <name>Raven</name>
     <entry>.25</entry>
   </collection>
-	<collection>
-		<name>Chicken</name>
-		<entry>.25</entry>
-	</collection>
-	<collection>
-		<name>Turkey</name>
-		<entry>.25</entry>
-	</collection>
-	<collection>
-		<name>Peacock</name>
-		<entry>.25</entry>
-	</collection>
-	<collection>
-		<name>Pheasant</name>
-		<entry>.25</entry>
-	</collection>
   <collection>
     <name>Ravid</name>
     <entry>3</entry>
@@ -3062,13 +2742,37 @@
     <entry>10</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
+    <name>Lycanthrope, Black Bear (Werebear, Afflicted)</name>
     <entry>2147483647</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
+    <name>Lycanthrope, Black Bear (Werebear, Natural)</name>
     <entry>2147483647</entry>
   </collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
+		<entry>2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
+		<entry>2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)</name>
+		<entry>2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)</name>
+		<entry>2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)</name>
+		<entry>2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)</name>
+		<entry>2147483647</entry>
+	</collection>
   <collection>
     <name>Lycanthrope, Boar (Wereboar, Afflicted)</name>
     <entry>2147483647</entry>
@@ -3086,19 +2790,35 @@
     <entry>2147483647</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
+    <name>Lycanthrope, Rat (Wererat, Afflicted)</name>
     <entry>2147483647</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
+    <name>Lycanthrope, Rat (Wererat, Natural)</name>
+    <entry>2147483647</entry>
+  </collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
+		<entry>2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
+		<entry>2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
+		<entry>2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)</name>
+		<entry>2147483647</entry>
+	</collection>
+  <collection>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)</name>
     <entry>2147483647</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
-    <entry>2147483647</entry>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Natural)</name>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)</name>
     <entry>2147483647</entry>
   </collection>
   <collection>
