@@ -314,6 +314,12 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 Assert.That(creature.Demographics.Weight.Value, Is.Positive, message);
 
             Assert.That(creature.Demographics.Weight.Description, Is.Not.Empty, message);
+
+            var appearance = creature.Demographics.Skin;
+            appearance += creature.Demographics.Hair;
+            appearance += creature.Demographics.Eyes;
+            appearance += creature.Demographics.Other;
+            Assert.That(appearance, Is.Not.Empty, message);
         }
 
         private void VerifyAlignment(Creature creature, string message)
