@@ -41,27 +41,30 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 #else
             generationTimeLimitInSeconds = 5;
 #endif
-
         }
 
-        [TestCase(true, null)] //INFO: Pre-random template
-        [TestCase(true, CreatureConstants.Templates.None)]
-        [TestCase(false, null)] //INFO: Pre-random template
-        [TestCase(false, CreatureConstants.Templates.None)]
-        public void StressCreature(bool asCharacter, string template)
-        {
-            stressor.Stress(() => GenerateAndAssertCreature(asCharacter, template));
-        }
+        [Test]
+        public void StressCreature() => stressor.Stress(() => GenerateAndAssertCreature(false, false));
 
-        private void GenerateAndAssertCreature(bool asCharacter, string template)
+        [Test]
+        public void StressCreature_WithTemplate() => stressor.Stress(() => GenerateAndAssertCreature(false, true));
+
+        [Test]
+        public void StressCreatureAsCharacter() => stressor.Stress(() => GenerateAndAssertCreature(true, false));
+
+        [Test]
+        public void StressCreatureAsCharacter_WithTemplate() => stressor.Stress(() => GenerateAndAssertCreature(true, true));
+
+        private void GenerateAndAssertCreature(bool asCharacter, bool withTemplate)
         {
-            var randomCreature = GetCreatureAndTemplate(asCharacter, template);
+            var randomCreature = GetCreatureAndTemplate(asCharacter, withTemplate);
             GenerateAndAssertCreature(randomCreature.Creature, asCharacter, false, randomCreature.Template);
         }
 
-        private (string Creature, string Template) GetCreatureAndTemplate(bool asCharacter, string template)
+        private (string Creature, string Template) GetCreatureAndTemplate(bool asCharacter, bool withTemplate)
         {
-            if (template == null)
+            var template = CreatureConstants.Templates.None;
+            if (withTemplate)
             {
                 var validTemplates = allTemplates.Where(t => creatureVerifier.VerifyCompatibility(
                     asCharacter,
@@ -102,18 +105,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             return creature;
         }
 
-        [TestCase(true, null)] //INFO: Pre-random template
-        [TestCase(true, CreatureConstants.Templates.None)]
-        [TestCase(false, null)] //INFO: Pre-random template
-        [TestCase(false, CreatureConstants.Templates.None)]
-        public async Task StressCreatureAsync(bool asCharacter, string template)
-        {
-            await stressor.StressAsync(async () => await GenerateAndAssertCreatureAsync(asCharacter, template));
-        }
+        [Test]
+        public async Task StressCreatureAsync() => await stressor.StressAsync(async () => await GenerateAndAssertCreatureAsync(false, false));
 
-        private async Task GenerateAndAssertCreatureAsync(bool asCharacter, string template)
+        [Test]
+        public async Task StressCreatureAsync_WithTemplate() => await stressor.StressAsync(async () => await GenerateAndAssertCreatureAsync(false, true));
+
+        [Test]
+        public async Task StressCreatureAsyncAsCharacter() => await stressor.StressAsync(async () => await GenerateAndAssertCreatureAsync(true, false));
+
+        [Test]
+        public async Task StressCreatureAsyncAsCharacter_WithTemplate() => await stressor.StressAsync(async () => await GenerateAndAssertCreatureAsync(true, true));
+
+        private async Task GenerateAndAssertCreatureAsync(bool asCharacter, bool withTemplate)
         {
-            var randomCreature = GetCreatureAndTemplate(asCharacter, template);
+            var randomCreature = GetCreatureAndTemplate(asCharacter, withTemplate);
             await GenerateAndAssertCreatureAsync(randomCreature.Creature, randomCreature.Template, asCharacter);
         }
 
@@ -358,7 +364,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 randomFilters.Filters.ChallengeRating,
                 randomFilters.Filters.Alignment,
                 true,
-                randomFilters.Filters.Templates.ToArray());
+                [.. randomFilters.Filters.Templates]);
         }
     }
 }
