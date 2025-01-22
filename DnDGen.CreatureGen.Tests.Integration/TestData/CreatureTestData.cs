@@ -30,6 +30,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
                 (false, CreatureConstants.Dragon_White_Old, [CreatureConstants.Templates.HalfFiend]),
                 (false, CreatureConstants.Elemental_Air_Small, [CreatureConstants.Templates.HalfCelestial]),
                 (true, CreatureConstants.Gargoyle, [CreatureConstants.Templates.HalfCelestial]),
+                (true, CreatureConstants.Gargoyle, [CreatureConstants.Templates.HalfFiend]),
                 (false, CreatureConstants.Gargoyle_Kapoacinth, [CreatureConstants.Templates.Ghost]),
                 (true, CreatureConstants.Gargoyle_Kapoacinth, [CreatureConstants.Templates.HalfCelestial]),
                 (false, CreatureConstants.GibberingMouther, [CreatureConstants.Templates.HalfCelestial]),
@@ -126,6 +127,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
                 {
                     Templates = [CreatureConstants.Templates.HalfFiend],
                     Type = CreatureConstants.Types.Aberration
+                }),
+            (true, new Filters
+                {
+                    Templates = [CreatureConstants.Templates.HalfFiend],
+                    Type = CreatureConstants.Types.Plant,
+                    Alignment = AlignmentConstants.LawfulEvil
+                }),
+            (true, new Filters
+                {
+                    Templates = [CreatureConstants.Templates.HalfFiend],
+                    Type = CreatureConstants.Types.Subtypes.Earth,
+                    ChallengeRating = ChallengeRatingConstants.CR5
                 }),
             (false, new Filters
                 {
