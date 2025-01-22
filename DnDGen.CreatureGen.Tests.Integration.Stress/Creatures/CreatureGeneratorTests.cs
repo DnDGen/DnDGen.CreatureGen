@@ -199,7 +199,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 var validTypes = allTypes.Where(t => creatureVerifier.VerifyCompatibility(
                     asCharacter,
                     null,
-                    new Filters { Templates = new List<string> { template }, Type = t }));
+                    new Filters { Templates = [template], Type = t }));
 
                 type = collectionSelector.SelectRandomFrom(validTypes);
             }
@@ -211,7 +211,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                     .Where(c => creatureVerifier.VerifyCompatibility(
                         asCharacter,
                         null,
-                        new Filters { Templates = new List<string> { template }, Type = type, ChallengeRating = c }));
+                        new Filters { Templates = [template], Type = type, ChallengeRating = c }));
 
                 cr = collectionSelector.SelectRandomFrom(validChallengeRatings);
             }
