@@ -1,13 +1,11 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -24,8 +22,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private ICreatureGenerator creatureGenerator;
         private Stopwatch stopwatch;
         private Dice dice;
-        private Dictionary<string, (string Ability, int Minimum)> templateAbilityMinimums;
         private int generationTimeLimitInSeconds;
+        private AbilityRandomizerFactory abilityRandomizerFactory;
 
         [SetUp]
         public void Setup()
@@ -35,13 +33,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
             dice = GetNewInstanceOf<Dice>();
             stopwatch = new Stopwatch();
-
-            templateAbilityMinimums = new Dictionary<string, (string Ability, int Minimum)>
-            {
-                [CreatureConstants.Templates.Ghost] = (AbilityConstants.Charisma, 6),
-                [CreatureConstants.Templates.HalfCelestial] = (AbilityConstants.Intelligence, 4),
-                [CreatureConstants.Templates.HalfFiend] = (AbilityConstants.Intelligence, 4)
-            };
+            abilityRandomizerFactory = GetNewInstanceOf<AbilityRandomizerFactory>();
 
             //INFO: This accounts for how tests and generation may run more slowly when running locally versus in Azure
 #if STRESS
@@ -88,61 +80,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             return (randomCreatureName, template);
         }
 
-        private AbilityRandomizer GetAbilityRandomizer(params string[] templates)
-        {
-            var rolls = new[]
-            {
-                AbilityConstants.RandomizerRolls.Heroic,
-                AbilityConstants.RandomizerRolls.BestOfFour,
-                AbilityConstants.RandomizerRolls.Default,
-                AbilityConstants.RandomizerRolls.Average,
-                AbilityConstants.RandomizerRolls.Good,
-                AbilityConstants.RandomizerRolls.OnesAsSixes,
-                AbilityConstants.RandomizerRolls.Poor,
-                AbilityConstants.RandomizerRolls.Raw,
-                AbilityConstants.RandomizerRolls.Wild,
-            };
-
-            var randomizer = new AbilityRandomizer
-            {
-                Roll = collectionSelector.SelectRandomFrom(rolls)
-            };
-
-            //HACK: This is just to avoid the issue when a randomly-rolled ability
-            //(especially with "Poor" or "Wild") ends up much lower than normally would be with the "Default" roll,
-            //and the template requires an ability to be a minimum value
-            if (templates.Any(t => t != null && templateAbilityMinimums.ContainsKey(t)))
-            {
-                foreach (var template in templates.Where(templateAbilityMinimums.ContainsKey))
-                {
-                    if (!randomizer.AbilityAdvancements.ContainsKey(templateAbilityMinimums[template].Ability))
-                    {
-                        randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability] = 0;
-                    }
-
-                    var newMin = Math.Max(randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability], templateAbilityMinimums[template].Minimum);
-                    randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability] = newMin;
-                    randomizer.PriorityAbility = templateAbilityMinimums[template].Ability;
-                }
-            }
-            else if (templates.Contains(null))
-            {
-                //HACK: Here, the template might be randomly selected, so we have to guard against it for the sake of stress testing
-                foreach (var kvp in templateAbilityMinimums)
-                {
-                    if (dice.Roll(randomizer.Roll).AsPotentialMinimum() < kvp.Value.Minimum)
-                    {
-                        randomizer.AbilityAdvancements[kvp.Value.Ability] = kvp.Value.Minimum;
-                    }
-                }
-            }
-
-            return randomizer;
-        }
-
         private Creature GenerateAndAssertCreature(string creatureName, bool asCharacter, bool useDefaultAbilities = false, params string[] templates)
         {
-            var randomizer = GetAbilityRandomizer(templates);
+            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer(templates);
             if (useDefaultAbilities)
                 randomizer.Roll = AbilityConstants.RandomizerRolls.Default;
 
@@ -179,7 +119,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private async Task<Creature> GenerateAndAssertCreatureAsync(string creatureName, string template, bool asCharacter)
         {
-            var randomizer = GetAbilityRandomizer(template);
+            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer([template]);
 
             stopwatch.Restart();
             var creature = await creatureGenerator.GenerateAsync(asCharacter, creatureName, randomizer, template);
@@ -310,7 +250,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             filters.ChallengeRating = challengeRating;
             filters.Alignment = alignment;
 
-            var randomizer = GetAbilityRandomizer(templates.FirstOrDefault());
+            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer(templates);
             if (useDefaultAbilities)
                 randomizer.Roll = AbilityConstants.RandomizerRolls.Default;
 
@@ -380,7 +320,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             if (template != null)
                 filters.Templates.Add(template);
 
-            var randomizer = GetAbilityRandomizer(template);
+            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer([template]);
 
             stopwatch.Restart();
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, randomizer, filters);

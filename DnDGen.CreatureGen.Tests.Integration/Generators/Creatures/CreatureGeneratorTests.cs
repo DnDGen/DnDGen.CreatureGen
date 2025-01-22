@@ -5,12 +5,9 @@ using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.Infrastructure.Selectors.Collections;
-using DnDGen.RollGen;
 using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -23,9 +20,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         private CreatureAsserter creatureAsserter;
         private ICreatureGenerator creatureGenerator;
         private Stopwatch stopwatch;
-        private ICollectionSelector collectionSelector;
-        private Dictionary<string, (string Ability, int Minimum)> templateAbilityMinimums;
-        private Dice dice;
+        private AbilityRandomizerFactory abilityRandomizerFactory;
 
         private const int generationTimeLimitInSeconds = 5;
 
@@ -35,15 +30,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             creatureAsserter = GetNewInstanceOf<CreatureAsserter>();
             creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
             stopwatch = new Stopwatch();
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
-            dice = GetNewInstanceOf<Dice>();
-
-            templateAbilityMinimums = new Dictionary<string, (string Ability, int Minimum)>
-            {
-                [CreatureConstants.Templates.Ghost] = (AbilityConstants.Charisma, 6),
-                [CreatureConstants.Templates.HalfCelestial] = (AbilityConstants.Intelligence, 4),
-                [CreatureConstants.Templates.HalfFiend] = (AbilityConstants.Intelligence, 4)
-            };
+            abilityRandomizerFactory = GetNewInstanceOf<AbilityRandomizerFactory>();
         }
 
         [TestCase(CreatureConstants.Androsphinx)]
@@ -766,7 +753,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
         public void BUG_GenerateProblematicCreature(bool asCharacter, string creatureName, params string[] templates)
         {
-            var randomizer = GetAbilityRandomizer(templates);
+            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer(templates);
             GenerateAndAssertCreature(creatureName, asCharacter, randomizer, templates);
         }
 
@@ -781,7 +768,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
         public void BUG_GenerateProblematicCreature_ProblematicAbilities(bool asCharacter, string creatureName, params string[] templates)
         {
-            var randomizer = GetAbilityRandomizer(templates, [AbilityConstants.RandomizerRolls.Poor, AbilityConstants.RandomizerRolls.Wild]);
+            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer(templates, [AbilityConstants.RandomizerRolls.Poor, AbilityConstants.RandomizerRolls.Wild]);
             GenerateAndAssertCreature(creatureName, asCharacter, randomizer, templates);
         }
 
@@ -803,52 +790,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             return creature;
         }
 
-        private AbilityRandomizer GetAbilityRandomizer(string[] templates, string[] rolls = null)
-        {
-            rolls ??=
-            [
-                AbilityConstants.RandomizerRolls.Heroic,
-                AbilityConstants.RandomizerRolls.BestOfFour,
-                AbilityConstants.RandomizerRolls.Default,
-                AbilityConstants.RandomizerRolls.Average,
-                AbilityConstants.RandomizerRolls.Good,
-                AbilityConstants.RandomizerRolls.OnesAsSixes,
-                AbilityConstants.RandomizerRolls.Poor,
-                AbilityConstants.RandomizerRolls.Raw,
-                AbilityConstants.RandomizerRolls.Wild,
-            ];
-
-            var randomizer = new AbilityRandomizer
-            {
-                Roll = collectionSelector.SelectRandomFrom(rolls)
-            };
-
-            //HACK: This is just to avoid the issue when a randomly-rolled ability
-            //(especially with "Poor" or "Wild") ends up much lower than normally would be with the "Default" roll,
-            //and the template requires an ability to be a minimum value
-            if (templates.Any(t => t != null && templateAbilityMinimums.ContainsKey(t)))
-            {
-                foreach (var template in templates.Where(templateAbilityMinimums.ContainsKey))
-                {
-                    if (!randomizer.AbilityAdvancements.ContainsKey(templateAbilityMinimums[template].Ability))
-                    {
-                        randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability] = 0;
-                    }
-
-                    var newMin = Math.Max(randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability], templateAbilityMinimums[template].Minimum);
-                    randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability] = newMin;
-                    randomizer.PriorityAbility = templateAbilityMinimums[template].Ability;
-                }
-            }
-
-            return randomizer;
-        }
-
         //INFO: Too many problematic test cases for Repeat to be time-efficient
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
         public void BUG_GenerateCreatureWithProblematicFilters(string type, bool asCharacter, string template, string challengeRating, string alignment)
         {
-            var randomizer = GetAbilityRandomizer([template]);
+            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer([template]);
             GenerateAndAssertRandomCreature(asCharacter, type, challengeRating, alignment, randomizer, template);
         }
 
@@ -863,7 +809,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
         public void BUG_GenerateCreatureWithProblematicFilters_ProblematicAbilities(string type, bool asCharacter, string template, string challengeRating, string alignment)
         {
-            var randomizer = GetAbilityRandomizer([template], [AbilityConstants.RandomizerRolls.Poor, AbilityConstants.RandomizerRolls.Wild]);
+            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer([template], [AbilityConstants.RandomizerRolls.Poor, AbilityConstants.RandomizerRolls.Wild]);
             GenerateAndAssertRandomCreature(asCharacter, type, challengeRating, alignment, randomizer, template);
         }
 

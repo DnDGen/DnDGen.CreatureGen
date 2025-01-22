@@ -29,6 +29,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
                 (false, CreatureConstants.Dragon_Silver_Ancient, [CreatureConstants.Templates.HalfCelestial]),
                 (false, CreatureConstants.Dragon_White_Old, [CreatureConstants.Templates.HalfFiend]),
                 (false, CreatureConstants.Elemental_Air_Small, [CreatureConstants.Templates.HalfCelestial]),
+                (false, CreatureConstants.Elemental_Fire_Medium, [CreatureConstants.Templates.HalfFiend]),
                 (true, CreatureConstants.Gargoyle, [CreatureConstants.Templates.HalfCelestial]),
                 (true, CreatureConstants.Gargoyle, [CreatureConstants.Templates.HalfFiend]),
                 (false, CreatureConstants.Gargoyle_Kapoacinth, [CreatureConstants.Templates.Ghost]),
@@ -40,6 +41,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
                 (false, CreatureConstants.Hieracosphinx, [CreatureConstants.Templates.Skeleton]),
                 (false, CreatureConstants.Human, [CreatureConstants.Templates.Ghost]),
                 (false, CreatureConstants.Kobold, [CreatureConstants.Templates.HalfFiend]),
+                (false, CreatureConstants.Lizardfolk, [CreatureConstants.Templates.HalfCelestial]),
                 (false, CreatureConstants.Lizardfolk, [CreatureConstants.Templates.HalfFiend]),
                 (false, CreatureConstants.Mimic, [CreatureConstants.Templates.Ghost]),
                 (false, CreatureConstants.Otyugh, [CreatureConstants.Templates.Ghost]),
@@ -48,6 +50,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
                 (true, CreatureConstants.ShamblingMound, [CreatureConstants.Templates.HalfFiend]),
                 (true, CreatureConstants.Skum, [CreatureConstants.Templates.Ghost]),
                 (false, CreatureConstants.Troglodyte, [CreatureConstants.Templates.HalfCelestial]),
+                (false, CreatureConstants.Troglodyte, [CreatureConstants.Templates.HalfFiend]),
                 (true, CreatureConstants.Xill, []),
             ];
 
@@ -133,6 +136,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
                     Templates = [CreatureConstants.Templates.HalfFiend],
                     Type = CreatureConstants.Types.Plant,
                     Alignment = AlignmentConstants.LawfulEvil
+                }),
+            (false, new Filters
+                {
+                    Templates = [CreatureConstants.Templates.HalfFiend],
+                    Type = CreatureConstants.Types.Subtypes.Native
                 }),
             (true, new Filters
                 {
