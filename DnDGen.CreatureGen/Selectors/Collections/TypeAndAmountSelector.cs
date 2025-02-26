@@ -2,11 +2,13 @@
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Selectors.Collections
 {
+    [Obsolete]
     internal class TypeAndAmountSelector : ITypeAndAmountSelector
     {
         private readonly ICollectionSelector collectionSelector;

@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace DnDGen.CreatureGen.Selectors.Collections
 {
+    [Obsolete]
     internal class AdjustmentsSelector : IAdjustmentsSelector
     {
         private readonly ICollectionSelector collectionsSelector;

@@ -1,9 +1,11 @@
 ﻿using DnDGen.CreatureGen.Selectors.Selections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Selectors.Collections
 {
+    [Obsolete]
     internal class BonusSelector : IBonusSelector
     {
         private readonly ITypeAndAmountSelector typeAndAmountSelector;

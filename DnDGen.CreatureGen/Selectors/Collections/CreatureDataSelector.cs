@@ -7,6 +7,7 @@ using System.Linq;
 
 namespace DnDGen.CreatureGen.Selectors.Collections
 {
+    [Obsolete]
     internal class CreatureDataSelector : ICreatureDataSelector
     {
         private readonly ICollectionSelector collectionSelector;

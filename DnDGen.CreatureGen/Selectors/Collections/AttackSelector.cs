@@ -16,15 +16,17 @@ namespace DnDGen.CreatureGen.Selectors.Collections
         {
             this.collectionSelector = collectionSelector;
 
-            damageMaps = new Dictionary<string, string>();
-            damageMaps["2d8"] = "3d8";
-            damageMaps["2d6"] = "3d6";
-            damageMaps["1d10"] = "2d8";
-            damageMaps["1d8"] = "2d6";
-            damageMaps["1d6"] = "1d8";
-            damageMaps["1d4"] = "1d6";
-            damageMaps["1d3"] = "1d4";
-            damageMaps["1d2"] = "1d3";
+            damageMaps = new Dictionary<string, string>
+            {
+                ["2d8"] = "3d8",
+                ["2d6"] = "3d6",
+                ["1d10"] = "2d8",
+                ["1d8"] = "2d6",
+                ["1d6"] = "1d8",
+                ["1d4"] = "1d6",
+                ["1d3"] = "1d4",
+                ["1d2"] = "1d3"
+            };
         }
 
         public IEnumerable<AttackSelection> Select(string creatureName, string originalSize, string advancedSize)
