@@ -35,6 +35,23 @@ namespace DnDGen.CreatureGen.Tests.Integration
             ];
         }
 
+        public double GetGenerationTimeLimitInSeconds(Creature creature)
+        {
+            var timeLimit = creature.HitPoints.HitDiceQuantity * 0.1;
+
+            if (creature.Templates.Count > 0)
+                timeLimit += creature.Templates.Count;
+
+            //INFO: This accounts for how tests and generation may run more slowly when running locally versus in Azure
+#if STRESS
+            timeLimit = Math.Max(1, timeLimit);
+#else
+            timeLimit = Math.Max(5, timeLimit);
+#endif
+
+            return timeLimit;
+        }
+
         public void AssertCreature(Creature creature, string message = null)
         {
             message ??= creature.Summary;
@@ -47,12 +64,14 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 verifierMessage.AppendLine($"\tCreature Type: {type}");
                 verifierMessage.AppendLine($"\tCreature Alignment: {creature.Alignment.Full}");
 
-                //INFO: We are not asserting that the challenge rating is valid
+                //INFO: We are not asserting that the challenge rating matches the filter
                 //Since the CR can be altered by advancement and by generating as a character
-                var filters = new Filters();
-                filters.Type = type;
-                filters.Templates = creature.Templates;
-                filters.Alignment = creature.Alignment.Full;
+                var filters = new Filters
+                {
+                    Type = type,
+                    Templates = creature.Templates,
+                    Alignment = creature.Alignment.Full
+                };
 
                 var isValid = creatureVerifier.VerifyCompatibility(false, creature.Name, filters);
                 Assert.That(isValid, Is.True, verifierMessage.ToString());
