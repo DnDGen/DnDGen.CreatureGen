@@ -35,6 +35,11 @@ namespace DnDGen.CreatureGen.Tests.Integration
             ];
         }
 
+        public double GetGenerationTimeLimitInSeconds(Creature creature)
+        {
+            return Math.Max(1, creature.HitPoints.HitDiceQuantity * 0.1) + creature.Templates.Count;
+        }
+
         public void AssertCreature(Creature creature, string message = null)
         {
             message ??= creature.Summary;
