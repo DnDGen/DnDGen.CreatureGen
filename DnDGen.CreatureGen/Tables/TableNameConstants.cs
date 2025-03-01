@@ -6,7 +6,6 @@
         {
             public const string ArcaneSpellFailures = "ArcaneSpellFailures";
             public const string GrappleBonuses = "GrappleBonuses";
-            public const string HitDice = "HitDice";
             public const string SizeModifiers = "SizeModifiers";
             public const string SkillPoints = "SkillPoints";
         }
@@ -61,6 +60,7 @@
             public const string FeatSkillRankRequirements = "FeatSkillRankRequirements";
             public const string FeatSpeedRequirements = "FeatSpeedRequirements";
             public const string Heights = "Heights";
+            public const string HitDice = "HitDice";
             public const string KnownSpells = "KnownSpells";
             public const string Lengths = "Lengths";
             public const string SaveBonuses = "SaveBonuses";

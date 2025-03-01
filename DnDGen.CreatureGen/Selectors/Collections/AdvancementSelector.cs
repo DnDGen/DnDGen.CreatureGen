@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.Infrastructure.Selectors.Percentiles;
+using DnDGen.RollGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,26 +15,37 @@ namespace DnDGen.CreatureGen.Selectors.Collections
         private readonly ITypeAndAmountSelector typeAndAmountSelector;
         private readonly IPercentileSelector percentileSelector;
         private readonly ICollectionSelector collectionSelector;
+        private readonly ICollectionTypeAndAmountSelector collectionTypeAndAmountSelector;
+        private readonly ICollectionDataSelector<AdvancementDataSelection> advancementDataSelector;
         private readonly IAdjustmentsSelector adjustmentsSelector;
+        private readonly Dice dice;
 
         public AdvancementSelector(
             ITypeAndAmountSelector typeAndAmountSelector,
             IPercentileSelector percentileSelector,
             ICollectionSelector collectionSelector,
+            ICollectionDataSelector<AdvancementDataSelection> advancementDataSelector,
+            ICollectionTypeAndAmountSelector collectionTypeAndAmountSelector,
+            Dice dice,
             IAdjustmentsSelector adjustmentsSelector)
         {
             this.typeAndAmountSelector = typeAndAmountSelector;
             this.percentileSelector = percentileSelector;
             this.collectionSelector = collectionSelector;
+            this.advancementDataSelector = advancementDataSelector;
+            this.collectionTypeAndAmountSelector = collectionTypeAndAmountSelector;
+            this.dice = dice;
             this.adjustmentsSelector = adjustmentsSelector;
         }
 
-        public bool IsAdvanced(string creature, string challengeRatingFilter)
+        public bool IsAdvanced(string creature, IEnumerable<string> templates, string challengeRatingFilter)
         {
             if (challengeRatingFilter != null)
                 return false;
 
-            var advancements = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Advancements, creature);
+            templates ??= [];
+
+            var advancements = GetValidAdvancements(creature, templates);
             if (!advancements.Any())
                 return false;
 
@@ -41,45 +53,42 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             return isAdvanced;
         }
 
-        public AdvancementSelection SelectRandomFor(string creature, IEnumerable<string> templates, CreatureType creatureType, string originalSize, string originalChallengeRating)
+        private IEnumerable<AdvancementDataSelection> GetValidAdvancements(string creature, IEnumerable<string> templates)
         {
-            var advancements = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Advancements, creature);
-            var creatureHitDice = adjustmentsSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
+            var advancements = advancementDataSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Advancements, creature);
+            var creatureHitDice = collectionTypeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, creature);
             var maxHitDice = int.MaxValue;
-            templates ??= Enumerable.Empty<string>();
 
             foreach (var template in templates)
             {
-                var templateMaxHitDice = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, template);
-                maxHitDice = Math.Min(templateMaxHitDice, maxHitDice);
+                var templateMaxHitDice = collectionTypeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, template);
+                maxHitDice = Math.Min(templateMaxHitDice.Amount, maxHitDice);
             }
 
-            var validAdvancements = advancements.Where(a => creatureHitDice + a.Amount <= maxHitDice);
-            if (!validAdvancements.Any())
-            {
-                var minimumAdvancement = advancements.OrderBy(a => a.Amount).First();
-                var newAdvancementAmount = maxHitDice - (int)Math.Max(creatureHitDice, 1);
-                minimumAdvancement.Amount = Math.Min(newAdvancementAmount, minimumAdvancement.Amount);
+            var validAdvancements = advancements.Where(a => a.AdvancementIsValid(dice, maxHitDice - creatureHitDice.Amount));
 
-                validAdvancements = new[] { minimumAdvancement };
-            }
+            return validAdvancements;
+        }
 
-            var randomAdvancement = collectionSelector.SelectRandomFrom(validAdvancements);
+        public AdvancementDataSelection SelectRandomFor(string creature, IEnumerable<string> templates, CreatureType creatureType, string originalSize, string originalChallengeRating)
+        {
+            templates ??= [];
+
+            var advancements = GetValidAdvancements(creature, templates);
+            var randomAdvancement = collectionSelector.SelectRandomFrom(advancements);
             var selection = GetAdvancementSelection(creature, creatureType, originalSize, originalChallengeRating, randomAdvancement);
 
             return selection;
         }
 
-        private AdvancementSelection GetAdvancementSelection(string creatureName, CreatureType creatureType, string originalSize, string originalChallengeRating, TypeAndAmountSelection typeAndAmount)
+        private AdvancementDataSelection GetAdvancementSelection(
+            string creatureName,
+            CreatureType creatureType,
+            string originalSize,
+            string originalChallengeRating,
+            AdvancementDataSelection selection)
         {
-            var selection = new AdvancementSelection();
-            selection.AdditionalHitDice = typeAndAmount.Amount;
-
-            var sections = typeAndAmount.Type.Split(',');
-            selection.Size = sections[DataIndexConstants.AdvancementSelectionData.Size];
-            selection.Space = Convert.ToDouble(sections[DataIndexConstants.AdvancementSelectionData.Space]);
-            selection.Reach = Convert.ToDouble(sections[DataIndexConstants.AdvancementSelectionData.Reach]);
-
+            selection.SetAdditionalHitDice(dice);
             selection.StrengthAdjustment = GetStrengthAdjustment(originalSize, selection.Size);
             selection.ConstitutionAdjustment = GetConstitutionAdjustment(originalSize, selection.Size);
             selection.DexterityAdjustment = GetDexterityAdjustment(originalSize, selection.Size);

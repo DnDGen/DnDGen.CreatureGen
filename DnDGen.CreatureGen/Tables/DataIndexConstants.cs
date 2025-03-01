@@ -122,6 +122,7 @@
             public const int Size = 0;
             public const int Space = 1;
             public const int Reach = 2;
+            public const int AdditionalHitDiceRoll = 3;
         }
     }
 }
