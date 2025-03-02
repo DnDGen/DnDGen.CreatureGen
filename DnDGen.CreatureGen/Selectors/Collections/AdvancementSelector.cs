@@ -17,7 +17,6 @@ namespace DnDGen.CreatureGen.Selectors.Collections
         private readonly ICollectionSelector collectionSelector;
         private readonly ICollectionTypeAndAmountSelector collectionTypeAndAmountSelector;
         private readonly ICollectionDataSelector<AdvancementDataSelection> advancementDataSelector;
-        private readonly IAdjustmentsSelector adjustmentsSelector;
         private readonly Dice dice;
 
         public AdvancementSelector(
@@ -26,8 +25,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             ICollectionSelector collectionSelector,
             ICollectionDataSelector<AdvancementDataSelection> advancementDataSelector,
             ICollectionTypeAndAmountSelector collectionTypeAndAmountSelector,
-            Dice dice,
-            IAdjustmentsSelector adjustmentsSelector)
+            Dice dice)
         {
             this.typeAndAmountSelector = typeAndAmountSelector;
             this.percentileSelector = percentileSelector;
@@ -35,7 +33,6 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             this.advancementDataSelector = advancementDataSelector;
             this.collectionTypeAndAmountSelector = collectionTypeAndAmountSelector;
             this.dice = dice;
-            this.adjustmentsSelector = adjustmentsSelector;
         }
 
         public bool IsAdvanced(string creature, IEnumerable<string> templates, string challengeRatingFilter)
@@ -89,10 +86,6 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             AdvancementDataSelection selection)
         {
             selection.SetAdditionalHitDice(dice);
-            selection.StrengthAdjustment = GetStrengthAdjustment(originalSize, selection.Size);
-            selection.ConstitutionAdjustment = GetConstitutionAdjustment(originalSize, selection.Size);
-            selection.DexterityAdjustment = GetDexterityAdjustment(originalSize, selection.Size);
-            selection.NaturalArmorAdjustment = GetNaturalArmorAdjustment(originalSize, selection.Size);
 
             if (IsBarghest(creatureName))
             {
@@ -145,106 +138,6 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             var advancementAmount = additionalHitDice / divisor;
 
             return ChallengeRatingConstants.IncreaseChallengeRating(originalChallengeRating, advancementAmount);
-        }
-
-        private int GetConstitutionAdjustment(string originalSize, string advancedSize)
-        {
-            var constitutionAdjustment = 0;
-            var currentSize = originalSize;
-
-            while (currentSize != advancedSize)
-            {
-                switch (currentSize)
-                {
-                    case SizeConstants.Fine: currentSize = SizeConstants.Diminutive; break;
-                    case SizeConstants.Diminutive: currentSize = SizeConstants.Tiny; break;
-                    case SizeConstants.Tiny: currentSize = SizeConstants.Small; break;
-                    case SizeConstants.Small: currentSize = SizeConstants.Medium; constitutionAdjustment += 2; break;
-                    case SizeConstants.Medium: currentSize = SizeConstants.Large; constitutionAdjustment += 4; break;
-                    case SizeConstants.Large: currentSize = SizeConstants.Huge; constitutionAdjustment += 4; break;
-                    case SizeConstants.Huge: currentSize = SizeConstants.Gargantuan; constitutionAdjustment += 4; break;
-                    case SizeConstants.Gargantuan: currentSize = SizeConstants.Colossal; constitutionAdjustment += 4; break;
-                    case SizeConstants.Colossal:
-                    default: throw new ArgumentException($"{currentSize} is not a valid size that can be advanced");
-                }
-            }
-
-            return constitutionAdjustment;
-        }
-
-        private int GetDexterityAdjustment(string originalSize, string advancedSize)
-        {
-            var dexterityAdjustment = 0;
-            var currentSize = originalSize;
-
-            while (currentSize != advancedSize)
-            {
-                switch (currentSize)
-                {
-                    case SizeConstants.Fine: currentSize = SizeConstants.Diminutive; dexterityAdjustment -= 2; break;
-                    case SizeConstants.Diminutive: currentSize = SizeConstants.Tiny; dexterityAdjustment -= 2; break;
-                    case SizeConstants.Tiny: currentSize = SizeConstants.Small; dexterityAdjustment -= 2; break;
-                    case SizeConstants.Small: currentSize = SizeConstants.Medium; dexterityAdjustment -= 2; break;
-                    case SizeConstants.Medium: currentSize = SizeConstants.Large; dexterityAdjustment -= 2; break;
-                    case SizeConstants.Large: currentSize = SizeConstants.Huge; dexterityAdjustment -= 2; break;
-                    case SizeConstants.Huge: currentSize = SizeConstants.Gargantuan; break;
-                    case SizeConstants.Gargantuan: currentSize = SizeConstants.Colossal; break;
-                    case SizeConstants.Colossal:
-                    default: throw new ArgumentException($"{currentSize} is not a valid size that can be advanced");
-                }
-            }
-
-            return dexterityAdjustment;
-        }
-
-        private int GetStrengthAdjustment(string originalSize, string advancedSize)
-        {
-            var strengthAdjustment = 0;
-            var currentSize = originalSize;
-
-            while (currentSize != advancedSize)
-            {
-                switch (currentSize)
-                {
-                    case SizeConstants.Fine: currentSize = SizeConstants.Diminutive; break;
-                    case SizeConstants.Diminutive: currentSize = SizeConstants.Tiny; strengthAdjustment += 2; break;
-                    case SizeConstants.Tiny: currentSize = SizeConstants.Small; strengthAdjustment += 4; break;
-                    case SizeConstants.Small: currentSize = SizeConstants.Medium; strengthAdjustment += 4; break;
-                    case SizeConstants.Medium: currentSize = SizeConstants.Large; strengthAdjustment += 8; break;
-                    case SizeConstants.Large: currentSize = SizeConstants.Huge; strengthAdjustment += 8; break;
-                    case SizeConstants.Huge: currentSize = SizeConstants.Gargantuan; strengthAdjustment += 8; break;
-                    case SizeConstants.Gargantuan: currentSize = SizeConstants.Colossal; strengthAdjustment += 8; break;
-                    case SizeConstants.Colossal:
-                    default: throw new ArgumentException($"{currentSize} is not a valid size that can be advanced");
-                }
-            }
-
-            return strengthAdjustment;
-        }
-
-        private int GetNaturalArmorAdjustment(string originalSize, string advancedSize)
-        {
-            var naturalArmorAdjustment = 0;
-            var currentSize = originalSize;
-
-            while (currentSize != advancedSize)
-            {
-                switch (currentSize)
-                {
-                    case SizeConstants.Fine: currentSize = SizeConstants.Diminutive; break;
-                    case SizeConstants.Diminutive: currentSize = SizeConstants.Tiny; break;
-                    case SizeConstants.Tiny: currentSize = SizeConstants.Small; break;
-                    case SizeConstants.Small: currentSize = SizeConstants.Medium; break;
-                    case SizeConstants.Medium: currentSize = SizeConstants.Large; naturalArmorAdjustment += 2; break;
-                    case SizeConstants.Large: currentSize = SizeConstants.Huge; naturalArmorAdjustment += 3; break;
-                    case SizeConstants.Huge: currentSize = SizeConstants.Gargantuan; naturalArmorAdjustment += 4; break;
-                    case SizeConstants.Gargantuan: currentSize = SizeConstants.Colossal; naturalArmorAdjustment += 5; break;
-                    case SizeConstants.Colossal:
-                    default: throw new ArgumentException($"{currentSize} is not a valid size that can be advanced");
-                }
-            }
-
-            return naturalArmorAdjustment;
         }
     }
 }

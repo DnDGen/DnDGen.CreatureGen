@@ -179,6 +179,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.AdvancementSelectionData.Size, 0)]
         [TestCase(DataIndexConstants.AdvancementSelectionData.Space, 1)]
         [TestCase(DataIndexConstants.AdvancementSelectionData.Reach, 2)]
+        [TestCase(DataIndexConstants.AdvancementSelectionData.AdditionalHitDiceRoll, 3)]
+        [TestCase(DataIndexConstants.AdvancementSelectionData.StrengthAdjustment, 4)]
+        [TestCase(DataIndexConstants.AdvancementSelectionData.ConstitutionAdjustment, 5)]
+        [TestCase(DataIndexConstants.AdvancementSelectionData.DexterityAdjustment, 6)]
+        [TestCase(DataIndexConstants.AdvancementSelectionData.NaturalArmorAdjustment, 7)]
+        [TestCase(DataIndexConstants.AdvancementSelectionData.ChallengeRatingDivisor, 8)]
         public void AdvancementSelectionDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));

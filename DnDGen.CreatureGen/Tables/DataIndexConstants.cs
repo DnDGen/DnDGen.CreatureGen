@@ -123,6 +123,11 @@
             public const int Space = 1;
             public const int Reach = 2;
             public const int AdditionalHitDiceRoll = 3;
+            public const int StrengthAdjustment = 4;
+            public const int ConstitutionAdjustment = 5;
+            public const int DexterityAdjustment = 6;
+            public const int NaturalArmorAdjustment = 7;
+            public const int ChallengeRatingDivisor = 8;
         }
     }
 }

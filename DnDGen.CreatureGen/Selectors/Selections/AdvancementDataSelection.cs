@@ -18,11 +18,12 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public int NaturalArmorAdjustment { get; set; }
         public string AdjustedChallengeRating { get; set; }
         public int CasterLevelAdjustment { get; set; }
+        public int ChallengeRatingDivisor { get; set; }
 
         public override Func<string[], AdvancementDataSelection> MapTo => Map;
         public override Func<AdvancementDataSelection, string[]> MapFrom => Map;
 
-        public override int SectionCount => 4;
+        public override int SectionCount => 9;
 
         private int maxHitDice;
 
@@ -34,6 +35,11 @@ namespace DnDGen.CreatureGen.Selectors.Selections
                 Size = splitData[DataIndexConstants.AdvancementSelectionData.Size],
                 Space = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.Space]),
                 Reach = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.Reach]),
+                StrengthAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.StrengthAdjustment]),
+                ConstitutionAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.ConstitutionAdjustment]),
+                DexterityAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.DexterityAdjustment]),
+                NaturalArmorAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.NaturalArmorAdjustment]),
+                ChallengeRatingDivisor = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.ChallengeRatingDivisor]),
             };
 
             return selection;
@@ -46,6 +52,11 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             data[DataIndexConstants.AdvancementSelectionData.Space] = selection.Space.ToString();
             data[DataIndexConstants.AdvancementSelectionData.Reach] = selection.Reach.ToString();
             data[DataIndexConstants.AdvancementSelectionData.AdditionalHitDiceRoll] = selection.AdditionalHitDiceRoll;
+            data[DataIndexConstants.AdvancementSelectionData.StrengthAdjustment] = selection.StrengthAdjustment.ToString();
+            data[DataIndexConstants.AdvancementSelectionData.ConstitutionAdjustment] = selection.ConstitutionAdjustment.ToString();
+            data[DataIndexConstants.AdvancementSelectionData.DexterityAdjustment] = selection.DexterityAdjustment.ToString();
+            data[DataIndexConstants.AdvancementSelectionData.NaturalArmorAdjustment] = selection.NaturalArmorAdjustment.ToString();
+            data[DataIndexConstants.AdvancementSelectionData.ChallengeRatingDivisor] = selection.ChallengeRatingDivisor.ToString();
 
             return data;
         }
