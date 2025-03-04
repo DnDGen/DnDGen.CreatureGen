@@ -73,17 +73,12 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 
             var advancements = GetValidAdvancements(creature, templates);
             var randomAdvancement = collectionSelector.SelectRandomFrom(advancements);
-            var selection = GetAdvancementSelection(creature, creatureType, originalSize, originalChallengeRating, randomAdvancement);
+            var selection = GetAdvancementSelection(creature, randomAdvancement);
 
             return selection;
         }
 
-        private AdvancementDataSelection GetAdvancementSelection(
-            string creatureName,
-            CreatureType creatureType,
-            string originalSize,
-            string originalChallengeRating,
-            AdvancementDataSelection selection)
+        private AdvancementDataSelection GetAdvancementSelection(string creatureName, AdvancementDataSelection selection)
         {
             selection.SetAdditionalProperties(dice);
 
@@ -95,49 +90,12 @@ namespace DnDGen.CreatureGen.Selectors.Collections
                 selection.CasterLevelAdjustment = selection.AdditionalHitDice;
             }
 
-            selection.AdjustedChallengeRating = AdjustChallengeRating(originalSize, selection.Size, originalChallengeRating, selection.AdditionalHitDice, creatureType.Name);
-
             return selection;
-        }
-
-        private string AdjustChallengeRating(string size, string advancedSize, string originalChallengeRating, int additionalHitDice, string creatureType)
-        {
-            var sizeAdjustedChallengeRating = AdjustChallengeRating(size, advancedSize, originalChallengeRating);
-            var hitDieAdjustedChallengeRating = AdjustChallengeRating(sizeAdjustedChallengeRating, additionalHitDice, creatureType);
-
-            return hitDieAdjustedChallengeRating;
         }
 
         private bool IsBarghest(string creatureName)
         {
             return creatureName == CreatureConstants.Barghest || creatureName == CreatureConstants.Barghest_Greater;
-        }
-
-        private string AdjustChallengeRating(string originalSize, string advancedSize, string originalChallengeRating)
-        {
-            var sizes = SizeConstants.GetOrdered();
-            var originalSizeIndex = Array.IndexOf(sizes, originalSize);
-            var advancedIndex = Array.IndexOf(sizes, advancedSize);
-            var largeIndex = Array.IndexOf(sizes, SizeConstants.Large);
-
-            if (advancedIndex < largeIndex || originalSize == advancedSize)
-            {
-                return originalChallengeRating;
-            }
-
-            var increase = advancedIndex - Math.Max(largeIndex - 1, originalSizeIndex);
-            var adjustedChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(originalChallengeRating, increase);
-
-            return adjustedChallengeRating;
-        }
-
-        private string AdjustChallengeRating(string originalChallengeRating, int additionalHitDice, string creatureType)
-        {
-            var creatureTypeDivisor = typeAndAmountSelector.SelectOne(TableNameConstants.TypeAndAmount.Advancements, creatureType);
-            var divisor = creatureTypeDivisor.Amount;
-            var advancementAmount = additionalHitDice / divisor;
-
-            return ChallengeRatingConstants.IncreaseChallengeRating(originalChallengeRating, advancementAmount);
         }
     }
 }

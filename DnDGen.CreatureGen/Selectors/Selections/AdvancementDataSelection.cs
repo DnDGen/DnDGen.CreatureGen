@@ -1,4 +1,5 @@
-﻿using DnDGen.CreatureGen.Tables;
+﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Models;
 using DnDGen.RollGen;
 using System;
@@ -16,6 +17,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public int DexterityAdjustment { get; set; }
         public int ConstitutionAdjustment { get; set; }
         public int NaturalArmorAdjustment { get; set; }
+        public string OriginalChallengeRating { get; set; }
         public string AdjustedChallengeRating { get; set; }
         public int ChallengeRatingAdjustment { get; set; }
         public int ChallengeRatingDivisor { get; set; }
@@ -24,7 +26,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public override Func<string[], AdvancementDataSelection> MapTo => Map;
         public override Func<AdvancementDataSelection, string[]> MapFrom => Map;
 
-        public override int SectionCount => 10;
+        public override int SectionCount => 11;
 
         private int maxHitDice;
 
@@ -42,6 +44,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
                 NaturalArmorAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.NaturalArmorAdjustment]),
                 ChallengeRatingDivisor = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.ChallengeRatingDivisor]),
                 ChallengeRatingAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.ChallengeRatingDivisor]),
+                OriginalChallengeRating = splitData[DataIndexConstants.AdvancementSelectionData.OriginalChallengeRating],
             };
 
             return selection;
@@ -60,6 +63,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             data[DataIndexConstants.AdvancementSelectionData.NaturalArmorAdjustment] = selection.NaturalArmorAdjustment.ToString();
             data[DataIndexConstants.AdvancementSelectionData.ChallengeRatingDivisor] = selection.ChallengeRatingDivisor.ToString();
             data[DataIndexConstants.AdvancementSelectionData.ChallengeRatingAdjustment] = selection.ChallengeRatingAdjustment.ToString();
+            data[DataIndexConstants.AdvancementSelectionData.OriginalChallengeRating] = selection.OriginalChallengeRating.ToString();
 
             return data;
         }
@@ -87,37 +91,8 @@ namespace DnDGen.CreatureGen.Selectors.Selections
 
         private string AdjustChallengeRating()
         {
-            var sizeAdjustedChallengeRating = AdjustChallengeRating(size, advancedSize, originalChallengeRating);
-            var hitDieAdjustedChallengeRating = AdjustChallengeRating(sizeAdjustedChallengeRating, additionalHitDice, creatureType);
-
-            return hitDieAdjustedChallengeRating;
-        }
-
-        private string AdjustChallengeRating(string originalSize, string advancedSize, string originalChallengeRating)
-        {
-            var sizes = SizeConstants.GetOrdered();
-            var originalSizeIndex = Array.IndexOf(sizes, originalSize);
-            var advancedIndex = Array.IndexOf(sizes, advancedSize);
-            var largeIndex = Array.IndexOf(sizes, SizeConstants.Large);
-
-            if (advancedIndex < largeIndex || originalSize == advancedSize)
-            {
-                return originalChallengeRating;
-            }
-
-            var increase = advancedIndex - Math.Max(largeIndex - 1, originalSizeIndex);
-            var adjustedChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(originalChallengeRating, increase);
-
-            return adjustedChallengeRating;
-        }
-
-        private string AdjustChallengeRating(string originalChallengeRating, int additionalHitDice, string creatureType)
-        {
-            var creatureTypeDivisor = typeAndAmountSelector.SelectOne(TableNameConstants.TypeAndAmount.Advancements, creatureType);
-            var divisor = creatureTypeDivisor.Amount;
-            var advancementAmount = additionalHitDice / divisor;
-
-            return ChallengeRatingConstants.IncreaseChallengeRating(originalChallengeRating, advancementAmount);
+            var advancementAmount = ChallengeRatingAdjustment + AdditionalHitDice / ChallengeRatingDivisor;
+            return ChallengeRatingConstants.IncreaseChallengeRating(OriginalChallengeRating, advancementAmount);
         }
     }
 }

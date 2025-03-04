@@ -186,6 +186,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.AdvancementSelectionData.NaturalArmorAdjustment, 7)]
         [TestCase(DataIndexConstants.AdvancementSelectionData.ChallengeRatingDivisor, 8)]
         [TestCase(DataIndexConstants.AdvancementSelectionData.ChallengeRatingAdjustment, 9)]
+        [TestCase(DataIndexConstants.AdvancementSelectionData.OriginalChallengeRating, 10)]
         public void AdvancementSelectionDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));

@@ -952,6 +952,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 NaturalArmorAdjustment = GetNaturalArmorAdjustment(creatureData.Size, advancedSize),
                 ChallengeRatingDivisor = GetChallengeRatingDivisor(creature),
                 ChallengeRatingAdjustment = GetChallengeRatingAdjustment(creatureData.Size, advancedSize),
+                OriginalChallengeRating = creatureData.ChallengeRating,
             };
 
             return Infrastructure.Helpers.DataHelper.Parse(selection);
