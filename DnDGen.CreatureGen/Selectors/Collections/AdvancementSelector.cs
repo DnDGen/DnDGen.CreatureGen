@@ -85,7 +85,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             string originalChallengeRating,
             AdvancementDataSelection selection)
         {
-            selection.SetAdditionalHitDice(dice);
+            selection.SetAdditionalProperties(dice);
 
             if (IsBarghest(creatureName))
             {

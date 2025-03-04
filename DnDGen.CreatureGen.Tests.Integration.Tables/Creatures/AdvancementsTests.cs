@@ -20,6 +20,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         private ICreatureDataSelector creatureDataSelector;
         private Dictionary<string, string[]> advancements;
         private ICollectionTypeAndAmountSelector collectionTypeAndAmountSelector;
+        private ICollectionSelector collectionSelector;
+        private Dictionary<string, int> typeDivisors;
 
         protected override string tableName => TableNameConstants.TypeAndAmount.Advancements;
 
@@ -27,6 +29,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void OnetimeSetup()
         {
             advancements = GetAdvancementsTestData();
+            typeDivisors = new Dictionary<string, int>
+            {
+                [CreatureConstants.Types.Aberration] = 4,
+                [CreatureConstants.Types.Animal] = 3,
+                [CreatureConstants.Types.Construct] = 4,
+                [CreatureConstants.Types.Dragon] = 2,
+                [CreatureConstants.Types.Elemental] = 4,
+                [CreatureConstants.Types.Fey] = 4,
+                [CreatureConstants.Types.Giant] = 4,
+                [CreatureConstants.Types.Humanoid] = 4,
+                [CreatureConstants.Types.MagicalBeast] = 3,
+                [CreatureConstants.Types.MonstrousHumanoid] = 3,
+                [CreatureConstants.Types.Ooze] = 4,
+                [CreatureConstants.Types.Outsider] = 2,
+                [CreatureConstants.Types.Plant] = 4,
+                [CreatureConstants.Types.Undead] = 4,
+                [CreatureConstants.Types.Vermin] = 4,
+            };
         }
 
         [SetUp]
@@ -35,6 +55,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             dice = GetNewInstanceOf<Dice>();
             creatureDataSelector = GetNewInstanceOf<ICreatureDataSelector>();
             collectionTypeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
+            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
         }
 
         [Test]
@@ -929,10 +950,34 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 ConstitutionAdjustment = GetConstitutionAdjustment(creatureData.Size, advancedSize),
                 DexterityAdjustment = GetDexterityAdjustment(creatureData.Size, advancedSize),
                 NaturalArmorAdjustment = GetNaturalArmorAdjustment(creatureData.Size, advancedSize),
-                ChallengeRatingDivisor = GetChallengeRatingDivisor(),
+                ChallengeRatingDivisor = GetChallengeRatingDivisor(creature),
+                ChallengeRatingAdjustment = GetChallengeRatingAdjustment(creatureData.Size, advancedSize),
             };
 
             return Infrastructure.Helpers.DataHelper.Parse(selection);
+        }
+
+        private int GetChallengeRatingAdjustment(string originalSize, string advancedSize)
+        {
+            var sizes = SizeConstants.GetOrdered();
+            var originalSizeIndex = Array.IndexOf(sizes, originalSize);
+            var advancedIndex = Array.IndexOf(sizes, advancedSize);
+            var largeIndex = Array.IndexOf(sizes, SizeConstants.Large);
+
+            if (advancedIndex < largeIndex || originalSize == advancedSize)
+            {
+                return 0;
+            }
+
+            var increase = advancedIndex - Math.Max(largeIndex - 1, originalSizeIndex);
+            return increase;
+        }
+
+        private int GetChallengeRatingDivisor(string creature)
+        {
+            var types = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, creature);
+            var creatureType = types.First();
+            return typeDivisors[creatureType];
         }
 
         private int GetConstitutionAdjustment(string originalSize, string advancedSize)
@@ -1033,29 +1078,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
 
             return naturalArmorAdjustment;
-        }
-
-        [TestCase(CreatureConstants.Types.Aberration, 4)]
-        [TestCase(CreatureConstants.Types.Animal, 3)]
-        [TestCase(CreatureConstants.Types.Construct, 4)]
-        [TestCase(CreatureConstants.Types.Dragon, 2)]
-        [TestCase(CreatureConstants.Types.Elemental, 4)]
-        [TestCase(CreatureConstants.Types.Fey, 4)]
-        [TestCase(CreatureConstants.Types.Giant, 4)]
-        [TestCase(CreatureConstants.Types.Humanoid, 4)]
-        [TestCase(CreatureConstants.Types.MagicalBeast, 3)]
-        [TestCase(CreatureConstants.Types.MonstrousHumanoid, 3)]
-        [TestCase(CreatureConstants.Types.Ooze, 4)]
-        [TestCase(CreatureConstants.Types.Outsider, 2)]
-        [TestCase(CreatureConstants.Types.Plant, 4)]
-        [TestCase(CreatureConstants.Types.Undead, 4)]
-        [TestCase(CreatureConstants.Types.Vermin, 4)]
-        public void AdvancementChallengeRatingDivisor(string creatureType, int divisor)
-        {
-            var typesAndAmounts = new Dictionary<string, int>();
-            typesAndAmounts[creatureType] = divisor;
-
-            AssertTypesAndAmounts(creatureType, typesAndAmounts);
         }
     }
 }
