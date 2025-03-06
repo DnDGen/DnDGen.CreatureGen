@@ -17,18 +17,15 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public int DexterityAdjustment { get; set; }
         public int ConstitutionAdjustment { get; set; }
         public int NaturalArmorAdjustment { get; set; }
-        public string OriginalChallengeRating { get; set; }
         public string AdjustedChallengeRating { get; set; }
-        public int ChallengeRatingAdjustment { get; set; }
         public int ChallengeRatingDivisor { get; set; }
         public int CasterLevelAdjustment { get; set; }
+        public int MaxHitDice { get; private set; }
 
         public override Func<string[], AdvancementDataSelection> MapTo => Map;
         public override Func<AdvancementDataSelection, string[]> MapFrom => Map;
 
-        public override int SectionCount => 11;
-
-        private int maxHitDice;
+        public override int SectionCount => 10;
 
         public static AdvancementDataSelection Map(string[] splitData)
         {
@@ -36,15 +33,14 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             {
                 AdditionalHitDiceRoll = splitData[DataIndexConstants.AdvancementSelectionData.AdditionalHitDiceRoll],
                 Size = splitData[DataIndexConstants.AdvancementSelectionData.Size],
-                Space = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.Space]),
-                Reach = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.Reach]),
+                Space = Convert.ToDouble(splitData[DataIndexConstants.AdvancementSelectionData.Space]),
+                Reach = Convert.ToDouble(splitData[DataIndexConstants.AdvancementSelectionData.Reach]),
                 StrengthAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.StrengthAdjustment]),
                 ConstitutionAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.ConstitutionAdjustment]),
                 DexterityAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.DexterityAdjustment]),
                 NaturalArmorAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.NaturalArmorAdjustment]),
                 ChallengeRatingDivisor = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.ChallengeRatingDivisor]),
-                ChallengeRatingAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.ChallengeRatingDivisor]),
-                OriginalChallengeRating = splitData[DataIndexConstants.AdvancementSelectionData.OriginalChallengeRating],
+                AdjustedChallengeRating = splitData[DataIndexConstants.AdvancementSelectionData.AdjustedChallengeRating],
             };
 
             return selection;
@@ -62,8 +58,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             data[DataIndexConstants.AdvancementSelectionData.DexterityAdjustment] = selection.DexterityAdjustment.ToString();
             data[DataIndexConstants.AdvancementSelectionData.NaturalArmorAdjustment] = selection.NaturalArmorAdjustment.ToString();
             data[DataIndexConstants.AdvancementSelectionData.ChallengeRatingDivisor] = selection.ChallengeRatingDivisor.ToString();
-            data[DataIndexConstants.AdvancementSelectionData.ChallengeRatingAdjustment] = selection.ChallengeRatingAdjustment.ToString();
-            data[DataIndexConstants.AdvancementSelectionData.OriginalChallengeRating] = selection.OriginalChallengeRating.ToString();
+            data[DataIndexConstants.AdvancementSelectionData.AdjustedChallengeRating] = selection.AdjustedChallengeRating;
 
             return data;
         }
@@ -72,27 +67,25 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         {
             Size = string.Empty;
             AdjustedChallengeRating = string.Empty;
+            AdditionalHitDiceRoll = string.Empty;
+            ChallengeRatingDivisor = 1;
+            MaxHitDice = int.MaxValue;
         }
 
         public bool AdvancementIsValid(Dice dice, int max)
         {
-            maxHitDice = max;
-            return dice.Roll(AdditionalHitDiceRoll).AsPotentialMinimum() <= maxHitDice;
+            MaxHitDice = max;
+            return dice.Roll(AdditionalHitDiceRoll).AsPotentialMinimum() <= MaxHitDice;
         }
 
         public void SetAdditionalProperties(Dice dice)
         {
             AdditionalHitDice = dice.Roll(AdditionalHitDiceRoll).AsSum();
-            if (AdditionalHitDice > maxHitDice)
-                AdditionalHitDice = maxHitDice;
+            if (AdditionalHitDice > MaxHitDice)
+                AdditionalHitDice = MaxHitDice;
 
-            AdjustedChallengeRating = AdjustChallengeRating();
-        }
-
-        private string AdjustChallengeRating()
-        {
-            var advancementAmount = ChallengeRatingAdjustment + AdditionalHitDice / ChallengeRatingDivisor;
-            return ChallengeRatingConstants.IncreaseChallengeRating(OriginalChallengeRating, advancementAmount);
+            var advancementAmount = AdditionalHitDice / ChallengeRatingDivisor;
+            AdjustedChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(AdjustedChallengeRating, advancementAmount);
         }
     }
 }

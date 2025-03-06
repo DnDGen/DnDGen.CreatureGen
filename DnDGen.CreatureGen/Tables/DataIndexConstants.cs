@@ -128,8 +128,7 @@
             public const int DexterityAdjustment = 6;
             public const int NaturalArmorAdjustment = 7;
             public const int ChallengeRatingDivisor = 8;
-            public const int ChallengeRatingAdjustment = 9;
-            public const int OriginalChallengeRating = 10;
+            public const int AdjustedChallengeRating = 9;
         }
     }
 }
