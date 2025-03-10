@@ -21,6 +21,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         private ICollectionTypeAndAmountSelector collectionTypeAndAmountSelector;
         private ICollectionSelector collectionSelector;
         private Dictionary<string, int> typeDivisors;
+        private Dictionary<string, double> spaces;
+        private Dictionary<string, double> tallReach;
+        private Dictionary<string, double> longReach;
+        private Dictionary<string, Dictionary<string, string>> creatureHeights;
+        private Dictionary<string, Dictionary<string, string>> creatureLengths;
 
         protected override string tableName => TableNameConstants.TypeAndAmount.Advancements;
 
@@ -46,6 +51,45 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 [CreatureConstants.Types.Undead] = 4,
                 [CreatureConstants.Types.Vermin] = 4,
             };
+            spaces = new Dictionary<string, double>
+            {
+                [SizeConstants.Fine] = 0.5,
+                [SizeConstants.Diminutive] = 1,
+                [SizeConstants.Tiny] = 2.5,
+                [SizeConstants.Small] = 5,
+                [SizeConstants.Medium] = 5,
+                [SizeConstants.Large] = 10,
+                [SizeConstants.Huge] = 15,
+                [SizeConstants.Gargantuan] = 20,
+                [SizeConstants.Colossal] = 30,
+            };
+            tallReach = new Dictionary<string, double>
+            {
+                [SizeConstants.Fine] = 0,
+                [SizeConstants.Diminutive] = 0,
+                [SizeConstants.Tiny] = 0,
+                [SizeConstants.Small] = 5,
+                [SizeConstants.Medium] = 5,
+                [SizeConstants.Large] = 10,
+                [SizeConstants.Huge] = 15,
+                [SizeConstants.Gargantuan] = 20,
+                [SizeConstants.Colossal] = 30,
+            };
+            longReach = new Dictionary<string, double>
+            {
+                [SizeConstants.Fine] = 0,
+                [SizeConstants.Diminutive] = 0,
+                [SizeConstants.Tiny] = 0,
+                [SizeConstants.Small] = 5,
+                [SizeConstants.Medium] = 5,
+                [SizeConstants.Large] = 5,
+                [SizeConstants.Huge] = 10,
+                [SizeConstants.Gargantuan] = 15,
+                [SizeConstants.Colossal] = 20,
+            };
+
+            creatureHeights = HeightsTests.GetCreatureHeights();
+            creatureLengths = LengthsTests.GetCreatureLengths();
         }
 
         [SetUp]
@@ -168,171 +212,198 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             testCases[CreatureConstants.Aboleth] =
             [
-                GetData(CreatureConstants.Aboleth, SizeConstants.Huge, 15, 10, 9, 16),
-                GetData(CreatureConstants.Aboleth, SizeConstants.Gargantuan, 20, 15, 17, 24),
+                GetData(CreatureConstants.Aboleth, SizeConstants.Huge, 9, 16),
+                GetData(CreatureConstants.Aboleth, SizeConstants.Gargantuan, 17, 24),
             ];
             testCases[CreatureConstants.Achaierai] =
             [
-                GetData(CreatureConstants.Achaierai, SizeConstants.Large, 10, 10, 7, 12),
-                GetData(CreatureConstants.Achaierai, SizeConstants.Huge, 15, 15, 13, 18),
+                GetData(CreatureConstants.Achaierai, SizeConstants.Large, 7, 12),
+                GetData(CreatureConstants.Achaierai, SizeConstants.Huge, 13, 18),
             ];
             testCases[CreatureConstants.Allip] =
             [
-                GetData(CreatureConstants.Allip, SizeConstants.Medium, 5, 5, 5, 12),
+                GetData(CreatureConstants.Allip, SizeConstants.Medium, 5, 12),
             ];
             testCases[CreatureConstants.Androsphinx] =
             [
-                GetData(CreatureConstants.Androsphinx, SizeConstants.Large, 10, 5, 13, 18),
-                GetData(CreatureConstants.Androsphinx, SizeConstants.Huge, 15, 10, 19, 36),
+                GetData(CreatureConstants.Androsphinx, SizeConstants.Large, 13, 18),
+                GetData(CreatureConstants.Androsphinx, SizeConstants.Huge, 19, 36),
             ];
             testCases[CreatureConstants.Angel_AstralDeva] =
             [
-                GetData(CreatureConstants.Angel_AstralDeva, SizeConstants.Medium, 5, 5, 13, 18),
-                GetData(CreatureConstants.Angel_AstralDeva, SizeConstants.Large, 10, 10, 19, 36),
+                GetData(CreatureConstants.Angel_AstralDeva, SizeConstants.Medium, 13, 18),
+                GetData(CreatureConstants.Angel_AstralDeva, SizeConstants.Large, 19, 36),
             ];
             testCases[CreatureConstants.Angel_Planetar] =
             [
-                GetData(CreatureConstants.Angel_Planetar, SizeConstants.Large, 10, 10, 15, 21),
-                GetData(CreatureConstants.Angel_Planetar, SizeConstants.Huge, 15, 15, 22, 42),
+                GetData(CreatureConstants.Angel_Planetar, SizeConstants.Large, 15, 21),
+                GetData(CreatureConstants.Angel_Planetar, SizeConstants.Huge, 22, 42),
             ];
             testCases[CreatureConstants.Angel_Solar] =
             [
-                GetData(CreatureConstants.Angel_Solar, SizeConstants.Large, 10, 10, 23, 33),
-                GetData(CreatureConstants.Angel_Solar, SizeConstants.Huge, 15, 15, 34, 66),
+                GetData(CreatureConstants.Angel_Solar, SizeConstants.Large, 23, 33),
+                GetData(CreatureConstants.Angel_Solar, SizeConstants.Huge, 34, 66),
             ];
             testCases[CreatureConstants.Ankheg] =
             [
-                GetData(CreatureConstants.Ankheg, SizeConstants.Large, 10, 5, 4, 4),
-                GetData(CreatureConstants.Ankheg, SizeConstants.Huge, 15, 10, 5, 9),
+                GetData(CreatureConstants.Ankheg, SizeConstants.Large, 4, 4),
+                GetData(CreatureConstants.Ankheg, SizeConstants.Huge, 5, 9),
             ];
             testCases[CreatureConstants.Ant_Giant_Queen] =
             [
-                GetData(CreatureConstants.Ant_Giant_Queen, SizeConstants.Large, 10, 5, 5, 6),
-                GetData(CreatureConstants.Ant_Giant_Queen, SizeConstants.Huge, 15, 10, 7, 8),
+                GetData(CreatureConstants.Ant_Giant_Queen, SizeConstants.Large, 5, 6),
+                GetData(CreatureConstants.Ant_Giant_Queen, SizeConstants.Huge, 7, 8),
             ];
             testCases[CreatureConstants.Ant_Giant_Soldier] =
             [
-                GetData(CreatureConstants.Ant_Giant_Soldier, SizeConstants.Medium, 5, 5, 3, 4),
-                GetData(CreatureConstants.Ant_Giant_Soldier, SizeConstants.Large, 10, 5, 5, 6),
+                GetData(CreatureConstants.Ant_Giant_Soldier, SizeConstants.Medium, 3, 4),
+                GetData(CreatureConstants.Ant_Giant_Soldier, SizeConstants.Large, 5, 6),
             ];
             testCases[CreatureConstants.Ant_Giant_Worker] =
             [
-                GetData(CreatureConstants.Ant_Giant_Worker, SizeConstants.Medium, 5, 5, 3, 4),
-                GetData(CreatureConstants.Ant_Giant_Worker, SizeConstants.Large, 10, 5, 5, 6),
+                GetData(CreatureConstants.Ant_Giant_Worker, SizeConstants.Medium, 3, 4),
+                GetData(CreatureConstants.Ant_Giant_Worker, SizeConstants.Large, 5, 6),
             ];
             testCases[CreatureConstants.Ape] =
             [
-                GetData(CreatureConstants.Ape, SizeConstants.Large, 10, 10, 5, 8),
+                GetData(CreatureConstants.Ape, SizeConstants.Large, 5, 8),
             ];
             testCases[CreatureConstants.Ape_Dire] =
             [
-                GetData(CreatureConstants.Ape_Dire, SizeConstants.Large, 10, 10, 6, 15),
+                GetData(CreatureConstants.Ape_Dire, SizeConstants.Large, 6, 15),
             ];
             testCases[CreatureConstants.Arrowhawk_Adult] =
             [
-                GetData(CreatureConstants.Arrowhawk_Adult, SizeConstants.Medium, 5, 5, 8, 14),
+                GetData(CreatureConstants.Arrowhawk_Adult, SizeConstants.Medium, 8, 14),
             ];
             testCases[CreatureConstants.Arrowhawk_Elder] =
             [
-                GetData(CreatureConstants.Arrowhawk_Elder, SizeConstants.Large, 10, 5, 16, 24),
+                GetData(CreatureConstants.Arrowhawk_Elder, SizeConstants.Large, 16, 24),
             ];
             testCases[CreatureConstants.Arrowhawk_Juvenile] =
             [
-                GetData(CreatureConstants.Arrowhawk_Juvenile, SizeConstants.Small, 5, 5, 4, 6),
+                GetData(CreatureConstants.Arrowhawk_Juvenile, SizeConstants.Small, 4, 6),
             ];
             testCases[CreatureConstants.AssassinVine] =
             [
-                GetData(CreatureConstants.AssassinVine, SizeConstants.Huge, 15, 15, 5, 16),
-                GetData(CreatureConstants.AssassinVine, SizeConstants.Gargantuan, 20, 20, 17, 32),
-                GetData(CreatureConstants.AssassinVine, SizeConstants.Colossal, 30, 30, 33, 100),
+                GetData(CreatureConstants.AssassinVine, SizeConstants.Huge, 5, 16),
+                GetData(CreatureConstants.AssassinVine, SizeConstants.Gargantuan,  17, 32),
+                GetData(CreatureConstants.AssassinVine, SizeConstants.Colossal, 33, 100),
             ];
             testCases[CreatureConstants.Athach] =
             [
-                GetData(CreatureConstants.Athach, SizeConstants.Huge, 15, 15, 15, 28),
+                GetData(CreatureConstants.Athach, SizeConstants.Huge, 15, 28),
             ];
             testCases[CreatureConstants.Avoral] =
             [
-                GetData(CreatureConstants.Avoral, SizeConstants.Medium, 5, 5, 8, 14),
-                GetData(CreatureConstants.Avoral, SizeConstants.Large, 10, 5, 15, 21),
+                GetData(CreatureConstants.Avoral, SizeConstants.Medium, 8, 14),
+                GetData(CreatureConstants.Avoral, SizeConstants.Large, 15, 21),
             ];
             testCases[CreatureConstants.Babau] =
             [
-                GetData(CreatureConstants.Babau, SizeConstants.Large, 10, 5, 8, 14),
-                GetData(CreatureConstants.Babau, SizeConstants.Huge, 15, 10, 15, 21),
+                GetData(CreatureConstants.Babau, SizeConstants.Large, 8, 14),
+                GetData(CreatureConstants.Babau, SizeConstants.Huge, 15, 21),
             ];
             testCases[CreatureConstants.Baboon] =
             [
-                GetData(CreatureConstants.Baboon, SizeConstants.Medium, 5, 5, 2, 3),
+                GetData(CreatureConstants.Baboon, SizeConstants.Medium, 2, 3),
             ];
             testCases[CreatureConstants.Badger] =
             [
-                GetData(CreatureConstants.Badger, SizeConstants.Small, 5, 5, 2, 2),
+                GetData(CreatureConstants.Badger, SizeConstants.Small, 2, 2),
             ];
             testCases[CreatureConstants.Badger_Dire] =
             [
-                GetData(CreatureConstants.Badger_Dire, SizeConstants.Large, 10, 5, 4, 9),
+                GetData(CreatureConstants.Badger_Dire, SizeConstants.Large, 4, 9),
             ];
             testCases[CreatureConstants.Balor] =
             [
-                GetData(CreatureConstants.Balor, SizeConstants.Large, 10, 10, 21, 30),
-                GetData(CreatureConstants.Balor, SizeConstants.Huge, 15, 15, 31, 60),
+                GetData(CreatureConstants.Balor, SizeConstants.Large, 21, 30),
+                GetData(CreatureConstants.Balor, SizeConstants.Huge, 31, 60),
             ];
             testCases[CreatureConstants.BarbedDevil_Hamatula] =
             [
-                GetData(CreatureConstants.BarbedDevil_Hamatula, SizeConstants.Medium, 5, 5, 13, 24),
-                GetData(CreatureConstants.BarbedDevil_Hamatula, SizeConstants.Large, 10, 10, 25, 36),
+                GetData(CreatureConstants.BarbedDevil_Hamatula, SizeConstants.Medium, 13, 24),
+                GetData(CreatureConstants.BarbedDevil_Hamatula, SizeConstants.Large, 25, 36),
             ];
             testCases[CreatureConstants.Barghest] =
             [
-                GetData(CreatureConstants.Barghest, SizeConstants.Medium, 5, 5, 7, 8),
+                GetData(CreatureConstants.Barghest, SizeConstants.Medium, 7, 8),
             ];
             testCases[CreatureConstants.Barghest_Greater] =
             [
-                GetData(CreatureConstants.Barghest_Greater, SizeConstants.Large, 10, 5, 10, 18),
+                GetData(CreatureConstants.Barghest_Greater, SizeConstants.Large, 10, 18),
             ];
             testCases[CreatureConstants.Basilisk] =
             [
-                GetData(CreatureConstants.Basilisk, SizeConstants.Medium, 5, 5, 7, 10),
-                GetData(CreatureConstants.Basilisk, SizeConstants.Large, 10, 5, 11, 18),
+                GetData(CreatureConstants.Basilisk, SizeConstants.Medium, 7, 10),
+                GetData(CreatureConstants.Basilisk, SizeConstants.Large, 11, 18),
             ];
             testCases[CreatureConstants.Bat_Dire] =
             [
-                GetData(CreatureConstants.Bat_Dire, SizeConstants.Large, 10, 5, 5, 12),
+                GetData(CreatureConstants.Bat_Dire, SizeConstants.Large, 5, 12),
             ];
             testCases[CreatureConstants.Bear_Black] =
             [
-                GetData(CreatureConstants.Bear_Black, SizeConstants.Medium, 5, 5, 4, 5),
+                GetData(CreatureConstants.Bear_Black, SizeConstants.Medium, 4, 5),
             ];
             testCases[CreatureConstants.Bear_Brown] =
             [
-                GetData(CreatureConstants.Bear_Brown, SizeConstants.Large, 10, 5, 7, 10),
+                GetData(CreatureConstants.Bear_Brown, SizeConstants.Large, 7, 10),
             ];
             testCases[CreatureConstants.Bear_Polar] =
             [
-                GetData(CreatureConstants.Bear_Polar, SizeConstants.Large, 10, 5, 9, 12),
+                GetData(CreatureConstants.Bear_Polar, SizeConstants.Large, 9, 12),
             ];
             testCases[CreatureConstants.Bear_Dire] =
             [
-                GetData(CreatureConstants.Bear_Dire, SizeConstants.Large, 10, 5, 13, 16),
-                GetData(CreatureConstants.Bear_Dire, SizeConstants.Huge, 15, 10, 17, 36),
+                GetData(CreatureConstants.Bear_Dire, SizeConstants.Large, 13, 16),
+                GetData(CreatureConstants.Bear_Dire, SizeConstants.Huge, 17, 36),
+            ];
+            testCases[CreatureConstants.BeardedDevil_Barbazu] =
+            [
+                GetData(CreatureConstants.BeardedDevil_Barbazu, SizeConstants.Medium, 7, 9),
+                GetData(CreatureConstants.BeardedDevil_Barbazu, SizeConstants.Large, 10, 18),
+            ];
+            testCases[CreatureConstants.Bebilith] =
+            [
+                GetData(CreatureConstants.Bebilith, SizeConstants.Huge, 13, 18),
+                GetData(CreatureConstants.Bebilith, SizeConstants.Gargantuan, 19, 36),
+            ];
+            testCases[CreatureConstants.Bee_Giant] =
+            [
+                GetData(CreatureConstants.Bee_Giant, SizeConstants.Medium, 4, 6),
+                GetData(CreatureConstants.Bee_Giant, SizeConstants.Large, 7, 9),
+            ];
+            testCases[CreatureConstants.Behir] =
+            [
+                GetData(CreatureConstants.Behir, SizeConstants.Huge, 10, 13),
+                GetData(CreatureConstants.Behir, SizeConstants.Gargantuan, 14, 27),
+            ];
+            testCases[CreatureConstants.Beholder] =
+            [
+                GetData(CreatureConstants.Beholder, SizeConstants.Large, 12, 16),
+                GetData(CreatureConstants.Beholder, SizeConstants.Huge, 17, 33),
+            ];
+            testCases[CreatureConstants.Beholder_Gauth] =
+            [
+                GetData(CreatureConstants.Beholder_Gauth, SizeConstants.Medium, 7, 12),
+                GetData(CreatureConstants.Beholder_Gauth, SizeConstants.Large, 13, 18),
+            ];
+            testCases[CreatureConstants.Belker] =
+            [
+                GetData(CreatureConstants.Belker, SizeConstants.Large, 8, 10),
+                GetData(CreatureConstants.Belker, SizeConstants.Huge, 11, 21),
+            ];
+            testCases[CreatureConstants.Bison] =
+            [
+                GetData(CreatureConstants.Bison, SizeConstants.Large, 6, 7),
+            ];
+            testCases[CreatureConstants.BlackPudding] =
+            [
+                GetData(CreatureConstants.BlackPudding, SizeConstants.Huge, 11, 15),
             ];
 
-            testCases[CreatureConstants.BeardedDevil_Barbazu][RollHelper.GetRollWithMostEvenDistribution(6, 7, 9, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.BeardedDevil_Barbazu][RollHelper.GetRollWithMostEvenDistribution(6, 10, 18, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Bebilith][RollHelper.GetRollWithMostEvenDistribution(12, 13, 18, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Bebilith][RollHelper.GetRollWithMostEvenDistribution(12, 19, 36, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Bee_Giant][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Bee_Giant][RollHelper.GetRollWithMostEvenDistribution(3, 7, 9, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Behir][RollHelper.GetRollWithMostEvenDistribution(9, 10, 13, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Behir][RollHelper.GetRollWithMostEvenDistribution(9, 14, 27, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Beholder][RollHelper.GetRollWithMostEvenDistribution(11, 12, 16, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Beholder][RollHelper.GetRollWithMostEvenDistribution(11, 17, 33, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Beholder_Gauth][RollHelper.GetRollWithMostEvenDistribution(6, 7, 12, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Beholder_Gauth][RollHelper.GetRollWithMostEvenDistribution(6, 13, 18, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Belker][RollHelper.GetRollWithMostEvenDistribution(7, 8, 10, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Belker][RollHelper.GetRollWithMostEvenDistribution(7, 11, 21, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Bison][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.BlackPudding][RollHelper.GetRollWithMostEvenDistribution(10, 11, 15, true)] = GetData(SizeConstants.Huge, 15, 10);
             testCases[CreatureConstants.BlinkDog][RollHelper.GetRollWithMostEvenDistribution(4, 5, 7, true)] = GetData(SizeConstants.Medium, 5, 5);
             testCases[CreatureConstants.BlinkDog][RollHelper.GetRollWithMostEvenDistribution(4, 8, 12, true)] = GetData(SizeConstants.Large, 10, 5);
             testCases[CreatureConstants.Boar][RollHelper.GetRollWithMostEvenDistribution(3, 4, 5, true)] = GetData(SizeConstants.Medium, 5, 5);
@@ -1039,15 +1110,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return testCases;
         }
 
-        private string GetData(string creature, string advancedSize, double space, double reach, int lowerHitDice, int upperHitDice)
+        private string GetData(string creature, string advancedSize, int lowerHitDice, int upperHitDice)
         {
             var creatureData = creatureDataSelector.SelectFor(creature);
             var creatureHitDice = collectionTypeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, creature);
 
             var selection = new AdvancementDataSelection
             {
-                Reach = reach,
-                Space = space,
+                Reach = GetReach(creature, advancedSize),
+                Space = GetSpace(advancedSize),
                 Size = advancedSize,
                 AdditionalHitDiceRoll = RollHelper.GetRollWithMostEvenDistribution(creatureHitDice.Amount, lowerHitDice, upperHitDice, true),
                 StrengthAdjustment = GetStrengthAdjustment(creatureData.Size, advancedSize),
@@ -1060,6 +1131,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             return Infrastructure.Helpers.DataHelper.Parse(selection);
         }
+
+        private double GetReach(string creature, string advancedSize)
+        {
+            var length = dice.Roll(creatureLengths[creature][creature]).AsPotentialAverage();
+            var height = dice.Roll(creatureHeights[creature][creature]).AsPotentialAverage();
+
+            if (height >= length)
+                return tallReach[advancedSize];
+
+            return longReach[advancedSize];
+        }
+
+        private double GetSpace(string advancedSize) => spaces[advancedSize];
 
         private string GetAdjustedChallengeRating(string cr, string originalSize, string advancedSize)
         {
