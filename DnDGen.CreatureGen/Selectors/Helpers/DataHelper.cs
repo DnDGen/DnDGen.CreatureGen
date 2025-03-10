@@ -1,5 +1,8 @@
-﻿namespace DnDGen.CreatureGen.Selectors.Helpers
+﻿using System;
+
+namespace DnDGen.CreatureGen.Selectors.Helpers
 {
+    [Obsolete("Use the Infrastructure DataHelper instead")]
     public abstract class DataHelper
     {
         protected readonly char divider;

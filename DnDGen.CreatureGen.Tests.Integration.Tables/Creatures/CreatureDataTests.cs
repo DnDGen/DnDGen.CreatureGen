@@ -1,8 +1,10 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Integration.Tables.Helpers;
+using DnDGen.Infrastructure.Helpers;
 using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,6 +14,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     public class CreatureDataTests : DataTests
     {
         private ICollectionSelector collectionSelector;
+        private SpaceReachHelper spaceReachHelper;
 
         protected override string tableName => TableNameConstants.Collection.CreatureData;
 
@@ -32,6 +35,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void Setup()
         {
             collectionSelector = GetNewInstanceOf<ICollectionSelector>();
+            spaceReachHelper = GetNewInstanceOf<SpaceReachHelper>();
         }
 
         [Test]
@@ -692,8 +696,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void CreatureData(
             string creature,
             string size,
-            double space,
-            double reach,
             string challengeRating,
             int? levelAdjustment,
             bool canUseEquipment,
@@ -701,18 +703,30 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             int naturalArmor,
             int numberOfHands)
         {
-            var collection = DataIndexConstants.CreatureData.InitializeData();
-            collection[DataIndexConstants.CreatureData.ChallengeRating] = challengeRating;
-            collection[DataIndexConstants.CreatureData.LevelAdjustment] = Convert.ToString(levelAdjustment);
-            collection[DataIndexConstants.CreatureData.Reach] = reach.ToString();
-            collection[DataIndexConstants.CreatureData.Size] = size;
-            collection[DataIndexConstants.CreatureData.Space] = space.ToString();
-            collection[DataIndexConstants.CreatureData.CanUseEquipment] = canUseEquipment.ToString();
-            collection[DataIndexConstants.CreatureData.CasterLevel] = casterLevel.ToString();
-            collection[DataIndexConstants.CreatureData.NaturalArmor] = naturalArmor.ToString();
-            collection[DataIndexConstants.CreatureData.NumberOfHands] = numberOfHands.ToString();
+            var data = DataHelper.Parse(new CreatureDataSelection
+            {
+                ChallengeRating = challengeRating,
+                LevelAdjustment = levelAdjustment,
+                Reach = spaceReachHelper.GetReach(creature, size),
+                Size = size,
+                Space = spaceReachHelper.GetSpace(size),
+                CanUseEquipment = canUseEquipment,
+                NaturalArmor = naturalArmor,
+                NumberOfHands = numberOfHands,
+            });
 
-            AssertSegmentedData(creature, collection);
+            //var collection = DataIndexConstants.CreatureData.InitializeData();
+            //collection[DataIndexConstants.CreatureData.ChallengeRating] = challengeRating;
+            //collection[DataIndexConstants.CreatureData.LevelAdjustment] = Convert.ToString(levelAdjustment);
+            //collection[DataIndexConstants.CreatureData.Reach] = reach.ToString();
+            //collection[DataIndexConstants.CreatureData.Size] = size;
+            //collection[DataIndexConstants.CreatureData.Space] = space.ToString();
+            //collection[DataIndexConstants.CreatureData.CanUseEquipment] = canUseEquipment.ToString();
+            //collection[DataIndexConstants.CreatureData.CasterLevel] = casterLevel.ToString();
+            //collection[DataIndexConstants.CreatureData.NaturalArmor] = naturalArmor.ToString();
+            //collection[DataIndexConstants.CreatureData.NumberOfHands] = numberOfHands.ToString();
+
+            AssertCollection(creature, data);
 
             //Number of Entries
             var emptyData = DataIndexConstants.CreatureData.InitializeData();

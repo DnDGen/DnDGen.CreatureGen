@@ -1,6 +1,8 @@
-﻿namespace DnDGen.CreatureGen.Selectors.Selections
+﻿using DnDGen.Infrastructure.Models;
+
+namespace DnDGen.CreatureGen.Selectors.Selections
 {
-    internal class CreatureDataSelection
+    internal class CreatureDataSelection : DataSelection<CreatureDataSelection>
     {
         public string Size { get; set; }
         public string ChallengeRating { get; set; }
