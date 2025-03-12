@@ -8,7 +8,7 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
     public class DamageHelper : DataHelper
     {
         public DamageHelper()
-            : base(AttackSelection.DamageDivider)
+            : base(AttackDataSelection.DamageDivider)
         { }
 
         public string[] BuildData(string roll, string type, string condition = "")
@@ -55,7 +55,7 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
                 entries.Add(entry);
             }
 
-            return string.Join(AttackSelection.DamageSplitDivider.ToString(), entries);
+            return string.Join(AttackDataSelection.DamageSplitDivider.ToString(), entries);
         }
 
         public string[][] ParseEntries(string entry)
@@ -65,7 +65,7 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
                 return new string[0][];
             }
 
-            var entries = entry.Split(AttackSelection.DamageSplitDivider);
+            var entries = entry.Split(AttackDataSelection.DamageSplitDivider);
             var data = new string[entries.Length][];
 
             for (var i = 0; i < entries.Length; i++)
@@ -83,7 +83,7 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
                 return true;
             }
 
-            var entries = entry.Split(AttackSelection.DamageSplitDivider);
+            var entries = entry.Split(AttackDataSelection.DamageSplitDivider);
             var valid = true;
 
             foreach (var subEntry in entries)

@@ -5,6 +5,6 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 {
     internal interface IAttackSelector
     {
-        IEnumerable<AttackSelection> Select(string creatureName, string originalSize, string advancedSize);
+        IEnumerable<AttackDataSelection> Select(string creatureName, string originalSize, string advancedSize);
     }
 }

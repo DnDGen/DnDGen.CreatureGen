@@ -140,7 +140,7 @@ namespace DnDGen.CreatureGen.Generators.Attacks
             return Convert.ToInt32(Math.Floor(abilities[AbilityConstants.Strength].Modifier * multiplier));
         }
 
-        private Ability GetAbilityForAttack(Dictionary<string, Ability> abilities, AttackSelection attackSelection)
+        private Ability GetAbilityForAttack(Dictionary<string, Ability> abilities, AttackDataSelection attackSelection)
         {
             if (!attackSelection.IsMelee || !abilities[AbilityConstants.Strength].HasScore)
                 return abilities[AbilityConstants.Dexterity];

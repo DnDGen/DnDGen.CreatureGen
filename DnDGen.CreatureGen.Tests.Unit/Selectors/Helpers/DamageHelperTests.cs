@@ -268,7 +268,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
                 entries.Add(entry);
             }
 
-            return string.Join(AttackSelection.DamageSplitDivider.ToString(), entries);
+            return string.Join(AttackDataSelection.DamageSplitDivider.ToString(), entries);
         }
     }
 }

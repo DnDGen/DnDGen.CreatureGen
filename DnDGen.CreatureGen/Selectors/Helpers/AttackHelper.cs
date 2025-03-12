@@ -1,12 +1,14 @@
 ﻿using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using System;
 
 namespace DnDGen.CreatureGen.Selectors.Helpers
 {
+    [Obsolete("Use Infrastructure DataHelper instead")]
     public class AttackHelper : DataHelper
     {
         public AttackHelper()
-            : base(AttackSelection.Divider)
+            : base(AttackDataSelection.Divider)
         { }
 
         public string[] BuildData(
@@ -45,22 +47,6 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
             data[DataIndexConstants.AttackData.RequiredGenderIndex] = requiredGender ?? string.Empty;
 
             return data;
-        }
-
-        public override string BuildKey(string creature, string[] data)
-        {
-            return BuildKeyFromSections(creature,
-                data[DataIndexConstants.AttackData.NameIndex],
-                data[DataIndexConstants.AttackData.IsPrimaryIndex],
-                data[DataIndexConstants.AttackData.DamageDataIndex],
-                data[DataIndexConstants.AttackData.DamageEffectIndex]);
-        }
-
-        public override bool ValidateEntry(string entry)
-        {
-            var data = ParseEntry(entry);
-            var init = DataIndexConstants.AttackData.InitializeData();
-            return data.Length == init.Length;
         }
     }
 }

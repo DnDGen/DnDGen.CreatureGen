@@ -96,7 +96,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
             var damageData2 = damageHelper.BuildData("my other roll", "my other damage type");
             var damageEntry2 = damageHelper.BuildEntry(damageData2);
 
-            var damageDataEntry = string.Join(AttackSelection.DamageSplitDivider, damageEntry1, damageEntry2);
+            var damageDataEntry = string.Join(AttackDataSelection.DamageSplitDivider, damageEntry1, damageEntry2);
 
             var data = helper.BuildData(
                 "attack name",

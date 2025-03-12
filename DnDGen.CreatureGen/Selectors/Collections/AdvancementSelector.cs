@@ -12,7 +12,6 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 {
     internal class AdvancementSelector : IAdvancementSelector
     {
-        private readonly ITypeAndAmountSelector typeAndAmountSelector;
         private readonly IPercentileSelector percentileSelector;
         private readonly ICollectionSelector collectionSelector;
         private readonly ICollectionTypeAndAmountSelector collectionTypeAndAmountSelector;
@@ -20,14 +19,12 @@ namespace DnDGen.CreatureGen.Selectors.Collections
         private readonly Dice dice;
 
         public AdvancementSelector(
-            ITypeAndAmountSelector typeAndAmountSelector,
             IPercentileSelector percentileSelector,
             ICollectionSelector collectionSelector,
             ICollectionDataSelector<AdvancementDataSelection> advancementDataSelector,
             ICollectionTypeAndAmountSelector collectionTypeAndAmountSelector,
             Dice dice)
         {
-            this.typeAndAmountSelector = typeAndAmountSelector;
             this.percentileSelector = percentileSelector;
             this.collectionSelector = collectionSelector;
             this.advancementDataSelector = advancementDataSelector;
@@ -67,7 +64,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             return validAdvancements;
         }
 
-        public AdvancementDataSelection SelectRandomFor(string creature, IEnumerable<string> templates, CreatureType creatureType, string originalSize, string originalChallengeRating)
+        public AdvancementDataSelection SelectRandomFor(string creature, IEnumerable<string> templates)
         {
             templates ??= [];
 

@@ -180,8 +180,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [TestCase(true, true, true, true)]
         public void GenerateAttack_WithoutSave(bool isNatural, bool isMelee, bool isPrimary, bool isSpecial)
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection()
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection()
             {
                 Name = "attack",
                 Damages = new List<Damage>
@@ -231,8 +231,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void GenerateAttack_IgnoreAttacksThatDoNotMeetRequirements()
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection()
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection()
             {
                 Name = "good attack",
                 Damages = new List<Damage>
@@ -245,7 +245,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
                 FrequencyQuantity = 42,
                 FrequencyTimePeriod = "time period",
             });
-            attacks.Add(new AttackSelection()
+            attacks.Add(new AttackDataSelection()
             {
                 Name = "gendered attack",
                 Damages = new List<Damage>
@@ -287,8 +287,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void GenerateAttack_AddAttacksThatMeetRequirements()
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection()
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection()
             {
                 Name = "good attack",
                 Damages = new List<Damage>
@@ -301,7 +301,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
                 FrequencyQuantity = 42,
                 FrequencyTimePeriod = "time period",
             });
-            attacks.Add(new AttackSelection()
+            attacks.Add(new AttackDataSelection()
             {
                 Name = "gendered attack",
                 Damages = new List<Damage>
@@ -405,8 +405,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [TestCase(true, true, true, AbilityConstants.Wisdom)]
         public void GenerateAttack_WithSave(bool isMelee, bool isPrimary, bool isSpecial, string saveAbility)
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection()
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection()
             {
                 Name = "attack",
                 Damages = new List<Damage>
@@ -462,8 +462,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void GenerateAttack_WithSave_UnnaturalAndWithoutAbility()
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection()
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection()
             {
                 Name = "attack",
                 Damages = new List<Damage>
@@ -518,8 +518,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void BUG_GenerateAttack_WithSave_NaturalAndWithoutAbility()
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection()
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection()
             {
                 Name = "attack",
                 Damages = new List<Damage>
@@ -773,8 +773,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [TestCase(50, 96, 131)]
         public void GenerateAttack_WithSave(int hitDice, int bonus, int saveBase)
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection()
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection()
             {
                 Name = "attack",
                 Damages = new List<Damage>
@@ -823,9 +823,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void GenerateAttacks()
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection() { Name = "attack", Damages = new List<Damage> { new Damage { Roll = "my roll", Type = "my type" } } });
-            attacks.Add(new AttackSelection() { Name = "other attack", Damages = new List<Damage> { new Damage { Roll = "my other roll", Type = "my other type" } } });
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection() { Name = "attack", Damages = new List<Damage> { new Damage { Roll = "my roll", Type = "my type" } } });
+            attacks.Add(new AttackDataSelection() { Name = "other attack", Damages = new List<Damage> { new Damage { Roll = "my other roll", Type = "my other type" } } });
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
@@ -846,7 +846,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void GenerateNoAttacks()
         {
-            var attacks = new List<AttackSelection>();
+            var attacks = new List<AttackDataSelection>();
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
@@ -857,8 +857,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void GenerateAttackBaseAttackBonus()
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection { Name = "attack 1" });
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection { Name = "attack 1" });
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
@@ -871,8 +871,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void GenerateMeleeAttackBaseAbility()
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection { Name = "attack 1", IsMelee = true });
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection { Name = "attack 1", IsMelee = true });
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
@@ -885,8 +885,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void GenerateRangedAttackBaseAbility()
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection { Name = "attack 1", IsMelee = false });
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection { Name = "attack 1", IsMelee = false });
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
@@ -899,8 +899,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void GenerateMeleeAttackBaseAbilityWithNoStrength()
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection { Name = "attack 1", IsMelee = true });
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection { Name = "attack 1", IsMelee = true });
 
             abilities[AbilityConstants.Strength].BaseScore = 0;
 
@@ -915,8 +915,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void GenerateAttackSizeModifier()
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection { Name = "attack 1" });
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection { Name = "attack 1" });
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
             mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(90210);
@@ -930,8 +930,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void GenerateSpecialAttack()
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection { Name = "attack 1", IsMelee = true, IsSpecial = true });
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection { Name = "attack 1", IsMelee = true, IsSpecial = true });
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
             mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(90210);
@@ -1096,8 +1096,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [TestCase(50, 1.5, 30)]
         public void GenerateAttack_WithDamageMultiplier(int strengthValue, double multiplier, int bonus)
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection()
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection()
             {
                 Name = "attack",
                 Damages = new List<Damage>
@@ -1131,8 +1131,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void GenerateAttack_Primary_Ranged_Breath()
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection()
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection()
             {
                 Name = "attack",
                 Damages = new List<Damage> { new Damage { Roll = "my roll", Type = "my type" } },
@@ -1161,8 +1161,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void GenerateAttack_Primary_Ranged_Thrown()
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection()
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection()
             {
                 Name = "attack",
                 Damages = new List<Damage> { new Damage { Roll = "my roll", Type = "my type" } },
@@ -1191,8 +1191,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void GenerateAttack_Primary_AllSole()
         {
-            var attackSelections = new List<AttackSelection>();
-            attackSelections.Add(new AttackSelection()
+            var attackSelections = new List<AttackDataSelection>();
+            attackSelections.Add(new AttackDataSelection()
             {
                 Name = "nat melee attack",
                 Damages = new List<Damage> { new Damage { Roll = "my nat melee roll", Type = "my nat melee type" } },
@@ -1203,7 +1203,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
                 IsMelee = true,
                 IsNatural = true
             });
-            attackSelections.Add(new AttackSelection()
+            attackSelections.Add(new AttackDataSelection()
             {
                 Name = "nat range attack",
                 Damages = new List<Damage> { new Damage { Roll = "my nat range roll", Type = "my nat range type" } },
@@ -1214,7 +1214,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
                 IsMelee = false,
                 IsNatural = true
             });
-            attackSelections.Add(new AttackSelection()
+            attackSelections.Add(new AttackDataSelection()
             {
                 Name = "melee attack",
                 Damages = new List<Damage> { new Damage { Roll = "my melee roll", Type = "my melee type" } },
@@ -1225,7 +1225,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
                 IsMelee = true,
                 IsNatural = false
             });
-            attackSelections.Add(new AttackSelection()
+            attackSelections.Add(new AttackDataSelection()
             {
                 Name = "range attack",
                 Damages = new List<Damage> { new Damage { Roll = "my range roll", Type = "my range type" } },
@@ -1275,8 +1275,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [TestCase(false)]
         public void GenerateAttack_Primary_Multiple(bool isNatural)
         {
-            var attackSelections = new List<AttackSelection>();
-            attackSelections.Add(new AttackSelection()
+            var attackSelections = new List<AttackDataSelection>();
+            attackSelections.Add(new AttackDataSelection()
             {
                 Name = "attack",
                 Damages = new List<Damage> { new Damage { Roll = "my roll", Type = "my type" } },
@@ -1306,8 +1306,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [TestCase(false)]
         public void GenerateAttack_Primary_WithSecondary(bool isNatural)
         {
-            var attackSelections = new List<AttackSelection>();
-            attackSelections.Add(new AttackSelection()
+            var attackSelections = new List<AttackDataSelection>();
+            attackSelections.Add(new AttackDataSelection()
             {
                 Name = "primary attack",
                 Damages = new List<Damage> { new Damage { Roll = "my primary roll", Type = "my primary type" } },
@@ -1318,7 +1318,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
                 IsMelee = true,
                 IsNatural = isNatural
             });
-            attackSelections.Add(new AttackSelection()
+            attackSelections.Add(new AttackDataSelection()
             {
                 Name = "secondary attack",
                 Damages = new List<Damage> { new Damage { Roll = "my secondary roll", Type = "my secondary type" } },
@@ -1351,8 +1351,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void GenerateAttack_Primary_SoleAndMultiple()
         {
-            var attackSelections = new List<AttackSelection>();
-            attackSelections.Add(new AttackSelection()
+            var attackSelections = new List<AttackDataSelection>();
+            attackSelections.Add(new AttackDataSelection()
             {
                 Name = "attack",
                 Damages = new List<Damage> { new Damage { Roll = "my roll", Type = "my type" } },
@@ -1362,7 +1362,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
                 IsMelee = true,
                 IsNatural = false
             });
-            attackSelections.Add(new AttackSelection()
+            attackSelections.Add(new AttackDataSelection()
             {
                 Name = "nat attack",
                 Damages = new List<Damage> { new Damage { Roll = "my nat roll", Type = "my nat type" } },
@@ -1395,8 +1395,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void GenerateAttack_Secondary()
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection()
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection()
             {
                 Name = "attack",
                 Damages = new List<Damage> { new Damage { Roll = "my roll", Type = "my type" } },
@@ -1429,8 +1429,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [TestCase(AbilityConstants.Charisma)]
         public void GenerateAttackWithAbilityEffect(string ability)
         {
-            var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection()
+            var attacks = new List<AttackDataSelection>();
+            attacks.Add(new AttackDataSelection()
             {
                 Name = "attack",
                 Damages = new List<Damage>

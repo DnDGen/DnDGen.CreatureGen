@@ -29,10 +29,10 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             };
         }
 
-        public IEnumerable<AttackSelection> Select(string creatureName, string originalSize, string advancedSize)
+        public IEnumerable<AttackDataSelection> Select(string creatureName, string originalSize, string advancedSize)
         {
             var attackData = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, creatureName);
-            var selections = new List<AttackSelection>();
+            var selections = new List<AttackDataSelection>();
 
             foreach (var data in attackData)
             {
@@ -43,9 +43,9 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             return selections;
         }
 
-        private AttackSelection Parse(string input, string originalSize, string advancedSize)
+        private AttackDataSelection Parse(string input, string originalSize, string advancedSize)
         {
-            var selection = AttackSelection.From(input);
+            var selection = AttackDataSelection.From(input);
 
             if (selection.IsNatural && originalSize != advancedSize)
             {
