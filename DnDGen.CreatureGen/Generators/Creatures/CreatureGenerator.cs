@@ -15,7 +15,7 @@ using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Verifiers;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
-using DnDGen.Infrastructure.Generators;
+using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Selectors.Collections;
 using System;
 using System.Collections.Generic;
@@ -85,7 +85,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         }
 
         public Creature Generate(bool asCharacter, string creatureName, AbilityRandomizer abilityRandomizer = null, params string[] templates)
-            => Generate(asCharacter, creatureName, abilityRandomizer, new Filters { Templates = new List<string>(templates) });
+            => Generate(asCharacter, creatureName, abilityRandomizer, new Filters { Templates = [.. templates] });
 
         public (string Creature, string[] Templates) GenerateRandomName(bool asCharacter, Filters filters = null)
         {
@@ -117,7 +117,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private IEnumerable<string> GetCreaturesOfTemplates(IEnumerable<string> creatureGroup, bool asCharacter, Filters filters)
         {
             if (filters?.CleanTemplates.Any() != true)
-                return Enumerable.Empty<string>();
+                return [];
 
             var template = filters.CleanTemplates[0] ?? string.Empty;
             var applicator = justInTimeFactory.Build<TemplateApplicator>(template);

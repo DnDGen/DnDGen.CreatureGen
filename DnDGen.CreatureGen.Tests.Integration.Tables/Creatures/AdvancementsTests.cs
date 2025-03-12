@@ -633,431 +633,526 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             testCases[CreatureConstants.Dragon_Bronze_Wyrm] = [GetData(CreatureConstants.Dragon_Bronze_Wyrm, SizeConstants.Gargantuan, 37, 38)];
             testCases[CreatureConstants.Dragon_Bronze_GreatWyrm] = [GetData(CreatureConstants.Dragon_Bronze_GreatWyrm, SizeConstants.Gargantuan, 40, 100)];
 
+            testCases[CreatureConstants.Dragon_Copper_Wyrmling] = [GetData(CreatureConstants.Dragon_Copper_Wyrmling, SizeConstants.Small, 6, 7)];
+            testCases[CreatureConstants.Dragon_Copper_VeryYoung] = [GetData(CreatureConstants.Dragon_Copper_VeryYoung, SizeConstants.Medium, 9, 10)];
+            testCases[CreatureConstants.Dragon_Copper_Young] = [GetData(CreatureConstants.Dragon_Copper_Young, SizeConstants.Medium, 12, 13)];
+            testCases[CreatureConstants.Dragon_Copper_Juvenile] = [GetData(CreatureConstants.Dragon_Copper_Juvenile, SizeConstants.Large, 15, 16)];
+            testCases[CreatureConstants.Dragon_Copper_YoungAdult] = [GetData(CreatureConstants.Dragon_Copper_YoungAdult, SizeConstants.Large, 18, 19)];
+            testCases[CreatureConstants.Dragon_Copper_Adult] = [GetData(CreatureConstants.Dragon_Copper_Adult, SizeConstants.Huge, 21, 22)];
+            testCases[CreatureConstants.Dragon_Copper_MatureAdult] = [GetData(CreatureConstants.Dragon_Copper_MatureAdult, SizeConstants.Huge, 24, 25)];
+            testCases[CreatureConstants.Dragon_Copper_Old] = [GetData(CreatureConstants.Dragon_Copper_Old, SizeConstants.Huge, 27, 28)];
+            testCases[CreatureConstants.Dragon_Copper_VeryOld] = [GetData(CreatureConstants.Dragon_Copper_VeryOld, SizeConstants.Huge, 30, 31)];
+            testCases[CreatureConstants.Dragon_Copper_Ancient] = [GetData(CreatureConstants.Dragon_Copper_Ancient, SizeConstants.Gargantuan, 33, 34)];
+            testCases[CreatureConstants.Dragon_Copper_Wyrm] = [GetData(CreatureConstants.Dragon_Copper_Wyrm, SizeConstants.Gargantuan, 36, 37)];
+            testCases[CreatureConstants.Dragon_Copper_GreatWyrm] = [GetData(CreatureConstants.Dragon_Copper_GreatWyrm, SizeConstants.Gargantuan, 39, 100)];
 
-            testCases[CreatureConstants.Dragon_Copper_Wyrmling][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Dragon_Copper_VeryYoung][RollHelper.GetRollWithMostEvenDistribution(8, 9, 10, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Dragon_Copper_Young][RollHelper.GetRollWithMostEvenDistribution(11, 12, 13, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Dragon_Copper_Juvenile][RollHelper.GetRollWithMostEvenDistribution(14, 15, 16, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Dragon_Copper_YoungAdult][RollHelper.GetRollWithMostEvenDistribution(17, 18, 19, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Dragon_Copper_Adult][RollHelper.GetRollWithMostEvenDistribution(20, 21, 22, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Dragon_Copper_MatureAdult][RollHelper.GetRollWithMostEvenDistribution(23, 24, 25, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Dragon_Copper_Old][RollHelper.GetRollWithMostEvenDistribution(26, 27, 28, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Dragon_Copper_VeryOld][RollHelper.GetRollWithMostEvenDistribution(29, 30, 31, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Dragon_Copper_Ancient][RollHelper.GetRollWithMostEvenDistribution(32, 33, 34, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Dragon_Copper_Wyrm][RollHelper.GetRollWithMostEvenDistribution(35, 36, 37, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Dragon_Copper_GreatWyrm][RollHelper.GetRollWithMostEvenDistribution(38, 39, 100, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Dragon_Gold_Wyrmling][RollHelper.GetRollWithMostEvenDistribution(8, 9, 10, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Dragon_Gold_VeryYoung][RollHelper.GetRollWithMostEvenDistribution(11, 12, 13, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Dragon_Gold_Young][RollHelper.GetRollWithMostEvenDistribution(14, 15, 16, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Dragon_Gold_Juvenile][RollHelper.GetRollWithMostEvenDistribution(17, 18, 19, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Dragon_Gold_YoungAdult][RollHelper.GetRollWithMostEvenDistribution(20, 21, 22, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Dragon_Gold_Adult][RollHelper.GetRollWithMostEvenDistribution(23, 24, 25, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Dragon_Gold_MatureAdult][RollHelper.GetRollWithMostEvenDistribution(26, 27, 28, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Dragon_Gold_Old][RollHelper.GetRollWithMostEvenDistribution(29, 30, 31, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Dragon_Gold_VeryOld][RollHelper.GetRollWithMostEvenDistribution(32, 33, 34, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Dragon_Gold_Ancient][RollHelper.GetRollWithMostEvenDistribution(35, 36, 37, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Dragon_Gold_Wyrm][RollHelper.GetRollWithMostEvenDistribution(38, 39, 40, true)] = GetData(SizeConstants.Colossal, 30, 20);
-            testCases[CreatureConstants.Dragon_Gold_GreatWyrm][RollHelper.GetRollWithMostEvenDistribution(41, 42, 100, true)] = GetData(SizeConstants.Colossal, 30, 20);
-            testCases[CreatureConstants.Dragon_Silver_Wyrmling][RollHelper.GetRollWithMostEvenDistribution(7, 8, 9, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Dragon_Silver_VeryYoung][RollHelper.GetRollWithMostEvenDistribution(10, 11, 12, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Dragon_Silver_Young][RollHelper.GetRollWithMostEvenDistribution(13, 14, 15, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Dragon_Silver_Juvenile][RollHelper.GetRollWithMostEvenDistribution(16, 17, 18, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Dragon_Silver_YoungAdult][RollHelper.GetRollWithMostEvenDistribution(19, 20, 21, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Dragon_Silver_Adult][RollHelper.GetRollWithMostEvenDistribution(22, 23, 24, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Dragon_Silver_MatureAdult][RollHelper.GetRollWithMostEvenDistribution(25, 26, 27, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Dragon_Silver_Old][RollHelper.GetRollWithMostEvenDistribution(28, 29, 30, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Dragon_Silver_VeryOld][RollHelper.GetRollWithMostEvenDistribution(31, 32, 33, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Dragon_Silver_Ancient][RollHelper.GetRollWithMostEvenDistribution(34, 35, 36, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Dragon_Silver_Wyrm][RollHelper.GetRollWithMostEvenDistribution(37, 38, 39, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Dragon_Silver_GreatWyrm][RollHelper.GetRollWithMostEvenDistribution(40, 41, 100, true)] = GetData(SizeConstants.Colossal, 30, 20);
-            testCases[CreatureConstants.DragonTurtle][RollHelper.GetRollWithMostEvenDistribution(12, 13, 24, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.DragonTurtle][RollHelper.GetRollWithMostEvenDistribution(12, 25, 36, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Dragonne][RollHelper.GetRollWithMostEvenDistribution(9, 10, 12, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Dragonne][RollHelper.GetRollWithMostEvenDistribution(9, 13, 27, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Dretch][RollHelper.GetRollWithMostEvenDistribution(2, 3, 6, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Eagle][RollHelper.GetRollWithMostEvenDistribution(1, 2, 3, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Eagle_Giant][RollHelper.GetRollWithMostEvenDistribution(4, 5, 8, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Eagle_Giant][RollHelper.GetRollWithMostEvenDistribution(4, 9, 12, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Efreeti][RollHelper.GetRollWithMostEvenDistribution(10, 11, 15, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Efreeti][RollHelper.GetRollWithMostEvenDistribution(10, 16, 30, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Elasmosaurus][RollHelper.GetRollWithMostEvenDistribution(10, 11, 20, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Elasmosaurus][RollHelper.GetRollWithMostEvenDistribution(10, 21, 30, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Elemental_Air_Elder][RollHelper.GetRollWithMostEvenDistribution(24, 25, 48, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Elemental_Air_Greater][RollHelper.GetRollWithMostEvenDistribution(21, 22, 23, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Elemental_Air_Huge][RollHelper.GetRollWithMostEvenDistribution(16, 17, 20, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Elemental_Air_Large][RollHelper.GetRollWithMostEvenDistribution(8, 9, 15, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Elemental_Air_Medium][RollHelper.GetRollWithMostEvenDistribution(4, 5, 7, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Elemental_Air_Small][RollHelper.GetRollWithMostEvenDistribution(2, 3, 3, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Elemental_Earth_Elder][RollHelper.GetRollWithMostEvenDistribution(24, 25, 48, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Elemental_Earth_Greater][RollHelper.GetRollWithMostEvenDistribution(21, 22, 23, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Elemental_Earth_Huge][RollHelper.GetRollWithMostEvenDistribution(16, 17, 20, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Elemental_Earth_Large][RollHelper.GetRollWithMostEvenDistribution(8, 9, 15, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Elemental_Earth_Medium][RollHelper.GetRollWithMostEvenDistribution(4, 5, 7, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Elemental_Earth_Small][RollHelper.GetRollWithMostEvenDistribution(2, 3, 3, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Elemental_Fire_Elder][RollHelper.GetRollWithMostEvenDistribution(24, 25, 48, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Elemental_Fire_Greater][RollHelper.GetRollWithMostEvenDistribution(21, 22, 23, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Elemental_Fire_Huge][RollHelper.GetRollWithMostEvenDistribution(16, 17, 20, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Elemental_Fire_Large][RollHelper.GetRollWithMostEvenDistribution(8, 9, 15, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Elemental_Fire_Medium][RollHelper.GetRollWithMostEvenDistribution(4, 5, 7, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Elemental_Fire_Small][RollHelper.GetRollWithMostEvenDistribution(2, 3, 3, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Elemental_Water_Elder][RollHelper.GetRollWithMostEvenDistribution(24, 25, 48, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Elemental_Water_Greater][RollHelper.GetRollWithMostEvenDistribution(21, 22, 23, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Elemental_Water_Huge][RollHelper.GetRollWithMostEvenDistribution(16, 17, 20, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Elemental_Water_Large][RollHelper.GetRollWithMostEvenDistribution(8, 9, 15, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Elemental_Water_Medium][RollHelper.GetRollWithMostEvenDistribution(4, 5, 7, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Elemental_Water_Small][RollHelper.GetRollWithMostEvenDistribution(2, 3, 3, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Elephant][RollHelper.GetRollWithMostEvenDistribution(11, 12, 22, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Erinyes][RollHelper.GetRollWithMostEvenDistribution(9, 10, 18, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.EtherealFilcher][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.EtherealFilcher][RollHelper.GetRollWithMostEvenDistribution(5, 8, 15, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.EtherealMarauder][RollHelper.GetRollWithMostEvenDistribution(2, 3, 4, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.EtherealMarauder][RollHelper.GetRollWithMostEvenDistribution(2, 5, 6, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Ettercap][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Ettercap][RollHelper.GetRollWithMostEvenDistribution(5, 8, 15, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.FireBeetle_Giant][RollHelper.GetRollWithMostEvenDistribution(1, 2, 3, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.FormianMyrmarch][RollHelper.GetRollWithMostEvenDistribution(12, 13, 18, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.FormianMyrmarch][RollHelper.GetRollWithMostEvenDistribution(12, 19, 24, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.FormianQueen][RollHelper.GetRollWithMostEvenDistribution(20, 21, 30, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.FormianQueen][RollHelper.GetRollWithMostEvenDistribution(20, 31, 40, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.FormianTaskmaster][RollHelper.GetRollWithMostEvenDistribution(6, 7, 9, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.FormianTaskmaster][RollHelper.GetRollWithMostEvenDistribution(6, 10, 12, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.FormianWarrior][RollHelper.GetRollWithMostEvenDistribution(4, 5, 8, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.FormianWarrior][RollHelper.GetRollWithMostEvenDistribution(4, 9, 12, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.FormianWorker][RollHelper.GetRollWithMostEvenDistribution(1, 2, 3, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.FrostWorm][RollHelper.GetRollWithMostEvenDistribution(14, 15, 21, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.FrostWorm][RollHelper.GetRollWithMostEvenDistribution(14, 22, 42, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Gargoyle][RollHelper.GetRollWithMostEvenDistribution(4, 5, 6, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Gargoyle][RollHelper.GetRollWithMostEvenDistribution(4, 7, 12, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Gargoyle_Kapoacinth][RollHelper.GetRollWithMostEvenDistribution(4, 5, 6, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Gargoyle_Kapoacinth][RollHelper.GetRollWithMostEvenDistribution(4, 7, 12, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.GelatinousCube][RollHelper.GetRollWithMostEvenDistribution(4, 5, 12, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.GelatinousCube][RollHelper.GetRollWithMostEvenDistribution(4, 13, 24, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Ghaele][RollHelper.GetRollWithMostEvenDistribution(10, 11, 15, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Ghaele][RollHelper.GetRollWithMostEvenDistribution(10, 16, 30, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Ghoul][RollHelper.GetRollWithMostEvenDistribution(2, 3, 3, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Ghoul_Ghast][RollHelper.GetRollWithMostEvenDistribution(4, 5, 8, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Ghoul_Lacedon][RollHelper.GetRollWithMostEvenDistribution(2, 3, 3, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.GibberingMouther][RollHelper.GetRollWithMostEvenDistribution(4, 5, 12, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Girallon][RollHelper.GetRollWithMostEvenDistribution(7, 8, 10, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Girallon][RollHelper.GetRollWithMostEvenDistribution(7, 11, 21, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Glabrezu][RollHelper.GetRollWithMostEvenDistribution(12, 13, 18, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Glabrezu][RollHelper.GetRollWithMostEvenDistribution(12, 19, 36, true)] = GetData(SizeConstants.Gargantuan, 20, 20);
-            testCases[CreatureConstants.Golem_Clay][RollHelper.GetRollWithMostEvenDistribution(11, 12, 18, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Golem_Clay][RollHelper.GetRollWithMostEvenDistribution(11, 19, 33, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Golem_Flesh][RollHelper.GetRollWithMostEvenDistribution(9, 10, 18, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Golem_Flesh][RollHelper.GetRollWithMostEvenDistribution(9, 19, 27, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Golem_Iron][RollHelper.GetRollWithMostEvenDistribution(18, 19, 24, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Golem_Iron][RollHelper.GetRollWithMostEvenDistribution(18, 25, 54, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Golem_Stone][RollHelper.GetRollWithMostEvenDistribution(14, 15, 21, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Golem_Stone][RollHelper.GetRollWithMostEvenDistribution(14, 22, 42, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Gorgon][RollHelper.GetRollWithMostEvenDistribution(8, 9, 15, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Gorgon][RollHelper.GetRollWithMostEvenDistribution(8, 16, 24, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.GrayOoze][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.GrayOoze][RollHelper.GetRollWithMostEvenDistribution(3, 7, 9, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.GrayRender][RollHelper.GetRollWithMostEvenDistribution(10, 11, 15, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.GrayRender][RollHelper.GetRollWithMostEvenDistribution(10, 16, 30, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Grick][RollHelper.GetRollWithMostEvenDistribution(2, 3, 4, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Grick][RollHelper.GetRollWithMostEvenDistribution(2, 5, 6, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Griffon][RollHelper.GetRollWithMostEvenDistribution(7, 8, 10, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Griffon][RollHelper.GetRollWithMostEvenDistribution(7, 11, 21, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Grig][RollHelper.GetRollWithMostEvenDistribution(0, 1, 3, true)] = GetData(SizeConstants.Tiny, 2.5, 0);
-            testCases[CreatureConstants.Grig_WithFiddle][RollHelper.GetRollWithMostEvenDistribution(0, 1, 3, true)] = GetData(SizeConstants.Tiny, 2.5, 0);
-            testCases[CreatureConstants.Gynosphinx][RollHelper.GetRollWithMostEvenDistribution(8, 9, 12, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Gynosphinx][RollHelper.GetRollWithMostEvenDistribution(8, 13, 24, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.HellHound][RollHelper.GetRollWithMostEvenDistribution(4, 5, 8, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.HellHound][RollHelper.GetRollWithMostEvenDistribution(4, 9, 12, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.HellHound_NessianWarhound][RollHelper.GetRollWithMostEvenDistribution(12, 13, 17, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.HellHound_NessianWarhound][RollHelper.GetRollWithMostEvenDistribution(12, 18, 24, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Hellcat_Bezekira][RollHelper.GetRollWithMostEvenDistribution(8, 9, 10, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Hellcat_Bezekira][RollHelper.GetRollWithMostEvenDistribution(8, 11, 24, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Hezrou][RollHelper.GetRollWithMostEvenDistribution(10, 11, 15, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Hezrou][RollHelper.GetRollWithMostEvenDistribution(10, 16, 30, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Hieracosphinx][RollHelper.GetRollWithMostEvenDistribution(9, 10, 14, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Hieracosphinx][RollHelper.GetRollWithMostEvenDistribution(9, 15, 27, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Hippogriff][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Hippogriff][RollHelper.GetRollWithMostEvenDistribution(3, 7, 9, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Homunculus][RollHelper.GetRollWithMostEvenDistribution(2, 3, 6, true)] = GetData(SizeConstants.Tiny, 2.5, 0);
-            testCases[CreatureConstants.HornedDevil_Cornugon][RollHelper.GetRollWithMostEvenDistribution(15, 16, 20, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.HornedDevil_Cornugon][RollHelper.GetRollWithMostEvenDistribution(15, 21, 45, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.HoundArchon][RollHelper.GetRollWithMostEvenDistribution(6, 7, 9, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.HoundArchon][RollHelper.GetRollWithMostEvenDistribution(6, 10, 18, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Howler][RollHelper.GetRollWithMostEvenDistribution(6, 7, 9, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Howler][RollHelper.GetRollWithMostEvenDistribution(6, 10, 18, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Hyena][RollHelper.GetRollWithMostEvenDistribution(2, 3, 3, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Hyena][RollHelper.GetRollWithMostEvenDistribution(2, 4, 5, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.IceDevil_Gelugon][RollHelper.GetRollWithMostEvenDistribution(14, 15, 28, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.IceDevil_Gelugon][RollHelper.GetRollWithMostEvenDistribution(14, 29, 42, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Imp][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Tiny, 2.5, 0);
-            testCases[CreatureConstants.InvisibleStalker][RollHelper.GetRollWithMostEvenDistribution(8, 9, 12, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.InvisibleStalker][RollHelper.GetRollWithMostEvenDistribution(8, 13, 24, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Janni][RollHelper.GetRollWithMostEvenDistribution(6, 7, 9, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Janni][RollHelper.GetRollWithMostEvenDistribution(6, 10, 18, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Kolyarut][RollHelper.GetRollWithMostEvenDistribution(13, 14, 22, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Kolyarut][RollHelper.GetRollWithMostEvenDistribution(13, 23, 39, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Kraken][RollHelper.GetRollWithMostEvenDistribution(20, 21, 32, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Kraken][RollHelper.GetRollWithMostEvenDistribution(20, 33, 60, true)] = GetData(SizeConstants.Colossal, 30, 20);
-            testCases[CreatureConstants.Krenshar][RollHelper.GetRollWithMostEvenDistribution(2, 3, 4, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Krenshar][RollHelper.GetRollWithMostEvenDistribution(2, 5, 8, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Lamia][RollHelper.GetRollWithMostEvenDistribution(9, 10, 13, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Lamia][RollHelper.GetRollWithMostEvenDistribution(9, 14, 27, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Lammasu][RollHelper.GetRollWithMostEvenDistribution(7, 8, 10, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Lammasu][RollHelper.GetRollWithMostEvenDistribution(7, 11, 21, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.LanternArchon][RollHelper.GetRollWithMostEvenDistribution(1, 2, 4, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Lemure][RollHelper.GetRollWithMostEvenDistribution(2, 3, 6, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Leonal][RollHelper.GetRollWithMostEvenDistribution(12, 13, 18, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Leonal][RollHelper.GetRollWithMostEvenDistribution(12, 19, 36, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Leopard][RollHelper.GetRollWithMostEvenDistribution(3, 4, 5, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Lillend][RollHelper.GetRollWithMostEvenDistribution(7, 8, 10, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Lillend][RollHelper.GetRollWithMostEvenDistribution(7, 11, 21, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Lion][RollHelper.GetRollWithMostEvenDistribution(5, 6, 8, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Lion_Dire][RollHelper.GetRollWithMostEvenDistribution(8, 9, 16, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Lion_Dire][RollHelper.GetRollWithMostEvenDistribution(8, 17, 24, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Lizard_Monitor][RollHelper.GetRollWithMostEvenDistribution(3, 4, 5, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Magmin][RollHelper.GetRollWithMostEvenDistribution(2, 3, 4, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Magmin][RollHelper.GetRollWithMostEvenDistribution(2, 5, 6, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.MantaRay][RollHelper.GetRollWithMostEvenDistribution(4, 5, 6, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Manticore][RollHelper.GetRollWithMostEvenDistribution(6, 7, 16, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Manticore][RollHelper.GetRollWithMostEvenDistribution(6, 17, 18, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Marilith][RollHelper.GetRollWithMostEvenDistribution(16, 17, 20, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Marilith][RollHelper.GetRollWithMostEvenDistribution(16, 21, 48, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Marut][RollHelper.GetRollWithMostEvenDistribution(15, 16, 28, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Marut][RollHelper.GetRollWithMostEvenDistribution(15, 29, 45, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Megaraptor][RollHelper.GetRollWithMostEvenDistribution(8, 9, 16, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Megaraptor][RollHelper.GetRollWithMostEvenDistribution(8, 17, 24, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Mephit_Air][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Mephit_Air][RollHelper.GetRollWithMostEvenDistribution(3, 7, 9, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Mephit_Dust][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Mephit_Dust][RollHelper.GetRollWithMostEvenDistribution(3, 7, 9, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Mephit_Earth][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Mephit_Earth][RollHelper.GetRollWithMostEvenDistribution(3, 7, 9, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Mephit_Fire][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Mephit_Fire][RollHelper.GetRollWithMostEvenDistribution(3, 7, 9, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Mephit_Ice][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Mephit_Ice][RollHelper.GetRollWithMostEvenDistribution(3, 7, 9, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Mephit_Magma][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Mephit_Magma][RollHelper.GetRollWithMostEvenDistribution(3, 7, 9, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Mephit_Ooze][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Mephit_Ooze][RollHelper.GetRollWithMostEvenDistribution(3, 7, 9, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Mephit_Salt][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Mephit_Salt][RollHelper.GetRollWithMostEvenDistribution(3, 7, 9, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Mephit_Steam][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Mephit_Steam][RollHelper.GetRollWithMostEvenDistribution(3, 7, 9, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Mephit_Water][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Mephit_Water][RollHelper.GetRollWithMostEvenDistribution(3, 7, 9, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Mimic][RollHelper.GetRollWithMostEvenDistribution(7, 8, 10, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Mimic][RollHelper.GetRollWithMostEvenDistribution(7, 11, 21, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Mohrg][RollHelper.GetRollWithMostEvenDistribution(14, 15, 21, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Mohrg][RollHelper.GetRollWithMostEvenDistribution(14, 22, 28, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Monkey][RollHelper.GetRollWithMostEvenDistribution(1, 2, 3, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Mummy][RollHelper.GetRollWithMostEvenDistribution(8, 9, 16, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Mummy][RollHelper.GetRollWithMostEvenDistribution(8, 17, 24, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Naga_Dark][RollHelper.GetRollWithMostEvenDistribution(9, 10, 13, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Naga_Dark][RollHelper.GetRollWithMostEvenDistribution(9, 14, 27, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Naga_Guardian][RollHelper.GetRollWithMostEvenDistribution(11, 12, 16, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Naga_Guardian][RollHelper.GetRollWithMostEvenDistribution(11, 17, 33, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Naga_Spirit][RollHelper.GetRollWithMostEvenDistribution(9, 10, 13, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Naga_Spirit][RollHelper.GetRollWithMostEvenDistribution(9, 14, 27, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Naga_Water][RollHelper.GetRollWithMostEvenDistribution(7, 8, 10, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Naga_Water][RollHelper.GetRollWithMostEvenDistribution(7, 11, 21, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Nalfeshnee][RollHelper.GetRollWithMostEvenDistribution(14, 15, 20, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Nalfeshnee][RollHelper.GetRollWithMostEvenDistribution(14, 21, 42, true)] = GetData(SizeConstants.Gargantuan, 20, 20);
-            testCases[CreatureConstants.NightHag][RollHelper.GetRollWithMostEvenDistribution(8, 9, 16, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Nightcrawler][RollHelper.GetRollWithMostEvenDistribution(25, 26, 50, true)] = GetData(SizeConstants.Colossal, 30, 20);
-            testCases[CreatureConstants.Nightmare][RollHelper.GetRollWithMostEvenDistribution(6, 7, 10, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Nightmare][RollHelper.GetRollWithMostEvenDistribution(6, 11, 18, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Nightwalker][RollHelper.GetRollWithMostEvenDistribution(21, 22, 31, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Nightwalker][RollHelper.GetRollWithMostEvenDistribution(21, 32, 42, true)] = GetData(SizeConstants.Gargantuan, 20, 20);
-            testCases[CreatureConstants.Nightwing][RollHelper.GetRollWithMostEvenDistribution(17, 18, 25, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Nightwing][RollHelper.GetRollWithMostEvenDistribution(17, 26, 34, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Nixie][RollHelper.GetRollWithMostEvenDistribution(1, 2, 3, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Nymph][RollHelper.GetRollWithMostEvenDistribution(6, 7, 12, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.OchreJelly][RollHelper.GetRollWithMostEvenDistribution(6, 7, 9, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.OchreJelly][RollHelper.GetRollWithMostEvenDistribution(6, 10, 18, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Octopus][RollHelper.GetRollWithMostEvenDistribution(2, 3, 6, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Octopus_Giant][RollHelper.GetRollWithMostEvenDistribution(8, 9, 12, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Octopus_Giant][RollHelper.GetRollWithMostEvenDistribution(8, 13, 24, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Otyugh][RollHelper.GetRollWithMostEvenDistribution(6, 7, 8, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Otyugh][RollHelper.GetRollWithMostEvenDistribution(6, 9, 18, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Owl][RollHelper.GetRollWithMostEvenDistribution(1, 2, 2, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Owl_Giant][RollHelper.GetRollWithMostEvenDistribution(4, 5, 8, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Owl_Giant][RollHelper.GetRollWithMostEvenDistribution(4, 9, 12, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Owlbear][RollHelper.GetRollWithMostEvenDistribution(5, 6, 8, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Owlbear][RollHelper.GetRollWithMostEvenDistribution(5, 9, 15, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Pegasus][RollHelper.GetRollWithMostEvenDistribution(4, 5, 8, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.PhantomFungus][RollHelper.GetRollWithMostEvenDistribution(2, 3, 4, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.PhantomFungus][RollHelper.GetRollWithMostEvenDistribution(2, 5, 6, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.PhaseSpider][RollHelper.GetRollWithMostEvenDistribution(5, 6, 8, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.PhaseSpider][RollHelper.GetRollWithMostEvenDistribution(5, 9, 15, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Phasm][RollHelper.GetRollWithMostEvenDistribution(15, 16, 21, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Phasm][RollHelper.GetRollWithMostEvenDistribution(15, 22, 45, true)] = GetData(SizeConstants.Gargantuan, 20, 20);
-            testCases[CreatureConstants.PitFiend][RollHelper.GetRollWithMostEvenDistribution(18, 19, 36, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.PitFiend][RollHelper.GetRollWithMostEvenDistribution(18, 37, 54, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Pixie][RollHelper.GetRollWithMostEvenDistribution(1, 2, 3, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Pixie_WithIrresistibleDance][RollHelper.GetRollWithMostEvenDistribution(1, 2, 3, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Porpoise][RollHelper.GetRollWithMostEvenDistribution(2, 3, 4, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Porpoise][RollHelper.GetRollWithMostEvenDistribution(2, 3, 4, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.PrayingMantis_Giant][RollHelper.GetRollWithMostEvenDistribution(4, 5, 8, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.PrayingMantis_Giant][RollHelper.GetRollWithMostEvenDistribution(4, 9, 12, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Pseudodragon][RollHelper.GetRollWithMostEvenDistribution(2, 3, 4, true)] = GetData(SizeConstants.Tiny, 2.5, 0);
-            testCases[CreatureConstants.PurpleWorm][RollHelper.GetRollWithMostEvenDistribution(16, 17, 32, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.PurpleWorm][RollHelper.GetRollWithMostEvenDistribution(16, 33, 48, true)] = GetData(SizeConstants.Colossal, 30, 20);
-            testCases[CreatureConstants.Quasit][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Tiny, 2.5, 0);
-            testCases[CreatureConstants.Rast][RollHelper.GetRollWithMostEvenDistribution(4, 5, 6, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Rast][RollHelper.GetRollWithMostEvenDistribution(4, 7, 12, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Rat_Dire][RollHelper.GetRollWithMostEvenDistribution(1, 2, 3, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Rat_Dire][RollHelper.GetRollWithMostEvenDistribution(1, 4, 6, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Ravid][RollHelper.GetRollWithMostEvenDistribution(3, 4, 4, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Ravid][RollHelper.GetRollWithMostEvenDistribution(3, 5, 9, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.RazorBoar][RollHelper.GetRollWithMostEvenDistribution(15, 16, 30, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.RazorBoar][RollHelper.GetRollWithMostEvenDistribution(15, 31, 45, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Remorhaz][RollHelper.GetRollWithMostEvenDistribution(7, 8, 14, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Remorhaz][RollHelper.GetRollWithMostEvenDistribution(7, 15, 21, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Retriever][RollHelper.GetRollWithMostEvenDistribution(10, 11, 15, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Retriever][RollHelper.GetRollWithMostEvenDistribution(10, 16, 30, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Rhinoceras][RollHelper.GetRollWithMostEvenDistribution(8, 9, 12, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Rhinoceras][RollHelper.GetRollWithMostEvenDistribution(8, 13, 24, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Roc][RollHelper.GetRollWithMostEvenDistribution(18, 19, 32, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Roc][RollHelper.GetRollWithMostEvenDistribution(18, 33, 54, true)] = GetData(SizeConstants.Colossal, 30, 20);
-            testCases[CreatureConstants.Roper][RollHelper.GetRollWithMostEvenDistribution(10, 11, 15, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Roper][RollHelper.GetRollWithMostEvenDistribution(10, 16, 30, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.RustMonster][RollHelper.GetRollWithMostEvenDistribution(5, 6, 8, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.RustMonster][RollHelper.GetRollWithMostEvenDistribution(5, 9, 15, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Sahuagin][RollHelper.GetRollWithMostEvenDistribution(2, 3, 5, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Sahuagin][RollHelper.GetRollWithMostEvenDistribution(2, 6, 10, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Sahuagin_Malenti][RollHelper.GetRollWithMostEvenDistribution(2, 3, 5, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Sahuagin_Malenti][RollHelper.GetRollWithMostEvenDistribution(2, 6, 10, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Sahuagin_Mutant][RollHelper.GetRollWithMostEvenDistribution(2, 3, 5, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Sahuagin_Mutant][RollHelper.GetRollWithMostEvenDistribution(2, 6, 10, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Salamander_Average][RollHelper.GetRollWithMostEvenDistribution(9, 10, 14, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Salamander_Flamebrother][RollHelper.GetRollWithMostEvenDistribution(4, 5, 6, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Salamander_Noble][RollHelper.GetRollWithMostEvenDistribution(15, 16, 21, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Salamander_Noble][RollHelper.GetRollWithMostEvenDistribution(15, 22, 45, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Satyr][RollHelper.GetRollWithMostEvenDistribution(5, 6, 10, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Satyr_WithPipes][RollHelper.GetRollWithMostEvenDistribution(5, 6, 10, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Scorpion_Monstrous_Colossal][RollHelper.GetRollWithMostEvenDistribution(40, 41, 60, true)] = GetData(SizeConstants.Colossal, 40, 30);
-            testCases[CreatureConstants.Scorpion_Monstrous_Gargantuan][RollHelper.GetRollWithMostEvenDistribution(20, 21, 39, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Scorpion_Monstrous_Huge][RollHelper.GetRollWithMostEvenDistribution(10, 11, 19, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Scorpion_Monstrous_Large][RollHelper.GetRollWithMostEvenDistribution(5, 6, 9, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Scorpion_Monstrous_Medium][RollHelper.GetRollWithMostEvenDistribution(2, 3, 4, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.SeaCat][RollHelper.GetRollWithMostEvenDistribution(6, 7, 9, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.SeaCat][RollHelper.GetRollWithMostEvenDistribution(6, 10, 18, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Shadow][RollHelper.GetRollWithMostEvenDistribution(3, 4, 9, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.ShadowMastiff][RollHelper.GetRollWithMostEvenDistribution(4, 5, 6, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.ShadowMastiff][RollHelper.GetRollWithMostEvenDistribution(4, 7, 12, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.ShamblingMound][RollHelper.GetRollWithMostEvenDistribution(8, 9, 12, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.ShamblingMound][RollHelper.GetRollWithMostEvenDistribution(8, 13, 24, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Shark_Dire][RollHelper.GetRollWithMostEvenDistribution(18, 19, 32, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Shark_Dire][RollHelper.GetRollWithMostEvenDistribution(18, 33, 54, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Shark_Huge][RollHelper.GetRollWithMostEvenDistribution(10, 11, 17, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Shark_Large][RollHelper.GetRollWithMostEvenDistribution(7, 8, 9, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Shark_Medium][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.ShieldGuardian][RollHelper.GetRollWithMostEvenDistribution(15, 16, 24, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.ShieldGuardian][RollHelper.GetRollWithMostEvenDistribution(15, 25, 45, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.ShockerLizard][RollHelper.GetRollWithMostEvenDistribution(2, 3, 4, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.ShockerLizard][RollHelper.GetRollWithMostEvenDistribution(2, 5, 6, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Shrieker][RollHelper.GetRollWithMostEvenDistribution(2, 3, 3, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Skum][RollHelper.GetRollWithMostEvenDistribution(2, 3, 4, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Skum][RollHelper.GetRollWithMostEvenDistribution(2, 5, 6, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Slaad_Blue][RollHelper.GetRollWithMostEvenDistribution(8, 9, 12, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Slaad_Blue][RollHelper.GetRollWithMostEvenDistribution(8, 13, 24, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Slaad_Death][RollHelper.GetRollWithMostEvenDistribution(15, 16, 22, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Slaad_Death][RollHelper.GetRollWithMostEvenDistribution(15, 23, 45, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Slaad_Gray][RollHelper.GetRollWithMostEvenDistribution(10, 11, 15, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Slaad_Gray][RollHelper.GetRollWithMostEvenDistribution(10, 16, 30, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Slaad_Green][RollHelper.GetRollWithMostEvenDistribution(9, 10, 15, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Slaad_Green][RollHelper.GetRollWithMostEvenDistribution(9, 16, 27, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Slaad_Red][RollHelper.GetRollWithMostEvenDistribution(7, 8, 10, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Slaad_Red][RollHelper.GetRollWithMostEvenDistribution(7, 11, 21, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Snake_Constrictor][RollHelper.GetRollWithMostEvenDistribution(3, 4, 5, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Snake_Constrictor][RollHelper.GetRollWithMostEvenDistribution(3, 6, 10, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Snake_Constrictor_Giant][RollHelper.GetRollWithMostEvenDistribution(11, 12, 16, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Snake_Constrictor_Giant][RollHelper.GetRollWithMostEvenDistribution(11, 17, 33, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Snake_Viper_Huge][RollHelper.GetRollWithMostEvenDistribution(6, 7, 18, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Spectre][RollHelper.GetRollWithMostEvenDistribution(7, 8, 14, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Spider_Monstrous_Hunter_Colossal][RollHelper.GetRollWithMostEvenDistribution(32, 33, 60, true)] = GetData(SizeConstants.Colossal, 40, 30);
-            testCases[CreatureConstants.Spider_Monstrous_Hunter_Gargantuan][RollHelper.GetRollWithMostEvenDistribution(16, 17, 31, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Spider_Monstrous_Hunter_Huge][RollHelper.GetRollWithMostEvenDistribution(8, 9, 15, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Spider_Monstrous_Hunter_Large][RollHelper.GetRollWithMostEvenDistribution(4, 5, 7, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Spider_Monstrous_Hunter_Medium][RollHelper.GetRollWithMostEvenDistribution(2, 3, 3, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal][RollHelper.GetRollWithMostEvenDistribution(32, 33, 60, true)] = GetData(SizeConstants.Colossal, 40, 30);
-            testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan][RollHelper.GetRollWithMostEvenDistribution(16, 17, 31, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Huge][RollHelper.GetRollWithMostEvenDistribution(8, 9, 15, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Large][RollHelper.GetRollWithMostEvenDistribution(4, 5, 7, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Medium][RollHelper.GetRollWithMostEvenDistribution(2, 3, 3, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.SpiderEater][RollHelper.GetRollWithMostEvenDistribution(4, 5, 12, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Squid][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Squid][RollHelper.GetRollWithMostEvenDistribution(3, 7, 11, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Squid_Giant][RollHelper.GetRollWithMostEvenDistribution(12, 13, 18, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Squid_Giant][RollHelper.GetRollWithMostEvenDistribution(12, 19, 36, true)] = GetData(SizeConstants.Gargantuan, 20, 20);
-            testCases[CreatureConstants.StagBeetle_Giant][RollHelper.GetRollWithMostEvenDistribution(7, 8, 10, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.StagBeetle_Giant][RollHelper.GetRollWithMostEvenDistribution(7, 11, 21, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Succubus][RollHelper.GetRollWithMostEvenDistribution(6, 7, 12, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Tarrasque][RollHelper.GetRollWithMostEvenDistribution(48, 49, 100, true)] = GetData(SizeConstants.Colossal, 30, 20);
-            testCases[CreatureConstants.Tendriculos][RollHelper.GetRollWithMostEvenDistribution(9, 10, 16, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Tendriculos][RollHelper.GetRollWithMostEvenDistribution(9, 17, 27, true)] = GetData(SizeConstants.Gargantuan, 20, 20);
-            testCases[CreatureConstants.Thoqqua][RollHelper.GetRollWithMostEvenDistribution(3, 4, 9, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Tiger][RollHelper.GetRollWithMostEvenDistribution(6, 7, 12, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Tiger][RollHelper.GetRollWithMostEvenDistribution(6, 13, 18, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Tiger_Dire][RollHelper.GetRollWithMostEvenDistribution(16, 17, 32, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Tiger_Dire][RollHelper.GetRollWithMostEvenDistribution(16, 33, 48, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Titan][RollHelper.GetRollWithMostEvenDistribution(20, 21, 30, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Titan][RollHelper.GetRollWithMostEvenDistribution(20, 31, 60, true)] = GetData(SizeConstants.Gargantuan, 20, 20);
-            testCases[CreatureConstants.Tojanida_Adult][RollHelper.GetRollWithMostEvenDistribution(7, 8, 14, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Tojanida_Elder][RollHelper.GetRollWithMostEvenDistribution(15, 16, 24, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Tojanida_Juvenile][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.Treant][RollHelper.GetRollWithMostEvenDistribution(7, 8, 16, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Treant][RollHelper.GetRollWithMostEvenDistribution(7, 17, 21, true)] = GetData(SizeConstants.Gargantuan, 20, 20);
-            testCases[CreatureConstants.Triceratops][RollHelper.GetRollWithMostEvenDistribution(16, 17, 32, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Triceratops][RollHelper.GetRollWithMostEvenDistribution(16, 33, 48, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Triton][RollHelper.GetRollWithMostEvenDistribution(3, 4, 9, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.TrumpetArchon][RollHelper.GetRollWithMostEvenDistribution(12, 13, 18, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.TrumpetArchon][RollHelper.GetRollWithMostEvenDistribution(12, 19, 36, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Tyrannosaurus][RollHelper.GetRollWithMostEvenDistribution(18, 19, 36, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Tyrannosaurus][RollHelper.GetRollWithMostEvenDistribution(18, 37, 54, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Unicorn][RollHelper.GetRollWithMostEvenDistribution(4, 5, 8, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.UmberHulk][RollHelper.GetRollWithMostEvenDistribution(8, 9, 12, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.UmberHulk][RollHelper.GetRollWithMostEvenDistribution(8, 13, 24, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Vargouille][RollHelper.GetRollWithMostEvenDistribution(1, 2, 3, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.VioletFungus][RollHelper.GetRollWithMostEvenDistribution(2, 3, 6, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Vrock][RollHelper.GetRollWithMostEvenDistribution(10, 11, 14, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Vrock][RollHelper.GetRollWithMostEvenDistribution(10, 15, 30, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Wasp_Giant][RollHelper.GetRollWithMostEvenDistribution(5, 6, 8, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Wasp_Giant][RollHelper.GetRollWithMostEvenDistribution(5, 9, 15, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Weasel_Dire][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Weasel_Dire][RollHelper.GetRollWithMostEvenDistribution(3, 7, 9, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Whale_Baleen][RollHelper.GetRollWithMostEvenDistribution(12, 13, 18, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Whale_Baleen][RollHelper.GetRollWithMostEvenDistribution(12, 19, 36, true)] = GetData(SizeConstants.Colossal, 30, 20);
-            testCases[CreatureConstants.Whale_Cachalot][RollHelper.GetRollWithMostEvenDistribution(12, 13, 18, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Whale_Cachalot][RollHelper.GetRollWithMostEvenDistribution(12, 19, 36, true)] = GetData(SizeConstants.Colossal, 30, 20);
-            testCases[CreatureConstants.Whale_Orca][RollHelper.GetRollWithMostEvenDistribution(9, 10, 13, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Whale_Orca][RollHelper.GetRollWithMostEvenDistribution(9, 14, 27, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Wight][RollHelper.GetRollWithMostEvenDistribution(4, 5, 8, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.WillOWisp][RollHelper.GetRollWithMostEvenDistribution(9, 10, 18, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.WinterWolf][RollHelper.GetRollWithMostEvenDistribution(6, 7, 9, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.WinterWolf][RollHelper.GetRollWithMostEvenDistribution(6, 10, 18, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Wolf][RollHelper.GetRollWithMostEvenDistribution(2, 3, 3, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Wolf][RollHelper.GetRollWithMostEvenDistribution(2, 4, 6, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Wolf_Dire][RollHelper.GetRollWithMostEvenDistribution(6, 7, 18, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Wolverine][RollHelper.GetRollWithMostEvenDistribution(3, 4, 5, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Wolverine_Dire][RollHelper.GetRollWithMostEvenDistribution(5, 6, 15, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Worg][RollHelper.GetRollWithMostEvenDistribution(4, 5, 6, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Worg][RollHelper.GetRollWithMostEvenDistribution(4, 7, 12, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Wraith][RollHelper.GetRollWithMostEvenDistribution(5, 6, 10, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Wraith_Dread][RollHelper.GetRollWithMostEvenDistribution(16, 17, 32, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Wyvern][RollHelper.GetRollWithMostEvenDistribution(7, 8, 10, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Wyvern][RollHelper.GetRollWithMostEvenDistribution(7, 11, 21, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Xill][RollHelper.GetRollWithMostEvenDistribution(5, 6, 8, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Xill][RollHelper.GetRollWithMostEvenDistribution(5, 9, 15, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Xorn_Average][RollHelper.GetRollWithMostEvenDistribution(7, 8, 14, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.Xorn_Elder][RollHelper.GetRollWithMostEvenDistribution(15, 16, 21, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Xorn_Elder][RollHelper.GetRollWithMostEvenDistribution(15, 22, 45, true)] = GetData(SizeConstants.Huge, 15, 15);
-            testCases[CreatureConstants.Xorn_Minor][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Small, 5, 5);
-            testCases[CreatureConstants.YethHound][RollHelper.GetRollWithMostEvenDistribution(3, 4, 6, true)] = GetData(SizeConstants.Medium, 5, 5);
-            testCases[CreatureConstants.YethHound][RollHelper.GetRollWithMostEvenDistribution(3, 7, 9, true)] = GetData(SizeConstants.Large, 10, 5);
-            testCases[CreatureConstants.Yrthak][RollHelper.GetRollWithMostEvenDistribution(12, 13, 16, true)] = GetData(SizeConstants.Huge, 15, 10);
-            testCases[CreatureConstants.Yrthak][RollHelper.GetRollWithMostEvenDistribution(12, 17, 36, true)] = GetData(SizeConstants.Gargantuan, 20, 15);
-            testCases[CreatureConstants.Zelekhut][RollHelper.GetRollWithMostEvenDistribution(8, 9, 16, true)] = GetData(SizeConstants.Large, 10, 10);
-            testCases[CreatureConstants.Zelekhut][RollHelper.GetRollWithMostEvenDistribution(8, 17, 24, true)] = GetData(SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Dragon_Gold_Wyrmling] = [GetData(CreatureConstants.Dragon_Gold_Wyrmling, SizeConstants.Medium, 9, 10)];
+            testCases[CreatureConstants.Dragon_Gold_VeryYoung] = [GetData(CreatureConstants.Dragon_Gold_VeryYoung, SizeConstants.Large, 12, 13)];
+            testCases[CreatureConstants.Dragon_Gold_Young] = [GetData(CreatureConstants.Dragon_Gold_Young, SizeConstants.Large, 15, 16)];
+            testCases[CreatureConstants.Dragon_Gold_Juvenile] = [GetData(CreatureConstants.Dragon_Gold_Juvenile, SizeConstants.Large, 18, 19)];
+            testCases[CreatureConstants.Dragon_Gold_YoungAdult] = [GetData(CreatureConstants.Dragon_Gold_YoungAdult, SizeConstants.Huge, 21, 22)];
+            testCases[CreatureConstants.Dragon_Gold_Adult] = [GetData(CreatureConstants.Dragon_Gold_Adult, SizeConstants.Huge, 24, 25)];
+            testCases[CreatureConstants.Dragon_Gold_MatureAdult] = [GetData(CreatureConstants.Dragon_Gold_MatureAdult, SizeConstants.Huge, 27, 28)];
+            testCases[CreatureConstants.Dragon_Gold_Old] = [GetData(CreatureConstants.Dragon_Gold_Old, SizeConstants.Gargantuan, 30, 31)];
+            testCases[CreatureConstants.Dragon_Gold_VeryOld] = [GetData(CreatureConstants.Dragon_Gold_VeryOld, SizeConstants.Gargantuan, 33, 34)];
+            testCases[CreatureConstants.Dragon_Gold_Ancient] = [GetData(CreatureConstants.Dragon_Gold_Ancient, SizeConstants.Gargantuan, 36, 37)];
+            testCases[CreatureConstants.Dragon_Gold_Wyrm] = [GetData(CreatureConstants.Dragon_Gold_Wyrm, SizeConstants.Gargantuan, 39, 40)];
+            testCases[CreatureConstants.Dragon_Gold_GreatWyrm] = [GetData(CreatureConstants.Dragon_Gold_GreatWyrm, SizeConstants.Colossal, 42, 100)];
+
+            testCases[CreatureConstants.Dragon_Silver_Wyrmling] = [GetData(CreatureConstants.Dragon_Silver_Wyrmling, SizeConstants.Medium, 8, 9)];
+            testCases[CreatureConstants.Dragon_Silver_VeryYoung] = [GetData(CreatureConstants.Dragon_Silver_VeryYoung, SizeConstants.Large, 11, 12)];
+            testCases[CreatureConstants.Dragon_Silver_Young] = [GetData(CreatureConstants.Dragon_Silver_Young, SizeConstants.Large, 14, 15)];
+            testCases[CreatureConstants.Dragon_Silver_Juvenile] = [GetData(CreatureConstants.Dragon_Silver_Juvenile, SizeConstants.Large, 17, 18)];
+            testCases[CreatureConstants.Dragon_Silver_YoungAdult] = [GetData(CreatureConstants.Dragon_Silver_YoungAdult, SizeConstants.Huge, 20, 21)];
+            testCases[CreatureConstants.Dragon_Silver_Adult] = [GetData(CreatureConstants.Dragon_Silver_Adult, SizeConstants.Huge, 23, 24)];
+            testCases[CreatureConstants.Dragon_Silver_MatureAdult] = [GetData(CreatureConstants.Dragon_Silver_MatureAdult, SizeConstants.Huge, 26, 27)];
+            testCases[CreatureConstants.Dragon_Silver_Old] = [GetData(CreatureConstants.Dragon_Silver_Old, SizeConstants.Gargantuan, 29, 30)];
+            testCases[CreatureConstants.Dragon_Silver_VeryOld] = [GetData(CreatureConstants.Dragon_Silver_VeryOld, SizeConstants.Gargantuan, 32, 33)];
+            testCases[CreatureConstants.Dragon_Silver_Ancient] = [GetData(CreatureConstants.Dragon_Silver_Ancient, SizeConstants.Gargantuan, 35, 36)];
+            testCases[CreatureConstants.Dragon_Silver_Wyrm] = [GetData(CreatureConstants.Dragon_Silver_Wyrm, SizeConstants.Gargantuan, 38, 39)];
+            testCases[CreatureConstants.Dragon_Silver_GreatWyrm] = [GetData(CreatureConstants.Dragon_Silver_GreatWyrm, SizeConstants.Colossal, 41, 100)];
+
+            testCases[CreatureConstants.DragonTurtle] =
+            [
+                GetData(CreatureConstants.DragonTurtle, SizeConstants.Huge, 13, 24),
+                GetData(CreatureConstants.DragonTurtle, SizeConstants.Gargantuan, 25, 36),
+            ];
+            testCases[CreatureConstants.Dragonne] =
+            [
+                GetData(CreatureConstants.Dragonne, SizeConstants.Large, 10, 12),
+                GetData(CreatureConstants.Dragonne, SizeConstants.Huge, 13, 27),
+            ];
+            testCases[CreatureConstants.Dretch] = [GetData(CreatureConstants.Dretch, SizeConstants.Small, 3, 6)];
+            testCases[CreatureConstants.Eagle] = [GetData(CreatureConstants.Eagle, SizeConstants.Medium, 2, 3)];
+            testCases[CreatureConstants.Eagle_Giant] =
+            [
+                GetData(CreatureConstants.Eagle_Giant, SizeConstants.Large, 5, 8),
+                GetData(CreatureConstants.Eagle_Giant, SizeConstants.Huge, 9, 12),
+            ];
+            testCases[CreatureConstants.Efreeti] =
+            [
+                GetData(CreatureConstants.Efreeti, SizeConstants.Large, 11, 15),
+                GetData(CreatureConstants.Efreeti, SizeConstants.Huge, 16, 30),
+            ];
+            testCases[CreatureConstants.Elasmosaurus] =
+            [
+                GetData(CreatureConstants.Elasmosaurus, SizeConstants.Huge, 11, 20),
+                GetData(CreatureConstants.Elasmosaurus, SizeConstants.Gargantuan, 21, 30),
+            ];
+            testCases[CreatureConstants.Elemental_Air_Elder] = [GetData(CreatureConstants.Elemental_Air_Elder, SizeConstants.Huge, 25, 48)];
+            testCases[CreatureConstants.Elemental_Air_Greater] = [GetData(CreatureConstants.Elemental_Air_Greater, SizeConstants.Huge, 22, 23)];
+            testCases[CreatureConstants.Elemental_Air_Huge] = [GetData(CreatureConstants.Elemental_Air_Huge, SizeConstants.Huge, 17, 20)];
+            testCases[CreatureConstants.Elemental_Air_Large] = [GetData(CreatureConstants.Elemental_Air_Large, SizeConstants.Large, 9, 15)];
+            testCases[CreatureConstants.Elemental_Air_Medium] = [GetData(CreatureConstants.Elemental_Air_Medium, SizeConstants.Medium, 5, 7)];
+            testCases[CreatureConstants.Elemental_Air_Small] = [GetData(CreatureConstants.Elemental_Air_Small, SizeConstants.Small, 3, 3)];
+            testCases[CreatureConstants.Elemental_Earth_Elder] = [GetData(CreatureConstants.Elemental_Earth_Elder, SizeConstants.Huge, 25, 48)];
+            testCases[CreatureConstants.Elemental_Earth_Greater] = [GetData(CreatureConstants.Elemental_Earth_Greater, SizeConstants.Huge, 22, 23)];
+            testCases[CreatureConstants.Elemental_Earth_Huge] = [GetData(CreatureConstants.Elemental_Earth_Huge, SizeConstants.Huge, 17, 20)];
+            testCases[CreatureConstants.Elemental_Earth_Large] = [GetData(CreatureConstants.Elemental_Earth_Large, SizeConstants.Large, 9, 15)];
+            testCases[CreatureConstants.Elemental_Earth_Medium] = [GetData(CreatureConstants.Elemental_Earth_Medium, SizeConstants.Medium, 5, 7)];
+            testCases[CreatureConstants.Elemental_Earth_Small] = [GetData(CreatureConstants.Elemental_Earth_Small, SizeConstants.Small, 3, 3)];
+            testCases[CreatureConstants.Elemental_Fire_Elder] = [GetData(CreatureConstants.Elemental_Fire_Elder, SizeConstants.Huge, 25, 48)];
+            testCases[CreatureConstants.Elemental_Fire_Greater] = [GetData(CreatureConstants.Elemental_Fire_Greater, SizeConstants.Huge, 22, 23)];
+            testCases[CreatureConstants.Elemental_Fire_Huge] = [GetData(CreatureConstants.Elemental_Fire_Huge, SizeConstants.Huge, 17, 20)];
+            testCases[CreatureConstants.Elemental_Fire_Large] = [GetData(CreatureConstants.Elemental_Fire_Large, SizeConstants.Large, 9, 15)];
+            testCases[CreatureConstants.Elemental_Fire_Medium] = [GetData(CreatureConstants.Elemental_Fire_Medium, SizeConstants.Medium, 5, 7)];
+            testCases[CreatureConstants.Elemental_Fire_Small] = [GetData(CreatureConstants.Elemental_Fire_Small, SizeConstants.Small, 3, 3)];
+            testCases[CreatureConstants.Elemental_Water_Elder] = [GetData(CreatureConstants.Elemental_Water_Elder, SizeConstants.Huge, 25, 48)];
+            testCases[CreatureConstants.Elemental_Water_Greater] = [GetData(CreatureConstants.Elemental_Water_Greater, SizeConstants.Huge, 22, 23)];
+            testCases[CreatureConstants.Elemental_Water_Huge] = [GetData(CreatureConstants.Elemental_Water_Huge, SizeConstants.Huge, 17, 20)];
+            testCases[CreatureConstants.Elemental_Water_Large] = [GetData(CreatureConstants.Elemental_Water_Large, SizeConstants.Large, 9, 15)];
+            testCases[CreatureConstants.Elemental_Water_Medium] = [GetData(CreatureConstants.Elemental_Water_Medium, SizeConstants.Medium, 5, 7)];
+            testCases[CreatureConstants.Elemental_Water_Small] = [GetData(CreatureConstants.Elemental_Water_Small, SizeConstants.Small, 3, 3)];
+            testCases[CreatureConstants.Elephant] = [GetData(CreatureConstants.Elephant, SizeConstants.Huge, 12, 22)];
+            testCases[CreatureConstants.Erinyes] = [GetData(CreatureConstants.Erinyes, SizeConstants.Medium, 10, 18)];
+            testCases[CreatureConstants.EtherealFilcher] =
+            [
+                GetData(CreatureConstants.EtherealFilcher, SizeConstants.Medium, 6, 7),
+                GetData(CreatureConstants.EtherealFilcher, SizeConstants.Large, 8, 15),
+            ];
+            testCases[CreatureConstants.EtherealMarauder] =
+            [
+                GetData(CreatureConstants.EtherealMarauder, SizeConstants.Medium, 3, 4),
+                GetData(CreatureConstants.EtherealMarauder, SizeConstants.Large, 5, 6),
+            ];
+            testCases[CreatureConstants.Ettercap] =
+            [
+                GetData(CreatureConstants.Ettercap, SizeConstants.Medium, 6, 7),
+                GetData(CreatureConstants.Ettercap, SizeConstants.Large, 8, 15),
+            ];
+            testCases[CreatureConstants.FireBeetle_Giant] = [GetData(CreatureConstants.FireBeetle_Giant, SizeConstants.Small, 2, 3)];
+            testCases[CreatureConstants.FormianMyrmarch] =
+            [
+                GetData(CreatureConstants.FormianMyrmarch, SizeConstants.Large, 13, 18),
+                GetData(CreatureConstants.FormianMyrmarch, SizeConstants.Huge, 19, 24),
+            ];
+            testCases[CreatureConstants.FormianQueen] =
+            [
+                GetData(CreatureConstants.FormianQueen, SizeConstants.Huge, 21, 30),
+                GetData(CreatureConstants.FormianQueen, SizeConstants.Gargantuan, 31, 40),
+            ];
+            testCases[CreatureConstants.FormianTaskmaster] =
+            [
+                GetData(CreatureConstants.FormianTaskmaster, SizeConstants.Medium, 7, 9),
+                GetData(CreatureConstants.FormianTaskmaster, SizeConstants.Large, 10, 12),
+            ];
+            testCases[CreatureConstants.FormianWarrior] =
+            [
+                GetData(CreatureConstants.FormianWarrior, SizeConstants.Medium, 5, 8),
+                GetData(CreatureConstants.FormianWarrior, SizeConstants.Large, 9, 12),
+            ];
+            testCases[CreatureConstants.FormianWorker] = [GetData(CreatureConstants.FormianWorker, SizeConstants.Medium, 2, 3)];
+            testCases[CreatureConstants.FrostWorm] =
+            [
+                GetData(CreatureConstants.FrostWorm, SizeConstants.Huge, 15, 21),
+                GetData(CreatureConstants.FrostWorm, SizeConstants.Gargantuan, 22, 42),
+            ];
+            testCases[CreatureConstants.Gargoyle] =
+            [
+                GetData(CreatureConstants.Gargoyle, SizeConstants.Medium, 5, 6),
+                GetData(CreatureConstants.Gargoyle, SizeConstants.Large, 7, 12),
+            ];
+            testCases[CreatureConstants.Gargoyle_Kapoacinth] =
+            [
+                GetData(CreatureConstants.Gargoyle_Kapoacinth, SizeConstants.Medium, 5, 6),
+                GetData(CreatureConstants.Gargoyle_Kapoacinth, SizeConstants.Large, 7, 12),
+            ];
+            testCases[CreatureConstants.Gargoyle_Kapoacinth] =
+            [
+                GetData(CreatureConstants.Gargoyle_Kapoacinth, SizeConstants.Medium, 5, 6),
+                GetData(CreatureConstants.Gargoyle_Kapoacinth, SizeConstants.Large, 7, 12),
+            ];
+            testCases[CreatureConstants.GelatinousCube] =
+            [
+                GetData(CreatureConstants.GelatinousCube, SizeConstants.Large, 5, 12),
+                GetData(CreatureConstants.GelatinousCube, SizeConstants.Huge, 13, 24),
+            ];
+            testCases[CreatureConstants.Ghaele] =
+            [
+                GetData(CreatureConstants.Ghaele, SizeConstants.Medium, 11, 15),
+                GetData(CreatureConstants.Ghaele, SizeConstants.Large, 16, 30),
+            ];
+            testCases[CreatureConstants.Ghoul] = [GetData(CreatureConstants.Ghoul, SizeConstants.Medium, 3, 3)];
+            testCases[CreatureConstants.Ghoul_Ghast] = [GetData(CreatureConstants.Ghoul_Ghast, SizeConstants.Medium, 5, 8)];
+            testCases[CreatureConstants.Ghoul_Lacedon] = [GetData(CreatureConstants.Ghoul_Lacedon, SizeConstants.Medium, 3, 3)];
+            testCases[CreatureConstants.GibberingMouther] = [GetData(CreatureConstants.GibberingMouther, SizeConstants.Large, 5, 12)];
+            testCases[CreatureConstants.Girallon] =
+            [
+                GetData(CreatureConstants.Girallon, SizeConstants.Large, 8, 10),
+                GetData(CreatureConstants.Girallon, SizeConstants.Huge, 11, 21),
+            ];
+            testCases[CreatureConstants.Glabrezu] =
+            [
+                GetData(CreatureConstants.Glabrezu, SizeConstants.Huge, 13, 18),
+                GetData(CreatureConstants.Glabrezu, SizeConstants.Gargantuan, 19, 36),
+            ];
+            testCases[CreatureConstants.Golem_Clay] =
+            [
+                GetData(CreatureConstants.Golem_Clay, SizeConstants.Large, 12, 18),
+                GetData(CreatureConstants.Golem_Clay, SizeConstants.Huge, 19, 33),
+            ];
+            testCases[CreatureConstants.Golem_Flesh] =
+            [
+                GetData(CreatureConstants.Golem_Flesh, SizeConstants.Large, 10, 18),
+                GetData(CreatureConstants.Golem_Flesh, SizeConstants.Huge, 19, 27),
+            ];
+            testCases[CreatureConstants.Golem_Iron] =
+            [
+                GetData(CreatureConstants.Golem_Iron, SizeConstants.Large, 19, 24),
+                GetData(CreatureConstants.Golem_Iron, SizeConstants.Huge, 25, 54),
+            ];
+            testCases[CreatureConstants.Golem_Stone] =
+            [
+                GetData(CreatureConstants.Golem_Stone, SizeConstants.Large, 15, 21),
+                GetData(CreatureConstants.Golem_Stone, SizeConstants.Huge, 22, 42),
+            ];
+            testCases[CreatureConstants.Gorgon] =
+            [
+                GetData(CreatureConstants.Gorgon, SizeConstants.Large, 9, 15),
+                GetData(CreatureConstants.Gorgon, SizeConstants.Huge, 16, 24),
+            ];
+            testCases[CreatureConstants.GrayOoze] =
+            [
+                GetData(CreatureConstants.GrayOoze, SizeConstants.Medium, 4, 6),
+                GetData(CreatureConstants.GrayOoze, SizeConstants.Large, 7, 9),
+            ];
+            testCases[CreatureConstants.GrayRender] =
+            [
+                GetData(CreatureConstants.GrayRender, SizeConstants.Large, 11, 15),
+                GetData(CreatureConstants.GrayRender, SizeConstants.Huge, 16, 30),
+            ];
+            testCases[CreatureConstants.Grick] =
+            [
+                GetData(CreatureConstants.Grick, SizeConstants.Medium, 3, 4),
+                GetData(CreatureConstants.Grick, SizeConstants.Large, 5, 6),
+            ];
+            testCases[CreatureConstants.Griffon] =
+            [
+                GetData(CreatureConstants.Griffon, SizeConstants.Large, 8, 10),
+                GetData(CreatureConstants.Griffon, SizeConstants.Huge, 11, 21),
+            ];
+            testCases[CreatureConstants.Grig] = [GetData(CreatureConstants.Grig, SizeConstants.Tiny, 1, 3)];
+            testCases[CreatureConstants.Grig_WithFiddle] = [GetData(CreatureConstants.Grig_WithFiddle, SizeConstants.Tiny, 1, 3)];
+            testCases[CreatureConstants.Gynosphinx] =
+            [
+                GetData(CreatureConstants.Gynosphinx, SizeConstants.Large, 9, 12),
+                GetData(CreatureConstants.Gynosphinx, SizeConstants.Huge, 13, 24),
+            ];
+
+            testCases[CreatureConstants.HellHound][GetData(5, 8, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.HellHound][GetData(9, 12, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.HellHound_NessianWarhound][GetData(13, 17, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.HellHound_NessianWarhound][GetData(18, 24, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Hellcat_Bezekira][GetData(9, 10, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Hellcat_Bezekira][GetData(11, 24, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Hezrou][GetData(11, 15, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Hezrou][GetData(16, 30, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Hieracosphinx][GetData(10, 14, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Hieracosphinx][GetData(15, 27, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Hippogriff][GetData(4, 6, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Hippogriff][GetData(7, 9, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Homunculus][GetData(3, 6, SizeConstants.Tiny, 2.5, 0);
+            testCases[CreatureConstants.HornedDevil_Cornugon][GetData(16, 20, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.HornedDevil_Cornugon][GetData(21, 45, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.HoundArchon][GetData(7, 9, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.HoundArchon][GetData(10, 18, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Howler][GetData(7, 9, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Howler][GetData(10, 18, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Hyena][GetData(3, 3, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Hyena][GetData(4, 5, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.IceDevil_Gelugon][GetData(15, 28, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.IceDevil_Gelugon][GetData(29, 42, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Imp][GetData(4, 6, SizeConstants.Tiny, 2.5, 0);
+            testCases[CreatureConstants.InvisibleStalker][GetData(9, 12, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.InvisibleStalker][GetData(13, 24, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Janni][GetData(7, 9, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Janni][GetData(10, 18, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Kolyarut][GetData(14, 22, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Kolyarut][GetData(23, 39, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Kraken][GetData(21, 32, SizeConstants.Gargantuan, 20, 15);
+            testCases[CreatureConstants.Kraken][GetData(33, 60, SizeConstants.Colossal, 30, 20);
+            testCases[CreatureConstants.Krenshar][GetData(3, 4, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Krenshar][GetData(5, 8, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Lamia][GetData(10, 13, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Lamia][GetData(14, 27, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Lammasu][GetData(8, 10, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Lammasu][GetData(11, 21, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.LanternArchon][GetData(2, 4, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Lemure][GetData(3, 6, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Leonal][GetData(13, 18, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Leonal][GetData(19, 36, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Leopard][GetData(4, 5, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Lillend][GetData(8, 10, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Lillend][GetData(11, 21, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Lion][GetData(6, 8, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Lion_Dire][GetData(9, 16, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Lion_Dire][GetData(17, 24, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Lizard_Monitor][GetData(4, 5, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Magmin][GetData(3, 4, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Magmin][GetData(5, 6, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.MantaRay][GetData(5, 6, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Manticore][GetData(7, 16, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Manticore][GetData(17, 18, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Marilith][GetData(17, 20, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Marilith][GetData(21, 48, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Marut][GetData(16, 28, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Marut][GetData(29, 45, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Megaraptor][GetData(9, 16, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Megaraptor][GetData(17, 24, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Mephit_Air][GetData(4, 6, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Mephit_Air][GetData(7, 9, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Mephit_Dust][GetData(4, 6, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Mephit_Dust][GetData(7, 9, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Mephit_Earth][GetData(4, 6, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Mephit_Earth][GetData(7, 9, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Mephit_Fire][GetData(4, 6, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Mephit_Fire][GetData(7, 9, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Mephit_Ice][GetData(4, 6, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Mephit_Ice][GetData(7, 9, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Mephit_Magma][GetData(4, 6, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Mephit_Magma][GetData(7, 9, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Mephit_Ooze][GetData(4, 6, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Mephit_Ooze][GetData(7, 9, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Mephit_Salt][GetData(4, 6, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Mephit_Salt][GetData(7, 9, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Mephit_Steam][GetData(4, 6, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Mephit_Steam][GetData(7, 9, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Mephit_Water][GetData(4, 6, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Mephit_Water][GetData(7, 9, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Mimic][GetData(8, 10, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Mimic][GetData(11, 21, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Mohrg][GetData(15, 21, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Mohrg][GetData(22, 28, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Monkey][GetData(2, 3, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Mummy][GetData(9, 16, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Mummy][GetData(17, 24, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Naga_Dark][GetData(10, 13, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Naga_Dark][GetData(14, 27, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Naga_Guardian][GetData(12, 16, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Naga_Guardian][GetData(17, 33, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Naga_Spirit][GetData(10, 13, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Naga_Spirit][GetData(14, 27, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Naga_Water][GetData(8, 10, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Naga_Water][GetData(11, 21, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Nalfeshnee][GetData(15, 20, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Nalfeshnee][GetData(21, 42, SizeConstants.Gargantuan, 20, 20);
+            testCases[CreatureConstants.NightHag][GetData(9, 16, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Nightcrawler][GetData(26, 50, SizeConstants.Colossal, 30, 20);
+            testCases[CreatureConstants.Nightmare][GetData(7, 10, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Nightmare][GetData(11, 18, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Nightwalker][GetData(22, 31, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Nightwalker][GetData(32, 42, SizeConstants.Gargantuan, 20, 20);
+            testCases[CreatureConstants.Nightwing][GetData(18, 25, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Nightwing][GetData(26, 34, SizeConstants.Gargantuan, 20, 15);
+            testCases[CreatureConstants.Nixie][GetData(2, 3, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Nymph][GetData(7, 12, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.OchreJelly][GetData(7, 9, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.OchreJelly][GetData(10, 18, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Octopus][GetData(3, 6, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Octopus_Giant][GetData(9, 12, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Octopus_Giant][GetData(13, 24, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Otyugh][GetData(7, 8, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Otyugh][GetData(9, 18, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Owl][GetData(2, 2, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Owl_Giant][GetData(5, 8, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Owl_Giant][GetData(9, 12, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Owlbear][GetData(6, 8, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Owlbear][GetData(9, 15, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Pegasus][GetData(5, 8, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.PhantomFungus][GetData(3, 4, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.PhantomFungus][GetData(5, 6, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.PhaseSpider][GetData(6, 8, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.PhaseSpider][GetData(9, 15, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Phasm][GetData(16, 21, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Phasm][GetData(22, 45, SizeConstants.Gargantuan, 20, 20);
+            testCases[CreatureConstants.PitFiend][GetData(19, 36, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.PitFiend][GetData(37, 54, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Pixie][GetData(2, 3, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Pixie_WithIrresistibleDance][GetData(2, 3, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Porpoise][GetData(3, 4, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Porpoise][GetData(3, 4, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.PrayingMantis_Giant][GetData(5, 8, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.PrayingMantis_Giant][GetData(9, 12, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Pseudodragon][GetData(3, 4, SizeConstants.Tiny, 2.5, 0);
+            testCases[CreatureConstants.PurpleWorm][GetData(17, 32, SizeConstants.Gargantuan, 20, 15);
+            testCases[CreatureConstants.PurpleWorm][GetData(33, 48, SizeConstants.Colossal, 30, 20);
+            testCases[CreatureConstants.Quasit][GetData(4, 6, SizeConstants.Tiny, 2.5, 0);
+            testCases[CreatureConstants.Rast][GetData(5, 6, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Rast][GetData(7, 12, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Rat_Dire][GetData(2, 3, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Rat_Dire][GetData(4, 6, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Ravid][GetData(4, 4, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Ravid][GetData(5, 9, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.RazorBoar][GetData(16, 30, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.RazorBoar][GetData(31, 45, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Remorhaz][GetData(8, 14, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Remorhaz][GetData(15, 21, SizeConstants.Gargantuan, 20, 15);
+            testCases[CreatureConstants.Retriever][GetData(11, 15, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Retriever][GetData(16, 30, SizeConstants.Gargantuan, 20, 15);
+            testCases[CreatureConstants.Rhinoceras][GetData(9, 12, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Rhinoceras][GetData(13, 24, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Roc][GetData(19, 32, SizeConstants.Gargantuan, 20, 15);
+            testCases[CreatureConstants.Roc][GetData(33, 54, SizeConstants.Colossal, 30, 20);
+            testCases[CreatureConstants.Roper][GetData(11, 15, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Roper][GetData(16, 30, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.RustMonster][GetData(6, 8, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.RustMonster][GetData(9, 15, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Sahuagin][GetData(3, 5, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Sahuagin][GetData(6, 10, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Sahuagin_Malenti][GetData(3, 5, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Sahuagin_Malenti][GetData(6, 10, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Sahuagin_Mutant][GetData(3, 5, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Sahuagin_Mutant][GetData(6, 10, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Salamander_Average][GetData(10, 14, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Salamander_Flamebrother][GetData(5, 6, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Salamander_Noble][GetData(16, 21, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Salamander_Noble][GetData(22, 45, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Satyr][GetData(6, 10, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Satyr_WithPipes][GetData(6, 10, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Scorpion_Monstrous_Colossal][GetData(41, 60, SizeConstants.Colossal, 40, 30);
+            testCases[CreatureConstants.Scorpion_Monstrous_Gargantuan][GetData(21, 39, SizeConstants.Gargantuan, 20, 15);
+            testCases[CreatureConstants.Scorpion_Monstrous_Huge][GetData(11, 19, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Scorpion_Monstrous_Large][GetData(6, 9, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Scorpion_Monstrous_Medium][GetData(3, 4, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.SeaCat][GetData(7, 9, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.SeaCat][GetData(10, 18, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Shadow][GetData(4, 9, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.ShadowMastiff][GetData(5, 6, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.ShadowMastiff][GetData(7, 12, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.ShamblingMound][GetData(9, 12, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.ShamblingMound][GetData(13, 24, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Shark_Dire][GetData(19, 32, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Shark_Dire][GetData(33, 54, SizeConstants.Gargantuan, 20, 15);
+            testCases[CreatureConstants.Shark_Huge][GetData(11, 17, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Shark_Large][GetData(8, 9, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Shark_Medium][GetData(4, 6, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.ShieldGuardian][GetData(16, 24, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.ShieldGuardian][GetData(25, 45, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.ShockerLizard][GetData(3, 4, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.ShockerLizard][GetData(5, 6, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Shrieker][GetData(3, 3, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Skum][GetData(3, 4, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Skum][GetData(5, 6, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Slaad_Blue][GetData(9, 12, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Slaad_Blue][GetData(13, 24, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Slaad_Death][GetData(16, 22, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Slaad_Death][GetData(23, 45, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Slaad_Gray][GetData(11, 15, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Slaad_Gray][GetData(16, 30, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Slaad_Green][GetData(10, 15, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Slaad_Green][GetData(16, 27, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Slaad_Red][GetData(8, 10, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Slaad_Red][GetData(11, 21, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Snake_Constrictor][GetData(4, 5, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Snake_Constrictor][GetData(6, 10, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Snake_Constrictor_Giant][GetData(12, 16, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Snake_Constrictor_Giant][GetData(17, 33, SizeConstants.Gargantuan, 20, 15);
+            testCases[CreatureConstants.Snake_Viper_Huge][GetData(7, 18, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Spectre][GetData(8, 14, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Spider_Monstrous_Hunter_Colossal][GetData(33, 60, SizeConstants.Colossal, 40, 30);
+            testCases[CreatureConstants.Spider_Monstrous_Hunter_Gargantuan][GetData(17, 31, SizeConstants.Gargantuan, 20, 15);
+            testCases[CreatureConstants.Spider_Monstrous_Hunter_Huge][GetData(9, 15, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Spider_Monstrous_Hunter_Large][GetData(5, 7, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Spider_Monstrous_Hunter_Medium][GetData(3, 3, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal][GetData(33, 60, SizeConstants.Colossal, 40, 30);
+            testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan][GetData(17, 31, SizeConstants.Gargantuan, 20, 15);
+            testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Huge][GetData(9, 15, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Large][GetData(5, 7, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Medium][GetData(3, 3, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.SpiderEater][GetData(5, 12, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Squid][GetData(4, 6, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Squid][GetData(7, 11, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Squid_Giant][GetData(13, 18, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Squid_Giant][GetData(19, 36, SizeConstants.Gargantuan, 20, 20);
+            testCases[CreatureConstants.StagBeetle_Giant][GetData(8, 10, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.StagBeetle_Giant][GetData(11, 21, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Succubus][GetData(7, 12, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Tarrasque][GetData(49, 100, SizeConstants.Colossal, 30, 20);
+            testCases[CreatureConstants.Tendriculos][GetData(10, 16, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Tendriculos][GetData(17, 27, SizeConstants.Gargantuan, 20, 20);
+            testCases[CreatureConstants.Thoqqua][GetData(4, 9, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Tiger][GetData(7, 12, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Tiger][GetData(13, 18, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Tiger_Dire][GetData(17, 32, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Tiger_Dire][GetData(33, 48, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Titan][GetData(21, 30, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Titan][GetData(31, 60, SizeConstants.Gargantuan, 20, 20);
+            testCases[CreatureConstants.Tojanida_Adult][GetData(8, 14, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Tojanida_Elder][GetData(16, 24, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Tojanida_Juvenile][GetData(4, 6, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.Treant][GetData(8, 16, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Treant][GetData(17, 21, SizeConstants.Gargantuan, 20, 20);
+            testCases[CreatureConstants.Triceratops][GetData(17, 32, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Triceratops][GetData(33, 48, SizeConstants.Gargantuan, 20, 15);
+            testCases[CreatureConstants.Triton][GetData(4, 9, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.TrumpetArchon][GetData(13, 18, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.TrumpetArchon][GetData(19, 36, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Tyrannosaurus][GetData(19, 36, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Tyrannosaurus][GetData(37, 54, SizeConstants.Gargantuan, 20, 15);
+            testCases[CreatureConstants.Unicorn][GetData(5, 8, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.UmberHulk][GetData(9, 12, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.UmberHulk][GetData(13, 24, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Vargouille][GetData(2, 3, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.VioletFungus][GetData(3, 6, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Vrock][GetData(11, 14, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Vrock][GetData(15, 30, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Wasp_Giant][GetData(6, 8, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Wasp_Giant][GetData(9, 15, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Weasel_Dire][GetData(4, 6, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Weasel_Dire][GetData(7, 9, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Whale_Baleen][GetData(13, 18, SizeConstants.Gargantuan, 20, 15);
+            testCases[CreatureConstants.Whale_Baleen][GetData(19, 36, SizeConstants.Colossal, 30, 20);
+            testCases[CreatureConstants.Whale_Cachalot][GetData(13, 18, SizeConstants.Gargantuan, 20, 15);
+            testCases[CreatureConstants.Whale_Cachalot][GetData(19, 36, SizeConstants.Colossal, 30, 20);
+            testCases[CreatureConstants.Whale_Orca][GetData(10, 13, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Whale_Orca][GetData(14, 27, SizeConstants.Gargantuan, 20, 15);
+            testCases[CreatureConstants.Wight][GetData(5, 8, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.WillOWisp][GetData(10, 18, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.WinterWolf][GetData(7, 9, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.WinterWolf][GetData(10, 18, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Wolf][GetData(3, 3, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Wolf][GetData(4, 6, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Wolf_Dire][GetData(7, 18, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Wolverine][GetData(4, 5, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Wolverine_Dire][GetData(6, 15, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Worg][GetData(5, 6, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Worg][GetData(7, 12, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Wraith][GetData(6, 10, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Wraith_Dread][GetData(17, 32, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Wyvern][GetData(8, 10, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Wyvern][GetData(11, 21, SizeConstants.Gargantuan, 20, 15);
+            testCases[CreatureConstants.Xill][GetData(6, 8, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Xill][GetData(9, 15, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Xorn_Average][GetData(8, 14, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.Xorn_Elder][GetData(16, 21, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Xorn_Elder][GetData(22, 45, SizeConstants.Huge, 15, 15);
+            testCases[CreatureConstants.Xorn_Minor][GetData(4, 6, SizeConstants.Small, 5, 5);
+            testCases[CreatureConstants.YethHound][GetData(4, 6, SizeConstants.Medium, 5, 5);
+            testCases[CreatureConstants.YethHound][GetData(7, 9, SizeConstants.Large, 10, 5);
+            testCases[CreatureConstants.Yrthak][GetData(13, 16, SizeConstants.Huge, 15, 10);
+            testCases[CreatureConstants.Yrthak][GetData(17, 36, SizeConstants.Gargantuan, 20, 15);
+            testCases[CreatureConstants.Zelekhut][GetData(9, 16, SizeConstants.Large, 10, 10);
+            testCases[CreatureConstants.Zelekhut][GetData(17, 24, SizeConstants.Huge, 15, 15);
 
             return testCases;
         }
