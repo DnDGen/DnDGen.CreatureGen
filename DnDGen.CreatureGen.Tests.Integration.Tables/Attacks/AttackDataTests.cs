@@ -24,7 +24,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         private ICreatureDataSelector creatureDataSelector;
         private Dictionary<string, List<string>> creatureAttackData;
         private Dictionary<string, List<string>> templateAttackData;
-        private Dictionary<string, List<AdvancementDataSelection>> advancementData;
+        private Dictionary<string, IEnumerable<AdvancementDataSelection>> advancementData;
+        private Dictionary<string, IEnumerable<CreatureDataSelection>> creatureData;
 
         protected override string tableName => TableNameConstants.Collection.AttackData;
 
@@ -53,7 +54,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             templateAttackData = AttackTestData.GetTemplateAttackData();
 
             var advancementDataSelector = GetNewInstanceOf<ICollectionDataSelector<AdvancementDataSelection>>();
-            advancementData = advancementDataSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Advancements);
+            advancementData = advancementDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.Advancements);
+
+            var creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
+            creatureData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
         }
 
         [SetUp]
@@ -70,10 +74,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             var creatures = CreatureConstants.GetAll();
             var templates = CreatureConstants.Templates.GetAll();
+            var count = creatures.Count();
 
             foreach (var creature in creatures)
             {
-                var advancements = advancementDataSelector.
+                var key = creature + creatureData[creature].Single().Size;
+
+                var advancements = advancementData[creature];
+
+                //TODO: Make keys the creature + size (original size + all advancements)
+                //this way advanced attack data can be pre-computed
             }
 
             Assert.That(templateAttackData.Keys, Is.EquivalentTo(templates));
@@ -83,16 +93,40 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertCollectionNames(names);
         }
 
+        [Test]
+        public void AttackKeysAreUnique()
+        {
+            var attackKeys = new List<string>();
+
+            foreach (var kvp in creatureAttackData)
+            {
+                var keys = kvp.Value
+                    .Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>)
+                    .Select(s => s.BuildKey(kvp.Key));
+                attackKeys.AddRange(keys);
+            }
+
+            foreach (var kvp in templateAttackData)
+            {
+                var keys = kvp.Value
+                    .Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>)
+                    .Select(s => s.BuildKey(kvp.Key));
+                attackKeys.AddRange(keys);
+            }
+
+            Assert.That(attackKeys, Is.Unique);
+        }
+
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreatureAttackData(string creature)
         {
-            if (!entries.Any())
+            if (!creatureAttackData[creature].Any())
                 Assert.Fail("Test case did not specify attacks or NONE");
 
-            if (entries[0][DataIndexConstants.AttackData.NameIndex] == AttackTestData.None)
-                entries.Clear();
+            if (creatureAttackData[creature][0] == AttackTestData.None)
+                creatureAttackData[creature].Clear();
 
-            foreach (var entry in entries)
+            foreach (var entry in creatureAttackData[creature])
             {
                 var stringEntry = helper.BuildEntry(entry);
                 var attackValid = helper.ValidateEntry(stringEntry);
@@ -102,21 +136,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 Assert.That(damageValid, Is.True, $"{creature}: {entry[DataIndexConstants.AttackData.NameIndex]}: {entry[DataIndexConstants.AttackData.DamageDataIndex]} is not valid damage data");
             }
 
-            AssertCreatureHasCorrectImprovedGrab(entries);
-            AssertCreatureHasCorrectSpellLikeAbility(entries);
-            AssertCreatureHasCorrectSpells(entries);
-            AssertCreatureEffectDoesNotHaveDamage(entries);
-            AssertNaturalAttacksHaveCorrectDamageTypes(entries);
-            AssertPoisonAttacksHaveCorrectDamageTypes(entries);
-            AssertDiseaseAttacksHaveCorrectDamageTypes(entries);
+            AssertCreatureHasCorrectImprovedGrab(creatureAttackData[creature]);
+            AssertCreatureHasCorrectSpellLikeAbility(creatureAttackData[creature]);
+            AssertCreatureHasCorrectSpells(creatureAttackData[creature]);
+            AssertCreatureEffectDoesNotHaveDamage(creatureAttackData[creature]);
+            AssertNaturalAttacksHaveCorrectDamageTypes(creatureAttackData[creature]);
+            AssertPoisonAttacksHaveCorrectDamageTypes(creatureAttackData[creature]);
+            AssertDiseaseAttacksHaveCorrectDamageTypes(creatureAttackData[creature]);
 
-            AssertData(creature, entries);
-
-            var templates = CreatureConstants.Templates.GetAll();
-            if (templates.Contains(creature))
-            {
-                Assert.Pass("The following assertions only apply to creatures, not templates");
-            }
+            AssertData(creature, creatureAttackData[creature]);
 
             CreatureWithSpellLikeAbilityAttack_HasSpellLikeAbilitySpecialQuality(creature);
             CreatureWithPsionicAttack_HasPsionicSpecialQuality(creature);
@@ -125,15 +153,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void TempplateAttackData(string creature)
+        public void TemplateAttackData(string creature)
         {
-            if (!entries.Any())
+            if (!templateAttackData[creature].Any())
                 Assert.Fail("Test case did not specify attacks or NONE");
 
-            if (entries[0][DataIndexConstants.AttackData.NameIndex] == AttackTestData.None)
-                entries.Clear();
+            if (templateAttackData[creature][0] == AttackTestData.None)
+                templateAttackData[creature].Clear();
 
-            foreach (var entry in entries)
+            foreach (var entry in templateAttackData[creature])
             {
                 var stringEntry = helper.BuildEntry(entry);
                 var attackValid = helper.ValidateEntry(stringEntry);
@@ -143,26 +171,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 Assert.That(damageValid, Is.True, $"{creature}: {entry[DataIndexConstants.AttackData.NameIndex]}: {entry[DataIndexConstants.AttackData.DamageDataIndex]} is not valid damage data");
             }
 
-            AssertCreatureHasCorrectImprovedGrab(entries);
-            AssertCreatureHasCorrectSpellLikeAbility(entries);
-            AssertCreatureHasCorrectSpells(entries);
-            AssertCreatureEffectDoesNotHaveDamage(entries);
-            AssertNaturalAttacksHaveCorrectDamageTypes(entries);
-            AssertPoisonAttacksHaveCorrectDamageTypes(entries);
-            AssertDiseaseAttacksHaveCorrectDamageTypes(entries);
+            AssertCreatureHasCorrectImprovedGrab(templateAttackData[creature]);
+            AssertCreatureHasCorrectSpellLikeAbility(templateAttackData[creature]);
+            AssertCreatureHasCorrectSpells(templateAttackData[creature]);
+            AssertCreatureEffectDoesNotHaveDamage(templateAttackData[creature]);
+            AssertNaturalAttacksHaveCorrectDamageTypes(templateAttackData[creature]);
+            AssertPoisonAttacksHaveCorrectDamageTypes(templateAttackData[creature]);
+            AssertDiseaseAttacksHaveCorrectDamageTypes(templateAttackData[creature]);
 
-            AssertData(creature, entries);
-
-            var templates = CreatureConstants.Templates.GetAll();
-            if (templates.Contains(creature))
-            {
-                Assert.Pass("The following assertions only apply to creatures, not templates");
-            }
-
-            CreatureWithSpellLikeAbilityAttack_HasSpellLikeAbilitySpecialQuality(creature);
-            CreatureWithPsionicAttack_HasPsionicSpecialQuality(creature);
-            CreatureWithSpellsAttack_HasMagicSpells(creature);
-            CreatureWithUnnaturalAttack_CanUseEquipment(creature);
+            AssertData(creature, templateAttackData[creature]);
         }
 
         private void AssertCreatureEffectDoesNotHaveDamage(List<string[]> entries)

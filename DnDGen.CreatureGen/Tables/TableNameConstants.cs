@@ -13,6 +13,7 @@
         internal static class Collection
         {
             public const string AbilityGroups = "AbilityGroups";
+            public const string Advancements = "Advancements";
             public const string AerialManeuverability = "AerialManeuverability";
             public const string AlignmentGroups = "AlignmentGroups";
             public const string AttackData = "AttackData";
@@ -20,6 +21,7 @@
             public const string CreatureData = "CreatureData";
             public const string CreatureGroups = "CreatureGroups";
             public const string CreatureTypes = "CreatureTypes";
+            public const string DamageData = "DamageData";
             public const string FeatData = "FeatData";
             public const string FeatFoci = "FeatFoci";
             public const string FeatGroups = "FeatGroups";
@@ -52,7 +54,6 @@
         internal static class TypeAndAmount
         {
             public const string AbilityAdjustments = "AbilityAdjustments";
-            public const string Advancements = "Advancements";
             public const string AgeRolls = "AgeRolls";
             public const string ArmorClassBonuses = "ArmorClassBonuses";
             public const string Casters = "Casters";
