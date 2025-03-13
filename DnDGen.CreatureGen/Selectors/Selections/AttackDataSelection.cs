@@ -1,7 +1,6 @@
-﻿using DnDGen.CreatureGen.Selectors.Helpers;
-using DnDGen.CreatureGen.Tables;
+﻿using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Helpers;
 using DnDGen.Infrastructure.Models;
-using DnDGen.TreasureGen.Items;
 using System;
 using System.Collections.Generic;
 
@@ -9,7 +8,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
 {
     internal class AttackDataSelection : DataSelection<AttackDataSelection>
     {
-        public List<Damage> Damages { get; set; }
+        public List<DamageDataSelection> Damages { get; set; }
         public string DamageEffect { get; set; }
         public double DamageBonusMultiplier { get; set; }
         public string Name { get; set; }
@@ -24,10 +23,11 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public string AttackType { get; set; }
         public int SaveDcBonus { get; set; }
         public string RequiredGender { get; set; }
+
         public override Func<string[], AttackDataSelection> MapTo => Map;
         public override Func<AttackDataSelection, string[]> MapFrom => Map;
 
-        public override int SectionCount => 10;
+        public override int SectionCount => 13;
 
         public static AttackDataSelection Map(string[] splitData)
         {
@@ -55,21 +55,20 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public static string[] Map(AttackDataSelection selection)
         {
             var data = new string[selection.SectionCount];
-            data[DataIndexConstants.AttackData.NameIndex] = name;
-            data[DataIndexConstants.AttackData.DamageDataIndex] = damageData;
-            data[DataIndexConstants.AttackData.DamageEffectIndex] = damageEffect;
-            data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex] = damageBonusMultiplier.ToString();
-            data[DataIndexConstants.AttackData.IsMeleeIndex] = isMelee.ToString();
-            data[DataIndexConstants.AttackData.IsNaturalIndex] = isNatural.ToString();
-            data[DataIndexConstants.AttackData.IsPrimaryIndex] = isPrimary.ToString();
-            data[DataIndexConstants.AttackData.IsSpecialIndex] = isSpecial.ToString();
-            data[DataIndexConstants.AttackData.FrequencyQuantityIndex] = frequencyQuantity.ToString();
-            data[DataIndexConstants.AttackData.FrequencyTimePeriodIndex] = frequencyTimePeriod;
-            data[DataIndexConstants.AttackData.SaveIndex] = save ?? string.Empty;
-            data[DataIndexConstants.AttackData.SaveAbilityIndex] = saveAbility ?? string.Empty;
-            data[DataIndexConstants.AttackData.AttackTypeIndex] = attackType;
-            data[DataIndexConstants.AttackData.SaveDcBonusIndex] = saveDcBonus.ToString();
-            data[DataIndexConstants.AttackData.RequiredGenderIndex] = requiredGender ?? string.Empty;
+            data[DataIndexConstants.AttackData.NameIndex] = selection.Name;
+            data[DataIndexConstants.AttackData.DamageEffectIndex] = selection.DamageEffect;
+            data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex] = selection.DamageBonusMultiplier.ToString();
+            data[DataIndexConstants.AttackData.IsMeleeIndex] = selection.IsMelee.ToString();
+            data[DataIndexConstants.AttackData.IsNaturalIndex] = selection.IsNatural.ToString();
+            data[DataIndexConstants.AttackData.IsPrimaryIndex] = selection.IsPrimary.ToString();
+            data[DataIndexConstants.AttackData.IsSpecialIndex] = selection.IsSpecial.ToString();
+            data[DataIndexConstants.AttackData.FrequencyQuantityIndex] = selection.FrequencyQuantity.ToString();
+            data[DataIndexConstants.AttackData.FrequencyTimePeriodIndex] = selection.FrequencyTimePeriod;
+            data[DataIndexConstants.AttackData.SaveIndex] = selection.Save ?? string.Empty;
+            data[DataIndexConstants.AttackData.SaveAbilityIndex] = selection.SaveAbility ?? string.Empty;
+            data[DataIndexConstants.AttackData.AttackTypeIndex] = selection.AttackType;
+            data[DataIndexConstants.AttackData.SaveDcBonusIndex] = selection.SaveDcBonus.ToString();
+            data[DataIndexConstants.AttackData.RequiredGenderIndex] = selection.RequiredGender ?? string.Empty;
 
             return data;
         }
@@ -83,63 +82,28 @@ namespace DnDGen.CreatureGen.Selectors.Selections
 
         public bool RequirementsMet(string gender) => string.IsNullOrEmpty(RequiredGender) || RequiredGender == gender;
 
-        public static AttackDataSelection From(string rawData)
+        public static string BuildKey(string creature, string[] data)
         {
-            var helper = new AttackHelper();
-            var data = helper.ParseEntry(rawData);
-
-            var selection = new AttackDataSelection
-            {
-                IsMelee = Convert.ToBoolean(data[DataIndexConstants.AttackData.IsMeleeIndex]),
-                IsNatural = Convert.ToBoolean(data[DataIndexConstants.AttackData.IsNaturalIndex]),
-                IsPrimary = Convert.ToBoolean(data[DataIndexConstants.AttackData.IsPrimaryIndex]),
-                IsSpecial = Convert.ToBoolean(data[DataIndexConstants.AttackData.IsSpecialIndex]),
-                Name = data[DataIndexConstants.AttackData.NameIndex],
-                DamageEffect = data[DataIndexConstants.AttackData.DamageEffectIndex],
-                DamageBonusMultiplier = Convert.ToDouble(data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex]),
-                FrequencyQuantity = Convert.ToInt32(data[DataIndexConstants.AttackData.FrequencyQuantityIndex]),
-                FrequencyTimePeriod = data[DataIndexConstants.AttackData.FrequencyTimePeriodIndex],
-                Save = data[DataIndexConstants.AttackData.SaveIndex],
-                SaveAbility = data[DataIndexConstants.AttackData.SaveAbilityIndex],
-                AttackType = data[DataIndexConstants.AttackData.AttackTypeIndex],
-                SaveDcBonus = Convert.ToInt32(data[DataIndexConstants.AttackData.SaveDcBonusIndex]),
-                RequiredGender = data[DataIndexConstants.AttackData.RequiredGenderIndex],
-            };
-
-            var damageHelper = new DamageHelper();
-            var damageEntries = damageHelper.ParseEntries(data[DataIndexConstants.AttackData.DamageDataIndex]);
-
-            foreach (var damageData in damageEntries)
-            {
-                var damage = new Damage
-                {
-                    Roll = damageData[DataIndexConstants.AttackData.DamageData.RollIndex],
-                    Type = damageData[DataIndexConstants.AttackData.DamageData.TypeIndex],
-                    Condition = damageData[DataIndexConstants.AttackData.DamageData.ConditionIndex],
-                };
-
-                selection.Damages.Add(damage);
-            }
-
-            return selection;
-        }
-
-        public string BuildKey(string creature, string[] data)
-        {
+            //HACK: Original key included damage roll, which is now a separate data selection
+            //Hopefully key keeps uniqueness without it
             return BuildKeyFromSections(creature,
                 data[DataIndexConstants.AttackData.NameIndex],
                 data[DataIndexConstants.AttackData.IsPrimaryIndex],
-                data[DataIndexConstants.AttackData.DamageDataIndex],
                 data[DataIndexConstants.AttackData.DamageEffectIndex]);
         }
 
-        public string BuildKeyFromSections(string creature, params string[] keySections)
+        public static string BuildKey(string creature, string data)
         {
-            var key = creature;
-            foreach (var section in keySections)
-                key += section;
+            var parsedData = DataHelper.Parse(data);
+            return BuildKey(creature, parsedData);
+        }
 
-            return key;
+        private static string BuildKeyFromSections(string creature, params string[] keySections) => $"{creature}{string.Join(string.Empty, keySections)}";
+
+        public string BuildKey(string creature)
+        {
+            var data = MapFrom(this);
+            return BuildKey(creature, data);
         }
     }
 }

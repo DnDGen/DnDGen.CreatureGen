@@ -44,7 +44,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         }
 
         [TestCase(DataIndexConstants.AttackData.NameIndex, 0)]
-        [TestCase(DataIndexConstants.AttackData.DamageDataIndex, 1)]
+        [TestCase(DataIndexConstants.AttackData.RequiredGenderIndex, 1)]
         [TestCase(DataIndexConstants.AttackData.IsNaturalIndex, 2)]
         [TestCase(DataIndexConstants.AttackData.IsMeleeIndex, 3)]
         [TestCase(DataIndexConstants.AttackData.IsPrimaryIndex, 4)]
@@ -63,7 +63,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         }
 
         [TestCase(DataIndexConstants.AttackData.NameIndex)]
-        [TestCase(DataIndexConstants.AttackData.DamageDataIndex)]
+        [TestCase(DataIndexConstants.AttackData.RequiredGenderIndex)]
         [TestCase(DataIndexConstants.AttackData.IsNaturalIndex)]
         [TestCase(DataIndexConstants.AttackData.IsMeleeIndex)]
         [TestCase(DataIndexConstants.AttackData.IsPrimaryIndex)]

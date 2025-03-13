@@ -16,7 +16,7 @@
         internal static class AttackData
         {
             public const int NameIndex = 0;
-            public const int DamageDataIndex = 1;
+            public const int RequiredGenderIndex = 1;
             public const int IsNaturalIndex = 2;
             public const int IsMeleeIndex = 3;
             public const int IsPrimaryIndex = 4;
@@ -29,7 +29,6 @@
             public const int DamageEffectIndex = 11;
             public const int DamageBonusMultiplierIndex = 12;
             public const int SaveDcBonusIndex = 13;
-            public const int RequiredGenderIndex = 14;
 
             public static string[] InitializeData()
             {

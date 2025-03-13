@@ -4,7 +4,6 @@ using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Helpers;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -17,14 +16,13 @@ using System.Linq;
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 {
     [TestFixture]
-    public class AttackDataTests : DataTests
+    public class DamageDataTests : DataTests
     {
         private ICollectionSelector collectionSelector;
         private IFeatsSelector featsSelector;
         private ICreatureDataSelector creatureDataSelector;
         private Dictionary<string, List<string>> creatureAttackData;
         private Dictionary<string, List<string>> templateAttackData;
-        private Dictionary<string, List<AdvancementDataSelection>> advancementData;
 
         protected override string tableName => TableNameConstants.Collection.AttackData;
 
@@ -51,9 +49,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             creatureAttackData = AttackTestData.GetCreatureAttackData();
             templateAttackData = AttackTestData.GetTemplateAttackData();
-
-            var advancementDataSelector = GetNewInstanceOf<ICollectionDataSelector<AdvancementDataSelection>>();
-            advancementData = advancementDataSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Advancements);
         }
 
         [SetUp]
@@ -71,14 +66,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             var creatures = CreatureConstants.GetAll();
             var templates = CreatureConstants.Templates.GetAll();
 
-            foreach (var creature in creatures)
-            {
-                var advancements = advancementDataSelector.
-            }
-
-            Assert.That(templateAttackData.Keys, Is.EquivalentTo(templates));
-
-            var names = creatureAttackData.Keys.Union(templateAttackData.Keys);
+            var names = creatures.Union(templates);
 
             AssertCollectionNames(names);
         }

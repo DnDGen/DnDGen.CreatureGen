@@ -10,11 +10,16 @@ namespace DnDGen.CreatureGen.Selectors.Collections
     internal class AttackSelector : IAttackSelector
     {
         private readonly ICollectionSelector collectionSelector;
+        private readonly ICollectionDataSelector<AttackDataSelection> attackDataSelector;
+        private readonly ICollectionDataSelector<DamageDataSelection> damageDataSelector;
         private readonly Dictionary<string, string> damageMaps;
+        private readonly string[] orderedSizes;
 
-        public AttackSelector(ICollectionSelector collectionSelector)
+        public AttackSelector(ICollectionSelector collectionSelector, ICollectionDataSelector<AttackDataSelection> attackDataSelector, ICollectionDataSelector<DamageDataSelection> damageDataSelector)
         {
             this.collectionSelector = collectionSelector;
+            this.attackDataSelector = attackDataSelector;
+            this.damageDataSelector = damageDataSelector;
 
             damageMaps = new Dictionary<string, string>
             {
@@ -27,42 +32,35 @@ namespace DnDGen.CreatureGen.Selectors.Collections
                 ["1d3"] = "1d4",
                 ["1d2"] = "1d3"
             };
+
+            orderedSizes = SizeConstants.GetOrdered();
         }
 
         public IEnumerable<AttackDataSelection> Select(string creatureName, string originalSize, string advancedSize)
         {
-            var attackData = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, creatureName);
-            var selections = new List<AttackDataSelection>();
+            var attackSelections = attackDataSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, creatureName);
 
-            foreach (var data in attackData)
+            foreach (var selection in attackSelections)
             {
-                var selection = Parse(data, originalSize, advancedSize);
-                selections.Add(selection);
-            }
+                var key = selection.BuildKey(creatureName);
+                var damageSelections = damageDataSelector.SelectFrom(Config.Name, TableNameConstants.Collection.DamageData, key);
+                selection.Damages.AddRange(damageSelections);
 
-            return selections;
-        }
-
-        private AttackDataSelection Parse(string input, string originalSize, string advancedSize)
-        {
-            var selection = AttackDataSelection.From(input);
-
-            if (selection.IsNatural && originalSize != advancedSize)
-            {
-                foreach (var damage in selection.Damages)
+                if (selection.IsNatural && originalSize != advancedSize)
                 {
-                    damage.Roll = GetAdjustedDamage(damage.Roll, originalSize, advancedSize);
+                    foreach (var damage in selection.Damages)
+                    {
+                        damage.Roll = GetAdjustedDamage(damage.Roll, originalSize, advancedSize);
+                    }
                 }
             }
 
-            return selection;
+            return attackSelections;
         }
 
         private string GetAdjustedDamage(string originalDamage, string originalSize, string advancedSize)
         {
             var adjustedDamage = originalDamage;
-
-            var orderedSizes = SizeConstants.GetOrdered();
             var sizeDifference = Array.IndexOf(orderedSizes, advancedSize) - Array.IndexOf(orderedSizes, originalSize);
 
             while (sizeDifference-- > 0 && damageMaps.ContainsKey(adjustedDamage))

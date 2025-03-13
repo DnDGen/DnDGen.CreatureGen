@@ -1,5 +1,4 @@
-﻿using DnDGen.CreatureGen.Selectors.Helpers;
-using DnDGen.CreatureGen.Selectors.Selections;
+﻿using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using NUnit.Framework;
 
@@ -9,15 +8,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
     public class AttackDataSelectionTests
     {
         private AttackDataSelection selection;
-        private AttackHelper attackHelper;
-        private DamageHelper damageHelper;
 
         [SetUp]
         public void Setup()
         {
             selection = new AttackDataSelection();
-            attackHelper = new AttackHelper();
-            damageHelper = new DamageHelper();
         }
 
         [Test]
@@ -32,274 +27,481 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         }
 
         [Test]
-        public void SectionCountIs10()
+        public void SectionCountIs13()
         {
-            Assert.That(selection.SectionCount, Is.EqualTo(10));
+            Assert.That(selection.SectionCount, Is.EqualTo(13));
         }
 
         [Test]
         public void Map_FromString_ReturnsSelection()
         {
             var data = new string[selection.SectionCount];
-            data[DataIndexConstants.AttackData.AdditionalHitDiceRoll] = "9266d90210";
-            data[DataIndexConstants.AttackData.ChallengeRatingDivisor] = "42";
-            data[DataIndexConstants.AttackData.ConstitutionAdjustment] = "600";
-            data[DataIndexConstants.AttackData.DexterityAdjustment] = "1337";
-            data[DataIndexConstants.AttackData.NaturalArmorAdjustment] = "1336";
-            data[DataIndexConstants.AttackData.Reach] = "9.6";
-            data[DataIndexConstants.AttackData.Size] = "enormous";
-            data[DataIndexConstants.AttackData.Space] = "78.3";
-            data[DataIndexConstants.AttackData.StrengthAdjustment] = "8245";
-            data[DataIndexConstants.AttackData.AdjustedChallengeRating] = "adjusted cr";
+            data[DataIndexConstants.AttackData.NameIndex] = "my attack";
+            data[DataIndexConstants.AttackData.DamageEffectIndex] = "my damage effect";
+            data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex] = "926.6";
+            data[DataIndexConstants.AttackData.IsMeleeIndex] = bool.TrueString;
+            data[DataIndexConstants.AttackData.IsNaturalIndex] = bool.FalseString;
+            data[DataIndexConstants.AttackData.IsPrimaryIndex] = bool.TrueString;
+            data[DataIndexConstants.AttackData.IsSpecialIndex] = bool.FalseString;
+            data[DataIndexConstants.AttackData.FrequencyQuantityIndex] = "90210";
+            data[DataIndexConstants.AttackData.FrequencyTimePeriodIndex] = "my time period";
+            data[DataIndexConstants.AttackData.SaveIndex] = "my save";
+            data[DataIndexConstants.AttackData.SaveAbilityIndex] = "my save ability";
+            data[DataIndexConstants.AttackData.AttackTypeIndex] = "my attack type";
+            data[DataIndexConstants.AttackData.SaveDcBonusIndex] = "42";
+            data[DataIndexConstants.AttackData.RequiredGenderIndex] = "my required gender";
 
-            var newSelection = AdvancementDataSelection.Map(data);
+            var newSelection = AttackDataSelection.Map(data);
             Assert.That(newSelection, Is.Not.Null);
-            Assert.That(newSelection.AdditionalHitDiceRoll, Is.EqualTo("9266d90210"));
-            Assert.That(newSelection.ChallengeRatingDivisor, Is.EqualTo(42));
-            Assert.That(newSelection.ConstitutionAdjustment, Is.EqualTo(600));
-            Assert.That(newSelection.DexterityAdjustment, Is.EqualTo(1337));
-            Assert.That(newSelection.NaturalArmorAdjustment, Is.EqualTo(1336));
-            Assert.That(newSelection.Reach, Is.EqualTo(9.6));
-            Assert.That(newSelection.Size, Is.EqualTo("enourmous"));
-            Assert.That(newSelection.Space, Is.EqualTo(78.3));
-            Assert.That(newSelection.StrengthAdjustment, Is.EqualTo(8245));
-            Assert.That(newSelection.AdjustedChallengeRating, Is.EqualTo("adjusted cr"));
+            Assert.That(newSelection.Name, Is.EqualTo("my attack"));
+            Assert.That(newSelection.DamageEffect, Is.EqualTo("my damage effect"));
+            Assert.That(newSelection.DamageBonusMultiplier, Is.EqualTo(926.6));
+            Assert.That(newSelection.IsMelee, Is.EqualTo(true));
+            Assert.That(newSelection.IsNatural, Is.EqualTo(false));
+            Assert.That(newSelection.IsPrimary, Is.EqualTo(true));
+            Assert.That(newSelection.IsSpecial, Is.EqualTo(false));
+            Assert.That(newSelection.FrequencyQuantity, Is.EqualTo(90210));
+            Assert.That(newSelection.FrequencyTimePeriod, Is.EqualTo("my time period"));
+            Assert.That(newSelection.Save, Is.EqualTo("my save"));
+            Assert.That(newSelection.SaveAbility, Is.EqualTo("my save ability"));
+            Assert.That(newSelection.AttackType, Is.EqualTo("my attack type"));
+            Assert.That(newSelection.SaveDcBonus, Is.EqualTo(42));
+            Assert.That(newSelection.RequiredGender, Is.EqualTo("my required gender"));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void Map_FromString_ReturnsSelection_Melee(bool melee)
+        {
+            var data = new string[selection.SectionCount];
+            data[DataIndexConstants.AttackData.IsMeleeIndex] = melee.ToString();
+
+            var newSelection = AttackDataSelection.Map(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.IsMelee, Is.EqualTo(melee));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void Map_FromString_ReturnsSelection_Natural(bool natural)
+        {
+            var data = new string[selection.SectionCount];
+            data[DataIndexConstants.AttackData.IsNaturalIndex] = natural.ToString();
+
+            var newSelection = AttackDataSelection.Map(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.IsNatural, Is.EqualTo(natural));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void Map_FromString_ReturnsSelection_Primary(bool primary)
+        {
+            var data = new string[selection.SectionCount];
+            data[DataIndexConstants.AttackData.IsPrimaryIndex] = primary.ToString();
+
+            var newSelection = AttackDataSelection.Map(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.IsPrimary, Is.EqualTo(primary));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void Map_FromString_ReturnsSelection_Special(bool special)
+        {
+            var data = new string[selection.SectionCount];
+            data[DataIndexConstants.AttackData.IsSpecialIndex] = special.ToString();
+
+            var newSelection = AttackDataSelection.Map(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.IsSpecial, Is.EqualTo(special));
+        }
+
+        [TestCase("my save", "my save")]
+        [TestCase("", "")]
+        [TestCase(null, "")]
+        public void Map_FromString_ReturnsSelection_Save(string save, string expected)
+        {
+            var data = new string[selection.SectionCount];
+            data[DataIndexConstants.AttackData.SaveIndex] = save;
+
+            var newSelection = AttackDataSelection.Map(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.Save, Is.EqualTo(expected));
+        }
+
+        [TestCase("my save ability", "my save ability")]
+        [TestCase("", "")]
+        [TestCase(null, "")]
+        public void Map_FromString_ReturnsSelection_SaveAbility(string saveAbility, string expected)
+        {
+            var data = new string[selection.SectionCount];
+            data[DataIndexConstants.AttackData.SaveAbilityIndex] = saveAbility;
+
+            var newSelection = AttackDataSelection.Map(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.Save, Is.EqualTo(expected));
+        }
+
+        [TestCase("my required gender", "my required gender")]
+        [TestCase("", "")]
+        [TestCase(null, "")]
+        public void Map_FromString_ReturnsSelection_RequiredGender(string requiredGender, string expected)
+        {
+            var data = new string[selection.SectionCount];
+            data[DataIndexConstants.AttackData.RequiredGenderIndex] = requiredGender;
+
+            var newSelection = AttackDataSelection.Map(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.RequiredGender, Is.EqualTo(expected));
         }
 
         [Test]
         public void Map_FromSelection_ReturnsString()
         {
-            var selection = new AdvancementDataSelection
+            var selection = new AttackDataSelection
             {
-                AdditionalHitDiceRoll = "9266d90210",
-                ChallengeRatingDivisor = 42,
-                ConstitutionAdjustment = 600,
-                DexterityAdjustment = 1337,
-                NaturalArmorAdjustment = 1336,
-                Reach = 9.6,
-                Size = "enormous",
-                Space = 78.3,
-                StrengthAdjustment = 8245,
-                AdjustedChallengeRating = "adjusted cr",
+                Name = "my attack",
+                DamageEffect = "my damage effect",
+                DamageBonusMultiplier = 926.6,
+                IsMelee = true,
+                IsNatural = false,
+                IsPrimary = true,
+                IsSpecial = false,
+                FrequencyQuantity = 90210,
+                FrequencyTimePeriod = "my time period",
+                Save = "my save",
+                SaveAbility = "my save ability",
+                AttackType = "my attack type",
+                SaveDcBonus = 42,
+                RequiredGender = "my required gender",
             };
 
-            var rawData = AdvancementDataSelection.Map(selection);
+            var rawData = AttackDataSelection.Map(selection);
             Assert.That(rawData.Length, Is.EqualTo(selection.SectionCount));
-            Assert.That(rawData[DataIndexConstants.AttackData.AdditionalHitDiceRoll], Is.EqualTo("9266d90210"));
-            Assert.That(rawData[DataIndexConstants.AttackData.ChallengeRatingDivisor], Is.EqualTo("42"));
-            Assert.That(rawData[DataIndexConstants.AttackData.ConstitutionAdjustment], Is.EqualTo("600"));
-            Assert.That(rawData[DataIndexConstants.AttackData.DexterityAdjustment], Is.EqualTo("1337"));
-            Assert.That(rawData[DataIndexConstants.AttackData.NaturalArmorAdjustment], Is.EqualTo("1336"));
-            Assert.That(rawData[DataIndexConstants.AttackData.Reach], Is.EqualTo("9.6"));
-            Assert.That(rawData[DataIndexConstants.AttackData.Size], Is.EqualTo("enormous"));
-            Assert.That(rawData[DataIndexConstants.AttackData.Space], Is.EqualTo("78.3"));
-            Assert.That(rawData[DataIndexConstants.AttackData.StrengthAdjustment], Is.EqualTo("8245"));
-            Assert.That(rawData[DataIndexConstants.AttackData.AdjustedChallengeRating], Is.EqualTo("adjusted cr"));
+            Assert.That(rawData[DataIndexConstants.AttackData.NameIndex], Is.EqualTo("my attack"));
+            Assert.That(rawData[DataIndexConstants.AttackData.DamageEffectIndex], Is.EqualTo("my damage effect"));
+            Assert.That(rawData[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.EqualTo("926.6"));
+            Assert.That(rawData[DataIndexConstants.AttackData.IsMeleeIndex], Is.EqualTo(bool.TrueString));
+            Assert.That(rawData[DataIndexConstants.AttackData.IsNaturalIndex], Is.EqualTo(bool.FalseString));
+            Assert.That(rawData[DataIndexConstants.AttackData.IsPrimaryIndex], Is.EqualTo(bool.TrueString));
+            Assert.That(rawData[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(bool.FalseString));
+            Assert.That(rawData[DataIndexConstants.AttackData.FrequencyQuantityIndex], Is.EqualTo("90210"));
+            Assert.That(rawData[DataIndexConstants.AttackData.FrequencyTimePeriodIndex], Is.EqualTo("my time period"));
+            Assert.That(rawData[DataIndexConstants.AttackData.SaveIndex], Is.EqualTo("my save"));
+            Assert.That(rawData[DataIndexConstants.AttackData.SaveAbilityIndex], Is.EqualTo("my save ability"));
+            Assert.That(rawData[DataIndexConstants.AttackData.AttackTypeIndex], Is.EqualTo("my attack type"));
+            Assert.That(rawData[DataIndexConstants.AttackData.SaveDcBonusIndex], Is.EqualTo("42"));
+            Assert.That(rawData[DataIndexConstants.AttackData.RequiredGenderIndex], Is.EqualTo("my required gender"));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void Map_FromSelection_ReturnsString_Melee(bool melee)
+        {
+            selection.IsMelee = melee;
+
+            var data = AttackDataSelection.Map(selection);
+            Assert.That(data[DataIndexConstants.AttackData.IsMeleeIndex], Is.EqualTo(melee.ToString()));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void Map_FromSelection_ReturnsString_Natural(bool natural)
+        {
+            selection.IsNatural = natural;
+
+            var data = AttackDataSelection.Map(selection);
+            Assert.That(data[DataIndexConstants.AttackData.IsNaturalIndex], Is.EqualTo(natural.ToString()));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void Map_FromSelection_ReturnsString_Primary(bool primary)
+        {
+            selection.IsPrimary = primary;
+
+            var data = AttackDataSelection.Map(selection);
+            Assert.That(data[DataIndexConstants.AttackData.IsPrimaryIndex], Is.EqualTo(primary.ToString()));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void Map_FromSelection_ReturnsString_Special(bool special)
+        {
+            selection.IsSpecial = special;
+
+            var data = AttackDataSelection.Map(selection);
+            Assert.That(data[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(special.ToString()));
+        }
+
+        [TestCase("my save", "my save")]
+        [TestCase("", "")]
+        [TestCase(null, "")]
+        public void Map_FromSelection_ReturnsString_Save(string save, string expected)
+        {
+            selection.Save = save;
+
+            var data = AttackDataSelection.Map(selection);
+            Assert.That(data[DataIndexConstants.AttackData.SaveIndex], Is.EqualTo(expected));
+        }
+
+        [TestCase("my save ability", "my save ability")]
+        [TestCase("", "")]
+        [TestCase(null, "")]
+        public void Map_FromSelection_ReturnsString_SaveAbility(string saveAbility, string expected)
+        {
+            selection.SaveAbility = saveAbility;
+
+            var data = AttackDataSelection.Map(selection);
+            Assert.That(data[DataIndexConstants.AttackData.SaveAbilityIndex], Is.EqualTo(expected));
+        }
+
+        [TestCase("my required gender", "my required gender")]
+        [TestCase("", "")]
+        [TestCase(null, "")]
+        public void Map_FromSelection_ReturnsString_RequiredGender(string requiredGender, string expected)
+        {
+            selection.RequiredGender = requiredGender;
+
+            var data = AttackDataSelection.Map(selection);
+            Assert.That(data[DataIndexConstants.AttackData.RequiredGenderIndex], Is.EqualTo(expected));
         }
 
         [Test]
         public void MapTo_ReturnsSelection()
         {
             var data = new string[selection.SectionCount];
-            data[DataIndexConstants.AttackData.AdditionalHitDiceRoll] = "9266d90210";
-            data[DataIndexConstants.AttackData.ChallengeRatingDivisor] = "42";
-            data[DataIndexConstants.AttackData.ConstitutionAdjustment] = "600";
-            data[DataIndexConstants.AttackData.DexterityAdjustment] = "1337";
-            data[DataIndexConstants.AttackData.NaturalArmorAdjustment] = "1336";
-            data[DataIndexConstants.AttackData.Reach] = "9.6";
-            data[DataIndexConstants.AttackData.Size] = "enormous";
-            data[DataIndexConstants.AttackData.Space] = "78.3";
-            data[DataIndexConstants.AttackData.StrengthAdjustment] = "8245";
-            data[DataIndexConstants.AttackData.AdjustedChallengeRating] = "adjusted cr";
+            data[DataIndexConstants.AttackData.NameIndex] = "my attack";
+            data[DataIndexConstants.AttackData.DamageEffectIndex] = "my damage effect";
+            data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex] = "926.6";
+            data[DataIndexConstants.AttackData.IsMeleeIndex] = bool.TrueString;
+            data[DataIndexConstants.AttackData.IsNaturalIndex] = bool.FalseString;
+            data[DataIndexConstants.AttackData.IsPrimaryIndex] = bool.TrueString;
+            data[DataIndexConstants.AttackData.IsSpecialIndex] = bool.FalseString;
+            data[DataIndexConstants.AttackData.FrequencyQuantityIndex] = "90210";
+            data[DataIndexConstants.AttackData.FrequencyTimePeriodIndex] = "my time period";
+            data[DataIndexConstants.AttackData.SaveIndex] = "my save";
+            data[DataIndexConstants.AttackData.SaveAbilityIndex] = "my save ability";
+            data[DataIndexConstants.AttackData.AttackTypeIndex] = "my attack type";
+            data[DataIndexConstants.AttackData.SaveDcBonusIndex] = "42";
+            data[DataIndexConstants.AttackData.RequiredGenderIndex] = "my required gender";
 
             var newSelection = selection.MapTo(data);
             Assert.That(newSelection, Is.Not.Null);
-            Assert.That(newSelection.AdditionalHitDiceRoll, Is.EqualTo("9266d90210"));
-            Assert.That(newSelection.ChallengeRatingDivisor, Is.EqualTo(42));
-            Assert.That(newSelection.ConstitutionAdjustment, Is.EqualTo(600));
-            Assert.That(newSelection.DexterityAdjustment, Is.EqualTo(1337));
-            Assert.That(newSelection.NaturalArmorAdjustment, Is.EqualTo(1336));
-            Assert.That(newSelection.Reach, Is.EqualTo(9.6));
-            Assert.That(newSelection.Size, Is.EqualTo("enourmous"));
-            Assert.That(newSelection.Space, Is.EqualTo(78.3));
-            Assert.That(newSelection.StrengthAdjustment, Is.EqualTo(8245));
-            Assert.That(newSelection.AdjustedChallengeRating, Is.EqualTo("adjusted cr"));
+            Assert.That(newSelection.Name, Is.EqualTo("my attack"));
+            Assert.That(newSelection.DamageEffect, Is.EqualTo("my damage effect"));
+            Assert.That(newSelection.DamageBonusMultiplier, Is.EqualTo(926.6));
+            Assert.That(newSelection.IsMelee, Is.EqualTo(true));
+            Assert.That(newSelection.IsNatural, Is.EqualTo(false));
+            Assert.That(newSelection.IsPrimary, Is.EqualTo(true));
+            Assert.That(newSelection.IsSpecial, Is.EqualTo(false));
+            Assert.That(newSelection.FrequencyQuantity, Is.EqualTo(90210));
+            Assert.That(newSelection.FrequencyTimePeriod, Is.EqualTo("my time period"));
+            Assert.That(newSelection.Save, Is.EqualTo("my save"));
+            Assert.That(newSelection.SaveAbility, Is.EqualTo("my save ability"));
+            Assert.That(newSelection.AttackType, Is.EqualTo("my attack type"));
+            Assert.That(newSelection.SaveDcBonus, Is.EqualTo(42));
+            Assert.That(newSelection.RequiredGender, Is.EqualTo("my required gender"));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void MapTo_ReturnsSelection_Melee(bool melee)
+        {
+            var data = new string[selection.SectionCount];
+            data[DataIndexConstants.AttackData.IsMeleeIndex] = melee.ToString();
+
+            var newSelection = selection.MapTo(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.IsMelee, Is.EqualTo(melee));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void MapTo_ReturnsSelection_Natural(bool natural)
+        {
+            var data = new string[selection.SectionCount];
+            data[DataIndexConstants.AttackData.IsNaturalIndex] = natural.ToString();
+
+            var newSelection = selection.MapTo(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.IsNatural, Is.EqualTo(natural));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void MapTo_ReturnsSelection_Primary(bool primary)
+        {
+            var data = new string[selection.SectionCount];
+            data[DataIndexConstants.AttackData.IsPrimaryIndex] = primary.ToString();
+
+            var newSelection = selection.MapTo(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.IsPrimary, Is.EqualTo(primary));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void MapTo_ReturnsSelection_Special(bool special)
+        {
+            var data = new string[selection.SectionCount];
+            data[DataIndexConstants.AttackData.IsSpecialIndex] = special.ToString();
+
+            var newSelection = selection.MapTo(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.IsSpecial, Is.EqualTo(special));
+        }
+
+        [TestCase("my save", "my save")]
+        [TestCase("", "")]
+        [TestCase(null, "")]
+        public void MapTo_ReturnsSelection_Save(string save, string expected)
+        {
+            var data = new string[selection.SectionCount];
+            data[DataIndexConstants.AttackData.SaveIndex] = save;
+
+            var newSelection = selection.MapTo(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.Save, Is.EqualTo(expected));
+        }
+
+        [TestCase("my save ability", "my save ability")]
+        [TestCase("", "")]
+        [TestCase(null, "")]
+        public void MapTo_ReturnsSelection_SaveAbility(string saveAbility, string expected)
+        {
+            var data = new string[selection.SectionCount];
+            data[DataIndexConstants.AttackData.SaveAbilityIndex] = saveAbility;
+
+            var newSelection = selection.MapTo(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.Save, Is.EqualTo(expected));
+        }
+
+        [TestCase("my required gender", "my required gender")]
+        [TestCase("", "")]
+        [TestCase(null, "")]
+        public void MapTo_ReturnsSelection_RequiredGender(string requiredGender, string expected)
+        {
+            var data = new string[selection.SectionCount];
+            data[DataIndexConstants.AttackData.RequiredGenderIndex] = requiredGender;
+
+            var newSelection = selection.MapTo(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.RequiredGender, Is.EqualTo(expected));
         }
 
         [Test]
         public void MapFrom_ReturnsString()
         {
-            var selection = new AdvancementDataSelection
+            var selection = new AttackDataSelection
             {
-                AdditionalHitDiceRoll = "9266d90210",
-                ChallengeRatingDivisor = 42,
-                ConstitutionAdjustment = 600,
-                DexterityAdjustment = 1337,
-                NaturalArmorAdjustment = 1336,
-                Reach = 9.6,
-                Size = "enormous",
-                Space = 78.3,
-                StrengthAdjustment = 8245,
-                AdjustedChallengeRating = "adjusted cr",
+                Name = "my attack",
+                DamageEffect = "my damage effect",
+                DamageBonusMultiplier = 926.6,
+                IsMelee = true,
+                IsNatural = false,
+                IsPrimary = true,
+                IsSpecial = false,
+                FrequencyQuantity = 90210,
+                FrequencyTimePeriod = "my time period",
+                Save = "my save",
+                SaveAbility = "my save ability",
+                AttackType = "my attack type",
+                SaveDcBonus = 42,
+                RequiredGender = "my required gender",
             };
 
             var rawData = selection.MapFrom(selection);
             Assert.That(rawData.Length, Is.EqualTo(selection.SectionCount));
-            Assert.That(rawData[DataIndexConstants.AttackData.AdditionalHitDiceRoll], Is.EqualTo("9266d90210"));
-            Assert.That(rawData[DataIndexConstants.AttackData.ChallengeRatingDivisor], Is.EqualTo("42"));
-            Assert.That(rawData[DataIndexConstants.AttackData.ConstitutionAdjustment], Is.EqualTo("600"));
-            Assert.That(rawData[DataIndexConstants.AttackData.DexterityAdjustment], Is.EqualTo("1337"));
-            Assert.That(rawData[DataIndexConstants.AttackData.NaturalArmorAdjustment], Is.EqualTo("1336"));
-            Assert.That(rawData[DataIndexConstants.AttackData.Reach], Is.EqualTo("9.6"));
-            Assert.That(rawData[DataIndexConstants.AttackData.Size], Is.EqualTo("enormous"));
-            Assert.That(rawData[DataIndexConstants.AttackData.Space], Is.EqualTo("78.3"));
-            Assert.That(rawData[DataIndexConstants.AttackData.StrengthAdjustment], Is.EqualTo("8245"));
-            Assert.That(rawData[DataIndexConstants.AttackData.AdjustedChallengeRating], Is.EqualTo("adjusted cr"));
+            Assert.That(rawData[DataIndexConstants.AttackData.NameIndex], Is.EqualTo("my attack"));
+            Assert.That(rawData[DataIndexConstants.AttackData.DamageEffectIndex], Is.EqualTo("my damage effect"));
+            Assert.That(rawData[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.EqualTo("926.6"));
+            Assert.That(rawData[DataIndexConstants.AttackData.IsMeleeIndex], Is.EqualTo(bool.TrueString));
+            Assert.That(rawData[DataIndexConstants.AttackData.IsNaturalIndex], Is.EqualTo(bool.FalseString));
+            Assert.That(rawData[DataIndexConstants.AttackData.IsPrimaryIndex], Is.EqualTo(bool.TrueString));
+            Assert.That(rawData[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(bool.FalseString));
+            Assert.That(rawData[DataIndexConstants.AttackData.FrequencyQuantityIndex], Is.EqualTo("90210"));
+            Assert.That(rawData[DataIndexConstants.AttackData.FrequencyTimePeriodIndex], Is.EqualTo("my time period"));
+            Assert.That(rawData[DataIndexConstants.AttackData.SaveIndex], Is.EqualTo("my save"));
+            Assert.That(rawData[DataIndexConstants.AttackData.SaveAbilityIndex], Is.EqualTo("my save ability"));
+            Assert.That(rawData[DataIndexConstants.AttackData.AttackTypeIndex], Is.EqualTo("my attack type"));
+            Assert.That(rawData[DataIndexConstants.AttackData.SaveDcBonusIndex], Is.EqualTo("42"));
+            Assert.That(rawData[DataIndexConstants.AttackData.RequiredGenderIndex], Is.EqualTo("my required gender"));
         }
 
-        [Test]
-        public void FromData_ReturnsSelection_WithNoDamage()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void MapFrom_ReturnsString_Melee(bool melee)
         {
-            var data = attackHelper.BuildData("name", string.Empty, "effect", 4.2, "attack type", 9266, "time period", true, true, true, true, string.Empty, string.Empty);
-            var rawData = attackHelper.BuildEntry(data);
+            selection.IsMelee = melee;
 
-            var selection = AttackDataSelection.From(rawData);
-            Assert.That(selection.AttackType, Is.EqualTo("attack type"));
-            Assert.That(selection.Damages, Is.Empty);
-            Assert.That(selection.DamageEffect, Is.EqualTo("effect"));
-            Assert.That(selection.DamageBonusMultiplier, Is.EqualTo(4.2));
-            Assert.That(selection.FrequencyQuantity, Is.EqualTo(9266));
-            Assert.That(selection.FrequencyTimePeriod, Is.EqualTo("time period"));
-            Assert.That(selection.IsMelee, Is.True);
-            Assert.That(selection.IsNatural, Is.True);
-            Assert.That(selection.IsPrimary, Is.True);
-            Assert.That(selection.IsSpecial, Is.True);
-            Assert.That(selection.Name, Is.EqualTo("name"));
-            Assert.That(selection.Save, Is.Empty);
-            Assert.That(selection.SaveAbility, Is.Empty);
-            Assert.That(selection.SaveDcBonus, Is.Zero);
+            var data = selection.MapFrom(selection);
+            Assert.That(data[DataIndexConstants.AttackData.IsMeleeIndex], Is.EqualTo(melee.ToString()));
         }
 
-        [Test]
-        public void FromData_ReturnsSelection_WithDamage()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void MapFrom_ReturnsString_Natural(bool natural)
         {
-            var damageData = damageHelper.BuildData("my roll", "my damage type", "my condition");
-            var damageEntry = damageHelper.BuildEntry(damageData);
+            selection.IsNatural = natural;
 
-            var data = attackHelper.BuildData("name", damageEntry, "effect", 4.2, "attack type", 9266, "time period", true, true, true, true, string.Empty, string.Empty);
-            var rawData = attackHelper.BuildEntry(data);
-
-            var selection = AttackDataSelection.From(rawData);
-            Assert.That(selection.AttackType, Is.EqualTo("attack type"));
-            Assert.That(selection.Damages, Has.Count.EqualTo(1));
-            Assert.That(selection.Damages[0].Roll, Is.EqualTo("my roll"));
-            Assert.That(selection.Damages[0].Type, Is.EqualTo("my damage type"));
-            Assert.That(selection.Damages[0].Condition, Is.EqualTo("my condition"));
-            Assert.That(selection.DamageEffect, Is.EqualTo("effect"));
-            Assert.That(selection.DamageBonusMultiplier, Is.EqualTo(4.2));
-            Assert.That(selection.FrequencyQuantity, Is.EqualTo(9266));
-            Assert.That(selection.FrequencyTimePeriod, Is.EqualTo("time period"));
-            Assert.That(selection.IsMelee, Is.True);
-            Assert.That(selection.IsNatural, Is.True);
-            Assert.That(selection.IsPrimary, Is.True);
-            Assert.That(selection.IsSpecial, Is.True);
-            Assert.That(selection.Name, Is.EqualTo("name"));
-            Assert.That(selection.Save, Is.Empty);
-            Assert.That(selection.SaveAbility, Is.Empty);
-            Assert.That(selection.SaveDcBonus, Is.Zero);
+            var data = selection.MapFrom(selection);
+            Assert.That(data[DataIndexConstants.AttackData.IsNaturalIndex], Is.EqualTo(natural.ToString()));
         }
 
-        [Test]
-        public void FromData_ReturnsSelection_WithMultipleDamages()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void MapFrom_ReturnsString_Primary(bool primary)
         {
-            var damageData1 = damageHelper.BuildData("my roll", "my damage type", "my condition");
-            var damageEntry1 = damageHelper.BuildEntry(damageData1);
+            selection.IsPrimary = primary;
 
-            var damageData2 = damageHelper.BuildData("my other roll", "my other damage type", "my other condition");
-            var damageEntry2 = damageHelper.BuildEntry(damageData2);
-
-            var damageEntry = string.Join(AttackDataSelection.DamageSplitDivider, damageEntry1, damageEntry2);
-
-            var data = attackHelper.BuildData("name", damageEntry, "effect", 4.2, "attack type", 9266, "time period", true, true, true, true, string.Empty, string.Empty);
-            var rawData = attackHelper.BuildEntry(data);
-
-            var selection = AttackDataSelection.From(rawData);
-            Assert.That(selection.AttackType, Is.EqualTo("attack type"));
-            Assert.That(selection.Damages, Has.Count.EqualTo(2));
-            Assert.That(selection.Damages[0].Roll, Is.EqualTo("my roll"));
-            Assert.That(selection.Damages[0].Type, Is.EqualTo("my damage type"));
-            Assert.That(selection.Damages[0].Condition, Is.EqualTo("my condition"));
-            Assert.That(selection.Damages[1].Roll, Is.EqualTo("my other roll"));
-            Assert.That(selection.Damages[1].Type, Is.EqualTo("my other damage type"));
-            Assert.That(selection.Damages[1].Condition, Is.EqualTo("my other condition"));
-            Assert.That(selection.DamageEffect, Is.EqualTo("effect"));
-            Assert.That(selection.DamageBonusMultiplier, Is.EqualTo(4.2));
-            Assert.That(selection.FrequencyQuantity, Is.EqualTo(9266));
-            Assert.That(selection.FrequencyTimePeriod, Is.EqualTo("time period"));
-            Assert.That(selection.IsMelee, Is.True);
-            Assert.That(selection.IsNatural, Is.True);
-            Assert.That(selection.IsPrimary, Is.True);
-            Assert.That(selection.IsSpecial, Is.True);
-            Assert.That(selection.Name, Is.EqualTo("name"));
-            Assert.That(selection.Save, Is.Empty);
-            Assert.That(selection.SaveAbility, Is.Empty);
-            Assert.That(selection.SaveDcBonus, Is.Zero);
+            var data = selection.MapFrom(selection);
+            Assert.That(data[DataIndexConstants.AttackData.IsPrimaryIndex], Is.EqualTo(primary.ToString()));
         }
 
-        [Test]
-        public void FromData_ReturnsSelection_WithSave()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void MapFrom_ReturnsString_Special(bool special)
         {
-            var damageData = damageHelper.BuildData("my roll", "my damage type");
-            var damageEntry = damageHelper.BuildEntry(damageData);
+            selection.IsSpecial = special;
 
-            var data = attackHelper.BuildData("name", damageEntry, "effect", 4.2, "attack type", 9266, "time period", true, true, true, true, "save", "save ability", 90210);
-            var rawData = attackHelper.BuildEntry(data);
-
-            var selection = AttackDataSelection.From(rawData);
-            Assert.That(selection.AttackType, Is.EqualTo("attack type"));
-            Assert.That(selection.Damages, Has.Count.EqualTo(1));
-            Assert.That(selection.Damages[0].Roll, Is.EqualTo("my roll"));
-            Assert.That(selection.Damages[0].Type, Is.EqualTo("my damage type"));
-            Assert.That(selection.DamageEffect, Is.EqualTo("effect"));
-            Assert.That(selection.DamageBonusMultiplier, Is.EqualTo(4.2));
-            Assert.That(selection.FrequencyQuantity, Is.EqualTo(9266));
-            Assert.That(selection.FrequencyTimePeriod, Is.EqualTo("time period"));
-            Assert.That(selection.IsMelee, Is.True);
-            Assert.That(selection.IsNatural, Is.True);
-            Assert.That(selection.IsPrimary, Is.True);
-            Assert.That(selection.IsSpecial, Is.True);
-            Assert.That(selection.Name, Is.EqualTo("name"));
-            Assert.That(selection.Save, Is.EqualTo("save"));
-            Assert.That(selection.SaveAbility, Is.EqualTo("save ability"));
-            Assert.That(selection.SaveDcBonus, Is.EqualTo(90210));
+            var data = selection.MapFrom(selection);
+            Assert.That(data[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(special.ToString()));
         }
 
-        [Test]
-        public void FromData_ReturnsSelection_WithoutSave()
+        [TestCase("my save", "my save")]
+        [TestCase("", "")]
+        [TestCase(null, "")]
+        public void MapFrom_ReturnsString_Save(string save, string expected)
         {
-            var damageData = damageHelper.BuildData("my roll", "my damage type");
-            var damageEntry = damageHelper.BuildEntry(damageData);
+            selection.Save = save;
 
-            var data = attackHelper.BuildData("name", damageEntry, "effect", 4.2, "attack type", 9266, "time period", true, true, true, true, string.Empty, string.Empty);
-            var rawData = attackHelper.BuildEntry(data);
+            var data = selection.MapFrom(selection);
+            Assert.That(data[DataIndexConstants.AttackData.SaveIndex], Is.EqualTo(expected));
+        }
 
-            var selection = AttackDataSelection.From(rawData);
-            Assert.That(selection.AttackType, Is.EqualTo("attack type"));
-            Assert.That(selection.Damages, Has.Count.EqualTo(1));
-            Assert.That(selection.Damages[0].Roll, Is.EqualTo("my roll"));
-            Assert.That(selection.Damages[0].Type, Is.EqualTo("my damage type"));
-            Assert.That(selection.DamageEffect, Is.EqualTo("effect"));
-            Assert.That(selection.DamageBonusMultiplier, Is.EqualTo(4.2));
-            Assert.That(selection.FrequencyQuantity, Is.EqualTo(9266));
-            Assert.That(selection.FrequencyTimePeriod, Is.EqualTo("time period"));
-            Assert.That(selection.IsMelee, Is.True);
-            Assert.That(selection.IsNatural, Is.True);
-            Assert.That(selection.IsPrimary, Is.True);
-            Assert.That(selection.IsSpecial, Is.True);
-            Assert.That(selection.Name, Is.EqualTo("name"));
-            Assert.That(selection.Save, Is.Empty);
-            Assert.That(selection.SaveAbility, Is.Empty);
-            Assert.That(selection.SaveDcBonus, Is.Zero);
+        [TestCase("my save ability", "my save ability")]
+        [TestCase("", "")]
+        [TestCase(null, "")]
+        public void MapFrom_ReturnsString_SaveAbility(string saveAbility, string expected)
+        {
+            selection.SaveAbility = saveAbility;
+
+            var data = selection.MapFrom(selection);
+            Assert.That(data[DataIndexConstants.AttackData.SaveAbilityIndex], Is.EqualTo(expected));
+        }
+
+        [TestCase("my required gender", "my required gender")]
+        [TestCase("", "")]
+        [TestCase(null, "")]
+        public void MapFrom_ReturnsString_RequiredGender(string requiredGender, string expected)
+        {
+            selection.RequiredGender = requiredGender;
+
+            var data = selection.MapFrom(selection);
+            Assert.That(data[DataIndexConstants.AttackData.RequiredGenderIndex], Is.EqualTo(expected));
         }
 
         [TestCase(null)]
@@ -325,6 +527,46 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             selection.RequiredGender = "my required gender";
             var met = selection.RequirementsMet("wrong gender");
             Assert.That(met, Is.False);
+        }
+
+        [TestCase(true, "", "")]
+        [TestCase(true, "", "my effect")]
+        [TestCase(true, "my roll", "")]
+        [TestCase(true, "my roll", "my effect")]
+        [TestCase(false, "", "")]
+        [TestCase(false, "", "my effect")]
+        [TestCase(false, "my roll", "")]
+        [TestCase(false, "my roll", "my effect")]
+        public void BuildKey_FromData(bool primary, string roll, string effect)
+        {
+            //HACK: Remove the roll is not needed for unique key
+            selection.Name = "My Attack";
+            selection.IsPrimary = primary;
+            selection.DamageEffect = effect;
+
+            var data = selection.MapFrom(selection);
+            var key = AttackDataSelection.BuildKey("creature", data);
+            Assert.That(key, Is.EqualTo($"creatureMy Attack{primary}{effect}"));
+        }
+
+        [TestCase(true, "", "")]
+        [TestCase(true, "", "my effect")]
+        [TestCase(true, "my roll", "")]
+        [TestCase(true, "my roll", "my effect")]
+        [TestCase(false, "", "")]
+        [TestCase(false, "", "my effect")]
+        [TestCase(false, "my roll", "")]
+        [TestCase(false, "my roll", "my effect")]
+        public void BuildKey_FromString(bool primary, string roll, string effect)
+        {
+            //HACK: Remove the roll is not needed for unique key
+            selection.Name = "My Attack";
+            selection.IsPrimary = primary;
+            selection.DamageEffect = effect;
+
+            var data = Infrastructure.Helpers.DataHelper.Parse(selection);
+            var key = AttackDataSelection.BuildKey("creature", data);
+            Assert.That(key, Is.EqualTo($"creatureMy Attack{primary}{effect}"));
         }
     }
 }

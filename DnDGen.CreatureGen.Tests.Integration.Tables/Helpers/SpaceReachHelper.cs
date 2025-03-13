@@ -8,11 +8,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
     internal class SpaceReachHelper
     {
         private readonly Dice dice;
-        private Dictionary<string, double> spaces;
-        private Dictionary<string, double> tallReach;
-        private Dictionary<string, double> longReach;
-        private Dictionary<string, Dictionary<string, string>> creatureHeights;
-        private Dictionary<string, Dictionary<string, string>> creatureLengths;
+        private readonly Dictionary<string, double> spaces;
+        private readonly Dictionary<string, double> tallReach;
+        private readonly Dictionary<string, double> longReach;
+        private readonly Dictionary<string, Dictionary<string, string>> creatureHeights;
+        private readonly Dictionary<string, Dictionary<string, string>> creatureLengths;
 
         public SpaceReachHelper(Dice dice)
         {
