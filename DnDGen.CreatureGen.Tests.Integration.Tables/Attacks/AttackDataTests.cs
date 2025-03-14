@@ -74,18 +74,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             var creatures = CreatureConstants.GetAll();
             var templates = CreatureConstants.Templates.GetAll();
-            var count = creatures.Count();
 
-            foreach (var creature in creatures)
-            {
-                var key = creature + creatureData[creature].Single().Size;
-
-                var advancements = advancementData[creature];
-
-                //TODO: Make keys the creature + size (original size + all advancements)
-                //this way advanced attack data can be pre-computed
-            }
-
+            Assert.That(creatureAttackData.Keys, Is.EquivalentTo(creatures));
             Assert.That(templateAttackData.Keys, Is.EquivalentTo(templates));
 
             var names = creatureAttackData.Keys.Union(templateAttackData.Keys);
@@ -94,27 +84,35 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         }
 
         [Test]
-        public void AttackKeysAreUnique()
+        public void AttackDamageKeysAreUnique()
         {
-            var attackKeys = new List<string>();
+            var attackDamageKeys = new List<string>();
 
             foreach (var kvp in creatureAttackData)
             {
-                var keys = kvp.Value
-                    .Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>)
-                    .Select(s => s.BuildKey(kvp.Key));
-                attackKeys.AddRange(keys);
+                var creature = kvp.Key;
+                var sizes = advancementData[creature]
+                    .Select(a => a.Size)
+                    .Union([creatureData[creature].Single().Size]);
+
+                foreach (var size in sizes)
+                {
+                    var keys = kvp.Value
+                        .Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>)
+                        .Select(s => s.BuildDamageKey(creature, size));
+                    attackDamageKeys.AddRange(keys);
+                }
             }
 
             foreach (var kvp in templateAttackData)
             {
                 var keys = kvp.Value
                     .Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>)
-                    .Select(s => s.BuildKey(kvp.Key));
-                attackKeys.AddRange(keys);
+                    .Select(s => s.BuildDamageKey(kvp.Key, string.Empty));
+                attackDamageKeys.AddRange(keys);
             }
 
-            Assert.That(attackKeys, Is.Unique);
+            Assert.That(attackDamageKeys, Is.Unique);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]

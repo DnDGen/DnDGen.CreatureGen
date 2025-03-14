@@ -42,17 +42,17 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 
             foreach (var selection in attackSelections)
             {
-                var key = selection.BuildKey(creatureName);
+                var key = selection.BuildDamageKey(creatureName, advancedSize);
                 var damageSelections = damageDataSelector.SelectFrom(Config.Name, TableNameConstants.Collection.DamageData, key);
                 selection.Damages.AddRange(damageSelections);
 
-                if (selection.IsNatural && originalSize != advancedSize)
-                {
-                    foreach (var damage in selection.Damages)
-                    {
-                        damage.Roll = GetAdjustedDamage(damage.Roll, originalSize, advancedSize);
-                    }
-                }
+                //if (selection.IsNatural && originalSize != advancedSize)
+                //{
+                //    foreach (var damage in selection.Damages)
+                //    {
+                //        damage.Roll = GetAdjustedDamage(damage.Roll, originalSize, advancedSize);
+                //    }
+                //}
             }
 
             return attackSelections;

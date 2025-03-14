@@ -23,6 +23,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         private ICreatureDataSelector creatureDataSelector;
         private Dictionary<string, List<string>> creatureAttackData;
         private Dictionary<string, List<string>> templateAttackData;
+        private Dictionary<string, string> damageMaps;
 
         protected override string tableName => TableNameConstants.Collection.AttackData;
 
@@ -49,6 +50,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             creatureAttackData = AttackTestData.GetCreatureAttackData();
             templateAttackData = AttackTestData.GetTemplateAttackData();
+            damageMaps = new Dictionary<string, string>
+            {
+                ["2d8"] = "3d8",
+                ["2d6"] = "3d6",
+                ["1d10"] = "2d8",
+                ["1d8"] = "2d6",
+                ["1d6"] = "1d8",
+                ["1d4"] = "1d6",
+                ["1d3"] = "1d4",
+                ["1d2"] = "1d3"
+            };
         }
 
         [SetUp]
@@ -65,6 +77,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             var creatures = CreatureConstants.GetAll();
             var templates = CreatureConstants.Templates.GetAll();
+
+            //TODO: Make keys the creature + size (original size + all advancements)
+            //this way advanced attack data can be pre-computed
 
             var names = creatures.Union(templates);
 
@@ -533,6 +548,41 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(spellLikeAbility[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Empty);
             Assert.That(spellLikeAbility[DataIndexConstants.AttackData.SaveDcBonusIndex], Is.EqualTo(0.ToString()));
             Assert.That(spellLikeAbility[DataIndexConstants.AttackData.SaveIndex], Is.Empty);
+        }
+
+        private IEnumerable<AttackDataSelection> Select(string creatureName, string originalSize, string advancedSize)
+        {
+            var attackSelections = attackDataSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, creatureName);
+
+            foreach (var selection in attackSelections)
+            {
+                var key = selection.BuildDamageKey(creatureName, advancedSize);
+                var damageSelections = damageDataSelector.SelectFrom(Config.Name, TableNameConstants.Collection.DamageData, key);
+                selection.Damages.AddRange(damageSelections);
+
+                if (selection.IsNatural && originalSize != advancedSize)
+                {
+                    foreach (var damage in selection.Damages)
+                    {
+                        damage.Roll = GetAdjustedDamage(damage.Roll, originalSize, advancedSize);
+                    }
+                }
+            }
+
+            return attackSelections;
+        }
+
+        private string GetAdjustedDamage(string originalDamage, string originalSize, string advancedSize)
+        {
+            var adjustedDamage = originalDamage;
+            var sizeDifference = Array.IndexOf(orderedSizes, advancedSize) - Array.IndexOf(orderedSizes, originalSize);
+
+            while (sizeDifference-- > 0 && damageMaps.ContainsKey(adjustedDamage))
+            {
+                adjustedDamage = damageMaps[adjustedDamage];
+            }
+
+            return adjustedDamage;
         }
     }
 }

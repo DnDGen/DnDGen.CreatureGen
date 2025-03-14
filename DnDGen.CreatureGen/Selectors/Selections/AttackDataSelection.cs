@@ -1,5 +1,4 @@
 ﻿using DnDGen.CreatureGen.Tables;
-using DnDGen.Infrastructure.Helpers;
 using DnDGen.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
@@ -82,28 +81,16 @@ namespace DnDGen.CreatureGen.Selectors.Selections
 
         public bool RequirementsMet(string gender) => string.IsNullOrEmpty(RequiredGender) || RequiredGender == gender;
 
-        public static string BuildKey(string creature, string[] data)
+        private static string BuildKeyFromSections(params string[] keySections) => string.Join(string.Empty, keySections);
+
+        public string BuildDamageKey(string creature, string size)
         {
-            //HACK: Original key included damage roll, which is now a separate data selection
-            //Hopefully key keeps uniqueness without it
+            var data = MapFrom(this);
             return BuildKeyFromSections(creature,
+                size,
                 data[DataIndexConstants.AttackData.NameIndex],
                 data[DataIndexConstants.AttackData.IsPrimaryIndex],
                 data[DataIndexConstants.AttackData.DamageEffectIndex]);
-        }
-
-        public static string BuildKey(string creature, string data)
-        {
-            var parsedData = DataHelper.Parse(data);
-            return BuildKey(creature, parsedData);
-        }
-
-        private static string BuildKeyFromSections(string creature, params string[] keySections) => $"{creature}{string.Join(string.Empty, keySections)}";
-
-        public string BuildKey(string creature)
-        {
-            var data = MapFrom(this);
-            return BuildKey(creature, data);
         }
     }
 }

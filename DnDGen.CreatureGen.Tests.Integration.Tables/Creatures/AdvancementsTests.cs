@@ -25,7 +25,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         private SpaceReachHelper spaceReachHelper;
         private string[] sizes;
 
-        protected override string tableName => TableNameConstants.TypeAndAmount.Advancements;
+        protected override string tableName => TableNameConstants.Collection.Advancements;
 
         [OneTimeSetUp]
         public void OnetimeSetup()
