@@ -124,16 +124,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             if (creatureAttackData[creature][0] == AttackTestData.None)
                 creatureAttackData[creature].Clear();
 
-            foreach (var entry in creatureAttackData[creature])
-            {
-                var stringEntry = helper.BuildEntry(entry);
-                var attackValid = helper.ValidateEntry(stringEntry);
-                Assert.That(attackValid, Is.True, $"{creature}: {entry[DataIndexConstants.AttackData.NameIndex]} is not valid attack data");
-
-                var damageValid = damageHelper.ValidateEntries(entry[DataIndexConstants.AttackData.DamageDataIndex]);
-                Assert.That(damageValid, Is.True, $"{creature}: {entry[DataIndexConstants.AttackData.NameIndex]}: {entry[DataIndexConstants.AttackData.DamageDataIndex]} is not valid damage data");
-            }
-
             AssertCreatureHasCorrectImprovedGrab(creatureAttackData[creature]);
             AssertCreatureHasCorrectSpellLikeAbility(creatureAttackData[creature]);
             AssertCreatureHasCorrectSpells(creatureAttackData[creature]);
@@ -230,23 +220,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
         private void AssertNaturalAttacksHaveCorrectDamageTypes(List<string[]> entries)
         {
-            var damageTypes = new Dictionary<string, string>();
-            damageTypes["bite"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}/{AttributeConstants.DamageTypes.Bludgeoning}";
-            damageTypes["claw"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}";
-            damageTypes["talon"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}";
-            damageTypes["talons"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}";
-            damageTypes["rake"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}";
-            damageTypes["rend"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}";
-            damageTypes["gore"] = $"{AttributeConstants.DamageTypes.Piercing}";
-            damageTypes["slap"] = $"{AttributeConstants.DamageTypes.Bludgeoning}";
-            damageTypes["tail slap"] = $"{AttributeConstants.DamageTypes.Bludgeoning}";
-            damageTypes["slam"] = $"{AttributeConstants.DamageTypes.Bludgeoning}";
-            damageTypes["sting"] = $"{AttributeConstants.DamageTypes.Piercing}";
-            damageTypes["tentacle"] = $"{AttributeConstants.DamageTypes.Bludgeoning}";
-            damageTypes["arm"] = $"{AttributeConstants.DamageTypes.Bludgeoning}";
-            damageTypes["wing"] = $"{AttributeConstants.DamageTypes.Bludgeoning}";
-            damageTypes["trample"] = $"{AttributeConstants.DamageTypes.Bludgeoning}";
-            damageTypes["unarmed strike"] = $"{AttributeConstants.DamageTypes.Bludgeoning}";
+            var damageTypes = new Dictionary<string, string>
+            {
+                ["bite"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}/{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["claw"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["talon"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["talons"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["rake"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["rend"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["gore"] = $"{AttributeConstants.DamageTypes.Piercing}",
+                ["slap"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["tail slap"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["slam"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["sting"] = $"{AttributeConstants.DamageTypes.Piercing}",
+                ["tentacle"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["arm"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["wing"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["trample"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["unarmed strike"] = $"{AttributeConstants.DamageTypes.Bludgeoning}"
+            };
 
             foreach (var entry in entries)
             {
@@ -490,8 +482,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(naturalAttack[DataIndexConstants.AttackData.DamageDataIndex], Is.Not.Empty, naturalAttack[DataIndexConstants.AttackData.NameIndex]);
         }
 
-        private void AssertCreatureHasCorrectImprovedGrab(List<string[]> entries)
+        private void AssertCreatureHasCorrectImprovedGrab(List<string> entries)
         {
+            var selection = Infrastructure.Helpers.DataHelper
+
             var improvedGrab = entries.FirstOrDefault(d => d[DataIndexConstants.AttackData.NameIndex] == "Improved Grab");
             if (improvedGrab == null)
             {

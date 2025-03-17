@@ -529,44 +529,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.False);
         }
 
-        [TestCase(true, "", "")]
-        [TestCase(true, "", "my effect")]
-        [TestCase(true, "my roll", "")]
-        [TestCase(true, "my roll", "my effect")]
-        [TestCase(false, "", "")]
-        [TestCase(false, "", "my effect")]
-        [TestCase(false, "my roll", "")]
-        [TestCase(false, "my roll", "my effect")]
-        public void BuildKey_FromData(bool primary, string roll, string effect)
+        [TestCase(true, "")]
+        [TestCase(true, "my effect")]
+        [TestCase(false, "")]
+        [TestCase(false, "my effect")]
+        public void BuildDamageKey_FromData(bool primary, string effect)
         {
-            //HACK: Remove the roll is not needed for unique key
             selection.Name = "My Attack";
             selection.IsPrimary = primary;
             selection.DamageEffect = effect;
 
-            var data = selection.MapFrom(selection);
-            var key = AttackDataSelection.BuildKey("creature", data);
-            Assert.That(key, Is.EqualTo($"creatureMy Attack{primary}{effect}"));
-        }
-
-        [TestCase(true, "", "")]
-        [TestCase(true, "", "my effect")]
-        [TestCase(true, "my roll", "")]
-        [TestCase(true, "my roll", "my effect")]
-        [TestCase(false, "", "")]
-        [TestCase(false, "", "my effect")]
-        [TestCase(false, "my roll", "")]
-        [TestCase(false, "my roll", "my effect")]
-        public void BuildKey_FromString(bool primary, string roll, string effect)
-        {
-            //HACK: Remove the roll is not needed for unique key
-            selection.Name = "My Attack";
-            selection.IsPrimary = primary;
-            selection.DamageEffect = effect;
-
-            var data = Infrastructure.Helpers.DataHelper.Parse(selection);
-            var key = AttackDataSelection.BuildKey("creature", data);
-            Assert.That(key, Is.EqualTo($"creatureMy Attack{primary}{effect}"));
+            var key = selection.BuildDamageKey("creature", "my size");
+            Assert.That(key, Is.EqualTo($"creaturemy sizeMy Attack{primary}{effect}"));
         }
     }
 }
