@@ -484,32 +484,33 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
         private void AssertCreatureHasCorrectImprovedGrab(List<string> entries)
         {
-            var selection = Infrastructure.Helpers.DataHelper
+            var selections = entries.Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>);
 
-            var improvedGrab = entries.FirstOrDefault(d => d[DataIndexConstants.AttackData.NameIndex] == "Improved Grab");
+            var improvedGrab = selections.FirstOrDefault(s => s.Name == "Improved Grab");
             if (improvedGrab == null)
             {
                 return;
             }
 
-            Assert.That(improvedGrab[DataIndexConstants.AttackData.AttackTypeIndex], Is.EqualTo("extraordinary ability"));
-            Assert.That(improvedGrab[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.EqualTo("0"));
-            Assert.That(improvedGrab[DataIndexConstants.AttackData.DamageEffectIndex], Is.Empty);
-            Assert.That(improvedGrab[DataIndexConstants.AttackData.DamageDataIndex], Is.Empty);
-            Assert.That(improvedGrab[DataIndexConstants.AttackData.FrequencyQuantityIndex], Is.EqualTo("1"));
-            Assert.That(improvedGrab[DataIndexConstants.AttackData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Round));
-            Assert.That(improvedGrab[DataIndexConstants.AttackData.IsMeleeIndex], Is.EqualTo(bool.TrueString));
-            Assert.That(improvedGrab[DataIndexConstants.AttackData.IsNaturalIndex], Is.EqualTo(bool.TrueString));
-            Assert.That(improvedGrab[DataIndexConstants.AttackData.IsPrimaryIndex], Is.EqualTo(bool.FalseString));
-            Assert.That(improvedGrab[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(bool.TrueString));
-            Assert.That(improvedGrab[DataIndexConstants.AttackData.NameIndex], Is.EqualTo("Improved Grab"));
-            Assert.That(improvedGrab[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Empty);
-            Assert.That(improvedGrab[DataIndexConstants.AttackData.SaveDcBonusIndex], Is.EqualTo("0"));
-            Assert.That(improvedGrab[DataIndexConstants.AttackData.SaveIndex], Is.Empty);
+            Assert.That(improvedGrab.AttackType, Is.EqualTo("extraordinary ability"));
+            Assert.That(improvedGrab.DamageBonusMultiplier, Is.EqualTo(0));
+            Assert.That(improvedGrab.DamageEffect, Is.Empty);
+            Assert.That(improvedGrab.FrequencyQuantity, Is.EqualTo(1));
+            Assert.That(improvedGrab.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(improvedGrab.IsMelee, Is.True);
+            Assert.That(improvedGrab.IsNatural, Is.True);
+            Assert.That(improvedGrab.IsPrimary, Is.False);
+            Assert.That(improvedGrab.IsSpecial, Is.True);
+            Assert.That(improvedGrab.Name, Is.EqualTo("Improved Grab"));
+            Assert.That(improvedGrab.SaveAbility, Is.Empty);
+            Assert.That(improvedGrab.SaveDcBonus, Is.EqualTo(0));
+            Assert.That(improvedGrab.Save, Is.Empty);
         }
 
-        private void AssertCreatureHasCorrectSpells(List<string[]> entries)
+        private void AssertCreatureHasCorrectSpells(List<string> entries)
         {
+            var selections = entries.Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>);
+
             var spells = entries.FirstOrDefault(d => d[DataIndexConstants.AttackData.NameIndex] == "Spells");
             if (spells == null)
             {
@@ -532,8 +533,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(spells[DataIndexConstants.AttackData.SaveIndex], Is.Empty);
         }
 
-        private void AssertCreatureHasCorrectSpellLikeAbility(List<string[]> entries)
+        private void AssertCreatureHasCorrectSpellLikeAbility(List<string> entries)
         {
+            var selections = entries.Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>);
+
             var spellLikeAbility = entries.FirstOrDefault(d => d[DataIndexConstants.AttackData.NameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility);
             if (spellLikeAbility == null)
             {
