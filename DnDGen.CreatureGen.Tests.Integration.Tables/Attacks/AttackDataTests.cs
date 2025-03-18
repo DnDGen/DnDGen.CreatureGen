@@ -3,7 +3,6 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
-using DnDGen.CreatureGen.Selectors.Helpers;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
@@ -17,7 +16,7 @@ using System.Linq;
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 {
     [TestFixture]
-    public class AttackDataTests : DataTests
+    public class AttackDataTests : CollectionTests
     {
         private ICollectionSelector collectionSelector;
         private IFeatsSelector featsSelector;
@@ -28,24 +27,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         private Dictionary<string, IEnumerable<CreatureDataSelection>> creatureData;
 
         protected override string tableName => TableNameConstants.Collection.AttackData;
-
-        protected override void PopulateIndices(IEnumerable<string> collection)
-        {
-            indices[DataIndexConstants.AttackData.IsMeleeIndex] = "Is Melee";
-            indices[DataIndexConstants.AttackData.IsNaturalIndex] = "Is Natural";
-            indices[DataIndexConstants.AttackData.IsPrimaryIndex] = "Is Primary";
-            indices[DataIndexConstants.AttackData.IsSpecialIndex] = "Is Special";
-            indices[DataIndexConstants.AttackData.NameIndex] = "Name";
-            indices[DataIndexConstants.AttackData.AttackTypeIndex] = "Attack Type";
-            indices[DataIndexConstants.AttackData.DamageEffectIndex] = "Damage Effect";
-            indices[DataIndexConstants.AttackData.FrequencyQuantityIndex] = "Frequency Quantity";
-            indices[DataIndexConstants.AttackData.FrequencyTimePeriodIndex] = "Frequency Time Period";
-            indices[DataIndexConstants.AttackData.SaveAbilityIndex] = "Save Ability";
-            indices[DataIndexConstants.AttackData.SaveIndex] = "Save";
-            indices[DataIndexConstants.AttackData.DamageBonusMultiplierIndex] = "Damage Bonus Multiplier";
-            indices[DataIndexConstants.AttackData.SaveDcBonusIndex] = "Save DC Bonus Multiplier";
-            indices[DataIndexConstants.AttackData.RequiredGenderIndex] = "Required Gender";
-        }
 
         [OneTimeSetUp]
         public void OneTimeSetup()
@@ -63,7 +44,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         [SetUp]
         public void Setup()
         {
-            helper = new AttackHelper();
             collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             featsSelector = GetNewInstanceOf<IFeatsSelector>();
             creatureDataSelector = GetNewInstanceOf<ICreatureDataSelector>();
@@ -132,7 +112,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertPoisonAttacksHaveCorrectDamageTypes(creatureAttackData[creature]);
             AssertDiseaseAttacksHaveCorrectDamageTypes(creatureAttackData[creature]);
 
-            AssertData(creature, creatureAttackData[creature]);
+            AssertCollection(creature, creatureAttackData[creature].ToArray());
 
             CreatureWithSpellLikeAbilityAttack_HasSpellLikeAbilitySpecialQuality(creature);
             CreatureWithPsionicAttack_HasPsionicSpecialQuality(creature);
@@ -265,9 +245,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     continue;
                 }
 
-                Assert.That(entry[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(bool.TrueString), "Special");
-                Assert.That(entry[DataIndexConstants.AttackData.IsMeleeIndex], Is.EqualTo(bool.TrueString), "Melee");
-                Assert.That(entry[DataIndexConstants.AttackData.IsPrimaryIndex], Is.EqualTo(bool.FalseString), "Primary");
+                Assert.That(entry[DataIndexConstants.AttackData.IsSpecialIndex], Is.True, "Special");
+                Assert.That(entry[DataIndexConstants.AttackData.IsMeleeIndex], Is.True, "Melee");
+                Assert.That(entry[DataIndexConstants.AttackData.IsPrimaryIndex], Is.False, "Primary");
                 Assert.That(entry[DataIndexConstants.AttackData.SaveIndex], Is.Not.Empty.And.EqualTo(SaveConstants.Fortitude));
 
                 if (entry[DataIndexConstants.AttackData.IsNaturalIndex] == bool.TrueString)
@@ -439,16 +419,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             Assert.That(table, Contains.Key(creature));
 
-            foreach (var entry in table[creature])
-            {
-                var valid = helper.ValidateEntry(entry);
-                Assert.That(valid, Is.True, $"Invalid entry: {entry}");
-            }
-
             var creatureData = creatureDataSelector.SelectFor(creature);
-            var unnaturalAttacks = table[creature]
-                .Select(helper.ParseEntry)
-                .Where(d => !Convert.ToBoolean(d[DataIndexConstants.AttackData.IsNaturalIndex]));
+            var selections = table[creature].Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>);
+            var unnaturalAttacks = selections.Where(s => !s.IsNatural);
 
             if (!unnaturalAttacks.Any())
             {
@@ -457,29 +430,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             Assert.That(unnaturalAttacks.Any(), Is.True.And.EqualTo(creatureData.CanUseEquipment));
 
-            //No Damage for Equipment attacks
-            foreach (var attack in unnaturalAttacks)
-            {
-                if (attack[DataIndexConstants.AttackData.NameIndex] != AttributeConstants.Melee
-                    && attack[DataIndexConstants.AttackData.NameIndex] != AttributeConstants.Ranged)
-                {
-                    continue;
-                }
-
-                Assert.That(attack[DataIndexConstants.AttackData.DamageDataIndex], Is.Empty, attack[DataIndexConstants.AttackData.NameIndex]);
-            }
-
             //Has Natural Attack
-            var naturalAttack = table[creature]
-                .Select(helper.ParseEntry)
-                .FirstOrDefault(d => d[DataIndexConstants.AttackData.IsNaturalIndex] == bool.TrueString
-                    && d[DataIndexConstants.AttackData.IsSpecialIndex] == bool.FalseString);
+            var naturalAttack = selections.FirstOrDefault(s => s.IsNatural && !s.IsSpecial);
 
             Assert.That(naturalAttack, Is.Not.Null);
-            Assert.That(naturalAttack[DataIndexConstants.AttackData.NameIndex], Is.Not.Empty);
-            Assert.That(naturalAttack[DataIndexConstants.AttackData.IsNaturalIndex], Is.EqualTo(bool.TrueString), naturalAttack[DataIndexConstants.AttackData.NameIndex]);
-            Assert.That(naturalAttack[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(bool.FalseString), naturalAttack[DataIndexConstants.AttackData.NameIndex]);
-            Assert.That(naturalAttack[DataIndexConstants.AttackData.DamageDataIndex], Is.Not.Empty, naturalAttack[DataIndexConstants.AttackData.NameIndex]);
+            Assert.That(naturalAttack.Name, Is.Not.Empty);
+            Assert.That(naturalAttack.IsNatural, Is.True, naturalAttack.Name);
+            Assert.That(naturalAttack.IsSpecial, Is.False, naturalAttack.Name);
         }
 
         private void AssertCreatureHasCorrectImprovedGrab(List<string> entries)
@@ -511,52 +468,50 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             var selections = entries.Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>);
 
-            var spells = entries.FirstOrDefault(d => d[DataIndexConstants.AttackData.NameIndex] == "Spells");
+            var spells = selections.FirstOrDefault(s => s.Name == "Spells");
             if (spells == null)
             {
                 return;
             }
 
-            Assert.That(spells[DataIndexConstants.AttackData.AttackTypeIndex], Is.EqualTo("spell-like ability"));
-            Assert.That(spells[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.EqualTo(0.ToString()));
-            Assert.That(spells[DataIndexConstants.AttackData.DamageEffectIndex], Is.Empty);
-            Assert.That(spells[DataIndexConstants.AttackData.DamageDataIndex], Is.Empty);
-            Assert.That(spells[DataIndexConstants.AttackData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()));
-            Assert.That(spells[DataIndexConstants.AttackData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Round));
-            Assert.That(spells[DataIndexConstants.AttackData.IsMeleeIndex], Is.EqualTo(bool.FalseString));
-            Assert.That(spells[DataIndexConstants.AttackData.IsNaturalIndex], Is.EqualTo(bool.TrueString));
-            Assert.That(spells[DataIndexConstants.AttackData.IsPrimaryIndex], Is.EqualTo(bool.TrueString));
-            Assert.That(spells[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(bool.TrueString));
-            Assert.That(spells[DataIndexConstants.AttackData.NameIndex], Is.EqualTo("Spells"));
-            Assert.That(spells[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Empty);
-            Assert.That(spells[DataIndexConstants.AttackData.SaveDcBonusIndex], Is.EqualTo(0.ToString()));
-            Assert.That(spells[DataIndexConstants.AttackData.SaveIndex], Is.Empty);
+            Assert.That(spells.AttackType, Is.EqualTo("spell-like ability"));
+            Assert.That(spells.DamageBonusMultiplier, Is.EqualTo(0));
+            Assert.That(spells.DamageEffect, Is.Empty);
+            Assert.That(spells.FrequencyQuantity, Is.EqualTo(1));
+            Assert.That(spells.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(spells.IsMelee, Is.False);
+            Assert.That(spells.IsNatural, Is.True);
+            Assert.That(spells.IsPrimary, Is.True);
+            Assert.That(spells.IsSpecial, Is.True);
+            Assert.That(spells.Name, Is.EqualTo("Spells"));
+            Assert.That(spells.SaveAbility, Is.Empty);
+            Assert.That(spells.SaveDcBonus, Is.EqualTo(0));
+            Assert.That(spells.Save, Is.Empty);
         }
 
         private void AssertCreatureHasCorrectSpellLikeAbility(List<string> entries)
         {
             var selections = entries.Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>);
 
-            var spellLikeAbility = entries.FirstOrDefault(d => d[DataIndexConstants.AttackData.NameIndex] == FeatConstants.SpecialQualities.SpellLikeAbility);
+            var spellLikeAbility = selections.FirstOrDefault(s => s.Name == FeatConstants.SpecialQualities.SpellLikeAbility);
             if (spellLikeAbility == null)
             {
                 return;
             }
 
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.AttackTypeIndex], Is.EqualTo("spell-like ability"));
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.EqualTo(0.ToString()));
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.DamageEffectIndex], Is.Empty);
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.DamageDataIndex], Is.Empty);
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.FrequencyQuantityIndex], Is.EqualTo(1.ToString()));
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.FrequencyTimePeriodIndex], Is.EqualTo(FeatConstants.Frequencies.Round));
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.IsMeleeIndex], Is.EqualTo(bool.FalseString));
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.IsNaturalIndex], Is.EqualTo(bool.TrueString));
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.IsPrimaryIndex], Is.EqualTo(bool.TrueString));
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(bool.TrueString));
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.NameIndex], Is.EqualTo(FeatConstants.SpecialQualities.SpellLikeAbility));
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Empty);
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.SaveDcBonusIndex], Is.EqualTo(0.ToString()));
-            Assert.That(spellLikeAbility[DataIndexConstants.AttackData.SaveIndex], Is.Empty);
+            Assert.That(spellLikeAbility.AttackType, Is.EqualTo("spell-like ability"));
+            Assert.That(spellLikeAbility.DamageBonusMultiplier, Is.EqualTo(0));
+            Assert.That(spellLikeAbility.DamageEffect, Is.Empty);
+            Assert.That(spellLikeAbility.FrequencyQuantity, Is.EqualTo(1));
+            Assert.That(spellLikeAbility.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(spellLikeAbility.IsMelee, Is.False);
+            Assert.That(spellLikeAbility.IsNatural, Is.True);
+            Assert.That(spellLikeAbility.IsPrimary, Is.True);
+            Assert.That(spellLikeAbility.IsSpecial, Is.True);
+            Assert.That(spellLikeAbility.Name, Is.EqualTo(FeatConstants.SpecialQualities.SpellLikeAbility));
+            Assert.That(spellLikeAbility.SaveAbility, Is.Empty);
+            Assert.That(spellLikeAbility.SaveDcBonus, Is.EqualTo(0));
+            Assert.That(spellLikeAbility.Save, Is.Empty);
         }
     }
 }
