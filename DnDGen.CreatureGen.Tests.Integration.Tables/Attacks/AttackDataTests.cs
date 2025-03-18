@@ -112,7 +112,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertPoisonAttacksHaveCorrectDamageTypes(creatureAttackData[creature]);
             AssertDiseaseAttacksHaveCorrectDamageTypes(creatureAttackData[creature]);
 
-            AssertCollection(creature, creatureAttackData[creature].ToArray());
+            AssertCollection(creature, [.. creatureAttackData[creature]]);
 
             CreatureWithSpellLikeAbilityAttack_HasSpellLikeAbilitySpecialQuality(creature);
             CreatureWithPsionicAttack_HasPsionicSpecialQuality(creature);
@@ -147,10 +147,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertPoisonAttacksHaveCorrectDamageTypes(templateAttackData[creature]);
             AssertDiseaseAttacksHaveCorrectDamageTypes(templateAttackData[creature]);
 
-            AssertData(creature, templateAttackData[creature]);
+            AssertCollection(creature, [.. templateAttackData[creature]]);
         }
 
-        private void AssertCreatureEffectDoesNotHaveDamage(List<string[]> entries)
+        private void AssertCreatureEffectDoesNotHaveDamage(List<string> entries)
         {
             var damageTypes = new[]
             {
@@ -181,138 +181,66 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 "negative"
             };
 
-            var attackNames = entries.Select(e => e[DataIndexConstants.AttackData.NameIndex]);
+            var selections = entries.Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>);
+            var attackNames = selections.Select(s => s.Name);
 
-            foreach (var entry in entries)
+            foreach (var selection in selections)
             {
-                if (attackNames.Contains(entry[DataIndexConstants.AttackData.DamageEffectIndex]))
+                if (attackNames.Contains(selection.DamageEffect))
                 {
                     continue;
                 }
 
                 foreach (var damageType in damageTypes)
                 {
-                    var words = entry[DataIndexConstants.AttackData.DamageEffectIndex].ToLower().Split(' ');
-                    Assert.That(words, Does.Not.Contain(damageType), entry[DataIndexConstants.AttackData.NameIndex]);
+                    var words = selection.DamageEffect.ToLower().Split(' ');
+                    Assert.That(words, Does.Not.Contain(damageType), selection.Name);
                 }
             }
         }
 
-        private void AssertNaturalAttacksHaveCorrectDamageTypes(List<string[]> entries)
+        private void AssertPoisonAttacksHaveCorrectDamageTypes(List<string> entries)
         {
-            var damageTypes = new Dictionary<string, string>
+            var poisons = entries
+                .Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>)
+                .Where(s => s.Name.Equals("poison", StringComparison.CurrentCultureIgnoreCase));
+
+            foreach (var selection in poisons)
             {
-                ["bite"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}/{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["claw"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
-                ["talon"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
-                ["talons"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
-                ["rake"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
-                ["rend"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
-                ["gore"] = $"{AttributeConstants.DamageTypes.Piercing}",
-                ["slap"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["tail slap"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["slam"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["sting"] = $"{AttributeConstants.DamageTypes.Piercing}",
-                ["tentacle"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["arm"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["wing"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["trample"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["unarmed strike"] = $"{AttributeConstants.DamageTypes.Bludgeoning}"
-            };
+                Assert.That(selection.IsSpecial, Is.True, "Special");
+                Assert.That(selection.IsMelee, Is.True, "Melee");
+                Assert.That(selection.IsPrimary, Is.False, "Primary");
+                Assert.That(selection.Save, Is.Not.Empty.And.EqualTo(SaveConstants.Fortitude));
 
-            foreach (var entry in entries)
-            {
-                if (!damageTypes.ContainsKey(entry[DataIndexConstants.AttackData.NameIndex].ToLower()))
-                {
-                    continue;
-                }
-
-                var damageData = damageHelper.ParseEntries(entry[DataIndexConstants.AttackData.DamageDataIndex]);
-                Assert.That(damageData, Is.Not.Empty, entry[DataIndexConstants.AttackData.NameIndex]);
-                Assert.That(
-                    damageData[0][DataIndexConstants.AttackData.DamageData.TypeIndex],
-                    Is.EqualTo(damageTypes[entry[DataIndexConstants.AttackData.NameIndex].ToLower()]),
-                    entry[DataIndexConstants.AttackData.NameIndex]);
-            }
-        }
-
-        private void AssertPoisonAttacksHaveCorrectDamageTypes(List<string[]> entries)
-        {
-            foreach (var entry in entries)
-            {
-                if (entry[DataIndexConstants.AttackData.NameIndex].ToLower() != "poison")
-                {
-                    continue;
-                }
-
-                Assert.That(entry[DataIndexConstants.AttackData.IsSpecialIndex], Is.True, "Special");
-                Assert.That(entry[DataIndexConstants.AttackData.IsMeleeIndex], Is.True, "Melee");
-                Assert.That(entry[DataIndexConstants.AttackData.IsPrimaryIndex], Is.False, "Primary");
-                Assert.That(entry[DataIndexConstants.AttackData.SaveIndex], Is.Not.Empty.And.EqualTo(SaveConstants.Fortitude));
-
-                if (entry[DataIndexConstants.AttackData.IsNaturalIndex] == bool.TrueString)
-                    Assert.That(entry[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Not.Empty);
+                if (selection.IsNatural)
+                    Assert.That(selection.SaveAbility, Is.Not.Empty);
                 else
-                    Assert.That(entry[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Empty);
-
-                var damageData = damageHelper.ParseEntries(entry[DataIndexConstants.AttackData.DamageDataIndex]);
-                Assert.That(damageData, Has.Length.AtMost(2).Or.Length.EqualTo(4), entry[DataIndexConstants.AttackData.DamageDataIndex]);
-
-                if (damageData.Length > 2)
-                {
-                    Assert.That(damageData[0][DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("Initial"));
-                    Assert.That(damageData[1][DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("Initial"));
-                    Assert.That(damageData[2][DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("Secondary"));
-                    Assert.That(damageData[3][DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("Secondary"));
-                }
-                else if (damageData.Length > 1)
-                {
-                    Assert.That(damageData[1][DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("Secondary"));
-                }
-
-                if (damageData.Length > 0)
-                {
-                    Assert.That(damageData[0][DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("Initial"));
-                }
-                else
-                {
-                    Assert.That(entry[DataIndexConstants.AttackData.DamageEffectIndex], Is.Not.Empty);
-                }
+                    Assert.That(selection.SaveAbility, Is.Empty);
             }
         }
 
-        private void AssertDiseaseAttacksHaveCorrectDamageTypes(List<string[]> entries)
+        private void AssertDiseaseAttacksHaveCorrectDamageTypes(List<string> entries)
         {
-            var attackNames = entries.Select(e => e[DataIndexConstants.AttackData.NameIndex]);
+            var selections = entries.Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>);
+            var attackNames = selections.Select(s => s.Name);
             var diseaseAttack = string.Empty;
 
-            foreach (var entry in entries)
+            foreach (var selection in selections)
             {
-                if (entry[DataIndexConstants.AttackData.NameIndex].ToLower() != "disease"
-                    && entry[DataIndexConstants.AttackData.NameIndex] != diseaseAttack)
+                if (!selection.Name.Equals("disease", StringComparison.CurrentCultureIgnoreCase) && selection.Name != diseaseAttack)
                 {
                     continue;
                 }
 
-                if (attackNames.Contains(entry[DataIndexConstants.AttackData.DamageEffectIndex]))
+                if (attackNames.Contains(selection.DamageEffect))
                 {
-                    diseaseAttack = entry[DataIndexConstants.AttackData.DamageEffectIndex];
+                    diseaseAttack = selection.DamageEffect;
                     continue;
                 }
 
-                Assert.That(entry[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(bool.TrueString));
-                Assert.That(entry[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Not.Empty);
-                Assert.That(entry[DataIndexConstants.AttackData.SaveIndex], Is.Not.Empty);
-
-                var damageData = damageHelper.ParseEntries(entry[DataIndexConstants.AttackData.DamageDataIndex]);
-                Assert.That(damageData, Is.Not.Empty, entry[DataIndexConstants.AttackData.NameIndex]);
-
-                for (var i = 0; i < damageData.Length; i++)
-                {
-                    Assert.That(damageData[i][DataIndexConstants.AttackData.DamageData.RollIndex], Is.Not.Empty, entry[DataIndexConstants.AttackData.NameIndex]);
-                    Assert.That(damageData[i][DataIndexConstants.AttackData.DamageData.TypeIndex], Is.Not.Empty, entry[DataIndexConstants.AttackData.NameIndex]);
-                    Assert.That(damageData[i][DataIndexConstants.AttackData.DamageData.ConditionIndex], Does.StartWith("Incubation period"), entry[DataIndexConstants.AttackData.NameIndex]);
-                }
+                Assert.That(selection.IsSpecial, Is.True);
+                Assert.That(selection.SaveAbility, Is.Not.Empty);
+                Assert.That(selection.Save, Is.Not.Empty);
 
                 diseaseAttack = string.Empty;
             }
