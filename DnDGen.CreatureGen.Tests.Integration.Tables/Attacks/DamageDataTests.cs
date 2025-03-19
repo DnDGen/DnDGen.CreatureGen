@@ -3,7 +3,7 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
-using DnDGen.CreatureGen.Selectors.Helpers;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -16,40 +16,28 @@ using System.Linq;
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 {
     [TestFixture]
-    public class DamageDataTests : DataTests
+    public class DamageDataTests : CollectionTests
     {
         private ICollectionSelector collectionSelector;
         private IFeatsSelector featsSelector;
         private ICreatureDataSelector creatureDataSelector;
         private Dictionary<string, List<string>> creatureAttackData;
         private Dictionary<string, List<string>> templateAttackData;
+        private Dictionary<string, List<string>> creatureAttackDamageData;
+        private Dictionary<string, List<string>> templateAttackDamageData;
         private Dictionary<string, string> damageMaps;
+        private Dictionary<string, IEnumerable<AdvancementDataSelection>> advancementData;
+        private Dictionary<string, IEnumerable<CreatureDataSelection>> creatureData;
 
-        protected override string tableName => TableNameConstants.Collection.AttackData;
-
-        protected override void PopulateIndices(IEnumerable<string> collection)
-        {
-            indices[DataIndexConstants.AttackData.IsMeleeIndex] = "Is Melee";
-            indices[DataIndexConstants.AttackData.IsNaturalIndex] = "Is Natural";
-            indices[DataIndexConstants.AttackData.IsPrimaryIndex] = "Is Primary";
-            indices[DataIndexConstants.AttackData.IsSpecialIndex] = "Is Special";
-            indices[DataIndexConstants.AttackData.NameIndex] = "Name";
-            indices[DataIndexConstants.AttackData.AttackTypeIndex] = "Attack Type";
-            indices[DataIndexConstants.AttackData.DamageEffectIndex] = "Damage Effect";
-            indices[DataIndexConstants.AttackData.FrequencyQuantityIndex] = "Frequency Quantity";
-            indices[DataIndexConstants.AttackData.FrequencyTimePeriodIndex] = "Frequency Time Period";
-            indices[DataIndexConstants.AttackData.SaveAbilityIndex] = "Save Ability";
-            indices[DataIndexConstants.AttackData.SaveIndex] = "Save";
-            indices[DataIndexConstants.AttackData.DamageBonusMultiplierIndex] = "Damage Bonus Multiplier";
-            indices[DataIndexConstants.AttackData.SaveDcBonusIndex] = "Save DC Bonus Multiplier";
-            indices[DataIndexConstants.AttackData.RequiredGenderIndex] = "Required Gender";
-        }
+        protected override string tableName => TableNameConstants.Collection.DamageData;
 
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
             creatureAttackData = AttackTestData.GetCreatureAttackData();
             templateAttackData = AttackTestData.GetTemplateAttackData();
+            creatureAttackDamageData = DamageTestData.GetCreatureDamageData();
+            templateAttackDamageData = DamageTestData.GetTemplateDamageData();
             damageMaps = new Dictionary<string, string>
             {
                 ["2d8"] = "3d8",
@@ -61,33 +49,66 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 ["1d3"] = "1d4",
                 ["1d2"] = "1d3"
             };
+
+            var advancementDataSelector = GetNewInstanceOf<ICollectionDataSelector<AdvancementDataSelection>>();
+            advancementData = advancementDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.Advancements);
+
+            var creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
+            creatureData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
         }
 
         [SetUp]
         public void Setup()
         {
-            helper = new AttackHelper();
             collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             featsSelector = GetNewInstanceOf<IFeatsSelector>();
             creatureDataSelector = GetNewInstanceOf<ICreatureDataSelector>();
         }
 
         [Test]
-        public void AttackDataNames()
+        public void DamageDataNames()
         {
-            var creatures = CreatureConstants.GetAll();
-            var templates = CreatureConstants.Templates.GetAll();
-
-            //TODO: Make keys the creature + size (original size + all advancements)
-            //this way advanced attack data can be pre-computed
-
-            var names = creatures.Union(templates);
+            var names = GetDamageKeys();
+            var testKeys = creatureAttackDamageData.Keys.Union(templateAttackDamageData.Keys);
+            Assert.That(testKeys, Is.EquivalentTo(names));
 
             AssertCollectionNames(names);
         }
 
+        private IEnumerable<string> GetDamageKeys()
+        {
+            var attackDamageKeys = new List<string>();
+
+            foreach (var kvp in creatureAttackData)
+            {
+                var creature = kvp.Key;
+                var sizes = advancementData[creature]
+                    .Select(a => a.Size)
+                    .Union([creatureData[creature].Single().Size]);
+
+                foreach (var size in sizes)
+                {
+                    var keys = kvp.Value
+                        .Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>)
+                        .Select(s => s.BuildDamageKey(creature, size));
+                    attackDamageKeys.AddRange(keys);
+                }
+            }
+
+            foreach (var kvp in templateAttackData)
+            {
+                var template = kvp.Key;
+                var keys = kvp.Value
+                    .Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>)
+                    .Select(s => s.BuildDamageKey(template, string.Empty));
+                attackDamageKeys.AddRange(keys);
+            }
+
+            return attackDamageKeys;
+        }
+
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreatureAttackData(string creature)
+        public void CreatureAttackDamageData(string creature)
         {
             if (!entries.Any())
                 Assert.Fail("Test case did not specify attacks or NONE");
@@ -128,7 +149,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void TempplateAttackData(string creature)
+        public void TempplateAttackDamageData(string template)
         {
             if (!entries.Any())
                 Assert.Fail("Test case did not specify attacks or NONE");

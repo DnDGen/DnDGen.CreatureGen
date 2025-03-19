@@ -86,9 +86,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             foreach (var kvp in templateAttackData)
             {
+                var template = kvp.Key;
                 var keys = kvp.Value
                     .Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>)
-                    .Select(s => s.BuildDamageKey(kvp.Key, string.Empty));
+                    .Select(s => s.BuildDamageKey(template, string.Empty));
                 attackDamageKeys.AddRange(keys);
             }
 
@@ -120,22 +121,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void TemplateAttackData(string creature)
+        public void TemplateAttackData(string template)
         {
-            if (!templateAttackData[creature].Any())
+            if (!templateAttackData[template].Any())
                 Assert.Fail("Test case did not specify attacks or NONE");
 
-            if (templateAttackData[creature][0] == AttackTestData.None)
-                templateAttackData[creature].Clear();
+            if (templateAttackData[template][0] == AttackTestData.None)
+                templateAttackData[template].Clear();
 
-            AssertCreatureHasCorrectImprovedGrab(templateAttackData[creature]);
-            AssertCreatureHasCorrectSpellLikeAbility(templateAttackData[creature]);
-            AssertCreatureHasCorrectSpells(templateAttackData[creature]);
-            AssertCreatureEffectDoesNotHaveDamage(templateAttackData[creature]);
-            AssertPoisonAttacks(templateAttackData[creature]);
-            AssertDiseaseAttacks(templateAttackData[creature]);
+            AssertCreatureHasCorrectImprovedGrab(templateAttackData[template]);
+            AssertCreatureHasCorrectSpellLikeAbility(templateAttackData[template]);
+            AssertCreatureHasCorrectSpells(templateAttackData[template]);
+            AssertCreatureEffectDoesNotHaveDamage(templateAttackData[template]);
+            AssertPoisonAttacks(templateAttackData[template]);
+            AssertDiseaseAttacks(templateAttackData[template]);
 
-            AssertCollection(creature, [.. templateAttackData[creature]]);
+            AssertCollection(template, [.. templateAttackData[template]]);
         }
 
         private void AssertCreatureEffectDoesNotHaveDamage(List<string> entries)
