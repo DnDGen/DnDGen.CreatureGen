@@ -49,12 +49,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 ["1d3"] = "1d4",
                 ["1d2"] = "1d3"
             };
-
-            var advancementDataSelector = GetNewInstanceOf<ICollectionDataSelector<AdvancementDataSelection>>();
-            advancementData = advancementDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.Advancements);
-
-            var creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
-            creatureData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
         }
 
         [SetUp]
@@ -68,43 +62,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         [Test]
         public void DamageDataNames()
         {
-            var names = GetDamageKeys();
+            var names = AttackTestData.GetDamageKeys();
             var testKeys = creatureAttackDamageData.Keys.Union(templateAttackDamageData.Keys);
             Assert.That(testKeys, Is.EquivalentTo(names));
 
             AssertCollectionNames(names);
-        }
-
-        private IEnumerable<string> GetDamageKeys()
-        {
-            var attackDamageKeys = new List<string>();
-
-            foreach (var kvp in creatureAttackData)
-            {
-                var creature = kvp.Key;
-                var sizes = advancementData[creature]
-                    .Select(a => a.Size)
-                    .Union([creatureData[creature].Single().Size]);
-
-                foreach (var size in sizes)
-                {
-                    var keys = kvp.Value
-                        .Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>)
-                        .Select(s => s.BuildDamageKey(creature, size));
-                    attackDamageKeys.AddRange(keys);
-                }
-            }
-
-            foreach (var kvp in templateAttackData)
-            {
-                var template = kvp.Key;
-                var keys = kvp.Value
-                    .Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>)
-                    .Select(s => s.BuildDamageKey(template, string.Empty));
-                attackDamageKeys.AddRange(keys);
-            }
-
-            return attackDamageKeys;
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]

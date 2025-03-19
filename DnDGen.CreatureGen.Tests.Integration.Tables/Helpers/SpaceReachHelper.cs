@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tests.Integration.Tables.Creatures;
 using DnDGen.RollGen;
+using DnDGen.RollGen.IoC;
 using System.Collections.Generic;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
@@ -13,6 +14,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
         private readonly Dictionary<string, double> longReach;
         private readonly Dictionary<string, Dictionary<string, string>> creatureHeights;
         private readonly Dictionary<string, Dictionary<string, string>> creatureLengths;
+
+        public SpaceReachHelper() : this(DiceFactory.Create())
+        { }
 
         public SpaceReachHelper(Dice dice)
         {

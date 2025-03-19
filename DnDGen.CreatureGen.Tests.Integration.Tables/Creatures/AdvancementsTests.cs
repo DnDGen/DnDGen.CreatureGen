@@ -30,7 +30,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [OneTimeSetUp]
         public void OnetimeSetup()
         {
-            advancements = GetAdvancementsTestData();
+            spaceReachHelper = GetNewInstanceOf<SpaceReachHelper>();
             typeDivisors = new Dictionary<string, int>
             {
                 [CreatureConstants.Types.Aberration] = 4,
@@ -49,9 +49,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 [CreatureConstants.Types.Undead] = 4,
                 [CreatureConstants.Types.Vermin] = 4,
             };
-
-            spaceReachHelper = GetNewInstanceOf<SpaceReachHelper>();
             sizes = SizeConstants.GetOrdered();
+
+            advancements = GetAdvancementsTestData();
         }
 
         [SetUp]
@@ -162,7 +162,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
-        private Dictionary<string, string[]> GetAdvancementsTestData()
+        public static Dictionary<string, string[]> GetAdvancementsTestData()
         {
             var testCases = new Dictionary<string, string[]>();
             var creatures = CreatureConstants.GetAll();
@@ -1271,10 +1271,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return testCases;
         }
 
-        private string GetData(string creature, string advancedSize, int lowerHitDice, int upperHitDice)
+        private static string GetData(string creature, string advancedSize, int lowerHitDice, int upperHitDice)
         {
             var creatureData = creatureDataSelector.SelectFor(creature);
             var creatureHitDice = collectionTypeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, creature);
+            var spaceReachHelper = new SpaceReachHelper();
 
             var selection = new AdvancementDataSelection
             {

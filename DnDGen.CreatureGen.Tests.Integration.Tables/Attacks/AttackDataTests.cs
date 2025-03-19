@@ -23,8 +23,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         private ICreatureDataSelector creatureDataSelector;
         private Dictionary<string, List<string>> creatureAttackData;
         private Dictionary<string, List<string>> templateAttackData;
-        private Dictionary<string, IEnumerable<AdvancementDataSelection>> advancementData;
-        private Dictionary<string, IEnumerable<CreatureDataSelection>> creatureData;
 
         protected override string tableName => TableNameConstants.Collection.AttackData;
 
@@ -33,12 +31,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             creatureAttackData = AttackTestData.GetCreatureAttackData();
             templateAttackData = AttackTestData.GetTemplateAttackData();
-
-            var advancementDataSelector = GetNewInstanceOf<ICollectionDataSelector<AdvancementDataSelection>>();
-            advancementData = advancementDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.Advancements);
-
-            var creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
-            creatureData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
         }
 
         [SetUp]
@@ -66,33 +58,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         [Test]
         public void AttackDamageKeysAreUnique()
         {
-            var attackDamageKeys = new List<string>();
-
-            foreach (var kvp in creatureAttackData)
-            {
-                var creature = kvp.Key;
-                var sizes = advancementData[creature]
-                    .Select(a => a.Size)
-                    .Union([creatureData[creature].Single().Size]);
-
-                foreach (var size in sizes)
-                {
-                    var keys = kvp.Value
-                        .Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>)
-                        .Select(s => s.BuildDamageKey(creature, size));
-                    attackDamageKeys.AddRange(keys);
-                }
-            }
-
-            foreach (var kvp in templateAttackData)
-            {
-                var template = kvp.Key;
-                var keys = kvp.Value
-                    .Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>)
-                    .Select(s => s.BuildDamageKey(template, string.Empty));
-                attackDamageKeys.AddRange(keys);
-            }
-
+            var attackDamageKeys = AttackTestData.GetDamageKeys();
             Assert.That(attackDamageKeys, Is.Unique);
         }
 

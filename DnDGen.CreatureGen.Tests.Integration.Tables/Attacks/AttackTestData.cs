@@ -4,15 +4,54 @@ using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Selectors.Selections;
+using DnDGen.CreatureGen.Tests.Integration.Tables.Creatures;
 using DnDGen.Infrastructure.Helpers;
 using DnDGen.TreasureGen.Items;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 {
     public class AttackTestData
     {
         public const string None = "NONE";
+
+        public static IEnumerable<string> GetDamageKeys()
+        {
+            var attackDamageKeys = new List<string>();
+            var creatureAttackData = GetCreatureAttackData();
+            var templateAttackData = GetTemplateAttackData();
+            var advancementData = AdvancementsTests.GetAdvancementsTestData();
+            var creatureData = CreatureDataTests.GetCreatureTestData();
+
+            foreach (var kvp in creatureAttackData)
+            {
+                var creature = kvp.Key;
+                var sizes = advancementData[creature]
+                    .Select(DataHelper.Parse<AdvancementDataSelection>)
+                    .Select(a => a.Size)
+                    .Union([DataHelper.Parse<CreatureDataSelection>(creatureData[creature]).Size]);
+
+                foreach (var size in sizes)
+                {
+                    var keys = kvp.Value
+                        .Select(DataHelper.Parse<AttackDataSelection>)
+                        .Select(s => s.BuildDamageKey(creature, size));
+                    attackDamageKeys.AddRange(keys);
+                }
+            }
+
+            foreach (var kvp in templateAttackData)
+            {
+                var template = kvp.Key;
+                var keys = kvp.Value
+                    .Select(DataHelper.Parse<AttackDataSelection>)
+                    .Select(s => s.BuildDamageKey(template, string.Empty));
+                attackDamageKeys.AddRange(keys);
+            }
+
+            return attackDamageKeys;
+        }
 
         public static Dictionary<string, List<string>> GetCreatureAttackData()
         {
