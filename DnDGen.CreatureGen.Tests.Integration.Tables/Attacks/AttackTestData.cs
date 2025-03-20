@@ -12,13 +12,13 @@ using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 {
-    public class AttackTestData
+    public static class AttackTestData
     {
         public const string None = "NONE";
 
-        public static IEnumerable<string> GetDamageKeys()
+        public static Dictionary<string, List<string>> GetDamageKeys()
         {
-            var attackDamageKeys = new List<string>();
+            var attackDamageKeys = new Dictionary<string, List<string>>();
             var creatureAttackData = GetCreatureAttackData();
             var templateAttackData = GetTemplateAttackData();
             var advancementData = AdvancementsTests.GetAdvancementsTestData();
@@ -27,6 +27,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             foreach (var kvp in creatureAttackData)
             {
                 var creature = kvp.Key;
+                attackDamageKeys[creature] = [];
+
                 var sizes = advancementData[creature]
                     .Select(DataHelper.Parse<AdvancementDataSelection>)
                     .Select(a => a.Size)
@@ -37,17 +39,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     var keys = kvp.Value
                         .Select(DataHelper.Parse<AttackDataSelection>)
                         .Select(s => s.BuildDamageKey(creature, size));
-                    attackDamageKeys.AddRange(keys);
+                    attackDamageKeys[creature].AddRange(keys);
                 }
             }
 
             foreach (var kvp in templateAttackData)
             {
                 var template = kvp.Key;
+                attackDamageKeys[template] = [];
+
                 var keys = kvp.Value
                     .Select(DataHelper.Parse<AttackDataSelection>)
                     .Select(s => s.BuildDamageKey(template, string.Empty));
-                attackDamageKeys.AddRange(keys);
+                attackDamageKeys[template].AddRange(keys);
             }
 
             return attackDamageKeys;
