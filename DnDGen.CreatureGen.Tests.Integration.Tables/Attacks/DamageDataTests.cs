@@ -5,7 +5,9 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Integration.Tables.Creatures;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
+using DnDGen.Infrastructure.Helpers;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
@@ -27,7 +29,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         private Dictionary<string, List<string>> templateAttackDamageData;
         private Dictionary<string, string> damageMaps;
         private Dictionary<string, IEnumerable<AdvancementDataSelection>> advancementData;
-        private Dictionary<string, IEnumerable<CreatureDataSelection>> creatureData;
+        private Dictionary<string, CreatureDataSelection> creatureData;
+        private Dictionary<string, AttackDataSelection> attackData;
 
         protected override string tableName => TableNameConstants.Collection.DamageData;
 
@@ -38,6 +41,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             templateAttackData = AttackTestData.GetTemplateAttackData();
             creatureAttackDamageData = DamageTestData.GetCreatureDamageData();
             templateAttackDamageData = DamageTestData.GetTemplateDamageData();
+            creatureData = CreatureDataTests.GetCreatureTestData().ToDictionary(kvp => kvp.Key, kvp => DataHelper.Parse<CreatureDataSelection>(kvp.Value));
+            advancementData = AdvancementsTests.GetAdvancementsTestData().ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(DataHelper.Parse<AdvancementDataSelection>));
+
             damageMaps = new Dictionary<string, string>
             {
                 ["2d8"] = "3d8",
@@ -49,6 +55,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 ["1d3"] = "1d4",
                 ["1d2"] = "1d3"
             };
+
+            attackData = [];
+            foreach (var kvp in creatureAttackData)
+            {
+                var creature = kvp.Key;
+                var size = creatureData[creature].Size;
+                var selections = kvp.Value.Select(DataHelper.Parse<AttackDataSelection>);
+
+                foreach (var selection in selections)
+                {
+                    //TODO: Add attack data with key of damage key
+                    //TODO: Add attak data with advancement sizes
+                }
+            }
         }
 
         [SetUp]
