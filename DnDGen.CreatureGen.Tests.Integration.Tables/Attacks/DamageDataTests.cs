@@ -1,5 +1,4 @@
-﻿using DnDGen.CreatureGen.Abilities;
-using DnDGen.CreatureGen.Creatures;
+﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
@@ -60,13 +59,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             foreach (var kvp in creatureAttackData)
             {
                 var creature = kvp.Key;
-                var size = creatureData[creature].Size;
+                var sizes = advancementData[creature].Select(a => a.Size).Union([creatureData[creature].Size]);
                 var selections = kvp.Value.Select(DataHelper.Parse<AttackDataSelection>);
 
                 foreach (var selection in selections)
                 {
-                    //TODO: Add attack data with key of damage key
-                    //TODO: Add attak data with advancement sizes
+                    foreach (var size in sizes)
+                    {
+                        attackData[selection.BuildDamageKey(creature, size)] = selection;
+                    }
                 }
             }
         }
@@ -92,37 +93,30 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreatureAttackDamageData(string creature)
         {
-            if (!entries.Any())
-                Assert.Fail("Test case did not specify attacks or NONE");
+            var attacks = creatureAttackData[creature];
+            var originalSize = creatureData[creature].Size;
+            var advancedSizes = advancementData[creature].Select(a => a.Size).Except([originalSize]);
 
-            if (entries[0][DataIndexConstants.AttackData.NameIndex] == AttackTestData.None)
-                entries.Clear();
-
-            foreach (var entry in entries)
+            foreach (var attack in attacks)
             {
-                var stringEntry = helper.BuildEntry(entry);
-                var attackValid = helper.ValidateEntry(stringEntry);
-                Assert.That(attackValid, Is.True, $"{creature}: {entry[DataIndexConstants.AttackData.NameIndex]} is not valid attack data");
-
-                var damageValid = damageHelper.ValidateEntries(entry[DataIndexConstants.AttackData.DamageDataIndex]);
-                Assert.That(damageValid, Is.True, $"{creature}: {entry[DataIndexConstants.AttackData.NameIndex]}: {entry[DataIndexConstants.AttackData.DamageDataIndex]} is not valid damage data");
+                var key = attack.B
+                AssertCreatureAttackDamages();
+                //TODO: Assert creature damage for each attack, original size
+                //TODO: Adjust damages for advancements, creature damage for each attack, advanced sizes
             }
+        }
 
-            AssertCreatureHasCorrectImprovedGrab(entries);
-            AssertCreatureHasCorrectSpellLikeAbility(entries);
-            AssertCreatureHasCorrectSpells(entries);
-            AssertCreatureEffectDoesNotHaveDamage(entries);
-            AssertNaturalAttacksHaveCorrectDamageTypes(entries);
-            AssertPoisonAttacksHaveCorrectDamageTypes(entries);
-            AssertDiseaseAttacksHaveCorrectDamageTypes(entries);
+        private void AssertCreatureAttackDamages(string key, IEnumerable<string> entries)
+        {
+            AssertCreatureHasCorrectImprovedGrab(creatureAttackDamageData[creature]);
+            AssertCreatureHasCorrectSpellLikeAbility(creatureAttackDamageData[creature]);
+            AssertCreatureHasCorrectSpells(creatureAttackDamageData[creature]);
+            AssertCreatureEffectDoesNotHaveDamage(creatureAttackDamageData[creature]);
+            AssertNaturalAttacksHaveCorrectDamageTypes(creatureAttackDamageData[creature]);
+            AssertPoisonAttacksHaveCorrectDamageTypes(creatureAttackDamageData[creature]);
+            AssertDiseaseAttacksHaveCorrectDamageTypes(creatureAttackDamageData[creature]);
 
-            AssertData(creature, entries);
-
-            var templates = CreatureConstants.Templates.GetAll();
-            if (templates.Contains(creature))
-            {
-                Assert.Pass("The following assertions only apply to creatures, not templates");
-            }
+            AssertCollection(key, creatureAttackDamageData[creature]);
 
             CreatureWithSpellLikeAbilityAttack_HasSpellLikeAbilitySpecialQuality(creature);
             CreatureWithPsionicAttack_HasPsionicSpecialQuality(creature);
@@ -133,115 +127,44 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void TempplateAttackDamageData(string template)
         {
-            if (!entries.Any())
-                Assert.Fail("Test case did not specify attacks or NONE");
+            AssertCreatureHasCorrectImprovedGrab(templateAttackDamageData[template]);
+            AssertCreatureHasCorrectSpellLikeAbility(templateAttackDamageData[template]);
+            AssertCreatureHasCorrectSpells(templateAttackDamageData[template]);
+            AssertCreatureEffectDoesNotHaveDamage(templateAttackDamageData[template]);
+            AssertNaturalAttacksHaveCorrectDamageTypes(templateAttackDamageData[template]);
+            AssertPoisonAttacksHaveCorrectDamageTypes(templateAttackDamageData[template]);
+            AssertDiseaseAttacksHaveCorrectDamageTypes(templateAttackDamageData[template]);
 
-            if (entries[0][DataIndexConstants.AttackData.NameIndex] == AttackTestData.None)
-                entries.Clear();
-
-            foreach (var entry in entries)
-            {
-                var stringEntry = helper.BuildEntry(entry);
-                var attackValid = helper.ValidateEntry(stringEntry);
-                Assert.That(attackValid, Is.True, $"{creature}: {entry[DataIndexConstants.AttackData.NameIndex]} is not valid attack data");
-
-                var damageValid = damageHelper.ValidateEntries(entry[DataIndexConstants.AttackData.DamageDataIndex]);
-                Assert.That(damageValid, Is.True, $"{creature}: {entry[DataIndexConstants.AttackData.NameIndex]}: {entry[DataIndexConstants.AttackData.DamageDataIndex]} is not valid damage data");
-            }
-
-            AssertCreatureHasCorrectImprovedGrab(entries);
-            AssertCreatureHasCorrectSpellLikeAbility(entries);
-            AssertCreatureHasCorrectSpells(entries);
-            AssertCreatureEffectDoesNotHaveDamage(entries);
-            AssertNaturalAttacksHaveCorrectDamageTypes(entries);
-            AssertPoisonAttacksHaveCorrectDamageTypes(entries);
-            AssertDiseaseAttacksHaveCorrectDamageTypes(entries);
-
-            AssertData(creature, entries);
-
-            var templates = CreatureConstants.Templates.GetAll();
-            if (templates.Contains(creature))
-            {
-                Assert.Pass("The following assertions only apply to creatures, not templates");
-            }
-
-            CreatureWithSpellLikeAbilityAttack_HasSpellLikeAbilitySpecialQuality(creature);
-            CreatureWithPsionicAttack_HasPsionicSpecialQuality(creature);
-            CreatureWithSpellsAttack_HasMagicSpells(creature);
-            CreatureWithUnnaturalAttack_CanUseEquipment(creature);
+            AssertCollection(template, templateAttackDamageData[template]);
         }
 
-        private void AssertCreatureEffectDoesNotHaveDamage(List<string[]> entries)
+        private void AssertNaturalAttacksHaveCorrectDamageTypes(List<string> entries)
         {
-            var damageTypes = new[]
+            var damageTypes = new Dictionary<string, string>
             {
-                AttributeConstants.DamageTypes.Bludgeoning.ToLower(),
-                AttributeConstants.DamageTypes.Piercing.ToLower(),
-                AttributeConstants.DamageTypes.Slashing.ToLower(),
-
-                FeatConstants.Foci.Elements.Acid.ToLower(),
-                FeatConstants.Foci.Elements.Cold.ToLower(),
-                FeatConstants.Foci.Elements.Electricity.ToLower(),
-                FeatConstants.Foci.Elements.Fire.ToLower(),
-                FeatConstants.Foci.Elements.Sonic.ToLower(),
-
-                AbilityConstants.Charisma.ToLower(),
-                AbilityConstants.Constitution.ToLower(),
-                AbilityConstants.Dexterity.ToLower(),
-                AbilityConstants.Intelligence.ToLower(),
-                AbilityConstants.Strength.ToLower(),
-                AbilityConstants.Wisdom.ToLower(),
-                "str",
-                "con",
-                "dex",
-                "wis",
-                "int",
-                "cha",
-
-                "level",
-                "negative"
+                ["bite"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}/{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["claw"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["talon"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["talons"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["rake"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["rend"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["gore"] = $"{AttributeConstants.DamageTypes.Piercing}",
+                ["slap"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["tail slap"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["slam"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["sting"] = $"{AttributeConstants.DamageTypes.Piercing}",
+                ["tentacle"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["arm"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["wing"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["trample"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["unarmed strike"] = $"{AttributeConstants.DamageTypes.Bludgeoning}"
             };
 
-            var attackNames = entries.Select(e => e[DataIndexConstants.AttackData.NameIndex]);
+            var selections = entries.Select(DataHelper.Parse<DamageDataSelection>);
 
-            foreach (var entry in entries)
+            foreach (var selection in selections)
             {
-                if (attackNames.Contains(entry[DataIndexConstants.AttackData.DamageEffectIndex]))
-                {
-                    continue;
-                }
-
-                foreach (var damageType in damageTypes)
-                {
-                    var words = entry[DataIndexConstants.AttackData.DamageEffectIndex].ToLower().Split(' ');
-                    Assert.That(words, Does.Not.Contain(damageType), entry[DataIndexConstants.AttackData.NameIndex]);
-                }
-            }
-        }
-
-        private void AssertNaturalAttacksHaveCorrectDamageTypes(List<string[]> entries)
-        {
-            var damageTypes = new Dictionary<string, string>();
-            damageTypes["bite"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}/{AttributeConstants.DamageTypes.Bludgeoning}";
-            damageTypes["claw"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}";
-            damageTypes["talon"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}";
-            damageTypes["talons"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}";
-            damageTypes["rake"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}";
-            damageTypes["rend"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}";
-            damageTypes["gore"] = $"{AttributeConstants.DamageTypes.Piercing}";
-            damageTypes["slap"] = $"{AttributeConstants.DamageTypes.Bludgeoning}";
-            damageTypes["tail slap"] = $"{AttributeConstants.DamageTypes.Bludgeoning}";
-            damageTypes["slam"] = $"{AttributeConstants.DamageTypes.Bludgeoning}";
-            damageTypes["sting"] = $"{AttributeConstants.DamageTypes.Piercing}";
-            damageTypes["tentacle"] = $"{AttributeConstants.DamageTypes.Bludgeoning}";
-            damageTypes["arm"] = $"{AttributeConstants.DamageTypes.Bludgeoning}";
-            damageTypes["wing"] = $"{AttributeConstants.DamageTypes.Bludgeoning}";
-            damageTypes["trample"] = $"{AttributeConstants.DamageTypes.Bludgeoning}";
-            damageTypes["unarmed strike"] = $"{AttributeConstants.DamageTypes.Bludgeoning}";
-
-            foreach (var entry in entries)
-            {
-                if (!damageTypes.ContainsKey(entry[DataIndexConstants.AttackData.NameIndex].ToLower()))
+                if (!damageTypes.ContainsKey(selection.Name.ToLower()))
                 {
                     continue;
                 }
