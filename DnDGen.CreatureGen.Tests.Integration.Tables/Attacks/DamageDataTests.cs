@@ -497,18 +497,5 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             return attackSelections;
         }
-
-        private string GetAdjustedDamage(string originalDamage, string originalSize, string advancedSize)
-        {
-            var adjustedDamage = originalDamage;
-            var sizeDifference = Array.IndexOf(orderedSizes, advancedSize) - Array.IndexOf(orderedSizes, originalSize);
-
-            while (sizeDifference-- > 0 && damageMaps.ContainsKey(adjustedDamage))
-            {
-                adjustedDamage = damageMaps[adjustedDamage];
-            }
-
-            return adjustedDamage;
-        }
     }
 }

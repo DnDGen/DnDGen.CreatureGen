@@ -1,4 +1,5 @@
-﻿using DnDGen.Infrastructure.Models;
+﻿using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Models;
 using System;
 
 namespace DnDGen.CreatureGen.Selectors.Selections
@@ -13,6 +14,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public override Func<DamageDataSelection, string[]> MapFrom => Map;
 
         public override int SectionCount => 3;
+        public override char Separator => '#';
 
         public DamageDataSelection()
         {
@@ -25,18 +27,18 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         {
             return new DamageDataSelection
             {
-                Roll = splitData[DataIndexConstants.Weapon.DamageData.RollIndex],
-                Type = splitData[DataIndexConstants.Weapon.DamageData.TypeIndex],
-                Condition = splitData[DataIndexConstants.Weapon.DamageData.ConditionIndex],
+                Roll = splitData[DataIndexConstants.AttackData.DamageData.RollIndex],
+                Type = splitData[DataIndexConstants.AttackData.DamageData.TypeIndex],
+                Condition = splitData[DataIndexConstants.AttackData.DamageData.ConditionIndex],
             };
         }
 
         public static string[] Map(DamageDataSelection selection)
         {
             var data = new string[selection.SectionCount];
-            data[DataIndexConstants.Weapon.DamageData.RollIndex] = selection.Roll;
-            data[DataIndexConstants.Weapon.DamageData.TypeIndex] = selection.Type;
-            data[DataIndexConstants.Weapon.DamageData.ConditionIndex] = selection.Condition;
+            data[DataIndexConstants.AttackData.DamageData.RollIndex] = selection.Roll;
+            data[DataIndexConstants.AttackData.DamageData.TypeIndex] = selection.Type;
+            data[DataIndexConstants.AttackData.DamageData.ConditionIndex] = selection.Condition;
 
             return data;
         }

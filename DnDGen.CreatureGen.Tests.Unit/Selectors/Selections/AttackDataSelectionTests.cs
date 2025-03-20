@@ -18,7 +18,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void AttackSelectionIsInitialized()
         {
-            Assert.That(selection.Damages, Is.Empty);
+            Assert.That(selection.Damage, Is.Null);
             Assert.That(selection.IsMelee, Is.False);
             Assert.That(selection.IsNatural, Is.False);
             Assert.That(selection.IsPrimary, Is.False);
@@ -27,9 +27,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         }
 
         [Test]
-        public void SectionCountIs13()
+        public void SectionCountIs14()
         {
-            Assert.That(selection.SectionCount, Is.EqualTo(13));
+            Assert.That(selection.SectionCount, Is.EqualTo(14));
         }
 
         [Test]
@@ -50,6 +50,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             data[DataIndexConstants.AttackData.AttackTypeIndex] = "my attack type";
             data[DataIndexConstants.AttackData.SaveDcBonusIndex] = "42";
             data[DataIndexConstants.AttackData.RequiredGenderIndex] = "my required gender";
+            data[DataIndexConstants.AttackData.DamageIndex] = Infrastructure.Helpers.DataHelper.Parse(new DamageDataSelection
+            {
+                Roll = "1d6",
+                Type = "slashing",
+                Condition = "bleeding"
+            });
 
             var newSelection = AttackDataSelection.Map(data);
             Assert.That(newSelection, Is.Not.Null);
@@ -67,6 +73,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(newSelection.AttackType, Is.EqualTo("my attack type"));
             Assert.That(newSelection.SaveDcBonus, Is.EqualTo(42));
             Assert.That(newSelection.RequiredGender, Is.EqualTo("my required gender"));
+            Assert.That(newSelection.Damage, Is.Not.Null);
+            Assert.That(newSelection.Damage.Roll, Is.EqualTo("1d6"));
+            Assert.That(newSelection.Damage.Type, Is.EqualTo("slashing"));
+            Assert.That(newSelection.Damage.Condition, Is.EqualTo("bleeding"));
         }
 
         [TestCase(true)]
@@ -157,6 +167,45 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         }
 
         [Test]
+        public void Map_FromString_ReturnsSelection_NoDamage()
+        {
+            var data = new string[selection.SectionCount];
+            data[DataIndexConstants.AttackData.NameIndex] = "my attack";
+            data[DataIndexConstants.AttackData.DamageEffectIndex] = "my damage effect";
+            data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex] = "926.6";
+            data[DataIndexConstants.AttackData.IsMeleeIndex] = bool.TrueString;
+            data[DataIndexConstants.AttackData.IsNaturalIndex] = bool.FalseString;
+            data[DataIndexConstants.AttackData.IsPrimaryIndex] = bool.TrueString;
+            data[DataIndexConstants.AttackData.IsSpecialIndex] = bool.FalseString;
+            data[DataIndexConstants.AttackData.FrequencyQuantityIndex] = "90210";
+            data[DataIndexConstants.AttackData.FrequencyTimePeriodIndex] = "my time period";
+            data[DataIndexConstants.AttackData.SaveIndex] = "my save";
+            data[DataIndexConstants.AttackData.SaveAbilityIndex] = "my save ability";
+            data[DataIndexConstants.AttackData.AttackTypeIndex] = "my attack type";
+            data[DataIndexConstants.AttackData.SaveDcBonusIndex] = "42";
+            data[DataIndexConstants.AttackData.RequiredGenderIndex] = "my required gender";
+            data[DataIndexConstants.AttackData.DamageIndex] = string.Empty;
+
+            var newSelection = AttackDataSelection.Map(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.Name, Is.EqualTo("my attack"));
+            Assert.That(newSelection.DamageEffect, Is.EqualTo("my damage effect"));
+            Assert.That(newSelection.DamageBonusMultiplier, Is.EqualTo(926.6));
+            Assert.That(newSelection.IsMelee, Is.EqualTo(true));
+            Assert.That(newSelection.IsNatural, Is.EqualTo(false));
+            Assert.That(newSelection.IsPrimary, Is.EqualTo(true));
+            Assert.That(newSelection.IsSpecial, Is.EqualTo(false));
+            Assert.That(newSelection.FrequencyQuantity, Is.EqualTo(90210));
+            Assert.That(newSelection.FrequencyTimePeriod, Is.EqualTo("my time period"));
+            Assert.That(newSelection.Save, Is.EqualTo("my save"));
+            Assert.That(newSelection.SaveAbility, Is.EqualTo("my save ability"));
+            Assert.That(newSelection.AttackType, Is.EqualTo("my attack type"));
+            Assert.That(newSelection.SaveDcBonus, Is.EqualTo(42));
+            Assert.That(newSelection.RequiredGender, Is.EqualTo("my required gender"));
+            Assert.That(newSelection.Damage, Is.Null);
+        }
+
+        [Test]
         public void Map_FromSelection_ReturnsString()
         {
             var selection = new AttackDataSelection
@@ -175,6 +224,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
                 AttackType = "my attack type",
                 SaveDcBonus = 42,
                 RequiredGender = "my required gender",
+                Damage = new DamageDataSelection
+                {
+                    Roll = "1d6",
+                    Type = "slashing",
+                    Condition = "bleeding"
+                }
             };
 
             var rawData = AttackDataSelection.Map(selection);

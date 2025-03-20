@@ -29,10 +29,11 @@
             public const int DamageEffectIndex = 11;
             public const int DamageBonusMultiplierIndex = 12;
             public const int SaveDcBonusIndex = 13;
+            public const int DamageIndex = 14;
 
             public static string[] InitializeData()
             {
-                return DataIndexConstants.InitializeData(RequiredGenderIndex);
+                return DataIndexConstants.InitializeData(DamageIndex);
             }
 
             internal static class DamageData

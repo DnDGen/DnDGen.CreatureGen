@@ -1,13 +1,13 @@
 ﻿using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Helpers;
 using DnDGen.Infrastructure.Models;
 using System;
-using System.Collections.Generic;
 
 namespace DnDGen.CreatureGen.Selectors.Selections
 {
     internal class AttackDataSelection : DataSelection<AttackDataSelection>
     {
-        public List<DamageDataSelection> Damages { get; set; }
+        public DamageDataSelection Damage { get; set; }
         public string DamageEffect { get; set; }
         public double DamageBonusMultiplier { get; set; }
         public string Name { get; set; }
@@ -26,7 +26,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public override Func<string[], AttackDataSelection> MapTo => Map;
         public override Func<AttackDataSelection, string[]> MapFrom => Map;
 
-        public override int SectionCount => 13;
+        public override int SectionCount => 14;
 
         public static AttackDataSelection Map(string[] splitData)
         {
@@ -46,6 +46,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
                 AttackType = splitData[DataIndexConstants.AttackData.AttackTypeIndex],
                 SaveDcBonus = Convert.ToInt32(splitData[DataIndexConstants.AttackData.SaveDcBonusIndex]),
                 RequiredGender = splitData[DataIndexConstants.AttackData.RequiredGenderIndex],
+                Damage = DataHelper.Parse<DamageDataSelection>(splitData[DataIndexConstants.AttackData.DamageIndex]),
             };
 
             return selection;
@@ -69,12 +70,16 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             data[DataIndexConstants.AttackData.SaveDcBonusIndex] = selection.SaveDcBonus.ToString();
             data[DataIndexConstants.AttackData.RequiredGenderIndex] = selection.RequiredGender ?? string.Empty;
 
+            if (selection.Damage != null)
+                data[DataIndexConstants.AttackData.DamageIndex] = DataHelper.Parse(selection.Damage);
+            else
+                data[DataIndexConstants.AttackData.DamageIndex] = string.Empty;
+
             return data;
         }
 
         public AttackDataSelection()
         {
-            Damages = [];
             DamageEffect = string.Empty;
             Name = string.Empty;
         }
