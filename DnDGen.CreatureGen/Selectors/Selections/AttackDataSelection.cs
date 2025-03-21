@@ -2,12 +2,14 @@
 using DnDGen.Infrastructure.Helpers;
 using DnDGen.Infrastructure.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Selectors.Selections
 {
     internal class AttackDataSelection : DataSelection<AttackDataSelection>
     {
-        public DamageDataSelection Damage { get; set; }
+        public List<DamageDataSelection> Damages { get; set; }
         public string DamageEffect { get; set; }
         public double DamageBonusMultiplier { get; set; }
         public string Name { get; set; }
@@ -27,6 +29,8 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public override Func<AttackDataSelection, string[]> MapFrom => Map;
 
         public override int SectionCount => 14;
+
+        private const char DamagesSeparator = '|';
 
         public static AttackDataSelection Map(string[] splitData)
         {
@@ -48,6 +52,10 @@ namespace DnDGen.CreatureGen.Selectors.Selections
                 RequiredGender = splitData[DataIndexConstants.AttackData.RequiredGenderIndex],
                 Damage = DataHelper.Parse<DamageDataSelection>(splitData[DataIndexConstants.AttackData.DamageIndex]),
             };
+
+            var damages = splitData[DataIndexConstants.AttackData.DamageIndex]
+                .Split(DamagesSeparator)
+                .Select(DataHelper.Parse<DamageDataSelection>);
 
             return selection;
         }
@@ -80,6 +88,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
 
         public AttackDataSelection()
         {
+            Damages = [];
             DamageEffect = string.Empty;
             Name = string.Empty;
         }
