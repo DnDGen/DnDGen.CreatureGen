@@ -38,104 +38,89 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[key] = [];
             }
 
+            Dictionary<string, List<string>> BuildData(string creature, string attackName,
+                string roll, string type = "", string condition = "",
+                string roll2 = null, string type2 = null, string condition2 = null)
+            {
+                return BuildAllData(
+                    creature,
+                    creatureData[creature],
+                    attackData[creature][attackName],
+                    advancementData[creature],
+                    roll, type, condition, roll2, type2, condition2);
+            }
+
+            attackDamages.Add(BuildData(CreatureConstants.Aasimar, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
+
+            attackDamages.Add(BuildData(CreatureConstants.Aboleth, "Tentacle", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+
+            attackDamages.Add(BuildData(CreatureConstants.Achaierai, "Claw", "1d6", clawDamageType));
             attackDamages.Add(BuildData(
-                CreatureConstants.Aasimar,
-                creatureData[CreatureConstants.Aasimar],
-                attackData[CreatureConstants.Aasimar]["Unarmed Strike"],
-                advancementData[CreatureConstants.Aasimar],
-                "1d3", AttributeConstants.DamageTypes.Bludgeoning));
+                CreatureConstants.Achaierai,
+                creatureData[CreatureConstants.Achaierai],
+                attackData[CreatureConstants.Achaierai]["Bite"],
+                advancementData[CreatureConstants.Achaierai],
+                "4d6", biteDamageType));
+            attackDamages.Add(BuildData(
+                CreatureConstants.Achaierai,
+                creatureData[CreatureConstants.Achaierai],
+                attackData[CreatureConstants.Achaierai]["Black cloud"],
+                advancementData[CreatureConstants.Achaierai],
+                "2d6"));
 
             attackDamages.Add(BuildData(
-                CreatureConstants.Aboleth,
-                creatureData[CreatureConstants.Aboleth],
-                attackData[CreatureConstants.Aboleth]["Tentacle"],
-                advancementData[CreatureConstants.Aboleth],
-                "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+                CreatureConstants.Allip,
+                creatureData[CreatureConstants.Allip],
+                attackData[CreatureConstants.Allip]["Madness"],
+                advancementData[CreatureConstants.Allip],
+                "1d4", AbilityConstants.Wisdom));
+            attackDamages.Add(BuildData(
+                CreatureConstants.Allip,
+                creatureData[CreatureConstants.Allip],
+                attackData[CreatureConstants.Allip]["Wisdom drain"],
+                advancementData[CreatureConstants.Allip],
+                "1d4", AbilityConstants.Wisdom));
 
-            attackDamages[CreatureConstants.Achaierai] = BuildData("Claw",
-                damageHelper.BuildEntries("1d6", clawDamageType),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Achaierai] = BuildData("Bite",
-                damageHelper.BuildEntries("4d6", biteDamageType),
-                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Achaierai] = BuildData("Black cloud",
-                damageHelper.BuildEntries("2d6"),
-                SpellConstants.Insanity, 0, "extraordinary ability", 3, FeatConstants.Frequencies.Day, false, true, true, true,
-                SaveConstants.Fortitude, AbilityConstants.Constitution));
+            attackDamages.Add(BuildData(
+                CreatureConstants.Androsphinx,
+                creatureData[CreatureConstants.Androsphinx],
+                attackData[CreatureConstants.Androsphinx]["Claw"],
+                advancementData[CreatureConstants.Androsphinx],
+                "2d4", clawDamageType));
+            attackDamages.Add(BuildData(
+                CreatureConstants.Androsphinx,
+                creatureData[CreatureConstants.Androsphinx],
+                attackData[CreatureConstants.Androsphinx]["Rake"],
+                advancementData[CreatureConstants.Androsphinx],
+                "2d4", clawDamageType));
 
-            attackDamages[CreatureConstants.Allip] = BuildData("Incorporeal touch",
-                string.Empty,
-                "Wisdom drain", 0, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Allip] = BuildData("Babble",
-                string.Empty,
-                SpellConstants.Hypnotism, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true,
-                SaveConstants.Will, AbilityConstants.Charisma));
-            attackDamages[CreatureConstants.Allip] = BuildData("Madness",
-                damageHelper.BuildEntries("1d4", AbilityConstants.Wisdom),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true));
-            attackDamages[CreatureConstants.Allip] = BuildData("Wisdom drain",
-                damageHelper.BuildEntries("1d4", AbilityConstants.Wisdom),
-                "Allip gains 5 temporary hit points", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
+            attackDamages.Add(BuildData(
+                CreatureConstants.Angel_AstralDeva,
+                creatureData[CreatureConstants.Angel_AstralDeva],
+                attackData[CreatureConstants.Angel_AstralDeva]["Slam"],
+                advancementData[CreatureConstants.Angel_AstralDeva],
+                "1d8", slapSlamDamageType));
 
-            attackDamages[CreatureConstants.Androsphinx] = BuildData("Claw",
-                damageHelper.BuildEntries("2d4", clawDamageType),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Androsphinx] = BuildData("Pounce",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Androsphinx] = BuildData("Rake",
-                damageHelper.BuildEntries("2d4", clawDamageType),
-                string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Androsphinx] = BuildData("Roar",
-                string.Empty,
-                string.Empty, 0, "supernatural ability", 3, FeatConstants.Frequencies.Day, false, true, true, true,
-                SaveConstants.Will, AbilityConstants.Charisma));
-            attackDamages[CreatureConstants.Androsphinx] = BuildData("Spells",
-                string.Empty,
-                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(
+                CreatureConstants.Angel_Planetar,
+                creatureData[CreatureConstants.Angel_Planetar],
+                attackData[CreatureConstants.Angel_Planetar]["Slam"],
+                advancementData[CreatureConstants.Angel_Planetar],
+                "2d8", slapSlamDamageType));
 
-            attackDamages[CreatureConstants.Angel_AstralDeva] = BuildData(AttributeConstants.Melee,
-                string.Empty,
-                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Angel_AstralDeva] = BuildData("Slam",
-                damageHelper.BuildEntries("1d8", slapSlamDamageType),
-                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Angel_AstralDeva] = BuildData("Stun",
-                string.Empty,
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Angel_AstralDeva] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
-                string.Empty,
-                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(
+                CreatureConstants.Angel_Solar,
+                creatureData[CreatureConstants.Angel_Solar],
+                attackData[CreatureConstants.Angel_Solar]["Slam"],
+                advancementData[CreatureConstants.Angel_Solar],
+                "2d8", slapSlamDamageType));
 
-            attackDamages[CreatureConstants.Angel_Planetar] = BuildData(AttributeConstants.Melee,
-                string.Empty,
-                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Angel_Planetar] = BuildData("Slam",
-                damageHelper.BuildEntries("2d8", slapSlamDamageType),
-                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Angel_Planetar] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
-                string.Empty,
-                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Angel_Planetar] = BuildData("Spells",
-                string.Empty,
-                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-
-            attackDamages[CreatureConstants.Angel_Solar] = BuildData(AttributeConstants.Melee,
-                string.Empty,
-                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Angel_Solar] = BuildData(AttributeConstants.Ranged,
-                string.Empty,
-                string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Angel_Solar] = BuildData("Slam",
-                damageHelper.BuildEntries("2d8", slapSlamDamageType),
-                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Angel_Solar] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
-                string.Empty,
-                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Angel_Solar] = BuildData("Spells",
-                string.Empty,
-                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-
+            attackDamages.Add(BuildData(
+                CreatureConstants.AnimatedObject_Tiny,
+                creatureData[CreatureConstants.AnimatedObject_Tiny],
+                attackData[CreatureConstants.AnimatedObject_Tiny]["Slam"],
+                advancementData[CreatureConstants.AnimatedObject_Tiny],
+                "2d8", slapSlamDamageType));
             attackDamages[CreatureConstants.AnimatedObject_Tiny] = BuildData("Slam",
                 damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning),
                 string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -5219,29 +5204,42 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             return testCases;
         }
 
-        private static Dictionary<string, List<string>> BuildData(
+        private static Dictionary<string, List<string>> BuildAllData(
             string creature,
             CreatureDataSelection creatureData,
             AttackDataSelection attack,
             IEnumerable<AdvancementDataSelection> advancements,
             string roll,
-            string type,
-            string condition = "")
+            string type = "",
+            string condition = "",
+            string roll2 = null,
+            string type2 = null,
+            string condition2 = null)
         {
             var data = new Dictionary<string, List<string>>();
             var key = attack.BuildDamageKey(creature, creatureData.Size);
             data[key] = [BuildData(roll, type, condition)];
+
+            if (roll2 != null)
+                data[key].Add(BuildData(roll2, type2, condition2));
 
             var advancedSizes = advancements.Select(a => a.Size).Except([creatureData.Size]);
             foreach (var size in advancedSizes)
             {
                 key = attack.BuildDamageKey(creature, size);
                 var advancedRoll = roll;
+                var advancedRoll2 = roll2;
 
                 if (attack.IsNatural)
+                {
                     advancedRoll = GetAdjustedDamage(roll, creatureData.Size, size);
+                    advancedRoll2 = GetAdjustedDamage(roll2, creatureData.Size, size);
+                }
 
                 data[key] = [BuildData(advancedRoll, type, condition)];
+
+                if (advancedRoll2 != null)
+                    data[key].Add(BuildData(advancedRoll2, type2, condition2));
             }
 
             return data;
@@ -5249,6 +5247,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
         private static string GetAdjustedDamage(string originalDamage, string originalSize, string advancedSize)
         {
+            if (string.IsNullOrEmpty(originalDamage))
+                return originalDamage;
+
             var damageMaps = new Dictionary<string, string>
             {
                 ["2d8"] = "3d8",

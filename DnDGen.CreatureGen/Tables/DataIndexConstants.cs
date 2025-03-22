@@ -2,17 +2,6 @@
 {
     internal static class DataIndexConstants
     {
-        private static string[] InitializeData(int maxIndex)
-        {
-            var capacity = maxIndex + 1;
-            var data = new string[capacity];
-
-            for (var i = 0; i < data.Length; i++)
-                data[i] = string.Empty;
-
-            return data;
-        }
-
         internal static class AttackData
         {
             public const int NameIndex = 0;
@@ -29,23 +18,12 @@
             public const int DamageEffectIndex = 11;
             public const int DamageBonusMultiplierIndex = 12;
             public const int SaveDcBonusIndex = 13;
-            public const int DamageIndex = 14;
-
-            public static string[] InitializeData()
-            {
-                return DataIndexConstants.InitializeData(DamageIndex);
-            }
 
             internal static class DamageData
             {
                 public const int RollIndex = 0;
                 public const int TypeIndex = 1;
                 public const int ConditionIndex = 2;
-
-                public static string[] InitializeData()
-                {
-                    return DataIndexConstants.InitializeData(ConditionIndex);
-                }
             }
         }
 
@@ -63,11 +41,6 @@
             public const int SaveBaseValueIndex = 9;
             public const int MinHitDiceIndex = 10;
             public const int MaxHitDiceIndex = 11;
-
-            public static string[] InitializeData()
-            {
-                return DataIndexConstants.InitializeData(MaxHitDiceIndex);
-            }
         }
 
         internal static class FeatData
@@ -84,11 +57,6 @@
             public const int RequiredNaturalWeaponQuantityIndex = 9;
             public const int RequiredHandQuantityIndex = 10;
             public const int RequiresEquipmentIndex = 11;
-
-            public static string[] InitializeData()
-            {
-                return DataIndexConstants.InitializeData(RequiresEquipmentIndex);
-            }
         }
 
         internal static class SkillSelectionData
@@ -110,11 +78,6 @@
             public const int CasterLevel = 6;
             public const int NaturalArmor = 7;
             public const int NumberOfHands = 8;
-
-            public static string[] InitializeData()
-            {
-                return DataIndexConstants.InitializeData(NumberOfHands);
-            }
         }
 
         internal static class AdvancementSelectionData
