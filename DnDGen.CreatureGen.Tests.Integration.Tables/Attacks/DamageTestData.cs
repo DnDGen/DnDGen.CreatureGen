@@ -42,7 +42,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 string roll, string type = "", string condition = "",
                 string roll2 = null, string type2 = null, string condition2 = null)
             {
-                return BuildAllData(
+                return BuildDamageDataForAttack(
                     creature,
                     creatureData[creature],
                     attackData[creature][attackName],
@@ -55,31 +55,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Aboleth, "Tentacle", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.Achaierai, "Claw", "1d6", clawDamageType));
-            attackDamages.Add(BuildData(
-                CreatureConstants.Achaierai,
-                creatureData[CreatureConstants.Achaierai],
-                attackData[CreatureConstants.Achaierai]["Bite"],
-                advancementData[CreatureConstants.Achaierai],
-                "4d6", biteDamageType));
-            attackDamages.Add(BuildData(
-                CreatureConstants.Achaierai,
-                creatureData[CreatureConstants.Achaierai],
-                attackData[CreatureConstants.Achaierai]["Black cloud"],
-                advancementData[CreatureConstants.Achaierai],
-                "2d6"));
+            attackDamages.Add(BuildData(CreatureConstants.Achaierai, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Achaierai, "Black cloud", "2d6"));
 
-            attackDamages.Add(BuildData(
-                CreatureConstants.Allip,
-                creatureData[CreatureConstants.Allip],
-                attackData[CreatureConstants.Allip]["Madness"],
-                advancementData[CreatureConstants.Allip],
-                "1d4", AbilityConstants.Wisdom));
-            attackDamages.Add(BuildData(
-                CreatureConstants.Allip,
-                creatureData[CreatureConstants.Allip],
-                attackData[CreatureConstants.Allip]["Wisdom drain"],
-                advancementData[CreatureConstants.Allip],
-                "1d4", AbilityConstants.Wisdom));
+            attackDamages.Add(BuildData(CreatureConstants.Allip, "Madness", "1d4", AbilityConstants.Wisdom));
+            attackDamages.Add(BuildData(CreatureConstants.Allip, "Wisdom drain", "1d4", AbilityConstants.Wisdom));
 
             attackDamages.Add(BuildData(
                 CreatureConstants.Androsphinx,
@@ -5204,7 +5184,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             return testCases;
         }
 
-        private static Dictionary<string, List<string>> BuildAllData(
+        private static Dictionary<string, List<string>> BuildDamageDataForAttack(
             string creature,
             CreatureDataSelection creatureData,
             AttackDataSelection attack,
