@@ -14,6 +14,7 @@
     <RepositoryUrl>https://github.com/DnDGen/CreatureGen</RepositoryUrl>
     <PackageTags>creature generator dice dungeons dragons d20 dnd 3.5 gen</PackageTags>
     <PackageReleaseNotes>#56 - Update DnDGen.Infrastructure and use pre-built selectors</PackageReleaseNotes>
+	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Generators\Magic\**" />
@@ -83,6 +84,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Alignments\AlignmentGroups.xml" />
+    <EmbeddedResource Include="Tables\Attacks\DamageData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tables\Attacks\AttackData.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
