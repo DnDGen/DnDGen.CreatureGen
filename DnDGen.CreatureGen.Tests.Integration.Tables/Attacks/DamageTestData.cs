@@ -351,37 +351,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 "1d6", AbilityConstants.Strength, "Initial",
                 "2d6", AbilityConstants.Strength, "Secondary"));
 
-            attackDamages[CreatureConstants.Bralani] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Bralani] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Bralani] = BuildData("Slam", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Bralani] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Bralani] = BuildData("Whirlwind blast",
-                damageHelper.BuildEntries("3d6", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Bralani, "Slam", "1d8", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Bralani, "Whirlwind blast", "3d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Bugbear] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Bugbear] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Bugbear] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Bugbear, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Bulette] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Bulette] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Bulette] = BuildData("Leap", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Bulette, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Bulette, "Claw", "2d6", clawDamageType));
 
-            attackDamages[CreatureConstants.Camel_Bactrian] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Camel_Bactrian, "Bite", "1d4", biteDamageType));
 
-            attackDamages[CreatureConstants.Camel_Dromedary] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Camel_Dromedary, "Bite", "1d4", biteDamageType));
 
-            attackDamages[CreatureConstants.CarrionCrawler] = BuildData("Tentacle",
-                damageHelper.BuildEntries("0", tentacleDamageType),
-                "Paralysis", 0, "melee", 8, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.CarrionCrawler] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.CarrionCrawler] = BuildData("Paralysis", string.Empty, "paralyzed for 2d4 rounds", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, false, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.CarrionCrawler, "Tentacle", "0", tentacleDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.CarrionCrawler, "Bite", "1d4", biteDamageType));
 
             attackDamages[CreatureConstants.Cat] = BuildData("Claw", damageHelper.BuildEntries("1d2", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             attackDamages[CreatureConstants.Cat] = BuildData("Bite", damageHelper.BuildEntries("1d3", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            attackDamages[CreatureConstants.Centaur] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Centaur] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
             attackDamages[CreatureConstants.Centaur] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             attackDamages[CreatureConstants.Centaur] = BuildData("Hoof",
                 damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
