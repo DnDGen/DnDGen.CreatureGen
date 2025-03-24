@@ -26,7 +26,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     .GroupBy(a => a.Name)
                     .ToDictionary(g => g.Key, g => g.ToArray()));
             var creatureData = CreatureDataTests.GetCreatureTestData().ToDictionary(kvp => kvp.Key, kvp => DataHelper.Parse<CreatureDataSelection>(kvp.Value));
-            var advancementData = AdvancementsTests.GetAdvancementsTestData().ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(DataHelper.Parse<AdvancementDataSelection>));
+            var advancementData = AdvancementsTests.GetAdvancementsTestData()
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(DataHelper.Parse<AdvancementDataSelection>));
 
             var biteDamageType = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}/{AttributeConstants.DamageTypes.Bludgeoning}";
             var clawDamageType = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}";
@@ -414,41 +415,40 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             attackDamages.Add(BuildData(CreatureConstants.ChainDevil_Kyton, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.ChaosBeast] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), "Corporeal Instability", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.ChaosBeast, "Claw", "1d3", clawDamageType));
 
-            attackDamages[CreatureConstants.Cheetah] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Cheetah] = BuildData("Claw", damageHelper.BuildEntries("1d2", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Cheetah] = BuildData("Trip", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Cheetah, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Cheetah, "Claw", "1d2", clawDamageType));
 
-            attackDamages[CreatureConstants.Chimera_Black] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Chimera_Black] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Chimera_Black] = BuildData("Gore", damageHelper.BuildEntries("1d8", goreDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Chimera_Black] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Chimera_Black] = BuildData("Breath weapon", damageHelper.BuildEntries("3d8", FeatConstants.Foci.Elements.Acid), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Black, "Bite (Dragon)", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Black, "Bite (Lion)", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Black, "Gore (Goat)", "1d8", goreDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Black, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Black, "Breath weapon", "3d8", FeatConstants.Foci.Elements.Acid));
 
-            attackDamages[CreatureConstants.Chimera_Blue] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Chimera_Blue] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Chimera_Blue] = BuildData("Gore", damageHelper.BuildEntries("1d8", goreDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Chimera_Blue] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Chimera_Blue] = BuildData("Breath weapon", damageHelper.BuildEntries("3d8", FeatConstants.Foci.Elements.Electricity), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Blue, "Bite (Dragon)", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Blue, "Bite (Lion)", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Blue, "Gore (Goat)", "1d8", goreDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Blue, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Blue, "Breath weapon", "3d8", FeatConstants.Foci.Elements.Electricity));
 
-            attackDamages[CreatureConstants.Chimera_Green] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Chimera_Green] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Chimera_Green] = BuildData("Gore", damageHelper.BuildEntries("1d8", goreDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Chimera_Green] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Chimera_Green] = BuildData("Breath weapon", damageHelper.BuildEntries("3d8", FeatConstants.Foci.Elements.Acid), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Green, "Bite (Dragon)", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Green, "Bite (Lion)", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Green, "Gore (Goat)", "1d8", goreDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Green, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Green, "Breath weapon", "3d8", FeatConstants.Foci.Elements.Acid));
 
-            attackDamages[CreatureConstants.Chimera_Red] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Chimera_Red] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Chimera_Red] = BuildData("Gore", damageHelper.BuildEntries("1d8", goreDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Chimera_Red] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Chimera_Red] = BuildData("Breath weapon", damageHelper.BuildEntries("3d8", FeatConstants.Foci.Elements.Fire), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Red, "Bite (Dragon)", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Red, "Bite (Lion)", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Red, "Gore (Goat)", "1d8", goreDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Red, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_Red, "Breath weapon", "3d8", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages[CreatureConstants.Chimera_White] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Chimera_White] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Chimera_White] = BuildData("Gore", damageHelper.BuildEntries("1d8", goreDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Chimera_White] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Chimera_White] = BuildData("Breath weapon", damageHelper.BuildEntries("3d8", FeatConstants.Foci.Elements.Cold), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_White, "Bite (Dragon)", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_White, "Bite (Lion)", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_White, "Gore (Goat)", "1d8", goreDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_White, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chimera_White, "Breath weapon", "3d8", FeatConstants.Foci.Elements.Cold));
 
             attackDamages[CreatureConstants.Choker] = BuildData("Tentacle", damageHelper.BuildEntries("1d3", tentacleDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             attackDamages[CreatureConstants.Choker] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));

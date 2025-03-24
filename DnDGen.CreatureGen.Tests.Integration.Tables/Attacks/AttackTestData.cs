@@ -1034,33 +1034,33 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Cheetah].Add(BuildData("Claw", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Cheetah].Add(BuildData("Trip", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
-            testCases[CreatureConstants.Chimera_Black].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Chimera_Black].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Chimera_Black].Add(BuildData("Gore", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Chimera_Black].Add(BuildData("Bite (Dragon)", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Chimera_Black].Add(BuildData("Bite (Lion)", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Chimera_Black].Add(BuildData("Gore (Goat)", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Chimera_Black].Add(BuildData("Claw", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.Chimera_Black].Add(BuildData("Breath weapon", string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
-            testCases[CreatureConstants.Chimera_Blue].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Chimera_Blue].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Chimera_Blue].Add(BuildData("Gore", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Chimera_Blue].Add(BuildData("Bite (Dragon)", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Chimera_Blue].Add(BuildData("Bite (Lion)", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Chimera_Blue].Add(BuildData("Gore (Goat)", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Chimera_Blue].Add(BuildData("Claw", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.Chimera_Blue].Add(BuildData("Breath weapon", string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
-            testCases[CreatureConstants.Chimera_Green].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Chimera_Green].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Chimera_Green].Add(BuildData("Gore", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Chimera_Green].Add(BuildData("Bite (Dragon)", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Chimera_Green].Add(BuildData("Bite (Lion)", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Chimera_Green].Add(BuildData("Gore (Goat)", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Chimera_Green].Add(BuildData("Claw", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.Chimera_Green].Add(BuildData("Breath weapon", string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
-            testCases[CreatureConstants.Chimera_Red].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Chimera_Red].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Chimera_Red].Add(BuildData("Gore", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Chimera_Red].Add(BuildData("Bite (Dragon)", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Chimera_Red].Add(BuildData("Bite (Lion)", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Chimera_Red].Add(BuildData("Gore (Goat)", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Chimera_Red].Add(BuildData("Claw", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.Chimera_Red].Add(BuildData("Breath weapon", string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
-            testCases[CreatureConstants.Chimera_White].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Chimera_White].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Chimera_White].Add(BuildData("Gore", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Chimera_White].Add(BuildData("Bite (Dragon)", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Chimera_White].Add(BuildData("Bite (Lion)", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Chimera_White].Add(BuildData("Gore (Goat)", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Chimera_White].Add(BuildData("Claw", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.Chimera_White].Add(BuildData("Breath weapon", string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
