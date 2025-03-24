@@ -450,3711 +450,2809 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Chimera_White, "Claw", "1d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Chimera_White, "Breath weapon", "3d8", FeatConstants.Foci.Elements.Cold));
 
-            attackDamages[CreatureConstants.Choker] = BuildData("Tentacle", damageHelper.BuildEntries("1d3", tentacleDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Choker] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Choker] = BuildData("Constrict", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Choker, "Tentacle", "1d3", tentacleDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Choker, "Constrict", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Chuul] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Chuul] = BuildData("Constrict", damageHelper.BuildEntries("3d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Chuul] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Chuul] = BuildData("Paralytic Tentacles", damageHelper.BuildEntries("1d8", tentacleDamageType), "6 round paralysis", 0.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Choker, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Choker, "Constrict", "3d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Choker, "Paralytic Tentacles", "1d8", tentacleDamageType));
 
-            attackDamages[CreatureConstants.Cloaker] = BuildData("Tail slap", damageHelper.BuildEntries("1d6", slapSlamDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Cloaker] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Cloaker] = BuildData("Moan", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Charisma));
-            attackDamages[CreatureConstants.Cloaker] = BuildData("Engulf", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Cloaker, "Tail slap", "1d6", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Cloaker, "Bite", "1d4", biteDamageType));
 
-            attackDamages[CreatureConstants.Cockatrice] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), "Petrification", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Cockatrice] = BuildData("Petrification", string.Empty, string.Empty, 1, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Cockatrice, "Bite", "1d4", biteDamageType));
 
-            attackDamages[CreatureConstants.Couatl] = BuildData("Bite", damageHelper.BuildEntries("1d3", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Couatl] = BuildData("Poison",
-                damageHelper.BuildEntries(
-                    "2d4", AbilityConstants.Strength, "Initial",
-                    "4d4", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Couatl] = BuildData("Constrict", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Couatl] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Couatl] = BuildData(FeatConstants.SpecialQualities.Psionic, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Couatl] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Couatl] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Couatl, "Bite", "1d3", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Couatl, "Poison",
+                "2d4", AbilityConstants.Strength, "Initial",
+                "4d4", AbilityConstants.Strength, "Secondary"));
+            attackDamages.Add(BuildData(CreatureConstants.Couatl, "Constrict", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Criosphinx] = BuildData("Gore", damageHelper.BuildEntries("2d6", goreDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Criosphinx] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Criosphinx] = BuildData("Pounce", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Criosphinx] = BuildData("Rake", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Criosphinx, "Gore", "2d6", goreDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Criosphinx, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Criosphinx, "Rake", "1d6", clawDamageType));
 
-            attackDamages[CreatureConstants.Crocodile] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Crocodile] = BuildData("Tail Slap", damageHelper.BuildEntries("1d12", slapSlamDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Crocodile] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Crocodile, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Crocodile, "Tail Slap", "1d12", slapSlamDamageType));
 
-            attackDamages[CreatureConstants.Crocodile_Giant] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Crocodile_Giant] = BuildData("Tail Slap", damageHelper.BuildEntries("1d12", slapSlamDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Crocodile_Giant] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Crocodile_Giant, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Crocodile_Giant, "Tail Slap", "1d12", slapSlamDamageType));
 
-            attackDamages[CreatureConstants.Cryohydra_5Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 5, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Cryohydra_5Heads] = BuildData("Breath weapon",
-                damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Cold, "Per living head"),
-                string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Cryohydra_5Heads, "Bite", "1d10", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Cryohydra_5Heads, "Breath weapon", "3d6", FeatConstants.Foci.Elements.Cold, "Per living head"));
 
-            attackDamages[CreatureConstants.Cryohydra_6Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 6, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Cryohydra_6Heads] = BuildData("Breath weapon", damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Cold, "Per living head"), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Cryohydra_6Heads, "Bite", "1d10", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Cryohydra_6Heads, "Breath weapon", "3d6", FeatConstants.Foci.Elements.Cold, "Per living head"));
 
-            attackDamages[CreatureConstants.Cryohydra_7Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 7, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Cryohydra_7Heads] = BuildData("Breath weapon", damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Cold, "Per living head"), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Cryohydra_7Heads, "Bite", "1d10", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Cryohydra_7Heads, "Breath weapon", "3d6", FeatConstants.Foci.Elements.Cold, "Per living head"));
 
-            attackDamages[CreatureConstants.Cryohydra_8Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 8, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Cryohydra_8Heads] = BuildData("Breath weapon", damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Cold, "Per living head"), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Cryohydra_8Heads, "Bite", "1d10", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Cryohydra_8Heads, "Breath weapon", "3d6", FeatConstants.Foci.Elements.Cold, "Per living head"));
 
-            attackDamages[CreatureConstants.Cryohydra_9Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 9, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Cryohydra_9Heads] = BuildData("Breath weapon", damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Cold, "Per living head"), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Cryohydra_9Heads, "Bite", "1d10", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Cryohydra_9Heads, "Breath weapon", "3d6", FeatConstants.Foci.Elements.Cold, "Per living head"));
 
-            attackDamages[CreatureConstants.Cryohydra_10Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 10, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Cryohydra_10Heads] = BuildData("Breath weapon", damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Cold, "Per living head"), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Cryohydra_10Heads, "Bite", "1d10", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Cryohydra_10Heads, "Breath weapon", "3d6", FeatConstants.Foci.Elements.Cold, "Per living head"));
 
-            attackDamages[CreatureConstants.Cryohydra_11Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 11, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Cryohydra_11Heads] = BuildData("Breath weapon", damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Cold, "Per living head"), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Cryohydra_11Heads, "Bite", "1d10", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Cryohydra_11Heads, "Breath weapon", "3d6", FeatConstants.Foci.Elements.Cold, "Per living head"));
 
-            attackDamages[CreatureConstants.Cryohydra_12Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 12, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Cryohydra_12Heads] = BuildData("Breath weapon", damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Cold, "Per living head"), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Cryohydra_12Heads, "Bite", "1d10", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Cryohydra_12Heads, "Breath weapon", "3d6", FeatConstants.Foci.Elements.Cold, "Per living head"));
 
-            attackDamages[CreatureConstants.Darkmantle] = BuildData("Slam", damageHelper.BuildEntries("1d4", slapSlamDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Darkmantle] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Darkmantle] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Darkmantle] = BuildData("Constrict", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Darkmantle, "Slam", "1d4", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Darkmantle, "Constrict", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Deinonychus] = BuildData("Talons", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Deinonychus] = BuildData("Foreclaw", damageHelper.BuildEntries("1d3", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Deinonychus] = BuildData("Bite", damageHelper.BuildEntries("2d4", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Deinonychus] = BuildData("Pounce", string.Empty, string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Deinonychus, "Talons", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Deinonychus, "Foreclaw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Deinonychus, "Bite", "2d4", biteDamageType));
 
-            attackDamages[CreatureConstants.Delver] = BuildData("Slam",
-                damageHelper.BuildEntries(
-                    "1d6", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
-                    "2d6", FeatConstants.Foci.Elements.Acid),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Delver] = BuildData("Corrosive Slime", string.Empty, string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Delver] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Delver, "Slam", "1d6", slapSlamDamageType, roll2: "2d6", type2: FeatConstants.Foci.Elements.Acid));
 
-            attackDamages[CreatureConstants.Derro] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Derro] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Derro] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Derro] = BuildData("Poison use", string.Empty, "Greenblood Oil or Monstrous Spider Venom", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Derro] = BuildData("Greenblood Oil",
-                damageHelper.BuildEntries(
-                    "1", AbilityConstants.Constitution, "Initial",
-                    "1d2", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, false, true, true, save: SaveConstants.Fortitude, saveDcBonus: 3));
-            attackDamages[CreatureConstants.Derro] = BuildData("Monstrous Spider Venom",
-                damageHelper.BuildEntries(
-                    "1d4", AbilityConstants.Strength, "Initial",
-                    "1d4", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, false, true, true, save: SaveConstants.Fortitude, saveDcBonus: 2));
-            attackDamages[CreatureConstants.Derro] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Derro] = BuildData("Sneak Attack", damageHelper.BuildEntries("1d6"), string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Derro, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Derro, "Greenblood Oil",
+                "1", AbilityConstants.Constitution, "Initial",
+                "1d2", AbilityConstants.Constitution, "Secondary"));
+            attackDamages.Add(BuildData(CreatureConstants.Derro, "Monstrous Spider Venom",
+                "1d4", AbilityConstants.Strength, "Initial",
+                "1d4", AbilityConstants.Strength, "Secondary"));
+            attackDamages.Add(BuildData(CreatureConstants.Derro, "Sneak Attack", "1d6"));
 
-            attackDamages[CreatureConstants.Derro_Sane] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Derro_Sane] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Derro_Sane] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Derro_Sane] = BuildData("Poison use", string.Empty, "Greenblood Oil or Monstrous Spider Venom", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Derro_Sane] = BuildData("Greenblood Oil",
-                damageHelper.BuildEntries(
-                    "1", AbilityConstants.Constitution, "Initial",
-                    "1d2", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, false, true, true, save: SaveConstants.Fortitude, saveDcBonus: 3));
-            attackDamages[CreatureConstants.Derro_Sane] = BuildData("Monstrous Spider Venom",
-                damageHelper.BuildEntries(
-                    "1d4", AbilityConstants.Strength, "Initial",
-                    "1d4", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, false, true, true, save: SaveConstants.Fortitude, saveDcBonus: 2));
-            attackDamages[CreatureConstants.Derro_Sane] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Derro_Sane] = BuildData("Sneak Attack", damageHelper.BuildEntries("1d6"), string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Derro_Sane, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Derro_Sane, "Greenblood Oil",
+                "1", AbilityConstants.Constitution, "Initial",
+                "1d2", AbilityConstants.Constitution, "Secondary"));
+            attackDamages.Add(BuildData(CreatureConstants.Derro_Sane, "Monstrous Spider Venom",
+                "1d4", AbilityConstants.Strength, "Initial",
+                "1d4", AbilityConstants.Strength, "Secondary"));
+            attackDamages.Add(BuildData(CreatureConstants.Derro_Sane, "Sneak Attack", "1d6"));
 
-            attackDamages[CreatureConstants.Destrachan] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Destrachan] = BuildData("Destructive harmonics", string.Empty, string.Empty, 1, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Charisma));
+            attackDamages.Add(BuildData(CreatureConstants.Destrachan, "Claw", "1d6", clawDamageType));
 
-            attackDamages[CreatureConstants.Devourer] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Devourer] = BuildData("Energy Drain", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, saveAbility: AbilityConstants.Charisma));
-            attackDamages[CreatureConstants.Devourer] = BuildData("Trap Essence", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Devourer] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Devourer, "Claw", "1d6", clawDamageType));
 
-            attackDamages[CreatureConstants.Digester] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Digester] = BuildData("Acid Spray (Cone)",
-                damageHelper.BuildEntries("4d8", FeatConstants.Foci.Elements.Acid),
-                string.Empty, 0, "extraordinary ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Digester] = BuildData("Acid Spray (Stream)",
-                damageHelper.BuildEntries("8d8", FeatConstants.Foci.Elements.Acid),
-                string.Empty, 0, "extraordinary ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Digester, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Digester, "Acid Spray (Cone)", "4d8", FeatConstants.Foci.Elements.Acid));
+            attackDamages.Add(BuildData(CreatureConstants.Digester, "Acid Spray (Stream)", "8d8", FeatConstants.Foci.Elements.Acid));
 
-            attackDamages[CreatureConstants.DisplacerBeast] = BuildData("Tentacle", damageHelper.BuildEntries("1d6", tentacleDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.DisplacerBeast] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.DisplacerBeast, "Tentacle", "1d6", tentacleDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.DisplacerBeast, "Claw", "1d8", biteDamageType));
 
-            attackDamages[CreatureConstants.DisplacerBeast_PackLord] = BuildData("Tentacle", damageHelper.BuildEntries("1d8", tentacleDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.DisplacerBeast_PackLord] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.DisplacerBeast_PackLord, "Tentacle", "1d8", tentacleDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.DisplacerBeast_PackLord, "Bite", "2d6", biteDamageType));
 
-            attackDamages[CreatureConstants.Djinni] = BuildData("Slam", damageHelper.BuildEntries("1d8", slapSlamDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Djinni] = BuildData("Air mastery", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Djinni] = BuildData("Whirlwind", string.Empty, string.Empty, 0, "supernatural ability", 1, $"10 {FeatConstants.Frequencies.Minute}", false, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex, saveDcBonus: 3));
-            attackDamages[CreatureConstants.Djinni] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Djinni, "Slam", "1d8", slapSlamDamageType));
 
-            attackDamages[CreatureConstants.Djinni_Noble] = BuildData("Slam", damageHelper.BuildEntries("1d8", slapSlamDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Djinni_Noble] = BuildData("Air mastery", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Djinni_Noble] = BuildData("Whirlwind", string.Empty, string.Empty, 0, "supernatural ability", 1, $"10 {FeatConstants.Frequencies.Minute}", false, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex, saveDcBonus: 3));
-            attackDamages[CreatureConstants.Djinni_Noble] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Djinni_Noble, "Slam", "1d8", slapSlamDamageType));
 
-            attackDamages[CreatureConstants.Dog] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Dog, "Bite", "1d4", biteDamageType));
 
-            attackDamages[CreatureConstants.Dog_Riding] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Dog_Riding, "Bite", "1d6", biteDamageType));
 
-            attackDamages[CreatureConstants.Donkey] = BuildData("Bite", damageHelper.BuildEntries("1d2", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Donkey, "Bite", "1d2", biteDamageType));
 
-            attackDamages[CreatureConstants.Doppelganger] = BuildData("Slam", damageHelper.BuildEntries("1d6", slapSlamDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Doppelganger] = BuildData("Detect Thoughts", string.Empty, string.Empty, 1, "supernatural ability", 0, FeatConstants.Frequencies.Constant, false, true, true, true));
-            attackDamages[CreatureConstants.Doppelganger] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Doppelganger, "Slam", "1d6", slapSlamDamageType));
 
-            attackDamages[CreatureConstants.DragonTurtle] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.DragonTurtle] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.DragonTurtle] = BuildData("Breath Weapon", damageHelper.BuildEntries("12d6", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.DragonTurtle] = BuildData("Capsize", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.DragonTurtle, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.DragonTurtle, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.DragonTurtle, "Breath Weapon", "12d6", FeatConstants.Foci.Elements.Fire));
 
             //Tiny
-            attackDamages[CreatureConstants.Dragon_Black_Wyrmling] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Black_Wyrmling] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_Wyrmling] = BuildData("Breath Weapon", damageHelper.BuildEntries("2d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Wyrmling, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Wyrmling, "Claw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Wyrmling, "Breath Weapon", "2d4", FeatConstants.Foci.Elements.Acid));
 
             //small
-            attackDamages[CreatureConstants.Dragon_Black_VeryYoung] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Black_VeryYoung] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_VeryYoung] = BuildData("Breath Weapon", damageHelper.BuildEntries("4d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_VeryYoung, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_VeryYoung, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_VeryYoung, "Breath Weapon", "4d4", FeatConstants.Foci.Elements.Acid));
 
             //medium
-            attackDamages[CreatureConstants.Dragon_Black_Young] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Black_Young] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_Young] = BuildData("Wing", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_Young] = BuildData("Breath Weapon", damageHelper.BuildEntries("6d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Young, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Young, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Young, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Young, "Breath Weapon", "6d4", FeatConstants.Foci.Elements.Acid));
 
             //medium
-            attackDamages[CreatureConstants.Dragon_Black_Juvenile] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Black_Juvenile] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_Juvenile] = BuildData("Wing", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_Juvenile] = BuildData("Breath Weapon", damageHelper.BuildEntries("8d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Black_Juvenile] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Juvenile, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Juvenile, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Juvenile, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Juvenile, "Breath Weapon", "8d4", FeatConstants.Foci.Elements.Acid));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Black_YoungAdult] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Black_YoungAdult] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_YoungAdult] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_YoungAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_YoungAdult] = BuildData("Breath Weapon", damageHelper.BuildEntries("10d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Black_YoungAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Black_YoungAdult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Black_YoungAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_YoungAdult, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_YoungAdult, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_YoungAdult, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_YoungAdult, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_YoungAdult, "Breath Weapon", "10d4", FeatConstants.Foci.Elements.Acid));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Black_Adult] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Black_Adult] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_Adult] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_Adult] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_Adult] = BuildData("Breath Weapon", damageHelper.BuildEntries("12d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Black_Adult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Black_Adult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Black_Adult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Adult, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Adult, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Adult, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Adult, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Adult, "Breath Weapon", "12d4", FeatConstants.Foci.Elements.Acid));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Black_MatureAdult] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Black_MatureAdult] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_MatureAdult] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_MatureAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_MatureAdult] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Black_MatureAdult] = BuildData("Breath Weapon", damageHelper.BuildEntries("14d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Black_MatureAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Black_MatureAdult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Black_MatureAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_MatureAdult, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_MatureAdult, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_MatureAdult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_MatureAdult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_MatureAdult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_MatureAdult, "Breath Weapon", "14d4", FeatConstants.Foci.Elements.Acid));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Black_Old] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Black_Old] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_Old] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_Old] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_Old] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Black_Old] = BuildData("Breath Weapon", damageHelper.BuildEntries("16d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Black_Old] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Black_Old] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Black_Old] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Old, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Old, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Old, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Old, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Old, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Old, "Breath Weapon", "16d4", FeatConstants.Foci.Elements.Acid));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Black_VeryOld] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Black_VeryOld] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_VeryOld] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_VeryOld] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_VeryOld] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Black_VeryOld] = BuildData("Breath Weapon", damageHelper.BuildEntries("18d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Black_VeryOld] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Black_VeryOld] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Black_VeryOld] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_VeryOld, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_VeryOld, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_VeryOld, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_VeryOld, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_VeryOld, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_VeryOld, "Breath Weapon", "18d4", FeatConstants.Foci.Elements.Acid));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Black_Ancient] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Black_Ancient] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_Ancient] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_Ancient] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_Ancient] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Black_Ancient] = BuildData("Breath Weapon", damageHelper.BuildEntries("20d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Black_Ancient] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Black_Ancient] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Black_Ancient] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Ancient, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Ancient, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Ancient, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Ancient, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Ancient, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Ancient, "Breath Weapon", "20d4", FeatConstants.Foci.Elements.Acid));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Black_Wyrm] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Black_Wyrm] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_Wyrm] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_Wyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_Wyrm] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Black_Wyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Black_Wyrm] = BuildData("Breath Weapon", damageHelper.BuildEntries("22d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Black_Wyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Black_Wyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Black_Wyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Wyrm, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Wyrm, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Wyrm, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Wyrm, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Wyrm, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Wyrm, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_Wyrm, "Breath Weapon", "22d4", FeatConstants.Foci.Elements.Acid));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Black_GreatWyrm] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Black_GreatWyrm] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_GreatWyrm] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_GreatWyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Black_GreatWyrm] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Black_GreatWyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Black_GreatWyrm] = BuildData("Breath Weapon", damageHelper.BuildEntries("24d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Black_GreatWyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Black_GreatWyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Black_GreatWyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_GreatWyrm, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_GreatWyrm, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_GreatWyrm, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_GreatWyrm, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_GreatWyrm, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_GreatWyrm, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Black_GreatWyrm, "Breath Weapon", "24d4", FeatConstants.Foci.Elements.Acid));
 
             //small
-            attackDamages[CreatureConstants.Dragon_Blue_Wyrmling] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Wyrmling] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Wyrmling] = BuildData("Breath Weapon", damageHelper.BuildEntries("2d8", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Wyrmling, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Wyrmling, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Wyrmling, "Breath Weapon", "2d8", FeatConstants.Foci.Elements.Electricity));
 
             //medium
-            attackDamages[CreatureConstants.Dragon_Blue_VeryYoung] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Blue_VeryYoung] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_VeryYoung] = BuildData("Wing", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_VeryYoung] = BuildData("Breath Weapon", damageHelper.BuildEntries("4d8", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_VeryYoung, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_VeryYoung, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_VeryYoung, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_VeryYoung, "Breath Weapon", "4d8", FeatConstants.Foci.Elements.Electricity));
 
             //medium
-            attackDamages[CreatureConstants.Dragon_Blue_Young] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Young] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Young] = BuildData("Wing", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Young] = BuildData("Breath Weapon", damageHelper.BuildEntries("6d8", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Young, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Young, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Young, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Young, "Breath Weapon", "6d8", FeatConstants.Foci.Elements.Electricity));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Blue_Juvenile] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Juvenile] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Juvenile] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Juvenile] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Juvenile] = BuildData("Breath Weapon", damageHelper.BuildEntries("8d8", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_Juvenile] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Juvenile, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Juvenile, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Juvenile, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Juvenile, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Juvenile, "Breath Weapon", "8d8", FeatConstants.Foci.Elements.Electricity));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Blue_YoungAdult] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Blue_YoungAdult] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_YoungAdult] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_YoungAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_YoungAdult] = BuildData("Breath Weapon", damageHelper.BuildEntries("10d8", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_YoungAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Blue_YoungAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_YoungAdult, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_YoungAdult, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_YoungAdult, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_YoungAdult, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_YoungAdult, "Breath Weapon", "10d8", FeatConstants.Foci.Elements.Electricity));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Blue_Adult] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Adult] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Adult] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Adult] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Adult] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_Adult] = BuildData("Breath Weapon", damageHelper.BuildEntries("12d8", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_Adult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Blue_Adult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Blue_Adult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Adult, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Adult, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Adult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Adult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Adult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Adult, "Breath Weapon", "12d8", FeatConstants.Foci.Elements.Electricity));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Blue_MatureAdult] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Blue_MatureAdult] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_MatureAdult] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_MatureAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_MatureAdult] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_MatureAdult] = BuildData("Breath Weapon", damageHelper.BuildEntries("14d8", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_MatureAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Blue_MatureAdult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Blue_MatureAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_MatureAdult, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_MatureAdult, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_MatureAdult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_MatureAdult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_MatureAdult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_MatureAdult, "Breath Weapon", "14d8", FeatConstants.Foci.Elements.Electricity));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Blue_Old] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Old] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Old] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Old] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Old] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_Old] = BuildData("Breath Weapon", damageHelper.BuildEntries("16d8", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_Old] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Blue_Old] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Blue_Old] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Old, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Old, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Old, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Old, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Old, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Old, "Breath Weapon", "16d8", FeatConstants.Foci.Elements.Electricity));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Blue_VeryOld] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Blue_VeryOld] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_VeryOld] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_VeryOld] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_VeryOld] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_VeryOld] = BuildData("Breath Weapon", damageHelper.BuildEntries("18d8", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_VeryOld] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Blue_VeryOld] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Blue_VeryOld] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_VeryOld, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_VeryOld, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_VeryOld, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_VeryOld, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_VeryOld, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_VeryOld, "Breath Weapon", "18d8", FeatConstants.Foci.Elements.Electricity));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Blue_Ancient] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Ancient] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Ancient] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Ancient] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Ancient] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_Ancient] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_Ancient] = BuildData("Breath Weapon", damageHelper.BuildEntries("20d8", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_Ancient] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Blue_Ancient] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Blue_Ancient] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Ancient, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Ancient, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Ancient, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Ancient, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Ancient, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Ancient, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Ancient, "Breath Weapon", "20d8", FeatConstants.Foci.Elements.Electricity));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Blue_Wyrm] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Wyrm] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Wyrm] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Wyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_Wyrm] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_Wyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_Wyrm] = BuildData("Breath Weapon", damageHelper.BuildEntries("22d8", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_Wyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Blue_Wyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Blue_Wyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Wyrm, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Wyrm, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Wyrm, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Wyrm, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Wyrm, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Wyrm, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_Wyrm, "Breath Weapon", "22d8", FeatConstants.Foci.Elements.Electricity));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Blue_GreatWyrm] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Blue_GreatWyrm] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_GreatWyrm] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_GreatWyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Blue_GreatWyrm] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_GreatWyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_GreatWyrm] = BuildData("Breath Weapon", damageHelper.BuildEntries("24d8", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Blue_GreatWyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Blue_GreatWyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Blue_GreatWyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_GreatWyrm, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_GreatWyrm, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_GreatWyrm, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_GreatWyrm, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_GreatWyrm, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_GreatWyrm, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Blue_GreatWyrm, "Breath Weapon", "24d8", FeatConstants.Foci.Elements.Electricity));
 
             //small
-            attackDamages[CreatureConstants.Dragon_Green_Wyrmling] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Green_Wyrmling] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_Wyrmling] = BuildData("Breath Weapon", damageHelper.BuildEntries("2d6", FeatConstants.Foci.Elements.Acid, "Gas"), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrmling, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrmling, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrmling, "Breath Weapon", "2d6", FeatConstants.Foci.Elements.Acid, "Gas"));
 
             //medium
-            attackDamages[CreatureConstants.Dragon_Green_VeryYoung] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Green_VeryYoung] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_VeryYoung] = BuildData("Wing", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_VeryYoung] = BuildData("Breath Weapon", damageHelper.BuildEntries("4d6", FeatConstants.Foci.Elements.Acid, "Gas"), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryYoung, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryYoung, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryYoung, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryYoung, "Breath Weapon", "4d6", FeatConstants.Foci.Elements.Acid, "Gas"));
 
             //medium
-            attackDamages[CreatureConstants.Dragon_Green_Young] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Green_Young] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_Young] = BuildData("Wing", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_Young] = BuildData("Breath Weapon", damageHelper.BuildEntries("6d6", FeatConstants.Foci.Elements.Acid, "Gas"), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Young, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Young, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Young, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Young, "Breath Weapon", "6d6", FeatConstants.Foci.Elements.Acid, "Gas"));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Green_Juvenile] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Green_Juvenile] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_Juvenile] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_Juvenile] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_Juvenile] = BuildData("Breath Weapon", damageHelper.BuildEntries("8d6", FeatConstants.Foci.Elements.Acid, "Gas"), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_Juvenile] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Juvenile, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Juvenile, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Juvenile, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Juvenile, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Juvenile, "Breath Weapon", "8d6", FeatConstants.Foci.Elements.Acid, "Gas"));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Green_YoungAdult] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Green_YoungAdult] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_YoungAdult] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_YoungAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_YoungAdult] = BuildData("Breath Weapon", damageHelper.BuildEntries("10d6", FeatConstants.Foci.Elements.Acid, "Gas"), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_YoungAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Green_YoungAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_YoungAdult, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_YoungAdult, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_YoungAdult, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_YoungAdult, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_YoungAdult, "Breath Weapon", "10d6", FeatConstants.Foci.Elements.Acid, "Gas"));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Green_Adult] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Green_Adult] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_Adult] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_Adult] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_Adult] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_Adult] = BuildData("Breath Weapon", damageHelper.BuildEntries("12d6", FeatConstants.Foci.Elements.Acid, "Gas"), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_Adult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Green_Adult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Green_Adult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Adult, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Adult, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Adult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Adult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Adult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Adult, "Breath Weapon", "12d6", FeatConstants.Foci.Elements.Acid, "Gas"));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Green_MatureAdult] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Green_MatureAdult] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_MatureAdult] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_MatureAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_MatureAdult] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_MatureAdult] = BuildData("Breath Weapon", damageHelper.BuildEntries("14d6", FeatConstants.Foci.Elements.Acid, "Gas"), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_MatureAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Green_MatureAdult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Green_MatureAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_MatureAdult, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_MatureAdult, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_MatureAdult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_MatureAdult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_MatureAdult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_MatureAdult, "Breath Weapon", "14d6", FeatConstants.Foci.Elements.Acid, "Gas"));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Green_Old] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Green_Old] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_Old] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_Old] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_Old] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_Old] = BuildData("Breath Weapon", damageHelper.BuildEntries("16d6", FeatConstants.Foci.Elements.Acid, "Gas"), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_Old] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Green_Old] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Green_Old] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Old, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Old, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Old, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Old, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Old, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Old, "Breath Weapon", "16d6", FeatConstants.Foci.Elements.Acid, "Gas"));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Green_VeryOld] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Green_VeryOld] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_VeryOld] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_VeryOld] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_VeryOld] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_VeryOld] = BuildData("Breath Weapon", damageHelper.BuildEntries("18d6", FeatConstants.Foci.Elements.Acid, "Gas"), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_VeryOld] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Green_VeryOld] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Green_VeryOld] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryOld, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryOld, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryOld, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryOld, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryOld, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryOld, "Breath Weapon", "18d6", FeatConstants.Foci.Elements.Acid, "Gas"));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Green_Ancient] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Green_Ancient] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_Ancient] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_Ancient] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_Ancient] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_Ancient] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_Ancient] = BuildData("Breath Weapon", damageHelper.BuildEntries("20d6", FeatConstants.Foci.Elements.Acid, "Gas"), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_Ancient] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Green_Ancient] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Green_Ancient] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Ancient, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Ancient, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Ancient, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Ancient, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Ancient, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Ancient, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Ancient, "Breath Weapon", "20d6", FeatConstants.Foci.Elements.Acid, "Gas"));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Green_Wyrm] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Green_Wyrm] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_Wyrm] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_Wyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_Wyrm] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_Wyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_Wyrm] = BuildData("Breath Weapon", damageHelper.BuildEntries("22d6", FeatConstants.Foci.Elements.Acid, "Gas"), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_Wyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Green_Wyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Green_Wyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrm, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrm, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrm, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrm, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrm, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrm, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrm, "Breath Weapon", "22d6", FeatConstants.Foci.Elements.Acid, "Gas"));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Green_GreatWyrm] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Green_GreatWyrm] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_GreatWyrm] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_GreatWyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Green_GreatWyrm] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_GreatWyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_GreatWyrm] = BuildData("Breath Weapon", damageHelper.BuildEntries("24d6", FeatConstants.Foci.Elements.Acid, "Gas"), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Green_GreatWyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Green_GreatWyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Green_GreatWyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_GreatWyrm, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_GreatWyrm, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_GreatWyrm, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_GreatWyrm, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_GreatWyrm, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_GreatWyrm, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_GreatWyrm, "Breath Weapon", "24d6", FeatConstants.Foci.Elements.Acid, "Gas"));
 
             //medium
-            attackDamages[CreatureConstants.Dragon_Red_Wyrmling] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Red_Wyrmling] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Wyrmling] = BuildData("Wing", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Wyrmling] = BuildData("Breath Weapon", damageHelper.BuildEntries("2d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Wyrmling, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Wyrmling, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Wyrmling, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Wyrmling, "Breath Weapon", "2d10", FeatConstants.Foci.Elements.Fire));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Red_VeryYoung] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Red_VeryYoung] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_VeryYoung] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_VeryYoung] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_VeryYoung] = BuildData("Breath Weapon", damageHelper.BuildEntries("4d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_VeryYoung, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_VeryYoung, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_VeryYoung, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_VeryYoung, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_VeryYoung, "Breath Weapon", "4d10", FeatConstants.Foci.Elements.Fire));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Red_Young] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Red_Young] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Young] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Young] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Young] = BuildData("Breath Weapon", damageHelper.BuildEntries("6d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_Young] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Young, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Young, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Young, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Young, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Young, "Breath Weapon", "6d10", FeatConstants.Foci.Elements.Fire));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Red_Juvenile] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Red_Juvenile] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Juvenile] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Juvenile] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Juvenile] = BuildData("Breath Weapon", damageHelper.BuildEntries("8d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_Juvenile] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Red_Juvenile] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Juvenile, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Juvenile, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Juvenile, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Juvenile, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Juvenile, "Breath Weapon", "8d10", FeatConstants.Foci.Elements.Fire));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Red_YoungAdult] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Red_YoungAdult] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_YoungAdult] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_YoungAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_YoungAdult] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_YoungAdult] = BuildData("Breath Weapon", damageHelper.BuildEntries("10d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_YoungAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Red_YoungAdult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Red_YoungAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_YoungAdult, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_YoungAdult, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_YoungAdult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_YoungAdult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_YoungAdult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_YoungAdult, "Breath Weapon", "10d10", FeatConstants.Foci.Elements.Fire));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Red_Adult] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Red_Adult] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Adult] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Adult] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Adult] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_Adult] = BuildData("Breath Weapon", damageHelper.BuildEntries("12d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_Adult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Red_Adult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Red_Adult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Adult, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Adult, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Adult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Adult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Adult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Adult, "Breath Weapon", "12d10", FeatConstants.Foci.Elements.Fire));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Red_MatureAdult] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Red_MatureAdult] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_MatureAdult] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_MatureAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_MatureAdult] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_MatureAdult] = BuildData("Breath Weapon", damageHelper.BuildEntries("14d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_MatureAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Red_MatureAdult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Red_MatureAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_MatureAdult, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_MatureAdult, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_MatureAdult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_MatureAdult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_MatureAdult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_MatureAdult, "Breath Weapon", "14d10", FeatConstants.Foci.Elements.Fire));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Red_Old] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Red_Old] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Old] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Old] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Old] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_Old] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_Old] = BuildData("Breath Weapon", damageHelper.BuildEntries("16d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_Old] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Red_Old] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Red_Old] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Old, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Old, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Old, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Old, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Old, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Old, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Old, "Breath Weapon", "16d10", FeatConstants.Foci.Elements.Fire));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Red_VeryOld] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Red_VeryOld] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_VeryOld] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_VeryOld] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_VeryOld] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_VeryOld] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_VeryOld] = BuildData("Breath Weapon", damageHelper.BuildEntries("18d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_VeryOld] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Red_VeryOld] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Red_VeryOld] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_VeryOld, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_VeryOld, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_VeryOld, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_VeryOld, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_VeryOld, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_VeryOld, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_VeryOld, "Breath Weapon", "18d10", FeatConstants.Foci.Elements.Fire));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Red_Ancient] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Red_Ancient] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Ancient] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Ancient] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Ancient] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_Ancient] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_Ancient] = BuildData("Breath Weapon", damageHelper.BuildEntries("20d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_Ancient] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Red_Ancient] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Red_Ancient] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Ancient, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Ancient, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Ancient, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Ancient, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Ancient, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Ancient, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Ancient, "Breath Weapon", "20d10", FeatConstants.Foci.Elements.Fire));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Red_Wyrm] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Red_Wyrm] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Wyrm] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Wyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_Wyrm] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_Wyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_Wyrm] = BuildData("Breath Weapon", damageHelper.BuildEntries("22d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_Wyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Red_Wyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Red_Wyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Wyrm, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Wyrm, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Wyrm, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Wyrm, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Wyrm, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Wyrm, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Wyrm, "Breath Weapon", "22d10", FeatConstants.Foci.Elements.Fire));
 
             //colossal
-            attackDamages[CreatureConstants.Dragon_Red_GreatWyrm] = BuildData("Bite", damageHelper.BuildEntries("4d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Red_GreatWyrm] = BuildData("Claw", damageHelper.BuildEntries("4d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_GreatWyrm] = BuildData("Wing", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_GreatWyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Red_GreatWyrm] = BuildData("Crush", damageHelper.BuildEntries("4d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_GreatWyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_GreatWyrm] = BuildData("Breath Weapon", damageHelper.BuildEntries("24d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Red_GreatWyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Red_GreatWyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Red_GreatWyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_GreatWyrm, "Bite", "4d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_GreatWyrm, "Claw", "4d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_GreatWyrm, "Wing", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_GreatWyrm, "Tail Slap", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_GreatWyrm, "Crush", "4d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_GreatWyrm, "Tail Sweep", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_GreatWyrm, "Breath Weapon", "24d10", FeatConstants.Foci.Elements.Fire));
 
             //tiny
-            attackDamages[CreatureConstants.Dragon_White_Wyrmling] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_White_Wyrmling] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_Wyrmling] = BuildData("Breath Weapon", damageHelper.BuildEntries("1d6", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Wyrmling, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Wyrmling, "Claw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Wyrmling, "Breath Weapon", "1d6", FeatConstants.Foci.Elements.Cold));
 
             //small
-            attackDamages[CreatureConstants.Dragon_White_VeryYoung] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_White_VeryYoung] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_VeryYoung] = BuildData("Breath Weapon", damageHelper.BuildEntries("2d6", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_VeryYoung, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_VeryYoung, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_VeryYoung, "Breath Weapon", "2d6", FeatConstants.Foci.Elements.Cold));
 
             //medium
-            attackDamages[CreatureConstants.Dragon_White_Young] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_White_Young] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_Young] = BuildData("Wing", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_Young] = BuildData("Breath Weapon", damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Young, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Young, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Young, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Young, "Breath Weapon", "3d6", FeatConstants.Foci.Elements.Cold));
 
             //medium
-            attackDamages[CreatureConstants.Dragon_White_Juvenile] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_White_Juvenile] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_Juvenile] = BuildData("Wing", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_Juvenile] = BuildData("Breath Weapon", damageHelper.BuildEntries("4d6", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_White_Juvenile] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Juvenile, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Juvenile, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Juvenile, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Juvenile, "Breath Weapon", "4d6", FeatConstants.Foci.Elements.Cold));
 
             //large
-            attackDamages[CreatureConstants.Dragon_White_YoungAdult] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_White_YoungAdult] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_YoungAdult] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_YoungAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_YoungAdult] = BuildData("Breath Weapon", damageHelper.BuildEntries("5d6", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_White_YoungAdult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_White_YoungAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_YoungAdult, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_YoungAdult, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_YoungAdult, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_YoungAdult, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_YoungAdult, "Breath Weapon", "5d6", FeatConstants.Foci.Elements.Cold));
 
             //large
-            attackDamages[CreatureConstants.Dragon_White_Adult] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_White_Adult] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_Adult] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_Adult] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_Adult] = BuildData("Breath Weapon", damageHelper.BuildEntries("6d6", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_White_Adult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_White_Adult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_White_Adult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Adult, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Adult, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Adult, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Adult, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Adult, "Breath Weapon", "6d6", FeatConstants.Foci.Elements.Cold));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_White_MatureAdult] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_White_MatureAdult] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_MatureAdult] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_MatureAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_MatureAdult] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_White_MatureAdult] = BuildData("Breath Weapon", damageHelper.BuildEntries("7d6", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_White_MatureAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_White_MatureAdult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_White_MatureAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_MatureAdult, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_MatureAdult, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_MatureAdult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_MatureAdult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_MatureAdult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_MatureAdult, "Breath Weapon", "7d6", FeatConstants.Foci.Elements.Cold));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_White_Old] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_White_Old] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_Old] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_Old] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_Old] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_White_Old] = BuildData("Breath Weapon", damageHelper.BuildEntries("8d6", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_White_Old] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_White_Old] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_White_Old] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Old, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Old, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Old, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Old, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Old, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Old, "Breath Weapon", "8d6", FeatConstants.Foci.Elements.Cold));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_White_VeryOld] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_White_VeryOld] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_VeryOld] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_VeryOld] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_VeryOld] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_White_VeryOld] = BuildData("Breath Weapon", damageHelper.BuildEntries("9d6", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_White_VeryOld] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_White_VeryOld] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_White_VeryOld] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_VeryOld, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_VeryOld, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_VeryOld, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_VeryOld, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_VeryOld, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_VeryOld, "Breath Weapon", "9d6", FeatConstants.Foci.Elements.Cold));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_White_Ancient] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_White_Ancient] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_Ancient] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_Ancient] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_Ancient] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_White_Ancient] = BuildData("Breath Weapon", damageHelper.BuildEntries("10d6", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_White_Ancient] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_White_Ancient] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_White_Ancient] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Ancient, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Ancient, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Ancient, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Ancient, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Ancient, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Ancient, "Breath Weapon", "10d6", FeatConstants.Foci.Elements.Cold));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_White_Wyrm] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_White_Wyrm] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_Wyrm] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_Wyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_Wyrm] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_White_Wyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_White_Wyrm] = BuildData("Breath Weapon", damageHelper.BuildEntries("11d6", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_White_Wyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_White_Wyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_White_Wyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Wyrm, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Wyrm, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Wyrm, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Wyrm, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Wyrm, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Wyrm, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_Wyrm, "Breath Weapon", "11d6", FeatConstants.Foci.Elements.Cold));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_White_GreatWyrm] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_White_GreatWyrm] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_GreatWyrm] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_GreatWyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_White_GreatWyrm] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_White_GreatWyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_White_GreatWyrm] = BuildData("Breath Weapon", damageHelper.BuildEntries("12d6", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_White_GreatWyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_White_GreatWyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_White_GreatWyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_GreatWyrm, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_GreatWyrm, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_GreatWyrm, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_GreatWyrm, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_GreatWyrm, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_GreatWyrm, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_White_GreatWyrm, "Breath Weapon", "12d6", FeatConstants.Foci.Elements.Cold));
 
             //tiny
-            attackDamages[CreatureConstants.Dragon_Brass_Wyrmling] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Wyrmling] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Wyrmling] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("1d6", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_Wyrmling] = BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+1 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Brass_Wyrmling] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Wyrmling, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Wyrmling, "Claw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Wyrmling, "Breath Weapon (fire)", "1d6", FeatConstants.Foci.Elements.Fire));
 
             //small
-            attackDamages[CreatureConstants.Dragon_Brass_VeryYoung] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Brass_VeryYoung] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_VeryYoung] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("2d6", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_VeryYoung] = BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+2 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Brass_VeryYoung] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_VeryYoung, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_VeryYoung, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_VeryYoung, "Breath Weapon (fire)", "2d6", FeatConstants.Foci.Elements.Fire));
 
             //medium
-            attackDamages[CreatureConstants.Dragon_Brass_Young] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Young] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Young] = BuildData("Wing", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Young] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_Young] = BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+3 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Brass_Young] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Brass_Young] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Young, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Young, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Young, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Young, "Breath Weapon (fire)", "3d6", FeatConstants.Foci.Elements.Fire));
 
             //medium
-            attackDamages[CreatureConstants.Dragon_Brass_Juvenile] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Juvenile] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Juvenile] = BuildData("Wing", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Juvenile] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("4d6", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_Juvenile] = BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+4 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Brass_Juvenile] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Brass_Juvenile] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Juvenile, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Juvenile, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Juvenile, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Juvenile, "Breath Weapon (fire)", "4d6", FeatConstants.Foci.Elements.Fire));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Brass_YoungAdult] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Brass_YoungAdult] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_YoungAdult] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_YoungAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_YoungAdult] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("5d6", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_YoungAdult] = BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+5 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Brass_YoungAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Brass_YoungAdult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Brass_YoungAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_YoungAdult, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_YoungAdult, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_YoungAdult, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_YoungAdult, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_YoungAdult, "Breath Weapon (fire)", "5d6", FeatConstants.Foci.Elements.Fire));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Brass_Adult] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Adult] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Adult] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Adult] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Adult] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("6d6", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_Adult] = BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+6 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Brass_Adult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Brass_Adult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Brass_Adult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Adult, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Adult, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Adult, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Adult, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Adult, "Breath Weapon (fire)", "6d6", FeatConstants.Foci.Elements.Fire));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Brass_MatureAdult] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Brass_MatureAdult] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_MatureAdult] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_MatureAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_MatureAdult] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_MatureAdult] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("7d6", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_MatureAdult] = BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+7 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Brass_MatureAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Brass_MatureAdult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Brass_MatureAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_MatureAdult, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_MatureAdult, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_MatureAdult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_MatureAdult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_MatureAdult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_MatureAdult, "Breath Weapon (fire)", "7d6", FeatConstants.Foci.Elements.Fire));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Brass_Old] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Old] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Old] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Old] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Old] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_Old] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("8d6", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_Old] = BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+8 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Brass_Old] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Brass_Old] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Brass_Old] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Old, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Old, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Old, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Old, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Old, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Old, "Breath Weapon (fire)", "8d6", FeatConstants.Foci.Elements.Fire));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Brass_VeryOld] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Brass_VeryOld] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_VeryOld] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_VeryOld] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_VeryOld] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_VeryOld] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("9d6", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_VeryOld] = BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+9 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Brass_VeryOld] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Brass_VeryOld] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Brass_VeryOld] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_VeryOld, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_VeryOld, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_VeryOld, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_VeryOld, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_VeryOld, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_VeryOld, "Breath Weapon (fire)", "9d6", FeatConstants.Foci.Elements.Fire));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Brass_Ancient] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Ancient] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Ancient] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Ancient] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Ancient] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_Ancient] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("10d6", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_Ancient] = BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+10 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Brass_Ancient] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Brass_Ancient] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Brass_Ancient] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Ancient, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Ancient, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Ancient, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Ancient, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Ancient, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Ancient, "Breath Weapon (fire)", "10d6", FeatConstants.Foci.Elements.Fire));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Brass_Wyrm] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Wyrm] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Wyrm] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Wyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_Wyrm] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_Wyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_Wyrm] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("11d6", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_Wyrm] = BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+11 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Brass_Wyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Brass_Wyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Brass_Wyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Wyrm, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Wyrm, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Wyrm, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Wyrm, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Wyrm, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Wyrm, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_Wyrm, "Breath Weapon (fire)", "11d6", FeatConstants.Foci.Elements.Fire));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Brass_GreatWyrm] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Brass_GreatWyrm] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_GreatWyrm] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_GreatWyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Brass_GreatWyrm] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_GreatWyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_GreatWyrm] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("12d6", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Brass_GreatWyrm] = BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+12 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Brass_GreatWyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Brass_GreatWyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Brass_GreatWyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_GreatWyrm, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_GreatWyrm, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_GreatWyrm, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_GreatWyrm, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_GreatWyrm, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_GreatWyrm, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Brass_GreatWyrm, "Breath Weapon (fire)", "12d6", FeatConstants.Foci.Elements.Fire));
 
             //small
-            attackDamages[CreatureConstants.Dragon_Bronze_Wyrmling] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Wyrmling] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Wyrmling] = BuildData("Breath Weapon (electricity)", damageHelper.BuildEntries("2d6", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_Wyrmling] = BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+1 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Bronze_Wyrmling] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Wyrmling, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Wyrmling, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Wyrmling, "Breath Weapon (electricity)", "2d6", FeatConstants.Foci.Elements.Electricity));
 
             //medium
-            attackDamages[CreatureConstants.Dragon_Bronze_VeryYoung] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_VeryYoung] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_VeryYoung] = BuildData("Wing", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_VeryYoung] = BuildData("Breath Weapon (electricity)", damageHelper.BuildEntries("4d6", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_VeryYoung] = BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+2 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Bronze_VeryYoung] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_VeryYoung, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_VeryYoung, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_VeryYoung, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_VeryYoung, "Breath Weapon (electricity)", "4d6", FeatConstants.Foci.Elements.Electricity));
 
             //medium
-            attackDamages[CreatureConstants.Dragon_Bronze_Young] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Young] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Young] = BuildData("Wing", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Young] = BuildData("Breath Weapon (electricity)", damageHelper.BuildEntries("6d6", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_Young] = BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+3 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Bronze_Young] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Bronze_Young] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Young, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Young, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Young, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Young, "Breath Weapon (electricity)", "6d6", FeatConstants.Foci.Elements.Electricity));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Bronze_Juvenile] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Juvenile] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Juvenile] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Juvenile] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Juvenile] = BuildData("Breath Weapon (electricity)", damageHelper.BuildEntries("8d6", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_Juvenile] = BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+4 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Bronze_Juvenile] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Bronze_Juvenile] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Juvenile, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Juvenile, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Juvenile, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Juvenile, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Juvenile, "Breath Weapon (electricity)", "8d6", FeatConstants.Foci.Elements.Electricity));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Bronze_YoungAdult] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_YoungAdult] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_YoungAdult] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_YoungAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_YoungAdult] = BuildData("Breath Weapon (electricity)", damageHelper.BuildEntries("10d6", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_YoungAdult] = BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+5 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Bronze_YoungAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Bronze_YoungAdult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Bronze_YoungAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_YoungAdult, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_YoungAdult, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_YoungAdult, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_YoungAdult, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_YoungAdult, "Breath Weapon (electricity)", "10d6", FeatConstants.Foci.Elements.Electricity));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Bronze_Adult] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Adult] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Adult] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Adult] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Adult] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_Adult] = BuildData("Breath Weapon (electricity)", damageHelper.BuildEntries("12d6", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_Adult] = BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+6 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Bronze_Adult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Bronze_Adult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Bronze_Adult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Adult, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Adult, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Adult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Adult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Adult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Adult, "Breath Weapon (electricity)", "12d6", FeatConstants.Foci.Elements.Electricity));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Bronze_MatureAdult] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_MatureAdult] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_MatureAdult] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_MatureAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_MatureAdult] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_MatureAdult] = BuildData("Breath Weapon (electricity)", damageHelper.BuildEntries("14d6", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_MatureAdult] = BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+7 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Bronze_MatureAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Bronze_MatureAdult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Bronze_MatureAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_MatureAdult, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_MatureAdult, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_MatureAdult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_MatureAdult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_MatureAdult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_MatureAdult, "Breath Weapon (electricity)", "14d6", FeatConstants.Foci.Elements.Electricity));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Bronze_Old] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Old] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Old] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Old] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Old] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_Old] = BuildData("Breath Weapon (electricity)", damageHelper.BuildEntries("16d6", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_Old] = BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+8 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Bronze_Old] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Bronze_Old] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Bronze_Old] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Old, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Old, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Old, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Old, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Old, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Old, "Breath Weapon (electricity)", "16d6", FeatConstants.Foci.Elements.Electricity));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Bronze_VeryOld] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_VeryOld] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_VeryOld] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_VeryOld] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_VeryOld] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_VeryOld] = BuildData("Breath Weapon (electricity)", damageHelper.BuildEntries("18d6", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_VeryOld] = BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+9 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Bronze_VeryOld] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Bronze_VeryOld] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Bronze_VeryOld] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_VeryOld, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_VeryOld, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_VeryOld, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_VeryOld, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_VeryOld, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_VeryOld, "Breath Weapon (electricity)", "18d6", FeatConstants.Foci.Elements.Electricity));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Bronze_Ancient] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Ancient] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Ancient] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Ancient] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Ancient] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_Ancient] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_Ancient] = BuildData("Breath Weapon (electricity)", damageHelper.BuildEntries("20d6", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_Ancient] = BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+10 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Bronze_Ancient] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Bronze_Ancient] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Bronze_Ancient] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Ancient, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Ancient, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Ancient, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Ancient, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Ancient, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Ancient, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Ancient, "Breath Weapon (electricity)", "20d6", FeatConstants.Foci.Elements.Electricity));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Bronze_Wyrm] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Wyrm] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Wyrm] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Wyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_Wyrm] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_Wyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_Wyrm] = BuildData("Breath Weapon (electricity)", damageHelper.BuildEntries("22d6", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_Wyrm] = BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+11 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Bronze_Wyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Bronze_Wyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Bronze_Wyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Wyrm, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Wyrm, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Wyrm, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Wyrm, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Wyrm, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Wyrm, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_Wyrm, "Breath Weapon (electricity)", "22d6", FeatConstants.Foci.Elements.Electricity));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Bronze_GreatWyrm] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_GreatWyrm] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_GreatWyrm] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_GreatWyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Bronze_GreatWyrm] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_GreatWyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_GreatWyrm] = BuildData("Breath Weapon (electricity)", damageHelper.BuildEntries("24d6", FeatConstants.Foci.Elements.Electricity), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Bronze_GreatWyrm] = BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+12 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Dragon_Bronze_GreatWyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Bronze_GreatWyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Bronze_GreatWyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_GreatWyrm, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_GreatWyrm, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_GreatWyrm, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_GreatWyrm, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_GreatWyrm, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_GreatWyrm, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Bronze_GreatWyrm, "Breath Weapon (electricity)", "24d6", FeatConstants.Foci.Elements.Electricity));
 
             //tiny
-            attackDamages[CreatureConstants.Dragon_Copper_Wyrmling] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Wyrmling] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Wyrmling] = BuildData("Breath Weapon (acid)", damageHelper.BuildEntries("2d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_Wyrmling] = BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed for 1d6+1 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Wyrmling, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Wyrmling, "Claw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Wyrmling, "Breath Weapon (acid)", "2d4", FeatConstants.Foci.Elements.Acid));
 
             //small
-            attackDamages[CreatureConstants.Dragon_Copper_VeryYoung] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Copper_VeryYoung] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_VeryYoung] = BuildData("Breath Weapon (acid)", damageHelper.BuildEntries("4d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_VeryYoung] = BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed for 1d6+2 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_VeryYoung, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_VeryYoung, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_VeryYoung, "Breath Weapon (acid)", "4d4", FeatConstants.Foci.Elements.Acid));
 
             //medium
-            attackDamages[CreatureConstants.Dragon_Copper_Young] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Young] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Young] = BuildData("Wing", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Young] = BuildData("Breath Weapon (acid)", damageHelper.BuildEntries("6d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_Young] = BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed for 1d6+3 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Copper_Young] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Young, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Young, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Young, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Young, "Breath Weapon (acid)", "6d4", FeatConstants.Foci.Elements.Acid));
 
             //medium
-            attackDamages[CreatureConstants.Dragon_Copper_Juvenile] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Juvenile] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Juvenile] = BuildData("Wing", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Juvenile] = BuildData("Breath Weapon (acid)", damageHelper.BuildEntries("8d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_Juvenile] = BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed for 1d6+4 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Copper_Juvenile] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Juvenile, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Juvenile, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Juvenile, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Juvenile, "Breath Weapon (acid)", "8d4", FeatConstants.Foci.Elements.Acid));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Copper_YoungAdult] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Copper_YoungAdult] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_YoungAdult] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_YoungAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_YoungAdult] = BuildData("Breath Weapon (acid)", damageHelper.BuildEntries("10d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_YoungAdult] = BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed for 1d6+5 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Copper_YoungAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_YoungAdult, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_YoungAdult, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_YoungAdult, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_YoungAdult, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_YoungAdult, "Breath Weapon (acid)", "10d4", FeatConstants.Foci.Elements.Acid));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Copper_Adult] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Adult] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Adult] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Adult] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Adult] = BuildData("Breath Weapon (acid)", damageHelper.BuildEntries("12d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_Adult] = BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed for 1d6+6 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Copper_Adult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Copper_Adult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Copper_Adult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Adult, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Adult, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Adult, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Adult, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Adult, "Breath Weapon (acid)", "12d4", FeatConstants.Foci.Elements.Acid));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Copper_MatureAdult] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Copper_MatureAdult] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_MatureAdult] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_MatureAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_MatureAdult] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_MatureAdult] = BuildData("Breath Weapon (acid)", damageHelper.BuildEntries("14d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_MatureAdult] = BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed for 1d6+7 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Copper_MatureAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Copper_MatureAdult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Copper_MatureAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_MatureAdult, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_MatureAdult, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_MatureAdult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_MatureAdult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_MatureAdult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_MatureAdult, "Breath Weapon (acid)", "14d4", FeatConstants.Foci.Elements.Acid));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Copper_Old] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Old] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Old] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Old] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Old] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_Old] = BuildData("Breath Weapon (acid)", damageHelper.BuildEntries("16d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_Old] = BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed for 1d6+8 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Copper_Old] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Copper_Old] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Copper_Old] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Old, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Old, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Old, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Old, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Old, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Old, "Breath Weapon (acid)", "16d4", FeatConstants.Foci.Elements.Acid));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Copper_VeryOld] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Copper_VeryOld] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_VeryOld] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_VeryOld] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_VeryOld] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_VeryOld] = BuildData("Breath Weapon (acid)", damageHelper.BuildEntries("18d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_VeryOld] = BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed for 1d6+9 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Copper_VeryOld] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Copper_VeryOld] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Copper_VeryOld] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_VeryOld, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_VeryOld, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_VeryOld, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_VeryOld, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_VeryOld, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_VeryOld, "Breath Weapon (acid)", "18d4", FeatConstants.Foci.Elements.Acid));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Copper_Ancient] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Ancient] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Ancient] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Ancient] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Ancient] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_Ancient] = BuildData("Breath Weapon (acid)", damageHelper.BuildEntries("20d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_Ancient] = BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed for 1d6+10 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Copper_Ancient] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Copper_Ancient] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Copper_Ancient] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Breath Weapon (acid)", "20d4", FeatConstants.Foci.Elements.Acid));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Copper_Wyrm] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Wyrm] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Wyrm] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Wyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_Wyrm] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_Wyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_Wyrm] = BuildData("Breath Weapon (acid)", damageHelper.BuildEntries("22d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_Wyrm] = BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed for 1d6+11 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Copper_Wyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Copper_Wyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Copper_Wyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Wyrm, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Wyrm, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Wyrm, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Wyrm, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Wyrm, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Wyrm, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Wyrm, "Breath Weapon (acid)", "22d4", FeatConstants.Foci.Elements.Acid));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Copper_GreatWyrm] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Copper_GreatWyrm] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_GreatWyrm] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_GreatWyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Copper_GreatWyrm] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_GreatWyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_GreatWyrm] = BuildData("Breath Weapon (acid)", damageHelper.BuildEntries("24d4", FeatConstants.Foci.Elements.Acid), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Copper_GreatWyrm] = BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed for 1d6+12 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Copper_GreatWyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Copper_GreatWyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Copper_GreatWyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_GreatWyrm, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_GreatWyrm, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_GreatWyrm, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_GreatWyrm, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_GreatWyrm, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_GreatWyrm, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_GreatWyrm, "Breath Weapon (acid)", "24d4", FeatConstants.Foci.Elements.Acid));
 
             //medium
-            attackDamages[CreatureConstants.Dragon_Gold_Wyrmling] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Wyrmling] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Wyrmling] = BuildData("Wing", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Wyrmling] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("2d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_Wyrmling] = BuildData("Breath Weapon (weakening gas)", damageHelper.BuildEntries("1", AbilityConstants.Strength), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Wyrmling, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Wyrmling, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Wyrmling, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Wyrmling, "Breath Weapon (fire)", "2d10", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Wyrmling, "Breath Weapon (weakening gas)", "1", AbilityConstants.Strength));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Gold_VeryYoung] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Gold_VeryYoung] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_VeryYoung] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_VeryYoung] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_VeryYoung] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("4d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_VeryYoung] = BuildData("Breath Weapon (weakening gas)", damageHelper.BuildEntries("2", AbilityConstants.Strength), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_VeryYoung, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_VeryYoung, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_VeryYoung, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_VeryYoung, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_VeryYoung, "Breath Weapon (fire)", "4d10", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_VeryYoung, "Breath Weapon (weakening gas)", "2", AbilityConstants.Strength));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Gold_Young] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Young] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Young] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Young] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Young] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("6d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_Young] = BuildData("Breath Weapon (weakening gas)", damageHelper.BuildEntries("3", AbilityConstants.Strength), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Gold_Young] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Young, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Young, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Young, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Young, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Young, "Breath Weapon (fire)", "6d10", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Young, "Breath Weapon (weakening gas)", "3", AbilityConstants.Strength));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Gold_Juvenile] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Juvenile] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Juvenile] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Juvenile] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Juvenile] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("8d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_Juvenile] = BuildData("Breath Weapon (weakening gas)", damageHelper.BuildEntries("4", AbilityConstants.Strength), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Gold_Juvenile] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Gold_Juvenile] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Juvenile, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Juvenile, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Juvenile, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Juvenile, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Juvenile, "Breath Weapon (fire)", "8d10", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Juvenile, "Breath Weapon (weakening gas)", "4", AbilityConstants.Strength));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Gold_YoungAdult] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Gold_YoungAdult] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_YoungAdult] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_YoungAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_YoungAdult] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_YoungAdult] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("10d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_YoungAdult] = BuildData("Breath Weapon (weakening gas)", damageHelper.BuildEntries("5", AbilityConstants.Strength), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Gold_YoungAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Gold_YoungAdult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Gold_YoungAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_YoungAdult, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_YoungAdult, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_YoungAdult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_YoungAdult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_YoungAdult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_YoungAdult, "Breath Weapon (fire)", "10d10", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_YoungAdult, "Breath Weapon (weakening gas)", "5", AbilityConstants.Strength));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Gold_Adult] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Adult] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Adult] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Adult] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Adult] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_Adult] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("12d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_Adult] = BuildData("Breath Weapon (weakening gas)", damageHelper.BuildEntries("6", AbilityConstants.Strength), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Gold_Adult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Gold_Adult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Gold_Adult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Adult, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Adult, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Adult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Adult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Adult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Adult, "Breath Weapon (fire)", "12d10", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Adult, "Breath Weapon (weakening gas)", "6", AbilityConstants.Strength));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Gold_MatureAdult] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Gold_MatureAdult] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_MatureAdult] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_MatureAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_MatureAdult] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_MatureAdult] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("14d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_MatureAdult] = BuildData("Breath Weapon (weakening gas)", damageHelper.BuildEntries("7", AbilityConstants.Strength), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Gold_MatureAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Gold_MatureAdult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Gold_MatureAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_MatureAdult, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_MatureAdult, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_MatureAdult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_MatureAdult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_MatureAdult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_MatureAdult, "Breath Weapon (fire)", "14d10", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_MatureAdult, "Breath Weapon (weakening gas)", "7", AbilityConstants.Strength));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Gold_Old] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Old] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Old] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Old] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Old] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_Old] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_Old] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("16d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_Old] = BuildData("Breath Weapon (weakening gas)", damageHelper.BuildEntries("8", AbilityConstants.Strength), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Gold_Old] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Gold_Old] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Gold_Old] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Old, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Old, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Old, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Old, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Old, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Old, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Old, "Breath Weapon (fire)", "16d10", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Old, "Breath Weapon (weakening gas)", "8", AbilityConstants.Strength));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Gold_VeryOld] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Gold_VeryOld] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_VeryOld] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_VeryOld] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_VeryOld] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_VeryOld] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_VeryOld] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("18d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_VeryOld] = BuildData("Breath Weapon (weakening gas)", damageHelper.BuildEntries("9", AbilityConstants.Strength), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Gold_VeryOld] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Gold_VeryOld] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Gold_VeryOld] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_VeryOld, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_VeryOld, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_VeryOld, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_VeryOld, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_VeryOld, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_VeryOld, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_VeryOld, "Breath Weapon (fire)", "18d10", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_VeryOld, "Breath Weapon (weakening gas)", "9", AbilityConstants.Strength));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Gold_Ancient] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Ancient] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Ancient] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Ancient] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Ancient] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_Ancient] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_Ancient] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("20d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_Ancient] = BuildData("Breath Weapon (weakening gas)", damageHelper.BuildEntries("10", AbilityConstants.Strength), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Gold_Ancient] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Gold_Ancient] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Gold_Ancient] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Ancient, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Ancient, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Ancient, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Ancient, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Ancient, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Ancient, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Ancient, "Breath Weapon (fire)", "20d10", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Ancient, "Breath Weapon (weakening gas)", "10", AbilityConstants.Strength));
 
             //colossal
-            attackDamages[CreatureConstants.Dragon_Gold_Wyrm] = BuildData("Bite", damageHelper.BuildEntries("4d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Wyrm] = BuildData("Claw", damageHelper.BuildEntries("4d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Wyrm] = BuildData("Wing", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Wyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_Wyrm] = BuildData("Crush", damageHelper.BuildEntries("4d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_Wyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_Wyrm] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("22d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_Wyrm] = BuildData("Breath Weapon (weakening gas)", damageHelper.BuildEntries("11", AbilityConstants.Strength), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Gold_Wyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Gold_Wyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Gold_Wyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Wyrm, "Bite", "4d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Wyrm, "Claw", "4d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Wyrm, "Wing", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Wyrm, "Tail Slap", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Wyrm, "Crush", "4d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Wyrm, "Tail Sweep", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Wyrm, "Breath Weapon (fire)", "22d10", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_Wyrm, "Breath Weapon (weakening gas)", "11", AbilityConstants.Strength));
 
             //colossal
-            attackDamages[CreatureConstants.Dragon_Gold_GreatWyrm] = BuildData("Bite", damageHelper.BuildEntries("4d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Gold_GreatWyrm] = BuildData("Claw", damageHelper.BuildEntries("4d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_GreatWyrm] = BuildData("Wing", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_GreatWyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Gold_GreatWyrm] = BuildData("Crush", damageHelper.BuildEntries("4d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_GreatWyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_GreatWyrm] = BuildData("Breath Weapon (fire)", damageHelper.BuildEntries("24d10", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Gold_GreatWyrm] = BuildData("Breath Weapon (weakening gas)", damageHelper.BuildEntries("12", AbilityConstants.Strength), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Gold_GreatWyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Gold_GreatWyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Gold_GreatWyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_GreatWyrm, "Bite", "4d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_GreatWyrm, "Claw", "4d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_GreatWyrm, "Wing", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_GreatWyrm, "Tail Slap", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_GreatWyrm, "Crush", "4d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_GreatWyrm, "Tail Sweep", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_GreatWyrm, "Breath Weapon (fire)", "24d10", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Gold_GreatWyrm, "Breath Weapon (weakening gas)", "12", AbilityConstants.Strength));
 
             //small
-            attackDamages[CreatureConstants.Dragon_Silver_Wyrmling] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Wyrmling] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Wyrmling] = BuildData("Breath Weapon (cold)", damageHelper.BuildEntries("2d8", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_Wyrmling] = BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+1 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Wyrmling, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Wyrmling, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Wyrmling, "Breath Weapon (cold)", "2d8", FeatConstants.Foci.Elements.Cold));
 
             //medium
-            attackDamages[CreatureConstants.Dragon_Silver_VeryYoung] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Silver_VeryYoung] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_VeryYoung] = BuildData("Wing", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_VeryYoung] = BuildData("Breath Weapon (cold)", damageHelper.BuildEntries("4d8", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_VeryYoung] = BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+2 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_VeryYoung, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_VeryYoung, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_VeryYoung, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_VeryYoung, "Breath Weapon (cold)", "4d8", FeatConstants.Foci.Elements.Cold));
 
             //medium
-            attackDamages[CreatureConstants.Dragon_Silver_Young] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Young] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Young] = BuildData("Wing", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Young] = BuildData("Breath Weapon (cold)", damageHelper.BuildEntries("6d8", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_Young] = BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+3 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Silver_Young] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Young, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Young, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Young, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Young, "Breath Weapon (cold)", "6d8", FeatConstants.Foci.Elements.Cold));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Silver_Juvenile] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Juvenile] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Juvenile] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Juvenile] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Juvenile] = BuildData("Breath Weapon (cold)", damageHelper.BuildEntries("8d8", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_Juvenile] = BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+4 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Silver_Juvenile] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Silver_Juvenile] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Juvenile, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Juvenile, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Juvenile, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Juvenile, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Juvenile, "Breath Weapon (cold)", "8d8", FeatConstants.Foci.Elements.Cold));
 
             //large
-            attackDamages[CreatureConstants.Dragon_Silver_YoungAdult] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Silver_YoungAdult] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_YoungAdult] = BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_YoungAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_YoungAdult] = BuildData("Breath Weapon (cold)", damageHelper.BuildEntries("10d8", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_YoungAdult] = BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+5 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Silver_YoungAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Silver_YoungAdult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Silver_YoungAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_YoungAdult, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_YoungAdult, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_YoungAdult, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_YoungAdult, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_YoungAdult, "Breath Weapon (cold)", "10d8", FeatConstants.Foci.Elements.Cold));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Silver_Adult] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Adult] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Adult] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Adult] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Adult] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_Adult] = BuildData("Breath Weapon (cold)", damageHelper.BuildEntries("12d8", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_Adult] = BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+6 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Silver_Adult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Silver_Adult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Silver_Adult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Adult, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Adult, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Adult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Adult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Adult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Adult, "Breath Weapon (cold)", "12d8", FeatConstants.Foci.Elements.Cold));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Silver_MatureAdult] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Silver_MatureAdult] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_MatureAdult] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_MatureAdult] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_MatureAdult] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_MatureAdult] = BuildData("Breath Weapon (cold)", damageHelper.BuildEntries("14d8", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_MatureAdult] = BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+7 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Silver_MatureAdult] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Silver_MatureAdult] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Silver_MatureAdult] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_MatureAdult, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_MatureAdult, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_MatureAdult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_MatureAdult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_MatureAdult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_MatureAdult, "Breath Weapon (cold)", "14d8", FeatConstants.Foci.Elements.Cold));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Silver_Old] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Old] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Old] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Old] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Old] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_Old] = BuildData("Breath Weapon (cold)", damageHelper.BuildEntries("16d8", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_Old] = BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+8 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Silver_Old] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Silver_Old] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Silver_Old] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Old, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Old, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Old, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Old, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Old, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Old, "Breath Weapon (cold)", "16d8", FeatConstants.Foci.Elements.Cold));
 
             //huge
-            attackDamages[CreatureConstants.Dragon_Silver_VeryOld] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Silver_VeryOld] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_VeryOld] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_VeryOld] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_VeryOld] = BuildData("Crush", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_VeryOld] = BuildData("Breath Weapon (cold)", damageHelper.BuildEntries("18d8", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_VeryOld] = BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+9 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Silver_VeryOld] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Silver_VeryOld] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Silver_VeryOld] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_VeryOld, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_VeryOld, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_VeryOld, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_VeryOld, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_VeryOld, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_VeryOld, "Breath Weapon (cold)", "18d8", FeatConstants.Foci.Elements.Cold));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Silver_Ancient] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Ancient] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Ancient] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Ancient] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Ancient] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_Ancient] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_Ancient] = BuildData("Breath Weapon (cold)", damageHelper.BuildEntries("20d8", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_Ancient] = BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+10 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Silver_Ancient] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Silver_Ancient] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Silver_Ancient] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Ancient, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Ancient, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Ancient, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Ancient, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Ancient, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Ancient, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Ancient, "Breath Weapon (cold)", "20d8", FeatConstants.Foci.Elements.Cold));
 
             //gargantuan
-            attackDamages[CreatureConstants.Dragon_Silver_Wyrm] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Wyrm] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Wyrm] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Wyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_Wyrm] = BuildData("Crush", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_Wyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_Wyrm] = BuildData("Breath Weapon (cold)", damageHelper.BuildEntries("22d8", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_Wyrm] = BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+11 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Silver_Wyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Silver_Wyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Silver_Wyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Wyrm, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Wyrm, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Wyrm, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Wyrm, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Wyrm, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Wyrm, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_Wyrm, "Breath Weapon (cold)", "22d8", FeatConstants.Foci.Elements.Cold));
 
             //colossal
-            attackDamages[CreatureConstants.Dragon_Silver_GreatWyrm] = BuildData("Bite", damageHelper.BuildEntries("4d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragon_Silver_GreatWyrm] = BuildData("Claw", damageHelper.BuildEntries("4d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_GreatWyrm] = BuildData("Wing", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_GreatWyrm] = BuildData("Tail Slap", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragon_Silver_GreatWyrm] = BuildData("Crush", damageHelper.BuildEntries("4d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_GreatWyrm] = BuildData("Tail Sweep", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_GreatWyrm] = BuildData("Breath Weapon (cold)", damageHelper.BuildEntries("24d8", FeatConstants.Foci.Elements.Cold), string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Dragon_Silver_GreatWyrm] = BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+12 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Dragon_Silver_GreatWyrm] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Silver_GreatWyrm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Dragon_Silver_GreatWyrm] = BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_GreatWyrm, "Bite", "4d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_GreatWyrm, "Claw", "4d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_GreatWyrm, "Wing", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_GreatWyrm, "Tail Slap", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_GreatWyrm, "Crush", "4d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_GreatWyrm, "Tail Sweep", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Silver_GreatWyrm, "Breath Weapon (cold)", "24d8", FeatConstants.Foci.Elements.Cold));
 
-            attackDamages[CreatureConstants.Dragonne] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dragonne] = BuildData("Claw", damageHelper.BuildEntries("2d4", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dragonne] = BuildData("Pounce", string.Empty, string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Dragonne] = BuildData("Roar", string.Empty, string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
+            attackDamages.Add(BuildData(CreatureConstants.Dragonne, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragonne, "Claw", "2d4", clawDamageType));
 
-            attackDamages[CreatureConstants.Dretch] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dretch] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Dretch] = BuildData("Summon Demon", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
-            attackDamages[CreatureConstants.Dretch] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dretch, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dretch, "Bite", "1d4", biteDamageType));
 
-            attackDamages[CreatureConstants.Drider] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Drider] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Drider] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Drider] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Drider] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Drider] = BuildData("Poison",
-                damageHelper.BuildEntries(
-                    "1d6", AbilityConstants.Strength, "Initial",
-                    "1d6", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Drider, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Drider, "Poison",
+                "1d6", AbilityConstants.Strength, "Initial",
+                "1d6", AbilityConstants.Strength, "Secondary"));
 
-            attackDamages[CreatureConstants.Dryad] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Dryad] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Dryad] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dryad] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dryad, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Dwarf_Deep] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Dwarf_Deep] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Dwarf_Deep] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Dwarf_Deep, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Dwarf_Duergar] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Dwarf_Duergar] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Dwarf_Duergar] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Dwarf_Duergar] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Dwarf_Duergar, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Dwarf_Hill] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Dwarf_Hill] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Dwarf_Hill] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Dwarf_Hill, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Dwarf_Mountain] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Dwarf_Mountain] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Dwarf_Mountain] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Dwarf_Mountain, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Eagle] = BuildData("Talons", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Eagle] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Eagle, "Talons", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Eagle, "Bite", "1d4", biteDamageType));
 
-            attackDamages[CreatureConstants.Eagle_Giant] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Eagle_Giant] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Eagle_Giant, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Eagle_Giant, "Bite", "1d8", biteDamageType));
 
-            attackDamages[CreatureConstants.Efreeti] = BuildData("Slam", damageHelper.BuildEntries("1d8", slapSlamDamageType), "Heat", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Efreeti] = BuildData("Change Size", string.Empty, string.Empty, 0, "spell-like ability", 2, FeatConstants.Frequencies.Day, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Efreeti] = BuildData("Heat",
-                damageHelper.BuildEntries("1d6", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, false, true, true, true));
-            attackDamages[CreatureConstants.Efreeti] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Efreeti, "Slam", "1d8", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Efreeti, "Heat", "1d6", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages[CreatureConstants.Elasmosaurus] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Elasmosaurus, "Bite", "2d8", biteDamageType));
 
-            attackDamages[CreatureConstants.Elemental_Air_Small] = BuildData("Slam",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Air_Small] = BuildData("Air mastery",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Air_Small] = BuildData("Whirlwind",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 0, "supernatural ability", 1, $"10 {FeatConstants.Frequencies.Minute}", false, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Small, "Slam", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Small, "Whirlwind", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elemental_Air_Medium] = BuildData("Slam",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Air_Medium] = BuildData("Air mastery",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Air_Medium] = BuildData("Whirlwind",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 0, "supernatural ability", 1, $"10 {FeatConstants.Frequencies.Minute}", false, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Medium, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Medium, "Whirlwind", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elemental_Air_Large] = BuildData("Slam",
-                damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Air_Large] = BuildData("Air mastery",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Air_Large] = BuildData("Whirlwind",
-                damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 0, "supernatural ability", 1, $"10 {FeatConstants.Frequencies.Minute}", false, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Large, "Slam", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Large, "Whirlwind", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elemental_Air_Huge] = BuildData("Slam",
-                damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Air_Huge] = BuildData("Air mastery",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Air_Huge] = BuildData("Whirlwind",
-                damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 0, "supernatural ability", 1, $"10 {FeatConstants.Frequencies.Minute}", false, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Huge, "Slam", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Huge, "Whirlwind", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elemental_Air_Greater] = BuildData("Slam",
-                damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Air_Greater] = BuildData("Air mastery",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Air_Greater] = BuildData("Whirlwind",
-                damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 0, "supernatural ability", 1, $"10 {FeatConstants.Frequencies.Minute}", false, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Greater, "Slam", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Greater, "Whirlwind", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elemental_Air_Elder] = BuildData("Slam",
-                damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Air_Elder] = BuildData("Air mastery",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Air_Elder] = BuildData("Whirlwind",
-                damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 0, "supernatural ability", 1, $"10 {FeatConstants.Frequencies.Minute}", false, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Elder, "Slam", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Elder, "Whirlwind", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elemental_Earth_Small] = BuildData("Slam",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Earth_Small] = BuildData("Earth mastery", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Earth_Small] = BuildData("Push", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Earth_Small, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Earth_Medium, "Slam", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Earth_Large, "Slam", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Earth_Huge, "Slam", "2d10", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Earth_Greater, "Slam", "2d10", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Earth_Elder, "Slam", "2d10", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elemental_Earth_Medium] = BuildData("Slam",
-                damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Earth_Medium] = BuildData("Earth mastery", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Earth_Medium] = BuildData("Push", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Small, "Slam", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Small, "Burn", "1d4", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages[CreatureConstants.Elemental_Earth_Large] = BuildData("Slam",
-                damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Earth_Large] = BuildData("Earth mastery", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Earth_Large] = BuildData("Push", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Medium, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Medium, "Burn", "1d6", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages[CreatureConstants.Elemental_Earth_Huge] = BuildData("Slam",
-                damageHelper.BuildEntries("2d10", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Earth_Huge] = BuildData("Earth mastery", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Earth_Huge] = BuildData("Push", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Large, "Slam", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Large, "Burn", "2d6", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages[CreatureConstants.Elemental_Earth_Greater] = BuildData("Slam",
-                damageHelper.BuildEntries("2d10", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Earth_Greater] = BuildData("Earth mastery", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Earth_Greater] = BuildData("Push", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Huge, "Slam", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Huge, "Burn", "2d8", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages[CreatureConstants.Elemental_Earth_Elder] = BuildData("Slam",
-                damageHelper.BuildEntries("2d10", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Earth_Elder] = BuildData("Earth mastery", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Earth_Elder] = BuildData("Push", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Greater, "Slam", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Greater, "Burn", "2d8", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages[CreatureConstants.Elemental_Fire_Small] = BuildData("Slam",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning),
-                "Burn", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Fire_Small] = BuildData("Burn",
-                damageHelper.BuildEntries("1d4", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Elder, "Slam", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Elder, "Burn", "2d8", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages[CreatureConstants.Elemental_Fire_Medium] = BuildData("Slam",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
-                "Burn", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Fire_Medium] = BuildData("Burn",
-                damageHelper.BuildEntries("1d6", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Water_Small, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Water_Small, "Vortex", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elemental_Fire_Large] = BuildData("Slam",
-                damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning),
-                "Burn", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Fire_Large] = BuildData("Burn",
-                damageHelper.BuildEntries("2d6", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Water_Medium, "Slam", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Water_Medium, "Vortex", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elemental_Fire_Huge] = BuildData("Slam",
-                damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning),
-                "Burn", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Fire_Huge] = BuildData("Burn",
-                damageHelper.BuildEntries("2d8", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Water_Large, "Slam", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Water_Large, "Vortex", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elemental_Fire_Greater] = BuildData("Slam",
-                damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning),
-                "Burn", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Fire_Greater] = BuildData("Burn",
-                damageHelper.BuildEntries("2d8", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Water_Huge, "Slam", "2d10", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Water_Huge, "Vortex", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elemental_Fire_Elder] = BuildData("Slam",
-                damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning),
-                "Burn", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Fire_Elder] = BuildData("Burn",
-                damageHelper.BuildEntries("2d8", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Water_Greater, "Slam", "2d10", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Water_Greater, "Vortex", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elemental_Water_Small] = BuildData("Slam",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Water_Small] = BuildData("Water mastery",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Water_Small] = BuildData("Drench",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Water_Small] = BuildData("Vortex",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 0, "supernatural ability", 1, $"10 {FeatConstants.Frequencies.Minute}", false, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Water_Elder, "Slam", "2d10", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Water_Elder, "Vortex", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elemental_Water_Medium] = BuildData("Slam",
-                damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Water_Medium] = BuildData("Water mastery",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Water_Medium] = BuildData("Drench",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Water_Medium] = BuildData("Vortex",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 0, "supernatural ability", 1, $"10 {FeatConstants.Frequencies.Minute}", false, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elephant, "Slam", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elephant, "Stamp", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elephant, "Gore", "2d8", AttributeConstants.DamageTypes.Piercing));
+            attackDamages.Add(BuildData(CreatureConstants.Elephant, "Trample", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elemental_Water_Large] = BuildData("Slam",
-                damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Water_Large] = BuildData("Water mastery",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Water_Large] = BuildData("Drench",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Water_Large] = BuildData("Vortex",
-                damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 0, "supernatural ability", 1, $"10 {FeatConstants.Frequencies.Minute}", false, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elf_Aquatic, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elemental_Water_Huge] = BuildData("Slam",
-                damageHelper.BuildEntries("2d10", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Water_Huge] = BuildData("Water mastery",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Water_Huge] = BuildData("Drench",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Water_Huge] = BuildData("Vortex",
-                damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 0, "supernatural ability", 1, $"10 {FeatConstants.Frequencies.Minute}", false, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elf_Drow, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elemental_Water_Greater] = BuildData("Slam",
-                damageHelper.BuildEntries("2d10", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Water_Greater] = BuildData("Water mastery",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Water_Greater] = BuildData("Drench",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Water_Greater] = BuildData("Vortex",
-                damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 0, "supernatural ability", 1, $"10 {FeatConstants.Frequencies.Minute}", false, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elf_Gray, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elemental_Water_Elder] = BuildData("Slam",
-                damageHelper.BuildEntries("2d10", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elemental_Water_Elder] = BuildData("Water mastery",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Water_Elder] = BuildData("Drench",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Elemental_Water_Elder] = BuildData("Vortex",
-                damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 0, "supernatural ability", 1, $"10 {FeatConstants.Frequencies.Minute}", false, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elf_Half, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elephant] = BuildData("Slam", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elephant] = BuildData("Stamp", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Elephant] = BuildData("Gore", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elephant] = BuildData("Trample", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Elf_High, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elf_Aquatic] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Elf_Aquatic] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Elf_Aquatic] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Elf_Wild, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elf_Drow] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Elf_Drow] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Elf_Drow] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Elf_Drow] = BuildData("Poison",
-                string.Empty,
-                "1 minute unconscious (Initial), 2d4 hours unconscious (Secondary)", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, false, false, true, save: SaveConstants.Fortitude, saveDcBonus: 3));
-            attackDamages[CreatureConstants.Elf_Drow] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Elf_Wood, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elf_Gray] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Elf_Gray] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Elf_Gray] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Erinyes, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Elf_Half] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Elf_Half] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Elf_Half] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.EtherealFilcher, "Bite", "1d4", biteDamageType));
 
-            attackDamages[CreatureConstants.Elf_High] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Elf_High] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Elf_High] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.EtherealMarauder, "Bite", "1d6", biteDamageType));
 
-            attackDamages[CreatureConstants.Elf_Wild] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Elf_Wild] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Elf_Wild] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-
-            attackDamages[CreatureConstants.Elf_Wood] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Elf_Wood] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Elf_Wood] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-
-            attackDamages[CreatureConstants.Erinyes] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Erinyes] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Erinyes] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Erinyes] = BuildData("Rope", string.Empty, "Entangle", 0, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Erinyes] = BuildData("Entangle", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Erinyes] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Erinyes] = BuildData("Summon Devil", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
-
-            attackDamages[CreatureConstants.EtherealFilcher] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.EtherealFilcher] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-
-            attackDamages[CreatureConstants.EtherealMarauder] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.EtherealMarauder] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-
-            attackDamages[CreatureConstants.Ettercap] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), "Poison", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Ettercap] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Ettercap] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Ettercap, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Ettercap, "Claw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Ettercap, "Poison",
                     "1d6", AbilityConstants.Dexterity, "Initial",
-                    "2d6", AbilityConstants.Dexterity, "Secondary"),
-                string.Empty, 0.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude, saveDcBonus: 2));
-            attackDamages[CreatureConstants.Ettercap] = BuildData("Web", string.Empty, string.Empty, 0, "extraordinary ability", 8, FeatConstants.Frequencies.Day, true, true, false, true, saveAbility: AbilityConstants.Constitution));
+                    "2d6", AbilityConstants.Dexterity, "Secondary"));
 
-            attackDamages[CreatureConstants.Ettin] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 2, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Ettin] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 2, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Ettin] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Ettin, "Unarmed Strike", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.FireBeetle_Giant] = BuildData("Bite", damageHelper.BuildEntries("2d4", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.FireBeetle_Giant, "Bite", "2d4", biteDamageType));
 
-            attackDamages[CreatureConstants.FormianWorker] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.FormianWorker] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.FormianWorker, "Bite", "1d4", biteDamageType));
 
-            attackDamages[CreatureConstants.FormianWarrior] = BuildData("Sting", damageHelper.BuildEntries("2d4", stingDamageType), "Poison", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.FormianWarrior] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.FormianWarrior] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.FormianWarrior] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.FormianWarrior, "Sting", "2d4", stingDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.FormianWarrior, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.FormianWarrior, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.FormianWarrior, "Poison",
                     "1d6", AbilityConstants.Strength, "Initial",
-                    "1d6", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                    "1d6", AbilityConstants.Strength, "Secondary"));
 
-            attackDamages[CreatureConstants.FormianTaskmaster] = BuildData("Sting", damageHelper.BuildEntries("2d4", stingDamageType), "Poison", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.FormianTaskmaster] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.FormianTaskmaster] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.FormianTaskmaster, "Sting", "2d4", stingDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.FormianTaskmaster, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.FormianTaskmaster, "Poison",
                     "1d6", AbilityConstants.Strength, "Initial",
-                    "1d6", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.FormianTaskmaster] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.FormianTaskmaster] = BuildData("Dominated creature", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                    "1d6", AbilityConstants.Strength, "Secondary"));
 
-            attackDamages[CreatureConstants.FormianMyrmarch] = BuildData("Sting",
-                damageHelper.BuildEntries("2d4", stingDamageType),
-                "Poison", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.FormianMyrmarch] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.FormianMyrmarch] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.FormianMyrmarch] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.FormianMyrmarch, "Sting", "2d4", stingDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.FormianMyrmarch, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.FormianMyrmarch, "Poison",
                     "1d6", AbilityConstants.Strength, "Initial",
-                    "1d6", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.FormianMyrmarch] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                    "1d6", AbilityConstants.Strength, "Secondary"));
 
-            attackDamages[CreatureConstants.FormianQueen] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.FormianQueen] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.FrostWorm, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.FrostWorm, "Cold", "1d8", FeatConstants.Foci.Elements.Cold));
+            attackDamages.Add(BuildData(CreatureConstants.FrostWorm, "Breath weapon", "15d6", FeatConstants.Foci.Elements.Cold));
 
-            attackDamages[CreatureConstants.FrostWorm] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), "Cold", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.FrostWorm] = BuildData("Trill", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.FrostWorm] = BuildData("Cold",
-                damageHelper.BuildEntries("1d8", FeatConstants.Foci.Elements.Cold),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-            attackDamages[CreatureConstants.FrostWorm] = BuildData("Breath weapon",
-                damageHelper.BuildEntries("15d6", FeatConstants.Foci.Elements.Cold),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Gargoyle, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Gargoyle, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Gargoyle, "Gore", "1d6", goreDamageType));
 
-            attackDamages[CreatureConstants.Gargoyle] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Gargoyle] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Gargoyle] = BuildData("Gore", damageHelper.BuildEntries("1d6", goreDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Gargoyle_Kapoacinth, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Gargoyle_Kapoacinth, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Gargoyle_Kapoacinth, "Gore", "1d6", AttributeConstants.DamageTypes.Piercing));
 
-            attackDamages[CreatureConstants.Gargoyle_Kapoacinth] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Gargoyle_Kapoacinth] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Gargoyle_Kapoacinth] = BuildData("Gore", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-
-            attackDamages[CreatureConstants.GelatinousCube] = BuildData("Slam",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.GelatinousCube, "Slam",
                     "1d6", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
-                    "1d6", FeatConstants.Foci.Elements.Acid),
-                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.GelatinousCube] = BuildData("Acid", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.GelatinousCube] = BuildData("Engulf", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, SaveConstants.Reflex, AbilityConstants.Strength, 1));
-            attackDamages[CreatureConstants.GelatinousCube] = BuildData("Paralysis", string.Empty, "3d6 rounds of paralysis", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                    "1d6", FeatConstants.Foci.Elements.Acid));
 
-            attackDamages[CreatureConstants.Ghaele] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Ghaele] = BuildData("Light Ray",
-                damageHelper.BuildEntries("2d12"),
-                string.Empty, 0, "ranged touch", 2, FeatConstants.Frequencies.Round, false, true, true, false));
-            attackDamages[CreatureConstants.Ghaele] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Ghaele] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Ghaele] = BuildData("Gaze", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Ghaele, "Light Ray", "2d12"));
 
-            attackDamages[CreatureConstants.Ghoul] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), "Disease, Paralysis", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Ghoul] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), "Paralysis", 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Ghoul] = BuildData("Disease", string.Empty, "Ghoul Fever", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-            attackDamages[CreatureConstants.Ghoul] = BuildData("Ghoul Fever",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Ghoul, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Ghoul, "Claw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Ghoul, "Ghoul Fever",
                     "1d3", AbilityConstants.Constitution, "Incubation period 1 day",
-                    "1d3", AbilityConstants.Dexterity, "Incubation period 1 day"),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Ghoul] = BuildData("Paralysis", string.Empty, "1d4+1 rounds", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
+                    "1d3", AbilityConstants.Dexterity, "Incubation period 1 day"));
 
-            attackDamages[CreatureConstants.Ghoul_Ghast] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), "Disease, Paralysis", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Ghoul_Ghast] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), "Paralysis", 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Ghoul_Ghast] = BuildData("Disease", string.Empty, "Ghoul Fever", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-            attackDamages[CreatureConstants.Ghoul_Ghast] = BuildData("Ghoul Fever",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Ghoul_Ghast, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Ghoul_Ghast, "Claw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Ghoul_Ghast, "Ghoul Fever",
                     "1d3", AbilityConstants.Constitution, "Incubation period 1 day",
-                    "1d3", AbilityConstants.Dexterity, "Incubation period 1 day"),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Ghoul_Ghast] = BuildData("Paralysis", string.Empty, "1d4+1 rounds", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Ghoul_Ghast] = BuildData("Stench", string.Empty, "1d6+4 rounds sickened", 0, "melee", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
+                    "1d3", AbilityConstants.Dexterity, "Incubation period 1 day"));
 
-            attackDamages[CreatureConstants.Ghoul_Lacedon] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), "Disease, Paralysis", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Ghoul_Lacedon] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), "Paralysis", 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Ghoul_Lacedon] = BuildData("Disease", string.Empty, "Ghoul Fever", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-            attackDamages[CreatureConstants.Ghoul_Lacedon] = BuildData("Ghoul Fever",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Ghoul_Lacedon, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Ghoul_Lacedon, "Claw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Ghoul_Lacedon, "Ghoul Fever",
                     "1d3", AbilityConstants.Constitution, "Incubation period 1 day",
-                    "1d3", AbilityConstants.Dexterity, "Incubation period 1 day"),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Ghoul_Lacedon] = BuildData("Paralysis", string.Empty, "1d4+1 rounds", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
+                    "1d3", AbilityConstants.Dexterity, "Incubation period 1 day"));
 
-            attackDamages[CreatureConstants.Giant_Cloud] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Giant_Cloud] = BuildData("Slam", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Giant_Cloud] = BuildData("Rock", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "ranged", 1, FeatConstants.Frequencies.Round, false, true, true, false));
-            attackDamages[CreatureConstants.Giant_Cloud] = BuildData("Rock Throwing", string.Empty, string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Giant_Cloud] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Giant_Cloud, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Giant_Cloud, "Rock", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Giant_Fire] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Giant_Fire] = BuildData("Slam", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Giant_Fire] = BuildData("Rock", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "ranged", 1, FeatConstants.Frequencies.Round, false, true, true, false));
-            attackDamages[CreatureConstants.Giant_Fire] = BuildData("Rock Throwing", string.Empty, string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Giant_Fire, "Slam", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Giant_Fire, "Rock", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Giant_Frost] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Giant_Frost] = BuildData("Slam", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Giant_Frost] = BuildData("Rock", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "ranged", 1, FeatConstants.Frequencies.Round, false, true, true, false));
-            attackDamages[CreatureConstants.Giant_Frost] = BuildData("Rock Throwing", string.Empty, string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Giant_Frost, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Giant_Frost, "Rock", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Giant_Hill] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Giant_Hill] = BuildData("Slam", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Giant_Hill] = BuildData("Rock", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "ranged", 1, FeatConstants.Frequencies.Round, false, true, true, false));
-            attackDamages[CreatureConstants.Giant_Hill] = BuildData("Rock Throwing", string.Empty, string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Giant_Hill, "Slam", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Giant_Hill, "Rock", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Giant_Stone] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Giant_Stone] = BuildData("Slam", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Giant_Stone] = BuildData("Rock", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "ranged", 1, FeatConstants.Frequencies.Round, false, true, true, false));
-            attackDamages[CreatureConstants.Giant_Stone] = BuildData("Rock Throwing", string.Empty, string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Giant_Stone, "Slam", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Giant_Stone, "Rock", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Giant_Stone_Elder] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Giant_Stone_Elder] = BuildData("Slam", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Giant_Stone_Elder] = BuildData("Rock", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "ranged", 1, FeatConstants.Frequencies.Round, false, true, true, false));
-            attackDamages[CreatureConstants.Giant_Stone_Elder] = BuildData("Rock Throwing", string.Empty, string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Giant_Stone_Elder] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Giant_Stone_Elder, "Slam", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Giant_Stone_Elder, "Rock", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Giant_Storm] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Giant_Storm] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Giant_Storm] = BuildData("Slam", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Giant_Storm] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Giant_Storm, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.GibberingMouther] = BuildData("Bite",
-                damageHelper.BuildEntries("1", biteDamageType),
-                string.Empty, 1, "melee", 6, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.GibberingMouther] = BuildData("Spittle",
-                damageHelper.BuildEntries("1d4", FeatConstants.Foci.Elements.Acid),
-                "Blindness", 0, "ranged touch", 1, FeatConstants.Frequencies.Round, false, true, true, false));
-            attackDamages[CreatureConstants.GibberingMouther] = BuildData("Blindness",
-                string.Empty,
-                "1d4 rounds blinded", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.GibberingMouther] = BuildData("Gibbering",
-                string.Empty,
-                "1d2 rounds Confusion", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.GibberingMouther] = BuildData("Improved Grab",
-                string.Empty,
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.GibberingMouther] = BuildData("Swallow Whole",
-                string.Empty,
-                "Blood Drain", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.GibberingMouther] = BuildData("Blood Drain",
-                damageHelper.BuildEntries("1d4", AbilityConstants.Constitution),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.GibberingMouther] = BuildData("Ground Manipulation",
-                string.Empty,
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.GibberingMouther, "Bite", "1", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.GibberingMouther, "Spittle", "1d4", FeatConstants.Foci.Elements.Acid));
+            attackDamages.Add(BuildData(CreatureConstants.GibberingMouther, "Blood Drain", "1d4", AbilityConstants.Constitution));
 
-            attackDamages[CreatureConstants.Girallon] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 4, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Girallon] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Girallon] = BuildData("Rend", damageHelper.BuildEntries("2d4", clawDamageType), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Girallon, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Girallon, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Girallon, "Rend", "2d4", clawDamageType));
 
-            attackDamages[CreatureConstants.Githyanki] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Githyanki] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Githyanki] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Githyanki] = BuildData(FeatConstants.SpecialQualities.Psionic, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Githyanki, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Githzerai] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Githzerai] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Githzerai] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Githzerai] = BuildData(FeatConstants.SpecialQualities.Psionic, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Githzerai, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Glabrezu] = BuildData("Pincer", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Glabrezu] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Glabrezu] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Glabrezu] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Glabrezu] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Glabrezu] = BuildData("Summon Demon", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Glabrezu, "Pincer", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Glabrezu, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Glabrezu, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Glabrezu, "Summon Demon", string.Empty));
 
-            attackDamages[CreatureConstants.Gnoll] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Gnoll] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Gnoll] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Gnoll, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Gnome_Forest] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Gnome_Forest] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Gnome_Forest] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Gnome_Forest] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Gnome_Forest, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Gnome_Rock] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Gnome_Rock] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Gnome_Rock] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Gnome_Rock] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Gnome_Rock, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Gnome_Svirfneblin] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Gnome_Svirfneblin] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Gnome_Svirfneblin] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Gnome_Svirfneblin] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Gnome_Svirfneblin, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Goblin] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Goblin] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Goblin] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Goblin, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Golem_Clay] = BuildData("Slam", damageHelper.BuildEntries("2d10", slapSlamDamageType), "Cursed Wound", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Golem_Clay] = BuildData("Berserk", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Golem_Clay] = BuildData("Cursed Wound", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true));
-            attackDamages[CreatureConstants.Golem_Clay] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Golem_Clay, "Slam", "2d10", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Golem_Clay, "Berserk", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Golem_Clay, "Cursed Wound", string.Empty));
 
-            attackDamages[CreatureConstants.Golem_Flesh] = BuildData("Slam", damageHelper.BuildEntries("2d8", slapSlamDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Golem_Flesh] = BuildData("Berserk", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Golem_Flesh, "Slam", "2d8", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Golem_Flesh, "Berserk", string.Empty));
 
-            attackDamages[CreatureConstants.Golem_Iron] = BuildData("Slam", damageHelper.BuildEntries("2d10", slapSlamDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Golem_Iron] = BuildData("Breath weapon", string.Empty, "Poisonous Gas", 0, "supernatural ability", 1, $"1d4+1 {FeatConstants.Frequencies.Round}", false, true, true, true));
-            attackDamages[CreatureConstants.Golem_Iron] = BuildData("Poisonous Gas",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Golem_Iron, "Slam", "2d10", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Golem_Iron, "Breath weapon", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Golem_Iron, "Poisonous Gas",
                     "1d4", AbilityConstants.Constitution, "Initial",
-                    "3d4", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "melee", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                    "3d4", AbilityConstants.Constitution, "Secondary"));
 
-            attackDamages[CreatureConstants.Golem_Stone] = BuildData("Slam", damageHelper.BuildEntries("2d10", slapSlamDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Golem_Stone] = BuildData("Slow", string.Empty, string.Empty, 0, "supernatural ability", 1, $"2 {FeatConstants.Frequencies.Round}", true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Golem_Stone, "Slam", "2d10", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Golem_Stone, "Slow", string.Empty, string.Empty, 0));
 
-            attackDamages[CreatureConstants.Golem_Stone_Greater] = BuildData("Slam", damageHelper.BuildEntries("4d8", slapSlamDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Golem_Stone_Greater] = BuildData("Slow", string.Empty, string.Empty, 0, "supernatural ability", 1, $"2 {FeatConstants.Frequencies.Round}", true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Golem_Stone_Greater, "Slam", "4d8", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Golem_Stone_Greater, "Slow", string.Empty, string.Empty, 0));
 
-            attackDamages[CreatureConstants.Gorgon] = BuildData("Gore", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Gorgon] = BuildData("Breath weapon", string.Empty, "Turn to stone", 0, "supernatural ability", 5, FeatConstants.Frequencies.Day, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Gorgon] = BuildData("Trample", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Gorgon, "Gore", "1d8", AttributeConstants.DamageTypes.Piercing));
+            attackDamages.Add(BuildData(CreatureConstants.Gorgon, "Breath weapon", string.Empty, "Turn to stone", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Gorgon, "Trample", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.GrayOoze] = BuildData("Slam",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.GrayOoze, "Slam",
+
                     "1d6", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
                     "1d6", FeatConstants.Foci.Elements.Acid),
                 string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.GrayOoze] = BuildData("Acid",
-                damageHelper.BuildEntries("16", FeatConstants.Foci.Elements.Acid, "Wooden or Metal objects"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.GrayOoze] = BuildData("Constrict",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.GrayOoze, "Acid",
+                "16", FeatConstants.Foci.Elements.Acid, "Wooden or Metal objects"),
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.GrayOoze, "Constrict",
+
                     "1d6", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
                     "1d6", FeatConstants.Foci.Elements.Acid),
                 string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.GrayOoze] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-            attackDamages[CreatureConstants.GrayRender] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.GrayRender] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.GrayRender] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.GrayRender] = BuildData("Rend", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.GrayRender, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.GrayRender, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.GrayRender, "Rend", "2d6", clawDamageType));
 
-            attackDamages[CreatureConstants.GreenHag] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.GreenHag] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.GreenHag] = BuildData("Weakness",
-                damageHelper.BuildEntries("2d4", AbilityConstants.Strength),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
-            attackDamages[CreatureConstants.GreenHag] = BuildData("Mimicry", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.GreenHag, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.GreenHag, "Weakness",
+                "2d4", AbilityConstants.Strength),
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.GreenHag, "Mimicry", string.Empty));
 
-            attackDamages[CreatureConstants.Grick] = BuildData("Tentacle", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 4, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Grick] = BuildData("Bite", damageHelper.BuildEntries("1d3", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Grick, "Tentacle", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Grick, "Bite", "1d3", biteDamageType));
 
-            attackDamages[CreatureConstants.Griffon] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Griffon] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Griffon] = BuildData("Pounce", string.Empty, string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Griffon] = BuildData("Rake", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Griffon, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Griffon, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Griffon, "Rake", "1d6", clawDamageType));
 
-            attackDamages[CreatureConstants.Grig] = BuildData(AttributeConstants.Melee,
+            attackDamages.Add(BuildData(CreatureConstants.Grig, AttributeConstants.Melee,
                 string.Empty,
                 string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Grig] = BuildData(AttributeConstants.Ranged,
+            attackDamages.Add(BuildData(CreatureConstants.Grig, AttributeConstants.Ranged,
                 string.Empty,
                 string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Grig] = BuildData("Unarmed Strike",
-                damageHelper.BuildEntries("1", AttributeConstants.DamageTypes.Bludgeoning),
+            attackDamages.Add(BuildData(CreatureConstants.Grig, "Unarmed Strike",
+                "1", AttributeConstants.DamageTypes.Bludgeoning),
                 string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Grig] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
+            attackDamages.Add(BuildData(CreatureConstants.Grig, FeatConstants.SpecialQualities.SpellLikeAbility,
                 string.Empty,
                 string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-            attackDamages[CreatureConstants.Grig_WithFiddle] = BuildData(AttributeConstants.Melee,
+            attackDamages.Add(BuildData(CreatureConstants.Grig_WithFiddle, AttributeConstants.Melee,
                 string.Empty,
                 string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Grig_WithFiddle] = BuildData(AttributeConstants.Ranged,
+            attackDamages.Add(BuildData(CreatureConstants.Grig_WithFiddle, AttributeConstants.Ranged,
                 string.Empty,
                 string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Grig_WithFiddle] = BuildData("Unarmed Strike",
-                damageHelper.BuildEntries("1", AttributeConstants.DamageTypes.Bludgeoning),
+            attackDamages.Add(BuildData(CreatureConstants.Grig_WithFiddle, "Unarmed Strike",
+                "1", AttributeConstants.DamageTypes.Bludgeoning),
                 string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Grig_WithFiddle] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
+            attackDamages.Add(BuildData(CreatureConstants.Grig_WithFiddle, FeatConstants.SpecialQualities.SpellLikeAbility,
                 string.Empty,
                 string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Grig_WithFiddle] = BuildData("Fiddle",
+            attackDamages.Add(BuildData(CreatureConstants.Grig_WithFiddle, "Fiddle",
                 string.Empty,
-                SpellConstants.IrresistibleDance, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+                SpellConstants.IrresistibleDance, 0));
 
-            attackDamages[CreatureConstants.Grimlock] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Grimlock] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Grimlock, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Gynosphinx] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Gynosphinx] = BuildData("Pounce", string.Empty, string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Gynosphinx] = BuildData("Rake", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Gynosphinx] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Gynosphinx, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Gynosphinx, "Rake", "1d6", clawDamageType));
 
-            attackDamages[CreatureConstants.Halfling_Deep] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Halfling_Deep] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Halfling_Deep] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Halfling_Deep, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Halfling_Lightfoot] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Halfling_Lightfoot] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Halfling_Lightfoot] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Halfling_Lightfoot, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Halfling_Tallfellow] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Halfling_Tallfellow] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Halfling_Tallfellow] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Halfling_Tallfellow, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Harpy] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Harpy] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Harpy] = BuildData("Captivating Song", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Harpy, "Claw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Harpy, "Captivating Song", string.Empty, string.Empty, 0));
 
-            attackDamages[CreatureConstants.Hawk] = BuildData("Talons", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Hawk, "Talons", "1d4", clawDamageType));
 
-            attackDamages[CreatureConstants.HellHound] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), "Fiery Bite", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.HellHound] = BuildData("Fiery Bite", damageHelper.BuildEntries("1d6", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.HellHound] = BuildData("Breath weapon", damageHelper.BuildEntries("2d6", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"2d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.HellHound, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.HellHound, "Fiery Bite", "1d6", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.HellHound, "Breath weapon", "2d6", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages[CreatureConstants.HellHound_NessianWarhound] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), "Fiery Bite", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.HellHound_NessianWarhound] = BuildData("Fiery Bite", damageHelper.BuildEntries("1d8", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.HellHound_NessianWarhound] = BuildData("Breath weapon", damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "supernatural ability", 1, $"2d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.HellHound_NessianWarhound, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.HellHound_NessianWarhound, "Fiery Bite", "1d8", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.HellHound_NessianWarhound, "Breath weapon", "3d6", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages[CreatureConstants.Hellcat_Bezekira] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Hellcat_Bezekira] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Hellcat_Bezekira] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Hellcat_Bezekira] = BuildData("Pounce", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Hellcat_Bezekira] = BuildData("Rake", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Hellcat_Bezekira, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Hellcat_Bezekira, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Hellcat_Bezekira, "Rake", "1d8", clawDamageType));
 
-            attackDamages[CreatureConstants.Hellwasp_Swarm] = BuildData("Swarm", damageHelper.BuildEntries("3d6"), "Poison", 0, "swarm", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Hellwasp_Swarm] = BuildData("Distraction", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Minute, true, true, true, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.Hellwasp_Swarm] = BuildData("Inhabit", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Minute, true, true, true, true));
-            attackDamages[CreatureConstants.Hellwasp_Swarm] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Hellwasp_Swarm, "Swarm", "3d6"));
+            attackDamages.Add(BuildData(CreatureConstants.Hellwasp_Swarm, "Distraction", string.Empty, string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Hellwasp_Swarm, "Inhabit", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Hellwasp_Swarm, "Poison",
+
                     "1d4", AbilityConstants.Dexterity, "Initial",
                     "1d4", AbilityConstants.Dexterity, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Hezrou] = BuildData("Bite", damageHelper.BuildEntries("4d4", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Hezrou] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Hezrou] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Hezrou] = BuildData("Stench", string.Empty, "Nauseated while in range + 1d4 rounds afterwards", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.Hezrou] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Hezrou] = BuildData("Summon Demon", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Hezrou, "Bite", "4d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Hezrou, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Hezrou, "Stench", string.Empty, "Nauseated while in range + 1d4 rounds afterwards", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Hezrou, "Summon Demon", string.Empty));
 
-            attackDamages[CreatureConstants.Hieracosphinx] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Hieracosphinx] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Hieracosphinx] = BuildData("Pounce", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Hieracosphinx] = BuildData("Rake", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Hieracosphinx, "Bite", "1d10", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Hieracosphinx, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Hieracosphinx, "Rake", "1d6", clawDamageType));
 
-            attackDamages[CreatureConstants.Hippogriff] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Hippogriff] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Hippogriff, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Hippogriff, "Bite", "1d8", biteDamageType));
 
-            attackDamages[CreatureConstants.Hobgoblin] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Hobgoblin] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Hobgoblin] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Hobgoblin, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Homunculus] = BuildData("Bite",
-                damageHelper.BuildEntries("1d4", biteDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Homunculus, "Bite",
+                "1d4", biteDamageType),
                 "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Homunculus] = BuildData("Poison",
+            attackDamages.Add(BuildData(CreatureConstants.Homunculus, "Poison",
                 string.Empty,
-                "Initial damage sleep for 1 minute, secondary damage sleep for another 5d6 minutes", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude, saveDcBonus: 2));
+                "Initial damage sleep for 1 minute, secondary damage sleep for another 5d6 minutes", 0, "extraordinary ability"));
 
-            attackDamages[CreatureConstants.HornedDevil_Cornugon] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.HornedDevil_Cornugon] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.HornedDevil_Cornugon] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.HornedDevil_Cornugon] = BuildData("Tail",
-                damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning),
+            attackDamages.Add(BuildData(CreatureConstants.HornedDevil_Cornugon, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.HornedDevil_Cornugon, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.HornedDevil_Cornugon, "Tail",
+                "2d6", AttributeConstants.DamageTypes.Bludgeoning),
                 "Infernal Wound", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.HornedDevil_Cornugon] = BuildData("Fear Aura", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, SaveConstants.Will, AbilityConstants.Charisma));
-            attackDamages[CreatureConstants.HornedDevil_Cornugon] = BuildData("Infernal Wound",
-                damageHelper.BuildEntries("2"),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, string.Empty, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.HornedDevil_Cornugon] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.HornedDevil_Cornugon] = BuildData("Stun", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Strength));
-            attackDamages[CreatureConstants.HornedDevil_Cornugon] = BuildData("Summon Devil", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.HornedDevil_Cornugon, "Fear Aura", string.Empty, string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.HornedDevil_Cornugon, "Infernal Wound",
+                "2"),
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.HornedDevil_Cornugon, "Stun", string.Empty, string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.HornedDevil_Cornugon, "Summon Devil", string.Empty));
 
-            attackDamages[CreatureConstants.Horse_Heavy] = BuildData("Hoof",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
+            attackDamages.Add(BuildData(CreatureConstants.Horse_Heavy, "Hoof",
+                "1d6", AttributeConstants.DamageTypes.Bludgeoning),
                 string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            attackDamages[CreatureConstants.Horse_Heavy_War] = BuildData("Hoof",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
+            attackDamages.Add(BuildData(CreatureConstants.Horse_Heavy_War, "Hoof",
+                "1d6", AttributeConstants.DamageTypes.Bludgeoning),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Horse_Heavy_War] = BuildData("Bite",
-                damageHelper.BuildEntries("1d4", biteDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Horse_Heavy_War, "Bite",
+                "1d4", biteDamageType),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            attackDamages[CreatureConstants.Horse_Light] = BuildData("Hoof",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning),
+            attackDamages.Add(BuildData(CreatureConstants.Horse_Light, "Hoof",
+                "1d4", AttributeConstants.DamageTypes.Bludgeoning),
                 string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            attackDamages[CreatureConstants.Horse_Light_War] = BuildData("Hoof",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning),
+            attackDamages.Add(BuildData(CreatureConstants.Horse_Light_War, "Hoof",
+                "1d4", AttributeConstants.DamageTypes.Bludgeoning),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Horse_Light_War] = BuildData("Bite", damageHelper.BuildEntries("1d3", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Horse_Light_War, "Bite", "1d3", biteDamageType));
 
-            attackDamages[CreatureConstants.HoundArchon] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.HoundArchon] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.HoundArchon] = BuildData("Slam", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.HoundArchon] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.HoundArchon, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.HoundArchon, "Slam", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Howler] = BuildData("Bite",
-                damageHelper.BuildEntries("2d8", biteDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Howler, "Bite",
+                "2d8", biteDamageType),
                 "1d4 Quills", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Howler] = BuildData("Quill",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
-                string.Empty, 0.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Dexterity, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Howler] = BuildData("Howl",
-                damageHelper.BuildEntries("1", AbilityConstants.Wisdom),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hour, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Howler, "Quill",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
+                string.Empty, 0.5));
+            attackDamages.Add(BuildData(CreatureConstants.Howler, "Howl",
+                "1", AbilityConstants.Wisdom),
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Human] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Human] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Human] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Human, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Hydra_5Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 5, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Hydra_5Heads, "Bite", "1d10", biteDamageType));
 
-            attackDamages[CreatureConstants.Hydra_6Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 6, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Hydra_6Heads, "Bite", "1d10", biteDamageType));
 
-            attackDamages[CreatureConstants.Hydra_7Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 7, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Hydra_7Heads, "Bite", "1d10", biteDamageType));
 
-            attackDamages[CreatureConstants.Hydra_8Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 8, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Hydra_8Heads, "Bite", "1d10", biteDamageType));
 
-            attackDamages[CreatureConstants.Hydra_9Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 9, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Hydra_9Heads, "Bite", "1d10", biteDamageType));
 
-            attackDamages[CreatureConstants.Hydra_10Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 10, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Hydra_10Heads, "Bite", "1d10", biteDamageType));
 
-            attackDamages[CreatureConstants.Hydra_11Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 11, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Hydra_11Heads, "Bite", "1d10", biteDamageType));
 
-            attackDamages[CreatureConstants.Hydra_12Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 12, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Hydra_12Heads, "Bite", "1d10", biteDamageType));
 
-            attackDamages[CreatureConstants.Hyena] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Hyena] = BuildData("Trip", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Hyena, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Hyena, "Trip", string.Empty));
 
-            attackDamages[CreatureConstants.IceDevil_Gelugon] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.IceDevil_Gelugon] = BuildData("Claw", damageHelper.BuildEntries("1d10", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.IceDevil_Gelugon] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.IceDevil_Gelugon] = BuildData("Tail", damageHelper.BuildEntries("3d6", AttributeConstants.DamageTypes.Bludgeoning), "slow", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.IceDevil_Gelugon] = BuildData("Fear Aura", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, SaveConstants.Will, AbilityConstants.Charisma));
-            attackDamages[CreatureConstants.IceDevil_Gelugon] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.IceDevil_Gelugon] = BuildData("Slow", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.IceDevil_Gelugon] = BuildData("Summon Devil", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.IceDevil_Gelugon, "Claw", "1d10", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.IceDevil_Gelugon, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.IceDevil_Gelugon, "Tail", "3d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.IceDevil_Gelugon, "Fear Aura", string.Empty, string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.IceDevil_Gelugon, "Slow", string.Empty, string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.IceDevil_Gelugon, "Summon Devil", string.Empty));
 
-            attackDamages[CreatureConstants.Imp] = BuildData("Sting", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), "poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Imp] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Imp, "Sting", "1d4", AttributeConstants.DamageTypes.Piercing));
+            attackDamages.Add(BuildData(CreatureConstants.Imp, "Poison",
+
                     "1d4", AbilityConstants.Dexterity, "Initial",
                     "2d4", AbilityConstants.Dexterity, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution, 2));
-            attackDamages[CreatureConstants.Imp] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0, "extraordinary ability"));
 
-            attackDamages[CreatureConstants.InvisibleStalker] = BuildData("Slam", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.InvisibleStalker, "Slam", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Janni] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Janni] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Janni] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Janni] = BuildData("Change Size", string.Empty, string.Empty, 0, "spell-like ability", 2, FeatConstants.Frequencies.Day, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Janni] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Janni, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Janni, "Change Size", string.Empty, string.Empty, 0));
 
-            attackDamages[CreatureConstants.Kobold] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Kobold] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Kobold] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Kobold, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Kolyarut] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Kolyarut] = BuildData("Slam", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Kolyarut] = BuildData("Vampiric Touch",
-                damageHelper.BuildEntries("5d6"),
+            attackDamages.Add(BuildData(CreatureConstants.Kolyarut, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Kolyarut, "Vampiric Touch",
+                "5d6"),
                 "Gain temporary hit points equal to damage dealt", 0, "melee touch", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Kolyarut] = BuildData("Enervation Ray",
-                damageHelper.BuildEntries("1d4", "Negative Level"),
+            attackDamages.Add(BuildData(CreatureConstants.Kolyarut, "Enervation Ray",
+                "1d4", "Negative Level"),
                 string.Empty, 0, "ranged touch", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Kolyarut] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-            attackDamages[CreatureConstants.Kraken] = BuildData("Tentacle",
-                damageHelper.BuildEntries("2d8", tentacleDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Kraken, "Tentacle",
+                "2d8", tentacleDamageType),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Kraken] = BuildData("Arm",
-                damageHelper.BuildEntries("1d6", tentacleDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Kraken, "Arm",
+                "1d6", tentacleDamageType),
                 string.Empty, 0.5, "melee", 6, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Kraken] = BuildData("Bite",
-                damageHelper.BuildEntries("4d6", biteDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Kraken, "Bite",
+                "4d6", biteDamageType),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Kraken] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Kraken] = BuildData("Constrict (Tentacle)",
-                damageHelper.BuildEntries("2d8", tentacleDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Kraken, "Constrict (Tentacle)",
+                "2d8", tentacleDamageType),
                 string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Kraken] = BuildData("Constrict (Arm)",
-                damageHelper.BuildEntries("1d6", tentacleDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Kraken, "Constrict (Arm)",
+                "1d6", tentacleDamageType),
                 string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Kraken] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-            attackDamages[CreatureConstants.Krenshar] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Krenshar] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Krenshar] = BuildData("Scare", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Krenshar] = BuildData("Scare with Screech", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Krenshar, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Krenshar, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Krenshar, "Scare", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Krenshar, "Scare with Screech", string.Empty, string.Empty, 0));
 
-            attackDamages[CreatureConstants.KuoToa] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.KuoToa] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.KuoToa] = BuildData("Lightning Bolt",
-                damageHelper.BuildEntries("1d6", FeatConstants.Foci.Elements.Electricity, "per Kuo-Toa Cleric"),
-                string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", true, true, true, false, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.KuoToa, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.KuoToa, "Lightning Bolt",
+                "1d6", FeatConstants.Foci.Elements.Electricity, "per Kuo-Toa Cleric"),
+                string.Empty));
 
-            attackDamages[CreatureConstants.Lamia] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Lamia] = BuildData("Touch", string.Empty, "Wisdom Drain", 0, "melee touch", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Lamia] = BuildData("Wisdom Drain",
-                damageHelper.BuildEntries("1d4", AbilityConstants.Wisdom),
+            attackDamages.Add(BuildData(CreatureConstants.Lamia, "Touch", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Lamia, "Wisdom Drain",
+                "1d4", AbilityConstants.Wisdom),
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Lamia] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Lamia] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Lamia, "Claw", "1d4", clawDamageType));
 
-            attackDamages[CreatureConstants.Lammasu] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Lammasu] = BuildData("Pounce", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Lammasu] = BuildData("Rake", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Lammasu] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Lammasu] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Lammasu, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Lammasu, "Rake", "1d6", clawDamageType));
 
-            attackDamages[CreatureConstants.LanternArchon] = BuildData("Light Ray", damageHelper.BuildEntries("1d6"), string.Empty, 0, "ranged touch", 2, FeatConstants.Frequencies.Round, false, true, true, false));
-            attackDamages[CreatureConstants.LanternArchon] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.LanternArchon, "Light Ray", "1d6"));
 
-            attackDamages[CreatureConstants.Lemure] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Lemure, "Claw", "1d4", clawDamageType));
 
-            attackDamages[CreatureConstants.Leonal] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Leonal] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Leonal] = BuildData("Roar", damageHelper.BuildEntries("2d6", FeatConstants.Foci.Elements.Sonic), string.Empty, 0, "supernatural ability", 3, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
-            attackDamages[CreatureConstants.Leonal] = BuildData("Pounce", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Leonal] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Leonal] = BuildData("Rake", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Leonal] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Leonal, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Leonal, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Leonal, "Roar", "2d6", FeatConstants.Foci.Elements.Sonic));
+            attackDamages.Add(BuildData(CreatureConstants.Leonal, "Rake", "1d6", clawDamageType));
 
-            attackDamages[CreatureConstants.Leopard] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Leopard] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Leopard] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Leopard] = BuildData("Pounce", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Leopard] = BuildData("Rake", damageHelper.BuildEntries("1d3", clawDamageType), string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Leopard, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Leopard, "Claw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Leopard, "Rake", "1d3", clawDamageType));
 
-            attackDamages[CreatureConstants.Lillend] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Lillend] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Lillend] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", slapSlamDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Lillend] = BuildData("Constrict", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Lillend] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Lillend] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Lillend] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Lillend, "Unarmed Strike", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Lillend, "Tail Slap", "2d6", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Lillend, "Constrict", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Lion] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Lion] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Lion] = BuildData("Pounce", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Lion] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Lion] = BuildData("Rake", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Lion, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Lion, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Lion, "Rake", "1d4", clawDamageType));
 
-            attackDamages[CreatureConstants.Lion_Dire] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Lion_Dire] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Lion_Dire] = BuildData("Pounce", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Lion_Dire] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Lion_Dire] = BuildData("Rake", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Lion_Dire, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Lion_Dire, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Lion_Dire, "Rake", "1d6", clawDamageType));
 
-            attackDamages[CreatureConstants.Lizard] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Lizard, "Bite", "1d4", biteDamageType));
 
-            attackDamages[CreatureConstants.Lizard_Monitor] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Lizard_Monitor, "Bite", "1d8", biteDamageType));
 
-            attackDamages[CreatureConstants.Lizardfolk] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Lizardfolk] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Lizardfolk] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Lizardfolk] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Lizardfolk, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Lizardfolk, "Bite", "1d4", biteDamageType));
 
-            attackDamages[CreatureConstants.Locathah] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Locathah] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Locathah] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Locathah, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Locust_Swarm] = BuildData("Swarm", damageHelper.BuildEntries("2d6"), string.Empty, 0, "swarm", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Locust_Swarm] = BuildData("Distraction", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Minute, true, true, true, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+            attackDamages.Add(BuildData(CreatureConstants.Locust_Swarm, "Swarm", "2d6"));
+            attackDamages.Add(BuildData(CreatureConstants.Locust_Swarm, "Distraction", string.Empty, string.Empty, 0));
 
-            attackDamages[CreatureConstants.Magmin] = BuildData("Burning Touch", damageHelper.BuildEntries("1d8", FeatConstants.Foci.Elements.Fire), "Combustion", 0, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Magmin] = BuildData("Slam", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), "Combustion", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Magmin] = BuildData("Combustion", damageHelper.BuildEntries("1d8", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.Magmin] = BuildData("Fiery Aura", damageHelper.BuildEntries("1d6", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Magmin, "Burning Touch", "1d8", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Magmin, "Slam", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Magmin, "Combustion", "1d8", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Magmin, "Fiery Aura", "1d6", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages[CreatureConstants.MantaRay] = BuildData("Ram", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.MantaRay, "Ram", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Manticore] = BuildData("Claw", damageHelper.BuildEntries("2d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Manticore] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Manticore] = BuildData("Spikes", string.Empty, "Tail Spikes", 0, "ranged", 6, FeatConstants.Frequencies.Round, false, true, true, false));
-            attackDamages[CreatureConstants.Manticore] = BuildData("Tail Spikes", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "extraordinary ability", 24, FeatConstants.Frequencies.Day, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Manticore, "Claw", "2d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Manticore, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Manticore, "Spikes", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Manticore, "Tail Spikes", "1d8", AttributeConstants.DamageTypes.Piercing));
 
-            attackDamages[CreatureConstants.Marilith] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Marilith] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 0.5, "melee", 5, FeatConstants.Frequencies.Round, true, false, false, false));
-            attackDamages[CreatureConstants.Marilith] = BuildData("Tail Slap", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Marilith] = BuildData("Slam", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 6, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Marilith] = BuildData("Constrict", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Strength));
-            attackDamages[CreatureConstants.Marilith] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Marilith] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Marilith] = BuildData("Summon Demon", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Marilith, "Tail Slap", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Marilith, "Slam", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Marilith, "Constrict", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Marilith, "Summon Demon", string.Empty));
 
-            attackDamages[CreatureConstants.Marut] = BuildData("Slam", damageHelper.BuildEntries("2d6", slapSlamDamageType), "Fist of Thunder", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Marut] = BuildData("Slam", damageHelper.BuildEntries("2d6", slapSlamDamageType), "Fist of Lightning", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Marut] = BuildData("Fist of Thunder",
-                damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Sonic),
-                "deafened 2d6 rounds", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Marut] = BuildData("Fist of Lightning",
-                damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Electricity),
-                "blinded 2d6 rounds", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Marut] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Marut, "Slam", "2d6", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Marut, "Slam", "2d6", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Marut, "Fist of Thunder",
+                "3d6", FeatConstants.Foci.Elements.Sonic),
+                "deafened 2d6 rounds", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Marut, "Fist of Lightning",
+                "3d6", FeatConstants.Foci.Elements.Electricity),
+                "blinded 2d6 rounds", 0));
 
-            attackDamages[CreatureConstants.Medusa] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Medusa] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Medusa] = BuildData("Snakes",
-                damageHelper.BuildEntries("1d4", biteDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Medusa, "Snakes",
+                "1d4", biteDamageType),
                 "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Medusa] = BuildData("Petrifying Gaze", string.Empty, "Permanent petrification", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
-            attackDamages[CreatureConstants.Medusa] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Medusa, "Petrifying Gaze", string.Empty, "Permanent petrification", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Medusa, "Poison",
+
                     "1d6", AbilityConstants.Strength, "Initial",
                     "2d6", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Megaraptor] = BuildData("Talons",
-                damageHelper.BuildEntries("2d6", clawDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Megaraptor, "Talons",
+                "2d6", clawDamageType),
                 string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Megaraptor] = BuildData("Foreclaw",
-                damageHelper.BuildEntries("1d4", clawDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Megaraptor, "Foreclaw",
+                "1d4", clawDamageType),
                 string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Megaraptor] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Megaraptor] = BuildData("Pounce", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Megaraptor, "Bite", "1d8", biteDamageType));
 
-            attackDamages[CreatureConstants.Mephit_Air] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Mephit_Air] = BuildData("Breath weapon",
-                damageHelper.BuildEntries("1d8"),
-                string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
-            attackDamages[CreatureConstants.Mephit_Air] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Mephit_Air] = BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Air, "Claw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Air, "Breath weapon",
+                "1d8"),
+                string.Empty, 0, "supernatural ability"));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Air, "Summon Mephit", string.Empty));
 
-            attackDamages[CreatureConstants.Mephit_Dust] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Mephit_Dust] = BuildData("Breath weapon",
-                damageHelper.BuildEntries("1d4"),
-                "Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
-            attackDamages[CreatureConstants.Mephit_Dust] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Mephit_Dust] = BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Dust, "Claw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Dust, "Breath weapon",
+                "1d4"),
+                "Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability"));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Dust, "Summon Mephit", string.Empty));
 
-            attackDamages[CreatureConstants.Mephit_Earth] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Mephit_Earth] = BuildData("Breath weapon",
-                damageHelper.BuildEntries("1d8"),
-                string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
-            attackDamages[CreatureConstants.Mephit_Earth] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Mephit_Earth] = BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Earth, "Claw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Earth, "Breath weapon",
+                "1d8"),
+                string.Empty, 0, "supernatural ability"));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Earth, "Summon Mephit", string.Empty));
 
-            attackDamages[CreatureConstants.Mephit_Fire] = BuildData("Claw",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Fire, "Claw",
+
                     "1d3", clawDamageType, string.Empty,
                     "1d4", FeatConstants.Foci.Elements.Fire),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Mephit_Fire] = BuildData("Breath weapon",
-                damageHelper.BuildEntries("1d8", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
-            attackDamages[CreatureConstants.Mephit_Fire] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Mephit_Fire] = BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Fire, "Breath weapon",
+                "1d8", FeatConstants.Foci.Elements.Fire),
+                string.Empty, 0, "supernatural ability"));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Fire, "Summon Mephit", string.Empty));
 
-            attackDamages[CreatureConstants.Mephit_Ice] = BuildData("Claw",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Ice, "Claw",
+
                     "1d3", clawDamageType, string.Empty,
                     "1d4", FeatConstants.Foci.Elements.Cold),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Mephit_Ice] = BuildData("Breath weapon",
-                damageHelper.BuildEntries("1d4", FeatConstants.Foci.Elements.Cold),
-                "Frostbitten Skin and Frozen Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
-            attackDamages[CreatureConstants.Mephit_Ice] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Mephit_Ice] = BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Ice, "Breath weapon",
+                "1d4", FeatConstants.Foci.Elements.Cold),
+                "Frostbitten Skin and Frozen Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability"));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Ice, "Summon Mephit", string.Empty));
 
-            attackDamages[CreatureConstants.Mephit_Magma] = BuildData("Claw",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Magma, "Claw",
+
                     "1d3", clawDamageType, string.Empty,
                     "1d4", FeatConstants.Foci.Elements.Fire),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Mephit_Magma] = BuildData("Breath weapon",
-                damageHelper.BuildEntries("1d4", FeatConstants.Foci.Elements.Fire),
-                "Burning Skin and Seared Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
-            attackDamages[CreatureConstants.Mephit_Magma] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Mephit_Magma] = BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Magma, "Breath weapon",
+                "1d4", FeatConstants.Foci.Elements.Fire),
+                "Burning Skin and Seared Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability"));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Magma, "Summon Mephit", string.Empty));
 
-            attackDamages[CreatureConstants.Mephit_Ooze] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Mephit_Ooze] = BuildData("Breath weapon",
-                damageHelper.BuildEntries("1d4", FeatConstants.Foci.Elements.Acid),
-                "Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
-            attackDamages[CreatureConstants.Mephit_Ooze] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Mephit_Ooze] = BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Ooze, "Claw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Ooze, "Breath weapon",
+                "1d4", FeatConstants.Foci.Elements.Acid),
+                "Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability"));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Ooze, "Summon Mephit", string.Empty));
 
-            attackDamages[CreatureConstants.Mephit_Salt] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Mephit_Salt] = BuildData("Breath weapon",
-                damageHelper.BuildEntries("1d4"),
-                "Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
-            attackDamages[CreatureConstants.Mephit_Salt] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Mephit_Salt] = BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Salt, "Claw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Salt, "Breath weapon",
+                "1d4"),
+                "Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability"));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Salt, "Summon Mephit", string.Empty));
 
-            attackDamages[CreatureConstants.Mephit_Steam] = BuildData("Claw",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Steam, "Claw",
+
                     "1d3", clawDamageType, string.Empty,
                     "1d4", FeatConstants.Foci.Elements.Fire),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Mephit_Steam] = BuildData("Breath weapon",
-                damageHelper.BuildEntries("1d4", FeatConstants.Foci.Elements.Fire),
-                "Burning Skin and Seared Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
-            attackDamages[CreatureConstants.Mephit_Steam] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Mephit_Steam] = BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Steam, "Breath weapon",
+                "1d4", FeatConstants.Foci.Elements.Fire),
+                "Burning Skin and Seared Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability"));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Steam, "Summon Mephit", string.Empty));
 
-            attackDamages[CreatureConstants.Mephit_Water] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Mephit_Water] = BuildData("Breath weapon",
-                damageHelper.BuildEntries("1d8", FeatConstants.Foci.Elements.Acid),
-                string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
-            attackDamages[CreatureConstants.Mephit_Water] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Mephit_Water] = BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Water, "Claw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Water, "Breath weapon",
+                "1d8", FeatConstants.Foci.Elements.Acid),
+                string.Empty, 0, "supernatural ability"));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Water, "Summon Mephit", string.Empty));
 
-            attackDamages[CreatureConstants.Merfolk] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Merfolk] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Merfolk] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Merfolk, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Mimic] = BuildData("Slam", damageHelper.BuildEntries("1d8", slapSlamDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Mimic] = BuildData("Adhesive", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Mimic] = BuildData("Crush", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Mimic, "Slam", "1d8", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Mimic, "Adhesive", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Mimic, "Crush", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.MindFlayer] = BuildData("Tentacle", damageHelper.BuildEntries("1d4", tentacleDamageType), string.Empty, 1, "melee", 4, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.MindFlayer] = BuildData("Mind Blast", string.Empty, "3d4 rounds stunned", 1, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.MindFlayer] = BuildData(FeatConstants.SpecialQualities.Psionic, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.MindFlayer] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.MindFlayer] = BuildData("Extract", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.MindFlayer, "Tentacle", "1d4", tentacleDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.MindFlayer, "Mind Blast", string.Empty, "3d4 rounds stunned", 1));
+            attackDamages.Add(BuildData(CreatureConstants.MindFlayer, "Extract", string.Empty));
 
-            attackDamages[CreatureConstants.Minotaur] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Minotaur] = BuildData("Gore", damageHelper.BuildEntries("1d8", goreDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Minotaur] = BuildData("Powerful Charge", damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Minotaur, "Gore", "1d8", goreDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Minotaur, "Powerful Charge", "4d6", AttributeConstants.DamageTypes.Piercing));
 
-            attackDamages[CreatureConstants.Mohrg] = BuildData("Slam", damageHelper.BuildEntries("1d6", slapSlamDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Mohrg] = BuildData("Tongue", string.Empty, "Paralyzing Touch", 0, "melee touch", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Mohrg] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Mohrg] = BuildData("Paralyzing Touch", string.Empty, "1d4 minutes paralyzed", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Mohrg] = BuildData("Create Spawn", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Mohrg, "Slam", "1d6", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Mohrg, "Tongue", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Mohrg, "Paralyzing Touch", string.Empty, "1d4 minutes paralyzed", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Mohrg, "Create Spawn", string.Empty));
 
-            attackDamages[CreatureConstants.Monkey] = BuildData("Bite", damageHelper.BuildEntries("1d3", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Monkey, "Bite", "1d3", biteDamageType));
 
-            attackDamages[CreatureConstants.Mule] = BuildData("Hoof", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Mule, "Hoof", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Mummy] = BuildData("Slam", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), "Disease", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Mummy] = BuildData("Despair", string.Empty, "1d4 rounds fear", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Mummy] = BuildData("Disease", string.Empty, "Mummy Rot", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Mummy] = BuildData("Mummy Rot",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Mummy, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Mummy, "Despair", string.Empty, "1d4 rounds fear", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Mummy, "Disease", string.Empty, "Mummy Rot", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Mummy, "Mummy Rot",
+
                     "1d6", AbilityConstants.Constitution, "Incubation period 1 minute",
                     "1d6", AbilityConstants.Charisma, "Incubation period 1 minute"),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Naga_Dark] = BuildData("Sting", damageHelper.BuildEntries("2d4", stingDamageType), "Poison", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Naga_Dark] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Naga_Dark] = BuildData("Poison", string.Empty, "lapse into a nightmare-haunted sleep for 2d4 minutes", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Naga_Dark] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Naga_Dark, "Sting", "2d4", stingDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Naga_Dark, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Naga_Dark, "Poison", string.Empty, "lapse into a nightmare-haunted sleep for 2d4 minutes", 0));
 
-            attackDamages[CreatureConstants.Naga_Guardian] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Naga_Guardian] = BuildData("Spit", string.Empty, "Poison", 0, "ranged touch", 1, FeatConstants.Frequencies.Round, false, true, false, false));
-            attackDamages[CreatureConstants.Naga_Guardian] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Naga_Guardian, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Naga_Guardian, "Spit", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Naga_Guardian, "Poison",
+
                     "1d10", AbilityConstants.Constitution, "Initial",
                     "1d10", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Naga_Guardian] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Naga_Spirit] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Naga_Spirit] = BuildData("Charming Gaze", string.Empty, SpellConstants.CharmPerson, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Naga_Spirit] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Naga_Spirit, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Naga_Spirit, "Charming Gaze", string.Empty, SpellConstants.CharmPerson, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Naga_Spirit, "Poison",
+
                     "1d8", AbilityConstants.Constitution, "Initial",
                     "1d8", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Naga_Spirit] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Naga_Water] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Naga_Water] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Naga_Water, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Naga_Water, "Poison",
+
                     "1d8", AbilityConstants.Constitution, "Initial",
                     "1d8", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Naga_Water] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Nalfeshnee] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Nalfeshnee] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Nalfeshnee] = BuildData("Smite", string.Empty, string.Empty, 1, "supernatural ability", 3, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
-            attackDamages[CreatureConstants.Nalfeshnee] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Nalfeshnee] = BuildData("Summon Demon", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Nalfeshnee, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Nalfeshnee, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Nalfeshnee, "Smite", string.Empty, string.Empty, 1));
+            attackDamages.Add(BuildData(CreatureConstants.Nalfeshnee, "Summon Demon", string.Empty));
 
-            attackDamages[CreatureConstants.NightHag] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), "Disease", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.NightHag] = BuildData("Disease",
-                damageHelper.BuildEntries("1d6", AbilityConstants.Constitution, "Incubation period 1 day"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.NightHag] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.NightHag] = BuildData("Dream Haunting", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.NightHag, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.NightHag, "Disease",
+                "1d6", AbilityConstants.Constitution, "Incubation period 1 day"),
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.NightHag, "Dream Haunting", string.Empty));
 
-            attackDamages[CreatureConstants.Nightcrawler] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Nightcrawler] = BuildData("Sting", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Piercing), "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Nightcrawler] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Nightcrawler] = BuildData("Desecrating Aura", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true));
-            attackDamages[CreatureConstants.Nightcrawler] = BuildData("Energy Drain",
-                damageHelper.BuildEntries("1", "Negative Level"),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Nightcrawler] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Nightcrawler] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Nightcrawler, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Nightcrawler, "Sting", "2d8", AttributeConstants.DamageTypes.Piercing));
+            attackDamages.Add(BuildData(CreatureConstants.Nightcrawler, "Desecrating Aura", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Nightcrawler, "Energy Drain",
+                "1", "Negative Level"),
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Nightcrawler, "Poison",
+
                     "2d6", AbilityConstants.Strength, "Initial",
                     "2d6", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Nightcrawler] = BuildData("Summon Undead", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
-            attackDamages[CreatureConstants.Nightcrawler] = BuildData("Swallow Whole",
-                damageHelper.BuildEntries(
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Nightcrawler, "Summon Undead", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Nightcrawler, "Swallow Whole",
+
                     "2d8+12", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
                     "12", FeatConstants.Foci.Elements.Acid),
                 "Energy Drain", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-            attackDamages[CreatureConstants.Nightmare] = BuildData("Hoof",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Nightmare, "Hoof",
+
                     "1d8", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
                     "1d4", FeatConstants.Foci.Elements.Fire),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Nightmare] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Nightmare] = BuildData("Flaming Hooves", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-            attackDamages[CreatureConstants.Nightmare] = BuildData("Smoke", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Nightmare] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Nightmare, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Nightmare, "Flaming Hooves", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Nightmare, "Smoke", string.Empty, string.Empty, 0));
 
-            attackDamages[CreatureConstants.Nightmare_Cauchemar] = BuildData("Hoof",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Nightmare_Cauchemar, "Hoof",
+
                     "2d6", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
                     "1d4", FeatConstants.Foci.Elements.Fire),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Nightmare_Cauchemar] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Nightmare_Cauchemar] = BuildData("Flaming Hooves", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-            attackDamages[CreatureConstants.Nightmare_Cauchemar] = BuildData("Smoke", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Nightmare_Cauchemar] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Nightmare_Cauchemar, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Nightmare_Cauchemar, "Flaming Hooves", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Nightmare_Cauchemar, "Smoke", string.Empty, string.Empty, 0));
 
-            attackDamages[CreatureConstants.Nightwalker] = BuildData("Slam", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Nightwalker] = BuildData("Crush Item", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Nightwalker] = BuildData("Desecrating Aura", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true));
-            attackDamages[CreatureConstants.Nightwalker] = BuildData("Evil Gaze", string.Empty, "1d8 rounds paralyzed with fear", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Nightwalker] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Nightwalker] = BuildData("Summon Undead", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Nightwalker, "Slam", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Nightwalker, "Crush Item", string.Empty, string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Nightwalker, "Desecrating Aura", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Nightwalker, "Evil Gaze", string.Empty, "1d8 rounds paralyzed with fear", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Nightwalker, "Summon Undead", string.Empty));
 
-            attackDamages[CreatureConstants.Nightwing] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), "Magic Drain", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Nightwing] = BuildData("Desecrating Aura", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true));
-            attackDamages[CreatureConstants.Nightwing] = BuildData("Magic Drain", string.Empty, "1 point enhancement bonus", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Nightwing] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Nightwing] = BuildData("Summon Undead", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Nightwing, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Nightwing, "Desecrating Aura", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Nightwing, "Magic Drain", string.Empty, "1 point enhancement bonus", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Nightwing, "Summon Undead", string.Empty));
 
-            attackDamages[CreatureConstants.Nixie] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Nixie] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Nixie] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Nixie] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Nixie, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Nymph] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Nymph] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Nymph] = BuildData("Blinding Beauty", string.Empty, "Blinded permanently", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Nymph] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Nymph] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Nymph] = BuildData("Stunning Glance", string.Empty, "stunned 2d4 rounds", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Nymph, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Nymph, "Blinding Beauty", string.Empty, "Blinded permanently", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Nymph, "Stunning Glance", string.Empty, "stunned 2d4 rounds", 0));
 
-            attackDamages[CreatureConstants.OchreJelly] = BuildData("Slam",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.OchreJelly, "Slam",
+
                     "2d4", slapSlamDamageType, string.Empty,
                     "1d4", FeatConstants.Foci.Elements.Acid),
                 string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.OchreJelly] = BuildData("Acid", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true));
-            attackDamages[CreatureConstants.OchreJelly] = BuildData("Constrict",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.OchreJelly, "Acid", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.OchreJelly, "Constrict",
+
                     "2d4", slapSlamDamageType, string.Empty,
                     "1d4", FeatConstants.Foci.Elements.Acid),
                 string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.OchreJelly] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-            attackDamages[CreatureConstants.Octopus] = BuildData("Arms", damageHelper.BuildEntries("0", tentacleDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Octopus] = BuildData("Bite", damageHelper.BuildEntries("1d3", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Octopus] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Octopus, "Arms", "0", tentacleDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Octopus, "Bite", "1d3", biteDamageType));
 
-            attackDamages[CreatureConstants.Octopus_Giant] = BuildData("Tentacle", damageHelper.BuildEntries("1d4", tentacleDamageType), string.Empty, 1, "melee", 8, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Octopus_Giant] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Octopus_Giant] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Octopus_Giant] = BuildData("Constrict", damageHelper.BuildEntries("2d8", tentacleDamageType), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Octopus_Giant, "Tentacle", "1d4", tentacleDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Octopus_Giant, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Octopus_Giant, "Constrict", "2d8", tentacleDamageType));
 
-            attackDamages[CreatureConstants.Ogre] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Ogre] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Ogre] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Ogre, "Unarmed Strike", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Ogre_Merrow] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Ogre_Merrow] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Ogre_Merrow] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Ogre_Merrow, "Unarmed Strike", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.OgreMage] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.OgreMage] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.OgreMage] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.OgreMage] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.OgreMage, "Unarmed Strike", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Orc] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Orc] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Orc] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Orc, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Orc_Half] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Orc_Half] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Orc_Half] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Orc_Half, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Otyugh] = BuildData("Tentacle", damageHelper.BuildEntries("1d6", tentacleDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Otyugh] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), "Disease", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Otyugh] = BuildData("Constrict", damageHelper.BuildEntries("1d6", tentacleDamageType), string.Empty, 0.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Otyugh] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Otyugh] = BuildData("Disease", string.Empty, "Filth Fever", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-            attackDamages[CreatureConstants.Otyugh] = BuildData("Filth Fever",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Otyugh, "Tentacle", "1d6", tentacleDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Otyugh, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Otyugh, "Constrict", "1d6", tentacleDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Otyugh, "Disease", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Otyugh, "Filth Fever",
+
                     "1d3", AbilityConstants.Dexterity, "Incubation period 1d3 days",
                     "1d3", AbilityConstants.Constitution, "Incubation period 1d3 days"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Owl] = BuildData("Talons", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Owl, "Talons", "1d4", clawDamageType));
 
-            attackDamages[CreatureConstants.Owl_Giant] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Owl_Giant] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Owl_Giant, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Owl_Giant, "Bite", "1d8", biteDamageType));
 
-            attackDamages[CreatureConstants.Owlbear] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Owlbear] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Owlbear] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Owlbear, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Owlbear, "Bite", "1d8", biteDamageType));
 
-            attackDamages[CreatureConstants.Pegasus] = BuildData("Hoof", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Pegasus] = BuildData("Bite", damageHelper.BuildEntries("1d3", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Pegasus] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Pegasus, "Hoof", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Pegasus, "Bite", "1d3", biteDamageType));
 
-            attackDamages[CreatureConstants.PhantomFungus] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.PhantomFungus, "Bite", "1d6", biteDamageType));
 
-            attackDamages[CreatureConstants.PhaseSpider] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.PhaseSpider] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.PhaseSpider, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.PhaseSpider, "Poison",
+
                     "1d8", AbilityConstants.Constitution, "Initial",
                     "1d8", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.PhaseSpider] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Phasm] = BuildData("Slam", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Phasm, "Slam", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.PitFiend] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.PitFiend] = BuildData("Wing", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.PitFiend] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), "poison, disease", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.PitFiend] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.PitFiend] = BuildData("Constrict", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 2, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.PitFiend] = BuildData("Fear Aura", string.Empty, string.Empty, 0, "supernatural ability", 2, FeatConstants.Frequencies.Round, false, true, false, true, SaveConstants.Will, AbilityConstants.Charisma));
-            attackDamages[CreatureConstants.PitFiend] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.PitFiend] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.PitFiend] = BuildData("Summon Devil", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
-            attackDamages[CreatureConstants.PitFiend] = BuildData("Poison",
-                damageHelper.BuildEntries("1d6", AbilityConstants.Constitution, "Initial"),
-                "Death (Secondary)", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.PitFiend] = BuildData("Disease", string.Empty, "Devil Chills", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-            attackDamages[CreatureConstants.PitFiend] = BuildData("Devil Chills",
-                damageHelper.BuildEntries("1d4", AbilityConstants.Strength, "Incubation period 1d4 days"),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+            attackDamages.Add(BuildData(CreatureConstants.PitFiend, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.PitFiend, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.PitFiend, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.PitFiend, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.PitFiend, "Constrict", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.PitFiend, "Fear Aura", string.Empty, string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.PitFiend, "Summon Devil", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.PitFiend, "Poison",
+                "1d6", AbilityConstants.Constitution, "Initial"),
+                "Death (Secondary)", 0));
+            attackDamages.Add(BuildData(CreatureConstants.PitFiend, "Disease", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.PitFiend, "Devil Chills",
+                "1d4", AbilityConstants.Strength, "Incubation period 1d4 days"),
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Pixie] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Pixie] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Pixie] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Pixie] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Pixie] = BuildData("Special Arrow (Memory Loss)", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, false, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will, saveDcBonus: 2));
-            attackDamages[CreatureConstants.Pixie] = BuildData("Special Arrow (Sleep)", string.Empty, SpellConstants.Sleep, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, false, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude, saveDcBonus: 2));
+            attackDamages.Add(BuildData(CreatureConstants.Pixie, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Pixie, "Special Arrow (Memory Loss)", string.Empty, string.Empty, 0, "extraordinary ability"));
+            attackDamages.Add(BuildData(CreatureConstants.Pixie, "Special Arrow (Sleep)", string.Empty, SpellConstants.Sleep, 0, "extraordinary ability"));
 
-            attackDamages[CreatureConstants.Pixie_WithIrresistibleDance] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Pixie_WithIrresistibleDance] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Pixie_WithIrresistibleDance] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Pixie_WithIrresistibleDance] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Pixie_WithIrresistibleDance] = BuildData("Special Arrow (Memory Loss)", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, false, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will, saveDcBonus: 2));
-            attackDamages[CreatureConstants.Pixie_WithIrresistibleDance] = BuildData("Special Arrow (Sleep)", string.Empty, SpellConstants.Sleep, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, false, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude, saveDcBonus: 2));
+            attackDamages.Add(BuildData(CreatureConstants.Pixie_WithIrresistibleDance, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Pixie_WithIrresistibleDance, "Special Arrow (Memory Loss)", string.Empty, string.Empty, 0, "extraordinary ability"));
+            attackDamages.Add(BuildData(CreatureConstants.Pixie_WithIrresistibleDance, "Special Arrow (Sleep)", string.Empty, SpellConstants.Sleep, 0, "extraordinary ability"));
 
-            attackDamages[CreatureConstants.Pony] = BuildData("Hoof", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Pony, "Hoof", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Pony_War] = BuildData("Hoof", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Pony_War, "Hoof", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Porpoise] = BuildData("Slam", damageHelper.BuildEntries("2d4", slapSlamDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Porpoise, "Slam", "2d4", slapSlamDamageType));
 
-            attackDamages[CreatureConstants.PrayingMantis_Giant] = BuildData("Claws", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.PrayingMantis_Giant] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.PrayingMantis_Giant] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.PrayingMantis_Giant, "Claws", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.PrayingMantis_Giant, "Bite", "1d6", biteDamageType));
 
-            attackDamages[CreatureConstants.Pseudodragon] = BuildData("Sting",
-                damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Piercing),
+            attackDamages.Add(BuildData(CreatureConstants.Pseudodragon, "Sting",
+                "1d3", AttributeConstants.DamageTypes.Piercing),
                 "Poison", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Pseudodragon] = BuildData("Bite",
-                damageHelper.BuildEntries("1", biteDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Pseudodragon, "Bite",
+                "1", biteDamageType),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Pseudodragon] = BuildData("Poison",
+            attackDamages.Add(BuildData(CreatureConstants.Pseudodragon, "Poison",
                 string.Empty,
-                "initial damage sleep for 1 minute, secondary damage sleep for 1d3 hours", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude, saveDcBonus: 2));
+                "initial damage sleep for 1 minute, secondary damage sleep for 1d3 hours", 0, "extraordinary ability"));
 
-            attackDamages[CreatureConstants.PurpleWorm] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.PurpleWorm] = BuildData("Sting", damageHelper.BuildEntries("2d6", stingDamageType), "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.PurpleWorm] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.PurpleWorm] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.PurpleWorm, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.PurpleWorm, "Sting", "2d6", stingDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.PurpleWorm, "Poison",
+
                     "1d6", AbilityConstants.Strength, "Initial",
                     "2d6", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.PurpleWorm] = BuildData("Swallow Whole",
-                damageHelper.BuildEntries(
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.PurpleWorm, "Swallow Whole",
+
                     "2d8+12", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
                     "8", FeatConstants.Foci.Elements.Acid),
                 string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-            attackDamages[CreatureConstants.Pyrohydra_5Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 5, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Pyrohydra_5Heads] = BuildData("Breath weapon", damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Fire, "Per living head"), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Pyrohydra_5Heads, "Bite", "1d10", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Pyrohydra_5Heads, "Breath weapon", "3d6", FeatConstants.Foci.Elements.Fire, "Per living head"));
 
-            attackDamages[CreatureConstants.Pyrohydra_6Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 6, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Pyrohydra_6Heads] = BuildData("Breath weapon", damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Fire, "Per living head"), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Pyrohydra_6Heads, "Bite", "1d10", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Pyrohydra_6Heads, "Breath weapon", "3d6", FeatConstants.Foci.Elements.Fire, "Per living head"));
 
-            attackDamages[CreatureConstants.Pyrohydra_7Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 7, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Pyrohydra_7Heads] = BuildData("Breath weapon", damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Fire, "Per living head"), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Pyrohydra_7Heads, "Bite", "1d10", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Pyrohydra_7Heads, "Breath weapon", "3d6", FeatConstants.Foci.Elements.Fire, "Per living head"));
 
-            attackDamages[CreatureConstants.Pyrohydra_8Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 8, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Pyrohydra_8Heads] = BuildData("Breath weapon", damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Fire, "Per living head"), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Pyrohydra_8Heads, "Bite", "1d10", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Pyrohydra_8Heads, "Breath weapon", "3d6", FeatConstants.Foci.Elements.Fire, "Per living head"));
 
-            attackDamages[CreatureConstants.Pyrohydra_9Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 9, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Pyrohydra_9Heads] = BuildData("Breath weapon", damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Fire, "Per living head"), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Pyrohydra_9Heads, "Bite", "1d10", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Pyrohydra_9Heads, "Breath weapon", "3d6", FeatConstants.Foci.Elements.Fire, "Per living head"));
 
-            attackDamages[CreatureConstants.Pyrohydra_10Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 10, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Pyrohydra_10Heads] = BuildData("Breath weapon", damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Fire, "Per living head"), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Pyrohydra_10Heads, "Bite", "1d10", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Pyrohydra_10Heads, "Breath weapon", "3d6", FeatConstants.Foci.Elements.Fire, "Per living head"));
 
-            attackDamages[CreatureConstants.Pyrohydra_11Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 11, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Pyrohydra_11Heads] = BuildData("Breath weapon", damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Fire, "Per living head"), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Pyrohydra_11Heads, "Bite", "1d10", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Pyrohydra_11Heads, "Breath weapon", "3d6", FeatConstants.Foci.Elements.Fire, "Per living head"));
 
-            attackDamages[CreatureConstants.Pyrohydra_12Heads] = BuildData("Bite", damageHelper.BuildEntries("1d10", biteDamageType), string.Empty, 1, "melee", 12, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Pyrohydra_12Heads] = BuildData("Breath weapon", damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Fire, "Per living head"), string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Pyrohydra_12Heads, "Bite", "1d10", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Pyrohydra_12Heads, "Breath weapon", "3d6", FeatConstants.Foci.Elements.Fire, "Per living head"));
 
-            attackDamages[CreatureConstants.Quasit] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), "poison", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Quasit] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Quasit] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Quasit, "Claw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Quasit, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Quasit, "Poison",
+
                     "1d4", AbilityConstants.Dexterity, "Initial",
                     "2d4", AbilityConstants.Dexterity, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution, 2));
-            attackDamages[CreatureConstants.Quasit] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0, "extraordinary ability"));
 
-            attackDamages[CreatureConstants.Rakshasa] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Rakshasa] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Rakshasa] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Rakshasa, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Rakshasa, "Bite", "1d6", biteDamageType));
 
-            attackDamages[CreatureConstants.Rast] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 4, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Rast] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Rast] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Rast] = BuildData("Paralyzing Gaze", string.Empty, "Paralysis for 1d6 rounds", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Rast] = BuildData("Blood Drain",
-                damageHelper.BuildEntries("1", AbilityConstants.Constitution),
+            attackDamages.Add(BuildData(CreatureConstants.Rast, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Rast, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Rast, "Paralyzing Gaze", string.Empty, "Paralysis for 1d6 rounds", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Rast, "Blood Drain",
+                "1", AbilityConstants.Constitution),
                 string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-            attackDamages[CreatureConstants.Rat] = BuildData("Bite", damageHelper.BuildEntries("1d3", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Rat, "Bite", "1d3", biteDamageType));
 
-            attackDamages[CreatureConstants.Rat_Dire] = BuildData("Bite", damageHelper.BuildEntries("1d3", biteDamageType), "Disease", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Rat_Dire] = BuildData("Disease", string.Empty, "Filth Fever", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true));
-            attackDamages[CreatureConstants.Rat_Dire] = BuildData("Filth Fever",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Rat_Dire, "Bite", "1d3", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Rat_Dire, "Disease", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Rat_Dire, "Filth Fever",
+
                     "1d3", AbilityConstants.Dexterity, "Incubation period 1d3 days",
                     "1d3", AbilityConstants.Constitution, "Incubation period 1d3 days"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Rat_Swarm] = BuildData("Swarm", damageHelper.BuildEntries("1d6"), "Disease", 0, "swarm", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Rat_Swarm] = BuildData("Disease", string.Empty, "Filth Fever", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true));
-            attackDamages[CreatureConstants.Rat_Swarm] = BuildData("Filth Fever",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Rat_Swarm, "Swarm", "1d6"));
+            attackDamages.Add(BuildData(CreatureConstants.Rat_Swarm, "Disease", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Rat_Swarm, "Filth Fever",
+
                     "1d3", AbilityConstants.Dexterity, "Incubation period 1d3 days",
                     "1d3", AbilityConstants.Constitution, "Incubation period 1d3 days"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.Rat_Swarm] = BuildData("Distraction", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Minute, true, true, true, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Rat_Swarm, "Distraction", string.Empty, string.Empty, 0));
 
-            attackDamages[CreatureConstants.Raven] = BuildData("Claws", damageHelper.BuildEntries("1d2", clawDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Raven, "Claws", "1d2", clawDamageType));
 
-            attackDamages[CreatureConstants.Ravid] = BuildData("Tail Slap", damageHelper.BuildEntries("1d6", slapSlamDamageType), "Positive Energy", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Ravid] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), "Positive Energy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Ravid] = BuildData("Tail Touch", string.Empty, "Positive Energy", 0, "melee touch", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Ravid] = BuildData("Claw Touch", string.Empty, "Positive Energy", 0, "melee touch", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Ravid] = BuildData("Positive Energy",
-                damageHelper.BuildEntries("2d10", "Positive energy"),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Ravid] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Ravid, "Tail Slap", "1d6", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Ravid, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Ravid, "Tail Touch", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Ravid, "Claw Touch", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Ravid, "Positive Energy",
+                "2d10", "Positive energy"),
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.RazorBoar] = BuildData("Tusk Slash", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), "Vorpal Tusk", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.RazorBoar] = BuildData("Hoof", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.RazorBoar] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.RazorBoar] = BuildData("Vorpal Tusk", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.RazorBoar] = BuildData("Trample", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.RazorBoar, "Tusk Slash", "1d8", AttributeConstants.DamageTypes.Slashing));
+            attackDamages.Add(BuildData(CreatureConstants.RazorBoar, "Hoof", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.RazorBoar, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.RazorBoar, "Vorpal Tusk", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.RazorBoar, "Trample", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Remorhaz] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Remorhaz] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Remorhaz] = BuildData("Swallow Whole",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Remorhaz, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Remorhaz, "Swallow Whole",
+
                     "2d8+12", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
                     "8d6", FeatConstants.Foci.Elements.Fire),
                 string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-            attackDamages[CreatureConstants.Retriever] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 1, "melee", 4, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Retriever] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Retriever] = BuildData("Eye Ray", string.Empty, string.Empty, 0, "ranged touch", 1, FeatConstants.Frequencies.Round, false, true, false, true, string.Empty, AbilityConstants.Dexterity));
-            attackDamages[CreatureConstants.Retriever] = BuildData("Find Target", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, false, true));
-            attackDamages[CreatureConstants.Retriever] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Retriever, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Retriever, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Retriever, "Eye Ray", string.Empty, string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Retriever, "Find Target", string.Empty));
 
-            attackDamages[CreatureConstants.Rhinoceras] = BuildData("Gore", damageHelper.BuildEntries("2d6", goreDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Rhinoceras] = BuildData("Powerful Charge", damageHelper.BuildEntries("4d6", goreDamageType), string.Empty, 3, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Rhinoceras, "Gore", "2d6", goreDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Rhinoceras, "Powerful Charge", "4d6", goreDamageType));
 
-            attackDamages[CreatureConstants.Roc] = BuildData("Talon", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Roc] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Roc, "Talon", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Roc, "Bite", "2d8", biteDamageType));
 
-            attackDamages[CreatureConstants.Roper] = BuildData("Strand", string.Empty, "Drag", 0, "ranged touch", 6, FeatConstants.Frequencies.Round, false, true, false, false));
-            attackDamages[CreatureConstants.Roper] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Roper] = BuildData("Drag", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Strength));
-            attackDamages[CreatureConstants.Roper] = BuildData("Weakness",
-                damageHelper.BuildEntries("2d8", AbilityConstants.Strength),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Roper, "Strand", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Roper, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Roper, "Drag", string.Empty, string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Roper, "Weakness",
+                "2d8", AbilityConstants.Strength),
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.RustMonster] = BuildData("Antennae", string.Empty, "Rust", 0, "melee touch", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.RustMonster] = BuildData("Bite", damageHelper.BuildEntries("1d3", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.RustMonster] = BuildData("Rust", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 4));
+            attackDamages.Add(BuildData(CreatureConstants.RustMonster, "Antennae", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.RustMonster, "Bite", "1d3", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.RustMonster, "Rust", string.Empty, string.Empty, 0, "extraordinary ability"));
 
-            attackDamages[CreatureConstants.Sahuagin] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Sahuagin] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Sahuagin] = BuildData("Talon", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Sahuagin] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Sahuagin] = BuildData("Blood Frenzy", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
-            attackDamages[CreatureConstants.Sahuagin] = BuildData("Rake", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Sahuagin, "Talon", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Sahuagin, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Sahuagin, "Blood Frenzy", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Sahuagin, "Rake", "1d4", clawDamageType));
 
-            attackDamages[CreatureConstants.Sahuagin_Mutant] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Sahuagin_Mutant] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1, "ranged", 2, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Sahuagin_Mutant] = BuildData("Talon", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 4, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Sahuagin_Mutant] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Sahuagin_Mutant] = BuildData("Blood Frenzy", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
-            attackDamages[CreatureConstants.Sahuagin_Mutant] = BuildData("Rake", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Sahuagin_Mutant, "Talon", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Sahuagin_Mutant, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Sahuagin_Mutant, "Blood Frenzy", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Sahuagin_Mutant, "Rake", "1d4", clawDamageType));
 
-            attackDamages[CreatureConstants.Sahuagin_Malenti] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Sahuagin_Malenti] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Sahuagin_Malenti] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Sahuagin_Malenti] = BuildData("Blood Frenzy", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Sahuagin_Malenti, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Sahuagin_Malenti, "Blood Frenzy", string.Empty));
 
-            attackDamages[CreatureConstants.Salamander_Flamebrother] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Salamander_Flamebrother] = BuildData("Tail Slap", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), "Heat", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Salamander_Flamebrother] = BuildData("Constrict", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), "Heat", 0.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Salamander_Flamebrother] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Salamander_Flamebrother] = BuildData("Heat",
-                 damageHelper.BuildEntries("1d6", FeatConstants.Foci.Elements.Fire),
+            attackDamages.Add(BuildData(CreatureConstants.Salamander_Flamebrother, "Tail Slap", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Salamander_Flamebrother, "Constrict", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Salamander_Flamebrother, "Heat",
+                 "1d6", FeatConstants.Foci.Elements.Fire),
                 string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
 
-            attackDamages[CreatureConstants.Salamander_Average] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Salamander_Average] = BuildData("Tail Slap", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), "Heat", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Salamander_Average] = BuildData("Constrict", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), "Heat", 0.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Salamander_Average] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Salamander_Average] = BuildData("Heat",
-                 damageHelper.BuildEntries("1d6", FeatConstants.Foci.Elements.Fire),
+            attackDamages.Add(BuildData(CreatureConstants.Salamander_Average, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Salamander_Average, "Constrict", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Salamander_Average, "Heat",
+                 "1d6", FeatConstants.Foci.Elements.Fire),
                 string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
 
-            attackDamages[CreatureConstants.Salamander_Noble] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Salamander_Noble] = BuildData("Tail Slap", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), "Heat", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Salamander_Noble] = BuildData("Constrict", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), "Heat", 0.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Salamander_Noble] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Salamander_Noble] = BuildData("Heat",
-                 damageHelper.BuildEntries("1d8", FeatConstants.Foci.Elements.Fire),
+            attackDamages.Add(BuildData(CreatureConstants.Salamander_Noble, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Salamander_Noble, "Constrict", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Salamander_Noble, "Heat",
+                 "1d8", FeatConstants.Foci.Elements.Fire),
                 string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-            attackDamages[CreatureConstants.Salamander_Noble] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-            attackDamages[CreatureConstants.Satyr] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, false, false));
-            attackDamages[CreatureConstants.Satyr] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 0, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Satyr] = BuildData("Head butt", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Satyr, "Head butt", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Satyr_WithPipes] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, false, false));
-            attackDamages[CreatureConstants.Satyr_WithPipes] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 0, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Satyr_WithPipes] = BuildData("Head butt", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Satyr_WithPipes] = BuildData("Pipes", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.Satyr_WithPipes, "Head butt", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Satyr_WithPipes, "Pipes", string.Empty, string.Empty, 0));
 
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Tiny] = BuildData("Claw", damageHelper.BuildEntries("1d2", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Tiny] = BuildData("Sting", damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Piercing), "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Tiny] = BuildData("Constrict", damageHelper.BuildEntries("1d2", clawDamageType), string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Tiny] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Tiny] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Tiny, "Claw", "1d2", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Tiny, "Sting", "1d2", AttributeConstants.DamageTypes.Piercing));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Tiny, "Constrict", "1d2", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Tiny, "Poison",
+
                     "1", AbilityConstants.Constitution, "Initial",
                     "1", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Small] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Small] = BuildData("Sting", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Piercing), "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Small] = BuildData("Constrict", damageHelper.BuildEntries("1d3", clawDamageType), string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Small] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Small] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Small, "Claw", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Small, "Sting", "1d3", AttributeConstants.DamageTypes.Piercing));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Small, "Constrict", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Small, "Poison",
+
                     "1d2", AbilityConstants.Constitution, "Initial",
                     "1d2", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Medium] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Medium] = BuildData("Sting", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Medium] = BuildData("Constrict", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Medium] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Medium] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Medium, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Medium, "Sting", "1d4", AttributeConstants.DamageTypes.Piercing));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Medium, "Constrict", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Medium, "Poison",
+
                     "1d3", AbilityConstants.Constitution, "Initial",
                     "1d3", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Large] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Large] = BuildData("Sting", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing), "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Large] = BuildData("Constrict", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Large] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Large] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Large, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Large, "Sting", "1d6", AttributeConstants.DamageTypes.Piercing));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Large, "Constrict", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Large, "Poison",
+
                     "1d4", AbilityConstants.Constitution, "Initial",
                     "1d4", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Huge] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Huge] = BuildData("Sting", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Huge] = BuildData("Constrict", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Huge] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Huge] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Huge, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Huge, "Sting", "1d8", AttributeConstants.DamageTypes.Piercing));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Huge, "Constrict", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Huge, "Poison",
+
                     "1d6", AbilityConstants.Constitution, "Initial",
                     "1d6", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Gargantuan] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Gargantuan] = BuildData("Sting", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Gargantuan] = BuildData("Constrict", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Gargantuan] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Gargantuan] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Gargantuan, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Gargantuan, "Sting", "2d6", AttributeConstants.DamageTypes.Piercing));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Gargantuan, "Constrict", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Gargantuan, "Poison",
+
                     "1d8", AbilityConstants.Constitution, "Initial",
                     "1d8", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Colossal] = BuildData("Claw", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Colossal] = BuildData("Sting", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Piercing), "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Colossal] = BuildData("Constrict", damageHelper.BuildEntries("2d8", clawDamageType), string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Colossal] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Scorpion_Monstrous_Colossal] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Colossal, "Claw", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Colossal, "Sting", "2d8", AttributeConstants.DamageTypes.Piercing));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Colossal, "Constrict", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Colossal, "Poison",
+
                     "1d10", AbilityConstants.Constitution, "Initial",
                     "1d10", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Scorpionfolk] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Scorpionfolk] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 0, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Scorpionfolk] = BuildData("Sting", damageHelper.BuildEntries("1d8", stingDamageType), "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Scorpionfolk] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Scorpionfolk] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Scorpionfolk, "Sting", "1d8", stingDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpionfolk, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpionfolk, "Poison",
+
                     "1d4", AbilityConstants.Dexterity, "Initial",
                     "1d4", AbilityConstants.Dexterity, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Scorpionfolk] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Scorpionfolk] = BuildData("Trample", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex));
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpionfolk, "Trample", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.SeaCat] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.SeaCat] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.SeaCat] = BuildData("Rend", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.SeaCat, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.SeaCat, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.SeaCat, "Rend", "2d6", clawDamageType));
 
-            attackDamages[CreatureConstants.SeaHag] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.SeaHag] = BuildData("Horrific Appearance",
-                damageHelper.BuildEntries("2d6", AbilityConstants.Strength),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
-            attackDamages[CreatureConstants.SeaHag] = BuildData("Evil Eye", string.Empty, string.Empty, 0, "supernatural ability", 3, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
+            attackDamages.Add(BuildData(CreatureConstants.SeaHag, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.SeaHag, "Horrific Appearance",
+                "2d6", AbilityConstants.Strength),
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.SeaHag, "Evil Eye", string.Empty, string.Empty, 0));
 
-            attackDamages[CreatureConstants.Shadow] = BuildData("Incorporeal touch", string.Empty, "Strength Damage", 0, "melee touch", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Shadow] = BuildData("Strength Damage",
-                damageHelper.BuildEntries("1d6", AbilityConstants.Strength),
+            attackDamages.Add(BuildData(CreatureConstants.Shadow, "Incorporeal touch", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Shadow, "Strength Damage",
+                "1d6", AbilityConstants.Strength),
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-            attackDamages[CreatureConstants.Shadow] = BuildData("Create Spawn", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Shadow, "Create Spawn", string.Empty));
 
-            attackDamages[CreatureConstants.Shadow_Greater] = BuildData("Incorporeal touch", string.Empty, "Strength Damage", 0, "melee touch", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Shadow_Greater] = BuildData("Strength Damage",
-                damageHelper.BuildEntries("1d8", AbilityConstants.Strength),
+            attackDamages.Add(BuildData(CreatureConstants.Shadow_Greater, "Incorporeal touch", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Shadow_Greater, "Strength Damage",
+                "1d8", AbilityConstants.Strength),
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-            attackDamages[CreatureConstants.Shadow_Greater] = BuildData("Create Spawn", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Shadow_Greater, "Create Spawn", string.Empty));
 
-            attackDamages[CreatureConstants.ShadowMastiff] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.ShadowMastiff] = BuildData("Bay", string.Empty, "panicked 2d4 rounds", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.ShadowMastiff] = BuildData("Trip", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.ShadowMastiff, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.ShadowMastiff, "Bay", string.Empty, "panicked 2d4 rounds", 0));
+            attackDamages.Add(BuildData(CreatureConstants.ShadowMastiff, "Trip", string.Empty));
 
-            attackDamages[CreatureConstants.ShamblingMound] = BuildData("Slam", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.ShamblingMound] = BuildData("Constrict", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.ShamblingMound] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.ShamblingMound, "Slam", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.ShamblingMound, "Constrict", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Shark_Dire] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Shark_Dire] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Shark_Dire] = BuildData("Swallow Whole",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Shark_Dire, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Shark_Dire, "Swallow Whole",
+
                     "2d6+6", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
                     "1d8+4", FeatConstants.Foci.Elements.Acid),
                 string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-            attackDamages[CreatureConstants.Shark_Huge] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Shark_Huge, "Bite", "2d6", biteDamageType));
 
-            attackDamages[CreatureConstants.Shark_Large] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Shark_Large, "Bite", "1d8", biteDamageType));
 
-            attackDamages[CreatureConstants.Shark_Medium] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Shark_Medium, "Bite", "1d6", biteDamageType));
 
-            attackDamages[CreatureConstants.ShieldGuardian] = BuildData("Slam", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.ShieldGuardian] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.ShieldGuardian, "Slam", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.ShockerLizard] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.ShockerLizard] = BuildData("Stunning Shock",
-                damageHelper.BuildEntries("2d8", FeatConstants.Foci.Elements.Electricity),
-                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            attackDamages[CreatureConstants.ShockerLizard] = BuildData("Lethal Shock",
-                damageHelper.BuildEntries("2d8", FeatConstants.Foci.Elements.Electricity, "per Shocker Lizard"),
-                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, false, true, true, true, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.ShockerLizard, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.ShockerLizard, "Stunning Shock",
+                "2d8", FeatConstants.Foci.Elements.Electricity),
+                string.Empty, 1.5));
+            attackDamages.Add(BuildData(CreatureConstants.ShockerLizard, "Lethal Shock",
+                "2d8", FeatConstants.Foci.Elements.Electricity, "per Shocker Lizard"),
+                string.Empty));
 
-            attackDamages[CreatureConstants.Shrieker] = BuildData("Shriek", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Shrieker, "Shriek", string.Empty));
 
-            attackDamages[CreatureConstants.Skum] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Skum] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Skum] = BuildData("Rake", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Skum, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Skum, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Skum, "Rake", "1d6", clawDamageType));
 
-            attackDamages[CreatureConstants.Slaad_Red] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Slaad_Red] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), "Implant", 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Slaad_Red] = BuildData("Pounce", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Slaad_Red] = BuildData("Implant", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Slaad_Red] = BuildData("Stunning Croak", string.Empty, "Stunned 1d3 rounds", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Slaad_Red] = BuildData("Summon Slaad", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Red, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Red, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Red, "Implant", string.Empty, string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Red, "Stunning Croak", string.Empty, "Stunned 1d3 rounds", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Red, "Summon Slaad", string.Empty));
 
-            attackDamages[CreatureConstants.Slaad_Blue] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 1, "melee", 4, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Slaad_Blue] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), "Disease", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Slaad_Blue] = BuildData("Disease", string.Empty, "Slaad Fever", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Slaad_Blue] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Slaad_Blue] = BuildData("Slaad Fever",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Blue, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Blue, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Blue, "Disease", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Blue, "Slaad Fever",
+
                     "1d3", AbilityConstants.Dexterity, "Incubation period 1 day",
                     "1d3", AbilityConstants.Charisma, "Incubation period 1 day"),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Slaad_Blue] = BuildData("Summon Slaad", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Blue, "Summon Slaad", string.Empty));
 
-            attackDamages[CreatureConstants.Slaad_Green] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Slaad_Green] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Slaad_Green] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Slaad_Green] = BuildData("Summon Slaad", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Green, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Green, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Green, "Summon Slaad", string.Empty));
 
-            attackDamages[CreatureConstants.Slaad_Gray] = BuildData("Claw", damageHelper.BuildEntries("2d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Slaad_Gray] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Slaad_Gray] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Slaad_Gray] = BuildData("Summon Slaad", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Gray, "Claw", "2d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Gray, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Gray, "Summon Slaad", string.Empty));
 
-            attackDamages[CreatureConstants.Slaad_Death] = BuildData("Claw", damageHelper.BuildEntries("3d6", clawDamageType), "Stun", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Slaad_Death] = BuildData("Bite", damageHelper.BuildEntries("2d10", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Slaad_Death] = BuildData("Stun", string.Empty, "Stunned 1 round", 0, "extraordinary ability", 3, FeatConstants.Frequencies.Day, false, true, true, true, saveAbility: AbilityConstants.Wisdom, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Slaad_Death] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Slaad_Death] = BuildData("Summon Slaad", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Death, "Claw", "3d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Death, "Bite", "2d10", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Death, "Stun", string.Empty, "Stunned 1 round", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Slaad_Death, "Summon Slaad", string.Empty));
 
-            attackDamages[CreatureConstants.Snake_Constrictor] = BuildData("Bite", damageHelper.BuildEntries("1d3", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Snake_Constrictor] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Snake_Constrictor] = BuildData("Constrict", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Snake_Constrictor, "Bite", "1d3", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Snake_Constrictor, "Constrict", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Snake_Constrictor_Giant] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Snake_Constrictor_Giant] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Snake_Constrictor_Giant] = BuildData("Constrict", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Snake_Constrictor_Giant, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Snake_Constrictor_Giant, "Constrict", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Snake_Viper_Tiny] = BuildData("Bite",
-                damageHelper.BuildEntries("1", biteDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Tiny, "Bite",
+                "1", biteDamageType),
                 "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Snake_Viper_Tiny] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Tiny, "Poison",
+
                     "1d6", AbilityConstants.Constitution, "Initial",
                     "1d6", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Snake_Viper_Small] = BuildData("Bite", damageHelper.BuildEntries("1d2", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Snake_Viper_Small] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Small, "Bite", "1d2", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Small, "Poison",
+
                     "1d6", AbilityConstants.Constitution, "Initial",
                     "1d6", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Snake_Viper_Medium] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Snake_Viper_Medium] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Medium, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Medium, "Poison",
+
                     "1d6", AbilityConstants.Constitution, "Initial",
                     "1d6", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Snake_Viper_Large] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Snake_Viper_Large] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Large, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Large, "Poison",
+
                     "1d6", AbilityConstants.Constitution, "Initial",
                     "1d6", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Snake_Viper_Huge] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Snake_Viper_Huge] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Huge, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Huge, "Poison",
+
                     "1d6", AbilityConstants.Constitution, "Initial",
                     "1d6", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Spectre] = BuildData("Incorporeal touch", damageHelper.BuildEntries("1d8"), "Energy Drain", 0, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Spectre] = BuildData("Energy Drain",
-                damageHelper.BuildEntries("2", "Negative Level"),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Spectre] = BuildData("Create Spawn", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Spectre, "Incorporeal touch", "1d8"));
+            attackDamages.Add(BuildData(CreatureConstants.Spectre, "Energy Drain",
+                "2", "Negative Level"),
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Spectre, "Create Spawn", string.Empty));
 
-            attackDamages[CreatureConstants.Spider_Monstrous_Hunter_Tiny] = BuildData("Bite", damageHelper.BuildEntries("1d3", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Spider_Monstrous_Hunter_Tiny] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Tiny, "Bite", "1d3", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Tiny, "Poison",
+
                     "1d2", AbilityConstants.Strength, "Initial",
                     "1d2", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Spider_Monstrous_Hunter_Small] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Spider_Monstrous_Hunter_Small] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Small, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Small, "Poison",
+
                     "1d3", AbilityConstants.Strength, "Initial",
                     "1d3", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Spider_Monstrous_Hunter_Medium] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Spider_Monstrous_Hunter_Medium] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Medium, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Medium, "Poison",
+
                     "1d4", AbilityConstants.Strength, "Initial",
                     "1d4", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Spider_Monstrous_Hunter_Large] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Spider_Monstrous_Hunter_Large] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Large, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Large, "Poison",
+
                     "1d6", AbilityConstants.Strength, "Initial",
                     "1d6", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Spider_Monstrous_Hunter_Huge] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Spider_Monstrous_Hunter_Huge] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Huge, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Huge, "Poison",
+
                     "1d8", AbilityConstants.Strength, "Initial",
                     "1d8", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Spider_Monstrous_Hunter_Gargantuan] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Spider_Monstrous_Hunter_Gargantuan] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Gargantuan, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Gargantuan, "Poison",
+
                     "2d6", AbilityConstants.Strength, "Initial",
                     "2d6", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Spider_Monstrous_Hunter_Colossal] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Spider_Monstrous_Hunter_Colossal] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Colossal, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Colossal, "Poison",
+
                     "2d8", AbilityConstants.Strength, "Initial",
                     "2d8", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Tiny] = BuildData("Bite", damageHelper.BuildEntries("1d3", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Tiny] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Tiny, "Bite", "1d3", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Tiny, "Poison",
+
                     "1d2", AbilityConstants.Strength, "Initial",
                     "1d2", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Tiny] = BuildData("Web", string.Empty, string.Empty, 0, "extraordinary ability", 8, FeatConstants.Frequencies.Day, false, true, true, true, saveAbility: AbilityConstants.Constitution));
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Tiny, "Web", string.Empty, string.Empty));
 
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Small] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Small] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Small, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Small, "Poison",
+
                     "1d3", AbilityConstants.Strength, "Initial",
                     "1d3", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Small] = BuildData("Web", string.Empty, string.Empty, 0, "extraordinary ability", 8, FeatConstants.Frequencies.Day, false, true, true, true, saveAbility: AbilityConstants.Constitution));
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Small, "Web", string.Empty, string.Empty));
 
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Medium] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Medium] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Medium, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Medium, "Poison",
+
                     "1d4", AbilityConstants.Strength, "Initial",
                     "1d4", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Medium] = BuildData("Web", string.Empty, string.Empty, 0, "extraordinary ability", 8, FeatConstants.Frequencies.Day, false, true, true, true, saveAbility: AbilityConstants.Constitution));
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Medium, "Web", string.Empty, string.Empty));
 
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Large] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Large] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Large, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Large, "Poison",
+
                     "1d6", AbilityConstants.Strength, "Initial",
                     "1d6", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Large] = BuildData("Web", string.Empty, string.Empty, 0, "extraordinary ability", 8, FeatConstants.Frequencies.Day, false, true, true, true, saveAbility: AbilityConstants.Constitution));
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Large, "Web", string.Empty, string.Empty));
 
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Huge] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Huge] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Huge, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Huge, "Poison",
+
                     "1d8", AbilityConstants.Strength, "Initial",
                     "1d8", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Huge] = BuildData("Web", string.Empty, string.Empty, 0, "extraordinary ability", 8, FeatConstants.Frequencies.Day, false, true, true, true, saveAbility: AbilityConstants.Constitution));
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Huge, "Web", string.Empty, string.Empty));
 
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan, "Poison",
+
                     "2d6", AbilityConstants.Strength, "Initial",
                     "2d6", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan] = BuildData("Web", string.Empty, string.Empty, 0, "extraordinary ability", 8, FeatConstants.Frequencies.Day, false, true, true, true, saveAbility: AbilityConstants.Constitution));
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan, "Web", string.Empty, string.Empty));
 
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Colossal, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Colossal, "Poison",
+
                     "2d8", AbilityConstants.Strength, "Initial",
                     "2d8", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal] = BuildData("Web", string.Empty, string.Empty, 0, "extraordinary ability", 8, FeatConstants.Frequencies.Day, false, true, true, true, saveAbility: AbilityConstants.Constitution));
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Colossal, "Web", string.Empty, string.Empty));
 
-            attackDamages[CreatureConstants.SpiderEater] = BuildData("Sting", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), "Poison", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.SpiderEater] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.SpiderEater] = BuildData("Poison",
+            attackDamages.Add(BuildData(CreatureConstants.SpiderEater, "Sting", "1d8", AttributeConstants.DamageTypes.Piercing));
+            attackDamages.Add(BuildData(CreatureConstants.SpiderEater, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.SpiderEater, "Poison",
                 string.Empty,
-                "Paralysis for 1d8+5 weeks (Secondary)", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.SpiderEater] = BuildData("Implant", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, requiredGender: GenderConstants.Female));
+                "Paralysis for 1d8+5 weeks (Secondary)", 0));
+            attackDamages.Add(BuildData(CreatureConstants.SpiderEater, "Implant", string.Empty, string.Empty));
 
-            attackDamages[CreatureConstants.Spider_Swarm] = BuildData("Swarm", damageHelper.BuildEntries("1d6"), "poison", 0, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Spider_Swarm] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Swarm, "Swarm", "1d6"));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Swarm, "Poison",
+
                     "1d3", AbilityConstants.Strength, "Initial",
                     "1d3", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.Spider_Swarm] = BuildData("Distraction", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Minute, true, true, true, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Spider_Swarm, "Distraction", string.Empty, string.Empty, 0));
 
-            attackDamages[CreatureConstants.Squid] = BuildData("Arms",
-                damageHelper.BuildEntries("0", tentacleDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Squid, "Arms",
+                "0", tentacleDamageType),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Squid] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Squid] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Squid, "Bite", "1d6", biteDamageType));
 
-            attackDamages[CreatureConstants.Squid_Giant] = BuildData("Tentacle", damageHelper.BuildEntries("1d6", tentacleDamageType), string.Empty, 1, "melee", 10, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Squid_Giant] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Squid_Giant] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Squid_Giant] = BuildData("Constrict", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Squid_Giant, "Tentacle", "1d6", tentacleDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Squid_Giant, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Squid_Giant, "Constrict", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.StagBeetle_Giant] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.StagBeetle_Giant] = BuildData("Trample", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.StagBeetle_Giant, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.StagBeetle_Giant, "Trample", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Stirge] = BuildData("Touch", string.Empty, "Attach", 0, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Stirge] = BuildData("Attach", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Stirge] = BuildData("Blood Drain",
-                damageHelper.BuildEntries("1d4", AbilityConstants.Constitution),
+            attackDamages.Add(BuildData(CreatureConstants.Stirge, "Touch", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Stirge, "Attach", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Stirge, "Blood Drain",
+                "1d4", AbilityConstants.Constitution),
                 string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
-            attackDamages[CreatureConstants.Succubus] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Succubus] = BuildData("Energy Drain",
-                damageHelper.BuildEntries("1", "Negative Level"),
-                SpellConstants.Suggestion, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, string.Empty, AbilityConstants.Charisma));
-            attackDamages[CreatureConstants.Succubus] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Succubus] = BuildData("Summon Demon", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Succubus, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Succubus, "Energy Drain",
+                "1", "Negative Level"),
+                SpellConstants.Suggestion, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Succubus, "Summon Demon", string.Empty));
 
-            attackDamages[CreatureConstants.Tarrasque] = BuildData("Bite", damageHelper.BuildEntries("4d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Tarrasque] = BuildData("Horn",
-                damageHelper.BuildEntries("1d10", AttributeConstants.DamageTypes.Piercing),
+            attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Bite", "4d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Horn",
+                "1d10", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Tarrasque] = BuildData("Claw",
-                damageHelper.BuildEntries("1d12", clawDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Claw",
+                "1d12", clawDamageType),
                 string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Tarrasque] = BuildData("Tail Slap",
-                damageHelper.BuildEntries("3d8", slapSlamDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Tail Slap",
+                "3d8", slapSlamDamageType),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Tarrasque] = BuildData("Augmented Critical", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Tarrasque] = BuildData("Frightful Presence", string.Empty, "Shaken", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.Tarrasque] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Tarrasque] = BuildData("Rush", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Minute, false, true, true, true));
-            attackDamages[CreatureConstants.Tarrasque] = BuildData("Swallow Whole",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Augmented Critical", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Frightful Presence", string.Empty, "Shaken", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Rush", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Swallow Whole",
+
                     "2d8+8", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
                     "2d8+6", FeatConstants.Foci.Elements.Acid),
                 string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-            attackDamages[CreatureConstants.Tendriculos] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Tendriculos] = BuildData("Tendril",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
+            attackDamages.Add(BuildData(CreatureConstants.Tendriculos, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Tendriculos, "Tendril",
+                "1d6", AttributeConstants.DamageTypes.Bludgeoning),
                 string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Tendriculos] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Tendriculos] = BuildData("Swallow Whole",
-                damageHelper.BuildEntries("2d6", FeatConstants.Foci.Elements.Acid),
+            attackDamages.Add(BuildData(CreatureConstants.Tendriculos, "Swallow Whole",
+                "2d6", FeatConstants.Foci.Elements.Acid),
                 "Paralysis", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Tendriculos] = BuildData("Paralysis", string.Empty, "paralyzed for 3d6 rounds", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, false, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Tendriculos, "Paralysis", string.Empty, "paralyzed for 3d6 rounds", 0));
 
-            attackDamages[CreatureConstants.Thoqqua] = BuildData("Slam", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), "Heat, Burn", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Thoqqua] = BuildData("Heat", damageHelper.BuildEntries("2d6", FeatConstants.Foci.Elements.Fire), string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Thoqqua] = BuildData("Burn", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Thoqqua, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Thoqqua, "Heat", "2d6", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Thoqqua, "Burn", string.Empty, string.Empty, 0));
 
-            attackDamages[CreatureConstants.Tiefling] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Tiefling] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Tiefling] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Tiefling] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Tiefling, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Tiger] = BuildData("Claw", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Tiger] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Tiger] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Tiger] = BuildData("Pounce", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Tiger] = BuildData("Rake", damageHelper.BuildEntries("1d8", clawDamageType), string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Tiger, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Tiger, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Tiger, "Rake", "1d8", clawDamageType));
 
-            attackDamages[CreatureConstants.Tiger_Dire] = BuildData("Claw", damageHelper.BuildEntries("2d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Tiger_Dire] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Tiger_Dire] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Tiger_Dire] = BuildData("Pounce", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.Tiger_Dire] = BuildData("Rake", damageHelper.BuildEntries("2d4", clawDamageType), string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Tiger_Dire, "Claw", "2d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Tiger_Dire, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Tiger_Dire, "Rake", "2d4", clawDamageType));
 
-            attackDamages[CreatureConstants.Titan] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Titan] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Titan] = BuildData("Slam", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Titan] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Titan, "Slam", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Toad] = new[] { None });
+            attackDamages.Add(BuildData(CreatureConstants.Toad] = new[] { None });
 
-            attackDamages[CreatureConstants.Tojanida_Juvenile] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Tojanida_Juvenile] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Tojanida_Juvenile] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Tojanida_Juvenile] = BuildData("Ink Cloud", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Minute, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Tojanida_Juvenile, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Tojanida_Juvenile, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Tojanida_Juvenile, "Ink Cloud", string.Empty, string.Empty, 0));
 
-            attackDamages[CreatureConstants.Tojanida_Adult] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Tojanida_Adult] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Tojanida_Adult] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Tojanida_Adult] = BuildData("Ink Cloud", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Minute, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Tojanida_Adult, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Tojanida_Adult, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Tojanida_Adult, "Ink Cloud", string.Empty, string.Empty, 0));
 
-            attackDamages[CreatureConstants.Tojanida_Elder] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Tojanida_Elder] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Tojanida_Elder] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Tojanida_Elder] = BuildData("Ink Cloud", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Minute, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Tojanida_Elder, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Tojanida_Elder, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Tojanida_Elder, "Ink Cloud", string.Empty, string.Empty, 0));
 
-            attackDamages[CreatureConstants.Treant] = BuildData("Slam", damageHelper.BuildEntries("2d6", slapSlamDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Treant] = BuildData("Animate Trees", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Treant] = BuildData("Double Damage Against Objects", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Treant] = BuildData("Trample", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Treant, "Slam", "2d6", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Treant, "Animate Trees", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Treant, "Double Damage Against Objects", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Treant, "Trample", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Triceratops] = BuildData("Gore",
-                damageHelper.BuildEntries("2d8", goreDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Triceratops, "Gore",
+                "2d8", goreDamageType),
                 string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Triceratops] = BuildData("Powerful charge",
-                damageHelper.BuildEntries("4d8", goreDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Triceratops, "Powerful charge",
+                "4d8", goreDamageType),
                 string.Empty, 2, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Triceratops] = BuildData("Trample",
-                damageHelper.BuildEntries("2d12", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex));
+            attackDamages.Add(BuildData(CreatureConstants.Triceratops, "Trample",
+                "2d12", AttributeConstants.DamageTypes.Bludgeoning),
+                string.Empty, 1.5));
 
-            attackDamages[CreatureConstants.Triton] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Triton] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Triton] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Triton] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Triton, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Troglodyte] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Troglodyte] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Troglodyte] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Troglodyte] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Troglodyte] = BuildData("Stench", string.Empty, "Sickened 10 rounds", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Troglodyte, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Troglodyte, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Troglodyte, "Stench", string.Empty, "Sickened 10 rounds", 0));
 
-            attackDamages[CreatureConstants.Troll] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Troll] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Troll] = BuildData("Rend", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Troll, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Troll, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Troll, "Rend", "2d6", clawDamageType));
 
-            attackDamages[CreatureConstants.Troll_Scrag] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Troll_Scrag] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Troll_Scrag] = BuildData("Rend", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Troll_Scrag, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Troll_Scrag, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Troll_Scrag, "Rend", "2d6", clawDamageType));
 
-            attackDamages[CreatureConstants.TrumpetArchon] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.TrumpetArchon] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.TrumpetArchon] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.TrumpetArchon] = BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.TrumpetArchon] = BuildData("Trumpet", string.Empty, "1d4 rounds paralyzed", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.TrumpetArchon, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.TrumpetArchon, "Trumpet", string.Empty, "1d4 rounds paralyzed", 0));
 
-            attackDamages[CreatureConstants.Tyrannosaurus] = BuildData("Bite",
-                damageHelper.BuildEntries("3d6", biteDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Tyrannosaurus, "Bite",
+                "3d6", biteDamageType),
                 string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Tyrannosaurus] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Tyrannosaurus] = BuildData("Swallow Whole",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Tyrannosaurus, "Swallow Whole",
+
                     "2d8", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
                     "8", FeatConstants.Foci.Elements.Acid),
                 string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-            attackDamages[CreatureConstants.UmberHulk] = BuildData("Claw", damageHelper.BuildEntries("2d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.UmberHulk] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.UmberHulk] = BuildData("Confusing Gaze", string.Empty, SpellConstants.Confusion, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.UmberHulk, "Claw", "2d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.UmberHulk, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.UmberHulk, "Confusing Gaze", string.Empty, SpellConstants.Confusion, 0));
 
-            attackDamages[CreatureConstants.UmberHulk_TrulyHorrid] = BuildData("Claw", damageHelper.BuildEntries("3d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.UmberHulk_TrulyHorrid] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.UmberHulk_TrulyHorrid] = BuildData("Confusing Gaze", string.Empty, SpellConstants.Confusion, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            attackDamages.Add(BuildData(CreatureConstants.UmberHulk_TrulyHorrid, "Claw", "3d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.UmberHulk_TrulyHorrid, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.UmberHulk_TrulyHorrid, "Confusing Gaze", string.Empty, SpellConstants.Confusion, 0));
 
-            attackDamages[CreatureConstants.Unicorn] = BuildData("Horn",
-                damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing),
+            attackDamages.Add(BuildData(CreatureConstants.Unicorn, "Horn",
+                "1d8", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Unicorn] = BuildData("Hoof",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning),
+            attackDamages.Add(BuildData(CreatureConstants.Unicorn, "Hoof",
+                "1d4", AttributeConstants.DamageTypes.Bludgeoning),
                 string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Unicorn] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-            attackDamages[CreatureConstants.VampireSpawn] = BuildData("Slam", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), "Energy Drain", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.VampireSpawn] = BuildData("Blood Drain",
-                damageHelper.BuildEntries("1d4", AbilityConstants.Constitution),
+            attackDamages.Add(BuildData(CreatureConstants.VampireSpawn, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.VampireSpawn, "Blood Drain",
+                "1d4", AbilityConstants.Constitution),
                 "Vampire Spawn gains 5 temporary hit points", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.VampireSpawn] = BuildData("Domination", string.Empty, SpellConstants.DominatePerson, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.VampireSpawn] = BuildData("Energy Drain",
-                damageHelper.BuildEntries("1", "Negative Level"),
-                "Vampire Spawn gains 5 temporary hit points", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.VampireSpawn] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.VampireSpawn, "Domination", string.Empty, SpellConstants.DominatePerson, 0));
+            attackDamages.Add(BuildData(CreatureConstants.VampireSpawn, "Energy Drain",
+                "1", "Negative Level"),
+                "Vampire Spawn gains 5 temporary hit points", 0));
 
-            attackDamages[CreatureConstants.Vargouille] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Vargouille] = BuildData("Shriek", string.Empty, "paralyzed 2d4 rounds", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude, saveDcBonus: 1));
-            attackDamages[CreatureConstants.Vargouille] = BuildData("Kiss", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude, saveDcBonus: 4));
-            attackDamages[CreatureConstants.Vargouille] = BuildData("Poison", string.Empty, "unable to heal the vargouille’s bite damage naturally or magically", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude, saveDcBonus: 1));
+            attackDamages.Add(BuildData(CreatureConstants.Vargouille, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Vargouille, "Shriek", string.Empty, "paralyzed 2d4 rounds", 0, "supernatural ability"));
+            attackDamages.Add(BuildData(CreatureConstants.Vargouille, "Kiss", string.Empty, string.Empty, 0, "supernatural ability"));
+            attackDamages.Add(BuildData(CreatureConstants.Vargouille, "Poison", string.Empty, "unable to heal the vargouille’s bite damage naturally or magically", 0, "extraordinary ability"));
 
-            attackDamages[CreatureConstants.VioletFungus] = BuildData("Tentacle", damageHelper.BuildEntries("1d6", tentacleDamageType), "Poison", 1, "melee", 4, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.VioletFungus] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.VioletFungus, "Tentacle", "1d6", tentacleDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.VioletFungus, "Poison",
+
                     "1d4", AbilityConstants.Strength, "Initial",
                     "1d4", AbilityConstants.Constitution, "Initial",
                     "1d4", AbilityConstants.Strength, "Secondary",
                     "1d4", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Vrock] = BuildData("Claw", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Vrock] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Vrock] = BuildData("Talon", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Vrock] = BuildData("Dance of Ruin", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Minute, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Charisma));
-            attackDamages[CreatureConstants.Vrock] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Vrock] = BuildData("Spores",
-                damageHelper.BuildEntries("1d8"),
+            attackDamages.Add(BuildData(CreatureConstants.Vrock, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Vrock, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Vrock, "Talon", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Vrock, "Dance of Ruin", string.Empty, string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Vrock, "Spores",
+                "1d8"),
                 string.Empty, 0, "melee", 1, $"3 {FeatConstants.Frequencies.Round}", false, true, true, true));
-            attackDamages[CreatureConstants.Vrock] = BuildData("Stunning Screech", string.Empty, string.Empty, 0, "melee", 1, FeatConstants.Frequencies.Hour, false, true, true, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.Vrock] = BuildData("Summon Demon", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Vrock, "Stunning Screech", string.Empty, string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Vrock, "Summon Demon", string.Empty));
 
-            attackDamages[CreatureConstants.Wasp_Giant] = BuildData("Sting", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Piercing), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Wasp_Giant] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Wasp_Giant, "Sting", "1d3", AttributeConstants.DamageTypes.Piercing));
+            attackDamages.Add(BuildData(CreatureConstants.Wasp_Giant, "Poison",
+
                     "1d6", AbilityConstants.Dexterity, "Initial",
                     "1d6", AbilityConstants.Dexterity, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Weasel] = BuildData("Bite", damageHelper.BuildEntries("1d3", biteDamageType), "Attach", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Weasel] = BuildData("Attach",
-                damageHelper.BuildEntries("1d3", biteDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Weasel, "Bite", "1d3", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Weasel, "Attach",
+                "1d3", biteDamageType),
                 string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-            attackDamages[CreatureConstants.Weasel_Dire] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), "Attach", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Weasel_Dire] = BuildData("Attach",
+            attackDamages.Add(BuildData(CreatureConstants.Weasel_Dire, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Weasel_Dire, "Attach",
                 string.Empty,
                 "Blood Drain", 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Weasel_Dire] = BuildData("Blood Drain",
-                damageHelper.BuildEntries("1d4", AbilityConstants.Constitution),
+            attackDamages.Add(BuildData(CreatureConstants.Weasel_Dire, "Blood Drain",
+                "1d4", AbilityConstants.Constitution),
                 string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-            attackDamages[CreatureConstants.Whale_Baleen] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Whale_Baleen, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Whale_Cachalot] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Whale_Cachalot] = BuildData("Tail Slap", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Whale_Cachalot, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Whale_Cachalot, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Whale_Orca] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Whale_Orca, "Bite", "2d6", biteDamageType));
 
-            attackDamages[CreatureConstants.Wight] = BuildData("Slam", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), "Energy Drain", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Wight] = BuildData("Energy Drain", damageHelper.BuildEntries("1", "Negative Level"), "Wight gains 5 temporary hit points", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Wight] = BuildData("Create Spawn", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Wight, "Slam", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Wight, "Energy Drain", "1", "Negative Level"));
+            attackDamages.Add(BuildData(CreatureConstants.Wight, "Create Spawn", string.Empty));
 
-            attackDamages[CreatureConstants.WillOWisp] = BuildData("Shock",
-                damageHelper.BuildEntries("2d8", FeatConstants.Foci.Elements.Electricity),
+            attackDamages.Add(BuildData(CreatureConstants.WillOWisp, "Shock",
+                "2d8", FeatConstants.Foci.Elements.Electricity),
                 string.Empty, 0, "melee touch", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
-            attackDamages[CreatureConstants.WinterWolf] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), "Freezing Bite", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.WinterWolf] = BuildData("Breath Weapon",
-                damageHelper.BuildEntries("4d6", FeatConstants.Foci.Elements.Cold),
-                string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.WinterWolf] = BuildData("Freezing Bite",
-                damageHelper.BuildEntries("1d6", FeatConstants.Foci.Elements.Cold),
+            attackDamages.Add(BuildData(CreatureConstants.WinterWolf, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.WinterWolf, "Breath Weapon",
+                "4d6", FeatConstants.Foci.Elements.Cold),
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.WinterWolf, "Freezing Bite",
+                "1d6", FeatConstants.Foci.Elements.Cold),
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true));
-            attackDamages[CreatureConstants.WinterWolf] = BuildData("Trip", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.WinterWolf, "Trip", string.Empty));
 
-            attackDamages[CreatureConstants.Wolf] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Wolf] = BuildData("Trip", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Wolf, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Wolf, "Trip", string.Empty));
 
-            attackDamages[CreatureConstants.Wolf_Dire] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Wolf_Dire] = BuildData("Trip", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Wolf_Dire, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Wolf_Dire, "Trip", string.Empty));
 
-            attackDamages[CreatureConstants.Wolverine] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Wolverine] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Wolverine] = BuildData("Rage", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Wolverine, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Wolverine, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Wolverine, "Rage", string.Empty));
 
-            attackDamages[CreatureConstants.Wolverine_Dire] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Wolverine_Dire] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Wolverine_Dire] = BuildData("Rage", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Wolverine_Dire, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Wolverine_Dire, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Wolverine_Dire, "Rage", string.Empty));
 
-            attackDamages[CreatureConstants.Worg] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Worg] = BuildData("Trip", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Worg, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Worg, "Trip", string.Empty));
 
-            attackDamages[CreatureConstants.Wraith] = BuildData("Incorporeal touch",
-                damageHelper.BuildEntries("1d4"),
+            attackDamages.Add(BuildData(CreatureConstants.Wraith, "Incorporeal touch",
+                "1d4"),
                 $"Constitution Drain", 0, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Wraith] = BuildData("Constitution Drain",
-                damageHelper.BuildEntries("1d4", AbilityConstants.Constitution),
-                "Wraith gains 5 temporary hit points", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Wraith] = BuildData("Create Spawn", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Wraith, "Constitution Drain",
+                "1d4", AbilityConstants.Constitution),
+                "Wraith gains 5 temporary hit points", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Wraith, "Create Spawn", string.Empty));
 
-            attackDamages[CreatureConstants.Wraith_Dread] = BuildData("Incorporeal touch",
-                damageHelper.BuildEntries("2d6"),
+            attackDamages.Add(BuildData(CreatureConstants.Wraith_Dread, "Incorporeal touch",
+                "2d6"),
                 $"Constitution Drain", 0, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Wraith_Dread] = BuildData("Constitution Drain",
-                damageHelper.BuildEntries("1d8", AbilityConstants.Constitution),
-                "Dread Wraith gains 5 temporary hit points", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Wraith_Dread] = BuildData("Create Spawn", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Wraith_Dread, "Constitution Drain",
+                "1d8", AbilityConstants.Constitution),
+                "Dread Wraith gains 5 temporary hit points", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Wraith_Dread, "Create Spawn", string.Empty));
 
-            attackDamages[CreatureConstants.Wyvern] = BuildData("Sting", damageHelper.BuildEntries("1d6", stingDamageType), "Poison", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Wyvern] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Wyvern] = BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Wyvern] = BuildData("Talon", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Wyvern] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.Wyvern, "Sting", "1d6", stingDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Wyvern, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Wyvern, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Wyvern, "Talon", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Wyvern, "Poison",
+
                     "2d6", AbilityConstants.Constitution, "Initial",
                     "2d6", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.Wyvern] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.Xill] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 2, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Xill] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 2, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.Xill] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Xill] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Xill] = BuildData("Bite",
-                damageHelper.BuildEntries("0", biteDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.Xill, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Xill, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Xill, "Bite",
+                "0", biteDamageType),
                 "Paralysis", 0, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Xill] = BuildData("Implant", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Xill] = BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Xill] = BuildData("Paralysis", string.Empty, "paralyzed for 1d4 hours", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Xill, "Implant", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Xill, "Paralysis", string.Empty, "paralyzed for 1d4 hours", 0));
 
-            attackDamages[CreatureConstants.Xorn_Minor] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Xorn_Minor] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), string.Empty, 0.5, "melee", 3, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Xorn_Minor, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Xorn_Minor, "Claw", "1d3", clawDamageType));
 
-            attackDamages[CreatureConstants.Xorn_Average] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Xorn_Average] = BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "melee", 3, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Xorn_Average, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Xorn_Average, "Claw", "1d4", clawDamageType));
 
-            attackDamages[CreatureConstants.Xorn_Elder] = BuildData("Bite", damageHelper.BuildEntries("4d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Xorn_Elder] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 3, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Xorn_Elder, "Bite", "4d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Xorn_Elder, "Claw", "1d6", clawDamageType));
 
-            attackDamages[CreatureConstants.YethHound] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.YethHound] = BuildData("Bay", string.Empty, "panicked 2d4 rounds", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.YethHound] = BuildData("Trip", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.YethHound, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.YethHound, "Bay", string.Empty, "panicked 2d4 rounds", 0));
+            attackDamages.Add(BuildData(CreatureConstants.YethHound, "Trip", string.Empty));
 
-            attackDamages[CreatureConstants.Yrthak] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Yrthak] = BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Yrthak] = BuildData("Sonic Lance",
-                damageHelper.BuildEntries("6d6", FeatConstants.Foci.Elements.Sonic),
+            attackDamages.Add(BuildData(CreatureConstants.Yrthak, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Yrthak, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Yrthak, "Sonic Lance",
+                "6d6", FeatConstants.Foci.Elements.Sonic),
                 string.Empty, 0, "ranged touch", 1, $"2 {FeatConstants.Frequencies.Round}", false, true, true, false));
-            attackDamages[CreatureConstants.Yrthak] = BuildData("Explosion",
-                damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing),
-                string.Empty, 0, "supernatural ability", 1, $"2 {FeatConstants.Frequencies.Round}", true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Yrthak, "Explosion",
+                "2d6", AttributeConstants.DamageTypes.Piercing),
+                string.Empty, 0));
 
-            attackDamages[CreatureConstants.YuanTi_Pureblood] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.YuanTi_Pureblood] = BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.YuanTi_Pureblood] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.YuanTi_Pureblood] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Pureblood, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeHead] = BuildData(AttributeConstants.Melee,
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeHead, AttributeConstants.Melee,
                 string.Empty,
                 string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeHead] = BuildData(AttributeConstants.Ranged,
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeHead, AttributeConstants.Ranged,
                 string.Empty,
                 string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeHead] = BuildData("Bite",
-                damageHelper.BuildEntries("1d6", biteDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeHead, "Bite",
+                "1d6", biteDamageType),
                 "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeHead] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeHead, "Poison",
+
                     "1d6", AbilityConstants.Constitution, "Initial",
                     "1d6", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeHead] = BuildData("Produce Acid",
-                damageHelper.BuildEntries(
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeHead, "Produce Acid",
+
                     "3d6", FeatConstants.Foci.Elements.Acid, string.Empty,
                     "2d6", FeatConstants.Foci.Elements.Acid, "Grappling or pinning foe"),
-                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeHead] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeHead, FeatConstants.SpecialQualities.SpellLikeAbility,
                 string.Empty,
                 string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeArms] = BuildData("Bite",
-                damageHelper.BuildEntries("1d4", biteDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeArms, "Bite",
+                "1d4", biteDamageType),
                 "Poison", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeArms] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeArms, "Poison",
+
                     "1d6", AbilityConstants.Constitution, "Initial",
                     "1d6", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeArms] = BuildData("Produce Acid",
-                damageHelper.BuildEntries(
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeArms, "Produce Acid",
+
                     "3d6", FeatConstants.Foci.Elements.Acid, string.Empty,
                     "2d6", FeatConstants.Foci.Elements.Acid, "Grappling or pinning foe"),
-                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeArms] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeArms, FeatConstants.SpecialQualities.SpellLikeAbility,
                 string.Empty,
                 string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] = BuildData(AttributeConstants.Melee,
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, AttributeConstants.Melee,
                 string.Empty,
                 string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] = BuildData(AttributeConstants.Ranged,
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, AttributeConstants.Ranged,
                 string.Empty,
                 string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] = BuildData("Bite",
-                damageHelper.BuildEntries("1d6", biteDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, "Bite",
+                "1d6", biteDamageType),
                 "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, "Poison",
+
                     "1d6", AbilityConstants.Constitution, "Initial",
                     "1d6", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] = BuildData("Produce Acid",
-                damageHelper.BuildEntries(
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, "Produce Acid",
+
                     "3d6", FeatConstants.Foci.Elements.Acid, string.Empty,
                     "2d6", FeatConstants.Foci.Elements.Acid, "Grappling or pinning foe"),
-                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] = BuildData("Constrict",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning),
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, "Constrict",
+                "1d4", AttributeConstants.DamageTypes.Bludgeoning),
                 string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, FeatConstants.SpecialQualities.SpellLikeAbility,
                 string.Empty,
                 string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeTail] = BuildData(AttributeConstants.Melee,
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeTail, AttributeConstants.Melee,
                 string.Empty,
                 string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeTail] = BuildData(AttributeConstants.Ranged,
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeTail, AttributeConstants.Ranged,
                 string.Empty,
                 string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeTail] = BuildData("Bite",
-                damageHelper.BuildEntries("1d6", biteDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeTail, "Bite",
+                "1d6", biteDamageType),
                 "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeTail] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeTail, "Poison",
+
                     "1d6", AbilityConstants.Constitution, "Initial",
                     "1d6", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeTail] = BuildData("Produce Acid",
-                damageHelper.BuildEntries(
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeTail, "Produce Acid",
+
                     "3d6", FeatConstants.Foci.Elements.Acid, string.Empty,
                     "2d6", FeatConstants.Foci.Elements.Acid, "Grappling or pinning foe"),
-                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeTail] = BuildData("Constrict",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeTail, "Constrict",
+                "1d6", AttributeConstants.DamageTypes.Bludgeoning),
                 string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.YuanTi_Halfblood_SnakeTail] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Halfblood_SnakeTail, FeatConstants.SpecialQualities.SpellLikeAbility,
                 string.Empty,
                 string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-            attackDamages[CreatureConstants.YuanTi_Abomination] = BuildData(AttributeConstants.Melee,
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Abomination, AttributeConstants.Melee,
                 string.Empty,
                 string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.YuanTi_Abomination] = BuildData(AttributeConstants.Ranged,
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Abomination, AttributeConstants.Ranged,
                 string.Empty,
                 string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages[CreatureConstants.YuanTi_Abomination] = BuildData("Bite",
-                damageHelper.BuildEntries("2d6", biteDamageType),
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Abomination, "Bite",
+                "2d6", biteDamageType),
                 "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.YuanTi_Abomination] = BuildData("Poison",
-                damageHelper.BuildEntries(
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Abomination, "Poison",
+
                     "1d6", AbilityConstants.Constitution, "Initial",
                     "1d6", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.YuanTi_Abomination] = BuildData("Aversion",
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Abomination, "Aversion",
                 string.Empty,
-                "aversion 10 minutes", 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
-            attackDamages[CreatureConstants.YuanTi_Abomination] = BuildData("Produce Acid",
-                damageHelper.BuildEntries(
+                "aversion 10 minutes", 0));
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Abomination, "Produce Acid",
+
                     "3d6", FeatConstants.Foci.Elements.Acid, string.Empty,
                     "2d6", FeatConstants.Foci.Elements.Acid, "Grappling or pinning foe"),
-                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            attackDamages[CreatureConstants.YuanTi_Abomination] = BuildData("Constrict",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
+                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Abomination, "Constrict",
+                "1d6", AttributeConstants.DamageTypes.Bludgeoning),
                 string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages[CreatureConstants.YuanTi_Abomination] = BuildData("Improved Grab",
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Abomination, "Improved Grab",
                 string.Empty,
                 string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.YuanTi_Abomination] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
+            attackDamages.Add(BuildData(CreatureConstants.YuanTi_Abomination, FeatConstants.SpecialQualities.SpellLikeAbility,
                 string.Empty,
                 string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-            attackDamages[CreatureConstants.Zelekhut] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.Zelekhut] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Zelekhut] = BuildData("Electrified Weapon",
-                damageHelper.BuildEntries("1d6", FeatConstants.Foci.Elements.Electricity),
+            attackDamages.Add(BuildData(CreatureConstants.Zelekhut, "Unarmed Strike", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Zelekhut, "Electrified Weapon",
+                "1d6", FeatConstants.Foci.Elements.Electricity),
                 string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-            attackDamages[CreatureConstants.Zelekhut] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             foreach (var kvp in attackDamages.SelectMany(d => d))
             {
@@ -4181,422 +3279,422 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[template] = [];
             }
 
-            testCases[CreatureConstants.Templates.CelestialCreature] = BuildData("Smite Evil",
+            testCases[CreatureConstants.Templates.CelestialCreature, "Smite Evil",
                 string.Empty,
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
-            testCases[CreatureConstants.Templates.FiendishCreature] = BuildData("Smite Good",
+            testCases[CreatureConstants.Templates.FiendishCreature, "Smite Good",
                 string.Empty,
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
-            testCases[CreatureConstants.Templates.Ghost] = BuildData("Corrupting Gaze",
-                damageHelper.BuildEntries(
+            testCases[CreatureConstants.Templates.Ghost, "Corrupting Gaze",
+
                     "2d10", string.Empty, string.Empty,
                     "1d4", AbilityConstants.Charisma),
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true,
                 SaveConstants.Fortitude, AbilityConstants.Charisma));
-            testCases[CreatureConstants.Templates.Ghost] = BuildData("Corrupting Touch",
-                damageHelper.BuildEntries("1d6"),
+            testCases[CreatureConstants.Templates.Ghost, "Corrupting Touch",
+                "1d6"),
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-            testCases[CreatureConstants.Templates.Ghost] = BuildData("Draining Touch",
-                damageHelper.BuildEntries("1d4", "Ability points (of ghost's choosing)"),
+            testCases[CreatureConstants.Templates.Ghost, "Draining Touch",
+                "1d4", "Ability points (of ghost's choosing)"),
                 "Ghost heals 5 points of damage", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-            testCases[CreatureConstants.Templates.Ghost] = BuildData("Frightful Moan",
+            testCases[CreatureConstants.Templates.Ghost, "Frightful Moan",
                 string.Empty,
                 "Panic for 2d4 rounds", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true,
                 SaveConstants.Will, AbilityConstants.Charisma));
-            testCases[CreatureConstants.Templates.Ghost] = BuildData("Horrific Appearance",
-                damageHelper.BuildEntries(
+            testCases[CreatureConstants.Templates.Ghost, "Horrific Appearance",
+
                     "1d4", AbilityConstants.Strength, string.Empty,
                     "1d4", AbilityConstants.Dexterity, string.Empty,
                     "1d4", AbilityConstants.Constitution),
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true,
                 SaveConstants.Fortitude, AbilityConstants.Charisma));
-            testCases[CreatureConstants.Templates.Ghost] = BuildData("Malevolence",
+            testCases[CreatureConstants.Templates.Ghost, "Malevolence",
                 string.Empty,
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true,
                 SaveConstants.Will, AbilityConstants.Charisma, 5));
-            testCases[CreatureConstants.Templates.Ghost] = BuildData("Manifestation",
+            testCases[CreatureConstants.Templates.Ghost, "Manifestation",
                 string.Empty,
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Templates.Ghost] = BuildData(SpellConstants.Telekinesis,
+            testCases[CreatureConstants.Templates.Ghost, SpellConstants.Telekinesis,
                 string.Empty,
                 string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true,
                 SaveConstants.Will, AbilityConstants.Charisma));
 
-            testCases[CreatureConstants.Templates.HalfCelestial] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
+            testCases[CreatureConstants.Templates.HalfCelestial, FeatConstants.SpecialQualities.SpellLikeAbility,
                 string.Empty,
                 string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Templates.HalfCelestial] = BuildData("Smite Evil",
+            testCases[CreatureConstants.Templates.HalfCelestial, "Smite Evil",
                 string.Empty,
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
-            testCases[CreatureConstants.Templates.HalfDragon_Black] = BuildData("Claw",
-                damageHelper.BuildEntries("1d4", clawDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_Black, "Claw",
+                "1d4", clawDamageType),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.HalfDragon_Black] = BuildData("Bite",
-                damageHelper.BuildEntries("1d6", biteDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_Black, "Bite",
+                "1d6", biteDamageType),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.HalfDragon_Black] = BuildData("Breath Weapon",
-                damageHelper.BuildEntries("6d8", FeatConstants.Foci.Elements.Acid),
+            testCases[CreatureConstants.Templates.HalfDragon_Black, "Breath Weapon",
+                "6d8", FeatConstants.Foci.Elements.Acid),
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
                 SaveConstants.Reflex, AbilityConstants.Constitution));
 
-            testCases[CreatureConstants.Templates.HalfDragon_Blue] = BuildData("Claw",
-                damageHelper.BuildEntries("1d4", clawDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_Blue, "Claw",
+                "1d4", clawDamageType),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.HalfDragon_Blue] = BuildData("Bite",
-                damageHelper.BuildEntries("1d6", biteDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_Blue, "Bite",
+                "1d6", biteDamageType),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.HalfDragon_Blue] = BuildData("Breath Weapon",
-                damageHelper.BuildEntries("6d8", FeatConstants.Foci.Elements.Electricity),
+            testCases[CreatureConstants.Templates.HalfDragon_Blue, "Breath Weapon",
+                "6d8", FeatConstants.Foci.Elements.Electricity),
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
                 SaveConstants.Reflex, AbilityConstants.Constitution));
 
-            testCases[CreatureConstants.Templates.HalfDragon_Brass] = BuildData("Claw",
-                damageHelper.BuildEntries("1d4", clawDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_Brass, "Claw",
+                "1d4", clawDamageType),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.HalfDragon_Brass] = BuildData("Bite",
-                damageHelper.BuildEntries("1d6", biteDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_Brass, "Bite",
+                "1d6", biteDamageType),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.HalfDragon_Brass] = BuildData("Breath Weapon",
-                damageHelper.BuildEntries("6d8", FeatConstants.Foci.Elements.Fire),
+            testCases[CreatureConstants.Templates.HalfDragon_Brass, "Breath Weapon",
+                "6d8", FeatConstants.Foci.Elements.Fire),
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
                 SaveConstants.Reflex, AbilityConstants.Constitution));
 
-            testCases[CreatureConstants.Templates.HalfDragon_Bronze] = BuildData("Claw",
-                damageHelper.BuildEntries("1d4", clawDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_Bronze, "Claw",
+                "1d4", clawDamageType),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.HalfDragon_Bronze] = BuildData("Bite",
-                damageHelper.BuildEntries("1d6", biteDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_Bronze, "Bite",
+                "1d6", biteDamageType),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.HalfDragon_Bronze] = BuildData("Breath Weapon",
-                damageHelper.BuildEntries("6d8", FeatConstants.Foci.Elements.Electricity),
+            testCases[CreatureConstants.Templates.HalfDragon_Bronze, "Breath Weapon",
+                "6d8", FeatConstants.Foci.Elements.Electricity),
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
                 SaveConstants.Reflex, AbilityConstants.Constitution));
 
-            testCases[CreatureConstants.Templates.HalfDragon_Copper] = BuildData("Claw",
-                damageHelper.BuildEntries("1d4", clawDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_Copper, "Claw",
+                "1d4", clawDamageType),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.HalfDragon_Copper] = BuildData("Bite",
-                damageHelper.BuildEntries("1d6", biteDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_Copper, "Bite",
+                "1d6", biteDamageType),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.HalfDragon_Copper] = BuildData("Breath Weapon",
-                damageHelper.BuildEntries("6d8", FeatConstants.Foci.Elements.Acid),
+            testCases[CreatureConstants.Templates.HalfDragon_Copper, "Breath Weapon",
+                "6d8", FeatConstants.Foci.Elements.Acid),
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
                 SaveConstants.Reflex, AbilityConstants.Constitution));
 
-            testCases[CreatureConstants.Templates.HalfDragon_Gold] = BuildData("Claw",
-                damageHelper.BuildEntries("1d4", clawDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_Gold, "Claw",
+                "1d4", clawDamageType),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.HalfDragon_Gold] = BuildData("Bite",
-                damageHelper.BuildEntries("1d6", biteDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_Gold, "Bite",
+                "1d6", biteDamageType),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.HalfDragon_Gold] = BuildData("Breath Weapon",
-                damageHelper.BuildEntries("6d8", FeatConstants.Foci.Elements.Fire),
+            testCases[CreatureConstants.Templates.HalfDragon_Gold, "Breath Weapon",
+                "6d8", FeatConstants.Foci.Elements.Fire),
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
                 SaveConstants.Reflex, AbilityConstants.Constitution));
 
-            testCases[CreatureConstants.Templates.HalfDragon_Green] = BuildData("Claw",
-                damageHelper.BuildEntries("1d4", clawDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_Green, "Claw",
+                "1d4", clawDamageType),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.HalfDragon_Green] = BuildData("Bite",
-                damageHelper.BuildEntries("1d6", biteDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_Green, "Bite",
+                "1d6", biteDamageType),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.HalfDragon_Green] = BuildData("Breath Weapon",
-                damageHelper.BuildEntries("6d8", FeatConstants.Foci.Elements.Acid, "Gas"),
+            testCases[CreatureConstants.Templates.HalfDragon_Green, "Breath Weapon",
+                "6d8", FeatConstants.Foci.Elements.Acid, "Gas"),
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
                 SaveConstants.Reflex, AbilityConstants.Constitution));
 
-            testCases[CreatureConstants.Templates.HalfDragon_Red] = BuildData("Claw",
-                damageHelper.BuildEntries("1d4", clawDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_Red, "Claw",
+                "1d4", clawDamageType),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.HalfDragon_Red] = BuildData("Bite",
-                damageHelper.BuildEntries("1d6", biteDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_Red, "Bite",
+                "1d6", biteDamageType),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.HalfDragon_Red] = BuildData("Breath Weapon",
-                damageHelper.BuildEntries("6d8", FeatConstants.Foci.Elements.Fire),
+            testCases[CreatureConstants.Templates.HalfDragon_Red, "Breath Weapon",
+                "6d8", FeatConstants.Foci.Elements.Fire),
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
                 SaveConstants.Reflex, AbilityConstants.Constitution));
 
-            testCases[CreatureConstants.Templates.HalfDragon_Silver] = BuildData("Claw",
-                damageHelper.BuildEntries("1d4", clawDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_Silver, "Claw",
+                "1d4", clawDamageType),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.HalfDragon_Silver] = BuildData("Bite",
-                damageHelper.BuildEntries("1d6", biteDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_Silver, "Bite",
+                "1d6", biteDamageType),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.HalfDragon_Silver] = BuildData("Breath Weapon",
-                damageHelper.BuildEntries("6d8", FeatConstants.Foci.Elements.Cold),
+            testCases[CreatureConstants.Templates.HalfDragon_Silver, "Breath Weapon",
+                "6d8", FeatConstants.Foci.Elements.Cold),
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
                 SaveConstants.Reflex, AbilityConstants.Constitution));
 
-            testCases[CreatureConstants.Templates.HalfDragon_White] = BuildData("Claw",
-                damageHelper.BuildEntries("1d4", clawDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_White, "Claw",
+                "1d4", clawDamageType),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.HalfDragon_White] = BuildData("Bite",
-                damageHelper.BuildEntries("1d6", biteDamageType),
+            testCases[CreatureConstants.Templates.HalfDragon_White, "Bite",
+                "1d6", biteDamageType),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.HalfDragon_White] = BuildData("Breath Weapon",
-                damageHelper.BuildEntries("6d8", FeatConstants.Foci.Elements.Cold),
+            testCases[CreatureConstants.Templates.HalfDragon_White, "Breath Weapon",
+                "6d8", FeatConstants.Foci.Elements.Cold),
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
                 SaveConstants.Reflex, AbilityConstants.Constitution));
 
-            testCases[CreatureConstants.Templates.HalfFiend] = BuildData("Claw",
-                damageHelper.BuildEntries("1d4", clawDamageType),
+            testCases[CreatureConstants.Templates.HalfFiend, "Claw",
+                "1d4", clawDamageType),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.HalfFiend] = BuildData("Bite",
-                damageHelper.BuildEntries("1d6", biteDamageType),
+            testCases[CreatureConstants.Templates.HalfFiend, "Bite",
+                "1d6", biteDamageType),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.HalfFiend] = BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
+            testCases[CreatureConstants.Templates.HalfFiend, FeatConstants.SpecialQualities.SpellLikeAbility,
                 string.Empty,
                 string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Templates.HalfFiend] = BuildData("Smite Good",
+            testCases[CreatureConstants.Templates.HalfFiend, "Smite Good",
                 string.Empty,
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
-            testCases[CreatureConstants.Templates.Lich] = BuildData("Touch",
-                damageHelper.BuildEntries("1d8+5"),
-                "Paralyzing Touch", 0, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false, SaveConstants.Will, AbilityConstants.Charisma));
-            testCases[CreatureConstants.Templates.Lich] = BuildData("Fear Aura",
+            testCases[CreatureConstants.Templates.Lich, "Touch",
+                "1d8+5"),
+                "Paralyzing Touch", 0));
+            testCases[CreatureConstants.Templates.Lich, "Fear Aura",
                 string.Empty,
-                "Fear", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, SaveConstants.Will, AbilityConstants.Charisma));
-            testCases[CreatureConstants.Templates.Lich] = BuildData("Paralyzing Touch",
+                "Fear", 0));
+            testCases[CreatureConstants.Templates.Lich, "Paralyzing Touch",
                 string.Empty,
-                "Paralyzed", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
+                "Paralyzed", 0));
 
             testCases[CreatureConstants.Templates.None] = new[] { None });
 
-            testCases[CreatureConstants.Templates.Skeleton] = BuildData("Claw",
-                damageHelper.BuildEntries("1d4", clawDamageType),
+            testCases[CreatureConstants.Templates.Skeleton, "Claw",
+                "1d4", clawDamageType),
                 string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
-            testCases[CreatureConstants.Templates.Vampire] = BuildData("Slam",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
+            testCases[CreatureConstants.Templates.Vampire, "Slam",
+                "1d6", AttributeConstants.DamageTypes.Bludgeoning),
                 string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Vampire] = BuildData("Blood Drain",
-                damageHelper.BuildEntries("1d4", AbilityConstants.Constitution),
+            testCases[CreatureConstants.Templates.Vampire, "Blood Drain",
+                "1d4", AbilityConstants.Constitution),
                 "Vampire gains 5 temporary hit points", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            testCases[CreatureConstants.Templates.Vampire] = BuildData("Children of the Night",
+            testCases[CreatureConstants.Templates.Vampire, "Children of the Night",
                 string.Empty,
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Templates.Vampire] = BuildData("Dominate",
+            testCases[CreatureConstants.Templates.Vampire, "Dominate",
                 string.Empty,
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
-            testCases[CreatureConstants.Templates.Vampire] = BuildData("Create Spawn",
+                string.Empty, 0));
+            testCases[CreatureConstants.Templates.Vampire, "Create Spawn",
                 string.Empty,
                 string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            testCases[CreatureConstants.Templates.Vampire] = BuildData("Energy Drain",
-                damageHelper.BuildEntries("2", "Negative Level"),
+            testCases[CreatureConstants.Templates.Vampire, "Energy Drain",
+                "2", "Negative Level"),
                 "Vampire gains 5 temporary hit points", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural] = BuildData("Curse of Lycanthropy",
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, "Curse of Lycanthropy",
                 string.Empty,
                 "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true,
                 SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural] = BuildData("Gore (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural, "Gore (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural] = BuildData("Curse of Lycanthropy",
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural, "Curse of Lycanthropy",
                 string.Empty,
-                "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                "Contract lycanthropy", 0));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural] = BuildData("Gore (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural, "Gore (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural] = BuildData("Curse of Lycanthropy",
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural, "Curse of Lycanthropy",
                 string.Empty,
-                "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                "Contract lycanthropy", 0));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Natural] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Natural, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Natural] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Natural, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Natural] = BuildData("Curse of Lycanthropy",
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Natural, "Curse of Lycanthropy",
                 string.Empty,
-                "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                "Contract lycanthropy", 0));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural] = BuildData("Curse of Lycanthropy",
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, "Curse of Lycanthropy",
                 string.Empty,
-                "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                "Contract lycanthropy", 0));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural] = BuildData("Curse of Lycanthropy",
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural, "Curse of Lycanthropy",
                 string.Empty,
-                "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                "Contract lycanthropy", 0));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural] = BuildData("Curse of Lycanthropy",
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural, "Curse of Lycanthropy",
                 string.Empty,
-                "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                "Contract lycanthropy", 0));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural] = BuildData("Curse of Lycanthropy",
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural, "Curse of Lycanthropy",
                 string.Empty,
-                "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                "Contract lycanthropy", 0));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural] = BuildData("Curse of Lycanthropy",
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural, "Curse of Lycanthropy",
                 string.Empty,
-                "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                "Contract lycanthropy", 0));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted] = BuildData("Gore (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted, "Gore (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted] = BuildData("Gore (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted, "Gore (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Afflicted] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Afflicted, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Afflicted] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Afflicted, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            testCases[CreatureConstants.Templates.Zombie] = BuildData("Slam",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
+            testCases[CreatureConstants.Templates.Zombie, "Slam",
+                "1d6", AttributeConstants.DamageTypes.Bludgeoning),
                 string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural] = BuildData("Curse of Lycanthropy",
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural, "Curse of Lycanthropy",
                 string.Empty,
                 "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true,
                 SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural] = BuildData("Curse of Lycanthropy",
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural, "Curse of Lycanthropy",
                 string.Empty,
                 "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true,
                 SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural] = BuildData("Claw (in Hybrid form)",
-                damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural, "Claw (in Hybrid form)",
+                "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural] = BuildData("Bite (in Hybrid form)",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural, "Bite (in Hybrid form)",
+                "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural] = BuildData("Curse of Lycanthropy",
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural, "Curse of Lycanthropy",
                 string.Empty,
                 "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true,
                 SaveConstants.Fortitude, AbilityConstants.Constitution));
