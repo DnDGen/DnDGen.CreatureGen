@@ -366,78 +366,55 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.CarrionCrawler, "Tentacle", "0", tentacleDamageType));
             attackDamages.Add(BuildData(CreatureConstants.CarrionCrawler, "Bite", "1d4", biteDamageType));
 
-            attackDamages[CreatureConstants.Cat] = BuildData("Claw", damageHelper.BuildEntries("1d2", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Cat] = BuildData("Bite", damageHelper.BuildEntries("1d3", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Cat, "Claw", "1d2", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Cat, "Bite", "1d3", biteDamageType));
 
-            attackDamages[CreatureConstants.Centaur] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Centaur] = BuildData("Hoof",
-                damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Centaur, "Unarmed Strike", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Centaur, "Hoof", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages[CreatureConstants.Centipede_Monstrous_Tiny] = BuildData("Bite", damageHelper.BuildEntries("1d3", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Centipede_Monstrous_Tiny] = BuildData("Poison",
-                damageHelper.BuildEntries(
-                    "1", AbilityConstants.Dexterity, "Initial",
-                    "1", AbilityConstants.Dexterity, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Centipede_Monstrous_Tiny, "Bite", "1d3", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Centipede_Monstrous_Tiny, "Poison",
+                "1", AbilityConstants.Dexterity, "Initial",
+                "1", AbilityConstants.Dexterity, "Secondary"));
 
-            attackDamages[CreatureConstants.Centipede_Monstrous_Small] = BuildData("Bite", damageHelper.BuildEntries("1d4", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Centipede_Monstrous_Small] = BuildData("Poison",
-                damageHelper.BuildEntries(
-                    "1d2", AbilityConstants.Dexterity, "Initial",
-                    "1d2", AbilityConstants.Dexterity, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Centipede_Monstrous_Small, "Bite", "1d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Centipede_Monstrous_Small, "Poison",
+                "1d2", AbilityConstants.Dexterity, "Initial",
+                "1d2", AbilityConstants.Dexterity, "Secondary"));
 
-            attackDamages[CreatureConstants.Centipede_Monstrous_Medium] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Centipede_Monstrous_Medium] = BuildData("Poison",
-                damageHelper.BuildEntries(
-                    "1d3", AbilityConstants.Dexterity, "Initial",
-                    "1d3", AbilityConstants.Dexterity, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Centipede_Monstrous_Medium, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Centipede_Monstrous_Medium, "Poison",
+                "1d3", AbilityConstants.Dexterity, "Initial",
+                "1d3", AbilityConstants.Dexterity, "Secondary"));
 
-            attackDamages[CreatureConstants.Centipede_Monstrous_Large] = BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Centipede_Monstrous_Large] = BuildData("Poison",
-                damageHelper.BuildEntries(
-                    "1d4", AbilityConstants.Dexterity, "Initial",
-                    "1d4", AbilityConstants.Dexterity, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Centipede_Monstrous_Large, "Bite", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Centipede_Monstrous_Large, "Poison",
+                "1d4", AbilityConstants.Dexterity, "Initial",
+                "1d4", AbilityConstants.Dexterity, "Secondary"));
 
-            attackDamages[CreatureConstants.Centipede_Monstrous_Huge] = BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Centipede_Monstrous_Huge] = BuildData("Poison",
-                damageHelper.BuildEntries(
-                    "1d6", AbilityConstants.Dexterity, "Initial",
-                    "1d6", AbilityConstants.Dexterity, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Centipede_Monstrous_Huge, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Centipede_Monstrous_Huge, "Poison",
+                "1d6", AbilityConstants.Dexterity, "Initial",
+                "1d6", AbilityConstants.Dexterity, "Secondary"));
 
-            attackDamages[CreatureConstants.Centipede_Monstrous_Gargantuan] = BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Centipede_Monstrous_Gargantuan] = BuildData("Poison",
-                damageHelper.BuildEntries(
-                    "1d8", AbilityConstants.Dexterity, "Initial",
-                    "1d8", AbilityConstants.Dexterity, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Centipede_Monstrous_Gargantuan, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Centipede_Monstrous_Gargantuan, "Poison",
+                "1d8", AbilityConstants.Dexterity, "Initial",
+                "1d8", AbilityConstants.Dexterity, "Secondary"));
 
-            attackDamages[CreatureConstants.Centipede_Monstrous_Colossal] = BuildData("Bite", damageHelper.BuildEntries("4d6", biteDamageType), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Centipede_Monstrous_Colossal] = BuildData("Poison",
-                damageHelper.BuildEntries(
-                    "2d6", AbilityConstants.Dexterity, "Initial",
-                    "2d6", AbilityConstants.Dexterity, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            attackDamages.Add(BuildData(CreatureConstants.Centipede_Monstrous_Colossal, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Centipede_Monstrous_Colossal, "Poison",
+                "2d6", AbilityConstants.Dexterity, "Initial",
+                "2d6", AbilityConstants.Dexterity, "Secondary"));
 
-            attackDamages[CreatureConstants.Centipede_Swarm] = BuildData("Swarm", damageHelper.BuildEntries("2d6"), "Poison", 0, "swarm", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Centipede_Swarm] = BuildData("Distraction", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
-            attackDamages[CreatureConstants.Centipede_Swarm] = BuildData("Poison",
-                damageHelper.BuildEntries(
-                    "1d4", AbilityConstants.Dexterity, "Initial",
-                    "1d4", AbilityConstants.Dexterity, "Secondary"),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+            attackDamages.Add(BuildData(CreatureConstants.Centipede_Swarm, "Swarm", "2d6"));
+            attackDamages.Add(BuildData(CreatureConstants.Centipede_Swarm, "Poison",
+                "1d4", AbilityConstants.Dexterity, "Initial",
+                "1d4", AbilityConstants.Dexterity, "Secondary"));
 
-            attackDamages[CreatureConstants.ChainDevil_Kyton] = BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages[CreatureConstants.ChainDevil_Kyton] = BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.ChainDevil_Kyton] = BuildData("Dancing Chains", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
-            attackDamages[CreatureConstants.ChainDevil_Kyton] = BuildData("Unnerving Gaze", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
+            attackDamages.Add(BuildData(CreatureConstants.ChainDevil_Kyton, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages[CreatureConstants.ChaosBeast] = BuildData("Claw", damageHelper.BuildEntries("1d3", clawDamageType), "Corporeal Instability", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.ChaosBeast] = BuildData("Corporeal Instability", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
 
             attackDamages[CreatureConstants.Cheetah] = BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
             attackDamages[CreatureConstants.Cheetah] = BuildData("Claw", damageHelper.BuildEntries("1d2", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
