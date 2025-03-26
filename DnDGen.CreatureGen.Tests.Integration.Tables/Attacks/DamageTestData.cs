@@ -44,14 +44,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             Dictionary<string, List<string>> BuildData(string creature, string attackName,
                 string roll, string type = "", string condition = "",
-                string roll2 = null, string type2 = null, string condition2 = null)
+                string roll2 = null, string type2 = null, string condition2 = null,
+                string roll3 = null, string type3 = null, string condition3 = null,
+                string roll4 = null, string type4 = null, string condition4 = null)
             {
                 return BuildDamageDataForAttack(
                     creature,
                     creatureData[creature],
                     attackData[creature][attackName],
                     advancementData[creature],
-                    roll, type, condition, roll2, type2, condition2);
+                    [(roll, type, condition),
+                    (roll2, type2, condition2),
+                    (roll3, type3, condition3),
+                    (roll4, type4, condition4)]);
             }
 
             attackDamages.Add(BuildData(CreatureConstants.Aasimar, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
@@ -2004,86 +2009,49 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             attackDamages.Add(BuildData(CreatureConstants.Naga_Water, "Bite", "2d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Naga_Water, "Poison",
-
                     "1d8", AbilityConstants.Constitution, "Initial",
-                    "1d8", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0));
+                    "1d8", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Nalfeshnee, "Bite", "2d8", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Nalfeshnee, "Claw", "1d8", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Nalfeshnee, "Smite", string.Empty, string.Empty, 1));
-            attackDamages.Add(BuildData(CreatureConstants.Nalfeshnee, "Summon Demon", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.NightHag, "Bite", "2d6", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.NightHag, "Disease",
-                "1d6", AbilityConstants.Constitution, "Incubation period 1 day"),
-                string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.NightHag, "Dream Haunting", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.NightHag, "Disease", "1d6", AbilityConstants.Constitution, "Incubation period 1 day"));
 
             attackDamages.Add(BuildData(CreatureConstants.Nightcrawler, "Bite", "4d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Nightcrawler, "Sting", "2d8", AttributeConstants.DamageTypes.Piercing));
-            attackDamages.Add(BuildData(CreatureConstants.Nightcrawler, "Desecrating Aura", string.Empty));
-            attackDamages.Add(BuildData(CreatureConstants.Nightcrawler, "Energy Drain",
-                "1", "Negative Level"),
-                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Nightcrawler, "Energy Drain", "1", "Negative Level"));
             attackDamages.Add(BuildData(CreatureConstants.Nightcrawler, "Poison",
-
                     "2d6", AbilityConstants.Strength, "Initial",
-                    "2d6", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.Nightcrawler, "Summon Undead", string.Empty));
+                    "2d6", AbilityConstants.Strength, "Secondary"));
             attackDamages.Add(BuildData(CreatureConstants.Nightcrawler, "Swallow Whole",
-
                     "2d8+12", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
-                    "12", FeatConstants.Foci.Elements.Acid),
-                "Energy Drain", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                    "12", FeatConstants.Foci.Elements.Acid));
 
             attackDamages.Add(BuildData(CreatureConstants.Nightmare, "Hoof",
-
                     "1d8", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
-                    "1d4", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                    "1d4", FeatConstants.Foci.Elements.Fire));
             attackDamages.Add(BuildData(CreatureConstants.Nightmare, "Bite", "1d8", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Nightmare, "Flaming Hooves", string.Empty));
-            attackDamages.Add(BuildData(CreatureConstants.Nightmare, "Smoke", string.Empty, string.Empty, 0));
 
             attackDamages.Add(BuildData(CreatureConstants.Nightmare_Cauchemar, "Hoof",
-
                     "2d6", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
-                    "1d4", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                    "1d4", FeatConstants.Foci.Elements.Fire));
             attackDamages.Add(BuildData(CreatureConstants.Nightmare_Cauchemar, "Bite", "2d6", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Nightmare_Cauchemar, "Flaming Hooves", string.Empty));
-            attackDamages.Add(BuildData(CreatureConstants.Nightmare_Cauchemar, "Smoke", string.Empty, string.Empty, 0));
 
             attackDamages.Add(BuildData(CreatureConstants.Nightwalker, "Slam", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Nightwalker, "Crush Item", string.Empty, string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.Nightwalker, "Desecrating Aura", string.Empty));
-            attackDamages.Add(BuildData(CreatureConstants.Nightwalker, "Evil Gaze", string.Empty, "1d8 rounds paralyzed with fear", 0));
-            attackDamages.Add(BuildData(CreatureConstants.Nightwalker, "Summon Undead", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.Nightwing, "Bite", "2d6", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Nightwing, "Desecrating Aura", string.Empty));
-            attackDamages.Add(BuildData(CreatureConstants.Nightwing, "Magic Drain", string.Empty, "1 point enhancement bonus", 0));
-            attackDamages.Add(BuildData(CreatureConstants.Nightwing, "Summon Undead", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.Nixie, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.Nymph, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Nymph, "Blinding Beauty", string.Empty, "Blinded permanently", 0));
-            attackDamages.Add(BuildData(CreatureConstants.Nymph, "Stunning Glance", string.Empty, "stunned 2d4 rounds", 0));
 
             attackDamages.Add(BuildData(CreatureConstants.OchreJelly, "Slam",
-
                     "2d4", slapSlamDamageType, string.Empty,
-                    "1d4", FeatConstants.Foci.Elements.Acid),
-                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.OchreJelly, "Acid", string.Empty));
+                    "1d4", FeatConstants.Foci.Elements.Acid));
             attackDamages.Add(BuildData(CreatureConstants.OchreJelly, "Constrict",
-
                     "2d4", slapSlamDamageType, string.Empty,
-                    "1d4", FeatConstants.Foci.Elements.Acid),
-                string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                    "1d4", FeatConstants.Foci.Elements.Acid));
 
             attackDamages.Add(BuildData(CreatureConstants.Octopus, "Arms", "0", tentacleDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Octopus, "Bite", "1d3", biteDamageType));
@@ -2105,12 +2073,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Otyugh, "Tentacle", "1d6", tentacleDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Otyugh, "Bite", "1d4", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Otyugh, "Constrict", "1d6", tentacleDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Otyugh, "Disease", string.Empty));
             attackDamages.Add(BuildData(CreatureConstants.Otyugh, "Filth Fever",
-
                     "1d3", AbilityConstants.Dexterity, "Incubation period 1d3 days",
-                    "1d3", AbilityConstants.Constitution, "Incubation period 1d3 days"),
-                string.Empty, 0));
+                    "1d3", AbilityConstants.Constitution, "Incubation period 1d3 days"));
 
             attackDamages.Add(BuildData(CreatureConstants.Owl, "Talons", "1d4", clawDamageType));
 
@@ -2127,10 +2092,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             attackDamages.Add(BuildData(CreatureConstants.PhaseSpider, "Bite", "1d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.PhaseSpider, "Poison",
-
                     "1d8", AbilityConstants.Constitution, "Initial",
-                    "1d8", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0));
+                    "1d8", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Phasm, "Slam", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
@@ -2139,23 +2102,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.PitFiend, "Bite", "4d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.PitFiend, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.PitFiend, "Constrict", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.PitFiend, "Fear Aura", string.Empty, string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.PitFiend, "Summon Devil", string.Empty));
             attackDamages.Add(BuildData(CreatureConstants.PitFiend, "Poison",
-                "1d6", AbilityConstants.Constitution, "Initial"),
-                "Death (Secondary)", 0));
-            attackDamages.Add(BuildData(CreatureConstants.PitFiend, "Disease", string.Empty));
+                "1d6", AbilityConstants.Constitution, "Initial"));
             attackDamages.Add(BuildData(CreatureConstants.PitFiend, "Devil Chills",
-                "1d4", AbilityConstants.Strength, "Incubation period 1d4 days"),
-                string.Empty, 0));
+                "1d4", AbilityConstants.Strength, "Incubation period 1d4 days"));
 
             attackDamages.Add(BuildData(CreatureConstants.Pixie, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Pixie, "Special Arrow (Memory Loss)", string.Empty, string.Empty, 0, "extraordinary ability"));
-            attackDamages.Add(BuildData(CreatureConstants.Pixie, "Special Arrow (Sleep)", string.Empty, SpellConstants.Sleep, 0, "extraordinary ability"));
 
             attackDamages.Add(BuildData(CreatureConstants.Pixie_WithIrresistibleDance, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Pixie_WithIrresistibleDance, "Special Arrow (Memory Loss)", string.Empty, string.Empty, 0, "extraordinary ability"));
-            attackDamages.Add(BuildData(CreatureConstants.Pixie_WithIrresistibleDance, "Special Arrow (Sleep)", string.Empty, SpellConstants.Sleep, 0, "extraordinary ability"));
 
             attackDamages.Add(BuildData(CreatureConstants.Pony, "Hoof", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
@@ -2167,27 +2121,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.PrayingMantis_Giant, "Bite", "1d6", biteDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.Pseudodragon, "Sting",
-                "1d3", AttributeConstants.DamageTypes.Piercing),
-                "Poison", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                "1d3", AttributeConstants.DamageTypes.Piercing));
             attackDamages.Add(BuildData(CreatureConstants.Pseudodragon, "Bite",
-                "1", biteDamageType),
-                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages.Add(BuildData(CreatureConstants.Pseudodragon, "Poison",
-                string.Empty,
-                "initial damage sleep for 1 minute, secondary damage sleep for 1d3 hours", 0, "extraordinary ability"));
+                "1", biteDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.PurpleWorm, "Bite", "2d8", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.PurpleWorm, "Sting", "2d6", stingDamageType));
             attackDamages.Add(BuildData(CreatureConstants.PurpleWorm, "Poison",
-
                     "1d6", AbilityConstants.Strength, "Initial",
-                    "2d6", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0));
+                    "2d6", AbilityConstants.Strength, "Secondary"));
             attackDamages.Add(BuildData(CreatureConstants.PurpleWorm, "Swallow Whole",
-
                     "2d8+12", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
-                    "8", FeatConstants.Foci.Elements.Acid),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                    "8", FeatConstants.Foci.Elements.Acid));
 
             attackDamages.Add(BuildData(CreatureConstants.Pyrohydra_5Heads, "Bite", "1d10", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Pyrohydra_5Heads, "Breath weapon", "3d6", FeatConstants.Foci.Elements.Fire, "Per living head"));
@@ -2216,67 +2161,47 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Quasit, "Claw", "1d3", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Quasit, "Bite", "1d4", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Quasit, "Poison",
-
                     "1d4", AbilityConstants.Dexterity, "Initial",
-                    "2d4", AbilityConstants.Dexterity, "Secondary"),
-                string.Empty, 0, "extraordinary ability"));
+                    "2d4", AbilityConstants.Dexterity, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Rakshasa, "Claw", "1d4", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Rakshasa, "Bite", "1d6", biteDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.Rast, "Claw", "1d4", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Rast, "Bite", "1d8", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Rast, "Paralyzing Gaze", string.Empty, "Paralysis for 1d6 rounds", 0));
             attackDamages.Add(BuildData(CreatureConstants.Rast, "Blood Drain",
-                "1", AbilityConstants.Constitution),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                "1", AbilityConstants.Constitution));
 
             attackDamages.Add(BuildData(CreatureConstants.Rat, "Bite", "1d3", biteDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.Rat_Dire, "Bite", "1d3", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Rat_Dire, "Disease", string.Empty));
             attackDamages.Add(BuildData(CreatureConstants.Rat_Dire, "Filth Fever",
-
                     "1d3", AbilityConstants.Dexterity, "Incubation period 1d3 days",
-                    "1d3", AbilityConstants.Constitution, "Incubation period 1d3 days"),
-                string.Empty, 0));
+                    "1d3", AbilityConstants.Constitution, "Incubation period 1d3 days"));
 
             attackDamages.Add(BuildData(CreatureConstants.Rat_Swarm, "Swarm", "1d6"));
-            attackDamages.Add(BuildData(CreatureConstants.Rat_Swarm, "Disease", string.Empty));
             attackDamages.Add(BuildData(CreatureConstants.Rat_Swarm, "Filth Fever",
-
                     "1d3", AbilityConstants.Dexterity, "Incubation period 1d3 days",
-                    "1d3", AbilityConstants.Constitution, "Incubation period 1d3 days"),
-                string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.Rat_Swarm, "Distraction", string.Empty, string.Empty, 0));
+                    "1d3", AbilityConstants.Constitution, "Incubation period 1d3 days"));
 
             attackDamages.Add(BuildData(CreatureConstants.Raven, "Claws", "1d2", clawDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.Ravid, "Tail Slap", "1d6", slapSlamDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Ravid, "Claw", "1d4", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Ravid, "Tail Touch", string.Empty));
-            attackDamages.Add(BuildData(CreatureConstants.Ravid, "Claw Touch", string.Empty));
-            attackDamages.Add(BuildData(CreatureConstants.Ravid, "Positive Energy",
-                "2d10", "Positive energy"),
-                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Ravid, "Positive Energy", "2d10", "Positive energy"));
 
             attackDamages.Add(BuildData(CreatureConstants.RazorBoar, "Tusk Slash", "1d8", AttributeConstants.DamageTypes.Slashing));
             attackDamages.Add(BuildData(CreatureConstants.RazorBoar, "Hoof", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.RazorBoar, "Bite", "1d8", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.RazorBoar, "Vorpal Tusk", string.Empty));
             attackDamages.Add(BuildData(CreatureConstants.RazorBoar, "Trample", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.Remorhaz, "Bite", "2d8", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Remorhaz, "Swallow Whole",
-
                     "2d8+12", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
-                    "8d6", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                    "8d6", FeatConstants.Foci.Elements.Fire));
 
             attackDamages.Add(BuildData(CreatureConstants.Retriever, "Claw", "2d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Retriever, "Bite", "1d8", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Retriever, "Eye Ray", string.Empty, string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.Retriever, "Find Target", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.Rhinoceras, "Gore", "2d6", goreDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Rhinoceras, "Powerful Charge", "4d6", goreDamageType));
@@ -2284,123 +2209,94 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Roc, "Talon", "2d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Roc, "Bite", "2d8", biteDamageType));
 
-            attackDamages.Add(BuildData(CreatureConstants.Roper, "Strand", string.Empty));
             attackDamages.Add(BuildData(CreatureConstants.Roper, "Bite", "2d6", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Roper, "Drag", string.Empty, string.Empty));
-            attackDamages.Add(BuildData(CreatureConstants.Roper, "Weakness",
-                "2d8", AbilityConstants.Strength),
-                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Roper, "Weakness", "2d8", AbilityConstants.Strength));
 
-            attackDamages.Add(BuildData(CreatureConstants.RustMonster, "Antennae", string.Empty));
             attackDamages.Add(BuildData(CreatureConstants.RustMonster, "Bite", "1d3", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.RustMonster, "Rust", string.Empty, string.Empty, 0, "extraordinary ability"));
 
             attackDamages.Add(BuildData(CreatureConstants.Sahuagin, "Talon", "1d4", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Sahuagin, "Bite", "1d4", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Sahuagin, "Blood Frenzy", string.Empty));
             attackDamages.Add(BuildData(CreatureConstants.Sahuagin, "Rake", "1d4", clawDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.Sahuagin_Mutant, "Talon", "1d4", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Sahuagin_Mutant, "Bite", "1d4", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Sahuagin_Mutant, "Blood Frenzy", string.Empty));
             attackDamages.Add(BuildData(CreatureConstants.Sahuagin_Mutant, "Rake", "1d4", clawDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.Sahuagin_Malenti, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Sahuagin_Malenti, "Blood Frenzy", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.Salamander_Flamebrother, "Tail Slap", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Salamander_Flamebrother, "Constrict", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Salamander_Flamebrother, "Heat",
-                 "1d6", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
+                 "1d6", FeatConstants.Foci.Elements.Fire));
 
             attackDamages.Add(BuildData(CreatureConstants.Salamander_Average, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Salamander_Average, "Constrict", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Salamander_Average, "Heat",
-                 "1d6", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
+                 "1d6", FeatConstants.Foci.Elements.Fire));
 
             attackDamages.Add(BuildData(CreatureConstants.Salamander_Noble, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Salamander_Noble, "Constrict", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Salamander_Noble, "Heat",
-                 "1d8", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
+                 "1d8", FeatConstants.Foci.Elements.Fire));
 
             attackDamages.Add(BuildData(CreatureConstants.Satyr, "Head butt", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.Satyr_WithPipes, "Head butt", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Satyr_WithPipes, "Pipes", string.Empty, string.Empty, 0));
 
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Tiny, "Claw", "1d2", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Tiny, "Sting", "1d2", AttributeConstants.DamageTypes.Piercing));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Tiny, "Constrict", "1d2", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Tiny, "Poison",
-
                     "1", AbilityConstants.Constitution, "Initial",
-                    "1", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0));
+                    "1", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Small, "Claw", "1d3", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Small, "Sting", "1d3", AttributeConstants.DamageTypes.Piercing));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Small, "Constrict", "1d3", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Small, "Poison",
-
                     "1d2", AbilityConstants.Constitution, "Initial",
-                    "1d2", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0));
+                    "1d2", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Medium, "Claw", "1d4", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Medium, "Sting", "1d4", AttributeConstants.DamageTypes.Piercing));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Medium, "Constrict", "1d4", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Medium, "Poison",
-
                     "1d3", AbilityConstants.Constitution, "Initial",
-                    "1d3", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0));
+                    "1d3", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Large, "Claw", "1d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Large, "Sting", "1d6", AttributeConstants.DamageTypes.Piercing));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Large, "Constrict", "1d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Large, "Poison",
-
                     "1d4", AbilityConstants.Constitution, "Initial",
-                    "1d4", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0));
+                    "1d4", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Huge, "Claw", "1d8", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Huge, "Sting", "1d8", AttributeConstants.DamageTypes.Piercing));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Huge, "Constrict", "1d8", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Huge, "Poison",
-
                     "1d6", AbilityConstants.Constitution, "Initial",
-                    "1d6", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0));
+                    "1d6", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Gargantuan, "Claw", "2d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Gargantuan, "Sting", "2d6", AttributeConstants.DamageTypes.Piercing));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Gargantuan, "Constrict", "2d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Gargantuan, "Poison",
-
                     "1d8", AbilityConstants.Constitution, "Initial",
-                    "1d8", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0));
+                    "1d8", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Colossal, "Claw", "2d8", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Colossal, "Sting", "2d8", AttributeConstants.DamageTypes.Piercing));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Colossal, "Constrict", "2d8", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Colossal, "Poison",
-
                     "1d10", AbilityConstants.Constitution, "Initial",
-                    "1d10", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0));
+                    "1d10", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Scorpionfolk, "Sting", "1d8", stingDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpionfolk, "Claw", "1d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpionfolk, "Poison",
-
                     "1d4", AbilityConstants.Dexterity, "Initial",
-                    "1d4", AbilityConstants.Dexterity, "Secondary"),
-                string.Empty, 0));
+                    "1d4", AbilityConstants.Dexterity, "Secondary"));
             attackDamages.Add(BuildData(CreatureConstants.Scorpionfolk, "Trample", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.SeaCat, "Claw", "1d6", clawDamageType));
@@ -2408,36 +2304,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.SeaCat, "Rend", "2d6", clawDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.SeaHag, "Claw", "1d4", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.SeaHag, "Horrific Appearance",
-                "2d6", AbilityConstants.Strength),
-                string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.SeaHag, "Evil Eye", string.Empty, string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.SeaHag, "Horrific Appearance", "2d6", AbilityConstants.Strength));
 
-            attackDamages.Add(BuildData(CreatureConstants.Shadow, "Incorporeal touch", string.Empty));
-            attackDamages.Add(BuildData(CreatureConstants.Shadow, "Strength Damage",
-                "1d6", AbilityConstants.Strength),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-            attackDamages.Add(BuildData(CreatureConstants.Shadow, "Create Spawn", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Shadow, "Strength Damage", "1d6", AbilityConstants.Strength));
 
-            attackDamages.Add(BuildData(CreatureConstants.Shadow_Greater, "Incorporeal touch", string.Empty));
-            attackDamages.Add(BuildData(CreatureConstants.Shadow_Greater, "Strength Damage",
-                "1d8", AbilityConstants.Strength),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-            attackDamages.Add(BuildData(CreatureConstants.Shadow_Greater, "Create Spawn", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Shadow_Greater, "Strength Damage", "1d8", AbilityConstants.Strength));
 
             attackDamages.Add(BuildData(CreatureConstants.ShadowMastiff, "Bite", "1d6", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.ShadowMastiff, "Bay", string.Empty, "panicked 2d4 rounds", 0));
-            attackDamages.Add(BuildData(CreatureConstants.ShadowMastiff, "Trip", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.ShamblingMound, "Slam", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.ShamblingMound, "Constrict", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.Shark_Dire, "Bite", "2d8", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Shark_Dire, "Swallow Whole",
-
                     "2d6+6", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
-                    "1d8+4", FeatConstants.Foci.Elements.Acid),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                    "1d8+4", FeatConstants.Foci.Elements.Acid));
 
             attackDamages.Add(BuildData(CreatureConstants.Shark_Huge, "Bite", "2d6", biteDamageType));
 
@@ -2448,14 +2329,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.ShieldGuardian, "Slam", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.ShockerLizard, "Bite", "1d4", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.ShockerLizard, "Stunning Shock",
-                "2d8", FeatConstants.Foci.Elements.Electricity),
-                string.Empty, 1.5));
-            attackDamages.Add(BuildData(CreatureConstants.ShockerLizard, "Lethal Shock",
-                "2d8", FeatConstants.Foci.Elements.Electricity, "per Shocker Lizard"),
-                string.Empty));
-
-            attackDamages.Add(BuildData(CreatureConstants.Shrieker, "Shriek", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.ShockerLizard, "Stunning Shock", "2d8", FeatConstants.Foci.Elements.Electricity));
+            attackDamages.Add(BuildData(CreatureConstants.ShockerLizard, "Lethal Shock", "2d8", FeatConstants.Foci.Elements.Electricity, "per Shocker Lizard"));
 
             attackDamages.Add(BuildData(CreatureConstants.Skum, "Bite", "2d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Skum, "Claw", "1d4", clawDamageType));
@@ -2463,32 +2338,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             attackDamages.Add(BuildData(CreatureConstants.Slaad_Red, "Bite", "2d8", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Slaad_Red, "Claw", "1d4", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Slaad_Red, "Implant", string.Empty, string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.Slaad_Red, "Stunning Croak", string.Empty, "Stunned 1d3 rounds", 0));
-            attackDamages.Add(BuildData(CreatureConstants.Slaad_Red, "Summon Slaad", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.Slaad_Blue, "Claw", "2d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Slaad_Blue, "Bite", "2d8", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Slaad_Blue, "Disease", string.Empty));
             attackDamages.Add(BuildData(CreatureConstants.Slaad_Blue, "Slaad Fever",
-
                     "1d3", AbilityConstants.Dexterity, "Incubation period 1 day",
-                    "1d3", AbilityConstants.Charisma, "Incubation period 1 day"),
-                string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.Slaad_Blue, "Summon Slaad", string.Empty));
+                    "1d3", AbilityConstants.Charisma, "Incubation period 1 day"));
 
             attackDamages.Add(BuildData(CreatureConstants.Slaad_Green, "Claw", "1d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Slaad_Green, "Bite", "2d8", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Slaad_Green, "Summon Slaad", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.Slaad_Gray, "Claw", "2d4", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Slaad_Gray, "Bite", "2d8", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Slaad_Gray, "Summon Slaad", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.Slaad_Death, "Claw", "3d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Slaad_Death, "Bite", "2d10", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Slaad_Death, "Stun", string.Empty, "Stunned 1 round", 0));
-            attackDamages.Add(BuildData(CreatureConstants.Slaad_Death, "Summon Slaad", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.Snake_Constrictor, "Bite", "1d3", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Snake_Constrictor, "Constrict", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
@@ -2496,172 +2360,113 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Snake_Constrictor_Giant, "Bite", "1d8", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Snake_Constrictor_Giant, "Constrict", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Tiny, "Bite",
-                "1", biteDamageType),
-                "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Tiny, "Bite", "1", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Tiny, "Poison",
-
                     "1d6", AbilityConstants.Constitution, "Initial",
-                    "1d6", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0));
+                    "1d6", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Small, "Bite", "1d2", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Small, "Poison",
-
                     "1d6", AbilityConstants.Constitution, "Initial",
-                    "1d6", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0));
+                    "1d6", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Medium, "Bite", "1d4", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Medium, "Poison",
-
                     "1d6", AbilityConstants.Constitution, "Initial",
-                    "1d6", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0));
+                    "1d6", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Large, "Bite", "1d4", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Large, "Poison",
-
                     "1d6", AbilityConstants.Constitution, "Initial",
-                    "1d6", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0));
+                    "1d6", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Huge, "Bite", "1d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Snake_Viper_Huge, "Poison",
-
                     "1d6", AbilityConstants.Constitution, "Initial",
-                    "1d6", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0));
+                    "1d6", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Spectre, "Incorporeal touch", "1d8"));
-            attackDamages.Add(BuildData(CreatureConstants.Spectre, "Energy Drain",
-                "2", "Negative Level"),
-                string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.Spectre, "Create Spawn", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Spectre, "Energy Drain", "2", "Negative Level"));
 
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Tiny, "Bite", "1d3", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Tiny, "Poison",
-
                     "1d2", AbilityConstants.Strength, "Initial",
-                    "1d2", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0));
+                    "1d2", AbilityConstants.Strength, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Small, "Bite", "1d4", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Small, "Poison",
-
                     "1d3", AbilityConstants.Strength, "Initial",
-                    "1d3", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0));
+                    "1d3", AbilityConstants.Strength, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Medium, "Bite", "1d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Medium, "Poison",
-
                     "1d4", AbilityConstants.Strength, "Initial",
-                    "1d4", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0));
+                    "1d4", AbilityConstants.Strength, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Large, "Bite", "1d8", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Large, "Poison",
-
                     "1d6", AbilityConstants.Strength, "Initial",
-                    "1d6", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0));
+                    "1d6", AbilityConstants.Strength, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Huge, "Bite", "2d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Huge, "Poison",
-
                     "1d8", AbilityConstants.Strength, "Initial",
-                    "1d8", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0));
+                    "1d8", AbilityConstants.Strength, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Gargantuan, "Bite", "2d8", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Gargantuan, "Poison",
-
                     "2d6", AbilityConstants.Strength, "Initial",
-                    "2d6", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0));
+                    "2d6", AbilityConstants.Strength, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Colossal, "Bite", "4d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_Hunter_Colossal, "Poison",
-
                     "2d8", AbilityConstants.Strength, "Initial",
-                    "2d8", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0));
+                    "2d8", AbilityConstants.Strength, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Tiny, "Bite", "1d3", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Tiny, "Poison",
-
                     "1d2", AbilityConstants.Strength, "Initial",
-                    "1d2", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Tiny, "Web", string.Empty, string.Empty));
+                    "1d2", AbilityConstants.Strength, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Small, "Bite", "1d4", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Small, "Poison",
-
                     "1d3", AbilityConstants.Strength, "Initial",
-                    "1d3", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Small, "Web", string.Empty, string.Empty));
+                    "1d3", AbilityConstants.Strength, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Medium, "Bite", "1d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Medium, "Poison",
-
                     "1d4", AbilityConstants.Strength, "Initial",
-                    "1d4", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Medium, "Web", string.Empty, string.Empty));
+                    "1d4", AbilityConstants.Strength, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Large, "Bite", "1d8", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Large, "Poison",
-
                     "1d6", AbilityConstants.Strength, "Initial",
-                    "1d6", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Large, "Web", string.Empty, string.Empty));
+                    "1d6", AbilityConstants.Strength, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Huge, "Bite", "2d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Huge, "Poison",
-
                     "1d8", AbilityConstants.Strength, "Initial",
-                    "1d8", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Huge, "Web", string.Empty, string.Empty));
+                    "1d8", AbilityConstants.Strength, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan, "Bite", "2d8", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan, "Poison",
-
                     "2d6", AbilityConstants.Strength, "Initial",
-                    "2d6", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan, "Web", string.Empty, string.Empty));
+                    "2d6", AbilityConstants.Strength, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Colossal, "Bite", "4d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Colossal, "Poison",
-
                     "2d8", AbilityConstants.Strength, "Initial",
-                    "2d8", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.Spider_Monstrous_WebSpinner_Colossal, "Web", string.Empty, string.Empty));
+                    "2d8", AbilityConstants.Strength, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.SpiderEater, "Sting", "1d8", AttributeConstants.DamageTypes.Piercing));
             attackDamages.Add(BuildData(CreatureConstants.SpiderEater, "Bite", "1d8", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.SpiderEater, "Poison",
-                string.Empty,
-                "Paralysis for 1d8+5 weeks (Secondary)", 0));
-            attackDamages.Add(BuildData(CreatureConstants.SpiderEater, "Implant", string.Empty, string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.Spider_Swarm, "Swarm", "1d6"));
             attackDamages.Add(BuildData(CreatureConstants.Spider_Swarm, "Poison",
-
                     "1d3", AbilityConstants.Strength, "Initial",
-                    "1d3", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.Spider_Swarm, "Distraction", string.Empty, string.Empty, 0));
+                    "1d3", AbilityConstants.Strength, "Secondary"));
 
-            attackDamages.Add(BuildData(CreatureConstants.Squid, "Arms",
-                "0", tentacleDamageType),
-                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Squid, "Arms", "0", tentacleDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Squid, "Bite", "1d6", biteDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.Squid_Giant, "Tentacle", "1d6", tentacleDamageType));
@@ -2671,49 +2476,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.StagBeetle_Giant, "Bite", "4d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.StagBeetle_Giant, "Trample", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages.Add(BuildData(CreatureConstants.Stirge, "Touch", string.Empty));
-            attackDamages.Add(BuildData(CreatureConstants.Stirge, "Attach", string.Empty));
-            attackDamages.Add(BuildData(CreatureConstants.Stirge, "Blood Drain",
-                "1d4", AbilityConstants.Constitution),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Stirge, "Blood Drain", "1d4", AbilityConstants.Constitution));
 
             attackDamages.Add(BuildData(CreatureConstants.Succubus, "Claw", "1d6", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Succubus, "Energy Drain",
-                "1", "Negative Level"),
-                SpellConstants.Suggestion, 0));
-            attackDamages.Add(BuildData(CreatureConstants.Succubus, "Summon Demon", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Succubus, "Energy Drain", "1", "Negative Level"));
 
             attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Bite", "4d8", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Horn",
-                "1d10", AttributeConstants.DamageTypes.Piercing),
-                string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Claw",
-                "1d12", clawDamageType),
-                string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Tail Slap",
-                "3d8", slapSlamDamageType),
-                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Augmented Critical", string.Empty));
-            attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Frightful Presence", string.Empty, "Shaken", 0));
-            attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Rush", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Horn", "1d10", AttributeConstants.DamageTypes.Piercing));
+            attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Claw", "1d12", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Tail Slap", "3d8", slapSlamDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Tarrasque, "Swallow Whole",
-
                     "2d8+8", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
-                    "2d8+6", FeatConstants.Foci.Elements.Acid),
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                    "2d8+6", FeatConstants.Foci.Elements.Acid));
 
             attackDamages.Add(BuildData(CreatureConstants.Tendriculos, "Bite", "2d8", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Tendriculos, "Tendril",
-                "1d6", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages.Add(BuildData(CreatureConstants.Tendriculos, "Swallow Whole",
-                "2d6", FeatConstants.Foci.Elements.Acid),
-                "Paralysis", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages.Add(BuildData(CreatureConstants.Tendriculos, "Paralysis", string.Empty, "paralyzed for 3d6 rounds", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Tendriculos, "Tendril", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Tendriculos, "Swallow Whole", "2d6", FeatConstants.Foci.Elements.Acid));
 
             attackDamages.Add(BuildData(CreatureConstants.Thoqqua, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Thoqqua, "Heat", "2d6", FeatConstants.Foci.Elements.Fire));
-            attackDamages.Add(BuildData(CreatureConstants.Thoqqua, "Burn", string.Empty, string.Empty, 0));
 
             attackDamages.Add(BuildData(CreatureConstants.Tiefling, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
@@ -2727,40 +2508,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             attackDamages.Add(BuildData(CreatureConstants.Titan, "Slam", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages.Add(BuildData(CreatureConstants.Toad] = new[] { None });
-
             attackDamages.Add(BuildData(CreatureConstants.Tojanida_Juvenile, "Bite", "2d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Tojanida_Juvenile, "Claw", "1d4", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Tojanida_Juvenile, "Ink Cloud", string.Empty, string.Empty, 0));
 
             attackDamages.Add(BuildData(CreatureConstants.Tojanida_Adult, "Bite", "2d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Tojanida_Adult, "Claw", "1d4", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Tojanida_Adult, "Ink Cloud", string.Empty, string.Empty, 0));
 
             attackDamages.Add(BuildData(CreatureConstants.Tojanida_Elder, "Bite", "2d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Tojanida_Elder, "Claw", "1d4", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Tojanida_Elder, "Ink Cloud", string.Empty, string.Empty, 0));
 
             attackDamages.Add(BuildData(CreatureConstants.Treant, "Slam", "2d6", slapSlamDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Treant, "Animate Trees", string.Empty));
-            attackDamages.Add(BuildData(CreatureConstants.Treant, "Double Damage Against Objects", string.Empty));
             attackDamages.Add(BuildData(CreatureConstants.Treant, "Trample", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages.Add(BuildData(CreatureConstants.Triceratops, "Gore",
-                "2d8", goreDamageType),
-                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.Triceratops, "Powerful charge",
-                "4d8", goreDamageType),
-                string.Empty, 2, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.Triceratops, "Trample",
-                "2d12", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1.5));
+            attackDamages.Add(BuildData(CreatureConstants.Triceratops, "Gore", "2d8", goreDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Triceratops, "Powerful charge", "4d8", goreDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Triceratops, "Trample", "2d12", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.Triton, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.Troglodyte, "Claw", "1d4", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Troglodyte, "Bite", "1d4", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Troglodyte, "Stench", string.Empty, "Sickened 10 rounds", 0));
 
             attackDamages.Add(BuildData(CreatureConstants.Troll, "Claw", "1d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Troll, "Bite", "1d6", biteDamageType));
@@ -2771,54 +2538,33 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Troll_Scrag, "Rend", "2d6", clawDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.TrumpetArchon, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.TrumpetArchon, "Trumpet", string.Empty, "1d4 rounds paralyzed", 0));
 
-            attackDamages.Add(BuildData(CreatureConstants.Tyrannosaurus, "Bite",
-                "3d6", biteDamageType),
-                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Tyrannosaurus, "Bite", "3d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Tyrannosaurus, "Swallow Whole",
-
                     "2d8", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
-                    "8", FeatConstants.Foci.Elements.Acid),
-                string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                    "8", FeatConstants.Foci.Elements.Acid));
 
             attackDamages.Add(BuildData(CreatureConstants.UmberHulk, "Claw", "2d4", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.UmberHulk, "Bite", "2d8", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.UmberHulk, "Confusing Gaze", string.Empty, SpellConstants.Confusion, 0));
 
             attackDamages.Add(BuildData(CreatureConstants.UmberHulk_TrulyHorrid, "Claw", "3d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.UmberHulk_TrulyHorrid, "Bite", "4d6", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.UmberHulk_TrulyHorrid, "Confusing Gaze", string.Empty, SpellConstants.Confusion, 0));
 
-            attackDamages.Add(BuildData(CreatureConstants.Unicorn, "Horn",
-                "1d8", AttributeConstants.DamageTypes.Piercing),
-                string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.Unicorn, "Hoof",
-                "1d4", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Unicorn, "Horn", "1d8", AttributeConstants.DamageTypes.Piercing));
+            attackDamages.Add(BuildData(CreatureConstants.Unicorn, "Hoof", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.VampireSpawn, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.VampireSpawn, "Blood Drain",
-                "1d4", AbilityConstants.Constitution),
-                "Vampire Spawn gains 5 temporary hit points", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages.Add(BuildData(CreatureConstants.VampireSpawn, "Domination", string.Empty, SpellConstants.DominatePerson, 0));
-            attackDamages.Add(BuildData(CreatureConstants.VampireSpawn, "Energy Drain",
-                "1", "Negative Level"),
-                "Vampire Spawn gains 5 temporary hit points", 0));
+            attackDamages.Add(BuildData(CreatureConstants.VampireSpawn, "Blood Drain", "1d4", AbilityConstants.Constitution));
+            attackDamages.Add(BuildData(CreatureConstants.VampireSpawn, "Energy Drain", "1", "Negative Level"));
 
             attackDamages.Add(BuildData(CreatureConstants.Vargouille, "Bite", "1d4", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Vargouille, "Shriek", string.Empty, "paralyzed 2d4 rounds", 0, "supernatural ability"));
-            attackDamages.Add(BuildData(CreatureConstants.Vargouille, "Kiss", string.Empty, string.Empty, 0, "supernatural ability"));
-            attackDamages.Add(BuildData(CreatureConstants.Vargouille, "Poison", string.Empty, "unable to heal the vargouille’s bite damage naturally or magically", 0, "extraordinary ability"));
 
             attackDamages.Add(BuildData(CreatureConstants.VioletFungus, "Tentacle", "1d6", tentacleDamageType));
             attackDamages.Add(BuildData(CreatureConstants.VioletFungus, "Poison",
-
                     "1d4", AbilityConstants.Strength, "Initial",
                     "1d4", AbilityConstants.Constitution, "Initial",
                     "1d4", AbilityConstants.Strength, "Secondary",
-                    "1d4", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0));
+                    "1d4", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Vrock, "Claw", "2d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Vrock, "Bite", "1d8", biteDamageType));
@@ -3531,40 +3277,33 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             CreatureDataSelection creatureData,
             AttackDataSelection[] attacks,
             IEnumerable<AdvancementDataSelection> advancements,
-            string roll,
-            string type = "",
-            string condition = "",
-            string roll2 = null,
-            string type2 = null,
-            string condition2 = null)
+            (string roll, string type, string condition)[] damages)
         {
             var data = new Dictionary<string, List<string>>();
+            var validDamages = damages.Where(d => d.roll != null);
+            var advancedSizes = advancements.Select(a => a.Size).Except([creatureData.Size]);
 
             foreach (var attack in attacks)
             {
                 var key = attack.BuildDamageKey(creature, creatureData.Size);
-                data[key] = [BuildData(roll, type, condition)];
+                data[key] = [];
 
-                if (roll2 != null)
-                    data[key].Add(BuildData(roll2, type2, condition2));
-
-                var advancedSizes = advancements.Select(a => a.Size).Except([creatureData.Size]);
-                foreach (var size in advancedSizes)
+                foreach (var damage in validDamages)
                 {
-                    key = attack.BuildDamageKey(creature, size);
-                    var advancedRoll = roll;
-                    var advancedRoll2 = roll2;
+                    data[key].Add(BuildData(damage.roll, damage.type, damage.condition));
 
-                    if (attack.IsNatural)
+                    foreach (var size in advancedSizes)
                     {
-                        advancedRoll = GetAdjustedDamage(roll, creatureData.Size, size);
-                        advancedRoll2 = GetAdjustedDamage(roll2, creatureData.Size, size);
+                        key = attack.BuildDamageKey(creature, size);
+                        var advancedRoll = damage.roll;
+
+                        if (attack.IsNatural)
+                        {
+                            advancedRoll = GetAdjustedDamage(damage.roll, creatureData.Size, size);
+                        }
+
+                        data[key] = [BuildData(advancedRoll, damage.type, damage.condition)];
                     }
-
-                    data[key] = [BuildData(advancedRoll, type, condition)];
-
-                    if (advancedRoll2 != null)
-                        data[key].Add(BuildData(advancedRoll2, type2, condition2));
                 }
             }
 
