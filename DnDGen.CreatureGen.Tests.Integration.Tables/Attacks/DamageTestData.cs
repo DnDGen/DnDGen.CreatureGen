@@ -1687,7 +1687,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Glabrezu, "Pincer", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Glabrezu, "Claw", "1d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Glabrezu, "Bite", "1d8", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Glabrezu, "Summon Demon", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.Gnoll, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
@@ -1700,51 +1699,35 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Goblin, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.Golem_Clay, "Slam", "2d10", slapSlamDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Golem_Clay, "Berserk", string.Empty));
-            attackDamages.Add(BuildData(CreatureConstants.Golem_Clay, "Cursed Wound", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.Golem_Flesh, "Slam", "2d8", slapSlamDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Golem_Flesh, "Berserk", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.Golem_Iron, "Slam", "2d10", slapSlamDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Golem_Iron, "Breath weapon", string.Empty));
             attackDamages.Add(BuildData(CreatureConstants.Golem_Iron, "Poisonous Gas",
                     "1d4", AbilityConstants.Constitution, "Initial",
                     "3d4", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Golem_Stone, "Slam", "2d10", slapSlamDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Golem_Stone, "Slow", string.Empty, string.Empty, 0));
 
             attackDamages.Add(BuildData(CreatureConstants.Golem_Stone_Greater, "Slam", "4d8", slapSlamDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Golem_Stone_Greater, "Slow", string.Empty, string.Empty, 0));
 
             attackDamages.Add(BuildData(CreatureConstants.Gorgon, "Gore", "1d8", AttributeConstants.DamageTypes.Piercing));
-            attackDamages.Add(BuildData(CreatureConstants.Gorgon, "Breath weapon", string.Empty, "Turn to stone", 0));
             attackDamages.Add(BuildData(CreatureConstants.Gorgon, "Trample", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.GrayOoze, "Slam",
-
                     "1d6", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
-                    "1d6", FeatConstants.Foci.Elements.Acid),
-                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.GrayOoze, "Acid",
-                "16", FeatConstants.Foci.Elements.Acid, "Wooden or Metal objects"),
-                string.Empty, 0));
+                    "1d6", FeatConstants.Foci.Elements.Acid));
+            attackDamages.Add(BuildData(CreatureConstants.GrayOoze, "Acid", "16", FeatConstants.Foci.Elements.Acid, "Wooden or Metal objects"));
             attackDamages.Add(BuildData(CreatureConstants.GrayOoze, "Constrict",
-
                     "1d6", AttributeConstants.DamageTypes.Bludgeoning, string.Empty,
-                    "1d6", FeatConstants.Foci.Elements.Acid),
-                string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                    "1d6", FeatConstants.Foci.Elements.Acid));
 
             attackDamages.Add(BuildData(CreatureConstants.GrayRender, "Bite", "2d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.GrayRender, "Claw", "1d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.GrayRender, "Rend", "2d6", clawDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.GreenHag, "Claw", "1d4", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.GreenHag, "Weakness",
-                "2d4", AbilityConstants.Strength),
-                string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.GreenHag, "Mimicry", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.GreenHag, "Weakness", "2d4", AbilityConstants.Strength));
 
             attackDamages.Add(BuildData(CreatureConstants.Grick, "Tentacle", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Grick, "Bite", "1d3", biteDamageType));
@@ -1753,34 +1736,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Griffon, "Claw", "1d4", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Griffon, "Rake", "1d6", clawDamageType));
 
-            attackDamages.Add(BuildData(CreatureConstants.Grig, AttributeConstants.Melee,
-                string.Empty,
-                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.Grig, AttributeConstants.Ranged,
-                string.Empty,
-                string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.Grig, "Unarmed Strike",
-                "1", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.Grig, FeatConstants.SpecialQualities.SpellLikeAbility,
-                string.Empty,
-                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Grig, "Unarmed Strike", "1", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages.Add(BuildData(CreatureConstants.Grig_WithFiddle, AttributeConstants.Melee,
-                string.Empty,
-                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.Grig_WithFiddle, AttributeConstants.Ranged,
-                string.Empty,
-                string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.Grig_WithFiddle, "Unarmed Strike",
-                "1", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.Grig_WithFiddle, FeatConstants.SpecialQualities.SpellLikeAbility,
-                string.Empty,
-                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages.Add(BuildData(CreatureConstants.Grig_WithFiddle, "Fiddle",
-                string.Empty,
-                SpellConstants.IrresistibleDance, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Grig_WithFiddle, "Unarmed Strike", "1", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.Grimlock, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
@@ -1794,7 +1752,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Halfling_Tallfellow, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.Harpy, "Claw", "1d3", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Harpy, "Captivating Song", string.Empty, string.Empty, 0));
 
             attackDamages.Add(BuildData(CreatureConstants.Hawk, "Talons", "1d4", clawDamageType));
 
@@ -1811,18 +1768,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Hellcat_Bezekira, "Rake", "1d8", clawDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.Hellwasp_Swarm, "Swarm", "3d6"));
-            attackDamages.Add(BuildData(CreatureConstants.Hellwasp_Swarm, "Distraction", string.Empty, string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.Hellwasp_Swarm, "Inhabit", string.Empty));
             attackDamages.Add(BuildData(CreatureConstants.Hellwasp_Swarm, "Poison",
-
                     "1d4", AbilityConstants.Dexterity, "Initial",
-                    "1d4", AbilityConstants.Dexterity, "Secondary"),
-                string.Empty, 0));
+                    "1d4", AbilityConstants.Dexterity, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Hezrou, "Bite", "4d4", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Hezrou, "Claw", "1d8", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Hezrou, "Stench", string.Empty, "Nauseated while in range + 1d4 rounds afterwards", 0));
-            attackDamages.Add(BuildData(CreatureConstants.Hezrou, "Summon Demon", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.Hieracosphinx, "Bite", "1d10", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Hieracosphinx, "Claw", "1d6", clawDamageType));
@@ -1833,57 +1784,29 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             attackDamages.Add(BuildData(CreatureConstants.Hobgoblin, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages.Add(BuildData(CreatureConstants.Homunculus, "Bite",
-                "1d4", biteDamageType),
-                "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages.Add(BuildData(CreatureConstants.Homunculus, "Poison",
-                string.Empty,
-                "Initial damage sleep for 1 minute, secondary damage sleep for another 5d6 minutes", 0, "extraordinary ability"));
+            attackDamages.Add(BuildData(CreatureConstants.Homunculus, "Bite", "1d4", biteDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.HornedDevil_Cornugon, "Claw", "2d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.HornedDevil_Cornugon, "Bite", "2d8", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.HornedDevil_Cornugon, "Tail",
-                "2d6", AttributeConstants.DamageTypes.Bludgeoning),
-                "Infernal Wound", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages.Add(BuildData(CreatureConstants.HornedDevil_Cornugon, "Fear Aura", string.Empty, string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.HornedDevil_Cornugon, "Infernal Wound",
-                "2"),
-                string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.HornedDevil_Cornugon, "Stun", string.Empty, string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.HornedDevil_Cornugon, "Summon Devil", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.HornedDevil_Cornugon, "Tail", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.HornedDevil_Cornugon, "Infernal Wound", "2"));
 
-            attackDamages.Add(BuildData(CreatureConstants.Horse_Heavy, "Hoof",
-                "1d6", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Horse_Heavy, "Hoof", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages.Add(BuildData(CreatureConstants.Horse_Heavy_War, "Hoof",
-                "1d6", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.Horse_Heavy_War, "Bite",
-                "1d4", biteDamageType),
-                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Horse_Heavy_War, "Hoof", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Horse_Heavy_War, "Bite", "1d4", biteDamageType));
 
-            attackDamages.Add(BuildData(CreatureConstants.Horse_Light, "Hoof",
-                "1d4", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+            attackDamages.Add(BuildData(CreatureConstants.Horse_Light, "Hoof", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages.Add(BuildData(CreatureConstants.Horse_Light_War, "Hoof",
-                "1d4", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Horse_Light_War, "Hoof", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Horse_Light_War, "Bite", "1d3", biteDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.HoundArchon, "Bite", "1d8", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.HoundArchon, "Slam", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages.Add(BuildData(CreatureConstants.Howler, "Bite",
-                "2d8", biteDamageType),
-                "1d4 Quills", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.Howler, "Quill",
-                "1d6", AttributeConstants.DamageTypes.Piercing),
-                string.Empty, 0.5));
-            attackDamages.Add(BuildData(CreatureConstants.Howler, "Howl",
-                "1", AbilityConstants.Wisdom),
-                string.Empty, 0));
+            attackDamages.Add(BuildData(CreatureConstants.Howler, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Howler, "Quill", "1d6", AttributeConstants.DamageTypes.Piercing));
+            attackDamages.Add(BuildData(CreatureConstants.Howler, "Howl", "1", AbilityConstants.Wisdom));
 
             attackDamages.Add(BuildData(CreatureConstants.Human, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
@@ -1904,67 +1827,39 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Hydra_12Heads, "Bite", "1d10", biteDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.Hyena, "Bite", "1d6", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Hyena, "Trip", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.IceDevil_Gelugon, "Claw", "1d10", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.IceDevil_Gelugon, "Bite", "2d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.IceDevil_Gelugon, "Tail", "3d6", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.IceDevil_Gelugon, "Fear Aura", string.Empty, string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.IceDevil_Gelugon, "Slow", string.Empty, string.Empty, 0));
-            attackDamages.Add(BuildData(CreatureConstants.IceDevil_Gelugon, "Summon Devil", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.Imp, "Sting", "1d4", AttributeConstants.DamageTypes.Piercing));
             attackDamages.Add(BuildData(CreatureConstants.Imp, "Poison",
-
                     "1d4", AbilityConstants.Dexterity, "Initial",
-                    "2d4", AbilityConstants.Dexterity, "Secondary"),
-                string.Empty, 0, "extraordinary ability"));
+                    "2d4", AbilityConstants.Dexterity, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.InvisibleStalker, "Slam", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.Janni, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Janni, "Change Size", string.Empty, string.Empty, 0));
 
             attackDamages.Add(BuildData(CreatureConstants.Kobold, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.Kolyarut, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Kolyarut, "Vampiric Touch",
-                "5d6"),
-                "Gain temporary hit points equal to damage dealt", 0, "melee touch", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            attackDamages.Add(BuildData(CreatureConstants.Kolyarut, "Enervation Ray",
-                "1d4", "Negative Level"),
-                string.Empty, 0, "ranged touch", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Kolyarut, "Vampiric Touch", "5d6"));
+            attackDamages.Add(BuildData(CreatureConstants.Kolyarut, "Enervation Ray", "1d4", "Negative Level"));
 
-            attackDamages.Add(BuildData(CreatureConstants.Kraken, "Tentacle",
-                "2d8", tentacleDamageType),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.Kraken, "Arm",
-                "1d6", tentacleDamageType),
-                string.Empty, 0.5, "melee", 6, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages.Add(BuildData(CreatureConstants.Kraken, "Bite",
-                "4d6", biteDamageType),
-                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages.Add(BuildData(CreatureConstants.Kraken, "Constrict (Tentacle)",
-                "2d8", tentacleDamageType),
-                string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages.Add(BuildData(CreatureConstants.Kraken, "Constrict (Arm)",
-                "1d6", tentacleDamageType),
-                string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Kraken, "Tentacle", "2d8", tentacleDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Kraken, "Arm", "1d6", tentacleDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Kraken, "Bite", "4d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Kraken, "Constrict (Tentacle)", "2d8", tentacleDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Kraken, "Constrict (Arm)", "1d6", tentacleDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.Krenshar, "Bite", "1d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Krenshar, "Claw", "1d4", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Krenshar, "Scare", string.Empty));
-            attackDamages.Add(BuildData(CreatureConstants.Krenshar, "Scare with Screech", string.Empty, string.Empty, 0));
 
             attackDamages.Add(BuildData(CreatureConstants.KuoToa, "Bite", "1d6", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.KuoToa, "Lightning Bolt",
-                "1d6", FeatConstants.Foci.Elements.Electricity, "per Kuo-Toa Cleric"),
-                string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.KuoToa, "Lightning Bolt", "1d6", FeatConstants.Foci.Elements.Electricity, "per Kuo-Toa Cleric"));
 
-            attackDamages.Add(BuildData(CreatureConstants.Lamia, "Touch", string.Empty));
-            attackDamages.Add(BuildData(CreatureConstants.Lamia, "Wisdom Drain",
-                "1d4", AbilityConstants.Wisdom),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            attackDamages.Add(BuildData(CreatureConstants.Lamia, "Wisdom Drain", "1d4", AbilityConstants.Wisdom));
             attackDamages.Add(BuildData(CreatureConstants.Lamia, "Claw", "1d4", clawDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.Lammasu, "Claw", "1d6", clawDamageType));
@@ -2005,7 +1900,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Locathah, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.Locust_Swarm, "Swarm", "2d6"));
-            attackDamages.Add(BuildData(CreatureConstants.Locust_Swarm, "Distraction", string.Empty, string.Empty, 0));
 
             attackDamages.Add(BuildData(CreatureConstants.Magmin, "Burning Touch", "1d8", FeatConstants.Foci.Elements.Fire));
             attackDamages.Add(BuildData(CreatureConstants.Magmin, "Slam", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
@@ -2016,167 +1910,97 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             attackDamages.Add(BuildData(CreatureConstants.Manticore, "Claw", "2d4", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Manticore, "Bite", "1d8", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Manticore, "Spikes", string.Empty));
             attackDamages.Add(BuildData(CreatureConstants.Manticore, "Tail Spikes", "1d8", AttributeConstants.DamageTypes.Piercing));
 
             attackDamages.Add(BuildData(CreatureConstants.Marilith, "Tail Slap", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Marilith, "Slam", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Marilith, "Constrict", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Marilith, "Summon Demon", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.Marut, "Slam", "2d6", slapSlamDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Marut, "Slam", "2d6", slapSlamDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Marut, "Fist of Thunder",
-                "3d6", FeatConstants.Foci.Elements.Sonic),
-                "deafened 2d6 rounds", 0));
-            attackDamages.Add(BuildData(CreatureConstants.Marut, "Fist of Lightning",
-                "3d6", FeatConstants.Foci.Elements.Electricity),
-                "blinded 2d6 rounds", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Marut, "Fist of Thunder", "3d6", FeatConstants.Foci.Elements.Sonic));
+            attackDamages.Add(BuildData(CreatureConstants.Marut, "Fist of Lightning", "3d6", FeatConstants.Foci.Elements.Electricity));
 
-            attackDamages.Add(BuildData(CreatureConstants.Medusa, "Snakes",
-                "1d4", biteDamageType),
-                "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.Medusa, "Petrifying Gaze", string.Empty, "Permanent petrification", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Medusa, "Snakes", "1d4", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Medusa, "Poison",
-
                     "1d6", AbilityConstants.Strength, "Initial",
-                    "2d6", AbilityConstants.Strength, "Secondary"),
-                string.Empty, 0));
+                    "2d6", AbilityConstants.Strength, "Secondary"));
 
-            attackDamages.Add(BuildData(CreatureConstants.Megaraptor, "Talons",
-                "2d6", clawDamageType),
-                string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.Megaraptor, "Foreclaw",
-                "1d4", clawDamageType),
-                string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Megaraptor, "Talons", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Megaraptor, "Foreclaw", "1d4", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Megaraptor, "Bite", "1d8", biteDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.Mephit_Air, "Claw", "1d3", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Air, "Breath weapon",
-                "1d8"),
-                string.Empty, 0, "supernatural ability"));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Air, "Summon Mephit", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Air, "Breath weapon", "1d8"));
 
             attackDamages.Add(BuildData(CreatureConstants.Mephit_Dust, "Claw", "1d3", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Dust, "Breath weapon",
-                "1d4"),
-                "Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability"));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Dust, "Summon Mephit", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Dust, "Breath weapon", "1d4"));
 
             attackDamages.Add(BuildData(CreatureConstants.Mephit_Earth, "Claw", "1d3", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Earth, "Breath weapon",
-                "1d8"),
-                string.Empty, 0, "supernatural ability"));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Earth, "Summon Mephit", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Earth, "Breath weapon", "1d8"));
 
             attackDamages.Add(BuildData(CreatureConstants.Mephit_Fire, "Claw",
-
                     "1d3", clawDamageType, string.Empty,
-                    "1d4", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Fire, "Breath weapon",
-                "1d8", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 0, "supernatural ability"));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Fire, "Summon Mephit", string.Empty));
+                    "1d4", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Fire, "Breath weapon", "1d8", FeatConstants.Foci.Elements.Fire));
 
             attackDamages.Add(BuildData(CreatureConstants.Mephit_Ice, "Claw",
-
                     "1d3", clawDamageType, string.Empty,
-                    "1d4", FeatConstants.Foci.Elements.Cold),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Ice, "Breath weapon",
-                "1d4", FeatConstants.Foci.Elements.Cold),
-                "Frostbitten Skin and Frozen Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability"));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Ice, "Summon Mephit", string.Empty));
+                    "1d4", FeatConstants.Foci.Elements.Cold));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Ice, "Breath weapon", "1d4", FeatConstants.Foci.Elements.Cold));
 
             attackDamages.Add(BuildData(CreatureConstants.Mephit_Magma, "Claw",
-
                     "1d3", clawDamageType, string.Empty,
-                    "1d4", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Magma, "Breath weapon",
-                "1d4", FeatConstants.Foci.Elements.Fire),
-                "Burning Skin and Seared Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability"));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Magma, "Summon Mephit", string.Empty));
+                    "1d4", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Magma, "Breath weapon", "1d4", FeatConstants.Foci.Elements.Fire));
 
             attackDamages.Add(BuildData(CreatureConstants.Mephit_Ooze, "Claw", "1d3", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Ooze, "Breath weapon",
-                "1d4", FeatConstants.Foci.Elements.Acid),
-                "Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability"));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Ooze, "Summon Mephit", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Ooze, "Breath weapon", "1d4", FeatConstants.Foci.Elements.Acid));
 
             attackDamages.Add(BuildData(CreatureConstants.Mephit_Salt, "Claw", "1d3", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Salt, "Breath weapon",
-                "1d4"),
-                "Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability"));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Salt, "Summon Mephit", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Salt, "Breath weapon", "1d4"));
 
             attackDamages.Add(BuildData(CreatureConstants.Mephit_Steam, "Claw",
-
                     "1d3", clawDamageType, string.Empty,
-                    "1d4", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Steam, "Breath weapon",
-                "1d4", FeatConstants.Foci.Elements.Fire),
-                "Burning Skin and Seared Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability"));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Steam, "Summon Mephit", string.Empty));
+                    "1d4", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Steam, "Breath weapon", "1d4", FeatConstants.Foci.Elements.Fire));
 
             attackDamages.Add(BuildData(CreatureConstants.Mephit_Water, "Claw", "1d3", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Water, "Breath weapon",
-                "1d8", FeatConstants.Foci.Elements.Acid),
-                string.Empty, 0, "supernatural ability"));
-            attackDamages.Add(BuildData(CreatureConstants.Mephit_Water, "Summon Mephit", string.Empty));
+            attackDamages.Add(BuildData(CreatureConstants.Mephit_Water, "Breath weapon", "1d8", FeatConstants.Foci.Elements.Acid));
 
             attackDamages.Add(BuildData(CreatureConstants.Merfolk, "Unarmed Strike", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.Mimic, "Slam", "1d8", slapSlamDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Mimic, "Adhesive", string.Empty));
             attackDamages.Add(BuildData(CreatureConstants.Mimic, "Crush", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.MindFlayer, "Tentacle", "1d4", tentacleDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.MindFlayer, "Mind Blast", string.Empty, "3d4 rounds stunned", 1));
-            attackDamages.Add(BuildData(CreatureConstants.MindFlayer, "Extract", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.Minotaur, "Gore", "1d8", goreDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Minotaur, "Powerful Charge", "4d6", AttributeConstants.DamageTypes.Piercing));
 
             attackDamages.Add(BuildData(CreatureConstants.Mohrg, "Slam", "1d6", slapSlamDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Mohrg, "Tongue", string.Empty));
-            attackDamages.Add(BuildData(CreatureConstants.Mohrg, "Paralyzing Touch", string.Empty, "1d4 minutes paralyzed", 0));
-            attackDamages.Add(BuildData(CreatureConstants.Mohrg, "Create Spawn", string.Empty));
 
             attackDamages.Add(BuildData(CreatureConstants.Monkey, "Bite", "1d3", biteDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.Mule, "Hoof", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.Mummy, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Mummy, "Despair", string.Empty, "1d4 rounds fear", 0));
-            attackDamages.Add(BuildData(CreatureConstants.Mummy, "Disease", string.Empty, "Mummy Rot", 0));
             attackDamages.Add(BuildData(CreatureConstants.Mummy, "Mummy Rot",
-
                     "1d6", AbilityConstants.Constitution, "Incubation period 1 minute",
-                    "1d6", AbilityConstants.Charisma, "Incubation period 1 minute"),
-                string.Empty, 0));
+                    "1d6", AbilityConstants.Charisma, "Incubation period 1 minute"));
 
             attackDamages.Add(BuildData(CreatureConstants.Naga_Dark, "Sting", "2d4", stingDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Naga_Dark, "Bite", "1d4", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Naga_Dark, "Poison", string.Empty, "lapse into a nightmare-haunted sleep for 2d4 minutes", 0));
 
             attackDamages.Add(BuildData(CreatureConstants.Naga_Guardian, "Bite", "2d6", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Naga_Guardian, "Spit", string.Empty));
             attackDamages.Add(BuildData(CreatureConstants.Naga_Guardian, "Poison",
-
                     "1d10", AbilityConstants.Constitution, "Initial",
-                    "1d10", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0));
+                    "1d10", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Naga_Spirit, "Bite", "2d6", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Naga_Spirit, "Charming Gaze", string.Empty, SpellConstants.CharmPerson, 0));
             attackDamages.Add(BuildData(CreatureConstants.Naga_Spirit, "Poison",
-
                     "1d8", AbilityConstants.Constitution, "Initial",
-                    "1d8", AbilityConstants.Constitution, "Secondary"),
-                string.Empty, 0));
+                    "1d8", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Naga_Water, "Bite", "2d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Naga_Water, "Poison",
