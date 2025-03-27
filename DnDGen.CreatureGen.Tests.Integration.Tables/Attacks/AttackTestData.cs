@@ -30,12 +30,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     .Select(DataHelper.Parse<AdvancementDataSelection>)
                     .Select(a => a.Size)
                     .Union([DataHelper.Parse<CreatureDataSelection>(creatureData[creature]).Size]);
+                var attackSelections = kvp.Value.Select(DataHelper.Parse<AttackDataSelection>);
 
                 foreach (var size in sizes)
                 {
-                    var keys = kvp.Value
-                        .Select(DataHelper.Parse<AttackDataSelection>)
-                        .Select(s => s.BuildDamageKey(creature, size));
+                    var keys = attackSelections.Select(s => s.BuildDamageKey(creature, size));
                     attackDamageKeys.AddRange(keys);
                 }
             }
@@ -47,14 +46,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             var attackDamageKeys = new List<string>();
             var templateAttackData = GetTemplateAttackData();
+            var sizes = SizeConstants.GetOrdered();
 
             foreach (var kvp in templateAttackData)
             {
                 var template = kvp.Key;
-                var keys = kvp.Value
-                    .Select(DataHelper.Parse<AttackDataSelection>)
-                    .Select(s => s.BuildDamageKey(template, string.Empty));
-                attackDamageKeys.AddRange(keys);
+                var attackSelections = kvp.Value.Select(DataHelper.Parse<AttackDataSelection>);
+
+                foreach (var size in sizes)
+                {
+                    var keys = attackSelections.Select(s => s.BuildDamageKey(template, size));
+                    attackDamageKeys.AddRange(keys);
+                }
             }
 
             return attackDamageKeys;

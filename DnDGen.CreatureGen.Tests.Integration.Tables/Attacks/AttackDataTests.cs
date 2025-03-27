@@ -5,7 +5,9 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Integration.Tables.Creatures;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
+using DnDGen.Infrastructure.Helpers;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
@@ -20,9 +22,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
     {
         private ICollectionSelector collectionSelector;
         private IFeatsSelector featsSelector;
-        private ICreatureDataSelector creatureDataSelector;
         private Dictionary<string, List<string>> creatureAttackData;
         private Dictionary<string, List<string>> templateAttackData;
+        private Dictionary<string, CreatureDataSelection> creatureData;
 
         protected override string tableName => TableNameConstants.Collection.AttackData;
 
@@ -31,6 +33,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             creatureAttackData = AttackTestData.GetCreatureAttackData();
             templateAttackData = AttackTestData.GetTemplateAttackData();
+            creatureData = CreatureDataTests.GetCreatureTestData().ToDictionary(kvp => kvp.Key, kvp => DataHelper.Parse<CreatureDataSelection>(kvp.Value));
         }
 
         [SetUp]
@@ -38,7 +41,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             featsSelector = GetNewInstanceOf<IFeatsSelector>();
-            creatureDataSelector = GetNewInstanceOf<ICreatureDataSelector>();
         }
 
         [Test]
@@ -58,8 +60,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         [Test]
         public void AttackDamageKeysAreUnique()
         {
-            var attackDamageKeys = AttackTestData.GetDamageKeys();
-            Assert.That(attackDamageKeys, Is.Unique);
+            var creatureAttackDamageKeys = AttackTestData.GetCreatureDamageKeys();
+            var templateAttackDamageKeys = AttackTestData.GetTemplateDamageKeys();
+            var damageKeys = creatureAttackDamageKeys.Concat(templateAttackDamageKeys);
+            Assert.That(damageKeys, Is.Unique);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
@@ -157,7 +161,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         private void AssertPoisonAttacks(List<string> entries)
         {
             var poisons = entries
-                .Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>)
+                .Select(DataHelper.Parse<AttackDataSelection>)
                 .Where(s => s.Name.Equals("poison", StringComparison.CurrentCultureIgnoreCase));
 
             foreach (var selection in poisons)
@@ -176,7 +180,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
         private void AssertDiseaseAttacks(List<string> entries)
         {
-            var selections = entries.Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>);
+            var selections = entries.Select(DataHelper.Parse<AttackDataSelection>);
 
             var disease = selections.FirstOrDefault(s => s.Name.Equals("disease", StringComparison.CurrentCultureIgnoreCase));
             if (disease == null)
@@ -233,7 +237,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(table, Contains.Key(creature));
 
             var hasSpellsAttack = table[creature]
-                .Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>)
+                .Select(DataHelper.Parse<AttackDataSelection>)
                 .Any(s => s.Name == "Spells");
 
             var caster = collectionSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, creature);
@@ -252,16 +256,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             Assert.That(table, Contains.Key(creature));
 
-            var creatureData = creatureDataSelector.SelectFor(creature);
-            var selections = table[creature].Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>);
+            var selections = table[creature].Select(DataHelper.Parse<AttackDataSelection>);
             var unnaturalAttacks = selections.Where(s => !s.IsNatural);
 
             if (!unnaturalAttacks.Any())
             {
-                Assert.Pass($"{creature} has all-natural, 100% USDA Organic attacks");
+                return;
             }
 
-            Assert.That(unnaturalAttacks.Any(), Is.True.And.EqualTo(creatureData.CanUseEquipment));
+            Assert.That(unnaturalAttacks.Any(), Is.True.And.EqualTo(creatureData[creature].CanUseEquipment));
 
             //Has Natural Attack
             var naturalAttack = selections.FirstOrDefault(s => s.IsNatural && !s.IsSpecial);
@@ -274,7 +277,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
         private void AssertCreatureHasCorrectImprovedGrab(List<string> entries)
         {
-            var selections = entries.Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>);
+            var selections = entries.Select(DataHelper.Parse<AttackDataSelection>);
 
             var improvedGrab = selections.FirstOrDefault(s => s.Name == "Improved Grab");
             if (improvedGrab == null)
