@@ -1,8 +1,6 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
-using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tests.Integration.Tables.Creatures;
 using DnDGen.Infrastructure.Helpers;
@@ -2726,416 +2724,251 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[key] = [];
             }
 
-            attackDamages[CreatureConstants.Templates.Ghost, "Corrupting Gaze",
-                    "2d10", string.Empty, string.Empty,
-                    "1d4", AbilityConstants.Charisma),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true,
-                SaveConstants.Fortitude, AbilityConstants.Charisma));
-            attackDamages[CreatureConstants.Templates.Ghost, "Corrupting Touch",
-                "1d6"),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-            attackDamages[CreatureConstants.Templates.Ghost, "Draining Touch",
-                "1d4", "Ability points (of ghost's choosing)"),
-                "Ghost heals 5 points of damage", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-            attackDamages[CreatureConstants.Templates.Ghost, "Frightful Moan",
-                string.Empty,
-                "Panic for 2d4 rounds", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true,
-                SaveConstants.Will, AbilityConstants.Charisma));
-            attackDamages[CreatureConstants.Templates.Ghost, "Horrific Appearance",
+            Dictionary<string, List<string>> BuildData(string creature, string attackName,
+                string roll, string type = "", string condition = "",
+                string roll2 = null, string type2 = null, string condition2 = null,
+                string roll3 = null, string type3 = null, string condition3 = null,
+                string roll4 = null, string type4 = null, string condition4 = null)
+            {
+                return BuildDamageDataForAttack(
+                    creature,
+                    null,
+                    attackData[creature][attackName],
+                    [],
+                    [(roll, type, condition),
+                    (roll2, type2, condition2),
+                    (roll3, type3, condition3),
+                    (roll4, type4, condition4)]);
+            }
 
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Ghost, "Corrupting Gaze",
+                    "2d10", string.Empty, string.Empty,
+                    "1d4", AbilityConstants.Charisma));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Ghost, "Corrupting Touch", "1d6"));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Ghost, "Draining Touch", "1d4", "Ability points (of ghost's choosing)"));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Ghost, "Horrific Appearance",
                     "1d4", AbilityConstants.Strength, string.Empty,
                     "1d4", AbilityConstants.Dexterity, string.Empty,
-                    "1d4", AbilityConstants.Constitution),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true,
-                SaveConstants.Fortitude, AbilityConstants.Charisma));
-            attackDamages[CreatureConstants.Templates.Ghost, "Malevolence",
-                string.Empty,
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true,
-                SaveConstants.Will, AbilityConstants.Charisma, 5));
-            attackDamages[CreatureConstants.Templates.Ghost, "Manifestation",
-                string.Empty,
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Templates.Ghost, SpellConstants.Telekinesis,
-                string.Empty,
-                string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true,
-                SaveConstants.Will, AbilityConstants.Charisma));
+                    "1d4", AbilityConstants.Constitution));
 
-            attackDamages[CreatureConstants.Templates.HalfCelestial, FeatConstants.SpecialQualities.SpellLikeAbility,
-                string.Empty,
-                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Templates.HalfCelestial, "Smite Evil",
-                string.Empty,
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Black, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Black, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Black, "Breath Weapon", "6d8", FeatConstants.Foci.Elements.Acid));
 
-            attackDamages[CreatureConstants.Templates.HalfDragon_Black, "Claw",
-                "1d4", clawDamageType),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_Black, "Bite",
-                "1d6", biteDamageType),
-                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_Black, "Breath Weapon",
-                "6d8", FeatConstants.Foci.Elements.Acid),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
-                SaveConstants.Reflex, AbilityConstants.Constitution));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Blue, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Blue, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Blue, "Breath Weapon", "6d8", FeatConstants.Foci.Elements.Electricity));
 
-            attackDamages[CreatureConstants.Templates.HalfDragon_Blue, "Claw",
-                "1d4", clawDamageType),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_Blue, "Bite",
-                "1d6", biteDamageType),
-                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_Blue, "Breath Weapon",
-                "6d8", FeatConstants.Foci.Elements.Electricity),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
-                SaveConstants.Reflex, AbilityConstants.Constitution));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Brass, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Brass, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Brass, "Breath Weapon", "6d8", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages[CreatureConstants.Templates.HalfDragon_Brass, "Claw",
-                "1d4", clawDamageType),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_Brass, "Bite",
-                "1d6", biteDamageType),
-                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_Brass, "Breath Weapon",
-                "6d8", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
-                SaveConstants.Reflex, AbilityConstants.Constitution));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Bronze, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Bronze, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Bronze, "Breath Weapon", "6d8", FeatConstants.Foci.Elements.Electricity));
 
-            attackDamages[CreatureConstants.Templates.HalfDragon_Bronze, "Claw",
-                "1d4", clawDamageType),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_Bronze, "Bite",
-                "1d6", biteDamageType),
-                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_Bronze, "Breath Weapon",
-                "6d8", FeatConstants.Foci.Elements.Electricity),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
-                SaveConstants.Reflex, AbilityConstants.Constitution));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Copper, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Copper, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Copper, "Breath Weapon", "6d8", FeatConstants.Foci.Elements.Acid));
 
-            attackDamages[CreatureConstants.Templates.HalfDragon_Copper, "Claw",
-                "1d4", clawDamageType),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_Copper, "Bite",
-                "1d6", biteDamageType),
-                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_Copper, "Breath Weapon",
-                "6d8", FeatConstants.Foci.Elements.Acid),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
-                SaveConstants.Reflex, AbilityConstants.Constitution));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Gold, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Gold, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Gold, "Breath Weapon", "6d8", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages[CreatureConstants.Templates.HalfDragon_Gold, "Claw",
-                "1d4", clawDamageType),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_Gold, "Bite",
-                "1d6", biteDamageType),
-                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_Gold, "Breath Weapon",
-                "6d8", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
-                SaveConstants.Reflex, AbilityConstants.Constitution));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Green, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Green, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Green, "Breath Weapon", "6d8", FeatConstants.Foci.Elements.Acid, "Gas"));
 
-            attackDamages[CreatureConstants.Templates.HalfDragon_Green, "Claw",
-                "1d4", clawDamageType),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_Green, "Bite",
-                "1d6", biteDamageType),
-                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_Green, "Breath Weapon",
-                "6d8", FeatConstants.Foci.Elements.Acid, "Gas"),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
-                SaveConstants.Reflex, AbilityConstants.Constitution));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Red, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Red, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Red, "Breath Weapon", "6d8", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages[CreatureConstants.Templates.HalfDragon_Red, "Claw",
-                "1d4", clawDamageType),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_Red, "Bite",
-                "1d6", biteDamageType),
-                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_Red, "Breath Weapon",
-                "6d8", FeatConstants.Foci.Elements.Fire),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
-                SaveConstants.Reflex, AbilityConstants.Constitution));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Silver, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Silver, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Silver, "Breath Weapon", "6d8", FeatConstants.Foci.Elements.Cold));
 
-            attackDamages[CreatureConstants.Templates.HalfDragon_Silver, "Claw",
-                "1d4", clawDamageType),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_Silver, "Bite",
-                "1d6", biteDamageType),
-                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_Silver, "Breath Weapon",
-                "6d8", FeatConstants.Foci.Elements.Cold),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
-                SaveConstants.Reflex, AbilityConstants.Constitution));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_White, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_White, "Bite", "1d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_White, "Breath Weapon", "6d8", FeatConstants.Foci.Elements.Cold));
 
-            attackDamages[CreatureConstants.Templates.HalfDragon_White, "Claw",
-                "1d4", clawDamageType),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_White, "Bite",
-                "1d6", biteDamageType),
-                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.HalfDragon_White, "Breath Weapon",
-                "6d8", FeatConstants.Foci.Elements.Cold),
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
-                SaveConstants.Reflex, AbilityConstants.Constitution));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfFiend, "Claw", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfFiend, "Bite", "1d6", biteDamageType));
 
-            attackDamages[CreatureConstants.Templates.HalfFiend, "Claw",
-                "1d4", clawDamageType),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.HalfFiend, "Bite",
-                "1d6", biteDamageType),
-                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.HalfFiend, FeatConstants.SpecialQualities.SpellLikeAbility,
-                string.Empty,
-                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Templates.HalfFiend, "Smite Good",
-                string.Empty,
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lich, "Touch", "1d8+5"));
 
-            attackDamages[CreatureConstants.Templates.Lich, "Touch",
-                "1d8+5"),
-                "Paralyzing Touch", 0));
-            attackDamages[CreatureConstants.Templates.Lich, "Fear Aura",
-                string.Empty,
-                "Fear", 0));
-            attackDamages[CreatureConstants.Templates.Lich, "Paralyzing Touch",
-                string.Empty,
-                "Paralyzed", 0));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Skeleton, "Claw", "1d4", clawDamageType));
 
-            attackDamages[CreatureConstants.Templates.None] = new[] { None });
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Vampire, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Vampire, "Blood Drain", "1d4", AbilityConstants.Constitution));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Vampire, "Energy Drain", "2", "Negative Level"));
 
-            attackDamages[CreatureConstants.Templates.Skeleton, "Claw",
-                "1d4", clawDamageType),
-                string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, "Claw (in Hybrid form)", "1d4", AttributeConstants.DamageTypes.Slashing));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, "Bite (in Hybrid form)", "1d6", AttributeConstants.DamageTypes.Piercing));
 
-            attackDamages[CreatureConstants.Templates.Vampire, "Slam",
-                "1d6", AttributeConstants.DamageTypes.Bludgeoning),
-                string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Vampire, "Blood Drain",
-                "1d4", AbilityConstants.Constitution),
-                "Vampire gains 5 temporary hit points", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Templates.Vampire, "Children of the Night",
-                string.Empty,
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            attackDamages[CreatureConstants.Templates.Vampire, "Dominate",
-                string.Empty,
-                string.Empty, 0));
-            attackDamages[CreatureConstants.Templates.Vampire, "Create Spawn",
-                string.Empty,
-                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            attackDamages[CreatureConstants.Templates.Vampire, "Energy Drain",
-                "2", "Negative Level"),
-                "Vampire gains 5 temporary hit points", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Boar_Natural, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Boar_Natural, "Gore (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, "Curse of Lycanthropy",
-                string.Empty,
-                "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true,
-                SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Boar_Natural, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Boar_Natural, "Gore (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural, "Gore (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Boar_Natural, "Curse of Lycanthropy",
-                string.Empty,
-                "Contract lycanthropy", 0));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Rat_Natural, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural, "Gore (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Rat_Natural, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural, "Curse of Lycanthropy",
-                string.Empty,
-                "Contract lycanthropy", 0));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Rat_Natural, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Rat_Natural, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Rat_Natural, "Curse of Lycanthropy",
-                string.Empty,
-                "Contract lycanthropy", 0));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Tiger_Natural, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Tiger_Natural, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, "Curse of Lycanthropy",
-                string.Empty,
-                "Contract lycanthropy", 0));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Tiger_Natural, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Tiger_Natural, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Tiger_Natural, "Curse of Lycanthropy",
-                string.Empty,
-                "Contract lycanthropy", 0));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Wolf_Natural, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Wolf_Natural, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural, "Curse of Lycanthropy",
-                string.Empty,
-                "Contract lycanthropy", 0));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Wolf_Natural, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Wolf_Natural, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Wolf_Natural, "Curse of Lycanthropy",
-                string.Empty,
-                "Contract lycanthropy", 0));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural, "Bite (in Hybrid form)",
-                "1d6", AttributeConstants.DamageTypes.Piercing),
-                "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural, "Curse of Lycanthropy",
-                string.Empty,
-                "Contract lycanthropy", 0));
-
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, "Claw (in Hybrid form)",
-                "1d4", AttributeConstants.DamageTypes.Slashing),
-                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Boar_Afflicted, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted, "Gore (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Boar_Afflicted, "Gore (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted, "Gore (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted, "Gore (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Rat_Afflicted, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Rat_Afflicted, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Rat_Afflicted, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Rat_Afflicted, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            attackDamages[CreatureConstants.Templates.Zombie, "Slam",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Zombie, "Slam",
                 "1d6", AttributeConstants.DamageTypes.Bludgeoning),
                 string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural, "Curse of Lycanthropy",
-                string.Empty,
-                "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true,
-                SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural, "Curse of Lycanthropy",
-                string.Empty,
-                "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true,
-                SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural, "Claw (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural, "Claw (in Hybrid form)",
                 "1d4", AttributeConstants.DamageTypes.Slashing),
                 string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural, "Bite (in Hybrid form)",
+            attackDamages.Add(BuildData(CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural, "Bite (in Hybrid form)",
                 "1d6", AttributeConstants.DamageTypes.Piercing),
                 "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            attackDamages[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural, "Curse of Lycanthropy",
-                string.Empty,
-                "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true,
-                SaveConstants.Fortitude, AbilityConstants.Constitution));
 
             foreach (var kvp in attackDamages.SelectMany(d => d))
             {
@@ -3154,28 +2987,34 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             var data = new Dictionary<string, List<string>>();
             var validDamages = damages.Where(d => d.roll != null);
-            var advancedSizes = advancements.Select(a => a.Size).Except([creatureData.Size]);
+            var size = creatureData?.Size ?? string.Empty;
+            var advancedSizes = advancements.Select(a => a.Size).Except([size]);
 
             foreach (var attack in attacks)
             {
-                var key = attack.BuildDamageKey(creature, creatureData.Size);
-                data[key] = [];
+                var originalKey = attack.BuildDamageKey(creature, size);
+                data[originalKey] = [];
 
                 foreach (var damage in validDamages)
                 {
-                    data[key].Add(BuildData(damage.roll, damage.type, damage.condition));
+                    data[originalKey].Add(BuildData(damage.roll, damage.type, damage.condition));
+                }
 
-                    foreach (var size in advancedSizes)
+                foreach (var advancedSize in advancedSizes)
+                {
+                    var advancedKey = attack.BuildDamageKey(creature, advancedSize);
+                    data[advancedKey] = [];
+
+                    foreach (var damage in validDamages)
                     {
-                        key = attack.BuildDamageKey(creature, size);
                         var advancedRoll = damage.roll;
 
                         if (attack.IsNatural)
                         {
-                            advancedRoll = GetAdjustedDamage(damage.roll, creatureData.Size, size);
+                            advancedRoll = GetAdjustedDamage(damage.roll, size, advancedSize);
                         }
 
-                        data[key] = [BuildData(advancedRoll, damage.type, damage.condition)];
+                        data[advancedKey].Add(BuildData(advancedRoll, damage.type, damage.condition));
                     }
                 }
             }
