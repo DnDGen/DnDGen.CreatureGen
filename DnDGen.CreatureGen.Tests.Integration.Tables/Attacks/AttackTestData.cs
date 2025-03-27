@@ -16,11 +16,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
     {
         public const string None = "NONE";
 
-        public static IEnumerable<string> GetDamageKeys()
+        public static IEnumerable<string> GetCreatureDamageKeys()
         {
             var attackDamageKeys = new List<string>();
             var creatureAttackData = GetCreatureAttackData();
-            var templateAttackData = GetTemplateAttackData();
             var advancementData = AdvancementsTests.GetAdvancementsTestData();
             var creatureData = CreatureDataTests.GetCreatureTestData();
 
@@ -40,6 +39,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     attackDamageKeys.AddRange(keys);
                 }
             }
+
+            return attackDamageKeys;
+        }
+
+        public static IEnumerable<string> GetTemplateDamageKeys()
+        {
+            var attackDamageKeys = new List<string>();
+            var templateAttackData = GetTemplateAttackData();
 
             foreach (var kvp in templateAttackData)
             {
