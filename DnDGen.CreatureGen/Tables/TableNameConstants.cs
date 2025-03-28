@@ -16,6 +16,7 @@
             public const string Advancements = "Advancements";
             public const string AerialManeuverability = "AerialManeuverability";
             public const string AlignmentGroups = "AlignmentGroups";
+            public const string ArmorClassBonuses = "ArmorClassBonuses";
             public const string AttackData = "AttackData";
             public const string CasterGroups = "CasterGroups";
             public const string CreatureData = "CreatureData";
@@ -55,7 +56,6 @@
         {
             public const string AbilityAdjustments = "AbilityAdjustments";
             public const string AgeRolls = "AgeRolls";
-            public const string ArmorClassBonuses = "ArmorClassBonuses";
             public const string Casters = "Casters";
             public const string FeatAbilityRequirements = "FeatAbilityRequirements";
             public const string FeatSkillRankRequirements = "FeatSkillRankRequirements";

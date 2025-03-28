@@ -7,6 +7,6 @@ namespace DnDGen.CreatureGen.Selectors.Collections
     [Obsolete]
     internal interface IBonusSelector
     {
-        IEnumerable<BonusSelection> SelectFor(string tableName, string source);
+        IEnumerable<BonusDataSelection> SelectFor(string tableName, string source);
     }
 }

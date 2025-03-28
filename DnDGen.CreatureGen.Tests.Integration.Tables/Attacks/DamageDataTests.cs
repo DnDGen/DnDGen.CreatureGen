@@ -1,11 +1,10 @@
-﻿using DnDGen.CreatureGen.Feats;
-using DnDGen.CreatureGen.Selectors.Collections;
+﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.Tables.Creatures;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Helpers;
-using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
 using System;
@@ -17,8 +16,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
     [TestFixture]
     public class DamageDataTests : CollectionTests
     {
-        private ICollectionSelector collectionSelector;
-        private IFeatsSelector featsSelector;
         private Dictionary<string, List<string>> creatureAttackData;
         private Dictionary<string, List<string>> templateAttackData;
         private Dictionary<string, List<string>> creatureAttackDamageData;
@@ -39,28 +36,35 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             advancementData = AdvancementsTests.GetAdvancementsTestData().ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(DataHelper.Parse<AdvancementDataSelection>));
         }
 
-        [SetUp]
-        public void Setup()
-        {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
-            featsSelector = GetNewInstanceOf<IFeatsSelector>();
-        }
-
         [Test]
         public void DamageDataNames()
         {
             var creatureKeys = AttackTestData.GetCreatureDamageKeys();
             var templateKeys = AttackTestData.GetTemplateDamageKeys();
-            var names = creatureKeys.Union(templateKeys);
+            var names = creatureKeys.Concat(templateKeys);
 
             var testKeys = creatureAttackDamageData.Keys.Union(templateAttackDamageData.Keys);
-            Assert.That(testKeys, Is.EquivalentTo(names));
+            Assert.That(testKeys, Is.Unique.And.EquivalentTo(names));
+
+            var computedKeys = CreatureConstants.GetAll()
+                .SelectMany(GetCreatureDamageKeys)
+                .Concat(CreatureConstants.Templates.GetAll().SelectMany(GetTemplateDamageKeys));
+            Assert.That(computedKeys, Is.Unique.And.EquivalentTo(names));
 
             AssertCollectionNames(names);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreatureAttackDamageData(string creature)
+        {
+            var keys = GetCreatureDamageKeys(creature);
+            foreach (var key in keys)
+            {
+                AssertCreatureAttackDamages(key, creature);
+            }
+        }
+
+        private IEnumerable<string> GetCreatureDamageKeys(string creature)
         {
             var attacks = creatureAttackData[creature].Select(DataHelper.Parse<AttackDataSelection>);
             var sizes = advancementData[creature]
@@ -71,43 +75,63 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             {
                 foreach (var size in sizes)
                 {
-                    var key = attack.BuildDamageKey(creature, size);
-                    Assert.That(creatureAttackDamageData, Contains.Key(key));
-                    AssertCreatureAttackDamages(key, creature);
+                    yield return attack.BuildDamageKey(creature, size);
                 }
             }
         }
 
         private void AssertCreatureAttackDamages(string key, string creature)
         {
-            AssertCreatureHasCorrectImprovedGrab(creatureAttackDamageData[key]);
-            AssertCreatureHasCorrectSpellLikeAbility(creatureAttackDamageData[key]);
-            AssertCreatureHasCorrectSpells(creatureAttackDamageData[key]);
-            AssertCreatureEffectDoesNotHaveDamage(creatureAttackDamageData[key]);
-            AssertNaturalAttacksHaveCorrectDamageTypes(creatureAttackDamageData[key]);
-            AssertPoisonAttacksHaveCorrectDamageTypes(creatureAttackDamageData[key]);
-            AssertDiseaseAttacksHaveCorrectDamageTypes(creatureAttackDamageData[key]);
+            Assert.That(creatureAttackDamageData, Contains.Key(key));
 
-            AssertCollection(key, creatureAttackDamageData[key]);
+            AssertCorrectImprovedGrab(key, creatureAttackDamageData[key]);
+            AssertCorrectSpellLikeAbility(key, creatureAttackDamageData[key]);
+            AssertCorrectSpells(key, creatureAttackDamageData[key]);
+            AssertNaturalAttacksHaveCorrectDamageTypes(key, creatureAttackDamageData[key]);
+            AssertPoisonAttacksHaveCorrectDamageTypes(creature, key, creatureAttackDamageData[key]);
+            AssertDiseaseAttacksHaveCorrectDamageTypes(creature, key, creatureAttackDamageData[key]);
 
-            CreatureWithSpellLikeAbilityAttack_HasSpellLikeAbilitySpecialQuality(creature);
-            CreatureWithPsionicAttack_HasPsionicSpecialQuality(creature);
-            CreatureWithSpellsAttack_HasMagicSpells(creature);
-            CreatureWithUnnaturalAttack_CanUseEquipment(creature);
+            AssertCollection(key, [.. creatureAttackDamageData[key]]);
+
+            CreatureWithUnnaturalAttack_CanUseEquipment(creature, key);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void TemplateAttackDamageData(string template)
         {
-            AssertCreatureHasCorrectImprovedGrab(templateAttackDamageData[template]);
-            AssertCreatureHasCorrectSpellLikeAbility(templateAttackDamageData[template]);
-            AssertCreatureHasCorrectSpells(templateAttackDamageData[template]);
-            AssertCreatureEffectDoesNotHaveDamage(templateAttackDamageData[template]);
-            AssertNaturalAttacksHaveCorrectDamageTypes(templateAttackDamageData[template]);
-            AssertPoisonAttacksHaveCorrectDamageTypes(templateAttackDamageData[template]);
-            AssertDiseaseAttacksHaveCorrectDamageTypes(templateAttackDamageData[template]);
+            var keys = GetTemplateDamageKeys(template);
+            foreach (var key in keys)
+            {
+                AssertTemplateAttackDamages(key, template);
+            }
+        }
 
-            AssertCollection(template, templateAttackDamageData[template]);
+        private IEnumerable<string> GetTemplateDamageKeys(string template)
+        {
+            var attacks = templateAttackData[template].Select(DataHelper.Parse<AttackDataSelection>);
+            var sizes = SizeConstants.GetOrdered();
+
+            foreach (var attack in attacks)
+            {
+                foreach (var size in sizes)
+                {
+                    yield return attack.BuildDamageKey(template, size);
+                }
+            }
+        }
+
+        private void AssertTemplateAttackDamages(string key, string template)
+        {
+            Assert.That(templateAttackDamageData, Contains.Key(key));
+
+            AssertCorrectImprovedGrab(key, templateAttackDamageData[key]);
+            AssertCorrectSpellLikeAbility(key, templateAttackDamageData[key]);
+            AssertCorrectSpells(key, templateAttackDamageData[key]);
+            AssertNaturalAttacksHaveCorrectDamageTypes(key, templateAttackDamageData[key]);
+            AssertPoisonAttacksHaveCorrectDamageTypes(template, key, templateAttackDamageData[key]);
+            AssertDiseaseAttacksHaveCorrectDamageTypes(template, key, templateAttackDamageData[key]);
+
+            AssertCollection(key, [.. templateAttackDamageData[key]]);
         }
 
         private void AssertNaturalAttacksHaveCorrectDamageTypes(string key, List<string> entries)
@@ -225,9 +249,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 Assert.That(creatureAttackDamageData[key], Is.Not.Empty, key);
         }
 
-        private void AssertCreatureHasCorrectImprovedGrab(string key, List<string> entries) => AssertEmpty(key, entries, "Improved Grab");
-        private void AssertCreatureHasCorrectSpells(string key, List<string> entries) => AssertEmpty(key, entries, "Spells");
-        private void AssertCreatureHasCorrectSpellLikeAbility(string key, List<string> entries) => AssertEmpty(key, entries, FeatConstants.SpecialQualities.SpellLikeAbility);
+        private void AssertCorrectImprovedGrab(string key, List<string> entries) => AssertEmpty(key, entries, "Improved Grab");
+        private void AssertCorrectSpells(string key, List<string> entries) => AssertEmpty(key, entries, "Spells");
+        private void AssertCorrectSpellLikeAbility(string key, List<string> entries) => AssertEmpty(key, entries, FeatConstants.SpecialQualities.SpellLikeAbility);
 
         private void AssertEmpty(string key, List<string> entries, string attackName)
         {

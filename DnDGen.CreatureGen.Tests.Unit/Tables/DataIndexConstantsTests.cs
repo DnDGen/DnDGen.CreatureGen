@@ -1,6 +1,5 @@
 ﻿using DnDGen.CreatureGen.Tables;
 using NUnit.Framework;
-using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Tables
 {
@@ -24,25 +23,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
             Assert.That(constant, Is.EqualTo(value));
         }
 
-        [TestCase(DataIndexConstants.SpecialQualityData.FeatNameIndex)]
-        [TestCase(DataIndexConstants.SpecialQualityData.PowerIndex)]
-        [TestCase(DataIndexConstants.SpecialQualityData.FocusIndex)]
-        [TestCase(DataIndexConstants.SpecialQualityData.FrequencyQuantityIndex)]
-        [TestCase(DataIndexConstants.SpecialQualityData.FrequencyTimePeriodIndex)]
-        [TestCase(DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex)]
-        [TestCase(DataIndexConstants.SpecialQualityData.RequiresEquipmentIndex)]
-        [TestCase(DataIndexConstants.SpecialQualityData.SaveAbilityIndex)]
-        [TestCase(DataIndexConstants.SpecialQualityData.SaveIndex)]
-        [TestCase(DataIndexConstants.SpecialQualityData.SaveBaseValueIndex)]
-        [TestCase(DataIndexConstants.SpecialQualityData.MinHitDiceIndex)]
-        [TestCase(DataIndexConstants.SpecialQualityData.MaxHitDiceIndex)]
-        public void SpecialQualityDataIndicesInitialized(int index)
-        {
-            var data = DataIndexConstants.SpecialQualityData.InitializeData();
-            Assert.That(data.Count, Is.GreaterThan(index));
-            Assert.That(data, Is.All.Empty);
-        }
-
         [TestCase(DataIndexConstants.AttackData.NameIndex, 0)]
         [TestCase(DataIndexConstants.AttackData.RequiredGenderIndex, 1)]
         [TestCase(DataIndexConstants.AttackData.IsNaturalIndex, 2)]
@@ -62,27 +42,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
             Assert.That(constant, Is.EqualTo(value));
         }
 
-        [TestCase(DataIndexConstants.AttackData.NameIndex)]
-        [TestCase(DataIndexConstants.AttackData.RequiredGenderIndex)]
-        [TestCase(DataIndexConstants.AttackData.IsNaturalIndex)]
-        [TestCase(DataIndexConstants.AttackData.IsMeleeIndex)]
-        [TestCase(DataIndexConstants.AttackData.IsPrimaryIndex)]
-        [TestCase(DataIndexConstants.AttackData.IsSpecialIndex)]
-        [TestCase(DataIndexConstants.AttackData.FrequencyQuantityIndex)]
-        [TestCase(DataIndexConstants.AttackData.FrequencyTimePeriodIndex)]
-        [TestCase(DataIndexConstants.AttackData.SaveAbilityIndex)]
-        [TestCase(DataIndexConstants.AttackData.SaveIndex)]
-        [TestCase(DataIndexConstants.AttackData.AttackTypeIndex)]
-        [TestCase(DataIndexConstants.AttackData.DamageEffectIndex)]
-        [TestCase(DataIndexConstants.AttackData.DamageBonusMultiplierIndex)]
-        [TestCase(DataIndexConstants.AttackData.SaveDcBonusIndex)]
-        public void AttackDataIndicesInitialized(int index)
-        {
-            var data = DataIndexConstants.AttackData.InitializeData();
-            Assert.That(data.Count, Is.GreaterThan(index));
-            Assert.That(data, Is.All.Empty);
-        }
-
         [TestCase(DataIndexConstants.AttackData.DamageData.RollIndex, 0)]
         [TestCase(DataIndexConstants.AttackData.DamageData.TypeIndex, 1)]
         [TestCase(DataIndexConstants.AttackData.DamageData.ConditionIndex, 2)]
@@ -91,14 +50,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
             Assert.That(constant, Is.EqualTo(value));
         }
 
-        [TestCase(DataIndexConstants.AttackData.DamageData.RollIndex)]
-        [TestCase(DataIndexConstants.AttackData.DamageData.TypeIndex)]
-        [TestCase(DataIndexConstants.AttackData.DamageData.ConditionIndex)]
-        public void DamageDataIndicesInitialized(int index)
+        [TestCase(DataIndexConstants.BonusData.BonusRollIndex, 0)]
+        [TestCase(DataIndexConstants.BonusData.TargetIndex, 1)]
+        [TestCase(DataIndexConstants.BonusData.ConditionIndex, 2)]
+        public void BonusDataIndex(int constant, int value)
         {
-            var data = DataIndexConstants.AttackData.DamageData.InitializeData();
-            Assert.That(data.Count, Is.GreaterThan(index));
-            Assert.That(data, Is.All.Empty);
+            Assert.That(constant, Is.EqualTo(value));
         }
 
         [TestCase(DataIndexConstants.FeatData.BaseAttackRequirementIndex, 0)]
@@ -116,25 +73,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         public void FeatDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));
-        }
-
-        [TestCase(DataIndexConstants.FeatData.BaseAttackRequirementIndex)]
-        [TestCase(DataIndexConstants.FeatData.FocusTypeIndex)]
-        [TestCase(DataIndexConstants.FeatData.PowerIndex)]
-        [TestCase(DataIndexConstants.FeatData.FrequencyQuantityIndex)]
-        [TestCase(DataIndexConstants.FeatData.FrequencyTimePeriodIndex)]
-        [TestCase(DataIndexConstants.FeatData.MinimumCasterLevelIndex)]
-        [TestCase(DataIndexConstants.FeatData.RequiresSpecialAttackIndex)]
-        [TestCase(DataIndexConstants.FeatData.RequiresSpellLikeAbilityIndex)]
-        [TestCase(DataIndexConstants.FeatData.RequiresNaturalArmorIndex)]
-        [TestCase(DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex)]
-        [TestCase(DataIndexConstants.FeatData.RequiredHandQuantityIndex)]
-        [TestCase(DataIndexConstants.FeatData.RequiresEquipmentIndex)]
-        public void FeatDataIndicesInitialized(int index)
-        {
-            var data = DataIndexConstants.FeatData.InitializeData();
-            Assert.That(data.Count, Is.GreaterThan(index));
-            Assert.That(data, Is.All.Empty);
         }
 
         [TestCase(DataIndexConstants.SkillSelectionData.BaseAbilityNameIndex, 0)]
@@ -158,22 +96,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         public void CreatureDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));
-        }
-
-        [TestCase(DataIndexConstants.CreatureData.ChallengeRating)]
-        [TestCase(DataIndexConstants.CreatureData.LevelAdjustment)]
-        [TestCase(DataIndexConstants.CreatureData.Reach)]
-        [TestCase(DataIndexConstants.CreatureData.Size)]
-        [TestCase(DataIndexConstants.CreatureData.Space)]
-        [TestCase(DataIndexConstants.CreatureData.CanUseEquipment)]
-        [TestCase(DataIndexConstants.CreatureData.CasterLevel)]
-        [TestCase(DataIndexConstants.CreatureData.NaturalArmor)]
-        [TestCase(DataIndexConstants.CreatureData.NumberOfHands)]
-        public void CreatureDataIndicesInitialized(int index)
-        {
-            var data = DataIndexConstants.CreatureData.InitializeData();
-            Assert.That(data.Count, Is.GreaterThan(index));
-            Assert.That(data, Is.All.Empty);
         }
 
         [TestCase(DataIndexConstants.AdvancementSelectionData.Size, 0)]

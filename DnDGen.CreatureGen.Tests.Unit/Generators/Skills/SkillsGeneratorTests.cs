@@ -1632,7 +1632,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266 }
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1660,8 +1660,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266 },
-                new BonusSelection { Target = creatureSkills[1], Bonus = 90210 },
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266 },
+                new BonusDataSelection { Target = creatureSkills[1], Bonus = 90210 },
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1694,8 +1694,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266 },
-                new BonusSelection { Target = creatureSkills[0], Bonus = 90210 }
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266 },
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 90210 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1729,7 +1729,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266, Condition = "condition" }
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266, Condition = "condition" }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1757,8 +1757,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266, Condition = "condition" },
-                new BonusSelection { Target = creatureSkills[0], Bonus = 90210, Condition = "other condition" }
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266, Condition = "condition" },
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 90210, Condition = "other condition" }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1792,8 +1792,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266, Condition = "condition" },
-                new BonusSelection { Target = creatureSkills[0], Bonus = 90210 }
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266, Condition = "condition" },
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 90210 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1840,7 +1840,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = SkillConstants.Build("skill", "focus"), Bonus = 9266 }
+                new BonusDataSelection { Target = SkillConstants.Build("skill", "focus"), Bonus = 9266 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1881,7 +1881,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = SkillConstants.Build("skill", "focus"), Bonus = 9266, Condition = "condition" }
+                new BonusDataSelection { Target = SkillConstants.Build("skill", "focus"), Bonus = 9266, Condition = "condition" }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1927,7 +1927,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = "skill", Bonus = 9266 }
+                new BonusDataSelection { Target = "skill", Bonus = 9266 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -1979,7 +1979,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = "skill", Bonus = 9266, Condition = "condition" }
+                new BonusDataSelection { Target = "skill", Bonus = 9266, Condition = "condition" }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -2013,8 +2013,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266 },
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266 }
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266 },
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -2544,7 +2544,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266 }
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
 
@@ -2572,7 +2572,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266 }
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureType.Name)).Returns(bonuses);
 
@@ -2602,7 +2602,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266 }
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("subtype")).Returns(bonuses);
 
@@ -2654,7 +2654,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[1], Bonus = 9266 }
+                new BonusDataSelection { Target = creatureSkills[1], Bonus = 9266 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
 
@@ -2683,7 +2683,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[1], Bonus = 9266 }
+                new BonusDataSelection { Target = creatureSkills[1], Bonus = 9266 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("creature skill 3")).Returns(bonuses);
 
@@ -2719,7 +2719,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[1], Bonus = 9266 }
+                new BonusDataSelection { Target = creatureSkills[1], Bonus = 9266 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(SkillConstants.Build("creature skill", "wrong focus"))).Returns(bonuses);
 
@@ -2748,7 +2748,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = "creature skill 3", Bonus = 9266 }
+                new BonusDataSelection { Target = "creature skill 3", Bonus = 9266 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
 
@@ -2784,7 +2784,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = SkillConstants.Build("creature skill", "wrong focus"), Bonus = 9266 }
+                new BonusDataSelection { Target = SkillConstants.Build("creature skill", "wrong focus"), Bonus = 9266 }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
 
@@ -2812,7 +2812,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 2;
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[0] } };
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = untrainedSkills[0] } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
@@ -2847,7 +2847,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 2;
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[0], Condition = "condition" } };
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = untrainedSkills[0], Condition = "condition" } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
@@ -2882,10 +2882,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 3;
 
-            var bonuses1 = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[0] } };
+            var bonuses1 = new[] { new BonusDataSelection { Bonus = 9266, Target = untrainedSkills[0] } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses1);
 
-            var bonuses2 = new[] { new BonusSelection { Bonus = 90210, Target = untrainedSkills[1] } };
+            var bonuses2 = new[] { new BonusDataSelection { Bonus = 90210, Target = untrainedSkills[1] } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[1])).Returns(bonuses2);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
@@ -2936,8 +2936,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses1 = new[]
             {
-                new BonusSelection { Bonus = 9266, Target = untrainedSkills[0] },
-                new BonusSelection { Bonus = 90210, Target = untrainedSkills[1] }
+                new BonusDataSelection { Bonus = 9266, Target = untrainedSkills[0] },
+                new BonusDataSelection { Bonus = 90210, Target = untrainedSkills[1] }
             };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses1);
 
@@ -2987,10 +2987,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 3;
 
-            var bonuses1 = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[1] } };
+            var bonuses1 = new[] { new BonusDataSelection { Bonus = 9266, Target = untrainedSkills[1] } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses1);
 
-            var bonuses2 = new[] { new BonusSelection { Bonus = 90210, Target = untrainedSkills[1] } };
+            var bonuses2 = new[] { new BonusDataSelection { Bonus = 90210, Target = untrainedSkills[1] } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[1])).Returns(bonuses2);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
@@ -3052,10 +3052,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[1])).Returns(wrongSkillSelection);
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[0] } };
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = untrainedSkills[0] } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(SkillConstants.Build("skill name", "focus"))).Returns(bonuses);
 
-            var wrongBonuses = new[] { new BonusSelection { Bonus = 666, Target = untrainedSkills[0] } };
+            var wrongBonuses = new[] { new BonusDataSelection { Bonus = 666, Target = untrainedSkills[0] } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(SkillConstants.Build("skill name", "other focus"))).Returns(wrongBonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
@@ -3110,10 +3110,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[1])).Returns(wrongSkillSelection);
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = SkillConstants.Build("skill name", "focus") } };
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = SkillConstants.Build("skill name", "focus") } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
 
-            var wrongBonuses = new[] { new BonusSelection { Bonus = 90210, Target = SkillConstants.Build("skill name", "other focus") } };
+            var wrongBonuses = new[] { new BonusDataSelection { Bonus = 90210, Target = SkillConstants.Build("skill name", "other focus") } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[1])).Returns(wrongBonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
@@ -3180,7 +3180,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[0])).Returns(wrongSkillSelection);
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = SkillConstants.Build("other skill name", "other focus") } };
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = SkillConstants.Build("other skill name", "other focus") } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(SkillConstants.Build("skill name", "focus"))).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
@@ -3229,7 +3229,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[0])).Returns(wrongSkillSelection);
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = SkillConstants.Build("other skill name", "other focus") } };
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = SkillConstants.Build("other skill name", "other focus") } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("skill name")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
@@ -3278,7 +3278,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[0])).Returns(wrongSkillSelection);
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = "other skill name" } };
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = "other skill name" } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(SkillConstants.Build("skill name", "focus"))).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
@@ -3327,7 +3327,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[0])).Returns(wrongSkillSelection);
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = "other skill name" } };
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = "other skill name" } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor("skill name")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
@@ -3361,7 +3361,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 7;
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[1] } };
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = untrainedSkills[1] } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(untrainedSkills[0])).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
@@ -3394,7 +3394,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 2;
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = creatureSkills[1] } };
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = creatureSkills[1] } };
             mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();

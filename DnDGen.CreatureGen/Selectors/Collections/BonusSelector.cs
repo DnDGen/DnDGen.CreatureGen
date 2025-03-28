@@ -15,7 +15,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             this.typeAndAmountSelector = typeAndAmountSelector;
         }
 
-        public IEnumerable<BonusSelection> SelectFor(string tableName, string source)
+        public IEnumerable<BonusDataSelection> SelectFor(string tableName, string source)
         {
             var typeAndAmountSelections = typeAndAmountSelector.Select(tableName, source);
             var bonusSelections = typeAndAmountSelections.Select(s => Parse(s));
@@ -23,13 +23,13 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             return bonusSelections;
         }
 
-        private BonusSelection Parse(TypeAndAmountSelection input)
+        private BonusDataSelection Parse(TypeAndAmountSelection input)
         {
-            var selection = new BonusSelection();
+            var selection = new BonusDataSelection();
 
             selection.Bonus = input.Amount;
 
-            var sections = input.Type.Split(BonusSelection.Divider);
+            var sections = input.Type.Split(BonusDataSelection.Divider);
             selection.Target = sections[0];
 
             if (sections.Length > 1)

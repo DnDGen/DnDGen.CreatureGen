@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Selectors.Helpers;
+using DnDGen.Infrastructure.Models;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
 
         protected void AssertTypesAndAmounts(string name, Dictionary<string, string> typesAndAmounts)
         {
-            var entries = typesAndAmounts.Select(kvp => TypeAndAmountHelper.Build(kvp.Key, kvp.Value)).ToArray();
+            var entries = typesAndAmounts.Select(kvp => DataHelper.Parse<TypeAndAmountDataSelection>(kvp.Key, kvp.Value)).ToArray();
             AssertDistinctCollection(name, entries);
         }
     }

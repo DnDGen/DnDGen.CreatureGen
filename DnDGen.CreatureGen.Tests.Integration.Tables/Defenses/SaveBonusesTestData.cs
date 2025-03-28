@@ -1334,7 +1334,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             var data = saveName;
 
             if (!string.IsNullOrEmpty(condition))
-                data += BonusSelection.Divider + condition;
+                data += BonusDataSelection.Divider + condition;
 
             return data;
         }

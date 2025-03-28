@@ -22,6 +22,7 @@ namespace DnDGen.CreatureGen.IoC.Modules
 
             Kernel.BindDataSelection<AdvancementDataSelection>();
             Kernel.BindDataSelection<AttackDataSelection>();
+            Kernel.BindDataSelection<DamageDataSelection>();
         }
     }
 }

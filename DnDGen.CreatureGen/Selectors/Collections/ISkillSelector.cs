@@ -6,6 +6,6 @@ namespace DnDGen.CreatureGen.Selectors.Collections
     internal interface ISkillSelector
     {
         SkillSelection SelectFor(string skill);
-        IEnumerable<BonusSelection> SelectBonusesFor(string source);
+        IEnumerable<BonusDataSelection> SelectBonusesFor(string source);
     }
 }

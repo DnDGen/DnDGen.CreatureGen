@@ -27,6 +27,13 @@
             }
         }
 
+        internal static class BonusData
+        {
+            public const int BonusRollIndex = 0;
+            public const int TargetIndex = 1;
+            public const int ConditionIndex = 2;
+        }
+
         internal static class SpecialQualityData
         {
             public const int FeatNameIndex = 0;

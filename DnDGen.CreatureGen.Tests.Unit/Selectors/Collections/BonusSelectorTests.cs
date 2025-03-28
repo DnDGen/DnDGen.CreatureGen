@@ -77,7 +77,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         {
             var typesAndAmounts = new[]
             {
-                new TypeAndAmountSelection { Type = $"type{BonusSelection.Divider}{condition}", Amount = 9266 },
+                new TypeAndAmountSelection { Type = $"type{BonusDataSelection.Divider}{condition}", Amount = 9266 },
             };
 
             mockTypeAndAmountSelector.Setup(s => s.Select("table name", "source")).Returns(typesAndAmounts);

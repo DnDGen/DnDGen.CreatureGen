@@ -16,7 +16,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         private ISkillSelector skillSelector;
         private Mock<ICollectionSelector> mockInnerSelector;
         private Mock<IBonusSelector> mockBonusSelector;
-        private List<BonusSelection> bonusSelections;
+        private List<BonusDataSelection> bonusSelections;
 
         [SetUp]
         public void Setup()
@@ -25,7 +25,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             mockBonusSelector = new Mock<IBonusSelector>();
             skillSelector = new SkillSelector(mockInnerSelector.Object, mockBonusSelector.Object);
 
-            bonusSelections = new List<BonusSelection>();
+            bonusSelections = new List<BonusDataSelection>();
 
             mockBonusSelector.Setup(s => s.SelectFor(TableNameConstants.TypeAndAmount.SkillBonuses, "creature")).Returns(bonusSelections);
         }
@@ -84,7 +84,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             string condition = "",
             int bonus = 1)
         {
-            var bonusSelection = new BonusSelection();
+            var bonusSelection = new BonusDataSelection();
             bonusSelection.Bonus = bonus;
             bonusSelection.Target = SkillConstants.Build(skill, focus);
             bonusSelection.Condition = condition;

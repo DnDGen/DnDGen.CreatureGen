@@ -2520,7 +2520,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             var data = SkillConstants.Build(skillName, focus);
 
             if (!string.IsNullOrEmpty(condition))
-                data += BonusSelection.Divider + condition;
+                data += BonusDataSelection.Divider + condition;
 
             return data;
         }

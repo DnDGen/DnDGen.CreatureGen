@@ -1,5 +1,6 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Integration.TestData;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,17 @@ using System.Linq;
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
 {
     [TestFixture]
-    public class SaveBonusesTests : TypesAndAmountsTests
+    public class SaveBonusesTests : CollectionTests
     {
-        protected override string tableName => TableNameConstants.TypeAndAmount.SaveBonuses;
+        protected override string tableName => TableNameConstants.Collection.SaveBonuses;
+
+        private Dictionary<string, List<string>> saveBonusesData;
+
+        [OneTimeSetUp]
+        public void OneTimeSetup()
+        {
+            saveBonusesData = SaveBonusesTestData.GetSaveBonusesData();
+        }
 
         [Test]
         public void SaveBonusesNames()
@@ -24,19 +33,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             AssertCollectionNames(names);
         }
 
-        [TestCaseSource(typeof(SaveBonusesTestData), nameof(SaveBonusesTestData.Creatures))]
-        [TestCaseSource(typeof(SaveBonusesTestData), nameof(SaveBonusesTestData.Types))]
-        [TestCaseSource(typeof(SaveBonusesTestData), nameof(SaveBonusesTestData.Subtypes))]
-        [TestCaseSource(typeof(SaveBonusesTestData), nameof(SaveBonusesTestData.Templates))]
-        public void SaveBonuses(string source, Dictionary<string, int> saveAndBonus)
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
+        public void SaveBonuses(string source)
         {
-            if (!saveAndBonus.Any())
+            if (!saveBonusesData[source].Any())
                 Assert.Fail("Test case did not specify saves bonuses or NONE");
 
-            if (saveAndBonus.ContainsKey(SaveBonusesTestData.None))
-                saveAndBonus.Clear();
+            if (saveBonusesData[source][0] == SaveBonusesTestData.None)
+                saveBonusesData[source].Clear();
 
-            AssertTypesAndAmounts(source, saveAndBonus);
+            AssertCollection(source, [.. saveBonusesData[source]]);
         }
     }
 }

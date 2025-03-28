@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Selectors.Selections;
+using DnDGen.CreatureGen.Tables;
 using NUnit.Framework;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
@@ -32,9 +33,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         public void Map_FromString_ReturnsSelection()
         {
             var data = new string[selection.SectionCount];
-            data[DataIndexConstants.Weapon.DamageData.ConditionIndex] = "my condition";
-            data[DataIndexConstants.Weapon.DamageData.RollIndex] = "my roll";
-            data[DataIndexConstants.Weapon.DamageData.TypeIndex] = "my type";
+            data[DataIndexConstants.AttackData.DamageData.ConditionIndex] = "my condition";
+            data[DataIndexConstants.AttackData.DamageData.RollIndex] = "my roll";
+            data[DataIndexConstants.AttackData.DamageData.TypeIndex] = "my type";
 
             var newSelection = DamageDataSelection.Map(data);
             Assert.That(newSelection, Is.Not.Null);
@@ -49,18 +50,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             var selection = new DamageDataSelection { Condition = "my condition", Roll = "my roll", Type = "my type" };
             var rawData = DamageDataSelection.Map(selection);
             Assert.That(rawData.Length, Is.EqualTo(selection.SectionCount));
-            Assert.That(rawData[DataIndexConstants.Weapon.DamageData.ConditionIndex], Is.EqualTo("my condition"));
-            Assert.That(rawData[DataIndexConstants.Weapon.DamageData.RollIndex], Is.EqualTo("my roll"));
-            Assert.That(rawData[DataIndexConstants.Weapon.DamageData.TypeIndex], Is.EqualTo("my type"));
+            Assert.That(rawData[DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("my condition"));
+            Assert.That(rawData[DataIndexConstants.AttackData.DamageData.RollIndex], Is.EqualTo("my roll"));
+            Assert.That(rawData[DataIndexConstants.AttackData.DamageData.TypeIndex], Is.EqualTo("my type"));
         }
 
         [Test]
         public void MapTo_ReturnsSelection()
         {
             var data = new string[selection.SectionCount];
-            data[DataIndexConstants.Weapon.DamageData.ConditionIndex] = "my condition";
-            data[DataIndexConstants.Weapon.DamageData.RollIndex] = "my roll";
-            data[DataIndexConstants.Weapon.DamageData.TypeIndex] = "my type";
+            data[DataIndexConstants.AttackData.DamageData.ConditionIndex] = "my condition";
+            data[DataIndexConstants.AttackData.DamageData.RollIndex] = "my roll";
+            data[DataIndexConstants.AttackData.DamageData.TypeIndex] = "my type";
 
             var newSelection = selection.MapTo(data);
             Assert.That(newSelection, Is.Not.Null);
@@ -75,9 +76,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             var selection = new DamageDataSelection { Condition = "my condition", Roll = "my roll", Type = "my type" };
             var rawData = selection.MapFrom(selection);
             Assert.That(rawData.Length, Is.EqualTo(selection.SectionCount));
-            Assert.That(rawData[DataIndexConstants.Weapon.DamageData.ConditionIndex], Is.EqualTo("my condition"));
-            Assert.That(rawData[DataIndexConstants.Weapon.DamageData.RollIndex], Is.EqualTo("my roll"));
-            Assert.That(rawData[DataIndexConstants.Weapon.DamageData.TypeIndex], Is.EqualTo("my type"));
+            Assert.That(rawData[DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("my condition"));
+            Assert.That(rawData[DataIndexConstants.AttackData.DamageData.RollIndex], Is.EqualTo("my roll"));
+            Assert.That(rawData[DataIndexConstants.AttackData.DamageData.TypeIndex], Is.EqualTo("my type"));
         }
     }
 }

@@ -29,7 +29,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         private List<string> strongSaves;
         private HitPoints hitPoints;
         private CreatureType creatureType;
-        private Dictionary<string, List<BonusSelection>> racialBonuses;
+        private Dictionary<string, List<BonusDataSelection>> racialBonuses;
 
         [SetUp]
         public void Setup()
@@ -45,7 +45,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             strongSaves = new List<string>();
             hitPoints = new HitPoints();
             creatureType = new CreatureType();
-            racialBonuses = new Dictionary<string, List<BonusSelection>>();
+            racialBonuses = new Dictionary<string, List<BonusDataSelection>>();
 
             hitPoints.HitDice.Add(new HitDice { Quantity = 1 });
             creatureType.Name = "creature type";
@@ -53,8 +53,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
             abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
             abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
-            racialBonuses["creature"] = new List<BonusSelection>();
-            racialBonuses[creatureType.Name] = new List<BonusSelection>();
+            racialBonuses["creature"] = new List<BonusDataSelection>();
+            racialBonuses[creatureType.Name] = new List<BonusDataSelection>();
 
             reflexSaveFeats.Add("other feat");
             fortitudeSaveFeats.Add("other feat");
@@ -322,7 +322,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         {
             var counter = 1;
 
-            racialBonuses["creature"].Add(new BonusSelection { Target = source, Bonus = counter++ });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = source, Bonus = counter++ });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -360,7 +360,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         {
             var counter = 1;
 
-            racialBonuses["creature"].Add(new BonusSelection { Target = source, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = source, Bonus = counter++, Condition = $"condition {counter++}" });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -398,10 +398,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         {
             var counter = 1;
 
-            racialBonuses["creature"].Add(new BonusSelection { Target = GroupConstants.All, Bonus = counter++ });
-            racialBonuses["creature"].Add(new BonusSelection { Target = SaveConstants.Fortitude, Bonus = counter++ });
-            racialBonuses["creature"].Add(new BonusSelection { Target = SaveConstants.Reflex, Bonus = counter++ });
-            racialBonuses["creature"].Add(new BonusSelection { Target = SaveConstants.Will, Bonus = counter++ });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = GroupConstants.All, Bonus = counter++ });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = SaveConstants.Fortitude, Bonus = counter++ });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = SaveConstants.Reflex, Bonus = counter++ });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = SaveConstants.Will, Bonus = counter++ });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -439,14 +439,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         {
             var counter = 1;
 
-            racialBonuses["creature"].Add(new BonusSelection { Target = GroupConstants.All, Bonus = counter++ });
-            racialBonuses["creature"].Add(new BonusSelection { Target = GroupConstants.All, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["creature"].Add(new BonusSelection { Target = SaveConstants.Fortitude, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["creature"].Add(new BonusSelection { Target = SaveConstants.Fortitude, Bonus = counter++ });
-            racialBonuses["creature"].Add(new BonusSelection { Target = SaveConstants.Reflex, Bonus = counter++ });
-            racialBonuses["creature"].Add(new BonusSelection { Target = SaveConstants.Reflex, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["creature"].Add(new BonusSelection { Target = SaveConstants.Will, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["creature"].Add(new BonusSelection { Target = SaveConstants.Will, Bonus = counter++ });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = GroupConstants.All, Bonus = counter++ });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = GroupConstants.All, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = SaveConstants.Fortitude, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = SaveConstants.Fortitude, Bonus = counter++ });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = SaveConstants.Reflex, Bonus = counter++ });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = SaveConstants.Reflex, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = SaveConstants.Will, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = SaveConstants.Will, Bonus = counter++ });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -484,10 +484,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         {
             var counter = 1;
 
-            racialBonuses["creature"].Add(new BonusSelection { Target = GroupConstants.All, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["creature"].Add(new BonusSelection { Target = SaveConstants.Fortitude, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["creature"].Add(new BonusSelection { Target = SaveConstants.Reflex, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["creature"].Add(new BonusSelection { Target = SaveConstants.Will, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = GroupConstants.All, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = SaveConstants.Fortitude, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = SaveConstants.Reflex, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = SaveConstants.Will, Bonus = counter++, Condition = $"condition {counter++}" });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -525,7 +525,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         {
             var counter = 1;
 
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = source, Bonus = counter++ });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = source, Bonus = counter++ });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -563,7 +563,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         {
             var counter = 1;
 
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = source, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = source, Bonus = counter++, Condition = $"condition {counter++}" });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -601,10 +601,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         {
             var counter = 1;
 
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = GroupConstants.All, Bonus = counter++ });
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = SaveConstants.Fortitude, Bonus = counter++ });
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = SaveConstants.Reflex, Bonus = counter++ });
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = SaveConstants.Will, Bonus = counter++ });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = GroupConstants.All, Bonus = counter++ });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = SaveConstants.Fortitude, Bonus = counter++ });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = SaveConstants.Reflex, Bonus = counter++ });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = SaveConstants.Will, Bonus = counter++ });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -642,14 +642,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         {
             var counter = 1;
 
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = GroupConstants.All, Bonus = counter++ });
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = GroupConstants.All, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = SaveConstants.Fortitude, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = SaveConstants.Fortitude, Bonus = counter++ });
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = SaveConstants.Reflex, Bonus = counter++ });
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = SaveConstants.Reflex, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = SaveConstants.Will, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = SaveConstants.Will, Bonus = counter++ });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = GroupConstants.All, Bonus = counter++ });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = GroupConstants.All, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = SaveConstants.Fortitude, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = SaveConstants.Fortitude, Bonus = counter++ });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = SaveConstants.Reflex, Bonus = counter++ });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = SaveConstants.Reflex, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = SaveConstants.Will, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = SaveConstants.Will, Bonus = counter++ });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -687,10 +687,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         {
             var counter = 1;
 
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = GroupConstants.All, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = SaveConstants.Fortitude, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = SaveConstants.Reflex, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = SaveConstants.Will, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = GroupConstants.All, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = SaveConstants.Fortitude, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = SaveConstants.Reflex, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = SaveConstants.Will, Bonus = counter++, Condition = $"condition {counter++}" });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -730,8 +730,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
             creatureType.SubTypes = new[] { "subtype 1" };
 
-            racialBonuses["subtype 1"] = new List<BonusSelection>();
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = source, Bonus = counter++ });
+            racialBonuses["subtype 1"] = new List<BonusDataSelection>();
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = source, Bonus = counter++ });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -771,8 +771,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
             creatureType.SubTypes = new[] { "subtype 1" };
 
-            racialBonuses["subtype 1"] = new List<BonusSelection>();
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = source, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["subtype 1"] = new List<BonusDataSelection>();
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = source, Bonus = counter++, Condition = $"condition {counter++}" });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -812,11 +812,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
             creatureType.SubTypes = new[] { "subtype 1" };
 
-            racialBonuses["subtype 1"] = new List<BonusSelection>();
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = GroupConstants.All, Bonus = counter++ });
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = SaveConstants.Fortitude, Bonus = counter++ });
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = SaveConstants.Reflex, Bonus = counter++ });
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = SaveConstants.Will, Bonus = counter++ });
+            racialBonuses["subtype 1"] = new List<BonusDataSelection>();
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = GroupConstants.All, Bonus = counter++ });
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = SaveConstants.Fortitude, Bonus = counter++ });
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = SaveConstants.Reflex, Bonus = counter++ });
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = SaveConstants.Will, Bonus = counter++ });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -856,15 +856,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
             creatureType.SubTypes = new[] { "subtype 1" };
 
-            racialBonuses["subtype 1"] = new List<BonusSelection>();
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = GroupConstants.All, Bonus = counter++ });
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = GroupConstants.All, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = SaveConstants.Fortitude, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = SaveConstants.Fortitude, Bonus = counter++ });
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = SaveConstants.Reflex, Bonus = counter++ });
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = SaveConstants.Reflex, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = SaveConstants.Will, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = SaveConstants.Will, Bonus = counter++ });
+            racialBonuses["subtype 1"] = new List<BonusDataSelection>();
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = GroupConstants.All, Bonus = counter++ });
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = GroupConstants.All, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = SaveConstants.Fortitude, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = SaveConstants.Fortitude, Bonus = counter++ });
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = SaveConstants.Reflex, Bonus = counter++ });
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = SaveConstants.Reflex, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = SaveConstants.Will, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = SaveConstants.Will, Bonus = counter++ });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -904,11 +904,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
             creatureType.SubTypes = new[] { "subtype 1" };
 
-            racialBonuses["subtype 1"] = new List<BonusSelection>();
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = GroupConstants.All, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = SaveConstants.Fortitude, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = SaveConstants.Reflex, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = SaveConstants.Will, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["subtype 1"] = new List<BonusDataSelection>();
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = GroupConstants.All, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = SaveConstants.Fortitude, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = SaveConstants.Reflex, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = SaveConstants.Will, Bonus = counter++, Condition = $"condition {counter++}" });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -948,14 +948,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
             creatureType.SubTypes = new[] { "subtype 1", "subtype 2", "subtype 666" };
 
-            racialBonuses["subtype 1"] = new List<BonusSelection>();
-            racialBonuses["subtype 2"] = new List<BonusSelection>();
-            racialBonuses["subtype 666"] = new List<BonusSelection>();
+            racialBonuses["subtype 1"] = new List<BonusDataSelection>();
+            racialBonuses["subtype 2"] = new List<BonusDataSelection>();
+            racialBonuses["subtype 666"] = new List<BonusDataSelection>();
 
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = GroupConstants.All, Bonus = counter++ });
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = SaveConstants.Fortitude, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["subtype 2"].Add(new BonusSelection { Target = SaveConstants.Will, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["subtype 2"].Add(new BonusSelection { Target = SaveConstants.Reflex, Bonus = counter++ });
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = GroupConstants.All, Bonus = counter++ });
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = SaveConstants.Fortitude, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["subtype 2"].Add(new BonusDataSelection { Target = SaveConstants.Will, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["subtype 2"].Add(new BonusDataSelection { Target = SaveConstants.Reflex, Bonus = counter++ });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -993,26 +993,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         {
             var counter = 1;
 
-            racialBonuses["creature"].Add(new BonusSelection { Target = GroupConstants.All, Bonus = counter++ });
-            racialBonuses["creature"].Add(new BonusSelection { Target = GroupConstants.All, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["creature"].Add(new BonusSelection { Target = SaveConstants.Fortitude, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["creature"].Add(new BonusSelection { Target = SaveConstants.Fortitude, Bonus = counter++ });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = GroupConstants.All, Bonus = counter++ });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = GroupConstants.All, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = SaveConstants.Fortitude, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = SaveConstants.Fortitude, Bonus = counter++ });
 
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = SaveConstants.Reflex, Bonus = counter++ });
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = SaveConstants.Reflex, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = SaveConstants.Will, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = SaveConstants.Will, Bonus = counter++ });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = SaveConstants.Reflex, Bonus = counter++ });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = SaveConstants.Reflex, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = SaveConstants.Will, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = SaveConstants.Will, Bonus = counter++ });
 
             creatureType.SubTypes = new[] { "subtype 1", "subtype 2", "subtype 666" };
 
-            racialBonuses["subtype 1"] = new List<BonusSelection>();
-            racialBonuses["subtype 2"] = new List<BonusSelection>();
-            racialBonuses["subtype 666"] = new List<BonusSelection>();
+            racialBonuses["subtype 1"] = new List<BonusDataSelection>();
+            racialBonuses["subtype 2"] = new List<BonusDataSelection>();
+            racialBonuses["subtype 666"] = new List<BonusDataSelection>();
 
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = GroupConstants.All, Bonus = counter++ });
-            racialBonuses["subtype 1"].Add(new BonusSelection { Target = SaveConstants.Fortitude, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["subtype 2"].Add(new BonusSelection { Target = SaveConstants.Will, Bonus = counter++, Condition = $"condition {counter++}" });
-            racialBonuses["subtype 2"].Add(new BonusSelection { Target = SaveConstants.Reflex, Bonus = counter++ });
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = GroupConstants.All, Bonus = counter++ });
+            racialBonuses["subtype 1"].Add(new BonusDataSelection { Target = SaveConstants.Fortitude, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["subtype 2"].Add(new BonusDataSelection { Target = SaveConstants.Will, Bonus = counter++, Condition = $"condition {counter++}" });
+            racialBonuses["subtype 2"].Add(new BonusDataSelection { Target = SaveConstants.Reflex, Bonus = counter++ });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));

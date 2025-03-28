@@ -14,7 +14,6 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public override Func<DamageDataSelection, string[]> MapFrom => Map;
 
         public override int SectionCount => 3;
-        public override char Separator => '#';
 
         public DamageDataSelection()
         {

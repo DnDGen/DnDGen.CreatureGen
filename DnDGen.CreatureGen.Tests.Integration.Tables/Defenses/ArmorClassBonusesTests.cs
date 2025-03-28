@@ -4,15 +4,14 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using NUnit.Framework;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
 {
     [TestFixture]
-    public class ArmorClassBonusesTests : TypesAndAmountsTests
+    public class ArmorClassBonusesTests : CollectionTests
     {
-        protected override string tableName => TableNameConstants.TypeAndAmount.ArmorClassBonuses;
+        protected override string tableName => TableNameConstants.Collection.ArmorClassBonuses;
 
         [Test]
         public void ArmorClassBonusesNames()
@@ -720,18 +719,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         [TestCase(CreatureConstants.Types.Subtypes.Water)]
         public void ArmorClassBonus(string name, string target = null, int bonus = 0, string condition = null)
         {
-            var typesAndAmounts = new Dictionary<string, int>();
-
-            if (!string.IsNullOrEmpty(target))
+            if (string.IsNullOrEmpty(target))
             {
-                var type = target;
-                if (!string.IsNullOrEmpty(condition))
-                    type += $"{BonusSelection.Divider}{condition}";
-
-                typesAndAmounts[type] = bonus;
+                AssertCollection(name, []);
+                return;
             }
 
-            AssertTypesAndAmounts(name, typesAndAmounts);
+            var data = Infrastructure.Helpers.DataHelper.Parse(new BonusDataSelection
+            {
+                Target = target,
+                BonusRoll = bonus.ToString(),
+                Condition = condition
+            });
+
+            AssertCollection(name, data);
         }
     }
 }

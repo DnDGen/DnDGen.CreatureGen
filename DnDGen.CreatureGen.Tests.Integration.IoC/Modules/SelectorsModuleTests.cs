@@ -1,5 +1,7 @@
 ﻿using DnDGen.CreatureGen.Selectors;
 using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
+using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 
 namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
@@ -59,6 +61,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         public void ItemSelectorIsInjected()
         {
             AssertNotSingleton<IItemSelector>();
+        }
+
+        [Test]
+        public void CollectionData_AdvancementDataSelectorIsNotConstructedAsSingleton()
+        {
+            AssertNotSingleton<ICollectionDataSelector<AdvancementDataSelection>>();
+        }
+
+        [Test]
+        public void CollectionData_AttackDataSelectorIsNotConstructedAsSingleton()
+        {
+            AssertNotSingleton<ICollectionDataSelector<AttackDataSelection>>();
+        }
+
+        [Test]
+        public void CollectionData_DamageDataSelectorIsNotConstructedAsSingleton()
+        {
+            AssertNotSingleton<ICollectionDataSelector<DamageDataSelection>>();
         }
     }
 }

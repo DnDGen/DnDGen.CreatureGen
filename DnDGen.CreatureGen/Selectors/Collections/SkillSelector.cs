@@ -31,7 +31,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             return selection;
         }
 
-        public IEnumerable<BonusSelection> SelectBonusesFor(string source)
+        public IEnumerable<BonusDataSelection> SelectBonusesFor(string source)
         {
             var bonusSelections = bonusSelector.SelectFor(TableNameConstants.TypeAndAmount.SkillBonuses, source);
 
