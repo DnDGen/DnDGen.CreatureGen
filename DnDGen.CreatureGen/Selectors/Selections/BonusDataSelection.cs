@@ -1,6 +1,5 @@
 ﻿using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Models;
-using DnDGen.RollGen;
 using System;
 
 namespace DnDGen.CreatureGen.Selectors.Selections
@@ -8,8 +7,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
     internal class BonusDataSelection : DataSelection<BonusDataSelection>
     {
         public string Target { get; set; }
-        public string BonusRoll { get; set; }
-        public int Bonus { get; private set; }
+        public int Bonus { get; set; }
         public string Condition { get; set; }
 
         public override Func<string[], BonusDataSelection> MapTo => Map;
@@ -19,7 +17,6 @@ namespace DnDGen.CreatureGen.Selectors.Selections
 
         public BonusDataSelection()
         {
-            BonusRoll = string.Empty;
             Target = string.Empty;
             Condition = string.Empty;
         }
@@ -28,7 +25,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         {
             return new BonusDataSelection
             {
-                BonusRoll = splitData[DataIndexConstants.BonusData.BonusRollIndex],
+                Bonus = Convert.ToInt32(splitData[DataIndexConstants.BonusData.BonusIndex]),
                 Target = splitData[DataIndexConstants.BonusData.TargetIndex],
                 Condition = splitData[DataIndexConstants.BonusData.ConditionIndex],
             };
@@ -37,16 +34,11 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public static string[] Map(BonusDataSelection selection)
         {
             var data = new string[selection.SectionCount];
-            data[DataIndexConstants.BonusData.BonusRollIndex] = selection.BonusRoll;
+            data[DataIndexConstants.BonusData.BonusIndex] = selection.Bonus.ToString();
             data[DataIndexConstants.BonusData.TargetIndex] = selection.Target;
             data[DataIndexConstants.BonusData.ConditionIndex] = selection.Condition;
 
             return data;
-        }
-
-        public void SetAdditionalProperties(Dice dice)
-        {
-            Bonus = dice.Roll(BonusRoll).AsSum();
         }
     }
 }

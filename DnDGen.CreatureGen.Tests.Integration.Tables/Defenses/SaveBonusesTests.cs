@@ -29,7 +29,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             var templates = CreatureConstants.Templates.GetAll();
 
             var names = creatures.Union(types).Union(subtypes).Union(templates);
-
+            Assert.That(saveBonusesData.Keys, Is.EquivalentTo(names));
             AssertCollectionNames(names);
         }
 

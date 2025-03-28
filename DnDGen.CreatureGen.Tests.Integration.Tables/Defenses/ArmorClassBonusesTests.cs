@@ -728,7 +728,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             var data = Infrastructure.Helpers.DataHelper.Parse(new BonusDataSelection
             {
                 Target = target,
-                BonusRoll = bonus.ToString(),
+                Bonus = bonus,
                 Condition = condition
             });
 
