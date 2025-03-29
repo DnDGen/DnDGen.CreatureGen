@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Integration.TestData;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,17 @@ using System.Linq;
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 {
     [TestFixture]
-    public class SkillBonusesTests : TypesAndAmountsTests
+    public class SkillBonusesTests : CollectionTests
     {
-        protected override string tableName => TableNameConstants.TypeAndAmount.SkillBonuses;
+        protected override string tableName => TableNameConstants.Collection.SkillBonuses;
+
+        private Dictionary<string, List<string>> skillBonusesData;
+
+        [OneTimeSetUp]
+        public void OneTimeSetup()
+        {
+            skillBonusesData = SkillBonusesTestData.GetSkillBonusesData();
+        }
 
         [Test]
         public void SkillBonusesNames()
@@ -31,34 +40,38 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             };
 
             var names = creatures.Union(types).Union(subtypes).Union(skills).Union(nonFociSkills);
-
+            Assert.That(skillBonusesData.Keys, Is.EquivalentTo(names));
             AssertCollectionNames(names);
         }
 
-        [TestCaseSource(typeof(SkillBonusesTestData), nameof(SkillBonusesTestData.Creatures))]
-        [TestCaseSource(typeof(SkillBonusesTestData), nameof(SkillBonusesTestData.Types))]
-        [TestCaseSource(typeof(SkillBonusesTestData), nameof(SkillBonusesTestData.Subtypes))]
-        public void SkillBonuses(string source, Dictionary<string, int> skillAndBonus)
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
+        public void SkillBonuses(string source)
         {
-            if (!skillAndBonus.Any())
+            Assert.That(skillBonusesData, Contains.Key(source));
+
+            if (!skillBonusesData[source].Any())
                 Assert.Fail("Test case did not specify skill bonuses or NONE");
 
-            if (skillAndBonus.ContainsKey(SkillBonusesTestData.None))
-                skillAndBonus.Clear();
+            if (skillBonusesData[source][0] == SkillBonusesTestData.None)
+                skillBonusesData[source].Clear();
 
-            AssertTypesAndAmounts(source, skillAndBonus);
+            AssertCollection(source, [.. skillBonusesData[source]]);
         }
 
         [TestCaseSource(typeof(SkillBonusesTestData), nameof(SkillBonusesTestData.SkillSynergies))]
-        public void SkillSynergies(string source, Dictionary<string, int> skillAndBonus)
+        public void SkillSynergies(string source)
         {
-            if (!skillAndBonus.Any())
+            Assert.That(skillBonusesData, Contains.Key(source));
+
+            if (!skillBonusesData[source].Any())
                 Assert.Fail("Test case did not specify skill bonuses or NONE");
 
-            if (skillAndBonus.ContainsKey(SkillBonusesTestData.None))
-                skillAndBonus.Clear();
+            if (skillBonusesData[source][0] == SkillBonusesTestData.None)
+                skillBonusesData[source].Clear();
 
-            AssertTypesAndAmounts(source, skillAndBonus);
+            AssertCollection(source, [.. skillBonusesData[source]]);
         }
     }
 }

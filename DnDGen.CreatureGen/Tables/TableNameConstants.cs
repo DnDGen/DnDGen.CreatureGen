@@ -33,7 +33,9 @@
             public const string RequiredAlignments = "RequiredAlignments";
             public const string RequiredFeats = "RequiredFeats";
             public const string RequiredSizes = "RequiredSizes";
+            public const string SaveBonuses = "SaveBonuses";
             public const string SaveGroups = "SaveGroups";
+            public const string SkillBonuses = "SkillBonuses";
             public const string SkillData = "SkillData";
             public const string SkillGroups = "SkillGroups";
             public const string SpecialQualityData = "SpecialQualityData";
@@ -64,8 +66,6 @@
             public const string HitDice = "HitDice";
             public const string KnownSpells = "KnownSpells";
             public const string Lengths = "Lengths";
-            public const string SaveBonuses = "SaveBonuses";
-            public const string SkillBonuses = "SkillBonuses";
             public const string SpellDomains = "SpellDomains";
             public const string SpellLevels = "SpellLevels";
             public const string SpellsPerDay = "SpellsPerDay";

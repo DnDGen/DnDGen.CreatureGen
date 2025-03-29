@@ -3,7 +3,6 @@ using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Helpers;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,1294 +14,1279 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
 
         public static Dictionary<string, List<string>> GetCreatureSaveBonuses()
         {
-            var testCases = new Dictionary<string, List<string>>();
-
-            testCases[CreatureConstants.Aasimar] = [None];
-
-            testCases[CreatureConstants.Aboleth] = [None];
-
-            testCases[CreatureConstants.Achaierai] = [None];
-
-            testCases[CreatureConstants.Allip] = [None];
-
-            testCases[CreatureConstants.Androsphinx] = [None];
-
-            testCases[CreatureConstants.Angel_AstralDeva] = [None];
-
-            testCases[CreatureConstants.Angel_Planetar] = [None];
-
-            testCases[CreatureConstants.Angel_Solar] = [None];
-
-            testCases[CreatureConstants.AnimatedObject_Colossal] = [None];
-            testCases[CreatureConstants.AnimatedObject_Colossal_Flexible] = [None];
-            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs] = [None];
-            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Colossal_Sheetlike] = [None];
-            testCases[CreatureConstants.AnimatedObject_Colossal_TwoLegs] = [None];
-            testCases[CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Colossal_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Gargantuan] = [None];
-            testCases[CreatureConstants.AnimatedObject_Gargantuan_Flexible] = [None];
-            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs] = [None];
-            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike] = [None];
-            testCases[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs] = [None];
-            testCases[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Gargantuan_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Huge] = [None];
-            testCases[CreatureConstants.AnimatedObject_Huge_Flexible] = [None];
-            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs] = [None];
-            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Huge_Sheetlike] = [None];
-            testCases[CreatureConstants.AnimatedObject_Huge_TwoLegs] = [None];
-            testCases[CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Huge_Wheels_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Huge_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Large] = [None];
-            testCases[CreatureConstants.AnimatedObject_Large_Flexible] = [None];
-            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs] = [None];
-            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Large_Sheetlike] = [None];
-            testCases[CreatureConstants.AnimatedObject_Large_TwoLegs] = [None];
-            testCases[CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Large_Wheels_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Large_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Medium] = [None];
-            testCases[CreatureConstants.AnimatedObject_Medium_Flexible] = [None];
-            testCases[CreatureConstants.AnimatedObject_Medium_MultipleLegs] = [None];
-            testCases[CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Medium_Sheetlike] = [None];
-            testCases[CreatureConstants.AnimatedObject_Medium_TwoLegs] = [None];
-            testCases[CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Medium_Wheels_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Medium_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Small] = [None];
-            testCases[CreatureConstants.AnimatedObject_Small_Flexible] = [None];
-            testCases[CreatureConstants.AnimatedObject_Small_MultipleLegs] = [None];
-            testCases[CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Small_Sheetlike] = [None];
-            testCases[CreatureConstants.AnimatedObject_Small_TwoLegs] = [None];
-            testCases[CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Small_Wheels_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Small_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Tiny] = [None];
-            testCases[CreatureConstants.AnimatedObject_Tiny_Flexible] = [None];
-            testCases[CreatureConstants.AnimatedObject_Tiny_MultipleLegs] = [None];
-            testCases[CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Tiny_Sheetlike] = [None];
-            testCases[CreatureConstants.AnimatedObject_Tiny_TwoLegs] = [None];
-            testCases[CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden] = [None];
-            testCases[CreatureConstants.AnimatedObject_Tiny_Wooden] = [None];
+            var testCases = new Dictionary<string, List<string>>
+            {
+                [CreatureConstants.Aasimar] = [None],
+
+                [CreatureConstants.Aboleth] = [None],
+
+                [CreatureConstants.Achaierai] = [None],
+
+                [CreatureConstants.Allip] = [None],
+
+                [CreatureConstants.Androsphinx] = [None],
+
+                [CreatureConstants.Angel_AstralDeva] = [None],
+
+                [CreatureConstants.Angel_Planetar] = [None],
+
+                [CreatureConstants.Angel_Solar] = [None],
+
+                [CreatureConstants.AnimatedObject_Colossal] = [None],
+                [CreatureConstants.AnimatedObject_Colossal_Flexible] = [None],
+                [CreatureConstants.AnimatedObject_Colossal_MultipleLegs] = [None],
+                [CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Colossal_Sheetlike] = [None],
+                [CreatureConstants.AnimatedObject_Colossal_TwoLegs] = [None],
+                [CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Colossal_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Gargantuan] = [None],
+                [CreatureConstants.AnimatedObject_Gargantuan_Flexible] = [None],
+                [CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs] = [None],
+                [CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Gargantuan_Sheetlike] = [None],
+                [CreatureConstants.AnimatedObject_Gargantuan_TwoLegs] = [None],
+                [CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Gargantuan_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Huge] = [None],
+                [CreatureConstants.AnimatedObject_Huge_Flexible] = [None],
+                [CreatureConstants.AnimatedObject_Huge_MultipleLegs] = [None],
+                [CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Huge_Sheetlike] = [None],
+                [CreatureConstants.AnimatedObject_Huge_TwoLegs] = [None],
+                [CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Huge_Wheels_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Huge_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Large] = [None],
+                [CreatureConstants.AnimatedObject_Large_Flexible] = [None],
+                [CreatureConstants.AnimatedObject_Large_MultipleLegs] = [None],
+                [CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Large_Sheetlike] = [None],
+                [CreatureConstants.AnimatedObject_Large_TwoLegs] = [None],
+                [CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Large_Wheels_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Large_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Medium] = [None],
+                [CreatureConstants.AnimatedObject_Medium_Flexible] = [None],
+                [CreatureConstants.AnimatedObject_Medium_MultipleLegs] = [None],
+                [CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Medium_Sheetlike] = [None],
+                [CreatureConstants.AnimatedObject_Medium_TwoLegs] = [None],
+                [CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Medium_Wheels_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Medium_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Small] = [None],
+                [CreatureConstants.AnimatedObject_Small_Flexible] = [None],
+                [CreatureConstants.AnimatedObject_Small_MultipleLegs] = [None],
+                [CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Small_Sheetlike] = [None],
+                [CreatureConstants.AnimatedObject_Small_TwoLegs] = [None],
+                [CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Small_Wheels_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Small_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Tiny] = [None],
+                [CreatureConstants.AnimatedObject_Tiny_Flexible] = [None],
+                [CreatureConstants.AnimatedObject_Tiny_MultipleLegs] = [None],
+                [CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Tiny_Sheetlike] = [None],
+                [CreatureConstants.AnimatedObject_Tiny_TwoLegs] = [None],
+                [CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Tiny_Wooden] = [None],
 
-            testCases[CreatureConstants.Ankheg] = [None];
+                [CreatureConstants.Ankheg] = [None],
 
-            testCases[CreatureConstants.Annis] = [None];
+                [CreatureConstants.Annis] = [None],
 
-            testCases[CreatureConstants.Ant_Giant_Queen] = [None];
+                [CreatureConstants.Ant_Giant_Queen] = [None],
 
-            testCases[CreatureConstants.Ant_Giant_Soldier] = [None];
+                [CreatureConstants.Ant_Giant_Soldier] = [None],
 
-            testCases[CreatureConstants.Ant_Giant_Worker] = [None];
+                [CreatureConstants.Ant_Giant_Worker] = [None],
 
-            testCases[CreatureConstants.Ape] = [None];
+                [CreatureConstants.Ape] = [None],
 
-            testCases[CreatureConstants.Ape_Dire] = [None];
+                [CreatureConstants.Ape_Dire] = [None],
 
-            testCases[CreatureConstants.Aranea] = [None];
+                [CreatureConstants.Aranea] = [None],
 
-            testCases[CreatureConstants.Arrowhawk_Juvenile] = [None];
+                [CreatureConstants.Arrowhawk_Juvenile] = [None],
 
-            testCases[CreatureConstants.Arrowhawk_Adult] = [None];
+                [CreatureConstants.Arrowhawk_Adult] = [None],
 
-            testCases[CreatureConstants.Arrowhawk_Elder] = [None];
+                [CreatureConstants.Arrowhawk_Elder] = [None],
 
-            testCases[CreatureConstants.AssassinVine] = [None];
+                [CreatureConstants.AssassinVine] = [None],
 
-            testCases[CreatureConstants.Athach] = [None];
+                [CreatureConstants.Athach] = [None],
 
-            testCases[CreatureConstants.Avoral] = [None];
+                [CreatureConstants.Avoral] = [None],
 
-            testCases[CreatureConstants.Azer] = [None];
+                [CreatureConstants.Azer] = [None],
 
-            testCases[CreatureConstants.Babau] = [None];
+                [CreatureConstants.Babau] = [None],
 
-            testCases[CreatureConstants.Baboon] = [None];
+                [CreatureConstants.Baboon] = [None],
 
-            testCases[CreatureConstants.Badger] = [None];
+                [CreatureConstants.Badger] = [None],
 
-            testCases[CreatureConstants.Badger_Dire] = [None];
+                [CreatureConstants.Badger_Dire] = [None],
 
-            testCases[CreatureConstants.Balor] = [None];
+                [CreatureConstants.Balor] = [None],
 
-            testCases[CreatureConstants.BarbedDevil_Hamatula] = [None];
+                [CreatureConstants.BarbedDevil_Hamatula] = [None],
 
-            testCases[CreatureConstants.Barghest] = [None];
+                [CreatureConstants.Barghest] = [None],
 
-            testCases[CreatureConstants.Barghest_Greater] = [None];
+                [CreatureConstants.Barghest_Greater] = [None],
 
-            testCases[CreatureConstants.Basilisk] = [None];
+                [CreatureConstants.Basilisk] = [None],
 
-            testCases[CreatureConstants.Basilisk_Greater] = [None];
+                [CreatureConstants.Basilisk_Greater] = [None],
 
-            testCases[CreatureConstants.Bat] = [None];
+                [CreatureConstants.Bat] = [None],
 
-            testCases[CreatureConstants.Bat_Dire] = [None];
+                [CreatureConstants.Bat_Dire] = [None],
 
-            testCases[CreatureConstants.Bat_Swarm] = [None];
+                [CreatureConstants.Bat_Swarm] = [None],
 
-            testCases[CreatureConstants.Bear_Black] = [None];
+                [CreatureConstants.Bear_Black] = [None],
 
-            testCases[CreatureConstants.Bear_Brown] = [None];
+                [CreatureConstants.Bear_Brown] = [None],
 
-            testCases[CreatureConstants.Bear_Dire] = [None];
+                [CreatureConstants.Bear_Dire] = [None],
 
-            testCases[CreatureConstants.Bear_Polar] = [None];
+                [CreatureConstants.Bear_Polar] = [None],
 
-            testCases[CreatureConstants.BeardedDevil_Barbazu] = [None];
+                [CreatureConstants.BeardedDevil_Barbazu] = [None],
 
-            testCases[CreatureConstants.Bebilith] = [None];
+                [CreatureConstants.Bebilith] = [None],
 
-            testCases[CreatureConstants.Bee_Giant] = [None];
+                [CreatureConstants.Bee_Giant] = [None],
 
-            testCases[CreatureConstants.Behir] = [None];
+                [CreatureConstants.Behir] = [None],
 
-            testCases[CreatureConstants.Beholder] = [None];
+                [CreatureConstants.Beholder] = [None],
 
-            testCases[CreatureConstants.Beholder_Gauth] = [None];
+                [CreatureConstants.Beholder_Gauth] = [None],
 
-            testCases[CreatureConstants.Belker] = [None];
+                [CreatureConstants.Belker] = [None],
 
-            testCases[CreatureConstants.Bison] = [None];
+                [CreatureConstants.Bison] = [None],
 
-            testCases[CreatureConstants.BlackPudding] = [None];
+                [CreatureConstants.BlackPudding] = [None],
 
-            testCases[CreatureConstants.BlackPudding_Elder] = [None];
+                [CreatureConstants.BlackPudding_Elder] = [None],
 
-            testCases[CreatureConstants.BlinkDog] = [None];
+                [CreatureConstants.BlinkDog] = [None],
 
-            testCases[CreatureConstants.Boar] = [None];
+                [CreatureConstants.Boar] = [None],
 
-            testCases[CreatureConstants.Boar_Dire] = [None];
+                [CreatureConstants.Boar_Dire] = [None],
 
-            testCases[CreatureConstants.Bodak] = [None];
+                [CreatureConstants.Bodak] = [None],
 
-            testCases[CreatureConstants.BombardierBeetle_Giant] = [None];
+                [CreatureConstants.BombardierBeetle_Giant] = [None],
 
-            testCases[CreatureConstants.BoneDevil_Osyluth] = [None];
+                [CreatureConstants.BoneDevil_Osyluth] = [None],
 
-            testCases[CreatureConstants.Bralani] = [None];
+                [CreatureConstants.Bralani] = [None],
 
-            testCases[CreatureConstants.Bugbear] = [None];
+                [CreatureConstants.Bugbear] = [None],
 
-            testCases[CreatureConstants.Bulette] = [None];
+                [CreatureConstants.Bulette] = [None],
 
-            testCases[CreatureConstants.Camel_Bactrian] = [None];
+                [CreatureConstants.Camel_Bactrian] = [None],
 
-            testCases[CreatureConstants.Camel_Dromedary] = [None];
+                [CreatureConstants.Camel_Dromedary] = [None],
 
-            testCases[CreatureConstants.CarrionCrawler] = [None];
+                [CreatureConstants.CarrionCrawler] = [None],
 
-            testCases[CreatureConstants.Cat] = [None];
+                [CreatureConstants.Cat] = [None],
 
-            testCases[CreatureConstants.Centaur] = [None];
+                [CreatureConstants.Centaur] = [None],
 
-            testCases[CreatureConstants.Centipede_Monstrous_Colossal] = [None];
+                [CreatureConstants.Centipede_Monstrous_Colossal] = [None],
 
-            testCases[CreatureConstants.Centipede_Monstrous_Gargantuan] = [None];
+                [CreatureConstants.Centipede_Monstrous_Gargantuan] = [None],
 
-            testCases[CreatureConstants.Centipede_Monstrous_Huge] = [None];
+                [CreatureConstants.Centipede_Monstrous_Huge] = [None],
 
-            testCases[CreatureConstants.Centipede_Monstrous_Large] = [None];
+                [CreatureConstants.Centipede_Monstrous_Large] = [None],
 
-            testCases[CreatureConstants.Centipede_Monstrous_Medium] = [None];
+                [CreatureConstants.Centipede_Monstrous_Medium] = [None],
 
-            testCases[CreatureConstants.Centipede_Monstrous_Small] = [None];
+                [CreatureConstants.Centipede_Monstrous_Small] = [None],
 
-            testCases[CreatureConstants.Centipede_Monstrous_Tiny] = [None];
+                [CreatureConstants.Centipede_Monstrous_Tiny] = [None],
 
-            testCases[CreatureConstants.Centipede_Swarm] = [None];
+                [CreatureConstants.Centipede_Swarm] = [None],
 
-            testCases[CreatureConstants.ChainDevil_Kyton] = [None];
+                [CreatureConstants.ChainDevil_Kyton] = [None],
 
-            testCases[CreatureConstants.ChaosBeast] = [None];
+                [CreatureConstants.ChaosBeast] = [None],
 
-            testCases[CreatureConstants.Cheetah] = [None];
+                [CreatureConstants.Cheetah] = [None],
 
-            testCases[CreatureConstants.Chimera_Black] = [None];
+                [CreatureConstants.Chimera_Black] = [None],
 
-            testCases[CreatureConstants.Chimera_Blue] = [None];
+                [CreatureConstants.Chimera_Blue] = [None],
 
-            testCases[CreatureConstants.Chimera_Green] = [None];
+                [CreatureConstants.Chimera_Green] = [None],
 
-            testCases[CreatureConstants.Chimera_Red] = [None];
+                [CreatureConstants.Chimera_Red] = [None],
 
-            testCases[CreatureConstants.Chimera_White] = [None];
+                [CreatureConstants.Chimera_White] = [None],
 
-            testCases[CreatureConstants.Choker] = [None];
+                [CreatureConstants.Choker] = [None],
 
-            testCases[CreatureConstants.Chuul] = [None];
+                [CreatureConstants.Chuul] = [None],
 
-            testCases[CreatureConstants.Cloaker] = [None];
+                [CreatureConstants.Cloaker] = [None],
 
-            testCases[CreatureConstants.Cockatrice] = [None];
+                [CreatureConstants.Cockatrice] = [None],
 
-            testCases[CreatureConstants.Couatl] = [None];
+                [CreatureConstants.Couatl] = [None],
 
-            testCases[CreatureConstants.Criosphinx] = [None];
+                [CreatureConstants.Criosphinx] = [None],
 
-            testCases[CreatureConstants.Crocodile] = [None];
+                [CreatureConstants.Crocodile] = [None],
 
-            testCases[CreatureConstants.Crocodile_Giant] = [None];
+                [CreatureConstants.Crocodile_Giant] = [None],
 
-            testCases[CreatureConstants.Cryohydra_5Heads] = [None];
+                [CreatureConstants.Cryohydra_5Heads] = [None],
 
-            testCases[CreatureConstants.Cryohydra_6Heads] = [None];
+                [CreatureConstants.Cryohydra_6Heads] = [None],
 
-            testCases[CreatureConstants.Cryohydra_7Heads] = [None];
+                [CreatureConstants.Cryohydra_7Heads] = [None],
 
-            testCases[CreatureConstants.Cryohydra_8Heads] = [None];
+                [CreatureConstants.Cryohydra_8Heads] = [None],
 
-            testCases[CreatureConstants.Cryohydra_9Heads] = [None];
+                [CreatureConstants.Cryohydra_9Heads] = [None],
 
-            testCases[CreatureConstants.Cryohydra_10Heads] = [None];
+                [CreatureConstants.Cryohydra_10Heads] = [None],
 
-            testCases[CreatureConstants.Cryohydra_11Heads] = [None];
+                [CreatureConstants.Cryohydra_11Heads] = [None],
 
-            testCases[CreatureConstants.Cryohydra_12Heads] = [None];
+                [CreatureConstants.Cryohydra_12Heads] = [None],
 
-            testCases[CreatureConstants.Darkmantle] = [None];
+                [CreatureConstants.Darkmantle] = [None],
 
-            testCases[CreatureConstants.Deinonychus] = [None];
+                [CreatureConstants.Deinonychus] = [None],
 
-            testCases[CreatureConstants.Delver] = [None];
+                [CreatureConstants.Delver] = [None],
 
-            testCases[CreatureConstants.Derro] = [None];
+                [CreatureConstants.Derro] = [None],
 
-            testCases[CreatureConstants.Derro_Sane] = [None];
+                [CreatureConstants.Derro_Sane] = [None],
 
-            testCases[CreatureConstants.Destrachan] = [None];
+                [CreatureConstants.Destrachan] = [None],
 
-            testCases[CreatureConstants.Devourer] = [None];
+                [CreatureConstants.Devourer] = [None],
 
-            testCases[CreatureConstants.Digester] = [None];
+                [CreatureConstants.Digester] = [None],
 
-            testCases[CreatureConstants.DisplacerBeast] =
-                [GetData(GroupConstants.All, 2, "ranged magical attacks that specifically target the displacer beast, except for ranged touch attacks")];
+                [CreatureConstants.DisplacerBeast] =
+                    [GetData(GroupConstants.All, 2, "ranged magical attacks that specifically target the displacer beast, except for ranged touch attacks")],
 
-            testCases[CreatureConstants.DisplacerBeast_PackLord] =
-                [GetData(GroupConstants.All, 2, "ranged magical attacks that specifically target the displacer beast, except for ranged touch attacks")];
+                [CreatureConstants.DisplacerBeast_PackLord] =
+                    [GetData(GroupConstants.All, 2, "ranged magical attacks that specifically target the displacer beast, except for ranged touch attacks")],
 
-            testCases[CreatureConstants.Djinni] = [None];
+                [CreatureConstants.Djinni] = [None],
 
-            testCases[CreatureConstants.Djinni_Noble] = [None];
+                [CreatureConstants.Djinni_Noble] = [None],
 
-            testCases[CreatureConstants.Dog] = [None];
+                [CreatureConstants.Dog] = [None],
 
-            testCases[CreatureConstants.Dog_Riding] = [None];
+                [CreatureConstants.Dog_Riding] = [None],
 
-            testCases[CreatureConstants.Donkey] = [None];
+                [CreatureConstants.Donkey] = [None],
 
-            testCases[CreatureConstants.Doppelganger] = [None];
+                [CreatureConstants.Doppelganger] = [None],
 
-            testCases[CreatureConstants.Dragon_Black_Wyrmling] = [None];
+                [CreatureConstants.Dragon_Black_Wyrmling] = [None],
 
-            testCases[CreatureConstants.Dragon_Black_VeryYoung] = [None];
+                [CreatureConstants.Dragon_Black_VeryYoung] = [None],
 
-            testCases[CreatureConstants.Dragon_Black_Young] = [None];
+                [CreatureConstants.Dragon_Black_Young] = [None],
 
-            testCases[CreatureConstants.Dragon_Black_Juvenile] = [None];
+                [CreatureConstants.Dragon_Black_Juvenile] = [None],
 
-            testCases[CreatureConstants.Dragon_Black_YoungAdult] = [None];
+                [CreatureConstants.Dragon_Black_YoungAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_Black_Adult] = [None];
+                [CreatureConstants.Dragon_Black_Adult] = [None],
 
-            testCases[CreatureConstants.Dragon_Black_MatureAdult] = [None];
+                [CreatureConstants.Dragon_Black_MatureAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_Black_Old] = [None];
+                [CreatureConstants.Dragon_Black_Old] = [None],
 
-            testCases[CreatureConstants.Dragon_Black_VeryOld] = [None];
+                [CreatureConstants.Dragon_Black_VeryOld] = [None],
 
-            testCases[CreatureConstants.Dragon_Black_Ancient] = [None];
+                [CreatureConstants.Dragon_Black_Ancient] = [None],
 
-            testCases[CreatureConstants.Dragon_Black_Wyrm] = [None];
+                [CreatureConstants.Dragon_Black_Wyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_Black_GreatWyrm] = [None];
+                [CreatureConstants.Dragon_Black_GreatWyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_Blue_Wyrmling] = [None];
+                [CreatureConstants.Dragon_Blue_Wyrmling] = [None],
 
-            testCases[CreatureConstants.Dragon_Blue_VeryYoung] = [None];
+                [CreatureConstants.Dragon_Blue_VeryYoung] = [None],
 
-            testCases[CreatureConstants.Dragon_Blue_Young] = [None];
+                [CreatureConstants.Dragon_Blue_Young] = [None],
 
-            testCases[CreatureConstants.Dragon_Blue_Juvenile] = [None];
+                [CreatureConstants.Dragon_Blue_Juvenile] = [None],
 
-            testCases[CreatureConstants.Dragon_Blue_YoungAdult] = [None];
+                [CreatureConstants.Dragon_Blue_YoungAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_Blue_Adult] = [None];
+                [CreatureConstants.Dragon_Blue_Adult] = [None],
 
-            testCases[CreatureConstants.Dragon_Blue_MatureAdult] = [None];
+                [CreatureConstants.Dragon_Blue_MatureAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_Blue_Old] = [None];
+                [CreatureConstants.Dragon_Blue_Old] = [None],
 
-            testCases[CreatureConstants.Dragon_Blue_VeryOld] = [None];
+                [CreatureConstants.Dragon_Blue_VeryOld] = [None],
 
-            testCases[CreatureConstants.Dragon_Blue_Ancient] = [None];
+                [CreatureConstants.Dragon_Blue_Ancient] = [None],
 
-            testCases[CreatureConstants.Dragon_Blue_Wyrm] = [None];
+                [CreatureConstants.Dragon_Blue_Wyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_Blue_GreatWyrm] = [None];
+                [CreatureConstants.Dragon_Blue_GreatWyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_Green_Wyrmling] = [None];
+                [CreatureConstants.Dragon_Green_Wyrmling] = [None],
 
-            testCases[CreatureConstants.Dragon_Green_VeryYoung] = [None];
+                [CreatureConstants.Dragon_Green_VeryYoung] = [None],
 
-            testCases[CreatureConstants.Dragon_Green_Young] = [None];
+                [CreatureConstants.Dragon_Green_Young] = [None],
 
-            testCases[CreatureConstants.Dragon_Green_Juvenile] = [None];
+                [CreatureConstants.Dragon_Green_Juvenile] = [None],
 
-            testCases[CreatureConstants.Dragon_Green_YoungAdult] = [None];
+                [CreatureConstants.Dragon_Green_YoungAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_Green_Adult] = [None];
+                [CreatureConstants.Dragon_Green_Adult] = [None],
 
-            testCases[CreatureConstants.Dragon_Green_MatureAdult] = [None];
+                [CreatureConstants.Dragon_Green_MatureAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_Green_Old] = [None];
+                [CreatureConstants.Dragon_Green_Old] = [None],
 
-            testCases[CreatureConstants.Dragon_Green_VeryOld] = [None];
+                [CreatureConstants.Dragon_Green_VeryOld] = [None],
 
-            testCases[CreatureConstants.Dragon_Green_Ancient] = [None];
+                [CreatureConstants.Dragon_Green_Ancient] = [None],
 
-            testCases[CreatureConstants.Dragon_Green_Wyrm] = [None];
+                [CreatureConstants.Dragon_Green_Wyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_Green_GreatWyrm] = [None];
+                [CreatureConstants.Dragon_Green_GreatWyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_Red_Wyrmling] = [None];
+                [CreatureConstants.Dragon_Red_Wyrmling] = [None],
 
-            testCases[CreatureConstants.Dragon_Red_VeryYoung] = [None];
+                [CreatureConstants.Dragon_Red_VeryYoung] = [None],
 
-            testCases[CreatureConstants.Dragon_Red_Young] = [None];
+                [CreatureConstants.Dragon_Red_Young] = [None],
 
-            testCases[CreatureConstants.Dragon_Red_Juvenile] = [None];
+                [CreatureConstants.Dragon_Red_Juvenile] = [None],
 
-            testCases[CreatureConstants.Dragon_Red_YoungAdult] = [None];
+                [CreatureConstants.Dragon_Red_YoungAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_Red_Adult] = [None];
+                [CreatureConstants.Dragon_Red_Adult] = [None],
 
-            testCases[CreatureConstants.Dragon_Red_MatureAdult] = [None];
+                [CreatureConstants.Dragon_Red_MatureAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_Red_Old] = [None];
+                [CreatureConstants.Dragon_Red_Old] = [None],
 
-            testCases[CreatureConstants.Dragon_Red_VeryOld] = [None];
+                [CreatureConstants.Dragon_Red_VeryOld] = [None],
 
-            testCases[CreatureConstants.Dragon_Red_Ancient] = [None];
+                [CreatureConstants.Dragon_Red_Ancient] = [None],
 
-            testCases[CreatureConstants.Dragon_Red_Wyrm] = [None];
+                [CreatureConstants.Dragon_Red_Wyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_Red_GreatWyrm] = [None];
+                [CreatureConstants.Dragon_Red_GreatWyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_White_Wyrmling] = [None];
+                [CreatureConstants.Dragon_White_Wyrmling] = [None],
 
-            testCases[CreatureConstants.Dragon_White_VeryYoung] = [None];
+                [CreatureConstants.Dragon_White_VeryYoung] = [None],
 
-            testCases[CreatureConstants.Dragon_White_Young] = [None];
+                [CreatureConstants.Dragon_White_Young] = [None],
 
-            testCases[CreatureConstants.Dragon_White_Juvenile] = [None];
+                [CreatureConstants.Dragon_White_Juvenile] = [None],
 
-            testCases[CreatureConstants.Dragon_White_YoungAdult] = [None];
+                [CreatureConstants.Dragon_White_YoungAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_White_Adult] = [None];
+                [CreatureConstants.Dragon_White_Adult] = [None],
 
-            testCases[CreatureConstants.Dragon_White_MatureAdult] = [None];
+                [CreatureConstants.Dragon_White_MatureAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_White_Old] = [None];
+                [CreatureConstants.Dragon_White_Old] = [None],
 
-            testCases[CreatureConstants.Dragon_White_VeryOld] = [None];
+                [CreatureConstants.Dragon_White_VeryOld] = [None],
 
-            testCases[CreatureConstants.Dragon_White_Ancient] = [None];
+                [CreatureConstants.Dragon_White_Ancient] = [None],
 
-            testCases[CreatureConstants.Dragon_White_Wyrm] = [None];
+                [CreatureConstants.Dragon_White_Wyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_White_GreatWyrm] = [None];
+                [CreatureConstants.Dragon_White_GreatWyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_Brass_Wyrmling] = [None];
+                [CreatureConstants.Dragon_Brass_Wyrmling] = [None],
 
-            testCases[CreatureConstants.Dragon_Brass_VeryYoung] = [None];
+                [CreatureConstants.Dragon_Brass_VeryYoung] = [None],
 
-            testCases[CreatureConstants.Dragon_Brass_Young] = [None];
+                [CreatureConstants.Dragon_Brass_Young] = [None],
 
-            testCases[CreatureConstants.Dragon_Brass_Juvenile] = [None];
+                [CreatureConstants.Dragon_Brass_Juvenile] = [None],
 
-            testCases[CreatureConstants.Dragon_Brass_YoungAdult] = [None];
+                [CreatureConstants.Dragon_Brass_YoungAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_Brass_Adult] = [None];
+                [CreatureConstants.Dragon_Brass_Adult] = [None],
 
-            testCases[CreatureConstants.Dragon_Brass_MatureAdult] = [None];
+                [CreatureConstants.Dragon_Brass_MatureAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_Brass_Old] = [None];
+                [CreatureConstants.Dragon_Brass_Old] = [None],
 
-            testCases[CreatureConstants.Dragon_Brass_VeryOld] = [None];
+                [CreatureConstants.Dragon_Brass_VeryOld] = [None],
 
-            testCases[CreatureConstants.Dragon_Brass_Ancient] = [None];
+                [CreatureConstants.Dragon_Brass_Ancient] = [None],
 
-            testCases[CreatureConstants.Dragon_Brass_Wyrm] = [None];
+                [CreatureConstants.Dragon_Brass_Wyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_Brass_GreatWyrm] = [None];
+                [CreatureConstants.Dragon_Brass_GreatWyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_Bronze_Wyrmling] = [None];
+                [CreatureConstants.Dragon_Bronze_Wyrmling] = [None],
 
-            testCases[CreatureConstants.Dragon_Bronze_VeryYoung] = [None];
+                [CreatureConstants.Dragon_Bronze_VeryYoung] = [None],
 
-            testCases[CreatureConstants.Dragon_Bronze_Young] = [None];
+                [CreatureConstants.Dragon_Bronze_Young] = [None],
 
-            testCases[CreatureConstants.Dragon_Bronze_Juvenile] = [None];
+                [CreatureConstants.Dragon_Bronze_Juvenile] = [None],
 
-            testCases[CreatureConstants.Dragon_Bronze_YoungAdult] = [None];
+                [CreatureConstants.Dragon_Bronze_YoungAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_Bronze_Adult] = [None];
+                [CreatureConstants.Dragon_Bronze_Adult] = [None],
 
-            testCases[CreatureConstants.Dragon_Bronze_MatureAdult] = [None];
+                [CreatureConstants.Dragon_Bronze_MatureAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_Bronze_Old] = [None];
+                [CreatureConstants.Dragon_Bronze_Old] = [None],
 
-            testCases[CreatureConstants.Dragon_Bronze_VeryOld] = [None];
+                [CreatureConstants.Dragon_Bronze_VeryOld] = [None],
 
-            testCases[CreatureConstants.Dragon_Bronze_Ancient] = [None];
+                [CreatureConstants.Dragon_Bronze_Ancient] = [None],
 
-            testCases[CreatureConstants.Dragon_Bronze_Wyrm] = [None];
+                [CreatureConstants.Dragon_Bronze_Wyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_Bronze_GreatWyrm] = [None];
+                [CreatureConstants.Dragon_Bronze_GreatWyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_Copper_Wyrmling] = [None];
+                [CreatureConstants.Dragon_Copper_Wyrmling] = [None],
 
-            testCases[CreatureConstants.Dragon_Copper_VeryYoung] = [None];
+                [CreatureConstants.Dragon_Copper_VeryYoung] = [None],
 
-            testCases[CreatureConstants.Dragon_Copper_Young] = [None];
+                [CreatureConstants.Dragon_Copper_Young] = [None],
 
-            testCases[CreatureConstants.Dragon_Copper_Juvenile] = [None];
+                [CreatureConstants.Dragon_Copper_Juvenile] = [None],
 
-            testCases[CreatureConstants.Dragon_Copper_YoungAdult] = [None];
+                [CreatureConstants.Dragon_Copper_YoungAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_Copper_Adult] = [None];
+                [CreatureConstants.Dragon_Copper_Adult] = [None],
 
-            testCases[CreatureConstants.Dragon_Copper_MatureAdult] = [None];
+                [CreatureConstants.Dragon_Copper_MatureAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_Copper_Old] = [None];
+                [CreatureConstants.Dragon_Copper_Old] = [None],
 
-            testCases[CreatureConstants.Dragon_Copper_VeryOld] = [None];
+                [CreatureConstants.Dragon_Copper_VeryOld] = [None],
 
-            testCases[CreatureConstants.Dragon_Copper_Ancient] = [None];
+                [CreatureConstants.Dragon_Copper_Ancient] = [None],
 
-            testCases[CreatureConstants.Dragon_Copper_Wyrm] = [None];
+                [CreatureConstants.Dragon_Copper_Wyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_Copper_GreatWyrm] = [None];
+                [CreatureConstants.Dragon_Copper_GreatWyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_Gold_Wyrmling] = [None];
+                [CreatureConstants.Dragon_Gold_Wyrmling] = [None],
 
-            testCases[CreatureConstants.Dragon_Gold_VeryYoung] = [None];
+                [CreatureConstants.Dragon_Gold_VeryYoung] = [None],
 
-            testCases[CreatureConstants.Dragon_Gold_Young] = [None];
+                [CreatureConstants.Dragon_Gold_Young] = [None],
 
-            testCases[CreatureConstants.Dragon_Gold_Juvenile] = [None];
+                [CreatureConstants.Dragon_Gold_Juvenile] = [None],
 
-            testCases[CreatureConstants.Dragon_Gold_YoungAdult] = [None];
+                [CreatureConstants.Dragon_Gold_YoungAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_Gold_Adult] = [None];
+                [CreatureConstants.Dragon_Gold_Adult] = [None],
 
-            testCases[CreatureConstants.Dragon_Gold_MatureAdult] = [None];
+                [CreatureConstants.Dragon_Gold_MatureAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_Gold_Old] = [None];
+                [CreatureConstants.Dragon_Gold_Old] = [None],
 
-            testCases[CreatureConstants.Dragon_Gold_VeryOld] = [None];
+                [CreatureConstants.Dragon_Gold_VeryOld] = [None],
 
-            testCases[CreatureConstants.Dragon_Gold_Ancient] = [None];
+                [CreatureConstants.Dragon_Gold_Ancient] = [None],
 
-            testCases[CreatureConstants.Dragon_Gold_Wyrm] = [None];
+                [CreatureConstants.Dragon_Gold_Wyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_Gold_GreatWyrm] = [None];
+                [CreatureConstants.Dragon_Gold_GreatWyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_Silver_Wyrmling] = [None];
+                [CreatureConstants.Dragon_Silver_Wyrmling] = [None],
 
-            testCases[CreatureConstants.Dragon_Silver_VeryYoung] = [None];
+                [CreatureConstants.Dragon_Silver_VeryYoung] = [None],
 
-            testCases[CreatureConstants.Dragon_Silver_Young] = [None];
+                [CreatureConstants.Dragon_Silver_Young] = [None],
 
-            testCases[CreatureConstants.Dragon_Silver_Juvenile] = [None];
+                [CreatureConstants.Dragon_Silver_Juvenile] = [None],
 
-            testCases[CreatureConstants.Dragon_Silver_YoungAdult] = [None];
+                [CreatureConstants.Dragon_Silver_YoungAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_Silver_Adult] = [None];
+                [CreatureConstants.Dragon_Silver_Adult] = [None],
 
-            testCases[CreatureConstants.Dragon_Silver_MatureAdult] = [None];
+                [CreatureConstants.Dragon_Silver_MatureAdult] = [None],
 
-            testCases[CreatureConstants.Dragon_Silver_Old] = [None];
+                [CreatureConstants.Dragon_Silver_Old] = [None],
 
-            testCases[CreatureConstants.Dragon_Silver_VeryOld] = [None];
+                [CreatureConstants.Dragon_Silver_VeryOld] = [None],
 
-            testCases[CreatureConstants.Dragon_Silver_Ancient] = [None];
+                [CreatureConstants.Dragon_Silver_Ancient] = [None],
 
-            testCases[CreatureConstants.Dragon_Silver_Wyrm] = [None];
+                [CreatureConstants.Dragon_Silver_Wyrm] = [None],
 
-            testCases[CreatureConstants.Dragon_Silver_GreatWyrm] = [None];
+                [CreatureConstants.Dragon_Silver_GreatWyrm] = [None],
 
-            testCases[CreatureConstants.DragonTurtle] = [None];
+                [CreatureConstants.DragonTurtle] = [None],
 
-            testCases[CreatureConstants.Dragonne] = [None];
+                [CreatureConstants.Dragonne] = [None],
 
-            testCases[CreatureConstants.Dretch] = [None];
+                [CreatureConstants.Dretch] = [None],
 
-            testCases[CreatureConstants.Drider] = [None];
+                [CreatureConstants.Drider] = [None],
 
-            testCases[CreatureConstants.Dryad] = [None];
+                [CreatureConstants.Dryad] = [None],
 
-            testCases[CreatureConstants.Dwarf_Deep] = [GetData(SaveConstants.Fortitude, 3, "against poison")];
-            testCases[CreatureConstants.Dwarf_Deep] = [GetData(GroupConstants.All, 3, "against spells and spell-like abilities")];
+                [CreatureConstants.Dwarf_Deep] =
+                    [GetData(SaveConstants.Fortitude, 3, "against poison"), GetData(GroupConstants.All, 3, "against spells and spell-like abilities")],
 
-            testCases[CreatureConstants.Dwarf_Duergar] = [GetData(GroupConstants.All, 2, "against spells and spell-like abilities")];
+                [CreatureConstants.Dwarf_Duergar] = [GetData(GroupConstants.All, 2, "against spells and spell-like abilities")],
 
-            testCases[CreatureConstants.Dwarf_Hill] = [GetData(SaveConstants.Fortitude, 2, "against poison")];
-            testCases[CreatureConstants.Dwarf_Hill] = [GetData(GroupConstants.All, 2, "against spells and spell-like abilities")];
+                [CreatureConstants.Dwarf_Hill] =
+                    [GetData(SaveConstants.Fortitude, 2, "against poison"), GetData(GroupConstants.All, 2, "against spells and spell-like abilities")],
 
-            testCases[CreatureConstants.Dwarf_Mountain] = [GetData(SaveConstants.Fortitude, 2, "against poison")];
-            testCases[CreatureConstants.Dwarf_Mountain] = [GetData(GroupConstants.All, 2, "against spells and spell-like abilities")];
+                [CreatureConstants.Dwarf_Mountain] =
+                    [GetData(SaveConstants.Fortitude, 2, "against poison"), GetData(GroupConstants.All, 2, "against spells and spell-like abilities")],
 
-            testCases[CreatureConstants.Eagle] = [None];
+                [CreatureConstants.Eagle] = [None],
 
-            testCases[CreatureConstants.Eagle_Giant] = [None];
+                [CreatureConstants.Eagle_Giant] = [None],
 
-            testCases[CreatureConstants.Efreeti] = [None];
+                [CreatureConstants.Efreeti] = [None],
 
-            testCases[CreatureConstants.Elasmosaurus] = [None];
+                [CreatureConstants.Elasmosaurus] = [None],
 
-            testCases[CreatureConstants.Elemental_Air_Small] = [None];
+                [CreatureConstants.Elemental_Air_Small] = [None],
 
-            testCases[CreatureConstants.Elemental_Air_Medium] = [None];
+                [CreatureConstants.Elemental_Air_Medium] = [None],
 
-            testCases[CreatureConstants.Elemental_Air_Large] = [None];
+                [CreatureConstants.Elemental_Air_Large] = [None],
 
-            testCases[CreatureConstants.Elemental_Air_Huge] = [None];
+                [CreatureConstants.Elemental_Air_Huge] = [None],
 
-            testCases[CreatureConstants.Elemental_Air_Greater] = [None];
+                [CreatureConstants.Elemental_Air_Greater] = [None],
 
-            testCases[CreatureConstants.Elemental_Air_Elder] = [None];
+                [CreatureConstants.Elemental_Air_Elder] = [None],
 
-            testCases[CreatureConstants.Elemental_Earth_Small] = [None];
+                [CreatureConstants.Elemental_Earth_Small] = [None],
 
-            testCases[CreatureConstants.Elemental_Earth_Medium] = [None];
+                [CreatureConstants.Elemental_Earth_Medium] = [None],
 
-            testCases[CreatureConstants.Elemental_Earth_Large] = [None];
+                [CreatureConstants.Elemental_Earth_Large] = [None],
 
-            testCases[CreatureConstants.Elemental_Earth_Huge] = [None];
+                [CreatureConstants.Elemental_Earth_Huge] = [None],
 
-            testCases[CreatureConstants.Elemental_Earth_Greater] = [None];
+                [CreatureConstants.Elemental_Earth_Greater] = [None],
 
-            testCases[CreatureConstants.Elemental_Earth_Elder] = [None];
+                [CreatureConstants.Elemental_Earth_Elder] = [None],
 
-            testCases[CreatureConstants.Elemental_Fire_Small] = [None];
+                [CreatureConstants.Elemental_Fire_Small] = [None],
 
-            testCases[CreatureConstants.Elemental_Fire_Medium] = [None];
+                [CreatureConstants.Elemental_Fire_Medium] = [None],
 
-            testCases[CreatureConstants.Elemental_Fire_Large] = [None];
+                [CreatureConstants.Elemental_Fire_Large] = [None],
 
-            testCases[CreatureConstants.Elemental_Fire_Huge] = [None];
+                [CreatureConstants.Elemental_Fire_Huge] = [None],
 
-            testCases[CreatureConstants.Elemental_Fire_Greater] = [None];
+                [CreatureConstants.Elemental_Fire_Greater] = [None],
 
-            testCases[CreatureConstants.Elemental_Fire_Elder] = [None];
+                [CreatureConstants.Elemental_Fire_Elder] = [None],
 
-            testCases[CreatureConstants.Elemental_Water_Small] = [None];
+                [CreatureConstants.Elemental_Water_Small] = [None],
 
-            testCases[CreatureConstants.Elemental_Water_Medium] = [None];
+                [CreatureConstants.Elemental_Water_Medium] = [None],
 
-            testCases[CreatureConstants.Elemental_Water_Large] = [None];
+                [CreatureConstants.Elemental_Water_Large] = [None],
 
-            testCases[CreatureConstants.Elemental_Water_Huge] = [None];
+                [CreatureConstants.Elemental_Water_Huge] = [None],
 
-            testCases[CreatureConstants.Elemental_Water_Greater] = [None];
+                [CreatureConstants.Elemental_Water_Greater] = [None],
 
-            testCases[CreatureConstants.Elemental_Water_Elder] = [None];
+                [CreatureConstants.Elemental_Water_Elder] = [None],
 
-            testCases[CreatureConstants.Elephant] = [None];
+                [CreatureConstants.Elephant] = [None],
 
-            testCases[CreatureConstants.Elf_Aquatic] = [None];
+                [CreatureConstants.Elf_Aquatic] = [None],
 
-            testCases[CreatureConstants.Elf_Drow] = [GetData(SaveConstants.Will, 2, "spells and spell-like abilities")];
+                [CreatureConstants.Elf_Drow] = [GetData(SaveConstants.Will, 2, "spells and spell-like abilities")],
 
-            testCases[CreatureConstants.Elf_Gray] = [None];
+                [CreatureConstants.Elf_Gray] = [None],
 
-            testCases[CreatureConstants.Elf_Half] = [None];
+                [CreatureConstants.Elf_Half] = [None],
 
-            testCases[CreatureConstants.Elf_High] = [None];
+                [CreatureConstants.Elf_High] = [None],
 
-            testCases[CreatureConstants.Elf_Wild] = [None];
+                [CreatureConstants.Elf_Wild] = [None],
 
-            testCases[CreatureConstants.Elf_Wood] = [None];
+                [CreatureConstants.Elf_Wood] = [None],
 
-            testCases[CreatureConstants.Erinyes] = [None];
+                [CreatureConstants.Erinyes] = [None],
 
-            testCases[CreatureConstants.EtherealFilcher] = [None];
+                [CreatureConstants.EtherealFilcher] = [None],
 
-            testCases[CreatureConstants.EtherealMarauder] = [None];
+                [CreatureConstants.EtherealMarauder] = [None],
 
-            testCases[CreatureConstants.Ettercap] = [None];
+                [CreatureConstants.Ettercap] = [None],
 
-            testCases[CreatureConstants.Ettin] = [None];
+                [CreatureConstants.Ettin] = [None],
 
-            testCases[CreatureConstants.FireBeetle_Giant] = [None];
+                [CreatureConstants.FireBeetle_Giant] = [None],
 
-            testCases[CreatureConstants.FormianMyrmarch] = [None];
+                [CreatureConstants.FormianMyrmarch] = [None],
 
-            testCases[CreatureConstants.FormianQueen] = [None];
+                [CreatureConstants.FormianQueen] = [None],
 
-            testCases[CreatureConstants.FormianTaskmaster] = [None];
+                [CreatureConstants.FormianTaskmaster] = [None],
 
-            testCases[CreatureConstants.FormianWarrior] = [None];
+                [CreatureConstants.FormianWarrior] = [None],
 
-            testCases[CreatureConstants.FormianWorker] = [None];
+                [CreatureConstants.FormianWorker] = [None],
 
-            testCases[CreatureConstants.FrostWorm] = [None];
+                [CreatureConstants.FrostWorm] = [None],
 
-            testCases[CreatureConstants.Gargoyle] = [None];
+                [CreatureConstants.Gargoyle] = [None],
 
-            testCases[CreatureConstants.Gargoyle_Kapoacinth] = [None];
+                [CreatureConstants.Gargoyle_Kapoacinth] = [None],
 
-            testCases[CreatureConstants.GelatinousCube] = [None];
+                [CreatureConstants.GelatinousCube] = [None],
 
-            testCases[CreatureConstants.Ghaele] = [None];
+                [CreatureConstants.Ghaele] = [None],
 
-            testCases[CreatureConstants.Ghoul] = [None];
+                [CreatureConstants.Ghoul] = [None],
 
-            testCases[CreatureConstants.Ghoul_Ghast] = [None];
+                [CreatureConstants.Ghoul_Ghast] = [None],
 
-            testCases[CreatureConstants.Ghoul_Lacedon] = [None];
+                [CreatureConstants.Ghoul_Lacedon] = [None],
 
-            testCases[CreatureConstants.Giant_Cloud] = [None];
+                [CreatureConstants.Giant_Cloud] = [None],
 
-            testCases[CreatureConstants.Giant_Fire] = [None];
+                [CreatureConstants.Giant_Fire] = [None],
 
-            testCases[CreatureConstants.Giant_Frost] = [None];
+                [CreatureConstants.Giant_Frost] = [None],
 
-            testCases[CreatureConstants.Giant_Hill] = [None];
+                [CreatureConstants.Giant_Hill] = [None],
 
-            testCases[CreatureConstants.Giant_Stone] = [None];
+                [CreatureConstants.Giant_Stone] = [None],
 
-            testCases[CreatureConstants.Giant_Stone_Elder] = [None];
+                [CreatureConstants.Giant_Stone_Elder] = [None],
 
-            testCases[CreatureConstants.Giant_Storm] = [None];
+                [CreatureConstants.Giant_Storm] = [None],
 
-            testCases[CreatureConstants.GibberingMouther] = [None];
+                [CreatureConstants.GibberingMouther] = [None],
 
-            testCases[CreatureConstants.Girallon] = [None];
+                [CreatureConstants.Girallon] = [None],
 
-            testCases[CreatureConstants.Githyanki] = [None];
+                [CreatureConstants.Githyanki] = [None],
 
-            testCases[CreatureConstants.Githzerai] = [None];
+                [CreatureConstants.Githzerai] = [None],
 
-            testCases[CreatureConstants.Glabrezu] = [None];
+                [CreatureConstants.Glabrezu] = [None],
 
-            testCases[CreatureConstants.Gnoll] = [None];
+                [CreatureConstants.Gnoll] = [None],
 
-            testCases[CreatureConstants.Gnome_Forest] = [GetData(GroupConstants.All, 2, "against illusions")];
+                [CreatureConstants.Gnome_Forest] = [GetData(GroupConstants.All, 2, "against illusions")],
 
-            testCases[CreatureConstants.Gnome_Rock] = [GetData(GroupConstants.All, 2, "against illusions")];
+                [CreatureConstants.Gnome_Rock] = [GetData(GroupConstants.All, 2, "against illusions")],
 
-            testCases[CreatureConstants.Gnome_Svirfneblin] = [GetData(GroupConstants.All, 2)];
+                [CreatureConstants.Gnome_Svirfneblin] = [GetData(GroupConstants.All, 2)],
 
-            testCases[CreatureConstants.Goblin] = [None];
+                [CreatureConstants.Goblin] = [None],
 
-            testCases[CreatureConstants.Golem_Clay] = [None];
+                [CreatureConstants.Golem_Clay] = [None],
 
-            testCases[CreatureConstants.Golem_Flesh] = [None];
+                [CreatureConstants.Golem_Flesh] = [None],
 
-            testCases[CreatureConstants.Golem_Iron] = [None];
+                [CreatureConstants.Golem_Iron] = [None],
 
-            testCases[CreatureConstants.Golem_Stone] = [None];
+                [CreatureConstants.Golem_Stone] = [None],
 
-            testCases[CreatureConstants.Golem_Stone_Greater] = [None];
+                [CreatureConstants.Golem_Stone_Greater] = [None],
 
-            testCases[CreatureConstants.Gorgon] = [None];
+                [CreatureConstants.Gorgon] = [None],
 
-            testCases[CreatureConstants.GrayOoze] = [None];
+                [CreatureConstants.GrayOoze] = [None],
 
-            testCases[CreatureConstants.GrayRender] = [None];
+                [CreatureConstants.GrayRender] = [None],
 
-            testCases[CreatureConstants.GreenHag] = [None];
+                [CreatureConstants.GreenHag] = [None],
 
-            testCases[CreatureConstants.Grick] = [None];
+                [CreatureConstants.Grick] = [None],
 
-            testCases[CreatureConstants.Griffon] = [None];
+                [CreatureConstants.Griffon] = [None],
 
-            testCases[CreatureConstants.Grig] = [None];
+                [CreatureConstants.Grig] = [None],
 
-            testCases[CreatureConstants.Grig_WithFiddle] = [None];
+                [CreatureConstants.Grig_WithFiddle] = [None],
 
-            testCases[CreatureConstants.Grimlock] = [None];
+                [CreatureConstants.Grimlock] = [None],
 
-            testCases[CreatureConstants.Gynosphinx] = [None];
+                [CreatureConstants.Gynosphinx] = [None],
 
-            testCases[CreatureConstants.Halfling_Deep] = [None];
+                [CreatureConstants.Halfling_Deep] = [None],
 
-            testCases[CreatureConstants.Halfling_Lightfoot] = [None];
+                [CreatureConstants.Halfling_Lightfoot] = [None],
 
-            testCases[CreatureConstants.Halfling_Tallfellow] = [None];
+                [CreatureConstants.Halfling_Tallfellow] = [None],
 
-            testCases[CreatureConstants.Harpy] = [None];
+                [CreatureConstants.Harpy] = [None],
 
-            testCases[CreatureConstants.Hawk] = [None];
+                [CreatureConstants.Hawk] = [None],
 
-            testCases[CreatureConstants.HellHound] = [None];
+                [CreatureConstants.HellHound] = [None],
 
-            testCases[CreatureConstants.HellHound_NessianWarhound] = [None];
+                [CreatureConstants.HellHound_NessianWarhound] = [None],
 
-            testCases[CreatureConstants.Hellcat_Bezekira] = [None];
+                [CreatureConstants.Hellcat_Bezekira] = [None],
 
-            testCases[CreatureConstants.Hellwasp_Swarm] = [None];
+                [CreatureConstants.Hellwasp_Swarm] = [None],
 
-            testCases[CreatureConstants.Hezrou] = [None];
+                [CreatureConstants.Hezrou] = [None],
 
-            testCases[CreatureConstants.Hieracosphinx] = [None];
+                [CreatureConstants.Hieracosphinx] = [None],
 
-            testCases[CreatureConstants.Hippogriff] = [None];
+                [CreatureConstants.Hippogriff] = [None],
 
-            testCases[CreatureConstants.Hobgoblin] = [None];
+                [CreatureConstants.Hobgoblin] = [None],
 
-            testCases[CreatureConstants.Homunculus] = [None];
+                [CreatureConstants.Homunculus] = [None],
 
-            testCases[CreatureConstants.HornedDevil_Cornugon] = [None];
+                [CreatureConstants.HornedDevil_Cornugon] = [None],
 
-            testCases[CreatureConstants.Horse_Heavy] = [None];
+                [CreatureConstants.Horse_Heavy] = [None],
 
-            testCases[CreatureConstants.Horse_Heavy_War] = [None];
+                [CreatureConstants.Horse_Heavy_War] = [None],
 
-            testCases[CreatureConstants.Horse_Light] = [None];
+                [CreatureConstants.Horse_Light] = [None],
 
-            testCases[CreatureConstants.Horse_Light_War] = [None];
+                [CreatureConstants.Horse_Light_War] = [None],
 
-            testCases[CreatureConstants.HoundArchon] = [None];
+                [CreatureConstants.HoundArchon] = [None],
 
-            testCases[CreatureConstants.Howler] = [None];
+                [CreatureConstants.Howler] = [None],
 
-            testCases[CreatureConstants.Human] = [None];
+                [CreatureConstants.Human] = [None],
 
-            testCases[CreatureConstants.Hydra_5Heads] = [None];
+                [CreatureConstants.Hydra_5Heads] = [None],
 
-            testCases[CreatureConstants.Hydra_6Heads] = [None];
+                [CreatureConstants.Hydra_6Heads] = [None],
 
-            testCases[CreatureConstants.Hydra_7Heads] = [None];
+                [CreatureConstants.Hydra_7Heads] = [None],
 
-            testCases[CreatureConstants.Hydra_8Heads] = [None];
+                [CreatureConstants.Hydra_8Heads] = [None],
 
-            testCases[CreatureConstants.Hydra_9Heads] = [None];
+                [CreatureConstants.Hydra_9Heads] = [None],
 
-            testCases[CreatureConstants.Hydra_10Heads] = [None];
+                [CreatureConstants.Hydra_10Heads] = [None],
 
-            testCases[CreatureConstants.Hydra_11Heads] = [None];
+                [CreatureConstants.Hydra_11Heads] = [None],
 
-            testCases[CreatureConstants.Hydra_12Heads] = [None];
+                [CreatureConstants.Hydra_12Heads] = [None],
 
-            testCases[CreatureConstants.Hyena] = [None];
+                [CreatureConstants.Hyena] = [None],
 
-            testCases[CreatureConstants.IceDevil_Gelugon] = [None];
+                [CreatureConstants.IceDevil_Gelugon] = [None],
 
-            testCases[CreatureConstants.Imp] = [None];
+                [CreatureConstants.Imp] = [None],
 
-            testCases[CreatureConstants.InvisibleStalker] = [None];
+                [CreatureConstants.InvisibleStalker] = [None],
 
-            testCases[CreatureConstants.Janni] = [None];
+                [CreatureConstants.Janni] = [None],
 
-            testCases[CreatureConstants.Kobold] = [None];
+                [CreatureConstants.Kobold] = [None],
 
-            testCases[CreatureConstants.Kolyarut] = [None];
+                [CreatureConstants.Kolyarut] = [None],
 
-            testCases[CreatureConstants.Kraken] = [None];
+                [CreatureConstants.Kraken] = [None],
 
-            testCases[CreatureConstants.Krenshar] = [None];
+                [CreatureConstants.Krenshar] = [None],
 
-            testCases[CreatureConstants.KuoToa] = [None];
+                [CreatureConstants.KuoToa] = [None],
 
-            testCases[CreatureConstants.Lamia] = [None];
+                [CreatureConstants.Lamia] = [None],
 
-            testCases[CreatureConstants.Lammasu] = [None];
+                [CreatureConstants.Lammasu] = [None],
 
-            testCases[CreatureConstants.LanternArchon] = [None];
+                [CreatureConstants.LanternArchon] = [None],
 
-            testCases[CreatureConstants.Lemure] = [None];
+                [CreatureConstants.Lemure] = [None],
 
-            testCases[CreatureConstants.Leonal] = [None];
+                [CreatureConstants.Leonal] = [None],
 
-            testCases[CreatureConstants.Leopard] = [None];
+                [CreatureConstants.Leopard] = [None],
 
-            testCases[CreatureConstants.Lillend] = [None];
+                [CreatureConstants.Lillend] = [None],
 
-            testCases[CreatureConstants.Lion] = [None];
+                [CreatureConstants.Lion] = [None],
 
-            testCases[CreatureConstants.Lion_Dire] = [None];
+                [CreatureConstants.Lion_Dire] = [None],
 
-            testCases[CreatureConstants.Lizard] = [None];
+                [CreatureConstants.Lizard] = [None],
 
-            testCases[CreatureConstants.Lizard_Monitor] = [None];
+                [CreatureConstants.Lizard_Monitor] = [None],
 
-            testCases[CreatureConstants.Lizardfolk] = [None];
+                [CreatureConstants.Lizardfolk] = [None],
 
-            testCases[CreatureConstants.Locathah] = [None];
+                [CreatureConstants.Locathah] = [None],
 
-            testCases[CreatureConstants.Locust_Swarm] = [None];
+                [CreatureConstants.Locust_Swarm] = [None],
 
-            testCases[CreatureConstants.Magmin] = [None];
+                [CreatureConstants.Magmin] = [None],
 
-            testCases[CreatureConstants.MantaRay] = [None];
+                [CreatureConstants.MantaRay] = [None],
 
-            testCases[CreatureConstants.Manticore] = [None];
+                [CreatureConstants.Manticore] = [None],
 
-            testCases[CreatureConstants.Marilith] = [None];
+                [CreatureConstants.Marilith] = [None],
 
-            testCases[CreatureConstants.Marut] = [None];
+                [CreatureConstants.Marut] = [None],
 
-            testCases[CreatureConstants.Medusa] = [None];
+                [CreatureConstants.Medusa] = [None],
 
-            testCases[CreatureConstants.Megaraptor] = [None];
+                [CreatureConstants.Megaraptor] = [None],
 
-            testCases[CreatureConstants.Mephit_Air] = [None];
+                [CreatureConstants.Mephit_Air] = [None],
 
-            testCases[CreatureConstants.Mephit_Dust] = [None];
+                [CreatureConstants.Mephit_Dust] = [None],
 
-            testCases[CreatureConstants.Mephit_Earth] = [None];
+                [CreatureConstants.Mephit_Earth] = [None],
 
-            testCases[CreatureConstants.Mephit_Fire] = [None];
+                [CreatureConstants.Mephit_Fire] = [None],
 
-            testCases[CreatureConstants.Mephit_Ice] = [None];
+                [CreatureConstants.Mephit_Ice] = [None],
 
-            testCases[CreatureConstants.Mephit_Magma] = [None];
+                [CreatureConstants.Mephit_Magma] = [None],
 
-            testCases[CreatureConstants.Mephit_Ooze] = [None];
+                [CreatureConstants.Mephit_Ooze] = [None],
 
-            testCases[CreatureConstants.Mephit_Salt] = [None];
+                [CreatureConstants.Mephit_Salt] = [None],
 
-            testCases[CreatureConstants.Mephit_Steam] = [None];
+                [CreatureConstants.Mephit_Steam] = [None],
 
-            testCases[CreatureConstants.Mephit_Water] = [None];
+                [CreatureConstants.Mephit_Water] = [None],
 
-            testCases[CreatureConstants.Merfolk] = [None];
+                [CreatureConstants.Merfolk] = [None],
 
-            testCases[CreatureConstants.Mimic] = [None];
+                [CreatureConstants.Mimic] = [None],
 
-            testCases[CreatureConstants.MindFlayer] = [None];
+                [CreatureConstants.MindFlayer] = [None],
 
-            testCases[CreatureConstants.Minotaur] = [None];
+                [CreatureConstants.Minotaur] = [None],
 
-            testCases[CreatureConstants.Mohrg] = [None];
+                [CreatureConstants.Mohrg] = [None],
 
-            testCases[CreatureConstants.Monkey] = [None];
+                [CreatureConstants.Monkey] = [None],
 
-            testCases[CreatureConstants.Mule] = [None];
+                [CreatureConstants.Mule] = [None],
 
-            testCases[CreatureConstants.Mummy] = [None];
+                [CreatureConstants.Mummy] = [None],
 
-            testCases[CreatureConstants.Naga_Dark] = [GetData(GroupConstants.All, "against charm effects")] = 2;
+                [CreatureConstants.Naga_Dark] = [GetData(GroupConstants.All, 2, "against charm effects")],
 
-            testCases[CreatureConstants.Naga_Guardian] = [None];
+                [CreatureConstants.Naga_Guardian] = [None],
 
-            testCases[CreatureConstants.Naga_Spirit] = [None];
+                [CreatureConstants.Naga_Spirit] = [None],
 
-            testCases[CreatureConstants.Naga_Water] = [None];
+                [CreatureConstants.Naga_Water] = [None],
 
-            testCases[CreatureConstants.Nalfeshnee] = [None];
+                [CreatureConstants.Nalfeshnee] = [None],
 
-            testCases[CreatureConstants.NightHag] = [GetData(GroupConstants.All)] = 2;
+                [CreatureConstants.NightHag] = [GetData(GroupConstants.All, 2)],
 
-            testCases[CreatureConstants.Nightcrawler] = [None];
+                [CreatureConstants.Nightcrawler] = [None],
 
-            testCases[CreatureConstants.Nightmare] = [None];
+                [CreatureConstants.Nightmare] = [None],
 
-            testCases[CreatureConstants.Nightmare_Cauchemar] = [None];
+                [CreatureConstants.Nightmare_Cauchemar] = [None],
 
-            testCases[CreatureConstants.Nightwalker] = [None];
+                [CreatureConstants.Nightwalker] = [None],
 
-            testCases[CreatureConstants.Nightwing] = [None];
+                [CreatureConstants.Nightwing] = [None],
 
-            testCases[CreatureConstants.Nixie] = [None];
+                [CreatureConstants.Nixie] = [None],
 
-            testCases[CreatureConstants.Nymph] = [None];
+                [CreatureConstants.Nymph] = [None],
 
-            testCases[CreatureConstants.OchreJelly] = [None];
+                [CreatureConstants.OchreJelly] = [None],
 
-            testCases[CreatureConstants.Octopus] = [None];
+                [CreatureConstants.Octopus] = [None],
 
-            testCases[CreatureConstants.Octopus_Giant] = [None];
+                [CreatureConstants.Octopus_Giant] = [None],
 
-            testCases[CreatureConstants.Ogre] = [None];
+                [CreatureConstants.Ogre] = [None],
 
-            testCases[CreatureConstants.Ogre_Merrow] = [None];
+                [CreatureConstants.Ogre_Merrow] = [None],
 
-            testCases[CreatureConstants.OgreMage] = [None];
+                [CreatureConstants.OgreMage] = [None],
 
-            testCases[CreatureConstants.Orc] = [None];
+                [CreatureConstants.Orc] = [None],
 
-            testCases[CreatureConstants.Orc_Half] = [None];
+                [CreatureConstants.Orc_Half] = [None],
 
-            testCases[CreatureConstants.Otyugh] = [None];
+                [CreatureConstants.Otyugh] = [None],
 
-            testCases[CreatureConstants.Owl] = [None];
+                [CreatureConstants.Owl] = [None],
 
-            testCases[CreatureConstants.Owl_Giant] = [None];
+                [CreatureConstants.Owl_Giant] = [None],
 
-            testCases[CreatureConstants.Owlbear] = [None];
+                [CreatureConstants.Owlbear] = [None],
 
-            testCases[CreatureConstants.Pegasus] = [None];
+                [CreatureConstants.Pegasus] = [None],
 
-            testCases[CreatureConstants.PhantomFungus] = [None];
+                [CreatureConstants.PhantomFungus] = [None],
 
-            testCases[CreatureConstants.PhaseSpider] = [None];
+                [CreatureConstants.PhaseSpider] = [None],
 
-            testCases[CreatureConstants.Phasm] = [None];
+                [CreatureConstants.Phasm] = [None],
 
-            testCases[CreatureConstants.PitFiend] = [None];
+                [CreatureConstants.PitFiend] = [None],
 
-            testCases[CreatureConstants.Pixie] = [None];
+                [CreatureConstants.Pixie] = [None],
 
-            testCases[CreatureConstants.Pixie_WithIrresistibleDance] = [None];
+                [CreatureConstants.Pixie_WithIrresistibleDance] = [None],
 
-            testCases[CreatureConstants.Pony] = [None];
+                [CreatureConstants.Pony] = [None],
 
-            testCases[CreatureConstants.Pony_War] = [None];
+                [CreatureConstants.Pony_War] = [None],
 
-            testCases[CreatureConstants.Porpoise] = [None];
+                [CreatureConstants.Porpoise] = [None],
 
-            testCases[CreatureConstants.PrayingMantis_Giant] = [None];
+                [CreatureConstants.PrayingMantis_Giant] = [None],
 
-            testCases[CreatureConstants.Pseudodragon] = [None];
+                [CreatureConstants.Pseudodragon] = [None],
 
-            testCases[CreatureConstants.PurpleWorm] = [None];
+                [CreatureConstants.PurpleWorm] = [None],
 
-            testCases[CreatureConstants.Pyrohydra_5Heads] = [None];
+                [CreatureConstants.Pyrohydra_5Heads] = [None],
 
-            testCases[CreatureConstants.Pyrohydra_6Heads] = [None];
+                [CreatureConstants.Pyrohydra_6Heads] = [None],
 
-            testCases[CreatureConstants.Pyrohydra_7Heads] = [None];
+                [CreatureConstants.Pyrohydra_7Heads] = [None],
 
-            testCases[CreatureConstants.Pyrohydra_8Heads] = [None];
+                [CreatureConstants.Pyrohydra_8Heads] = [None],
 
-            testCases[CreatureConstants.Pyrohydra_9Heads] = [None];
+                [CreatureConstants.Pyrohydra_9Heads] = [None],
 
-            testCases[CreatureConstants.Pyrohydra_10Heads] = [None];
+                [CreatureConstants.Pyrohydra_10Heads] = [None],
 
-            testCases[CreatureConstants.Pyrohydra_11Heads] = [None];
+                [CreatureConstants.Pyrohydra_11Heads] = [None],
 
-            testCases[CreatureConstants.Pyrohydra_12Heads] = [None];
+                [CreatureConstants.Pyrohydra_12Heads] = [None],
 
-            testCases[CreatureConstants.Quasit] = [None];
+                [CreatureConstants.Quasit] = [None],
 
-            testCases[CreatureConstants.Rakshasa] = [None];
+                [CreatureConstants.Rakshasa] = [None],
 
-            testCases[CreatureConstants.Rast] = [None];
+                [CreatureConstants.Rast] = [None],
 
-            testCases[CreatureConstants.Rat] = [None];
+                [CreatureConstants.Rat] = [None],
 
-            testCases[CreatureConstants.Rat_Dire] = [None];
+                [CreatureConstants.Rat_Dire] = [None],
 
-            testCases[CreatureConstants.Rat_Swarm] = [None];
+                [CreatureConstants.Rat_Swarm] = [None],
 
-            testCases[CreatureConstants.Raven] = [None];
+                [CreatureConstants.Raven] = [None],
 
-            testCases[CreatureConstants.Ravid] = [None];
+                [CreatureConstants.Ravid] = [None],
 
-            testCases[CreatureConstants.RazorBoar] = [None];
+                [CreatureConstants.RazorBoar] = [None],
 
-            testCases[CreatureConstants.Remorhaz] = [None];
+                [CreatureConstants.Remorhaz] = [None],
 
-            testCases[CreatureConstants.Retriever] = [None];
+                [CreatureConstants.Retriever] = [None],
 
-            testCases[CreatureConstants.Rhinoceras] = [None];
+                [CreatureConstants.Rhinoceras] = [None],
 
-            testCases[CreatureConstants.Roc] = [None];
+                [CreatureConstants.Roc] = [None],
 
-            testCases[CreatureConstants.Roper] = [None];
+                [CreatureConstants.Roper] = [None],
 
-            testCases[CreatureConstants.RustMonster] = [None];
+                [CreatureConstants.RustMonster] = [None],
 
-            testCases[CreatureConstants.Sahuagin] = [None];
+                [CreatureConstants.Sahuagin] = [None],
 
-            testCases[CreatureConstants.Sahuagin_Malenti] = [None];
+                [CreatureConstants.Sahuagin_Malenti] = [None],
 
-            testCases[CreatureConstants.Sahuagin_Mutant] = [None];
+                [CreatureConstants.Sahuagin_Mutant] = [None],
 
-            testCases[CreatureConstants.Salamander_Flamebrother] = [None];
+                [CreatureConstants.Salamander_Flamebrother] = [None],
 
-            testCases[CreatureConstants.Salamander_Average] = [None];
+                [CreatureConstants.Salamander_Average] = [None],
 
-            testCases[CreatureConstants.Salamander_Noble] = [None];
+                [CreatureConstants.Salamander_Noble] = [None],
 
-            testCases[CreatureConstants.Satyr] = [None];
+                [CreatureConstants.Satyr] = [None],
 
-            testCases[CreatureConstants.Satyr_WithPipes] = [None];
+                [CreatureConstants.Satyr_WithPipes] = [None],
 
-            testCases[CreatureConstants.Scorpion_Monstrous_Colossal] = [None];
+                [CreatureConstants.Scorpion_Monstrous_Colossal] = [None],
 
-            testCases[CreatureConstants.Scorpion_Monstrous_Gargantuan] = [None];
+                [CreatureConstants.Scorpion_Monstrous_Gargantuan] = [None],
 
-            testCases[CreatureConstants.Scorpion_Monstrous_Huge] = [None];
+                [CreatureConstants.Scorpion_Monstrous_Huge] = [None],
 
-            testCases[CreatureConstants.Scorpion_Monstrous_Large] = [None];
+                [CreatureConstants.Scorpion_Monstrous_Large] = [None],
 
-            testCases[CreatureConstants.Scorpion_Monstrous_Medium] = [None];
+                [CreatureConstants.Scorpion_Monstrous_Medium] = [None],
 
-            testCases[CreatureConstants.Scorpion_Monstrous_Small] = [None];
+                [CreatureConstants.Scorpion_Monstrous_Small] = [None],
 
-            testCases[CreatureConstants.Scorpion_Monstrous_Tiny] = [None];
+                [CreatureConstants.Scorpion_Monstrous_Tiny] = [None],
 
-            testCases[CreatureConstants.Scorpionfolk] = [None];
+                [CreatureConstants.Scorpionfolk] = [None],
 
-            testCases[CreatureConstants.SeaCat] = [None];
+                [CreatureConstants.SeaCat] = [None],
 
-            testCases[CreatureConstants.SeaHag] = [None];
+                [CreatureConstants.SeaHag] = [None],
 
-            testCases[CreatureConstants.Shadow] = [None];
+                [CreatureConstants.Shadow] = [None],
 
-            testCases[CreatureConstants.Shadow_Greater] = [None];
+                [CreatureConstants.Shadow_Greater] = [None],
 
-            testCases[CreatureConstants.ShadowMastiff] = [None];
+                [CreatureConstants.ShadowMastiff] = [None],
 
-            testCases[CreatureConstants.ShamblingMound] = [None];
+                [CreatureConstants.ShamblingMound] = [None],
 
-            testCases[CreatureConstants.Shark_Dire] = [None];
+                [CreatureConstants.Shark_Dire] = [None],
 
-            testCases[CreatureConstants.Shark_Huge] = [None];
+                [CreatureConstants.Shark_Huge] = [None],
 
-            testCases[CreatureConstants.Shark_Large] = [None];
+                [CreatureConstants.Shark_Large] = [None],
 
-            testCases[CreatureConstants.Shark_Medium] = [None];
+                [CreatureConstants.Shark_Medium] = [None],
 
-            testCases[CreatureConstants.ShieldGuardian] = [None];
+                [CreatureConstants.ShieldGuardian] = [None],
 
-            testCases[CreatureConstants.ShockerLizard] = [None];
+                [CreatureConstants.ShockerLizard] = [None],
 
-            testCases[CreatureConstants.Shrieker] = [None];
+                [CreatureConstants.Shrieker] = [None],
 
-            testCases[CreatureConstants.Skum] = [None];
+                [CreatureConstants.Skum] = [None],
 
-            testCases[CreatureConstants.Slaad_Red] = [None];
+                [CreatureConstants.Slaad_Red] = [None],
 
-            testCases[CreatureConstants.Slaad_Blue] = [None];
+                [CreatureConstants.Slaad_Blue] = [None],
 
-            testCases[CreatureConstants.Slaad_Green] = [None];
+                [CreatureConstants.Slaad_Green] = [None],
 
-            testCases[CreatureConstants.Slaad_Gray] = [None];
+                [CreatureConstants.Slaad_Gray] = [None],
 
-            testCases[CreatureConstants.Slaad_Death] = [None];
+                [CreatureConstants.Slaad_Death] = [None],
 
-            testCases[CreatureConstants.Snake_Constrictor] = [None];
+                [CreatureConstants.Snake_Constrictor] = [None],
 
-            testCases[CreatureConstants.Snake_Constrictor_Giant] = [None];
+                [CreatureConstants.Snake_Constrictor_Giant] = [None],
 
-            testCases[CreatureConstants.Snake_Viper_Tiny] = [None];
+                [CreatureConstants.Snake_Viper_Tiny] = [None],
 
-            testCases[CreatureConstants.Snake_Viper_Small] = [None];
+                [CreatureConstants.Snake_Viper_Small] = [None],
 
-            testCases[CreatureConstants.Snake_Viper_Medium] = [None];
+                [CreatureConstants.Snake_Viper_Medium] = [None],
 
-            testCases[CreatureConstants.Snake_Viper_Large] = [None];
+                [CreatureConstants.Snake_Viper_Large] = [None],
 
-            testCases[CreatureConstants.Snake_Viper_Huge] = [None];
+                [CreatureConstants.Snake_Viper_Huge] = [None],
 
-            testCases[CreatureConstants.Spectre] = [None];
+                [CreatureConstants.Spectre] = [None],
 
-            testCases[CreatureConstants.Spider_Monstrous_Hunter_Colossal] = [None];
+                [CreatureConstants.Spider_Monstrous_Hunter_Colossal] = [None],
 
-            testCases[CreatureConstants.Spider_Monstrous_Hunter_Gargantuan] = [None];
+                [CreatureConstants.Spider_Monstrous_Hunter_Gargantuan] = [None],
 
-            testCases[CreatureConstants.Spider_Monstrous_Hunter_Huge] = [None];
+                [CreatureConstants.Spider_Monstrous_Hunter_Huge] = [None],
 
-            testCases[CreatureConstants.Spider_Monstrous_Hunter_Large] = [None];
+                [CreatureConstants.Spider_Monstrous_Hunter_Large] = [None],
 
-            testCases[CreatureConstants.Spider_Monstrous_Hunter_Medium] = [None];
+                [CreatureConstants.Spider_Monstrous_Hunter_Medium] = [None],
 
-            testCases[CreatureConstants.Spider_Monstrous_Hunter_Small] = [None];
+                [CreatureConstants.Spider_Monstrous_Hunter_Small] = [None],
 
-            testCases[CreatureConstants.Spider_Monstrous_Hunter_Tiny] = [None];
+                [CreatureConstants.Spider_Monstrous_Hunter_Tiny] = [None],
 
-            testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal] = [None];
+                [CreatureConstants.Spider_Monstrous_WebSpinner_Colossal] = [None],
 
-            testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan] = [None];
+                [CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan] = [None],
 
-            testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Huge] = [None];
+                [CreatureConstants.Spider_Monstrous_WebSpinner_Huge] = [None],
 
-            testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Large] = [None];
+                [CreatureConstants.Spider_Monstrous_WebSpinner_Large] = [None],
 
-            testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Medium] = [None];
+                [CreatureConstants.Spider_Monstrous_WebSpinner_Medium] = [None],
 
-            testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Small] = [None];
+                [CreatureConstants.Spider_Monstrous_WebSpinner_Small] = [None],
 
-            testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Tiny] = [None];
+                [CreatureConstants.Spider_Monstrous_WebSpinner_Tiny] = [None],
 
-            testCases[CreatureConstants.SpiderEater] = [None];
+                [CreatureConstants.SpiderEater] = [None],
 
-            testCases[CreatureConstants.Spider_Swarm] = [None];
+                [CreatureConstants.Spider_Swarm] = [None],
 
-            testCases[CreatureConstants.Squid] = [None];
+                [CreatureConstants.Squid] = [None],
 
-            testCases[CreatureConstants.Squid_Giant] = [None];
+                [CreatureConstants.Squid_Giant] = [None],
 
-            testCases[CreatureConstants.StagBeetle_Giant] = [None];
+                [CreatureConstants.StagBeetle_Giant] = [None],
 
-            testCases[CreatureConstants.Stirge] = [None];
+                [CreatureConstants.Stirge] = [None],
 
-            testCases[CreatureConstants.Succubus] = [None];
+                [CreatureConstants.Succubus] = [None],
 
-            testCases[CreatureConstants.Tarrasque] = [None];
+                [CreatureConstants.Tarrasque] = [None],
 
-            testCases[CreatureConstants.Tendriculos] = [None];
+                [CreatureConstants.Tendriculos] = [None],
 
-            testCases[CreatureConstants.Thoqqua] = [None];
+                [CreatureConstants.Thoqqua] = [None],
 
-            testCases[CreatureConstants.Tiefling] = [None];
+                [CreatureConstants.Tiefling] = [None],
 
-            testCases[CreatureConstants.Tiger] = [None];
+                [CreatureConstants.Tiger] = [None],
 
-            testCases[CreatureConstants.Tiger_Dire] = [None];
+                [CreatureConstants.Tiger_Dire] = [None],
 
-            testCases[CreatureConstants.Titan] = [None];
+                [CreatureConstants.Titan] = [None],
 
-            testCases[CreatureConstants.Toad] = [None];
+                [CreatureConstants.Toad] = [None],
 
-            testCases[CreatureConstants.Tojanida_Juvenile] = [None];
+                [CreatureConstants.Tojanida_Juvenile] = [None],
 
-            testCases[CreatureConstants.Tojanida_Adult] = [None];
+                [CreatureConstants.Tojanida_Adult] = [None],
 
-            testCases[CreatureConstants.Tojanida_Elder] = [None];
+                [CreatureConstants.Tojanida_Elder] = [None],
 
-            testCases[CreatureConstants.Treant] = [None];
+                [CreatureConstants.Treant] = [None],
 
-            testCases[CreatureConstants.Triceratops] = [None];
+                [CreatureConstants.Triceratops] = [None],
 
-            testCases[CreatureConstants.Triton] = [None];
+                [CreatureConstants.Triton] = [None],
 
-            testCases[CreatureConstants.Troglodyte] = [None];
+                [CreatureConstants.Troglodyte] = [None],
 
-            testCases[CreatureConstants.Troll] = [None];
+                [CreatureConstants.Troll] = [None],
 
-            testCases[CreatureConstants.Troll_Scrag] = [None];
+                [CreatureConstants.Troll_Scrag] = [None],
 
-            testCases[CreatureConstants.TrumpetArchon] = [None];
+                [CreatureConstants.TrumpetArchon] = [None],
 
-            testCases[CreatureConstants.Tyrannosaurus] = [None];
+                [CreatureConstants.Tyrannosaurus] = [None],
 
-            testCases[CreatureConstants.UmberHulk] = [None];
+                [CreatureConstants.UmberHulk] = [None],
 
-            testCases[CreatureConstants.UmberHulk_TrulyHorrid] = [None];
+                [CreatureConstants.UmberHulk_TrulyHorrid] = [None],
 
-            testCases[CreatureConstants.Unicorn] = [None];
+                [CreatureConstants.Unicorn] = [None],
 
-            testCases[CreatureConstants.VampireSpawn] = [None];
+                [CreatureConstants.VampireSpawn] = [None],
 
-            testCases[CreatureConstants.Vargouille] = [None];
+                [CreatureConstants.Vargouille] = [None],
 
-            testCases[CreatureConstants.VioletFungus] = [None];
+                [CreatureConstants.VioletFungus] = [None],
 
-            testCases[CreatureConstants.Vrock] = [None];
+                [CreatureConstants.Vrock] = [None],
 
-            testCases[CreatureConstants.Wasp_Giant] = [None];
+                [CreatureConstants.Wasp_Giant] = [None],
 
-            testCases[CreatureConstants.Weasel] = [None];
+                [CreatureConstants.Weasel] = [None],
 
-            testCases[CreatureConstants.Weasel_Dire] = [None];
+                [CreatureConstants.Weasel_Dire] = [None],
 
-            testCases[CreatureConstants.Whale_Baleen] = [None];
+                [CreatureConstants.Whale_Baleen] = [None],
 
-            testCases[CreatureConstants.Whale_Cachalot] = [None];
+                [CreatureConstants.Whale_Cachalot] = [None],
 
-            testCases[CreatureConstants.Whale_Orca] = [None];
+                [CreatureConstants.Whale_Orca] = [None],
 
-            testCases[CreatureConstants.Wight] = [None];
+                [CreatureConstants.Wight] = [None],
 
-            testCases[CreatureConstants.WillOWisp] = [None];
+                [CreatureConstants.WillOWisp] = [None],
 
-            testCases[CreatureConstants.WinterWolf] = [None];
+                [CreatureConstants.WinterWolf] = [None],
 
-            testCases[CreatureConstants.Wolf] = [None];
+                [CreatureConstants.Wolf] = [None],
 
-            testCases[CreatureConstants.Wolf_Dire] = [None];
+                [CreatureConstants.Wolf_Dire] = [None],
 
-            testCases[CreatureConstants.Wolverine] = [None];
+                [CreatureConstants.Wolverine] = [None],
 
-            testCases[CreatureConstants.Wolverine_Dire] = [None];
+                [CreatureConstants.Wolverine_Dire] = [None],
 
-            testCases[CreatureConstants.Worg] = [None];
+                [CreatureConstants.Worg] = [None],
 
-            testCases[CreatureConstants.Wraith] = [None];
+                [CreatureConstants.Wraith] = [None],
 
-            testCases[CreatureConstants.Wraith_Dread] = [None];
+                [CreatureConstants.Wraith_Dread] = [None],
 
-            testCases[CreatureConstants.Wyvern] = [None];
+                [CreatureConstants.Wyvern] = [None],
 
-            testCases[CreatureConstants.Xill] = [None];
+                [CreatureConstants.Xill] = [None],
 
-            testCases[CreatureConstants.Xorn_Minor] = [None];
+                [CreatureConstants.Xorn_Minor] = [None],
 
-            testCases[CreatureConstants.Xorn_Average] = [None];
+                [CreatureConstants.Xorn_Average] = [None],
 
-            testCases[CreatureConstants.Xorn_Elder] = [None];
+                [CreatureConstants.Xorn_Elder] = [None],
 
-            testCases[CreatureConstants.YethHound] = [None];
+                [CreatureConstants.YethHound] = [None],
 
-            testCases[CreatureConstants.Yrthak] = [None];
+                [CreatureConstants.Yrthak] = [None],
 
-            testCases[CreatureConstants.YuanTi_Abomination] = [None];
+                [CreatureConstants.YuanTi_Abomination] = [None],
 
-            testCases[CreatureConstants.YuanTi_Halfblood_SnakeArms] = [None];
+                [CreatureConstants.YuanTi_Halfblood_SnakeArms] = [None],
 
-            testCases[CreatureConstants.YuanTi_Halfblood_SnakeHead] = [None];
+                [CreatureConstants.YuanTi_Halfblood_SnakeHead] = [None],
 
-            testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail] = [None];
+                [CreatureConstants.YuanTi_Halfblood_SnakeTail] = [None],
 
-            testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] = [None];
+                [CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] = [None],
 
-            testCases[CreatureConstants.YuanTi_Pureblood] = [None];
+                [CreatureConstants.YuanTi_Pureblood] = [None],
 
-            testCases[CreatureConstants.Zelekhut] = [None];
+                [CreatureConstants.Zelekhut] = [None]
+            };
 
             return testCases;
         }
 
-        public static IEnumerable Types
+        public static Dictionary<string, List<string>> GetTypeSaveBonuses()
         {
-            get
+            var testCases = new Dictionary<string, List<string>>
             {
-                var testCases = new Dictionary<string, List<string>>();
+                [CreatureConstants.Types.Aberration] = [None],
+                [CreatureConstants.Types.Animal] = [None],
+                [CreatureConstants.Types.Construct] = [None],
+                [CreatureConstants.Types.Dragon] = [None],
+                [CreatureConstants.Types.Elemental] = [None],
+                [CreatureConstants.Types.Fey] = [None],
+                [CreatureConstants.Types.Giant] = [None],
+                [CreatureConstants.Types.Humanoid] = [None],
+                [CreatureConstants.Types.MagicalBeast] = [None],
+                [CreatureConstants.Types.MonstrousHumanoid] = [None],
+                [CreatureConstants.Types.Ooze] = [None],
+                [CreatureConstants.Types.Outsider] = [None],
+                [CreatureConstants.Types.Plant] = [None],
+                [CreatureConstants.Types.Undead] = [None],
+                [CreatureConstants.Types.Vermin] = [None]
+            };
 
-                testCases[CreatureConstants.Types.Aberration] = [None];
-
-                testCases[CreatureConstants.Types.Animal] = [None];
-
-                testCases[CreatureConstants.Types.Construct] = [None];
-
-                testCases[CreatureConstants.Types.Dragon] = [None];
-
-                testCases[CreatureConstants.Types.Elemental] = [None];
-
-                testCases[CreatureConstants.Types.Fey] = [None];
-
-                testCases[CreatureConstants.Types.Giant] = [None];
-
-                testCases[CreatureConstants.Types.Humanoid] = [None];
-
-                testCases[CreatureConstants.Types.MagicalBeast] = [None];
-
-                testCases[CreatureConstants.Types.MonstrousHumanoid] = [None];
-
-                testCases[CreatureConstants.Types.Ooze] = [None];
-
-                testCases[CreatureConstants.Types.Outsider] = [None];
-
-                testCases[CreatureConstants.Types.Plant] = [None];
-
-                testCases[CreatureConstants.Types.Undead] = [None];
-
-                testCases[CreatureConstants.Types.Vermin] = [None];
-
-                return TestDataHelper.EnumerateTestCases(testCases);
-            }
+            return testCases;
         }
 
         private static string GetData(string saveName, int bonus, string condition = "")
@@ -1324,136 +1308,126 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
         }
 
-        public static IEnumerable Subtypes
+        public static Dictionary<string, List<string>> GetSubtypeSaveBonuses()
         {
-            get
+            var testCases = new Dictionary<string, List<string>>();
+            var creatures = CreatureConstants.GetAll();
+
+            //INFO: Some subtypes, such as Gnoll, are duplicate of the creature entries
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll().Except(creatures);
+
+            foreach (var subtype in subtypes)
             {
-                var testCases = new Dictionary<string, List<string>>();
-                var subtypes = CreatureConstants.Types.Subtypes.GetAll()
-                    .Except(new[]
-                    {
-                        CreatureConstants.Types.Subtypes.Gnoll,
-                        CreatureConstants.Types.Subtypes.Human,
-                        CreatureConstants.Types.Subtypes.Orc,
-                    }); //INFO: This is duplicated from the creature entry
-
-                foreach (var subtype in subtypes)
-                {
-                    testCases[subtype] = new List<string>();
-                }
-
-                testCases[CreatureConstants.Types.Subtypes.Air] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Angel] = [GetData(SaveConstants.Fortitude, "against poison")] = 4;
-
-                testCases[CreatureConstants.Types.Subtypes.Aquatic] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Archon] = [GetData(SaveConstants.Fortitude, "against poison")] = 4;
-
-                testCases[CreatureConstants.Types.Subtypes.Augmented] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Chaotic] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Cold] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Dwarf] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Earth] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Elf] = [GetData(GroupConstants.All, "enchantment spells or effects")] = 2;
-
-                testCases[CreatureConstants.Types.Subtypes.Evil] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Extraplanar] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Fire] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Gnome] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Goblinoid] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Good] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Halfling] = [GetData(GroupConstants.All)] = 1;
-                testCases[CreatureConstants.Types.Subtypes.Halfling] = [GetData(GroupConstants.All, "morale against fear")] = 2;
-
-                testCases[CreatureConstants.Types.Subtypes.Incorporeal] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Lawful] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Native] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Reptilian] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Shapechanger] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Swarm] = [None];
-
-                testCases[CreatureConstants.Types.Subtypes.Water] = [None];
-
-                return TestDataHelper.EnumerateTestCases(testCases);
+                testCases[subtype] = [];
             }
+
+            testCases[CreatureConstants.Types.Subtypes.Air] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Angel] = [GetData(SaveConstants.Fortitude, 4, "against poison")];
+
+            testCases[CreatureConstants.Types.Subtypes.Aquatic] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Archon] = [GetData(SaveConstants.Fortitude, 4, "against poison")];
+
+            testCases[CreatureConstants.Types.Subtypes.Augmented] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Chaotic] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Cold] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Dwarf] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Earth] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Elf] = [GetData(GroupConstants.All, 2, "enchantment spells or effects")];
+
+            testCases[CreatureConstants.Types.Subtypes.Evil] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Extraplanar] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Fire] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Gnome] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Goblinoid] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Good] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Halfling] = [GetData(GroupConstants.All, 1), GetData(GroupConstants.All, 2, "morale against fear")];
+
+            testCases[CreatureConstants.Types.Subtypes.Incorporeal] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Lawful] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Native] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Reptilian] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Shapechanger] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Swarm] = [None];
+
+            testCases[CreatureConstants.Types.Subtypes.Water] = [None];
+
+            return testCases;
         }
 
-        public static IEnumerable Templates
+        public static Dictionary<string, List<string>> GetTemplateSaveBonuses()
         {
-            get
+            var testCases = new Dictionary<string, List<string>>();
+            var templates = CreatureConstants.Templates.GetAll();
+
+            foreach (var template in templates)
             {
-                var testCases = new Dictionary<string, List<string>>();
-                var templates = CreatureConstants.Templates.GetAll(); //INFO: This is duplicated from the creature entry
-
-                foreach (var template in templates)
-                {
-                    testCases[template] = new List<string>();
-                }
-
-                testCases[CreatureConstants.Templates.None] = [None];
-                testCases[CreatureConstants.Templates.CelestialCreature] = [None];
-                testCases[CreatureConstants.Templates.FiendishCreature] = [None];
-                testCases[CreatureConstants.Templates.HalfCelestial] = [None];
-                testCases[CreatureConstants.Templates.HalfDragon_Black] = [None];
-                testCases[CreatureConstants.Templates.HalfDragon_Blue] = [None];
-                testCases[CreatureConstants.Templates.HalfDragon_Brass] = [None];
-                testCases[CreatureConstants.Templates.HalfDragon_Bronze] = [None];
-                testCases[CreatureConstants.Templates.HalfDragon_Copper] = [None];
-                testCases[CreatureConstants.Templates.HalfDragon_Gold] = [None];
-                testCases[CreatureConstants.Templates.HalfDragon_Green] = [None];
-                testCases[CreatureConstants.Templates.HalfDragon_Red] = [None];
-                testCases[CreatureConstants.Templates.HalfDragon_Silver] = [None];
-                testCases[CreatureConstants.Templates.HalfDragon_White] = [None];
-                testCases[CreatureConstants.Templates.HalfFiend] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Afflicted] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Natural] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted] = [None];
-                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural] = [None];
-                testCases[CreatureConstants.Templates.Skeleton] = [None];
-                testCases[CreatureConstants.Templates.Zombie] = [None];
-                testCases[CreatureConstants.Templates.Vampire] = [None];
-                testCases[CreatureConstants.Templates.Ghost] = [None];
-                testCases[CreatureConstants.Templates.Lich] = [None];
-
-                return TestDataHelper.EnumerateTestCases(testCases);
+                testCases[template] = [];
             }
+
+            testCases[CreatureConstants.Templates.None] = [None];
+            testCases[CreatureConstants.Templates.CelestialCreature] = [None];
+            testCases[CreatureConstants.Templates.FiendishCreature] = [None];
+            testCases[CreatureConstants.Templates.HalfCelestial] = [None];
+            testCases[CreatureConstants.Templates.HalfDragon_Black] = [None];
+            testCases[CreatureConstants.Templates.HalfDragon_Blue] = [None];
+            testCases[CreatureConstants.Templates.HalfDragon_Brass] = [None];
+            testCases[CreatureConstants.Templates.HalfDragon_Bronze] = [None];
+            testCases[CreatureConstants.Templates.HalfDragon_Copper] = [None];
+            testCases[CreatureConstants.Templates.HalfDragon_Gold] = [None];
+            testCases[CreatureConstants.Templates.HalfDragon_Green] = [None];
+            testCases[CreatureConstants.Templates.HalfDragon_Red] = [None];
+            testCases[CreatureConstants.Templates.HalfDragon_Silver] = [None];
+            testCases[CreatureConstants.Templates.HalfDragon_White] = [None];
+            testCases[CreatureConstants.Templates.HalfFiend] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Afflicted] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Natural] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted] = [None];
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural] = [None];
+            testCases[CreatureConstants.Templates.Skeleton] = [None];
+            testCases[CreatureConstants.Templates.Zombie] = [None];
+            testCases[CreatureConstants.Templates.Vampire] = [None];
+            testCases[CreatureConstants.Templates.Ghost] = [None];
+            testCases[CreatureConstants.Templates.Lich] = [None];
+
+            return testCases;
         }
     }
 }

@@ -39,6 +39,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void SaveBonuses(string source)
         {
+            Assert.That(saveBonusesData, Contains.Key(source));
+
             if (!saveBonusesData[source].Any())
                 Assert.Fail("Test case did not specify saves bonuses or NONE");
 
