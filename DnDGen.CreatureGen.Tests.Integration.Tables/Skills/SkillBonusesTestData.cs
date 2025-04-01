@@ -397,11 +397,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Listen, 4, condition: "while able to use blindsight"),
                     GetData(SkillConstants.Hide, 4)];
 
-                testCases[CreatureConstants.Deinonychus] = [GetData(SkillConstants.Hide, 8)];
-                testCases[CreatureConstants.Deinonychus] = [GetData(SkillConstants.Jump, 8)];
-                testCases[CreatureConstants.Deinonychus] = [GetData(SkillConstants.Listen)] = 8;
-                testCases[CreatureConstants.Deinonychus] = [GetData(SkillConstants.Spot, 8)];
-                testCases[CreatureConstants.Deinonychus] = [GetData(SkillConstants.Survival)] = 8;
+                testCases[CreatureConstants.Deinonychus] =
+                    [GetData(SkillConstants.Hide, 8),
+                    GetData(SkillConstants.Jump, 8),
+                    GetData(SkillConstants.Listen, 8),
+                    GetData(SkillConstants.Spot, 8),
+                    GetData(SkillConstants.Survival, 8)];
 
                 testCases[CreatureConstants.Delver] = [None];
 
@@ -409,12 +410,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Derro_Sane] = [None];
 
-                testCases[CreatureConstants.Destrachan] = [GetData(SkillConstants.Listen)] = 10;
+                testCases[CreatureConstants.Destrachan] = [GetData(SkillConstants.Listen, 10)];
 
                 testCases[CreatureConstants.Devourer] = [None];
 
-                testCases[CreatureConstants.Digester] = [GetData(SkillConstants.Hide, 4)];
-                testCases[CreatureConstants.Digester] = [GetData(SkillConstants.Jump, 4)];
+                testCases[CreatureConstants.Digester] = [GetData(SkillConstants.Hide, 4), GetData(SkillConstants.Jump, 4)];
 
                 testCases[CreatureConstants.DisplacerBeast] = [GetData(SkillConstants.Hide, 8)];
 
@@ -424,19 +424,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Djinni_Noble] = [None];
 
-                testCases[CreatureConstants.Dog] = [GetData(SkillConstants.Jump, 4)];
-                testCases[CreatureConstants.Dog] = [GetData(SkillConstants.Survival, condition: "tracking by scent")] = 4;
+                testCases[CreatureConstants.Dog] = [GetData(SkillConstants.Jump, 4), GetData(SkillConstants.Survival, 4, condition: "tracking by scent")];
 
-                testCases[CreatureConstants.Dog_Riding] = [GetData(SkillConstants.Jump, 4)];
-                testCases[CreatureConstants.Dog_Riding] = [GetData(SkillConstants.Survival, condition: "tracking by scent")] = 4;
+                testCases[CreatureConstants.Dog_Riding] = [GetData(SkillConstants.Jump, 4), GetData(SkillConstants.Survival, 4, condition: "tracking by scent")];
 
-                testCases[CreatureConstants.Donkey] = [GetData(SkillConstants.Balance)] = 2;
+                testCases[CreatureConstants.Donkey] = [GetData(SkillConstants.Balance, 2)];
 
-                testCases[CreatureConstants.Doppelganger] = [GetData(SkillConstants.Bluff)] = 4;
-                testCases[CreatureConstants.Doppelganger] = [GetData(SkillConstants.Disguise)] = 4;
-                testCases[CreatureConstants.Doppelganger] = [GetData(SkillConstants.Bluff, condition: "when reading an opponent's mind")] = 4;
-                testCases[CreatureConstants.Doppelganger] = [GetData(SkillConstants.Disguise, condition: "when reading an opponent's mind")] = 4;
-                testCases[CreatureConstants.Doppelganger] = [GetData(SkillConstants.Disguise, condition: "when using Change Shape")] = 10;
+                testCases[CreatureConstants.Doppelganger] =
+                    [GetData(SkillConstants.Bluff, 4),
+                    GetData(SkillConstants.Disguise, 4),
+                    GetData(SkillConstants.Bluff, 4, condition: "when reading an opponent's mind"),
+                    GetData(SkillConstants.Disguise, 4, condition: "when reading an opponent's mind"),
+                    GetData(SkillConstants.Disguise, 10, condition: "when using Change Shape")];
 
                 testCases[CreatureConstants.Dragon_Black_Wyrmling] = [None];
 
@@ -678,25 +677,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Dragon_Silver_GreatWyrm] = [None];
 
-                testCases[CreatureConstants.DragonTurtle] = [GetData(SkillConstants.Hide, condition: "when submerged")] = 8;
+                testCases[CreatureConstants.DragonTurtle] = [GetData(SkillConstants.Hide, 8, condition: "when submerged")];
 
-                testCases[CreatureConstants.Dragonne] = [GetData(SkillConstants.Listen)] = 4;
-                testCases[CreatureConstants.Dragonne] = [GetData(SkillConstants.Spot, 4)];
+                testCases[CreatureConstants.Dragonne] = [GetData(SkillConstants.Listen, 4), GetData(SkillConstants.Spot, 4)];
 
                 testCases[CreatureConstants.Dretch] = [None];
 
-                testCases[CreatureConstants.Drider] = [GetData(SkillConstants.Hide, 4)];
-                testCases[CreatureConstants.Drider] = [GetData(SkillConstants.MoveSilently, 4)];
-                testCases[CreatureConstants.Drider] = [GetData(SkillConstants.Climb, 8)];
-                testCases[CreatureConstants.Drider] = [GetData(SkillConstants.Climb, 10, condition: "can always take 10")];
+                testCases[CreatureConstants.Drider] =
+                    [GetData(SkillConstants.Hide, 4),
+                    GetData(SkillConstants.MoveSilently, 4),
+                    GetData(SkillConstants.Climb, 8),
+                    GetData(SkillConstants.Climb, 10, condition: "can always take 10")];
 
-                testCases[CreatureConstants.Dryad] = [GetData(SkillConstants.Diplomacy, condition: "when using Wild Empathy")] = 6;
+                testCases[CreatureConstants.Dryad] = [GetData(SkillConstants.Diplomacy, 6, condition: "when using Wild Empathy")];
 
                 testCases[CreatureConstants.Dwarf_Deep] = [None];
 
-                testCases[CreatureConstants.Dwarf_Duergar] = [GetData(SkillConstants.MoveSilently, 4)];
-                testCases[CreatureConstants.Dwarf_Duergar] = [GetData(SkillConstants.Listen)] = 1;
-                testCases[CreatureConstants.Dwarf_Duergar] = [GetData(SkillConstants.Spot)] = 1;
+                testCases[CreatureConstants.Dwarf_Duergar] =
+                    [GetData(SkillConstants.MoveSilently, 4),
+                    GetData(SkillConstants.Listen, 1),
+                    GetData(SkillConstants.Spot, 1)];
 
                 testCases[CreatureConstants.Dwarf_Hill] = [None];
 
@@ -708,7 +708,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Efreeti] = [None];
 
-                testCases[CreatureConstants.Elasmosaurus] = [GetData(SkillConstants.Hide, condition: "in water")] = 8;
+                testCases[CreatureConstants.Elasmosaurus] = [GetData(SkillConstants.Hide, 8, condition: "in water")];
 
                 testCases[CreatureConstants.Elemental_Air_Small] = [None];
 
@@ -760,60 +760,76 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Elephant] = [None];
 
-                testCases[CreatureConstants.Elf_Aquatic] = [GetData(SkillConstants.Listen, 2)];
-                testCases[CreatureConstants.Elf_Aquatic] = [GetData(SkillConstants.Search)] = 2;
-                testCases[CreatureConstants.Elf_Aquatic] = [GetData(SkillConstants.Search, condition: "passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for")] = 0;
-                testCases[CreatureConstants.Elf_Aquatic] = [GetData(SkillConstants.Spot, 2)];
+                testCases[CreatureConstants.Elf_Aquatic] =
+                    [GetData(SkillConstants.Listen, 2),
+                    GetData(SkillConstants.Search, 2),
+                    GetData(SkillConstants.Search, 0,
+                        condition: "passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for"),
+                    GetData(SkillConstants.Spot, 2)];
 
-                testCases[CreatureConstants.Elf_Drow] = [GetData(SkillConstants.Listen, 2)];
-                testCases[CreatureConstants.Elf_Drow] = [GetData(SkillConstants.Search)] = 2;
-                testCases[CreatureConstants.Elf_Drow] = [GetData(SkillConstants.Search, condition: "passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for")] = 0;
-                testCases[CreatureConstants.Elf_Drow] = [GetData(SkillConstants.Spot, 2)];
+                testCases[CreatureConstants.Elf_Drow] =
+                    [GetData(SkillConstants.Listen, 2),
+                    GetData(SkillConstants.Search, 2),
+                    GetData(SkillConstants.Search, 0,
+                        condition: "passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for"),
+                    GetData(SkillConstants.Spot, 2)];
 
-                testCases[CreatureConstants.Elf_Gray] = [GetData(SkillConstants.Listen, 2)];
-                testCases[CreatureConstants.Elf_Gray] = [GetData(SkillConstants.Search)] = 2;
-                testCases[CreatureConstants.Elf_Gray] = [GetData(SkillConstants.Search, condition: "passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for")] = 0;
-                testCases[CreatureConstants.Elf_Gray] = [GetData(SkillConstants.Spot, 2)];
+                testCases[CreatureConstants.Elf_Gray] =
+                    [GetData(SkillConstants.Listen, 2),
+                    GetData(SkillConstants.Search, 2),
+                    GetData(SkillConstants.Search, 0,
+                        condition: "passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for"),
+                    GetData(SkillConstants.Spot, 2)];
 
-                testCases[CreatureConstants.Elf_Half] = [GetData(SkillConstants.Diplomacy)] = 2;
-                testCases[CreatureConstants.Elf_Half] = [GetData(SkillConstants.GatherInformation)] = 2;
-                testCases[CreatureConstants.Elf_Half] = [GetData(SkillConstants.Listen)] = 1;
-                testCases[CreatureConstants.Elf_Half] = [GetData(SkillConstants.Search)] = 1;
-                testCases[CreatureConstants.Elf_Half] = [GetData(SkillConstants.Spot)] = 1;
+                testCases[CreatureConstants.Elf_Half] =
+                    [GetData(SkillConstants.Diplomacy, 2),
+                    GetData(SkillConstants.GatherInformation, 2),
+                    GetData(SkillConstants.Listen, 1),
+                    GetData(SkillConstants.Search, 1),
+                    GetData(SkillConstants.Spot, 1)];
 
-                testCases[CreatureConstants.Elf_High] = [GetData(SkillConstants.Listen, 2)];
-                testCases[CreatureConstants.Elf_High] = [GetData(SkillConstants.Search)] = 2;
-                testCases[CreatureConstants.Elf_High] = [GetData(SkillConstants.Search, condition: "passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for")] = 0;
-                testCases[CreatureConstants.Elf_High] = [GetData(SkillConstants.Spot, 2)];
+                testCases[CreatureConstants.Elf_High] =
+                    [GetData(SkillConstants.Listen, 2),
+                    GetData(SkillConstants.Search, 2),
+                    GetData(SkillConstants.Search, 0,
+                        condition: "passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for"),
+                    GetData(SkillConstants.Spot, 2)];
 
-                testCases[CreatureConstants.Elf_Wild] = [GetData(SkillConstants.Listen, 2)];
-                testCases[CreatureConstants.Elf_Wild] = [GetData(SkillConstants.Search)] = 2;
-                testCases[CreatureConstants.Elf_Wild] = [GetData(SkillConstants.Search, condition: "passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for")] = 0;
-                testCases[CreatureConstants.Elf_Wild] = [GetData(SkillConstants.Spot, 2)];
+                testCases[CreatureConstants.Elf_Wild] =
+                    [GetData(SkillConstants.Listen, 2),
+                    GetData(SkillConstants.Search, 2),
+                    GetData(SkillConstants.Search, 0,
+                        condition: "passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for"),
+                    GetData(SkillConstants.Spot, 2)];
 
-                testCases[CreatureConstants.Elf_Wood] = [GetData(SkillConstants.Listen, 2)];
-                testCases[CreatureConstants.Elf_Wood] = [GetData(SkillConstants.Search)] = 2;
-                testCases[CreatureConstants.Elf_Wood] = [GetData(SkillConstants.Search, condition: "passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for")] = 0;
-                testCases[CreatureConstants.Elf_Wood] = [GetData(SkillConstants.Spot, 2)];
+                testCases[CreatureConstants.Elf_Wood] =
+                    [GetData(SkillConstants.Listen, 2),
+                    GetData(SkillConstants.Search, 2),
+                    GetData(SkillConstants.Search, 0,
+                        condition: "passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for"),
+                    GetData(SkillConstants.Spot, 2)];
 
                 testCases[CreatureConstants.Erinyes] = [None];
 
-                testCases[CreatureConstants.EtherealFilcher] = [GetData(SkillConstants.Listen)] = 4;
-                testCases[CreatureConstants.EtherealFilcher] = [GetData(SkillConstants.SleightOfHand)] = 8;
-                testCases[CreatureConstants.EtherealFilcher] = [GetData(SkillConstants.Spot, 4)];
+                testCases[CreatureConstants.EtherealFilcher] =
+                    [GetData(SkillConstants.Listen, 4),
+                    GetData(SkillConstants.SleightOfHand, 8),
+                    GetData(SkillConstants.Spot, 4)];
 
-                testCases[CreatureConstants.EtherealMarauder] = [GetData(SkillConstants.Listen, 2)];
-                testCases[CreatureConstants.EtherealMarauder] = [GetData(SkillConstants.MoveSilently)] = 2;
-                testCases[CreatureConstants.EtherealMarauder] = [GetData(SkillConstants.Spot, 2)];
+                testCases[CreatureConstants.EtherealMarauder] =
+                    [GetData(SkillConstants.Listen, 2),
+                    GetData(SkillConstants.MoveSilently, 2),
+                    GetData(SkillConstants.Spot, 2)];
 
-                testCases[CreatureConstants.Ettercap] = [GetData(SkillConstants.Craft, focus: SkillConstants.Foci.Craft.Trapmaking)] = 4;
-                testCases[CreatureConstants.Ettercap] = [GetData(SkillConstants.Hide, 4)];
-                testCases[CreatureConstants.Ettercap] = [GetData(SkillConstants.Spot, 4)];
-                testCases[CreatureConstants.Ettercap] = [GetData(SkillConstants.Climb, 8)];
-                testCases[CreatureConstants.Ettercap] = [GetData(SkillConstants.Climb, 10, condition: "can always take 10")];
+                testCases[CreatureConstants.Ettercap] =
+                    [GetData(SkillConstants.Craft, 4, focus: SkillConstants.Foci.Craft.Trapmaking),
+                    GetData(SkillConstants.Hide, 4),
+                    GetData(SkillConstants.Spot, 4),
+                    GetData(SkillConstants.Climb, 8),
+                    GetData(SkillConstants.Climb, 10, condition: "can always take 10")];
 
                 testCases[CreatureConstants.Ettin] = [GetData(SkillConstants.Listen, 2)];
-                testCases[CreatureConstants.Ettin] = [GetData(SkillConstants.Search)] = 2;
+                testCases[CreatureConstants.Ettin] = [GetData(SkillConstants.Search, 2)];
                 testCases[CreatureConstants.Ettin] = [GetData(SkillConstants.Spot, 2)];
 
                 testCases[CreatureConstants.FireBeetle_Giant] = [None];
@@ -877,7 +893,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Githzerai] = [None];
 
-                testCases[CreatureConstants.Glabrezu] = [GetData(SkillConstants.Listen)] = 8;
+                testCases[CreatureConstants.Glabrezu] = [GetData(SkillConstants.Listen, 8)];
                 testCases[CreatureConstants.Glabrezu] = [GetData(SkillConstants.Spot, 8)];
 
                 testCases[CreatureConstants.Gnoll] = [None];
@@ -933,16 +949,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Halfling_Lightfoot] = [GetData(SkillConstants.Climb)] = 2;
                 testCases[CreatureConstants.Halfling_Lightfoot] = [GetData(SkillConstants.Jump)] = 2;
-                testCases[CreatureConstants.Halfling_Lightfoot] = [GetData(SkillConstants.MoveSilently)] = 2;
+                testCases[CreatureConstants.Halfling_Lightfoot] = [GetData(SkillConstants.MoveSilently, 2)];
 
                 testCases[CreatureConstants.Halfling_Tallfellow] = [None];
 
-                testCases[CreatureConstants.Harpy] = [GetData(SkillConstants.Bluff)] = 4;
-                testCases[CreatureConstants.Harpy] = [GetData(SkillConstants.Listen)] = 4;
+                testCases[CreatureConstants.Harpy] = [GetData(SkillConstants.Bluff, 4)];
+                testCases[CreatureConstants.Harpy] = [GetData(SkillConstants.Listen, 4)];
 
                 testCases[CreatureConstants.Hawk] = [GetData(SkillConstants.Spot, 8)];
 
-                testCases[CreatureConstants.Hellcat_Bezekira] = [GetData(SkillConstants.Listen)] = 4;
+                testCases[CreatureConstants.Hellcat_Bezekira] = [GetData(SkillConstants.Listen, 4)];
                 testCases[CreatureConstants.Hellcat_Bezekira] = [GetData(SkillConstants.MoveSilently, 4)];
 
                 testCases[CreatureConstants.Hellwasp_Swarm] = [None];
@@ -953,7 +969,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.HellHound_NessianWarhound] = [GetData(SkillConstants.Hide)] = 5;
                 testCases[CreatureConstants.HellHound_NessianWarhound] = [GetData(SkillConstants.MoveSilently)] = 5;
 
-                testCases[CreatureConstants.Hezrou] = [GetData(SkillConstants.Listen)] = 8;
+                testCases[CreatureConstants.Hezrou] = [GetData(SkillConstants.Listen, 8)];
                 testCases[CreatureConstants.Hezrou] = [GetData(SkillConstants.Spot, 8)];
 
                 testCases[CreatureConstants.Hieracosphinx] = [GetData(SkillConstants.Spot, 4)];
@@ -1033,9 +1049,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Kobold] = [GetData(SkillConstants.Craft, focus: SkillConstants.Foci.Craft.Trapmaking)] = 2;
                 testCases[CreatureConstants.Kobold] = [GetData(SkillConstants.Profession, focus: SkillConstants.Foci.Profession.Miner)] = 2;
-                testCases[CreatureConstants.Kobold] = [GetData(SkillConstants.Search)] = 2;
+                testCases[CreatureConstants.Kobold] = [GetData(SkillConstants.Search, 2)];
 
-                testCases[CreatureConstants.Kolyarut] = [GetData(SkillConstants.Disguise)] = 4;
+                testCases[CreatureConstants.Kolyarut] = [GetData(SkillConstants.Disguise, 4)];
                 testCases[CreatureConstants.Kolyarut] = [GetData(SkillConstants.GatherInformation)] = 4;
                 testCases[CreatureConstants.Kolyarut] = [GetData(SkillConstants.SenseMotive)] = 4;
 
@@ -1048,7 +1064,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.KuoToa] = [GetData(SkillConstants.Spot, 4)];
                 testCases[CreatureConstants.KuoToa] = [GetData(SkillConstants.Search)] = 4;
 
-                testCases[CreatureConstants.Lamia] = [GetData(SkillConstants.Bluff)] = 4;
+                testCases[CreatureConstants.Lamia] = [GetData(SkillConstants.Bluff, 4)];
                 testCases[CreatureConstants.Lamia] = [GetData(SkillConstants.Hide, 4)];
 
                 testCases[CreatureConstants.Lammasu] = [GetData(SkillConstants.Spot, 2)];
@@ -1096,7 +1112,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Locathah] = [None];
 
-                testCases[CreatureConstants.Locust_Swarm] = [GetData(SkillConstants.Listen)] = 4;
+                testCases[CreatureConstants.Locust_Swarm] = [GetData(SkillConstants.Listen, 4)];
                 testCases[CreatureConstants.Locust_Swarm] = [GetData(SkillConstants.Spot, 4)];
 
                 testCases[CreatureConstants.Magmin] = [None];
@@ -1105,20 +1121,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Manticore] = [GetData(SkillConstants.Spot, 4)];
 
-                testCases[CreatureConstants.Marilith] = [GetData(SkillConstants.Listen)] = 8;
+                testCases[CreatureConstants.Marilith] = [GetData(SkillConstants.Listen, 8)];
                 testCases[CreatureConstants.Marilith] = [GetData(SkillConstants.Spot, 8)];
 
                 testCases[CreatureConstants.Marut] = [GetData(SkillConstants.Concentration)] = 4;
-                testCases[CreatureConstants.Marut] = [GetData(SkillConstants.Listen)] = 4;
+                testCases[CreatureConstants.Marut] = [GetData(SkillConstants.Listen, 4)];
                 testCases[CreatureConstants.Marut] = [GetData(SkillConstants.Spot, 4)];
 
                 testCases[CreatureConstants.Medusa] = [None];
 
                 testCases[CreatureConstants.Megaraptor] = [GetData(SkillConstants.Hide, 8)];
                 testCases[CreatureConstants.Megaraptor] = [GetData(SkillConstants.Jump, 8)];
-                testCases[CreatureConstants.Megaraptor] = [GetData(SkillConstants.Listen)] = 8;
+                testCases[CreatureConstants.Megaraptor] = [GetData(SkillConstants.Listen, 8)];
                 testCases[CreatureConstants.Megaraptor] = [GetData(SkillConstants.Spot, 8)];
-                testCases[CreatureConstants.Megaraptor] = [GetData(SkillConstants.Survival)] = 8;
+                testCases[CreatureConstants.Megaraptor] = [GetData(SkillConstants.Survival, 8)];
 
                 testCases[CreatureConstants.Mephit_Air] = [None];
 
@@ -1146,7 +1162,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.MindFlayer] = [None];
 
-                testCases[CreatureConstants.Minotaur] = [GetData(SkillConstants.Listen)] = 4;
+                testCases[CreatureConstants.Minotaur] = [GetData(SkillConstants.Listen, 4)];
                 testCases[CreatureConstants.Minotaur] = [GetData(SkillConstants.Search)] = 4;
                 testCases[CreatureConstants.Minotaur] = [GetData(SkillConstants.Spot, 4)];
 
@@ -1168,7 +1184,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Naga_Water] = [None];
 
-                testCases[CreatureConstants.Nalfeshnee] = [GetData(SkillConstants.Listen)] = 8;
+                testCases[CreatureConstants.Nalfeshnee] = [GetData(SkillConstants.Listen, 8)];
                 testCases[CreatureConstants.Nalfeshnee] = [GetData(SkillConstants.Spot, 8)];
 
                 testCases[CreatureConstants.NightHag] = [None];
@@ -1209,17 +1225,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Otyugh] = [GetData(SkillConstants.Hide, condition: "in its lair")] = 8;
 
-                testCases[CreatureConstants.Owl] = [GetData(SkillConstants.Listen)] = 8;
+                testCases[CreatureConstants.Owl] = [GetData(SkillConstants.Listen, 8)];
                 testCases[CreatureConstants.Owl] = [GetData(SkillConstants.MoveSilently)] = 14;
                 testCases[CreatureConstants.Owl] = [GetData(SkillConstants.Spot, condition: "in areas of shadowy illumination")] = 8;
 
-                testCases[CreatureConstants.Owl_Giant] = [GetData(SkillConstants.Listen)] = 8;
+                testCases[CreatureConstants.Owl_Giant] = [GetData(SkillConstants.Listen, 8)];
                 testCases[CreatureConstants.Owl_Giant] = [GetData(SkillConstants.MoveSilently, condition: "in flight")] = 8;
                 testCases[CreatureConstants.Owl_Giant] = [GetData(SkillConstants.Spot, 4)];
 
                 testCases[CreatureConstants.Owlbear] = [None];
 
-                testCases[CreatureConstants.Pegasus] = [GetData(SkillConstants.Listen)] = 4;
+                testCases[CreatureConstants.Pegasus] = [GetData(SkillConstants.Listen, 4)];
                 testCases[CreatureConstants.Pegasus] = [GetData(SkillConstants.Spot, 4)];
 
                 testCases[CreatureConstants.PhantomFungus] = [GetData(SkillConstants.MoveSilently)] = 5;
@@ -1232,11 +1248,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.PitFiend] = [None];
 
                 testCases[CreatureConstants.Pixie] = [GetData(SkillConstants.Listen, 2)];
-                testCases[CreatureConstants.Pixie] = [GetData(SkillConstants.Search)] = 2;
+                testCases[CreatureConstants.Pixie] = [GetData(SkillConstants.Search, 2)];
                 testCases[CreatureConstants.Pixie] = [GetData(SkillConstants.Spot, 2)];
 
                 testCases[CreatureConstants.Pixie_WithIrresistibleDance] = [GetData(SkillConstants.Listen, 2)];
-                testCases[CreatureConstants.Pixie_WithIrresistibleDance] = [GetData(SkillConstants.Search)] = 2;
+                testCases[CreatureConstants.Pixie_WithIrresistibleDance] = [GetData(SkillConstants.Search, 2)];
                 testCases[CreatureConstants.Pixie_WithIrresistibleDance] = [GetData(SkillConstants.Spot, 2)];
 
                 testCases[CreatureConstants.Pony] = [None];
@@ -1298,10 +1314,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Quasit] = [None];
 
-                testCases[CreatureConstants.Rakshasa] = [GetData(SkillConstants.Bluff)] = 4;
+                testCases[CreatureConstants.Rakshasa] = [GetData(SkillConstants.Bluff, 4)];
                 testCases[CreatureConstants.Rakshasa] = [GetData(SkillConstants.Bluff, condition: "when using Change Shape")] = 10;
                 testCases[CreatureConstants.Rakshasa] = [GetData(SkillConstants.Bluff, condition: "when reading an opponent's mind")] = 4;
-                testCases[CreatureConstants.Rakshasa] = [GetData(SkillConstants.Disguise)] = 4;
+                testCases[CreatureConstants.Rakshasa] = [GetData(SkillConstants.Disguise, 4)];
                 testCases[CreatureConstants.Rakshasa] = [GetData(SkillConstants.Disguise, condition: "when reading an opponent's mind")] = 4;
 
                 testCases[CreatureConstants.Rast] = [None];
@@ -1335,7 +1351,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.RazorBoar] = [None];
 
-                testCases[CreatureConstants.Remorhaz] = [GetData(SkillConstants.Listen)] = 4;
+                testCases[CreatureConstants.Remorhaz] = [GetData(SkillConstants.Listen, 4)];
 
                 testCases[CreatureConstants.Retriever] = [None];
 
@@ -1375,13 +1391,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Salamander_Noble] = [GetData(SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Blacksmithing))] = 4;
 
                 testCases[CreatureConstants.Satyr] = [GetData(SkillConstants.Hide, 4)];
-                testCases[CreatureConstants.Satyr] = [GetData(SkillConstants.Listen)] = 4;
+                testCases[CreatureConstants.Satyr] = [GetData(SkillConstants.Listen, 4)];
                 testCases[CreatureConstants.Satyr] = [GetData(SkillConstants.MoveSilently, 4)];
                 testCases[CreatureConstants.Satyr] = [GetData(SkillConstants.Perform)] = 4;
                 testCases[CreatureConstants.Satyr] = [GetData(SkillConstants.Spot, 4)];
 
                 testCases[CreatureConstants.Satyr_WithPipes] = [GetData(SkillConstants.Hide, 4)];
-                testCases[CreatureConstants.Satyr_WithPipes] = [GetData(SkillConstants.Listen)] = 4;
+                testCases[CreatureConstants.Satyr_WithPipes] = [GetData(SkillConstants.Listen, 4)];
                 testCases[CreatureConstants.Satyr_WithPipes] = [GetData(SkillConstants.MoveSilently, 4)];
                 testCases[CreatureConstants.Satyr_WithPipes] = [GetData(SkillConstants.Perform)] = 4;
                 testCases[CreatureConstants.Satyr_WithPipes] = [GetData(SkillConstants.Spot, 4)];
@@ -1435,7 +1451,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.ShadowMastiff] = [GetData(SkillConstants.Survival, condition: "when tracking by scent")] = 4;
 
                 testCases[CreatureConstants.ShamblingMound] = [GetData(SkillConstants.Hide, 4)];
-                testCases[CreatureConstants.ShamblingMound] = [GetData(SkillConstants.Listen)] = 4;
+                testCases[CreatureConstants.ShamblingMound] = [GetData(SkillConstants.Listen, 4)];
                 testCases[CreatureConstants.ShamblingMound] = [GetData(SkillConstants.MoveSilently, 4)];
                 testCases[CreatureConstants.ShamblingMound] = [GetData(SkillConstants.Hide, condition: "in a swampy or forested area")] = 8;
 
@@ -1592,7 +1608,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Spider_Swarm] = [GetData(SkillConstants.Hide, 4)];
                 testCases[CreatureConstants.Spider_Swarm] = [GetData(SkillConstants.Spot, 4)];
 
-                testCases[CreatureConstants.SpiderEater] = [GetData(SkillConstants.Listen)] = 4;
+                testCases[CreatureConstants.SpiderEater] = [GetData(SkillConstants.Listen, 4)];
                 testCases[CreatureConstants.SpiderEater] = [GetData(SkillConstants.Spot, 4)];
 
                 testCases[CreatureConstants.Squid] = [None];
@@ -1603,18 +1619,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Stirge] = [None];
 
-                testCases[CreatureConstants.Succubus] = [GetData(SkillConstants.Listen)] = 8;
+                testCases[CreatureConstants.Succubus] = [GetData(SkillConstants.Listen, 8)];
                 testCases[CreatureConstants.Succubus] = [GetData(SkillConstants.Spot, 8)];
                 testCases[CreatureConstants.Succubus] = [GetData(SkillConstants.Disguise, condition: "when using Change Shape")] = 10;
 
-                testCases[CreatureConstants.Tarrasque] = [GetData(SkillConstants.Listen)] = 8;
+                testCases[CreatureConstants.Tarrasque] = [GetData(SkillConstants.Listen, 8)];
                 testCases[CreatureConstants.Tarrasque] = [GetData(SkillConstants.Spot, 8)];
 
                 testCases[CreatureConstants.Tendriculos] = [None];
 
                 testCases[CreatureConstants.Thoqqua] = [None];
 
-                testCases[CreatureConstants.Tiefling] = [GetData(SkillConstants.Bluff)] = 2;
+                testCases[CreatureConstants.Tiefling] = [GetData(SkillConstants.Bluff, 2)];
                 testCases[CreatureConstants.Tiefling] = [GetData(SkillConstants.Hide)] = 2;
 
                 testCases[CreatureConstants.Tiger] = [GetData(SkillConstants.Balance)] = 4;
@@ -1661,9 +1677,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Unicorn] = [GetData(SkillConstants.MoveSilently, 4)];
                 testCases[CreatureConstants.Unicorn] = [GetData(SkillConstants.Survival, condition: "within the boundaries of their forest")] = 3;
 
-                testCases[CreatureConstants.VampireSpawn] = [GetData(SkillConstants.Bluff)] = 4;
+                testCases[CreatureConstants.VampireSpawn] = [GetData(SkillConstants.Bluff, 4)];
                 testCases[CreatureConstants.VampireSpawn] = [GetData(SkillConstants.Hide, 4)];
-                testCases[CreatureConstants.VampireSpawn] = [GetData(SkillConstants.Listen)] = 4;
+                testCases[CreatureConstants.VampireSpawn] = [GetData(SkillConstants.Listen, 4)];
                 testCases[CreatureConstants.VampireSpawn] = [GetData(SkillConstants.MoveSilently, 4)];
                 testCases[CreatureConstants.VampireSpawn] = [GetData(SkillConstants.Search)] = 4;
                 testCases[CreatureConstants.VampireSpawn] = [GetData(SkillConstants.SenseMotive)] = 4;
@@ -1673,7 +1689,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.VioletFungus] = [None];
 
-                testCases[CreatureConstants.Vrock] = [GetData(SkillConstants.Listen)] = 8;
+                testCases[CreatureConstants.Vrock] = [GetData(SkillConstants.Listen, 8)];
                 testCases[CreatureConstants.Vrock] = [GetData(SkillConstants.Spot, 8)];
 
                 testCases[CreatureConstants.Wasp_Giant] = [GetData(SkillConstants.Spot, 8)];
@@ -1686,22 +1702,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Weasel_Dire] = [None];
 
-                testCases[CreatureConstants.Whale_Baleen] = [GetData(SkillConstants.Listen)] = 4;
+                testCases[CreatureConstants.Whale_Baleen] = [GetData(SkillConstants.Listen, 4)];
                 testCases[CreatureConstants.Whale_Baleen] = [GetData(SkillConstants.Spot, 4)];
 
-                testCases[CreatureConstants.Whale_Cachalot] = [GetData(SkillConstants.Listen)] = 4;
+                testCases[CreatureConstants.Whale_Cachalot] = [GetData(SkillConstants.Listen, 4)];
                 testCases[CreatureConstants.Whale_Cachalot] = [GetData(SkillConstants.Spot, 4)];
 
-                testCases[CreatureConstants.Whale_Orca] = [GetData(SkillConstants.Listen)] = 4;
+                testCases[CreatureConstants.Whale_Orca] = [GetData(SkillConstants.Listen, 4)];
                 testCases[CreatureConstants.Whale_Orca] = [GetData(SkillConstants.Spot, 4)];
 
-                testCases[CreatureConstants.Wight] = [GetData(SkillConstants.MoveSilently)] = 8;
+                testCases[CreatureConstants.Wight] = [GetData(SkillConstants.MoveSilently, 8)];
 
                 testCases[CreatureConstants.WillOWisp] = [None];
 
-                testCases[CreatureConstants.WinterWolf] = [GetData(SkillConstants.Listen)] = 1;
+                testCases[CreatureConstants.WinterWolf] = [GetData(SkillConstants.Listen, 1)];
                 testCases[CreatureConstants.WinterWolf] = [GetData(SkillConstants.MoveSilently)] = 1;
-                testCases[CreatureConstants.WinterWolf] = [GetData(SkillConstants.Spot)] = 1;
+                testCases[CreatureConstants.WinterWolf] = [GetData(SkillConstants.Spot, 1)];
                 testCases[CreatureConstants.WinterWolf] = [GetData(SkillConstants.Hide)] = 2;
                 testCases[CreatureConstants.WinterWolf] = [GetData(SkillConstants.Hide, condition: "in areas of snow and ice")] = 5;
                 testCases[CreatureConstants.WinterWolf] = [GetData(SkillConstants.Survival, condition: "tracking by scent")] = 4;
@@ -1710,7 +1726,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Wolf_Dire] = [GetData(SkillConstants.Hide)] = 2;
                 testCases[CreatureConstants.Wolf_Dire] = [GetData(SkillConstants.Listen, 2)];
-                testCases[CreatureConstants.Wolf_Dire] = [GetData(SkillConstants.MoveSilently)] = 2;
+                testCases[CreatureConstants.Wolf_Dire] = [GetData(SkillConstants.MoveSilently, 2)];
                 testCases[CreatureConstants.Wolf_Dire] = [GetData(SkillConstants.Spot, 2)];
                 testCases[CreatureConstants.Wolf_Dire] = [GetData(SkillConstants.Survival, condition: "tracking by scent")] = 4;
 
@@ -1720,9 +1736,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Wolverine_Dire] = [GetData(SkillConstants.Climb, 8)];
                 testCases[CreatureConstants.Wolverine_Dire] = [GetData(SkillConstants.Climb, 10, condition: "can always take 10")];
 
-                testCases[CreatureConstants.Worg] = [GetData(SkillConstants.Listen)] = 1;
+                testCases[CreatureConstants.Worg] = [GetData(SkillConstants.Listen, 1)];
                 testCases[CreatureConstants.Worg] = [GetData(SkillConstants.MoveSilently)] = 1;
-                testCases[CreatureConstants.Worg] = [GetData(SkillConstants.Spot)] = 1;
+                testCases[CreatureConstants.Worg] = [GetData(SkillConstants.Spot, 1)];
                 testCases[CreatureConstants.Worg] = [GetData(SkillConstants.Hide)] = 2;
                 testCases[CreatureConstants.Worg] = [GetData(SkillConstants.Survival, condition: "tracking by scent")] = 4;
 
@@ -1742,7 +1758,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.YethHound] = [GetData(SkillConstants.Survival, condition: "tracking by scent")] = 4;
 
-                testCases[CreatureConstants.Yrthak] = [GetData(SkillConstants.Listen)] = 4;
+                testCases[CreatureConstants.Yrthak] = [GetData(SkillConstants.Listen, 4)];
 
                 testCases[CreatureConstants.YuanTi_Pureblood] = [GetData(SkillConstants.Disguise, condition: "when impersonating a human")] = 5;
 
@@ -2094,12 +2110,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[GetData(SkillConstants.Balance] = [None];
 
-                testCases[GetData(SkillConstants.Bluff] = [GetData(SkillConstants.Diplomacy)] = 2;
+                testCases[GetData(SkillConstants.Bluff] = [GetData(SkillConstants.Diplomacy, 2)];
                 testCases[GetData(SkillConstants.Bluff] = [GetData(SkillConstants.Disguise, condition: "acting")] = 2;
                 testCases[GetData(SkillConstants.Bluff] = [GetData(SkillConstants.Intimidate)] = 2;
                 testCases[GetData(SkillConstants.Bluff] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Dowser)] = 2;
                 testCases[GetData(SkillConstants.Bluff] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Soothsayer)] = 2;
-                testCases[GetData(SkillConstants.Bluff] = [GetData(SkillConstants.SleightOfHand)] = 2;
+                testCases[GetData(SkillConstants.Bluff] = [GetData(SkillConstants.SleightOfHand, 2)];
 
                 testCases[GetData(SkillConstants.Climb] = [None];
 
@@ -2249,7 +2265,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.History)] = [GetData(SkillConstants.Knowledge, "bardic")] = 2;
 
-                testCases[GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] = [GetData(SkillConstants.GatherInformation)] = 2;
+                testCases[GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] = [GetData(SkillConstants.GatherInformation, 2)];
                 testCases[GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.CityGuide)] = 2;
                 testCases[GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.LocalCourier)] = 2;
                 testCases[GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.OutOfTownCourier)] = 2;
@@ -2263,7 +2279,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 testCases[GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.WildernessGuide)] = 2;
                 testCases[GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = [GetData(SkillConstants.Survival, condition: "in aboveground natural environments")] = 2;
 
-                testCases[GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = [GetData(SkillConstants.Diplomacy)] = 2;
+                testCases[GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = [GetData(SkillConstants.Diplomacy, 2)];
                 testCases[GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Butler)] = 2;
                 testCases[GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Footman)] = 2;
                 testCases[GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Governess)] = 2;
@@ -2301,7 +2317,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[GetData(SkillConstants.Profession] = [GetData(None)] = 0;
 
-                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Adviser)] = [GetData(SkillConstants.Diplomacy)] = 2;
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Adviser)] = [GetData(SkillConstants.Diplomacy, 2)];
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Adviser)] = [GetData(SkillConstants.Knowledge)] = 2;
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Alchemist)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Alchemy)] = 2;
@@ -2318,7 +2334,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Armorer)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Armorsmithing)] = 2;
 
-                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Barrister)] = [GetData(SkillConstants.Diplomacy)] = 2;
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Barrister)] = [GetData(SkillConstants.Diplomacy, 2)];
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Blacksmith)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Blacksmithing)] = 2;
 
@@ -2330,7 +2346,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Brewer)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Brewing)] = 2;
 
-                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Butler)] = [GetData(SkillConstants.Diplomacy)] = 2;
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Butler)] = [GetData(SkillConstants.Diplomacy, 2)];
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Butler)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = 2;
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Carpenter)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Woodworking)] = 2;
@@ -2341,7 +2357,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Chandler)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Candlemaking)] = 2;
 
-                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.CityGuide)] = [GetData(SkillConstants.Diplomacy)] = 2;
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.CityGuide)] = [GetData(SkillConstants.Diplomacy, 2)];
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.CityGuide)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] = 2;
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Clerk)] = [None];
@@ -2358,8 +2374,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Craftsman)] = [GetData(SkillConstants.Craft)] = 2;
 
-                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Dowser)] = [GetData(SkillConstants.Bluff)] = 2;
-                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Dowser)] = [GetData(SkillConstants.Survival)] = 2;
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Dowser)] = [GetData(SkillConstants.Bluff, 2)];
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Dowser)] = [GetData(SkillConstants.Survival, 2)];
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Dyer)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Dyemaking)] = 2;
 
@@ -2375,14 +2391,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Fletcher)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Bowmaking)] = 2;
 
-                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Footman)] = [GetData(SkillConstants.Diplomacy)] = 2;
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Footman)] = [GetData(SkillConstants.Diplomacy, 2)];
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Footman)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = 2;
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Gemcutter)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Gemcutting)] = 2;
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Goldsmith)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Goldsmithing)] = 2;
 
-                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Governess)] = [GetData(SkillConstants.Diplomacy)] = 2;
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Governess)] = [GetData(SkillConstants.Diplomacy, 2)];
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Governess)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = 2;
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Haberdasher)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Hatmaking)] = 2;
@@ -2392,7 +2408,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Horner)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Hornworking)] = 2;
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Hunter)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Trapmaking)] = 2;
-                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Hunter)] = [GetData(SkillConstants.Survival)] = 2;
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Hunter)] = [GetData(SkillConstants.Survival, 2)];
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Interpreter)] = [None];
 
@@ -2412,7 +2428,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Masseuse)] = [GetData(SkillConstants.Heal)] = 2;
 
-                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Matchmaker)] = [GetData(SkillConstants.Diplomacy)] = 2;
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Matchmaker)] = [GetData(SkillConstants.Diplomacy, 2)];
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Matchmaker)] = [GetData(SkillConstants.SenseMotive)] = 2;
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Midwife)] = [GetData(SkillConstants.Heal)] = 2;
@@ -2423,7 +2439,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Miner)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = 2;
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Miner)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Dungeoneering)] = 2;
 
-                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Navigator)] = [GetData(SkillConstants.Survival)] = 2;
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Navigator)] = [GetData(SkillConstants.Survival, 2)];
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Nursemaid)] = [None];
 
@@ -2463,7 +2479,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Soapmaker)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Soapmaking)] = 2;
 
-                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Soothsayer)] = [GetData(SkillConstants.Bluff)] = 2;
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Soothsayer)] = [GetData(SkillConstants.Bluff, 2)];
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Tanner)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Tanning)] = 2;
 
@@ -2477,9 +2493,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Trapper)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Trapmaking)] = 2;
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Trapper)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = 2;
-                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Trapper)] = [GetData(SkillConstants.Survival)] = 2;
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Trapper)] = [GetData(SkillConstants.Survival, 2)];
 
-                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Valet)] = [GetData(SkillConstants.Diplomacy)] = 2;
+                testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Valet)] = [GetData(SkillConstants.Diplomacy, 2)];
 
                 testCases[GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Vintner)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Winemaking)] = 2;
 
@@ -2497,7 +2513,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[GetData(SkillConstants.Search] = [GetData(SkillConstants.Survival, condition: "following tracks")] = 2;
 
-                testCases[GetData(SkillConstants.SenseMotive] = [GetData(SkillConstants.Diplomacy)] = 2;
+                testCases[GetData(SkillConstants.SenseMotive] = [GetData(SkillConstants.Diplomacy, 2)];
                 testCases[GetData(SkillConstants.SenseMotive] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Matchmaker)] = 2;
                 testCases[GetData(SkillConstants.SenseMotive] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Trader)] = 2;
 
@@ -2516,7 +2532,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 testCases[GetData(SkillConstants.Swim] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.SailorCrewmember)] = 2;
                 testCases[GetData(SkillConstants.Swim] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.SailorMate)] = 2;
 
-                testCases[GetData(SkillConstants.Tumble] = [GetData(SkillConstants.Balance)] = 2;
+                testCases[GetData(SkillConstants.Tumble] = [GetData(SkillConstants.Balance, 2)];
                 testCases[GetData(SkillConstants.Tumble] = [GetData(SkillConstants.Jump)] = 2;
 
                 testCases[GetData(SkillConstants.UseMagicDevice] = [GetData(SkillConstants.Spellcraft, condition: "decipher scrolls")] = 2;
