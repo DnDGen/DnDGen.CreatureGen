@@ -2,6 +2,8 @@
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.Infrastructure.Helpers;
+using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,95 +11,93 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 {
     public class SkillBonusesTestData
     {
-        public const string None = "NONE";
-
         public static Dictionary<string, List<string>> GetCreatureSkillBonuses()
         {
             var testCases = new Dictionary<string, List<string>>
             {
                 [CreatureConstants.Aasimar] = [GetData(SkillConstants.Listen, 2), GetData(SkillConstants.Spot, 2)],
 
-                [CreatureConstants.Aboleth] = [None],
+                [CreatureConstants.Aboleth] = [],
 
-                [CreatureConstants.Achaierai] = [None],
+                [CreatureConstants.Achaierai] = [],
 
-                [CreatureConstants.Allip] = [None],
+                [CreatureConstants.Allip] = [],
 
-                [CreatureConstants.Androsphinx] = [None],
+                [CreatureConstants.Androsphinx] = [],
 
-                [CreatureConstants.Angel_AstralDeva] = [None],
+                [CreatureConstants.Angel_AstralDeva] = [],
 
-                [CreatureConstants.Angel_Planetar] = [None],
+                [CreatureConstants.Angel_Planetar] = [],
 
-                [CreatureConstants.Angel_Solar] = [None],
+                [CreatureConstants.Angel_Solar] = [],
 
-                [CreatureConstants.AnimatedObject_Colossal] = [None],
-                [CreatureConstants.AnimatedObject_Colossal_Flexible] = [None],
-                [CreatureConstants.AnimatedObject_Colossal_MultipleLegs] = [None],
-                [CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Colossal_Sheetlike] = [None],
-                [CreatureConstants.AnimatedObject_Colossal_TwoLegs] = [None],
-                [CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Colossal_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Gargantuan] = [None],
-                [CreatureConstants.AnimatedObject_Gargantuan_Flexible] = [None],
-                [CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs] = [None],
-                [CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Gargantuan_Sheetlike] = [None],
-                [CreatureConstants.AnimatedObject_Gargantuan_TwoLegs] = [None],
-                [CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Gargantuan_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Huge] = [None],
-                [CreatureConstants.AnimatedObject_Huge_Flexible] = [None],
-                [CreatureConstants.AnimatedObject_Huge_MultipleLegs] = [None],
-                [CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Huge_Sheetlike] = [None],
-                [CreatureConstants.AnimatedObject_Huge_TwoLegs] = [None],
-                [CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Huge_Wheels_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Huge_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Large] = [None],
-                [CreatureConstants.AnimatedObject_Large_Flexible] = [None],
-                [CreatureConstants.AnimatedObject_Large_MultipleLegs] = [None],
-                [CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Large_Sheetlike] = [None],
-                [CreatureConstants.AnimatedObject_Large_TwoLegs] = [None],
-                [CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Large_Wheels_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Large_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Medium] = [None],
-                [CreatureConstants.AnimatedObject_Medium_Flexible] = [None],
-                [CreatureConstants.AnimatedObject_Medium_MultipleLegs] = [None],
-                [CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Medium_Sheetlike] = [None],
-                [CreatureConstants.AnimatedObject_Medium_TwoLegs] = [None],
-                [CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Medium_Wheels_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Medium_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Small] = [None],
-                [CreatureConstants.AnimatedObject_Small_Flexible] = [None],
-                [CreatureConstants.AnimatedObject_Small_MultipleLegs] = [None],
-                [CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Small_Sheetlike] = [None],
-                [CreatureConstants.AnimatedObject_Small_TwoLegs] = [None],
-                [CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Small_Wheels_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Small_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Tiny] = [None],
-                [CreatureConstants.AnimatedObject_Tiny_Flexible] = [None],
-                [CreatureConstants.AnimatedObject_Tiny_MultipleLegs] = [None],
-                [CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Tiny_Sheetlike] = [None],
-                [CreatureConstants.AnimatedObject_Tiny_TwoLegs] = [None],
-                [CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden] = [None],
-                [CreatureConstants.AnimatedObject_Tiny_Wooden] = [None],
+                [CreatureConstants.AnimatedObject_Colossal] = [],
+                [CreatureConstants.AnimatedObject_Colossal_Flexible] = [],
+                [CreatureConstants.AnimatedObject_Colossal_MultipleLegs] = [],
+                [CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Colossal_Sheetlike] = [],
+                [CreatureConstants.AnimatedObject_Colossal_TwoLegs] = [],
+                [CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Colossal_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Gargantuan] = [],
+                [CreatureConstants.AnimatedObject_Gargantuan_Flexible] = [],
+                [CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs] = [],
+                [CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Gargantuan_Sheetlike] = [],
+                [CreatureConstants.AnimatedObject_Gargantuan_TwoLegs] = [],
+                [CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Gargantuan_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Huge] = [],
+                [CreatureConstants.AnimatedObject_Huge_Flexible] = [],
+                [CreatureConstants.AnimatedObject_Huge_MultipleLegs] = [],
+                [CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Huge_Sheetlike] = [],
+                [CreatureConstants.AnimatedObject_Huge_TwoLegs] = [],
+                [CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Huge_Wheels_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Huge_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Large] = [],
+                [CreatureConstants.AnimatedObject_Large_Flexible] = [],
+                [CreatureConstants.AnimatedObject_Large_MultipleLegs] = [],
+                [CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Large_Sheetlike] = [],
+                [CreatureConstants.AnimatedObject_Large_TwoLegs] = [],
+                [CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Large_Wheels_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Large_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Medium] = [],
+                [CreatureConstants.AnimatedObject_Medium_Flexible] = [],
+                [CreatureConstants.AnimatedObject_Medium_MultipleLegs] = [],
+                [CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Medium_Sheetlike] = [],
+                [CreatureConstants.AnimatedObject_Medium_TwoLegs] = [],
+                [CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Medium_Wheels_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Medium_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Small] = [],
+                [CreatureConstants.AnimatedObject_Small_Flexible] = [],
+                [CreatureConstants.AnimatedObject_Small_MultipleLegs] = [],
+                [CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Small_Sheetlike] = [],
+                [CreatureConstants.AnimatedObject_Small_TwoLegs] = [],
+                [CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Small_Wheels_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Small_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Tiny] = [],
+                [CreatureConstants.AnimatedObject_Tiny_Flexible] = [],
+                [CreatureConstants.AnimatedObject_Tiny_MultipleLegs] = [],
+                [CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Tiny_Sheetlike] = [],
+                [CreatureConstants.AnimatedObject_Tiny_TwoLegs] = [],
+                [CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden] = [],
+                [CreatureConstants.AnimatedObject_Tiny_Wooden] = [],
 
-                [CreatureConstants.Ankheg] = [None],
+                [CreatureConstants.Ankheg] = [],
 
-                [CreatureConstants.Annis] = [None],
+                [CreatureConstants.Annis] = [],
 
                 [CreatureConstants.Ant_Giant_Queen] =
                 [GetData(SkillConstants.Climb, 8),
@@ -125,19 +125,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Climb, 8),
                     GetData(SkillConstants.Climb, 10, condition: "can always take 10")],
 
-                [CreatureConstants.Arrowhawk_Adult] = [None],
+                [CreatureConstants.Arrowhawk_Adult] = [],
 
-                [CreatureConstants.Arrowhawk_Elder] = [None],
+                [CreatureConstants.Arrowhawk_Elder] = [],
 
-                [CreatureConstants.Arrowhawk_Juvenile] = [None],
+                [CreatureConstants.Arrowhawk_Juvenile] = [],
 
                 [CreatureConstants.AssassinVine] = [GetData(SkillConstants.Climb, 8), GetData(SkillConstants.Climb, 10, condition: "can always take 10")],
 
-                [CreatureConstants.Athach] = [None],
+                [CreatureConstants.Athach] = [],
 
                 [CreatureConstants.Avoral] = [GetData(SkillConstants.Spot, 8)],
 
-                [CreatureConstants.Azer] = [None],
+                [CreatureConstants.Azer] = [],
 
                 [CreatureConstants.Babau] =
                 [GetData(SkillConstants.Hide, 8),
@@ -149,11 +149,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Badger] = [GetData(SkillConstants.EscapeArtist, 4)],
 
-                [CreatureConstants.Badger_Dire] = [None],
+                [CreatureConstants.Badger_Dire] = [],
 
                 [CreatureConstants.Balor] = [GetData(SkillConstants.Listen, 8), GetData(SkillConstants.Spot, 8)],
 
-                [CreatureConstants.BarbedDevil_Hamatula] = [None],
+                [CreatureConstants.BarbedDevil_Hamatula] = [],
 
                 [CreatureConstants.Barghest] = [GetData(SkillConstants.Hide, 4, condition: "in wolf form")],
 
@@ -179,14 +179,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Bear_Brown] = [GetData(SkillConstants.Swim, 4)],
 
-                [CreatureConstants.Bear_Dire] = [None],
+                [CreatureConstants.Bear_Dire] = [],
 
                 [CreatureConstants.Bear_Polar] =
                 [GetData(SkillConstants.Swim, 8, condition: "special action or avoid a hazard"),
                     GetData(SkillConstants.Swim, 10, condition: "can always take 10"),
                     GetData(SkillConstants.Hide, 12, condition: "in snowy settings")],
 
-                [CreatureConstants.BeardedDevil_Barbazu] = [None],
+                [CreatureConstants.BeardedDevil_Barbazu] = [],
 
                 [CreatureConstants.Bebilith] = [GetData(SkillConstants.Hide, 8)],
 
@@ -194,39 +194,39 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Behir] = [GetData(SkillConstants.Climb, 8), GetData(SkillConstants.Climb, 10, condition: "can always take 10")],
 
-                [CreatureConstants.Beholder] = [None],
+                [CreatureConstants.Beholder] = [],
 
-                [CreatureConstants.Beholder_Gauth] = [None],
+                [CreatureConstants.Beholder_Gauth] = [],
 
                 [CreatureConstants.Belker] = [GetData(SkillConstants.MoveSilently, 4)],
 
-                [CreatureConstants.Bison] = [None],
+                [CreatureConstants.Bison] = [],
 
                 [CreatureConstants.BlackPudding] = [GetData(SkillConstants.Climb, 8), GetData(SkillConstants.Climb, 10, condition: "can always take 10")],
 
                 [CreatureConstants.BlackPudding_Elder] = [GetData(SkillConstants.Climb, 8), GetData(SkillConstants.Climb, 10, condition: "can always take 10")],
 
-                [CreatureConstants.BlinkDog] = [None],
+                [CreatureConstants.BlinkDog] = [],
 
-                [CreatureConstants.Boar] = [None],
+                [CreatureConstants.Boar] = [],
 
-                [CreatureConstants.Boar_Dire] = [None],
+                [CreatureConstants.Boar_Dire] = [],
 
-                [CreatureConstants.Bodak] = [None],
+                [CreatureConstants.Bodak] = [],
 
-                [CreatureConstants.BombardierBeetle_Giant] = [None],
+                [CreatureConstants.BombardierBeetle_Giant] = [],
 
-                [CreatureConstants.BoneDevil_Osyluth] = [None],
+                [CreatureConstants.BoneDevil_Osyluth] = [],
 
-                [CreatureConstants.Bralani] = [None],
+                [CreatureConstants.Bralani] = [],
 
                 [CreatureConstants.Bugbear] = [GetData(SkillConstants.MoveSilently, 4)],
 
-                [CreatureConstants.Bulette] = [None],
+                [CreatureConstants.Bulette] = [],
 
-                [CreatureConstants.Camel_Bactrian] = [None],
+                [CreatureConstants.Camel_Bactrian] = [],
 
-                [CreatureConstants.Camel_Dromedary] = [None],
+                [CreatureConstants.Camel_Dromedary] = [],
 
                 [CreatureConstants.CarrionCrawler] = [GetData(SkillConstants.Climb, 8), GetData(SkillConstants.Climb, 10, condition: "can always take 10")],
 
@@ -238,7 +238,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Balance, 8),
                     GetData(SkillConstants.Hide, 4, condition: "in areas of tall grass or heavy undergrowth")],
 
-                [CreatureConstants.Centaur] = [None],
+                [CreatureConstants.Centaur] = [],
 
                 [CreatureConstants.Centipede_Monstrous_Colossal] =
                 [GetData(SkillConstants.Spot, 4),
@@ -289,9 +289,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.ChainDevil_Kyton] = [GetData(SkillConstants.Craft, 8, condition: "involving metalwork")],
 
-                [CreatureConstants.ChaosBeast] = [None],
+                [CreatureConstants.ChaosBeast] = [],
 
-                [CreatureConstants.Cheetah] = [None],
+                [CreatureConstants.Cheetah] = [],
 
                 [CreatureConstants.Chimera_Black] =
                 [GetData(SkillConstants.Spot, 2),
@@ -320,15 +320,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Choker] = [GetData(SkillConstants.Climb, 8), GetData(SkillConstants.Climb, 10, condition: "can always take 10")],
 
-                [CreatureConstants.Chuul] = [None],
+                [CreatureConstants.Chuul] = [],
 
-                [CreatureConstants.Cloaker] = [None],
+                [CreatureConstants.Cloaker] = [],
 
-                [CreatureConstants.Cockatrice] = [None],
+                [CreatureConstants.Cockatrice] = [],
 
-                [CreatureConstants.Couatl] = [None],
+                [CreatureConstants.Couatl] = [],
 
-                [CreatureConstants.Criosphinx] = [None],
+                [CreatureConstants.Criosphinx] = [],
 
                 [CreatureConstants.Crocodile] =
                 [GetData(SkillConstants.Swim, 8, condition: "special action or avoid a hazard"),
@@ -402,15 +402,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Spot, 8),
                     GetData(SkillConstants.Survival, 8)],
 
-                [CreatureConstants.Delver] = [None],
+                [CreatureConstants.Delver] = [],
 
-                [CreatureConstants.Derro] = [None],
+                [CreatureConstants.Derro] = [],
 
-                [CreatureConstants.Derro_Sane] = [None],
+                [CreatureConstants.Derro_Sane] = [],
 
                 [CreatureConstants.Destrachan] = [GetData(SkillConstants.Listen, 10)],
 
-                [CreatureConstants.Devourer] = [None],
+                [CreatureConstants.Devourer] = [],
 
                 [CreatureConstants.Digester] = [GetData(SkillConstants.Hide, 4), GetData(SkillConstants.Jump, 4)],
 
@@ -418,9 +418,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.DisplacerBeast_PackLord] = [GetData(SkillConstants.Hide, 8)],
 
-                [CreatureConstants.Djinni] = [None],
+                [CreatureConstants.Djinni] = [],
 
-                [CreatureConstants.Djinni_Noble] = [None],
+                [CreatureConstants.Djinni_Noble] = [],
 
                 [CreatureConstants.Dog] = [GetData(SkillConstants.Jump, 4), GetData(SkillConstants.Survival, 4, condition: "tracking by scent")],
 
@@ -435,251 +435,251 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Disguise, 4, condition: "when reading an opponent's mind"),
                     GetData(SkillConstants.Disguise, 10, condition: "when using Change Shape")],
 
-                [CreatureConstants.Dragon_Black_Wyrmling] = [None],
+                [CreatureConstants.Dragon_Black_Wyrmling] = [],
 
-                [CreatureConstants.Dragon_Black_VeryYoung] = [None],
+                [CreatureConstants.Dragon_Black_VeryYoung] = [],
 
-                [CreatureConstants.Dragon_Black_Young] = [None],
+                [CreatureConstants.Dragon_Black_Young] = [],
 
-                [CreatureConstants.Dragon_Black_Juvenile] = [None],
+                [CreatureConstants.Dragon_Black_Juvenile] = [],
 
-                [CreatureConstants.Dragon_Black_YoungAdult] = [None],
+                [CreatureConstants.Dragon_Black_YoungAdult] = [],
 
-                [CreatureConstants.Dragon_Black_Adult] = [None],
+                [CreatureConstants.Dragon_Black_Adult] = [],
 
-                [CreatureConstants.Dragon_Black_MatureAdult] = [None],
+                [CreatureConstants.Dragon_Black_MatureAdult] = [],
 
-                [CreatureConstants.Dragon_Black_Old] = [None],
+                [CreatureConstants.Dragon_Black_Old] = [],
 
-                [CreatureConstants.Dragon_Black_VeryOld] = [None],
+                [CreatureConstants.Dragon_Black_VeryOld] = [],
 
-                [CreatureConstants.Dragon_Black_Ancient] = [None],
+                [CreatureConstants.Dragon_Black_Ancient] = [],
 
-                [CreatureConstants.Dragon_Black_Wyrm] = [None],
+                [CreatureConstants.Dragon_Black_Wyrm] = [],
 
-                [CreatureConstants.Dragon_Black_GreatWyrm] = [None],
+                [CreatureConstants.Dragon_Black_GreatWyrm] = [],
 
-                [CreatureConstants.Dragon_Blue_Wyrmling] = [None],
+                [CreatureConstants.Dragon_Blue_Wyrmling] = [],
 
-                [CreatureConstants.Dragon_Blue_VeryYoung] = [None],
+                [CreatureConstants.Dragon_Blue_VeryYoung] = [],
 
-                [CreatureConstants.Dragon_Blue_Young] = [None],
+                [CreatureConstants.Dragon_Blue_Young] = [],
 
-                [CreatureConstants.Dragon_Blue_Juvenile] = [None],
+                [CreatureConstants.Dragon_Blue_Juvenile] = [],
 
-                [CreatureConstants.Dragon_Blue_YoungAdult] = [None],
+                [CreatureConstants.Dragon_Blue_YoungAdult] = [],
 
-                [CreatureConstants.Dragon_Blue_Adult] = [None],
+                [CreatureConstants.Dragon_Blue_Adult] = [],
 
-                [CreatureConstants.Dragon_Blue_MatureAdult] = [None],
+                [CreatureConstants.Dragon_Blue_MatureAdult] = [],
 
-                [CreatureConstants.Dragon_Blue_Old] = [None],
+                [CreatureConstants.Dragon_Blue_Old] = [],
 
-                [CreatureConstants.Dragon_Blue_VeryOld] = [None],
+                [CreatureConstants.Dragon_Blue_VeryOld] = [],
 
-                [CreatureConstants.Dragon_Blue_Ancient] = [None],
+                [CreatureConstants.Dragon_Blue_Ancient] = [],
 
-                [CreatureConstants.Dragon_Blue_Wyrm] = [None],
+                [CreatureConstants.Dragon_Blue_Wyrm] = [],
 
-                [CreatureConstants.Dragon_Blue_GreatWyrm] = [None],
+                [CreatureConstants.Dragon_Blue_GreatWyrm] = [],
 
-                [CreatureConstants.Dragon_Green_Wyrmling] = [None],
+                [CreatureConstants.Dragon_Green_Wyrmling] = [],
 
-                [CreatureConstants.Dragon_Green_VeryYoung] = [None],
+                [CreatureConstants.Dragon_Green_VeryYoung] = [],
 
-                [CreatureConstants.Dragon_Green_Young] = [None],
+                [CreatureConstants.Dragon_Green_Young] = [],
 
-                [CreatureConstants.Dragon_Green_Juvenile] = [None],
+                [CreatureConstants.Dragon_Green_Juvenile] = [],
 
-                [CreatureConstants.Dragon_Green_YoungAdult] = [None],
+                [CreatureConstants.Dragon_Green_YoungAdult] = [],
 
-                [CreatureConstants.Dragon_Green_Adult] = [None],
+                [CreatureConstants.Dragon_Green_Adult] = [],
 
-                [CreatureConstants.Dragon_Green_MatureAdult] = [None],
+                [CreatureConstants.Dragon_Green_MatureAdult] = [],
 
-                [CreatureConstants.Dragon_Green_Old] = [None],
+                [CreatureConstants.Dragon_Green_Old] = [],
 
-                [CreatureConstants.Dragon_Green_VeryOld] = [None],
+                [CreatureConstants.Dragon_Green_VeryOld] = [],
 
-                [CreatureConstants.Dragon_Green_Ancient] = [None],
+                [CreatureConstants.Dragon_Green_Ancient] = [],
 
-                [CreatureConstants.Dragon_Green_Wyrm] = [None],
+                [CreatureConstants.Dragon_Green_Wyrm] = [],
 
-                [CreatureConstants.Dragon_Green_GreatWyrm] = [None],
+                [CreatureConstants.Dragon_Green_GreatWyrm] = [],
 
-                [CreatureConstants.Dragon_Red_Wyrmling] = [None],
+                [CreatureConstants.Dragon_Red_Wyrmling] = [],
 
-                [CreatureConstants.Dragon_Red_VeryYoung] = [None],
+                [CreatureConstants.Dragon_Red_VeryYoung] = [],
 
-                [CreatureConstants.Dragon_Red_Young] = [None],
+                [CreatureConstants.Dragon_Red_Young] = [],
 
-                [CreatureConstants.Dragon_Red_Juvenile] = [None],
+                [CreatureConstants.Dragon_Red_Juvenile] = [],
 
-                [CreatureConstants.Dragon_Red_YoungAdult] = [None],
+                [CreatureConstants.Dragon_Red_YoungAdult] = [],
 
-                [CreatureConstants.Dragon_Red_Adult] = [None],
+                [CreatureConstants.Dragon_Red_Adult] = [],
 
-                [CreatureConstants.Dragon_Red_MatureAdult] = [None],
+                [CreatureConstants.Dragon_Red_MatureAdult] = [],
 
-                [CreatureConstants.Dragon_Red_Old] = [None],
+                [CreatureConstants.Dragon_Red_Old] = [],
 
-                [CreatureConstants.Dragon_Red_VeryOld] = [None],
+                [CreatureConstants.Dragon_Red_VeryOld] = [],
 
-                [CreatureConstants.Dragon_Red_Ancient] = [None],
+                [CreatureConstants.Dragon_Red_Ancient] = [],
 
-                [CreatureConstants.Dragon_Red_Wyrm] = [None],
+                [CreatureConstants.Dragon_Red_Wyrm] = [],
 
-                [CreatureConstants.Dragon_Red_GreatWyrm] = [None],
+                [CreatureConstants.Dragon_Red_GreatWyrm] = [],
 
-                [CreatureConstants.Dragon_White_Wyrmling] = [None],
+                [CreatureConstants.Dragon_White_Wyrmling] = [],
 
-                [CreatureConstants.Dragon_White_VeryYoung] = [None],
+                [CreatureConstants.Dragon_White_VeryYoung] = [],
 
-                [CreatureConstants.Dragon_White_Young] = [None],
+                [CreatureConstants.Dragon_White_Young] = [],
 
-                [CreatureConstants.Dragon_White_Juvenile] = [None],
+                [CreatureConstants.Dragon_White_Juvenile] = [],
 
-                [CreatureConstants.Dragon_White_YoungAdult] = [None],
+                [CreatureConstants.Dragon_White_YoungAdult] = [],
 
-                [CreatureConstants.Dragon_White_Adult] = [None],
+                [CreatureConstants.Dragon_White_Adult] = [],
 
-                [CreatureConstants.Dragon_White_MatureAdult] = [None],
+                [CreatureConstants.Dragon_White_MatureAdult] = [],
 
-                [CreatureConstants.Dragon_White_Old] = [None],
+                [CreatureConstants.Dragon_White_Old] = [],
 
-                [CreatureConstants.Dragon_White_VeryOld] = [None],
+                [CreatureConstants.Dragon_White_VeryOld] = [],
 
-                [CreatureConstants.Dragon_White_Ancient] = [None],
+                [CreatureConstants.Dragon_White_Ancient] = [],
 
-                [CreatureConstants.Dragon_White_Wyrm] = [None],
+                [CreatureConstants.Dragon_White_Wyrm] = [],
 
-                [CreatureConstants.Dragon_White_GreatWyrm] = [None],
+                [CreatureConstants.Dragon_White_GreatWyrm] = [],
 
-                [CreatureConstants.Dragon_Brass_Wyrmling] = [None],
+                [CreatureConstants.Dragon_Brass_Wyrmling] = [],
 
-                [CreatureConstants.Dragon_Brass_VeryYoung] = [None],
+                [CreatureConstants.Dragon_Brass_VeryYoung] = [],
 
-                [CreatureConstants.Dragon_Brass_Young] = [None],
+                [CreatureConstants.Dragon_Brass_Young] = [],
 
-                [CreatureConstants.Dragon_Brass_Juvenile] = [None],
+                [CreatureConstants.Dragon_Brass_Juvenile] = [],
 
-                [CreatureConstants.Dragon_Brass_YoungAdult] = [None],
+                [CreatureConstants.Dragon_Brass_YoungAdult] = [],
 
-                [CreatureConstants.Dragon_Brass_Adult] = [None],
+                [CreatureConstants.Dragon_Brass_Adult] = [],
 
-                [CreatureConstants.Dragon_Brass_MatureAdult] = [None],
+                [CreatureConstants.Dragon_Brass_MatureAdult] = [],
 
-                [CreatureConstants.Dragon_Brass_Old] = [None],
+                [CreatureConstants.Dragon_Brass_Old] = [],
 
-                [CreatureConstants.Dragon_Brass_VeryOld] = [None],
+                [CreatureConstants.Dragon_Brass_VeryOld] = [],
 
-                [CreatureConstants.Dragon_Brass_Ancient] = [None],
+                [CreatureConstants.Dragon_Brass_Ancient] = [],
 
-                [CreatureConstants.Dragon_Brass_Wyrm] = [None],
+                [CreatureConstants.Dragon_Brass_Wyrm] = [],
 
-                [CreatureConstants.Dragon_Brass_GreatWyrm] = [None],
+                [CreatureConstants.Dragon_Brass_GreatWyrm] = [],
 
-                [CreatureConstants.Dragon_Bronze_Wyrmling] = [None],
+                [CreatureConstants.Dragon_Bronze_Wyrmling] = [],
 
-                [CreatureConstants.Dragon_Bronze_VeryYoung] = [None],
+                [CreatureConstants.Dragon_Bronze_VeryYoung] = [],
 
-                [CreatureConstants.Dragon_Bronze_Young] = [None],
+                [CreatureConstants.Dragon_Bronze_Young] = [],
 
-                [CreatureConstants.Dragon_Bronze_Juvenile] = [None],
+                [CreatureConstants.Dragon_Bronze_Juvenile] = [],
 
-                [CreatureConstants.Dragon_Bronze_YoungAdult] = [None],
+                [CreatureConstants.Dragon_Bronze_YoungAdult] = [],
 
-                [CreatureConstants.Dragon_Bronze_Adult] = [None],
+                [CreatureConstants.Dragon_Bronze_Adult] = [],
 
-                [CreatureConstants.Dragon_Bronze_MatureAdult] = [None],
+                [CreatureConstants.Dragon_Bronze_MatureAdult] = [],
 
-                [CreatureConstants.Dragon_Bronze_Old] = [None],
+                [CreatureConstants.Dragon_Bronze_Old] = [],
 
-                [CreatureConstants.Dragon_Bronze_VeryOld] = [None],
+                [CreatureConstants.Dragon_Bronze_VeryOld] = [],
 
-                [CreatureConstants.Dragon_Bronze_Ancient] = [None],
+                [CreatureConstants.Dragon_Bronze_Ancient] = [],
 
-                [CreatureConstants.Dragon_Bronze_Wyrm] = [None],
+                [CreatureConstants.Dragon_Bronze_Wyrm] = [],
 
-                [CreatureConstants.Dragon_Bronze_GreatWyrm] = [None],
+                [CreatureConstants.Dragon_Bronze_GreatWyrm] = [],
 
-                [CreatureConstants.Dragon_Copper_Wyrmling] = [None],
+                [CreatureConstants.Dragon_Copper_Wyrmling] = [],
 
-                [CreatureConstants.Dragon_Copper_VeryYoung] = [None],
+                [CreatureConstants.Dragon_Copper_VeryYoung] = [],
 
-                [CreatureConstants.Dragon_Copper_Young] = [None],
+                [CreatureConstants.Dragon_Copper_Young] = [],
 
-                [CreatureConstants.Dragon_Copper_Juvenile] = [None],
+                [CreatureConstants.Dragon_Copper_Juvenile] = [],
 
-                [CreatureConstants.Dragon_Copper_YoungAdult] = [None],
+                [CreatureConstants.Dragon_Copper_YoungAdult] = [],
 
-                [CreatureConstants.Dragon_Copper_Adult] = [None],
+                [CreatureConstants.Dragon_Copper_Adult] = [],
 
-                [CreatureConstants.Dragon_Copper_MatureAdult] = [None],
+                [CreatureConstants.Dragon_Copper_MatureAdult] = [],
 
-                [CreatureConstants.Dragon_Copper_Old] = [None],
+                [CreatureConstants.Dragon_Copper_Old] = [],
 
-                [CreatureConstants.Dragon_Copper_VeryOld] = [None],
+                [CreatureConstants.Dragon_Copper_VeryOld] = [],
 
-                [CreatureConstants.Dragon_Copper_Ancient] = [None],
+                [CreatureConstants.Dragon_Copper_Ancient] = [],
 
-                [CreatureConstants.Dragon_Copper_Wyrm] = [None],
+                [CreatureConstants.Dragon_Copper_Wyrm] = [],
 
-                [CreatureConstants.Dragon_Copper_GreatWyrm] = [None],
+                [CreatureConstants.Dragon_Copper_GreatWyrm] = [],
 
-                [CreatureConstants.Dragon_Gold_Wyrmling] = [None],
+                [CreatureConstants.Dragon_Gold_Wyrmling] = [],
 
-                [CreatureConstants.Dragon_Gold_VeryYoung] = [None],
+                [CreatureConstants.Dragon_Gold_VeryYoung] = [],
 
-                [CreatureConstants.Dragon_Gold_Young] = [None],
+                [CreatureConstants.Dragon_Gold_Young] = [],
 
-                [CreatureConstants.Dragon_Gold_Juvenile] = [None],
+                [CreatureConstants.Dragon_Gold_Juvenile] = [],
 
-                [CreatureConstants.Dragon_Gold_YoungAdult] = [None],
+                [CreatureConstants.Dragon_Gold_YoungAdult] = [],
 
-                [CreatureConstants.Dragon_Gold_Adult] = [None],
+                [CreatureConstants.Dragon_Gold_Adult] = [],
 
-                [CreatureConstants.Dragon_Gold_MatureAdult] = [None],
+                [CreatureConstants.Dragon_Gold_MatureAdult] = [],
 
-                [CreatureConstants.Dragon_Gold_Old] = [None],
+                [CreatureConstants.Dragon_Gold_Old] = [],
 
-                [CreatureConstants.Dragon_Gold_VeryOld] = [None],
+                [CreatureConstants.Dragon_Gold_VeryOld] = [],
 
-                [CreatureConstants.Dragon_Gold_Ancient] = [None],
+                [CreatureConstants.Dragon_Gold_Ancient] = [],
 
-                [CreatureConstants.Dragon_Gold_Wyrm] = [None],
+                [CreatureConstants.Dragon_Gold_Wyrm] = [],
 
-                [CreatureConstants.Dragon_Gold_GreatWyrm] = [None],
+                [CreatureConstants.Dragon_Gold_GreatWyrm] = [],
 
-                [CreatureConstants.Dragon_Silver_Wyrmling] = [None],
+                [CreatureConstants.Dragon_Silver_Wyrmling] = [],
 
-                [CreatureConstants.Dragon_Silver_VeryYoung] = [None],
+                [CreatureConstants.Dragon_Silver_VeryYoung] = [],
 
-                [CreatureConstants.Dragon_Silver_Young] = [None],
+                [CreatureConstants.Dragon_Silver_Young] = [],
 
-                [CreatureConstants.Dragon_Silver_Juvenile] = [None],
+                [CreatureConstants.Dragon_Silver_Juvenile] = [],
 
-                [CreatureConstants.Dragon_Silver_YoungAdult] = [None],
+                [CreatureConstants.Dragon_Silver_YoungAdult] = [],
 
-                [CreatureConstants.Dragon_Silver_Adult] = [None],
+                [CreatureConstants.Dragon_Silver_Adult] = [],
 
-                [CreatureConstants.Dragon_Silver_MatureAdult] = [None],
+                [CreatureConstants.Dragon_Silver_MatureAdult] = [],
 
-                [CreatureConstants.Dragon_Silver_Old] = [None],
+                [CreatureConstants.Dragon_Silver_Old] = [],
 
-                [CreatureConstants.Dragon_Silver_VeryOld] = [None],
+                [CreatureConstants.Dragon_Silver_VeryOld] = [],
 
-                [CreatureConstants.Dragon_Silver_Ancient] = [None],
+                [CreatureConstants.Dragon_Silver_Ancient] = [],
 
-                [CreatureConstants.Dragon_Silver_Wyrm] = [None],
+                [CreatureConstants.Dragon_Silver_Wyrm] = [],
 
-                [CreatureConstants.Dragon_Silver_GreatWyrm] = [None],
+                [CreatureConstants.Dragon_Silver_GreatWyrm] = [],
 
                 [CreatureConstants.DragonTurtle] = [GetData(SkillConstants.Hide, 8, condition: "when submerged")],
 
                 [CreatureConstants.Dragonne] = [GetData(SkillConstants.Listen, 4), GetData(SkillConstants.Spot, 4)],
 
-                [CreatureConstants.Dretch] = [None],
+                [CreatureConstants.Dretch] = [],
 
                 [CreatureConstants.Drider] =
                 [GetData(SkillConstants.Hide, 4),
@@ -689,74 +689,74 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Dryad] = [GetData(SkillConstants.Diplomacy, 6, condition: "when using Wild Empathy")],
 
-                [CreatureConstants.Dwarf_Deep] = [None],
+                [CreatureConstants.Dwarf_Deep] = [],
 
                 [CreatureConstants.Dwarf_Duergar] =
                 [GetData(SkillConstants.MoveSilently, 4),
                     GetData(SkillConstants.Listen, 1),
                     GetData(SkillConstants.Spot, 1)],
 
-                [CreatureConstants.Dwarf_Hill] = [None],
+                [CreatureConstants.Dwarf_Hill] = [],
 
-                [CreatureConstants.Dwarf_Mountain] = [None],
+                [CreatureConstants.Dwarf_Mountain] = [],
 
                 [CreatureConstants.Eagle] = [GetData(SkillConstants.Spot, 8)],
 
                 [CreatureConstants.Eagle_Giant] = [GetData(SkillConstants.Spot, 4)],
 
-                [CreatureConstants.Efreeti] = [None],
+                [CreatureConstants.Efreeti] = [],
 
                 [CreatureConstants.Elasmosaurus] = [GetData(SkillConstants.Hide, 8, condition: "in water")],
 
-                [CreatureConstants.Elemental_Air_Small] = [None],
+                [CreatureConstants.Elemental_Air_Small] = [],
 
-                [CreatureConstants.Elemental_Air_Medium] = [None],
+                [CreatureConstants.Elemental_Air_Medium] = [],
 
-                [CreatureConstants.Elemental_Air_Large] = [None],
+                [CreatureConstants.Elemental_Air_Large] = [],
 
-                [CreatureConstants.Elemental_Air_Huge] = [None],
+                [CreatureConstants.Elemental_Air_Huge] = [],
 
-                [CreatureConstants.Elemental_Air_Greater] = [None],
+                [CreatureConstants.Elemental_Air_Greater] = [],
 
-                [CreatureConstants.Elemental_Air_Elder] = [None],
+                [CreatureConstants.Elemental_Air_Elder] = [],
 
-                [CreatureConstants.Elemental_Earth_Small] = [None],
+                [CreatureConstants.Elemental_Earth_Small] = [],
 
-                [CreatureConstants.Elemental_Earth_Medium] = [None],
+                [CreatureConstants.Elemental_Earth_Medium] = [],
 
-                [CreatureConstants.Elemental_Earth_Large] = [None],
+                [CreatureConstants.Elemental_Earth_Large] = [],
 
-                [CreatureConstants.Elemental_Earth_Huge] = [None],
+                [CreatureConstants.Elemental_Earth_Huge] = [],
 
-                [CreatureConstants.Elemental_Earth_Greater] = [None],
+                [CreatureConstants.Elemental_Earth_Greater] = [],
 
-                [CreatureConstants.Elemental_Earth_Elder] = [None],
+                [CreatureConstants.Elemental_Earth_Elder] = [],
 
-                [CreatureConstants.Elemental_Fire_Small] = [None],
+                [CreatureConstants.Elemental_Fire_Small] = [],
 
-                [CreatureConstants.Elemental_Fire_Medium] = [None],
+                [CreatureConstants.Elemental_Fire_Medium] = [],
 
-                [CreatureConstants.Elemental_Fire_Large] = [None],
+                [CreatureConstants.Elemental_Fire_Large] = [],
 
-                [CreatureConstants.Elemental_Fire_Huge] = [None],
+                [CreatureConstants.Elemental_Fire_Huge] = [],
 
-                [CreatureConstants.Elemental_Fire_Greater] = [None],
+                [CreatureConstants.Elemental_Fire_Greater] = [],
 
-                [CreatureConstants.Elemental_Fire_Elder] = [None],
+                [CreatureConstants.Elemental_Fire_Elder] = [],
 
-                [CreatureConstants.Elemental_Water_Small] = [None],
+                [CreatureConstants.Elemental_Water_Small] = [],
 
-                [CreatureConstants.Elemental_Water_Medium] = [None],
+                [CreatureConstants.Elemental_Water_Medium] = [],
 
-                [CreatureConstants.Elemental_Water_Large] = [None],
+                [CreatureConstants.Elemental_Water_Large] = [],
 
-                [CreatureConstants.Elemental_Water_Huge] = [None],
+                [CreatureConstants.Elemental_Water_Huge] = [],
 
-                [CreatureConstants.Elemental_Water_Greater] = [None],
+                [CreatureConstants.Elemental_Water_Greater] = [],
 
-                [CreatureConstants.Elemental_Water_Elder] = [None],
+                [CreatureConstants.Elemental_Water_Elder] = [],
 
-                [CreatureConstants.Elephant] = [None],
+                [CreatureConstants.Elephant] = [],
 
                 [CreatureConstants.Elf_Aquatic] =
                 [GetData(SkillConstants.Listen, 2),
@@ -807,7 +807,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                         condition: "passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for"),
                     GetData(SkillConstants.Spot, 2)],
 
-                [CreatureConstants.Erinyes] = [None],
+                [CreatureConstants.Erinyes] = [],
 
                 [CreatureConstants.EtherealFilcher] =
                 [GetData(SkillConstants.Listen, 4),
@@ -828,17 +828,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Ettin] = [GetData(SkillConstants.Listen, 2), GetData(SkillConstants.Search, 2), GetData(SkillConstants.Spot, 2)],
 
-                [CreatureConstants.FireBeetle_Giant] = [None],
+                [CreatureConstants.FireBeetle_Giant] = [],
 
-                [CreatureConstants.FormianMyrmarch] = [None],
+                [CreatureConstants.FormianMyrmarch] = [],
 
-                [CreatureConstants.FormianQueen] = [None],
+                [CreatureConstants.FormianQueen] = [],
 
-                [CreatureConstants.FormianTaskmaster] = [None],
+                [CreatureConstants.FormianTaskmaster] = [],
 
-                [CreatureConstants.FormianWarrior] = [None],
+                [CreatureConstants.FormianWarrior] = [],
 
-                [CreatureConstants.FormianWorker] = [None],
+                [CreatureConstants.FormianWorker] = [],
 
                 [CreatureConstants.FrostWorm] = [GetData(SkillConstants.Hide, 10, condition: "on Cold Plains")],
 
@@ -858,21 +858,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 [GetData(SkillConstants.Climb, 8),
                     GetData(SkillConstants.Climb, 10, condition: "can always take 10")],
 
-                [CreatureConstants.Ghaele] = [None],
+                [CreatureConstants.Ghaele] = [],
 
-                [CreatureConstants.Ghoul] = [None],
+                [CreatureConstants.Ghoul] = [],
 
-                [CreatureConstants.Ghoul_Ghast] = [None],
+                [CreatureConstants.Ghoul_Ghast] = [],
 
-                [CreatureConstants.Ghoul_Lacedon] = [None],
+                [CreatureConstants.Ghoul_Lacedon] = [],
 
-                [CreatureConstants.Giant_Cloud] = [None],
+                [CreatureConstants.Giant_Cloud] = [],
 
-                [CreatureConstants.Giant_Fire] = [None],
+                [CreatureConstants.Giant_Fire] = [],
 
-                [CreatureConstants.Giant_Frost] = [None],
+                [CreatureConstants.Giant_Frost] = [],
 
-                [CreatureConstants.Giant_Hill] = [None],
+                [CreatureConstants.Giant_Hill] = [],
 
                 [CreatureConstants.Giant_Stone] = [GetData(SkillConstants.Hide, 8, condition: "in rocky terrain")],
 
@@ -889,39 +889,39 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Girallon] = [GetData(SkillConstants.Climb, 8), GetData(SkillConstants.Climb, 10, condition: "can always take 10")],
 
-                [CreatureConstants.Githyanki] = [None],
+                [CreatureConstants.Githyanki] = [],
 
-                [CreatureConstants.Githzerai] = [None],
+                [CreatureConstants.Githzerai] = [],
 
                 [CreatureConstants.Glabrezu] = [GetData(SkillConstants.Listen, 8), GetData(SkillConstants.Spot, 8)],
 
-                [CreatureConstants.Gnoll] = [None],
+                [CreatureConstants.Gnoll] = [],
 
                 [CreatureConstants.Gnome_Forest] = [GetData(SkillConstants.Hide, 4), GetData(SkillConstants.Hide, 8, condition: "in a wooded area")],
 
-                [CreatureConstants.Gnome_Rock] = [None],
+                [CreatureConstants.Gnome_Rock] = [],
 
                 [CreatureConstants.Gnome_Svirfneblin] = [GetData(SkillConstants.Hide, 2), GetData(SkillConstants.Hide, 2, condition: "underground")],
 
                 [CreatureConstants.Goblin] = [GetData(SkillConstants.MoveSilently, 4), GetData(SkillConstants.Ride, 4)],
 
-                [CreatureConstants.Golem_Clay] = [None],
+                [CreatureConstants.Golem_Clay] = [],
 
-                [CreatureConstants.Golem_Flesh] = [None],
+                [CreatureConstants.Golem_Flesh] = [],
 
-                [CreatureConstants.Golem_Iron] = [None],
+                [CreatureConstants.Golem_Iron] = [],
 
-                [CreatureConstants.Golem_Stone] = [None],
+                [CreatureConstants.Golem_Stone] = [],
 
-                [CreatureConstants.Golem_Stone_Greater] = [None],
+                [CreatureConstants.Golem_Stone_Greater] = [],
 
-                [CreatureConstants.Gorgon] = [None],
+                [CreatureConstants.Gorgon] = [],
 
                 [CreatureConstants.GrayOoze] = [GetData(SkillConstants.Climb, 8), GetData(SkillConstants.Climb, 10, condition: "can always take 10")],
 
                 [CreatureConstants.GrayRender] = [GetData(SkillConstants.Spot, 4)],
 
-                [CreatureConstants.GreenHag] = [None],
+                [CreatureConstants.GreenHag] = [],
 
                 [CreatureConstants.Grick] =
                 [GetData(SkillConstants.Climb, 8),
@@ -936,16 +936,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Grimlock] = [GetData(SkillConstants.Hide, 10, condition: "in mountains or underground")],
 
-                [CreatureConstants.Gynosphinx] = [None],
+                [CreatureConstants.Gynosphinx] = [],
 
-                [CreatureConstants.Halfling_Deep] = [None],
+                [CreatureConstants.Halfling_Deep] = [],
 
                 [CreatureConstants.Halfling_Lightfoot] =
                 [GetData(SkillConstants.Climb, 2),
                     GetData(SkillConstants.Jump, 2),
                     GetData(SkillConstants.MoveSilently, 2)],
 
-                [CreatureConstants.Halfling_Tallfellow] = [None],
+                [CreatureConstants.Halfling_Tallfellow] = [],
 
                 [CreatureConstants.Harpy] = [GetData(SkillConstants.Bluff, 4), GetData(SkillConstants.Listen, 4)],
 
@@ -953,7 +953,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Hellcat_Bezekira] = [GetData(SkillConstants.Listen, 4), GetData(SkillConstants.MoveSilently, 4)],
 
-                [CreatureConstants.Hellwasp_Swarm] = [None],
+                [CreatureConstants.Hellwasp_Swarm] = [],
 
                 [CreatureConstants.HellHound] = [GetData(SkillConstants.Hide, 5), GetData(SkillConstants.MoveSilently, 5)],
 
@@ -967,15 +967,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Hobgoblin] = [GetData(SkillConstants.MoveSilently, 4)],
 
-                [CreatureConstants.Horse_Heavy] = [None],
+                [CreatureConstants.Horse_Heavy] = [],
 
-                [CreatureConstants.Horse_Heavy_War] = [None],
+                [CreatureConstants.Horse_Heavy_War] = [],
 
-                [CreatureConstants.Horse_Light] = [None],
+                [CreatureConstants.Horse_Light] = [],
 
-                [CreatureConstants.Horse_Light_War] = [None],
+                [CreatureConstants.Horse_Light_War] = [],
 
-                [CreatureConstants.Howler] = [None],
+                [CreatureConstants.Howler] = [],
 
                 [CreatureConstants.Hydra_5Heads] =
                 [GetData(SkillConstants.Listen, 2),
@@ -1025,25 +1025,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Swim, 8, condition: "special action or avoid a hazard"),
                     GetData(SkillConstants.Swim, 10, condition: "can always take 10")],
 
-                [CreatureConstants.Homunculus] = [None],
+                [CreatureConstants.Homunculus] = [],
 
-                [CreatureConstants.HornedDevil_Cornugon] = [None],
+                [CreatureConstants.HornedDevil_Cornugon] = [],
 
                 [CreatureConstants.HoundArchon] =
                 [GetData(SkillConstants.Hide, 4, condition: "in canine form"),
                     GetData(SkillConstants.Survival, 4, condition: "in canine form")],
 
-                [CreatureConstants.Human] = [None],
+                [CreatureConstants.Human] = [],
 
                 [CreatureConstants.Hyena] = [GetData(SkillConstants.Hide, 4, condition: "in tall grass or heavy undergrowth")],
 
-                [CreatureConstants.IceDevil_Gelugon] = [None],
+                [CreatureConstants.IceDevil_Gelugon] = [],
 
-                [CreatureConstants.Imp] = [None],
+                [CreatureConstants.Imp] = [],
 
-                [CreatureConstants.InvisibleStalker] = [None],
+                [CreatureConstants.InvisibleStalker] = [],
 
-                [CreatureConstants.Janni] = [None],
+                [CreatureConstants.Janni] = [],
 
                 [CreatureConstants.Kobold] =
                 [GetData(SkillConstants.Craft, 2, focus: SkillConstants.Foci.Craft.Trapmaking),
@@ -1055,7 +1055,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.GatherInformation, 4),
                     GetData(SkillConstants.SenseMotive, 4)],
 
-                [CreatureConstants.Kraken] = [None],
+                [CreatureConstants.Kraken] = [],
 
                 [CreatureConstants.Krenshar] = [GetData(SkillConstants.Jump, 4), GetData(SkillConstants.MoveSilently, 4)],
 
@@ -1065,9 +1065,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Lammasu] = [GetData(SkillConstants.Spot, 2)],
 
-                [CreatureConstants.LanternArchon] = [None],
+                [CreatureConstants.LanternArchon] = [],
 
-                [CreatureConstants.Lemure] = [None],
+                [CreatureConstants.Lemure] = [],
 
                 [CreatureConstants.Leonal] = [GetData(SkillConstants.Balance, 4), GetData(SkillConstants.Hide, 4), GetData(SkillConstants.MoveSilently, 4)],
 
@@ -1107,13 +1107,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Lizardfolk] = [GetData(SkillConstants.Jump, 4), GetData(SkillConstants.Swim, 4), GetData(SkillConstants.Balance, 4)],
 
-                [CreatureConstants.Locathah] = [None],
+                [CreatureConstants.Locathah] = [],
 
                 [CreatureConstants.Locust_Swarm] = [GetData(SkillConstants.Listen, 4), GetData(SkillConstants.Spot, 4)],
 
-                [CreatureConstants.Magmin] = [None],
+                [CreatureConstants.Magmin] = [],
 
-                [CreatureConstants.MantaRay] = [None],
+                [CreatureConstants.MantaRay] = [],
 
                 [CreatureConstants.Manticore] = [GetData(SkillConstants.Spot, 4)],
 
@@ -1121,7 +1121,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Marut] = [GetData(SkillConstants.Concentration, 4), GetData(SkillConstants.Listen, 4), GetData(SkillConstants.Spot, 4)],
 
-                [CreatureConstants.Medusa] = [None],
+                [CreatureConstants.Medusa] = [],
 
                 [CreatureConstants.Megaraptor] =
                 [GetData(SkillConstants.Hide, 8),
@@ -1130,35 +1130,35 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Spot, 8),
                     GetData(SkillConstants.Survival, 8)],
 
-                [CreatureConstants.Mephit_Air] = [None],
+                [CreatureConstants.Mephit_Air] = [],
 
-                [CreatureConstants.Mephit_Dust] = [None],
+                [CreatureConstants.Mephit_Dust] = [],
 
-                [CreatureConstants.Mephit_Earth] = [None],
+                [CreatureConstants.Mephit_Earth] = [],
 
-                [CreatureConstants.Mephit_Fire] = [None],
+                [CreatureConstants.Mephit_Fire] = [],
 
-                [CreatureConstants.Mephit_Ice] = [None],
+                [CreatureConstants.Mephit_Ice] = [],
 
-                [CreatureConstants.Mephit_Magma] = [None],
+                [CreatureConstants.Mephit_Magma] = [],
 
-                [CreatureConstants.Mephit_Ooze] = [None],
+                [CreatureConstants.Mephit_Ooze] = [],
 
-                [CreatureConstants.Mephit_Salt] = [None],
+                [CreatureConstants.Mephit_Salt] = [],
 
-                [CreatureConstants.Mephit_Steam] = [None],
+                [CreatureConstants.Mephit_Steam] = [],
 
-                [CreatureConstants.Mephit_Water] = [None],
+                [CreatureConstants.Mephit_Water] = [],
 
-                [CreatureConstants.Merfolk] = [None],
+                [CreatureConstants.Merfolk] = [],
 
                 [CreatureConstants.Mimic] = [GetData(SkillConstants.Disguise, 8)],
 
-                [CreatureConstants.MindFlayer] = [None],
+                [CreatureConstants.MindFlayer] = [],
 
                 [CreatureConstants.Minotaur] = [GetData(SkillConstants.Listen, 4), GetData(SkillConstants.Search, 4), GetData(SkillConstants.Spot, 4)],
 
-                [CreatureConstants.Mohrg] = [None],
+                [CreatureConstants.Mohrg] = [],
 
                 [CreatureConstants.Monkey] =
                 [GetData(SkillConstants.Balance, 8),
@@ -1167,25 +1167,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Mule] = [GetData(SkillConstants.Balance, 2, condition: "To avoid slipping or falling")],
 
-                [CreatureConstants.Mummy] = [None],
+                [CreatureConstants.Mummy] = [],
 
-                [CreatureConstants.Naga_Dark] = [None],
+                [CreatureConstants.Naga_Dark] = [],
 
-                [CreatureConstants.Naga_Guardian] = [None],
+                [CreatureConstants.Naga_Guardian] = [],
 
-                [CreatureConstants.Naga_Spirit] = [None],
+                [CreatureConstants.Naga_Spirit] = [],
 
-                [CreatureConstants.Naga_Water] = [None],
+                [CreatureConstants.Naga_Water] = [],
 
                 [CreatureConstants.Nalfeshnee] = [GetData(SkillConstants.Listen, 8), GetData(SkillConstants.Spot, 8)],
 
-                [CreatureConstants.NightHag] = [None],
+                [CreatureConstants.NightHag] = [],
 
-                [CreatureConstants.Nightcrawler] = [None],
+                [CreatureConstants.Nightcrawler] = [],
 
-                [CreatureConstants.Nightmare] = [None],
+                [CreatureConstants.Nightmare] = [],
 
-                [CreatureConstants.Nightmare_Cauchemar] = [None],
+                [CreatureConstants.Nightmare_Cauchemar] = [],
 
                 [CreatureConstants.Nightwalker] = [GetData(SkillConstants.Hide, 8, condition: "in a dark area")],
 
@@ -1203,15 +1203,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Octopus_Giant] = [GetData(SkillConstants.Hide, 4), GetData(SkillConstants.EscapeArtist, 10)],
 
-                [CreatureConstants.Ogre] = [None],
+                [CreatureConstants.Ogre] = [],
 
-                [CreatureConstants.Ogre_Merrow] = [None],
+                [CreatureConstants.Ogre_Merrow] = [],
 
-                [CreatureConstants.OgreMage] = [None],
+                [CreatureConstants.OgreMage] = [],
 
-                [CreatureConstants.Orc] = [None],
+                [CreatureConstants.Orc] = [],
 
-                [CreatureConstants.Orc_Half] = [None],
+                [CreatureConstants.Orc_Half] = [],
 
                 [CreatureConstants.Otyugh] = [GetData(SkillConstants.Hide, 8, condition: "in its lair")],
 
@@ -1225,7 +1225,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.MoveSilently, 8, condition: "in flight"),
                     GetData(SkillConstants.Spot, 4)],
 
-                [CreatureConstants.Owlbear] = [None],
+                [CreatureConstants.Owlbear] = [],
 
                 [CreatureConstants.Pegasus] = [GetData(SkillConstants.Listen, 4), GetData(SkillConstants.Spot, 4)],
 
@@ -1235,7 +1235,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Phasm] = [GetData(SkillConstants.Disguise, 10, condition: "when using Shapechange")],
 
-                [CreatureConstants.PitFiend] = [None],
+                [CreatureConstants.PitFiend] = [],
 
                 [CreatureConstants.Pixie] = [GetData(SkillConstants.Listen, 2), GetData(SkillConstants.Search, 2), GetData(SkillConstants.Spot, 2)],
 
@@ -1244,9 +1244,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Search, 2),
                     GetData(SkillConstants.Spot, 2)],
 
-                [CreatureConstants.Pony] = [None],
+                [CreatureConstants.Pony] = [],
 
-                [CreatureConstants.Pony_War] = [None],
+                [CreatureConstants.Pony_War] = [],
 
                 [CreatureConstants.Porpoise] =
                 [GetData(SkillConstants.Listen, 4, condition: "while able to use blindsight"),
@@ -1311,7 +1311,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Swim, 8, condition: "special action or avoid a hazard"),
                     GetData(SkillConstants.Swim, 10, condition: "can always take 10")],
 
-                [CreatureConstants.Quasit] = [None],
+                [CreatureConstants.Quasit] = [],
 
                 [CreatureConstants.Rakshasa] =
                 [GetData(SkillConstants.Bluff, 4),
@@ -1320,7 +1320,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Disguise, 4),
                     GetData(SkillConstants.Disguise, 4, condition: "when reading an opponent's mind")],
 
-                [CreatureConstants.Rast] = [None],
+                [CreatureConstants.Rast] = [],
 
                 [CreatureConstants.Rat] =
                 [GetData(SkillConstants.Hide, 4),
@@ -1348,23 +1348,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Swim, 8, condition: "special action or avoid a hazard"),
                     GetData(SkillConstants.Swim, 10, condition: "can always take 10")],
 
-                [CreatureConstants.Raven] = [None],
+                [CreatureConstants.Raven] = [],
 
-                [CreatureConstants.Ravid] = [None],
+                [CreatureConstants.Ravid] = [],
 
-                [CreatureConstants.RazorBoar] = [None],
+                [CreatureConstants.RazorBoar] = [],
 
                 [CreatureConstants.Remorhaz] = [GetData(SkillConstants.Listen, 4)],
 
-                [CreatureConstants.Retriever] = [None],
+                [CreatureConstants.Retriever] = [],
 
-                [CreatureConstants.Rhinoceras] = [None],
+                [CreatureConstants.Rhinoceras] = [],
 
                 [CreatureConstants.Roc] = [GetData(SkillConstants.Spot, 4)],
 
                 [CreatureConstants.Roper] = [GetData(SkillConstants.Hide, 8, condition: "in stony or icy areas")],
 
-                [CreatureConstants.RustMonster] = [None],
+                [CreatureConstants.RustMonster] = [],
 
                 [CreatureConstants.Sahuagin] =
                 [GetData(SkillConstants.Hide, 4, condition: "underwater"),
@@ -1445,11 +1445,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Climb, 4),
                     GetData(SkillConstants.Hide, 4)],
 
-                [CreatureConstants.Scorpionfolk] = [None],
+                [CreatureConstants.Scorpionfolk] = [],
 
-                [CreatureConstants.SeaCat] = [None],
+                [CreatureConstants.SeaCat] = [],
 
-                [CreatureConstants.SeaHag] = [None],
+                [CreatureConstants.SeaHag] = [],
 
                 [CreatureConstants.Shadow] =
                 [GetData(SkillConstants.Listen, 2),
@@ -1473,15 +1473,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.MoveSilently, 4),
                     GetData(SkillConstants.Hide, 8, condition: "in a swampy or forested area")],
 
-                [CreatureConstants.Shark_Dire] = [None],
+                [CreatureConstants.Shark_Dire] = [],
 
-                [CreatureConstants.Shark_Huge] = [None],
+                [CreatureConstants.Shark_Huge] = [],
 
-                [CreatureConstants.Shark_Large] = [None],
+                [CreatureConstants.Shark_Large] = [],
 
-                [CreatureConstants.Shark_Medium] = [None],
+                [CreatureConstants.Shark_Medium] = [],
 
-                [CreatureConstants.ShieldGuardian] = [None],
+                [CreatureConstants.ShieldGuardian] = [],
 
                 [CreatureConstants.ShockerLizard] =
                 [GetData(SkillConstants.Hide, 4),
@@ -1492,38 +1492,38 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Swim, 8, condition: "special action or avoid a hazard"),
                     GetData(SkillConstants.Swim, 10, condition: "can always take 10")],
 
-                [CreatureConstants.Shrieker] = [None],
+                [CreatureConstants.Shrieker] = [],
 
                 [CreatureConstants.Skum] =
                 [GetData(SkillConstants.Hide, 4, condition: "underwater"),
                     GetData(SkillConstants.Listen, 4, condition: "underwater"),
                     GetData(SkillConstants.Spot, 4, condition: "underwater")],
 
-                [CreatureConstants.Slaad_Red] = [None],
+                [CreatureConstants.Slaad_Red] = [],
 
-                [CreatureConstants.Slaad_Blue] = [None],
+                [CreatureConstants.Slaad_Blue] = [],
 
-                [CreatureConstants.Slaad_Green] = [None],
+                [CreatureConstants.Slaad_Green] = [],
 
-                [CreatureConstants.Slaad_Gray] = [None],
+                [CreatureConstants.Slaad_Gray] = [],
 
-                [CreatureConstants.Slaad_Death] = [None],
+                [CreatureConstants.Slaad_Death] = [],
 
-                [CreatureConstants.Snake_Constrictor] = [None],
+                [CreatureConstants.Snake_Constrictor] = [],
 
-                [CreatureConstants.Snake_Constrictor_Giant] = [None],
+                [CreatureConstants.Snake_Constrictor_Giant] = [],
 
-                [CreatureConstants.Snake_Viper_Tiny] = [None],
+                [CreatureConstants.Snake_Viper_Tiny] = [],
 
-                [CreatureConstants.Snake_Viper_Small] = [None],
+                [CreatureConstants.Snake_Viper_Small] = [],
 
-                [CreatureConstants.Snake_Viper_Medium] = [None],
+                [CreatureConstants.Snake_Viper_Medium] = [],
 
-                [CreatureConstants.Snake_Viper_Large] = [None],
+                [CreatureConstants.Snake_Viper_Large] = [],
 
-                [CreatureConstants.Snake_Viper_Huge] = [None],
+                [CreatureConstants.Snake_Viper_Huge] = [],
 
-                [CreatureConstants.Spectre] = [None],
+                [CreatureConstants.Spectre] = [],
 
                 [CreatureConstants.Spider_Monstrous_Hunter_Colossal] =
                 [GetData(SkillConstants.Climb, 8),
@@ -1645,13 +1645,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.SpiderEater] = [GetData(SkillConstants.Listen, 4), GetData(SkillConstants.Spot, 4)],
 
-                [CreatureConstants.Squid] = [None],
+                [CreatureConstants.Squid] = [],
 
-                [CreatureConstants.Squid_Giant] = [None],
+                [CreatureConstants.Squid_Giant] = [],
 
-                [CreatureConstants.StagBeetle_Giant] = [None],
+                [CreatureConstants.StagBeetle_Giant] = [],
 
-                [CreatureConstants.Stirge] = [None],
+                [CreatureConstants.Stirge] = [],
 
                 [CreatureConstants.Succubus] =
                 [GetData(SkillConstants.Listen, 8),
@@ -1660,9 +1660,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Tarrasque] = [GetData(SkillConstants.Listen, 8), GetData(SkillConstants.Spot, 8)],
 
-                [CreatureConstants.Tendriculos] = [None],
+                [CreatureConstants.Tendriculos] = [],
 
-                [CreatureConstants.Thoqqua] = [None],
+                [CreatureConstants.Thoqqua] = [],
 
                 [CreatureConstants.Tiefling] = [GetData(SkillConstants.Bluff, 2), GetData(SkillConstants.Hide, 2)],
 
@@ -1677,35 +1677,35 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.MoveSilently, 4),
                     GetData(SkillConstants.Hide, 4, condition: "in tall grass or heavy undergrowth")],
 
-                [CreatureConstants.Titan] = [None],
+                [CreatureConstants.Titan] = [],
 
                 [CreatureConstants.Toad] = [GetData(SkillConstants.Hide, 4)],
 
-                [CreatureConstants.Tojanida_Juvenile] = [None],
+                [CreatureConstants.Tojanida_Juvenile] = [],
 
-                [CreatureConstants.Tojanida_Adult] = [None],
+                [CreatureConstants.Tojanida_Adult] = [],
 
-                [CreatureConstants.Tojanida_Elder] = [None],
+                [CreatureConstants.Tojanida_Elder] = [],
 
-                [CreatureConstants.Treant] = [None],
+                [CreatureConstants.Treant] = [],
 
-                [CreatureConstants.Triceratops] = [None],
+                [CreatureConstants.Triceratops] = [],
 
-                [CreatureConstants.Triton] = [None],
+                [CreatureConstants.Triton] = [],
 
                 [CreatureConstants.Troglodyte] = [GetData(SkillConstants.Hide, 4), GetData(SkillConstants.Hide, 4, condition: "in rocky or underground settings")],
 
-                [CreatureConstants.Troll] = [None],
+                [CreatureConstants.Troll] = [],
 
-                [CreatureConstants.Troll_Scrag] = [None],
+                [CreatureConstants.Troll_Scrag] = [],
 
-                [CreatureConstants.TrumpetArchon] = [None],
+                [CreatureConstants.TrumpetArchon] = [],
 
                 [CreatureConstants.Tyrannosaurus] = [GetData(SkillConstants.Listen, 2), GetData(SkillConstants.Spot, 2)],
 
-                [CreatureConstants.UmberHulk] = [None],
+                [CreatureConstants.UmberHulk] = [],
 
-                [CreatureConstants.UmberHulk_TrulyHorrid] = [None],
+                [CreatureConstants.UmberHulk_TrulyHorrid] = [],
 
                 [CreatureConstants.Unicorn] =
                 [GetData(SkillConstants.MoveSilently, 4),
@@ -1720,9 +1720,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.SenseMotive, 4),
                     GetData(SkillConstants.Spot, 4)],
 
-                [CreatureConstants.Vargouille] = [None],
+                [CreatureConstants.Vargouille] = [],
 
-                [CreatureConstants.VioletFungus] = [None],
+                [CreatureConstants.VioletFungus] = [],
 
                 [CreatureConstants.Vrock] = [GetData(SkillConstants.Listen, 8), GetData(SkillConstants.Spot, 8)],
 
@@ -1734,7 +1734,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Climb, 8),
                     GetData(SkillConstants.Climb, 10, condition: "can always take 10")],
 
-                [CreatureConstants.Weasel_Dire] = [None],
+                [CreatureConstants.Weasel_Dire] = [],
 
                 [CreatureConstants.Whale_Baleen] = [GetData(SkillConstants.Listen, 4), GetData(SkillConstants.Spot, 4)],
 
@@ -1744,7 +1744,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Wight] = [GetData(SkillConstants.MoveSilently, 8)],
 
-                [CreatureConstants.WillOWisp] = [None],
+                [CreatureConstants.WillOWisp] = [],
 
                 [CreatureConstants.WinterWolf] =
                 [GetData(SkillConstants.Listen, 1),
@@ -1774,19 +1774,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Hide, 2),
                     GetData(SkillConstants.Survival, 4, condition: "tracking by scent")],
 
-                [CreatureConstants.Wraith] = [None],
+                [CreatureConstants.Wraith] = [],
 
-                [CreatureConstants.Wraith_Dread] = [None],
+                [CreatureConstants.Wraith_Dread] = [],
 
                 [CreatureConstants.Wyvern] = [GetData(SkillConstants.Spot, 3)],
 
-                [CreatureConstants.Xill] = [None],
+                [CreatureConstants.Xill] = [],
 
-                [CreatureConstants.Xorn_Minor] = [None],
+                [CreatureConstants.Xorn_Minor] = [],
 
-                [CreatureConstants.Xorn_Average] = [None],
+                [CreatureConstants.Xorn_Average] = [],
 
-                [CreatureConstants.Xorn_Elder] = [None],
+                [CreatureConstants.Xorn_Elder] = [],
 
                 [CreatureConstants.YethHound] = [GetData(SkillConstants.Survival, 4, condition: "tracking by scent")],
 
@@ -1827,35 +1827,35 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         {
             var testCases = new Dictionary<string, List<string>>
             {
-                [CreatureConstants.Types.Aberration] = [None],
+                [CreatureConstants.Types.Aberration] = [],
 
-                [CreatureConstants.Types.Animal] = [None],
+                [CreatureConstants.Types.Animal] = [],
 
-                [CreatureConstants.Types.Construct] = [None],
+                [CreatureConstants.Types.Construct] = [],
 
-                [CreatureConstants.Types.Dragon] = [None],
+                [CreatureConstants.Types.Dragon] = [],
 
-                [CreatureConstants.Types.Elemental] = [None],
+                [CreatureConstants.Types.Elemental] = [],
 
-                [CreatureConstants.Types.Fey] = [None],
+                [CreatureConstants.Types.Fey] = [],
 
-                [CreatureConstants.Types.Giant] = [None],
+                [CreatureConstants.Types.Giant] = [],
 
-                [CreatureConstants.Types.Humanoid] = [None],
+                [CreatureConstants.Types.Humanoid] = [],
 
-                [CreatureConstants.Types.MagicalBeast] = [None],
+                [CreatureConstants.Types.MagicalBeast] = [],
 
-                [CreatureConstants.Types.MonstrousHumanoid] = [None],
+                [CreatureConstants.Types.MonstrousHumanoid] = [],
 
-                [CreatureConstants.Types.Ooze] = [None],
+                [CreatureConstants.Types.Ooze] = [],
 
-                [CreatureConstants.Types.Outsider] = [None],
+                [CreatureConstants.Types.Outsider] = [],
 
-                [CreatureConstants.Types.Plant] = [None],
+                [CreatureConstants.Types.Plant] = [],
 
-                [CreatureConstants.Types.Undead] = [None],
+                [CreatureConstants.Types.Undead] = [],
 
-                [CreatureConstants.Types.Vermin] = [None]
+                [CreatureConstants.Types.Vermin] = []
             };
 
             return testCases;
@@ -1865,58 +1865,58 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         {
             var testCases = new Dictionary<string, List<string>>
             {
-                [CreatureConstants.Types.Subtypes.Air] = [None],
+                [CreatureConstants.Types.Subtypes.Air] = [],
 
-                [CreatureConstants.Types.Subtypes.Angel] = [None],
+                [CreatureConstants.Types.Subtypes.Angel] = [],
 
                 [CreatureConstants.Types.Subtypes.Aquatic] =
                     [GetData(SkillConstants.Swim, 8, condition: "special action or avoid a hazard"),
                     GetData(SkillConstants.Swim, 10, condition: "can always take 10")],
 
-                [CreatureConstants.Types.Subtypes.Archon] = [None],
+                [CreatureConstants.Types.Subtypes.Archon] = [],
 
-                [CreatureConstants.Types.Subtypes.Augmented] = [None],
+                [CreatureConstants.Types.Subtypes.Augmented] = [],
 
-                [CreatureConstants.Types.Subtypes.Chaotic] = [None],
+                [CreatureConstants.Types.Subtypes.Chaotic] = [],
 
-                [CreatureConstants.Types.Subtypes.Cold] = [None],
+                [CreatureConstants.Types.Subtypes.Cold] = [],
 
                 [CreatureConstants.Types.Subtypes.Dwarf] =
                     [GetData(SkillConstants.Appraise, 2, condition: "for items related to stone or metal"),
                     GetData(SkillConstants.Craft, 2, condition: "for items related to stone or metal")],
 
-                [CreatureConstants.Types.Subtypes.Earth] = [None],
+                [CreatureConstants.Types.Subtypes.Earth] = [],
 
-                [CreatureConstants.Types.Subtypes.Elf] = [None],
+                [CreatureConstants.Types.Subtypes.Elf] = [],
 
-                [CreatureConstants.Types.Subtypes.Evil] = [None],
+                [CreatureConstants.Types.Subtypes.Evil] = [],
 
-                [CreatureConstants.Types.Subtypes.Extraplanar] = [None],
+                [CreatureConstants.Types.Subtypes.Extraplanar] = [],
 
-                [CreatureConstants.Types.Subtypes.Fire] = [None],
+                [CreatureConstants.Types.Subtypes.Fire] = [],
 
                 [CreatureConstants.Types.Subtypes.Gnome] =
                     [GetData(SkillConstants.Listen, 2),
                     GetData(SkillConstants.Craft, 2, focus: SkillConstants.Foci.Craft.Alchemy)],
 
-                [CreatureConstants.Types.Subtypes.Goblinoid] = [None],
+                [CreatureConstants.Types.Subtypes.Goblinoid] = [],
 
-                [CreatureConstants.Types.Subtypes.Good] = [None],
+                [CreatureConstants.Types.Subtypes.Good] = [],
 
                 [CreatureConstants.Types.Subtypes.Halfling] = [GetData(SkillConstants.Listen, 2)],
 
                 [CreatureConstants.Types.Subtypes.Incorporeal] =
                     [GetData(SkillConstants.MoveSilently, 9000, condition: "always succeeds, and cannot be heard by Listen checks unless it wants to be")],
 
-                [CreatureConstants.Types.Subtypes.Lawful] = [None],
+                [CreatureConstants.Types.Subtypes.Lawful] = [],
 
-                [CreatureConstants.Types.Subtypes.Native] = [None],
+                [CreatureConstants.Types.Subtypes.Native] = [],
 
-                [CreatureConstants.Types.Subtypes.Reptilian] = [None],
+                [CreatureConstants.Types.Subtypes.Reptilian] = [],
 
-                [CreatureConstants.Types.Subtypes.Shapechanger] = [None],
+                [CreatureConstants.Types.Subtypes.Shapechanger] = [],
 
-                [CreatureConstants.Types.Subtypes.Swarm] = [None],
+                [CreatureConstants.Types.Subtypes.Swarm] = [],
 
                 [CreatureConstants.Types.Subtypes.Water] =
                     [GetData(SkillConstants.Swim, 8, condition: "special action or avoid a hazard"),
@@ -1926,447 +1926,745 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             return testCases;
         }
 
+        public static IEnumerable<string> SkillSynergyNames =>
+            [
+                SkillConstants.Appraise,
+                SkillConstants.Balance,
+                SkillConstants.Bluff,
+                SkillConstants.Craft,
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Alchemy),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Armorsmithing),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Blacksmithing),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Bookbinding),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Bowmaking),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Brassmaking),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Brewing),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Candlemaking),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Cloth),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Coppersmithing),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Dyemaking),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Gemcutting),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Glass),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Goldsmithing),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Hatmaking),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Hornworking),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Jewelmaking),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Leather),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Locksmithing),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Mapmaking),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Milling),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Painting),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Parchmentmaking),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Pewtermaking),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Potterymaking),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Sculpting),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Shipmaking),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Shoemaking),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Silversmithing),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Skinning),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Soapmaking),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Stonemasonry),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Tanning),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Trapmaking),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Weaponsmithing),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Weaving),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Wheelmaking),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Winemaking),
+                SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Woodworking),
+                SkillConstants.Climb,
+                SkillConstants.Concentration,
+                SkillConstants.DecipherScript,
+                SkillConstants.Diplomacy,
+                SkillConstants.DisableDevice,
+                SkillConstants.Disguise,
+                SkillConstants.EscapeArtist,
+                SkillConstants.Forgery,
+                SkillConstants.GatherInformation,
+                SkillConstants.HandleAnimal,
+                SkillConstants.Heal,
+                SkillConstants.Hide,
+                SkillConstants.Intimidate,
+                SkillConstants.Jump,
+                SkillConstants.Knowledge,
+                SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Arcana),
+                SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.ArchitectureAndEngineering),
+                SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Dungeoneering),
+                SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Geography),
+                SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.History),
+                SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local),
+                SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature),
+                SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty),
+                SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Religion),
+                SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.ThePlanes),
+                SkillConstants.Listen,
+                SkillConstants.MoveSilently,
+                SkillConstants.OpenLock,
+                SkillConstants.Perform,
+                SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.Act),
+                SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.Comedy),
+                SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.Dance),
+                SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.KeyboardInstruments),
+                SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.Oratory),
+                SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.PercussionInstruments),
+                SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.Sing),
+                SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.StringInstruments),
+                SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.WindInstruments),
+                SkillConstants.Profession,
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Adviser),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Alchemist),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.AnimalGroomer),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.AnimalTrainer),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Apothecary),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Appraiser),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Architect),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Armorer),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Barrister),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Blacksmith),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Bookbinder),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Bowyer),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Brazier),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Brewer),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Butler),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Carpenter),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Cartographer),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Cartwright),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Chandler),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.CityGuide),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Clerk),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Cobbler),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Coffinmaker),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Coiffeur),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Cook),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Coppersmith),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Craftsman),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Dowser),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Dyer),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Embalmer),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Engineer),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Entertainer),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.ExoticAnimalTrainer),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Farmer),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Fletcher),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Footman),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Gemcutter),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Goldsmith),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Governess),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Haberdasher),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Healer),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Horner),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Hunter),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Interpreter),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Jeweler),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Laborer),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Launderer),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Limner),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.LocalCourier),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Locksmith),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Maid),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Masseuse),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Matchmaker),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Midwife),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Miller),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Miner),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Navigator),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Nursemaid),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.OutOfTownCourier),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Painter),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Parchmentmaker),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Pewterer),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Polisher),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Porter),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Potter),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Sage),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.SailorCrewmember),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.SailorMate),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Scribe),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Sculptor),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Shepherd),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Shipwright),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Silversmith),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Skinner),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Soapmaker),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Soothsayer),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Tanner),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Teacher),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Teamster),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Trader),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Trapper),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Valet),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Vintner),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Weaponsmith),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Weaver),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Wheelwright),
+                SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.WildernessGuide),
+                SkillConstants.Ride,
+                SkillConstants.Search,
+                SkillConstants.SenseMotive,
+                SkillConstants.SleightOfHand,
+                SkillConstants.Spellcraft,
+                SkillConstants.Spot,
+                SkillConstants.Survival,
+                SkillConstants.Swim,
+                SkillConstants.Tumble,
+                SkillConstants.UseMagicDevice,
+                SkillConstants.UseRope
+            ];
+
+        public static IEnumerable SkillSynergies => SkillSynergyNames.Select(n => new TestCaseData(n));
+
         public static Dictionary<string, List<string>> GetSkillSynergiesSkillBonuses()
         {
-            var testCases = new Dictionary<string, List<string>>();
-
-            testCases[SkillConstants.Appraise] =
+            var testCases = new Dictionary<string, List<string>>
+            {
+                [SkillConstants.Appraise] =
                 [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Appraiser),
-                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Trader)];
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Trader)],
 
-            testCases[SkillConstants.Balance] = [None];
+                [SkillConstants.Balance] = [],
 
-            testCases[SkillConstants.Bluff] =
+                [SkillConstants.Bluff] =
                 [GetData(SkillConstants.Diplomacy, 2),
                 GetData(SkillConstants.Disguise, 2, condition: "acting"),
                 GetData(SkillConstants.Intimidate, 2),
                 GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Dowser),
                 GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Soothsayer),
-                GetData(SkillConstants.SleightOfHand, 2)];
+                GetData(SkillConstants.SleightOfHand, 2)],
 
-            testCases[SkillConstants.Climb] = [None];
+                [SkillConstants.Climb] = [],
 
-            testCases[SkillConstants.Concentration] = [None];
+                [SkillConstants.Concentration] = [],
 
-            testCases[SkillConstants.Craft] =
+                [SkillConstants.Craft] =
                 [GetData(SkillConstants.Appraise, 2, condition: "related to items made with your Craft skill"),
-                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Craftsman)];
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Craftsman)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Alchemy)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Alchemist)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Alchemy)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Embalmer)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Alchemy)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Alchemist),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Embalmer)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Armorsmithing)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Armorer)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Armorsmithing)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Armorer)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Blacksmithing)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Blacksmith)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Blacksmithing)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Blacksmith)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Bookbinding)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Bookbinder)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Bookbinding)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Bookbinder)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Bowmaking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Bowyer)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Bowmaking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Fletcher)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Bowmaking)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Bowyer),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Fletcher)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Brassmaking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Brazier)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Brassmaking)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Brazier)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Brewing)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Brewer)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Brewing)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Brewer)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Candlemaking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Chandler)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Candlemaking)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Chandler)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Cloth)] = [None];
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Cloth)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Coppersmithing)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Coppersmith)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Coppersmithing)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Coppersmith)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Dyemaking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Dyer)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Dyemaking)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Dyer)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Gemcutting)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Gemcutter)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Gemcutting)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Gemcutter)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Glass)] = [None];
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Glass)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Goldsmithing)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Goldsmith)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Goldsmithing)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Goldsmith)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Hatmaking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Haberdasher)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Hatmaking)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Haberdasher)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Hornworking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Horner)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Hornworking)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Horner)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Jewelmaking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Jeweler)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Jewelmaking)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Jeweler)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Leather)] = [None];
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Leather)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Locksmithing)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Locksmith)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Locksmithing)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Locksmith)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Mapmaking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Cartographer)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Mapmaking)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Cartographer)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Milling)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Miller)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Milling)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Miller)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Painting)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Limner)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Painting)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Painter)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Painting)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Limner),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Painter)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Parchmentmaking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Parchmentmaker)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Parchmentmaking)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Parchmentmaker)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Pewtermaking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Pewterer)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Pewtermaking)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Pewterer)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Potterymaking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Potter)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Potterymaking)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Potter)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Sculpting)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Sculptor)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Sculpting)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Sculptor)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Shipmaking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Shipwright)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Shipmaking)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Shipwright)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Shoemaking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Cobbler)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Shoemaking)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Cobbler)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Silversmithing)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Silversmith)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Silversmithing)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Silversmith)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Skinning)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Skinner)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Skinning)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Skinner)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Soapmaking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Soapmaker)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Soapmaking)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Soapmaker)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Stonemasonry)] = [None];
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Stonemasonry)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Tanning)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Tanner)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Tanning)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Tanner)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Trapmaking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Hunter)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Trapmaking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Trapper)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Trapmaking)] = [GetData(SkillConstants.Search, condition: "finding traps")] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Trapmaking)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Hunter),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Trapper),
+                GetData(SkillConstants.Search, 2, condition: "finding traps")],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Weaponsmithing)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Weaponsmith)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Weaponsmithing)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Weaponsmith)],
+
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Weaving)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Weaver)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Weaving)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Weaver)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Wheelmaking)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Wheelwright)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Wheelmaking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Wheelwright)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Winemaking)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Vintner)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Winemaking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Vintner)] = 2;
+                [SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Woodworking)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Carpenter),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Cartwright),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Coffinmaker)],
 
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Woodworking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Carpenter)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Woodworking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Cartwright)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Craft, SkillConstants.Foci.Craft.Woodworking)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Coffinmaker)] = 2;
+                [SkillConstants.DecipherScript] = [GetData(SkillConstants.UseMagicDevice, 2, condition: "with scrolls")],
 
-            testCases[SkillConstants.DecipherScript] = [GetData(SkillConstants.UseMagicDevice, condition: "with scrolls")] = 2;
+                [SkillConstants.Diplomacy] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Barrister),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Butler),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.CityGuide),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Footman),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Governess),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Matchmaker),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Valet)],
 
-            testCases[SkillConstants.Diplomacy] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Barrister)] = 2;
-            testCases[SkillConstants.Diplomacy] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Butler)] = 2;
-            testCases[SkillConstants.Diplomacy] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.CityGuide)] = 2;
-            testCases[SkillConstants.Diplomacy] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Footman)] = 2;
-            testCases[SkillConstants.Diplomacy] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Governess)] = 2;
-            testCases[SkillConstants.Diplomacy] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Matchmaker)] = 2;
-            testCases[SkillConstants.Diplomacy] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Valet)] = 2;
+                [SkillConstants.DisableDevice] = [],
 
-            testCases[SkillConstants.DisableDevice] = [GetData(None)] = 0;
+                [SkillConstants.Disguise] = [GetData(SkillConstants.Perform, 2, SkillConstants.Foci.Perform.Act, "in costume")],
 
-            testCases[SkillConstants.Disguise] = [GetData(SkillConstants.Perform, SkillConstants.Foci.Perform.Act, "in costume")] = 2;
+                [SkillConstants.EscapeArtist] = [GetData(SkillConstants.UseRope, 2, condition: "binding someone")],
 
-            testCases[SkillConstants.EscapeArtist] = [GetData(SkillConstants.UseRope, condition: "binding someone")] = 2;
+                [SkillConstants.Forgery] = [],
 
-            testCases[SkillConstants.Forgery] = [GetData(None)] = 0;
+                [SkillConstants.GatherInformation] = [],
 
-            testCases[SkillConstants.GatherInformation] = [GetData(None)] = 0;
+                [SkillConstants.HandleAnimal] =
+                [GetData(SkillConstants.Diplomacy, 2, condition: "wild empathy"),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.AnimalGroomer),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.AnimalTrainer),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.ExoticAnimalTrainer),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Shepherd),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Teamster),
+                GetData(SkillConstants.Ride, 2)],
 
-            testCases[SkillConstants.HandleAnimal] = [GetData(SkillConstants.Diplomacy, condition: "wild empathy")] = 2;
-            testCases[SkillConstants.HandleAnimal] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.AnimalGroomer)] = 2;
-            testCases[SkillConstants.HandleAnimal] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.AnimalTrainer)] = 2;
-            testCases[SkillConstants.HandleAnimal] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.ExoticAnimalTrainer)] = 2;
-            testCases[SkillConstants.HandleAnimal] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Shepherd)] = 2;
-            testCases[SkillConstants.HandleAnimal] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Teamster)] = 2;
-            testCases[SkillConstants.HandleAnimal] = [GetData(SkillConstants.Ride)] = 2;
+                [SkillConstants.Heal] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Healer),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Masseuse),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Midwife)],
 
-            testCases[SkillConstants.Heal] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Healer)] = 2;
-            testCases[SkillConstants.Heal] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Masseuse)] = 2;
-            testCases[SkillConstants.Heal] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Midwife)] = 2;
+                [SkillConstants.Hide] = [],
 
-            testCases[SkillConstants.Hide] = [GetData(None)] = 0;
+                [SkillConstants.Intimidate] = [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.SailorMate)],
 
-            testCases[SkillConstants.Intimidate] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.SailorMate)] = 2;
+                [SkillConstants.Jump] = [GetData(SkillConstants.Tumble, 2)],
 
-            testCases[SkillConstants.Jump] = [GetData(SkillConstants.Tumble)] = 2;
+                [SkillConstants.Knowledge] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Adviser),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Sage),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Teacher)],
 
-            testCases[SkillConstants.Knowledge] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Adviser)] = 2;
-            testCases[SkillConstants.Knowledge] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Sage)] = 2;
-            testCases[SkillConstants.Knowledge] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Teacher)] = 2;
+                [SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Arcana)] = [GetData(SkillConstants.Spellcraft, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Arcana)] = [GetData(SkillConstants.Spellcraft)] = 2;
+                [SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.ArchitectureAndEngineering)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Architect),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Engineer),
+                GetData(SkillConstants.Search, 2, condition: "find secret doors or compartments")],
 
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.ArchitectureAndEngineering)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Architect)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.ArchitectureAndEngineering)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Engineer)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.ArchitectureAndEngineering)] = [GetData(SkillConstants.Search, condition: "find secret doors or compartments")] = 2;
+                [SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Dungeoneering)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Miner),
+                GetData(SkillConstants.Survival, 2, condition: "underground")],
 
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Dungeoneering)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Miner)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Dungeoneering)] = [GetData(SkillConstants.Survival, condition: "underground")] = 2;
+                [SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Geography)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Miner),
+                GetData(SkillConstants.Survival, 2, condition: "keep from getting lost or avoid natural hazards")],
 
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Geography)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Miner)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Geography)] = [GetData(SkillConstants.Survival, condition: "keep from getting lost or avoid natural hazards")] = 2;
+                [SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.History)] = [GetData(SkillConstants.Knowledge, 2, "bardic")],
 
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.History)] = [GetData(SkillConstants.Knowledge, "bardic")] = 2;
+                [SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] =
+                [GetData(SkillConstants.GatherInformation, 2),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.CityGuide),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.LocalCourier),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.OutOfTownCourier),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.WildernessGuide)],
 
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] = [GetData(SkillConstants.GatherInformation, 2)];
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.CityGuide)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.LocalCourier)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.OutOfTownCourier)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.WildernessGuide)] = 2;
+                [SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Apothecary),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Farmer),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Hunter),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Miner),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Trapper),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.WildernessGuide),
+                GetData(SkillConstants.Survival, 2, condition: "in aboveground natural environments")],
 
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Apothecary)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Farmer)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Hunter)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Miner)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Trapper)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.WildernessGuide)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = [GetData(SkillConstants.Survival, condition: "in aboveground natural environments")] = 2;
+                [SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] =
+                [GetData(SkillConstants.Diplomacy, 2),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Butler),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Footman),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Governess),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Maid)],
 
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = [GetData(SkillConstants.Diplomacy, 2)];
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Butler)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Footman)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Governess)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Maid)] = 2;
+                [SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Religion)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Religion)] = [GetData(None)] = 0;
+                [SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.ThePlanes)] =
+                [GetData(SkillConstants.Survival, 2, condition: "on other planes")],
 
-            testCases[SkillConstants.Build(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.ThePlanes)] = [GetData(SkillConstants.Survival, condition: "on other planes")] = 2;
+                [SkillConstants.Listen] = [],
 
-            testCases[SkillConstants.Listen] = [GetData(None)] = 0;
+                [SkillConstants.MoveSilently] = [],
 
-            testCases[SkillConstants.MoveSilently] = [GetData(None)] = 0;
+                [SkillConstants.OpenLock] = [],
 
-            testCases[SkillConstants.OpenLock] = [GetData(None)] = 0;
+                [SkillConstants.Perform] = [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Entertainer)],
 
-            testCases[SkillConstants.Perform] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Entertainer)] = 2;
+                [SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.Act)] =
+                [GetData(SkillConstants.Disguise, 2, condition: "impersonating someone else")],
 
-            testCases[SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.Act)] = [GetData(SkillConstants.Disguise, condition: "impersonating someone else")] = 2;
+                [SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.Comedy)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.Comedy)] = [GetData(None)] = 0;
+                [SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.Dance)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.Dance)] = [GetData(None)] = 0;
+                [SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.KeyboardInstruments)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.KeyboardInstruments)] = [GetData(None)] = 0;
+                [SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.Oratory)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.Oratory)] = [GetData(None)] = 0;
+                [SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.PercussionInstruments)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.PercussionInstruments)] = [GetData(None)] = 0;
+                [SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.Sing)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.Sing)] = [GetData(None)] = 0;
+                [SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.StringInstruments)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.StringInstruments)] = [GetData(None)] = 0;
+                [SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.WindInstruments)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Perform, SkillConstants.Foci.Perform.WindInstruments)] = [GetData(None)] = 0;
+                [SkillConstants.Profession] = [],
 
-            testCases[SkillConstants.Profession] = [GetData(None)] = 0;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Adviser)] =
+                [GetData(SkillConstants.Diplomacy, 2),
+                GetData(SkillConstants.Knowledge, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Adviser)] = [GetData(SkillConstants.Diplomacy, 2)];
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Adviser)] = [GetData(SkillConstants.Knowledge)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Alchemist)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Alchemy)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Alchemist)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Alchemy)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.AnimalGroomer)] = [GetData(SkillConstants.HandleAnimal, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.AnimalGroomer)] = [GetData(SkillConstants.HandleAnimal)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.AnimalTrainer)] = [GetData(SkillConstants.HandleAnimal, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.AnimalTrainer)] = [GetData(SkillConstants.HandleAnimal)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Apothecary)] =
+                [GetData(SkillConstants.Knowledge, 2, SkillConstants.Foci.Knowledge.Nature)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Apothecary)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Appraiser)] = [GetData(SkillConstants.Appraise, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Appraiser)] = [GetData(SkillConstants.Appraise)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Architect)] =
+                [GetData(SkillConstants.Knowledge, 2, SkillConstants.Foci.Knowledge.ArchitectureAndEngineering)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Architect)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.ArchitectureAndEngineering)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Armorer)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Armorsmithing)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Armorer)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Armorsmithing)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Barrister)] = [GetData(SkillConstants.Diplomacy, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Barrister)] = [GetData(SkillConstants.Diplomacy, 2)];
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Blacksmith)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Blacksmithing)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Blacksmith)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Blacksmithing)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Bookbinder)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Bookbinding)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Bookbinder)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Bookbinding)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Bowyer)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Bowmaking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Bowyer)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Bowmaking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Brazier)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Brassmaking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Brazier)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Brassmaking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Brewer)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Brewing)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Brewer)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Brewing)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Butler)] =
+                [GetData(SkillConstants.Diplomacy, 2),
+                GetData(SkillConstants.Knowledge, 2, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Butler)] = [GetData(SkillConstants.Diplomacy, 2)];
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Butler)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Carpenter)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Woodworking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Carpenter)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Woodworking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Cartographer)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Mapmaking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Cartographer)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Mapmaking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Cartwright)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Woodworking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Cartwright)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Woodworking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Chandler)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Candlemaking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Chandler)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Candlemaking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.CityGuide)] =
+                [GetData(SkillConstants.Diplomacy, 2),
+                GetData(SkillConstants.Knowledge, 2, SkillConstants.Foci.Knowledge.Local)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.CityGuide)] = [GetData(SkillConstants.Diplomacy, 2)];
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.CityGuide)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Clerk)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Clerk)] = [None];
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Cobbler)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Shoemaking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Cobbler)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Shoemaking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Coffinmaker)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Woodworking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Coffinmaker)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Woodworking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Coiffeur)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Coiffeur)] = [None];
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Cook)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Cook)] = [None];
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Coppersmith)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Coppersmithing)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Coppersmith)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Coppersmithing)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Craftsman)] = [GetData(SkillConstants.Craft, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Craftsman)] = [GetData(SkillConstants.Craft)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Dowser)] =
+                [GetData(SkillConstants.Bluff, 2),
+                GetData(SkillConstants.Survival, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Dowser)] = [GetData(SkillConstants.Bluff, 2)];
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Dowser)] = [GetData(SkillConstants.Survival, 2)];
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Dyer)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Dyemaking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Dyer)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Dyemaking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Embalmer)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Alchemy)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Embalmer)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Alchemy)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Engineer)] =
+                [GetData(SkillConstants.Knowledge, 2, SkillConstants.Foci.Knowledge.ArchitectureAndEngineering)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Engineer)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.ArchitectureAndEngineering)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Entertainer)] = [GetData(SkillConstants.Perform, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Entertainer)] = [GetData(SkillConstants.Perform)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.ExoticAnimalTrainer)] = [GetData(SkillConstants.HandleAnimal, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.ExoticAnimalTrainer)] = [GetData(SkillConstants.HandleAnimal)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Farmer)] =
+                [GetData(SkillConstants.Knowledge, 2, SkillConstants.Foci.Knowledge.Nature)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Farmer)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Fletcher)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Bowmaking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Fletcher)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Bowmaking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Footman)] =
+                [GetData(SkillConstants.Diplomacy, 2),
+                GetData(SkillConstants.Knowledge, 2, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Footman)] = [GetData(SkillConstants.Diplomacy, 2)];
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Footman)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Gemcutter)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Gemcutting)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Gemcutter)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Gemcutting)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Goldsmith)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Goldsmithing)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Goldsmith)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Goldsmithing)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Governess)] =
+                [GetData(SkillConstants.Diplomacy, 2),
+                GetData(SkillConstants.Knowledge, 2, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Governess)] = [GetData(SkillConstants.Diplomacy, 2)];
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Governess)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Haberdasher)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Hatmaking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Haberdasher)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Hatmaking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Healer)] = [GetData(SkillConstants.Heal, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Healer)] = [GetData(SkillConstants.Heal)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Horner)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Hornworking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Horner)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Hornworking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Hunter)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Trapmaking),
+                GetData(SkillConstants.Survival, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Hunter)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Trapmaking)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Hunter)] = [GetData(SkillConstants.Survival, 2)];
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Interpreter)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Interpreter)] = [None];
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Jeweler)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Jewelmaking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Jeweler)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Jewelmaking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Laborer)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Laborer)] = [None];
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Launderer)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Launderer)] = [None];
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Limner)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Painting)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Limner)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Painting)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.LocalCourier)] =
+                [GetData(SkillConstants.Knowledge, 2, SkillConstants.Foci.Knowledge.Local)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.LocalCourier)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Locksmith)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Locksmithing)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Locksmith)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Locksmithing)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Maid)] =
+                [GetData(SkillConstants.Knowledge, 2, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Maid)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.NobilityAndRoyalty)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Masseuse)] = [GetData(SkillConstants.Heal, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Masseuse)] = [GetData(SkillConstants.Heal)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Matchmaker)] =
+                [GetData(SkillConstants.Diplomacy, 2),
+                GetData(SkillConstants.SenseMotive, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Matchmaker)] = [GetData(SkillConstants.Diplomacy, 2)];
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Matchmaker)] = [GetData(SkillConstants.SenseMotive)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Midwife)] = [GetData(SkillConstants.Heal, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Midwife)] = [GetData(SkillConstants.Heal)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Miller)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Milling)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Miller)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Milling)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Miner)] =
+                [GetData(SkillConstants.Knowledge, 2, SkillConstants.Foci.Knowledge.Geography),
+                GetData(SkillConstants.Knowledge, 2, SkillConstants.Foci.Knowledge.Nature),
+                GetData(SkillConstants.Knowledge, 2, SkillConstants.Foci.Knowledge.Dungeoneering)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Miner)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Geography)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Miner)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Miner)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Dungeoneering)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Navigator)] = [GetData(SkillConstants.Survival, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Navigator)] = [GetData(SkillConstants.Survival, 2)];
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Nursemaid)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Nursemaid)] = [None];
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.OutOfTownCourier)] =
+                [GetData(SkillConstants.Knowledge, 2, SkillConstants.Foci.Knowledge.Local),
+                GetData(SkillConstants.Ride, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.OutOfTownCourier)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.OutOfTownCourier)] = [GetData(SkillConstants.Ride)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Painter)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Painting)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Painter)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Painting)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Parchmentmaker)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Parchmentmaking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Parchmentmaker)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Parchmentmaking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Pewterer)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Pewtermaking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Pewterer)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Pewtermaking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Polisher)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Polisher)] = [None];
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Porter)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Porter)] = [None];
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Potter)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Potterymaking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Potter)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Potterymaking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Sage)] = [GetData(SkillConstants.Knowledge, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Sage)] = [GetData(SkillConstants.Knowledge)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.SailorCrewmember)] = [GetData(SkillConstants.Swim, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.SailorCrewmember)] = [GetData(SkillConstants.Swim)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.SailorMate)] =
+                [GetData(SkillConstants.Intimidate, 2),
+                GetData(SkillConstants.Swim, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.SailorMate)] = [GetData(SkillConstants.Intimidate)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.SailorMate)] = [GetData(SkillConstants.Swim)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Scribe)] = [],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Scribe)] = [None];
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Sculptor)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Sculpting)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Sculptor)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Sculpting)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Shepherd)] = [GetData(SkillConstants.HandleAnimal, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Shepherd)] = [GetData(SkillConstants.HandleAnimal)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Shipwright)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Shipmaking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Shipwright)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Shipmaking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Silversmith)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Silversmithing)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Silversmith)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Silversmithing)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Skinner)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Skinning)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Skinner)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Skinning)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Soapmaker)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Soapmaking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Soapmaker)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Soapmaking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Soothsayer)] = [GetData(SkillConstants.Bluff, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Soothsayer)] = [GetData(SkillConstants.Bluff, 2)];
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Tanner)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Tanning)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Tanner)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Tanning)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Teacher)] = [GetData(SkillConstants.Knowledge, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Teacher)] = [GetData(SkillConstants.Knowledge)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Teamster)] =
+                [GetData(SkillConstants.HandleAnimal, 2),
+                GetData(SkillConstants.Ride, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Teamster)] = [GetData(SkillConstants.HandleAnimal)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Teamster)] = [GetData(SkillConstants.Ride)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Trader)] =
+                [GetData(SkillConstants.Appraise, 2),
+                GetData(SkillConstants.SenseMotive, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Trader)] = [GetData(SkillConstants.Appraise)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Trader)] = [GetData(SkillConstants.SenseMotive)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Trapper)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Trapmaking),
+                GetData(SkillConstants.Knowledge, 2, SkillConstants.Foci.Knowledge.Nature),
+                GetData(SkillConstants.Survival, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Trapper)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Trapmaking)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Trapper)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Trapper)] = [GetData(SkillConstants.Survival, 2)];
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Valet)] = [GetData(SkillConstants.Diplomacy, 2)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Valet)] = [GetData(SkillConstants.Diplomacy, 2)];
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Vintner)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Winemaking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Vintner)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Winemaking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Weaponsmith)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Weaponsmithing)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Weaponsmith)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Weaponsmithing)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Weaver)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Weaving)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Weaver)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Weaving)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Wheelwright)] =
+                [GetData(SkillConstants.Craft, 2, SkillConstants.Foci.Craft.Wheelmaking)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.Wheelwright)] = [GetData(SkillConstants.Craft, SkillConstants.Foci.Craft.Wheelmaking)] = 2;
+                [SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.WildernessGuide)] =
+                [GetData(SkillConstants.Knowledge, 2, SkillConstants.Foci.Knowledge.Local),
+                GetData(SkillConstants.Knowledge, 2, SkillConstants.Foci.Knowledge.Nature)],
 
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.WildernessGuide)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Local)] = 2;
-            testCases[SkillConstants.Build(SkillConstants.Profession, SkillConstants.Foci.Profession.WildernessGuide)] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = 2;
+                [SkillConstants.Ride] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.OutOfTownCourier),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Teamster)],
 
-            testCases[SkillConstants.Ride] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.OutOfTownCourier)] = 2;
-            testCases[SkillConstants.Ride] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Teamster)] = 2;
+                [SkillConstants.Search] = [GetData(SkillConstants.Survival, 2, condition: "following tracks")],
 
-            testCases[SkillConstants.Search] = [GetData(SkillConstants.Survival, condition: "following tracks")] = 2;
+                [SkillConstants.SenseMotive] =
+                [GetData(SkillConstants.Diplomacy, 2),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Matchmaker),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Trader)],
 
-            testCases[SkillConstants.SenseMotive] = [GetData(SkillConstants.Diplomacy, 2)];
-            testCases[SkillConstants.SenseMotive] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Matchmaker)] = 2;
-            testCases[SkillConstants.SenseMotive] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Trader)] = 2;
+                [SkillConstants.SleightOfHand] = [],
 
-            testCases[SkillConstants.SleightOfHand] = [None];
+                [SkillConstants.Spellcraft] = [GetData(SkillConstants.UseMagicDevice, 2, condition: "with scrolls")],
 
-            testCases[SkillConstants.Spellcraft] = [GetData(SkillConstants.UseMagicDevice, condition: "with scrolls")] = 2;
+                [SkillConstants.Spot] = [],
 
-            testCases[SkillConstants.Spot] = [None];
+                [SkillConstants.Survival] =
+                [GetData(SkillConstants.Knowledge, 2, SkillConstants.Foci.Knowledge.Nature),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Dowser),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Hunter),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Navigator),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.Trapper)],
 
-            testCases[SkillConstants.Survival] = [GetData(SkillConstants.Knowledge, SkillConstants.Foci.Knowledge.Nature)] = 2;
-            testCases[SkillConstants.Survival] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Dowser)] = 2;
-            testCases[SkillConstants.Survival] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Hunter)] = 2;
-            testCases[SkillConstants.Survival] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Navigator)] = 2;
-            testCases[SkillConstants.Survival] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.Trapper)] = 2;
+                [SkillConstants.Swim] =
+                [GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.SailorCrewmember),
+                GetData(SkillConstants.Profession, 2, SkillConstants.Foci.Profession.SailorMate)],
 
-            testCases[SkillConstants.Swim] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.SailorCrewmember)] = 2;
-            testCases[SkillConstants.Swim] = [GetData(SkillConstants.Profession, SkillConstants.Foci.Profession.SailorMate)] = 2;
+                [SkillConstants.Tumble] = [GetData(SkillConstants.Balance, 2), GetData(SkillConstants.Jump, 2)],
 
-            testCases[SkillConstants.Tumble] = [GetData(SkillConstants.Balance, 2)];
-            testCases[SkillConstants.Tumble] = [GetData(SkillConstants.Jump, 2)];
+                [SkillConstants.UseMagicDevice] = [GetData(SkillConstants.Spellcraft, 2, condition: "decipher scrolls")],
 
-            testCases[SkillConstants.UseMagicDevice] = [GetData(SkillConstants.Spellcraft, condition: "decipher scrolls")] = 2;
-
-            testCases[SkillConstants.UseRope] = [GetData(SkillConstants.Climb, condition: "with rope")] = 2;
-            testCases[SkillConstants.UseRope] = [GetData(SkillConstants.EscapeArtist, condition: "escaping rope bonds")] = 2;
+                [SkillConstants.UseRope] =
+                [GetData(SkillConstants.Climb, 2, condition: "with rope"),
+                GetData(SkillConstants.EscapeArtist, 2, condition: "escaping rope bonds")]
+            };
 
             return testCases;
         }

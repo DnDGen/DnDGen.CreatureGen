@@ -41,6 +41,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
             var names = creatures.Union(types).Union(subtypes).Union(skills).Union(nonFociSkills);
             Assert.That(skillBonusesData.Keys, Is.EquivalentTo(names));
+            Assert.That(SkillBonusesTestData.SkillSynergyNames, Is.EquivalentTo(names));
             AssertCollectionNames(names);
         }
 
@@ -51,12 +52,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         {
             Assert.That(skillBonusesData, Contains.Key(source));
 
-            if (!skillBonusesData[source].Any())
-                Assert.Fail("Test case did not specify skill bonuses or NONE");
-
-            if (skillBonusesData[source][0] == SkillBonusesTestData.None)
-                skillBonusesData[source].Clear();
-
             AssertCollection(source, [.. skillBonusesData[source]]);
         }
 
@@ -64,12 +59,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         public void SkillSynergies(string source)
         {
             Assert.That(skillBonusesData, Contains.Key(source));
-
-            if (!skillBonusesData[source].Any())
-                Assert.Fail("Test case did not specify skill bonuses or NONE");
-
-            if (skillBonusesData[source][0] == SkillBonusesTestData.None)
-                skillBonusesData[source].Clear();
 
             AssertCollection(source, [.. skillBonusesData[source]]);
         }
