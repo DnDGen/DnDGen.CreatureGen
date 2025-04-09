@@ -64,6 +64,28 @@
             public const int RequiredNaturalWeaponQuantityIndex = 9;
             public const int RequiredHandQuantityIndex = 10;
             public const int RequiresEquipmentIndex = 11;
+            public const int NameIndex = 12;
+            public const int RequiredFeatsIndex = 13;
+            public const int RequiredSkillsIndex = 14;
+            public const int RequiredStrengthIndex = 15;
+            public const int RequiredConstitutionIndex = 16;
+            public const int RequiredDexterityIndex = 17;
+            public const int RequiredIntelligenceIndex = 18;
+            public const int RequiredWisdomIndex = 19;
+            public const int RequiredCharismaIndex = 20;
+
+            internal static class RequiredSkillData
+            {
+                public const int SkillIndex = 0;
+                public const int FocusIndex = 1;
+                public const int RanksIndex = 2;
+            }
+
+            internal static class RequiredFeatData
+            {
+                public const int FeatIndex = 0;
+                public const int FociIndex = 1;
+            }
         }
 
         internal static class SkillSelectionData

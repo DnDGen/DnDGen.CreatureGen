@@ -70,7 +70,31 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex, 9)]
         [TestCase(DataIndexConstants.FeatData.RequiredHandQuantityIndex, 10)]
         [TestCase(DataIndexConstants.FeatData.RequiresEquipmentIndex, 11)]
+        [TestCase(DataIndexConstants.FeatData.NameIndex, 12)]
+        [TestCase(DataIndexConstants.FeatData.RequiredFeatsIndex, 13)]
+        [TestCase(DataIndexConstants.FeatData.RequiredSkillsIndex, 14)]
+        [TestCase(DataIndexConstants.FeatData.RequiredStrengthIndex, 15)]
+        [TestCase(DataIndexConstants.FeatData.RequiredConstitutionIndex, 16)]
+        [TestCase(DataIndexConstants.FeatData.RequiredDexterityIndex, 17)]
+        [TestCase(DataIndexConstants.FeatData.RequiredIntelligenceIndex, 18)]
+        [TestCase(DataIndexConstants.FeatData.RequiredWisdomIndex, 19)]
+        [TestCase(DataIndexConstants.FeatData.RequiredCharismaIndex, 20)]
         public void FeatDataIndex(int constant, int value)
+        {
+            Assert.That(constant, Is.EqualTo(value));
+        }
+
+        [TestCase(DataIndexConstants.FeatData.RequiredSkillData.SkillIndex, 0)]
+        [TestCase(DataIndexConstants.FeatData.RequiredSkillData.FocusIndex, 1)]
+        [TestCase(DataIndexConstants.FeatData.RequiredSkillData.RanksIndex, 2)]
+        public void FeatData_RequiredSkillIndex(int constant, int value)
+        {
+            Assert.That(constant, Is.EqualTo(value));
+        }
+
+        [TestCase(DataIndexConstants.FeatData.RequiredFeatData.FeatIndex, 0)]
+        [TestCase(DataIndexConstants.FeatData.RequiredFeatData.FociIndex, 1)]
+        public void FeatData_RequiredFeatIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));
         }

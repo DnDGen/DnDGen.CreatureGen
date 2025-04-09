@@ -1,9 +1,11 @@
 ﻿using DnDGen.CreatureGen.Feats;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Selectors.Selections
 {
+    [Obsolete("moving to subclass of feat data")]
     internal class RequiredFeatSelection
     {
         public string Feat { get; set; }

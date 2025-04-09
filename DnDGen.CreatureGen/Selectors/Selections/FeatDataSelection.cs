@@ -4,6 +4,7 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Helpers;
 using DnDGen.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
@@ -14,13 +15,14 @@ namespace DnDGen.CreatureGen.Selectors.Selections
     internal class FeatDataSelection : DataSelection<FeatDataSelection>
     {
         public string Feat { get; set; }
-        public Frequency Frequency { get; set; }
+        public int FrequencyQuantity { get; set; }
+        public string FrequencyTimePeriod { get; set; }
         public int Power { get; set; }
-        public IEnumerable<RequiredFeatSelection> RequiredFeats { get; set; }
+        public IEnumerable<RequiredFeatDataSelection> RequiredFeats { get; set; }
         public int RequiredBaseAttack { get; set; }
         public Dictionary<string, int> RequiredAbilities { get; set; }
         public Dictionary<string, int> RequiredSpeeds { get; set; }
-        public IEnumerable<RequiredSkillSelection> RequiredSkills { get; set; }
+        public IEnumerable<RequiredSkillDataSelection> RequiredSkills { get; set; }
         public string FocusType { get; set; }
         public bool CanBeTakenMultipleTimes { get; set; }
         public int MinimumCasterLevel { get; set; }
@@ -36,24 +38,62 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public override Func<FeatDataSelection, string[]> MapFrom => Map;
 
         public override int SectionCount => 10;
+        private static char Delimiter => '|';
 
         public static FeatDataSelection Map(string[] splitData)
         {
             var selection = new FeatDataSelection
             {
-                AdditionalHitDiceRoll = splitData[DataIndexConstants.AdvancementSelectionData.AdditionalHitDiceRoll],
-                Size = splitData[DataIndexConstants.AdvancementSelectionData.Size],
-                Space = Convert.ToDouble(splitData[DataIndexConstants.AdvancementSelectionData.Space]),
-                Reach = Convert.ToDouble(splitData[DataIndexConstants.AdvancementSelectionData.Reach]),
-                StrengthAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.StrengthAdjustment]),
-                ConstitutionAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.ConstitutionAdjustment]),
-                DexterityAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.DexterityAdjustment]),
-                NaturalArmorAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.NaturalArmorAdjustment]),
-                ChallengeRatingDivisor = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.ChallengeRatingDivisor]),
-                AdjustedChallengeRating = splitData[DataIndexConstants.AdvancementSelectionData.AdjustedChallengeRating],
+                Feat = splitData[DataIndexConstants.FeatData.NameIndex],
+                RequiredBaseAttack = Convert.ToInt32(splitData[DataIndexConstants.FeatData.BaseAttackRequirementIndex]),
+                FocusType = splitData[DataIndexConstants.FeatData.FocusTypeIndex],
+                FrequencyQuantity = Convert.ToInt32(splitData[DataIndexConstants.FeatData.FrequencyQuantityIndex]),
+                FrequencyTimePeriod = splitData[DataIndexConstants.FeatData.FrequencyTimePeriodIndex],
+                Power = Convert.ToInt32(splitData[DataIndexConstants.FeatData.PowerIndex]),
+                MinimumCasterLevel = Convert.ToInt32(splitData[DataIndexConstants.FeatData.MinimumCasterLevelIndex]),
+                RequiredHands = Convert.ToInt32(splitData[DataIndexConstants.FeatData.RequiredHandQuantityIndex]),
+                RequiredNaturalWeapons = Convert.ToInt32(splitData[DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex]),
+                RequiresNaturalArmor = Convert.ToBoolean(splitData[DataIndexConstants.FeatData.RequiresNaturalArmorIndex]),
+                RequiresSpecialAttack = Convert.ToBoolean(splitData[DataIndexConstants.FeatData.RequiresSpecialAttackIndex]),
+                RequiresSpellLikeAbility = Convert.ToBoolean(splitData[DataIndexConstants.FeatData.RequiresSpellLikeAbilityIndex]),
+                RequiresEquipment = Convert.ToBoolean(splitData[DataIndexConstants.FeatData.RequiresEquipmentIndex]),
+                RequiredFeats = GetRequiredFeats(splitData[DataIndexConstants.FeatData.RequiredFeatsIndex]),
+                RequiredSkills = GetRequiredSkills(splitData[DataIndexConstants.FeatData.RequiredSkillsIndex]),
+                RequiredAbilities = GetRequiredAbilities(splitData),
+                RequiredSpeeds = GetRequiredSpeeds(requiredSpeeds, featSelection.Feat),
+                RequiredSizes = GetRequiredSizes(requiredSizes, featSelection.Feat),
+
+                CanBeTakenMultipleTimes = featsTakenMultipleTimes.Contains(featSelection.Feat),
+
             };
 
             return selection;
+        }
+
+        private static Dictionary<string, int> GetRequiredAbilities(string[] splitData) => new()
+        {
+            [AbilityConstants.Strength] = Convert.ToInt32(splitData[DataIndexConstants.FeatData.RequiredStrengthIndex]),
+            [AbilityConstants.Constitution] = Convert.ToInt32(splitData[DataIndexConstants.FeatData.RequiredConstitutionIndex]),
+            [AbilityConstants.Dexterity] = Convert.ToInt32(splitData[DataIndexConstants.FeatData.RequiredDexterityIndex]),
+            [AbilityConstants.Intelligence] = Convert.ToInt32(splitData[DataIndexConstants.FeatData.RequiredIntelligenceIndex]),
+            [AbilityConstants.Wisdom] = Convert.ToInt32(splitData[DataIndexConstants.FeatData.RequiredWisdomIndex]),
+            [AbilityConstants.Charisma] = Convert.ToInt32(splitData[DataIndexConstants.FeatData.RequiredCharismaIndex]),
+        };
+
+        private static IEnumerable<RequiredSkillDataSelection> GetRequiredSkills(string requiredSkillsData)
+        {
+            if (string.IsNullOrEmpty(requiredSkillsData))
+                return [];
+
+            return requiredSkillsData.Split(Delimiter).Select(DataHelper.Parse<RequiredSkillDataSelection>);
+        }
+
+        private static IEnumerable<RequiredFeatDataSelection> GetRequiredFeats(string requiredFeatsData)
+        {
+            if (string.IsNullOrEmpty(requiredFeatsData))
+                return [];
+
+            return requiredFeatsData.Split(Delimiter).Select(DataHelper.Parse<RequiredFeatDataSelection>);
         }
 
         public static string[] Map(FeatDataSelection selection)
@@ -162,6 +202,119 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         private bool FocusSelected(Feat feat)
         {
             return string.IsNullOrEmpty(FocusType) || feat.Foci.Contains(GroupConstants.All);
+        }
+
+        internal class RequiredFeatDataSelection : DataSelection<RequiredFeatDataSelection>
+        {
+            public string Feat { get; set; }
+            public IEnumerable<string> Foci { get; set; }
+
+            public override Func<string[], RequiredFeatDataSelection> MapTo => Map;
+            public override Func<RequiredFeatDataSelection, string[]> MapFrom => Map;
+
+            public override int SectionCount => 2;
+            public override char Separator => '#';
+            private static char Delimiter => ',';
+
+            public static RequiredFeatDataSelection Map(string[] splitData)
+            {
+                var selection = new RequiredFeatDataSelection
+                {
+                    Feat = splitData[DataIndexConstants.FeatData.RequiredFeatData.FeatIndex],
+                    Foci = splitData[DataIndexConstants.FeatData.RequiredFeatData.FociIndex]
+                        .Split(Delimiter)
+                        .Where(f => !string.IsNullOrEmpty(f)),
+
+                };
+
+                return selection;
+            }
+
+            public static string[] Map(RequiredFeatDataSelection selection)
+            {
+                var data = new string[selection.SectionCount];
+                data[DataIndexConstants.FeatData.RequiredFeatData.FeatIndex] = selection.Feat;
+                data[DataIndexConstants.FeatData.RequiredFeatData.FociIndex] = string.Join(Delimiter, selection.Foci);
+
+                return data;
+            }
+
+            public RequiredFeatDataSelection()
+            {
+                Feat = string.Empty;
+                Foci = [];
+            }
+
+            public bool RequirementMet(IEnumerable<Feat> otherFeats)
+            {
+                var requiredFeats = otherFeats.Where(f => f.Name == Feat);
+
+                if (!requiredFeats.Any())
+                    return false;
+
+                if (!Foci.Any())
+                    return true;
+
+                var requiredFoci = requiredFeats.SelectMany(f => f.Foci);
+                return Foci.Intersect(requiredFoci).Any();
+            }
+        }
+
+        internal class RequiredSkillDataSelection : DataSelection<RequiredSkillDataSelection>
+        {
+            public string Skill { get; set; }
+            public string Focus { get; set; }
+            public int Ranks { get; set; }
+
+            public override Func<string[], RequiredSkillDataSelection> MapTo => Map;
+            public override Func<RequiredSkillDataSelection, string[]> MapFrom => Map;
+
+            public override int SectionCount => 3;
+            public override char Separator => '#';
+
+            public static RequiredSkillDataSelection Map(string[] splitData)
+            {
+                var selection = new RequiredSkillDataSelection
+                {
+                    Skill = splitData[DataIndexConstants.FeatData.RequiredSkillData.SkillIndex],
+                    Focus = splitData[DataIndexConstants.FeatData.RequiredSkillData.FocusIndex],
+                    Ranks = Convert.ToInt32(splitData[DataIndexConstants.FeatData.RequiredSkillData.RanksIndex]),
+                };
+
+                return selection;
+            }
+
+            public static string[] Map(RequiredSkillDataSelection selection)
+            {
+                var data = new string[selection.SectionCount];
+                data[DataIndexConstants.FeatData.RequiredSkillData.SkillIndex] = selection.Skill;
+                data[DataIndexConstants.FeatData.RequiredSkillData.FocusIndex] = selection.Focus;
+                data[DataIndexConstants.FeatData.RequiredSkillData.RanksIndex] = selection.Ranks.ToString();
+
+                return data;
+            }
+
+            public RequiredSkillDataSelection()
+            {
+                Skill = string.Empty;
+                Focus = string.Empty;
+            }
+
+            public bool RequirementMet(IEnumerable<Skill> otherSkills)
+            {
+                var thisSkill = SkillConstants.Build(Skill, Focus);
+                var requiredSkills = otherSkills.Where(s => s.IsEqualTo(thisSkill));
+
+                if (!requiredSkills.Any())
+                    return false;
+
+                if (!string.IsNullOrEmpty(Focus) && !requiredSkills.Any(s => s.Focus == Focus))
+                    return false;
+
+                var anyHaveSufficientRanks = requiredSkills.Any(s => s.EffectiveRanks >= Ranks);
+
+                return anyHaveSufficientRanks;
+            }
         }
     }
 }
