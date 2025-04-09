@@ -24,10 +24,10 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             helper = new SpecialQualityHelper();
         }
 
-        public IEnumerable<FeatSelection> SelectFeats()
+        public IEnumerable<FeatDataSelection> SelectFeats()
         {
             var featData = collectionsSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.FeatData);
-            var featSelections = new List<FeatSelection>();
+            var featSelections = new List<FeatDataSelection>();
 
             var featsTakenMultipleTimes = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.TakenMultipleTimes);
             var requiredAbilities = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatAbilityRequirements);
@@ -38,7 +38,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 
             foreach (var dataKVP in featData)
             {
-                var featSelection = new FeatSelection();
+                var featSelection = new FeatDataSelection();
                 featSelection.Feat = dataKVP.Key;
 
                 var data = dataKVP.Value.ToArray();

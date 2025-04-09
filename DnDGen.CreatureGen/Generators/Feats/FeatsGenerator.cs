@@ -171,7 +171,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
             Dictionary<string, Ability> abilities,
             IEnumerable<Skill> skills,
             IEnumerable<Feat> preselectedFeats,
-            IEnumerable<FeatSelection> sourceFeatSelections,
+            IEnumerable<FeatDataSelection> sourceFeatSelections,
             int quantity,
             int casterLevel,
             IEnumerable<Attack> attacks)
@@ -179,11 +179,11 @@ namespace DnDGen.CreatureGen.Generators.Feats
             var feats = new List<Feat>();
             var chosenFeats = new List<Feat>(preselectedFeats);
 
-            var chosenFeatSelections = new List<FeatSelection>();
+            var chosenFeatSelections = new List<FeatDataSelection>();
             var preselectedFeatSelections = GetSelectedSelections(sourceFeatSelections, preselectedFeats);
             chosenFeatSelections.AddRange(preselectedFeatSelections);
 
-            var availableFeatSelections = new List<FeatSelection>();
+            var availableFeatSelections = new List<FeatDataSelection>();
 
             var newAvailableFeatSelections = AddNewlyAvailableFeatSelections(availableFeatSelections, sourceFeatSelections, chosenFeatSelections, chosenFeats);
             availableFeatSelections.AddRange(newAvailableFeatSelections);
@@ -240,7 +240,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
             return feats;
         }
 
-        private IEnumerable<FeatSelection> GetSelectedSelections(IEnumerable<FeatSelection> sourceFeatSelections, IEnumerable<Feat> preselectedFeats)
+        private IEnumerable<FeatDataSelection> GetSelectedSelections(IEnumerable<FeatDataSelection> sourceFeatSelections, IEnumerable<Feat> preselectedFeats)
         {
             var featNames = preselectedFeats.Select(f => f.Name);
             var featSelections = sourceFeatSelections.Where(s => featNames.Contains(s.Feat));
@@ -249,7 +249,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
             return nonRepeatableFeatSelections;
         }
 
-        private bool FeatSelectionCanBeSelectedAgain(FeatSelection featSelection)
+        private bool FeatSelectionCanBeSelectedAgain(FeatDataSelection featSelection)
         {
             var isEmpty = string.IsNullOrEmpty(featSelection.FocusType);
 
@@ -257,7 +257,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
                 || featSelection.CanBeTakenMultipleTimes;
         }
 
-        private bool FeatsWithFociMatch(Feat feat, FeatSelection featSelection)
+        private bool FeatsWithFociMatch(Feat feat, FeatDataSelection featSelection)
         {
             return feat.Frequency.TimePeriod == string.Empty
                 && feat.Name == featSelection.Feat
@@ -266,7 +266,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
                 && !string.IsNullOrEmpty(featSelection.FocusType);
         }
 
-        private IEnumerable<FeatSelection> AddNewlyAvailableFeatSelections(IEnumerable<FeatSelection> currentFeatSelections, IEnumerable<FeatSelection> sourceFeatSelections, IEnumerable<FeatSelection> chosenFeatSelections, IEnumerable<Feat> chosenFeats)
+        private IEnumerable<FeatDataSelection> AddNewlyAvailableFeatSelections(IEnumerable<FeatDataSelection> currentFeatSelections, IEnumerable<FeatDataSelection> sourceFeatSelections, IEnumerable<FeatDataSelection> chosenFeatSelections, IEnumerable<Feat> chosenFeats)
         {
             var missingSelections = sourceFeatSelections.Except(currentFeatSelections);
             var newPossibleSelections = missingSelections.Except(chosenFeatSelections);

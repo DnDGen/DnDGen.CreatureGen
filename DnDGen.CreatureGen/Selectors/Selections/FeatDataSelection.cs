@@ -4,12 +4,14 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Selectors.Selections
 {
-    internal class FeatSelection
+    internal class FeatDataSelection : DataSelection<FeatDataSelection>
     {
         public string Feat { get; set; }
         public Frequency Frequency { get; set; }
@@ -30,16 +32,57 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public int RequiredHands { get; set; }
         public IEnumerable<string> RequiredSizes { get; set; }
 
-        public FeatSelection()
+        public override Func<string[], FeatDataSelection> MapTo => Map;
+        public override Func<FeatDataSelection, string[]> MapFrom => Map;
+
+        public override int SectionCount => 10;
+
+        public static FeatDataSelection Map(string[] splitData)
+        {
+            var selection = new FeatDataSelection
+            {
+                AdditionalHitDiceRoll = splitData[DataIndexConstants.AdvancementSelectionData.AdditionalHitDiceRoll],
+                Size = splitData[DataIndexConstants.AdvancementSelectionData.Size],
+                Space = Convert.ToDouble(splitData[DataIndexConstants.AdvancementSelectionData.Space]),
+                Reach = Convert.ToDouble(splitData[DataIndexConstants.AdvancementSelectionData.Reach]),
+                StrengthAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.StrengthAdjustment]),
+                ConstitutionAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.ConstitutionAdjustment]),
+                DexterityAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.DexterityAdjustment]),
+                NaturalArmorAdjustment = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.NaturalArmorAdjustment]),
+                ChallengeRatingDivisor = Convert.ToInt32(splitData[DataIndexConstants.AdvancementSelectionData.ChallengeRatingDivisor]),
+                AdjustedChallengeRating = splitData[DataIndexConstants.AdvancementSelectionData.AdjustedChallengeRating],
+            };
+
+            return selection;
+        }
+
+        public static string[] Map(FeatDataSelection selection)
+        {
+            var data = new string[selection.SectionCount];
+            data[DataIndexConstants.AdvancementSelectionData.Size] = selection.Size;
+            data[DataIndexConstants.AdvancementSelectionData.Space] = selection.Space.ToString();
+            data[DataIndexConstants.AdvancementSelectionData.Reach] = selection.Reach.ToString();
+            data[DataIndexConstants.AdvancementSelectionData.AdditionalHitDiceRoll] = selection.AdditionalHitDiceRoll;
+            data[DataIndexConstants.AdvancementSelectionData.StrengthAdjustment] = selection.StrengthAdjustment.ToString();
+            data[DataIndexConstants.AdvancementSelectionData.ConstitutionAdjustment] = selection.ConstitutionAdjustment.ToString();
+            data[DataIndexConstants.AdvancementSelectionData.DexterityAdjustment] = selection.DexterityAdjustment.ToString();
+            data[DataIndexConstants.AdvancementSelectionData.NaturalArmorAdjustment] = selection.NaturalArmorAdjustment.ToString();
+            data[DataIndexConstants.AdvancementSelectionData.ChallengeRatingDivisor] = selection.ChallengeRatingDivisor.ToString();
+            data[DataIndexConstants.AdvancementSelectionData.AdjustedChallengeRating] = selection.AdjustedChallengeRating;
+
+            return data;
+        }
+
+        public FeatDataSelection()
         {
             Feat = string.Empty;
-            RequiredFeats = Enumerable.Empty<RequiredFeatSelection>();
-            RequiredAbilities = new Dictionary<string, int>();
-            RequiredSpeeds = new Dictionary<string, int>();
-            RequiredSkills = Enumerable.Empty<RequiredSkillSelection>();
+            RequiredFeats = [];
+            RequiredAbilities = [];
+            RequiredSpeeds = [];
+            RequiredSkills = [];
             FocusType = string.Empty;
             Frequency = new Frequency();
-            RequiredSizes = Enumerable.Empty<string>();
+            RequiredSizes = [];
         }
 
         public bool ImmutableRequirementsMet(

@@ -1,4 +1,5 @@
 ﻿using DnDGen.Infrastructure.Mappers.Collections;
+using DnDGen.Infrastructure.Selectors.Collections;
 using MoreLinq;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
     public abstract class CollectionTests : TableTests
     {
         protected CollectionMapper collectionMapper;
+        protected ICollectionSelector collectionSelector;
 
         protected Dictionary<string, IEnumerable<string>> table;
         protected Dictionary<int, string> indices;
@@ -18,6 +20,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
         public void CollectionSetup()
         {
             collectionMapper = GetNewInstanceOf<CollectionMapper>();
+            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
 
             table = collectionMapper.Map(Config.Name, tableName);
             indices = [];
@@ -117,6 +120,30 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
             AssertUniqueCollection(collection, $"{name}: Expected");
             AssertCollection(name, collection);
             AssertUniqueCollection(table[name], $"{name}: Actual");
+        }
+
+        protected IEnumerable<string> ExplodeCollection(string tableName, string collectionName) => ExplodeRecursive(tableName, collectionName);
+
+        private IEnumerable<string> ExplodeRecursive(string tableName, string collectionName)
+        {
+            var rootCollection = collectionSelector.SelectFrom(Config.Name, tableName, collectionName);
+            var explodedCollection = new List<string>();
+
+            foreach (var entry in rootCollection)
+            {
+                if (collectionSelector.IsCollection(Config.Name, tableName, entry) && entry != collectionName)
+                {
+                    var subCollection = ExplodeRecursive(tableName, entry);
+
+                    explodedCollection.AddRange(subCollection);
+                }
+                else
+                {
+                    explodedCollection.Add(entry);
+                }
+            }
+
+            return explodedCollection;
         }
     }
 }

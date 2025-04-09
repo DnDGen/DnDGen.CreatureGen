@@ -1,7 +1,6 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System.Linq;
 
@@ -10,15 +9,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     [TestFixture]
     public class CreatureTypesTests : CollectionTests
     {
-        private ICollectionSelector collectionSelector;
-
         protected override string tableName => TableNameConstants.Collection.CreatureTypes;
-
-        [SetUp]
-        public void Setup()
-        {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
-        }
 
         [Test]
         public void CreatureTypesNames()
@@ -1298,7 +1289,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var allTypes = CreatureConstants.Types.GetAll();
             var allSubTypes = CreatureConstants.Types.Subtypes.GetAll();
             var allTypesAndSubtypes = allTypes.Union(allSubTypes);
-            var lycanthropes = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.Lycanthrope);
+            var lycanthropes = ExplodeCollection(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.Lycanthrope);
             var goodnessCreatures = new[] { CreatureConstants.Templates.CelestialCreature, CreatureConstants.Templates.FiendishCreature };
 
             if (lycanthropes.Contains(creature))
@@ -1341,7 +1332,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var type in types)
             {
-                var creaturesOfType = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, type);
+                var creaturesOfType = ExplodeCollection(TableNameConstants.Collection.CreatureGroups, type);
                 Assert.That(creaturesOfType, Contains.Item(creature), type);
             }
         }

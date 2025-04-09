@@ -12,9 +12,9 @@ using System.Collections.Generic;
 namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 {
     [TestFixture]
-    public class FeatSelectionTests
+    public class FeatDataSelectionTests
     {
-        private FeatSelection selection;
+        private FeatDataSelection selection;
         private List<Feat> feats;
         private Dictionary<string, Ability> abilities;
         private Dictionary<string, Measurement> speeds;
@@ -24,7 +24,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [SetUp]
         public void Setup()
         {
-            selection = new FeatSelection();
+            selection = new FeatDataSelection();
             feats = new List<Feat>();
             abilities = new Dictionary<string, Ability>();
             skills = new List<Skill>();

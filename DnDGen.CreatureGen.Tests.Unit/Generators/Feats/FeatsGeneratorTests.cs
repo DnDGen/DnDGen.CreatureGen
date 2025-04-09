@@ -27,7 +27,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         private Dictionary<string, Ability> abilities;
         private Dictionary<string, Measurement> speeds;
         private List<Skill> skills;
-        private List<FeatSelection> featSelections;
+        private List<FeatDataSelection> featSelections;
         private List<SpecialQualitySelection> specialQualitySelections;
         private Mock<Dice> mockDice;
         private HitPoints hitPoints;
@@ -47,7 +47,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
 
             abilities = new Dictionary<string, Ability>();
             skills = new List<Skill>();
-            featSelections = new List<FeatSelection>();
+            featSelections = new List<FeatDataSelection>();
             specialQualitySelections = new List<SpecialQualitySelection>();
             hitPoints = new HitPoints();
             attacks = new List<Attack>();
@@ -63,7 +63,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
 
             mockFeatsSelector.Setup(s => s.SelectFeats()).Returns(featSelections);
             mockFeatsSelector.Setup(s => s.SelectSpecialQualities("creature", creatureType)).Returns(specialQualitySelections);
-            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<FeatSelection>>())).Returns((IEnumerable<FeatSelection> fs) => fs.First());
+            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<FeatDataSelection>>())).Returns((IEnumerable<FeatDataSelection> fs) => fs.First());
         }
 
         [Test]
@@ -116,7 +116,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         {
             for (var i = 0; i < quantity; i++)
             {
-                var selection = new FeatSelection();
+                var selection = new FeatDataSelection();
                 selection.Feat = $"feat{i + 1}";
 
                 featSelections.Add(selection);
@@ -146,10 +146,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             hitPoints.HitDice[0].Quantity = 3;
             AddFeatSelections(3);
 
-            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<FeatSelection>>(fs => fs.Count() == 3)))
-                .Returns((IEnumerable<FeatSelection> fs) => fs.Last());
-            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<FeatSelection>>(fs => fs.Count() == 2)))
-                .Returns((IEnumerable<FeatSelection> fs) => fs.First());
+            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<FeatDataSelection>>(fs => fs.Count() == 3)))
+                .Returns((IEnumerable<FeatDataSelection> fs) => fs.Last());
+            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<FeatDataSelection>>(fs => fs.Count() == 2)))
+                .Returns((IEnumerable<FeatDataSelection> fs) => fs.First());
 
             var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             var featNames = feats.Select(f => f.Name);
@@ -206,7 +206,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             featSelections[1].RequiredFeats = new[] { new RequiredFeatSelection { Feat = featSelections[0].Feat } };
 
             var index = 0;
-            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<FeatSelection>>())).Returns((IEnumerable<FeatSelection> fs) => fs.ElementAt(index++ % fs.Count()));
+            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<FeatDataSelection>>())).Returns((IEnumerable<FeatDataSelection> fs) => fs.ElementAt(index++ % fs.Count()));
 
             var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             var featNames = feats.Select(f => f.Name);
@@ -259,7 +259,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
                 .Returns("focus 2");
 
             var index = 0;
-            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<FeatSelection>>()))
+            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<FeatDataSelection>>()))
                 .Returns(() => featSelections[index])
                 .Callback(() => index++);
 
@@ -354,7 +354,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void AllDataFromFeatSelectionIsCopiedToFeat()
         {
-            var selection = new FeatSelection();
+            var selection = new FeatDataSelection();
             selection.Feat = "additional feat";
             selection.FocusType = "focus type";
             selection.Frequency.Quantity = 9266;
