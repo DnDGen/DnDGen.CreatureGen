@@ -38,7 +38,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public override Func<FeatDataSelection, string[]> MapFrom => Map;
 
         public override int SectionCount => 10;
-        private static char Delimiter => '|';
+        public static char Delimiter => '|';
 
         public static FeatDataSelection Map(string[] splitData)
         {
@@ -60,25 +60,44 @@ namespace DnDGen.CreatureGen.Selectors.Selections
                 RequiredFeats = GetRequiredFeats(splitData[DataIndexConstants.FeatData.RequiredFeatsIndex]),
                 RequiredSkills = GetRequiredSkills(splitData[DataIndexConstants.FeatData.RequiredSkillsIndex]),
                 RequiredAbilities = GetRequiredAbilities(splitData),
-                RequiredSpeeds = GetRequiredSpeeds(requiredSpeeds, featSelection.Feat),
-                RequiredSizes = GetRequiredSizes(requiredSizes, featSelection.Feat),
-
-                CanBeTakenMultipleTimes = featsTakenMultipleTimes.Contains(featSelection.Feat),
-
+                RequiredSpeeds = GetRequiredSpeeds(splitData),
+                RequiredSizes = GetRequiredSizes(splitData[DataIndexConstants.FeatData.RequiredSizesIndex]),
+                CanBeTakenMultipleTimes = Convert.ToBoolean(splitData[DataIndexConstants.FeatData.TakenMultipleTimesIndex]),
             };
 
             return selection;
         }
 
+        private static IEnumerable<string> GetRequiredSizes(string requiredSizesData)
+        {
+            if (string.IsNullOrEmpty(requiredSizesData))
+                return [];
+
+            return requiredSizesData.Split(Delimiter);
+        }
+
+        private static Dictionary<string, int> GetRequiredSpeeds(string[] splitData) => new()
+        {
+            [SpeedConstants.Fly] = Convert.ToInt32(splitData[DataIndexConstants.FeatData.RequiredFlySpeedIndex]),
+        };
+
         private static Dictionary<string, int> GetRequiredAbilities(string[] splitData) => new()
         {
-            [AbilityConstants.Strength] = Convert.ToInt32(splitData[DataIndexConstants.FeatData.RequiredStrengthIndex]),
-            [AbilityConstants.Constitution] = Convert.ToInt32(splitData[DataIndexConstants.FeatData.RequiredConstitutionIndex]),
-            [AbilityConstants.Dexterity] = Convert.ToInt32(splitData[DataIndexConstants.FeatData.RequiredDexterityIndex]),
-            [AbilityConstants.Intelligence] = Convert.ToInt32(splitData[DataIndexConstants.FeatData.RequiredIntelligenceIndex]),
-            [AbilityConstants.Wisdom] = Convert.ToInt32(splitData[DataIndexConstants.FeatData.RequiredWisdomIndex]),
-            [AbilityConstants.Charisma] = Convert.ToInt32(splitData[DataIndexConstants.FeatData.RequiredCharismaIndex]),
+            [AbilityConstants.Strength] = GetRequiredAbility(splitData[DataIndexConstants.FeatData.RequiredStrengthIndex]),
+            [AbilityConstants.Constitution] = GetRequiredAbility(splitData[DataIndexConstants.FeatData.RequiredConstitutionIndex]),
+            [AbilityConstants.Dexterity] = GetRequiredAbility(splitData[DataIndexConstants.FeatData.RequiredDexterityIndex]),
+            [AbilityConstants.Intelligence] = GetRequiredAbility(splitData[DataIndexConstants.FeatData.RequiredIntelligenceIndex]),
+            [AbilityConstants.Wisdom] = GetRequiredAbility(splitData[DataIndexConstants.FeatData.RequiredWisdomIndex]),
+            [AbilityConstants.Charisma] = GetRequiredAbility(splitData[DataIndexConstants.FeatData.RequiredCharismaIndex]),
         };
+
+        private static int GetRequiredAbility(string requiredAbilities)
+        {
+            if (string.IsNullOrEmpty(requiredAbilities))
+                return 0;
+
+            return Convert.ToInt32(requiredAbilities);
+        }
 
         private static IEnumerable<RequiredSkillDataSelection> GetRequiredSkills(string requiredSkillsData)
         {
@@ -99,18 +118,62 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public static string[] Map(FeatDataSelection selection)
         {
             var data = new string[selection.SectionCount];
-            data[DataIndexConstants.AdvancementSelectionData.Size] = selection.Size;
-            data[DataIndexConstants.AdvancementSelectionData.Space] = selection.Space.ToString();
-            data[DataIndexConstants.AdvancementSelectionData.Reach] = selection.Reach.ToString();
-            data[DataIndexConstants.AdvancementSelectionData.AdditionalHitDiceRoll] = selection.AdditionalHitDiceRoll;
-            data[DataIndexConstants.AdvancementSelectionData.StrengthAdjustment] = selection.StrengthAdjustment.ToString();
-            data[DataIndexConstants.AdvancementSelectionData.ConstitutionAdjustment] = selection.ConstitutionAdjustment.ToString();
-            data[DataIndexConstants.AdvancementSelectionData.DexterityAdjustment] = selection.DexterityAdjustment.ToString();
-            data[DataIndexConstants.AdvancementSelectionData.NaturalArmorAdjustment] = selection.NaturalArmorAdjustment.ToString();
-            data[DataIndexConstants.AdvancementSelectionData.ChallengeRatingDivisor] = selection.ChallengeRatingDivisor.ToString();
-            data[DataIndexConstants.AdvancementSelectionData.AdjustedChallengeRating] = selection.AdjustedChallengeRating;
+            data[DataIndexConstants.FeatData.NameIndex] = selection.Feat;
+            data[DataIndexConstants.FeatData.BaseAttackRequirementIndex] = selection.RequiredBaseAttack.ToString();
+            data[DataIndexConstants.FeatData.FocusTypeIndex] = selection.FocusType;
+            data[DataIndexConstants.FeatData.FrequencyQuantityIndex] = selection.FrequencyQuantity.ToString();
+            data[DataIndexConstants.FeatData.FrequencyTimePeriodIndex] = selection.FrequencyTimePeriod;
+            data[DataIndexConstants.FeatData.PowerIndex] = selection.Power.ToString();
+            data[DataIndexConstants.FeatData.MinimumCasterLevelIndex] = selection.MinimumCasterLevel.ToString();
+            data[DataIndexConstants.FeatData.RequiredHandQuantityIndex] = selection.RequiredHands.ToString();
+            data[DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex] = selection.RequiredNaturalWeapons.ToString();
+            data[DataIndexConstants.FeatData.RequiresNaturalArmorIndex] = selection.RequiresNaturalArmor.ToString();
+            data[DataIndexConstants.FeatData.RequiresSpecialAttackIndex] = selection.RequiresSpecialAttack.ToString();
+            data[DataIndexConstants.FeatData.RequiresSpellLikeAbilityIndex] = selection.RequiresSpellLikeAbility.ToString();
+            data[DataIndexConstants.FeatData.RequiresEquipmentIndex] = selection.RequiresEquipment.ToString();
+            data[DataIndexConstants.FeatData.RequiredFeatsIndex] = GetRequiredFeats(selection.RequiredFeats);
+            data[DataIndexConstants.FeatData.RequiredSkillsIndex] = GetRequiredSkills(selection.RequiredSkills);
+            data[DataIndexConstants.FeatData.RequiredStrengthIndex] = GetRequiredAbility(AbilityConstants.Strength, selection.RequiredAbilities);
+            data[DataIndexConstants.FeatData.RequiredConstitutionIndex] = GetRequiredAbility(AbilityConstants.Constitution, selection.RequiredAbilities);
+            data[DataIndexConstants.FeatData.RequiredDexterityIndex] = GetRequiredAbility(AbilityConstants.Dexterity, selection.RequiredAbilities);
+            data[DataIndexConstants.FeatData.RequiredIntelligenceIndex] = GetRequiredAbility(AbilityConstants.Intelligence, selection.RequiredAbilities);
+            data[DataIndexConstants.FeatData.RequiredWisdomIndex] = GetRequiredAbility(AbilityConstants.Wisdom, selection.RequiredAbilities);
+            data[DataIndexConstants.FeatData.RequiredCharismaIndex] = GetRequiredAbility(AbilityConstants.Charisma, selection.RequiredAbilities);
+            data[DataIndexConstants.FeatData.RequiredFlySpeedIndex] = GetRequiredSpeed(SpeedConstants.Fly, selection.RequiredSpeeds);
+            data[DataIndexConstants.FeatData.RequiredSizesIndex] = GetRequiredSizes(selection.RequiredSizes);
+            data[DataIndexConstants.FeatData.TakenMultipleTimesIndex] = selection.CanBeTakenMultipleTimes.ToString();
 
             return data;
+        }
+
+        private static string GetRequiredSizes(IEnumerable<string> requiredSizesData) => string.Join(Delimiter, requiredSizesData);
+
+        private static string GetRequiredSpeed(string speed, Dictionary<string, int> requiredSpeeds)
+        {
+            if (!requiredSpeeds.ContainsKey(speed))
+                return 0.ToString();
+
+            return requiredSpeeds[speed].ToString();
+        }
+
+        private static string GetRequiredAbility(string ability, Dictionary<string, int> requiredAbilities)
+        {
+            if (!requiredAbilities.ContainsKey(ability))
+                return 0.ToString();
+
+            return requiredAbilities[ability].ToString();
+        }
+
+        private static string GetRequiredSkills(IEnumerable<RequiredSkillDataSelection> requiredSkillsData)
+        {
+            var parsedData = requiredSkillsData.Select(DataHelper.Parse);
+            return string.Join(Delimiter, parsedData);
+        }
+
+        private static string GetRequiredFeats(IEnumerable<RequiredFeatDataSelection> requiredFeatsData)
+        {
+            var parsedData = requiredFeatsData.Select(DataHelper.Parse);
+            return string.Join(Delimiter, parsedData);
         }
 
         public FeatDataSelection()
@@ -121,7 +184,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             RequiredSpeeds = [];
             RequiredSkills = [];
             FocusType = string.Empty;
-            Frequency = new Frequency();
+            FrequencyTimePeriod = string.Empty;
             RequiredSizes = [];
         }
 
@@ -168,6 +231,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
                 if (abilities[requiredAbility.Key].FullScore < requiredAbility.Value)
                     return false;
 
+            //foreach (var requiredSpeed in RequiredSpeeds.Where(rs => rs.Value > 0))
             foreach (var requiredSpeed in RequiredSpeeds)
                 if (!speeds.ContainsKey(requiredSpeed.Key) || speeds[requiredSpeed.Key].Value < requiredSpeed.Value)
                     return false;
@@ -191,7 +255,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
 
         private bool FeatSelected(IEnumerable<Feat> feats)
         {
-            return feats.Any(f => FeatSelected(f));
+            return feats.Any(FeatSelected);
         }
 
         private bool FeatSelected(Feat feat)
@@ -214,7 +278,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
 
             public override int SectionCount => 2;
             public override char Separator => '#';
-            private static char Delimiter => ',';
+            public static char Delimiter => ',';
 
             public static RequiredFeatDataSelection Map(string[] splitData)
             {

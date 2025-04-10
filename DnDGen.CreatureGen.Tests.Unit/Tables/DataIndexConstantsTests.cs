@@ -79,6 +79,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.FeatData.RequiredIntelligenceIndex, 18)]
         [TestCase(DataIndexConstants.FeatData.RequiredWisdomIndex, 19)]
         [TestCase(DataIndexConstants.FeatData.RequiredCharismaIndex, 20)]
+        [TestCase(DataIndexConstants.FeatData.RequiredFlySpeedIndex, 21)]
+        [TestCase(DataIndexConstants.FeatData.TakenMultipleTimesIndex, 22)]
+        [TestCase(DataIndexConstants.FeatData.RequiredSizesIndex, 23)]
         public void FeatDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));

@@ -73,6 +73,9 @@
             public const int RequiredIntelligenceIndex = 18;
             public const int RequiredWisdomIndex = 19;
             public const int RequiredCharismaIndex = 20;
+            public const int RequiredFlySpeedIndex = 21;
+            public const int TakenMultipleTimesIndex = 22;
+            public const int RequiredSizesIndex = 23;
 
             internal static class RequiredSkillData
             {
