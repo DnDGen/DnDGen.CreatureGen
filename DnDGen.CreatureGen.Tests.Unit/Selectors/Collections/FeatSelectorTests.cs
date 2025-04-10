@@ -67,7 +67,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
             Assert.That(specialQuality.Save, Is.Empty);
@@ -102,7 +102,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(first.Frequency.TimePeriod, Is.Empty);
             Assert.That(first.MinimumAbilities, Is.Empty);
             Assert.That(first.Power, Is.Zero);
-            Assert.That(first.RandomFociQuantity, Is.Empty);
+            Assert.That(first.RandomFociQuantityRoll, Is.Empty);
             Assert.That(first.RequiredFeats, Is.Empty);
             Assert.That(first.RequiresEquipment, Is.False);
             Assert.That(first.Save, Is.Empty);
@@ -117,7 +117,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(last.Frequency.TimePeriod, Is.Empty);
             Assert.That(last.MinimumAbilities, Is.Empty);
             Assert.That(last.Power, Is.Zero);
-            Assert.That(last.RandomFociQuantity, Is.Empty);
+            Assert.That(last.RandomFociQuantityRoll, Is.Empty);
             Assert.That(last.RequiredFeats, Is.Empty);
             Assert.That(last.RequiresEquipment, Is.False);
             Assert.That(last.Save, Is.Empty);
@@ -167,7 +167,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
             Assert.That(specialQuality.Save, Is.Empty);
@@ -193,7 +193,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Frequency.TimePeriod, Is.EqualTo("fortnight"));
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
             Assert.That(specialQuality.Save, Is.Empty);
@@ -234,7 +234,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.MinimumAbilities.Keys, Contains.Item("ability"));
             Assert.That(specialQuality.MinimumAbilities["ability"], Is.EqualTo(9266));
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
             Assert.That(specialQuality.Save, Is.Empty);
@@ -275,7 +275,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.MinimumAbilities.Keys, Contains.Item("ability"));
             Assert.That(specialQuality.MinimumAbilities["ability"], Is.EqualTo(9266));
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
             Assert.That(specialQuality.Save, Is.Empty);
@@ -319,7 +319,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.MinimumAbilities["ability"], Is.EqualTo(9266));
             Assert.That(specialQuality.MinimumAbilities["other ability"], Is.EqualTo(90210));
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
             Assert.That(specialQuality.Save, Is.Empty);
@@ -345,7 +345,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.EqualTo(9266));
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
             Assert.That(specialQuality.Save, Is.Empty);
@@ -371,7 +371,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.EqualTo("random foci quantity"));
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.EqualTo("random foci quantity"));
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
             Assert.That(specialQuality.Save, Is.Empty);
@@ -409,7 +409,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Not.Empty);
             Assert.That(specialQuality.RequiredFeats.Count(), Is.EqualTo(1));
             Assert.That(specialQuality.RequiresEquipment, Is.False);
@@ -452,7 +452,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Not.Empty);
             Assert.That(specialQuality.RequiredFeats.Count(), Is.EqualTo(1));
             Assert.That(specialQuality.RequiresEquipment, Is.False);
@@ -495,7 +495,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Not.Empty);
             Assert.That(specialQuality.RequiredFeats.Count(), Is.EqualTo(1));
             Assert.That(specialQuality.RequiresEquipment, Is.False);
@@ -539,7 +539,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Not.Empty);
             Assert.That(specialQuality.RequiredFeats.Count(), Is.EqualTo(2));
             Assert.That(specialQuality.RequiresEquipment, Is.False);
@@ -587,7 +587,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Not.Empty);
             Assert.That(specialQuality.RequiredFeats.Count(), Is.EqualTo(2));
             Assert.That(specialQuality.RequiresEquipment, Is.False);
@@ -635,7 +635,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Not.Empty);
             Assert.That(specialQuality.RequiredFeats.Count(), Is.EqualTo(2));
             Assert.That(specialQuality.RequiresEquipment, Is.False);
@@ -670,7 +670,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.True);
             Assert.That(specialQuality.Save, Is.Empty);
@@ -696,7 +696,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
             Assert.That(specialQuality.Save, Is.Empty);
@@ -733,7 +733,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
             Assert.That(specialQuality.Save, Is.Empty);
@@ -759,7 +759,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
             Assert.That(specialQuality.Save, Is.Empty);
@@ -787,7 +787,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
             Assert.That(specialQuality.Save, Is.Empty);
@@ -817,7 +817,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(first.Frequency.TimePeriod, Is.Empty);
             Assert.That(first.MinimumAbilities, Is.Empty);
             Assert.That(first.Power, Is.Zero);
-            Assert.That(first.RandomFociQuantity, Is.Empty);
+            Assert.That(first.RandomFociQuantityRoll, Is.Empty);
             Assert.That(first.RequiredFeats, Is.Empty);
             Assert.That(first.RequiresEquipment, Is.False);
             Assert.That(first.Save, Is.Empty);
@@ -832,7 +832,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(last.Frequency.TimePeriod, Is.Empty);
             Assert.That(last.MinimumAbilities, Is.Empty);
             Assert.That(last.Power, Is.Zero);
-            Assert.That(last.RandomFociQuantity, Is.Empty);
+            Assert.That(last.RandomFociQuantityRoll, Is.Empty);
             Assert.That(last.RequiredFeats, Is.Empty);
             Assert.That(last.RequiresEquipment, Is.False);
             Assert.That(last.Save, Is.Empty);
@@ -861,7 +861,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[0].Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQualities[0].MinimumAbilities, Is.Empty);
             Assert.That(specialQualities[0].Power, Is.Zero);
-            Assert.That(specialQualities[0].RandomFociQuantity, Is.Empty);
+            Assert.That(specialQualities[0].RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQualities[0].RequiredFeats, Is.Empty);
             Assert.That(specialQualities[0].RequiresEquipment, Is.False);
             Assert.That(specialQualities[0].Save, Is.Empty);
@@ -876,7 +876,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[1].Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQualities[1].MinimumAbilities, Is.Empty);
             Assert.That(specialQualities[1].Power, Is.Zero);
-            Assert.That(specialQualities[1].RandomFociQuantity, Is.Empty);
+            Assert.That(specialQualities[1].RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQualities[1].RequiredFeats, Is.Empty);
             Assert.That(specialQualities[1].RequiresEquipment, Is.False);
             Assert.That(specialQualities[1].Save, Is.EqualTo("my save"));
@@ -891,7 +891,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[2].Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQualities[2].MinimumAbilities, Is.Empty);
             Assert.That(specialQualities[2].Power, Is.Zero);
-            Assert.That(specialQualities[2].RandomFociQuantity, Is.Empty);
+            Assert.That(specialQualities[2].RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQualities[2].RequiredFeats, Is.Empty);
             Assert.That(specialQualities[2].RequiresEquipment, Is.False);
             Assert.That(specialQualities[2].Save, Is.Empty);
@@ -906,7 +906,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[3].Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQualities[3].MinimumAbilities, Is.Empty);
             Assert.That(specialQualities[3].Power, Is.Zero);
-            Assert.That(specialQualities[3].RandomFociQuantity, Is.Empty);
+            Assert.That(specialQualities[3].RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQualities[3].RequiredFeats, Is.Empty);
             Assert.That(specialQualities[3].RequiresEquipment, Is.False);
             Assert.That(specialQualities[3].Save, Is.Empty);
@@ -937,7 +937,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
-            Assert.That(specialQuality.RandomFociQuantity, Is.Empty);
+            Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQuality.RequiredFeats, Is.Empty);
             Assert.That(specialQuality.RequiresEquipment, Is.False);
             Assert.That(specialQuality.Save, Is.Empty);
@@ -964,7 +964,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[0].Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQualities[0].MinimumAbilities, Is.Empty);
             Assert.That(specialQualities[0].Power, Is.Zero);
-            Assert.That(specialQualities[0].RandomFociQuantity, Is.Empty);
+            Assert.That(specialQualities[0].RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQualities[0].RequiredFeats, Is.Empty);
             Assert.That(specialQualities[0].RequiresEquipment, Is.False);
             Assert.That(specialQualities[0].Save, Is.Empty);
@@ -977,7 +977,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[1].Frequency.TimePeriod, Is.EqualTo("fortnight"));
             Assert.That(specialQualities[1].MinimumAbilities, Is.Empty);
             Assert.That(specialQualities[1].Power, Is.Zero);
-            Assert.That(specialQualities[1].RandomFociQuantity, Is.Empty);
+            Assert.That(specialQualities[1].RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQualities[1].RequiredFeats, Is.Empty);
             Assert.That(specialQualities[1].RequiresEquipment, Is.False);
             Assert.That(specialQualities[1].Save, Is.Empty);
@@ -990,7 +990,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[2].Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQualities[2].MinimumAbilities, Is.Empty);
             Assert.That(specialQualities[2].Power, Is.EqualTo(90210));
-            Assert.That(specialQualities[2].RandomFociQuantity, Is.Empty);
+            Assert.That(specialQualities[2].RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQualities[2].RequiredFeats, Is.Empty);
             Assert.That(specialQualities[2].RequiresEquipment, Is.False);
             Assert.That(specialQualities[2].Save, Is.Empty);
@@ -1003,7 +1003,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQualities[3].Frequency.TimePeriod, Is.Empty);
             Assert.That(specialQualities[3].MinimumAbilities, Is.Empty);
             Assert.That(specialQualities[3].Power, Is.Zero);
-            Assert.That(specialQualities[3].RandomFociQuantity, Is.Empty);
+            Assert.That(specialQualities[3].RandomFociQuantityRoll, Is.Empty);
             Assert.That(specialQualities[3].RequiredFeats, Is.Empty);
             Assert.That(specialQualities[3].RequiresEquipment, Is.True);
             Assert.That(specialQualities[3].Save, Is.Empty);

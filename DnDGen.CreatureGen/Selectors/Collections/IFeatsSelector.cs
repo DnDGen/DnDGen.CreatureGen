@@ -6,7 +6,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 {
     internal interface IFeatsSelector
     {
-        IEnumerable<SpecialQualitySelection> SelectSpecialQualities(string creature, CreatureType creatureType);
+        IEnumerable<SpecialQualityDataSelection> SelectSpecialQualities(string creature, CreatureType creatureType);
         IEnumerable<FeatDataSelection> SelectFeats();
     }
 }

@@ -7,7 +7,7 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
     public class SpecialQualityHelper : DataHelper
     {
         public SpecialQualityHelper()
-            : base(SpecialQualitySelection.Divider)
+            : base(SpecialQualityDataSelection.Divider)
         { }
 
         public string[] BuildData(

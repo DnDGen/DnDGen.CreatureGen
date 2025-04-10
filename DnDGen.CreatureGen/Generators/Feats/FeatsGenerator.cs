@@ -101,7 +101,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
             return specialQualities;
         }
 
-        private IEnumerable<string> GetFoci(SpecialQualitySelection specialQualitySelection, IEnumerable<Skill> skills, Dictionary<string, Ability> abilities)
+        private IEnumerable<string> GetFoci(SpecialQualityDataSelection specialQualitySelection, IEnumerable<Skill> skills, Dictionary<string, Ability> abilities)
         {
             if (string.IsNullOrEmpty(specialQualitySelection.FocusType))
                 return Enumerable.Empty<string>();
@@ -109,9 +109,9 @@ namespace DnDGen.CreatureGen.Generators.Feats
             var foci = new HashSet<string>();
 
             var fociQuantity = 1;
-            if (specialQualitySelection.RandomFociQuantity.Any())
+            if (specialQualitySelection.RandomFociQuantityRoll.Any())
             {
-                var roll = dice.Roll(specialQualitySelection.RandomFociQuantity).AsSum();
+                var roll = dice.Roll(specialQualitySelection.RandomFociQuantityRoll).AsSum();
                 if (roll > fociQuantity)
                     fociQuantity = roll;
             }

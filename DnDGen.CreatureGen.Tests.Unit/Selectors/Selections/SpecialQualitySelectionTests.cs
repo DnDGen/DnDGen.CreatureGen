@@ -12,7 +12,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
     [TestFixture]
     public class SpecialQualitySelectionTests
     {
-        private SpecialQualitySelection selection;
+        private SpecialQualityDataSelection selection;
         private Dictionary<string, Ability> abilities;
         private List<Feat> feats;
         private Alignment alignment;
@@ -21,7 +21,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [SetUp]
         public void Setup()
         {
-            selection = new SpecialQualitySelection();
+            selection = new SpecialQualityDataSelection();
             abilities = new Dictionary<string, Ability>();
             feats = new List<Feat>();
             alignment = new Alignment();
@@ -41,7 +41,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(selection.FocusType, Is.Empty);
             Assert.That(selection.Frequency, Is.Not.Null);
             Assert.That(selection.MinimumAbilities, Is.Empty);
-            Assert.That(selection.RandomFociQuantity, Is.Empty);
+            Assert.That(selection.RandomFociQuantityRoll, Is.Empty);
             Assert.That(selection.RequiredFeats, Is.Empty);
             Assert.That(selection.RequiredSizes, Is.Empty);
             Assert.That(selection.RequiredAlignments, Is.Empty);
@@ -53,7 +53,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void SpecialQualitySelectionDivider()
         {
-            Assert.That(SpecialQualitySelection.Divider, Is.EqualTo('#'));
+            Assert.That(SpecialQualityDataSelection.Divider, Is.EqualTo('#'));
         }
 
         [Test]
