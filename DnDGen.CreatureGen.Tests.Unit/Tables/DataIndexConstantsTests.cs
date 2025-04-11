@@ -18,6 +18,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.SpecialQualityData.SaveBaseValueIndex, 9)]
         [TestCase(DataIndexConstants.SpecialQualityData.MinHitDiceIndex, 10)]
         [TestCase(DataIndexConstants.SpecialQualityData.MaxHitDiceIndex, 11)]
+        [TestCase(DataIndexConstants.SpecialQualityData.RequiredFeatsIndex, 12)]
+        [TestCase(DataIndexConstants.SpecialQualityData.RequiredSizesIndex, 13)]
+        [TestCase(DataIndexConstants.SpecialQualityData.RequiredAlignmentsIndex, 14)]
+        [TestCase(DataIndexConstants.SpecialQualityData.RequiredStrengthIndex, 15)]
+        [TestCase(DataIndexConstants.SpecialQualityData.RequiredConstitutionIndex, 16)]
+        [TestCase(DataIndexConstants.SpecialQualityData.RequiredDexterityIndex, 17)]
+        [TestCase(DataIndexConstants.SpecialQualityData.RequiredIntelligenceIndex, 18)]
+        [TestCase(DataIndexConstants.SpecialQualityData.RequiredWisdomIndex, 19)]
+        [TestCase(DataIndexConstants.SpecialQualityData.RequiredCharismaIndex, 20)]
         public void SpecialQualityDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));

@@ -48,6 +48,15 @@
             public const int SaveBaseValueIndex = 9;
             public const int MinHitDiceIndex = 10;
             public const int MaxHitDiceIndex = 11;
+            public const int RequiredFeatsIndex = 12;
+            public const int RequiredSizesIndex = 13;
+            public const int RequiredAlignmentsIndex = 14;
+            public const int RequiredStrengthIndex = 15;
+            public const int RequiredConstitutionIndex = 16;
+            public const int RequiredDexterityIndex = 17;
+            public const int RequiredIntelligenceIndex = 18;
+            public const int RequiredWisdomIndex = 19;
+            public const int RequiredCharismaIndex = 20;
         }
 
         internal static class FeatData

@@ -37,7 +37,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public override Func<string[], FeatDataSelection> MapTo => Map;
         public override Func<FeatDataSelection, string[]> MapFrom => Map;
 
-        public override int SectionCount => 10;
+        public override int SectionCount => 24;
         public static char Delimiter => '|';
 
         public static FeatDataSelection Map(string[] splitData)

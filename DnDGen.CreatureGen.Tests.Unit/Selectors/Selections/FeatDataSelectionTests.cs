@@ -60,9 +60,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         }
 
         [Test]
-        public void SectionCountIs10()
+        public void SectionCountIs24()
         {
-            Assert.That(selection.SectionCount, Is.EqualTo(10));
+            Assert.That(selection.SectionCount, Is.EqualTo(24));
         }
 
         [Test]

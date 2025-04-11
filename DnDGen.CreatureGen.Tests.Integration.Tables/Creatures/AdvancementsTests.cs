@@ -1,5 +1,4 @@
 ﻿using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.Tables.Helpers;
@@ -17,13 +16,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     public class AdvancementsTests : CollectionTests
     {
         private Dice dice;
-        private ICreatureDataSelector creatureDataSelector;
         private Dictionary<string, string[]> advancements;
         private ICollectionTypeAndAmountSelector collectionTypeAndAmountSelector;
-        private ICollectionSelector collectionSelector;
         private Dictionary<string, int> typeDivisors;
         private SpaceReachHelper spaceReachHelper;
         private string[] sizes;
+        private Dictionary<string, CreatureDataSelection> creatureData;
 
         protected override string tableName => TableNameConstants.Collection.Advancements;
 
@@ -50,6 +48,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 [CreatureConstants.Types.Vermin] = 4,
             };
             sizes = SizeConstants.GetOrdered();
+            creatureData = CreatureDataTests.GetCreatureTestData().ToDictionary(kvp => kvp.Key, kvp => Infrastructure.Helpers.DataHelper.Parse<CreatureDataSelection>(kvp.Value));
 
             advancements = GetAdvancementsTestData();
         }
@@ -58,7 +57,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void Setup()
         {
             dice = GetNewInstanceOf<Dice>();
-            creatureDataSelector = GetNewInstanceOf<ICreatureDataSelector>();
             collectionTypeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
             collectionSelector = GetNewInstanceOf<ICollectionSelector>();
         }
@@ -126,14 +124,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 .Select(s => s.Size);
             Assert.That(sizes, Is.Unique);
 
-            var creatureData = creatureDataSelector.SelectFor(creature);
             var orderedSizes = SizeConstants.GetOrdered();
-            var originalSizeIndex = Array.IndexOf(orderedSizes, creatureData.Size);
+            var originalSizeIndex = Array.IndexOf(orderedSizes, creatureData[creature].Size);
 
             foreach (var size in sizes)
             {
                 var sizeIndex = Array.IndexOf(orderedSizes, size);
-                Assert.That(sizeIndex, Is.AtLeast(originalSizeIndex), $"{size} >= {creatureData.Size}");
+                Assert.That(sizeIndex, Is.AtLeast(originalSizeIndex), $"{size} >= {creatureData[creature].Size}");
             }
 
             foreach (var advancementData in advancements[creature])
@@ -1273,7 +1270,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         private static string GetData(string creature, string advancedSize, int lowerHitDice, int upperHitDice)
         {
-            var creatureData = creatureDataSelector.SelectFor(creature);
             var creatureHitDice = collectionTypeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, creature);
             var spaceReachHelper = new SpaceReachHelper();
 
@@ -1283,12 +1279,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 Space = spaceReachHelper.GetSpace(advancedSize),
                 Size = advancedSize,
                 AdditionalHitDiceRoll = RollHelper.GetRollWithMostEvenDistribution(creatureHitDice.Amount, lowerHitDice, upperHitDice, true),
-                StrengthAdjustment = GetStrengthAdjustment(creatureData.Size, advancedSize),
-                ConstitutionAdjustment = GetConstitutionAdjustment(creatureData.Size, advancedSize),
-                DexterityAdjustment = GetDexterityAdjustment(creatureData.Size, advancedSize),
-                NaturalArmorAdjustment = GetNaturalArmorAdjustment(creatureData.Size, advancedSize),
+                StrengthAdjustment = GetStrengthAdjustment(creatureData[creature].Size, advancedSize),
+                ConstitutionAdjustment = GetConstitutionAdjustment(creatureData[creature].Size, advancedSize),
+                DexterityAdjustment = GetDexterityAdjustment(creatureData[creature].Size, advancedSize),
+                NaturalArmorAdjustment = GetNaturalArmorAdjustment(creatureData[creature].Size, advancedSize),
                 ChallengeRatingDivisor = GetChallengeRatingDivisor(creature),
-                AdjustedChallengeRating = GetAdjustedChallengeRating(creatureData.ChallengeRating, creatureData.Size, advancedSize),
+                AdjustedChallengeRating = GetAdjustedChallengeRating(creatureData[creature].ChallengeRating, creatureData[creature].Size, advancedSize),
             };
 
             return Infrastructure.Helpers.DataHelper.Parse(selection);
