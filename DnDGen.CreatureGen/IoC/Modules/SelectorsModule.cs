@@ -13,7 +13,6 @@ namespace DnDGen.CreatureGen.IoC.Modules
             Bind<IAdjustmentsSelector>().To<AdjustmentsSelector>();
             Bind<ISkillSelector>().To<SkillSelector>();
             Bind<IFeatsSelector>().To<FeatsSelector>();
-            Bind<ITypeAndAmountSelector>().To<TypeAndAmountSelector>();
             Bind<ICreatureDataSelector>().To<CreatureDataSelector>();
             Bind<IAttackSelector>().To<AttackSelector>();
             Bind<IAdvancementSelector>().To<AdvancementSelector>();
@@ -26,6 +25,7 @@ namespace DnDGen.CreatureGen.IoC.Modules
             Kernel.BindDataSelection<BonusDataSelection>();
             Kernel.BindDataSelection<CreatureDataSelection>();
             Kernel.BindDataSelection<FeatDataSelection>();
+            Kernel.BindDataSelection<SpecialQualityDataSelection>();
         }
     }
 }

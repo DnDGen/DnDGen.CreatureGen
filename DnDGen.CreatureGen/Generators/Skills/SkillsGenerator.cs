@@ -203,9 +203,9 @@ namespace DnDGen.CreatureGen.Generators.Skills
             return skills;
         }
 
-        private IEnumerable<SkillSelection> GetSkillSelections(IEnumerable<string> skillNames, IEnumerable<string> creatureSkills)
+        private IEnumerable<SkillDataSelection> GetSkillSelections(IEnumerable<string> skillNames, IEnumerable<string> creatureSkills)
         {
-            var selections = new List<SkillSelection>();
+            var selections = new List<SkillDataSelection>();
 
             foreach (var skillName in skillNames)
             {
@@ -230,7 +230,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
             return selections;
         }
 
-        private IEnumerable<SkillSelection> ExplodeSelectedSkill(SkillSelection skillSelection)
+        private IEnumerable<SkillDataSelection> ExplodeSelectedSkill(SkillDataSelection skillSelection)
         {
             if (skillSelection.RandomFociQuantity == 0)
                 return new[] { skillSelection };
@@ -239,7 +239,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
 
             if (skillSelection.RandomFociQuantity >= skillFoci.Count)
             {
-                return skillFoci.Select(f => new SkillSelection
+                return skillFoci.Select(f => new SkillDataSelection
                 {
                     BaseAbilityName = skillSelection.BaseAbilityName,
                     SkillName = skillSelection.SkillName,
@@ -248,12 +248,12 @@ namespace DnDGen.CreatureGen.Generators.Skills
                 });
             }
 
-            var selections = new List<SkillSelection>();
+            var selections = new List<SkillDataSelection>();
 
             while (skillSelection.RandomFociQuantity > selections.Count)
             {
                 var focus = collectionsSelector.SelectRandomFrom(skillFoci);
-                var selection = new SkillSelection();
+                var selection = new SkillDataSelection();
 
                 selection.BaseAbilityName = skillSelection.BaseAbilityName;
                 selection.SkillName = skillSelection.SkillName;
@@ -269,7 +269,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
 
         private IEnumerable<Skill> InitializeSkills(
             Dictionary<string, Ability> abilities,
-            IEnumerable<SkillSelection> skillSelections,
+            IEnumerable<SkillDataSelection> skillSelections,
             HitPoints hitPoints,
             bool includeFirstHitDieBonus)
         {

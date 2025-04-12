@@ -98,5 +98,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         {
             AssertNotSingleton<ICollectionDataSelector<FeatDataSelection>>();
         }
+
+        [Test]
+        public void CollectionData_SpecialQualityDataSelectorIsNotConstructedAsSingleton()
+        {
+            AssertNotSingleton<ICollectionDataSelector<SpecialQualityDataSelection>>();
+        }
     }
 }

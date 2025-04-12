@@ -18,11 +18,11 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             this.bonusSelector = bonusSelector;
         }
 
-        public SkillSelection SelectFor(string skill)
+        public SkillDataSelection SelectFor(string skill)
         {
             var data = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SkillData, skill).ToArray();
 
-            var selection = new SkillSelection();
+            var selection = new SkillDataSelection();
             selection.BaseAbilityName = data[DataIndexConstants.SkillSelectionData.BaseAbilityNameIndex];
             selection.SkillName = data[DataIndexConstants.SkillSelectionData.SkillNameIndex];
             selection.RandomFociQuantity = Convert.ToInt32(data[DataIndexConstants.SkillSelectionData.RandomFociQuantityIndex]);

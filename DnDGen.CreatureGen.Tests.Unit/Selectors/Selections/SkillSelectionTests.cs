@@ -8,12 +8,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
     [TestFixture]
     public class SkillSelectionTests
     {
-        private SkillSelection selection;
+        private SkillDataSelection selection;
 
         [SetUp]
         public void Setup()
         {
-            selection = new SkillSelection();
+            selection = new SkillDataSelection();
         }
 
         [Test]
@@ -68,7 +68,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             selection.Focus = selectionFocus;
             selection.SkillName = selectionName;
 
-            var otherSelection = new SkillSelection();
+            var otherSelection = new SkillDataSelection();
             otherSelection.SkillName = skillName;
             otherSelection.Focus = skillFocus;
 
@@ -84,7 +84,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             selection.SkillName = "skill";
             selection.RandomFociQuantity = selectionQuantity;
 
-            var otherSelection = new SkillSelection();
+            var otherSelection = new SkillDataSelection();
             otherSelection.SkillName = "skill";
             otherSelection.RandomFociQuantity = otherSelectionQuantity;
 
