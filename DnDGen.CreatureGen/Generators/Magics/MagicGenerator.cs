@@ -2,7 +2,6 @@
 using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Magics;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.TreasureGen.Items;
@@ -16,18 +15,15 @@ namespace DnDGen.CreatureGen.Generators.Magics
     {
         private readonly ISpellsGenerator spellsGenerator;
         private readonly ICollectionSelector collectionsSelector;
-        private readonly IAdjustmentsSelector adjustmentsSelector;
-        private readonly ITypeAndAmountSelector typeAndAmountSelector;
+        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
 
         public MagicGenerator(
             ISpellsGenerator spellsGenerator,
             ICollectionSelector collectionsSelector,
-            IAdjustmentsSelector adjustmentsSelector,
-            ITypeAndAmountSelector typeAndAmountSelector)
+            ICollectionTypeAndAmountSelector typeAndAmountSelector)
         {
             this.spellsGenerator = spellsGenerator;
             this.collectionsSelector = collectionsSelector;
-            this.adjustmentsSelector = adjustmentsSelector;
             this.typeAndAmountSelector = typeAndAmountSelector;
         }
 
@@ -35,7 +31,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
         {
             var magic = new Magic();
 
-            var casters = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Casters, creatureName);
+            var casters = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, creatureName);
             if (!casters.Any())
             {
                 return magic;
@@ -48,7 +44,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
             var spellAbility = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AbilityGroups, $"{magic.Caster}:Spellcaster").Single();
             magic.CastingAbility = abilities[spellAbility];
 
-            var domainTypesAndAmounts = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.SpellDomains, creatureName);
+            var domainTypesAndAmounts = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.SpellDomains, creatureName);
             var domains = new List<string>();
 
             if (domainTypesAndAmounts.Any())
@@ -96,13 +92,13 @@ namespace DnDGen.CreatureGen.Generators.Magics
 
         private Magic MakeSpells(string creature, Magic magic, Alignment alignment)
         {
-            magic.SpellsPerDay = spellsGenerator.GeneratePerDay(magic.Caster, magic.CasterLevel, magic.CastingAbility, magic.Domains.ToArray());
-            magic.KnownSpells = spellsGenerator.GenerateKnown(creature, magic.Caster, magic.CasterLevel, alignment, magic.CastingAbility, magic.Domains.ToArray());
+            magic.SpellsPerDay = spellsGenerator.GeneratePerDay(magic.Caster, magic.CasterLevel, magic.CastingAbility, [.. magic.Domains]);
+            magic.KnownSpells = spellsGenerator.GenerateKnown(creature, magic.Caster, magic.CasterLevel, alignment, magic.CastingAbility, [.. magic.Domains]);
 
             var classesThatPrepareSpells = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, GroupConstants.PreparesSpells);
             if (classesThatPrepareSpells.Contains(magic.Caster))
             {
-                magic.PreparedSpells = spellsGenerator.GeneratePrepared(magic.KnownSpells, magic.SpellsPerDay, magic.Domains.ToArray());
+                magic.PreparedSpells = spellsGenerator.GeneratePrepared(magic.KnownSpells, magic.SpellsPerDay, [.. magic.Domains]);
             }
 
             return magic;
@@ -110,12 +106,12 @@ namespace DnDGen.CreatureGen.Generators.Magics
 
         private int GetArcaneSpellFailure(Item item)
         {
-            var arcaneSpellFailure = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.ArcaneSpellFailures, item.Name);
+            var arcaneSpellFailureSelection = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.Adjustments.ArcaneSpellFailures, item.Name);
 
             if (item.Traits.Contains(TraitConstants.SpecialMaterials.Mithral))
-                arcaneSpellFailure -= 10;
+                arcaneSpellFailureSelection.AmountAsDouble -= 10;
 
-            return Math.Max(0, arcaneSpellFailure);
+            return Math.Max(0, arcaneSpellFailureSelection.Amount);
         }
     }
 }

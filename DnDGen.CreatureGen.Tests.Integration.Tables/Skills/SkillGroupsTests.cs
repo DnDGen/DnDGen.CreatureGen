@@ -4,7 +4,6 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System;
 using System.Linq;
@@ -14,18 +13,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
     [TestFixture]
     public class SkillGroupsTests : CollectionTests
     {
-        private ICollectionSelector collectionSelector;
-
-        protected override string tableName
-        {
-            get { return TableNameConstants.Collection.SkillGroups; }
-        }
-
-        [SetUp]
-        public void Setup()
-        {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
-        }
+        protected override string tableName => TableNameConstants.Collection.SkillGroups;
 
         [Test]
         public void SkillGroupsNames()

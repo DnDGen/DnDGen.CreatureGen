@@ -1,8 +1,9 @@
 ﻿using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.Infrastructure.Helpers;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
@@ -10,14 +11,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
     [TestFixture]
     public class CreatureChallengeRatingGroupsTests : CreatureGroupsTableTests
     {
-        private ICreatureDataSelector creatureDataSelector;
-        private ICollectionSelector collectionSelector;
+        private Dictionary<string, CreatureDataSelection> creatureData;
 
-        [SetUp]
-        public void Setup()
+        [OneTimeSetUp]
+        public void OneTimeSetup()
         {
-            creatureDataSelector = GetNewInstanceOf<ICreatureDataSelector>();
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
+            creatureData = CreatureDataTests.GetCreatureTestData().ToDictionary(k => k.Key, k => DataHelper.Parse<CreatureDataSelection>(k.Value));
         }
 
         [Test]
@@ -697,21 +696,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Dragon_Gold_GreatWyrm)]
         public void CreatureChallengeRatingGroup(string name, params string[] entries)
         {
-            AssertDistinctCollection(name, entries);
+            AssertCreatureGroup(name, entries);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreatureChallengeRatingGroupMatchesCreatureData(string creature)
         {
-            var data = creatureDataSelector.SelectFor(creature);
-            var ofChallengeRating = collectionSelector.Explode(Config.Name, tableName, data.ChallengeRating);
-            Assert.That(ofChallengeRating, Contains.Item(creature), $"Should be: {data.ChallengeRating}");
+            Assert.That(table[creatureData[creature].ChallengeRating], Contains.Item(creature), $"Should be: {creatureData[creature].ChallengeRating}");
 
-            var challengeRatings = ChallengeRatingConstants.GetOrdered().Except([data.ChallengeRating]);
-            foreach (var challengeRating in challengeRatings)
+            var otherChallengeRatings = ChallengeRatingConstants.GetOrdered().Except([creatureData[creature].ChallengeRating]);
+            foreach (var otherChallengeRating in otherChallengeRatings)
             {
-                ofChallengeRating = collectionSelector.Explode(Config.Name, tableName, challengeRating);
-                Assert.That(ofChallengeRating, Does.Not.Contain(creature), $"Should NOT be: {challengeRating}");
+                Assert.That(table[otherChallengeRating], Does.Not.Contain(creature), $"Should NOT be: {otherChallengeRating}");
             }
         }
     }

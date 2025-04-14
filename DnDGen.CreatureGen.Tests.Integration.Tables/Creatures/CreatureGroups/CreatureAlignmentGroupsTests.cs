@@ -1,7 +1,6 @@
 ﻿using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +10,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
     [TestFixture]
     public class CreatureAlignmentGroupsTests : CreatureGroupsTableTests
     {
-        private ICollectionSelector collectionSelector;
-
-        [SetUp]
-        public void Setup()
-        {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
-        }
-
         [Test]
         public void CreatureGroupNames()
         {
@@ -42,12 +33,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
             foreach (var creature in allCreatures)
             {
-                if (allAlignmentGroups[creature + GroupConstants.Exploded].Contains(alignment))
+                if (allAlignmentGroups[creature].Contains(alignment))
                     entries.Add(creature);
             }
 
             Assert.That(entries, Is.Not.Empty);
-            AssertDistinctCollection(alignment, entries.ToArray());
+            AssertCreatureGroup(alignment, [.. entries]);
         }
     }
 }

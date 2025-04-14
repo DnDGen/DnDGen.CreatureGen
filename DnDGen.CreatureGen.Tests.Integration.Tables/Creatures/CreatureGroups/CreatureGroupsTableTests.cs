@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Tables;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
@@ -56,7 +57,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Groups.Hag,
                 CreatureConstants.Groups.HalfDragon,
                 CreatureConstants.Groups.Halfling,
-                CreatureConstants.Groups.HasSkeleton,
                 CreatureConstants.Groups.Horse,
                 CreatureConstants.Groups.Hydra,
                 CreatureConstants.Groups.Inevitable,
@@ -81,12 +81,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 SaveConstants.Fortitude,
                 SaveConstants.Reflex,
                 SaveConstants.Will,
+                SaveConstants.Fortitude + GroupConstants.TREE,
+                SaveConstants.Reflex + GroupConstants.TREE,
+                SaveConstants.Will + GroupConstants.TREE,
                 GroupConstants.GoodBaseAttack,
                 GroupConstants.AverageBaseAttack,
                 GroupConstants.PoorBaseAttack,
+                GroupConstants.GoodBaseAttack + GroupConstants.TREE,
+                GroupConstants.AverageBaseAttack + GroupConstants.TREE,
+                GroupConstants.PoorBaseAttack + GroupConstants.TREE,
                 GroupConstants.All,
+                GroupConstants.All + GroupConstants.TREE,
                 GroupConstants.Characters,
+                GroupConstants.Characters + GroupConstants.TREE,
                 GroupConstants.Templates,
+                GroupConstants.Templates + GroupConstants.TREE,
+                GroupConstants.HasSkeleton,
+                GroupConstants.HasSkeleton + GroupConstants.TREE,
             };
 
             var alignments = new[]
@@ -102,9 +113,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 AlignmentConstants.ChaoticEvil,
             };
 
-            var names = entries.Union(types).Union(subtypes).Union(challengeRatings).Union(alignments);
+            var names = entries
+                .Union(types)
+                .Union(types.Select(t => t + GroupConstants.TREE))
+                .Union(subtypes)
+                .Union(subtypes.Select(st => st + GroupConstants.TREE))
+                .Union(challengeRatings)
+                .Union(challengeRatings.Select(cr => cr + GroupConstants.TREE))
+                .Union(alignments)
+                .Union(alignments.Select(a => a + GroupConstants.TREE));
 
             AssertCollectionNames(names);
+        }
+
+        protected void AssertCreatureGroup(string name, IEnumerable<string> entries)
+        {
+            AssertDistinctCollection(name + GroupConstants.TREE, [.. entries]);
+
+            var exploded = ExplodeCollection(tableName, name + GroupConstants.TREE);
+            AssertDistinctCollection(name, [.. exploded]);
         }
     }
 }

@@ -5,7 +5,7 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Selectors;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.Infrastructure.Generators;
+using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.Infrastructure.Selectors.Percentiles;
 using DnDGen.TreasureGen.Items;

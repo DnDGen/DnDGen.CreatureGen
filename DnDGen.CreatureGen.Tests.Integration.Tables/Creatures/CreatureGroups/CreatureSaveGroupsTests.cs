@@ -1,6 +1,6 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
-using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.CreatureGen.Tables;
 using NUnit.Framework;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
@@ -8,14 +8,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
     [TestFixture]
     public class CreatureSaveGroupsTests : CreatureGroupsTableTests
     {
-        private ICollectionSelector collectionSelector;
-
-        [SetUp]
-        public void Setup()
-        {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
-        }
-
         [Test]
         public void CreatureGroupNames()
         {
@@ -85,15 +77,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Templates.Zombie)]
         public void CreatureSaveGroup(string save, params string[] group)
         {
-            AssertDistinctCollection(save, group);
+            AssertCreatureGroup(save, group);
         }
 
         [TestCase(SaveConstants.Will, CreatureConstants.Templates.Skeleton)]
         [TestCase(SaveConstants.Will, CreatureConstants.Templates.Zombie)]
         public void SaveGroupContainsCreature(string save, string creature)
         {
-            var saveGroup = collectionSelector.Explode(Config.Name, tableName, save);
-            Assert.That(saveGroup, Contains.Item(creature));
+            var explodedGroup = ExplodeCollection(tableName, save + GroupConstants.TREE);
+            Assert.That(explodedGroup, Contains.Item(creature));
+            Assert.That(table[save], Contains.Item(creature));
         }
     }
 }

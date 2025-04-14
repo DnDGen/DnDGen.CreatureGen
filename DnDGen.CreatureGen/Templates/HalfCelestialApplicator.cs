@@ -8,7 +8,7 @@ using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Languages;
-using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -24,27 +24,25 @@ namespace DnDGen.CreatureGen.Templates
     {
         private readonly ICollectionSelector collectionSelector;
         private readonly IEnumerable<string> creatureTypes;
-        private readonly ITypeAndAmountSelector typeAndAmountSelector;
+        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private readonly ISpeedsGenerator speedsGenerator;
         private readonly IAttacksGenerator attacksGenerator;
         private readonly IFeatsGenerator featsGenerator;
         private readonly ISkillsGenerator skillsGenerator;
         private readonly IMagicGenerator magicGenerator;
-        private readonly IAdjustmentsSelector adjustmentSelector;
-        private readonly ICreatureDataSelector creatureDataSelector;
+        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
         private readonly ICreaturePrototypeFactory prototypeFactory;
         private readonly IDemographicsGenerator demographicsGenerator;
 
         public HalfCelestialApplicator(
             ICollectionSelector collectionSelector,
-            ITypeAndAmountSelector typeAndAmountSelector,
+            ICollectionTypeAndAmountSelector typeAndAmountSelector,
             ISpeedsGenerator speedsGenerator,
             IAttacksGenerator attacksGenerator,
             IFeatsGenerator featsGenerator,
             ISkillsGenerator skillsGenerator,
             IMagicGenerator magicGenerator,
-            IAdjustmentsSelector adjustmentSelector,
-            ICreatureDataSelector creatureDataSelector,
+            ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
             ICreaturePrototypeFactory prototypeFactory,
             IDemographicsGenerator demographicsGenerator)
         {
@@ -55,7 +53,6 @@ namespace DnDGen.CreatureGen.Templates
             this.featsGenerator = featsGenerator;
             this.skillsGenerator = skillsGenerator;
             this.magicGenerator = magicGenerator;
-            this.adjustmentSelector = adjustmentSelector;
             this.creatureDataSelector = creatureDataSelector;
             this.prototypeFactory = prototypeFactory;
             this.demographicsGenerator = demographicsGenerator;
@@ -95,7 +92,7 @@ namespace DnDGen.CreatureGen.Templates
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
-                    creature.Templates.Union([CreatureConstants.Templates.HalfCelestial]).ToArray());
+                    [.. creature.Templates.Union([CreatureConstants.Templates.HalfCelestial])]);
             }
 
             // Template
@@ -236,11 +233,10 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureAlignment(CreaturePrototype creature, string presetAlignment)
         {
-            creature.Alignments = creature.Alignments
+            creature.Alignments = [.. creature.Alignments
                 .Where(a => a.Goodness != AlignmentConstants.Evil)
                 .Select(a => UpdateCreatureAlignment(a, presetAlignment))
-                .Distinct()
-                .ToList();
+                .Distinct()];
         }
 
         private Alignment UpdateCreatureAlignment(Alignment alignment, string presetAlignment)
@@ -273,12 +269,12 @@ namespace DnDGen.CreatureGen.Templates
             creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating, creature.GetRoundedHitDiceQuantity());
         }
 
-        private IEnumerable<string> GetChallengeRatings(string challengeRating) => new[]
-        {
+        private IEnumerable<string> GetChallengeRatings(string challengeRating) =>
+        [
             ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 1),
             ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2),
             ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 3),
-        };
+        ];
 
         private string UpdateCreatureChallengeRating(string challengeRating, int hitDiceQuantity)
         {
@@ -416,7 +412,7 @@ namespace DnDGen.CreatureGen.Templates
         {
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
-                new[] { creature.Alignment.Full },
+                [creature.Alignment.Full],
                 creature.Abilities[AbilityConstants.Intelligence],
                 creature.ChallengeRating,
                 creature.HitPoints.RoundedHitDiceQuantity,
@@ -430,7 +426,7 @@ namespace DnDGen.CreatureGen.Templates
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
-                    creature.Templates.Union(new[] { CreatureConstants.Templates.HalfCelestial }).ToArray());
+                    [.. creature.Templates.Union([CreatureConstants.Templates.HalfCelestial])]);
             }
 
             var tasks = new List<Task>();
@@ -516,15 +512,20 @@ namespace DnDGen.CreatureGen.Templates
         {
             var filteredBaseCreatures = sourceCreatures;
 
-            var allData = creatureDataSelector.SelectAll();
-            var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
+            var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
+            var allHitDice = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice);
             var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
             var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
 
             if (!string.IsNullOrEmpty(filters?.ChallengeRating))
             {
                 filteredBaseCreatures = filteredBaseCreatures
-                    .Where(c => CreatureInRange(allData[c].ChallengeRating, filters.ChallengeRating, asCharacter, allHitDice[c], allTypes[c]));
+                    .Where(c => CreatureInRange(
+                        allData[c].Single().ChallengeRating,
+                        filters.ChallengeRating,
+                        asCharacter,
+                        allHitDice[c].Single().AmountAsDouble,
+                        allTypes[c]));
             }
 
             if (!string.IsNullOrEmpty(filters?.Type))
@@ -544,17 +545,17 @@ namespace DnDGen.CreatureGen.Templates
                 var presetAlignment = new Alignment(filters.Alignment);
                 if (presetAlignment.Goodness != AlignmentConstants.Good)
                 {
-                    return Enumerable.Empty<string>();
+                    return [];
                 }
             }
 
             var templateCreatures = filteredBaseCreatures
                 .Where(c => IsCompatible(
                     allTypes[c],
-                    allAlignments[c + GroupConstants.Exploded],
+                    allAlignments[c],
                     c,
-                    allData[c].ChallengeRating,
-                    allHitDice[c],
+                    allData[c].Single().ChallengeRating,
+                    allHitDice[c].Single().AmountAsDouble,
                     asCharacter,
                     filters));
 
@@ -588,13 +589,15 @@ namespace DnDGen.CreatureGen.Templates
                 creatureChallengeRating = ChallengeRatingConstants.CR0;
             }
 
-            var abilityAdjustments = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, creature);
+            var abilityAdjustments = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, creature);
             var intelligenceAdjustment = abilityAdjustments.FirstOrDefault(a => a.Type == AbilityConstants.Intelligence);
             if (intelligenceAdjustment == null)
                 return false;
 
-            var intelligence = new Ability(AbilityConstants.Intelligence);
-            intelligence.RacialAdjustment = intelligenceAdjustment.Amount;
+            var intelligence = new Ability(AbilityConstants.Intelligence)
+            {
+                RacialAdjustment = intelligenceAdjustment.Amount
+            };
 
             var compatibility = IsCompatible(types, alignments, intelligence, creatureChallengeRating, hitDice.RoundedQuantity, filters);
             return compatibility.Compatible;

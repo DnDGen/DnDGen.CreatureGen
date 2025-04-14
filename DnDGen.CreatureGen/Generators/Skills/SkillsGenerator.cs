@@ -3,7 +3,6 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Items;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
@@ -17,16 +16,23 @@ namespace DnDGen.CreatureGen.Generators.Skills
 {
     internal class SkillsGenerator : ISkillsGenerator
     {
-        private readonly ISkillSelector skillSelector;
+        private readonly ICollectionDataSelector<SkillDataSelection> skillSelector;
+        private readonly ICollectionDataSelector<BonusDataSelection> bonusSelector;
         private readonly ICollectionSelector collectionsSelector;
-        private readonly IAdjustmentsSelector adjustmentsSelector;
+        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private readonly Dice dice;
 
-        public SkillsGenerator(ISkillSelector skillSelector, ICollectionSelector collectionsSelector, IAdjustmentsSelector adjustmentsSelector, Dice dice)
+        public SkillsGenerator(
+            ICollectionDataSelector<SkillDataSelection> skillSelector,
+            ICollectionDataSelector<BonusDataSelection> bonusSelector,
+            ICollectionSelector collectionsSelector,
+            ICollectionTypeAndAmountSelector typeAndAmountSelector,
+            Dice dice)
         {
             this.skillSelector = skillSelector;
+            this.bonusSelector = bonusSelector;
             this.collectionsSelector = collectionsSelector;
-            this.adjustmentsSelector = adjustmentsSelector;
+            this.typeAndAmountSelector = typeAndAmountSelector;
             this.dice = dice;
         }
 
@@ -40,7 +46,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
             bool includeFirstHitDieBonus = true)
         {
             if (hitPoints.RoundedHitDiceQuantity == 0)
-                return Enumerable.Empty<Skill>();
+                return [];
 
             var creatureSkillNames = GetCreatureSkillNames(creatureName, creatureType);
             var untrainedSkillNames = GetUntrainedSkillsNames(canUseEquipment);
@@ -88,14 +94,14 @@ namespace DnDGen.CreatureGen.Generators.Skills
 
         private IEnumerable<Skill> ApplyBonuses(string creature, CreatureType creatureType, IEnumerable<Skill> skills, string size)
         {
-            var creatureBonuses = skillSelector.SelectBonusesFor(creature);
-            var typeBonuses = skillSelector.SelectBonusesFor(creatureType.Name);
+            var creatureBonuses = bonusSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, creature);
+            var typeBonuses = bonusSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, creatureType.Name);
 
             var bonuses = creatureBonuses.Union(typeBonuses);
 
             foreach (var subtype in creatureType.SubTypes)
             {
-                var subtypeBonuses = skillSelector.SelectBonusesFor(subtype);
+                var subtypeBonuses = bonusSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, subtype);
                 bonuses = bonuses.Union(subtypeBonuses);
             }
 
@@ -120,8 +126,8 @@ namespace DnDGen.CreatureGen.Generators.Skills
 
             foreach (var sourceSkill in synergyOpportunities)
             {
-                var baseBonuses = skillSelector.SelectBonusesFor(sourceSkill.Name);
-                var specificBonuses = skillSelector.SelectBonusesFor(sourceSkill.Key);
+                var baseBonuses = bonusSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, sourceSkill.Name);
+                var specificBonuses = bonusSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, sourceSkill.Key);
 
                 var bonuses = baseBonuses.Union(specificBonuses);
 
@@ -209,7 +215,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
 
             foreach (var skillName in skillNames)
             {
-                var selection = skillSelector.SelectFor(skillName);
+                var selection = skillSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, skillName);
                 selection.ClassSkill = creatureSkills.Contains(skillName) || creatureSkills.Contains(selection.SkillName);
 
                 var explodedSelections = ExplodeSelectedSkill(selection);
@@ -233,7 +239,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
         private IEnumerable<SkillDataSelection> ExplodeSelectedSkill(SkillDataSelection skillSelection)
         {
             if (skillSelection.RandomFociQuantity == 0)
-                return new[] { skillSelection };
+                return [skillSelection];
 
             var skillFoci = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, skillSelection.SkillName).ToList();
 
@@ -253,12 +259,13 @@ namespace DnDGen.CreatureGen.Generators.Skills
             while (skillSelection.RandomFociQuantity > selections.Count)
             {
                 var focus = collectionsSelector.SelectRandomFrom(skillFoci);
-                var selection = new SkillDataSelection();
-
-                selection.BaseAbilityName = skillSelection.BaseAbilityName;
-                selection.SkillName = skillSelection.SkillName;
-                selection.Focus = focus;
-                selection.ClassSkill = skillSelection.ClassSkill;
+                var selection = new SkillDataSelection
+                {
+                    BaseAbilityName = skillSelection.BaseAbilityName,
+                    SkillName = skillSelection.SkillName,
+                    Focus = focus,
+                    ClassSkill = skillSelection.ClassSkill
+                };
 
                 selections.Add(selection);
                 skillFoci.Remove(focus);
@@ -300,8 +307,8 @@ namespace DnDGen.CreatureGen.Generators.Skills
             if (hitDieQuantity == 0 || !intelligence.HasScore)
                 return 0;
 
-            var points = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.SkillPoints, creatureType.Name);
-            var perHitDie = Math.Max(1, points + intelligence.Modifier);
+            var pointsSelection = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.Adjustments.SkillPoints, creatureType.Name);
+            var perHitDie = Math.Max(1, pointsSelection.Amount + intelligence.Modifier);
             var multiplier = hitDieQuantity;
 
             if (includeFirstHitDieBonus)

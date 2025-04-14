@@ -1,7 +1,6 @@
 ﻿using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Selectors.Collections;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using System;
@@ -13,13 +12,13 @@ namespace DnDGen.CreatureGen.Generators.Creatures
     {
         private readonly ICollectionSelector collectionsSelector;
         private readonly Dice dice;
-        private readonly ITypeAndAmountSelector typeAndAmountSelector;
+        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private readonly string[] heightDescriptions;
         private readonly string[] lengthDescriptions;
         private readonly string[] wingspanDescriptions;
         private readonly string[] weightDescriptions;
 
-        public DemographicsGenerator(ICollectionSelector collectionsSelector, Dice dice, ITypeAndAmountSelector typeAndAmountSelector)
+        public DemographicsGenerator(ICollectionSelector collectionsSelector, Dice dice, ICollectionTypeAndAmountSelector typeAndAmountSelector)
         {
             this.collectionsSelector = collectionsSelector;
             this.dice = dice;
@@ -40,29 +39,29 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             };
             demographics.MaximumAge = DetermineMaximumAge(creatureName, demographics.Age);
 
-            var heights = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Heights, creatureName);
+            var heights = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, creatureName);
             var baseHeight = heights.First(h => h.Type == demographics.Gender);
             var heightModifier = heights.First(h => h.Type == creatureName);
 
             demographics.Height.Value = baseHeight.Amount + heightModifier.Amount;
-            var rawHeightRoll = GetRoll(baseHeight.RawAmount, heightModifier.RawAmount);
+            var rawHeightRoll = GetRoll(baseHeight.Roll, heightModifier.Roll);
             demographics.Height.Description = dice.Describe(rawHeightRoll, (int)demographics.Height.Value, heightDescriptions);
 
-            var lengths = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Lengths, creatureName);
+            var lengths = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, creatureName);
             var baseLength = lengths.First(h => h.Type == demographics.Gender);
             var lengthModifier = lengths.First(h => h.Type == creatureName);
 
             demographics.Length.Value = baseLength.Amount + lengthModifier.Amount;
-            var rawLengthRoll = GetRoll(baseLength.RawAmount, lengthModifier.RawAmount);
+            var rawLengthRoll = GetRoll(baseLength.Roll, lengthModifier.Roll);
             demographics.Length.Description = dice.Describe(rawLengthRoll, (int)demographics.Length.Value, lengthDescriptions);
 
-            var weights = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Weights, creatureName);
+            var weights = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, creatureName);
             var baseWeight = weights.First(h => h.Type == demographics.Gender);
             var weightModifier = weights.First(h => h.Type == creatureName);
             var multiplier = Math.Max(heightModifier.Amount, lengthModifier.Amount);
 
             demographics.Weight.Value = baseWeight.Amount + multiplier * weightModifier.Amount;
-            var rawWeightRoll = GetMultipliedRoll(baseWeight.RawAmount, multiplier, weightModifier.RawAmount);
+            var rawWeightRoll = GetMultipliedRoll(baseWeight.Roll, multiplier, weightModifier.Roll);
             demographics.Weight.Description = dice.Describe(rawWeightRoll, (int)demographics.Weight.Value, weightDescriptions);
 
             demographics.Wingspan = GenerateWingspan(creatureName, demographics.Gender);
@@ -112,9 +111,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return age;
         }
 
-        private TypeAndAmountSelection GetRandomAgeRoll(string creatureName)
+        private TypeAndAmountDataSelection GetRandomAgeRoll(string creatureName)
         {
-            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, creatureName);
+            var ageRolls = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, creatureName);
             var nonCommonCategories = new[]
             {
                 AgeConstants.Categories.MiddleAge,
@@ -149,7 +148,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         private int GetMaximumAge(string creatureName)
         {
-            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, creatureName);
+            var ageRolls = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, creatureName);
             var maxAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Maximum);
 
             if (maxAgeRoll == null)
@@ -163,7 +162,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         private Measurement GenerateWingspan(string tablename, string creatureName, string gender)
         {
-            var wingspans = typeAndAmountSelector.Select(tablename, creatureName);
+            var wingspans = typeAndAmountSelector.SelectFrom(Config.Name, tablename, creatureName);
             var baseWingspan = wingspans.First(h => h.Type == gender);
             var wingspanModifier = wingspans.First(h => h.Type == creatureName);
 
@@ -172,7 +171,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 Value = baseWingspan.Amount + wingspanModifier.Amount
             };
 
-            var rawWingspanRoll = GetRoll(baseWingspan.RawAmount, wingspanModifier.RawAmount);
+            var rawWingspanRoll = GetRoll(baseWingspan.Roll, wingspanModifier.Roll);
             wingspan.Description = dice.Describe(rawWingspanRoll, (int)wingspan.Value, wingspanDescriptions);
 
             return wingspan;
@@ -236,7 +235,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         private void UpdateAge(Demographics source, string template)
         {
-            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, template);
+            var ageRolls = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, template);
             var maxAgeRoll = ageRolls.First(r => r.Type == AgeConstants.Categories.Maximum);
             var ageRoll = ageRolls.First(r => r.Type != AgeConstants.Categories.Maximum);
 
@@ -273,16 +272,16 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             if (measurement.Value == 0)
                 return;
 
-            var templateMeasurements = typeAndAmountSelector.Select(tablename, template);
+            var templateMeasurements = typeAndAmountSelector.SelectFrom(Config.Name, tablename, template);
             var templateModifier = templateMeasurements.First();
 
             if (templateModifier.Amount == 0)
                 return;
 
-            var creatureMeasurements = typeAndAmountSelector.Select(tablename, creature);
+            var creatureMeasurements = typeAndAmountSelector.SelectFrom(Config.Name, tablename, creature);
             var creatureBase = creatureMeasurements.First(h => h.Type == gender);
             var creatureModifier = creatureMeasurements.First(h => h.Type == creature);
-            var rawCreatureRoll = GetRoll(creatureBase.RawAmount, creatureModifier.RawAmount);
+            var rawCreatureRoll = GetRoll(creatureBase.Roll, creatureModifier.Roll);
 
             if (templateModifier.Amount < 0)
                 measurement.Value -= GetBelowAverageDecrease(measurement.Value, rawCreatureRoll);
@@ -297,7 +296,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             if (source.Weight.Value == 0)
                 return;
 
-            var templateMeasurements = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Weights, template);
+            var templateMeasurements = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, template);
             var templateModifier = templateMeasurements.First();
 
             if (templateModifier.Amount == 0)
@@ -309,10 +308,10 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             else
                 multiplier = GetMultiplier(TableNameConstants.TypeAndAmount.Lengths, creature, source.Gender, source.Length.Value);
 
-            var weights = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Weights, creature);
+            var weights = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, creature);
             var baseWeight = weights.First(h => h.Type == source.Gender);
             var weightModifier = weights.First(h => h.Type == creature);
-            var rawCreatureRoll = GetMultipliedRoll(baseWeight.RawAmount, multiplier, weightModifier.RawAmount);
+            var rawCreatureRoll = GetMultipliedRoll(baseWeight.Roll, multiplier, weightModifier.Roll);
 
             if (templateModifier.Amount < 0)
                 source.Weight.Value -= GetBelowAverageDecrease(source.Weight.Value, rawCreatureRoll);
@@ -324,7 +323,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         private double GetMultiplier(string tablename, string creature, string gender, double baseValue)
         {
-            var measurements = typeAndAmountSelector.Select(tablename, creature);
+            var measurements = typeAndAmountSelector.SelectFrom(Config.Name, tablename, creature);
             var baseMeasurement = measurements.First(h => h.Type == gender);
             return baseValue - baseMeasurement.Amount;
         }

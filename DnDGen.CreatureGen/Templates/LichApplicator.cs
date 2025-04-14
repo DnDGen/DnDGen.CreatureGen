@@ -23,7 +23,7 @@ namespace DnDGen.CreatureGen.Templates
     internal class LichApplicator : TemplateApplicator
     {
         private readonly ICollectionSelector collectionSelector;
-        private readonly ICreatureDataSelector creatureDataSelector;
+        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
         private readonly Dice dice;
         private readonly IAttacksGenerator attacksGenerator;
         private readonly IFeatsGenerator featsGenerator;

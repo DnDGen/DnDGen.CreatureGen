@@ -9,7 +9,7 @@ using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Languages;
-using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -34,10 +34,9 @@ namespace DnDGen.CreatureGen.Templates
         private readonly Dice dice;
         private readonly IAlignmentGenerator alignmentGenerator;
         private readonly IMagicGenerator magicGenerator;
-        private readonly ICreatureDataSelector creatureDataSelector;
-        private readonly IAdjustmentsSelector adjustmentSelector;
+        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
         private readonly ICreaturePrototypeFactory prototypeFactory;
-        private readonly ITypeAndAmountSelector typeAndAmountSelector;
+        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private readonly IDemographicsGenerator demographicsGenerator;
 
         public HalfDragonApplicator(
@@ -49,10 +48,9 @@ namespace DnDGen.CreatureGen.Templates
             IAlignmentGenerator alignmentGenerator,
             Dice dice,
             IMagicGenerator magicGenerator,
-            ICreatureDataSelector creatureDataSelector,
-            IAdjustmentsSelector adjustmentSelector,
+            ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
             ICreaturePrototypeFactory prototypeFactory,
-            ITypeAndAmountSelector typeAndAmountSelector,
+            ICollectionTypeAndAmountSelector typeAndAmountSelector,
             IDemographicsGenerator demographicsGenerator)
         {
             this.collectionSelector = collectionSelector;

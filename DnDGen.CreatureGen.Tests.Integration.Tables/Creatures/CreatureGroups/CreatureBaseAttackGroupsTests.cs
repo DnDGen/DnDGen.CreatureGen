@@ -33,7 +33,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Types.Undead)]
         public void CreatureBaseAttackGroup(string baseAttack, params string[] group)
         {
-            AssertDistinctCollection(baseAttack, group);
+            AssertCreatureGroup(baseAttack, group);
         }
     }
 }

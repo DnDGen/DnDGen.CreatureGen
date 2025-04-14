@@ -56,7 +56,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
             AssertCollection(table[name], collection, name);
         }
 
-        private void AssertCollection(IEnumerable<string> source, IEnumerable<string> expected, string message)
+        private void AssertCollection(IEnumerable<string> source, IEnumerable<string> expected, string message = "")
         {
             Assert.That(source.OrderBy(s => s), Is.EquivalentTo(expected.OrderBy(e => e)), message);
         }
@@ -117,14 +117,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
 
         public virtual void AssertDistinctCollection(string name, params string[] collection)
         {
-            AssertUniqueCollection(collection, $"{name}: Expected");
-            AssertCollection(name, collection);
-            AssertUniqueCollection(table[name], $"{name}: Actual");
+            Assert.That(table, Contains.Key(name));
+            AssertDistinctCollection(table[name], collection, name);
+        }
+
+        public virtual void AssertDistinctCollection(IEnumerable<string> actual, IEnumerable<string> expected, string message = "")
+        {
+            AssertUniqueCollection(expected, $"{message}: Expected");
+            AssertCollection(actual, expected);
+            AssertUniqueCollection(actual, $"{message}: Actual");
         }
 
         protected IEnumerable<string> ExplodeCollection(string tableName, string collectionName) => ExplodeRecursive(tableName, collectionName);
 
-        private IEnumerable<string> ExplodeRecursive(string tableName, string collectionName)
+        private List<string> ExplodeRecursive(string tableName, string collectionName)
         {
             var rootCollection = collectionSelector.SelectFrom(Config.Name, tableName, collectionName);
             var explodedCollection = new List<string>();

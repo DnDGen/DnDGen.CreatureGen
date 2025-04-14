@@ -1,8 +1,8 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Items;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +11,10 @@ namespace DnDGen.CreatureGen.Generators.Abilities
 {
     internal class AbilitiesGenerator : IAbilitiesGenerator
     {
-        private readonly ITypeAndAmountSelector typeAndAmountSelector;
+        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private readonly Dice dice;
 
-        public AbilitiesGenerator(ITypeAndAmountSelector typeAndAmountSelector, Dice dice)
+        public AbilitiesGenerator(ICollectionTypeAndAmountSelector typeAndAmountSelector, Dice dice)
         {
             this.typeAndAmountSelector = typeAndAmountSelector;
             this.dice = dice;
@@ -22,9 +22,9 @@ namespace DnDGen.CreatureGen.Generators.Abilities
 
         public Dictionary<string, Ability> GenerateFor(string creatureName, AbilityRandomizer randomizer, Demographics demographics)
         {
-            var abilitySelections = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, creatureName);
-            var allAbilities = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, GroupConstants.All);
-            var ageAbilities = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, demographics.Age.Description);
+            var abilitySelections = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, creatureName);
+            var allAbilities = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, GroupConstants.All);
+            var ageAbilities = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, demographics.Age.Description);
             var abilities = new Dictionary<string, Ability>();
 
             foreach (var selection in allAbilities)

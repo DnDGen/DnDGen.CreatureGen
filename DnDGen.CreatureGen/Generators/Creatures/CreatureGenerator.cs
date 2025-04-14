@@ -11,6 +11,7 @@ using DnDGen.CreatureGen.Generators.Languages;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Verifiers;
@@ -32,7 +33,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private readonly IAbilitiesGenerator abilitiesGenerator;
         private readonly ISkillsGenerator skillsGenerator;
         private readonly IFeatsGenerator featsGenerator;
-        private readonly ICreatureDataSelector creatureDataSelector;
+        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
         private readonly IHitPointsGenerator hitPointsGenerator;
         private readonly IArmorClassGenerator armorClassGenerator;
         private readonly ISavesGenerator savesGenerator;
@@ -51,7 +52,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             IAbilitiesGenerator abilitiesGenerator,
             ISkillsGenerator skillsGenerator,
             IFeatsGenerator featsGenerator,
-            ICreatureDataSelector creatureDataSelector,
+            ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
             IHitPointsGenerator hitPointsGenerator,
             IArmorClassGenerator armorClassGenerator,
             ISavesGenerator savesGenerator,
@@ -96,7 +97,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             }
 
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
-            var validCreatures = collectionsSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, group);
+            var validCreatures = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, group);
 
             if (filters?.CleanTemplates?.Any() != true)
             {
@@ -182,7 +183,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var compatibleCreatures = GetCreaturesOfTemplate(CreatureConstants.Templates.None, creatureGroup, asCharacter, filters);
             validCreatures.AddRange(compatibleCreatures);
 
-            var templates = collectionsSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
+            var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
 
             //This will weight things in favor of non-templated creatures
             //INFO: Using this instead of the creature verifier, so that we can ensure compatiblity with the specified creature group
@@ -206,7 +207,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var randomCreature = collectionsSelector.SelectRandomFrom(validCreatures);
 
-            var templates = collectionsSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
+            var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
             if (!templates.Contains(randomCreature))
                 return (randomCreature, CreatureConstants.Templates.None);
 
@@ -260,7 +261,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 Name = creatureName
             };
 
-            var creatureData = creatureDataSelector.SelectFor(creatureName);
+            var creatureData = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, creatureName);
             creature.Size = creatureData.Size;
             creature.Space.Value = creatureData.Space;
             creature.Reach.Value = creatureData.Reach;
@@ -276,9 +277,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             abilityRandomizer ??= new AbilityRandomizer();
             creature.Abilities = abilitiesGenerator.GenerateFor(creatureName, abilityRandomizer, creature.Demographics);
 
-            if (advancementSelector.IsAdvanced(creatureName, filters?.ChallengeRating))
+            if (advancementSelector.IsAdvanced(creatureName, templates, filters?.ChallengeRating))
             {
-                var advancement = advancementSelector.SelectRandomFor(creatureName, templates, creature.Type, creature.Size, creature.ChallengeRating);
+                var advancement = advancementSelector.SelectRandomFor(creatureName, templates);
 
                 creature.IsAdvanced = true;
                 creature.Size = advancement.Size;

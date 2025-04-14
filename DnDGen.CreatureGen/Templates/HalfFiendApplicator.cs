@@ -33,7 +33,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly Dice dice;
         private readonly IMagicGenerator magicGenerator;
         private readonly IAdjustmentsSelector adjustmentSelector;
-        private readonly ICreatureDataSelector creatureDataSelector;
+        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
         private readonly ICreaturePrototypeFactory prototypeFactory;
         private readonly IDemographicsGenerator demographicsGenerator;
 

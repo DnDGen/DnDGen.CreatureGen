@@ -4,6 +4,8 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Helpers;
+using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,8 +49,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             var monsterFeats = FeatConstants.Monster.All();
             var craftFeats = FeatConstants.MagicItemCreation.All();
             var metamagicFeats = FeatConstants.Metamagic.All();
+            var featsWithFoci = GetFeatsWithFociAbilityRequirementNames();
 
-            var names = feats.Union(monsterFeats).Union(craftFeats).Union(metamagicFeats);
+            var names = feats
+                .Union(monsterFeats)
+                .Union(craftFeats)
+                .Union(metamagicFeats)
+                .Union(featsWithFoci);
 
             AssertCollectionNames(names);
         }
@@ -202,7 +209,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             bool spellLikeAbility,
             bool equipment)
         {
-            var data = Infrastructure.Helpers.DataHelper.Parse(new FeatDataSelection
+            var data = DataHelper.Parse(new FeatDataSelection
             {
                 Feat = name,
                 RequiredBaseAttack = baseAttackRequirement,
@@ -226,6 +233,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             });
 
             AssertCollection(name, data);
+        }
+
+        [TestCase(FeatConstants.WeaponProficiency_Exotic, WeaponConstants.BastardSword)]
+        [TestCase(FeatConstants.WeaponProficiency_Exotic, WeaponConstants.DwarvenWaraxe)]
+        [TestCase(FeatConstants.WeaponProficiency_Martial, WeaponConstants.DwarvenWaraxe)]
+        public void FeatData_FeatWithFocus(string name, string focus)
+        {
+            var nameWithFocus = name + focus;
+            var selection = DataHelper.Parse<FeatDataSelection>(table[name].Single());
+            selection.RequiredAbilities = requiredAbilities.ContainsKey(nameWithFocus) ? requiredAbilities[nameWithFocus] : [];
+
+            var data = DataHelper.Parse(selection);
+            AssertCollection(nameWithFocus, data);
         }
 
         private Dictionary<string, Dictionary<string, int>> GetRequiredAbilities()
@@ -266,6 +286,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
                 [FeatConstants.Monster.MultiweaponFighting_Greater] = new() { [AbilityConstants.Dexterity] = 19 },
                 [FeatConstants.Monster.MultiweaponFighting_Improved] = new() { [AbilityConstants.Dexterity] = 15 },
                 [FeatConstants.Monster.NaturalArmor_Improved] = new() { [AbilityConstants.Constitution] = 13 },
+
+                [$"{FeatConstants.WeaponProficiency_Exotic}/{WeaponConstants.BastardSword}"] = new() { [AbilityConstants.Strength] = 13 },
+                [$"{FeatConstants.WeaponProficiency_Exotic}/{WeaponConstants.DwarvenWaraxe}"] = new() { [AbilityConstants.Strength] = 13 },
+                [$"{FeatConstants.WeaponProficiency_Martial}/{WeaponConstants.DwarvenWaraxe}"] = new() { [AbilityConstants.Strength] = 13 },
             };
 
             return abilityRequirements;
@@ -383,6 +407,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             };
 
             return requiredSpeeds;
+        }
+
+        private IEnumerable<string> GetFeatsWithFociAbilityRequirementNames()
+        {
+            return
+            [
+                FeatConstants.WeaponProficiency_Exotic + WeaponConstants.BastardSword,
+                FeatConstants.WeaponProficiency_Exotic + WeaponConstants.DwarvenWaraxe,
+                FeatConstants.WeaponProficiency_Martial + WeaponConstants.DwarvenWaraxe,
+            ];
         }
     }
 }

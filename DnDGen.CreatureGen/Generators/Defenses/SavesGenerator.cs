@@ -2,7 +2,7 @@
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
-using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using System;
@@ -14,31 +14,38 @@ namespace DnDGen.CreatureGen.Generators.Defenses
     internal class SavesGenerator : ISavesGenerator
     {
         private readonly ICollectionSelector collectionsSelector;
-        private readonly IBonusSelector bonusSelector;
+        private readonly ICollectionDataSelector<BonusDataSelection> bonusSelector;
 
-        public SavesGenerator(ICollectionSelector collectionsSelector, IBonusSelector bonusSelector)
+        public SavesGenerator(ICollectionSelector collectionsSelector, ICollectionDataSelector<BonusDataSelection> bonusSelector)
         {
             this.collectionsSelector = collectionsSelector;
             this.bonusSelector = bonusSelector;
         }
 
-        public Dictionary<string, Save> GenerateWith(string creatureName, CreatureType creatureType, HitPoints hitPoints, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities)
+        public Dictionary<string, Save> GenerateWith(
+            string creatureName,
+            CreatureType creatureType,
+            HitPoints hitPoints,
+            IEnumerable<Feat> feats,
+            Dictionary<string, Ability> abilities)
         {
-            var saves = new Dictionary<string, Save>();
-
-            saves[SaveConstants.Fortitude] = GetFortitudeSave(creatureName, creatureType, hitPoints, feats, abilities);
-            saves[SaveConstants.Reflex] = GetReflexSave(creatureName, creatureType, hitPoints, feats, abilities);
-            saves[SaveConstants.Will] = GetWillSave(creatureName, creatureType, hitPoints, feats, abilities);
+            var saves = new Dictionary<string, Save>
+            {
+                [SaveConstants.Fortitude] = GetFortitudeSave(creatureName, creatureType, hitPoints, feats, abilities),
+                [SaveConstants.Reflex] = GetReflexSave(creatureName, creatureType, hitPoints, feats, abilities),
+                [SaveConstants.Will] = GetWillSave(creatureName, creatureType, hitPoints, feats, abilities)
+            };
 
             return saves;
         }
 
         private Save GetFortitudeSave(string creatureName, CreatureType creatureType, HitPoints hitPoints, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities)
         {
-            var save = new Save();
-
-            save.BaseAbility = abilities[AbilityConstants.Constitution];
-            save.BaseValue = GetSaveBaseValue(creatureName, hitPoints, SaveConstants.Fortitude);
+            var save = new Save
+            {
+                BaseAbility = abilities[AbilityConstants.Constitution],
+                BaseValue = GetSaveBaseValue(creatureName, hitPoints, SaveConstants.Fortitude)
+            };
 
             save = GetRacialSavingThrowBonuses(save, creatureName, creatureType, SaveConstants.Fortitude);
             save = GetFeatSavingThrowBonuses(save, feats, SaveConstants.Fortitude, abilities);
@@ -48,10 +55,11 @@ namespace DnDGen.CreatureGen.Generators.Defenses
 
         private Save GetReflexSave(string creatureName, CreatureType creatureType, HitPoints hitPoints, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities)
         {
-            var save = new Save();
-
-            save.BaseAbility = abilities[AbilityConstants.Dexterity];
-            save.BaseValue = GetSaveBaseValue(creatureName, hitPoints, SaveConstants.Reflex);
+            var save = new Save
+            {
+                BaseAbility = abilities[AbilityConstants.Dexterity],
+                BaseValue = GetSaveBaseValue(creatureName, hitPoints, SaveConstants.Reflex)
+            };
 
             save = GetRacialSavingThrowBonuses(save, creatureName, creatureType, SaveConstants.Reflex);
             save = GetFeatSavingThrowBonuses(save, feats, SaveConstants.Reflex, abilities);
@@ -61,9 +69,10 @@ namespace DnDGen.CreatureGen.Generators.Defenses
 
         private Save GetWillSave(string creatureName, CreatureType creatureType, HitPoints hitPoints, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities)
         {
-            var save = new Save();
-
-            save.BaseValue = GetSaveBaseValue(creatureName, hitPoints, SaveConstants.Will);
+            var save = new Save
+            {
+                BaseValue = GetSaveBaseValue(creatureName, hitPoints, SaveConstants.Will)
+            };
 
             if (feats.Any(f => f.Name == FeatConstants.SpecialQualities.Madness))
                 save.BaseAbility = abilities[AbilityConstants.Charisma];
@@ -90,14 +99,14 @@ namespace DnDGen.CreatureGen.Generators.Defenses
 
         private Save GetRacialSavingThrowBonuses(Save save, string creatureName, CreatureType creatureType, string saveName)
         {
-            var creatureBonuses = bonusSelector.SelectFor(TableNameConstants.TypeAndAmount.SaveBonuses, creatureName);
-            var creatureTypeBonuses = bonusSelector.SelectFor(TableNameConstants.TypeAndAmount.SaveBonuses, creatureType.Name);
+            var creatureBonuses = bonusSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SaveBonuses, creatureName);
+            var creatureTypeBonuses = bonusSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SaveBonuses, creatureType.Name);
 
             var bonuses = creatureBonuses.Union(creatureTypeBonuses);
 
             foreach (var subtype in creatureType.SubTypes)
             {
-                var subtypeBonuses = bonusSelector.SelectFor(TableNameConstants.TypeAndAmount.SaveBonuses, subtype);
+                var subtypeBonuses = bonusSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SaveBonuses, subtype);
                 bonuses = bonuses.Union(subtypeBonuses);
             }
 

@@ -26,7 +26,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IAttacksGenerator attacksGenerator;
         private readonly IFeatsGenerator featsGenerator;
         private readonly ICollectionSelector collectionSelector;
-        private readonly ICreatureDataSelector creatureDataSelector;
+        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
         private readonly IAdjustmentsSelector adjustmentSelector;
         private readonly IEnumerable<string> creatureTypes;
         private readonly ICreaturePrototypeFactory prototypeFactory;

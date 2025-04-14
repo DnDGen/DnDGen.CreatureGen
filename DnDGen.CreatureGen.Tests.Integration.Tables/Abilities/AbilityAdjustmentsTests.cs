@@ -1,6 +1,5 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
@@ -13,23 +12,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
     [TestFixture]
     public class AbilityAdjustmentsTests : TypesAndAmountsTests
     {
-        private ICollectionSelector collectionSelector;
-        private ITypeAndAmountSelector typesAndAmountsSelector;
+        private ICollectionTypeAndAmountSelector typesAndAmountsSelector;
 
         protected override string tableName => TableNameConstants.TypeAndAmount.AbilityAdjustments;
 
         [SetUp]
         public void Setup()
         {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
-            typesAndAmountsSelector = GetNewInstanceOf<ITypeAndAmountSelector>();
+            typesAndAmountsSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
         }
 
         [Test]
         public void AbilityAdjustmentsNames()
         {
             var creatures = CreatureConstants.GetAll();
-            var allAges = typesAndAmountsSelector.SelectAll(TableNameConstants.TypeAndAmount.AgeRolls);
+            var allAges = typesAndAmountsSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls);
             var ages = allAges.Values.SelectMany(v => v.Select(t => t.Type)).Distinct();
             var names = creatures
                 .Union(ages)
@@ -61,7 +58,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
 
             var creatures = CreatureConstants.GetAll();
             if (!creatures.Contains(name))
-                Assert.Pass();
+                Assert.Pass($"Only creatures have ability adjustments as multiples of 2. '{name}' is not a creature");
 
             foreach (var kvp in typesAndAmounts)
             {
@@ -3867,8 +3864,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         [TestCase(CreatureConstants.Types.Vermin, AbilityConstants.Intelligence)]
         public void Type_DoesNotHaveAbility(string creatureType, string ability)
         {
-            var creatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, creatureType);
-            var abilities = typesAndAmountsSelector.SelectAll(tableName);
+            var creatures = ExplodeCollection(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var abilities = typesAndAmountsSelector.SelectAllFrom(Config.Name, tableName);
 
             foreach (var creature in creatures)
             {
@@ -3890,8 +3887,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
         public void Type_HasAllAbilities(string creatureType)
         {
-            var creatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, creatureType);
-            var abilities = typesAndAmountsSelector.SelectAll(tableName);
+            var creatures = ExplodeCollection(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var abilities = typesAndAmountsSelector.SelectAllFrom(Config.Name, tableName);
             var templates = CreatureConstants.Templates.GetAll();
 
             //INFO: Templates handle typing differently, so we want to ignore those for this test
@@ -3909,8 +3906,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         [Test]
         public void AnimalsHaveLowIntelligence()
         {
-            var animals = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
-            var abilities = typesAndAmountsSelector.SelectAll(tableName);
+            var animals = ExplodeCollection(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
+            var abilities = typesAndAmountsSelector.SelectAllFrom(Config.Name, tableName);
 
             foreach (var animal in animals)
             {

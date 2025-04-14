@@ -13,7 +13,7 @@ namespace DnDGen.CreatureGen.Templates
     internal class NoneApplicator : TemplateApplicator
     {
         private readonly ICollectionSelector collectionSelector;
-        private readonly ICreatureDataSelector creatureDataSelector;
+        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
         private readonly IAdjustmentsSelector adjustmentSelector;
         private readonly ICreaturePrototypeFactory prototypeFactory;
 

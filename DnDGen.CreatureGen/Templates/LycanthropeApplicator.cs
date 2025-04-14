@@ -29,7 +29,7 @@ namespace DnDGen.CreatureGen.Templates
         public bool IsNatural { get; set; }
 
         private readonly ICollectionSelector collectionSelector;
-        private readonly ICreatureDataSelector creatureDataSelector;
+        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
         private readonly IHitPointsGenerator hitPointsGenerator;
         private readonly Dice dice;
         private readonly ITypeAndAmountSelector typeAndAmountSelector;

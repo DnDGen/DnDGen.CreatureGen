@@ -12,8 +12,8 @@
         public const string Characters = "Characters";
         public const string Deflection = "Deflection";
         public const string DodgeBonus = "Dodge Bonus";
-        public const string Exploded = "Exploded";
         public const string GoodBaseAttack = "Good Base Attack";
+        public const string HasSkeleton = "Has Skeleton";
         public const string Initiative = "Initiative";
         public const string ManualCrossbows = "Manual Crossbows";
         public const string NaturalArmor = "Natural Armor";
@@ -23,6 +23,7 @@
         public const string SkillSynergy = "Skill Synergy";
         public const string TakenMultipleTimes = "Taken Multiple Times";
         public const string Templates = "Templates";
+        public const string TREE = "TREE";
         public const string Unnatural = "Unnatural";
         public const string Untrained = "Untrained";
         public const string WeaponProficiency = "Weapon Proficiency";

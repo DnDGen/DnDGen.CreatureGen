@@ -1,7 +1,7 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using System;
@@ -13,45 +13,45 @@ namespace DnDGen.CreatureGen.Generators.Creatures
     internal class CreaturePrototypeFactory : ICreaturePrototypeFactory
     {
         private readonly ICollectionSelector collectionSelector;
-        private readonly IAdjustmentsSelector adjustmentSelector;
-        private readonly ICreatureDataSelector creatureDataSelector;
-        private readonly ITypeAndAmountSelector typeAndAmountSelector;
+        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
+        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
 
         public CreaturePrototypeFactory(
             ICollectionSelector collectionSelector,
-            IAdjustmentsSelector adjustmentSelector,
-            ICreatureDataSelector creatureDataSelector,
-            ITypeAndAmountSelector typeAndAmountSelector)
+            ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
+            ICollectionTypeAndAmountSelector typeAndAmountSelector)
         {
             this.collectionSelector = collectionSelector;
-            this.adjustmentSelector = adjustmentSelector;
             this.creatureDataSelector = creatureDataSelector;
             this.typeAndAmountSelector = typeAndAmountSelector;
         }
 
         public IEnumerable<CreaturePrototype> Build(IEnumerable<string> creatureNames, bool asCharacter)
         {
-            var allData = creatureDataSelector.SelectAll();
-            var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
+            var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
+            var allHitDice = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice);
             var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
             var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
-            var allAbilityAdjustments = typeAndAmountSelector.SelectAll(TableNameConstants.TypeAndAmount.AbilityAdjustments);
-            var allCasterLevels = typeAndAmountSelector.SelectAll(TableNameConstants.TypeAndAmount.Casters);
+            var allAbilityAdjustments = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments);
+            var allCasterLevels = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters);
             var abilityNames = allAbilityAdjustments[CreatureConstants.Human].Select(s => s.Type);
 
             foreach (var creature in creatureNames)
             {
-                var prototype = new CreaturePrototype();
-                prototype.Name = creature;
-                prototype.Abilities = allAbilityAdjustments[creature]
-                    .ToDictionary(a => a.Type, a => new Ability(a.Type) { RacialAdjustment = a.Amount });
-                prototype.Alignments = allAlignments[creature].Select(a => new Alignment(a)).Distinct().ToList();
-                prototype.CasterLevel = allData[creature].CasterLevel;
-                prototype.Size = allData[creature].Size;
-                prototype.ChallengeRating = allData[creature].ChallengeRating;
-                prototype.HitDiceQuantity = allHitDice[creature];
-                prototype.LevelAdjustment = allData[creature].LevelAdjustment;
-                prototype.Type = new CreatureType(allTypes[creature]);
+                var creatureData = allData[creature].Single();
+                var hitDice = allHitDice[creature].Single();
+                var prototype = new CreaturePrototype
+                {
+                    Name = creature,
+                    Abilities = allAbilityAdjustments[creature].ToDictionary(a => a.Type, a => new Ability(a.Type) { RacialAdjustment = a.Amount }),
+                    Alignments = [.. allAlignments[creature].Select(a => new Alignment(a)).Distinct()],
+                    CasterLevel = creatureData.CasterLevel,
+                    Size = creatureData.Size,
+                    ChallengeRating = creatureData.ChallengeRating,
+                    HitDiceQuantity = hitDice.AmountAsDouble,
+                    LevelAdjustment = creatureData.LevelAdjustment,
+                    Type = new CreatureType(allTypes[creature])
+                };
 
                 if (asCharacter && prototype.HitDiceQuantity <= 1 && prototype.Type.Name == CreatureConstants.Types.Humanoid)
                 {
@@ -69,7 +69,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 if (allCasterLevels[creature].Any())
                 {
                     var maxLevel = allCasterLevels[creature].Max(c => c.Amount);
-                    prototype.CasterLevel = Math.Max(maxLevel, allData[creature].CasterLevel);
+                    prototype.CasterLevel = Math.Max(maxLevel, creatureData.CasterLevel);
                 }
 
                 yield return prototype;

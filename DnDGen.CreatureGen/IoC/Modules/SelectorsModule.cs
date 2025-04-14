@@ -26,6 +26,7 @@ namespace DnDGen.CreatureGen.IoC.Modules
             Kernel.BindDataSelection<CreatureDataSelection>();
             Kernel.BindDataSelection<FeatDataSelection>();
             Kernel.BindDataSelection<SpecialQualityDataSelection>();
+            Kernel.BindDataSelection<SkillDataSelection>();
         }
     }
 }

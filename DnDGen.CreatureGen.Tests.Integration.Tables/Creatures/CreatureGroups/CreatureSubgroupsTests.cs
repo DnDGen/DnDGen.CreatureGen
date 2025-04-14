@@ -1,6 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System.Linq;
 
@@ -9,14 +8,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
     [TestFixture]
     public class CreatureSubgroupsTests : CreatureGroupsTableTests
     {
-        private ICollectionSelector collectionSelector;
-
-        [SetUp]
-        public void Setup()
-        {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
-        }
-
         [Test]
         public void CreatureGroupNames()
         {
@@ -576,7 +567,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.YethHound,
             };
 
-            AssertDistinctCollection(GroupConstants.All, entries);
+            AssertCreatureGroup(GroupConstants.All, entries);
         }
 
         [Test]
@@ -729,7 +720,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Troll,
             };
 
-            AssertDistinctCollection(GroupConstants.Characters, entries);
+            AssertCreatureGroup(GroupConstants.Characters, entries);
         }
 
         [Test]
@@ -750,7 +741,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Templates.HalfFiend,
             };
 
-            AssertDistinctCollection(GroupConstants.Templates, entries);
+            AssertCreatureGroup(GroupConstants.Templates, entries);
         }
 
         [Test]
@@ -963,7 +954,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Types.MonstrousHumanoid,
             };
 
-            AssertDistinctCollection(CreatureConstants.Groups.HasSkeleton, entries);
+            AssertCreatureGroup(GroupConstants.HasSkeleton, entries);
         }
 
         [Test]
@@ -985,7 +976,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 Assert.That(group, Does.Not.Contain(forbiddenEntry), name);
 
             //INFO: Remove the name from the group, or we get infinite recursion traversing itself as a subgroup
-            var subgroupNames = group.Intersect(table.Keys).Except(new[] { name });
+            var subgroupNames = group.Intersect(table.Keys).Except([name]);
 
             foreach (var subgroupName in subgroupNames)
             {
@@ -998,30 +989,33 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         public void All_Exploded_ContainsAllCreatures()
         {
             var creatures = CreatureConstants.GetAll();
-            var allCreatures = collectionSelector.Explode(Config.Name, tableName, GroupConstants.All);
+            var explodedCreatures = ExplodeCollection(tableName, GroupConstants.All + GroupConstants.TREE);
 
-            //HACK: The failure message for Is.Equivalent is truncated because of the size of the collection
-            //So, we will alter the assertions
-            Assert.That(creatures, Is.Unique, "From GetAll");
-            Assert.That(allCreatures, Is.Unique, "From Explode");
-            Assert.That(creatures.Except(allCreatures), Is.Empty, "From GetAll");
-            Assert.That(allCreatures.Except(creatures), Is.Empty, "From Explode");
+            Assert.That(creatures, Is.Unique);
+            Assert.That(explodedCreatures, Is.Unique.And.EquivalentTo(creatures));
+            Assert.That(table[GroupConstants.All], Is.Unique.And.EquivalentTo(creatures));
         }
 
         [Test]
         public void Characters_Exploded_ContainsAllCharacterCreatures()
         {
             var characters = CreatureConstants.GetAllCharacters();
-            var allCharacters = collectionSelector.Explode(Config.Name, tableName, GroupConstants.Characters);
-            Assert.That(allCharacters, Is.EquivalentTo(characters));
+            var explodedCharacters = ExplodeCollection(tableName, GroupConstants.Characters + GroupConstants.TREE);
+
+            Assert.That(characters, Is.Unique);
+            Assert.That(explodedCharacters, Is.Unique.And.EquivalentTo(characters));
+            Assert.That(table[GroupConstants.Characters], Is.Unique.And.EquivalentTo(characters));
         }
 
         [Test]
         public void Templates_Exploded_ContainsAllTemplates()
         {
-            var templates = CreatureConstants.Templates.GetAll().Except(new[] { CreatureConstants.Templates.None });
-            var allTemplates = collectionSelector.Explode(Config.Name, tableName, GroupConstants.Templates);
-            Assert.That(allTemplates, Is.EquivalentTo(templates));
+            var templates = CreatureConstants.Templates.GetAll().Except([CreatureConstants.Templates.None]);
+            var explodedTemplates = ExplodeCollection(tableName, GroupConstants.Templates + GroupConstants.TREE);
+
+            Assert.That(templates, Is.Unique);
+            Assert.That(explodedTemplates, Is.Unique.And.EquivalentTo(templates));
+            Assert.That(table[GroupConstants.Templates], Is.Unique.And.EquivalentTo(templates));
         }
     }
 }

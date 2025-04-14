@@ -249,7 +249,6 @@ namespace DnDGen.CreatureGen.Creatures
             public const string Hag = "Hag";
             public const string HalfDragon = "Half-Dragon";
             public const string Halfling = "Halfling";
-            public const string HasSkeleton = "Has Skeleton";
             public const string Horse = "Horse";
             public const string Hydra = "Hydra";
             public const string Inevitable = "Inevitable";

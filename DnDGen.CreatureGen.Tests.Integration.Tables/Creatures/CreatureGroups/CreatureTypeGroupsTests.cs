@@ -1,23 +1,13 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
-using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 {
     [TestFixture]
     public class CreatureTypeGroupsTests : CreatureGroupsTableTests
     {
-        private ICollectionSelector collectionSelector;
-
-        [SetUp]
-        public void Setup()
-        {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
-        }
-
         [Test]
         public void CreatureGroupNames()
         {
@@ -381,7 +371,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Groups.Tojanida)]
         public void CreatureTypeGroup(string name, params string[] entries)
         {
-            AssertDistinctCollection(name, entries);
+            AssertCreatureGroup(name, entries);
         }
 
         [Test]
@@ -416,7 +406,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.WillOWisp,
             };
 
-            AssertDistinctCollection(CreatureConstants.Types.Aberration, creatures);
+            AssertCreatureGroup(CreatureConstants.Types.Aberration, creatures);
         }
 
         [Test]
@@ -489,7 +479,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Wolverine_Dire,
             };
 
-            AssertDistinctCollection(CreatureConstants.Types.Animal, creatures);
+            AssertCreatureGroup(CreatureConstants.Types.Animal, creatures);
         }
 
         [Test]
@@ -545,7 +535,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.YethHound,
             };
 
-            AssertDistinctCollection(CreatureConstants.Types.Subtypes.Extraplanar, creatures);
+            AssertCreatureGroup(CreatureConstants.Types.Subtypes.Extraplanar, creatures);
         }
 
         [Test]
@@ -602,7 +592,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Yrthak,
             };
 
-            AssertDistinctCollection(CreatureConstants.Types.MagicalBeast, creatures);
+            AssertCreatureGroup(CreatureConstants.Types.MagicalBeast, creatures);
         }
 
         [Test]
@@ -661,40 +651,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.YethHound,
             };
 
-            base.AssertDistinctCollection(CreatureConstants.Types.Outsider, creatures);
+            AssertCreatureGroup(CreatureConstants.Types.Outsider, creatures);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreatureTypeMatchesCreatureGroupType(string creature)
+        public void CreatureTypeAndSubtypesMatchesCreatureGroupTypeAndSubtypes(string creature)
         {
             var types = collectionMapper.Map(Config.Name, TableNameConstants.Collection.CreatureTypes);
             Assert.That(types.Keys, Contains.Item(creature));
             Assert.That(types[creature], Is.Not.Empty);
 
-            var type = types[creature].First();
-            Assert.That(table.Keys, Contains.Item(type), "Table keys");
-
-            var creaturesOfType = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, type);
-            Assert.That(creaturesOfType, Contains.Item(creature), type);
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreatureSubtypesMatchCreatureGroupSubtypes(string creature)
-        {
-            var types = collectionMapper.Map(Config.Name, TableNameConstants.Collection.CreatureTypes);
-            Assert.That(types.Keys, Contains.Item(creature));
-            Assert.That(types[creature], Is.Not.Empty);
-
-            //INFO: Have to remove types, as augmented creatures have original creature type as a subtype
-            var allTypes = CreatureConstants.Types.GetAll();
-            var subtypes = types[creature].Skip(1).Except(allTypes);
-
-            foreach (var subtype in subtypes)
+            foreach (var type in types[creature])
             {
-                Assert.That(table.Keys, Contains.Item(subtype), "Table keys");
-                var creaturesOfSubtype = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, subtype);
+                Assert.That(table.Keys, Contains.Item(type), "Table keys");
 
-                Assert.That(creaturesOfSubtype, Contains.Item(creature), subtype);
+                var explodedCreaturesOfType = ExplodeCollection(TableNameConstants.Collection.CreatureGroups, type + GroupConstants.TREE);
+                Assert.That(explodedCreaturesOfType, Contains.Item(creature), type);
+                Assert.That(table[type], Contains.Item(creature), type);
             }
         }
     }
