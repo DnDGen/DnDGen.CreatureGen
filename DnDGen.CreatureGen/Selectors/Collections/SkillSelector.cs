@@ -7,6 +7,7 @@ using System.Linq;
 
 namespace DnDGen.CreatureGen.Selectors.Collections
 {
+    [Obsolete("use collection data selector instead")]
     internal class SkillSelector : ISkillSelector
     {
         private readonly ICollectionSelector collectionSelector;
@@ -31,6 +32,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             return selection;
         }
 
+        [Obsolete("use collection data selector instead - <BonusDataSelection>(Config.Name, TableNameConstants.Collection.SkillBonuses, xxx)")]
         public IEnumerable<BonusDataSelection> SelectBonusesFor(string source)
         {
             var bonusSelections = bonusSelector.SelectFor(TableNameConstants.TypeAndAmount.SkillBonuses, source);

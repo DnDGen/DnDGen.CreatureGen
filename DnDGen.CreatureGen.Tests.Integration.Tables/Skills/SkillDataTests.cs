@@ -1,27 +1,17 @@
 ﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Helpers;
 using NUnit.Framework;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 {
     [TestFixture]
-    public class SkillDataTests : DataTests
+    public class SkillDataTests : CollectionTests
     {
-        protected override string tableName
-        {
-            get { return TableNameConstants.Collection.SkillData; }
-        }
-
-        protected override void PopulateIndices(IEnumerable<string> collection)
-        {
-            indices[DataIndexConstants.SkillSelectionData.BaseAbilityNameIndex] = "Base Ability Name";
-            indices[DataIndexConstants.SkillSelectionData.FocusIndex] = "Focus";
-            indices[DataIndexConstants.SkillSelectionData.RandomFociQuantityIndex] = "Random Foci Quantity";
-            indices[DataIndexConstants.SkillSelectionData.SkillNameIndex] = "Skill Name";
-        }
+        protected override string tableName => TableNameConstants.Collection.SkillData;
 
         [Test]
         public void SkillDataNames()
@@ -106,13 +96,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             if (string.IsNullOrEmpty(skillName))
                 skillName = name;
 
-            var data = new string[4];
-            data[DataIndexConstants.SkillSelectionData.BaseAbilityNameIndex] = baseAbility;
-            data[DataIndexConstants.SkillSelectionData.RandomFociQuantityIndex] = randomFoci.ToString();
-            data[DataIndexConstants.SkillSelectionData.SkillNameIndex] = skillName;
-            data[DataIndexConstants.SkillSelectionData.FocusIndex] = string.Empty;
+            var data = DataHelper.Parse(new SkillDataSelection
+            {
+                SkillName = skillName,
+                BaseAbilityName = baseAbility,
+                RandomFociQuantity = randomFoci
+            });
 
-            AssertSegmentedData(name, data);
+            AssertCollection(name, data);
         }
 
         [TestCase(SkillConstants.Craft, AbilityConstants.Intelligence, SkillConstants.Foci.Craft.Alchemy)]
@@ -262,15 +253,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(SkillConstants.Profession, AbilityConstants.Wisdom, SkillConstants.Foci.Profession.WildernessGuide)]
         public void SkillSelectionData(string skillName, string baseAbility, string focus)
         {
-            var name = $"{skillName}/{focus}";
+            var name = SkillConstants.Build(skillName, focus);
 
-            var data = new string[4];
-            data[DataIndexConstants.SkillSelectionData.BaseAbilityNameIndex] = baseAbility;
-            data[DataIndexConstants.SkillSelectionData.RandomFociQuantityIndex] = 0.ToString();
-            data[DataIndexConstants.SkillSelectionData.SkillNameIndex] = skillName;
-            data[DataIndexConstants.SkillSelectionData.FocusIndex] = focus;
+            var data = DataHelper.Parse(new SkillDataSelection
+            {
+                SkillName = skillName,
+                BaseAbilityName = baseAbility,
+                Focus = focus
+            });
 
-            AssertSegmentedData(name, data);
+            AssertCollection(name, data);
         }
     }
 }

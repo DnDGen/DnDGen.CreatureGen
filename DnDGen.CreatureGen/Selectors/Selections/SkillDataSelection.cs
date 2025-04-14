@@ -16,7 +16,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public override Func<string[], SkillDataSelection> MapTo => Map;
         public override Func<SkillDataSelection, string[]> MapFrom => Map;
 
-        public override int SectionCount => 10;
+        public override int SectionCount => 4;
 
         public static SkillDataSelection Map(string[] splitData)
         {
@@ -34,16 +34,10 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public static string[] Map(SkillDataSelection selection)
         {
             var data = new string[selection.SectionCount];
-            data[DataIndexConstants.AdvancementSelectionData.Size] = selection.Size;
-            data[DataIndexConstants.AdvancementSelectionData.Space] = selection.Space.ToString();
-            data[DataIndexConstants.AdvancementSelectionData.Reach] = selection.Reach.ToString();
-            data[DataIndexConstants.AdvancementSelectionData.AdditionalHitDiceRoll] = selection.AdditionalHitDiceRoll;
-            data[DataIndexConstants.AdvancementSelectionData.StrengthAdjustment] = selection.StrengthAdjustment.ToString();
-            data[DataIndexConstants.AdvancementSelectionData.ConstitutionAdjustment] = selection.ConstitutionAdjustment.ToString();
-            data[DataIndexConstants.AdvancementSelectionData.DexterityAdjustment] = selection.DexterityAdjustment.ToString();
-            data[DataIndexConstants.AdvancementSelectionData.NaturalArmorAdjustment] = selection.NaturalArmorAdjustment.ToString();
-            data[DataIndexConstants.AdvancementSelectionData.ChallengeRatingDivisor] = selection.ChallengeRatingDivisor.ToString();
-            data[DataIndexConstants.AdvancementSelectionData.AdjustedChallengeRating] = selection.AdjustedChallengeRating;
+            data[DataIndexConstants.SkillSelectionData.BaseAbilityNameIndex] = selection.BaseAbilityName;
+            data[DataIndexConstants.SkillSelectionData.SkillNameIndex] = selection.SkillName;
+            data[DataIndexConstants.SkillSelectionData.RandomFociQuantityIndex] = selection.RandomFociQuantity.ToString();
+            data[DataIndexConstants.SkillSelectionData.FocusIndex] = selection.Focus;
 
             return data;
         }
