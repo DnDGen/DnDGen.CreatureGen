@@ -1,7 +1,6 @@
 ﻿using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.TestData;
 using NUnit.Framework;
 using System.Linq;
 
@@ -71,13 +70,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
                 GroupConstants.All,
             };
 
-            names = names
+            names = [.. names
                 .Union(creatures)
                 .Union(templates)
                 .Union(creatures.Select(c => c + GroupConstants.TREE))
                 .Union(templates.Select(c => c + GroupConstants.TREE))
-                .Union(templates.Select(c => c + GroupConstants.AllowedInput))
-                .ToArray();
+                .Union(templates.Select(c => c + GroupConstants.AllowedInput))];
 
             AssertCollectionNames(names);
         }
@@ -1023,6 +1021,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         public void AlignmentGroup(string name, params string[] collection)
         {
             AssertCollection(name + GroupConstants.TREE, collection);
+
+            var exploded = ExplodeCollection(tableName, name + GroupConstants.TREE);
+            AssertCollection(name, [.. exploded]);
         }
 
         [TestCase(AlignmentConstants.LawfulEvil)]
@@ -1096,17 +1097,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
                 Assert.That(table, Contains.Key(creature), creature);
                 Assert.That(table[creature], Has.Count.EqualTo(1).And.Contains(AlignmentConstants.TrueNeutral), creature);
             }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void AllCreaturesHaveValidExplodedAlignment(string creature)
-        {
-            var alignments = ExplodeCollection(tableName, creature + GroupConstants.TREE);
-            Assert.That(alignments, Is.Not.Empty, creature);
-            Assert.That(alignments, Is.SubsetOf(table[GroupConstants.All]), creature);
-
-            AssertCollection(creature, [.. alignments]);
         }
 
         [TestCase(CreatureConstants.Templates.CelestialCreature,

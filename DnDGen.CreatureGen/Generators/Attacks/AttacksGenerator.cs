@@ -4,7 +4,6 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using System;
@@ -16,13 +15,13 @@ namespace DnDGen.CreatureGen.Generators.Attacks
     internal class AttacksGenerator : IAttacksGenerator
     {
         private readonly ICollectionSelector collectionSelector;
-        private readonly IAdjustmentsSelector adjustmentsSelector;
+        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private readonly IAttackSelector attackSelector;
 
-        public AttacksGenerator(ICollectionSelector collectionSelector, IAdjustmentsSelector adjustmentsSelector, IAttackSelector attackSelector)
+        public AttacksGenerator(ICollectionSelector collectionSelector, ICollectionTypeAndAmountSelector typeAndAmountSelector, IAttackSelector attackSelector)
         {
             this.collectionSelector = collectionSelector;
-            this.adjustmentsSelector = adjustmentsSelector;
+            this.typeAndAmountSelector = typeAndAmountSelector;
             this.attackSelector = attackSelector;
         }
 
@@ -37,115 +36,44 @@ namespace DnDGen.CreatureGen.Generators.Attacks
                 creatureType.Name,
                 GroupConstants.GoodBaseAttack, GroupConstants.AverageBaseAttack, GroupConstants.PoorBaseAttack);
 
-            switch (baseAttackQuality)
+            return baseAttackQuality switch
             {
-                case GroupConstants.GoodBaseAttack: return GetGoodBaseAttackBonus(hitPoints.RoundedHitDiceQuantity);
-                case GroupConstants.AverageBaseAttack: return GetAverageBaseAttackBonus(hitPoints.RoundedHitDiceQuantity);
-                case GroupConstants.PoorBaseAttack: return GetPoorBaseAttackBonus(hitPoints.RoundedHitDiceQuantity);
-                default: throw new ArgumentException($"{creatureType.Name} has no base attack");
-            }
+                GroupConstants.GoodBaseAttack => GetGoodBaseAttackBonus(hitPoints.RoundedHitDiceQuantity),
+                GroupConstants.AverageBaseAttack => GetAverageBaseAttackBonus(hitPoints.RoundedHitDiceQuantity),
+                GroupConstants.PoorBaseAttack => GetPoorBaseAttackBonus(hitPoints.RoundedHitDiceQuantity),
+                _ => throw new ArgumentException($"{creatureType.Name} has no base attack"),
+            };
         }
 
-        private int GetGoodBaseAttackBonus(int hitDiceQuantity)
-        {
-            return hitDiceQuantity;
-        }
-
-        private int GetAverageBaseAttackBonus(int hitDiceQuantity)
-        {
-            return hitDiceQuantity * 3 / 4;
-        }
-
-        private int GetPoorBaseAttackBonus(int hitDiceQuantity)
-        {
-            return hitDiceQuantity / 2;
-        }
+        private int GetGoodBaseAttackBonus(int hitDiceQuantity) => hitDiceQuantity;
+        private int GetAverageBaseAttackBonus(int hitDiceQuantity) => hitDiceQuantity * 3 / 4;
+        private int GetPoorBaseAttackBonus(int hitDiceQuantity) => hitDiceQuantity / 2;
 
         public int? GenerateGrappleBonus(string creature, string size, int baseAttackBonus, Ability strength)
         {
             if (!strength.HasScore)
                 return null;
 
-            var sizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.GrappleBonuses, size);
-            var creatureModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.GrappleBonuses, creature);
-            return baseAttackBonus + strength.Modifier + sizeModifier + creatureModifier;
+            var sizeModifier = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.Adjustments.GrappleBonuses, size);
+            var creatureModifier = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.Adjustments.GrappleBonuses, creature);
+            return baseAttackBonus + strength.Modifier + sizeModifier.Amount + creatureModifier.Amount;
         }
 
         public IEnumerable<Attack> GenerateAttacks(
             string creatureName,
-            string originalSize,
             string size,
             int baseAttackBonus,
             Dictionary<string, Ability> abilities,
             int hitDiceQuantity,
             string gender)
         {
-            var attackSelections = attackSelector.Select(creatureName, originalSize, size);
-            var sizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, size);
-            var attacks = new List<Attack>();
-
-            foreach (var attackSelection in attackSelections)
-            {
-                if (!attackSelection.RequirementsMet(gender))
-                    continue;
-
-                var attack = new Attack();
-                attacks.Add(attack);
-
-                attack.Damages = attackSelection.Damages;
-                attack.DamageEffect = attackSelection.DamageEffect;
-                attack.DamageBonus = GetDamageBonus(abilities, attackSelection.DamageBonusMultiplier);
-                attack.Name = attackSelection.Name;
-                attack.IsMelee = attackSelection.IsMelee;
-                attack.IsNatural = attackSelection.IsNatural;
-                attack.IsPrimary = attackSelection.IsPrimary;
-                attack.IsSpecial = attackSelection.IsSpecial;
-                attack.AttackType = attackSelection.AttackType;
-
-                attack.Frequency = new Frequency
-                {
-                    Quantity = attackSelection.FrequencyQuantity,
-                    TimePeriod = attackSelection.FrequencyTimePeriod
-                };
-
-                if (!string.IsNullOrEmpty(attackSelection.SaveAbility) || !string.IsNullOrEmpty(attackSelection.Save))
-                {
-                    attack.Save = new SaveDieCheck
-                    {
-                        BaseValue = 10 + attackSelection.SaveDcBonus,
-                        Save = attackSelection.Save
-                    };
-
-                    if (attack.IsNatural && !string.IsNullOrEmpty(attackSelection.SaveAbility))
-                    {
-                        attack.Save.BaseAbility = abilities[attackSelection.SaveAbility];
-                        attack.Save.BaseValue += hitDiceQuantity / 2;
-                    }
-                }
-
-                attack.BaseAttackBonus = baseAttackBonus;
-                attack.SizeModifier = sizeModifier;
-                attack.BaseAbility = GetAbilityForAttack(abilities, attackSelection);
-            }
+            var attackSelections = attackSelector.Select(creatureName, size);
+            var sizeModifier = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.Adjustments.SizeModifiers, size);
+            var attacks = attackSelections
+                .Where(s => s.RequirementsMet(gender))
+                .Select(s => Attack.From(s, abilities, hitDiceQuantity, baseAttackBonus, sizeModifier.Amount));
 
             return attacks;
-        }
-
-        private int GetDamageBonus(Dictionary<string, Ability> abilities, double multiplier)
-        {
-            var modifier = abilities[AbilityConstants.Strength].Modifier;
-            if (modifier < 0)
-                return modifier;
-
-            return Convert.ToInt32(Math.Floor(abilities[AbilityConstants.Strength].Modifier * multiplier));
-        }
-
-        private Ability GetAbilityForAttack(Dictionary<string, Ability> abilities, AttackDataSelection attackSelection)
-        {
-            if (!attackSelection.IsMelee || !abilities[AbilityConstants.Strength].HasScore)
-                return abilities[AbilityConstants.Dexterity];
-
-            return abilities[AbilityConstants.Strength];
         }
 
         public IEnumerable<Attack> ApplyAttackBonuses(IEnumerable<Attack> attacks, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities)

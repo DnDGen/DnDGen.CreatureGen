@@ -123,7 +123,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             {
                 var weapon = creature.Equipment.Weapons.FirstOrDefault(w => w.Name == attack.Name);
                 Assert.That(weapon, Is.Not.Null, $"{creature.Summary}: {attack.Name}");
-                Assert.That(weapon.DamageDescription, Is.Not.Empty, $"{creature.Summary}: {weapon.Summary}");
+                Assert.That(weapon.DamageSummary, Is.Not.Empty, $"{creature.Summary}: {weapon.Summary}");
                 Assert.That(weaponNames, Contains.Item(weapon.Name), $"{creature.Summary}: {weapon.Summary}");
 
                 Assert.That(attack.Damages, Is.Not.Empty.And.Count.EqualTo(weapon.Damages.Count), $"{creature.Summary}; Weapon: {weapon.Summary}");
@@ -132,13 +132,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
                 {
                     if (i == 0)
                     {
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Roll), $"{creature.Summary}; Weapon: {weapon.Summary}");
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Type), $"{creature.Summary}; Weapon: {weapon.Summary}");
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Condition), $"{creature.Summary}; Weapon: {weapon.Summary}");
+                        Assert.That(attack.DamageSummary, Contains.Substring(weapon.Damages[i].Roll), $"{creature.Summary}; Weapon: {weapon.Summary}");
+                        Assert.That(attack.DamageSummary, Contains.Substring(weapon.Damages[i].Type), $"{creature.Summary}; Weapon: {weapon.Summary}");
+                        Assert.That(attack.DamageSummary, Contains.Substring(weapon.Damages[i].Condition), $"{creature.Summary}; Weapon: {weapon.Summary}");
                     }
                     else
                     {
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Description), $"{creature.Summary}; Weapon: {weapon.Summary}");
+                        Assert.That(attack.DamageSummary, Contains.Substring(weapon.Damages[i].Summary), $"{creature.Summary}; Weapon: {weapon.Summary}");
                     }
                 }
 

@@ -2,7 +2,7 @@
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
-using DnDGen.Infrastructure.Generators;
+using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Selectors.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,15 +22,15 @@ namespace DnDGen.CreatureGen.Verifiers
 
         public bool VerifyCompatibility(bool asCharacter, string creature = null, Filters filters = null)
         {
-            IEnumerable<string> baseCreatures = new[] { creature };
+            IEnumerable<string> baseCreatures = [creature];
             if (string.IsNullOrEmpty(creature))
             {
-                baseCreatures = collectionsSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
+                baseCreatures = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
             }
 
             if (asCharacter)
             {
-                var characters = collectionsSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
+                var characters = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
                 baseCreatures = baseCreatures.Intersect(characters);
             }
 
@@ -57,7 +57,7 @@ namespace DnDGen.CreatureGen.Verifiers
             if (compatible)
                 return true;
 
-            var templates = collectionsSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
+            var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
             foreach (var otherTemplate in templates)
             {
                 compatible = TemplatesAreCompatible([otherTemplate], baseCreatures, asCharacter, filters);

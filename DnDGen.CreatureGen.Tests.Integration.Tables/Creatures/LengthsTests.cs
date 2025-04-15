@@ -13,7 +13,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     [TestFixture]
     public class LengthsTests : TypesAndAmountsTests
     {
-        private ICollectionSelector collectionSelector;
         private Dice dice;
 
         protected override string tableName => TableNameConstants.TypeAndAmount.Lengths;
@@ -84,7 +83,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var creature in creatures)
             {
-                lengths[creature] = new Dictionary<string, string>();
+                lengths[creature] = [];
             }
 
             lengths[CreatureConstants.Aasimar][GenderConstants.Female] = "0";

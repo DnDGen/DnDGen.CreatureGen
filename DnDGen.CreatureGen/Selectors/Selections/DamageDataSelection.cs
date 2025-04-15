@@ -1,5 +1,6 @@
 ﻿using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Models;
+using DnDGen.TreasureGen.Items;
 using System;
 
 namespace DnDGen.CreatureGen.Selectors.Selections
@@ -40,6 +41,16 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             data[DataIndexConstants.AttackData.DamageData.ConditionIndex] = selection.Condition;
 
             return data;
+        }
+
+        internal Damage To()
+        {
+            return new Damage
+            {
+                Roll = Roll,
+                Type = Type,
+                Condition = Condition
+            };
         }
     }
 }

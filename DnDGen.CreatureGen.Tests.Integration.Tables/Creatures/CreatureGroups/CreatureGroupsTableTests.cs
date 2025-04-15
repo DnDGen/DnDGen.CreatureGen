@@ -18,6 +18,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
             var challengeRatings = ChallengeRatingConstants.GetOrdered();
+            var templates = CreatureConstants.Templates.GetAll();
 
             var entries = new[]
             {
@@ -121,7 +122,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 .Union(challengeRatings)
                 .Union(challengeRatings.Select(cr => cr + GroupConstants.TREE))
                 .Union(alignments)
-                .Union(alignments.Select(a => a + GroupConstants.TREE));
+                .Union(alignments.Select(a => a + GroupConstants.TREE))
+                .Union(templates);
 
             AssertCollectionNames(names);
         }

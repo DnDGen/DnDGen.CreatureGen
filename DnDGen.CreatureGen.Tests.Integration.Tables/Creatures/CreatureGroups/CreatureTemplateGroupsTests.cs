@@ -1,8 +1,8 @@
-﻿using DnDGen.CreatureGen.Alignments;
-using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Tables;
+﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Creatures;
+using DnDGen.CreatureGen.Templates;
+using DnDGen.CreatureGen.Tests.Integration.TestData;
 using NUnit.Framework;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
@@ -10,97 +10,32 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
     [TestFixture]
     public class CreatureTemplateGroupsTests : CreatureGroupsTableTests
     {
+        private ICreaturePrototypeFactory prototypeFactory;
+
+        [SetUp]
+        public void Setup()
+        {
+            prototypeFactory = GetNewInstanceOf<ICreaturePrototypeFactory>();
+        }
+
         [Test]
         public void CreatureGroupNames()
         {
             AssertCreatureGroupNamesAreComplete();
         }
 
-        [Test]
-        public void CelestialCreatureTemplateGroup()
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
+        public void TemplateGroup(string template)
         {
             var allCreatures = CreatureConstants.GetAll();
-            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
-            var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
+            var allPrototypes = prototypeFactory.Build(allCreatures, false);
 
-            var templateCreatures = allCreatures.Where(c => CelestialCreatureHelper.IsCompatible(allTypes[c], allAlignments[c]));
+            var applicator = GetNewInstanceOf<TemplateApplicator>(template);
+            var templatePrototypes = applicator.GetCompatiblePrototypes(allPrototypes, false);
+            var templateCreatures = templatePrototypes.Select(p => p.Name);
+
             Assert.That(templateCreatures, Is.Not.Empty);
-            AssertCreatureGroup(CreatureConstants.Templates.CelestialCreature, [.. templateCreatures]);
+            AssertCollection(template, [.. templateCreatures]);
         }
-
-        private static class CelestialCreatureHelper
-        {
-            public static bool IsCompatible(IEnumerable<string> types, IEnumerable<string> alignments)
-            {
-                if (types.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
-                    return false;
-
-                var creatureTypes = new[]
-                {
-                    CreatureConstants.Types.Aberration,
-                    CreatureConstants.Types.Animal,
-                    CreatureConstants.Types.Dragon,
-                    CreatureConstants.Types.Fey,
-                    CreatureConstants.Types.Giant,
-                    CreatureConstants.Types.Humanoid,
-                    CreatureConstants.Types.MagicalBeast,
-                    CreatureConstants.Types.MonstrousHumanoid,
-                    CreatureConstants.Types.Plant,
-                    CreatureConstants.Types.Vermin,
-                };
-                if (!creatureTypes.Contains(types.First()))
-                    return false;
-
-                if (!alignments.Any(a => !a.Contains(AlignmentConstants.Evil)))
-                    return false;
-
-                return true;
-            }
-        }
-
-        [Test]
-        public void FiendishCreatureTemplateGroup()
-        {
-            var allCreatures = CreatureConstants.GetAll();
-            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
-            var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
-
-            var templateCreatures = allCreatures.Where(c => FiendishCreatureHelper.IsCompatible(allTypes[c], allAlignments[c]));
-            Assert.That(templateCreatures, Is.Not.Empty);
-            AssertCreatureGroup(CreatureConstants.Templates.FiendishCreature, [.. templateCreatures]);
-        }
-
-        private static class FiendishCreatureHelper
-        {
-            public static bool IsCompatible(IEnumerable<string> types, IEnumerable<string> alignments)
-            {
-                if (types.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
-                    return false;
-
-                var creatureTypes = new[]
-                {
-                    CreatureConstants.Types.Aberration,
-                    CreatureConstants.Types.Animal,
-                    CreatureConstants.Types.Dragon,
-                    CreatureConstants.Types.Fey,
-                    CreatureConstants.Types.Giant,
-                    CreatureConstants.Types.Humanoid,
-                    CreatureConstants.Types.MagicalBeast,
-                    CreatureConstants.Types.MonstrousHumanoid,
-                    CreatureConstants.Types.Ooze,
-                    CreatureConstants.Types.Plant,
-                    CreatureConstants.Types.Vermin,
-                };
-                if (!creatureTypes.Contains(types.First()))
-                    return false;
-
-                if (!alignments.Any(a => !a.Contains(AlignmentConstants.Good)))
-                    return false;
-
-                return true;
-            }
-        }
-
-        //TODO: Other templates
     }
 }

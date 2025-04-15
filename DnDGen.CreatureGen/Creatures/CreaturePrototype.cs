@@ -19,20 +19,14 @@ namespace DnDGen.CreatureGen.Creatures
 
         public CreaturePrototype()
         {
-            Abilities = new Dictionary<string, Ability>();
-            Alignments = new List<Alignment>();
+            Abilities = [];
+            Alignments = [];
             Size = string.Empty;
             ChallengeRating = string.Empty;
             Name = string.Empty;
             Type = new CreatureType();
         }
 
-        public int GetRoundedHitDiceQuantity()
-        {
-            var hitDice = new HitDice();
-            hitDice.Quantity = HitDiceQuantity;
-
-            return hitDice.RoundedQuantity;
-        }
+        public int GetRoundedHitDiceQuantity() => HitDice.GetRoundedQuantity(HitDiceQuantity);
     }
 }

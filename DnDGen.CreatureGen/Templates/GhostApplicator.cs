@@ -76,6 +76,8 @@ namespace DnDGen.CreatureGen.Templates
                 [creature.Alignment.Full],
                 creature.Abilities[AbilityConstants.Charisma],
                 creature.ChallengeRating,
+                asCharacter,
+                creature.HitPoints.RoundedHitDiceQuantity,
                 filters);
             if (!compatibility.Compatible)
             {
@@ -311,7 +313,6 @@ namespace DnDGen.CreatureGen.Templates
             var ghostAttacks = attacksGenerator.GenerateAttacks(
                 CreatureConstants.Templates.Ghost,
                 creature.Size,
-                creature.Size,
                 creature.BaseAttackBonus,
                 creature.Abilities,
                 creature.HitPoints.RoundedHitDiceQuantity,
@@ -376,6 +377,8 @@ namespace DnDGen.CreatureGen.Templates
                 [creature.Alignment.Full],
                 creature.Abilities[AbilityConstants.Charisma],
                 creature.ChallengeRating,
+                asCharacter,
+                creature.HitPoints.RoundedHitDiceQuantity,
                 filters);
             if (!compatibility.Compatible)
             {
@@ -386,7 +389,7 @@ namespace DnDGen.CreatureGen.Templates
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
-                    creature.Templates.Union([CreatureConstants.Templates.Ghost]).ToArray());
+                    [.. creature.Templates.Union([CreatureConstants.Templates.Ghost])]);
             }
 
             var tasks = new List<Task>();
@@ -455,55 +458,31 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
-            var filteredBaseCreatures = sourceCreatures;
+            var templateCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Ghost);
+            var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
+            if (!filteredBaseCreatures.Any())
+                return [];
+
+            if (string.IsNullOrEmpty(filters?.ChallengeRating)
+                && string.IsNullOrEmpty(filters?.Type)
+                && string.IsNullOrEmpty(filters?.Alignment))
+                return filteredBaseCreatures;
 
             var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
             var allHitDice = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice);
             var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
             var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
 
-            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
-            {
-                filteredBaseCreatures = filteredBaseCreatures
-                    .Where(c => CreatureInRange(
-                        allData[c].Single().ChallengeRating,
-                        filters.ChallengeRating,
-                        asCharacter,
-                        allHitDice[c].Single().AmountAsDouble,
-                        allTypes[c]));
-            }
-
-            if (!string.IsNullOrEmpty(filters?.Type))
-            {
-                //INFO: Unless this type is added by a template, it must already exist on the base creature
-                //So first, we check to see if the template could return this type for a human
-                //If not, then we can filter the base creatures down to ones that already have this type
-                var templateTypes = GetPotentialTypes(allTypes[CreatureConstants.Human]).Except(allTypes[CreatureConstants.Human]);
-                if (!templateTypes.Contains(filters.Type))
-                {
-                    filteredBaseCreatures = filteredBaseCreatures.Where(c => allTypes[c].Contains(filters.Type));
-                }
-            }
-
-            if (!string.IsNullOrEmpty(filters?.Alignment))
-            {
-                //INFO: Ghosts do not change the base creature's alignment
-                //So as long as the base creature's alignment fits, we are good
-                var alignmentCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, filters.Alignment);
-                filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
-            }
-
-            var templateCreatures = filteredBaseCreatures
-                .Where(c => IsCompatible(
+            filteredBaseCreatures = filteredBaseCreatures
+                .Where(c => AreFiltersCompatible(
                     allTypes[c],
                     allAlignments[c],
-                    c,
                     allData[c].Single().ChallengeRating,
-                    allHitDice[c].Single().AmountAsDouble,
                     asCharacter,
-                    filters));
+                    allHitDice[c].Single().AmountAsDouble,
+                    filters).Compatible);
 
-            return templateCreatures;
+            return filteredBaseCreatures;
         }
 
         private IEnumerable<string> GetPotentialTypes(IEnumerable<string> types)
@@ -516,58 +495,30 @@ namespace DnDGen.CreatureGen.Templates
             return adjustedTypes;
         }
 
-        private bool IsCompatible(
-            IEnumerable<string> types,
-            IEnumerable<string> alignments,
-            string creature,
-            string creatureChallengeRating,
-            Filters filters)
-        {
-            var abilityAdjustments = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, creature);
-            var charismaAdjustment = abilityAdjustments.FirstOrDefault(a => a.Type == AbilityConstants.Charisma);
-            if (charismaAdjustment == null)
-                return false;
-
-            var charisma = new Ability(AbilityConstants.Charisma)
-            {
-                RacialAdjustment = charismaAdjustment.Amount
-            };
-
-            var compatible = IsCompatible(types, alignments, charisma, creatureChallengeRating, filters);
-            return compatible.Compatible;
-        }
-
-        private bool IsCompatible(
-            IEnumerable<string> types,
-            IEnumerable<string> alignments,
-            string creature,
-            string creatureChallengeRating,
-            double creatureHitDiceQuantity,
-            bool asCharacter,
-            Filters filters)
-        {
-            var creatureType = types.First();
-
-            if (asCharacter && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
-            {
-                creatureChallengeRating = ChallengeRatingConstants.CR0;
-            }
-
-            var compatibility = IsCompatible(types, alignments, creature, creatureChallengeRating, filters);
-            return compatibility;
-        }
-
         private (bool Compatible, string Reason) IsCompatible(
             IEnumerable<string> types,
             IEnumerable<string> alignments,
             Ability charisma,
             string creatureChallengeRating,
+            bool asCharacter,
+            double creatureHitDiceQuantity,
             Filters filters)
         {
             var compatibility = IsCompatible(types, charisma);
             if (!compatibility.Compatible)
                 return (false, compatibility.Reason);
 
+            return AreFiltersCompatible(types, alignments, creatureChallengeRating, asCharacter, creatureHitDiceQuantity, filters);
+        }
+
+        private (bool Compatible, string Reason) AreFiltersCompatible(
+            IEnumerable<string> types,
+            IEnumerable<string> alignments,
+            string creatureChallengeRating,
+            bool asCharacter,
+            double creatureHitDiceQuantity,
+            Filters filters)
+        {
             if (!string.IsNullOrEmpty(filters?.Type))
             {
                 var updatedTypes = GetPotentialTypes(types);
@@ -577,6 +528,13 @@ namespace DnDGen.CreatureGen.Templates
 
             if (!string.IsNullOrEmpty(filters?.ChallengeRating))
             {
+                var creatureType = types.First();
+
+                if (asCharacter && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
+                {
+                    creatureChallengeRating = ChallengeRatingConstants.CR0;
+                }
+
                 var cr = UpdateCreatureChallengeRating(creatureChallengeRating);
                 if (cr != filters.ChallengeRating)
                     return (false, $"CR filter {filters.ChallengeRating} does not match updated creature CR {cr} (from CR {creatureChallengeRating})");
@@ -603,24 +561,6 @@ namespace DnDGen.CreatureGen.Templates
                 return (false, $"Creature has insufficient Charisma ({charisma.FullScore}, needs 6)");
 
             return (true, null);
-        }
-
-        private bool CreatureInRange(
-            string creatureChallengeRating,
-            string filterChallengeRating,
-            bool asCharacter,
-            double creatureHitDiceQuantity,
-            IEnumerable<string> creatureTypes)
-        {
-            var creatureType = creatureTypes.First();
-
-            if (asCharacter && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
-            {
-                creatureChallengeRating = ChallengeRatingConstants.CR0;
-            }
-
-            var templateChallengeRatings = GetChallengeRatings(creatureChallengeRating);
-            return templateChallengeRatings.Contains(filterChallengeRating);
         }
 
         public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
@@ -658,6 +598,8 @@ namespace DnDGen.CreatureGen.Templates
                     p.Alignments.Select(a => a.Full),
                     p.Abilities[AbilityConstants.Charisma],
                     p.ChallengeRating,
+                    asCharacter,
+                    p.HitDiceQuantity,
                     filters).Compatible);
             var updatedPrototypes = compatiblePrototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));
 

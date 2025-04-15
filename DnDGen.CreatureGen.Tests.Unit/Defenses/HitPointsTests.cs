@@ -20,7 +20,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
         {
             hitPoints = new HitPoints();
             mockDice = new Mock<Dice>();
-            mockPartialRolls = new Dictionary<int, Mock<PartialRoll>>();
+            mockPartialRolls = [];
 
             mockDice.Setup(d => d.Roll(It.IsAny<int>())).Returns((int q) => mockPartialRolls[q].Object);
         }
@@ -286,6 +286,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             hitPoints.HitDice.Add(new HitDice { Quantity = 4.2, HitDie = 600 });
 
             Assert.That(hitPoints.RoundedHitDiceQuantity, Is.EqualTo(5));
+        }
+
+        [TestCase(0, 0)]
+        [TestCase(.01, 1)]
+        [TestCase(.1, 1)]
+        [TestCase(.25, 1)]
+        [TestCase(.5, 1)]
+        [TestCase(.6, 1)]
+        [TestCase(.9266, 1)]
+        [TestCase(1, 1)]
+        [TestCase(1.5, 1)]
+        [TestCase(2, 2)]
+        [TestCase(2.5, 2)]
+        [TestCase(2.999999999, 2)]
+        [TestCase(9.266, 9)]
+        [TestCase(92.66, 92)]
+        [TestCase(926.6, 926)]
+        [TestCase(9266, 9266)]
+        public void GetRoundedQuantity(double quantity, int roundedValue)
+        {
+            var rounded = HitDice.GetRoundedQuantity(quantity);
+            Assert.That(rounded, Is.EqualTo(roundedValue));
         }
 
         [TestCase(0)]

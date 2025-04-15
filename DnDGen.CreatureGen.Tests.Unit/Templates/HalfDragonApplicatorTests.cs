@@ -1116,10 +1116,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 1));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(claw));
-            Assert.That(claws[0].DamageDescription, Is.EqualTo(expectedClawDamage));
+            Assert.That(claws[0].DamageSummary, Is.EqualTo(expectedClawDamage));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(newAttacks[3]));
-            Assert.That(bites[0].DamageDescription, Is.EqualTo("dragon bite roll dragon bite type"));
+            Assert.That(bites[0].DamageSummary, Is.EqualTo("dragon bite roll dragon bite type"));
         }
 
         private static IEnumerable GainAttacks_DuplicateAttack
@@ -1212,10 +1212,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 1));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(newAttacks[2]));
-            Assert.That(claws[0].DamageDescription, Is.EqualTo("dragon claw roll dragon claw type"));
+            Assert.That(claws[0].DamageSummary, Is.EqualTo("dragon claw roll dragon claw type"));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(bite));
-            Assert.That(bites[0].DamageDescription, Is.EqualTo(expectedBiteDamage));
+            Assert.That(bites[0].DamageSummary, Is.EqualTo(expectedBiteDamage));
         }
 
         [TestCaseSource(nameof(GainAttacks_DuplicateAttacks))]
@@ -1309,10 +1309,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 2));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(claw));
-            Assert.That(claws[0].DamageDescription, Is.EqualTo(expectedClawDescription));
+            Assert.That(claws[0].DamageSummary, Is.EqualTo(expectedClawDescription));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(bite));
-            Assert.That(bites[0].DamageDescription, Is.EqualTo(expectedBiteDescription));
+            Assert.That(bites[0].DamageSummary, Is.EqualTo(expectedBiteDescription));
         }
 
         private static IEnumerable GainAttacks_DuplicateAttacks
@@ -2081,10 +2081,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 1));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(claw));
-            Assert.That(claws[0].DamageDescription, Is.EqualTo(expectedClawDamage));
+            Assert.That(claws[0].DamageSummary, Is.EqualTo(expectedClawDamage));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(newAttacks[3]));
-            Assert.That(bites[0].DamageDescription, Is.EqualTo("dragon bite roll dragon bite type"));
+            Assert.That(bites[0].DamageSummary, Is.EqualTo("dragon bite roll dragon bite type"));
         }
 
         [TestCaseSource(nameof(GainAttacks_DuplicateAttack))]
@@ -2160,10 +2160,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 1));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(newAttacks[2]));
-            Assert.That(claws[0].DamageDescription, Is.EqualTo("dragon claw roll dragon claw type"));
+            Assert.That(claws[0].DamageSummary, Is.EqualTo("dragon claw roll dragon claw type"));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(bite));
-            Assert.That(bites[0].DamageDescription, Is.EqualTo(expectedBiteDamage));
+            Assert.That(bites[0].DamageSummary, Is.EqualTo(expectedBiteDamage));
         }
 
         [TestCaseSource(nameof(GainAttacks_DuplicateAttacks))]
@@ -2257,10 +2257,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 2));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(claw));
-            Assert.That(claws[0].DamageDescription, Is.EqualTo(expectedClawDescription));
+            Assert.That(claws[0].DamageSummary, Is.EqualTo(expectedClawDescription));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(bite));
-            Assert.That(bites[0].DamageDescription, Is.EqualTo(expectedBiteDescription));
+            Assert.That(bites[0].DamageSummary, Is.EqualTo(expectedBiteDescription));
         }
 
         [Test]

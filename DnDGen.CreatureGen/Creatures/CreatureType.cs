@@ -11,7 +11,7 @@ namespace DnDGen.CreatureGen.Creatures
         public CreatureType()
         {
             Name = string.Empty;
-            SubTypes = Enumerable.Empty<string>();
+            SubTypes = [];
         }
 
         public CreatureType(IEnumerable<string> types)
