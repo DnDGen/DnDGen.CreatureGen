@@ -1,7 +1,6 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
@@ -13,7 +12,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     [TestFixture]
     public class WeightsTests : TypesAndAmountsTests
     {
-        private ICollectionSelector collectionSelector;
         private Dice dice;
         private const int BASE_INDEX = 1;
         private const int MULTIPLIER_INDEX = 0;
@@ -37,7 +35,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [SetUp]
         public void Setup()
         {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             dice = GetNewInstanceOf<Dice>();
         }
 
@@ -2187,7 +2184,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void IncorporealCreaturesAreWeightless()
         {
-            var incorporealCreatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
+            var incorporealCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
 
             Assert.That(table.Keys, Is.SupersetOf(incorporealCreatures));
 

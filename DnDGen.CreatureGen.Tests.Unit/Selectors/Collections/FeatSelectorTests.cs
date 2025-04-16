@@ -19,7 +19,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
         private IFeatsSelector featsSelector;
         private Mock<ICollectionSelector> mockCollectionsSelector;
-        private Mock<ITypeAndAmountSelector> mockTypesAndAmountsSelector;
+        private Mock<ICollectionTypeAndAmountSelector> mockTypesAndAmountsSelector;
         private Dictionary<string, IEnumerable<string>> featsData;
         private Dictionary<string, List<string>> specialQualitiesData;
         private CreatureType creatureType;
@@ -29,7 +29,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         public void Setup()
         {
             mockCollectionsSelector = new Mock<ICollectionSelector>();
-            mockTypesAndAmountsSelector = new Mock<ITypeAndAmountSelector>();
+            mockTypesAndAmountsSelector = new Mock<ICollectionTypeAndAmountSelector>();
             featsSelector = new FeatsSelector(mockCollectionsSelector.Object, mockTypesAndAmountsSelector.Object);
 
             featsData = new Dictionary<string, IEnumerable<string>>();
@@ -42,7 +42,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, It.IsAny<string>())).Returns([]);
             mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredSizes, It.IsAny<string>())).Returns([]);
             mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, It.IsAny<string>()))
-                .Returns(Enumerable.Empty<TypeAndAmountSelection>());
+                .Returns(Enumerable.Empty<TypeAndAmountDataSelection>());
             mockCollectionsSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.FeatData)).Returns(featsData);
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpecialQualityData, It.IsAny<string>()))
@@ -210,7 +210,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             var abilityRequirements = new[]
             {
-                new TypeAndAmountSelection { Type = "ability", Amount = 9266 }
+                new TypeAndAmountDataSelection { Type = "ability", Amount = 9266 }
             };
 
             mockCollectionsSelector
@@ -251,7 +251,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             var abilityRequirements = new[]
             {
-                new TypeAndAmountSelection { Type = "ability", Amount = 9266 }
+                new TypeAndAmountDataSelection { Type = "ability", Amount = 9266 }
             };
 
             mockCollectionsSelector
@@ -292,8 +292,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             var abilityRequirements = new[]
             {
-                new TypeAndAmountSelection { Type = "ability", Amount = 9266 },
-                new TypeAndAmountSelection { Type = "other ability", Amount = 90210 }
+                new TypeAndAmountDataSelection { Type = "ability", Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = "other ability", Amount = 90210 }
             };
 
             mockCollectionsSelector
@@ -1381,7 +1381,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             var abilityRequirements = new[]
             {
-                new TypeAndAmountSelection { Type = "ability", Amount = 9266 }
+                new TypeAndAmountDataSelection { Type = "ability", Amount = 9266 }
             };
 
             mockCollectionsSelector
@@ -1419,8 +1419,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             var abilityRequirements = new[]
             {
-                new TypeAndAmountSelection { Type = "ability", Amount = 9266 },
-                new TypeAndAmountSelection { Type = "other ability", Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = "ability", Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = "other ability", Amount = 90210 },
             };
 
             mockCollectionsSelector
@@ -1740,7 +1740,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             var skillRankRequirements = new[]
             {
-                new TypeAndAmountSelection { Type = "skill", Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = "skill", Amount = 9266 },
             };
 
             mockCollectionsSelector
@@ -1780,7 +1780,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             var skillRankRequirements = new[]
             {
-                new TypeAndAmountSelection { Type = "skill/focus", Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = "skill/focus", Amount = 9266 },
             };
 
             mockCollectionsSelector
@@ -1820,8 +1820,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             var skillRankRequirements = new[]
             {
-                new TypeAndAmountSelection { Type = "skill", Amount = 9266 },
-                new TypeAndAmountSelection { Type = "other skill", Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = "skill", Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = "other skill", Amount = 90210 },
             };
 
             mockCollectionsSelector
@@ -1866,8 +1866,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             var skillRankRequirements = new[]
             {
-                new TypeAndAmountSelection { Type = "skill/focus", Amount = 9266 },
-                new TypeAndAmountSelection { Type = "other skill/other focus", Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = "skill/focus", Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = "other skill/other focus", Amount = 90210 },
             };
 
             mockCollectionsSelector
@@ -1912,8 +1912,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             var skillRankRequirements = new[]
             {
-                new TypeAndAmountSelection { Type = "skill", Amount = 9266 },
-                new TypeAndAmountSelection { Type = "other skill/other focus", Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = "skill", Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = "other skill/other focus", Amount = 90210 },
             };
 
             mockCollectionsSelector
@@ -2070,7 +2070,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             var speedRequirements = new[]
             {
-                new TypeAndAmountSelection { Type = "speed", Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = "speed", Amount = 9266 },
             };
 
             mockCollectionsSelector
@@ -2099,8 +2099,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             var speedRequirements = new[]
             {
-                new TypeAndAmountSelection { Type = "speed", Amount = 9266 },
-                new TypeAndAmountSelection { Type = "other speed", Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = "speed", Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = "other speed", Amount = 90210 },
             };
 
             mockCollectionsSelector
@@ -2130,7 +2130,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         {
             featsData["feat"] = BuildFeatData();
 
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSpeedRequirements, "feat")).Returns(Enumerable.Empty<TypeAndAmountSelection>());
+            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSpeedRequirements, "feat")).Returns(Enumerable.Empty<TypeAndAmountDataSelection>());
 
             var additionalFeats = featsSelector.SelectFeats();
             Assert.That(additionalFeats.Count, Is.EqualTo(1));

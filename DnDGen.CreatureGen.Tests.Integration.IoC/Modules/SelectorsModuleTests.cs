@@ -10,33 +10,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
     public class SelectorsModuleTests : IoCTests
     {
         [Test]
-        public void AdjustmentsSelectorsAreNotGeneratedAsSingletons()
-        {
-            AssertNotSingleton<IAdjustmentsSelector>();
-        }
-
-        [Test]
-        public void SkillSelectorsAreNotGeneratedAsSingletons()
-        {
-            AssertNotSingleton<ISkillSelector>();
-        }
-
-        [Test]
         public void FeatsSelectorsAreNotGeneratedAsSingletons()
         {
             AssertNotSingleton<IFeatsSelector>();
-        }
-
-        [Test]
-        public void TypeAndAmountSelectorIsInjected()
-        {
-            AssertNotSingleton<ITypeAndAmountSelector>();
-        }
-
-        [Test]
-        public void CreatureDataSelectorIsInjected()
-        {
-            AssertNotSingleton<ICreatureDataSelector>();
         }
 
         [Test]
@@ -49,12 +25,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         public void AdvancementSelectorIsInjected()
         {
             AssertNotSingleton<IAdvancementSelector>();
-        }
-
-        [Test]
-        public void BonusSelectorIsInjected()
-        {
-            AssertNotSingleton<IBonusSelector>();
         }
 
         [Test]

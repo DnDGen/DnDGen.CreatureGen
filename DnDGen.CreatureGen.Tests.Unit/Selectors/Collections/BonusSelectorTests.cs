@@ -10,12 +10,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
     public class BonusSelectorTests
     {
         private IBonusSelector bonusSelector;
-        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
 
         [SetUp]
         public void Setup()
         {
-            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
             bonusSelector = new BonusSelector(mockTypeAndAmountSelector.Object);
         }
 
@@ -31,7 +31,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         {
             var typesAndAmounts = new[]
             {
-                new TypeAndAmountSelection { Type = "type", Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = "type", Amount = 9266 },
             };
 
             mockTypeAndAmountSelector.Setup(s => s.Select("table name", "source")).Returns(typesAndAmounts);
@@ -50,8 +50,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         {
             var typesAndAmounts = new[]
             {
-                new TypeAndAmountSelection { Type = "type", Amount = 9266 },
-                new TypeAndAmountSelection { Type = "other type", Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = "type", Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = "other type", Amount = 90210 },
             };
 
             mockTypeAndAmountSelector.Setup(s => s.Select("table name", "source")).Returns(typesAndAmounts);
@@ -77,7 +77,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         {
             var typesAndAmounts = new[]
             {
-                new TypeAndAmountSelection { Type = $"type{BonusDataSelection.Divider}{condition}", Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = $"type{BonusDataSelection.Divider}{condition}", Amount = 9266 },
             };
 
             mockTypeAndAmountSelector.Setup(s => s.Select("table name", "source")).Returns(typesAndAmounts);

@@ -8,7 +8,6 @@ using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.Tables.Creatures;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Helpers;
-using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
 using System;
@@ -20,7 +19,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
     [TestFixture]
     public class AttackDataTests : CollectionTests
     {
-        private ICollectionSelector collectionSelector;
         private IFeatsSelector featsSelector;
         private Dictionary<string, List<string>> creatureAttackData;
         private Dictionary<string, List<string>> templateAttackData;
@@ -39,7 +37,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         [SetUp]
         public void Setup()
         {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             featsSelector = GetNewInstanceOf<IFeatsSelector>();
         }
 

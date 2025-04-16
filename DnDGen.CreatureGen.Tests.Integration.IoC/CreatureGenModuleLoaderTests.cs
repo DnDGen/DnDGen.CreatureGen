@@ -1,6 +1,6 @@
 ﻿using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.IoC;
-using DnDGen.Infrastructure.Generators;
+using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.Infrastructure.Selectors.Percentiles;
 using DnDGen.RollGen;
@@ -21,8 +21,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC
             var creatureGenLoader = new CreatureGenModuleLoader();
             creatureGenLoader.LoadModules(kernel);
 
-            var treasureGenerator = GetNewInstanceOf<ICreatureGenerator>();
-            Assert.That(treasureGenerator, Is.Not.Null);
+            var creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
+            Assert.That(creatureGenerator, Is.Not.Null);
         }
 
         [Test]
@@ -37,9 +37,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC
         {
             AssertNotSingleton<JustInTimeFactory>();
             AssertNotSingleton<IPercentileSelector>();
-
-            //INFO: The collection selector has a caching decorator
-            AssertSingleton<ICollectionSelector>();
+            AssertNotSingleton<ICollectionSelector>();
         }
 
         [Test]

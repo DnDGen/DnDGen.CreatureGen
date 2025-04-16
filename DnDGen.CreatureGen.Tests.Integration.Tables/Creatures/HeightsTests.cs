@@ -1,7 +1,6 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
@@ -13,7 +12,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     [TestFixture]
     public class HeightsTests : TypesAndAmountsTests
     {
-        private ICollectionSelector collectionSelector;
         private Dice dice;
 
         protected override string tableName => TableNameConstants.TypeAndAmount.Heights;
@@ -28,7 +26,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [SetUp]
         public void Setup()
         {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             dice = GetNewInstanceOf<Dice>();
         }
 

@@ -37,7 +37,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<ICollectionSelector> mockCollectionSelector;
         private Mock<IMagicGenerator> mockMagicGenerator;
-        private Mock<ICreatureDataSelector> mockCreatureDataSelector;
+        private Mock<ICollectionDataSelector<CreatureDataSelection>> mockCreatureDataSelector;
         private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
         private Mock<IDemographicsGenerator> mockDemographicsGenerator;
@@ -49,7 +49,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockCollectionSelector = new Mock<ICollectionSelector>();
             mockMagicGenerator = new Mock<IMagicGenerator>();
-            mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
+            mockCreatureDataSelector = new Mock<ICollectionDataSelector<CreatureDataSelection>>();
             mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
             mockDemographicsGenerator = new Mock<IDemographicsGenerator>();

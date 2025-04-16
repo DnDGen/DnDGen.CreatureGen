@@ -34,12 +34,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Creature baseCreature;
         private Mock<ICollectionSelector> mockCollectionSelector;
         private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
-        private Mock<ICreatureDataSelector> mockCreatureDataSelector;
+        private Mock<ICollectionDataSelector<CreatureDataSelection>> mockCreatureDataSelector;
         private Mock<Dice> mockDice;
         private Mock<IAttacksGenerator> mockAttacksGenerator;
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
-        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<IDemographicsGenerator> mockDemographicsGenerator;
 
         [SetUp]
@@ -47,12 +47,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             mockCollectionSelector = new Mock<ICollectionSelector>();
             mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
-            mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
+            mockCreatureDataSelector = new Mock<ICollectionDataSelector<CreatureDataSelection>>();
             mockDice = new Mock<Dice>();
             mockAttacksGenerator = new Mock<IAttacksGenerator>();
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
-            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
             mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
             applicator = new VampireApplicator(

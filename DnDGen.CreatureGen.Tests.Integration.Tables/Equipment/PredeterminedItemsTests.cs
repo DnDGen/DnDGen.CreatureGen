@@ -4,7 +4,6 @@ using DnDGen.CreatureGen.Selectors;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.TreasureGen.Items;
 using DnDGen.TreasureGen.Items.Magical;
 using NUnit.Framework;
@@ -17,7 +16,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
     {
         private IItemSelector itemSelector;
         private IFeatsSelector featsSelector;
-        private ICollectionSelector collectionSelector;
 
         protected override string tableName => TableNameConstants.Collection.PredeterminedItems;
 
@@ -26,7 +24,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         {
             itemSelector = GetNewInstanceOf<IItemSelector>();
             featsSelector = GetNewInstanceOf<IFeatsSelector>();
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
         }
 
         [Test]

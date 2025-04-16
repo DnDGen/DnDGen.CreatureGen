@@ -2,9 +2,9 @@
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Items;
-using DnDGen.CreatureGen.Selectors.Collections;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Models;
+using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using DnDGen.TreasureGen.Items;
 using Moq;
@@ -16,11 +16,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
     [TestFixture]
     public class AbilitiesGeneratorTests
     {
-        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<Dice> mockDice;
         private IAbilitiesGenerator abilitiesGenerator;
-        private List<TypeAndAmountSelection> abilitySelections;
-        private List<TypeAndAmountSelection> ageAbilitySelections;
+        private List<TypeAndAmountDataSelection> abilitySelections;
+        private List<TypeAndAmountDataSelection> ageAbilitySelections;
         private Mock<PartialRoll> mockPartialTotal;
         private AbilityRandomizer randomizer;
         private Demographics demographics;
@@ -28,7 +28,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [SetUp]
         public void Setup()
         {
-            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
             mockDice = new Mock<Dice>();
             abilitiesGenerator = new AbilitiesGenerator(mockTypeAndAmountSelector.Object, mockDice.Object);
             randomizer = new AbilityRandomizer();
@@ -37,19 +37,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             randomizer.Roll = "my roll";
             demographics.Age.Description = "my age category";
 
-            abilitySelections = new List<TypeAndAmountSelection>();
-            abilitySelections.Add(new TypeAndAmountSelection { Type = "ability", Amount = 0 });
-            abilitySelections.Add(new TypeAndAmountSelection { Type = "other ability", Amount = 9266 });
-            abilitySelections.Add(new TypeAndAmountSelection { Type = "last ability", Amount = -90210 });
+            abilitySelections =
+            [
+                new TypeAndAmountDataSelection { Type = "ability", AmountAsDouble = 0 },
+                new TypeAndAmountDataSelection { Type = "other ability", AmountAsDouble = 9266 },
+                new TypeAndAmountDataSelection { Type = "last ability", AmountAsDouble = -90210 },
+            ];
 
-            ageAbilitySelections = new List<TypeAndAmountSelection>();
-            ageAbilitySelections.Add(new TypeAndAmountSelection { Type = "ability", Amount = 0 });
-            ageAbilitySelections.Add(new TypeAndAmountSelection { Type = "other ability", Amount = 0 });
-            ageAbilitySelections.Add(new TypeAndAmountSelection { Type = "last ability", Amount = 0 });
+            ageAbilitySelections =
+            [
+                new TypeAndAmountDataSelection { Type = "ability", AmountAsDouble = 0 },
+                new TypeAndAmountDataSelection { Type = "other ability", AmountAsDouble = 0 },
+                new TypeAndAmountDataSelection { Type = "last ability", AmountAsDouble = 0 },
+            ];
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "creature name")).Returns(abilitySelections);
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, GroupConstants.All)).Returns(abilitySelections);
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my age category")).Returns(ageAbilitySelections);
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "creature name"))
+                .Returns(abilitySelections);
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, GroupConstants.All))
+                .Returns(abilitySelections);
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "my age category"))
+                .Returns(ageAbilitySelections);
 
             mockPartialTotal = new Mock<PartialRoll>();
             mockDice.Setup(d => d.Roll("my roll")).Returns(mockPartialTotal.Object);
@@ -98,12 +108,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         {
             var allAbilities = new[]
             {
-                new TypeAndAmountSelection { Type = "ability" },
-                new TypeAndAmountSelection { Type = "other ability" },
-                new TypeAndAmountSelection { Type = "last ability" }
+                new TypeAndAmountDataSelection { Type = "ability" },
+                new TypeAndAmountDataSelection { Type = "other ability" },
+                new TypeAndAmountDataSelection { Type = "last ability" }
             };
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, GroupConstants.All)).Returns(allAbilities);
+            mockTypeAndAmountSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, GroupConstants.All)).Returns(allAbilities);
 
             abilitySelections.RemoveAt(1);
 
@@ -259,9 +269,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [Test]
         public void GenerateFor_ApplyAgeCategoryModifiers()
         {
-            ageAbilitySelections[0].Amount = -1;
-            ageAbilitySelections[1].Amount = -2;
-            ageAbilitySelections[2].Amount = -3;
+            ageAbilitySelections[0].AmountAsDouble = -1;
+            ageAbilitySelections[1].AmountAsDouble = -2;
+            ageAbilitySelections[2].AmountAsDouble = -3;
 
             var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
@@ -287,9 +297,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             randomizer.SetRolls["other ability"] = 8245;
             randomizer.PriorityAbility = "last ability";
 
-            ageAbilitySelections[0].Amount = -1;
-            ageAbilitySelections[1].Amount = -2;
-            ageAbilitySelections[2].Amount = -3;
+            ageAbilitySelections[0].AmountAsDouble = -1;
+            ageAbilitySelections[1].AmountAsDouble = -2;
+            ageAbilitySelections[2].AmountAsDouble = -3;
 
             var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));

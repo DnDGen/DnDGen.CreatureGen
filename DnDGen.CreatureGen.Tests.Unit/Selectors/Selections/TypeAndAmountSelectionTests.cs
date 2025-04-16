@@ -4,18 +4,18 @@ using NUnit.Framework;
 namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 {
     [TestFixture]
-    public class TypeAndAmountSelectionTests
+    public class TypeAndAmountDataSelectionTests
     {
-        private TypeAndAmountSelection selection;
+        private TypeAndAmountDataSelection selection;
 
         [SetUp]
         public void Setup()
         {
-            selection = new TypeAndAmountSelection();
+            selection = new TypeAndAmountDataSelection();
         }
 
         [Test]
-        public void TypeAndAmountSelectionInitialized()
+        public void TypeAndAmountDataSelectionInitialized()
         {
             Assert.That(selection.Amount, Is.Zero);
             Assert.That(selection.Type, Is.Empty);
@@ -25,7 +25,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void TypeAndAmountDivider()
         {
-            Assert.That(TypeAndAmountSelection.Divider, Is.EqualTo('@'));
+            Assert.That(TypeAndAmountDataSelection.Divider, Is.EqualTo('@'));
         }
     }
 }

@@ -6,7 +6,7 @@ using DnDGen.CreatureGen.Generators.Items;
 using DnDGen.CreatureGen.Selectors;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
-using DnDGen.Infrastructure.Generators;
+using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.Infrastructure.Selectors.Percentiles;
 using DnDGen.TreasureGen.Items;
@@ -1633,9 +1633,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [TestCase(WeaponConstants.Dagger, WeaponConstants.Dagger, 2, 2)]
         public void GenerateTwoMeleeWeapons(string primary, string secondary, int bonus1, int bonus2)
         {
-            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true, IsPrimary = true, BaseAbility = abilities[AbilityConstants.Strength] });
-            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true, IsPrimary = false, BaseAbility = abilities[AbilityConstants.Strength] });
-            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+            attacks.Add(new Attack
+            {
+                Name = AttributeConstants.Melee,
+                IsNatural = false,
+                IsMelee = true,
+                IsPrimary = true,
+                BaseAbility = abilities[AbilityConstants.Strength]
+            });
+            attacks.Add(new Attack
+            {
+                Name = AttributeConstants.Melee,
+                IsNatural = false,
+                IsMelee = true,
+                IsPrimary = false,
+                BaseAbility = abilities[AbilityConstants.Strength]
+            });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = [GroupConstants.All] });
 
             var simple = WeaponConstants.GetAllSimple(false, false);
             var melee = WeaponConstants.GetAllMelee(false, false);
@@ -1657,10 +1671,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                 .Returns((int l, string t, string n, string[] tt) => new Weapon
                 {
                     Name = n,
-                    Damages = new List<Damage>
-                    {
+                    Damages =
+                    [
                        new Damage { Roll = $"my {n} roll", Type = $"my {n} damage type" }
-                    }
+                    ]
                 });
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -1668,9 +1682,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapons = equipment.Weapons.ToArray();
             Assert.That(weapons[0].Name, Is.EqualTo(primary));
-            Assert.That(weapons[0].DamageDescription, Is.EqualTo($"my {primary} roll my {primary} damage type"));
+            Assert.That(weapons[0].DamageSummary, Is.EqualTo($"my {primary} roll my {primary} damage type"));
             Assert.That(weapons[1].Name, Is.EqualTo(secondary));
-            Assert.That(weapons[1].DamageDescription, Is.EqualTo($"my {secondary} roll my {secondary} damage type"));
+            Assert.That(weapons[1].DamageSummary, Is.EqualTo($"my {secondary} roll my {secondary} damage type"));
 
             Assert.That(attacks, Has.Count.EqualTo(7));
             Assert.That(attacks[5].Name, Is.EqualTo(primary));
@@ -1747,11 +1761,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapons = equipment.Weapons.ToArray();
             Assert.That(weapons[0].Name, Is.EqualTo(primary));
-            Assert.That(weapons[0].DamageDescription, Is.EqualTo($"my {primary} roll my {primary} damage type"));
+            Assert.That(weapons[0].DamageSummary, Is.EqualTo($"my {primary} roll my {primary} damage type"));
             Assert.That(weapons[1].Name, Is.EqualTo(secondary));
-            Assert.That(weapons[1].DamageDescription, Is.EqualTo($"my {secondary} roll my {secondary} damage type"));
+            Assert.That(weapons[1].DamageSummary, Is.EqualTo($"my {secondary} roll my {secondary} damage type"));
             Assert.That(weapons[2].Name, Is.EqualTo(third));
-            Assert.That(weapons[2].DamageDescription, Is.EqualTo($"my {third} roll my {third} damage type"));
+            Assert.That(weapons[2].DamageSummary, Is.EqualTo($"my {third} roll my {third} damage type"));
 
             Assert.That(attacks, Has.Count.EqualTo(8));
             Assert.That(attacks[5].Name, Is.EqualTo(primary));
@@ -1851,13 +1865,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapons = equipment.Weapons.ToArray();
             Assert.That(weapons[0].Name, Is.EqualTo(primary1));
-            Assert.That(weapons[0].DamageDescription, Is.EqualTo($"my {primary1} roll my {primary1} damage type"));
+            Assert.That(weapons[0].DamageSummary, Is.EqualTo($"my {primary1} roll my {primary1} damage type"));
             Assert.That(weapons[1].Name, Is.EqualTo(primary2));
-            Assert.That(weapons[1].DamageDescription, Is.EqualTo($"my {primary2} roll my {primary2} damage type"));
+            Assert.That(weapons[1].DamageSummary, Is.EqualTo($"my {primary2} roll my {primary2} damage type"));
             Assert.That(weapons[2].Name, Is.EqualTo(secondary));
-            Assert.That(weapons[2].DamageDescription, Is.EqualTo($"my {secondary} roll my {secondary} damage type"));
+            Assert.That(weapons[2].DamageSummary, Is.EqualTo($"my {secondary} roll my {secondary} damage type"));
             Assert.That(weapons[3].Name, Is.EqualTo(third));
-            Assert.That(weapons[3].DamageDescription, Is.EqualTo($"my {third} roll my {third} damage type"));
+            Assert.That(weapons[3].DamageSummary, Is.EqualTo($"my {third} roll my {third} damage type"));
 
             Assert.That(attacks, Has.Count.EqualTo(9));
             Assert.That(attacks[5].Name, Is.EqualTo(primary1));

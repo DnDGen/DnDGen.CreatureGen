@@ -35,11 +35,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private TemplateApplicator applicator;
         private Creature baseCreature;
         private Mock<ICollectionSelector> mockCollectionSelector;
-        private Mock<ICreatureDataSelector> mockCreatureDataSelector;
+        private Mock<ICollectionDataSelector<CreatureDataSelection>> mockCreatureDataSelector;
         private Mock<Dice> mockDice;
         private Mock<IAttacksGenerator> mockAttacksGenerator;
         private Mock<IFeatsGenerator> mockFeatsGenerator;
-        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
         private Mock<IDemographicsGenerator> mockDemographicsGenerator;
@@ -48,11 +48,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void Setup()
         {
             mockCollectionSelector = new Mock<ICollectionSelector>();
-            mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
+            mockCreatureDataSelector = new Mock<ICollectionDataSelector<CreatureDataSelection>>();
             mockDice = new Mock<Dice>();
             mockAttacksGenerator = new Mock<IAttacksGenerator>();
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
-            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
             mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
             mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
@@ -1561,21 +1561,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor(It.IsAny<string>()))
                 .Returns((string c) => data[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountSelection>();
+            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
             };
 
             mockTypeAndAmountSelector
@@ -1642,12 +1642,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -1660,12 +1660,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"))
                 .Returns(new[]
                 {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = -6 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = -6 },
                 });
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"))
@@ -1720,12 +1720,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "preset alignment"))
                 .Returns(new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" });
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["my other creature"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["my other creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -1761,12 +1761,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -1779,12 +1779,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"))
                 .Returns(new[]
                 {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = -6 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = -6 },
                 });
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"))
@@ -1835,12 +1835,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["my other creature"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["my other creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -1907,23 +1907,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor(It.IsAny<string>()))
                 .Returns((string c) => data[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountSelection>();
+            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
             };
-            casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountSelection>();
+            casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -2020,21 +2020,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor(It.IsAny<string>()))
                 .Returns((string c) => data[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountSelection>();
+            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
             };
 
             mockTypeAndAmountSelector
@@ -2135,23 +2135,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor(It.IsAny<string>()))
                 .Returns((string c) => data[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountSelection>();
+            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
             };
-            casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountSelection>();
+            casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -2256,24 +2256,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor(It.IsAny<string>()))
                 .Returns((string c) => data[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountSelection>();
+            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
             };
-            casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 6"] = Enumerable.Empty<TypeAndAmountSelection>();
+            casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 6"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -2365,8 +2365,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor(It.IsAny<string>()))
                 .Returns((string c) => data[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -2446,8 +2446,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor(It.IsAny<string>()))
                 .Returns((string c) => data[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -2527,8 +2527,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor(It.IsAny<string>()))
                 .Returns((string c) => data[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["my creature"] = new[] { new TypeAndAmountSelection { Type = "spellcaster", Amount = casterLevel } };
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["my creature"] = new[] { new TypeAndAmountDataSelection { Type = "spellcaster", Amount = casterLevel } };
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -2588,8 +2588,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor(It.IsAny<string>()))
                 .Returns((string c) => data[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -2669,8 +2669,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor(It.IsAny<string>()))
                 .Returns((string c) => data[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -2737,8 +2737,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor(It.IsAny<string>()))
                 .Returns((string c) => data[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -2817,8 +2817,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -2932,8 +2932,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -3038,8 +3038,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -3105,8 +3105,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -3168,21 +3168,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor(It.IsAny<string>()))
                 .Returns((string c) => data[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountSelection>();
+            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
             };
 
             mockTypeAndAmountSelector
@@ -3400,12 +3400,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -3418,12 +3418,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"))
                 .Returns(new[]
                 {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = -6 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = -6 },
                 });
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"))
@@ -3478,12 +3478,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "preset alignment"))
                 .Returns(new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" });
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["my other creature"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["my other creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -3560,12 +3560,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -3578,12 +3578,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"))
                 .Returns(new[]
                 {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = -6 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = -6 },
                 });
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"))
@@ -3634,12 +3634,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["my other creature"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["my other creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -3808,23 +3808,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor(It.IsAny<string>()))
                 .Returns((string c) => data[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountSelection>();
+            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
             };
-            casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountSelection>();
+            casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -4072,21 +4072,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor(It.IsAny<string>()))
                 .Returns((string c) => data[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountSelection>();
+            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
             };
 
             mockTypeAndAmountSelector
@@ -4338,23 +4338,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor(It.IsAny<string>()))
                 .Returns((string c) => data[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountSelection>();
+            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
             };
-            casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountSelection>();
+            casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -4612,24 +4612,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor(It.IsAny<string>()))
                 .Returns((string c) => data[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountSelection>();
+            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
             };
-            casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["wrong creature 6"] = Enumerable.Empty<TypeAndAmountSelection>();
+            casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 6"] = Enumerable.Empty<TypeAndAmountDataSelection>();
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
@@ -4871,13 +4871,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor(It.IsAny<string>()))
                 .Returns((string c) => data[c]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
+            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
             };
 
             mockTypeAndAmountSelector

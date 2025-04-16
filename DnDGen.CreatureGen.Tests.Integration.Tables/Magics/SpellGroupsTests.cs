@@ -107,7 +107,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             Assert.That(spellLevels, Contains.Key(group));
 
             var spells = spellLevels[group]
-                .Select(e => e.Split(TypeAndAmountSelection.Divider).First())
+                .Select(e => e.Split(TypeAndAmountDataSelection.Divider).First())
                 .ToArray();
 
             AssertCollection(group, spells);

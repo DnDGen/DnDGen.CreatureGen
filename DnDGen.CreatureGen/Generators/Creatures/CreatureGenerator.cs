@@ -336,7 +336,6 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             creature.Attacks = attacksGenerator.GenerateAttacks(
                 creatureName,
-                creatureData.Size,
                 creature.Size,
                 creature.BaseAttackBonus,
                 creature.Abilities,

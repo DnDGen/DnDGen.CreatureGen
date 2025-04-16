@@ -10,13 +10,9 @@ namespace DnDGen.CreatureGen.IoC.Modules
     {
         public override void Load()
         {
-            Bind<IAdjustmentsSelector>().To<AdjustmentsSelector>();
-            Bind<ISkillSelector>().To<SkillSelector>();
             Bind<IFeatsSelector>().To<FeatsSelector>();
-            Bind<ICreatureDataSelector>().To<CreatureDataSelector>();
             Bind<IAttackSelector>().To<AttackSelector>();
             Bind<IAdvancementSelector>().To<AdvancementSelector>();
-            Bind<IBonusSelector>().To<BonusSelector>();
             Bind<IItemSelector>().To<ItemSelector>();
 
             Kernel.BindDataSelection<AdvancementDataSelection>();

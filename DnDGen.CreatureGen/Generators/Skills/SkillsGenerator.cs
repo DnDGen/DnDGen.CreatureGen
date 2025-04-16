@@ -307,7 +307,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
             if (hitDieQuantity == 0 || !intelligence.HasScore)
                 return 0;
 
-            var pointsSelection = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.Adjustments.SkillPoints, creatureType.Name);
+            var pointsSelection = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.SkillPoints, creatureType.Name);
             var perHitDie = Math.Max(1, pointsSelection.Amount + intelligence.Modifier);
             var multiplier = hitDieQuantity;
 

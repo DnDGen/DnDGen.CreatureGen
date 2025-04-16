@@ -36,7 +36,7 @@ namespace DnDGen.CreatureGen.Generators.Defenses
                 armorClass.AddBonus(ArmorClassConstants.Deflection, deflectionBonus);
             }
 
-            armorClass.SizeModifier = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.Adjustments.SizeModifiers, size).Amount;
+            armorClass.SizeModifier = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.SizeModifiers, size).Amount;
 
             var inertialArmorFeat = feats.FirstOrDefault(f => f.Name == FeatConstants.SpecialQualities.InertialArmor);
             if (inertialArmorFeat != null)

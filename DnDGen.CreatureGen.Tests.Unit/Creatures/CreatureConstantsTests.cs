@@ -742,7 +742,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Groups.Hag, "Hag")]
         [TestCase(CreatureConstants.Groups.HalfDragon, "Half-Dragon")]
         [TestCase(CreatureConstants.Groups.Halfling, "Halfling")]
-        [TestCase(CreatureConstants.Groups.HasSkeleton, "Has Skeleton")]
         [TestCase(CreatureConstants.Groups.Horse, "Horse")]
         [TestCase(CreatureConstants.Groups.Hydra, "Hydra")]
         [TestCase(CreatureConstants.Groups.Inevitable, "Inevitable")]

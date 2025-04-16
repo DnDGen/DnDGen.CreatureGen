@@ -1,7 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
+using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System.Linq;
 
@@ -10,14 +10,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     [TestFixture]
     public class AerialManeuverabilityTests : CollectionTests
     {
-        private ITypeAndAmountSelector typesAndAmountsSelector;
+        private ICollectionTypeAndAmountSelector typesAndAmountsSelector;
 
         protected override string tableName => TableNameConstants.Collection.AerialManeuverability;
 
         [SetUp]
         public void Setup()
         {
-            typesAndAmountsSelector = GetNewInstanceOf<ITypeAndAmountSelector>();
+            typesAndAmountsSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
         }
 
         [Test]
@@ -734,7 +734,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreatureWithAerialSpeedHaveManeuverability(string creature)
         {
-            var speeds = typesAndAmountsSelector.Select(TableNameConstants.Collection.Speeds, creature);
+            var speeds = typesAndAmountsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Speeds, creature);
             var maneuverability = GetCollection(creature);
 
             if (speeds.Any(s => s.Type == SpeedConstants.Fly))
@@ -754,7 +754,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void TemplateWithAerialSpeedHaveManeuverability(string template)
         {
-            var speeds = typesAndAmountsSelector.Select(TableNameConstants.Collection.Speeds, template);
+            var speeds = typesAndAmountsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Speeds, template);
             var maneuverability = GetCollection(template);
 
             if (speeds.Any(s => s.Type == SpeedConstants.Fly))

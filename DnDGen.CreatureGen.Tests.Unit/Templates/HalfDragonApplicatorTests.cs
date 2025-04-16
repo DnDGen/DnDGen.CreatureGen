@@ -45,10 +45,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<ISkillsGenerator> mockSkillsGenerator;
         private Mock<IAlignmentGenerator> mockAlignmentGenerator;
         private Mock<IMagicGenerator> mockMagicGenerator;
-        private Mock<ICreatureDataSelector> mockCreatureDataSelector;
+        private Mock<ICollectionDataSelector<CreatureDataSelection>> mockCreatureDataSelector;
         private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
-        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<IDemographicsGenerator> mockDemographicsGenerator;
 
         [SetUp]
@@ -62,10 +62,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockSkillsGenerator = new Mock<ISkillsGenerator>();
             mockAlignmentGenerator = new Mock<IAlignmentGenerator>();
             mockMagicGenerator = new Mock<IMagicGenerator>();
-            mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
+            mockCreatureDataSelector = new Mock<ICollectionDataSelector<CreatureDataSelection>>();
             mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
-            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
             mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
             applicator = new HalfDragonApplicator(

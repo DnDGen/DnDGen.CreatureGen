@@ -58,17 +58,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Cryohydra_7Heads,
             CreatureConstants.Cryohydra_8Heads,
             CreatureConstants.Cryohydra_9Heads)]
-        [TestCase(CreatureConstants.Groups.HalfDragon,
-            CreatureConstants.Templates.HalfDragon_Black,
-            CreatureConstants.Templates.HalfDragon_Blue,
-            CreatureConstants.Templates.HalfDragon_Brass,
-            CreatureConstants.Templates.HalfDragon_Bronze,
-            CreatureConstants.Templates.HalfDragon_Copper,
-            CreatureConstants.Templates.HalfDragon_Gold,
-            CreatureConstants.Templates.HalfDragon_Green,
-            CreatureConstants.Templates.HalfDragon_Red,
-            CreatureConstants.Templates.HalfDragon_Silver,
-            CreatureConstants.Templates.HalfDragon_White)]
         [TestCase(CreatureConstants.Groups.Demon,
             CreatureConstants.Babau,
             CreatureConstants.Balor,
@@ -323,31 +312,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Kolyarut,
             CreatureConstants.Marut,
             CreatureConstants.Zelekhut)]
-        [TestCase(CreatureConstants.Groups.Lycanthrope,
-            CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted,
-            CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural,
-            CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted,
-            CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural,
-            CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted,
-            CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural,
-            CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted,
-            CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural,
-            CreatureConstants.Templates.Lycanthrope_Boar_Afflicted,
-            CreatureConstants.Templates.Lycanthrope_Boar_Natural,
-            CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted,
-            CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural,
-            CreatureConstants.Templates.Lycanthrope_Rat_Afflicted,
-            CreatureConstants.Templates.Lycanthrope_Rat_Natural,
-            CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted,
-            CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural,
-            CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted,
-            CreatureConstants.Templates.Lycanthrope_Tiger_Natural,
-            CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted,
-            CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural,
-            CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted,
-            CreatureConstants.Templates.Lycanthrope_Wolf_Natural,
-            CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted,
-            CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural)]
         [TestCase(CreatureConstants.Groups.Mephit,
             CreatureConstants.Mephit_Air,
             CreatureConstants.Mephit_Dust,
@@ -568,6 +532,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             };
 
             AssertCreatureGroup(GroupConstants.All, entries);
+
+            var allCreatures = CreatureConstants.GetAll();
+            AssertDistinctCollection(GroupConstants.All, [.. allCreatures]);
         }
 
         [Test]
@@ -721,27 +688,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             };
 
             AssertCreatureGroup(GroupConstants.Characters, entries);
-        }
 
-        [Test]
-        public void TemplateGroup()
-        {
-            var entries = new[]
-            {
-                CreatureConstants.Groups.Lycanthrope,
-                CreatureConstants.Groups.HalfDragon,
-                CreatureConstants.Templates.Skeleton,
-                CreatureConstants.Templates.Zombie,
-                CreatureConstants.Templates.CelestialCreature,
-                CreatureConstants.Templates.FiendishCreature,
-                CreatureConstants.Templates.Ghost,
-                CreatureConstants.Templates.Vampire,
-                CreatureConstants.Templates.Lich,
-                CreatureConstants.Templates.HalfCelestial,
-                CreatureConstants.Templates.HalfFiend,
-            };
-
-            AssertCreatureGroup(GroupConstants.Templates, entries);
+            var allCharacters = CreatureConstants.GetAllCharacters();
+            AssertDistinctCollection(GroupConstants.Characters, [.. allCharacters]);
         }
 
         [Test]
@@ -983,39 +932,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 AssertGroupDoesNotContain(subgroupName, forbiddenEntry);
                 AssertGroupDoesNotContain(subgroupName, subgroupName);
             }
-        }
-
-        [Test]
-        public void All_Exploded_ContainsAllCreatures()
-        {
-            var creatures = CreatureConstants.GetAll();
-            var explodedCreatures = ExplodeCollection(tableName, GroupConstants.All + GroupConstants.TREE);
-
-            Assert.That(creatures, Is.Unique);
-            Assert.That(explodedCreatures, Is.Unique.And.EquivalentTo(creatures));
-            Assert.That(table[GroupConstants.All], Is.Unique.And.EquivalentTo(creatures));
-        }
-
-        [Test]
-        public void Characters_Exploded_ContainsAllCharacterCreatures()
-        {
-            var characters = CreatureConstants.GetAllCharacters();
-            var explodedCharacters = ExplodeCollection(tableName, GroupConstants.Characters + GroupConstants.TREE);
-
-            Assert.That(characters, Is.Unique);
-            Assert.That(explodedCharacters, Is.Unique.And.EquivalentTo(characters));
-            Assert.That(table[GroupConstants.Characters], Is.Unique.And.EquivalentTo(characters));
-        }
-
-        [Test]
-        public void Templates_Exploded_ContainsAllTemplates()
-        {
-            var templates = CreatureConstants.Templates.GetAll().Except([CreatureConstants.Templates.None]);
-            var explodedTemplates = ExplodeCollection(tableName, GroupConstants.Templates + GroupConstants.TREE);
-
-            Assert.That(templates, Is.Unique);
-            Assert.That(explodedTemplates, Is.Unique.And.EquivalentTo(templates));
-            Assert.That(table[GroupConstants.Templates], Is.Unique.And.EquivalentTo(templates));
         }
     }
 }

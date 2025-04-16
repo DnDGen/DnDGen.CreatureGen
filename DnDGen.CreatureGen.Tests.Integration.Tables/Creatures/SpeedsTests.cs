@@ -1,7 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.Infrastructure.Helpers;
+using DnDGen.Infrastructure.Models;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,17 +12,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     [TestFixture]
     public class SpeedsTests : TypesAndAmountsTests
     {
-        private ICollectionSelector collectionSelector;
-        private ITypeAndAmountSelector typesAndAmountsSelector;
-
         protected override string tableName => TableNameConstants.Collection.Speeds;
-
-        [SetUp]
-        public void Setup()
-        {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
-            typesAndAmountsSelector = GetNewInstanceOf<ITypeAndAmountSelector>();
-        }
 
         [Test]
         public void SpeedsNames()
@@ -59,7 +49,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
                 foreach (var template in templates)
                 {
-                    testCases[template] = new Dictionary<string, int>();
+                    testCases[template] = [];
                 }
 
                 testCases[CreatureConstants.Templates.Ghost][SpeedConstants.Fly] = 30;
@@ -92,7 +82,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
                 foreach (var creature in creatures)
                 {
-                    testCases[creature] = new Dictionary<string, int>();
+                    testCases[creature] = [];
                 }
 
                 testCases[CreatureConstants.Aasimar][SpeedConstants.Land] = 30;
@@ -1303,13 +1293,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Types.Subtypes.Water)]
         public void AllCreaturesOfSubtypeHaveSwimSpeeds(string subtype)
         {
-            var aquaticCreatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, subtype);
-
+            var aquaticCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, subtype);
             Assert.That(table.Keys, Is.SupersetOf(aquaticCreatures));
+
+            var allSpeeds = table.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(DataHelper.Parse<TypeAndAmountDataSelection>));
 
             foreach (var creature in aquaticCreatures)
             {
-                var speeds = typesAndAmountsSelector.Select(tableName, creature);
+                var speeds = allSpeeds[creature];
                 var aquaticSpeed = speeds.FirstOrDefault(s => s.Type == SpeedConstants.Swim);
 
                 Assert.That(aquaticSpeed, Is.Not.Null, creature);

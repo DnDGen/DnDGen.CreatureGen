@@ -37,13 +37,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private TemplateApplicator applicator;
         private Creature baseCreature;
         private Mock<ICollectionSelector> mockCollectionSelector;
-        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<ISpeedsGenerator> mockSpeedsGenerator;
         private Mock<IAttacksGenerator> mockAttacksGenerator;
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<ISkillsGenerator> mockSkillsGenerator;
         private Mock<IMagicGenerator> mockMagicGenerator;
-        private Mock<ICreatureDataSelector> mockCreatureDataSelector;
+        private Mock<ICollectionDataSelector<CreatureDataSelection>> mockCreatureDataSelector;
         private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
         private Mock<IDemographicsGenerator> mockDemographicsGenerator;
@@ -52,13 +52,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void Setup()
         {
             mockCollectionSelector = new Mock<ICollectionSelector>();
-            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
             mockSpeedsGenerator = new Mock<ISpeedsGenerator>();
             mockAttacksGenerator = new Mock<IAttacksGenerator>();
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockSkillsGenerator = new Mock<ISkillsGenerator>();
             mockMagicGenerator = new Mock<IMagicGenerator>();
-            mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
+            mockCreatureDataSelector = new Mock<ICollectionDataSelector<CreatureDataSelection>>();
             mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
             mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
@@ -1838,12 +1838,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -1981,12 +1981,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -2067,12 +2067,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -2141,12 +2141,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -2256,12 +2256,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -2378,12 +2378,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -2494,12 +2494,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -2647,12 +2647,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -2712,12 +2712,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -2777,11 +2777,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -2852,12 +2852,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = intelligenceAdjustment },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = intelligenceAdjustment },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 600 },
             };
 
             mockTypeAndAmountSelector
@@ -2925,12 +2925,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -2998,12 +2998,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -3070,12 +3070,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -3193,12 +3193,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -3337,12 +3337,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -3470,12 +3470,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -3574,12 +3574,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -3635,12 +3635,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -3671,12 +3671,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -3920,12 +3920,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -4008,12 +4008,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -4186,12 +4186,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -4407,12 +4407,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -4635,12 +4635,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -4858,12 +4858,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -5093,12 +5093,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector
@@ -5316,12 +5316,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
             };
 
             mockTypeAndAmountSelector

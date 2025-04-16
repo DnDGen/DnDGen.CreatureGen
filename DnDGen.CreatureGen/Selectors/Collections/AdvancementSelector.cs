@@ -14,7 +14,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
     {
         private readonly IPercentileSelector percentileSelector;
         private readonly ICollectionSelector collectionSelector;
-        private readonly ICollectionTypeAndAmountSelector collectionTypeAndAmountSelector;
+        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private readonly ICollectionDataSelector<AdvancementDataSelection> advancementDataSelector;
         private readonly Dice dice;
 
@@ -22,13 +22,13 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             IPercentileSelector percentileSelector,
             ICollectionSelector collectionSelector,
             ICollectionDataSelector<AdvancementDataSelection> advancementDataSelector,
-            ICollectionTypeAndAmountSelector collectionTypeAndAmountSelector,
+            ICollectionTypeAndAmountSelector typeAndAmountSelector,
             Dice dice)
         {
             this.percentileSelector = percentileSelector;
             this.collectionSelector = collectionSelector;
             this.advancementDataSelector = advancementDataSelector;
-            this.collectionTypeAndAmountSelector = collectionTypeAndAmountSelector;
+            this.typeAndAmountSelector = typeAndAmountSelector;
             this.dice = dice;
         }
 
@@ -49,13 +49,13 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 
         private IEnumerable<AdvancementDataSelection> GetValidAdvancements(string creature, IEnumerable<string> templates)
         {
-            var advancements = advancementDataSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Advancements, creature);
-            var creatureHitDice = collectionTypeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, creature);
+            var advancements = advancementDataSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Advancements, creature);
+            var creatureHitDice = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, creature);
             var maxHitDice = int.MaxValue;
 
             foreach (var template in templates)
             {
-                var templateMaxHitDice = collectionTypeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, template);
+                var templateMaxHitDice = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, template);
                 maxHitDice = Math.Min(templateMaxHitDice.Amount, maxHitDice);
             }
 

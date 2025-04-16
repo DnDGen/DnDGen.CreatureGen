@@ -2,8 +2,9 @@
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Defenses;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Models;
+using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using Moq;
 using NUnit.Framework;
@@ -16,7 +17,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
     public class HitPointsGeneratorTests
     {
         private Mock<Dice> mockDice;
-        private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
+        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private IHitPointsGenerator hitPointsGenerator;
 
         private Ability constitution;
@@ -31,26 +32,31 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         public void Setup()
         {
             mockDice = new Mock<Dice>();
-            mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
-            hitPointsGenerator = new HitPointsGenerator(mockDice.Object, mockAdjustmentSelector.Object);
+            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
+            hitPointsGenerator = new HitPointsGenerator(mockDice.Object, mockTypeAndAmountSelector.Object);
 
-            mockPartialRolls = new Dictionary<int, Mock<PartialRoll>>();
-            feats = new List<Feat>();
+            mockPartialRolls = [];
+            feats = [];
             constitution = new Ability(AbilityConstants.Constitution);
-            creatureType = new CreatureType();
+            creatureType = new CreatureType
+            {
+                Name = "creature type"
+            };
 
-            creatureType.Name = "creature type";
+            SetUpRolls(600.5, [9266, 42]);
 
-            SetUpRolls(600.5, new[] { 9266, 42 });
-
-            mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, creatureType.Name)).Returns(Die);
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, creatureType.Name))
+                .Returns(new TypeAndAmountDataSelection { AmountAsDouble = Die });
 
             mockDice.Setup(d => d.Roll(It.IsAny<int>())).Returns((int q) => mockPartialRolls[q].Object);
         }
 
         private void SetUpRolls(double average, int[] rolls, int die = Die)
         {
-            mockAdjustmentSelector.Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, CreatureName)).Returns(rolls.Length);
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, CreatureName))
+                .Returns(new TypeAndAmountDataSelection { AmountAsDouble = rolls.Length });
 
             if (!mockPartialRolls.ContainsKey(rolls.Length))
                 mockPartialRolls[rolls.Length] = new Mock<PartialRoll>();
@@ -96,11 +102,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         public void GetHitDieAsCharacter(string type, int quantity)
         {
             creatureType.Name = type;
-            mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, type)).Returns(Die);
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, type))
+                .Returns(new TypeAndAmountDataSelection { AmountAsDouble = Die });
 
             var rolls = Enumerable.Range(9266, quantity).ToArray();
             SetUpRolls(600.5, rolls);
-            mockAdjustmentSelector.Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, CreatureName)).Returns(2);
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, CreatureName))
+                .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 2 });
 
             var hitPoints = hitPointsGenerator.GenerateFor(CreatureName, creatureType, constitution, "size", asCharacter: true);
             Assert.That(hitPoints.Bonus, Is.Zero);
@@ -133,8 +143,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         public void GetHitDieAsCharacter_OnlyHas1HitDie(string type, int quantity)
         {
             creatureType.Name = type;
-            mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, type)).Returns(Die);
-            mockAdjustmentSelector.Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, CreatureName)).Returns(1);
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, type))
+                .Returns(new TypeAndAmountDataSelection { AmountAsDouble = Die });
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, CreatureName))
+                .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 1 });
 
             if (quantity > 0)
             {
@@ -266,8 +280,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         [Test]
         public void AddAdditionalHitDice()
         {
-            SetUpRolls(13.37, new[] { 42, 600, 1337, 1336 });
-            mockAdjustmentSelector.Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, CreatureName)).Returns(1);
+            SetUpRolls(13.37, [42, 600, 1337, 1336]);
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, CreatureName))
+                .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 1 });
 
             var hitPoints = hitPointsGenerator.GenerateFor(CreatureName, creatureType, constitution, "size", 3);
             Assert.That(hitPoints.Bonus, Is.Zero);
@@ -355,9 +371,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         public void ConstructsGetBonusHitPointsBasedOnSize(string size, int bonusHitPoints)
         {
             creatureType.Name = CreatureConstants.Types.Construct;
-            mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, CreatureConstants.Types.Construct)).Returns(1336);
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, CreatureConstants.Types.Construct))
+                .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 1336 });
 
-            SetUpRolls(13.37, new[] { 96, 783 }, 1336);
+            SetUpRolls(13.37, [96, 783], 1336);
 
             var hitPoints = hitPointsGenerator.GenerateFor(CreatureName, creatureType, constitution, size);
             Assert.That(hitPoints.Bonus, Is.EqualTo(bonusHitPoints));
@@ -386,11 +404,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         public void ConstructsGetBonusHitPointsBasedOnSizeWithBonusFeats(string size, int bonusHitPoints)
         {
             creatureType.Name = CreatureConstants.Types.Construct;
-            mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, CreatureConstants.Types.Construct)).Returns(1336);
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, CreatureConstants.Types.Construct))
+                .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 1336 });
 
             feats.Add(new Feat { Name = FeatConstants.Toughness, Power = 3 });
 
-            SetUpRolls(13.37, new[] { 96, 783 }, 1336);
+            SetUpRolls(13.37, [96, 783], 1336);
 
             var hitPoints = hitPointsGenerator.GenerateFor(CreatureName, creatureType, constitution, size);
             hitPoints = hitPointsGenerator.RegenerateWith(hitPoints, feats);

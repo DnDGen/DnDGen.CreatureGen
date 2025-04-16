@@ -106,7 +106,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
 
         private int GetArcaneSpellFailure(Item item)
         {
-            var arcaneSpellFailureSelection = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.Adjustments.ArcaneSpellFailures, item.Name);
+            var arcaneSpellFailureSelection = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.ArcaneSpellFailures, item.Name);
 
             if (item.Traits.Contains(TraitConstants.SpecialMaterials.Mithral))
                 arcaneSpellFailureSelection.AmountAsDouble -= 10;

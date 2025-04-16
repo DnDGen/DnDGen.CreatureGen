@@ -4,14 +4,6 @@ namespace DnDGen.CreatureGen.Tables
 {
     internal static class TableNameConstants
     {
-        internal static class Adjustments
-        {
-            public const string ArcaneSpellFailures = "ArcaneSpellFailures";
-            public const string GrappleBonuses = "GrappleBonuses";
-            public const string SizeModifiers = "SizeModifiers";
-            public const string SkillPoints = "SkillPoints";
-        }
-
         internal static class Collection
         {
             public const string AbilityGroups = "AbilityGroups";
@@ -62,6 +54,7 @@ namespace DnDGen.CreatureGen.Tables
         internal static class TypeAndAmount
         {
             public const string AbilityAdjustments = "AbilityAdjustments";
+            public const string ArcaneSpellFailures = "ArcaneSpellFailures";
             public const string AgeRolls = "AgeRolls";
             public const string Casters = "Casters";
             [Obsolete("incorporated into feat data")]
@@ -70,10 +63,13 @@ namespace DnDGen.CreatureGen.Tables
             public const string FeatSkillRankRequirements = "FeatSkillRankRequirements";
             [Obsolete("incorporated into feat data")]
             public const string FeatSpeedRequirements = "FeatSpeedRequirements";
+            public const string GrappleBonuses = "GrappleBonuses";
             public const string Heights = "Heights";
             public const string HitDice = "HitDice";
             public const string KnownSpells = "KnownSpells";
             public const string Lengths = "Lengths";
+            public const string SizeModifiers = "SizeModifiers";
+            public const string SkillPoints = "SkillPoints";
             public const string SpellDomains = "SpellDomains";
             public const string SpellLevels = "SpellLevels";
             public const string SpellsPerDay = "SpellsPerDay";

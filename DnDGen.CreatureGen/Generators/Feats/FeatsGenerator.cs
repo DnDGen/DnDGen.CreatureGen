@@ -55,20 +55,8 @@ namespace DnDGen.CreatureGen.Generators.Feats
 
                 foreach (var selection in setNewSelections)
                 {
-                    var specialQuality = new Feat();
-                    specialQuality.Name = selection.Feat;
+                    var specialQuality = Feat.From(selection, abilities);
                     specialQuality.Foci = GetFoci(selection, skills, abilities);
-
-                    specialQuality.Frequency = selection.Frequency;
-                    specialQuality.Power = selection.Power;
-
-                    if (!string.IsNullOrEmpty(selection.SaveAbility))
-                    {
-                        specialQuality.Save = new SaveDieCheck();
-                        specialQuality.Save.BaseAbility = abilities[selection.SaveAbility];
-                        specialQuality.Save.Save = selection.Save;
-                        specialQuality.Save.BaseValue = selection.SaveBaseValue;
-                    }
 
                     specialQualities.Add(specialQuality);
                     addedNames.Add(specialQuality.Name);
@@ -93,18 +81,16 @@ namespace DnDGen.CreatureGen.Generators.Feats
 
             if (specialQualities.Any(f => f.Name == FeatConstants.SpecialQualities.Blind))
             {
-                specialQualities = specialQualities
-                    .Where(f => !visionFeatNames.Contains(f.Name))
-                    .ToList();
+                specialQualities = [.. specialQualities.Where(f => !visionFeatNames.Contains(f.Name))];
             }
 
             return specialQualities;
         }
 
-        private IEnumerable<string> GetFoci(SpecialQualityDataSelection specialQualitySelection, IEnumerable<Skill> skills, Dictionary<string, Ability> abilities)
+        private HashSet<string> GetFoci(SpecialQualityDataSelection specialQualitySelection, IEnumerable<Skill> skills, Dictionary<string, Ability> abilities)
         {
             if (string.IsNullOrEmpty(specialQualitySelection.FocusType))
-                return Enumerable.Empty<string>();
+                return [];
 
             var foci = new HashSet<string>();
 
@@ -141,7 +127,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
             bool canUseEquipment)
         {
             if (!abilities[AbilityConstants.Intelligence].HasScore || hitPoints.HitDiceQuantity == 0)
-                return Enumerable.Empty<Feat>();
+                return [];
 
             var numberOfAdditionalFeats = GetFeatQuantity(hitPoints);
 
@@ -162,10 +148,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
             return feats;
         }
 
-        private int GetFeatQuantity(HitPoints hitPoints)
-        {
-            return hitPoints.RoundedHitDiceQuantity / 3 + 1;
-        }
+        private int GetFeatQuantity(HitPoints hitPoints) => hitPoints.RoundedHitDiceQuantity / 3 + 1;
 
         private List<Feat> PopulateFeatsRandomlyFrom(
             Dictionary<string, Ability> abilities,
@@ -192,7 +175,16 @@ namespace DnDGen.CreatureGen.Generators.Feats
             {
                 var featSelection = collectionsSelector.SelectRandomFrom(availableFeatSelections);
 
-                var preliminaryFocus = featFocusGenerator.GenerateFrom(featSelection.Feat, featSelection.FocusType, skills, featSelection.RequiredFeats, chosenFeats, casterLevel, abilities, attacks);
+                var preliminaryFocus = featFocusGenerator.GenerateFrom(
+                    featSelection.Feat,
+                    featSelection.FocusType,
+                    skills,
+                    featSelection.RequiredFeats,
+                    chosenFeats,
+                    casterLevel,
+                    abilities,
+                    attacks);
+
                 if (preliminaryFocus == FeatConstants.Foci.NoValidFociAvailable)
                 {
                     quantity++;
@@ -206,20 +198,10 @@ namespace DnDGen.CreatureGen.Generators.Feats
                     continue;
                 }
 
-                var feat = new Feat();
-                var hasMatchingFeat = feats.Any(f => FeatsWithFociMatch(f, featSelection));
-
-                if (hasMatchingFeat)
+                var feat = feats.FirstOrDefault(f => f.FociMatch(featSelection));
+                if (feat == null)
                 {
-                    feat = feats.First(f => FeatsWithFociMatch(f, featSelection));
-                }
-                else
-                {
-                    feat.Name = featSelection.Feat;
-                    feat.Frequency = featSelection.Frequency;
-                    feat.Power = featSelection.Power;
-                    feat.CanBeTakenMultipleTimes = featSelection.CanBeTakenMultipleTimes;
-
+                    feat = Feat.From(featSelection);
                     feats.Add(feat);
                     chosenFeats.Add(feat);
                 }
@@ -234,7 +216,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
                 availableFeatSelections.AddRange(newAvailableFeatSelections);
 
                 if (!string.IsNullOrEmpty(preliminaryFocus))
-                    feat.Foci = feat.Foci.Union(new[] { preliminaryFocus });
+                    feat.Foci = feat.Foci.Union([preliminaryFocus]);
             }
 
             return feats;
@@ -255,15 +237,6 @@ namespace DnDGen.CreatureGen.Generators.Feats
 
             return (!isEmpty && !featFocusGenerator.FocusTypeIsPreset(featSelection.FocusType))
                 || featSelection.CanBeTakenMultipleTimes;
-        }
-
-        private bool FeatsWithFociMatch(Feat feat, FeatDataSelection featSelection)
-        {
-            return feat.Frequency.TimePeriod == string.Empty
-                && feat.Name == featSelection.Feat
-                && feat.Power == featSelection.Power
-                && feat.Foci.Any()
-                && !string.IsNullOrEmpty(featSelection.FocusType);
         }
 
         private IEnumerable<FeatDataSelection> AddNewlyAvailableFeatSelections(IEnumerable<FeatDataSelection> currentFeatSelections, IEnumerable<FeatDataSelection> sourceFeatSelections, IEnumerable<FeatDataSelection> chosenFeatSelections, IEnumerable<Feat> chosenFeats)

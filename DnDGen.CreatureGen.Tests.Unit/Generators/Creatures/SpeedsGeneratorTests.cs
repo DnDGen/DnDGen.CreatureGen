@@ -1,8 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Creatures;
-using DnDGen.CreatureGen.Selectors.Collections;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
 using Moq;
 using NUnit.Framework;
@@ -13,13 +12,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
     public class SpeedsGeneratorTests
     {
         private ISpeedsGenerator speedsGenerator;
-        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<ICollectionSelector> mockCollectionSelector;
 
         [SetUp]
         public void Setup()
         {
-            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
             mockCollectionSelector = new Mock<ICollectionSelector>();
             speedsGenerator = new SpeedsGenerator(mockTypeAndAmountSelector.Object, mockCollectionSelector.Object);
         }
@@ -29,11 +28,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var speedSelections = new[]
             {
-                new TypeAndAmountSelection { Type = "on foot", Amount = 1234 },
-                new TypeAndAmountSelection { Type = "in a car", Amount = 2345 },
+                new TypeAndAmountDataSelection { Type = "on foot", AmountAsDouble = 1234 },
+                new TypeAndAmountDataSelection { Type = "in a car", AmountAsDouble = 2345 },
             };
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Collection.Speeds, "creature")).Returns(speedSelections);
+            mockTypeAndAmountSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.Speeds, "creature")).Returns(speedSelections);
 
             var speeds = speedsGenerator.Generate("creature");
             Assert.That(speeds["on foot"].Unit, Is.EqualTo("feet per round"));
@@ -50,12 +49,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var speedSelections = new[]
             {
-                new TypeAndAmountSelection { Type = "on foot", Amount = 1234 },
-                new TypeAndAmountSelection { Type = SpeedConstants.Fly, Amount = 2345 },
+                new TypeAndAmountDataSelection { Type = "on foot", AmountAsDouble = 1234 },
+                new TypeAndAmountDataSelection { Type = SpeedConstants.Fly, AmountAsDouble = 2345 },
             };
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Collection.Speeds, "creature")).Returns(speedSelections);
-            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AerialManeuverability, "creature")).Returns(new[] { "maneuverability" });
+            mockTypeAndAmountSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.Speeds, "creature")).Returns(speedSelections);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AerialManeuverability, "creature")).Returns(["maneuverability"]);
 
             var speeds = speedsGenerator.Generate("creature");
             Assert.That(speeds["on foot"].Unit, Is.EqualTo("feet per round"));

@@ -3,9 +3,8 @@ using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Magics;
-using DnDGen.CreatureGen.Selectors.Collections;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.TreasureGen.Items;
 using Moq;
@@ -20,52 +19,54 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
     {
         private Mock<ISpellsGenerator> mockSpellsGenerator;
         private Mock<ICollectionSelector> mockCollectionsSelector;
-        private Mock<IAdjustmentsSelector> mockAdjustmentsSelector;
-        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private IMagicGenerator magicGenerator;
         private Alignment alignment;
         private Dictionary<string, Ability> abilities;
         private Equipment equipment;
         private Dictionary<string, int> arcaneSpellFailures;
         private List<string> classesThatPrepareSpells;
-        private TypeAndAmountSelection caster;
+        private TypeAndAmountDataSelection caster;
 
         [SetUp]
         public void Setup()
         {
             mockSpellsGenerator = new Mock<ISpellsGenerator>();
             mockCollectionsSelector = new Mock<ICollectionSelector>();
-            mockAdjustmentsSelector = new Mock<IAdjustmentsSelector>();
-            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
             magicGenerator = new MagicGenerator(
                 mockSpellsGenerator.Object,
                 mockCollectionsSelector.Object,
-                mockAdjustmentsSelector.Object,
                 mockTypeAndAmountSelector.Object);
             alignment = new Alignment();
-            abilities = new Dictionary<string, Ability>();
+            abilities = [];
             equipment = new Equipment();
-            arcaneSpellFailures = new Dictionary<string, int>();
-            classesThatPrepareSpells = new List<string>();
-            caster = new TypeAndAmountSelection();
-
-            caster.Type = "class name";
-            caster.Amount = 42;
+            arcaneSpellFailures = [];
+            classesThatPrepareSpells = [];
+            caster = new TypeAndAmountDataSelection
+            {
+                Type = "class name",
+                AmountAsDouble = 42
+            };
 
             classesThatPrepareSpells.Add(caster.Type);
             classesThatPrepareSpells.Add("other class");
 
-            abilities["casting ability"] = new Ability("casting ability");
-            abilities["casting ability"].BaseScore = 11;
-            abilities["other ability"] = new Ability("other ability");
-            abilities["other ability"].BaseScore = 11;
+            abilities["casting ability"] = new Ability("casting ability")
+            {
+                BaseScore = 11
+            };
+            abilities["other ability"] = new Ability("other ability")
+            {
+                BaseScore = 11
+            };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, "creature"))
-                .Returns(new[] { caster });
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, "creature"))
+                .Returns([caster]);
 
-            mockAdjustmentsSelector
-                .Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.ArcaneSpellFailures, It.IsAny<string>()))
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.ArcaneSpellFailures, It.IsAny<string>()))
                 .Returns((string table, string name) => arcaneSpellFailures[name]);
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, GroupConstants.PreparesSpells))
@@ -116,12 +117,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
         public void GenerateDomains_None()
         {
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellDomains, "creature"))
-                .Returns(Enumerable.Empty<TypeAndAmountSelection>());
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.SpellDomains, "creature"))
+                .Returns([]);
 
-            var spellsPerDay = new List<SpellQuantity> { new SpellQuantity() };
-            var knownSpells = new List<Spell> { new Spell() };
-            var preparedSpells = new List<Spell> { new Spell() };
+            var spellsPerDay = new List<SpellQuantity> { new() };
+            var knownSpells = new List<Spell> { new() };
+            var preparedSpells = new List<Spell> { new() };
 
             mockSpellsGenerator
                 .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities["casting ability"]))
@@ -149,18 +150,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
         public void GenerateDomains_All()
         {
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellDomains, "creature"))
-                .Returns(new[]
-                {
-                    new TypeAndAmountSelection { Type = "domain 1", Amount = 4 },
-                    new TypeAndAmountSelection { Type = "domain 2", Amount = 4 },
-                    new TypeAndAmountSelection { Type = "domain 3", Amount = 4 },
-                    new TypeAndAmountSelection { Type = "domain 4", Amount = 4 },
-                });
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.SpellDomains, "creature"))
+                .Returns(
+                [
+                    new TypeAndAmountDataSelection { Type = "domain 1", AmountAsDouble = 4 },
+                    new TypeAndAmountDataSelection { Type = "domain 2", AmountAsDouble = 4 },
+                    new TypeAndAmountDataSelection { Type = "domain 3", AmountAsDouble = 4 },
+                    new TypeAndAmountDataSelection { Type = "domain 4", AmountAsDouble = 4 },
+                ]);
 
-            var spellsPerDay = new List<SpellQuantity> { new SpellQuantity() };
-            var knownSpells = new List<Spell> { new Spell() };
-            var preparedSpells = new List<Spell> { new Spell() };
+            var spellsPerDay = new List<SpellQuantity> { new() };
+            var knownSpells = new List<Spell> { new() };
+            var preparedSpells = new List<Spell> { new() };
 
             mockSpellsGenerator
                 .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities["casting ability"], "domain 1", "domain 2", "domain 3", "domain 4"))
@@ -190,23 +191,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
         public void GenerateDomains_RandomSubset()
         {
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellDomains, "creature"))
-                .Returns(new[]
-                {
-                    new TypeAndAmountSelection { Type = "domain 1", Amount = 2 },
-                    new TypeAndAmountSelection { Type = "domain 2", Amount = 2 },
-                    new TypeAndAmountSelection { Type = "domain 3", Amount = 2 },
-                    new TypeAndAmountSelection { Type = "domain 4", Amount = 2 },
-                });
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.SpellDomains, "creature"))
+                .Returns(
+                [
+                    new TypeAndAmountDataSelection { Type = "domain 1", AmountAsDouble = 2 },
+                    new TypeAndAmountDataSelection { Type = "domain 2", AmountAsDouble = 2 },
+                    new TypeAndAmountDataSelection { Type = "domain 3", AmountAsDouble = 2 },
+                    new TypeAndAmountDataSelection { Type = "domain 4", AmountAsDouble = 2 },
+                ]);
 
             var count = 0;
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> c) => c.ElementAt(count++ % c.Count()));
 
-            var spellsPerDay = new List<SpellQuantity> { new SpellQuantity() };
-            var knownSpells = new List<Spell> { new Spell() };
-            var preparedSpells = new List<Spell> { new Spell() };
+            var spellsPerDay = new List<SpellQuantity> { new() };
+            var knownSpells = new List<Spell> { new() };
+            var preparedSpells = new List<Spell> { new() };
 
             mockSpellsGenerator
                 .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities["casting ability"], "domain 1", "domain 3"))
@@ -233,20 +234,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
         public void GenerateDomains_Only1Available()
         {
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellDomains, "creature"))
-                .Returns(new[]
-                {
-                    new TypeAndAmountSelection { Type = "domain 3", Amount = 1 },
-                });
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.SpellDomains, "creature"))
+                .Returns(
+                [
+                    new TypeAndAmountDataSelection { Type = "domain 3", AmountAsDouble = 1 },
+                ]);
 
             var count = 0;
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> c) => c.ElementAt(count++ % c.Count()));
 
-            var spellsPerDay = new List<SpellQuantity> { new SpellQuantity() };
-            var knownSpells = new List<Spell> { new Spell() };
-            var preparedSpells = new List<Spell> { new Spell() };
+            var spellsPerDay = new List<SpellQuantity> { new() };
+            var knownSpells = new List<Spell> { new() };
+            var preparedSpells = new List<Spell> { new() };
 
             mockSpellsGenerator
                 .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities["casting ability"], "domain 3"))
@@ -273,22 +274,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
         public void GenerateDomains_DoNotRepeatDomains()
         {
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellDomains, "creature"))
-                .Returns(new[]
-                {
-                    new TypeAndAmountSelection { Type = "domain 1", Amount = 2 },
-                    new TypeAndAmountSelection { Type = "domain 2", Amount = 2 },
-                    new TypeAndAmountSelection { Type = "domain 3", Amount = 2 },
-                    new TypeAndAmountSelection { Type = "domain 4", Amount = 2 },
-                });
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.SpellDomains, "creature"))
+                .Returns(
+                [
+                    new TypeAndAmountDataSelection { Type = "domain 1", AmountAsDouble = 2 },
+                    new TypeAndAmountDataSelection { Type = "domain 2", AmountAsDouble = 2 },
+                    new TypeAndAmountDataSelection { Type = "domain 3", AmountAsDouble = 2 },
+                    new TypeAndAmountDataSelection { Type = "domain 4", AmountAsDouble = 2 },
+                ]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> c) => c.First());
 
-            var spellsPerDay = new List<SpellQuantity> { new SpellQuantity() };
-            var knownSpells = new List<Spell> { new Spell() };
-            var preparedSpells = new List<Spell> { new Spell() };
+            var spellsPerDay = new List<SpellQuantity> { new() };
+            var knownSpells = new List<Spell> { new() };
+            var preparedSpells = new List<Spell> { new() };
 
             mockSpellsGenerator
                 .Setup(g => g.GeneratePerDay(caster.Type, caster.Amount, abilities["casting ability"], "domain 1", "domain 2"))

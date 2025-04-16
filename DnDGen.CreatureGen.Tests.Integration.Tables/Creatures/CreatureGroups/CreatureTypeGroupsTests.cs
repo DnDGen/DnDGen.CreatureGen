@@ -34,8 +34,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Groups.Dragon_Silver,
             CreatureConstants.DragonTurtle,
             CreatureConstants.Pseudodragon,
-            CreatureConstants.Wyvern,
-            CreatureConstants.Groups.HalfDragon)]
+            CreatureConstants.Wyvern)]
         [TestCase(CreatureConstants.Types.Elemental,
             CreatureConstants.Belker,
             CreatureConstants.Groups.Elemental_Air,
@@ -352,8 +351,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Barghest_Greater,
             CreatureConstants.Doppelganger,
             CreatureConstants.Mimic,
-            CreatureConstants.Phasm,
-            CreatureConstants.Groups.Lycanthrope)]
+            CreatureConstants.Phasm)]
         [TestCase(CreatureConstants.Types.Subtypes.Swarm,
             CreatureConstants.Bat_Swarm,
             CreatureConstants.Centipede_Swarm,

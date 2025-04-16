@@ -1,6 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
-using DnDGen.CreatureGen.Tables;
 using NUnit.Framework;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
@@ -72,21 +71,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Types.Fey,
             CreatureConstants.Types.MonstrousHumanoid,
             CreatureConstants.Types.Outsider,
-            CreatureConstants.Types.Undead,
-            CreatureConstants.Templates.Skeleton,
-            CreatureConstants.Templates.Zombie)]
+            CreatureConstants.Types.Undead)]
         public void CreatureSaveGroup(string save, params string[] group)
         {
             AssertCreatureGroup(save, group);
-        }
-
-        [TestCase(SaveConstants.Will, CreatureConstants.Templates.Skeleton)]
-        [TestCase(SaveConstants.Will, CreatureConstants.Templates.Zombie)]
-        public void SaveGroupContainsCreature(string save, string creature)
-        {
-            var explodedGroup = ExplodeCollection(tableName, save + GroupConstants.TREE);
-            Assert.That(explodedGroup, Contains.Item(creature));
-            Assert.That(table[save], Contains.Item(creature));
         }
     }
 }

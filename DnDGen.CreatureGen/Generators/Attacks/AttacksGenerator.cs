@@ -54,8 +54,8 @@ namespace DnDGen.CreatureGen.Generators.Attacks
             if (!strength.HasScore)
                 return null;
 
-            var sizeModifier = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.Adjustments.GrappleBonuses, size);
-            var creatureModifier = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.Adjustments.GrappleBonuses, creature);
+            var sizeModifier = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.GrappleBonuses, size);
+            var creatureModifier = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.GrappleBonuses, creature);
             return baseAttackBonus + strength.Modifier + sizeModifier.Amount + creatureModifier.Amount;
         }
 
@@ -68,7 +68,7 @@ namespace DnDGen.CreatureGen.Generators.Attacks
             string gender)
         {
             var attackSelections = attackSelector.Select(creatureName, size);
-            var sizeModifier = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.Adjustments.SizeModifiers, size);
+            var sizeModifier = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.SizeModifiers, size);
             var attacks = attackSelections
                 .Where(s => s.RequirementsMet(gender))
                 .Select(s => Attack.From(s, abilities, hitDiceQuantity, baseAttackBonus, sizeModifier.Amount));

@@ -1,11 +1,12 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Selectors.Collections;
-using DnDGen.CreatureGen.Selectors.Helpers;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using Moq;
 using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
@@ -14,23 +15,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
     public class AttackSelectorTests
     {
         private IAttackSelector attackSelector;
-        private Mock<ICollectionSelector> mockCollectionSelector;
-        private AttackHelper attackHelper;
-        private DamageHelper damageHelper;
+        private Mock<ICollectionDataSelector<AttackDataSelection>> mockAttackDataSelector;
+        private Mock<ICollectionDataSelector<DamageDataSelection>> mockDamageDataSelector;
 
         [SetUp]
         public void Setup()
         {
-            mockCollectionSelector = new Mock<ICollectionSelector>();
-            attackSelector = new AttackSelector(mockCollectionSelector.Object);
-            attackHelper = new AttackHelper();
-            damageHelper = new DamageHelper();
+            mockAttackDataSelector = new Mock<ICollectionDataSelector<AttackDataSelection>>();
+            mockDamageDataSelector = new Mock<ICollectionDataSelector<DamageDataSelection>>();
+            attackSelector = new AttackSelector(mockAttackDataSelector.Object, mockDamageDataSelector.Object);
         }
 
         [Test]
         public void SelectNoAttacks()
         {
-            var attacks = attackSelector.Select("creature", "original size", "advanced size");
+            var attacks = attackSelector.Select("creature", "size");
             Assert.That(attacks, Is.Empty);
         }
 
@@ -136,9 +135,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(attack.SaveDcBonus, Is.Zero);
         }
 
-        private string GetData(
+
+
+        private AttackDataSelection GetData(
             string name,
-            string damageData,
+            List<DamageDataSelection> damageSelections,
             string damageEffect,
             double damageBonusMultiplier,
             int frequencyQuantity,
@@ -152,22 +153,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             string saveAbility = null,
             int saveDcBonus = 0)
         {
-            var data = attackHelper.BuildData(
-                name,
-                damageData,
-                damageEffect,
-                damageBonusMultiplier,
-                attackType,
-                frequencyQuantity,
-                frequencyTimePeriod,
-                isMelee,
-                isNatural,
-                isPrimary,
-                isSpecial,
-                save,
-                saveAbility,
-                saveDcBonus);
-            return attackHelper.BuildEntry(data);
+            return new AttackDataSelection
+            {
+                Name = name,
+                Damages = damageSelections,
+                DamageEffect = damageEffect,
+                DamageBonusMultiplier = damageBonusMultiplier,
+                FrequencyQuantity = frequencyQuantity,
+                FrequencyTimePeriod = frequencyTimePeriod,
+                AttackType = attackType,
+                IsMelee = isMelee,
+                IsNatural = isNatural,
+                IsPrimary = isPrimary,
+                IsSpecial = isSpecial,
+                Save = save,
+                SaveAbility = saveAbility,
+                SaveDcBonus = saveDcBonus,
+            };
         }
 
         [Test]

@@ -1597,8 +1597,8 @@ namespace DnDGen.CreatureGen.Creatures
 
         public static IEnumerable<string> GetAllCharacters()
         {
-            return new[]
-            {
+            return
+            [
                 Aasimar,
                 Aboleth,
                 Androsphinx,
@@ -1791,7 +1791,7 @@ namespace DnDGen.CreatureGen.Creatures
                 YuanTi_Halfblood_SnakeTailAndHumanLegs,
                 YuanTi_Pureblood,
                 Zelekhut,
-            };
+            ];
         }
     }
 }

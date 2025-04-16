@@ -1,8 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Creatures;
-using DnDGen.CreatureGen.Selectors.Collections;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using Moq;
@@ -37,14 +36,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         private IDemographicsGenerator generator;
         private Mock<ICollectionSelector> mockCollectionsSelector;
         private Mock<Dice> mockDice;
-        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
 
         [SetUp]
         public void Setup()
         {
             mockCollectionsSelector = new Mock<ICollectionSelector>();
             mockDice = new Mock<Dice>();
-            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
 
             generator = new DemographicsGenerator(mockCollectionsSelector.Object, mockDice.Object, mockTypeAndAmountSelector.Object);
 
@@ -64,73 +63,73 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
-            var ageRolls = new List<TypeAndAmountSelection>
+            var ageRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = AgeConstants.Categories.Adulthood, Amount = 9266, RawAmount = "raw 9266" },
-                new() { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" },
-                new() { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" },
-                new() { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" },
-                new() { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" }
+                new() { Type = AgeConstants.Categories.Adulthood, AmountAsDouble = 9266, Roll = "raw 9266" },
+                new() { Type = AgeConstants.Categories.MiddleAge, AmountAsDouble = 1337, Roll = "raw 1337" },
+                new() { Type = AgeConstants.Categories.Old, AmountAsDouble = 600, Roll = "raw 600" },
+                new() { Type = AgeConstants.Categories.Venerable, AmountAsDouble = 1336, Roll = "raw 1336" },
+                new() { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 90210, Roll = "raw 90210" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
                 .Returns(ageRolls);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[2]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[3])))
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[1]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[2]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[3])))
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(["This is how I die"]);
 
-            var heightRolls = new List<TypeAndAmountSelection>
+            var heightRolls = new List<TypeAndAmountDataSelection>
             {
-                new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
-                new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
-                new TypeAndAmountSelection { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+                new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" },
+                new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" },
+                new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var lengthRolls = new List<TypeAndAmountSelection>
+            var lengthRolls = new List<TypeAndAmountDataSelection>
             {
-                new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" },
-                new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" },
-                new TypeAndAmountSelection { Type = "my creature", Amount = 227, RawAmount = "raw 227" }
+                new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 922, Roll = "raw 922" },
+                new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 2022, Roll = "raw 2022" },
+                new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 227, Roll = "raw 227" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>
+            var weightRolls = new List<TypeAndAmountDataSelection>
             {
-                new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" },
-                new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" },
-                new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" }
+                new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 8245, Roll = "raw 8245" },
+                new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 69, Roll = "raw 69" },
+                new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 420, Roll = "raw 420" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            var wingspanRolls = new List<TypeAndAmountSelection>
+            var wingspanRolls = new List<TypeAndAmountDataSelection>
             {
-                new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" },
-                new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" },
-                new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" }
+                new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" },
+                new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" },
+                new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 345, Roll = "raw 345" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
             SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
@@ -175,60 +174,60 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = "my only age description", Amount = 9266, RawAmount = "raw 9266" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
+            var ageRolls = new List<TypeAndAmountDataSelection>();
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = "my only age description", AmountAsDouble = 9266, Roll = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 90210, Roll = "raw 90210" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
                 .Returns(ageRolls);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => !c.Any()),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => !c.Any()),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => !c.Any())))
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => !c.Any()),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => !c.Any()),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => !c.Any())))
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
-            var heightRolls = new List<TypeAndAmountSelection>();
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 783, RawAmount = "raw 783" });
+            var heightRolls = new List<TypeAndAmountDataSelection>();
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var lengthRolls = new List<TypeAndAmountSelection>();
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 227, RawAmount = "raw 227" });
+            var lengthRolls = new List<TypeAndAmountDataSelection>();
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 922, Roll = "raw 922" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 2022, Roll = "raw 2022" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 227, Roll = "raw 227" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>();
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" });
+            var weightRolls = new List<TypeAndAmountDataSelection>();
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 8245, Roll = "raw 8245" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 69, Roll = "raw 69" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 420, Roll = "raw 420" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            var wingspanRolls = new List<TypeAndAmountSelection>();
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" });
+            var wingspanRolls = new List<TypeAndAmountDataSelection>();
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 345, Roll = "raw 345" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
             SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
@@ -275,61 +274,61 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Adulthood, Amount = 9266, RawAmount = "raw 9266" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Venerable, Amount = 42, RawAmount = "raw 42" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
+            var ageRolls = new List<TypeAndAmountDataSelection>();
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Adulthood, AmountAsDouble = 9266, Roll = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Venerable, AmountAsDouble = 42, Roll = "raw 42" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 90210, Roll = "raw 90210" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
                 .Returns(ageRolls);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => !c.Any()),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => !c.Any()),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1])))
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => !c.Any()),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => !c.Any()),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[1])))
                 .Returns(ageRolls[index]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
-            var heightRolls = new List<TypeAndAmountSelection>();
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 783, RawAmount = "raw 783" });
+            var heightRolls = new List<TypeAndAmountDataSelection>();
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var lengthRolls = new List<TypeAndAmountSelection>();
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 227, RawAmount = "raw 227" });
+            var lengthRolls = new List<TypeAndAmountDataSelection>();
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 922, Roll = "raw 922" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 2022, Roll = "raw 2022" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 227, Roll = "raw 227" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>();
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" });
+            var weightRolls = new List<TypeAndAmountDataSelection>();
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 8245, Roll = "raw 8245" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 69, Roll = "raw 69" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 420, Roll = "raw 420" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            var wingspanRolls = new List<TypeAndAmountSelection>();
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" });
+            var wingspanRolls = new List<TypeAndAmountDataSelection>();
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 345, Roll = "raw 345" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
             SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
@@ -377,73 +376,73 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
-            var ageRolls = new List<TypeAndAmountSelection>
+            var ageRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = AgeConstants.Categories.Adulthood, Amount = 9266, RawAmount = "raw 9266" },
-                new() { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" },
-                new() { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" },
-                new() { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" },
-                new() { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" }
+                new() { Type = AgeConstants.Categories.Adulthood, AmountAsDouble = 9266, Roll = "raw 9266" },
+                new() { Type = AgeConstants.Categories.MiddleAge, AmountAsDouble = 1337, Roll = "raw 1337" },
+                new() { Type = AgeConstants.Categories.Old, AmountAsDouble = 600, Roll = "raw 600" },
+                new() { Type = AgeConstants.Categories.Venerable, AmountAsDouble = 1336, Roll = "raw 1336" },
+                new() { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 90210, Roll = "raw 90210" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
                 .Returns(ageRolls);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[2]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[3])))
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[1]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[2]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[3])))
                 .Returns(ageRolls[index]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(["This is how I die"]);
 
-            var heightRolls = new List<TypeAndAmountSelection>
+            var heightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
-                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
-                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+                new() { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" },
+                new() { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" },
+                new() { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var lengthRolls = new List<TypeAndAmountSelection>
+            var lengthRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 922, RawAmount = "raw 922" },
-                new() { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" },
-                new() { Type = "my creature", Amount = 227, RawAmount = "raw 227" }
+                new() { Type = "my gender", AmountAsDouble = 922, Roll = "raw 922" },
+                new() { Type = "my other gender", AmountAsDouble = 2022, Roll = "raw 2022" },
+                new() { Type = "my creature", AmountAsDouble = 227, Roll = "raw 227" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>
+            var weightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" },
-                new() { Type = "my other gender", Amount = 69, RawAmount = "raw 69" },
-                new() { Type = "my creature", Amount = 420, RawAmount = "raw 420" }
+                new() { Type = "my gender", AmountAsDouble = 8245, Roll = "raw 8245" },
+                new() { Type = "my other gender", AmountAsDouble = 69, Roll = "raw 69" },
+                new() { Type = "my creature", AmountAsDouble = 420, Roll = "raw 420" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            var wingspanRolls = new List<TypeAndAmountSelection>
+            var wingspanRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 123, RawAmount = "raw 123" },
-                new() { Type = "my other gender", Amount = 234, RawAmount = "raw 234" },
-                new() { Type = "my creature", Amount = 345, RawAmount = "raw 345" }
+                new() { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" },
+                new() { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" },
+                new() { Type = "my creature", AmountAsDouble = 345, Roll = "raw 345" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
             SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
@@ -520,63 +519,63 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Adulthood, Amount = 9266, RawAmount = "raw 9266" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 1209, RawAmount = "raw 1209" });
+            var ageRolls = new List<TypeAndAmountDataSelection>();
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Adulthood, AmountAsDouble = 9266, Roll = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.MiddleAge, AmountAsDouble = 1337, Roll = "raw 1337" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Old, AmountAsDouble = 600, Roll = "raw 600" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Venerable, AmountAsDouble = 1336, Roll = "raw 1336" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 1209, Roll = "raw 1209" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
                 .Returns(ageRolls);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[2]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[3])))
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[1]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[2]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[3])))
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
-            var heightRolls = new List<TypeAndAmountSelection>();
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 783, RawAmount = "raw 783" });
+            var heightRolls = new List<TypeAndAmountDataSelection>();
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var lengthRolls = new List<TypeAndAmountSelection>();
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 227, RawAmount = "raw 227" });
+            var lengthRolls = new List<TypeAndAmountDataSelection>();
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 922, Roll = "raw 922" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 2022, Roll = "raw 2022" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 227, Roll = "raw 227" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>();
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" });
+            var weightRolls = new List<TypeAndAmountDataSelection>();
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 8245, Roll = "raw 8245" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 69, Roll = "raw 69" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 420, Roll = "raw 420" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            var wingspanRolls = new List<TypeAndAmountSelection>();
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" });
+            var wingspanRolls = new List<TypeAndAmountDataSelection>();
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 345, Roll = "raw 345" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
             SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
@@ -621,12 +620,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Adulthood, Amount = 0, RawAmount = "raw 0" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 0, RawAmount = "raw 0" });
+            var ageRolls = new List<TypeAndAmountDataSelection>();
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Adulthood, AmountAsDouble = 0, Roll = "raw 0" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 0, Roll = "raw 0" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
                 .Returns(ageRolls);
 
             mockDice
@@ -635,50 +634,50 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => !c.Any()),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => !c.Any()),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => !c.Any())))
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => !c.Any()),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => !c.Any()),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => !c.Any())))
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
-            var heightRolls = new List<TypeAndAmountSelection>();
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 783, RawAmount = "raw 783" });
+            var heightRolls = new List<TypeAndAmountDataSelection>();
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var lengthRolls = new List<TypeAndAmountSelection>();
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 227, RawAmount = "raw 227" });
+            var lengthRolls = new List<TypeAndAmountDataSelection>();
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 922, Roll = "raw 922" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 2022, Roll = "raw 2022" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 227, Roll = "raw 227" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>();
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" });
+            var weightRolls = new List<TypeAndAmountDataSelection>();
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 8245, Roll = "raw 8245" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 69, Roll = "raw 69" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 420, Roll = "raw 420" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            var wingspanRolls = new List<TypeAndAmountSelection>();
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" });
+            var wingspanRolls = new List<TypeAndAmountDataSelection>();
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 345, Roll = "raw 345" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
             SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
@@ -723,13 +722,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
-            var ageRolls = new List<TypeAndAmountSelection>
+            var ageRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = AgeConstants.Categories.Adulthood, Amount = 0, RawAmount = "raw 0" },
-                new() { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" },
-                new() { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" },
-                new() { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" },
-                new() { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" }
+                new() { Type = AgeConstants.Categories.Adulthood, AmountAsDouble = 0, Roll = "raw 0" },
+                new() { Type = AgeConstants.Categories.MiddleAge, AmountAsDouble = 1337, Roll = "raw 1337" },
+                new() { Type = AgeConstants.Categories.Old, AmountAsDouble = 600, Roll = "raw 600" },
+                new() { Type = AgeConstants.Categories.Venerable, AmountAsDouble = 1336, Roll = "raw 1336" },
+                new() { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 90210, Roll = "raw 90210" }
             };
 
             mockDice
@@ -737,63 +736,63 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(0.922);
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
                 .Returns(ageRolls);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[2]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[3])))
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[1]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[2]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[3])))
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(["This is how I die"]);
 
-            var heightRolls = new List<TypeAndAmountSelection>
+            var heightRolls = new List<TypeAndAmountDataSelection>
             {
-                new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
-                new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
-                new TypeAndAmountSelection { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+                new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" },
+                new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" },
+                new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var lengthRolls = new List<TypeAndAmountSelection>
+            var lengthRolls = new List<TypeAndAmountDataSelection>
             {
-                new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" },
-                new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" },
-                new TypeAndAmountSelection { Type = "my creature", Amount = 227, RawAmount = "raw 227" }
+                new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 922, Roll = "raw 922" },
+                new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 2022, Roll = "raw 2022" },
+                new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 227, Roll = "raw 227" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>
+            var weightRolls = new List<TypeAndAmountDataSelection>
             {
-                new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" },
-                new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" },
-                new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" }
+                new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 8245, Roll = "raw 8245" },
+                new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 69, Roll = "raw 69" },
+                new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 420, Roll = "raw 420" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            var wingspanRolls = new List<TypeAndAmountSelection>
+            var wingspanRolls = new List<TypeAndAmountDataSelection>
             {
-                new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" },
-                new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" },
-                new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" }
+                new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" },
+                new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" },
+                new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 345, Roll = "raw 345" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
             SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
@@ -838,13 +837,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
-            var ageRolls = new List<TypeAndAmountSelection>
+            var ageRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = AgeConstants.Categories.Adulthood, Amount = 0, RawAmount = "raw 0" },
-                new() { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" },
-                new() { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" },
-                new() { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" },
-                new() { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" }
+                new() { Type = AgeConstants.Categories.Adulthood, AmountAsDouble = 0, Roll = "raw 0" },
+                new() { Type = AgeConstants.Categories.MiddleAge, AmountAsDouble = 1337, Roll = "raw 1337" },
+                new() { Type = AgeConstants.Categories.Old, AmountAsDouble = 600, Roll = "raw 600" },
+                new() { Type = AgeConstants.Categories.Venerable, AmountAsDouble = 1336, Roll = "raw 1336" },
+                new() { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 90210, Roll = "raw 90210" }
             };
 
             mockDice
@@ -852,63 +851,63 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(0);
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
                 .Returns(ageRolls);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[2]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[3])))
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[1]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[2]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[3])))
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(["This is how I die"]);
 
-            var heightRolls = new List<TypeAndAmountSelection>
+            var heightRolls = new List<TypeAndAmountDataSelection>
             {
-                new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
-                new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
-                new TypeAndAmountSelection { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+                new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" },
+                new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" },
+                new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var lengthRolls = new List<TypeAndAmountSelection>
+            var lengthRolls = new List<TypeAndAmountDataSelection>
             {
-                new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" },
-                new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" },
-                new TypeAndAmountSelection { Type = "my creature", Amount = 227, RawAmount = "raw 227" }
+                new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 922, Roll = "raw 922" },
+                new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 2022, Roll = "raw 2022" },
+                new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 227, Roll = "raw 227" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>
+            var weightRolls = new List<TypeAndAmountDataSelection>
             {
-                new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" },
-                new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" },
-                new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" }
+                new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 8245, Roll = "raw 8245" },
+                new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 69, Roll = "raw 69" },
+                new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 420, Roll = "raw 420" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            var wingspanRolls = new List<TypeAndAmountSelection>
+            var wingspanRolls = new List<TypeAndAmountDataSelection>
             {
-                new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" },
-                new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" },
-                new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" }
+                new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" },
+                new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" },
+                new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 345, Roll = "raw 345" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
             SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
@@ -953,13 +952,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
-            var ageRolls = new List<TypeAndAmountSelection>
+            var ageRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = AgeConstants.Categories.Adulthood, Amount = 9266, RawAmount = "raw 9266" },
-                new() { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" },
-                new() { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" },
-                new() { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" },
-                new() { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" }
+                new() { Type = AgeConstants.Categories.Adulthood, AmountAsDouble = 9266, Roll = "raw 9266" },
+                new() { Type = AgeConstants.Categories.MiddleAge, AmountAsDouble = 1337, Roll = "raw 1337" },
+                new() { Type = AgeConstants.Categories.Old, AmountAsDouble = 600, Roll = "raw 600" },
+                new() { Type = AgeConstants.Categories.Venerable, AmountAsDouble = 1336, Roll = "raw 1336" },
+                new() { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 90210, Roll = "raw 90210" }
             };
 
             mockDice
@@ -967,63 +966,63 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(0);
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
                 .Returns(ageRolls);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[2]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[3])))
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[1]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[2]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[3])))
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(["This is how I die"]);
 
-            var heightRolls = new List<TypeAndAmountSelection>
+            var heightRolls = new List<TypeAndAmountDataSelection>
             {
-                new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
-                new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
-                new TypeAndAmountSelection { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+                new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" },
+                new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" },
+                new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var lengthRolls = new List<TypeAndAmountSelection>
+            var lengthRolls = new List<TypeAndAmountDataSelection>
             {
-                new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" },
-                new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" },
-                new TypeAndAmountSelection { Type = "my creature", Amount = 227, RawAmount = "raw 227" }
+                new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 922, Roll = "raw 922" },
+                new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 2022, Roll = "raw 2022" },
+                new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 227, Roll = "raw 227" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>
+            var weightRolls = new List<TypeAndAmountDataSelection>
             {
-                new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" },
-                new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" },
-                new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" }
+                new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 8245, Roll = "raw 8245" },
+                new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 69, Roll = "raw 69" },
+                new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 420, Roll = "raw 420" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            var wingspanRolls = new List<TypeAndAmountSelection>
+            var wingspanRolls = new List<TypeAndAmountDataSelection>
             {
-                new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" },
-                new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" },
-                new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" }
+                new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" },
+                new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" },
+                new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 345, Roll = "raw 345" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
             SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
@@ -1078,67 +1077,67 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Adulthood, Amount = 9266, RawAmount = "raw 9266" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
+            var ageRolls = new List<TypeAndAmountDataSelection>();
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Adulthood, AmountAsDouble = 9266, Roll = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.MiddleAge, AmountAsDouble = 1337, Roll = "raw 1337" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Old, AmountAsDouble = 600, Roll = "raw 600" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Venerable, AmountAsDouble = 1336, Roll = "raw 1336" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 90210, Roll = "raw 90210" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
                 .Returns(ageRolls);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[2]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[3])))
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[1]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[2]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[3])))
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
-            var heightRolls = new List<TypeAndAmountSelection>();
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = roll, RawAmount = "raw 783" });
+            var heightRolls = new List<TypeAndAmountDataSelection>();
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = roll, Roll = "raw 783" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
             mockDice
                 .Setup(d => d.Describe("raw 42+raw 783", 42 + roll, It.IsAny<string[]>()))
                 .Returns((string r, int v, string[] descriptions) => descriptions[index]);
 
-            var lengthRolls = new List<TypeAndAmountSelection>();
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 227, RawAmount = "raw 227" });
+            var lengthRolls = new List<TypeAndAmountDataSelection>();
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 922, Roll = "raw 922" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 2022, Roll = "raw 2022" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 227, Roll = "raw 227" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>();
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" });
+            var weightRolls = new List<TypeAndAmountDataSelection>();
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 8245, Roll = "raw 8245" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 69, Roll = "raw 69" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 420, Roll = "raw 420" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            var wingspanRolls = new List<TypeAndAmountSelection>();
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" });
+            var wingspanRolls = new List<TypeAndAmountDataSelection>();
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 345, Roll = "raw 345" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
             SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
@@ -1193,67 +1192,67 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Adulthood, Amount = 9266, RawAmount = "raw 9266" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
+            var ageRolls = new List<TypeAndAmountDataSelection>();
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Adulthood, AmountAsDouble = 9266, Roll = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.MiddleAge, AmountAsDouble = 1337, Roll = "raw 1337" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Old, AmountAsDouble = 600, Roll = "raw 600" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Venerable, AmountAsDouble = 1336, Roll = "raw 1336" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 90210, Roll = "raw 90210" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
                 .Returns(ageRolls);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[2]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[3])))
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[1]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[2]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[3])))
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
-            var heightRolls = new List<TypeAndAmountSelection>();
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 783, RawAmount = "raw 783" });
+            var heightRolls = new List<TypeAndAmountDataSelection>();
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var lengthRolls = new List<TypeAndAmountSelection>();
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = roll, RawAmount = "raw 227" });
+            var lengthRolls = new List<TypeAndAmountDataSelection>();
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 922, Roll = "raw 922" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 2022, Roll = "raw 2022" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = roll, Roll = "raw 227" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
             mockDice
                 .Setup(d => d.Describe("raw 922+raw 227", 922 + roll, It.IsAny<string[]>()))
                 .Returns((string r, int v, string[] descriptions) => descriptions[index]);
 
-            var weightRolls = new List<TypeAndAmountSelection>();
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" });
+            var weightRolls = new List<TypeAndAmountDataSelection>();
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 8245, Roll = "raw 8245" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 69, Roll = "raw 69" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 420, Roll = "raw 420" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            var wingspanRolls = new List<TypeAndAmountSelection>();
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" });
+            var wingspanRolls = new List<TypeAndAmountDataSelection>();
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 345, Roll = "raw 345" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
             SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
@@ -1308,67 +1307,67 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Adulthood, Amount = 9266, RawAmount = "raw 9266" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
+            var ageRolls = new List<TypeAndAmountDataSelection>();
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Adulthood, AmountAsDouble = 9266, Roll = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.MiddleAge, AmountAsDouble = 1337, Roll = "raw 1337" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Old, AmountAsDouble = 600, Roll = "raw 600" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Venerable, AmountAsDouble = 1336, Roll = "raw 1336" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 90210, Roll = "raw 90210" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
                 .Returns(ageRolls);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[2]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[3])))
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[1]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[2]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[3])))
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
-            var heightRolls = new List<TypeAndAmountSelection>();
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 783, RawAmount = "raw 783" });
+            var heightRolls = new List<TypeAndAmountDataSelection>();
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var lengthRolls = new List<TypeAndAmountSelection>();
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 227, RawAmount = "raw 227" });
+            var lengthRolls = new List<TypeAndAmountDataSelection>();
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 922, Roll = "raw 922" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 2022, Roll = "raw 2022" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 227, Roll = "raw 227" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>();
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = roll, RawAmount = "raw 420" });
+            var weightRolls = new List<TypeAndAmountDataSelection>();
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 8245, Roll = "raw 8245" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 69, Roll = "raw 69" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = roll, Roll = "raw 420" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
             mockDice
                 .Setup(d => d.Describe("raw 8245+783*raw 420", 8245 + 783 * roll, It.IsAny<string[]>()))
                 .Returns((string r, int v, string[] descriptions) => descriptions[index]);
 
-            var wingspanRolls = new List<TypeAndAmountSelection>();
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" });
+            var wingspanRolls = new List<TypeAndAmountDataSelection>();
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 345, Roll = "raw 345" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
             SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
@@ -1413,63 +1412,63 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Adulthood, Amount = 9266, RawAmount = "raw 9266" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
+            var ageRolls = new List<TypeAndAmountDataSelection>();
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Adulthood, AmountAsDouble = 9266, Roll = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.MiddleAge, AmountAsDouble = 1337, Roll = "raw 1337" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Old, AmountAsDouble = 600, Roll = "raw 600" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Venerable, AmountAsDouble = 1336, Roll = "raw 1336" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 90210, Roll = "raw 90210" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
                 .Returns(ageRolls);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[2]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[3])))
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[1]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[2]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[3])))
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
-            var heightRolls = new List<TypeAndAmountSelection>();
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 783, RawAmount = "raw 783" });
+            var heightRolls = new List<TypeAndAmountDataSelection>();
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var lengthRolls = new List<TypeAndAmountSelection>();
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 0, RawAmount = "raw 0" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 0, RawAmount = "raw 0" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 0, RawAmount = "raw 0" });
+            var lengthRolls = new List<TypeAndAmountDataSelection>();
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 0, Roll = "raw 0" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 0, Roll = "raw 0" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 0, Roll = "raw 0" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>();
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" });
+            var weightRolls = new List<TypeAndAmountDataSelection>();
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 8245, Roll = "raw 8245" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 69, Roll = "raw 69" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 420, Roll = "raw 420" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            var wingspanRolls = new List<TypeAndAmountSelection>();
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" });
+            var wingspanRolls = new List<TypeAndAmountDataSelection>();
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 345, Roll = "raw 345" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
             SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
@@ -1514,63 +1513,63 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Adulthood, Amount = 9266, RawAmount = "raw 9266" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
+            var ageRolls = new List<TypeAndAmountDataSelection>();
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Adulthood, AmountAsDouble = 9266, Roll = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.MiddleAge, AmountAsDouble = 1337, Roll = "raw 1337" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Old, AmountAsDouble = 600, Roll = "raw 600" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Venerable, AmountAsDouble = 1336, Roll = "raw 1336" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 90210, Roll = "raw 90210" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
                 .Returns(ageRolls);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[2]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[3])))
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[1]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[2]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[3])))
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
-            var heightRolls = new List<TypeAndAmountSelection>();
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 0, RawAmount = "raw 0" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 0, RawAmount = "raw 0" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 0, RawAmount = "raw 0" });
+            var heightRolls = new List<TypeAndAmountDataSelection>();
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 0, Roll = "raw 0" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 0, Roll = "raw 0" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 0, Roll = "raw 0" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var lengthRolls = new List<TypeAndAmountSelection>();
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 227, RawAmount = "raw 227" });
+            var lengthRolls = new List<TypeAndAmountDataSelection>();
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 922, Roll = "raw 922" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 2022, Roll = "raw 2022" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 227, Roll = "raw 227" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>();
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" });
+            var weightRolls = new List<TypeAndAmountDataSelection>();
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 8245, Roll = "raw 8245" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 69, Roll = "raw 69" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 420, Roll = "raw 420" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            var wingspanRolls = new List<TypeAndAmountSelection>();
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" });
+            var wingspanRolls = new List<TypeAndAmountDataSelection>();
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 345, Roll = "raw 345" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
             SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
@@ -1615,63 +1614,63 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Adulthood, Amount = 9266, RawAmount = "raw 9266" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
+            var ageRolls = new List<TypeAndAmountDataSelection>();
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Adulthood, AmountAsDouble = 9266, Roll = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.MiddleAge, AmountAsDouble = 1337, Roll = "raw 1337" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Old, AmountAsDouble = 600, Roll = "raw 600" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Venerable, AmountAsDouble = 1336, Roll = "raw 1336" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 90210, Roll = "raw 90210" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
                 .Returns(ageRolls);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[2]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[3])))
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[1]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[2]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[3])))
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
-            var heightRolls = new List<TypeAndAmountSelection>();
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 783, RawAmount = "raw 783" });
+            var heightRolls = new List<TypeAndAmountDataSelection>();
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var lengthRolls = new List<TypeAndAmountSelection>();
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 2277, RawAmount = "raw 2277" });
+            var lengthRolls = new List<TypeAndAmountDataSelection>();
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 922, Roll = "raw 922" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 2022, Roll = "raw 2022" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 2277, Roll = "raw 2277" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>();
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" });
+            var weightRolls = new List<TypeAndAmountDataSelection>();
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 8245, Roll = "raw 8245" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 69, Roll = "raw 69" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 420, Roll = "raw 420" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            var wingspanRolls = new List<TypeAndAmountSelection>();
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" });
+            var wingspanRolls = new List<TypeAndAmountDataSelection>();
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 345, Roll = "raw 345" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
             SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
@@ -1726,63 +1725,63 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Adulthood, Amount = 9266, RawAmount = "raw 9266" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
+            var ageRolls = new List<TypeAndAmountDataSelection>();
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Adulthood, AmountAsDouble = 9266, Roll = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.MiddleAge, AmountAsDouble = 1337, Roll = "raw 1337" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Old, AmountAsDouble = 600, Roll = "raw 600" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Venerable, AmountAsDouble = 1336, Roll = "raw 1336" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 90210, Roll = "raw 90210" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
                 .Returns(ageRolls);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[2]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[3])))
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[1]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[2]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[3])))
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
-            var heightRolls = new List<TypeAndAmountSelection>();
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 783, RawAmount = "raw 783" });
+            var heightRolls = new List<TypeAndAmountDataSelection>();
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var lengthRolls = new List<TypeAndAmountSelection>();
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 227, RawAmount = "raw 227" });
+            var lengthRolls = new List<TypeAndAmountDataSelection>();
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 922, Roll = "raw 922" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 2022, Roll = "raw 2022" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 227, Roll = "raw 227" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>();
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" });
+            var weightRolls = new List<TypeAndAmountDataSelection>();
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 8245, Roll = "raw 8245" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 69, Roll = "raw 69" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 420, Roll = "raw 420" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            var wingspanRolls = new List<TypeAndAmountSelection>();
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = roll, RawAmount = "raw 345" });
+            var wingspanRolls = new List<TypeAndAmountDataSelection>();
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = roll, Roll = "raw 345" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
             mockDice
@@ -1831,63 +1830,63 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
-            var ageRolls = new List<TypeAndAmountSelection>();
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Adulthood, Amount = 9266, RawAmount = "raw 9266" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" });
-            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
+            var ageRolls = new List<TypeAndAmountDataSelection>();
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Adulthood, AmountAsDouble = 9266, Roll = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.MiddleAge, AmountAsDouble = 1337, Roll = "raw 1337" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Old, AmountAsDouble = 600, Roll = "raw 600" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Venerable, AmountAsDouble = 1336, Roll = "raw 1336" });
+            ageRolls.Add(new TypeAndAmountDataSelection { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 90210, Roll = "raw 90210" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
                 .Returns(ageRolls);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[2]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[3])))
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[1]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[2]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[3])))
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
-            var heightRolls = new List<TypeAndAmountSelection>();
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 42, RawAmount = "raw 42" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 96, RawAmount = "raw 96" });
-            heightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 783, RawAmount = "raw 783" });
+            var heightRolls = new List<TypeAndAmountDataSelection>();
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" });
+            heightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var lengthRolls = new List<TypeAndAmountSelection>();
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
-            lengthRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 227, RawAmount = "raw 227" });
+            var lengthRolls = new List<TypeAndAmountDataSelection>();
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 922, Roll = "raw 922" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 2022, Roll = "raw 2022" });
+            lengthRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 227, Roll = "raw 227" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>();
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" });
-            weightRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 420, RawAmount = "raw 420" });
+            var weightRolls = new List<TypeAndAmountDataSelection>();
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 8245, Roll = "raw 8245" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 69, Roll = "raw 69" });
+            weightRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 420, Roll = "raw 420" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            var wingspanRolls = new List<TypeAndAmountSelection>();
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 0, RawAmount = "raw 0" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 0, RawAmount = "raw 0" });
-            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 0, RawAmount = "raw 0" });
+            var wingspanRolls = new List<TypeAndAmountDataSelection>();
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my gender", AmountAsDouble = 0, Roll = "raw 0" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my other gender", AmountAsDouble = 0, Roll = "raw 0" });
+            wingspanRolls.Add(new TypeAndAmountDataSelection { Type = "my creature", AmountAsDouble = 0, Roll = "raw 0" });
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
             SetupAppearance("my creature", "my random skin", "my random hair", "my random eyes", "my random other");
@@ -1932,73 +1931,73 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
-            var ageRolls = new List<TypeAndAmountSelection>
+            var ageRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = AgeConstants.Categories.Adulthood, Amount = 9266, RawAmount = "raw 9266" },
-                new() { Type = AgeConstants.Categories.MiddleAge, Amount = 1337, RawAmount = "raw 1337" },
-                new() { Type = AgeConstants.Categories.Old, Amount = 600, RawAmount = "raw 600" },
-                new() { Type = AgeConstants.Categories.Venerable, Amount = 1336, RawAmount = "raw 1336" },
-                new() { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" }
+                new() { Type = AgeConstants.Categories.Adulthood, AmountAsDouble = 9266, Roll = "raw 9266" },
+                new() { Type = AgeConstants.Categories.MiddleAge, AmountAsDouble = 1337, Roll = "raw 1337" },
+                new() { Type = AgeConstants.Categories.Old, AmountAsDouble = 600, Roll = "raw 600" },
+                new() { Type = AgeConstants.Categories.Venerable, AmountAsDouble = 1336, Roll = "raw 1336" },
+                new() { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 90210, Roll = "raw 90210" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my creature"))
                 .Returns(ageRolls);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[0]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[1]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[2]),
-                    It.Is<IEnumerable<TypeAndAmountSelection>>(c => c.Single() == ageRolls[3])))
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[0]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[1]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[2]),
+                    It.Is<IEnumerable<TypeAndAmountDataSelection>>(c => c.Single() == ageRolls[3])))
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(["This is how I die"]);
 
-            var heightRolls = new List<TypeAndAmountSelection>
+            var heightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
-                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
-                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+                new() { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" },
+                new() { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" },
+                new() { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var lengthRolls = new List<TypeAndAmountSelection>
+            var lengthRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 922, RawAmount = "raw 922" },
-                new() { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" },
-                new() { Type = "my creature", Amount = 227, RawAmount = "raw 227" }
+                new() { Type = "my gender", AmountAsDouble = 922, Roll = "raw 922" },
+                new() { Type = "my other gender", AmountAsDouble = 2022, Roll = "raw 2022" },
+                new() { Type = "my creature", AmountAsDouble = 227, Roll = "raw 227" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>
+            var weightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" },
-                new() { Type = "my other gender", Amount = 69, RawAmount = "raw 69" },
-                new() { Type = "my creature", Amount = 420, RawAmount = "raw 420" }
+                new() { Type = "my gender", AmountAsDouble = 8245, Roll = "raw 8245" },
+                new() { Type = "my other gender", AmountAsDouble = 69, Roll = "raw 69" },
+                new() { Type = "my creature", AmountAsDouble = 420, Roll = "raw 420" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            var wingspanRolls = new List<TypeAndAmountSelection>
+            var wingspanRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 123, RawAmount = "raw 123" },
-                new() { Type = "my other gender", Amount = 234, RawAmount = "raw 234" },
-                new() { Type = "my creature", Amount = 345, RawAmount = "raw 345" }
+                new() { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" },
+                new() { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" },
+                new() { Type = "my creature", AmountAsDouble = 345, Roll = "raw 345" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
             SetupAppearance("my creaturemy gender", "my gendered random skin", "my gendered random hair", "my gendered random eyes", "my gendered random other");
@@ -2158,40 +2157,40 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupAppearance(template, string.Empty, string.Empty, string.Empty, string.Empty);
 
-            var ageRolls = new List<TypeAndAmountSelection>
+            var ageRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = AgeConstants.Categories.Adulthood, Amount = 0, RawAmount = "raw 0" },
-                new() { Type = AgeConstants.Categories.Maximum, Amount = 0, RawAmount = "raw 0" }
+                new() { Type = AgeConstants.Categories.Adulthood, AmountAsDouble = 0, Roll = "raw 0" },
+                new() { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 0, Roll = "raw 0" }
             };
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, template))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, template))
                 .Returns(ageRolls);
 
-            var templateHeights = new List<TypeAndAmountSelection>
+            var templateHeights = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = 0, RawAmount = "raw 0" },
+                new() { Type = "my template", AmountAsDouble = 0, Roll = "raw 0" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my template"))
                 .Returns(templateHeights);
 
-            var templateLengths = new List<TypeAndAmountSelection>
+            var templateLengths = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = 0, RawAmount = "raw 0" },
+                new() { Type = "my template", AmountAsDouble = 0, Roll = "raw 0" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my template"))
                 .Returns(templateLengths);
 
-            var templateWeights = new List<TypeAndAmountSelection>
+            var templateWeights = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = 0, RawAmount = "raw 0" },
+                new() { Type = "my template", AmountAsDouble = 0, Roll = "raw 0" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my template"))
                 .Returns(templateWeights);
         }
 
@@ -2200,13 +2199,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var ageRolls = new List<TypeAndAmountSelection>
+            var ageRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = AgeConstants.Categories.Multiplier, Amount = 42, RawAmount = "raw 42" },
-                new() { Type = AgeConstants.Categories.Maximum, Amount = 0, RawAmount = "raw 0" }
+                new() { Type = AgeConstants.Categories.Multiplier, AmountAsDouble = 42, Roll = "raw 42" },
+                new() { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 0, Roll = "raw 0" }
             };
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my template"))
                 .Returns(ageRolls);
 
             var demographics = new Demographics
@@ -2226,13 +2225,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var ageRolls = new List<TypeAndAmountSelection>
+            var ageRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "template age category", Amount = 42, RawAmount = "raw 42" },
-                new() { Type = AgeConstants.Categories.Maximum, Amount = 0, RawAmount = "raw 0" }
+                new() { Type = "template age category", AmountAsDouble = 42, Roll = "raw 42" },
+                new() { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 0, Roll = "raw 0" }
             };
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my template"))
                 .Returns(ageRolls);
 
             var demographics = new Demographics
@@ -2252,13 +2251,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var ageRolls = new List<TypeAndAmountSelection>
+            var ageRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = AgeConstants.Categories.Multiplier, Amount = 42, RawAmount = "raw 42" },
-                new() { Type = AgeConstants.Categories.Maximum, Amount = 0, RawAmount = "raw 0" }
+                new() { Type = AgeConstants.Categories.Multiplier, AmountAsDouble = 42, Roll = "raw 42" },
+                new() { Type = AgeConstants.Categories.Maximum, AmountAsDouble = 0, Roll = "raw 0" }
             };
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my template"))
                 .Returns(ageRolls);
 
             var demographics = new Demographics
@@ -2278,13 +2277,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var ageRolls = new List<TypeAndAmountSelection>
+            var ageRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "template age category", Amount = 42, RawAmount = "raw 42" },
-                new() { Type = AgeConstants.Categories.Maximum, Amount = AgeConstants.Ageless, RawAmount = "raw ageless" }
+                new() { Type = "template age category", AmountAsDouble = 42, Roll = "raw 42" },
+                new() { Type = AgeConstants.Categories.Maximum, AmountAsDouble = AgeConstants.Ageless, Roll = "raw ageless" }
             };
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my template"))
                 .Returns(ageRolls);
 
             var demographics = new Demographics
@@ -2304,15 +2303,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var wingspanRolls = new List<TypeAndAmountSelection>
+            var wingspanRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 123, RawAmount = "raw 123" },
-                new() { Type = "my other gender", Amount = 234, RawAmount = "raw 234" },
-                new() { Type = "my creature", Amount = 345, RawAmount = "raw 345" }
+                new() { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" },
+                new() { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" },
+                new() { Type = "my creature", AmountAsDouble = 345, Roll = "raw 345" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(wingspanRolls);
 
             var demographics = new Demographics
@@ -2346,15 +2345,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var wingspanRolls = new List<TypeAndAmountSelection>
+            var wingspanRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 123, RawAmount = "raw 123" },
-                new() { Type = "my other gender", Amount = 234, RawAmount = "raw 234" },
-                new() { Type = "my creature", Amount = roll, RawAmount = "raw 345" }
+                new() { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" },
+                new() { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" },
+                new() { Type = "my creature", AmountAsDouble = roll, Roll = "raw 345" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(wingspanRolls);
 
             mockDice
@@ -2382,15 +2381,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var wingspanRolls = new List<TypeAndAmountSelection>
+            var wingspanRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 123, RawAmount = "raw 123" },
-                new() { Type = "my other gender", Amount = 234, RawAmount = "raw 234" },
-                new() { Type = "my creature", Amount = 345, RawAmount = "raw 345" }
+                new() { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" },
+                new() { Type = "my other gender", AmountAsDouble = 234, Roll = "raw 234" },
+                new() { Type = "my creature", AmountAsDouble = 345, Roll = "raw 345" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(wingspanRolls);
 
             var demographics = new Demographics
@@ -2414,15 +2413,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var wingspanRolls = new List<TypeAndAmountSelection>
+            var wingspanRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my size", Amount = 123, RawAmount = "raw 123" },
-                new() { Type = "my other base key", Amount = 234, RawAmount = "raw 234" },
-                new() { Type = "my template", Amount = 345, RawAmount = "raw 345" }
+                new() { Type = "my size", AmountAsDouble = 123, Roll = "raw 123" },
+                new() { Type = "my other base key", AmountAsDouble = 234, Roll = "raw 234" },
+                new() { Type = "my template", AmountAsDouble = 345, Roll = "raw 345" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my template"))
                 .Returns(wingspanRolls);
 
             var demographics = new Demographics
@@ -2443,15 +2442,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var wingspanRolls = new List<TypeAndAmountSelection>
+            var wingspanRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my size", Amount = 123, RawAmount = "raw 123" },
-                new() { Type = "my other base key", Amount = 234, RawAmount = "raw 234" },
-                new() { Type = "my template", Amount = 345, RawAmount = "raw 345" }
+                new() { Type = "my size", AmountAsDouble = 123, Roll = "raw 123" },
+                new() { Type = "my other base key", AmountAsDouble = 234, Roll = "raw 234" },
+                new() { Type = "my template", AmountAsDouble = 345, Roll = "raw 345" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my template"))
                 .Returns(wingspanRolls);
 
             var demographics = new Demographics
@@ -2474,13 +2473,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var templateHeights = new List<TypeAndAmountSelection>
+            var templateHeights = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = 0, RawAmount = "raw 0" },
+                new() { Type = "my template", AmountAsDouble = 0, Roll = "raw 0" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my template"))
                 .Returns(templateHeights);
 
             var demographics = new Demographics
@@ -2502,13 +2501,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var templateHeights = new List<TypeAndAmountSelection>
+            var templateHeights = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = 1, RawAmount = "raw 0" },
+                new() { Type = "my template", AmountAsDouble = 1, Roll = "raw 0" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my template"))
                 .Returns(templateHeights);
 
             var demographics = new Demographics
@@ -2530,24 +2529,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var templateHeights = new List<TypeAndAmountSelection>
+            var templateHeights = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = 1, RawAmount = "raw 1" },
+                new() { Type = "my template", AmountAsDouble = 1, Roll = "raw 1" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my template"))
                 .Returns(templateHeights);
 
-            var heightRolls = new List<TypeAndAmountSelection>
+            var heightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
-                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
-                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+                new() { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" },
+                new() { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" },
+                new() { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
             mockDice
@@ -2590,23 +2589,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var templateHeights = new List<TypeAndAmountSelection>
+            var templateHeights = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = 1, RawAmount = "raw 1" },
+                new() { Type = "my template", AmountAsDouble = 1, Roll = "raw 1" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my template"))
                 .Returns(templateHeights);
 
-            var heightRolls = new List<TypeAndAmountSelection>
+            var heightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", RawAmount = "raw 42" },
-                new() { Type = "my creature", RawAmount = "raw 783" }
+                new() { Type = "my gender", Roll = "raw 42" },
+                new() { Type = "my creature", Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
             mockDice
@@ -2636,24 +2635,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var templateHeights = new List<TypeAndAmountSelection>
+            var templateHeights = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = -1, RawAmount = "raw 1" },
+                new() { Type = "my template", AmountAsDouble = -1, Roll = "raw 1" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my template"))
                 .Returns(templateHeights);
 
-            var heightRolls = new List<TypeAndAmountSelection>
+            var heightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
-                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
-                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+                new() { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" },
+                new() { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" },
+                new() { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
             mockDice
@@ -2696,23 +2695,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var templateHeights = new List<TypeAndAmountSelection>
+            var templateHeights = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = -1, RawAmount = "raw 1" },
+                new() { Type = "my template", AmountAsDouble = -1, Roll = "raw 1" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my template"))
                 .Returns(templateHeights);
 
-            var heightRolls = new List<TypeAndAmountSelection>
+            var heightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", RawAmount = "raw 42" },
-                new() { Type = "my creature", RawAmount = "raw 783" }
+                new() { Type = "my gender", Roll = "raw 42" },
+                new() { Type = "my creature", Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
             mockDice
@@ -2742,13 +2741,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var templateLengths = new List<TypeAndAmountSelection>
+            var templateLengths = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = 0, RawAmount = "raw 0" },
+                new() { Type = "my template", AmountAsDouble = 0, Roll = "raw 0" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my template"))
                 .Returns(templateLengths);
 
             var demographics = new Demographics
@@ -2770,13 +2769,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var templateLengths = new List<TypeAndAmountSelection>
+            var templateLengths = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = 1, RawAmount = "raw 0" },
+                new() { Type = "my template", AmountAsDouble = 1, Roll = "raw 0" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my template"))
                 .Returns(templateLengths);
 
             var demographics = new Demographics
@@ -2798,24 +2797,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var templateLengths = new List<TypeAndAmountSelection>
+            var templateLengths = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = 1, RawAmount = "raw 1" },
+                new() { Type = "my template", AmountAsDouble = 1, Roll = "raw 1" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my template"))
                 .Returns(templateLengths);
 
-            var lengthRolls = new List<TypeAndAmountSelection>
+            var lengthRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
-                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
-                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+                new() { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" },
+                new() { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" },
+                new() { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
             mockDice
@@ -2845,24 +2844,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var templateLengths = new List<TypeAndAmountSelection>
+            var templateLengths = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = -1, RawAmount = "raw 1" },
+                new() { Type = "my template", AmountAsDouble = -1, Roll = "raw 1" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my template"))
                 .Returns(templateLengths);
 
-            var lengthRolls = new List<TypeAndAmountSelection>
+            var lengthRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
-                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
-                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+                new() { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" },
+                new() { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" },
+                new() { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
             mockDice
@@ -2892,13 +2891,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var templateWeights = new List<TypeAndAmountSelection>
+            var templateWeights = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = 0, RawAmount = "raw 0" },
+                new() { Type = "my template", AmountAsDouble = 0, Roll = "raw 0" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my template"))
                 .Returns(templateWeights);
 
             var demographics = new Demographics
@@ -2920,13 +2919,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var templateWeights = new List<TypeAndAmountSelection>
+            var templateWeights = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = 1, RawAmount = "raw 0" },
+                new() { Type = "my template", AmountAsDouble = 1, Roll = "raw 0" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my template"))
                 .Returns(templateWeights);
 
             var demographics = new Demographics
@@ -2948,33 +2947,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var templateWeights = new List<TypeAndAmountSelection>
+            var templateWeights = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = 1, RawAmount = "raw 1" },
+                new() { Type = "my template", AmountAsDouble = 1, Roll = "raw 1" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my template"))
                 .Returns(templateWeights);
 
-            var heightRolls = new List<TypeAndAmountSelection>
+            var heightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 45, RawAmount = "raw 42" },
+                new() { Type = "my gender", AmountAsDouble = 45, Roll = "raw 42" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>
+            var weightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
-                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
-                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+                new() { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" },
+                new() { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" },
+                new() { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
             mockDice
@@ -3047,33 +3046,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var templateWeights = new List<TypeAndAmountSelection>
+            var templateWeights = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = 1, RawAmount = "raw 1" },
+                new() { Type = "my template", AmountAsDouble = 1, Roll = "raw 1" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my template"))
                 .Returns(templateWeights);
 
-            var heightRolls = new List<TypeAndAmountSelection>
+            var heightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = baseHeight, RawAmount = "raw 42" },
+                new() { Type = "my gender", AmountAsDouble = baseHeight, Roll = "raw 42" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>
+            var weightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
-                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
-                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+                new() { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" },
+                new() { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" },
+                new() { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
             mockDice
@@ -3104,33 +3103,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var templateWeights = new List<TypeAndAmountSelection>
+            var templateWeights = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = 1, RawAmount = "raw 1" },
+                new() { Type = "my template", AmountAsDouble = 1, Roll = "raw 1" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my template"))
                 .Returns(templateWeights);
 
-            var lengthRolls = new List<TypeAndAmountSelection>
+            var lengthRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 45, RawAmount = "raw 42" },
+                new() { Type = "my gender", AmountAsDouble = 45, Roll = "raw 42" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>
+            var weightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
-                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
-                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+                new() { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" },
+                new() { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" },
+                new() { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
             mockDice
@@ -3162,33 +3161,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var templateWeights = new List<TypeAndAmountSelection>
+            var templateWeights = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = -1, RawAmount = "raw 1" },
+                new() { Type = "my template", AmountAsDouble = -1, Roll = "raw 1" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my template"))
                 .Returns(templateWeights);
 
-            var heightRolls = new List<TypeAndAmountSelection>
+            var heightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 45, RawAmount = "raw 42" },
+                new() { Type = "my gender", AmountAsDouble = 45, Roll = "raw 42" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>
+            var weightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
-                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
-                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+                new() { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" },
+                new() { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" },
+                new() { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
             mockDice
@@ -3261,33 +3260,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var templateWeights = new List<TypeAndAmountSelection>
+            var templateWeights = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = -1, RawAmount = "raw 1" },
+                new() { Type = "my template", AmountAsDouble = -1, Roll = "raw 1" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my template"))
                 .Returns(templateWeights);
 
-            var heightRolls = new List<TypeAndAmountSelection>
+            var heightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 45, RawAmount = "raw 42" },
+                new() { Type = "my gender", AmountAsDouble = 45, Roll = "raw 42" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>
+            var weightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
-                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
-                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+                new() { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" },
+                new() { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" },
+                new() { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
             mockDice
@@ -3319,33 +3318,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetupTemplateDefaults("my template");
 
-            var templateWeights = new List<TypeAndAmountSelection>
+            var templateWeights = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = -1, RawAmount = "raw 1" },
+                new() { Type = "my template", AmountAsDouble = -1, Roll = "raw 1" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my template"))
                 .Returns(templateWeights);
 
-            var lengthRolls = new List<TypeAndAmountSelection>
+            var lengthRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 45, RawAmount = "raw 42" },
+                new() { Type = "my gender", AmountAsDouble = 45, Roll = "raw 42" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            var weightRolls = new List<TypeAndAmountSelection>
+            var weightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
-                new() { Type = "my other gender", Amount = 96, RawAmount = "raw 96" },
-                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+                new() { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" },
+                new() { Type = "my other gender", AmountAsDouble = 96, Roll = "raw 96" },
+                new() { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
             mockDice
@@ -3378,42 +3377,42 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             SetupTemplateDefaults("my template");
             SetupAppearance("my template", "template skin", "template hair", "template eyes", "template other");
 
-            var wingspanRolls = new List<TypeAndAmountSelection>
+            var wingspanRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my size", Amount = 2022, RawAmount = "raw 2022" },
-                new() { Type = "my template", Amount = 227, RawAmount = "raw 227" }
+                new() { Type = "my size", AmountAsDouble = 2022, Roll = "raw 2022" },
+                new() { Type = "my template", AmountAsDouble = 227, Roll = "raw 227" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Wingspans, "my template"))
                 .Returns(wingspanRolls);
 
-            var ageRolls = new List<TypeAndAmountSelection>
+            var ageRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "template age category", Amount = 42, RawAmount = "raw 42" },
-                new() { Type = AgeConstants.Categories.Maximum, Amount = AgeConstants.Ageless, RawAmount = "raw ageless" }
+                new() { Type = "template age category", AmountAsDouble = 42, Roll = "raw 42" },
+                new() { Type = AgeConstants.Categories.Maximum, AmountAsDouble = AgeConstants.Ageless, Roll = "raw ageless" }
             };
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls, "my template"))
                 .Returns(ageRolls);
 
-            var templateHeights = new List<TypeAndAmountSelection>
+            var templateHeights = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = 1, RawAmount = "raw 1" },
+                new() { Type = "my template", AmountAsDouble = 1, Roll = "raw 1" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my template"))
                 .Returns(templateHeights);
 
-            var heightRolls = new List<TypeAndAmountSelection>
+            var heightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 42, RawAmount = "raw 42" },
-                new() { Type = "my creature", Amount = 783, RawAmount = "raw 783" }
+                new() { Type = "my gender", AmountAsDouble = 42, Roll = "raw 42" },
+                new() { Type = "my creature", AmountAsDouble = 783, Roll = "raw 783" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
             mockDice
@@ -3423,23 +3422,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(d => d.Describe("raw 42+raw 783", 96 + 364, It.IsAny<string[]>()))
                 .Returns("eh+");
 
-            var templateLengths = new List<TypeAndAmountSelection>
+            var templateLengths = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = -1, RawAmount = "raw 1" },
+                new() { Type = "my template", AmountAsDouble = -1, Roll = "raw 1" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my template"))
                 .Returns(templateLengths);
 
-            var lengthRolls = new List<TypeAndAmountSelection>
+            var lengthRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 9, RawAmount = "raw 9" },
-                new() { Type = "my creature", Amount = 22, RawAmount = "raw 22" }
+                new() { Type = "my gender", AmountAsDouble = 9, Roll = "raw 9" },
+                new() { Type = "my creature", AmountAsDouble = 22, Roll = "raw 22" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
             mockDice
@@ -3449,23 +3448,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(d => d.Describe("raw 9+raw 22", 82 - 36, It.IsAny<string[]>()))
                 .Returns("eh-");
 
-            var templateWeights = new List<TypeAndAmountSelection>
+            var templateWeights = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my template", Amount = 1, RawAmount = "raw 1" },
+                new() { Type = "my template", AmountAsDouble = 1, Roll = "raw 1" },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my template"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my template"))
                 .Returns(templateWeights);
 
-            var weightRolls = new List<TypeAndAmountSelection>
+            var weightRolls = new List<TypeAndAmountDataSelection>
             {
-                new() { Type = "my gender", Amount = 123, RawAmount = "raw 123" },
-                new() { Type = "my creature", Amount = 234, RawAmount = "raw 234" }
+                new() { Type = "my gender", AmountAsDouble = 123, Roll = "raw 123" },
+                new() { Type = "my creature", AmountAsDouble = 234, Roll = "raw 234" }
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
             mockDice

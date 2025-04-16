@@ -35,10 +35,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private LycanthropeApplicator applicator;
         private Creature baseCreature;
         private Mock<ICollectionSelector> mockCollectionSelector;
-        private Mock<ICreatureDataSelector> mockCreatureDataSelector;
+        private Mock<ICollectionDataSelector<CreatureDataSelection>> mockCreatureDataSelector;
         private Mock<IHitPointsGenerator> mockHitPointsGenerator;
         private Mock<Dice> mockDice;
-        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<IAttacksGenerator> mockAttacksGenerator;
         private Mock<ISavesGenerator> mockSavesGenerator;
@@ -66,10 +66,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void Setup()
         {
             mockCollectionSelector = new Mock<ICollectionSelector>();
-            mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
+            mockCreatureDataSelector = new Mock<ICollectionDataSelector<CreatureDataSelection>>();
             mockHitPointsGenerator = new Mock<IHitPointsGenerator>();
             mockDice = new Mock<Dice>();
-            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockAttacksGenerator = new Mock<IAttacksGenerator>();
             mockSavesGenerator = new Mock<ISavesGenerator>();
@@ -669,12 +669,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my animal"))
                 .Returns(new[]
                 {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 666 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 666 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 8245 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = -666 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = -666 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = -666 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 666 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 666 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 8245 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = -666 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = -666 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = -666 },
                 });
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -1373,12 +1373,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var animalAbilityAdjustments = new[]
             {
-                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 666 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 9266 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 90210 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 666 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 42 },
-                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 666 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 666 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 666 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 666 },
             };
 
             mockTypeAndAmountSelector

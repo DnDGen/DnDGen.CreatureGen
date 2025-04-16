@@ -1,6 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -14,12 +13,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
     internal abstract class AppearancesTests : CollectionTests
     {
         private Dictionary<string, Dictionary<string, Dictionary<Rarity, IEnumerable<string>>>> creatureAppearances;
-        protected ICollectionSelector collectionSelector;
 
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             creatureAppearances = GetCreatureAppearances();
         }
 

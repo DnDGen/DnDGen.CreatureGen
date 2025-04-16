@@ -2,7 +2,6 @@
 using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Feats;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
@@ -19,9 +18,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
     public class FeatFocusGeneratorTests
     {
         private Mock<ICollectionSelector> mockCollectionsSelector;
-        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<ICollectionDataSelector<FeatDataSelection>> mockFeatDataSelector;
         private IFeatFocusGenerator featFocusGenerator;
-        private List<RequiredFeatSelection> requiredFeats;
+        private List<FeatDataSelection.RequiredFeatDataSelection> requiredFeats;
         private List<Feat> otherFeats;
         private List<Skill> skills;
         private Dictionary<string, IEnumerable<string>> focusTypes;
@@ -33,8 +32,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         public void Setup()
         {
             mockCollectionsSelector = new Mock<ICollectionSelector>();
-            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
-            featFocusGenerator = new FeatFocusGenerator(mockCollectionsSelector.Object, mockTypeAndAmountSelector.Object);
+            mockFeatDataSelector = new Mock<ICollectionDataSelector<FeatDataSelection>>();
+            featFocusGenerator = new FeatFocusGenerator(mockCollectionsSelector.Object, mockFeatDataSelector.Object);
 
             requiredFeats = [];
             otherFeats = [];
@@ -53,9 +52,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
                 .Setup(s => s.IsCollection(Config.Name, TableNameConstants.Collection.FeatFoci, It.IsAny<string>()))
                 .Returns((string assembly, string table, string name) => focusTypes.ContainsKey(name));
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> c) => c.First());
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, It.IsAny<string>()))
-                .Returns([]);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, It.IsAny<string>()))
+                .Returns((string n) => new FeatDataSelection { Feat = n, RequiredAbilities = [] });
         }
 
         [Test]
@@ -107,7 +106,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             otherFeats[0].Name = "featToFill";
             otherFeats[0].Foci = new[] { "school 1", "school 2" };
 
-            focusTypes["focus type"] = new[] { "school 1", "school 2", "school 3" };
+            focusTypes["focus type"] = ["school 1", "school 2", "school 3"];
 
             var focus = featFocusGenerator.GenerateFrom("featToFill", "focus type", skills, requiredFeats, otherFeats, 1, abilities, attacks);
             Assert.That(focus, Is.EqualTo("school 3"));
@@ -123,12 +122,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         public void SpellcastersCanSelectRayForWeaponFoci(int casterLevel)
         {
             //INFO: You won't have this focus type without a proficiency requirement
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
 
-            focusTypes[FeatConstants.Foci.WeaponWithUnarmedAndGrappleAndRay] = new[] { FeatConstants.Foci.Weapons.Ray, "weapon" };
-            focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon" };
+            focusTypes[FeatConstants.Foci.WeaponWithUnarmedAndGrappleAndRay] = [FeatConstants.Foci.Weapons.Ray, "weapon"];
+            focusTypes[FeatConstants.Foci.Weapon] = ["weapon"];
 
-            var focus = featFocusGenerator.GenerateFrom("featToFill", FeatConstants.Foci.WeaponWithUnarmedAndGrappleAndRay, skills, requiredFeats, otherFeats, casterLevel, abilities, attacks);
+            var focus = featFocusGenerator.GenerateFrom(
+                "featToFill",
+                FeatConstants.Foci.WeaponWithUnarmedAndGrappleAndRay,
+                skills,
+                requiredFeats,
+                otherFeats,
+                casterLevel,
+                abilities,
+                attacks);
             Assert.That(focus, Is.EqualTo(FeatConstants.Foci.Weapons.Ray));
         }
 
@@ -137,19 +144,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         public void NonSpellcastersCannotSelectRayForWeaponFoci(int casterLevel)
         {
             //INFO: You won't have this focus type without a proficiency requirement
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
 
-            focusTypes[FeatConstants.Foci.WeaponWithUnarmedAndGrappleAndRay] = new[] { FeatConstants.Foci.Weapons.Ray, "weapon" };
-            focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon" };
+            focusTypes[FeatConstants.Foci.WeaponWithUnarmedAndGrappleAndRay] = [FeatConstants.Foci.Weapons.Ray, "weapon"];
+            focusTypes[FeatConstants.Foci.Weapon] = ["weapon"];
 
-            var focus = featFocusGenerator.GenerateFrom("featToFill", FeatConstants.Foci.WeaponWithUnarmedAndGrappleAndRay, skills, requiredFeats, otherFeats, casterLevel, abilities, attacks);
+            var focus = featFocusGenerator.GenerateFrom(
+                "featToFill",
+                FeatConstants.Foci.WeaponWithUnarmedAndGrappleAndRay,
+                skills,
+                requiredFeats,
+                otherFeats,
+                casterLevel,
+                abilities,
+                attacks);
             Assert.That(focus, Is.EqualTo(FeatConstants.Foci.NoValidFociAvailable));
         }
 
         [Test]
         public void FeatsWithoutFociButWithRequirementsThatHaveFociDoNotUseSameFocus()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = "feat1" });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = "feat1" });
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "feat1";
             otherFeats[0].Foci = new[] { "focus" };
@@ -163,7 +178,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FeatsWithFociAndRequirementsThatHaveFociUseFocus()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = "feat1" });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = "feat1" });
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "feat1";
             otherFeats[0].Foci = new[] { "focus" };
@@ -177,7 +192,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void IfFeatRequirementHasMultipleFoci_PickRandomlyAmongThem()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = "feat1" });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = "feat1" });
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "feat1";
             otherFeats[0].Foci = new[] { "focus", "other focus" };
@@ -192,7 +207,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void IfFeatRequirementHasAllAsFoci_ExplodeIt()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = "feat1" });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = "feat1" });
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "feat1";
             otherFeats[0].Foci = new[] { GroupConstants.All };
@@ -207,7 +222,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void IfWeaponFamiliarityAndAllMartialOnRequirement_AddInFamiliarityTypes()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
 
@@ -232,7 +247,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void ProficiencyFulfillsProficiencyRequirement()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "proficiency2";
             otherFeats[0].Foci = new[] { "school 2" };
@@ -250,7 +265,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void ProficiencyWithAllFulfillsProficiencyRequirement()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "proficiency2";
             otherFeats[0].Foci = new[] { GroupConstants.All };
@@ -269,7 +284,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void ProficiencyFulfillsSpecificProficiencyRequirement()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency, Foci = new[] { "specific weapon" } });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency, Foci = new[] { "specific weapon" } });
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "proficiency2";
             otherFeats[0].Foci = new[] { "wrong weapon", "specific weapon" };
@@ -287,7 +302,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void ProficiencyFulfillsAnySpecificProficiencyRequirement()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency, Foci = new[] { "other specific weapon", "specific weapon" } });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency, Foci = new[] { "other specific weapon", "specific weapon" } });
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "proficiency2";
             otherFeats[0].Foci = new[] { "wrong weapon", "specific weapon" };
@@ -305,7 +320,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void ProficiencyWithAllFulfillsSpecificProficiencyRequirement()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency, Foci = new[] { "specific weapon" } });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency, Foci = new[] { "specific weapon" } });
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "proficiency2";
             otherFeats[0].Foci = new[] { GroupConstants.All };
@@ -324,7 +339,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void SpecificProficiencyRequirementUnfulfilled()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency, Foci = new[] { "specific weapon" } });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency, Foci = new[] { "specific weapon" } });
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "proficiency2";
             otherFeats[0].Foci = new[] { "wrong weapon" };
@@ -357,8 +372,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void AvailableFociAreIntersectionOfAllDependentFeats()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = "feat" });
-            requiredFeats.Add(new RequiredFeatSelection { Feat = "improved feat" });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = "feat" });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = "improved feat" });
 
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
@@ -377,9 +392,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void AvailableFociAreIntersectionOfAllDependentFeatsWithProficiencies()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
-            requiredFeats.Add(new RequiredFeatSelection { Feat = "feat" });
-            requiredFeats.Add(new RequiredFeatSelection { Feat = "improved feat" });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = "feat" });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = "improved feat" });
 
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
@@ -551,7 +566,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [TestCase(FeatConstants.Foci.WeaponWithUnarmedAndGrappleAndRay)]
         public void CanFocusInUnarmedStrikeWhenProficiencyIsRequirement(string focusType)
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "other weapon" };
             focusTypes[FeatConstants.Foci.WeaponWithUnarmed] = new[] { "weapon", "other weapon", FeatConstants.Foci.Weapons.UnarmedStrike };
             focusTypes[FeatConstants.Foci.WeaponWithUnarmedAndGrapple] = new[] { "weapon", "other weapon", FeatConstants.Foci.Weapons.UnarmedStrike, FeatConstants.Foci.Weapons.Grapple };
@@ -564,7 +579,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [TestCase(FeatConstants.Foci.Weapon)]
         public void CannotFocusInUnarmedStrikeWhenProficiencyIsRequirement(string focusType)
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "other weapon" };
             focusTypes[FeatConstants.Foci.WeaponWithUnarmed] = new[] { "weapon", "other weapon", FeatConstants.Foci.Weapons.UnarmedStrike };
             focusTypes[FeatConstants.Foci.WeaponWithUnarmedAndGrapple] = new[] { "weapon", "other weapon", FeatConstants.Foci.Weapons.UnarmedStrike, FeatConstants.Foci.Weapons.Grapple };
@@ -580,7 +595,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [TestCase(FeatConstants.Foci.WeaponWithUnarmedAndGrappleAndRay)]
         public void CanFocusInGrappleWhenProficiencyIsRequirement(string focusType)
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "other weapon" };
             focusTypes[FeatConstants.Foci.WeaponWithUnarmed] = new[] { "weapon", "other weapon", FeatConstants.Foci.Weapons.UnarmedStrike };
             focusTypes[FeatConstants.Foci.WeaponWithUnarmedAndGrapple] = new[] { "weapon", "other weapon", FeatConstants.Foci.Weapons.UnarmedStrike, FeatConstants.Foci.Weapons.Grapple };
@@ -596,7 +611,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [TestCase(FeatConstants.Foci.WeaponWithUnarmed)]
         public void CannotFocusInGrappleWhenProficiencyIsRequirement(string focusType)
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "other weapon" };
             focusTypes[FeatConstants.Foci.WeaponWithUnarmed] = new[] { "weapon", "other weapon", FeatConstants.Foci.Weapons.UnarmedStrike };
             focusTypes[FeatConstants.Foci.WeaponWithUnarmedAndGrapple] = new[] { "weapon", "other weapon", FeatConstants.Foci.Weapons.UnarmedStrike, FeatConstants.Foci.Weapons.Grapple };
@@ -612,7 +627,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [TestCase(FeatConstants.Foci.WeaponWithUnarmedAndGrappleAndRay, 1)]
         public void CanFocusInRayWhenProficiencyIsRequirement(string focusType, int casterLevel)
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "other weapon" };
             focusTypes[FeatConstants.Foci.WeaponWithUnarmed] = new[] { "weapon", "other weapon", FeatConstants.Foci.Weapons.UnarmedStrike };
             focusTypes[FeatConstants.Foci.WeaponWithUnarmedAndGrapple] = new[] { "weapon", "other weapon", FeatConstants.Foci.Weapons.UnarmedStrike, FeatConstants.Foci.Weapons.Grapple };
@@ -633,7 +648,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [TestCase(FeatConstants.Foci.WeaponWithUnarmedAndGrappleAndRay, 0)]
         public void CannotFocusInRayWhenProficiencyIsRequirement(string focusType, int casterLevel)
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "other weapon" };
             focusTypes[FeatConstants.Foci.WeaponWithUnarmed] = new[] { "weapon", "other weapon", FeatConstants.Foci.Weapons.UnarmedStrike };
             focusTypes[FeatConstants.Foci.WeaponWithUnarmedAndGrapple] = new[] { "weapon", "other weapon", FeatConstants.Foci.Weapons.UnarmedStrike, FeatConstants.Foci.Weapons.Grapple };
@@ -650,7 +665,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [TestCase(FeatConstants.Foci.Weapons.UnarmedStrike)]
         public void CanFocusInAutomaticProficiencyEvenWhenProficientWithWeapons(string automaticProficiency)
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
 
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "proficiency2";
@@ -673,8 +688,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [TestCase(FeatConstants.Foci.Weapons.UnarmedStrike)]
         public void CannotFocusInAutomaticProficiencyEvenWhenProficientWithWeapons(string automaticProficiency)
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
-            requiredFeats.Add(new RequiredFeatSelection { Feat = "required feat" });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = "required feat" });
 
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
@@ -757,7 +772,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [TestCase(FeatConstants.Foci.WeaponWithUnarmedAndGrappleAndRay)]
         public void FeatWithRequiredFeatThatHasWeaponFocusHonorsOnlyThatWeaponFocus(string focusType)
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = "feat1" });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = "feat1" });
 
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
@@ -799,7 +814,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             otherFeats[0].Name = featName;
             otherFeats[0].Foci = new[] { proficiencyFocus };
 
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
 
             focusTypes["focus type"] = new[] { "weapon", proficiencyFocus };
             focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "other weapon", proficiencyFocus };
@@ -814,7 +829,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FocusCanBeFromProficiencyWithNaturalAttack()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
 
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
@@ -842,7 +857,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FocusCannotBeFromProficiencyWithUnnaturalAttack()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
 
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
@@ -870,7 +885,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FocusCannotDuplicateProficiencyWithNaturalAttack()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
 
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
@@ -902,7 +917,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FocusCannotDuplicateProficiencyWithAllNaturalAttacks()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
 
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
@@ -965,7 +980,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             otherFeats[0].Name = "other feat";
             otherFeats[0].Foci = new[] { "other focus" };
 
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
 
             var proficiencyFeats = new[] { "other proficiency feat", "proficiency feat" };
             mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
@@ -981,16 +996,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FocusForFeatCanHaveAbilityRequirementUnmet()
         {
-            var abilityRequirements = new List<TypeAndAmountSelection>();
-            abilityRequirements.Add(new TypeAndAmountSelection
+            var abilityRequirements = new Dictionary<string, int>
             {
-                Type = "ability",
-                Amount = 13
-            });
+                ["ability"] = 13,
+            };
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
-            focusTypes["focus type"] = new[] { "focus", "other focus" };
+            focusTypes["focus type"] = ["focus", "other focus"];
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
             abilities["ability"] = new Ability("ability") { BaseScore = 12 };
 
@@ -1002,16 +1017,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [TestCase(14)]
         public void FocusForFeatCanHaveAbilityRequirementMet(int abilityScore)
         {
-            var abilityRequirements = new List<TypeAndAmountSelection>();
-            abilityRequirements.Add(new TypeAndAmountSelection
+            var abilityRequirements = new Dictionary<string, int>
             {
-                Type = "ability",
-                Amount = 13
-            });
+                ["ability"] = 13,
+            };
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
-            focusTypes["focus type"] = new[] { "focus", "other focus" };
+            focusTypes["focus type"] = ["focus", "other focus"];
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
             abilities["ability"] = new Ability("ability") { BaseScore = abilityScore };
 
@@ -1022,21 +1037,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FocusForFeatCanHaveAnyAbilityRequirementMet()
         {
-            var abilityRequirements = new List<TypeAndAmountSelection>();
-            abilityRequirements.Add(new TypeAndAmountSelection
+            var abilityRequirements = new Dictionary<string, int>
             {
-                Type = "ability",
-                Amount = 13
-            });
-            abilityRequirements.Add(new TypeAndAmountSelection
-            {
-                Type = "other ability",
-                Amount = 10
-            });
+                ["ability"] = 13,
+                ["other ability"] = 10,
+            };
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
-            focusTypes["focus type"] = new[] { "focus", "other focus" };
+            focusTypes["focus type"] = ["focus", "other focus"];
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
             abilities["ability"] = new Ability("ability") { BaseScore = 10 };
 
@@ -1047,16 +1058,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FocusForFeatCanHaveNoAbilityRequirementForFocus()
         {
-            var abilityRequirements = new List<TypeAndAmountSelection>();
-            abilityRequirements.Add(new TypeAndAmountSelection
+            var abilityRequirements = new Dictionary<string, int>
             {
-                Type = "ability",
-                Amount = 13
-            });
+                ["ability"] = 13,
+            };
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
-            focusTypes["focus type"] = new[] { "focus", "other focus" };
+            focusTypes["focus type"] = ["focus", "other focus"];
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
             abilities["ability"] = new Ability("ability") { BaseScore = 12 };
 
@@ -1067,16 +1078,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FocusForFeatCanHaveNoAbilityRequirementForFeat()
         {
-            var abilityRequirements = new List<TypeAndAmountSelection>();
-            abilityRequirements.Add(new TypeAndAmountSelection
+            var abilityRequirements = new Dictionary<string, int>
             {
-                Type = "ability",
-                Amount = 13
-            });
+                ["ability"] = 13,
+            };
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
-            focusTypes["focus type"] = new[] { "focus", "other focus" };
+            focusTypes["focus type"] = ["focus", "other focus"];
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
             abilities["ability"] = new Ability("ability") { BaseScore = 12 };
 
@@ -1088,16 +1099,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FocusForFeatCanHaveAbilityRequirementUnmetFromSkills()
         {
-            var abilityRequirements = new List<TypeAndAmountSelection>();
-            abilityRequirements.Add(new TypeAndAmountSelection
+            var abilityRequirements = new Dictionary<string, int>
             {
-                Type = "ability",
-                Amount = 13
-            });
+                ["ability"] = 13,
+            };
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
-            focusTypes["focus type"] = new[] { "focus", "other focus" };
+            focusTypes["focus type"] = ["focus", "other focus"];
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
             abilities["ability"] = new Ability("ability") { BaseScore = 12 };
 
@@ -1109,16 +1120,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [TestCase(14)]
         public void FocusForFeatCanHaveAbilityRequirementMetFromSkills(int abilityScore)
         {
-            var abilityRequirements = new List<TypeAndAmountSelection>();
-            abilityRequirements.Add(new TypeAndAmountSelection
+            var abilityRequirements = new Dictionary<string, int>
             {
-                Type = "ability",
-                Amount = 13
-            });
+                ["ability"] = 13,
+            };
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
-            focusTypes["focus type"] = new[] { "focus", "other focus" };
+            focusTypes["focus type"] = ["focus", "other focus"];
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
             abilities["ability"] = new Ability("ability") { BaseScore = abilityScore };
 
@@ -1129,21 +1140,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FocusForFeatCanHaveAnyAbilityRequirementMetFromSkills()
         {
-            var abilityRequirements = new List<TypeAndAmountSelection>();
-            abilityRequirements.Add(new TypeAndAmountSelection
+            var abilityRequirements = new Dictionary<string, int>
             {
-                Type = "ability",
-                Amount = 13
-            });
-            abilityRequirements.Add(new TypeAndAmountSelection
-            {
-                Type = "other ability",
-                Amount = 10
-            });
+                ["ability"] = 13,
+                ["other ability"] = 10,
+            };
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
-            focusTypes["focus type"] = new[] { "focus", "other focus" };
+            focusTypes["focus type"] = ["focus", "other focus"];
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
             abilities["ability"] = new Ability("ability") { BaseScore = 10 };
 
@@ -1154,16 +1161,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FocusForFeatCanHaveNoAbilityRequirementForFocusFromSkills()
         {
-            var abilityRequirements = new List<TypeAndAmountSelection>();
-            abilityRequirements.Add(new TypeAndAmountSelection
+            var abilityRequirements = new Dictionary<string, int>
             {
-                Type = "ability",
-                Amount = 13
-            });
+                ["ability"] = 13,
+            };
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
-            focusTypes["focus type"] = new[] { "focus", "other focus" };
+            focusTypes["focus type"] = ["focus", "other focus"];
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
             abilities["ability"] = new Ability("ability") { BaseScore = 12 };
 
@@ -1174,16 +1181,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FocusForFeatCanHaveNoAbilityRequirementForFeatFromSkills()
         {
-            var abilityRequirements = new List<TypeAndAmountSelection>();
-            abilityRequirements.Add(new TypeAndAmountSelection
+            var abilityRequirements = new Dictionary<string, int>
             {
-                Type = "ability",
-                Amount = 13
-            });
+                ["ability"] = 13,
+            };
 
-            mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat/focus")).Returns(abilityRequirements);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
-            focusTypes["focus type"] = new[] { "focus", "other focus" };
+            focusTypes["focus type"] = ["focus", "other focus"];
             abilities["other ability"] = new Ability("other ability") { BaseScore = 13 };
             abilities["ability"] = new Ability("ability") { BaseScore = 12 };
 
@@ -1194,21 +1201,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FocusAllowingAllCanBeFromProficiencyWithNaturalAttack()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
 
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "all proficiency";
-            otherFeats[0].Foci = new[] { GroupConstants.All };
+            otherFeats[0].Foci = [GroupConstants.All];
             otherFeats[1].Name = "specific proficiency";
-            otherFeats[1].Foci = new[] { "specific weapon" };
+            otherFeats[1].Foci = ["specific weapon"];
 
-            focusTypes["focus type"] = new[] { "weapon" };
-            focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "other weapon" };
-            focusTypes["all proficiency"] = new[] { "proficiency weapon", "other weapon", "weapon" };
+            focusTypes["focus type"] = ["weapon"];
+            focusTypes[FeatConstants.Foci.Weapon] = ["weapon", "other weapon"];
+            focusTypes["all proficiency"] = ["proficiency weapon", "other weapon", "weapon"];
 
             var proficiencyFeats = new[] { "all proficiency", "specific proficiency" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency))
+                .Returns(proficiencyFeats);
 
             attacks.Add(new Attack { Name = "claw", IsNatural = true });
             attacks.Add(new Attack { Name = "bite", IsNatural = true });
@@ -1222,7 +1231,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FocusAllowingAllCannotBeFromProficiencyWithUnnaturalAttack()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
 
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
@@ -1250,7 +1259,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FocusAllowingAllCannotDuplicateProficiencyWithNaturalAttack()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
 
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
@@ -1282,7 +1291,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void FocusAllowingAllCannotDuplicateProficiencyWithAllNaturalAttacks()
         {
-            requiredFeats.Add(new RequiredFeatSelection { Feat = GroupConstants.WeaponProficiency });
+            requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
 
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());

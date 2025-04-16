@@ -27,10 +27,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
     {
         private LycanthropeApplicator applicator;
         private Mock<ICollectionSelector> mockCollectionSelector;
-        private Mock<ICreatureDataSelector> mockCreatureDataSelector;
+        private Mock<ICollectionDataSelector<CreatureDataSelection>> mockCreatureDataSelector;
         private Mock<IHitPointsGenerator> mockHitPointsGenerator;
         private Mock<Dice> mockDice;
-        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<IAttacksGenerator> mockAttacksGenerator;
         private Mock<ISavesGenerator> mockSavesGenerator;
@@ -44,10 +44,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void Setup()
         {
             mockCollectionSelector = new Mock<ICollectionSelector>();
-            mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
+            mockCreatureDataSelector = new Mock<ICollectionDataSelector<CreatureDataSelection>>();
             mockHitPointsGenerator = new Mock<IHitPointsGenerator>();
             mockDice = new Mock<Dice>();
-            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockAttacksGenerator = new Mock<IAttacksGenerator>();
             mockSavesGenerator = new Mock<ISavesGenerator>();

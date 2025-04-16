@@ -1,8 +1,8 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Languages;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System.Linq;
 
@@ -13,12 +13,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
     {
         protected override string tableName => TableNameConstants.Collection.LanguageGroups;
 
-        private ITypeAndAmountSelector typeAndAmountSelector;
+        private ICollectionTypeAndAmountSelector typeAndAmountSelector;
 
         [SetUp]
         public void Setup()
         {
-            typeAndAmountSelector = GetNewInstanceOf<ITypeAndAmountSelector>();
+            typeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
         }
 
         [Test]
@@ -2276,7 +2276,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         public void IfLowOrNoIntelligence_NoLanguages()
         {
             var creatures = CreatureConstants.GetAll();
-            var allAbilities = typeAndAmountSelector.SelectAll(TableNameConstants.TypeAndAmount.AbilityAdjustments);
+            var allAbilities = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments);
 
             foreach (var creature in creatures)
             {

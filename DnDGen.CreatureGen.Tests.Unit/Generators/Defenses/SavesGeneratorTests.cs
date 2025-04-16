@@ -3,7 +3,6 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Defenses;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -19,7 +18,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
     public class SavesGeneratorTests
     {
         private Mock<ICollectionSelector> mockCollectionsSelector;
-        private Mock<IBonusSelector> mockBonusSelector;
+        private Mock<ICollectionDataSelector<BonusDataSelection>> mockBonusSelector;
         private ISavesGenerator savesGenerator;
         private List<Feat> feats;
         private Dictionary<string, Ability> abilities;
@@ -35,7 +34,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         public void Setup()
         {
             mockCollectionsSelector = new Mock<ICollectionSelector>();
-            mockBonusSelector = new Mock<IBonusSelector>();
+            mockBonusSelector = new Mock<ICollectionDataSelector<BonusDataSelection>>();
             savesGenerator = new SavesGenerator(mockCollectionsSelector.Object, mockBonusSelector.Object);
             feats = new List<Feat>();
             abilities = new Dictionary<string, Ability>();
@@ -73,7 +72,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SaveGroups, "creature"))
                 .Returns(strongSaves);
 
-            mockBonusSelector.Setup(s => s.SelectFor(TableNameConstants.TypeAndAmount.SaveBonuses, It.IsAny<string>())).Returns((string t, string s) => racialBonuses[s]);
+            mockBonusSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SaveBonuses, It.IsAny<string>()))
+                .Returns((string t, string s) => racialBonuses[s]);
         }
 
         [Test]
