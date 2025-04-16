@@ -4612,8 +4612,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void NoDuplicationOfSkillsBetweenTypeAndCreature(string creature)
         {
-            var creatureTypes = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureTypes, creature);
-            creatureTypes = creatureTypes.Except(new[] { creature });
+            var creatureTypes = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, creature);
+            creatureTypes = creatureTypes.Except([creature]);
 
             Assert.That(table.Keys, Contains.Item(creature)
                 .And.SupersetOf(creatureTypes));
@@ -4631,7 +4631,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         public void CreatureTypeSkillsContainSkillsCommonToAllCreatures(string creatureType)
         {
-            var creatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, creatureType);
+            var creatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, creatureType);
 
             //INFO: Excluding templates, since they have special rules
             var templates = CreatureConstants.Templates.GetAll();

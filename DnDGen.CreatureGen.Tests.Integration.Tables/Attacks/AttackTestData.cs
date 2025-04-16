@@ -21,7 +21,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             var attackDamageKeys = new List<string>();
             var creatureAttackData = GetCreatureAttackData();
             var advancementData = AdvancementsTests.GetAdvancementsTestData();
-            var creatureData = CreatureDataTests.GetCreatureTestData();
+            var creatureData = CreatureDataTests.GetCreatureDataSelections();
 
             foreach (var kvp in creatureAttackData)
             {
@@ -29,7 +29,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 var sizes = advancementData[creature]
                     .Select(DataHelper.Parse<AdvancementDataSelection>)
                     .Select(a => a.Size)
-                    .Union([DataHelper.Parse<CreatureDataSelection>(creatureData[creature]).Size]);
+                    .Union([creatureData[creature].Size]);
                 var attackSelections = kvp.Value.Select(DataHelper.Parse<AttackDataSelection>);
 
                 foreach (var size in sizes)

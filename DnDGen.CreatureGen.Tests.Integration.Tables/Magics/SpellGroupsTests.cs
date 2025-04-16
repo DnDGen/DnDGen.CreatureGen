@@ -1,9 +1,10 @@
 ﻿using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Magics;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
+using DnDGen.Infrastructure.Helpers;
+using DnDGen.Infrastructure.Models;
 using NUnit.Framework;
 using System.Linq;
 
@@ -107,7 +108,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             Assert.That(spellLevels, Contains.Key(group));
 
             var spells = spellLevels[group]
-                .Select(e => e.Split(TypeAndAmountDataSelection.Divider).First())
+                .Select(DataHelper.Parse<TypeAndAmountDataSelection>)
+                .Select(s => s.Type)
                 .ToArray();
 
             AssertCollection(group, spells);

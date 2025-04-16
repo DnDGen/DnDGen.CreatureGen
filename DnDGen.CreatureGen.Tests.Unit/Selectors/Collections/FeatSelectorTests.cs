@@ -1,8 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Selectors.Collections;
-using DnDGen.CreatureGen.Selectors.Helpers;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.TreasureGen.Items;
 using Moq;
@@ -23,7 +22,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         private Dictionary<string, IEnumerable<string>> featsData;
         private Dictionary<string, List<string>> specialQualitiesData;
         private CreatureType creatureType;
-        private SpecialQualityHelper helper;
 
         [SetUp]
         public void Setup()

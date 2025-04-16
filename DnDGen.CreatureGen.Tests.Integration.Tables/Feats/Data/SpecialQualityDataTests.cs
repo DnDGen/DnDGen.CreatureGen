@@ -32,7 +32,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             creatureData = SpecialQualityTestData.GetCreatureData();
             typeData = SpecialQualityTestData.GetTypeData();
             subtypeData = SpecialQualityTestData.GetSubtypeData();
-            creatureDataSelections = CreatureDataTests.GetCreatureTestData().ToDictionary(kvp => kvp.Key, kvp => DataHelper.Parse<CreatureDataSelection>(kvp.Value));
+            creatureDataSelections = CreatureDataTests.GetCreatureDataSelections();
         }
 
         [SetUp]

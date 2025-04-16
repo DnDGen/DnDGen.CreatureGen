@@ -141,8 +141,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         [TestCase(CreatureConstants.TrumpetArchon, SpellConstants.Casters.Cleric, 14)]
         public void CreatureCaster(string creature, string caster, int casterLevel)
         {
-            var typeAndAmount = new Dictionary<string, int>();
-            typeAndAmount[caster] = casterLevel;
+            var typeAndAmount = new Dictionary<string, int>
+            {
+                [caster] = casterLevel
+            };
 
             AssertTypesAndAmounts(creature, typeAndAmount);
         }
@@ -150,7 +152,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreaturesWithCasterHaveSpellAttack(string creature)
         {
-            var attacks = attackSelector.Select(creature, SizeConstants.Medium, SizeConstants.Medium);
+            var attacks = attackSelector.Select(creature, SizeConstants.Medium);
             var hasCaster = table[creature].Any();
 
             Assert.That(attacks.Any(a => a.Name == "Spells"), Is.EqualTo(hasCaster));

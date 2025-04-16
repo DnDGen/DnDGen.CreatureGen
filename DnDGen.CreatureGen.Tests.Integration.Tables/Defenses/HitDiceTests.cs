@@ -1,6 +1,8 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Integration.TestData;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
@@ -9,6 +11,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
     public class HitDiceTests : AdjustmentsTests
     {
         protected override string tableName => TableNameConstants.TypeAndAmount.HitDice;
+
+        private Dictionary<string, double> creatureHitDiceQuantities;
+
+        [OneTimeSetUp]
+        public void OneTimeSetup()
+        {
+            creatureHitDiceQuantities = GetCreatureHitDiceQuantities();
+        }
 
         [Test]
         public void HitDiceNames()
@@ -22,661 +32,671 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             AssertCollectionNames(names);
         }
 
-        [TestCase(CreatureConstants.Aasimar, 1)]
-        [TestCase(CreatureConstants.Aboleth, 8)]
-        [TestCase(CreatureConstants.Achaierai, 6)]
-        [TestCase(CreatureConstants.Allip, 4)]
-        [TestCase(CreatureConstants.Angel_AstralDeva, 12)]
-        [TestCase(CreatureConstants.Angel_Planetar, 14)]
-        [TestCase(CreatureConstants.Angel_Solar, 22)]
-        [TestCase(CreatureConstants.Ankheg, 3)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal, 32)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_Flexible, 32)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs, 32)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden, 32)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_Sheetlike, 32)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs, 32)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden, 32)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden, 32)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_Wooden, 32)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan, 16)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Flexible, 16)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs, 16)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden, 16)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Sheetlike, 16)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs, 16)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden, 16)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden, 16)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Wooden, 16)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge, 8)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_Flexible, 8)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs, 8)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden, 8)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_Sheetlike, 8)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs, 8)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden, 8)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_Wheels_Wooden, 8)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_Wooden, 8)]
-        [TestCase(CreatureConstants.AnimatedObject_Large, 4)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_Flexible, 4)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs, 4)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden, 4)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_Sheetlike, 4)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs, 4)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden, 4)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_Wheels_Wooden, 4)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_Wooden, 4)]
-        [TestCase(CreatureConstants.AnimatedObject_Medium, 2)]
-        [TestCase(CreatureConstants.AnimatedObject_Medium_Flexible, 2)]
-        [TestCase(CreatureConstants.AnimatedObject_Medium_MultipleLegs, 2)]
-        [TestCase(CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden, 2)]
-        [TestCase(CreatureConstants.AnimatedObject_Medium_Sheetlike, 2)]
-        [TestCase(CreatureConstants.AnimatedObject_Medium_TwoLegs, 2)]
-        [TestCase(CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden, 2)]
-        [TestCase(CreatureConstants.AnimatedObject_Medium_Wheels_Wooden, 2)]
-        [TestCase(CreatureConstants.AnimatedObject_Medium_Wooden, 2)]
-        [TestCase(CreatureConstants.AnimatedObject_Small, 1)]
-        [TestCase(CreatureConstants.AnimatedObject_Small_Flexible, 1)]
-        [TestCase(CreatureConstants.AnimatedObject_Small_MultipleLegs, 1)]
-        [TestCase(CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden, 1)]
-        [TestCase(CreatureConstants.AnimatedObject_Small_Sheetlike, 1)]
-        [TestCase(CreatureConstants.AnimatedObject_Small_TwoLegs, 1)]
-        [TestCase(CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden, 1)]
-        [TestCase(CreatureConstants.AnimatedObject_Small_Wheels_Wooden, 1)]
-        [TestCase(CreatureConstants.AnimatedObject_Small_Wooden, 1)]
-        [TestCase(CreatureConstants.AnimatedObject_Tiny, 0.5)]
-        [TestCase(CreatureConstants.AnimatedObject_Tiny_Flexible, 0.5)]
-        [TestCase(CreatureConstants.AnimatedObject_Tiny_MultipleLegs, 0.5)]
-        [TestCase(CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden, 0.5)]
-        [TestCase(CreatureConstants.AnimatedObject_Tiny_Sheetlike, 0.5)]
-        [TestCase(CreatureConstants.AnimatedObject_Tiny_TwoLegs, 0.5)]
-        [TestCase(CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden, 0.5)]
-        [TestCase(CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden, 0.5)]
-        [TestCase(CreatureConstants.AnimatedObject_Tiny_Wooden, 0.5)]
-        [TestCase(CreatureConstants.Annis, 7)]
-        [TestCase(CreatureConstants.Ape, 4)]
-        [TestCase(CreatureConstants.Ape_Dire, 5)]
-        [TestCase(CreatureConstants.Arrowhawk_Adult, 7)]
-        [TestCase(CreatureConstants.Arrowhawk_Elder, 15)]
-        [TestCase(CreatureConstants.Arrowhawk_Juvenile, 3)]
-        [TestCase(CreatureConstants.Androsphinx, 12)]
-        [TestCase(CreatureConstants.Ant_Giant_Queen, 4)]
-        [TestCase(CreatureConstants.Ant_Giant_Soldier, 2)]
-        [TestCase(CreatureConstants.Ant_Giant_Worker, 2)]
-        [TestCase(CreatureConstants.Aranea, 3)]
-        [TestCase(CreatureConstants.AssassinVine, 4)]
-        [TestCase(CreatureConstants.Athach, 14)]
-        [TestCase(CreatureConstants.Avoral, 7)]
-        [TestCase(CreatureConstants.Azer, 2)]
-        [TestCase(CreatureConstants.Babau, 7)]
-        [TestCase(CreatureConstants.Baboon, 1)]
-        [TestCase(CreatureConstants.Badger, 1)]
-        [TestCase(CreatureConstants.Badger_Dire, 3)]
-        [TestCase(CreatureConstants.Balor, 20)]
-        [TestCase(CreatureConstants.BarbedDevil_Hamatula, 12)]
-        [TestCase(CreatureConstants.Barghest, 6)]
-        [TestCase(CreatureConstants.Barghest_Greater, 9)]
-        [TestCase(CreatureConstants.Basilisk, 6)]
-        [TestCase(CreatureConstants.Basilisk_Greater, 18)]
-        [TestCase(CreatureConstants.Bat, .25)]
-        [TestCase(CreatureConstants.Bat_Dire, 4)]
-        [TestCase(CreatureConstants.Bat_Swarm, 3)]
-        [TestCase(CreatureConstants.Bear_Black, 3)]
-        [TestCase(CreatureConstants.Bear_Brown, 6)]
-        [TestCase(CreatureConstants.Bear_Dire, 12)]
-        [TestCase(CreatureConstants.Bear_Polar, 8)]
-        [TestCase(CreatureConstants.BeardedDevil_Barbazu, 6)]
-        [TestCase(CreatureConstants.Bebilith, 12)]
-        [TestCase(CreatureConstants.Bee_Giant, 3)]
-        [TestCase(CreatureConstants.Behir, 9)]
-        [TestCase(CreatureConstants.Beholder, 11)]
-        [TestCase(CreatureConstants.Beholder_Gauth, 6)]
-        [TestCase(CreatureConstants.Belker, 7)]
-        [TestCase(CreatureConstants.Bison, 5)]
-        [TestCase(CreatureConstants.BlackPudding, 10)]
-        [TestCase(CreatureConstants.BlackPudding_Elder, 20)]
-        [TestCase(CreatureConstants.BlinkDog, 4)]
-        [TestCase(CreatureConstants.Boar, 3)]
-        [TestCase(CreatureConstants.Boar_Dire, 7)]
-        [TestCase(CreatureConstants.Bodak, 9)]
-        [TestCase(CreatureConstants.BombardierBeetle_Giant, 2)]
-        [TestCase(CreatureConstants.BoneDevil_Osyluth, 10)]
-        [TestCase(CreatureConstants.Bralani, 6)]
-        [TestCase(CreatureConstants.Bugbear, 3)]
-        [TestCase(CreatureConstants.Bulette, 9)]
-        [TestCase(CreatureConstants.Camel_Bactrian, 3)]
-        [TestCase(CreatureConstants.Camel_Dromedary, 3)]
-        [TestCase(CreatureConstants.CarrionCrawler, 3)]
-        [TestCase(CreatureConstants.Cat, .5)]
-        [TestCase(CreatureConstants.Centaur, 4)]
-        [TestCase(CreatureConstants.Centipede_Monstrous_Colossal, 24)]
-        [TestCase(CreatureConstants.Centipede_Monstrous_Gargantuan, 12)]
-        [TestCase(CreatureConstants.Centipede_Monstrous_Huge, 6)]
-        [TestCase(CreatureConstants.Centipede_Monstrous_Large, 3)]
-        [TestCase(CreatureConstants.Centipede_Monstrous_Medium, 1)]
-        [TestCase(CreatureConstants.Centipede_Monstrous_Small, .5)]
-        [TestCase(CreatureConstants.Centipede_Monstrous_Tiny, .25)]
-        [TestCase(CreatureConstants.Centipede_Swarm, 9)]
-        [TestCase(CreatureConstants.ChainDevil_Kyton, 8)]
-        [TestCase(CreatureConstants.ChaosBeast, 8)]
-        [TestCase(CreatureConstants.Cheetah, 3)]
-        [TestCase(CreatureConstants.Chimera_Black, 9)]
-        [TestCase(CreatureConstants.Chimera_Blue, 9)]
-        [TestCase(CreatureConstants.Chimera_Green, 9)]
-        [TestCase(CreatureConstants.Chimera_Red, 9)]
-        [TestCase(CreatureConstants.Chimera_White, 9)]
-        [TestCase(CreatureConstants.Choker, 3)]
-        [TestCase(CreatureConstants.Chuul, 11)]
-        [TestCase(CreatureConstants.Cloaker, 6)]
-        [TestCase(CreatureConstants.Cockatrice, 5)]
-        [TestCase(CreatureConstants.Couatl, 9)]
-        [TestCase(CreatureConstants.Criosphinx, 10)]
-        [TestCase(CreatureConstants.Crocodile, 3)]
-        [TestCase(CreatureConstants.Crocodile_Giant, 7)]
-        [TestCase(CreatureConstants.Cryohydra_10Heads, 10)]
-        [TestCase(CreatureConstants.Cryohydra_11Heads, 11)]
-        [TestCase(CreatureConstants.Cryohydra_12Heads, 12)]
-        [TestCase(CreatureConstants.Cryohydra_5Heads, 5)]
-        [TestCase(CreatureConstants.Cryohydra_6Heads, 6)]
-        [TestCase(CreatureConstants.Cryohydra_7Heads, 7)]
-        [TestCase(CreatureConstants.Cryohydra_8Heads, 8)]
-        [TestCase(CreatureConstants.Cryohydra_9Heads, 9)]
-        [TestCase(CreatureConstants.Darkmantle, 1)]
-        [TestCase(CreatureConstants.Deinonychus, 4)]
-        [TestCase(CreatureConstants.Delver, 15)]
-        [TestCase(CreatureConstants.Derro, 3)]
-        [TestCase(CreatureConstants.Derro_Sane, 3)]
-        [TestCase(CreatureConstants.Destrachan, 8)]
-        [TestCase(CreatureConstants.Devourer, 12)]
-        [TestCase(CreatureConstants.Digester, 8)]
-        [TestCase(CreatureConstants.DisplacerBeast, 6)]
-        [TestCase(CreatureConstants.DisplacerBeast_PackLord, 18)]
-        [TestCase(CreatureConstants.Djinni, 7)]
-        [TestCase(CreatureConstants.Djinni_Noble, 10)]
-        [TestCase(CreatureConstants.Dog, 1)]
-        [TestCase(CreatureConstants.Dog_Riding, 2)]
-        [TestCase(CreatureConstants.Donkey, 2)]
-        [TestCase(CreatureConstants.Doppelganger, 4)]
-        [TestCase(CreatureConstants.Dragon_Black_Wyrmling, 4)]
-        [TestCase(CreatureConstants.Dragon_Black_VeryYoung, 7)]
-        [TestCase(CreatureConstants.Dragon_Black_Young, 10)]
-        [TestCase(CreatureConstants.Dragon_Black_Juvenile, 13)]
-        [TestCase(CreatureConstants.Dragon_Black_YoungAdult, 16)]
-        [TestCase(CreatureConstants.Dragon_Black_Adult, 19)]
-        [TestCase(CreatureConstants.Dragon_Black_MatureAdult, 22)]
-        [TestCase(CreatureConstants.Dragon_Black_Old, 25)]
-        [TestCase(CreatureConstants.Dragon_Black_VeryOld, 28)]
-        [TestCase(CreatureConstants.Dragon_Black_Ancient, 31)]
-        [TestCase(CreatureConstants.Dragon_Black_Wyrm, 34)]
-        [TestCase(CreatureConstants.Dragon_Black_GreatWyrm, 37)]
-        [TestCase(CreatureConstants.Dragon_Blue_Wyrmling, 6)]
-        [TestCase(CreatureConstants.Dragon_Blue_VeryYoung, 9)]
-        [TestCase(CreatureConstants.Dragon_Blue_Young, 12)]
-        [TestCase(CreatureConstants.Dragon_Blue_Juvenile, 15)]
-        [TestCase(CreatureConstants.Dragon_Blue_YoungAdult, 18)]
-        [TestCase(CreatureConstants.Dragon_Blue_Adult, 21)]
-        [TestCase(CreatureConstants.Dragon_Blue_MatureAdult, 24)]
-        [TestCase(CreatureConstants.Dragon_Blue_Old, 27)]
-        [TestCase(CreatureConstants.Dragon_Blue_VeryOld, 30)]
-        [TestCase(CreatureConstants.Dragon_Blue_Ancient, 33)]
-        [TestCase(CreatureConstants.Dragon_Blue_Wyrm, 36)]
-        [TestCase(CreatureConstants.Dragon_Blue_GreatWyrm, 39)]
-        [TestCase(CreatureConstants.Dragon_Green_Wyrmling, 5)]
-        [TestCase(CreatureConstants.Dragon_Green_VeryYoung, 8)]
-        [TestCase(CreatureConstants.Dragon_Green_Young, 11)]
-        [TestCase(CreatureConstants.Dragon_Green_Juvenile, 14)]
-        [TestCase(CreatureConstants.Dragon_Green_YoungAdult, 17)]
-        [TestCase(CreatureConstants.Dragon_Green_Adult, 20)]
-        [TestCase(CreatureConstants.Dragon_Green_MatureAdult, 23)]
-        [TestCase(CreatureConstants.Dragon_Green_Old, 26)]
-        [TestCase(CreatureConstants.Dragon_Green_VeryOld, 29)]
-        [TestCase(CreatureConstants.Dragon_Green_Ancient, 32)]
-        [TestCase(CreatureConstants.Dragon_Green_Wyrm, 35)]
-        [TestCase(CreatureConstants.Dragon_Green_GreatWyrm, 38)]
-        [TestCase(CreatureConstants.Dragon_Red_Wyrmling, 7)]
-        [TestCase(CreatureConstants.Dragon_Red_VeryYoung, 10)]
-        [TestCase(CreatureConstants.Dragon_Red_Young, 13)]
-        [TestCase(CreatureConstants.Dragon_Red_Juvenile, 16)]
-        [TestCase(CreatureConstants.Dragon_Red_YoungAdult, 19)]
-        [TestCase(CreatureConstants.Dragon_Red_Adult, 22)]
-        [TestCase(CreatureConstants.Dragon_Red_MatureAdult, 25)]
-        [TestCase(CreatureConstants.Dragon_Red_Old, 28)]
-        [TestCase(CreatureConstants.Dragon_Red_VeryOld, 31)]
-        [TestCase(CreatureConstants.Dragon_Red_Ancient, 34)]
-        [TestCase(CreatureConstants.Dragon_Red_Wyrm, 37)]
-        [TestCase(CreatureConstants.Dragon_Red_GreatWyrm, 40)]
-        [TestCase(CreatureConstants.Dragon_White_Wyrmling, 3)]
-        [TestCase(CreatureConstants.Dragon_White_VeryYoung, 6)]
-        [TestCase(CreatureConstants.Dragon_White_Young, 9)]
-        [TestCase(CreatureConstants.Dragon_White_Juvenile, 12)]
-        [TestCase(CreatureConstants.Dragon_White_YoungAdult, 15)]
-        [TestCase(CreatureConstants.Dragon_White_Adult, 18)]
-        [TestCase(CreatureConstants.Dragon_White_MatureAdult, 21)]
-        [TestCase(CreatureConstants.Dragon_White_Old, 24)]
-        [TestCase(CreatureConstants.Dragon_White_VeryOld, 27)]
-        [TestCase(CreatureConstants.Dragon_White_Ancient, 30)]
-        [TestCase(CreatureConstants.Dragon_White_Wyrm, 33)]
-        [TestCase(CreatureConstants.Dragon_White_GreatWyrm, 36)]
-        [TestCase(CreatureConstants.Dragon_Brass_Wyrmling, 4)]
-        [TestCase(CreatureConstants.Dragon_Brass_VeryYoung, 7)]
-        [TestCase(CreatureConstants.Dragon_Brass_Young, 10)]
-        [TestCase(CreatureConstants.Dragon_Brass_Juvenile, 13)]
-        [TestCase(CreatureConstants.Dragon_Brass_YoungAdult, 16)]
-        [TestCase(CreatureConstants.Dragon_Brass_Adult, 19)]
-        [TestCase(CreatureConstants.Dragon_Brass_MatureAdult, 22)]
-        [TestCase(CreatureConstants.Dragon_Brass_Old, 25)]
-        [TestCase(CreatureConstants.Dragon_Brass_VeryOld, 28)]
-        [TestCase(CreatureConstants.Dragon_Brass_Ancient, 31)]
-        [TestCase(CreatureConstants.Dragon_Brass_Wyrm, 34)]
-        [TestCase(CreatureConstants.Dragon_Brass_GreatWyrm, 37)]
-        [TestCase(CreatureConstants.Dragon_Bronze_Wyrmling, 6)]
-        [TestCase(CreatureConstants.Dragon_Bronze_VeryYoung, 9)]
-        [TestCase(CreatureConstants.Dragon_Bronze_Young, 12)]
-        [TestCase(CreatureConstants.Dragon_Bronze_Juvenile, 15)]
-        [TestCase(CreatureConstants.Dragon_Bronze_YoungAdult, 18)]
-        [TestCase(CreatureConstants.Dragon_Bronze_Adult, 21)]
-        [TestCase(CreatureConstants.Dragon_Bronze_MatureAdult, 24)]
-        [TestCase(CreatureConstants.Dragon_Bronze_Old, 27)]
-        [TestCase(CreatureConstants.Dragon_Bronze_VeryOld, 30)]
-        [TestCase(CreatureConstants.Dragon_Bronze_Ancient, 33)]
-        [TestCase(CreatureConstants.Dragon_Bronze_Wyrm, 36)]
-        [TestCase(CreatureConstants.Dragon_Bronze_GreatWyrm, 39)]
-        [TestCase(CreatureConstants.Dragon_Copper_Wyrmling, 5)]
-        [TestCase(CreatureConstants.Dragon_Copper_VeryYoung, 8)]
-        [TestCase(CreatureConstants.Dragon_Copper_Young, 11)]
-        [TestCase(CreatureConstants.Dragon_Copper_Juvenile, 14)]
-        [TestCase(CreatureConstants.Dragon_Copper_YoungAdult, 17)]
-        [TestCase(CreatureConstants.Dragon_Copper_Adult, 20)]
-        [TestCase(CreatureConstants.Dragon_Copper_MatureAdult, 23)]
-        [TestCase(CreatureConstants.Dragon_Copper_Old, 26)]
-        [TestCase(CreatureConstants.Dragon_Copper_VeryOld, 29)]
-        [TestCase(CreatureConstants.Dragon_Copper_Ancient, 32)]
-        [TestCase(CreatureConstants.Dragon_Copper_Wyrm, 35)]
-        [TestCase(CreatureConstants.Dragon_Copper_GreatWyrm, 38)]
-        [TestCase(CreatureConstants.Dragon_Gold_Wyrmling, 8)]
-        [TestCase(CreatureConstants.Dragon_Gold_VeryYoung, 11)]
-        [TestCase(CreatureConstants.Dragon_Gold_Young, 14)]
-        [TestCase(CreatureConstants.Dragon_Gold_Juvenile, 17)]
-        [TestCase(CreatureConstants.Dragon_Gold_YoungAdult, 20)]
-        [TestCase(CreatureConstants.Dragon_Gold_Adult, 23)]
-        [TestCase(CreatureConstants.Dragon_Gold_MatureAdult, 26)]
-        [TestCase(CreatureConstants.Dragon_Gold_Old, 29)]
-        [TestCase(CreatureConstants.Dragon_Gold_VeryOld, 32)]
-        [TestCase(CreatureConstants.Dragon_Gold_Ancient, 35)]
-        [TestCase(CreatureConstants.Dragon_Gold_Wyrm, 38)]
-        [TestCase(CreatureConstants.Dragon_Gold_GreatWyrm, 41)]
-        [TestCase(CreatureConstants.Dragon_Silver_Wyrmling, 7)]
-        [TestCase(CreatureConstants.Dragon_Silver_VeryYoung, 10)]
-        [TestCase(CreatureConstants.Dragon_Silver_Young, 13)]
-        [TestCase(CreatureConstants.Dragon_Silver_Juvenile, 16)]
-        [TestCase(CreatureConstants.Dragon_Silver_YoungAdult, 19)]
-        [TestCase(CreatureConstants.Dragon_Silver_Adult, 22)]
-        [TestCase(CreatureConstants.Dragon_Silver_MatureAdult, 25)]
-        [TestCase(CreatureConstants.Dragon_Silver_Old, 28)]
-        [TestCase(CreatureConstants.Dragon_Silver_VeryOld, 31)]
-        [TestCase(CreatureConstants.Dragon_Silver_Ancient, 34)]
-        [TestCase(CreatureConstants.Dragon_Silver_Wyrm, 37)]
-        [TestCase(CreatureConstants.Dragon_Silver_GreatWyrm, 40)]
-        [TestCase(CreatureConstants.DragonTurtle, 12)]
-        [TestCase(CreatureConstants.Dragonne, 9)]
-        [TestCase(CreatureConstants.Dretch, 2)]
-        [TestCase(CreatureConstants.Drider, 6)]
-        [TestCase(CreatureConstants.Dryad, 4)]
-        [TestCase(CreatureConstants.Dwarf_Deep, 1)]
-        [TestCase(CreatureConstants.Dwarf_Duergar, 1)]
-        [TestCase(CreatureConstants.Dwarf_Hill, 1)]
-        [TestCase(CreatureConstants.Dwarf_Mountain, 1)]
-        [TestCase(CreatureConstants.Eagle, 1)]
-        [TestCase(CreatureConstants.Eagle_Giant, 4)]
-        [TestCase(CreatureConstants.Efreeti, 10)]
-        [TestCase(CreatureConstants.Elasmosaurus, 10)]
-        [TestCase(CreatureConstants.Elemental_Air_Elder, 24)]
-        [TestCase(CreatureConstants.Elemental_Air_Greater, 21)]
-        [TestCase(CreatureConstants.Elemental_Air_Huge, 16)]
-        [TestCase(CreatureConstants.Elemental_Air_Large, 8)]
-        [TestCase(CreatureConstants.Elemental_Air_Medium, 4)]
-        [TestCase(CreatureConstants.Elemental_Air_Small, 2)]
-        [TestCase(CreatureConstants.Elemental_Earth_Elder, 24)]
-        [TestCase(CreatureConstants.Elemental_Earth_Greater, 21)]
-        [TestCase(CreatureConstants.Elemental_Earth_Huge, 16)]
-        [TestCase(CreatureConstants.Elemental_Earth_Large, 8)]
-        [TestCase(CreatureConstants.Elemental_Earth_Medium, 4)]
-        [TestCase(CreatureConstants.Elemental_Earth_Small, 2)]
-        [TestCase(CreatureConstants.Elemental_Fire_Elder, 24)]
-        [TestCase(CreatureConstants.Elemental_Fire_Greater, 21)]
-        [TestCase(CreatureConstants.Elemental_Fire_Huge, 16)]
-        [TestCase(CreatureConstants.Elemental_Fire_Large, 8)]
-        [TestCase(CreatureConstants.Elemental_Fire_Medium, 4)]
-        [TestCase(CreatureConstants.Elemental_Fire_Small, 2)]
-        [TestCase(CreatureConstants.Elemental_Water_Elder, 24)]
-        [TestCase(CreatureConstants.Elemental_Water_Greater, 21)]
-        [TestCase(CreatureConstants.Elemental_Water_Huge, 16)]
-        [TestCase(CreatureConstants.Elemental_Water_Large, 8)]
-        [TestCase(CreatureConstants.Elemental_Water_Medium, 4)]
-        [TestCase(CreatureConstants.Elemental_Water_Small, 2)]
-        [TestCase(CreatureConstants.Elephant, 11)]
-        [TestCase(CreatureConstants.Elf_Aquatic, 1)]
-        [TestCase(CreatureConstants.Elf_Drow, 1)]
-        [TestCase(CreatureConstants.Elf_Gray, 1)]
-        [TestCase(CreatureConstants.Elf_Half, 1)]
-        [TestCase(CreatureConstants.Elf_High, 1)]
-        [TestCase(CreatureConstants.Elf_Wild, 1)]
-        [TestCase(CreatureConstants.Elf_Wood, 1)]
-        [TestCase(CreatureConstants.Erinyes, 9)]
-        [TestCase(CreatureConstants.EtherealFilcher, 5)]
-        [TestCase(CreatureConstants.EtherealMarauder, 2)]
-        [TestCase(CreatureConstants.Ettercap, 5)]
-        [TestCase(CreatureConstants.Ettin, 10)]
-        [TestCase(CreatureConstants.FireBeetle_Giant, 1)]
-        [TestCase(CreatureConstants.FormianMyrmarch, 12)]
-        [TestCase(CreatureConstants.FormianQueen, 20)]
-        [TestCase(CreatureConstants.FormianTaskmaster, 6)]
-        [TestCase(CreatureConstants.FormianWarrior, 4)]
-        [TestCase(CreatureConstants.FormianWorker, 1)]
-        [TestCase(CreatureConstants.FrostWorm, 14)]
-        [TestCase(CreatureConstants.Gargoyle, 4)]
-        [TestCase(CreatureConstants.Gargoyle_Kapoacinth, 4)]
-        [TestCase(CreatureConstants.GelatinousCube, 4)]
-        [TestCase(CreatureConstants.Ghaele, 10)]
-        [TestCase(CreatureConstants.Ghoul, 2)]
-        [TestCase(CreatureConstants.Ghoul_Ghast, 4)]
-        [TestCase(CreatureConstants.Ghoul_Lacedon, 2)]
-        [TestCase(CreatureConstants.Giant_Cloud, 17)]
-        [TestCase(CreatureConstants.Giant_Fire, 15)]
-        [TestCase(CreatureConstants.Giant_Frost, 14)]
-        [TestCase(CreatureConstants.Giant_Hill, 12)]
-        [TestCase(CreatureConstants.Giant_Stone, 14)]
-        [TestCase(CreatureConstants.Giant_Stone_Elder, 14)]
-        [TestCase(CreatureConstants.Giant_Storm, 19)]
-        [TestCase(CreatureConstants.GibberingMouther, 4)]
-        [TestCase(CreatureConstants.Girallon, 7)]
-        [TestCase(CreatureConstants.Githyanki, 1)]
-        [TestCase(CreatureConstants.Githzerai, 1)]
-        [TestCase(CreatureConstants.Glabrezu, 12)]
-        [TestCase(CreatureConstants.Gnoll, 2)]
-        [TestCase(CreatureConstants.Gnome_Forest, 1)]
-        [TestCase(CreatureConstants.Gnome_Rock, 1)]
-        [TestCase(CreatureConstants.Gnome_Svirfneblin, 1)]
-        [TestCase(CreatureConstants.Goblin, 1)]
-        [TestCase(CreatureConstants.Golem_Clay, 11)]
-        [TestCase(CreatureConstants.Golem_Flesh, 9)]
-        [TestCase(CreatureConstants.Golem_Iron, 18)]
-        [TestCase(CreatureConstants.Golem_Stone, 14)]
-        [TestCase(CreatureConstants.Golem_Stone_Greater, 42)]
-        [TestCase(CreatureConstants.Gorgon, 8)]
-        [TestCase(CreatureConstants.GrayOoze, 3)]
-        [TestCase(CreatureConstants.GrayRender, 10)]
-        [TestCase(CreatureConstants.GreenHag, 9)]
-        [TestCase(CreatureConstants.Grick, 2)]
-        [TestCase(CreatureConstants.Griffon, 7)]
-        [TestCase(CreatureConstants.Grig, .5)]
-        [TestCase(CreatureConstants.Grig_WithFiddle, .5)]
-        [TestCase(CreatureConstants.Grimlock, 2)]
-        [TestCase(CreatureConstants.Gynosphinx, 8)]
-        [TestCase(CreatureConstants.Halfling_Deep, 1)]
-        [TestCase(CreatureConstants.Halfling_Lightfoot, 1)]
-        [TestCase(CreatureConstants.Halfling_Tallfellow, 1)]
-        [TestCase(CreatureConstants.Harpy, 7)]
-        [TestCase(CreatureConstants.Hawk, 1)]
-        [TestCase(CreatureConstants.Hellcat_Bezekira, 8)]
-        [TestCase(CreatureConstants.HellHound, 4)]
-        [TestCase(CreatureConstants.HellHound_NessianWarhound, 12)]
-        [TestCase(CreatureConstants.Hellwasp_Swarm, 12)]
-        [TestCase(CreatureConstants.Hezrou, 10)]
-        [TestCase(CreatureConstants.Hieracosphinx, 9)]
-        [TestCase(CreatureConstants.Hippogriff, 3)]
-        [TestCase(CreatureConstants.Hobgoblin, 1)]
-        [TestCase(CreatureConstants.Homunculus, 2)]
-        [TestCase(CreatureConstants.HornedDevil_Cornugon, 15)]
-        [TestCase(CreatureConstants.Horse_Heavy, 3)]
-        [TestCase(CreatureConstants.Horse_Heavy_War, 4)]
-        [TestCase(CreatureConstants.Horse_Light, 3)]
-        [TestCase(CreatureConstants.Horse_Light_War, 3)]
-        [TestCase(CreatureConstants.HoundArchon, 6)]
-        [TestCase(CreatureConstants.Howler, 6)]
-        [TestCase(CreatureConstants.Human, 1)]
-        [TestCase(CreatureConstants.Hydra_10Heads, 10)]
-        [TestCase(CreatureConstants.Hydra_11Heads, 11)]
-        [TestCase(CreatureConstants.Hydra_12Heads, 12)]
-        [TestCase(CreatureConstants.Hydra_5Heads, 5)]
-        [TestCase(CreatureConstants.Hydra_6Heads, 6)]
-        [TestCase(CreatureConstants.Hydra_7Heads, 7)]
-        [TestCase(CreatureConstants.Hydra_8Heads, 8)]
-        [TestCase(CreatureConstants.Hydra_9Heads, 9)]
-        [TestCase(CreatureConstants.Hyena, 2)]
-        [TestCase(CreatureConstants.IceDevil_Gelugon, 14)]
-        [TestCase(CreatureConstants.Imp, 3)]
-        [TestCase(CreatureConstants.InvisibleStalker, 8)]
-        [TestCase(CreatureConstants.Janni, 6)]
-        [TestCase(CreatureConstants.Kobold, 1)]
-        [TestCase(CreatureConstants.Kolyarut, 13)]
-        [TestCase(CreatureConstants.Kraken, 20)]
-        [TestCase(CreatureConstants.Krenshar, 2)]
-        [TestCase(CreatureConstants.KuoToa, 2)]
-        [TestCase(CreatureConstants.Lamia, 9)]
-        [TestCase(CreatureConstants.Lammasu, 7)]
-        [TestCase(CreatureConstants.LanternArchon, 1)]
-        [TestCase(CreatureConstants.Lemure, 2)]
-        [TestCase(CreatureConstants.Leonal, 12)]
-        [TestCase(CreatureConstants.Leopard, 3)]
-        [TestCase(CreatureConstants.Lillend, 7)]
-        [TestCase(CreatureConstants.Lion, 5)]
-        [TestCase(CreatureConstants.Lion_Dire, 8)]
-        [TestCase(CreatureConstants.Lizard, .5)]
-        [TestCase(CreatureConstants.Lizard_Monitor, 3)]
-        [TestCase(CreatureConstants.Lizardfolk, 2)]
-        [TestCase(CreatureConstants.Locathah, 2)]
-        [TestCase(CreatureConstants.Locust_Swarm, 6)]
-        [TestCase(CreatureConstants.Magmin, 2)]
-        [TestCase(CreatureConstants.MantaRay, 4)]
-        [TestCase(CreatureConstants.Manticore, 6)]
-        [TestCase(CreatureConstants.Marilith, 16)]
-        [TestCase(CreatureConstants.Marut, 15)]
-        [TestCase(CreatureConstants.Medusa, 6)]
-        [TestCase(CreatureConstants.Megaraptor, 8)]
-        [TestCase(CreatureConstants.Mephit_Air, 3)]
-        [TestCase(CreatureConstants.Mephit_Dust, 3)]
-        [TestCase(CreatureConstants.Mephit_Earth, 3)]
-        [TestCase(CreatureConstants.Mephit_Fire, 3)]
-        [TestCase(CreatureConstants.Mephit_Ice, 3)]
-        [TestCase(CreatureConstants.Mephit_Magma, 3)]
-        [TestCase(CreatureConstants.Mephit_Ooze, 3)]
-        [TestCase(CreatureConstants.Mephit_Salt, 3)]
-        [TestCase(CreatureConstants.Mephit_Steam, 3)]
-        [TestCase(CreatureConstants.Mephit_Water, 3)]
-        [TestCase(CreatureConstants.Merfolk, 1)]
-        [TestCase(CreatureConstants.Mimic, 7)]
-        [TestCase(CreatureConstants.MindFlayer, 8)]
-        [TestCase(CreatureConstants.Minotaur, 6)]
-        [TestCase(CreatureConstants.Mohrg, 14)]
-        [TestCase(CreatureConstants.Monkey, 1)]
-        [TestCase(CreatureConstants.Mule, 3)]
-        [TestCase(CreatureConstants.Mummy, 8)]
-        [TestCase(CreatureConstants.Naga_Dark, 9)]
-        [TestCase(CreatureConstants.Naga_Guardian, 11)]
-        [TestCase(CreatureConstants.Naga_Spirit, 9)]
-        [TestCase(CreatureConstants.Naga_Water, 7)]
-        [TestCase(CreatureConstants.Nalfeshnee, 14)]
-        [TestCase(CreatureConstants.NightHag, 8)]
-        [TestCase(CreatureConstants.Nightcrawler, 25)]
-        [TestCase(CreatureConstants.Nightmare, 6)]
-        [TestCase(CreatureConstants.Nightmare_Cauchemar, 15)]
-        [TestCase(CreatureConstants.Nightwalker, 21)]
-        [TestCase(CreatureConstants.Nightwing, 17)]
-        [TestCase(CreatureConstants.Nixie, 1)]
-        [TestCase(CreatureConstants.Nymph, 6)]
-        [TestCase(CreatureConstants.OchreJelly, 6)]
-        [TestCase(CreatureConstants.Octopus, 2)]
-        [TestCase(CreatureConstants.Octopus_Giant, 8)]
-        [TestCase(CreatureConstants.Ogre, 4)]
-        [TestCase(CreatureConstants.Ogre_Merrow, 4)]
-        [TestCase(CreatureConstants.OgreMage, 5)]
-        [TestCase(CreatureConstants.Orc, 1)]
-        [TestCase(CreatureConstants.Orc_Half, 1)]
-        [TestCase(CreatureConstants.Otyugh, 6)]
-        [TestCase(CreatureConstants.Owl, 1)]
-        [TestCase(CreatureConstants.Owl_Giant, 4)]
-        [TestCase(CreatureConstants.Owlbear, 5)]
-        [TestCase(CreatureConstants.Pegasus, 4)]
-        [TestCase(CreatureConstants.PhantomFungus, 2)]
-        [TestCase(CreatureConstants.PhaseSpider, 5)]
-        [TestCase(CreatureConstants.Phasm, 15)]
-        [TestCase(CreatureConstants.PitFiend, 18)]
-        [TestCase(CreatureConstants.Pixie, 1)]
-        [TestCase(CreatureConstants.Pixie_WithIrresistibleDance, 1)]
-        [TestCase(CreatureConstants.Pony, 2)]
-        [TestCase(CreatureConstants.Pony_War, 2)]
-        [TestCase(CreatureConstants.Porpoise, 2)]
-        [TestCase(CreatureConstants.PrayingMantis_Giant, 4)]
-        [TestCase(CreatureConstants.Pseudodragon, 2)]
-        [TestCase(CreatureConstants.PurpleWorm, 16)]
-        [TestCase(CreatureConstants.Pyrohydra_10Heads, 10)]
-        [TestCase(CreatureConstants.Pyrohydra_11Heads, 11)]
-        [TestCase(CreatureConstants.Pyrohydra_12Heads, 12)]
-        [TestCase(CreatureConstants.Pyrohydra_5Heads, 5)]
-        [TestCase(CreatureConstants.Pyrohydra_6Heads, 6)]
-        [TestCase(CreatureConstants.Pyrohydra_7Heads, 7)]
-        [TestCase(CreatureConstants.Pyrohydra_8Heads, 8)]
-        [TestCase(CreatureConstants.Pyrohydra_9Heads, 9)]
-        [TestCase(CreatureConstants.Quasit, 3)]
-        [TestCase(CreatureConstants.Rakshasa, 7)]
-        [TestCase(CreatureConstants.Rast, 4)]
-        [TestCase(CreatureConstants.Rat, .25)]
-        [TestCase(CreatureConstants.Rat_Dire, 1)]
-        [TestCase(CreatureConstants.Rat_Swarm, 4)]
-        [TestCase(CreatureConstants.Raven, .25)]
-        [TestCase(CreatureConstants.Ravid, 3)]
-        [TestCase(CreatureConstants.RazorBoar, 15)]
-        [TestCase(CreatureConstants.Remorhaz, 7)]
-        [TestCase(CreatureConstants.Retriever, 10)]
-        [TestCase(CreatureConstants.Rhinoceras, 8)]
-        [TestCase(CreatureConstants.Roc, 18)]
-        [TestCase(CreatureConstants.Roper, 10)]
-        [TestCase(CreatureConstants.RustMonster, 5)]
-        [TestCase(CreatureConstants.Sahuagin, 2)]
-        [TestCase(CreatureConstants.Sahuagin_Malenti, 2)]
-        [TestCase(CreatureConstants.Sahuagin_Mutant, 2)]
-        [TestCase(CreatureConstants.Salamander_Average, 9)]
-        [TestCase(CreatureConstants.Salamander_Flamebrother, 4)]
-        [TestCase(CreatureConstants.Salamander_Noble, 15)]
-        [TestCase(CreatureConstants.Satyr, 5)]
-        [TestCase(CreatureConstants.Satyr_WithPipes, 5)]
-        [TestCase(CreatureConstants.Scorpion_Monstrous_Colossal, 40)]
-        [TestCase(CreatureConstants.Scorpion_Monstrous_Gargantuan, 20)]
-        [TestCase(CreatureConstants.Scorpion_Monstrous_Huge, 10)]
-        [TestCase(CreatureConstants.Scorpion_Monstrous_Large, 5)]
-        [TestCase(CreatureConstants.Scorpion_Monstrous_Medium, 2)]
-        [TestCase(CreatureConstants.Scorpion_Monstrous_Small, 1)]
-        [TestCase(CreatureConstants.Scorpion_Monstrous_Tiny, .5)]
-        [TestCase(CreatureConstants.Scorpionfolk, 12)]
-        [TestCase(CreatureConstants.SeaCat, 6)]
-        [TestCase(CreatureConstants.SeaHag, 3)]
-        [TestCase(CreatureConstants.Shadow, 3)]
-        [TestCase(CreatureConstants.Shadow_Greater, 9)]
-        [TestCase(CreatureConstants.ShadowMastiff, 4)]
-        [TestCase(CreatureConstants.ShamblingMound, 8)]
-        [TestCase(CreatureConstants.Shark_Dire, 18)]
-        [TestCase(CreatureConstants.Shark_Huge, 10)]
-        [TestCase(CreatureConstants.Shark_Large, 7)]
-        [TestCase(CreatureConstants.Shark_Medium, 3)]
-        [TestCase(CreatureConstants.ShieldGuardian, 15)]
-        [TestCase(CreatureConstants.ShockerLizard, 2)]
-        [TestCase(CreatureConstants.Shrieker, 2)]
-        [TestCase(CreatureConstants.Skum, 2)]
-        [TestCase(CreatureConstants.Slaad_Blue, 8)]
-        [TestCase(CreatureConstants.Slaad_Death, 15)]
-        [TestCase(CreatureConstants.Slaad_Gray, 10)]
-        [TestCase(CreatureConstants.Slaad_Green, 9)]
-        [TestCase(CreatureConstants.Slaad_Red, 7)]
-        [TestCase(CreatureConstants.Snake_Constrictor, 3)]
-        [TestCase(CreatureConstants.Snake_Constrictor_Giant, 11)]
-        [TestCase(CreatureConstants.Snake_Viper_Huge, 6)]
-        [TestCase(CreatureConstants.Snake_Viper_Large, 3)]
-        [TestCase(CreatureConstants.Snake_Viper_Medium, 2)]
-        [TestCase(CreatureConstants.Snake_Viper_Small, 1)]
-        [TestCase(CreatureConstants.Snake_Viper_Tiny, .25)]
-        [TestCase(CreatureConstants.Spectre, 7)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Colossal, 32)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Gargantuan, 16)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Huge, 8)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Large, 4)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Medium, 2)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Small, 1)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Tiny, .5)]
-        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Colossal, 32)]
-        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan, 16)]
-        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Huge, 8)]
-        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Large, 4)]
-        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Medium, 2)]
-        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Small, 1)]
-        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Tiny, .5)]
-        [TestCase(CreatureConstants.Spider_Swarm, 2)]
-        [TestCase(CreatureConstants.SpiderEater, 4)]
-        [TestCase(CreatureConstants.Squid, 3)]
-        [TestCase(CreatureConstants.Squid_Giant, 12)]
-        [TestCase(CreatureConstants.StagBeetle_Giant, 7)]
-        [TestCase(CreatureConstants.Stirge, 1)]
-        [TestCase(CreatureConstants.Succubus, 6)]
-        [TestCase(CreatureConstants.Tarrasque, 48)]
-        [TestCase(CreatureConstants.Tendriculos, 9)]
-        [TestCase(CreatureConstants.Thoqqua, 3)]
-        [TestCase(CreatureConstants.Tiefling, 1)]
-        [TestCase(CreatureConstants.Tiger, 6)]
-        [TestCase(CreatureConstants.Tiger_Dire, 16)]
-        [TestCase(CreatureConstants.Titan, 20)]
-        [TestCase(CreatureConstants.Toad, .25)]
-        [TestCase(CreatureConstants.Tojanida_Adult, 7)]
-        [TestCase(CreatureConstants.Tojanida_Elder, 15)]
-        [TestCase(CreatureConstants.Tojanida_Juvenile, 3)]
-        [TestCase(CreatureConstants.Treant, 7)]
-        [TestCase(CreatureConstants.Triceratops, 16)]
-        [TestCase(CreatureConstants.Triton, 3)]
-        [TestCase(CreatureConstants.Troglodyte, 2)]
-        [TestCase(CreatureConstants.Troll, 6)]
-        [TestCase(CreatureConstants.Troll_Scrag, 6)]
-        [TestCase(CreatureConstants.TrumpetArchon, 12)]
-        [TestCase(CreatureConstants.Tyrannosaurus, 18)]
-        [TestCase(CreatureConstants.UmberHulk, 8)]
-        [TestCase(CreatureConstants.UmberHulk_TrulyHorrid, 20)]
-        [TestCase(CreatureConstants.Unicorn, 4)]
-        [TestCase(CreatureConstants.VampireSpawn, 4)]
-        [TestCase(CreatureConstants.Vargouille, 1)]
-        [TestCase(CreatureConstants.VioletFungus, 2)]
-        [TestCase(CreatureConstants.Vrock, 10)]
-        [TestCase(CreatureConstants.Wasp_Giant, 5)]
-        [TestCase(CreatureConstants.Weasel, .5)]
-        [TestCase(CreatureConstants.Weasel_Dire, 3)]
-        [TestCase(CreatureConstants.Whale_Baleen, 12)]
-        [TestCase(CreatureConstants.Whale_Cachalot, 12)]
-        [TestCase(CreatureConstants.Whale_Orca, 9)]
-        [TestCase(CreatureConstants.Wight, 4)]
-        [TestCase(CreatureConstants.WillOWisp, 9)]
-        [TestCase(CreatureConstants.WinterWolf, 6)]
-        [TestCase(CreatureConstants.Wolf, 2)]
-        [TestCase(CreatureConstants.Wolf_Dire, 6)]
-        [TestCase(CreatureConstants.Wolverine, 3)]
-        [TestCase(CreatureConstants.Wolverine_Dire, 5)]
-        [TestCase(CreatureConstants.Worg, 4)]
-        [TestCase(CreatureConstants.Wraith, 5)]
-        [TestCase(CreatureConstants.Wraith_Dread, 16)]
-        [TestCase(CreatureConstants.Wyvern, 7)]
-        [TestCase(CreatureConstants.Xill, 5)]
-        [TestCase(CreatureConstants.Xorn_Average, 7)]
-        [TestCase(CreatureConstants.Xorn_Elder, 15)]
-        [TestCase(CreatureConstants.Xorn_Minor, 3)]
-        [TestCase(CreatureConstants.YethHound, 3)]
-        [TestCase(CreatureConstants.Yrthak, 12)]
-        [TestCase(CreatureConstants.YuanTi_Abomination, 9)]
-        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeArms, 7)]
-        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeHead, 7)]
-        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTail, 7)]
-        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, 7)]
-        [TestCase(CreatureConstants.YuanTi_Pureblood, 4)]
-        [TestCase(CreatureConstants.Zelekhut, 8)]
-        public void HitDiceQuantity(string creature, double quantity)
+        public static Dictionary<string, double> GetCreatureHitDiceQuantities()
         {
-            AssertAdjustment(creature, quantity);
-            Assert.That(quantity, Is.Positive);
+            var quantities = new Dictionary<string, double>
+            {
+                [CreatureConstants.Aasimar] = 1,
+                [CreatureConstants.Aboleth] = 8,
+                [CreatureConstants.Achaierai] = 6,
+                [CreatureConstants.Allip] = 4,
+                [CreatureConstants.Angel_AstralDeva] = 12,
+                [CreatureConstants.Angel_Planetar] = 14,
+                [CreatureConstants.Angel_Solar] = 22,
+                [CreatureConstants.Ankheg] = 3,
+                [CreatureConstants.AnimatedObject_Colossal] = 32,
+                [CreatureConstants.AnimatedObject_Colossal_Flexible] = 32,
+                [CreatureConstants.AnimatedObject_Colossal_MultipleLegs] = 32,
+                [CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden] = 32,
+                [CreatureConstants.AnimatedObject_Colossal_Sheetlike] = 32,
+                [CreatureConstants.AnimatedObject_Colossal_TwoLegs] = 32,
+                [CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden] = 32,
+                [CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden] = 32,
+                [CreatureConstants.AnimatedObject_Colossal_Wooden] = 32,
+                [CreatureConstants.AnimatedObject_Gargantuan] = 16,
+                [CreatureConstants.AnimatedObject_Gargantuan_Flexible] = 16,
+                [CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs] = 16,
+                [CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden] = 16,
+                [CreatureConstants.AnimatedObject_Gargantuan_Sheetlike] = 16,
+                [CreatureConstants.AnimatedObject_Gargantuan_TwoLegs] = 16,
+                [CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden] = 16,
+                [CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden] = 16,
+                [CreatureConstants.AnimatedObject_Gargantuan_Wooden] = 16,
+                [CreatureConstants.AnimatedObject_Huge] = 8,
+                [CreatureConstants.AnimatedObject_Huge_Flexible] = 8,
+                [CreatureConstants.AnimatedObject_Huge_MultipleLegs] = 8,
+                [CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden] = 8,
+                [CreatureConstants.AnimatedObject_Huge_Sheetlike] = 8,
+                [CreatureConstants.AnimatedObject_Huge_TwoLegs] = 8,
+                [CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden] = 8,
+                [CreatureConstants.AnimatedObject_Huge_Wheels_Wooden] = 8,
+                [CreatureConstants.AnimatedObject_Huge_Wooden] = 8,
+                [CreatureConstants.AnimatedObject_Large] = 4,
+                [CreatureConstants.AnimatedObject_Large_Flexible] = 4,
+                [CreatureConstants.AnimatedObject_Large_MultipleLegs] = 4,
+                [CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden] = 4,
+                [CreatureConstants.AnimatedObject_Large_Sheetlike] = 4,
+                [CreatureConstants.AnimatedObject_Large_TwoLegs] = 4,
+                [CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden] = 4,
+                [CreatureConstants.AnimatedObject_Large_Wheels_Wooden] = 4,
+                [CreatureConstants.AnimatedObject_Large_Wooden] = 4,
+                [CreatureConstants.AnimatedObject_Medium] = 2,
+                [CreatureConstants.AnimatedObject_Medium_Flexible] = 2,
+                [CreatureConstants.AnimatedObject_Medium_MultipleLegs] = 2,
+                [CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden] = 2,
+                [CreatureConstants.AnimatedObject_Medium_Sheetlike] = 2,
+                [CreatureConstants.AnimatedObject_Medium_TwoLegs] = 2,
+                [CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden] = 2,
+                [CreatureConstants.AnimatedObject_Medium_Wheels_Wooden] = 2,
+                [CreatureConstants.AnimatedObject_Medium_Wooden] = 2,
+                [CreatureConstants.AnimatedObject_Small] = 1,
+                [CreatureConstants.AnimatedObject_Small_Flexible] = 1,
+                [CreatureConstants.AnimatedObject_Small_MultipleLegs] = 1,
+                [CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden] = 1,
+                [CreatureConstants.AnimatedObject_Small_Sheetlike] = 1,
+                [CreatureConstants.AnimatedObject_Small_TwoLegs] = 1,
+                [CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden] = 1,
+                [CreatureConstants.AnimatedObject_Small_Wheels_Wooden] = 1,
+                [CreatureConstants.AnimatedObject_Small_Wooden] = 1,
+                [CreatureConstants.AnimatedObject_Tiny] = 0.5,
+                [CreatureConstants.AnimatedObject_Tiny_Flexible] = 0.5,
+                [CreatureConstants.AnimatedObject_Tiny_MultipleLegs] = 0.5,
+                [CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden] = 0.5,
+                [CreatureConstants.AnimatedObject_Tiny_Sheetlike] = 0.5,
+                [CreatureConstants.AnimatedObject_Tiny_TwoLegs] = 0.5,
+                [CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden] = 0.5,
+                [CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden] = 0.5,
+                [CreatureConstants.AnimatedObject_Tiny_Wooden] = 0.5,
+                [CreatureConstants.Annis] = 7,
+                [CreatureConstants.Ape] = 4,
+                [CreatureConstants.Ape_Dire] = 5,
+                [CreatureConstants.Arrowhawk_Adult] = 7,
+                [CreatureConstants.Arrowhawk_Elder] = 15,
+                [CreatureConstants.Arrowhawk_Juvenile] = 3,
+                [CreatureConstants.Androsphinx] = 12,
+                [CreatureConstants.Ant_Giant_Queen] = 4,
+                [CreatureConstants.Ant_Giant_Soldier] = 2,
+                [CreatureConstants.Ant_Giant_Worker] = 2,
+                [CreatureConstants.Aranea] = 3,
+                [CreatureConstants.AssassinVine] = 4,
+                [CreatureConstants.Athach] = 14,
+                [CreatureConstants.Avoral] = 7,
+                [CreatureConstants.Azer] = 2,
+                [CreatureConstants.Babau] = 7,
+                [CreatureConstants.Baboon] = 1,
+                [CreatureConstants.Badger] = 1,
+                [CreatureConstants.Badger_Dire] = 3,
+                [CreatureConstants.Balor] = 20,
+                [CreatureConstants.BarbedDevil_Hamatula] = 12,
+                [CreatureConstants.Barghest] = 6,
+                [CreatureConstants.Barghest_Greater] = 9,
+                [CreatureConstants.Basilisk] = 6,
+                [CreatureConstants.Basilisk_Greater] = 18,
+                [CreatureConstants.Bat] = .25,
+                [CreatureConstants.Bat_Dire] = 4,
+                [CreatureConstants.Bat_Swarm] = 3,
+                [CreatureConstants.Bear_Black] = 3,
+                [CreatureConstants.Bear_Brown] = 6,
+                [CreatureConstants.Bear_Dire] = 12,
+                [CreatureConstants.Bear_Polar] = 8,
+                [CreatureConstants.BeardedDevil_Barbazu] = 6,
+                [CreatureConstants.Bebilith] = 12,
+                [CreatureConstants.Bee_Giant] = 3,
+                [CreatureConstants.Behir] = 9,
+                [CreatureConstants.Beholder] = 11,
+                [CreatureConstants.Beholder_Gauth] = 6,
+                [CreatureConstants.Belker] = 7,
+                [CreatureConstants.Bison] = 5,
+                [CreatureConstants.BlackPudding] = 10,
+                [CreatureConstants.BlackPudding_Elder] = 20,
+                [CreatureConstants.BlinkDog] = 4,
+                [CreatureConstants.Boar] = 3,
+                [CreatureConstants.Boar_Dire] = 7,
+                [CreatureConstants.Bodak] = 9,
+                [CreatureConstants.BombardierBeetle_Giant] = 2,
+                [CreatureConstants.BoneDevil_Osyluth] = 10,
+                [CreatureConstants.Bralani] = 6,
+                [CreatureConstants.Bugbear] = 3,
+                [CreatureConstants.Bulette] = 9,
+                [CreatureConstants.Camel_Bactrian] = 3,
+                [CreatureConstants.Camel_Dromedary] = 3,
+                [CreatureConstants.CarrionCrawler] = 3,
+                [CreatureConstants.Cat] = .5,
+                [CreatureConstants.Centaur] = 4,
+                [CreatureConstants.Centipede_Monstrous_Colossal] = 24,
+                [CreatureConstants.Centipede_Monstrous_Gargantuan] = 12,
+                [CreatureConstants.Centipede_Monstrous_Huge] = 6,
+                [CreatureConstants.Centipede_Monstrous_Large] = 3,
+                [CreatureConstants.Centipede_Monstrous_Medium] = 1,
+                [CreatureConstants.Centipede_Monstrous_Small] = .5,
+                [CreatureConstants.Centipede_Monstrous_Tiny] = .25,
+                [CreatureConstants.Centipede_Swarm] = 9,
+                [CreatureConstants.ChainDevil_Kyton] = 8,
+                [CreatureConstants.ChaosBeast] = 8,
+                [CreatureConstants.Cheetah] = 3,
+                [CreatureConstants.Chimera_Black] = 9,
+                [CreatureConstants.Chimera_Blue] = 9,
+                [CreatureConstants.Chimera_Green] = 9,
+                [CreatureConstants.Chimera_Red] = 9,
+                [CreatureConstants.Chimera_White] = 9,
+                [CreatureConstants.Choker] = 3,
+                [CreatureConstants.Chuul] = 11,
+                [CreatureConstants.Cloaker] = 6,
+                [CreatureConstants.Cockatrice] = 5,
+                [CreatureConstants.Couatl] = 9,
+                [CreatureConstants.Criosphinx] = 10,
+                [CreatureConstants.Crocodile] = 3,
+                [CreatureConstants.Crocodile_Giant] = 7,
+                [CreatureConstants.Cryohydra_10Heads] = 10,
+                [CreatureConstants.Cryohydra_11Heads] = 11,
+                [CreatureConstants.Cryohydra_12Heads] = 12,
+                [CreatureConstants.Cryohydra_5Heads] = 5,
+                [CreatureConstants.Cryohydra_6Heads] = 6,
+                [CreatureConstants.Cryohydra_7Heads] = 7,
+                [CreatureConstants.Cryohydra_8Heads] = 8,
+                [CreatureConstants.Cryohydra_9Heads] = 9,
+                [CreatureConstants.Darkmantle] = 1,
+                [CreatureConstants.Deinonychus] = 4,
+                [CreatureConstants.Delver] = 15,
+                [CreatureConstants.Derro] = 3,
+                [CreatureConstants.Derro_Sane] = 3,
+                [CreatureConstants.Destrachan] = 8,
+                [CreatureConstants.Devourer] = 12,
+                [CreatureConstants.Digester] = 8,
+                [CreatureConstants.DisplacerBeast] = 6,
+                [CreatureConstants.DisplacerBeast_PackLord] = 18,
+                [CreatureConstants.Djinni] = 7,
+                [CreatureConstants.Djinni_Noble] = 10,
+                [CreatureConstants.Dog] = 1,
+                [CreatureConstants.Dog_Riding] = 2,
+                [CreatureConstants.Donkey] = 2,
+                [CreatureConstants.Doppelganger] = 4,
+                [CreatureConstants.Dragon_Black_Wyrmling] = 4,
+                [CreatureConstants.Dragon_Black_VeryYoung] = 7,
+                [CreatureConstants.Dragon_Black_Young] = 10,
+                [CreatureConstants.Dragon_Black_Juvenile] = 13,
+                [CreatureConstants.Dragon_Black_YoungAdult] = 16,
+                [CreatureConstants.Dragon_Black_Adult] = 19,
+                [CreatureConstants.Dragon_Black_MatureAdult] = 22,
+                [CreatureConstants.Dragon_Black_Old] = 25,
+                [CreatureConstants.Dragon_Black_VeryOld] = 28,
+                [CreatureConstants.Dragon_Black_Ancient] = 31,
+                [CreatureConstants.Dragon_Black_Wyrm] = 34,
+                [CreatureConstants.Dragon_Black_GreatWyrm] = 37,
+                [CreatureConstants.Dragon_Blue_Wyrmling] = 6,
+                [CreatureConstants.Dragon_Blue_VeryYoung] = 9,
+                [CreatureConstants.Dragon_Blue_Young] = 12,
+                [CreatureConstants.Dragon_Blue_Juvenile] = 15,
+                [CreatureConstants.Dragon_Blue_YoungAdult] = 18,
+                [CreatureConstants.Dragon_Blue_Adult] = 21,
+                [CreatureConstants.Dragon_Blue_MatureAdult] = 24,
+                [CreatureConstants.Dragon_Blue_Old] = 27,
+                [CreatureConstants.Dragon_Blue_VeryOld] = 30,
+                [CreatureConstants.Dragon_Blue_Ancient] = 33,
+                [CreatureConstants.Dragon_Blue_Wyrm] = 36,
+                [CreatureConstants.Dragon_Blue_GreatWyrm] = 39,
+                [CreatureConstants.Dragon_Green_Wyrmling] = 5,
+                [CreatureConstants.Dragon_Green_VeryYoung] = 8,
+                [CreatureConstants.Dragon_Green_Young] = 11,
+                [CreatureConstants.Dragon_Green_Juvenile] = 14,
+                [CreatureConstants.Dragon_Green_YoungAdult] = 17,
+                [CreatureConstants.Dragon_Green_Adult] = 20,
+                [CreatureConstants.Dragon_Green_MatureAdult] = 23,
+                [CreatureConstants.Dragon_Green_Old] = 26,
+                [CreatureConstants.Dragon_Green_VeryOld] = 29,
+                [CreatureConstants.Dragon_Green_Ancient] = 32,
+                [CreatureConstants.Dragon_Green_Wyrm] = 35,
+                [CreatureConstants.Dragon_Green_GreatWyrm] = 38,
+                [CreatureConstants.Dragon_Red_Wyrmling] = 7,
+                [CreatureConstants.Dragon_Red_VeryYoung] = 10,
+                [CreatureConstants.Dragon_Red_Young] = 13,
+                [CreatureConstants.Dragon_Red_Juvenile] = 16,
+                [CreatureConstants.Dragon_Red_YoungAdult] = 19,
+                [CreatureConstants.Dragon_Red_Adult] = 22,
+                [CreatureConstants.Dragon_Red_MatureAdult] = 25,
+                [CreatureConstants.Dragon_Red_Old] = 28,
+                [CreatureConstants.Dragon_Red_VeryOld] = 31,
+                [CreatureConstants.Dragon_Red_Ancient] = 34,
+                [CreatureConstants.Dragon_Red_Wyrm] = 37,
+                [CreatureConstants.Dragon_Red_GreatWyrm] = 40,
+                [CreatureConstants.Dragon_White_Wyrmling] = 3,
+                [CreatureConstants.Dragon_White_VeryYoung] = 6,
+                [CreatureConstants.Dragon_White_Young] = 9,
+                [CreatureConstants.Dragon_White_Juvenile] = 12,
+                [CreatureConstants.Dragon_White_YoungAdult] = 15,
+                [CreatureConstants.Dragon_White_Adult] = 18,
+                [CreatureConstants.Dragon_White_MatureAdult] = 21,
+                [CreatureConstants.Dragon_White_Old] = 24,
+                [CreatureConstants.Dragon_White_VeryOld] = 27,
+                [CreatureConstants.Dragon_White_Ancient] = 30,
+                [CreatureConstants.Dragon_White_Wyrm] = 33,
+                [CreatureConstants.Dragon_White_GreatWyrm] = 36,
+                [CreatureConstants.Dragon_Brass_Wyrmling] = 4,
+                [CreatureConstants.Dragon_Brass_VeryYoung] = 7,
+                [CreatureConstants.Dragon_Brass_Young] = 10,
+                [CreatureConstants.Dragon_Brass_Juvenile] = 13,
+                [CreatureConstants.Dragon_Brass_YoungAdult] = 16,
+                [CreatureConstants.Dragon_Brass_Adult] = 19,
+                [CreatureConstants.Dragon_Brass_MatureAdult] = 22,
+                [CreatureConstants.Dragon_Brass_Old] = 25,
+                [CreatureConstants.Dragon_Brass_VeryOld] = 28,
+                [CreatureConstants.Dragon_Brass_Ancient] = 31,
+                [CreatureConstants.Dragon_Brass_Wyrm] = 34,
+                [CreatureConstants.Dragon_Brass_GreatWyrm] = 37,
+                [CreatureConstants.Dragon_Bronze_Wyrmling] = 6,
+                [CreatureConstants.Dragon_Bronze_VeryYoung] = 9,
+                [CreatureConstants.Dragon_Bronze_Young] = 12,
+                [CreatureConstants.Dragon_Bronze_Juvenile] = 15,
+                [CreatureConstants.Dragon_Bronze_YoungAdult] = 18,
+                [CreatureConstants.Dragon_Bronze_Adult] = 21,
+                [CreatureConstants.Dragon_Bronze_MatureAdult] = 24,
+                [CreatureConstants.Dragon_Bronze_Old] = 27,
+                [CreatureConstants.Dragon_Bronze_VeryOld] = 30,
+                [CreatureConstants.Dragon_Bronze_Ancient] = 33,
+                [CreatureConstants.Dragon_Bronze_Wyrm] = 36,
+                [CreatureConstants.Dragon_Bronze_GreatWyrm] = 39,
+                [CreatureConstants.Dragon_Copper_Wyrmling] = 5,
+                [CreatureConstants.Dragon_Copper_VeryYoung] = 8,
+                [CreatureConstants.Dragon_Copper_Young] = 11,
+                [CreatureConstants.Dragon_Copper_Juvenile] = 14,
+                [CreatureConstants.Dragon_Copper_YoungAdult] = 17,
+                [CreatureConstants.Dragon_Copper_Adult] = 20,
+                [CreatureConstants.Dragon_Copper_MatureAdult] = 23,
+                [CreatureConstants.Dragon_Copper_Old] = 26,
+                [CreatureConstants.Dragon_Copper_VeryOld] = 29,
+                [CreatureConstants.Dragon_Copper_Ancient] = 32,
+                [CreatureConstants.Dragon_Copper_Wyrm] = 35,
+                [CreatureConstants.Dragon_Copper_GreatWyrm] = 38,
+                [CreatureConstants.Dragon_Gold_Wyrmling] = 8,
+                [CreatureConstants.Dragon_Gold_VeryYoung] = 11,
+                [CreatureConstants.Dragon_Gold_Young] = 14,
+                [CreatureConstants.Dragon_Gold_Juvenile] = 17,
+                [CreatureConstants.Dragon_Gold_YoungAdult] = 20,
+                [CreatureConstants.Dragon_Gold_Adult] = 23,
+                [CreatureConstants.Dragon_Gold_MatureAdult] = 26,
+                [CreatureConstants.Dragon_Gold_Old] = 29,
+                [CreatureConstants.Dragon_Gold_VeryOld] = 32,
+                [CreatureConstants.Dragon_Gold_Ancient] = 35,
+                [CreatureConstants.Dragon_Gold_Wyrm] = 38,
+                [CreatureConstants.Dragon_Gold_GreatWyrm] = 41,
+                [CreatureConstants.Dragon_Silver_Wyrmling] = 7,
+                [CreatureConstants.Dragon_Silver_VeryYoung] = 10,
+                [CreatureConstants.Dragon_Silver_Young] = 13,
+                [CreatureConstants.Dragon_Silver_Juvenile] = 16,
+                [CreatureConstants.Dragon_Silver_YoungAdult] = 19,
+                [CreatureConstants.Dragon_Silver_Adult] = 22,
+                [CreatureConstants.Dragon_Silver_MatureAdult] = 25,
+                [CreatureConstants.Dragon_Silver_Old] = 28,
+                [CreatureConstants.Dragon_Silver_VeryOld] = 31,
+                [CreatureConstants.Dragon_Silver_Ancient] = 34,
+                [CreatureConstants.Dragon_Silver_Wyrm] = 37,
+                [CreatureConstants.Dragon_Silver_GreatWyrm] = 40,
+                [CreatureConstants.DragonTurtle] = 12,
+                [CreatureConstants.Dragonne] = 9,
+                [CreatureConstants.Dretch] = 2,
+                [CreatureConstants.Drider] = 6,
+                [CreatureConstants.Dryad] = 4,
+                [CreatureConstants.Dwarf_Deep] = 1,
+                [CreatureConstants.Dwarf_Duergar] = 1,
+                [CreatureConstants.Dwarf_Hill] = 1,
+                [CreatureConstants.Dwarf_Mountain] = 1,
+                [CreatureConstants.Eagle] = 1,
+                [CreatureConstants.Eagle_Giant] = 4,
+                [CreatureConstants.Efreeti] = 10,
+                [CreatureConstants.Elasmosaurus] = 10,
+                [CreatureConstants.Elemental_Air_Elder] = 24,
+                [CreatureConstants.Elemental_Air_Greater] = 21,
+                [CreatureConstants.Elemental_Air_Huge] = 16,
+                [CreatureConstants.Elemental_Air_Large] = 8,
+                [CreatureConstants.Elemental_Air_Medium] = 4,
+                [CreatureConstants.Elemental_Air_Small] = 2,
+                [CreatureConstants.Elemental_Earth_Elder] = 24,
+                [CreatureConstants.Elemental_Earth_Greater] = 21,
+                [CreatureConstants.Elemental_Earth_Huge] = 16,
+                [CreatureConstants.Elemental_Earth_Large] = 8,
+                [CreatureConstants.Elemental_Earth_Medium] = 4,
+                [CreatureConstants.Elemental_Earth_Small] = 2,
+                [CreatureConstants.Elemental_Fire_Elder] = 24,
+                [CreatureConstants.Elemental_Fire_Greater] = 21,
+                [CreatureConstants.Elemental_Fire_Huge] = 16,
+                [CreatureConstants.Elemental_Fire_Large] = 8,
+                [CreatureConstants.Elemental_Fire_Medium] = 4,
+                [CreatureConstants.Elemental_Fire_Small] = 2,
+                [CreatureConstants.Elemental_Water_Elder] = 24,
+                [CreatureConstants.Elemental_Water_Greater] = 21,
+                [CreatureConstants.Elemental_Water_Huge] = 16,
+                [CreatureConstants.Elemental_Water_Large] = 8,
+                [CreatureConstants.Elemental_Water_Medium] = 4,
+                [CreatureConstants.Elemental_Water_Small] = 2,
+                [CreatureConstants.Elephant] = 11,
+                [CreatureConstants.Elf_Aquatic] = 1,
+                [CreatureConstants.Elf_Drow] = 1,
+                [CreatureConstants.Elf_Gray] = 1,
+                [CreatureConstants.Elf_Half] = 1,
+                [CreatureConstants.Elf_High] = 1,
+                [CreatureConstants.Elf_Wild] = 1,
+                [CreatureConstants.Elf_Wood] = 1,
+                [CreatureConstants.Erinyes] = 9,
+                [CreatureConstants.EtherealFilcher] = 5,
+                [CreatureConstants.EtherealMarauder] = 2,
+                [CreatureConstants.Ettercap] = 5,
+                [CreatureConstants.Ettin] = 10,
+                [CreatureConstants.FireBeetle_Giant] = 1,
+                [CreatureConstants.FormianMyrmarch] = 12,
+                [CreatureConstants.FormianQueen] = 20,
+                [CreatureConstants.FormianTaskmaster] = 6,
+                [CreatureConstants.FormianWarrior] = 4,
+                [CreatureConstants.FormianWorker] = 1,
+                [CreatureConstants.FrostWorm] = 14,
+                [CreatureConstants.Gargoyle] = 4,
+                [CreatureConstants.Gargoyle_Kapoacinth] = 4,
+                [CreatureConstants.GelatinousCube] = 4,
+                [CreatureConstants.Ghaele] = 10,
+                [CreatureConstants.Ghoul] = 2,
+                [CreatureConstants.Ghoul_Ghast] = 4,
+                [CreatureConstants.Ghoul_Lacedon] = 2,
+                [CreatureConstants.Giant_Cloud] = 17,
+                [CreatureConstants.Giant_Fire] = 15,
+                [CreatureConstants.Giant_Frost] = 14,
+                [CreatureConstants.Giant_Hill] = 12,
+                [CreatureConstants.Giant_Stone] = 14,
+                [CreatureConstants.Giant_Stone_Elder] = 14,
+                [CreatureConstants.Giant_Storm] = 19,
+                [CreatureConstants.GibberingMouther] = 4,
+                [CreatureConstants.Girallon] = 7,
+                [CreatureConstants.Githyanki] = 1,
+                [CreatureConstants.Githzerai] = 1,
+                [CreatureConstants.Glabrezu] = 12,
+                [CreatureConstants.Gnoll] = 2,
+                [CreatureConstants.Gnome_Forest] = 1,
+                [CreatureConstants.Gnome_Rock] = 1,
+                [CreatureConstants.Gnome_Svirfneblin] = 1,
+                [CreatureConstants.Goblin] = 1,
+                [CreatureConstants.Golem_Clay] = 11,
+                [CreatureConstants.Golem_Flesh] = 9,
+                [CreatureConstants.Golem_Iron] = 18,
+                [CreatureConstants.Golem_Stone] = 14,
+                [CreatureConstants.Golem_Stone_Greater] = 42,
+                [CreatureConstants.Gorgon] = 8,
+                [CreatureConstants.GrayOoze] = 3,
+                [CreatureConstants.GrayRender] = 10,
+                [CreatureConstants.GreenHag] = 9,
+                [CreatureConstants.Grick] = 2,
+                [CreatureConstants.Griffon] = 7,
+                [CreatureConstants.Grig] = .5,
+                [CreatureConstants.Grig_WithFiddle] = .5,
+                [CreatureConstants.Grimlock] = 2,
+                [CreatureConstants.Gynosphinx] = 8,
+                [CreatureConstants.Halfling_Deep] = 1,
+                [CreatureConstants.Halfling_Lightfoot] = 1,
+                [CreatureConstants.Halfling_Tallfellow] = 1,
+                [CreatureConstants.Harpy] = 7,
+                [CreatureConstants.Hawk] = 1,
+                [CreatureConstants.Hellcat_Bezekira] = 8,
+                [CreatureConstants.HellHound] = 4,
+                [CreatureConstants.HellHound_NessianWarhound] = 12,
+                [CreatureConstants.Hellwasp_Swarm] = 12,
+                [CreatureConstants.Hezrou] = 10,
+                [CreatureConstants.Hieracosphinx] = 9,
+                [CreatureConstants.Hippogriff] = 3,
+                [CreatureConstants.Hobgoblin] = 1,
+                [CreatureConstants.Homunculus] = 2,
+                [CreatureConstants.HornedDevil_Cornugon] = 15,
+                [CreatureConstants.Horse_Heavy] = 3,
+                [CreatureConstants.Horse_Heavy_War] = 4,
+                [CreatureConstants.Horse_Light] = 3,
+                [CreatureConstants.Horse_Light_War] = 3,
+                [CreatureConstants.HoundArchon] = 6,
+                [CreatureConstants.Howler] = 6,
+                [CreatureConstants.Human] = 1,
+                [CreatureConstants.Hydra_10Heads] = 10,
+                [CreatureConstants.Hydra_11Heads] = 11,
+                [CreatureConstants.Hydra_12Heads] = 12,
+                [CreatureConstants.Hydra_5Heads] = 5,
+                [CreatureConstants.Hydra_6Heads] = 6,
+                [CreatureConstants.Hydra_7Heads] = 7,
+                [CreatureConstants.Hydra_8Heads] = 8,
+                [CreatureConstants.Hydra_9Heads] = 9,
+                [CreatureConstants.Hyena] = 2,
+                [CreatureConstants.IceDevil_Gelugon] = 14,
+                [CreatureConstants.Imp] = 3,
+                [CreatureConstants.InvisibleStalker] = 8,
+                [CreatureConstants.Janni] = 6,
+                [CreatureConstants.Kobold] = 1,
+                [CreatureConstants.Kolyarut] = 13,
+                [CreatureConstants.Kraken] = 20,
+                [CreatureConstants.Krenshar] = 2,
+                [CreatureConstants.KuoToa] = 2,
+                [CreatureConstants.Lamia] = 9,
+                [CreatureConstants.Lammasu] = 7,
+                [CreatureConstants.LanternArchon] = 1,
+                [CreatureConstants.Lemure] = 2,
+                [CreatureConstants.Leonal] = 12,
+                [CreatureConstants.Leopard] = 3,
+                [CreatureConstants.Lillend] = 7,
+                [CreatureConstants.Lion] = 5,
+                [CreatureConstants.Lion_Dire] = 8,
+                [CreatureConstants.Lizard] = .5,
+                [CreatureConstants.Lizard_Monitor] = 3,
+                [CreatureConstants.Lizardfolk] = 2,
+                [CreatureConstants.Locathah] = 2,
+                [CreatureConstants.Locust_Swarm] = 6,
+                [CreatureConstants.Magmin] = 2,
+                [CreatureConstants.MantaRay] = 4,
+                [CreatureConstants.Manticore] = 6,
+                [CreatureConstants.Marilith] = 16,
+                [CreatureConstants.Marut] = 15,
+                [CreatureConstants.Medusa] = 6,
+                [CreatureConstants.Megaraptor] = 8,
+                [CreatureConstants.Mephit_Air] = 3,
+                [CreatureConstants.Mephit_Dust] = 3,
+                [CreatureConstants.Mephit_Earth] = 3,
+                [CreatureConstants.Mephit_Fire] = 3,
+                [CreatureConstants.Mephit_Ice] = 3,
+                [CreatureConstants.Mephit_Magma] = 3,
+                [CreatureConstants.Mephit_Ooze] = 3,
+                [CreatureConstants.Mephit_Salt] = 3,
+                [CreatureConstants.Mephit_Steam] = 3,
+                [CreatureConstants.Mephit_Water] = 3,
+                [CreatureConstants.Merfolk] = 1,
+                [CreatureConstants.Mimic] = 7,
+                [CreatureConstants.MindFlayer] = 8,
+                [CreatureConstants.Minotaur] = 6,
+                [CreatureConstants.Mohrg] = 14,
+                [CreatureConstants.Monkey] = 1,
+                [CreatureConstants.Mule] = 3,
+                [CreatureConstants.Mummy] = 8,
+                [CreatureConstants.Naga_Dark] = 9,
+                [CreatureConstants.Naga_Guardian] = 11,
+                [CreatureConstants.Naga_Spirit] = 9,
+                [CreatureConstants.Naga_Water] = 7,
+                [CreatureConstants.Nalfeshnee] = 14,
+                [CreatureConstants.NightHag] = 8,
+                [CreatureConstants.Nightcrawler] = 25,
+                [CreatureConstants.Nightmare] = 6,
+                [CreatureConstants.Nightmare_Cauchemar] = 15,
+                [CreatureConstants.Nightwalker] = 21,
+                [CreatureConstants.Nightwing] = 17,
+                [CreatureConstants.Nixie] = 1,
+                [CreatureConstants.Nymph] = 6,
+                [CreatureConstants.OchreJelly] = 6,
+                [CreatureConstants.Octopus] = 2,
+                [CreatureConstants.Octopus_Giant] = 8,
+                [CreatureConstants.Ogre] = 4,
+                [CreatureConstants.Ogre_Merrow] = 4,
+                [CreatureConstants.OgreMage] = 5,
+                [CreatureConstants.Orc] = 1,
+                [CreatureConstants.Orc_Half] = 1,
+                [CreatureConstants.Otyugh] = 6,
+                [CreatureConstants.Owl] = 1,
+                [CreatureConstants.Owl_Giant] = 4,
+                [CreatureConstants.Owlbear] = 5,
+                [CreatureConstants.Pegasus] = 4,
+                [CreatureConstants.PhantomFungus] = 2,
+                [CreatureConstants.PhaseSpider] = 5,
+                [CreatureConstants.Phasm] = 15,
+                [CreatureConstants.PitFiend] = 18,
+                [CreatureConstants.Pixie] = 1,
+                [CreatureConstants.Pixie_WithIrresistibleDance] = 1,
+                [CreatureConstants.Pony] = 2,
+                [CreatureConstants.Pony_War] = 2,
+                [CreatureConstants.Porpoise] = 2,
+                [CreatureConstants.PrayingMantis_Giant] = 4,
+                [CreatureConstants.Pseudodragon] = 2,
+                [CreatureConstants.PurpleWorm] = 16,
+                [CreatureConstants.Pyrohydra_10Heads] = 10,
+                [CreatureConstants.Pyrohydra_11Heads] = 11,
+                [CreatureConstants.Pyrohydra_12Heads] = 12,
+                [CreatureConstants.Pyrohydra_5Heads] = 5,
+                [CreatureConstants.Pyrohydra_6Heads] = 6,
+                [CreatureConstants.Pyrohydra_7Heads] = 7,
+                [CreatureConstants.Pyrohydra_8Heads] = 8,
+                [CreatureConstants.Pyrohydra_9Heads] = 9,
+                [CreatureConstants.Quasit] = 3,
+                [CreatureConstants.Rakshasa] = 7,
+                [CreatureConstants.Rast] = 4,
+                [CreatureConstants.Rat] = .25,
+                [CreatureConstants.Rat_Dire] = 1,
+                [CreatureConstants.Rat_Swarm] = 4,
+                [CreatureConstants.Raven] = .25,
+                [CreatureConstants.Ravid] = 3,
+                [CreatureConstants.RazorBoar] = 15,
+                [CreatureConstants.Remorhaz] = 7,
+                [CreatureConstants.Retriever] = 10,
+                [CreatureConstants.Rhinoceras] = 8,
+                [CreatureConstants.Roc] = 18,
+                [CreatureConstants.Roper] = 10,
+                [CreatureConstants.RustMonster] = 5,
+                [CreatureConstants.Sahuagin] = 2,
+                [CreatureConstants.Sahuagin_Malenti] = 2,
+                [CreatureConstants.Sahuagin_Mutant] = 2,
+                [CreatureConstants.Salamander_Average] = 9,
+                [CreatureConstants.Salamander_Flamebrother] = 4,
+                [CreatureConstants.Salamander_Noble] = 15,
+                [CreatureConstants.Satyr] = 5,
+                [CreatureConstants.Satyr_WithPipes] = 5,
+                [CreatureConstants.Scorpion_Monstrous_Colossal] = 40,
+                [CreatureConstants.Scorpion_Monstrous_Gargantuan] = 20,
+                [CreatureConstants.Scorpion_Monstrous_Huge] = 10,
+                [CreatureConstants.Scorpion_Monstrous_Large] = 5,
+                [CreatureConstants.Scorpion_Monstrous_Medium] = 2,
+                [CreatureConstants.Scorpion_Monstrous_Small] = 1,
+                [CreatureConstants.Scorpion_Monstrous_Tiny] = .5,
+                [CreatureConstants.Scorpionfolk] = 12,
+                [CreatureConstants.SeaCat] = 6,
+                [CreatureConstants.SeaHag] = 3,
+                [CreatureConstants.Shadow] = 3,
+                [CreatureConstants.Shadow_Greater] = 9,
+                [CreatureConstants.ShadowMastiff] = 4,
+                [CreatureConstants.ShamblingMound] = 8,
+                [CreatureConstants.Shark_Dire] = 18,
+                [CreatureConstants.Shark_Huge] = 10,
+                [CreatureConstants.Shark_Large] = 7,
+                [CreatureConstants.Shark_Medium] = 3,
+                [CreatureConstants.ShieldGuardian] = 15,
+                [CreatureConstants.ShockerLizard] = 2,
+                [CreatureConstants.Shrieker] = 2,
+                [CreatureConstants.Skum] = 2,
+                [CreatureConstants.Slaad_Blue] = 8,
+                [CreatureConstants.Slaad_Death] = 15,
+                [CreatureConstants.Slaad_Gray] = 10,
+                [CreatureConstants.Slaad_Green] = 9,
+                [CreatureConstants.Slaad_Red] = 7,
+                [CreatureConstants.Snake_Constrictor] = 3,
+                [CreatureConstants.Snake_Constrictor_Giant] = 11,
+                [CreatureConstants.Snake_Viper_Huge] = 6,
+                [CreatureConstants.Snake_Viper_Large] = 3,
+                [CreatureConstants.Snake_Viper_Medium] = 2,
+                [CreatureConstants.Snake_Viper_Small] = 1,
+                [CreatureConstants.Snake_Viper_Tiny] = .25,
+                [CreatureConstants.Spectre] = 7,
+                [CreatureConstants.Spider_Monstrous_Hunter_Colossal] = 32,
+                [CreatureConstants.Spider_Monstrous_Hunter_Gargantuan] = 16,
+                [CreatureConstants.Spider_Monstrous_Hunter_Huge] = 8,
+                [CreatureConstants.Spider_Monstrous_Hunter_Large] = 4,
+                [CreatureConstants.Spider_Monstrous_Hunter_Medium] = 2,
+                [CreatureConstants.Spider_Monstrous_Hunter_Small] = 1,
+                [CreatureConstants.Spider_Monstrous_Hunter_Tiny] = .5,
+                [CreatureConstants.Spider_Monstrous_WebSpinner_Colossal] = 32,
+                [CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan] = 16,
+                [CreatureConstants.Spider_Monstrous_WebSpinner_Huge] = 8,
+                [CreatureConstants.Spider_Monstrous_WebSpinner_Large] = 4,
+                [CreatureConstants.Spider_Monstrous_WebSpinner_Medium] = 2,
+                [CreatureConstants.Spider_Monstrous_WebSpinner_Small] = 1,
+                [CreatureConstants.Spider_Monstrous_WebSpinner_Tiny] = .5,
+                [CreatureConstants.Spider_Swarm] = 2,
+                [CreatureConstants.SpiderEater] = 4,
+                [CreatureConstants.Squid] = 3,
+                [CreatureConstants.Squid_Giant] = 12,
+                [CreatureConstants.StagBeetle_Giant] = 7,
+                [CreatureConstants.Stirge] = 1,
+                [CreatureConstants.Succubus] = 6,
+                [CreatureConstants.Tarrasque] = 48,
+                [CreatureConstants.Tendriculos] = 9,
+                [CreatureConstants.Thoqqua] = 3,
+                [CreatureConstants.Tiefling] = 1,
+                [CreatureConstants.Tiger] = 6,
+                [CreatureConstants.Tiger_Dire] = 16,
+                [CreatureConstants.Titan] = 20,
+                [CreatureConstants.Toad] = .25,
+                [CreatureConstants.Tojanida_Adult] = 7,
+                [CreatureConstants.Tojanida_Elder] = 15,
+                [CreatureConstants.Tojanida_Juvenile] = 3,
+                [CreatureConstants.Treant] = 7,
+                [CreatureConstants.Triceratops] = 16,
+                [CreatureConstants.Triton] = 3,
+                [CreatureConstants.Troglodyte] = 2,
+                [CreatureConstants.Troll] = 6,
+                [CreatureConstants.Troll_Scrag] = 6,
+                [CreatureConstants.TrumpetArchon] = 12,
+                [CreatureConstants.Tyrannosaurus] = 18,
+                [CreatureConstants.UmberHulk] = 8,
+                [CreatureConstants.UmberHulk_TrulyHorrid] = 20,
+                [CreatureConstants.Unicorn] = 4,
+                [CreatureConstants.VampireSpawn] = 4,
+                [CreatureConstants.Vargouille] = 1,
+                [CreatureConstants.VioletFungus] = 2,
+                [CreatureConstants.Vrock] = 10,
+                [CreatureConstants.Wasp_Giant] = 5,
+                [CreatureConstants.Weasel] = .5,
+                [CreatureConstants.Weasel_Dire] = 3,
+                [CreatureConstants.Whale_Baleen] = 12,
+                [CreatureConstants.Whale_Cachalot] = 12,
+                [CreatureConstants.Whale_Orca] = 9,
+                [CreatureConstants.Wight] = 4,
+                [CreatureConstants.WillOWisp] = 9,
+                [CreatureConstants.WinterWolf] = 6,
+                [CreatureConstants.Wolf] = 2,
+                [CreatureConstants.Wolf_Dire] = 6,
+                [CreatureConstants.Wolverine] = 3,
+                [CreatureConstants.Wolverine_Dire] = 5,
+                [CreatureConstants.Worg] = 4,
+                [CreatureConstants.Wraith] = 5,
+                [CreatureConstants.Wraith_Dread] = 16,
+                [CreatureConstants.Wyvern] = 7,
+                [CreatureConstants.Xill] = 5,
+                [CreatureConstants.Xorn_Average] = 7,
+                [CreatureConstants.Xorn_Elder] = 15,
+                [CreatureConstants.Xorn_Minor] = 3,
+                [CreatureConstants.YethHound] = 3,
+                [CreatureConstants.Yrthak] = 12,
+                [CreatureConstants.YuanTi_Abomination] = 9,
+                [CreatureConstants.YuanTi_Halfblood_SnakeArms] = 7,
+                [CreatureConstants.YuanTi_Halfblood_SnakeHead] = 7,
+                [CreatureConstants.YuanTi_Halfblood_SnakeTail] = 7,
+                [CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] = 7,
+                [CreatureConstants.YuanTi_Pureblood] = 4,
+            };
+
+            return quantities;
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
+        public void HitDiceQuantity(string creature)
+        {
+            Assert.That(creatureHitDiceQuantities, Contains.Key(creature));
+            Assert.That(creatureHitDiceQuantities[creature], Is.Positive);
+            AssertAdjustment(creature, creatureHitDiceQuantities[creature]);
         }
 
         [TestCase(CreatureConstants.Types.Aberration, 8)]
@@ -696,11 +716,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         [TestCase(CreatureConstants.Types.Vermin, 8)]
         public void HitDie(string creatureType, int quantity)
         {
-            AssertAdjustment(creatureType, quantity);
             Assert.That(quantity, Is.Positive);
 
             var validDie = new[] { 2, 3, 4, 6, 8, 10, 12, 20, 100 };
             Assert.That(validDie, Contains.Item(quantity));
+            AssertAdjustment(creatureType, quantity);
         }
 
         [TestCase(CreatureConstants.Templates.CelestialCreature, int.MaxValue)]
@@ -749,8 +769,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         [TestCase(CreatureConstants.Templates.Zombie, 10)]
         public void MaxHitDice(string template, double quantity)
         {
-            AssertAdjustment(template, quantity);
             Assert.That(quantity, Is.Positive);
+            AssertAdjustment(template, quantity);
         }
     }
 }

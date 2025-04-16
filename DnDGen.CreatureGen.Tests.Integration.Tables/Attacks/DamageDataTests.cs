@@ -33,7 +33,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             templateAttackData = AttackTestData.GetTemplateAttackData();
             creatureAttackDamageData = DamageTestData.GetCreatureAttackDamageData();
             templateAttackDamageData = DamageTestData.GetTemplateDamageData();
-            creatureData = CreatureDataTests.GetCreatureTestData().ToDictionary(kvp => kvp.Key, kvp => DataHelper.Parse<CreatureDataSelection>(kvp.Value));
+            creatureData = CreatureDataTests.GetCreatureDataSelections();
             advancementData = AdvancementsTests.GetAdvancementsTestData().ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(DataHelper.Parse<AdvancementDataSelection>));
         }
 

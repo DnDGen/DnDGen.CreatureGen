@@ -1,7 +1,6 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.Infrastructure.Helpers;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +15,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-            creatureData = CreatureDataTests.GetCreatureTestData().ToDictionary(k => k.Key, k => DataHelper.Parse<CreatureDataSelection>(k.Value));
+            creatureData = CreatureDataTests.GetCreatureDataSelections();
         }
 
         [Test]

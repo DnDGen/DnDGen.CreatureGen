@@ -23,7 +23,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     .Select(DataHelper.Parse<AttackDataSelection>)
                     .GroupBy(a => a.Name)
                     .ToDictionary(g => g.Key, g => g.ToArray()));
-            var creatureData = CreatureDataTests.GetCreatureTestData().ToDictionary(kvp => kvp.Key, kvp => DataHelper.Parse<CreatureDataSelection>(kvp.Value));
+            var creatureData = CreatureDataTests.GetCreatureDataSelections();
             var advancementData = AdvancementsTests.GetAdvancementsTestData()
                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(DataHelper.Parse<AdvancementDataSelection>));
 

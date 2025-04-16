@@ -1,9 +1,10 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Integration.Tables.Defenses;
 using DnDGen.CreatureGen.Tests.Integration.Tables.Helpers;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
@@ -17,39 +18,35 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     {
         private Dice dice;
         private Dictionary<string, string[]> advancements;
-        private ICollectionTypeAndAmountSelector typeAndAmountSelector;
-        private Dictionary<string, int> typeDivisors;
-        private SpaceReachHelper spaceReachHelper;
-        private string[] sizes;
-        private Dictionary<string, CreatureDataSelection> creatureData;
+
+        private static readonly Dictionary<string, int> typeDivisors = new()
+        {
+            [CreatureConstants.Types.Aberration] = 4,
+            [CreatureConstants.Types.Animal] = 3,
+            [CreatureConstants.Types.Construct] = 4,
+            [CreatureConstants.Types.Dragon] = 2,
+            [CreatureConstants.Types.Elemental] = 4,
+            [CreatureConstants.Types.Fey] = 4,
+            [CreatureConstants.Types.Giant] = 4,
+            [CreatureConstants.Types.Humanoid] = 4,
+            [CreatureConstants.Types.MagicalBeast] = 3,
+            [CreatureConstants.Types.MonstrousHumanoid] = 3,
+            [CreatureConstants.Types.Ooze] = 4,
+            [CreatureConstants.Types.Outsider] = 2,
+            [CreatureConstants.Types.Plant] = 4,
+            [CreatureConstants.Types.Undead] = 4,
+            [CreatureConstants.Types.Vermin] = 4,
+        };
+        private static readonly string[] sizes = SizeConstants.GetOrdered();
+        private static readonly Dictionary<string, CreatureDataSelection> creatureData = CreatureDataTests.GetCreatureDataSelections();
+        private static readonly Dictionary<string, double> creatureHitDiceQuantities = HitDiceTests.GetCreatureHitDiceQuantities();
+        private static readonly Dictionary<string, string[]> creatureTypes = CreatureTypesTests.GetCreatureTypes();
 
         protected override string tableName => TableNameConstants.Collection.Advancements;
 
         [OneTimeSetUp]
         public void OnetimeSetup()
         {
-            spaceReachHelper = GetNewInstanceOf<SpaceReachHelper>();
-            typeDivisors = new Dictionary<string, int>
-            {
-                [CreatureConstants.Types.Aberration] = 4,
-                [CreatureConstants.Types.Animal] = 3,
-                [CreatureConstants.Types.Construct] = 4,
-                [CreatureConstants.Types.Dragon] = 2,
-                [CreatureConstants.Types.Elemental] = 4,
-                [CreatureConstants.Types.Fey] = 4,
-                [CreatureConstants.Types.Giant] = 4,
-                [CreatureConstants.Types.Humanoid] = 4,
-                [CreatureConstants.Types.MagicalBeast] = 3,
-                [CreatureConstants.Types.MonstrousHumanoid] = 3,
-                [CreatureConstants.Types.Ooze] = 4,
-                [CreatureConstants.Types.Outsider] = 2,
-                [CreatureConstants.Types.Plant] = 4,
-                [CreatureConstants.Types.Undead] = 4,
-                [CreatureConstants.Types.Vermin] = 4,
-            };
-            sizes = SizeConstants.GetOrdered();
-            creatureData = CreatureDataTests.GetCreatureTestData().ToDictionary(kvp => kvp.Key, kvp => Infrastructure.Helpers.DataHelper.Parse<CreatureDataSelection>(kvp.Value));
-
             advancements = GetAdvancementsTestData();
         }
 
@@ -57,8 +54,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void Setup()
         {
             dice = GetNewInstanceOf<Dice>();
-            typeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
         }
 
         [Test]
@@ -1270,7 +1265,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         private static string GetData(string creature, string advancedSize, int lowerHitDice, int upperHitDice)
         {
-            var creatureHitDice = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, creature);
+            var creatureHitDiceQuantity = HitDice.GetRoundedQuantity(creatureHitDiceQuantities[creature]);
             var spaceReachHelper = new SpaceReachHelper();
 
             var selection = new AdvancementDataSelection
@@ -1278,7 +1273,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 Reach = spaceReachHelper.GetReach(creature, advancedSize),
                 Space = spaceReachHelper.GetSpace(advancedSize),
                 Size = advancedSize,
-                AdditionalHitDiceRoll = RollHelper.GetRollWithMostEvenDistribution(creatureHitDice.Amount, lowerHitDice, upperHitDice, true),
+                AdditionalHitDiceRoll = RollHelper.GetRollWithMostEvenDistribution(creatureHitDiceQuantity, lowerHitDice, upperHitDice, true),
                 StrengthAdjustment = GetStrengthAdjustment(creatureData[creature].Size, advancedSize),
                 ConstitutionAdjustment = GetConstitutionAdjustment(creatureData[creature].Size, advancedSize),
                 DexterityAdjustment = GetDexterityAdjustment(creatureData[creature].Size, advancedSize),
@@ -1290,7 +1285,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return Infrastructure.Helpers.DataHelper.Parse(selection);
         }
 
-        private string GetAdjustedChallengeRating(string cr, string originalSize, string advancedSize)
+        private static string GetAdjustedChallengeRating(string cr, string originalSize, string advancedSize)
         {
             var originalSizeIndex = Array.IndexOf(sizes, originalSize);
             var advancedIndex = Array.IndexOf(sizes, advancedSize);
@@ -1305,14 +1300,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return ChallengeRatingConstants.IncreaseChallengeRating(cr, increase);
         }
 
-        private int GetChallengeRatingDivisor(string creature)
+        private static int GetChallengeRatingDivisor(string creature)
         {
-            var types = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, creature);
+            var types = creatureTypes[creature];
             var creatureType = types.First();
             return typeDivisors[creatureType];
         }
 
-        private int GetConstitutionAdjustment(string originalSize, string advancedSize)
+        private static int GetConstitutionAdjustment(string originalSize, string advancedSize)
         {
             var constitutionAdjustment = 0;
             var currentSize = originalSize;
@@ -1337,7 +1332,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return constitutionAdjustment;
         }
 
-        private int GetDexterityAdjustment(string originalSize, string advancedSize)
+        private static int GetDexterityAdjustment(string originalSize, string advancedSize)
         {
             var dexterityAdjustment = 0;
             var currentSize = originalSize;
@@ -1362,7 +1357,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return dexterityAdjustment;
         }
 
-        private int GetStrengthAdjustment(string originalSize, string advancedSize)
+        private static int GetStrengthAdjustment(string originalSize, string advancedSize)
         {
             var strengthAdjustment = 0;
             var currentSize = originalSize;
@@ -1387,7 +1382,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return strengthAdjustment;
         }
 
-        private int GetNaturalArmorAdjustment(string originalSize, string advancedSize)
+        private static int GetNaturalArmorAdjustment(string originalSize, string advancedSize)
         {
             var naturalArmorAdjustment = 0;
             var currentSize = originalSize;

@@ -83,6 +83,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertCollection(creature, creatureData[creature]);
         }
 
+        internal static Dictionary<string, CreatureDataSelection> GetCreatureDataSelections() =>
+            GetCreatureTestData().ToDictionary(kvp => kvp.Key, kvp => DataHelper.Parse<CreatureDataSelection>(kvp.Value));
+
         public static Dictionary<string, string> GetCreatureTestData()
         {
             var data = new Dictionary<string, string>
