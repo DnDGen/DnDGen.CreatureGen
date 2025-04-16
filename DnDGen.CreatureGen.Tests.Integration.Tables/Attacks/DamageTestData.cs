@@ -2941,13 +2941,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
                     foreach (var damage in validDamages)
                     {
-                        var adjustedRoll = damage.roll;
-
-                        if (attack.IsNatural)
-                        {
-                            adjustedRoll = GetAdjustedDamage(damage.roll, originalSize, adjustedSize);
-                        }
-
+                        var adjustedRoll = GetAdjustedDamage(attack, damage.roll, originalSize, adjustedSize);
                         data[adjustedKey].Add(BuildData(adjustedRoll, damage.type, damage.condition));
                     }
                 }
@@ -2970,8 +2964,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         };
         private static readonly Dictionary<string, string> damageDecreases = damageIncreases.ToDictionary(kvp => kvp.Value, kvp => kvp.Key);
 
-        private static string GetAdjustedDamage(string originalDamage, string originalSize, string adjustedSize)
+        internal static string GetAdjustedDamage(AttackDataSelection attack, string originalDamage, string originalSize, string adjustedSize)
         {
+            if (!attack.IsNatural)
+                return originalDamage;
+
             if (string.IsNullOrEmpty(originalDamage))
                 return originalDamage;
 
@@ -2996,7 +2993,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             return adjustedDamage;
         }
 
-        private static string BuildData(string roll, string type, string condition = "")
+        internal static string BuildData(string roll, string type, string condition = "")
         {
             return DataHelper.Parse(new DamageDataSelection
             {

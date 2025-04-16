@@ -183,7 +183,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var compatibleCreatures = GetCreaturesOfTemplate(CreatureConstants.Templates.None, creatureGroup, asCharacter, filters);
             validCreatures.AddRange(compatibleCreatures);
 
-            var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
+            var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All);
 
             //This will weight things in favor of non-templated creatures
             //INFO: Using this instead of the creature verifier, so that we can ensure compatiblity with the specified creature group
@@ -207,7 +207,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var randomCreature = collectionsSelector.SelectRandomFrom(validCreatures);
 
-            var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
+            var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All);
             if (!templates.Contains(randomCreature))
                 return (randomCreature, CreatureConstants.Templates.None);
 

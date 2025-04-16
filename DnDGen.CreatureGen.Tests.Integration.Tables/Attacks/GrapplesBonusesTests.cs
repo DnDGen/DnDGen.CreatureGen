@@ -8,7 +8,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
     [TestFixture]
     public class GrapplesBonusesTests : AdjustmentsTests
     {
-        protected override string tableName => TableNameConstants.Adjustments.GrappleBonuses;
+        protected override string tableName => TableNameConstants.TypeAndAmount.GrappleBonuses;
 
         [Test]
         public void GrappleBonusesNames()

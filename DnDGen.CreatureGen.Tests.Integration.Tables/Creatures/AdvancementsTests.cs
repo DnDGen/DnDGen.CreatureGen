@@ -17,7 +17,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     {
         private Dice dice;
         private Dictionary<string, string[]> advancements;
-        private ICollectionTypeAndAmountSelector collectionTypeAndAmountSelector;
+        private ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private Dictionary<string, int> typeDivisors;
         private SpaceReachHelper spaceReachHelper;
         private string[] sizes;
@@ -57,7 +57,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void Setup()
         {
             dice = GetNewInstanceOf<Dice>();
-            collectionTypeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
+            typeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
             collectionSelector = GetNewInstanceOf<ICollectionSelector>();
         }
 
@@ -1270,7 +1270,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         private static string GetData(string creature, string advancedSize, int lowerHitDice, int upperHitDice)
         {
-            var creatureHitDice = collectionTypeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, creature);
+            var creatureHitDice = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, creature);
             var spaceReachHelper = new SpaceReachHelper();
 
             var selection = new AdvancementDataSelection

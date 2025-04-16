@@ -57,7 +57,7 @@ namespace DnDGen.CreatureGen.Verifiers
             if (compatible)
                 return true;
 
-            var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
+            var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All);
             foreach (var otherTemplate in templates)
             {
                 compatible = TemplatesAreCompatible([otherTemplate], baseCreatures, asCharacter, filters);

@@ -21,8 +21,6 @@
         public const string PreparesSpells = "Prepares Spells";
         public const string Skills = "Skills";
         public const string SkillSynergy = "Skill Synergy";
-        public const string TakenMultipleTimes = "Taken Multiple Times";
-        public const string Templates = "Templates";
         public const string TREE = "TREE";
         public const string Unnatural = "Unnatural";
         public const string Untrained = "Untrained";
