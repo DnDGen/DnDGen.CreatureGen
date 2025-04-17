@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DnDGen.CreatureGen.Tables
+﻿namespace DnDGen.CreatureGen.Tables
 {
     internal static class TableNameConstants
     {
@@ -24,12 +22,6 @@ namespace DnDGen.CreatureGen.Tables
             public const string LanguageGroups = "LanguageGroups";
             public const string MaxAgeDescriptions = "MaxAgeDescriptions";
             public const string PredeterminedItems = "PredeterminedItems";
-            [Obsolete("incorporated into feat data")]
-            public const string RequiredAlignments = "RequiredAlignments";
-            [Obsolete("incorporated into feat data")]
-            public const string RequiredFeats = "RequiredFeats";
-            [Obsolete("incorporated into feat data")]
-            public const string RequiredSizes = "RequiredSizes";
             public const string SaveBonuses = "SaveBonuses";
             public const string SaveGroups = "SaveGroups";
             public const string SkillBonuses = "SkillBonuses";
@@ -57,12 +49,6 @@ namespace DnDGen.CreatureGen.Tables
             public const string ArcaneSpellFailures = "ArcaneSpellFailures";
             public const string AgeRolls = "AgeRolls";
             public const string Casters = "Casters";
-            [Obsolete("incorporated into feat data")]
-            public const string FeatAbilityRequirements = "FeatAbilityRequirements";
-            [Obsolete("incorporated into feat data")]
-            public const string FeatSkillRankRequirements = "FeatSkillRankRequirements";
-            [Obsolete("incorporated into feat data")]
-            public const string FeatSpeedRequirements = "FeatSpeedRequirements";
             public const string GrappleBonuses = "GrappleBonuses";
             public const string Heights = "Heights";
             public const string HitDice = "HitDice";

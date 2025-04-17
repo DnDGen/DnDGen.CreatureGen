@@ -1,5 +1,6 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -17,36 +18,34 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         private const string creature = "creature";
 
         private IFeatsSelector featsSelector;
-        private Mock<ICollectionSelector> mockCollectionsSelector;
-        private Mock<ICollectionTypeAndAmountSelector> mockTypesAndAmountsSelector;
-        private Dictionary<string, IEnumerable<string>> featsData;
-        private Dictionary<string, List<string>> specialQualitiesData;
+        private Mock<ICollectionDataSelector<FeatDataSelection>> mockFeatDataSelector;
+        private Mock<ICollectionDataSelector<SpecialQualityDataSelection>> mockSpecialQualityDataSelector;
+        private Dictionary<string, IEnumerable<FeatDataSelection>> featsData;
+        private Dictionary<string, List<SpecialQualityDataSelection>> specialQualitiesData;
         private CreatureType creatureType;
 
         [SetUp]
         public void Setup()
         {
-            mockCollectionsSelector = new Mock<ICollectionSelector>();
-            mockTypesAndAmountsSelector = new Mock<ICollectionTypeAndAmountSelector>();
-            featsSelector = new FeatsSelector(mockCollectionsSelector.Object, mockTypesAndAmountsSelector.Object);
+            mockFeatDataSelector = new Mock<ICollectionDataSelector<FeatDataSelection>>();
+            mockSpecialQualityDataSelector = new Mock<ICollectionDataSelector<SpecialQualityDataSelection>>();
+            featsSelector = new FeatsSelector(mockFeatDataSelector.Object, mockSpecialQualityDataSelector.Object);
 
-            featsData = new Dictionary<string, IEnumerable<string>>();
-            creatureType = new CreatureType();
-            creatureType.Name = "creature type";
-            specialQualitiesData = new Dictionary<string, List<string>>();
-            specialQualitiesData[creature] = new List<string>();
-            specialQualitiesData[creatureType.Name] = new List<string>();
+            featsData = [];
+            creatureType = new CreatureType
+            {
+                Name = "creature type"
+            };
+            specialQualitiesData = new Dictionary<string, List<SpecialQualityDataSelection>>
+            {
+                [creature] = [],
+                [creatureType.Name] = [],
+            };
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, It.IsAny<string>())).Returns([]);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredSizes, It.IsAny<string>())).Returns([]);
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, It.IsAny<string>()))
-                .Returns(Enumerable.Empty<TypeAndAmountDataSelection>());
-            mockCollectionsSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.FeatData)).Returns(featsData);
-            mockCollectionsSelector
+            mockFeatDataSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.FeatData)).Returns(featsData);
+            mockSpecialQualityDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpecialQualityData, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => specialQualitiesData[c]);
-
-            helper = new SpecialQualityHelper();
         }
 
         [Test]
@@ -61,8 +60,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
@@ -76,7 +75,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetNoSpecialQualities()
         {
-            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpecialQualityData, creature)).Returns(Enumerable.Empty<string>());
+            mockFeatDataSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpecialQualityData, creature)).Returns([]);
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities, Is.Empty);
@@ -96,8 +95,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(first.Feat, Is.EqualTo("special quality 1"));
             Assert.That(first.FocusType, Is.Empty);
-            Assert.That(first.Frequency.Quantity, Is.Zero);
-            Assert.That(first.Frequency.TimePeriod, Is.Empty);
+            Assert.That(first.FrequencyQuantity, Is.Zero);
+            Assert.That(first.FrequencyTimePeriod, Is.Empty);
             Assert.That(first.MinimumAbilities, Is.Empty);
             Assert.That(first.Power, Is.Zero);
             Assert.That(first.RandomFociQuantityRoll, Is.Empty);
@@ -111,8 +110,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(last.Feat, Is.EqualTo("special quality 2"));
             Assert.That(last.FocusType, Is.Empty);
-            Assert.That(last.Frequency.Quantity, Is.Zero);
-            Assert.That(last.Frequency.TimePeriod, Is.Empty);
+            Assert.That(last.FrequencyQuantity, Is.Zero);
+            Assert.That(last.FrequencyTimePeriod, Is.Empty);
             Assert.That(last.MinimumAbilities, Is.Empty);
             Assert.That(last.Power, Is.Zero);
             Assert.That(last.RandomFociQuantityRoll, Is.Empty);
@@ -125,7 +124,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(last.MaxHitDice, Is.EqualTo(int.MaxValue));
         }
 
-        private void AddSpecialQualityData(
+        private SpecialQualityDataSelection AddSpecialQualityData(
             string source,
             string featName,
             string focus = "",
@@ -140,13 +139,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             int minHitDice = 0,
             int maxHitDice = int.MaxValue)
         {
-            var data = helper.BuildData(featName, randomFociQuantity, focus, frequencyQuantity, frequencyTimePeriod, power, requiresEquipment, saveAbility, save, saveBaseValue, minHitDice, maxHitDice);
-            var entry = helper.BuildEntry(data);
-
             if (!specialQualitiesData.ContainsKey(source))
-                specialQualitiesData[source] = new List<string>();
+                specialQualitiesData[source] = [];
 
-            specialQualitiesData[source].Add(entry);
+            var selection = new SpecialQualityDataSelection
+            {
+                Feat = featName,
+                FocusType = focus,
+                FrequencyQuantity = frequencyQuantity,
+                FrequencyTimePeriod = frequencyTimePeriod,
+                Power = power,
+                RandomFociQuantityRoll = randomFociQuantity,
+                RequiresEquipment = requiresEquipment,
+                SaveAbility = saveAbility,
+                Save = save,
+                SaveBaseValue = saveBaseValue,
+                MinHitDice = minHitDice,
+                MaxHitDice = maxHitDice,
+            };
+
+            specialQualitiesData[source].Add(selection);
+
+            return selection;
         }
 
         [Test]
@@ -161,8 +175,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.EqualTo("focus type"));
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
@@ -187,8 +201,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.EqualTo(9266));
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.EqualTo("fortnight"));
+            Assert.That(specialQuality.FrequencyQuantity, Is.EqualTo(9266));
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.EqualTo("fortnight"));
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
@@ -204,19 +218,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithMinimumAbility()
         {
-            AddSpecialQualityData(creature, "special quality");
-
-            var abilityRequirements = new[]
+            var selection = AddSpecialQualityData(creature, "special quality");
+            selection.MinimumAbilities = new Dictionary<string, int>
             {
-                new TypeAndAmountDataSelection { Type = "ability", Amount = 9266 }
+                ["ability"] = 9266
             };
-
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatAbilityRequirements))
-                .Returns(new[] { "wrong special quality", "creaturespecial quality0" });
-            mockTypesAndAmountsSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "creaturespecial quality0"))
-                .Returns(abilityRequirements);
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -225,8 +231,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Not.Empty);
             Assert.That(specialQuality.MinimumAbilities.Count, Is.EqualTo(1));
             Assert.That(specialQuality.MinimumAbilities.Keys, Contains.Item("ability"));
@@ -245,19 +251,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityFromTypeWithMinimumAbility()
         {
-            AddSpecialQualityData(creatureType.Name, "special quality");
-
-            var abilityRequirements = new[]
+            var selection = AddSpecialQualityData(creatureType.Name, "special quality");
+            selection.MinimumAbilities = new Dictionary<string, int>
             {
-                new TypeAndAmountDataSelection { Type = "ability", Amount = 9266 }
+                ["ability"] = 9266
             };
-
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatAbilityRequirements))
-                .Returns(new[] { "wrong special quality", "creature typespecial quality0" });
-            mockTypesAndAmountsSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "creature typespecial quality0"))
-                .Returns(abilityRequirements);
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -266,8 +264,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Not.Empty);
             Assert.That(specialQuality.MinimumAbilities.Count, Is.EqualTo(1));
             Assert.That(specialQuality.MinimumAbilities.Keys, Contains.Item("ability"));
@@ -286,20 +284,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithMinimumAbilities()
         {
-            AddSpecialQualityData(creature, "special quality");
-
-            var abilityRequirements = new[]
+            var selection = AddSpecialQualityData(creature, "special quality");
+            selection.MinimumAbilities = new Dictionary<string, int>
             {
-                new TypeAndAmountDataSelection { Type = "ability", Amount = 9266 },
-                new TypeAndAmountDataSelection { Type = "other ability", Amount = 90210 }
+                ["ability"] = 9266,
+                ["other ability"] = 90210
             };
-
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatAbilityRequirements))
-                .Returns(new[] { "wrong special quality", "creaturespecial quality0" });
-            mockTypesAndAmountsSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "creaturespecial quality0"))
-                .Returns(abilityRequirements);
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -308,8 +298,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Not.Empty);
             Assert.That(specialQuality.MinimumAbilities.Count, Is.EqualTo(2));
             Assert.That(specialQuality.MinimumAbilities.Keys, Contains.Item("ability"));
@@ -339,8 +329,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.EqualTo(9266));
             Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
@@ -365,8 +355,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantityRoll, Is.EqualTo("random foci quantity"));
@@ -382,19 +372,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithRequiredFeat()
         {
-            AddSpecialQualityData(creature, "special quality");
-
-            var requiredFeats = new[]
-            {
-                "required feat"
-            };
-
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
-                .Returns(new[] { "wrong special quality", "creaturespecial quality0" });
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "creaturespecial quality0"))
-                .Returns(requiredFeats);
+            var selection = AddSpecialQualityData(creature, "special quality");
+            selection.RequiredFeats =
+            [
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = "required feat" }
+            ];
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -403,8 +385,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
@@ -425,19 +407,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithRequiredFeatFromCreatureType()
         {
-            AddSpecialQualityData(creatureType.Name, "special quality");
-
-            var requiredFeats = new[]
-            {
-                "required feat"
-            };
-
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
-                .Returns(new[] { "wrong special quality", "creature typespecial quality0" });
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "creature typespecial quality0"))
-                .Returns(requiredFeats);
+            var selection = AddSpecialQualityData(creatureType.Name, "special quality");
+            selection.RequiredFeats =
+            [
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = "required feat" }
+            ];
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -446,8 +420,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
@@ -468,19 +442,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithRequiredFeatWithFocus()
         {
-            AddSpecialQualityData(creature, "special quality");
-
-            var requiredFeats = new[]
-            {
-                "required feat/required focus"
-            };
-
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
-                .Returns(new[] { "wrong special quality", "creaturespecial quality0" });
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "creaturespecial quality0"))
-                .Returns(requiredFeats);
+            var selection = AddSpecialQualityData(creature, "special quality");
+            selection.RequiredFeats =
+            [
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = "required feat", Foci = ["required focus"] }
+            ];
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -489,8 +455,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
@@ -511,20 +477,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithRequiredFeats()
         {
-            AddSpecialQualityData(creature, "special quality");
-
-            var requiredFeats = new[]
-            {
-                "required feat",
-                "other required feat",
-            };
-
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
-                .Returns(new[] { "wrong special quality", "creaturespecial quality0" });
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "creaturespecial quality0"))
-                .Returns(requiredFeats);
+            var selection = AddSpecialQualityData(creature, "special quality");
+            selection.RequiredFeats =
+            [
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = "required feat" },
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = "other required feat" },
+            ];
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -533,8 +491,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
@@ -559,20 +517,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithRequiredFeatsWithFoci()
         {
-            AddSpecialQualityData(creature, "special quality");
-
-            var requiredFeats = new[]
-            {
-                "required feat/required focus",
-                "other required feat/other required focus",
-            };
-
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
-                .Returns(new[] { "wrong special quality", "creaturespecial quality0" });
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "creaturespecial quality0"))
-                .Returns(requiredFeats);
+            var selection = AddSpecialQualityData(creature, "special quality");
+            selection.RequiredFeats =
+            [
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = "required feat", Foci = ["required focus"] },
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = "other required feat", Foci = ["other required focus"] },
+            ];
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -581,8 +531,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
@@ -607,20 +557,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSpecialQualityWithRequiredFeatWithAndWithoutFoci()
         {
-            AddSpecialQualityData(creature, "special quality");
-
-            var requiredFeats = new[]
-            {
-                "required feat/required focus",
-                "other required feat",
-            };
-
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
-                .Returns(new[] { "wrong special quality", "creaturespecial quality0" });
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "creaturespecial quality0"))
-                .Returns(requiredFeats);
+            var selection = AddSpecialQualityData(creature, "special quality");
+            selection.RequiredFeats =
+            [
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = "required feat", Foci = ["required focus"] },
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = "other required feat" },
+            ];
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -629,8 +571,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
@@ -664,8 +606,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
@@ -690,8 +632,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
@@ -727,8 +669,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
@@ -753,8 +695,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
@@ -781,8 +723,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
@@ -811,8 +753,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(first.Feat, Is.EqualTo("special quality 1"));
             Assert.That(first.FocusType, Is.Empty);
-            Assert.That(first.Frequency.Quantity, Is.Zero);
-            Assert.That(first.Frequency.TimePeriod, Is.Empty);
+            Assert.That(first.FrequencyQuantity, Is.Zero);
+            Assert.That(first.FrequencyTimePeriod, Is.Empty);
             Assert.That(first.MinimumAbilities, Is.Empty);
             Assert.That(first.Power, Is.Zero);
             Assert.That(first.RandomFociQuantityRoll, Is.Empty);
@@ -826,8 +768,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(last.Feat, Is.EqualTo("special quality 2"));
             Assert.That(last.FocusType, Is.Empty);
-            Assert.That(last.Frequency.Quantity, Is.Zero);
-            Assert.That(last.Frequency.TimePeriod, Is.Empty);
+            Assert.That(last.FrequencyQuantity, Is.Zero);
+            Assert.That(last.FrequencyTimePeriod, Is.Empty);
             Assert.That(last.MinimumAbilities, Is.Empty);
             Assert.That(last.Power, Is.Zero);
             Assert.That(last.RandomFociQuantityRoll, Is.Empty);
@@ -855,8 +797,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQualities[0].Feat, Is.EqualTo("special quality 1"));
             Assert.That(specialQualities[0].FocusType, Is.Empty);
-            Assert.That(specialQualities[0].Frequency.Quantity, Is.Zero);
-            Assert.That(specialQualities[0].Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQualities[0].FrequencyQuantity, Is.Zero);
+            Assert.That(specialQualities[0].FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQualities[0].MinimumAbilities, Is.Empty);
             Assert.That(specialQualities[0].Power, Is.Zero);
             Assert.That(specialQualities[0].RandomFociQuantityRoll, Is.Empty);
@@ -870,8 +812,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQualities[1].Feat, Is.EqualTo("special quality 2"));
             Assert.That(specialQualities[1].FocusType, Is.Empty);
-            Assert.That(specialQualities[1].Frequency.Quantity, Is.Zero);
-            Assert.That(specialQualities[1].Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQualities[1].FrequencyQuantity, Is.Zero);
+            Assert.That(specialQualities[1].FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQualities[1].MinimumAbilities, Is.Empty);
             Assert.That(specialQualities[1].Power, Is.Zero);
             Assert.That(specialQualities[1].RandomFociQuantityRoll, Is.Empty);
@@ -885,8 +827,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQualities[2].Feat, Is.EqualTo("special quality 3"));
             Assert.That(specialQualities[2].FocusType, Is.Empty);
-            Assert.That(specialQualities[2].Frequency.Quantity, Is.Zero);
-            Assert.That(specialQualities[2].Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQualities[2].FrequencyQuantity, Is.Zero);
+            Assert.That(specialQualities[2].FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQualities[2].MinimumAbilities, Is.Empty);
             Assert.That(specialQualities[2].Power, Is.Zero);
             Assert.That(specialQualities[2].RandomFociQuantityRoll, Is.Empty);
@@ -900,8 +842,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQualities[3].Feat, Is.EqualTo("special quality 4"));
             Assert.That(specialQualities[3].FocusType, Is.Empty);
-            Assert.That(specialQualities[3].Frequency.Quantity, Is.Zero);
-            Assert.That(specialQualities[3].Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQualities[3].FrequencyQuantity, Is.Zero);
+            Assert.That(specialQualities[3].FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQualities[3].MinimumAbilities, Is.Empty);
             Assert.That(specialQualities[3].Power, Is.Zero);
             Assert.That(specialQualities[3].RandomFociQuantityRoll, Is.Empty);
@@ -931,8 +873,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQuality.Feat, Is.EqualTo("special quality"));
             Assert.That(specialQuality.FocusType, Is.Empty);
-            Assert.That(specialQuality.Frequency.Quantity, Is.Zero);
-            Assert.That(specialQuality.Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQuality.FrequencyQuantity, Is.Zero);
+            Assert.That(specialQuality.FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQuality.MinimumAbilities, Is.Empty);
             Assert.That(specialQuality.Power, Is.Zero);
             Assert.That(specialQuality.RandomFociQuantityRoll, Is.Empty);
@@ -958,8 +900,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQualities[0].Feat, Is.EqualTo("special quality"));
             Assert.That(specialQualities[0].FocusType, Is.EqualTo("focus"));
-            Assert.That(specialQualities[0].Frequency.Quantity, Is.Zero);
-            Assert.That(specialQualities[0].Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQualities[0].FrequencyQuantity, Is.Zero);
+            Assert.That(specialQualities[0].FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQualities[0].MinimumAbilities, Is.Empty);
             Assert.That(specialQualities[0].Power, Is.Zero);
             Assert.That(specialQualities[0].RandomFociQuantityRoll, Is.Empty);
@@ -971,8 +913,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQualities[1].Feat, Is.EqualTo("special quality"));
             Assert.That(specialQualities[1].FocusType, Is.Empty);
-            Assert.That(specialQualities[1].Frequency.Quantity, Is.EqualTo(9266));
-            Assert.That(specialQualities[1].Frequency.TimePeriod, Is.EqualTo("fortnight"));
+            Assert.That(specialQualities[1].FrequencyQuantity, Is.EqualTo(9266));
+            Assert.That(specialQualities[1].FrequencyTimePeriod, Is.EqualTo("fortnight"));
             Assert.That(specialQualities[1].MinimumAbilities, Is.Empty);
             Assert.That(specialQualities[1].Power, Is.Zero);
             Assert.That(specialQualities[1].RandomFociQuantityRoll, Is.Empty);
@@ -984,8 +926,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQualities[2].Feat, Is.EqualTo("special quality"));
             Assert.That(specialQualities[2].FocusType, Is.Empty);
-            Assert.That(specialQualities[2].Frequency.Quantity, Is.Zero);
-            Assert.That(specialQualities[2].Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQualities[2].FrequencyQuantity, Is.Zero);
+            Assert.That(specialQualities[2].FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQualities[2].MinimumAbilities, Is.Empty);
             Assert.That(specialQualities[2].Power, Is.EqualTo(90210));
             Assert.That(specialQualities[2].RandomFociQuantityRoll, Is.Empty);
@@ -997,8 +939,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(specialQualities[3].Feat, Is.EqualTo("special quality"));
             Assert.That(specialQualities[3].FocusType, Is.Empty);
-            Assert.That(specialQualities[3].Frequency.Quantity, Is.Zero);
-            Assert.That(specialQualities[3].Frequency.TimePeriod, Is.Empty);
+            Assert.That(specialQualities[3].FrequencyQuantity, Is.Zero);
+            Assert.That(specialQualities[3].FrequencyTimePeriod, Is.Empty);
             Assert.That(specialQualities[3].MinimumAbilities, Is.Empty);
             Assert.That(specialQualities[3].Power, Is.Zero);
             Assert.That(specialQualities[3].RandomFociQuantityRoll, Is.Empty);
@@ -1028,14 +970,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSizeRequirementForSpecialQuality()
         {
-            AddSpecialQualityData(creature, "special quality");
-
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredSizes))
-                .Returns(new[] { "wrong special quality", "creaturespecial quality0" });
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredSizes, "creaturespecial quality0"))
-                .Returns(new[] { "size" });
+            var selection = AddSpecialQualityData(creature, "special quality");
+            selection.RequiredSizes = ["size"];
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -1050,14 +986,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetSizeRequirementsForSpecialQuality()
         {
-            AddSpecialQualityData(creature, "special quality");
-
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredSizes))
-                .Returns(new[] { "wrong special quality", "creaturespecial quality0" });
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredSizes, "creaturespecial quality0"))
-                .Returns(new[] { "size", "other size" });
+            var selection = AddSpecialQualityData(creature, "special quality");
+            selection.RequiredSizes = ["size", "other size"];
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -1072,7 +1002,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetNoAlignmentRequirementForSpecialQuality()
         {
-            AddSpecialQualityData(creature, "special quality");
+            var selection = AddSpecialQualityData(creature, "special quality");
+            selection.RequiredAlignments = [];
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -1085,14 +1016,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetAlignmentRequirementForSpecialQuality()
         {
-            AddSpecialQualityData(creature, "special quality");
-
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredAlignments))
-                .Returns(new[] { "wrong special quality", "creaturespecial quality0" });
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredAlignments, "creaturespecial quality0"))
-                .Returns(new[] { "lawfulness goodness" });
+            var selection = AddSpecialQualityData(creature, "special quality");
+            selection.RequiredAlignments = ["lawfulness goodness"];
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -1106,14 +1031,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetAlignmentRequirementsForSpecialQuality()
         {
-            AddSpecialQualityData(creature, "special quality");
-
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredAlignments))
-                .Returns(new[] { "wrong special quality", "creaturespecial quality0" });
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredAlignments, "creaturespecial quality0"))
-                .Returns(new[] { "lawfulness goodness", "other lawfulness goodness", "lawfulness other goodness", "other lawfulness other goodness" });
+            var selection = AddSpecialQualityData(creature, "special quality");
+            selection.RequiredAlignments = ["lawfulness goodness", "other lawfulness goodness", "lawfulness other goodness", "other lawfulness other goodness"];
 
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             Assert.That(specialQualities.Count(), Is.EqualTo(1));
@@ -1157,7 +1076,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeat()
         {
-            featsData["feat"] = BuildFeatData();
+            featsData["feat"] = BuildFeatData("feat");
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1167,8 +1086,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.Zero);
-            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.FrequencyQuantity, Is.Zero);
+            Assert.That(feat.FrequencyTimePeriod, Is.Empty);
             Assert.That(feat.MinimumCasterLevel, Is.Zero);
             Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
@@ -1187,8 +1106,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeats()
         {
-            featsData["feat 1"] = BuildFeatData();
-            featsData["feat 2"] = BuildFeatData();
+            featsData["feat 1"] = BuildFeatData("feat");
+            featsData["feat 2"] = BuildFeatData("feat");
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(2));
@@ -1199,8 +1118,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(first.Feat, Is.EqualTo("feat 1"));
             Assert.That(first.CanBeTakenMultipleTimes, Is.False);
             Assert.That(first.FocusType, Is.Empty);
-            Assert.That(first.Frequency.Quantity, Is.Zero);
-            Assert.That(first.Frequency.TimePeriod, Is.Empty);
+            Assert.That(first.FrequencyQuantity, Is.Zero);
+            Assert.That(first.FrequencyTimePeriod, Is.Empty);
             Assert.That(first.MinimumCasterLevel, Is.Zero);
             Assert.That(first.Power, Is.Zero);
             Assert.That(first.RequiredAbilities, Is.Empty);
@@ -1211,8 +1130,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(last.Feat, Is.EqualTo("feat 2"));
             Assert.That(last.CanBeTakenMultipleTimes, Is.False);
             Assert.That(last.FocusType, Is.Empty);
-            Assert.That(last.Frequency.Quantity, Is.Zero);
-            Assert.That(last.Frequency.TimePeriod, Is.Empty);
+            Assert.That(last.FrequencyQuantity, Is.Zero);
+            Assert.That(last.FrequencyTimePeriod, Is.Empty);
             Assert.That(last.MinimumCasterLevel, Is.Zero);
             Assert.That(last.Power, Is.Zero);
             Assert.That(last.RequiredAbilities, Is.Empty);
@@ -1221,7 +1140,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(last.RequiredSkills, Is.Empty);
         }
 
-        private IEnumerable<string> BuildFeatData(
+        private IEnumerable<FeatDataSelection> BuildFeatData(
+            string name,
             string focus = "",
             int frequencyQuantity = 0,
             string frequencyTimePeriod = "",
@@ -1233,34 +1153,32 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             bool requiresNaturalArmor = false,
             int requiredNaturalWeaponQuantity = 0,
             int requiredHandQuantity = 0,
-            bool requiresEquipment = false)
+            bool requiresEquipment = false,
+            bool takenMultipleTimes = false)
         {
-            var data = DataIndexConstants.FeatData.InitializeData();
-
-            data[DataIndexConstants.FeatData.BaseAttackRequirementIndex] = baseAttack.ToString();
-            data[DataIndexConstants.FeatData.FocusTypeIndex] = focus;
-            data[DataIndexConstants.FeatData.FrequencyQuantityIndex] = frequencyQuantity.ToString();
-            data[DataIndexConstants.FeatData.FrequencyTimePeriodIndex] = frequencyTimePeriod;
-            data[DataIndexConstants.FeatData.PowerIndex] = power.ToString();
-            data[DataIndexConstants.FeatData.MinimumCasterLevelIndex] = minimumCasterLevel.ToString();
-            data[DataIndexConstants.FeatData.RequiresSpecialAttackIndex] = requiresSpecialAttack.ToString();
-            data[DataIndexConstants.FeatData.RequiresSpellLikeAbilityIndex] = requiresSpellLikeAbility.ToString();
-            data[DataIndexConstants.FeatData.RequiresNaturalArmorIndex] = requiresNaturalArmor.ToString();
-            data[DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex] = requiredNaturalWeaponQuantity.ToString();
-            data[DataIndexConstants.FeatData.RequiredHandQuantityIndex] = requiredHandQuantity.ToString();
-            data[DataIndexConstants.FeatData.RequiresEquipmentIndex] = requiresEquipment.ToString();
-
-            return data;
+            return [new FeatDataSelection
+            {
+                Feat = name,
+                RequiredBaseAttack = baseAttack,
+                FocusType = focus,
+                FrequencyQuantity = frequencyQuantity,
+                FrequencyTimePeriod = frequencyTimePeriod,
+                Power = power,
+                MinimumCasterLevel = minimumCasterLevel,
+                RequiresSpecialAttack = requiresSpecialAttack,
+                RequiresSpellLikeAbility = requiresSpellLikeAbility,
+                RequiresNaturalArmor = requiresNaturalArmor,
+                RequiredNaturalWeapons = requiredNaturalWeaponQuantity,
+                RequiredHands = requiredHandQuantity,
+                RequiresEquipment = requiresEquipment,
+                CanBeTakenMultipleTimes = takenMultipleTimes,
+            }];
         }
 
         [Test]
         public void GetFeatThatCanBeTakenMultipleTimes()
         {
-            featsData["feat"] = BuildFeatData();
-
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.TakenMultipleTimes))
-                .Returns(["wrong feat", "feat"]);
+            featsData["feat"] = BuildFeatData("feat", takenMultipleTimes: true);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1270,8 +1188,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.True);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.Zero);
-            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.FrequencyQuantity, Is.Zero);
+            Assert.That(feat.FrequencyTimePeriod, Is.Empty);
             Assert.That(feat.MinimumCasterLevel, Is.Zero);
             Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
@@ -1293,8 +1211,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.EqualTo("focus type"));
-            Assert.That(feat.Frequency.Quantity, Is.Zero);
-            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.FrequencyQuantity, Is.Zero);
+            Assert.That(feat.FrequencyTimePeriod, Is.Empty);
             Assert.That(feat.MinimumCasterLevel, Is.Zero);
             Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
@@ -1306,7 +1224,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithFrequency()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 9266, "fortnight", 0, 0, 0);
+            featsData["feat"] = BuildFeatData("feat", string.Empty, 9266, "fortnight", 0, 0, 0);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1316,8 +1234,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.EqualTo(9266));
-            Assert.That(feat.Frequency.TimePeriod, Is.EqualTo("fortnight"));
+            Assert.That(feat.FrequencyQuantity, Is.EqualTo(9266));
+            Assert.That(feat.FrequencyTimePeriod, Is.EqualTo("fortnight"));
             Assert.That(feat.MinimumCasterLevel, Is.Zero);
             Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
@@ -1329,7 +1247,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithMinimumCasterLevel()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 9266);
+            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 9266);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1339,8 +1257,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.Zero);
-            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.FrequencyQuantity, Is.Zero);
+            Assert.That(feat.FrequencyTimePeriod, Is.Empty);
             Assert.That(feat.MinimumCasterLevel, Is.EqualTo(9266));
             Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
@@ -1352,7 +1270,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithPower()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 9266, 0);
+            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 9266, 0);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1362,8 +1280,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.Zero);
-            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.FrequencyQuantity, Is.Zero);
+            Assert.That(feat.FrequencyTimePeriod, Is.Empty);
             Assert.That(feat.MinimumCasterLevel, Is.Zero);
             Assert.That(feat.Power, Is.EqualTo(9266));
             Assert.That(feat.RequiredAbilities, Is.Empty);
@@ -1375,19 +1293,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredAbility()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
-
-            var abilityRequirements = new[]
-            {
-                new TypeAndAmountDataSelection { Type = "ability", Amount = 9266 }
-            };
-
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatAbilityRequirements))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockTypesAndAmountsSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat"))
-                .Returns(abilityRequirements);
+            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
+            var selection = featsData["feat"].Single();
+            selection.RequiredAbilities = new Dictionary<string, int> { ["ability"] = 9266 };
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1397,8 +1305,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.Zero);
-            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.FrequencyQuantity, Is.Zero);
+            Assert.That(feat.FrequencyTimePeriod, Is.Empty);
             Assert.That(feat.MinimumCasterLevel, Is.Zero);
             Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Not.Empty);
@@ -1413,20 +1321,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredAbilities()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
-
-            var abilityRequirements = new[]
+            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
+            var selection = featsData["feat"].Single();
+            selection.RequiredAbilities = new Dictionary<string, int>
             {
-                new TypeAndAmountDataSelection { Type = "ability", Amount = 9266 },
-                new TypeAndAmountDataSelection { Type = "other ability", Amount = 90210 },
+                ["ability"] = 9266,
+                ["other ability"] = 90210
             };
-
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatAbilityRequirements))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockTypesAndAmountsSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "feat"))
-                .Returns(abilityRequirements);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1436,8 +1337,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.Zero);
-            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.FrequencyQuantity, Is.Zero);
+            Assert.That(feat.FrequencyTimePeriod, Is.Empty);
             Assert.That(feat.MinimumCasterLevel, Is.Zero);
             Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Not.Empty);
@@ -1454,7 +1355,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredBaseAttack()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 9266, 0, 0);
+            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 9266, 0, 0);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1464,8 +1365,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.Zero);
-            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.FrequencyQuantity, Is.Zero);
+            Assert.That(feat.FrequencyTimePeriod, Is.Empty);
             Assert.That(feat.MinimumCasterLevel, Is.Zero);
             Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
@@ -1477,19 +1378,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredFeat()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
-
-            var requiredFeats = new[]
-            {
-                "required feat"
-            };
-
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockCollectionsSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "feat"))
-                .Returns(requiredFeats);
+            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
+            var selection = featsData["feat"].Single();
+            selection.RequiredFeats =
+            [
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = "required feat" },
+            ];
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1499,8 +1393,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.Zero);
-            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.FrequencyQuantity, Is.Zero);
+            Assert.That(feat.FrequencyTimePeriod, Is.Empty);
             Assert.That(feat.MinimumCasterLevel, Is.Zero);
             Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
@@ -1517,17 +1411,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredFeatWithFocus()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
 
             var requiredFeats = new[]
             {
                 "required feat/required focus"
             };
 
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
                 .Returns(new[] { "wrong feat", "feat" });
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "feat"))
                 .Returns(requiredFeats);
 
@@ -1539,8 +1433,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.Zero);
-            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.FrequencyQuantity, Is.Zero);
+            Assert.That(feat.FrequencyTimePeriod, Is.Empty);
             Assert.That(feat.MinimumCasterLevel, Is.Zero);
             Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
@@ -1557,7 +1451,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredFeats()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
 
             var requiredFeats = new[]
             {
@@ -1565,10 +1459,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 "other required feat",
             };
 
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
                 .Returns(new[] { "wrong feat", "feat" });
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "feat"))
                 .Returns(requiredFeats);
 
@@ -1580,8 +1474,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.Zero);
-            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.FrequencyQuantity, Is.Zero);
+            Assert.That(feat.FrequencyTimePeriod, Is.Empty);
             Assert.That(feat.MinimumCasterLevel, Is.Zero);
             Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
@@ -1602,7 +1496,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredFeatsWithFocus()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
 
             var requiredFeats = new[]
             {
@@ -1610,10 +1504,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 "other required feat/other required focus",
             };
 
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
                 .Returns(new[] { "wrong feat", "feat" });
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "feat"))
                 .Returns(requiredFeats);
 
@@ -1625,8 +1519,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.Zero);
-            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.FrequencyQuantity, Is.Zero);
+            Assert.That(feat.FrequencyTimePeriod, Is.Empty);
             Assert.That(feat.MinimumCasterLevel, Is.Zero);
             Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
@@ -1647,17 +1541,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredFeatsWithFoci()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
 
             var requiredFeats = new[]
             {
                 "required feat/required focus,other required focus",
             };
 
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
                 .Returns(new[] { "wrong feat", "feat" });
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "feat"))
                 .Returns(requiredFeats);
 
@@ -1669,8 +1563,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.Zero);
-            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.FrequencyQuantity, Is.Zero);
+            Assert.That(feat.FrequencyTimePeriod, Is.Empty);
             Assert.That(feat.MinimumCasterLevel, Is.Zero);
             Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
@@ -1689,7 +1583,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredFeatsWithAndWithoutFoci()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
 
             var requiredFeats = new[]
             {
@@ -1697,10 +1591,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 "other required feat/other required focus",
             };
 
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
                 .Returns(new[] { "wrong feat", "feat" });
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "feat"))
                 .Returns(requiredFeats);
 
@@ -1712,8 +1606,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.Zero);
-            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.FrequencyQuantity, Is.Zero);
+            Assert.That(feat.FrequencyTimePeriod, Is.Empty);
             Assert.That(feat.MinimumCasterLevel, Is.Zero);
             Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
@@ -1734,14 +1628,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredSkill()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
 
             var skillRankRequirements = new[]
             {
                 new TypeAndAmountDataSelection { Type = "skill", Amount = 9266 },
             };
 
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatSkillRankRequirements))
                 .Returns(new[] { "wrong feat", "feat" });
             mockTypesAndAmountsSelector
@@ -1755,8 +1649,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
             Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
             Assert.That(featSelection.FocusType, Is.Empty);
-            Assert.That(featSelection.Frequency.Quantity, Is.Zero);
-            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
+            Assert.That(featSelection.FrequencyQuantity, Is.Zero);
+            Assert.That(featSelection.FrequencyTimePeriod, Is.Empty);
             Assert.That(featSelection.MinimumCasterLevel, Is.Zero);
             Assert.That(featSelection.Power, Is.Zero);
             Assert.That(featSelection.RequiredAbilities, Is.Empty);
@@ -1774,14 +1668,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredSkillWithFocus()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
 
             var skillRankRequirements = new[]
             {
                 new TypeAndAmountDataSelection { Type = "skill/focus", Amount = 9266 },
             };
 
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatSkillRankRequirements))
                 .Returns(new[] { "wrong feat", "feat" });
             mockTypesAndAmountsSelector
@@ -1795,8 +1689,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
             Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
             Assert.That(featSelection.FocusType, Is.Empty);
-            Assert.That(featSelection.Frequency.Quantity, Is.Zero);
-            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
+            Assert.That(featSelection.FrequencyQuantity, Is.Zero);
+            Assert.That(featSelection.FrequencyTimePeriod, Is.Empty);
             Assert.That(featSelection.MinimumCasterLevel, Is.Zero);
             Assert.That(featSelection.Power, Is.Zero);
             Assert.That(featSelection.RequiredAbilities, Is.Empty);
@@ -1814,7 +1708,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredSkills()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
 
             var skillRankRequirements = new[]
             {
@@ -1822,7 +1716,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 new TypeAndAmountDataSelection { Type = "other skill", Amount = 90210 },
             };
 
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatSkillRankRequirements))
                 .Returns(new[] { "wrong feat", "feat" });
             mockTypesAndAmountsSelector
@@ -1836,8 +1730,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
             Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
             Assert.That(featSelection.FocusType, Is.Empty);
-            Assert.That(featSelection.Frequency.Quantity, Is.Zero);
-            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
+            Assert.That(featSelection.FrequencyQuantity, Is.Zero);
+            Assert.That(featSelection.FrequencyTimePeriod, Is.Empty);
             Assert.That(featSelection.MinimumCasterLevel, Is.Zero);
             Assert.That(featSelection.Power, Is.Zero);
             Assert.That(featSelection.RequiredAbilities, Is.Empty);
@@ -1860,7 +1754,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredSkillsWithFoci()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
 
             var skillRankRequirements = new[]
             {
@@ -1868,7 +1762,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 new TypeAndAmountDataSelection { Type = "other skill/other focus", Amount = 90210 },
             };
 
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatSkillRankRequirements))
                 .Returns(new[] { "wrong feat", "feat" });
             mockTypesAndAmountsSelector
@@ -1882,8 +1776,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
             Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
             Assert.That(featSelection.FocusType, Is.Empty);
-            Assert.That(featSelection.Frequency.Quantity, Is.Zero);
-            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
+            Assert.That(featSelection.FrequencyQuantity, Is.Zero);
+            Assert.That(featSelection.FrequencyTimePeriod, Is.Empty);
             Assert.That(featSelection.MinimumCasterLevel, Is.Zero);
             Assert.That(featSelection.Power, Is.Zero);
             Assert.That(featSelection.RequiredAbilities, Is.Empty);
@@ -1906,7 +1800,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredSkillsWithAndWithoutFoci()
         {
-            featsData["feat"] = BuildFeatData(string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
 
             var skillRankRequirements = new[]
             {
@@ -1914,7 +1808,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 new TypeAndAmountDataSelection { Type = "other skill/other focus", Amount = 90210 },
             };
 
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatSkillRankRequirements))
                 .Returns(new[] { "wrong feat", "feat" });
             mockTypesAndAmountsSelector
@@ -1928,8 +1822,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
             Assert.That(featSelection.CanBeTakenMultipleTimes, Is.False);
             Assert.That(featSelection.FocusType, Is.Empty);
-            Assert.That(featSelection.Frequency.Quantity, Is.Zero);
-            Assert.That(featSelection.Frequency.TimePeriod, Is.Empty);
+            Assert.That(featSelection.FrequencyQuantity, Is.Zero);
+            Assert.That(featSelection.FrequencyTimePeriod, Is.Empty);
             Assert.That(featSelection.MinimumCasterLevel, Is.Zero);
             Assert.That(featSelection.Power, Is.Zero);
             Assert.That(featSelection.RequiredAbilities, Is.Empty);
@@ -1952,17 +1846,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithWeaponProficiencyRequirement()
         {
-            featsData["feat"] = BuildFeatData();
+            featsData["feat"] = BuildFeatData("feat");
 
             var requiredFeats = new[]
             {
                 GroupConstants.WeaponProficiency
             };
 
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
                 .Returns(new[] { "wrong feat", "feat" });
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "feat"))
                 .Returns(requiredFeats);
 
@@ -1974,8 +1868,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.Zero);
-            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.FrequencyQuantity, Is.Zero);
+            Assert.That(feat.FrequencyTimePeriod, Is.Empty);
             Assert.That(feat.MinimumCasterLevel, Is.Zero);
             Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
@@ -1992,17 +1886,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithCrossbowProficiencyRequirement()
         {
-            featsData["feat"] = BuildFeatData();
+            featsData["feat"] = BuildFeatData("feat");
 
             var requiredFeats = new[]
             {
                 $"{GroupConstants.WeaponProficiency}/{WeaponConstants.HandCrossbow},{WeaponConstants.HeavyCrossbow},{WeaponConstants.LightCrossbow}"
             };
 
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
                 .Returns(new[] { "wrong feat", "feat" });
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "feat"))
                 .Returns(requiredFeats);
 
@@ -2014,8 +1908,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.Feat, Is.EqualTo("feat"));
             Assert.That(feat.CanBeTakenMultipleTimes, Is.False);
             Assert.That(feat.FocusType, Is.Empty);
-            Assert.That(feat.Frequency.Quantity, Is.Zero);
-            Assert.That(feat.Frequency.TimePeriod, Is.Empty);
+            Assert.That(feat.FrequencyQuantity, Is.Zero);
+            Assert.That(feat.FrequencyTimePeriod, Is.Empty);
             Assert.That(feat.MinimumCasterLevel, Is.Zero);
             Assert.That(feat.Power, Is.Zero);
             Assert.That(feat.RequiredAbilities, Is.Empty);
@@ -2064,14 +1958,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatRequiringSpeed()
         {
-            featsData["feat"] = BuildFeatData();
+            featsData["feat"] = BuildFeatData("feat");
 
             var speedRequirements = new[]
             {
                 new TypeAndAmountDataSelection { Type = "speed", Amount = 9266 },
             };
 
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatSpeedRequirements))
                 .Returns(new[] { "wrong feat", "feat" });
             mockTypesAndAmountsSelector
@@ -2093,7 +1987,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatRequiringSpeeds()
         {
-            featsData["feat"] = BuildFeatData();
+            featsData["feat"] = BuildFeatData("feat");
 
             var speedRequirements = new[]
             {
@@ -2101,7 +1995,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 new TypeAndAmountDataSelection { Type = "other speed", Amount = 90210 },
             };
 
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatSpeedRequirements))
                 .Returns(new[] { "wrong feat", "feat" });
             mockTypesAndAmountsSelector
@@ -2126,7 +2020,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatNotRequiringSpeeds()
         {
-            featsData["feat"] = BuildFeatData();
+            featsData["feat"] = BuildFeatData("feat");
 
             mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSpeedRequirements, "feat")).Returns(Enumerable.Empty<TypeAndAmountDataSelection>());
 
@@ -2253,12 +2147,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatRequiringSize()
         {
-            featsData["feat"] = BuildFeatData();
+            featsData["feat"] = BuildFeatData("feat");
 
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredSizes))
                 .Returns(new[] { "wrong feat", "feat" });
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredSizes, "feat"))
                 .Returns(new[] { "size" });
 
@@ -2275,12 +2169,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatRequiringSizes()
         {
-            featsData["feat"] = BuildFeatData();
+            featsData["feat"] = BuildFeatData("feat");
 
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredSizes))
                 .Returns(new[] { "wrong feat", "feat" });
-            mockCollectionsSelector
+            mockFeatDataSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredSizes, "feat"))
                 .Returns(new[] { "size", "other size" });
 
@@ -2298,7 +2192,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatNotRequiringSizes()
         {
-            featsData["feat"] = BuildFeatData();
+            featsData["feat"] = BuildFeatData("feat");
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));

@@ -52,12 +52,6 @@
     <None Remove="Tables\Feats\Data\SpecialQualityData.xml" />
     <None Remove="Tables\Feats\FeatFoci.xml" />
     <None Remove="Tables\Feats\FeatGroups.xml" />
-    <None Remove="Tables\Feats\Requirements\FeatAbilityRequirements.xml" />
-    <None Remove="Tables\Feats\Requirements\FeatSkillRankRequirements.xml" />
-    <None Remove="Tables\Feats\Requirements\FeatSpeedRequirements.xml" />
-    <None Remove="Tables\Feats\Requirements\RequiredAlignments.xml" />
-    <None Remove="Tables\Feats\Requirements\RequiredFeats.xml" />
-    <None Remove="Tables\Feats\Requirements\RequiredSizes.xml" />
     <None Remove="Tables\Languages\LanguageGroups.xml" />
     <None Remove="Tables\Magics\CasterGroups.xml" />
     <None Remove="Tables\Magics\Casters.xml" />
@@ -148,14 +142,6 @@
     <EmbeddedResource Include="Tables\Feats\FeatGroups.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tables\Feats\Requirements\FeatAbilityRequirements.xml" />
-    <EmbeddedResource Include="Tables\Feats\Requirements\FeatSkillRankRequirements.xml" />
-    <EmbeddedResource Include="Tables\Feats\Requirements\FeatSpeedRequirements.xml" />
-    <EmbeddedResource Include="Tables\Feats\Requirements\RequiredAlignments.xml" />
-    <EmbeddedResource Include="Tables\Feats\Requirements\RequiredFeats.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tables\Feats\Requirements\RequiredSizes.xml" />
     <EmbeddedResource Include="Tables\Languages\LanguageGroups.xml" />
     <EmbeddedResource Include="Tables\Magics\CasterGroups.xml">
       <SubType>Designer</SubType>
