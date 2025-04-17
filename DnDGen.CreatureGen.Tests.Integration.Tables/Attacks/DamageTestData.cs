@@ -2960,7 +2960,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             ["1d6"] = "1d8",
             ["1d4"] = "1d6",
             ["1d3"] = "1d4",
-            ["1d2"] = "1d3"
+            ["1d2"] = "1d3",
+            ["1"] = "1d2",
+            ["0"] = "1",
         };
         private static readonly Dictionary<string, string> damageDecreases = damageIncreases.ToDictionary(kvp => kvp.Value, kvp => kvp.Key);
 

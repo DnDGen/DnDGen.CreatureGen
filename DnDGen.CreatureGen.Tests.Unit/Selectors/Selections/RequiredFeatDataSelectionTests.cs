@@ -6,16 +6,16 @@ using System.Collections.Generic;
 namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 {
     [TestFixture]
-    public class RequiredFeatSelectionTests
+    public class RequiredFeatDataSelectionTests
     {
-        private RequiredFeatSelection requiredFeatSelection;
+        private FeatDataSelection.RequiredFeatDataSelection requiredFeatSelection;
         private List<Feat> otherFeats;
 
         [SetUp]
         public void Setup()
         {
-            requiredFeatSelection = new RequiredFeatSelection();
-            otherFeats = new List<Feat>();
+            requiredFeatSelection = new FeatDataSelection.RequiredFeatDataSelection();
+            otherFeats = [];
         }
 
         [Test]
@@ -121,12 +121,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             otherFeats.Add(new Feat());
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "feat1";
-            otherFeats[0].Foci = new[] { "focus" };
+            otherFeats[0].Foci = ["focus"];
             otherFeats[1].Name = "feat2";
-            otherFeats[1].Foci = new[] { "other focus" };
+            otherFeats[1].Foci = ["other focus"];
 
             requiredFeatSelection.Feat = "feat2";
-            requiredFeatSelection.Foci = new[] { "focus" };
+            requiredFeatSelection.Foci = ["focus"];
 
             var met = requiredFeatSelection.RequirementMet(otherFeats);
             Assert.That(met, Is.False);
@@ -139,10 +139,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "feat1";
             otherFeats[1].Name = "feat2";
-            otherFeats[1].Foci = new[] { "other focus" };
+            otherFeats[1].Foci = ["other focus"];
 
             requiredFeatSelection.Feat = "feat2";
-            requiredFeatSelection.Foci = new[] { "focus" };
+            requiredFeatSelection.Foci = ["focus"];
 
             var met = requiredFeatSelection.RequirementMet(otherFeats);
             Assert.That(met, Is.False);

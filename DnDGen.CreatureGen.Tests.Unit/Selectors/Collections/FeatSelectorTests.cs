@@ -2,7 +2,6 @@
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.TreasureGen.Items;
 using Moq;
@@ -1293,7 +1292,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredAbility()
         {
-            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat"] = BuildFeatData("feat");
             var selection = featsData["feat"].Single();
             selection.RequiredAbilities = new Dictionary<string, int> { ["ability"] = 9266 };
 
@@ -1321,7 +1320,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredAbilities()
         {
-            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat"] = BuildFeatData("feat");
             var selection = featsData["feat"].Single();
             selection.RequiredAbilities = new Dictionary<string, int>
             {
@@ -1378,7 +1377,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredFeat()
         {
-            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
+            featsData["feat"] = BuildFeatData("feat");
             var selection = featsData["feat"].Single();
             selection.RequiredFeats =
             [
@@ -1411,19 +1410,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredFeatWithFocus()
         {
-            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
-
-            var requiredFeats = new[]
-            {
-                "required feat/required focus"
-            };
-
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "feat"))
-                .Returns(requiredFeats);
+            featsData["feat"] = BuildFeatData("feat");
+            var selection = featsData["feat"].Single();
+            selection.RequiredFeats =
+            [
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = "required feat", Foci = ["required focus"] },
+            ];
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1451,20 +1443,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredFeats()
         {
-            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
-
-            var requiredFeats = new[]
-            {
-                "required feat",
-                "other required feat",
-            };
-
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "feat"))
-                .Returns(requiredFeats);
+            featsData["feat"] = BuildFeatData("feat");
+            var selection = featsData["feat"].Single();
+            selection.RequiredFeats =
+            [
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = "required feat" },
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = "other required feat" },
+            ];
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1496,20 +1481,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredFeatsWithFocus()
         {
-            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
-
-            var requiredFeats = new[]
-            {
-                "required feat/required focus",
-                "other required feat/other required focus",
-            };
-
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "feat"))
-                .Returns(requiredFeats);
+            featsData["feat"] = BuildFeatData("feat");
+            var selection = featsData["feat"].Single();
+            selection.RequiredFeats =
+            [
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = "required feat", Foci = ["required focus"] },
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = "other required feat", Foci = ["other required focus"] },
+            ];
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1541,19 +1519,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredFeatsWithFoci()
         {
-            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
-
-            var requiredFeats = new[]
-            {
-                "required feat/required focus,other required focus",
-            };
-
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "feat"))
-                .Returns(requiredFeats);
+            featsData["feat"] = BuildFeatData("feat");
+            var selection = featsData["feat"].Single();
+            selection.RequiredFeats =
+            [
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = "required feat", Foci = ["required focus", "other required focus"] },
+            ];
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1583,20 +1554,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredFeatsWithAndWithoutFoci()
         {
-            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
-
-            var requiredFeats = new[]
-            {
-                "required feat",
-                "other required feat/other required focus",
-            };
-
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "feat"))
-                .Returns(requiredFeats);
+            featsData["feat"] = BuildFeatData("feat");
+            var selection = featsData["feat"].Single();
+            selection.RequiredFeats =
+            [
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = "required feat" },
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = "other required feat", Foci = ["other required focus"] },
+            ];
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1628,19 +1592,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredSkill()
         {
-            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
-
-            var skillRankRequirements = new[]
-            {
-                new TypeAndAmountDataSelection { Type = "skill", Amount = 9266 },
-            };
-
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatSkillRankRequirements))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockTypesAndAmountsSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, "feat"))
-                .Returns(skillRankRequirements);
+            featsData["feat"] = BuildFeatData("feat");
+            var selection = featsData["feat"].Single();
+            selection.RequiredSkills =
+            [
+                new FeatDataSelection.RequiredSkillDataSelection { Skill = "skill", Ranks = 9266 },
+            ];
 
             var additionalFeats = featsSelector.SelectFeats();
             Assert.That(additionalFeats.Count, Is.EqualTo(1));
@@ -1668,19 +1625,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredSkillWithFocus()
         {
-            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
-
-            var skillRankRequirements = new[]
-            {
-                new TypeAndAmountDataSelection { Type = "skill/focus", Amount = 9266 },
-            };
-
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatSkillRankRequirements))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockTypesAndAmountsSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, "feat"))
-                .Returns(skillRankRequirements);
+            featsData["feat"] = BuildFeatData("feat");
+            var selection = featsData["feat"].Single();
+            selection.RequiredSkills =
+            [
+                new FeatDataSelection.RequiredSkillDataSelection { Skill = "skill", Ranks = 9266, Focus = "focus" },
+            ];
 
             var additionalFeats = featsSelector.SelectFeats();
             Assert.That(additionalFeats.Count, Is.EqualTo(1));
@@ -1708,20 +1658,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredSkills()
         {
-            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
-
-            var skillRankRequirements = new[]
-            {
-                new TypeAndAmountDataSelection { Type = "skill", Amount = 9266 },
-                new TypeAndAmountDataSelection { Type = "other skill", Amount = 90210 },
-            };
-
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatSkillRankRequirements))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockTypesAndAmountsSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, "feat"))
-                .Returns(skillRankRequirements);
+            featsData["feat"] = BuildFeatData("feat");
+            var selection = featsData["feat"].Single();
+            selection.RequiredSkills =
+            [
+                new FeatDataSelection.RequiredSkillDataSelection { Skill = "skill", Ranks = 9266 },
+                new FeatDataSelection.RequiredSkillDataSelection { Skill = "other skill", Ranks = 90210 },
+            ];
 
             var additionalFeats = featsSelector.SelectFeats();
             Assert.That(additionalFeats.Count, Is.EqualTo(1));
@@ -1754,20 +1697,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredSkillsWithFoci()
         {
-            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
-
-            var skillRankRequirements = new[]
-            {
-                new TypeAndAmountDataSelection { Type = "skill/focus", Amount = 9266 },
-                new TypeAndAmountDataSelection { Type = "other skill/other focus", Amount = 90210 },
-            };
-
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatSkillRankRequirements))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockTypesAndAmountsSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, "feat"))
-                .Returns(skillRankRequirements);
+            featsData["feat"] = BuildFeatData("feat");
+            var selection = featsData["feat"].Single();
+            selection.RequiredSkills =
+            [
+                new FeatDataSelection.RequiredSkillDataSelection { Skill = "skill", Ranks = 9266, Focus = "focus" },
+                new FeatDataSelection.RequiredSkillDataSelection { Skill = "other skill", Ranks = 90210, Focus = "other focus" },
+            ];
 
             var additionalFeats = featsSelector.SelectFeats();
             Assert.That(additionalFeats.Count, Is.EqualTo(1));
@@ -1800,20 +1736,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithRequiredSkillsWithAndWithoutFoci()
         {
-            featsData["feat"] = BuildFeatData("feat", string.Empty, 0, string.Empty, 0, 0, 0);
-
-            var skillRankRequirements = new[]
-            {
-                new TypeAndAmountDataSelection { Type = "skill", Amount = 9266 },
-                new TypeAndAmountDataSelection { Type = "other skill/other focus", Amount = 90210 },
-            };
-
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatSkillRankRequirements))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockTypesAndAmountsSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, "feat"))
-                .Returns(skillRankRequirements);
+            featsData["feat"] = BuildFeatData("feat");
+            var selection = featsData["feat"].Single();
+            selection.RequiredSkills =
+            [
+                new FeatDataSelection.RequiredSkillDataSelection { Skill = "skill", Ranks = 9266 },
+                new FeatDataSelection.RequiredSkillDataSelection { Skill = "other skill", Ranks = 90210, Focus = "other focus" },
+            ];
 
             var additionalFeats = featsSelector.SelectFeats();
             Assert.That(additionalFeats.Count, Is.EqualTo(1));
@@ -1847,18 +1776,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         public void GetFeatWithWeaponProficiencyRequirement()
         {
             featsData["feat"] = BuildFeatData("feat");
-
-            var requiredFeats = new[]
-            {
-                GroupConstants.WeaponProficiency
-            };
-
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "feat"))
-                .Returns(requiredFeats);
+            var selection = featsData["feat"].Single();
+            selection.RequiredFeats =
+            [
+                new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency },
+            ];
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1887,18 +1809,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         public void GetFeatWithCrossbowProficiencyRequirement()
         {
             featsData["feat"] = BuildFeatData("feat");
-
-            var requiredFeats = new[]
-            {
-                $"{GroupConstants.WeaponProficiency}/{WeaponConstants.HandCrossbow},{WeaponConstants.HeavyCrossbow},{WeaponConstants.LightCrossbow}"
-            };
-
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredFeats, "feat"))
-                .Returns(requiredFeats);
+            var selection = featsData["feat"].Single();
+            selection.RequiredFeats =
+            [
+                new FeatDataSelection.RequiredFeatDataSelection
+                {
+                    Feat = GroupConstants.WeaponProficiency,
+                    Foci = [WeaponConstants.HandCrossbow, WeaponConstants.HeavyCrossbow, WeaponConstants.LightCrossbow],
+                },
+            ];
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1930,7 +1849,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatRequiringSpecialAttack()
         {
-            featsData["feat"] = BuildFeatData(requiresSpecialAttack: true);
+            featsData["feat"] = BuildFeatData("feat", requiresSpecialAttack: true);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1944,7 +1863,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatNotRequiringSpecialAttack()
         {
-            featsData["feat"] = BuildFeatData(requiresSpecialAttack: false);
+            featsData["feat"] = BuildFeatData("feat", requiresSpecialAttack: false);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -1959,18 +1878,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         public void GetFeatRequiringSpeed()
         {
             featsData["feat"] = BuildFeatData("feat");
-
-            var speedRequirements = new[]
-            {
-                new TypeAndAmountDataSelection { Type = "speed", Amount = 9266 },
-            };
-
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatSpeedRequirements))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockTypesAndAmountsSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSpeedRequirements, "feat"))
-                .Returns(speedRequirements);
+            var selection = featsData["feat"].Single();
+            selection.RequiredSpeeds.Add("speed", 9266);
 
             var additionalFeats = featsSelector.SelectFeats();
             Assert.That(additionalFeats.Count, Is.EqualTo(1));
@@ -1988,19 +1897,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         public void GetFeatRequiringSpeeds()
         {
             featsData["feat"] = BuildFeatData("feat");
-
-            var speedRequirements = new[]
-            {
-                new TypeAndAmountDataSelection { Type = "speed", Amount = 9266 },
-                new TypeAndAmountDataSelection { Type = "other speed", Amount = 90210 },
-            };
-
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatSpeedRequirements))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockTypesAndAmountsSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSpeedRequirements, "feat"))
-                .Returns(speedRequirements);
+            var selection = featsData["feat"].Single();
+            selection.RequiredSpeeds.Add("speed", 9266);
+            selection.RequiredSpeeds.Add("other speed", 90210);
 
             var additionalFeats = featsSelector.SelectFeats();
             Assert.That(additionalFeats.Count, Is.EqualTo(1));
@@ -2021,8 +1920,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         public void GetFeatNotRequiringSpeeds()
         {
             featsData["feat"] = BuildFeatData("feat");
-
-            mockTypesAndAmountsSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.FeatSpeedRequirements, "feat")).Returns(Enumerable.Empty<TypeAndAmountDataSelection>());
+            var selection = featsData["feat"].Single();
+            selection.RequiredSpeeds.Clear();
 
             var additionalFeats = featsSelector.SelectFeats();
             Assert.That(additionalFeats.Count, Is.EqualTo(1));
@@ -2035,7 +1934,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatRequiringSpellLikeAbility()
         {
-            featsData["feat"] = BuildFeatData(requiresSpellLikeAbility: true);
+            featsData["feat"] = BuildFeatData("feat", requiresSpellLikeAbility: true);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -2049,7 +1948,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatNotRequiringSpellLikeAbility()
         {
-            featsData["feat"] = BuildFeatData(requiresSpellLikeAbility: false);
+            featsData["feat"] = BuildFeatData("feat", requiresSpellLikeAbility: false);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -2063,7 +1962,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatRequiringNaturalArmor()
         {
-            featsData["feat"] = BuildFeatData(requiresNaturalArmor: true);
+            featsData["feat"] = BuildFeatData("feat", requiresNaturalArmor: true);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -2077,7 +1976,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatNotRequiringNaturalArmor()
         {
-            featsData["feat"] = BuildFeatData(requiresNaturalArmor: false);
+            featsData["feat"] = BuildFeatData("feat", requiresNaturalArmor: false);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -2091,7 +1990,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatRequiringNaturalWeaponQuantity()
         {
-            featsData["feat"] = BuildFeatData(requiredNaturalWeaponQuantity: 9266);
+            featsData["feat"] = BuildFeatData("feat", requiredNaturalWeaponQuantity: 9266);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -2105,7 +2004,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatNotRequiringNaturalWeaponQuantity()
         {
-            featsData["feat"] = BuildFeatData(requiredNaturalWeaponQuantity: 0);
+            featsData["feat"] = BuildFeatData("feat", requiredNaturalWeaponQuantity: 0);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -2119,7 +2018,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatRequiringHands()
         {
-            featsData["feat"] = BuildFeatData(requiredHandQuantity: 9266);
+            featsData["feat"] = BuildFeatData("feat", requiredHandQuantity: 9266);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -2133,7 +2032,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatNotRequiringHands()
         {
-            featsData["feat"] = BuildFeatData(requiredHandQuantity: 0);
+            featsData["feat"] = BuildFeatData("feat", requiredHandQuantity: 0);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -2148,13 +2047,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         public void GetFeatRequiringSize()
         {
             featsData["feat"] = BuildFeatData("feat");
-
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredSizes))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredSizes, "feat"))
-                .Returns(new[] { "size" });
+            var selection = featsData["feat"].Single();
+            selection.RequiredSizes = ["size"];
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -2170,13 +2064,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         public void GetFeatRequiringSizes()
         {
             featsData["feat"] = BuildFeatData("feat");
-
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredSizes))
-                .Returns(new[] { "wrong feat", "feat" });
-            mockFeatDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.RequiredSizes, "feat"))
-                .Returns(new[] { "size", "other size" });
+            var selection = featsData["feat"].Single();
+            selection.RequiredSizes = ["size", "other size"];
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -2206,7 +2095,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatRequiringEquipment()
         {
-            featsData["feat"] = BuildFeatData(requiresEquipment: true);
+            featsData["feat"] = BuildFeatData("feat", requiresEquipment: true);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));
@@ -2220,7 +2109,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatNotRequiringEquipment()
         {
-            featsData["feat"] = BuildFeatData(requiresEquipment: false);
+            featsData["feat"] = BuildFeatData("feat", requiresEquipment: false);
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));

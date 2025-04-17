@@ -24,8 +24,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(GroupConstants.PreparesSpells, "Prepares Spells")]
         [TestCase(GroupConstants.Skills, "Skills")]
         [TestCase(GroupConstants.SkillSynergy, "Skill Synergy")]
-        [TestCase(GroupConstants.TakenMultipleTimes, "Taken Multiple Times")]
-        [TestCase(GroupConstants.Templates, "Templates")]
         [TestCase(GroupConstants.TREE, "TREE")]
         [TestCase(GroupConstants.Unnatural, "Unnatural")]
         [TestCase(GroupConstants.Untrained, "Untrained")]

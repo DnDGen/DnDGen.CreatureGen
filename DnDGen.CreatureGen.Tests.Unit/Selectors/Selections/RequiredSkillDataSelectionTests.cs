@@ -7,17 +7,17 @@ using System.Collections.Generic;
 namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 {
     [TestFixture]
-    public class RequiredSkillSelectionTests
+    public class RequiredSkillDataSelectionTests
     {
-        private RequiredSkillSelection requiredSkillSelection;
+        private FeatDataSelection.RequiredSkillDataSelection requiredSkillSelection;
         private List<Skill> otherSkills;
         private Ability baseStat;
 
         [SetUp]
         public void Setup()
         {
-            requiredSkillSelection = new RequiredSkillSelection();
-            otherSkills = new List<Skill>();
+            requiredSkillSelection = new FeatDataSelection.RequiredSkillDataSelection();
+            otherSkills = [];
             baseStat = new Ability("stat name");
         }
 
@@ -31,8 +31,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 
         private Skill CreateClassSkill(string skillName, string focus = "")
         {
-            var skill = new Skill(skillName, baseStat, int.MaxValue, focus);
-            skill.ClassSkill = true;
+            var skill = new Skill(skillName, baseStat, int.MaxValue, focus)
+            {
+                ClassSkill = true
+            };
 
             return skill;
         }
