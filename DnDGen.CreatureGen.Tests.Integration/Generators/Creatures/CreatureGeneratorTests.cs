@@ -864,5 +864,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
 
             return creature;
         }
+
+        [Test]
+        public void AdvancedCreatureHappens()
+        {
+            //TODO: Pick a creature with advancements, iterate 100 times - at least one of those iterations should be an advanced creature
+            //Lower-level creature is better for faster iteration
+            Assert.Fail("not yet written");
+        }
     }
 }

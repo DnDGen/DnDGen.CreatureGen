@@ -40,6 +40,8 @@ namespace DnDGen.CreatureGen.Generators.Feats
             string size,
             Alignment alignment)
         {
+            throw new NotImplementedException("Refactor with possible/available/selected feat lists");
+
             var specialQualitySelections = featsSelector.SelectSpecialQualities(creatureName, creatureType);
             var specialQualities = new List<Feat>();
             var addedNames = new HashSet<string>();
@@ -159,6 +161,8 @@ namespace DnDGen.CreatureGen.Generators.Feats
             int casterLevel,
             IEnumerable<Attack> attacks)
         {
+            throw new NotImplementedException("Refactor with possible/available/selected feat lists");
+
             var feats = new List<Feat>();
             var chosenFeats = new List<Feat>(preselectedFeats);
 
