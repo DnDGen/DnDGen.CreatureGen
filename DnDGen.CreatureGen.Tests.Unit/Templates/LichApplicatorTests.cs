@@ -8,13 +8,13 @@ using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Languages;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
+using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using DnDGen.TreasureGen.Items;
@@ -40,7 +40,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<IAttacksGenerator> mockAttacksGenerator;
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
-        private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
         private Mock<IDemographicsGenerator> mockDemographicsGenerator;
 
@@ -53,7 +52,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAttacksGenerator = new Mock<IAttacksGenerator>();
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
-            mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
             mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
@@ -70,7 +68,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockAttacksGenerator.Object,
                 mockFeatsGenerator.Object,
                 mockTypeAndAmountSelector.Object,
-                mockAdjustmentSelector.Object,
                 mockPrototypeFactory.Object,
                 mockDemographicsGenerator.Object);
 
@@ -387,7 +384,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(g => g.GenerateAttacks(
                     CreatureConstants.Templates.Lich,
                     baseCreature.Size,
-                    baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
@@ -429,7 +425,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
                     CreatureConstants.Templates.Lich,
-                    baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
@@ -1097,7 +1092,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(g => g.GenerateAttacks(
                     CreatureConstants.Templates.Lich,
                     baseCreature.Size,
-                    baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
@@ -1139,7 +1133,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
                     CreatureConstants.Templates.Lich,
-                    baseCreature.Size,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
@@ -1515,6 +1508,60 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Templates.Single(), Is.EqualTo(CreatureConstants.Templates.Lich));
         }
 
+        private Dictionary<string, IEnumerable<CreatureDataSelection>> SetUpCreatureData(string cr = ChallengeRatingConstants.CR1)
+        {
+            var data = new Dictionary<string, IEnumerable<CreatureDataSelection>>
+            {
+                ["my creature"] = [new CreatureDataSelection { ChallengeRating = cr, LevelAdjustment = 0 }],
+                ["my other creature"] = [new CreatureDataSelection { ChallengeRating = cr, LevelAdjustment = 0 }],
+                ["creature 1"] = [new CreatureDataSelection { ChallengeRating = cr, LevelAdjustment = 0 }],
+                ["creature 2"] = [new CreatureDataSelection { ChallengeRating = cr, CasterLevel = 11 }],
+                ["creature 3"] = [new CreatureDataSelection { ChallengeRating = cr }],
+                ["wrong creature 1"] = [new CreatureDataSelection { ChallengeRating = cr, LevelAdjustment = 0 }],
+                ["wrong creature 2"] = [new CreatureDataSelection { ChallengeRating = cr }],
+                ["wrong creature 3"] = [new CreatureDataSelection { ChallengeRating = cr, CasterLevel = 10 }],
+                ["wrong creature 4"] = [new CreatureDataSelection { ChallengeRating = cr }],
+                ["wrong creature 5"] = [new CreatureDataSelection { ChallengeRating = cr }],
+                ["wrong creature 6"] = [new CreatureDataSelection { ChallengeRating = cr }],
+            };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData))
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureData, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => data[c]);
+
+            return data;
+        }
+
+        private Dictionary<string, IEnumerable<TypeAndAmountDataSelection>> SetUpHitDice(double amount = 1)
+        {
+            var hitDice = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { AmountAsDouble = amount }],
+                ["my other creature"] = [new() { AmountAsDouble = amount }],
+                ["creature 1"] = [new() { AmountAsDouble = amount }],
+                ["creature 2"] = [new() { AmountAsDouble = amount }],
+                ["creature 3"] = [new() { AmountAsDouble = amount }],
+                ["wrong creature 1"] = [new() { AmountAsDouble = amount }],
+                ["wrong creature 2"] = [new() { AmountAsDouble = amount }],
+                ["wrong creature 3"] = [new() { AmountAsDouble = amount }],
+                ["wrong creature 4"] = [new() { AmountAsDouble = amount }],
+                ["wrong creature 5"] = [new() { AmountAsDouble = amount }],
+                ["wrong creature 6"] = [new() { AmountAsDouble = amount }],
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice))
+                .Returns(hitDice);
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => hitDice[c]);
+
+            return hitDice;
+        }
+
         [Test]
         public void GetCompatibleCreatures_ReturnCompatibleCreatures()
         {
@@ -1545,70 +1592,41 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 11 };
-            data["creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 10 };
-            data["wrong creature 4"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
+            SetUpCreatureData();
+            SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 1"] = [];
+            casters["creature 2"] = [];
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 1"] = [];
+            casters["wrong creature 2"] = [];
+            casters["wrong creature 3"] = [];
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 10 },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["creature 1"] = 1;
-            hitDice["creature 2"] = 1;
-            hitDice["creature 3"] = 1;
-            hitDice["wrong creature 1"] = 1;
-            hitDice["wrong creature 2"] = 1;
-            hitDice["wrong creature 3"] = 1;
-            hitDice["wrong creature 4"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
-            alignments["creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
-            alignments["creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulGood };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
-            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralGood };
+            alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
+            alignments["creature 2"] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
+            alignments["creature 3"] = new[] { "other alignment", AlignmentConstants.LawfulGood };
+            alignments["wrong creature 1"] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
+            alignments["wrong creature 2"] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
+            alignments["wrong creature 3"] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
+            alignments["wrong creature 4"] = new[] { "other alignment", AlignmentConstants.NeutralGood };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -1627,11 +1645,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creatures = new[] { "my creature", "wrong creature 1", "my other creature", "wrong creature 2", "wrong creature 3" };
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "preset alignment" };
-            alignments["my other creature" + GroupConstants.Exploded] = new[] { "preset alignment", "original alignment" };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", "wrong alignment" };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "wrong alignment", "original alignment" };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", "original alignment" };
+            alignments["my creature"] = new[] { "other alignment", "preset alignment" };
+            alignments["my other creature"] = new[] { "preset alignment", "original alignment" };
+            alignments["wrong creature 1"] = new[] { "other alignment", "wrong alignment" };
+            alignments["wrong creature 2"] = new[] { "wrong alignment", "original alignment" };
+            alignments["wrong creature 3"] = new[] { "other alignment", "original alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -1642,44 +1660,46 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = 1336 },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
                 .Returns(adjustments);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my other creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "my other creature"))
                 .Returns(adjustments);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"))
                 .Returns(new[]
                 {
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = -6 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 9266 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 90210 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 42 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = 600 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = 1337 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = -6 },
                 });
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"))
                 .Returns(adjustments);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 3"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 3"))
                 .Returns(adjustments);
 
-            var types = new Dictionary<string, IEnumerable<string>>();
-            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types["my other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 3" };
-            types["wrong creature 1"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types["wrong creature 2"] = new[] { CreatureConstants.Types.Undead, "subtype 1", "subtype 2" };
-            types["wrong creature 3"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            var types = new Dictionary<string, IEnumerable<string>>
+            {
+                ["my creature"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"],
+                ["my other creature"] = [CreatureConstants.Types.Giant, "subtype 3"],
+                ["wrong creature 1"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"],
+                ["wrong creature 2"] = [CreatureConstants.Types.Undead, "subtype 1", "subtype 2"],
+                ["wrong creature 3"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"]
+            };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
@@ -1688,50 +1708,31 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["my other creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
+            var data = SetUpCreatureData();
+            data["wrong creature 1"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
+            data["wrong creature 2"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
+            data["wrong creature 3"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
-
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 2;
-            hitDice["my other creature"] = 2;
-            hitDice["wrong creature 1"] = 2;
-            hitDice["wrong creature 2"] = 2;
-            hitDice["wrong creature 3"] = 2;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
+            SetUpHitDice(2);
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "preset alignment"))
-                .Returns(new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" });
+                .Returns(["my creature", "wrong creature 2", "my other creature", "wrong creature 1"]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["my other creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [],
+                ["my other creature"] = [],
+                ["wrong creature 1"] = [],
+                ["wrong creature 2"] = [],
+                ["wrong creature 3"] = []
+            };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
             var filters = new Filters { Alignment = "preset alignment" };
@@ -1746,11 +1747,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creatures = new[] { "my creature", "wrong creature 1", "my other creature", "wrong creature 2", "wrong creature 3" };
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "preset Good", "preset alignment" };
-            alignments["my other creature" + GroupConstants.Exploded] = new[] { "preset Neutral", "original alignment" };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", "wrong alignment" };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "wrong alignment", "original alignment" };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", "original alignment" };
+            alignments["my creature"] = new[] { "preset Good", "preset alignment" };
+            alignments["my other creature"] = new[] { "preset Neutral", "original alignment" };
+            alignments["wrong creature 1"] = new[] { "other alignment", "wrong alignment" };
+            alignments["wrong creature 2"] = new[] { "wrong alignment", "original alignment" };
+            alignments["wrong creature 3"] = new[] { "other alignment", "original alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -1761,36 +1762,36 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = 1336 },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
                 .Returns(adjustments);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my other creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "my other creature"))
                 .Returns(adjustments);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"))
                 .Returns(new[]
                 {
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = -6 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 9266 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 90210 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 42 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = 600 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = 1337 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = -6 },
                 });
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"))
                 .Returns(adjustments);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 3"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 3"))
                 .Returns(adjustments);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -1807,46 +1808,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["my other creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
+            var data = SetUpCreatureData();
+            data["wrong creature 1"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
+            data["wrong creature 2"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
+            data["wrong creature 3"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
-
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 2;
-            hitDice["my other creature"] = 2;
-            hitDice["wrong creature 1"] = 2;
-            hitDice["wrong creature 2"] = 2;
-            hitDice["wrong creature 3"] = 2;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
+            SetUpHitDice(2);
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["my other creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["my creature"] = [];
+            casters["my other creature"] = [];
+            casters["wrong creature 1"] = [];
+            casters["wrong creature 2"] = [];
+            casters["wrong creature 3"] = [];
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
             var filters = new Filters { Alignment = "preset Evil" };
@@ -1890,74 +1870,45 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["creature 1"] = new CreatureDataSelection { ChallengeRating = original, LevelAdjustment = 0 };
-            data["creature 2"] = new CreatureDataSelection { ChallengeRating = original, CasterLevel = 11 };
-            data["creature 3"] = new CreatureDataSelection { ChallengeRating = original };
-            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = original, LevelAdjustment = 0 };
-            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = original };
-            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = original, CasterLevel = 10 };
-            data["wrong creature 4"] = new CreatureDataSelection { ChallengeRating = original };
-            data["wrong creature 5"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(original, 1), LevelAdjustment = 0 };
+            var data = SetUpCreatureData(original);
+            data["wrong creature 5"] = [new() { ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(original, 1), LevelAdjustment = 0 }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
+            SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 1"] = [];
+            casters["creature 2"] = [];
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 1"] = [];
+            casters["wrong creature 2"] = [];
+            casters["wrong creature 3"] = [];
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 10 },
             };
-            casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 5"] = [];
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["creature 1"] = 1;
-            hitDice["creature 2"] = 1;
-            hitDice["creature 3"] = 1;
-            hitDice["wrong creature 1"] = 1;
-            hitDice["wrong creature 2"] = 1;
-            hitDice["wrong creature 3"] = 1;
-            hitDice["wrong creature 4"] = 1;
-            hitDice["wrong creature 5"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
-            alignments["creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
-            alignments["creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulGood };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
-            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralGood };
-            alignments["wrong creature 5" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
+            alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
+            alignments["creature 2"] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
+            alignments["creature 3"] = new[] { "other alignment", AlignmentConstants.LawfulGood };
+            alignments["wrong creature 1"] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
+            alignments["wrong creature 2"] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
+            alignments["wrong creature 3"] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
+            alignments["wrong creature 4"] = new[] { "other alignment", AlignmentConstants.NeutralGood };
+            alignments["wrong creature 5"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -2004,70 +1955,41 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 11 };
-            data["creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 10 };
-            data["wrong creature 4"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
+            SetUpCreatureData();
+            SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 1"] = [];
+            casters["creature 2"] = [];
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 1"] = [];
+            casters["wrong creature 2"] = [];
+            casters["wrong creature 3"] = [];
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 10 },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["creature 1"] = 1;
-            hitDice["creature 2"] = 1;
-            hitDice["creature 3"] = 1;
-            hitDice["wrong creature 1"] = 1;
-            hitDice["wrong creature 2"] = 1;
-            hitDice["wrong creature 3"] = 1;
-            hitDice["wrong creature 4"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
-            alignments["creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
-            alignments["creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulGood };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
-            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralGood };
+            alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
+            alignments["creature 2"] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
+            alignments["creature 3"] = new[] { "other alignment", AlignmentConstants.LawfulGood };
+            alignments["wrong creature 1"] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
+            alignments["wrong creature 2"] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
+            alignments["wrong creature 3"] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
+            alignments["wrong creature 4"] = new[] { "other alignment", AlignmentConstants.NeutralGood };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -2115,77 +2037,48 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 11 };
-            data["creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 10 };
-            data["wrong creature 4"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 5"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
+            var data = SetUpCreatureData();
+            data["wrong creature 5"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
+            SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 1"] = [];
+            casters["creature 2"] = [];
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 1"] = [];
+            casters["wrong creature 2"] = [];
+            casters["wrong creature 3"] = [];
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 10 },
             };
-            casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 5"] = [];
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["creature 1"] = 1;
-            hitDice["creature 2"] = 1;
-            hitDice["creature 3"] = 1;
-            hitDice["wrong creature 1"] = 1;
-            hitDice["wrong creature 2"] = 1;
-            hitDice["wrong creature 3"] = 1;
-            hitDice["wrong creature 4"] = 1;
-            hitDice["wrong creature 5"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
-            alignments["creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
-            alignments["creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulGood };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
-            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralGood };
-            alignments["wrong creature 5" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
+            alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
+            alignments["creature 2"] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
+            alignments["creature 3"] = new[] { "other alignment", AlignmentConstants.LawfulGood };
+            alignments["wrong creature 1"] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
+            alignments["wrong creature 2"] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
+            alignments["wrong creature 3"] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
+            alignments["wrong creature 4"] = new[] { "other alignment", AlignmentConstants.NeutralGood };
+            alignments["wrong creature 5"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -2235,81 +2128,51 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 11 };
-            data["creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 10 };
-            data["wrong creature 4"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 5"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR2, LevelAdjustment = 0 };
-            data["wrong creature 6"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
+            var data = SetUpCreatureData();
+            data["wrong creature 5"] = [new() { ChallengeRating = ChallengeRatingConstants.CR2, LevelAdjustment = 0 }];
+            data["wrong creature 6"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
+            SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 1"] = [];
+            casters["creature 2"] = [];
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 1"] = [];
+            casters["wrong creature 2"] = [];
+            casters["wrong creature 3"] = [];
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 10 },
             };
-            casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 6"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 5"] = [];
+            casters["wrong creature 6"] = [];
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["creature 1"] = 1;
-            hitDice["creature 2"] = 1;
-            hitDice["creature 3"] = 1;
-            hitDice["wrong creature 1"] = 1;
-            hitDice["wrong creature 2"] = 1;
-            hitDice["wrong creature 3"] = 1;
-            hitDice["wrong creature 4"] = 1;
-            hitDice["wrong creature 5"] = 1;
-            hitDice["wrong creature 6"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
-            alignments["creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
-            alignments["creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulGood };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
-            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralGood };
-            alignments["wrong creature 5" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
-            alignments["wrong creature 6" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticNeutral };
+            alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
+            alignments["creature 2"] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
+            alignments["creature 3"] = new[] { "other alignment", AlignmentConstants.LawfulGood };
+            alignments["wrong creature 1"] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
+            alignments["wrong creature 2"] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
+            alignments["wrong creature 3"] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
+            alignments["wrong creature 4"] = new[] { "other alignment", AlignmentConstants.NeutralGood };
+            alignments["wrong creature 5"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
+            alignments["wrong creature 6"] = new[] { "other alignment", AlignmentConstants.ChaoticNeutral };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -2352,41 +2215,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = 0 };
+            var data = SetUpCreatureData();
+            data["my creature"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = 0 }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
+            SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["my creature"] = [];
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
+            alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -2433,41 +2281,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = casterLevel, LevelAdjustment = null };
+            var data = SetUpCreatureData();
+            data["my creature"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = casterLevel, LevelAdjustment = null }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
+            SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["my creature"] = [];
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
+            alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -2514,41 +2347,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = null };
+            var data = SetUpCreatureData();
+            data["my creature"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = null }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
+            SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = new[] { new TypeAndAmountDataSelection { Type = "spellcaster", Amount = casterLevel } };
+            casters["my creature"] = new[] { new TypeAndAmountDataSelection { Type = "spellcaster", AmountAsDouble = casterLevel } };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
+            alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -2575,41 +2393,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = null };
+            var data = SetUpCreatureData();
+            data["my creature"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = null }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
+            SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["my creature"] = [];
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
+            alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -2656,41 +2459,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = levelAdjustment };
+            var data = SetUpCreatureData();
+            data["my creature"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = levelAdjustment }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
+            SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["my creature"] = [];
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
+            alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -2724,41 +2512,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = 0 };
+            var data = SetUpCreatureData();
+            data["my creature"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = 0 }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
+            SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["my creature"] = [];
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
+            alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -2797,38 +2570,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["my creature"] = new CreatureDataSelection { CasterLevel = 0, LevelAdjustment = 0, ChallengeRating = original };
+            var data = SetUpCreatureData();
+            data["my creature"] = [new() { ChallengeRating = original, CasterLevel = 0, LevelAdjustment = 0 }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
-
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
+            SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["my creature"] = [];
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
+            alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -2912,38 +2670,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["my creature"] = new CreatureDataSelection { CasterLevel = 0, LevelAdjustment = 0, ChallengeRating = original };
+            var data = SetUpCreatureData();
+            data["my creature"] = [new() { ChallengeRating = original, CasterLevel = 0, LevelAdjustment = 0 }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
-
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = hitDiceQuantity;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
+            SetUpHitDice(hitDiceQuantity);
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["my creature"] = [];
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
+            alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -3005,11 +2748,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", creatureAlignment };
+            alignments["my creature"] = new[] { "other alignment", creatureAlignment };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -3018,34 +2761,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => alignments[c]);
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
+            var data = SetUpCreatureData();
+            data["my creature"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
-
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 4;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
+            SetUpHitDice(4);
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["my creature"] = [];
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
             var filters = new Filters { Alignment = alignmentFilter };
@@ -3076,7 +2804,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
+            alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -3085,34 +2813,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => alignments[c]);
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["my creature"] = new CreatureDataSelection { CasterLevel = 0, LevelAdjustment = 0, ChallengeRating = ChallengeRatingConstants.CR1 };
+            var data = SetUpCreatureData();
+            data["my creature"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = 0 }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
-
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
+            SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["my creature"] = [];
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
             var filters = new Filters { Alignment = alignment, Type = type, ChallengeRating = challengeRating };
@@ -3152,70 +2865,41 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 11 };
-            data["creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 10 };
-            data["wrong creature 4"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
+            var data = SetUpCreatureData();
+            var hitDice = SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 1"] = [];
+            casters["creature 2"] = [];
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 1"] = [];
+            casters["wrong creature 2"] = [];
+            casters["wrong creature 3"] = [];
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 10 },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["creature 1"] = 1;
-            hitDice["creature 2"] = 1;
-            hitDice["creature 3"] = 1;
-            hitDice["wrong creature 1"] = 1;
-            hitDice["wrong creature 2"] = 1;
-            hitDice["wrong creature 3"] = 1;
-            hitDice["wrong creature 4"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
-            alignments["creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
-            alignments["creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulGood };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
-            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralGood };
+            alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
+            alignments["creature 2"] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
+            alignments["creature 3"] = new[] { "other alignment", AlignmentConstants.LawfulGood };
+            alignments["wrong creature 1"] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
+            alignments["wrong creature 2"] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
+            alignments["wrong creature 3"] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
+            alignments["wrong creature 4"] = new[] { "other alignment", AlignmentConstants.NeutralGood };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -3230,11 +2914,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("creature 1")
                     .WithCreatureType(types["creature 1"].ToArray())
-                    .WithAlignments(alignments["creature 1" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["creature 1"].ChallengeRating)
-                    .WithCasterLevel(data["creature 1"].CasterLevel)
-                    .WithLevelAdjustment(data["creature 1"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["creature 1"])
+                    .WithAlignments(alignments["creature 1"].ToArray())
+                    .WithChallengeRating(data["creature 1"].Single().ChallengeRating)
+                    .WithCasterLevel(data["creature 1"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["creature 1"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["creature 1"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
                     .WithAbility(AbilityConstants.Dexterity, 42)
@@ -3246,11 +2930,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("creature 2")
                     .WithCreatureType(types["creature 2"].ToArray())
-                    .WithAlignments(alignments["creature 2" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["creature 2"].ChallengeRating)
-                    .WithCasterLevel(data["creature 2"].CasterLevel)
-                    .WithLevelAdjustment(data["creature 2"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["creature 2"])
+                    .WithAlignments(alignments["creature 2"].ToArray())
+                    .WithChallengeRating(data["creature 2"].Single().ChallengeRating)
+                    .WithCasterLevel(data["creature 2"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["creature 2"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["creature 2"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 96)
                     .WithAbility(AbilityConstants.Constitution, 783)
                     .WithAbility(AbilityConstants.Dexterity, 8245)
@@ -3262,11 +2946,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("creature 3")
                     .WithCreatureType(types["creature 3"].ToArray())
-                    .WithAlignments(alignments["creature 3" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["creature 3"].ChallengeRating)
-                    .WithCasterLevel(data["creature 3"].CasterLevel)
-                    .WithLevelAdjustment(data["creature 3"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["creature 3"])
+                    .WithAlignments(alignments["creature 3"].ToArray())
+                    .WithChallengeRating(data["creature 3"].Single().ChallengeRating)
+                    .WithCasterLevel(data["creature 3"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["creature 3"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["creature 3"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 69)
                     .WithAbility(AbilityConstants.Constitution, 420)
                     .WithAbility(AbilityConstants.Dexterity, 2)
@@ -3385,11 +3069,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creatures = new[] { "my creature", "wrong creature 1", "my other creature", "wrong creature 2", "wrong creature 3" };
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "preset alignment" };
-            alignments["my other creature" + GroupConstants.Exploded] = new[] { "preset alignment", "original alignment" };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", "wrong alignment" };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "wrong alignment", "original alignment" };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", "original alignment" };
+            alignments["my creature"] = new[] { "other alignment", "preset alignment" };
+            alignments["my other creature"] = new[] { "preset alignment", "original alignment" };
+            alignments["wrong creature 1"] = new[] { "other alignment", "wrong alignment" };
+            alignments["wrong creature 2"] = new[] { "wrong alignment", "original alignment" };
+            alignments["wrong creature 3"] = new[] { "other alignment", "original alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -3400,36 +3084,36 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = 1336 },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
                 .Returns(adjustments);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my other creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "my other creature"))
                 .Returns(adjustments);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"))
                 .Returns(new[]
                 {
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = -6 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 9266 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 90210 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 42 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = 600 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = 1337 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = -6 },
                 });
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"))
                 .Returns(adjustments);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 3"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 3"))
                 .Returns(adjustments);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -3446,50 +3130,31 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["my other creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
+            var data = SetUpCreatureData();
+            data["my creature"] = [new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
+            data["my other creature"] = [new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
+            data["wrong creature 1"] = [new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
+            data["wrong creature 2"] = [new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
+            data["wrong creature 3"] = [new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
-
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 2;
-            hitDice["my other creature"] = 2;
-            hitDice["wrong creature 1"] = 2;
-            hitDice["wrong creature 2"] = 2;
-            hitDice["wrong creature 3"] = 2;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
+            var hitDice = SetUpHitDice(2);
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "preset alignment"))
-                .Returns(new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" });
+                .Returns(["my creature", "wrong creature 2", "my other creature", "wrong creature 1"]);
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["my other creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["my creature"] = [];
+            casters["my other creature"] = [];
+            casters["wrong creature 1"] = [];
+            casters["wrong creature 2"] = [];
+            casters["wrong creature 3"] = [];
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
             var prototypes = new[]
@@ -3498,11 +3163,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my creature")
                     .WithCreatureType(types["my creature"].ToArray())
-                    .WithAlignments(alignments["my creature" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["my creature"].ChallengeRating)
-                    .WithCasterLevel(data["my creature"].CasterLevel)
-                    .WithLevelAdjustment(data["my creature"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["my creature"])
+                    .WithAlignments(alignments["my creature"].ToArray())
+                    .WithChallengeRating(data["my creature"].Single().ChallengeRating)
+                    .WithCasterLevel(data["my creature"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["my creature"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["my creature"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
                     .WithAbility(AbilityConstants.Dexterity, 42)
@@ -3514,11 +3179,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my other creature")
                     .WithCreatureType(types["my other creature"].ToArray())
-                    .WithAlignments(alignments["my other creature" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["my other creature"].ChallengeRating)
-                    .WithCasterLevel(data["my other creature"].CasterLevel)
-                    .WithLevelAdjustment(data["my other creature"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["my other creature"])
+                    .WithAlignments(alignments["my other creature"].ToArray())
+                    .WithChallengeRating(data["my other creature"].Single().ChallengeRating)
+                    .WithCasterLevel(data["my other creature"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["my other creature"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["my other creature"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 96)
                     .WithAbility(AbilityConstants.Constitution, 783)
                     .WithAbility(AbilityConstants.Dexterity, 8245)
@@ -3545,11 +3210,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creatures = new[] { "my creature", "wrong creature 1", "my other creature", "wrong creature 2", "wrong creature 3" };
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "preset Good", "preset alignment" };
-            alignments["my other creature" + GroupConstants.Exploded] = new[] { "preset Neutral", "original alignment" };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", "wrong alignment" };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "wrong alignment", "original alignment" };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", "original alignment" };
+            alignments["my creature"] = new[] { "preset Good", "preset alignment" };
+            alignments["my other creature"] = new[] { "preset Neutral", "original alignment" };
+            alignments["wrong creature 1"] = new[] { "other alignment", "wrong alignment" };
+            alignments["wrong creature 2"] = new[] { "wrong alignment", "original alignment" };
+            alignments["wrong creature 3"] = new[] { "other alignment", "original alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -3560,36 +3225,36 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var adjustments = new[]
             {
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = 600 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = 1337 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = 1336 },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
                 .Returns(adjustments);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my other creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "my other creature"))
                 .Returns(adjustments);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"))
                 .Returns(new[]
                 {
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 9266 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = -6 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 9266 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 90210 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 42 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = 600 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = 1337 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = -6 },
                 });
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"))
                 .Returns(adjustments);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 3"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 3"))
                 .Returns(adjustments);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -3606,46 +3271,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["my other creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
+            var data = SetUpCreatureData();
+            data["my creature"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
+            data["my other creature"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
+            data["wrong creature 1"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
+            data["wrong creature 2"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
+            data["wrong creature 3"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
-
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 2;
-            hitDice["my other creature"] = 2;
-            hitDice["wrong creature 1"] = 2;
-            hitDice["wrong creature 2"] = 2;
-            hitDice["wrong creature 3"] = 2;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
+            var hitDice = SetUpHitDice(2);
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["my other creature"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["my creature"] = [];
+            casters["my other creature"] = [];
+            casters["wrong creature 1"] = [];
+            casters["wrong creature 2"] = [];
+            casters["wrong creature 3"] = [];
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
             var prototypes = new[]
@@ -3654,11 +3300,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my creature")
                     .WithCreatureType(types["my creature"].ToArray())
-                    .WithAlignments(alignments["my creature" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["my creature"].ChallengeRating)
-                    .WithCasterLevel(data["my creature"].CasterLevel)
-                    .WithLevelAdjustment(data["my creature"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["my creature"])
+                    .WithAlignments(alignments["my creature"].ToArray())
+                    .WithChallengeRating(data["my creature"].Single().ChallengeRating)
+                    .WithCasterLevel(data["my creature"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["my creature"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["my creature"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
                     .WithAbility(AbilityConstants.Dexterity, 42)
@@ -3670,11 +3316,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my other creature")
                     .WithCreatureType(types["my other creature"].ToArray())
-                    .WithAlignments(alignments["my other creature" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["my other creature"].ChallengeRating)
-                    .WithCasterLevel(data["my other creature"].CasterLevel)
-                    .WithLevelAdjustment(data["my other creature"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["my other creature"])
+                    .WithAlignments(alignments["my other creature"].ToArray())
+                    .WithChallengeRating(data["my other creature"].Single().ChallengeRating)
+                    .WithCasterLevel(data["my other creature"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["my other creature"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["my other creature"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 96)
                     .WithAbility(AbilityConstants.Constitution, 783)
                     .WithAbility(AbilityConstants.Dexterity, 8245)
@@ -3791,74 +3437,45 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["creature 1"] = new CreatureDataSelection { ChallengeRating = original, LevelAdjustment = 0 };
-            data["creature 2"] = new CreatureDataSelection { ChallengeRating = original, CasterLevel = 11 };
-            data["creature 3"] = new CreatureDataSelection { ChallengeRating = original };
-            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = original, LevelAdjustment = 0 };
-            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = original };
-            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = original, CasterLevel = 10 };
-            data["wrong creature 4"] = new CreatureDataSelection { ChallengeRating = original };
-            data["wrong creature 5"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(original, 1), LevelAdjustment = 0 };
+            var data = SetUpCreatureData(original);
+            data["wrong creature 5"] = [new() { ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(original, 1), LevelAdjustment = 0 }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
+            var hitDice = SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 1"] = [];
+            casters["creature 2"] = [];
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 1"] = [];
+            casters["wrong creature 2"] = [];
+            casters["wrong creature 3"] = [];
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 10 },
             };
-            casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 5"] = [];
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["creature 1"] = 1;
-            hitDice["creature 2"] = 1;
-            hitDice["creature 3"] = 1;
-            hitDice["wrong creature 1"] = 1;
-            hitDice["wrong creature 2"] = 1;
-            hitDice["wrong creature 3"] = 1;
-            hitDice["wrong creature 4"] = 1;
-            hitDice["wrong creature 5"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
-            alignments["creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
-            alignments["creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulGood };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
-            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralGood };
-            alignments["wrong creature 5" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
+            alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
+            alignments["creature 2"] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
+            alignments["creature 3"] = new[] { "other alignment", AlignmentConstants.LawfulGood };
+            alignments["wrong creature 1"] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
+            alignments["wrong creature 2"] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
+            alignments["wrong creature 3"] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
+            alignments["wrong creature 4"] = new[] { "other alignment", AlignmentConstants.NeutralGood };
+            alignments["wrong creature 5"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -3873,11 +3490,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("creature 1")
                     .WithCreatureType(types["creature 1"].ToArray())
-                    .WithAlignments(alignments["creature 1" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["creature 1"].ChallengeRating)
-                    .WithCasterLevel(data["creature 1"].CasterLevel)
-                    .WithLevelAdjustment(data["creature 1"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["creature 1"])
+                    .WithAlignments(alignments["creature 1"].ToArray())
+                    .WithChallengeRating(data["creature 1"].Single().ChallengeRating)
+                    .WithCasterLevel(data["creature 1"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["creature 1"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["creature 1"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
                     .WithAbility(AbilityConstants.Dexterity, 42)
@@ -3889,11 +3506,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("creature 2")
                     .WithCreatureType(types["creature 2"].ToArray())
-                    .WithAlignments(alignments["creature 2" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["creature 2"].ChallengeRating)
-                    .WithCasterLevel(data["creature 2"].CasterLevel)
-                    .WithLevelAdjustment(data["creature 2"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["creature 2"])
+                    .WithAlignments(alignments["creature 2"].ToArray())
+                    .WithChallengeRating(data["creature 2"].Single().ChallengeRating)
+                    .WithCasterLevel(data["creature 2"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["creature 2"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["creature 2"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 96)
                     .WithAbility(AbilityConstants.Constitution, 783)
                     .WithAbility(AbilityConstants.Dexterity, 8245)
@@ -3905,11 +3522,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("creature 3")
                     .WithCreatureType(types["creature 3"].ToArray())
-                    .WithAlignments(alignments["creature 3" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["creature 3"].ChallengeRating)
-                    .WithCasterLevel(data["creature 3"].CasterLevel)
-                    .WithLevelAdjustment(data["creature 3"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["creature 3"])
+                    .WithAlignments(alignments["creature 3"].ToArray())
+                    .WithChallengeRating(data["creature 3"].Single().ChallengeRating)
+                    .WithCasterLevel(data["creature 3"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["creature 3"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["creature 3"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 69)
                     .WithAbility(AbilityConstants.Constitution, 420)
                     .WithAbility(AbilityConstants.Dexterity, 2)
@@ -4056,70 +3673,41 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 11 };
-            data["creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 10 };
-            data["wrong creature 4"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
+            var data = SetUpCreatureData();
+            var hitDice = SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 1"] = [];
+            casters["creature 2"] = [];
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 1"] = [];
+            casters["wrong creature 2"] = [];
+            casters["wrong creature 3"] = [];
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 10 },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["creature 1"] = 1;
-            hitDice["creature 2"] = 1;
-            hitDice["creature 3"] = 1;
-            hitDice["wrong creature 1"] = 1;
-            hitDice["wrong creature 2"] = 1;
-            hitDice["wrong creature 3"] = 1;
-            hitDice["wrong creature 4"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
-            alignments["creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
-            alignments["creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulGood };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
-            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralGood };
+            alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
+            alignments["creature 2"] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
+            alignments["creature 3"] = new[] { "other alignment", AlignmentConstants.LawfulGood };
+            alignments["wrong creature 1"] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
+            alignments["wrong creature 2"] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
+            alignments["wrong creature 3"] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
+            alignments["wrong creature 4"] = new[] { "other alignment", AlignmentConstants.NeutralGood };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -4134,11 +3722,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("creature 1")
                     .WithCreatureType(types["creature 1"].ToArray())
-                    .WithAlignments(alignments["creature 1" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["creature 1"].ChallengeRating)
-                    .WithCasterLevel(data["creature 1"].CasterLevel)
-                    .WithLevelAdjustment(data["creature 1"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["creature 1"])
+                    .WithAlignments(alignments["creature 1"].ToArray())
+                    .WithChallengeRating(data["creature 1"].Single().ChallengeRating)
+                    .WithCasterLevel(data["creature 1"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["creature 1"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["creature 1"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
                     .WithAbility(AbilityConstants.Dexterity, 42)
@@ -4150,11 +3738,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("creature 2")
                     .WithCreatureType(types["creature 2"].ToArray())
-                    .WithAlignments(alignments["creature 2" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["creature 2"].ChallengeRating)
-                    .WithCasterLevel(data["creature 2"].CasterLevel)
-                    .WithLevelAdjustment(data["creature 2"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["creature 2"])
+                    .WithAlignments(alignments["creature 2"].ToArray())
+                    .WithChallengeRating(data["creature 2"].Single().ChallengeRating)
+                    .WithCasterLevel(data["creature 2"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["creature 2"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["creature 2"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 96)
                     .WithAbility(AbilityConstants.Constitution, 783)
                     .WithAbility(AbilityConstants.Dexterity, 8245)
@@ -4166,11 +3754,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("creature 3")
                     .WithCreatureType(types["creature 3"].ToArray())
-                    .WithAlignments(alignments["creature 3" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["creature 3"].ChallengeRating)
-                    .WithCasterLevel(data["creature 3"].CasterLevel)
-                    .WithLevelAdjustment(data["creature 3"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["creature 3"])
+                    .WithAlignments(alignments["creature 3"].ToArray())
+                    .WithChallengeRating(data["creature 3"].Single().ChallengeRating)
+                    .WithCasterLevel(data["creature 3"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["creature 3"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["creature 3"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 69)
                     .WithAbility(AbilityConstants.Constitution, 420)
                     .WithAbility(AbilityConstants.Dexterity, 2)
@@ -4318,77 +3906,48 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 11 };
-            data["creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 10 };
-            data["wrong creature 4"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 5"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
+            var data = SetUpCreatureData();
+            data["wrong creature 5"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
+            var hitDice = SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 1"] = [];
+            casters["creature 2"] = [];
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 1"] = [];
+            casters["wrong creature 2"] = [];
+            casters["wrong creature 3"] = [];
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 10 },
             };
-            casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 5"] = [];
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["creature 1"] = 1;
-            hitDice["creature 2"] = 1;
-            hitDice["creature 3"] = 1;
-            hitDice["wrong creature 1"] = 1;
-            hitDice["wrong creature 2"] = 1;
-            hitDice["wrong creature 3"] = 1;
-            hitDice["wrong creature 4"] = 1;
-            hitDice["wrong creature 5"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
-            alignments["creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
-            alignments["creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulGood };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
-            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralGood };
-            alignments["wrong creature 5" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
+            alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
+            alignments["creature 2"] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
+            alignments["creature 3"] = new[] { "other alignment", AlignmentConstants.LawfulGood };
+            alignments["wrong creature 1"] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
+            alignments["wrong creature 2"] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
+            alignments["wrong creature 3"] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
+            alignments["wrong creature 4"] = new[] { "other alignment", AlignmentConstants.NeutralGood };
+            alignments["wrong creature 5"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -4403,11 +3962,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("creature 1")
                     .WithCreatureType(types["creature 1"].ToArray())
-                    .WithAlignments(alignments["creature 1" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["creature 1"].ChallengeRating)
-                    .WithCasterLevel(data["creature 1"].CasterLevel)
-                    .WithLevelAdjustment(data["creature 1"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["creature 1"])
+                    .WithAlignments(alignments["creature 1"].ToArray())
+                    .WithChallengeRating(data["creature 1"].Single().ChallengeRating)
+                    .WithCasterLevel(data["creature 1"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["creature 1"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["creature 1"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
                     .WithAbility(AbilityConstants.Dexterity, 42)
@@ -4419,11 +3978,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("creature 2")
                     .WithCreatureType(types["creature 2"].ToArray())
-                    .WithAlignments(alignments["creature 2" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["creature 2"].ChallengeRating)
-                    .WithCasterLevel(data["creature 2"].CasterLevel)
-                    .WithLevelAdjustment(data["creature 2"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["creature 2"])
+                    .WithAlignments(alignments["creature 2"].ToArray())
+                    .WithChallengeRating(data["creature 2"].Single().ChallengeRating)
+                    .WithCasterLevel(data["creature 2"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["creature 2"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["creature 2"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 96)
                     .WithAbility(AbilityConstants.Constitution, 783)
                     .WithAbility(AbilityConstants.Dexterity, 8245)
@@ -4435,11 +3994,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("creature 3")
                     .WithCreatureType(types["creature 3"].ToArray())
-                    .WithAlignments(alignments["creature 3" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["creature 3"].ChallengeRating)
-                    .WithCasterLevel(data["creature 3"].CasterLevel)
-                    .WithLevelAdjustment(data["creature 3"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["creature 3"])
+                    .WithAlignments(alignments["creature 3"].ToArray())
+                    .WithChallengeRating(data["creature 3"].Single().ChallengeRating)
+                    .WithCasterLevel(data["creature 3"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["creature 3"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["creature 3"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 69)
                     .WithAbility(AbilityConstants.Constitution, 420)
                     .WithAbility(AbilityConstants.Dexterity, 2)
@@ -4591,81 +4150,51 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 11 };
-            data["creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 10 };
-            data["wrong creature 4"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 5"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR2, LevelAdjustment = 0 };
-            data["wrong creature 6"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
+            var data = SetUpCreatureData();
+            data["wrong creature 5"] = [new() { ChallengeRating = ChallengeRatingConstants.CR2, LevelAdjustment = 0 }];
+            data["wrong creature 6"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
+            var hitDice = SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 1"] = [];
+            casters["creature 2"] = [];
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 11 },
             };
-            casters["wrong creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 3"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 1"] = [];
+            casters["wrong creature 2"] = [];
+            casters["wrong creature 3"] = [];
             casters["wrong creature 4"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 10 },
             };
-            casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["wrong creature 6"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["wrong creature 5"] = [];
+            casters["wrong creature 6"] = [];
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["creature 1"] = 1;
-            hitDice["creature 2"] = 1;
-            hitDice["creature 3"] = 1;
-            hitDice["wrong creature 1"] = 1;
-            hitDice["wrong creature 2"] = 1;
-            hitDice["wrong creature 3"] = 1;
-            hitDice["wrong creature 4"] = 1;
-            hitDice["wrong creature 5"] = 1;
-            hitDice["wrong creature 6"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
-            alignments["creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
-            alignments["creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulGood };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
-            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.NeutralGood };
-            alignments["wrong creature 5" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
-            alignments["wrong creature 6" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticNeutral };
+            alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
+            alignments["creature 2"] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
+            alignments["creature 3"] = new[] { "other alignment", AlignmentConstants.LawfulGood };
+            alignments["wrong creature 1"] = new[] { "other alignment", AlignmentConstants.LawfulEvil };
+            alignments["wrong creature 2"] = new[] { "other alignment", AlignmentConstants.ChaoticGood };
+            alignments["wrong creature 3"] = new[] { "other alignment", AlignmentConstants.NeutralEvil };
+            alignments["wrong creature 4"] = new[] { "other alignment", AlignmentConstants.NeutralGood };
+            alignments["wrong creature 5"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
+            alignments["wrong creature 6"] = new[] { "other alignment", AlignmentConstants.ChaoticNeutral };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -4680,11 +4209,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("creature 1")
                     .WithCreatureType(types["creature 1"].ToArray())
-                    .WithAlignments(alignments["creature 1" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["creature 1"].ChallengeRating)
-                    .WithCasterLevel(data["creature 1"].CasterLevel)
-                    .WithLevelAdjustment(data["creature 1"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["creature 1"])
+                    .WithAlignments(alignments["creature 1"].ToArray())
+                    .WithChallengeRating(data["creature 1"].Single().ChallengeRating)
+                    .WithCasterLevel(data["creature 1"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["creature 1"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["creature 1"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
                     .WithAbility(AbilityConstants.Dexterity, 42)
@@ -4695,12 +4224,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new CreaturePrototypeBuilder()
                     .WithTestValues()
                     .WithName("creature 2")
-                    .WithCreatureType(types["creature 2"].ToArray())
-                    .WithAlignments(alignments["creature 2" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["creature 2"].ChallengeRating)
-                    .WithCasterLevel(data["creature 2"].CasterLevel)
-                    .WithLevelAdjustment(data["creature 2"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["creature 2"])
+                    .WithCreatureType([.. types["creature 2"]])
+                    .WithAlignments([.. alignments["creature 2"]])
+                    .WithChallengeRating(data["creature 2"].Single().ChallengeRating)
+                    .WithCasterLevel(data["creature 2"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["creature 2"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["creature 2"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 96)
                     .WithAbility(AbilityConstants.Constitution, 783)
                     .WithAbility(AbilityConstants.Dexterity, 8245)
@@ -4711,12 +4240,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new CreaturePrototypeBuilder()
                     .WithTestValues()
                     .WithName("creature 3")
-                    .WithCreatureType(types["creature 3"].ToArray())
-                    .WithAlignments(alignments["creature 3" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["creature 3"].ChallengeRating)
-                    .WithCasterLevel(data["creature 3"].CasterLevel)
-                    .WithLevelAdjustment(data["creature 3"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["creature 3"])
+                    .WithCreatureType([.. types["creature 3"]])
+                    .WithAlignments([.. alignments["creature 3"]])
+                    .WithChallengeRating(data["creature 3"].Single().ChallengeRating)
+                    .WithCasterLevel(data["creature 3"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["creature 3"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["creature 3"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 69)
                     .WithAbility(AbilityConstants.Constitution, 420)
                     .WithAbility(AbilityConstants.Dexterity, 2)
@@ -4856,53 +4385,36 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 };
-            data["creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 11, LevelAdjustment = 2 };
-            data["creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 5 };
+            var data = SetUpCreatureData();
+            data["creature 1"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
+            data["creature 2"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 11, LevelAdjustment = 2 }];
+            data["creature 3"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 5 }];
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
+            var hitDice = SetUpHitDice();
 
             var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["creature 1"] = Enumerable.Empty<TypeAndAmountDataSelection>();
-            casters["creature 2"] = Enumerable.Empty<TypeAndAmountDataSelection>();
+            casters["creature 1"] = [];
+            casters["creature 2"] = [];
             casters["creature 3"] = new[]
             {
-                new TypeAndAmountDataSelection { Type = "caster 1", Amount = 10 },
-                new TypeAndAmountDataSelection { Type = "caster 2", Amount = 11 },
+                new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
+                new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 11 },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
                 .Returns(casters);
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["creature 1"] = 1;
-            hitDice["creature 2"] = 1;
-            hitDice["creature 3"] = 1;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["creature 1" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
-            alignments["creature 2" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
-            alignments["creature 3" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulGood };
+            alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
+            alignments["creature 2"] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
+            alignments["creature 3"] = new[] { "other alignment", AlignmentConstants.LawfulGood };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -4917,11 +4429,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("creature 1")
                     .WithCreatureType(types["creature 1"].ToArray())
-                    .WithAlignments(alignments["creature 1" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["creature 1"].ChallengeRating)
-                    .WithCasterLevel(data["creature 1"].CasterLevel)
-                    .WithLevelAdjustment(data["creature 1"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["creature 1"])
+                    .WithAlignments(alignments["creature 1"].ToArray())
+                    .WithChallengeRating(data["creature 1"].Single().ChallengeRating)
+                    .WithCasterLevel(data["creature 1"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["creature 1"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["creature 1"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
                     .WithAbility(AbilityConstants.Dexterity, 42)
@@ -4933,11 +4445,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("creature 2")
                     .WithCreatureType(types["creature 2"].ToArray())
-                    .WithAlignments(alignments["creature 2" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["creature 2"].ChallengeRating)
-                    .WithCasterLevel(data["creature 2"].CasterLevel)
-                    .WithLevelAdjustment(data["creature 2"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["creature 2"])
+                    .WithAlignments(alignments["creature 2"].ToArray())
+                    .WithChallengeRating(data["creature 2"].Single().ChallengeRating)
+                    .WithCasterLevel(data["creature 2"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["creature 2"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["creature 2"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 96)
                     .WithAbility(AbilityConstants.Constitution, 783)
                     .WithAbility(AbilityConstants.Dexterity, 8245)
@@ -4949,11 +4461,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("creature 3")
                     .WithCreatureType(types["creature 3"].ToArray())
-                    .WithAlignments(alignments["creature 3" + GroupConstants.Exploded].ToArray())
-                    .WithChallengeRating(data["creature 3"].ChallengeRating)
-                    .WithCasterLevel(data["creature 3"].CasterLevel)
-                    .WithLevelAdjustment(data["creature 3"].LevelAdjustment)
-                    .WithHitDiceQuantity(hitDice["creature 3"])
+                    .WithAlignments(alignments["creature 3"].ToArray())
+                    .WithChallengeRating(data["creature 3"].Single().ChallengeRating)
+                    .WithCasterLevel(data["creature 3"].Single().CasterLevel)
+                    .WithLevelAdjustment(data["creature 3"].Single().LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["creature 3"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 69)
                     .WithAbility(AbilityConstants.Constitution, 420)
                     .WithAbility(AbilityConstants.Dexterity, 2)

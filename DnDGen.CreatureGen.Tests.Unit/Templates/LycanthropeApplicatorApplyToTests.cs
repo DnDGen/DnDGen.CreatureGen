@@ -9,13 +9,13 @@ using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Defenses;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Skills;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
+using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using Moq;
@@ -44,7 +44,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<ISavesGenerator> mockSavesGenerator;
         private Mock<ISkillsGenerator> mockSkillsGenerator;
         private Mock<ISpeedsGenerator> mockSpeedsGenerator;
-        private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
         private Mock<IDemographicsGenerator> mockDemographicsGenerator;
         private HitPoints animalHitPoints;
@@ -75,7 +74,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockSavesGenerator = new Mock<ISavesGenerator>();
             mockSkillsGenerator = new Mock<ISkillsGenerator>();
             mockSpeedsGenerator = new Mock<ISpeedsGenerator>();
-            mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
             mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
@@ -90,7 +88,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockSavesGenerator.Object,
                 mockSkillsGenerator.Object,
                 mockSpeedsGenerator.Object,
-                mockAdjustmentSelector.Object,
                 mockPrototypeFactory.Object,
                 mockDemographicsGenerator.Object);
             applicator.LycanthropeSpecies = "my lycanthrope";
@@ -271,7 +268,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(g => g.GenerateAttacks(
                     "my animal",
                     animalData.Size,
-                    animalData.Size,
                     baseCreature.BaseAttackBonus + animalBaseAttack,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.HitDice[0].RoundedQuantity + hitDie.RoundedQuantity,
@@ -321,7 +317,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             animalData.NaturalArmor = naturalArmor > -1 ? naturalArmor : random.Next(20);
 
             mockCreatureDataSelector
-                .Setup(s => s.SelectFor(animal))
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, animal))
                 .Returns(animalData);
 
             //Hit points
@@ -413,7 +409,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
                     animal,
-                    animalData.Size,
                     animalData.Size,
                     baseCreature.BaseAttackBonus + animalBaseAttack,
                     baseCreature.Abilities,
@@ -666,15 +661,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             SetUpAnimal("my animal", roll: 9266, average: 90210.42);
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my animal"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "my animal"))
                 .Returns(new[]
                 {
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 666 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 666 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 8245 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = -666 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = -666 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = -666 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 666 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 666 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 8245 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = -666 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = -666 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = -666 },
                 });
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -1006,7 +1001,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
                     "my lycanthrope",
-                    SizeConstants.Medium,
                     biggerSize,
                     baseCreature.BaseAttackBonus + animalBaseAttack,
                     baseCreature.Abilities,
@@ -1052,7 +1046,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
                     "my lycanthrope",
-                    SizeConstants.Medium,
                     biggerSize,
                     baseCreature.BaseAttackBonus + animalBaseAttack,
                     baseCreature.Abilities,
@@ -1085,7 +1078,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
                     "my lycanthrope",
-                    SizeConstants.Medium,
                     size,
                     baseCreature.BaseAttackBonus + animalBaseAttack,
                     baseCreature.Abilities,
@@ -1120,7 +1112,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
                     "my lycanthrope",
-                    SizeConstants.Medium,
                     size,
                     baseCreature.BaseAttackBonus + animalBaseAttack,
                     baseCreature.Abilities,
@@ -1158,7 +1149,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
                     "my lycanthrope",
-                    SizeConstants.Medium,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus + animalBaseAttack,
                     baseCreature.Abilities,
@@ -1373,16 +1363,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var animalAbilityAdjustments = new[]
             {
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, Amount = 666 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, Amount = 9266 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, Amount = 90210 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, Amount = 666 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, Amount = 42 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, Amount = 666 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = 666 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 9266 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 90210 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = 666 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 42 },
+                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = 666 },
             };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my animal"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "my animal"))
                 .Returns(animalAbilityAdjustments);
 
             var creature = applicator.ApplyTo(baseCreature, false);

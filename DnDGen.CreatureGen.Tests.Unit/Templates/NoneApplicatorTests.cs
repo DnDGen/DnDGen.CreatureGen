@@ -2,7 +2,6 @@
 using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Creatures;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
@@ -25,7 +24,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private TemplateApplicator templateApplicator;
         private Mock<ICollectionSelector> mockCollectionSelector;
         private Mock<ICollectionDataSelector<CreatureDataSelection>> mockCreatureDataSelector;
-        private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
+        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
 
         [SetUp]
@@ -33,13 +32,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             mockCollectionSelector = new Mock<ICollectionSelector>();
             mockCreatureDataSelector = new Mock<ICollectionDataSelector<CreatureDataSelection>>();
-            mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
+            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
 
             templateApplicator = new NoneApplicator(
                 mockCollectionSelector.Object,
                 mockCreatureDataSelector.Object,
-                mockAdjustmentSelector.Object,
+                mockTypeAndAmountSelector.Object,
                 mockPrototypeFactory.Object);
         }
 
@@ -579,10 +578,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             hitDice["my creature"] = 4;
             hitDice["my other creature"] = 1;
 
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
                 .Returns(hitDice);
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
@@ -609,12 +608,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["my other creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
+            alignments["my creature"] = new[] { "other alignment", "my alignment" };
+            alignments["my other creature"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 1"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 2"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 3"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 4"] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -646,10 +645,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "preset alignment", "other alignment" };
-            alignments["my other creature" + GroupConstants.Exploded] = new[] { "preset alignment", "other alignment" };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "wrong alignment", "other alignment" };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "wrong alignment" };
+            alignments["my creature"] = new[] { "preset alignment", "other alignment" };
+            alignments["my other creature"] = new[] { "preset alignment", "other alignment" };
+            alignments["wrong creature 1"] = new[] { "wrong alignment", "other alignment" };
+            alignments["wrong creature 2"] = new[] { "wrong alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -681,10 +680,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             hitDice["wrong creature 1"] = 1;
             hitDice["wrong creature 2"] = 1;
 
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
                 .Returns(hitDice);
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
@@ -705,10 +704,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             hitDice["wrong creature 1"] = 4;
             hitDice["wrong creature 2"] = 4;
 
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
                 .Returns(hitDice);
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
@@ -739,12 +738,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["my other creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
+            alignments["my creature"] = new[] { "other alignment", "my alignment" };
+            alignments["my other creature"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 1"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 2"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 3"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 4"] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -788,10 +787,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             hitDice["wrong creature 1"] = 4;
             hitDice["wrong creature 2"] = 4;
 
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
                 .Returns(hitDice);
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
@@ -809,12 +808,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string c) => data[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["my other creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
+            alignments["my creature"] = new[] { "other alignment", "my alignment" };
+            alignments["my other creature"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 1"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 2"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 3"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 4"] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -842,10 +841,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             hitDice["wrong creature 3"] = 4;
             hitDice["wrong creature 4"] = 4;
 
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
                 .Returns(hitDice);
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
@@ -883,12 +882,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["my other creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
+            alignments["my creature"] = new[] { "other alignment", "my alignment" };
+            alignments["my other creature"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 1"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 2"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 3"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 4"] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -910,10 +909,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var hitDice = new Dictionary<string, double>();
             hitDice["my creature"] = 4;
 
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
                 .Returns(hitDice);
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
@@ -941,7 +940,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
+            alignments["my creature"] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -984,10 +983,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var hitDice = new Dictionary<string, double>();
             hitDice["my creature"] = 4;
 
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
                 .Returns(hitDice);
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
@@ -1002,7 +1001,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string c) => data[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
+            alignments["my creature"] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -1041,10 +1040,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var hitDice = new Dictionary<string, double>();
             hitDice["my creature"] = 1;
 
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
                 .Returns(hitDice);
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
@@ -1069,7 +1068,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
+            alignments["my creature"] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -1146,10 +1145,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var hitDice = new Dictionary<string, double>();
             hitDice["my creature"] = hitDiceQuantity;
 
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
                 .Returns(hitDice);
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
@@ -1174,7 +1173,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
+            alignments["my creature"] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -1251,10 +1250,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var hitDice = new Dictionary<string, double>();
             hitDice["my creature"] = hitDiceQuantity;
 
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
                 .Returns(hitDice);
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
@@ -1279,7 +1278,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
+            alignments["my creature"] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -1314,7 +1313,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
+            alignments["my creature"] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -1343,10 +1342,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var hitDice = new Dictionary<string, double>();
             hitDice["my creature"] = 4;
 
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
                 .Returns(hitDice);
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
@@ -1369,10 +1368,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var hitDice = new Dictionary<string, double>();
             hitDice["my creature"] = 2;
 
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
                 .Returns(hitDice);
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
@@ -1400,7 +1399,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
+            alignments["my creature"] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -1431,10 +1430,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             hitDice["my creature"] = 4;
             hitDice["my other creature"] = 1;
 
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
                 .Returns(hitDice);
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
@@ -1461,12 +1460,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["my other creature" + GroupConstants.Exploded] = new[] { "another alignment", "my alignment" };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
+            alignments["my creature"] = new[] { "other alignment", "my alignment" };
+            alignments["my other creature"] = new[] { "another alignment", "my alignment" };
+            alignments["wrong creature 1"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 2"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 3"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 4"] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -1481,7 +1480,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my creature")
                     .WithCreatureType(types["my creature"].ToArray())
-                    .WithAlignments(alignments["my creature" + GroupConstants.Exploded].ToArray())
+                    .WithAlignments(alignments["my creature"].ToArray())
                     .WithChallengeRating(data["my creature"].ChallengeRating)
                     .WithCasterLevel(data["my creature"].CasterLevel)
                     .WithLevelAdjustment(data["my creature"].LevelAdjustment)
@@ -1497,7 +1496,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my other creature")
                     .WithCreatureType(types["my other creature"].ToArray())
-                    .WithAlignments(alignments["my other creature" + GroupConstants.Exploded].ToArray())
+                    .WithAlignments(alignments["my other creature"].ToArray())
                     .WithChallengeRating(data["my other creature"].ChallengeRating)
                     .WithCasterLevel(data["my other creature"].CasterLevel)
                     .WithLevelAdjustment(data["my other creature"].LevelAdjustment)
@@ -1598,10 +1597,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "preset alignment", "other alignment" };
-            alignments["my other creature" + GroupConstants.Exploded] = new[] { "preset alignment", "other alignment" };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "wrong alignment", "other alignment" };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "wrong alignment" };
+            alignments["my creature"] = new[] { "preset alignment", "other alignment" };
+            alignments["my other creature"] = new[] { "preset alignment", "other alignment" };
+            alignments["wrong creature 1"] = new[] { "wrong alignment", "other alignment" };
+            alignments["wrong creature 2"] = new[] { "wrong alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -1633,10 +1632,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             hitDice["wrong creature 1"] = 1;
             hitDice["wrong creature 2"] = 1;
 
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
                 .Returns(hitDice);
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
@@ -1646,7 +1645,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my creature")
                     .WithCreatureType(types["my creature"].ToArray())
-                    .WithAlignments(alignments["my creature" + GroupConstants.Exploded].ToArray())
+                    .WithAlignments(alignments["my creature"].ToArray())
                     .WithChallengeRating(data["my creature"].ChallengeRating)
                     .WithCasterLevel(data["my creature"].CasterLevel)
                     .WithLevelAdjustment(data["my creature"].LevelAdjustment)
@@ -1662,7 +1661,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my other creature")
                     .WithCreatureType(types["my other creature"].ToArray())
-                    .WithAlignments(alignments["my other creature" + GroupConstants.Exploded].ToArray())
+                    .WithAlignments(alignments["my other creature"].ToArray())
                     .WithChallengeRating(data["my other creature"].ChallengeRating)
                     .WithCasterLevel(data["my other creature"].CasterLevel)
                     .WithLevelAdjustment(data["my other creature"].LevelAdjustment)
@@ -1755,10 +1754,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             hitDice["wrong creature 1"] = 4;
             hitDice["wrong creature 2"] = 4;
 
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
                 .Returns(hitDice);
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
@@ -1789,12 +1788,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["my other creature" + GroupConstants.Exploded] = new[] { "another alignment", "my alignment" };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
+            alignments["my creature"] = new[] { "other alignment", "my alignment" };
+            alignments["my other creature"] = new[] { "another alignment", "my alignment" };
+            alignments["wrong creature 1"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 2"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 3"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 4"] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -1809,7 +1808,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my creature")
                     .WithCreatureType(types["my creature"].ToArray())
-                    .WithAlignments(alignments["my creature" + GroupConstants.Exploded].ToArray())
+                    .WithAlignments(alignments["my creature"].ToArray())
                     .WithChallengeRating(data["my creature"].ChallengeRating)
                     .WithCasterLevel(data["my creature"].CasterLevel)
                     .WithLevelAdjustment(data["my creature"].LevelAdjustment)
@@ -1825,7 +1824,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my other creature")
                     .WithCreatureType(types["my other creature"].ToArray())
-                    .WithAlignments(alignments["my other creature" + GroupConstants.Exploded].ToArray())
+                    .WithAlignments(alignments["my other creature"].ToArray())
                     .WithChallengeRating(data["my other creature"].ChallengeRating)
                     .WithCasterLevel(data["my other creature"].CasterLevel)
                     .WithLevelAdjustment(data["my other creature"].LevelAdjustment)
@@ -1936,10 +1935,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             hitDice["wrong creature 1"] = 4;
             hitDice["wrong creature 2"] = 4;
 
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
                 .Returns(hitDice);
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
@@ -1957,12 +1956,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string c) => data[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["my other creature" + GroupConstants.Exploded] = new[] { "another alignment", "my alignment" };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
+            alignments["my creature"] = new[] { "other alignment", "my alignment" };
+            alignments["my other creature"] = new[] { "another alignment", "my alignment" };
+            alignments["wrong creature 1"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 2"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 3"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 4"] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -1977,7 +1976,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my creature")
                     .WithCreatureType(types["my creature"].ToArray())
-                    .WithAlignments(alignments["my creature" + GroupConstants.Exploded].ToArray())
+                    .WithAlignments(alignments["my creature"].ToArray())
                     .WithChallengeRating(data["my creature"].ChallengeRating)
                     .WithCasterLevel(data["my creature"].CasterLevel)
                     .WithLevelAdjustment(data["my creature"].LevelAdjustment)
@@ -1993,7 +1992,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my other creature")
                     .WithCreatureType(types["my other creature"].ToArray())
-                    .WithAlignments(alignments["my other creature" + GroupConstants.Exploded].ToArray())
+                    .WithAlignments(alignments["my other creature"].ToArray())
                     .WithChallengeRating(data["my other creature"].ChallengeRating)
                     .WithCasterLevel(data["my other creature"].CasterLevel)
                     .WithLevelAdjustment(data["my other creature"].LevelAdjustment)
@@ -2090,10 +2089,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             hitDice["wrong creature 3"] = 4;
             hitDice["wrong creature 4"] = 4;
 
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
                 .Returns(hitDice);
-            mockAdjustmentSelector
+            mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
@@ -2131,12 +2130,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["my other creature" + GroupConstants.Exploded] = new[] { "another alignment", "my alignment" };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
+            alignments["my creature"] = new[] { "other alignment", "my alignment" };
+            alignments["my other creature"] = new[] { "another alignment", "my alignment" };
+            alignments["wrong creature 1"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 2"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 3"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 4"] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -2151,7 +2150,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my creature")
                     .WithCreatureType(types["my creature"].ToArray())
-                    .WithAlignments(alignments["my creature" + GroupConstants.Exploded].ToArray())
+                    .WithAlignments(alignments["my creature"].ToArray())
                     .WithChallengeRating(data["my creature"].ChallengeRating)
                     .WithCasterLevel(data["my creature"].CasterLevel)
                     .WithLevelAdjustment(data["my creature"].LevelAdjustment)
@@ -2167,7 +2166,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my other creature")
                     .WithCreatureType(types["my other creature"].ToArray())
-                    .WithAlignments(alignments["my other creature" + GroupConstants.Exploded].ToArray())
+                    .WithAlignments(alignments["my other creature"].ToArray())
                     .WithChallengeRating(data["my other creature"].ChallengeRating)
                     .WithCasterLevel(data["my other creature"].CasterLevel)
                     .WithLevelAdjustment(data["my other creature"].LevelAdjustment)
