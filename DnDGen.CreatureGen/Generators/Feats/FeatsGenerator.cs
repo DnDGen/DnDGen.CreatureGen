@@ -40,30 +40,27 @@ namespace DnDGen.CreatureGen.Generators.Feats
             string size,
             Alignment alignment)
         {
-            throw new NotImplementedException("Refactor with possible/available/selected feat lists");
-
             var specialQualitySelections = featsSelector.SelectSpecialQualities(creatureName, creatureType);
             var specialQualities = new List<Feat>();
-            var addedNames = new HashSet<string>();
 
-            var newSelections = specialQualitySelections
-                .Where(s => s.RequirementsMet(abilities, specialQualities, canUseEquipment, size, alignment, hitPoints)
-                    && !addedNames.Contains(s.Feat));
+            var possibleSelections = specialQualitySelections.ToList();
+            var availableSelections = possibleSelections
+                .Where(s => s.RequirementsMet(abilities, specialQualities, canUseEquipment, size, alignment, hitPoints))
+                .ToList();
 
             do
             {
-                //INFO: Need to do this, or the foreach loop gets angry
-                var setNewSelections = newSelections.ToArray();
-
-                foreach (var selection in setNewSelections)
+                foreach (var selection in availableSelections)
                 {
                     var specialQuality = Feat.From(selection, abilities);
                     specialQuality.Foci = GetFoci(selection, skills, abilities);
 
                     specialQualities.Add(specialQuality);
-                    addedNames.Add(specialQuality.Name);
                 }
-            } while (newSelections.Any());
+
+                possibleSelections = [.. possibleSelections.Except(availableSelections)];
+                availableSelections = [.. possibleSelections.Where(s => s.RequirementsMet(abilities, specialQualities, canUseEquipment, size, alignment, hitPoints))];
+            } while (availableSelections.Any());
 
             //HACK: Handling this usecase because the orc creature and orc creature type are identical
             if (creatureName == CreatureConstants.Orc_Half)
@@ -161,8 +158,6 @@ namespace DnDGen.CreatureGen.Generators.Feats
             int casterLevel,
             IEnumerable<Attack> attacks)
         {
-            throw new NotImplementedException("Refactor with possible/available/selected feat lists");
-
             var feats = new List<Feat>();
             var chosenFeats = new List<Feat>(preselectedFeats);
 
