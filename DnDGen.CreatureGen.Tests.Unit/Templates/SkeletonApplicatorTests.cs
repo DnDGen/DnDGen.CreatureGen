@@ -2807,7 +2807,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my creature")
                     .WithCreatureType(types["my creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my creature"])
+                    .WithHitDiceQuantity(hitDice["my creature"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
                     .WithAbility(AbilityConstants.Dexterity, 42)
@@ -2819,7 +2819,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my other creature")
                     .WithCreatureType(types["my other creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my other creature"])
+                    .WithHitDiceQuantity(hitDice["my other creature"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 96)
                     .WithAbility(AbilityConstants.Constitution, 783)
                     .WithAbility(AbilityConstants.Dexterity, 8245)
@@ -2934,7 +2934,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my creature")
                     .WithCreatureType(types["my creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my creature"])
+                    .WithHitDiceQuantity(hitDice["my creature"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
                     .WithAbility(AbilityConstants.Dexterity, 42)
@@ -2946,7 +2946,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my other creature")
                     .WithCreatureType(types["my other creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my other creature"])
+                    .WithHitDiceQuantity(hitDice["my other creature"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 96)
                     .WithAbility(AbilityConstants.Constitution, 783)
                     .WithAbility(AbilityConstants.Dexterity, 8245)
@@ -2985,18 +2985,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 1;
-            hitDice["my other creature"] = 1;
-            hitDice["wrong creature 1"] = 1;
-            hitDice["wrong creature 2"] = 21;
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
+            var hitDice = SetUpHitDice();
+            hitDice["wrong creature 2"] = [new() { AmountAsDouble = 21 }];
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton))
@@ -3008,7 +2998,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my creature")
                     .WithCreatureType(types["my creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my creature"])
+                    .WithHitDiceQuantity(hitDice["my creature"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
                     .WithAbility(AbilityConstants.Dexterity, 42)
@@ -3020,7 +3010,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my other creature")
                     .WithCreatureType(types["my other creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my other creature"])
+                    .WithHitDiceQuantity(hitDice["my other creature"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 96)
                     .WithAbility(AbilityConstants.Constitution, 783)
                     .WithAbility(AbilityConstants.Dexterity, 8245)
@@ -3130,18 +3120,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton))
                 .Returns(new[] { "my wrong creature", "my creature", "my other creature", "yet another creature" });
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = lower + 0.01;
-            hitDice["my other creature"] = upper;
-            hitDice["another creature"] = (lower + upper) / 2;
-            hitDice["yet another creature"] = (lower + upper) / 2;
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
+            var hitDice = SetUpHitDice();
+            hitDice["my creature"] = [new() { AmountAsDouble = lower + 0.01 }];
+            hitDice["my other creature"] = [new() { AmountAsDouble = upper }];
+            hitDice["another creature"] = [new() { AmountAsDouble = (lower + upper) / 2 }];
+            hitDice["yet another creature"] = [new() { AmountAsDouble = (lower + upper) / 2 }];
 
             var prototypes = new[]
             {
@@ -3149,7 +3132,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my creature")
                     .WithCreatureType(types["my creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my creature"])
+                    .WithHitDiceQuantity(hitDice["my creature"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
                     .WithAbility(AbilityConstants.Dexterity, 42)
@@ -3161,7 +3144,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my other creature")
                     .WithCreatureType(types["my other creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my other creature"])
+                    .WithHitDiceQuantity(hitDice["my other creature"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 96)
                     .WithAbility(AbilityConstants.Constitution, 783)
                     .WithAbility(AbilityConstants.Dexterity, 8245)
@@ -3173,7 +3156,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("yet another creature")
                     .WithCreatureType(types["yet another creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["yet another creature"])
+                    .WithHitDiceQuantity(hitDice["yet another creature"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 69)
                     .WithAbility(AbilityConstants.Constitution, 420)
                     .WithAbility(AbilityConstants.Dexterity, -2)
@@ -3329,18 +3312,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton))
                 .Returns(new[] { "my wrong creature", "my creature", "my other creature", "yet another creature" });
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = lower + 0.01;
-            hitDice["my other creature"] = upper + 0.01;
-            hitDice["another creature"] = lower;
-            hitDice["yet another creature"] = upper;
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
+            var hitDice = SetUpHitDice();
+            hitDice["my creature"] = [new() { AmountAsDouble = lower + 0.01 }];
+            hitDice["my other creature"] = [new() { AmountAsDouble = upper + 0.01 }];
+            hitDice["another creature"] = [new() { AmountAsDouble = lower }];
+            hitDice["yet another creature"] = [new() { AmountAsDouble = upper }];
 
             var prototypes = new[]
             {
@@ -3348,7 +3324,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my creature")
                     .WithCreatureType(types["my creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my creature"])
+                    .WithHitDiceQuantity(hitDice["my creature"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
                     .WithAbility(AbilityConstants.Dexterity, 42)
@@ -3360,7 +3336,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("yet another creature")
                     .WithCreatureType(types["yet another creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["yet another creature"])
+                    .WithHitDiceQuantity(hitDice["yet another creature"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 69)
                     .WithAbility(AbilityConstants.Constitution, 420)
                     .WithAbility(AbilityConstants.Dexterity, -2)
@@ -3434,8 +3410,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
             Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(upper));
 
-            mockTypeAndAmountSelector.Verify(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my other creature"), Times.Never);
-            mockTypeAndAmountSelector.Verify(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "another creature"), Times.Never);
+            mockTypeAndAmountSelector.Verify(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, "my other creature"), Times.Never);
+            mockTypeAndAmountSelector.Verify(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, "another creature"), Times.Never);
         }
 
         [Test]
@@ -3460,17 +3436,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton))
                 .Returns(new[] { "my wrong creature", "my creature", "my other creature" });
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 1;
-            hitDice["my other creature"] = 2;
-            hitDice["another creature"] = 1;
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
+            var hitDice = SetUpHitDice();
+            hitDice["my other creature"] = [new() { AmountAsDouble = 2 }];
 
             var prototypes = new[]
             {
@@ -3478,7 +3445,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my creature")
                     .WithCreatureType(types["my creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my creature"])
+                    .WithHitDiceQuantity(hitDice["my creature"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
                     .WithAbility(AbilityConstants.Dexterity, 42)
@@ -3490,7 +3457,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my other creature")
                     .WithCreatureType(types["my other creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my other creature"])
+                    .WithHitDiceQuantity(hitDice["my other creature"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 96)
                     .WithAbility(AbilityConstants.Constitution, 783)
                     .WithAbility(AbilityConstants.Dexterity, 8245)
@@ -3643,17 +3610,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton))
                 .Returns(new[] { "my wrong creature", "my creature", "another creature", "my other creature" });
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 1;
-            hitDice["my other creature"] = 2;
-            hitDice["another creature"] = 1;
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
+            var hitDice = SetUpHitDice();
+            hitDice["my other creature"] = [new() { AmountAsDouble = 2 }];
 
             var prototypes = new[]
             {
@@ -3661,7 +3619,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my creature")
                     .WithCreatureType(types["my creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my creature"])
+                    .WithHitDiceQuantity(hitDice["my creature"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
                     .WithAbility(AbilityConstants.Dexterity, 42)
@@ -3673,7 +3631,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my other creature")
                     .WithCreatureType(types["my other creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my other creature"])
+                    .WithHitDiceQuantity(hitDice["my other creature"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 96)
                     .WithAbility(AbilityConstants.Constitution, 783)
                     .WithAbility(AbilityConstants.Dexterity, 8245)
@@ -3760,18 +3718,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton))
                 .Returns(new[] { "my wrong creature", "my creature", "my other creature", "yet another creature" });
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 1.01;
-            hitDice["my other creature"] = 2;
-            hitDice["another creature"] = 1;
-            hitDice["yet another creature"] = 1.5;
 
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
+            var hitDice = SetUpHitDice();
+            hitDice["my creature"] = [new() { AmountAsDouble = 1.01 }];
+            hitDice["my other creature"] = [new() { AmountAsDouble = 2 }];
+            hitDice["another creature"] = [new() { AmountAsDouble = 1 }];
+            hitDice["yet another creature"] = [new() { AmountAsDouble = 1.5 }];
 
             var types = new Dictionary<string, IEnumerable<string>>();
             types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
@@ -3796,7 +3748,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my creature")
                     .WithCreatureType(types["my creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my creature"])
+                    .WithHitDiceQuantity(hitDice["my creature"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
                     .WithAbility(AbilityConstants.Dexterity, 42)
@@ -3808,7 +3760,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my other creature")
                     .WithCreatureType(types["my other creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my other creature"])
+                    .WithHitDiceQuantity(hitDice["my other creature"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 96)
                     .WithAbility(AbilityConstants.Constitution, 783)
                     .WithAbility(AbilityConstants.Dexterity, 8245)
@@ -3910,17 +3862,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton))
                 .Returns(new[] { "my wrong creature", "my creature", "my other creature", "another creature" });
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 1.01;
-            hitDice["my other creature"] = 2;
-            hitDice["another creature"] = 1.5;
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
+            var hitDice = SetUpHitDice();
+            hitDice["my creature"] = [new() { AmountAsDouble = 1.01 }];
+            hitDice["my other creature"] = [new() { AmountAsDouble = 2 }];
+            hitDice["another creature"] = [new() { AmountAsDouble = 1.5 }];
 
             var types = new Dictionary<string, IEnumerable<string>>();
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2", invalidType };
@@ -3943,7 +3888,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my creature")
                     .WithCreatureType(types["my creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my creature"])
+                    .WithHitDiceQuantity(hitDice["my creature"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
                     .WithAbility(AbilityConstants.Dexterity, 42)
@@ -3955,7 +3900,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my other creature")
                     .WithCreatureType(types["my other creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my other creature"])
+                    .WithHitDiceQuantity(hitDice["my other creature"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 96)
                     .WithAbility(AbilityConstants.Constitution, 783)
                     .WithAbility(AbilityConstants.Dexterity, 8245)
@@ -3967,7 +3912,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("another creature")
                     .WithCreatureType(types["another creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["another creature"])
+                    .WithHitDiceQuantity(hitDice["another creature"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 69)
                     .WithAbility(AbilityConstants.Constitution, 420)
                     .WithAbility(AbilityConstants.Dexterity, -2)
@@ -4081,16 +4026,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton))
                 .Returns(new[] { "my wrong creature", "my creature", "my other creature", "yet another creature" });
 
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 1.01;
-            hitDice["my other creature"] = 2;
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
+            var hitDice = SetUpHitDice();
+            hitDice["my creature"] = [new() { AmountAsDouble = 1.01 }];
+            hitDice["my other creature"] = [new() { AmountAsDouble = 2 }];
 
             var types = new Dictionary<string, IEnumerable<string>>();
             types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
@@ -4113,7 +4051,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my creature")
                     .WithCreatureType(types["my creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my creature"])
+                    .WithHitDiceQuantity(hitDice["my creature"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
                     .WithAbility(AbilityConstants.Dexterity, 42)
@@ -4127,7 +4065,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("my other creature")
                     .WithCreatureType(types["my other creature"].ToArray())
-                    .WithHitDiceQuantity(hitDice["my other creature"])
+                    .WithHitDiceQuantity(hitDice["my other creature"].Single().AmountAsDouble)
                     .WithAbility(AbilityConstants.Strength, 96)
                     .WithAbility(AbilityConstants.Constitution, 783)
                     .WithAbility(AbilityConstants.Dexterity, 8245)
@@ -4739,8 +4677,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
             Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(upper));
 
-            mockTypeAndAmountSelector.Verify(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my other creature"), Times.Never);
-            mockTypeAndAmountSelector.Verify(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "another creature"), Times.Never);
+            mockTypeAndAmountSelector.Verify(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, "my other creature"), Times.Never);
+            mockTypeAndAmountSelector.Verify(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, "another creature"), Times.Never);
         }
 
         [Test]

@@ -139,10 +139,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             abilities[AbilityConstants.Strength].BaseScore = 90210;
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Adjustments.GrappleBonuses, "size"))
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.GrappleBonuses, "size"))
                 .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 42 });
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Adjustments.GrappleBonuses, "creature"))
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.GrappleBonuses, "creature"))
                 .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 600 });
 
             var grappleBonus = attacksGenerator.GenerateGrappleBonus("creature", "size", 9266, abilities[AbilityConstants.Strength]);
@@ -155,10 +155,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             abilities[AbilityConstants.Strength].BaseScore = 1;
 
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Adjustments.GrappleBonuses, "size"))
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.GrappleBonuses, "size"))
                 .Returns(new TypeAndAmountDataSelection { AmountAsDouble = -1 });
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Adjustments.GrappleBonuses, "creature"))
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.GrappleBonuses, "creature"))
                 .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 0 });
 
             var grappleBonus = attacksGenerator.GenerateGrappleBonus("creature", "size", 0, abilities[AbilityConstants.Strength]);
@@ -706,7 +706,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "size")).Returns(attacks);
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Adjustments.SizeModifiers, "size"))
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.SizeModifiers, "size"))
                 .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 90210 });
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 600, "gender");
@@ -725,7 +725,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             mockAttackSelector.Setup(s => s.Select("creature", "size")).Returns(attacks);
             mockTypeAndAmountSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Adjustments.SizeModifiers, "size"))
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.SizeModifiers, "size"))
                 .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 90210 });
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 600, "gender");
@@ -1089,20 +1089,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [TestCase(AbilityConstants.Charisma)]
         public void GenerateAttackWithAbilityEffect(string ability)
         {
-            var attacks = new List<AttackDataSelection>();
-            attacks.Add(new AttackDataSelection()
+            var attacks = new List<AttackDataSelection>
             {
-                Name = "attack",
-                Damages = new List<Damage>
+                new()
                 {
-                    new Damage { Roll = "my roll", Type = "my type" },
-                    new Damage { Roll = "1d4", Type = ability },
-                },
-                DamageEffect = $"{ability} drain",
-                DamageBonusMultiplier = 0.5,
-                FrequencyQuantity = 1,
-                IsMelee = true,
-            });
+                    Name = "attack",
+                    Damages =
+                    [
+                        new() { Roll = "my roll", Type = "my type" },
+                        new() { Roll = "1d4", Type = ability },
+                    ],
+                    DamageEffect = $"{ability} drain",
+                    DamageBonusMultiplier = 0.5,
+                    FrequencyQuantity = 1,
+                    IsMelee = true,
+                }
+            };
 
             abilities[AbilityConstants.Strength].BaseScore = 90210;
 
