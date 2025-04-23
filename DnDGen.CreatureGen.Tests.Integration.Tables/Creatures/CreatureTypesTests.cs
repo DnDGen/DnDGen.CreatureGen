@@ -32,7 +32,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertCollectionNames(names);
         }
 
-        public static Dictionary<string, string[]> GetCreatureTypes()
+        private Dictionary<string, string[]> GetCreatureTypes()
         {
             var types = new Dictionary<string, string[]>
             {

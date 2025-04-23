@@ -2,9 +2,9 @@
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.Tables.Creatures;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Helpers;
+using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
 using System;
@@ -17,8 +17,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
     [TestFixture]
     public class DamageDataTests : CollectionTests
     {
-        private Dictionary<string, List<string>> creatureAttackData;
-        private Dictionary<string, List<string>> templateAttackData;
+        private Dictionary<string, IEnumerable<AttackDataSelection>> attackData;
         private Dictionary<string, List<string>> creatureAttackDamageData;
         private Dictionary<string, List<string>> templateAttackDamageData;
         private Dictionary<string, IEnumerable<AdvancementDataSelection>> advancementData;
@@ -29,18 +28,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-            creatureAttackData = AttackTestData.GetCreatureAttackData();
-            templateAttackData = AttackTestData.GetTemplateAttackData();
-            creatureAttackDamageData = DamageTestData.GetCreatureAttackDamageData();
-            templateAttackDamageData = DamageTestData.GetTemplateDamageData();
-            creatureData = CreatureDataTests.GetCreatureDataSelections();
-            advancementData = AdvancementsTests.GetAdvancementsTestData().ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(DataHelper.Parse<AdvancementDataSelection>));
+            var attackDataSelector = GetNewInstanceOf<ICollectionDataSelector<AttackDataSelection>>();
+            attackData = attackDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AttackData);
+
+            var creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
+            creatureData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Single());
+
+            var advancementsDataSelector = GetNewInstanceOf<ICollectionDataSelector<AdvancementDataSelection>>();
+            advancementData = advancementsDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.Advancements);
+
+            creatureAttackDamageData = DamageTestData.GetCreatureAttackDamageData(attackData, creatureData, advancementData);
+            templateAttackDamageData = DamageTestData.GetTemplateDamageData(attackData);
         }
 
         [Test]
         public void DamageDataNames()
         {
-            var creatureKeys = AttackTestData.GetCreatureDamageKeys();
+            var creatureKeys = AttackTestData.GetCreatureDamageKeys(creatureData, advancementData);
             var templateKeys = AttackTestData.GetTemplateDamageKeys();
             var names = creatureKeys.Concat(templateKeys);
 
@@ -67,7 +72,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
         private IEnumerable<string> GetCreatureDamageKeys(string creature)
         {
-            var attacks = creatureAttackData[creature].Select(DataHelper.Parse<AttackDataSelection>);
+            var attacks = attackData[creature];
             var sizes = advancementData[creature]
                 .Select(a => a.Size)
                 .Union([creatureData[creature].Size]);
@@ -109,7 +114,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
         private IEnumerable<string> GetTemplateDamageKeys(string template)
         {
-            var attacks = templateAttackData[template].Select(DataHelper.Parse<AttackDataSelection>);
+            var attacks = attackData[template];
             var sizes = SizeConstants.GetOrdered();
 
             foreach (var attack in attacks)
@@ -196,9 +201,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             }
             else
             {
-                var poisonAttack = creatureAttackData[creature]
-                    .Select(DataHelper.Parse<AttackDataSelection>)
-                    .FirstOrDefault(a => a.Name.Equals("poison", StringComparison.CurrentCultureIgnoreCase));
+                var poisonAttack = attackData[creature].FirstOrDefault(a => a.Name.Equals("poison", StringComparison.CurrentCultureIgnoreCase));
 
                 Assert.That(poisonAttack.DamageEffect, Is.Not.Empty);
             }
@@ -206,7 +209,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
         private void AssertDiseaseAttacksHaveCorrectDamageTypes(string creature, string key, List<string> entries)
         {
-            var attackSelections = creatureAttackData[creature].Select(DataHelper.Parse<AttackDataSelection>);
+            var attackSelections = attackData[creature];
 
             var disease = attackSelections.FirstOrDefault(s => s.Name.Equals("disease", StringComparison.CurrentCultureIgnoreCase));
             if (disease == null)
@@ -237,9 +240,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             }
 
             //Has Natural Attack with Damage
-            var naturalAttack = creatureAttackData[creature]
-                .Select(DataHelper.Parse<AttackDataSelection>)
-                .FirstOrDefault(a => a.IsNatural && !a.IsSpecial);
+            var naturalAttack = attackData[creature].FirstOrDefault(a => a.IsNatural && !a.IsSpecial);
 
             Assert.That(naturalAttack, Is.Not.Null);
             Assert.That(naturalAttack.Name, Is.Not.Empty);

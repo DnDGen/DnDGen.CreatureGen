@@ -122,7 +122,7 @@ namespace DnDGen.CreatureGen.Attacks
                 attack.Save = new SaveDieCheck
                 {
                     BaseValue = 10 + selection.SaveDcBonus,
-                    Save = selection.Save
+                    Save = selection.Save ?? string.Empty
                 };
 
                 if (attack.IsNatural && !string.IsNullOrEmpty(selection.SaveAbility))

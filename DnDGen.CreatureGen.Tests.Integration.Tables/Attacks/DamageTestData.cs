@@ -2,7 +2,6 @@
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Selections;
-using DnDGen.CreatureGen.Tests.Integration.Tables.Creatures;
 using DnDGen.Infrastructure.Helpers;
 using DnDGen.TreasureGen.Items;
 using System;
@@ -13,19 +12,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 {
     public static class DamageTestData
     {
-        public static Dictionary<string, List<string>> GetCreatureAttackDamageData()
+        internal static Dictionary<string, List<string>> GetCreatureAttackDamageData(
+            Dictionary<string, IEnumerable<AttackDataSelection>> attackDataSelections,
+            Dictionary<string, CreatureDataSelection> creatureData,
+            Dictionary<string, IEnumerable<AdvancementDataSelection>> advancementData)
         {
             var testCases = new Dictionary<string, List<string>>();
             var attackDamages = new List<Dictionary<string, List<string>>>();
-            var attackData = AttackTestData.GetCreatureAttackData().ToDictionary(
+            var attackData = attackDataSelections.ToDictionary(
                 kvp => kvp.Key,
                 kvp => kvp.Value
-                    .Select(DataHelper.Parse<AttackDataSelection>)
                     .GroupBy(a => a.Name)
                     .ToDictionary(g => g.Key, g => g.ToArray()));
-            var creatureData = CreatureDataTests.GetCreatureDataSelections();
-            var advancementData = AdvancementsTests.GetAdvancementsTestData()
-                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(DataHelper.Parse<AdvancementDataSelection>));
 
             var biteDamageType = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}/{AttributeConstants.DamageTypes.Bludgeoning}";
             var clawDamageType = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}";
@@ -34,7 +32,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             var stingDamageType = $"{AttributeConstants.DamageTypes.Piercing}";
             var tentacleDamageType = $"{AttributeConstants.DamageTypes.Bludgeoning}";
 
-            var damageKeys = AttackTestData.GetCreatureDamageKeys();
+            var damageKeys = AttackTestData.GetCreatureDamageKeys(creatureData, advancementData);
             foreach (var key in damageKeys)
             {
                 testCases[key] = [];
@@ -2698,16 +2696,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             return testCases;
         }
 
-        public static Dictionary<string, List<string>> GetTemplateDamageData()
+        internal static Dictionary<string, List<string>> GetTemplateDamageData(Dictionary<string, IEnumerable<AttackDataSelection>> attackDataSelections)
         {
             var testCases = new Dictionary<string, List<string>>();
             var attackDamages = new List<Dictionary<string, List<string>>>();
             var templates = CreatureConstants.Templates.GetAll();
 
-            var attackData = AttackTestData.GetTemplateAttackData().ToDictionary(
+            var attackData = attackDataSelections.ToDictionary(
                 kvp => kvp.Key,
                 kvp => kvp.Value
-                    .Select(DataHelper.Parse<AttackDataSelection>)
                     .GroupBy(a => a.Name)
                     .ToDictionary(g => g.Key, g => g.ToArray()));
 

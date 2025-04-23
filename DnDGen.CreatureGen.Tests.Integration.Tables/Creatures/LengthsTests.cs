@@ -76,7 +76,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertTypesAndAmounts(name, typesAndRolls);
         }
 
-        public static Dictionary<string, Dictionary<string, string>> GetCreatureLengths()
+        private Dictionary<string, Dictionary<string, string>> GetCreatureLengths()
         {
             var creatures = CreatureConstants.GetAll();
             var lengths = new Dictionary<string, Dictionary<string, string>>();
@@ -2298,7 +2298,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void IfCreatureHasNoLength_HasHeight()
         {
-            var heights = HeightsTests.GetCreatureHeights();
+            var typeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
+            var heights = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights)
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToDictionary(v => v.Type, v => v.Roll));
+
             var creatures = CreatureConstants.GetAll();
 
             foreach (var creature in creatures)

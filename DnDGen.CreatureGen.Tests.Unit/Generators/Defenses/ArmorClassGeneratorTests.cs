@@ -56,7 +56,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
             mockBonusSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.ArmorClassBonuses, It.IsAny<string>()))
-                .Returns((string t, string s) => racialBonuses[s]);
+                .Returns((string a, string t, string s) => racialBonuses[s]);
         }
 
         [Test]
@@ -676,7 +676,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
             Assert.That(armorClass.ShieldBonus, Is.Zero);
             Assert.That(armorClass.ShieldBonuses, Is.Empty);
-
         }
 
         [Test]

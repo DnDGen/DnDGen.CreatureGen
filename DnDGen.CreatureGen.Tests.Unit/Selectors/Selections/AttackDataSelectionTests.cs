@@ -27,9 +27,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         }
 
         [Test]
-        public void SectionCountIs13()
+        public void SectionCountIs14()
         {
-            Assert.That(selection.SectionCount, Is.EqualTo(13));
+            Assert.That(selection.SectionCount, Is.EqualTo(14));
         }
 
         [Test]
@@ -140,7 +140,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 
             var newSelection = AttackDataSelection.Map(data);
             Assert.That(newSelection, Is.Not.Null);
-            Assert.That(newSelection.Save, Is.EqualTo(expected));
+            Assert.That(newSelection.SaveAbility, Is.EqualTo(expected));
         }
 
         [TestCase("my required gender", "my required gender")]
@@ -376,7 +376,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 
             var newSelection = selection.MapTo(data);
             Assert.That(newSelection, Is.Not.Null);
-            Assert.That(newSelection.Save, Is.EqualTo(expected));
+            Assert.That(newSelection.SaveAbility, Is.EqualTo(expected));
         }
 
         [TestCase("my required gender", "my required gender")]

@@ -32,7 +32,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             AssertCollectionNames(names);
         }
 
-        public static Dictionary<string, double> GetCreatureHitDiceQuantities()
+        private Dictionary<string, double> GetCreatureHitDiceQuantities()
         {
             var quantities = new Dictionary<string, double>
             {
@@ -686,6 +686,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
                 [CreatureConstants.YuanTi_Halfblood_SnakeTail] = 7,
                 [CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] = 7,
                 [CreatureConstants.YuanTi_Pureblood] = 4,
+                [CreatureConstants.Zelekhut] = 8,
             };
 
             return quantities;

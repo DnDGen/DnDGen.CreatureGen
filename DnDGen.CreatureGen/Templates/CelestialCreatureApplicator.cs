@@ -496,7 +496,7 @@ namespace DnDGen.CreatureGen.Templates
 
             if (!string.IsNullOrEmpty(filters?.ChallengeRating))
             {
-                var creatureType = creatureTypes.First();
+                var creatureType = types.First();
 
                 if (asCharacter && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
                 {

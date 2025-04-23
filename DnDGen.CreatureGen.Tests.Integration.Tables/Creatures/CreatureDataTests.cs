@@ -14,12 +14,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     public class CreatureDataTests : CollectionTests
     {
         private Dictionary<string, string> creatureData;
+        private SpaceReachHelper spaceReachHelper;
 
         protected override string tableName => TableNameConstants.Collection.CreatureData;
 
         [OneTimeSetUp]
         public void OnetimeSetup()
         {
+            spaceReachHelper = GetNewInstanceOf<SpaceReachHelper>();
             creatureData = GetCreatureTestData();
         }
 
@@ -83,10 +85,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertCollection(creature, creatureData[creature]);
         }
 
-        internal static Dictionary<string, CreatureDataSelection> GetCreatureDataSelections() =>
-            GetCreatureTestData().ToDictionary(kvp => kvp.Key, kvp => DataHelper.Parse<CreatureDataSelection>(kvp.Value));
-
-        public static Dictionary<string, string> GetCreatureTestData()
+        private Dictionary<string, string> GetCreatureTestData()
         {
             var data = new Dictionary<string, string>
             {
@@ -755,7 +754,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return data;
         }
 
-        private static string GetCreatureData(
+        private string GetCreatureData(
             string creature,
             string size,
             string challengeRating,
@@ -765,8 +764,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             int naturalArmor,
             int numberOfHands)
         {
-            var spaceReachHelper = new SpaceReachHelper();
-
             var selection = new CreatureDataSelection
             {
                 ChallengeRating = challengeRating,

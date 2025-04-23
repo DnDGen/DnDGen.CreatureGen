@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
+using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
@@ -26,8 +27,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-            heights = HeightsTests.GetCreatureHeights();
-            lengths = LengthsTests.GetCreatureLengths();
+            var typeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
+            heights = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights)
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToDictionary(v => v.Type, v => v.Roll));
+            lengths = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths)
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToDictionary(v => v.Type, v => v.Roll));
+
             creatureWeightRanges = GetCreatureWeightRanges();
             creatureWeightRolls = GetCreatureWeightRolls();
         }

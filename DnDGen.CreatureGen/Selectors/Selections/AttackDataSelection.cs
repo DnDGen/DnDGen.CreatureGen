@@ -26,7 +26,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public override Func<string[], AttackDataSelection> MapTo => Map;
         public override Func<AttackDataSelection, string[]> MapFrom => Map;
 
-        public override int SectionCount => 13;
+        public override int SectionCount => 14;
 
         public static AttackDataSelection Map(string[] splitData)
         {
@@ -41,11 +41,11 @@ namespace DnDGen.CreatureGen.Selectors.Selections
                 DamageBonusMultiplier = Convert.ToDouble(splitData[DataIndexConstants.AttackData.DamageBonusMultiplierIndex]),
                 FrequencyQuantity = Convert.ToInt32(splitData[DataIndexConstants.AttackData.FrequencyQuantityIndex]),
                 FrequencyTimePeriod = splitData[DataIndexConstants.AttackData.FrequencyTimePeriodIndex],
-                Save = splitData[DataIndexConstants.AttackData.SaveIndex],
-                SaveAbility = splitData[DataIndexConstants.AttackData.SaveAbilityIndex],
+                Save = splitData[DataIndexConstants.AttackData.SaveIndex] ?? string.Empty,
+                SaveAbility = splitData[DataIndexConstants.AttackData.SaveAbilityIndex] ?? string.Empty,
                 AttackType = splitData[DataIndexConstants.AttackData.AttackTypeIndex],
                 SaveDcBonus = Convert.ToInt32(splitData[DataIndexConstants.AttackData.SaveDcBonusIndex]),
-                RequiredGender = splitData[DataIndexConstants.AttackData.RequiredGenderIndex],
+                RequiredGender = splitData[DataIndexConstants.AttackData.RequiredGenderIndex] ?? string.Empty,
             };
 
             return selection;

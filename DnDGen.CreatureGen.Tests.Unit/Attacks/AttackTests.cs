@@ -771,8 +771,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
             Assert.That(attack.Frequency.TimePeriod, Is.EqualTo("time period"));
 
             Assert.That(attack.Save, Is.Not.Null);
-            Assert.That(attack.Save.BaseValue, Is.EqualTo(10 + 300 + 1337));
-            Assert.That(attack.Save.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
+            Assert.That(attack.Save.BaseValue, Is.EqualTo(10 + 1337));
+            Assert.That(attack.Save.BaseAbility, Is.Null);
             Assert.That(attack.Save.Save, Is.EqualTo("save"));
         }
 
@@ -865,6 +865,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
         {
             var selection = GetTestSelection();
             selection.SaveAbility = null;
+            selection.IsNatural = true;
 
             var attack = Attack.From(selection, abilities, 9266, 90210, 42);
             Assert.That(attack.Save, Is.Not.Null);
@@ -878,11 +879,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
         {
             var selection = GetTestSelection();
             selection.Save = string.Empty;
+            selection.SaveAbility = AbilityConstants.Constitution;
+            selection.IsNatural = true;
 
             var attack = Attack.From(selection, abilities, 9266, 90210, 42);
             Assert.That(attack.Save, Is.Not.Null);
-            Assert.That(attack.Save.BaseValue, Is.EqualTo(10 + 1337));
-            Assert.That(attack.Save.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
+            Assert.That(attack.Save.BaseValue, Is.EqualTo(10 + 9266 / 2 + 1337));
+            Assert.That(attack.Save.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Constitution]));
             Assert.That(attack.Save.Save, Is.Empty);
         }
 
@@ -891,11 +894,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
         {
             var selection = GetTestSelection();
             selection.Save = null;
+            selection.SaveAbility = AbilityConstants.Charisma;
+            selection.IsNatural = true;
 
             var attack = Attack.From(selection, abilities, 9266, 90210, 42);
             Assert.That(attack.Save, Is.Not.Null);
-            Assert.That(attack.Save.BaseValue, Is.EqualTo(10 + 1337));
-            Assert.That(attack.Save.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
+            Assert.That(attack.Save.BaseValue, Is.EqualTo(10 + 9266 / 2 + 1337));
+            Assert.That(attack.Save.BaseAbility, Is.EqualTo(abilities[AbilityConstants.Charisma]));
             Assert.That(attack.Save.Save, Is.Empty);
         }
 
@@ -904,6 +909,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
         {
             var selection = GetTestSelection();
             selection.SaveAbility = string.Empty;
+            selection.IsNatural = true;
 
             var attack = Attack.From(selection, abilities, 9266, 90210, 42);
             Assert.That(attack.Save, Is.Not.Null);
@@ -918,6 +924,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
             var selection = GetTestSelection();
             selection.SaveAbility = null;
             selection.Save = null;
+            selection.IsNatural = true;
 
             var attack = Attack.From(selection, abilities, 9266, 90210, 42);
             Assert.That(attack.Save, Is.Null);
@@ -929,6 +936,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
             var selection = GetTestSelection();
             selection.SaveAbility = null;
             selection.Save = string.Empty;
+            selection.IsNatural = true;
 
             var attack = Attack.From(selection, abilities, 9266, 90210, 42);
             Assert.That(attack.Save, Is.Null);
@@ -1641,8 +1649,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
 
             var attack = Attack.From(selection, abilities, 9266, 90210, 42);
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageSummary, Is.EqualTo("my roll+67650 my type plus effect"));
-            Assert.That(attack.DamageBonus, Is.EqualTo(67650));
+            Assert.That(attack.DamageSummary, Is.EqualTo("my roll+994 my type plus effect"));
+            Assert.That(attack.DamageBonus, Is.EqualTo(994));
             Assert.That(attack.DamageEffect, Is.EqualTo("effect"));
         }
 
@@ -1650,7 +1658,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
         [TestCase("my melee roll", "my melee type", true, false, "melee effect")]
         [TestCase("my nat range roll", "my nat range type", false, true, "nat range effect")]
         [TestCase("my range roll", "my range type", false, false, "range effect")]
-        public void From_ReturnsAttack_Primary(string roll, string type, bool melee, bool natural, string effect)
+        public void From_ReturnsAttack_IsPrimary(string roll, string type, bool melee, bool natural, string effect)
         {
             var selection = GetTestSelection();
             selection.Damages =
@@ -1667,12 +1675,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
             abilities[AbilityConstants.Strength].BaseScore = 1336;
 
             var attack = Attack.From(selection, abilities, 9266, 90210, 42);
-            Assert.That(attack.Name, Is.EqualTo("nat melee attack"));
+            Assert.That(attack.Name, Is.EqualTo("attack"));
             Assert.That(attack.IsMelee, Is.EqualTo(melee));
             Assert.That(attack.IsNatural, Is.EqualTo(natural));
-            Assert.That(attack.DamageBonus, Is.EqualTo(67650));
+            Assert.That(attack.DamageBonus, Is.EqualTo(994));
             Assert.That(attack.DamageEffect, Is.EqualTo(effect));
-            Assert.That(attack.DamageSummary, Is.EqualTo($"{roll}+67650 {type} plus {effect}"));
+            Assert.That(attack.DamageSummary, Is.EqualTo($"{roll}+994 {type} plus {effect}"));
         }
 
         [TestCase(true)]
@@ -1695,8 +1703,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
 
             var attack = Attack.From(selection, abilities, 9266, 90210, 42);
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageSummary, Is.EqualTo("my roll+45100 my type plus effect"));
-            Assert.That(attack.DamageBonus, Is.EqualTo(45100));
+            Assert.That(attack.DamageSummary, Is.EqualTo("my roll+663 my type plus effect"));
+            Assert.That(attack.DamageBonus, Is.EqualTo(663));
             Assert.That(attack.DamageEffect, Is.EqualTo("effect"));
         }
 
@@ -1721,8 +1729,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
 
             var attack = Attack.From(selection, abilities, 9266, 90210, 42);
             Assert.That(attack.Name, Is.EqualTo("secondary attack"));
-            Assert.That(attack.DamageSummary, Is.EqualTo("my secondary roll+22550 my secondary type plus secondary effect"));
-            Assert.That(attack.DamageBonus, Is.EqualTo(22550));
+            Assert.That(attack.DamageSummary, Is.EqualTo("my secondary roll+331 my secondary type plus secondary effect"));
+            Assert.That(attack.DamageBonus, Is.EqualTo(331));
             Assert.That(attack.DamageEffect, Is.EqualTo("secondary effect"));
         }
 
@@ -1749,8 +1757,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
 
             var attack = Attack.From(selection, abilities, 9266, 90210, 42);
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageSummary, Is.EqualTo($"my roll+22550 my type + 1d4 {ability} plus {ability} drain"));
-            Assert.That(attack.DamageBonus, Is.EqualTo(22550));
+            Assert.That(attack.DamageSummary, Is.EqualTo($"my secondary roll+331 my secondary type + 1d4 {ability} plus {ability} drain"));
+            Assert.That(attack.DamageBonus, Is.EqualTo(331));
             Assert.That(attack.DamageEffect, Is.EqualTo($"{ability} drain"));
         }
     }

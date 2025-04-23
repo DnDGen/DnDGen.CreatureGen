@@ -53,6 +53,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
                 [AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom),
                 [AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma)
             };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.SizeModifiers, It.IsAny<string>()))
+                .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 0 });
         }
 
         [TestCase(0, GroupConstants.GoodBaseAttack, 0)]
@@ -766,11 +770,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
-            var bonus = abilities[AbilityConstants.Strength].Modifier * 1.5;
-            var bonusString = bonus > 0 ? $"+{bonus}" : bonus < 0 ? bonus.ToString() : string.Empty;
+            //1327 / 2 = 663, 663 * 1.5 = 994
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageSummary, Is.EqualTo($"my roll{bonusString} my damage type + my other roll my other damage type plus effect"));
-            Assert.That(attack.DamageBonus, Is.EqualTo(bonus));
+            Assert.That(attack.DamageSummary, Is.EqualTo($"my roll+994 my damage type + my other roll my other damage type plus effect"));
+            Assert.That(attack.DamageBonus, Is.EqualTo(994));
             Assert.That(attack.DamageEffect, Is.EqualTo("effect"));
         }
 

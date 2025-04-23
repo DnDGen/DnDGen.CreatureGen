@@ -54,7 +54,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertTypesAndAmounts(name, wingspanRolls[name]);
         }
 
-        public Dictionary<string, Dictionary<string, string>> GetWingspanRolls()
+        private Dictionary<string, Dictionary<string, string>> GetWingspanRolls()
         {
             var creatures = CreatureConstants.GetAll();
             var wingspans = new Dictionary<string, Dictionary<string, string>>();

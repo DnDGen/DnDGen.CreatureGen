@@ -1,8 +1,9 @@
 ﻿using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Tests.Integration.Tables.Creatures;
+using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
-using DnDGen.RollGen.IoC;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
 {
@@ -15,10 +16,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
         private readonly Dictionary<string, Dictionary<string, string>> creatureHeights;
         private readonly Dictionary<string, Dictionary<string, string>> creatureLengths;
 
-        public SpaceReachHelper() : this(DiceFactory.Create())
-        { }
-
-        public SpaceReachHelper(Dice dice)
+        public SpaceReachHelper(Dice dice, ICollectionTypeAndAmountSelector typeAndAmountSelector)
         {
             this.dice = dice;
 
@@ -59,8 +57,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
                 [SizeConstants.Colossal] = 20,
             };
 
-            creatureHeights = HeightsTests.GetCreatureHeights();
-            creatureLengths = LengthsTests.GetCreatureLengths();
+            creatureHeights = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights)
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToDictionary(v => v.Type, v => v.Roll));
+            creatureLengths = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths)
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToDictionary(v => v.Type, v => v.Roll));
         }
 
         public double GetReach(string creature, string size)

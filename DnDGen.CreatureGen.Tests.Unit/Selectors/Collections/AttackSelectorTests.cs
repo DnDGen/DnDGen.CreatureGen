@@ -173,8 +173,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             bool isMelee = false,
             bool isPrimary = false,
             bool isSpecial = false,
-            string save = null,
-            string saveAbility = null,
+            string save = "",
+            string saveAbility = "",
             int saveDcBonus = 0)
         {
             return new AttackDataSelection

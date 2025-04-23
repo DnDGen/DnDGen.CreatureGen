@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -59,7 +60,8 @@ namespace DnDGen.CreatureGen.Selectors.Collections
                 maxHitDice = Math.Min(templateMaxHitDice.Amount, maxHitDice);
             }
 
-            var validAdvancements = advancements.Where(a => a.AdvancementIsValid(dice, maxHitDice - creatureHitDice.Amount));
+            var roundedhitDice = HitDice.GetRoundedQuantity(creatureHitDice.AmountAsDouble);
+            var validAdvancements = advancements.Where(a => a.AdvancementIsValid(dice, maxHitDice - roundedhitDice));
 
             return validAdvancements;
         }

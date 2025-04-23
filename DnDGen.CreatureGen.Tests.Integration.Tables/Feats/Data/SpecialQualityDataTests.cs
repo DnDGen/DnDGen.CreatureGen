@@ -3,9 +3,9 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.Tables.Creatures;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Helpers;
+using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -32,7 +32,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             creatureData = SpecialQualityTestData.GetCreatureData();
             typeData = SpecialQualityTestData.GetTypeData();
             subtypeData = SpecialQualityTestData.GetSubtypeData();
-            creatureDataSelections = CreatureDataTests.GetCreatureDataSelections();
+
+            var creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
+            creatureDataSelections = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Single());
+
         }
 
         [SetUp]

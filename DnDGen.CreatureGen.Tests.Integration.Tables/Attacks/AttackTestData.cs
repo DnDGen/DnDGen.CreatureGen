@@ -4,7 +4,6 @@ using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Selectors.Selections;
-using DnDGen.CreatureGen.Tests.Integration.Tables.Creatures;
 using DnDGen.Infrastructure.Helpers;
 using DnDGen.TreasureGen.Items;
 using System.Collections.Generic;
@@ -16,21 +15,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
     {
         public const string None = "NONE";
 
-        public static IEnumerable<string> GetCreatureDamageKeys()
+        internal static IEnumerable<string> GetCreatureDamageKeys(
+            Dictionary<string, CreatureDataSelection> creatureData,
+            Dictionary<string, IEnumerable<AdvancementDataSelection>> advancementData)
         {
             var attackDamageKeys = new List<string>();
-            var creatureAttackData = GetCreatureAttackData();
-            var advancementData = AdvancementsTests.GetAdvancementsTestData();
-            var creatureData = CreatureDataTests.GetCreatureDataSelections();
+            var creatureAttackData = GetCreatureAttackData().ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(DataHelper.Parse<AttackDataSelection>));
 
             foreach (var kvp in creatureAttackData)
             {
                 var creature = kvp.Key;
                 var sizes = advancementData[creature]
-                    .Select(DataHelper.Parse<AdvancementDataSelection>)
                     .Select(a => a.Size)
                     .Union([creatureData[creature].Size]);
-                var attackSelections = kvp.Value.Select(DataHelper.Parse<AttackDataSelection>);
+                var attackSelections = kvp.Value;
 
                 foreach (var size in sizes)
                 {
@@ -42,16 +40,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             return attackDamageKeys;
         }
 
-        public static IEnumerable<string> GetTemplateDamageKeys()
+        internal static IEnumerable<string> GetTemplateDamageKeys()
         {
             var attackDamageKeys = new List<string>();
-            var templateAttackData = GetTemplateAttackData();
+            var templateAttackData = GetTemplateAttackData().ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(DataHelper.Parse<AttackDataSelection>));
             var sizes = SizeConstants.GetOrdered();
 
             foreach (var kvp in templateAttackData)
             {
                 var template = kvp.Key;
-                var attackSelections = kvp.Value.Select(DataHelper.Parse<AttackDataSelection>);
+                var attackSelections = kvp.Value;
 
                 foreach (var size in sizes)
                 {
@@ -63,7 +61,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             return attackDamageKeys;
         }
 
-        public static Dictionary<string, List<string>> GetCreatureAttackData()
+        internal static Dictionary<string, List<string>> GetCreatureAttackData()
         {
             var testCases = new Dictionary<string, List<string>>();
             var creatures = CreatureConstants.GetAll();
@@ -4605,7 +4603,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             return testCases;
         }
 
-        public static Dictionary<string, List<string>> GetTemplateAttackData()
+        internal static Dictionary<string, List<string>> GetTemplateAttackData()
         {
             var testCases = new Dictionary<string, List<string>>();
             var templates = CreatureConstants.Templates.GetAll();

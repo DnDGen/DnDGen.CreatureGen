@@ -67,7 +67,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(newSelection.DexterityAdjustment, Is.EqualTo(1337));
             Assert.That(newSelection.NaturalArmorAdjustment, Is.EqualTo(1336));
             Assert.That(newSelection.Reach, Is.EqualTo(9.6));
-            Assert.That(newSelection.Size, Is.EqualTo("enourmous"));
+            Assert.That(newSelection.Size, Is.EqualTo("enormous"));
             Assert.That(newSelection.Space, Is.EqualTo(78.3));
             Assert.That(newSelection.StrengthAdjustment, Is.EqualTo(8245));
             Assert.That(newSelection.AdjustedChallengeRating, Is.EqualTo("adjusted cr"));
@@ -127,7 +127,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(newSelection.DexterityAdjustment, Is.EqualTo(1337));
             Assert.That(newSelection.NaturalArmorAdjustment, Is.EqualTo(1336));
             Assert.That(newSelection.Reach, Is.EqualTo(9.6));
-            Assert.That(newSelection.Size, Is.EqualTo("enourmous"));
+            Assert.That(newSelection.Size, Is.EqualTo("enormous"));
             Assert.That(newSelection.Space, Is.EqualTo(78.3));
             Assert.That(newSelection.StrengthAdjustment, Is.EqualTo(8245));
             Assert.That(newSelection.AdjustedChallengeRating, Is.EqualTo("adjusted cr"));
@@ -194,7 +194,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [TestCase(10, 10, true)]
         [TestCase(11, 10, false)]
         [TestCase(100, 10, false)]
-        public void AdvancementIsValid_ReturnsValidity(int max, int minRoll, bool expected)
+        public void AdvancementIsValid_ReturnsValidity(int minRoll, int max, bool expected)
         {
             selection.AdditionalHitDiceRoll = "roll 9266";
             mockDice.Setup(d => d.Roll("roll 9266").AsPotentialMinimum<int>()).Returns(minRoll);
@@ -208,6 +208,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         public void SetAdditionalProperties_SetsAdditionalHitDice()
         {
             selection.AdditionalHitDiceRoll = "roll 9266";
+            selection.AdjustedChallengeRating = ChallengeRatingConstants.CR1;
+            selection.ChallengeRatingDivisor = 1;
+
             mockDice.Setup(d => d.Roll("roll 9266").AsSum<int>()).Returns(9266);
 
             selection.SetAdditionalProperties(mockDice.Object);
@@ -218,6 +221,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         public void SetAdditionalProperties_SetsAdditionalHitDice_LessThanMax()
         {
             selection.AdditionalHitDiceRoll = "roll 9266";
+            selection.AdjustedChallengeRating = ChallengeRatingConstants.CR1;
+            selection.ChallengeRatingDivisor = 1;
+
             mockDice.Setup(d => d.Roll("roll 9266").AsPotentialMinimum<int>()).Returns(42);
             mockDice.Setup(d => d.Roll("roll 9266").AsSum<int>()).Returns(9266);
 
@@ -233,6 +239,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         public void SetAdditionalProperties_SetsAdditionalHitDice_ToMax()
         {
             selection.AdditionalHitDiceRoll = "roll 9266";
+            selection.AdjustedChallengeRating = ChallengeRatingConstants.CR1;
+            selection.ChallengeRatingDivisor = 1;
+
             mockDice.Setup(d => d.Roll("roll 9266").AsPotentialMinimum<int>()).Returns(42);
             mockDice.Setup(d => d.Roll("roll 9266").AsSum<int>()).Returns(90210);
 

@@ -1856,10 +1856,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature"] = new[] { "other alignment", "my alignment" };
             alignments["my other creature"] = new[] { "another alignment", "my alignment" };
-            alignments["wrong creature 1"] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 2"] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 3"] = new[] { "other alignment", "my alignment" };
-            alignments["wrong creature 4"] = new[] { "other alignment", "my alignment" };
+            alignments["wrong creature 1"] = ["other alignment", "my alignment"];
+            alignments["wrong creature 2"] = ["other alignment", "my alignment"];
+            alignments["wrong creature 3"] = ["other alignment", "my alignment"];
+            alignments["wrong creature 4"] = ["other alignment", "my alignment"];
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
@@ -1873,8 +1873,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new CreaturePrototypeBuilder()
                     .WithTestValues()
                     .WithName("my creature")
-                    .WithCreatureType(types["my creature"].ToArray())
-                    .WithAlignments(alignments["my creature"].ToArray())
+                    .WithCreatureType([.. types["my creature"]])
+                    .WithAlignments([.. alignments["my creature"]])
                     .WithChallengeRating(data["my creature"].Single().ChallengeRating)
                     .WithCasterLevel(data["my creature"].Single().CasterLevel)
                     .WithLevelAdjustment(data["my creature"].Single().LevelAdjustment)
@@ -1889,8 +1889,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new CreaturePrototypeBuilder()
                     .WithTestValues()
                     .WithName("my other creature")
-                    .WithCreatureType(types["my other creature"].ToArray())
-                    .WithAlignments(alignments["my other creature"].ToArray())
+                    .WithCreatureType([.. types["my other creature"]])
+                    .WithAlignments([.. alignments["my other creature"]])
                     .WithChallengeRating(data["my other creature"].Single().ChallengeRating)
                     .WithCasterLevel(data["my other creature"].Single().CasterLevel)
                     .WithLevelAdjustment(data["my other creature"].Single().LevelAdjustment)

@@ -2,9 +2,10 @@
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.Tables.Defenses;
 using DnDGen.CreatureGen.Tests.Integration.Tables.Helpers;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
+using DnDGen.Infrastructure.Helpers;
+using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
@@ -37,16 +38,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             [CreatureConstants.Types.Undead] = 4,
             [CreatureConstants.Types.Vermin] = 4,
         };
-        private static readonly string[] sizes = SizeConstants.GetOrdered();
-        private static readonly Dictionary<string, CreatureDataSelection> creatureData = CreatureDataTests.GetCreatureDataSelections();
-        private static readonly Dictionary<string, double> creatureHitDiceQuantities = HitDiceTests.GetCreatureHitDiceQuantities();
-        private static readonly Dictionary<string, string[]> creatureTypes = CreatureTypesTests.GetCreatureTypes();
+        private string[] sizes;
+        private Dictionary<string, CreatureDataSelection> creatureData;
+        private Dictionary<string, double> creatureHitDiceQuantities;
+        private Dictionary<string, IEnumerable<string>> creatureTypes;
+        private SpaceReachHelper spaceReachHelper;
 
         protected override string tableName => TableNameConstants.Collection.Advancements;
 
         [OneTimeSetUp]
         public void OnetimeSetup()
         {
+            sizes = SizeConstants.GetOrdered();
+
+            var creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
+            creatureData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Single());
+
+            var typeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
+            creatureHitDiceQuantities = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice)
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Single().AmountAsDouble);
+
+            var collectionSelector = GetNewInstanceOf<ICollectionSelector>();
+            creatureTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
+
+            spaceReachHelper = GetNewInstanceOf<SpaceReachHelper>();
             advancements = GetAdvancementsTestData();
         }
 
@@ -83,7 +99,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 return;
 
             var rolls = advancements[creature]
-                .Select(Infrastructure.Helpers.DataHelper.Parse<AdvancementDataSelection>)
+                .Select(DataHelper.Parse<AdvancementDataSelection>)
                 .Select(s => s.AdditionalHitDiceRoll);
 
             foreach (var roll in rolls)
@@ -115,7 +131,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 return;
 
             var sizes = advancements[creature]
-                .Select(Infrastructure.Helpers.DataHelper.Parse<AdvancementDataSelection>)
+                .Select(DataHelper.Parse<AdvancementDataSelection>)
                 .Select(s => s.Size);
             Assert.That(sizes, Is.Unique);
 
@@ -130,7 +146,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var advancementData in advancements[creature])
             {
-                var advancement = Infrastructure.Helpers.DataHelper.Parse<AdvancementDataSelection>(advancementData);
+                var advancement = DataHelper.Parse<AdvancementDataSelection>(advancementData);
                 var size = advancement.Size;
                 var sizeIndex = Array.IndexOf(orderedSizes, size);
 
@@ -139,7 +155,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
                 foreach (var otherAdvancementData in advancements[creature].Except([advancementData]))
                 {
-                    var otherAdvancement = Infrastructure.Helpers.DataHelper.Parse<AdvancementDataSelection>(otherAdvancementData);
+                    var otherAdvancement = DataHelper.Parse<AdvancementDataSelection>(otherAdvancementData);
                     var otherSize = otherAdvancement.Size;
                     var otherSizeIndex = Array.IndexOf(orderedSizes, otherSize);
 
@@ -154,7 +170,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
-        public static Dictionary<string, string[]> GetAdvancementsTestData()
+        private Dictionary<string, string[]> GetAdvancementsTestData()
         {
             var testCases = new Dictionary<string, string[]>();
             var creatures = CreatureConstants.GetAll();
@@ -1263,10 +1279,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return testCases;
         }
 
-        private static string GetData(string creature, string advancedSize, int lowerHitDice, int upperHitDice)
+        private string GetData(string creature, string advancedSize, int lowerHitDice, int upperHitDice)
         {
             var creatureHitDiceQuantity = HitDice.GetRoundedQuantity(creatureHitDiceQuantities[creature]);
-            var spaceReachHelper = new SpaceReachHelper();
 
             var selection = new AdvancementDataSelection
             {
@@ -1282,10 +1297,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 AdjustedChallengeRating = GetAdjustedChallengeRating(creatureData[creature].ChallengeRating, creatureData[creature].Size, advancedSize),
             };
 
-            return Infrastructure.Helpers.DataHelper.Parse(selection);
+            return DataHelper.Parse(selection);
         }
 
-        private static string GetAdjustedChallengeRating(string cr, string originalSize, string advancedSize)
+        private string GetAdjustedChallengeRating(string cr, string originalSize, string advancedSize)
         {
             var originalSizeIndex = Array.IndexOf(sizes, originalSize);
             var advancedIndex = Array.IndexOf(sizes, advancedSize);
@@ -1300,7 +1315,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return ChallengeRatingConstants.IncreaseChallengeRating(cr, increase);
         }
 
-        private static int GetChallengeRatingDivisor(string creature)
+        private int GetChallengeRatingDivisor(string creature)
         {
             var types = creatureTypes[creature];
             var creatureType = types.First();

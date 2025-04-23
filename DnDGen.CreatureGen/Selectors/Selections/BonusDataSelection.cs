@@ -27,7 +27,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             {
                 Bonus = Convert.ToInt32(splitData[DataIndexConstants.BonusData.BonusIndex]),
                 Target = splitData[DataIndexConstants.BonusData.TargetIndex],
-                Condition = splitData[DataIndexConstants.BonusData.ConditionIndex],
+                Condition = splitData[DataIndexConstants.BonusData.ConditionIndex] ?? string.Empty,
             };
         }
 
@@ -36,7 +36,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             var data = new string[selection.SectionCount];
             data[DataIndexConstants.BonusData.BonusIndex] = selection.Bonus.ToString();
             data[DataIndexConstants.BonusData.TargetIndex] = selection.Target;
-            data[DataIndexConstants.BonusData.ConditionIndex] = selection.Condition;
+            data[DataIndexConstants.BonusData.ConditionIndex] = selection.Condition ?? string.Empty;
 
             return data;
         }
