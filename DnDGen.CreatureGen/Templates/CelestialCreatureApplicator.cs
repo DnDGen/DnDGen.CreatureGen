@@ -401,6 +401,15 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
+            if (!string.IsNullOrEmpty(filters?.Alignment))
+            {
+                var presetAlignment = new Alignment(filters.Alignment);
+                if (presetAlignment.Goodness != AlignmentConstants.Good)
+                {
+                    return [];
+                }
+            }
+
             var templateCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.CelestialCreature);
             var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
             if (!filteredBaseCreatures.Any())
@@ -411,15 +420,6 @@ namespace DnDGen.CreatureGen.Templates
                 && string.IsNullOrEmpty(filters?.Alignment))
             {
                 return filteredBaseCreatures;
-            }
-
-            if (!string.IsNullOrEmpty(filters?.Alignment))
-            {
-                var presetAlignment = new Alignment(filters.Alignment);
-                if (presetAlignment.Goodness != AlignmentConstants.Good)
-                {
-                    return [];
-                }
             }
 
             var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
