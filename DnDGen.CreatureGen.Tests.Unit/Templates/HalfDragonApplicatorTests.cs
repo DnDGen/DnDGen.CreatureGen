@@ -1048,7 +1048,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(d => d.Roll("base roll").AsPotentialMaximum<int>(true))
                 .Returns(baseClawMax);
             mockDice
-                .Setup(d => d.Roll("dragon roll").AsPotentialMaximum<int>(true))
+                .Setup(d => d.Roll("dragon claw roll").AsPotentialMaximum<int>(true))
                 .Returns(dragonClawMax);
 
             var originalCount = baseCreature.Attacks.Count();
@@ -1059,7 +1059,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 1));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(claw));
-            Assert.That(claws[0].DamageSummary, Is.EqualTo(expectedClawDamage));
+            Assert.That(claws[0].DamageSummary, Is.EqualTo(expectedClawDamage.Replace("XXX", "claw")));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(newAttacks[3]));
             Assert.That(bites[0].DamageSummary, Is.EqualTo("dragon bite roll dragon bite type"));
@@ -1071,7 +1071,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 var damages = new[]
                 {
-                    (9266, 90210, "dragon roll dragon type"),
+                    (9266, 90210, "dragon XXX roll dragon XXX type"),
                     (9266, 42, "base roll base type"),
                 };
 
@@ -1097,20 +1097,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var bite = new Attack
             {
                 Name = "Bite",
-                Damages = new List<Damage>
-                    {
-                        new Damage { Roll = "base roll", Type = "base type" }
-                    },
+                Damages =
+                    [
+                        new() { Roll = "base roll", Type = "base type" }
+                    ],
                 IsSpecial = false,
                 IsMelee = true
             };
-            baseCreature.Attacks = baseCreature.Attacks.Union(new[] { bite });
+            baseCreature.Attacks = baseCreature.Attacks.Union([bite]);
 
             mockDice
                 .Setup(d => d.Roll("base roll").AsPotentialMaximum<int>(true))
                 .Returns(baseBiteMax);
             mockDice
-                .Setup(d => d.Roll("dragon roll").AsPotentialMaximum<int>(true))
+                .Setup(d => d.Roll("dragon bite roll").AsPotentialMaximum<int>(true))
                 .Returns(dragonBiteMax);
 
             var originalCount = baseCreature.Attacks.Count();
@@ -1124,7 +1124,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(claws[0].DamageSummary, Is.EqualTo("dragon claw roll dragon claw type"));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(bite));
-            Assert.That(bites[0].DamageSummary, Is.EqualTo(expectedBiteDamage));
+            Assert.That(bites[0].DamageSummary, Is.EqualTo(expectedBiteDamage.Replace("XXX", "bite")));
         }
 
         [TestCaseSource(nameof(GainAttacks_DuplicateAttacks))]
@@ -1830,20 +1830,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var claw = new Attack
             {
                 Name = "Claw",
-                Damages = new List<Damage>
-                    {
+                Damages =
+                    [
                         new Damage { Roll = "base roll", Type = "base type" }
-                    },
+                    ],
                 IsSpecial = false,
                 IsMelee = true
             };
-            baseCreature.Attacks = baseCreature.Attacks.Union(new[] { claw });
+            baseCreature.Attacks = baseCreature.Attacks.Union([claw]);
 
             mockDice
                 .Setup(d => d.Roll("base roll").AsPotentialMaximum<int>(true))
                 .Returns(baseClawMax);
             mockDice
-                .Setup(d => d.Roll("dragon roll").AsPotentialMaximum<int>(true))
+                .Setup(d => d.Roll("dragon claw roll").AsPotentialMaximum<int>(true))
                 .Returns(dragonClawMax);
 
             var originalCount = baseCreature.Attacks.Count();
@@ -1854,7 +1854,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 1));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(claw));
-            Assert.That(claws[0].DamageSummary, Is.EqualTo(expectedClawDamage));
+            Assert.That(claws[0].DamageSummary, Is.EqualTo(expectedClawDamage.Replace("XXX", "claw")));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(newAttacks[3]));
             Assert.That(bites[0].DamageSummary, Is.EqualTo("dragon bite roll dragon bite type"));
@@ -1888,7 +1888,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(d => d.Roll("base roll").AsPotentialMaximum<int>(true))
                 .Returns(baseBiteMax);
             mockDice
-                .Setup(d => d.Roll("dragon roll").AsPotentialMaximum<int>(true))
+                .Setup(d => d.Roll("dragon bite roll").AsPotentialMaximum<int>(true))
                 .Returns(dragonBiteMax);
 
             var originalCount = baseCreature.Attacks.Count();
@@ -1902,7 +1902,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(claws[0].DamageSummary, Is.EqualTo("dragon claw roll dragon claw type"));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(bite));
-            Assert.That(bites[0].DamageSummary, Is.EqualTo(expectedBiteDamage));
+            Assert.That(bites[0].DamageSummary, Is.EqualTo(expectedBiteDamage.Replace("XXX", "bite")));
         }
 
         [TestCaseSource(nameof(GainAttacks_DuplicateAttacks))]
