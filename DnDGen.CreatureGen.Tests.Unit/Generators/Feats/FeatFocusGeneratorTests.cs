@@ -54,7 +54,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> c) => c.First());
             mockFeatDataSelector
                 .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, It.IsAny<string>()))
-                .Returns((string n) => new FeatDataSelection { Feat = n, RequiredAbilities = [] });
+                .Returns((string a, string t, string n) => new FeatDataSelection { Feat = n, RequiredAbilities = [] });
         }
 
         [Test]
@@ -978,15 +978,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         {
             otherFeats.Add(new Feat());
             otherFeats[0].Name = "other feat";
-            otherFeats[0].Foci = new[] { "other focus" };
+            otherFeats[0].Foci = ["other focus"];
 
             requiredFeats.Add(new FeatDataSelection.RequiredFeatDataSelection { Feat = GroupConstants.WeaponProficiency });
 
             var proficiencyFeats = new[] { "other proficiency feat", "proficiency feat" };
-            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency)).Returns(proficiencyFeats);
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency))
+                .Returns(proficiencyFeats);
 
-            focusTypes["focus type"] = new[] { "weapon", "other weapon" };
-            focusTypes[FeatConstants.Foci.Weapon] = new[] { "weapon", "other weapon" };
+            focusTypes["focus type"] = ["weapon", "other weapon"];
+            focusTypes[FeatConstants.Foci.Weapon] = ["weapon", "other weapon"];
 
             var focus = featFocusGenerator.GenerateFrom("feat", "focus type", skills, requiredFeats, otherFeats, 1, abilities, attacks);
             Assert.That(focus, Is.EqualTo(FeatConstants.Foci.NoValidFociAvailable));
@@ -1002,7 +1004,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             };
 
             mockFeatDataSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Setup(s => s.IsCollection(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
+                .Returns(true);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
                 .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
             focusTypes["focus type"] = ["focus", "other focus"];
@@ -1023,7 +1028,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             };
 
             mockFeatDataSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Setup(s => s.IsCollection(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
+                .Returns(true);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
                 .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
             focusTypes["focus type"] = ["focus", "other focus"];
@@ -1044,7 +1052,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             };
 
             mockFeatDataSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Setup(s => s.IsCollection(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
+                .Returns(true);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
                 .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
             focusTypes["focus type"] = ["focus", "other focus"];
@@ -1064,7 +1075,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             };
 
             mockFeatDataSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Setup(s => s.IsCollection(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
+                .Returns(true);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
                 .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
             focusTypes["focus type"] = ["focus", "other focus"];
@@ -1084,7 +1098,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             };
 
             mockFeatDataSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Setup(s => s.IsCollection(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
+                .Returns(true);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
                 .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
             focusTypes["focus type"] = ["focus", "other focus"];
@@ -1105,7 +1122,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             };
 
             mockFeatDataSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Setup(s => s.IsCollection(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
+                .Returns(true);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
                 .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
             focusTypes["focus type"] = ["focus", "other focus"];
@@ -1126,7 +1146,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             };
 
             mockFeatDataSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Setup(s => s.IsCollection(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
+                .Returns(true);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
                 .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
             focusTypes["focus type"] = ["focus", "other focus"];
@@ -1147,7 +1170,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             };
 
             mockFeatDataSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Setup(s => s.IsCollection(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
+                .Returns(true);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
                 .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
             focusTypes["focus type"] = ["focus", "other focus"];
@@ -1167,7 +1193,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             };
 
             mockFeatDataSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Setup(s => s.IsCollection(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
+                .Returns(true);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
                 .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
             focusTypes["focus type"] = ["focus", "other focus"];
@@ -1187,7 +1216,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             };
 
             mockFeatDataSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "feat/focus"))
+                .Setup(s => s.IsCollection(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
+                .Returns(true);
+            mockFeatDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.FeatData, "featfocus"))
                 .Returns(new FeatDataSelection { Feat = "feat/focus", RequiredAbilities = abilityRequirements });
 
             focusTypes["focus type"] = ["focus", "other focus"];

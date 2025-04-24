@@ -27,7 +27,7 @@ namespace DnDGen.CreatureGen.Feats
             var summary = Name;
 
             if (Foci.Any())
-                summary += $" ({string.Join("/", Foci)})";
+                summary += $" ({string.Join("/", Foci.OrderBy(f => f.ToLower()))})";
 
             if (Power > 0)
                 summary += $", Power {Power}";

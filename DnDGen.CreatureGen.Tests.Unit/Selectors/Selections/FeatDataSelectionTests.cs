@@ -723,7 +723,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             var rawData = FeatDataSelection.RequiredFeatDataSelection.Map(requiredFeat);
             Assert.That(rawData.Length, Is.EqualTo(requiredFeat.SectionCount));
             Assert.That(rawData[DataIndexConstants.FeatData.RequiredFeatData.FeatIndex], Is.EqualTo("my required feat"));
-            Assert.That(rawData[DataIndexConstants.FeatData.RequiredFeatData.FociIndex], Is.EqualTo(["my required focus", "my other required focus"]));
+            Assert.That(rawData[DataIndexConstants.FeatData.RequiredFeatData.FociIndex], Is.EqualTo("my required focus,my other required focus")
+                .And.EqualTo(string.Join(FeatDataSelection.RequiredFeatDataSelection.Delimiter, ["my required focus", "my other required focus"])));
         }
 
         [Test]
@@ -1557,7 +1558,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             var rawData = requiredFeat.MapFrom(requiredFeat);
             Assert.That(rawData.Length, Is.EqualTo(requiredFeat.SectionCount));
             Assert.That(rawData[DataIndexConstants.FeatData.RequiredFeatData.FeatIndex], Is.EqualTo("my required feat"));
-            Assert.That(rawData[DataIndexConstants.FeatData.RequiredFeatData.FociIndex], Is.EqualTo(["my required focus", "my other required focus"]));
+            Assert.That(rawData[DataIndexConstants.FeatData.RequiredFeatData.FociIndex], Is.EqualTo("my required focus,my other required focus")
+                .And.EqualTo(string.Join(FeatDataSelection.RequiredFeatDataSelection.Delimiter, ["my required focus", "my other required focus"])));
         }
 
         [Test]

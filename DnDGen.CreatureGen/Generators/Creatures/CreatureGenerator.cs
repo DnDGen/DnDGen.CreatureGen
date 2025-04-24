@@ -234,7 +234,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             if (!compatible)
                 throw new InvalidCreatureException(null, asCharacter, creatureName, filters);
 
-            var creature = GeneratePrototype(creatureName, asCharacter, abilityRandomizer, filters);
+            var creature = GenerateBaseCreature(creatureName, asCharacter, abilityRandomizer, filters);
 
             if (filters?.CleanTemplates?.Any() == true)
             {
@@ -252,7 +252,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return creature;
         }
 
-        private Creature GeneratePrototype(string creatureName, bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters)
+        private Creature GenerateBaseCreature(string creatureName, bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters)
         {
             var templates = filters?.CleanTemplates ?? [];
 
@@ -466,7 +466,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             if (!compatible)
                 throw new InvalidCreatureException(null, asCharacter, creatureName, filters);
 
-            var creature = GeneratePrototype(creatureName, asCharacter, abilityRandomizer, filters);
+            var creature = GenerateBaseCreature(creatureName, asCharacter, abilityRandomizer, filters);
 
             if (filters?.CleanTemplates?.Any() == true)
             {

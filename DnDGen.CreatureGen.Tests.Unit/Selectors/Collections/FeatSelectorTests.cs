@@ -1105,8 +1105,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeats()
         {
-            featsData["feat 1"] = BuildFeatData("feat");
-            featsData["feat 2"] = BuildFeatData("feat");
+            featsData["feat 1"] = BuildFeatData("feat 1");
+            featsData["feat 2"] = BuildFeatData("feat 2");
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(2));
@@ -1200,7 +1200,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void GetFeatWithFocusType()
         {
-            featsData["feat"] = BuildFeatData("focus type");
+            featsData["feat"] = BuildFeatData("feat", "focus type");
 
             var feats = featsSelector.SelectFeats();
             Assert.That(feats.Count(), Is.EqualTo(1));

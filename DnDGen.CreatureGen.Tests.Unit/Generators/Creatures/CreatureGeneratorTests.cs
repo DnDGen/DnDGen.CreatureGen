@@ -440,7 +440,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             string advancedSize = "advanced size",
             params string[] templates)
         {
-            mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName, templates, challengeRatingFilter)).Returns(true);
+            var cleanedTemplates = templates.Where(t => !string.IsNullOrEmpty(t));
+            mockAdvancementSelector
+                .Setup(s => s.IsAdvanced(creatureName, It.Is<IEnumerable<string>>(t => t.IsEquivalentTo(cleanedTemplates)), challengeRatingFilter))
+                .Returns(true);
 
             var advancement = new AdvancementDataSelection
             {
@@ -448,7 +451,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Reach = 98.76,
                 Size = advancedSize ?? "advanced size",
                 Space = 54.32,
-                AdjustedChallengeRating = "adjusted challenge rating",
+                AdjustedChallengeRating = $"{advancementAmount + 9}",
                 CasterLevelAdjustment = 6331,
                 ConstitutionAdjustment = 69,
                 DexterityAdjustment = 783,

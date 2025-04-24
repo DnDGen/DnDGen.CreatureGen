@@ -58,6 +58,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Feats
         }
 
         [Test]
+        public void GetSummary_ReturnsSummary_WithSortedFoci()
+        {
+            feat.Name = "my feat";
+            feat.Foci = ["focus abc", "focus zyx", "focus YZ", "focus BCD"];
+
+            var summary = feat.GetSummary();
+            Assert.That(summary, Is.EqualTo("my feat (focus abc/focus BCD/focus YZ/focus zyx)"));
+        }
+
+        [Test]
         public void GetSummary_ReturnsSummary_WithPower()
         {
             feat.Name = "my feat";

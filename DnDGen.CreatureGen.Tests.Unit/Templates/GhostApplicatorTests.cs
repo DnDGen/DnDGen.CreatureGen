@@ -2317,7 +2317,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(hitDice);
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => hitDice[c]);
+                .Returns((string a, string t, string c) => hitDice[c].Single());
 
             return hitDice;
         }
