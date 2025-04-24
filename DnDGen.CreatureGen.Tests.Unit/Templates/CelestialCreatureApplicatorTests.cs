@@ -2792,38 +2792,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Plant, true)]
         [TestCase(CreatureConstants.Types.Undead, false)]
         [TestCase(CreatureConstants.Types.Vermin, true)]
-        public void IsCompatible_BasedOnCreatureType(string creatureType, bool compatible)
+        public void GetCompatibleCreatures_BasedOnCreatureType(string creatureType, bool compatible)
         {
-            var types = new Dictionary<string, IEnumerable<string>>
-            {
-                ["my creature"] = [creatureType, "subtype 1", "subtype 2"],
-                [CreatureConstants.Human] = [CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human],
-                [CreatureConstants.Rat] = [CreatureConstants.Types.Vermin]
-            };
-
+            //INFO: Creature type compatibility will be handled by the creature group
+            var celestialType = compatible ? creatureType : "wrong";
+            var celestialCreatures = new[] { "my celestial creature", "my creature", "my other creature", $"my {celestialType} creature" };
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
-                .Returns(types);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.CelestialCreature))
+                .Returns(celestialCreatures);
 
-            var alignments = new Dictionary<string, IEnumerable<string>>
-            {
-                ["my creature"] = [AlignmentConstants.LawfulGood, "other alignment"]
-            };
-
-            mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
-                .Returns(alignments);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => alignments[c]);
-
-            SetUpCreatureData();
-            SetUpHitDice();
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], false);
+            var compatibleCreatures = applicator.GetCompatibleCreatures([$"my {creatureType} creature"], false);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
@@ -2837,38 +2815,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
         [TestCase(CreatureConstants.Types.Plant)]
         [TestCase(CreatureConstants.Types.Vermin)]
-        public void IsCompatible_IncorporealIsNotValid(string creatureType)
+        public void GetCompatibleCreatures_IncorporealIsNotValid(string creatureType)
         {
-            var types = new Dictionary<string, IEnumerable<string>>
-            {
-                ["my creature"] = [creatureType, "subtype 1", CreatureConstants.Types.Subtypes.Incorporeal, "subtype 2"],
-                [CreatureConstants.Human] = [CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human],
-                [CreatureConstants.Rat] = [CreatureConstants.Types.Vermin]
-            };
-
+            //INFO: Creature type compatibility will be handled by the creature group
+            var celestialCreatures = new[] { "my celestial creature", $"my {creatureType} creature", "my other creature" };
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
-                .Returns(types);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.CelestialCreature))
+                .Returns(celestialCreatures);
 
-            var alignments = new Dictionary<string, IEnumerable<string>>
-            {
-                ["my creature"] = [AlignmentConstants.LawfulGood, "other alignment"]
-            };
-
-            mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
-                .Returns(alignments);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => alignments[c]);
-
-            SetUpCreatureData();
-            SetUpHitDice();
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], false);
+            var compatibleCreatures = applicator.GetCompatibleCreatures([$"my incorporeal {creatureType} creature"], false);
             Assert.That(compatibleCreatures, Is.Empty);
         }
 
@@ -2881,82 +2836,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(AlignmentConstants.LawfulEvil, false)]
         [TestCase(AlignmentConstants.NeutralEvil, false)]
         [TestCase(AlignmentConstants.ChaoticEvil, false)]
-        public void IsCompatible_MustHaveNonEvilAlignment(string alignment, bool compatible)
+        public void GetCompatibleCreatures_MustHaveNonEvilAlignment(string alignment, bool compatible)
         {
-            var types = new Dictionary<string, IEnumerable<string>>
-            {
-                ["my creature"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"],
-                [CreatureConstants.Human] = [CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human],
-                [CreatureConstants.Rat] = [CreatureConstants.Types.Vermin]
-            };
-
+            //INFO: Alignment compatibility will be handled by the creature group
+            var celestialAlignment = compatible ? alignment : "evil";
+            var celestialCreatures = new[] { "my celestial creature", $"my {celestialAlignment} creature", "my other creature" };
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
-                .Returns(types);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.CelestialCreature))
+                .Returns(celestialCreatures);
 
-            var alignments = new Dictionary<string, IEnumerable<string>>
-            {
-                ["my creature"] = [alignment, "other Evil"]
-            };
-
-            mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
-                .Returns(alignments);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => alignments[c]);
-
-            SetUpCreatureData();
-            SetUpHitDice();
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], false);
-            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
-        }
-
-        [TestCase(AlignmentConstants.LawfulGood, true)]
-        [TestCase(AlignmentConstants.NeutralGood, true)]
-        [TestCase(AlignmentConstants.ChaoticGood, true)]
-        [TestCase(AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.TrueNeutral, true)]
-        [TestCase(AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.LawfulEvil, false)]
-        [TestCase(AlignmentConstants.NeutralEvil, false)]
-        [TestCase(AlignmentConstants.ChaoticEvil, false)]
-        public void IsCompatible_MustHaveAnyNonEvilAlignment(string alignment, bool compatible)
-        {
-            var types = new Dictionary<string, IEnumerable<string>>
-            {
-                ["my creature"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"],
-                [CreatureConstants.Human] = [CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human],
-                [CreatureConstants.Rat] = [CreatureConstants.Types.Vermin]
-            };
-
-            mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
-                .Returns(types);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types[c]);
-
-            var alignments = new Dictionary<string, IEnumerable<string>>
-            {
-                ["my creature"] = ["other Evil", alignment]
-            };
-
-            mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
-                .Returns(alignments);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => alignments[c]);
-
-            SetUpCreatureData();
-            SetUpHitDice();
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], false);
+            var compatibleCreatures = applicator.GetCompatibleCreatures([$"my {alignment} creature"], false);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
@@ -2992,13 +2881,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.MagicalBeast, CreatureConstants.Types.Subtypes.Extraplanar, true)]
         [TestCase(CreatureConstants.Types.MagicalBeast, CreatureConstants.Types.Subtypes.Augmented, true)]
         [TestCase(CreatureConstants.Types.MagicalBeast, "wrong type", false)]
-        public void IsCompatible_TypeMustMatch(string originalType, string type, bool compatible)
+        public void GetCompatibleCreatures_TypeMustMatch(string originalType, string type, bool compatible)
         {
+            var celestialCreatures = new[] { "my celestial creature", "my creature", "my other creature" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.CelestialCreature))
+                .Returns(celestialCreatures);
+
             var types = new Dictionary<string, IEnumerable<string>>
             {
-                ["my creature"] = [originalType, "subtype 1", "subtype 2"],
-                [CreatureConstants.Human] = [CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human],
-                [CreatureConstants.Rat] = [CreatureConstants.Types.Vermin]
+                ["my creature"] = [originalType, "subtype 1", "subtype 2"]
             };
 
             mockCollectionSelector
@@ -3092,8 +2984,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
         [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, true)]
         [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
-        public void IsCompatible_ChallengeRatingMustMatch(double hitDiceQuantity, string original, string challengeRating, bool compatible)
+        public void GetCompatibleCreatures_ChallengeRatingMustMatch(double hitDiceQuantity, string original, string challengeRating, bool compatible)
         {
+            var celestialCreatures = new[] { "my celestial creature", "my creature", "my other creature" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.CelestialCreature))
+                .Returns(celestialCreatures);
+
             var types = new Dictionary<string, IEnumerable<string>>
             {
                 ["my creature"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"]
@@ -3198,8 +3095,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
         [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, true)]
         [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
-        public void IsCompatible_ChallengeRatingMustMatch_HumanoidCharacter(double hitDiceQuantity, string original, string challengeRating, bool compatible)
+        public void GetCompatibleCreatures_ChallengeRatingMustMatch_HumanoidCharacter(double hitDiceQuantity, string original, string challengeRating, bool compatible)
         {
+            var celestialCreatures = new[] { "my celestial creature", "my creature", "my other creature" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.CelestialCreature))
+                .Returns(celestialCreatures);
+
             var types = new Dictionary<string, IEnumerable<string>>
             {
                 ["my creature"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"]
@@ -3296,8 +3198,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
         [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, true)]
         [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
-        public void IsCompatible_ChallengeRatingMustMatch_NonHumanoidCharacter(double hitDiceQuantity, string original, string challengeRating, bool compatible)
+        public void GetCompatibleCreatures_ChallengeRatingMustMatch_NonHumanoidCharacter(double hitDiceQuantity, string original, string challengeRating, bool compatible)
         {
+            var celestialCreatures = new[] { "my celestial creature", "my creature", "my other creature" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.CelestialCreature))
+                .Returns(celestialCreatures);
+
             var types = new Dictionary<string, IEnumerable<string>>
             {
                 ["my creature"] = [CreatureConstants.Types.Giant, "subtype 1", "subtype 2"]
@@ -3361,13 +3268,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(AlignmentConstants.ChaoticGood, AlignmentConstants.LawfulEvil, false)]
         [TestCase(AlignmentConstants.ChaoticGood, AlignmentConstants.NeutralEvil, false)]
         [TestCase(AlignmentConstants.ChaoticGood, AlignmentConstants.ChaoticEvil, false)]
-        public void IsCompatible_AlignmentMustMatch(string alignmentFilter, string creatureAlignment, bool compatible)
+        public void GetCompatibleCreatures_AlignmentMustMatch(string alignmentFilter, string creatureAlignment, bool compatible)
         {
+            var celestialCreatures = new[] { "my celestial creature", "my creature", "my other creature" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.CelestialCreature))
+                .Returns(celestialCreatures);
+
             var types = new Dictionary<string, IEnumerable<string>>
             {
                 ["my creature"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"],
-                [CreatureConstants.Human] = [CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human],
-                [CreatureConstants.Rat] = [CreatureConstants.Types.Vermin]
             };
 
             mockCollectionSelector
@@ -3376,9 +3286,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string a, string t, string c) => types[c]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>
             {
@@ -3410,8 +3317,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase("wrong subtype", ChallengeRatingConstants.CR2, AlignmentConstants.NeutralGood, false)]
         [TestCase("wrong subtype", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulGood, false)]
         [TestCase("wrong subtype", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralGood, false)]
-        public void IsCompatible_AllFiltersMustMatch(string type, string challengeRating, string alignment, bool compatible)
+        public void GetCompatibleCreatures_AllFiltersMustMatch(string type, string challengeRating, string alignment, bool compatible)
         {
+            var celestialCreatures = new[] { "my celestial creature", "my creature", "my other creature" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.CelestialCreature))
+                .Returns(celestialCreatures);
+
             var types = new Dictionary<string, IEnumerable<string>>
             {
                 ["my creature"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"],
@@ -4722,6 +4634,113 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
         }
 
+        [TestCase(CreatureConstants.Types.Aberration, true)]
+        [TestCase(CreatureConstants.Types.Animal, true)]
+        [TestCase(CreatureConstants.Types.Construct, false)]
+        [TestCase(CreatureConstants.Types.Dragon, true)]
+        [TestCase(CreatureConstants.Types.Elemental, false)]
+        [TestCase(CreatureConstants.Types.Fey, true)]
+        [TestCase(CreatureConstants.Types.Giant, true)]
+        [TestCase(CreatureConstants.Types.Humanoid, true)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, true)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid, true)]
+        [TestCase(CreatureConstants.Types.Ooze, false)]
+        [TestCase(CreatureConstants.Types.Outsider, false)]
+        [TestCase(CreatureConstants.Types.Plant, true)]
+        [TestCase(CreatureConstants.Types.Undead, false)]
+        [TestCase(CreatureConstants.Types.Vermin, true)]
+        public void GetCompatiblePrototypes_FromPrototypes_BasedOnCreatureType(string creatureType, bool compatible)
+        {
+            var creatures = new[]
+            {
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(creatureType, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
+                    .Build(),
+            };
+
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        [TestCase(CreatureConstants.Types.Aberration)]
+        [TestCase(CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Types.Dragon)]
+        [TestCase(CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.Types.Plant)]
+        [TestCase(CreatureConstants.Types.Vermin)]
+        public void GetCompatiblePrototypes_FromPrototypes_IncorporealIsNotValid(string creatureType)
+        {
+            var creatures = new[]
+            {
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(creatureType, "subtype 1", CreatureConstants.Types.Subtypes.Incorporeal, "subtype 2")
+                    .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
+                    .Build(),
+            };
+
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false);
+            Assert.That(compatibleCreatures, Is.Empty);
+        }
+
+        [TestCase(AlignmentConstants.LawfulGood, true)]
+        [TestCase(AlignmentConstants.NeutralGood, true)]
+        [TestCase(AlignmentConstants.ChaoticGood, true)]
+        [TestCase(AlignmentConstants.LawfulNeutral, true)]
+        [TestCase(AlignmentConstants.TrueNeutral, true)]
+        [TestCase(AlignmentConstants.ChaoticNeutral, true)]
+        [TestCase(AlignmentConstants.LawfulEvil, false)]
+        [TestCase(AlignmentConstants.NeutralEvil, false)]
+        [TestCase(AlignmentConstants.ChaoticEvil, false)]
+        public void GetCompatiblePrototypes_FromPrototypes_MustHaveNonEvilAlignment(string alignment, bool compatible)
+        {
+            var creatures = new[]
+            {
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithAlignments(alignment, "other Evil")
+                    .Build(),
+            };
+
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        [TestCase(AlignmentConstants.LawfulGood, true)]
+        [TestCase(AlignmentConstants.NeutralGood, true)]
+        [TestCase(AlignmentConstants.ChaoticGood, true)]
+        [TestCase(AlignmentConstants.LawfulNeutral, true)]
+        [TestCase(AlignmentConstants.TrueNeutral, true)]
+        [TestCase(AlignmentConstants.ChaoticNeutral, true)]
+        [TestCase(AlignmentConstants.LawfulEvil, false)]
+        [TestCase(AlignmentConstants.NeutralEvil, false)]
+        [TestCase(AlignmentConstants.ChaoticEvil, false)]
+        public void GetCompatiblePrototypes_FromPrototypes_MustHaveAnyNonEvilAlignment(string alignment, bool compatible)
+        {
+            var creatures = new[]
+            {
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithAlignments("other Evil", alignment)
+                    .Build(),
+            };
+
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
         [Test]
         public void GetCompatiblePrototypes_FromPrototypes_ReturnEmpty_WhenAlignmentFilterInvalid()
         {
@@ -4962,9 +4981,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void GetCompatiblePrototypes_FromPrototypes_WithChallengeRating_ReturnCompatibleCreatures(
             bool asCharacter, double hitDiceQuantity, string original, string challengeRating)
         {
-            //TODO: wrong reature 2 & 3 return because when asCharacter = true and hitDice < 1, the CR gets set to 0 for them since they are huanoid
-            //Need to decide how to alter those creatures to make them genuinely "wrong"
-
             var creatures = new[]
             {
                 new CreaturePrototypeBuilder()
@@ -4989,7 +5005,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
                     .WithAlignments(AlignmentConstants.NeutralGood)
                     .WithChallengeRating(ChallengeRatingConstants.IncreaseChallengeRating(original, -3))
-                    .WithHitDiceQuantity(hitDiceQuantity)
+                    .WithHitDiceQuantity(asCharacter ? hitDiceQuantity + 1 : hitDiceQuantity)
                     .WithAbility(AbilityConstants.Strength, -2)
                     .WithAbility(AbilityConstants.Constitution, 3)
                     .WithAbility(AbilityConstants.Dexterity, -4)
@@ -5003,7 +5019,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
                     .WithAlignments(AlignmentConstants.NeutralGood)
                     .WithChallengeRating(ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 3))
-                    .WithHitDiceQuantity(hitDiceQuantity)
+                    .WithHitDiceQuantity(asCharacter ? hitDiceQuantity + 1 : hitDiceQuantity)
                     .WithAbility(AbilityConstants.Strength, -2)
                     .WithAbility(AbilityConstants.Constitution, 3)
                     .WithAbility(AbilityConstants.Dexterity, -4)
