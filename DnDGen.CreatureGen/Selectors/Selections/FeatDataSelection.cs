@@ -59,11 +59,12 @@ namespace DnDGen.CreatureGen.Selectors.Selections
                 RequiresEquipment = Convert.ToBoolean(splitData[DataIndexConstants.FeatData.RequiresEquipmentIndex]),
                 RequiredFeats = GetRequiredFeats(splitData[DataIndexConstants.FeatData.RequiredFeatsIndex]),
                 RequiredSkills = GetRequiredSkills(splitData[DataIndexConstants.FeatData.RequiredSkillsIndex]),
-                RequiredAbilities = GetRequiredAbilities(splitData),
-                RequiredSpeeds = GetRequiredSpeeds(splitData),
                 RequiredSizes = GetRequiredSizes(splitData[DataIndexConstants.FeatData.RequiredSizesIndex]),
                 CanBeTakenMultipleTimes = Convert.ToBoolean(splitData[DataIndexConstants.FeatData.TakenMultipleTimesIndex]),
             };
+
+            selection.SetRequiredAbilities(splitData);
+            selection.SetRequiredSpeeds(splitData);
 
             return selection;
         }
@@ -76,27 +77,26 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             return requiredSizesData.Split(Delimiter);
         }
 
-        private static Dictionary<string, int> GetRequiredSpeeds(string[] splitData) => new()
-        {
-            [SpeedConstants.Fly] = Convert.ToInt32(splitData[DataIndexConstants.FeatData.RequiredFlySpeedIndex]),
-        };
+        private void SetRequiredSpeeds(string[] splitData) => AddRequirementToDictionary(RequiredSpeeds, SpeedConstants.Fly, splitData[DataIndexConstants.FeatData.RequiredFlySpeedIndex]);
 
-        private static Dictionary<string, int> GetRequiredAbilities(string[] splitData) => new()
+        private void SetRequiredAbilities(string[] splitData)
         {
-            [AbilityConstants.Strength] = GetRequiredAbility(splitData[DataIndexConstants.FeatData.RequiredStrengthIndex]),
-            [AbilityConstants.Constitution] = GetRequiredAbility(splitData[DataIndexConstants.FeatData.RequiredConstitutionIndex]),
-            [AbilityConstants.Dexterity] = GetRequiredAbility(splitData[DataIndexConstants.FeatData.RequiredDexterityIndex]),
-            [AbilityConstants.Intelligence] = GetRequiredAbility(splitData[DataIndexConstants.FeatData.RequiredIntelligenceIndex]),
-            [AbilityConstants.Wisdom] = GetRequiredAbility(splitData[DataIndexConstants.FeatData.RequiredWisdomIndex]),
-            [AbilityConstants.Charisma] = GetRequiredAbility(splitData[DataIndexConstants.FeatData.RequiredCharismaIndex]),
-        };
+            AddRequirementToDictionary(RequiredAbilities, AbilityConstants.Strength, splitData[DataIndexConstants.FeatData.RequiredStrengthIndex]);
+            AddRequirementToDictionary(RequiredAbilities, AbilityConstants.Constitution, splitData[DataIndexConstants.FeatData.RequiredConstitutionIndex]);
+            AddRequirementToDictionary(RequiredAbilities, AbilityConstants.Dexterity, splitData[DataIndexConstants.FeatData.RequiredDexterityIndex]);
+            AddRequirementToDictionary(RequiredAbilities, AbilityConstants.Intelligence, splitData[DataIndexConstants.FeatData.RequiredIntelligenceIndex]);
+            AddRequirementToDictionary(RequiredAbilities, AbilityConstants.Wisdom, splitData[DataIndexConstants.FeatData.RequiredWisdomIndex]);
+            AddRequirementToDictionary(RequiredAbilities, AbilityConstants.Charisma, splitData[DataIndexConstants.FeatData.RequiredCharismaIndex]);
+        }
 
-        private static int GetRequiredAbility(string requiredAbilities)
+        private static void AddRequirementToDictionary(Dictionary<string, int> dictionary, string key, string rawValue)
         {
-            if (string.IsNullOrEmpty(requiredAbilities))
-                return 0;
+            if (string.IsNullOrEmpty(rawValue))
+                return;
 
-            return Convert.ToInt32(requiredAbilities);
+            var value = Convert.ToInt32(rawValue);
+            if (value > 0)
+                dictionary.Add(key, value);
         }
 
         private static IEnumerable<RequiredSkillDataSelection> GetRequiredSkills(string requiredSkillsData)
@@ -133,13 +133,13 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             data[DataIndexConstants.FeatData.RequiresEquipmentIndex] = selection.RequiresEquipment.ToString();
             data[DataIndexConstants.FeatData.RequiredFeatsIndex] = GetRequiredFeats(selection.RequiredFeats);
             data[DataIndexConstants.FeatData.RequiredSkillsIndex] = GetRequiredSkills(selection.RequiredSkills);
-            data[DataIndexConstants.FeatData.RequiredStrengthIndex] = GetRequiredAbility(AbilityConstants.Strength, selection.RequiredAbilities);
-            data[DataIndexConstants.FeatData.RequiredConstitutionIndex] = GetRequiredAbility(AbilityConstants.Constitution, selection.RequiredAbilities);
-            data[DataIndexConstants.FeatData.RequiredDexterityIndex] = GetRequiredAbility(AbilityConstants.Dexterity, selection.RequiredAbilities);
-            data[DataIndexConstants.FeatData.RequiredIntelligenceIndex] = GetRequiredAbility(AbilityConstants.Intelligence, selection.RequiredAbilities);
-            data[DataIndexConstants.FeatData.RequiredWisdomIndex] = GetRequiredAbility(AbilityConstants.Wisdom, selection.RequiredAbilities);
-            data[DataIndexConstants.FeatData.RequiredCharismaIndex] = GetRequiredAbility(AbilityConstants.Charisma, selection.RequiredAbilities);
-            data[DataIndexConstants.FeatData.RequiredFlySpeedIndex] = GetRequiredSpeed(SpeedConstants.Fly, selection.RequiredSpeeds);
+            data[DataIndexConstants.FeatData.RequiredStrengthIndex] = GetRequiredValueFromDictionary(AbilityConstants.Strength, selection.RequiredAbilities);
+            data[DataIndexConstants.FeatData.RequiredConstitutionIndex] = GetRequiredValueFromDictionary(AbilityConstants.Constitution, selection.RequiredAbilities);
+            data[DataIndexConstants.FeatData.RequiredDexterityIndex] = GetRequiredValueFromDictionary(AbilityConstants.Dexterity, selection.RequiredAbilities);
+            data[DataIndexConstants.FeatData.RequiredIntelligenceIndex] = GetRequiredValueFromDictionary(AbilityConstants.Intelligence, selection.RequiredAbilities);
+            data[DataIndexConstants.FeatData.RequiredWisdomIndex] = GetRequiredValueFromDictionary(AbilityConstants.Wisdom, selection.RequiredAbilities);
+            data[DataIndexConstants.FeatData.RequiredCharismaIndex] = GetRequiredValueFromDictionary(AbilityConstants.Charisma, selection.RequiredAbilities);
+            data[DataIndexConstants.FeatData.RequiredFlySpeedIndex] = GetRequiredValueFromDictionary(SpeedConstants.Fly, selection.RequiredSpeeds);
             data[DataIndexConstants.FeatData.RequiredSizesIndex] = GetRequiredSizes(selection.RequiredSizes);
             data[DataIndexConstants.FeatData.TakenMultipleTimesIndex] = selection.CanBeTakenMultipleTimes.ToString();
 
@@ -148,20 +148,12 @@ namespace DnDGen.CreatureGen.Selectors.Selections
 
         private static string GetRequiredSizes(IEnumerable<string> requiredSizesData) => string.Join(Delimiter, requiredSizesData);
 
-        private static string GetRequiredSpeed(string speed, Dictionary<string, int> requiredSpeeds)
+        private static string GetRequiredValueFromDictionary(string key, Dictionary<string, int> dictionary)
         {
-            if (!requiredSpeeds.ContainsKey(speed))
+            if (!dictionary.ContainsKey(key))
                 return 0.ToString();
 
-            return requiredSpeeds[speed].ToString();
-        }
-
-        private static string GetRequiredAbility(string ability, Dictionary<string, int> requiredAbilities)
-        {
-            if (!requiredAbilities.ContainsKey(ability))
-                return 0.ToString();
-
-            return requiredAbilities[ability].ToString();
+            return dictionary[key].ToString();
         }
 
         private static string GetRequiredSkills(IEnumerable<RequiredSkillDataSelection> requiredSkillsData)
@@ -231,7 +223,6 @@ namespace DnDGen.CreatureGen.Selectors.Selections
                 if (abilities[requiredAbility.Key].FullScore < requiredAbility.Value)
                     return false;
 
-            //foreach (var requiredSpeed in RequiredSpeeds.Where(rs => rs.Value > 0))
             foreach (var requiredSpeed in RequiredSpeeds)
                 if (!speeds.ContainsKey(requiredSpeed.Key) || speeds[requiredSpeed.Key].Value < requiredSpeed.Value)
                     return false;

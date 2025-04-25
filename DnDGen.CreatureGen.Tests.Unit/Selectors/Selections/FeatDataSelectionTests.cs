@@ -228,22 +228,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(newSelection, Is.Not.Null);
             Assert.That(newSelection.RequiredBaseAttack, Is.EqualTo(0));
             Assert.That(newSelection.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(newSelection.RequiredAbilities, Has.Count.EqualTo(6)
-                .And.ContainKey(AbilityConstants.Strength)
-                .And.ContainKey(AbilityConstants.Constitution)
-                .And.ContainKey(AbilityConstants.Dexterity)
-                .And.ContainKey(AbilityConstants.Intelligence)
-                .And.ContainKey(AbilityConstants.Wisdom)
-                .And.ContainKey(AbilityConstants.Charisma));
-            Assert.That(newSelection.RequiredAbilities[AbilityConstants.Strength], Is.EqualTo(0));
-            Assert.That(newSelection.RequiredAbilities[AbilityConstants.Constitution], Is.EqualTo(0));
-            Assert.That(newSelection.RequiredAbilities[AbilityConstants.Dexterity], Is.EqualTo(0));
-            Assert.That(newSelection.RequiredAbilities[AbilityConstants.Intelligence], Is.EqualTo(0));
-            Assert.That(newSelection.RequiredAbilities[AbilityConstants.Wisdom], Is.EqualTo(0));
-            Assert.That(newSelection.RequiredAbilities[AbilityConstants.Charisma], Is.EqualTo(0));
-            Assert.That(newSelection.RequiredSpeeds, Has.Count.EqualTo(1)
-                .And.ContainKey(SpeedConstants.Fly));
-            Assert.That(newSelection.RequiredSpeeds[SpeedConstants.Fly], Is.EqualTo(0));
+            Assert.That(newSelection.RequiredAbilities, Is.Empty);
+            Assert.That(newSelection.RequiredSpeeds, Is.Empty);
             Assert.That(newSelection.RequiredHands, Is.EqualTo(0));
             Assert.That(newSelection.RequiredNaturalWeapons, Is.EqualTo(0));
             Assert.That(newSelection.RequiredSizes, Is.Empty);
@@ -253,6 +239,103 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(newSelection.RequiresNaturalArmor, Is.EqualTo(false));
             Assert.That(newSelection.RequiresSpecialAttack, Is.EqualTo(false));
             Assert.That(newSelection.RequiresSpellLikeAbility, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Map_FromString_ReturnsSelection_NoRequiredAbilities()
+        {
+            var data = GetTestDataArray();
+            data[DataIndexConstants.FeatData.BaseAttackRequirementIndex] = "0";
+            data[DataIndexConstants.FeatData.MinimumCasterLevelIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredCharismaIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredConstitutionIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredDexterityIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredFeatsIndex] = string.Empty;
+            data[DataIndexConstants.FeatData.RequiredFlySpeedIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredHandQuantityIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredIntelligenceIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredSizesIndex] = string.Empty;
+            data[DataIndexConstants.FeatData.RequiredSkillsIndex] = string.Empty;
+            data[DataIndexConstants.FeatData.RequiredStrengthIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredWisdomIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiresEquipmentIndex] = bool.FalseString;
+            data[DataIndexConstants.FeatData.RequiresNaturalArmorIndex] = bool.FalseString;
+            data[DataIndexConstants.FeatData.RequiresSpecialAttackIndex] = bool.FalseString;
+            data[DataIndexConstants.FeatData.RequiresSpellLikeAbilityIndex] = bool.FalseString;
+
+            var newSelection = FeatDataSelection.Map(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.RequiredAbilities, Is.Empty);
+        }
+
+        [TestCase(AbilityConstants.Strength, DataIndexConstants.FeatData.RequiredStrengthIndex)]
+        [TestCase(AbilityConstants.Dexterity, DataIndexConstants.FeatData.RequiredDexterityIndex)]
+        [TestCase(AbilityConstants.Constitution, DataIndexConstants.FeatData.RequiredConstitutionIndex)]
+        [TestCase(AbilityConstants.Intelligence, DataIndexConstants.FeatData.RequiredIntelligenceIndex)]
+        [TestCase(AbilityConstants.Wisdom, DataIndexConstants.FeatData.RequiredWisdomIndex)]
+        [TestCase(AbilityConstants.Charisma, DataIndexConstants.FeatData.RequiredCharismaIndex)]
+        public void Map_FromString_ReturnsSelection_OneRequiredAbility(string ability, int index)
+        {
+            var data = GetTestDataArray();
+            data[DataIndexConstants.FeatData.BaseAttackRequirementIndex] = "0";
+            data[DataIndexConstants.FeatData.MinimumCasterLevelIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredCharismaIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredConstitutionIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredDexterityIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredFeatsIndex] = string.Empty;
+            data[DataIndexConstants.FeatData.RequiredFlySpeedIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredHandQuantityIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredIntelligenceIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredSizesIndex] = string.Empty;
+            data[DataIndexConstants.FeatData.RequiredSkillsIndex] = string.Empty;
+            data[DataIndexConstants.FeatData.RequiredStrengthIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredWisdomIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiresEquipmentIndex] = bool.FalseString;
+            data[DataIndexConstants.FeatData.RequiresNaturalArmorIndex] = bool.FalseString;
+            data[DataIndexConstants.FeatData.RequiresSpecialAttackIndex] = bool.FalseString;
+            data[DataIndexConstants.FeatData.RequiresSpellLikeAbilityIndex] = bool.FalseString;
+
+            data[index] = "6629";
+
+            var newSelection = FeatDataSelection.Map(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.RequiredAbilities, Has.Count.EqualTo(1)
+                .And.ContainKey(ability));
+            Assert.That(newSelection.RequiredAbilities[ability], Is.EqualTo(6629));
+        }
+
+        [Test]
+        public void Map_FromString_ReturnsSelection_TwoRequiredAbilities()
+        {
+            var data = GetTestDataArray();
+            data[DataIndexConstants.FeatData.BaseAttackRequirementIndex] = "0";
+            data[DataIndexConstants.FeatData.MinimumCasterLevelIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredCharismaIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredConstitutionIndex] = "";
+            data[DataIndexConstants.FeatData.RequiredDexterityIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredFeatsIndex] = string.Empty;
+            data[DataIndexConstants.FeatData.RequiredFlySpeedIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredHandQuantityIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredIntelligenceIndex] = "6629";
+            data[DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredSizesIndex] = string.Empty;
+            data[DataIndexConstants.FeatData.RequiredSkillsIndex] = string.Empty;
+            data[DataIndexConstants.FeatData.RequiredStrengthIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredWisdomIndex] = "01209";
+            data[DataIndexConstants.FeatData.RequiresEquipmentIndex] = bool.FalseString;
+            data[DataIndexConstants.FeatData.RequiresNaturalArmorIndex] = bool.FalseString;
+            data[DataIndexConstants.FeatData.RequiresSpecialAttackIndex] = bool.FalseString;
+            data[DataIndexConstants.FeatData.RequiresSpellLikeAbilityIndex] = bool.FalseString;
+
+            var newSelection = FeatDataSelection.Map(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.RequiredAbilities, Has.Count.EqualTo(2)
+                .And.ContainKey(AbilityConstants.Intelligence)
+                .And.ContainKey(AbilityConstants.Wisdom));
+            Assert.That(newSelection.RequiredAbilities[AbilityConstants.Intelligence], Is.EqualTo(6629));
+            Assert.That(newSelection.RequiredAbilities[AbilityConstants.Wisdom], Is.EqualTo(01209));
         }
 
         [Test]
@@ -673,6 +756,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         }
 
         [Test]
+        public void Map_FromSelection_ReturnsString_MissingSpeeds()
+        {
+            var selection = GetTestDataSelection();
+            selection.RequiredSpeeds.Clear();
+
+            var rawData = FeatDataSelection.Map(selection);
+            Assert.That(rawData.Length, Is.EqualTo(selection.SectionCount));
+            Assert.That(rawData[DataIndexConstants.FeatData.RequiredFlySpeedIndex], Is.EqualTo("0"));
+        }
+
+        [Test]
         public void Map_FromSelection_ReturnsString_NoRequiredFeats()
         {
             var selection = GetTestDataSelection();
@@ -1063,22 +1157,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(newSelection, Is.Not.Null);
             Assert.That(newSelection.RequiredBaseAttack, Is.EqualTo(0));
             Assert.That(newSelection.MinimumCasterLevel, Is.EqualTo(0));
-            Assert.That(newSelection.RequiredAbilities, Has.Count.EqualTo(6)
-                .And.ContainKey(AbilityConstants.Strength)
-                .And.ContainKey(AbilityConstants.Constitution)
-                .And.ContainKey(AbilityConstants.Dexterity)
-                .And.ContainKey(AbilityConstants.Intelligence)
-                .And.ContainKey(AbilityConstants.Wisdom)
-                .And.ContainKey(AbilityConstants.Charisma));
-            Assert.That(newSelection.RequiredAbilities[AbilityConstants.Strength], Is.EqualTo(0));
-            Assert.That(newSelection.RequiredAbilities[AbilityConstants.Constitution], Is.EqualTo(0));
-            Assert.That(newSelection.RequiredAbilities[AbilityConstants.Dexterity], Is.EqualTo(0));
-            Assert.That(newSelection.RequiredAbilities[AbilityConstants.Intelligence], Is.EqualTo(0));
-            Assert.That(newSelection.RequiredAbilities[AbilityConstants.Wisdom], Is.EqualTo(0));
-            Assert.That(newSelection.RequiredAbilities[AbilityConstants.Charisma], Is.EqualTo(0));
-            Assert.That(newSelection.RequiredSpeeds, Has.Count.EqualTo(1)
-                .And.ContainKey(SpeedConstants.Fly));
-            Assert.That(newSelection.RequiredSpeeds[SpeedConstants.Fly], Is.EqualTo(0));
+            Assert.That(newSelection.RequiredAbilities, Is.Empty);
+            Assert.That(newSelection.RequiredSpeeds, Is.Empty);
             Assert.That(newSelection.RequiredHands, Is.EqualTo(0));
             Assert.That(newSelection.RequiredNaturalWeapons, Is.EqualTo(0));
             Assert.That(newSelection.RequiredSizes, Is.Empty);
@@ -1088,6 +1168,103 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(newSelection.RequiresNaturalArmor, Is.EqualTo(false));
             Assert.That(newSelection.RequiresSpecialAttack, Is.EqualTo(false));
             Assert.That(newSelection.RequiresSpellLikeAbility, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void MapTo_ReturnsSelection_NoRequiredAbilities()
+        {
+            var data = GetTestDataArray();
+            data[DataIndexConstants.FeatData.BaseAttackRequirementIndex] = "0";
+            data[DataIndexConstants.FeatData.MinimumCasterLevelIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredCharismaIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredConstitutionIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredDexterityIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredFeatsIndex] = string.Empty;
+            data[DataIndexConstants.FeatData.RequiredFlySpeedIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredHandQuantityIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredIntelligenceIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredSizesIndex] = string.Empty;
+            data[DataIndexConstants.FeatData.RequiredSkillsIndex] = string.Empty;
+            data[DataIndexConstants.FeatData.RequiredStrengthIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredWisdomIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiresEquipmentIndex] = bool.FalseString;
+            data[DataIndexConstants.FeatData.RequiresNaturalArmorIndex] = bool.FalseString;
+            data[DataIndexConstants.FeatData.RequiresSpecialAttackIndex] = bool.FalseString;
+            data[DataIndexConstants.FeatData.RequiresSpellLikeAbilityIndex] = bool.FalseString;
+
+            var newSelection = selection.MapTo(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.RequiredAbilities, Is.Empty);
+        }
+
+        [TestCase(AbilityConstants.Strength, DataIndexConstants.FeatData.RequiredStrengthIndex)]
+        [TestCase(AbilityConstants.Dexterity, DataIndexConstants.FeatData.RequiredDexterityIndex)]
+        [TestCase(AbilityConstants.Constitution, DataIndexConstants.FeatData.RequiredConstitutionIndex)]
+        [TestCase(AbilityConstants.Intelligence, DataIndexConstants.FeatData.RequiredIntelligenceIndex)]
+        [TestCase(AbilityConstants.Wisdom, DataIndexConstants.FeatData.RequiredWisdomIndex)]
+        [TestCase(AbilityConstants.Charisma, DataIndexConstants.FeatData.RequiredCharismaIndex)]
+        public void MapTo_ReturnsSelection_OneRequiredAbility(string ability, int index)
+        {
+            var data = GetTestDataArray();
+            data[DataIndexConstants.FeatData.BaseAttackRequirementIndex] = "0";
+            data[DataIndexConstants.FeatData.MinimumCasterLevelIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredCharismaIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredConstitutionIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredDexterityIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredFeatsIndex] = string.Empty;
+            data[DataIndexConstants.FeatData.RequiredFlySpeedIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredHandQuantityIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredIntelligenceIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredSizesIndex] = string.Empty;
+            data[DataIndexConstants.FeatData.RequiredSkillsIndex] = string.Empty;
+            data[DataIndexConstants.FeatData.RequiredStrengthIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredWisdomIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiresEquipmentIndex] = bool.FalseString;
+            data[DataIndexConstants.FeatData.RequiresNaturalArmorIndex] = bool.FalseString;
+            data[DataIndexConstants.FeatData.RequiresSpecialAttackIndex] = bool.FalseString;
+            data[DataIndexConstants.FeatData.RequiresSpellLikeAbilityIndex] = bool.FalseString;
+
+            data[index] = "6629";
+
+            var newSelection = selection.MapTo(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.RequiredAbilities, Has.Count.EqualTo(1)
+                .And.ContainKey(ability));
+            Assert.That(newSelection.RequiredAbilities[ability], Is.EqualTo(6629));
+        }
+
+        [Test]
+        public void MapTo_ReturnsSelection_TwoRequiredAbilities()
+        {
+            var data = GetTestDataArray();
+            data[DataIndexConstants.FeatData.BaseAttackRequirementIndex] = "0";
+            data[DataIndexConstants.FeatData.MinimumCasterLevelIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredCharismaIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredConstitutionIndex] = "";
+            data[DataIndexConstants.FeatData.RequiredDexterityIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredFeatsIndex] = string.Empty;
+            data[DataIndexConstants.FeatData.RequiredFlySpeedIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredHandQuantityIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredIntelligenceIndex] = "6629";
+            data[DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredSizesIndex] = string.Empty;
+            data[DataIndexConstants.FeatData.RequiredSkillsIndex] = string.Empty;
+            data[DataIndexConstants.FeatData.RequiredStrengthIndex] = "0";
+            data[DataIndexConstants.FeatData.RequiredWisdomIndex] = "01209";
+            data[DataIndexConstants.FeatData.RequiresEquipmentIndex] = bool.FalseString;
+            data[DataIndexConstants.FeatData.RequiresNaturalArmorIndex] = bool.FalseString;
+            data[DataIndexConstants.FeatData.RequiresSpecialAttackIndex] = bool.FalseString;
+            data[DataIndexConstants.FeatData.RequiresSpellLikeAbilityIndex] = bool.FalseString;
+
+            var newSelection = selection.MapTo(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.RequiredAbilities, Has.Count.EqualTo(2)
+                .And.ContainKey(AbilityConstants.Intelligence)
+                .And.ContainKey(AbilityConstants.Wisdom));
+            Assert.That(newSelection.RequiredAbilities[AbilityConstants.Intelligence], Is.EqualTo(6629));
+            Assert.That(newSelection.RequiredAbilities[AbilityConstants.Wisdom], Is.EqualTo(01209));
         }
 
         [Test]
@@ -1505,6 +1682,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             {
                 Assert.That(rawData[index], Is.EqualTo("0"));
             }
+        }
+
+        [Test]
+        public void MapFrom_ReturnsString_MissingSpeeds()
+        {
+            var selection = GetTestDataSelection();
+            selection.RequiredSpeeds.Clear();
+
+            var rawData = selection.MapFrom(selection);
+            Assert.That(rawData.Length, Is.EqualTo(selection.SectionCount));
+            Assert.That(rawData[DataIndexConstants.FeatData.RequiredFlySpeedIndex], Is.EqualTo("0"));
         }
 
         [Test]
