@@ -555,6 +555,15 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
+            var dragonAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, DragonSpecies);
+
+            if (!string.IsNullOrEmpty(filters?.Alignment))
+            {
+                //INFO: For Half-Dragons, alignments are purely based on Dragon Species, not Base Creature
+                if (!dragonAlignments.Contains(filters.Alignment))
+                    return [];
+            }
+
             var templateCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, DragonSpecies);
             var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
             if (!filteredBaseCreatures.Any())
@@ -564,15 +573,6 @@ namespace DnDGen.CreatureGen.Templates
                 && string.IsNullOrEmpty(filters?.Type)
                 && string.IsNullOrEmpty(filters?.Alignment))
                 return filteredBaseCreatures;
-
-            var dragonAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, DragonSpecies);
-
-            if (!string.IsNullOrEmpty(filters?.Alignment))
-            {
-                //INFO: For Half-Dragons, alignments are purely based on Dragon Species, not Base Creature
-                if (!dragonAlignments.Contains(filters.Alignment))
-                    return [];
-            }
 
             var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
             var allHitDice = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice);
