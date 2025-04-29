@@ -101,7 +101,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             mockSkillSelector
                 .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, It.IsAny<string>()))
-                .Returns((string skill) => new SkillDataSelection { SkillName = skill, BaseAbilityName = AbilityConstants.Intelligence });
+                .Returns((string a, string t, string skill) => new SkillDataSelection { SkillName = skill, BaseAbilityName = AbilityConstants.Intelligence });
 
             mockDice
                 .Setup(d => d.Roll(It.IsAny<string>()).AsSum<int>())
@@ -1561,10 +1561,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             abilities["stat 2"] = new Ability("stat 2");
             abilities["stat 3"] = new Ability("stat 3");
 
-            var otherSkillSelection = new SkillDataSelection();
-            otherSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
-            otherSkillSelection.SkillName = "other skill";
-            otherSkillSelection.Focus = "software developer";
+            var otherSkillSelection = new SkillDataSelection
+            {
+                BaseAbilityName = AbilityConstants.Intelligence,
+                SkillName = "other skill",
+                Focus = "software developer"
+            };
 
             mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(otherSkillSelection);
 
@@ -1590,7 +1592,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureTypeSkillPoints = 10;
             hitPoints.HitDice[0].Quantity = 10;
 
-            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, It.IsAny<string>())).Returns((string skill) => new SkillDataSelection { SkillName = skill, BaseAbilityName = AbilityConstants.Strength });
+            mockSkillSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, It.IsAny<string>()))
+                .Returns((string a, string t, string skill) => new SkillDataSelection { SkillName = skill, BaseAbilityName = AbilityConstants.Strength });
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);

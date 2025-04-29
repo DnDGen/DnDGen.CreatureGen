@@ -25,8 +25,8 @@ namespace DnDGen.CreatureGen.Generators.Defenses
         {
             var hitPoints = new HitPoints();
 
-            var quantitySelection = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, creatureName).Single();
-            var dieSelection = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, creatureType.Name).Single();
+            var quantitySelection = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, creatureName);
+            var dieSelection = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, creatureType.Name);
             var quantity = quantitySelection.AmountAsDouble + additionalHitDice;
 
             if (asCharacter && creatureType.Name == CreatureConstants.Types.Humanoid)

@@ -48,7 +48,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
                 Power = Convert.ToInt32(splitData[DataIndexConstants.SpecialQualityData.PowerIndex]),
                 RandomFociQuantityRoll = splitData[DataIndexConstants.SpecialQualityData.RandomFociQuantityIndex],
                 Save = splitData[DataIndexConstants.SpecialQualityData.SaveIndex],
-                SaveAbility = splitData[DataIndexConstants.SpecialQualityData.SaveIndex],
+                SaveAbility = splitData[DataIndexConstants.SpecialQualityData.SaveAbilityIndex],
                 SaveBaseValue = Convert.ToInt32(splitData[DataIndexConstants.SpecialQualityData.SaveBaseValueIndex]),
                 MinHitDice = Convert.ToInt32(splitData[DataIndexConstants.SpecialQualityData.MinHitDiceIndex]),
                 MaxHitDice = Convert.ToInt32(splitData[DataIndexConstants.SpecialQualityData.MaxHitDiceIndex]),

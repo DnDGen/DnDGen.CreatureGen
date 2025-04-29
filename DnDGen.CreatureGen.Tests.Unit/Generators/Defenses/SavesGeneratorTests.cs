@@ -74,7 +74,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
             mockBonusSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SaveBonuses, It.IsAny<string>()))
-                .Returns((string t, string s) => racialBonuses[s]);
+                .Returns((string a, string t, string s) => racialBonuses[s]);
         }
 
         [Test]

@@ -67,7 +67,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.ArcaneSpellFailures, It.IsAny<string>()))
-                .Returns((string table, string name) => arcaneSpellFailures[name]);
+                .Returns((string a, string table, string name) => new() { AmountAsDouble = arcaneSpellFailures[name] });
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, GroupConstants.PreparesSpells))
                 .Returns(classesThatPrepareSpells);
