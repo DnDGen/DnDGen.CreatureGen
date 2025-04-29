@@ -397,6 +397,15 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
+            if (!string.IsNullOrEmpty(filters?.Alignment))
+            {
+                var presetAlignment = new Alignment(filters.Alignment);
+                if (presetAlignment.Goodness != AlignmentConstants.Evil)
+                {
+                    return [];
+                }
+            }
+
             var templateCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich);
             var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
             if (!filteredBaseCreatures.Any())
@@ -406,15 +415,6 @@ namespace DnDGen.CreatureGen.Templates
                 && string.IsNullOrEmpty(filters?.Type)
                 && string.IsNullOrEmpty(filters?.Alignment))
                 return filteredBaseCreatures;
-
-            if (!string.IsNullOrEmpty(filters?.Alignment))
-            {
-                var presetAlignment = new Alignment(filters.Alignment);
-                if (presetAlignment.Goodness != AlignmentConstants.Evil)
-                {
-                    return [];
-                }
-            }
 
             var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
             var allHitDice = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice);
@@ -453,7 +453,7 @@ namespace DnDGen.CreatureGen.Templates
             IEnumerable<int> casterLevels,
             Filters filters)
         {
-            var compatibility = IsCompatible(types, levelAdjustment, casterLevels);
+            var compatibility = IsCompatible(types, levelAdjustment, casterLevels, asCharacter);
             if (!compatibility.Compatible)
                 return (false, compatibility.Reason);
 
@@ -505,14 +505,14 @@ namespace DnDGen.CreatureGen.Templates
             return (true, null);
         }
 
-        private (bool Compatible, string Reason) IsCompatible(IEnumerable<string> types, int? levelAdjustment, IEnumerable<int> casterLevels)
+        private (bool Compatible, string Reason) IsCompatible(IEnumerable<string> types, int? levelAdjustment, IEnumerable<int> casterLevels, bool asCharacter)
         {
             if (types.First() != CreatureConstants.Types.Humanoid)
             {
                 return (false, $"Type '{types.First()}' is not valid");
             }
 
-            if (levelAdjustment.HasValue)
+            if (levelAdjustment.HasValue && asCharacter)
             {
                 return (true, null);
             }

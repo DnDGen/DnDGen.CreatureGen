@@ -108,15 +108,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(false, "subtype 1", ChallengeRatingConstants.CR3, "original Neutral", "Alignment filter 'original Neutral' is not valid")]
         [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original Evil", "CR filter 2 does not match updated creature CR 3 (from CR 1)")]
         [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR3, "original Evil", "Type filter 'wrong subtype' is not valid")]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR3, "original Evil", "",
-            Ignore = "As Character doesn't affect already-generated creature compatiblity")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR3, "original Evil", "CR filter 3 does not match updated creature CR 2 (from CR 0)")]
         public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
-            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
             baseCreature.HitPoints.HitDice[0].Quantity = 1;
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment("original alignment");
+            baseCreature.CasterLevel = 11;
 
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
@@ -142,7 +142,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Templates.Add("my other template");
 
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature.Templates, Has.Count.EqualTo(2));
             Assert.That(creature.Templates[0], Is.EqualTo("my other template"));
             Assert.That(creature.Templates[1], Is.EqualTo(CreatureConstants.Templates.Lich));
@@ -152,17 +152,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void ApplyTo_ReturnsCreature_WithFilters()
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
-            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
             baseCreature.HitPoints.HitDice[0].Quantity = 1;
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment("original alignment");
+            baseCreature.CasterLevel = 11;
 
             mockDice
                 .Setup(d => d
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 9266 });
+                .Returns([9266]);
             mockDice
                 .Setup(d => d
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
@@ -170,10 +171,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .AsPotentialAverage())
                 .Returns(90210);
 
-            var filters = new Filters();
-            filters.Type = "subtype 1";
-            filters.ChallengeRating = ChallengeRatingConstants.CR3;
-            filters.Alignment = "original Evil";
+            var filters = new Filters
+            {
+                Type = "subtype 1",
+                ChallengeRating = ChallengeRatingConstants.CR3,
+                Alignment = "original Evil"
+            };
 
             var creature = applicator.ApplyTo(baseCreature, false, filters);
             Assert.That(creature.Templates.Single(), Is.EqualTo(CreatureConstants.Templates.Lich));
@@ -191,7 +194,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     CreatureConstants.Templates.Lich + LanguageConstants.Groups.Automatic))
                 .Returns("Spoopy");
 
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -211,7 +214,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     CreatureConstants.Templates.Lich + LanguageConstants.Groups.Automatic))
                 .Returns("Spoopy");
 
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -228,7 +231,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "subtype 2",
             };
 
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
             Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(4));
@@ -250,7 +253,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Lich, false, false))
                 .Returns(templateDemographics);
 
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Demographics, Is.EqualTo(templateDemographics));
         }
@@ -277,7 +280,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .AsPotentialAverage())
                 .Returns(42);
 
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(42));
@@ -303,7 +306,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .AsPotentialAverage())
                 .Returns(42);
 
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(42));
@@ -312,7 +315,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_GainsNaturalArmor()
         {
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(5));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
 
@@ -330,7 +333,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, oldValue);
 
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(5));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
@@ -348,7 +351,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266);
 
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(9266));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
@@ -397,7 +400,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
 
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length));
             Assert.That(creature.Attacks, Is.SupersetOf(newAttacks));
@@ -413,10 +416,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Touch",
-                    Damages = new List<Damage>
-                    {
+                    Damages =
+                    [
                         new Damage { Roll = "lich touch roll", Type = "lich touch type" }
-                    },
+                    ],
                     IsSpecial = false,
                     IsMelee = true
                 },
@@ -462,13 +465,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Touch",
-                    Damages = new List<Damage>
-                    {
+                    Damages =
+                    [
                         new Damage { Roll = "lich touch roll", Type = "lich touch type" }
-                    },
+                    ],
                     IsSpecial = false,
                     IsMelee = true,
-                    AttackBonuses = new List<int> { 92 },
+                    AttackBonuses = [92],
                 },
             };
 
@@ -483,7 +486,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(attacksWithBonuses);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
 
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + attacksWithBonuses.Length));
             Assert.That(creature.Attacks, Is.SupersetOf(attacksWithBonuses));
@@ -517,7 +520,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(lichQualities);
 
             var originalCount = baseCreature.SpecialQualities.Count();
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
 
             Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(originalCount + lichQualities.Length));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(lichQualities));
@@ -545,7 +548,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(lichQualities);
 
             var originalCount = baseCreature.SpecialQualities.Count();
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
 
             Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(originalCount + lichQualities.Length));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(lichQualities));
@@ -554,7 +557,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_ModifyAbilities()
         {
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.Zero);
             Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
@@ -581,7 +584,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Abilities[ability].BaseScore = 0;
 
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature.Abilities[ability].HasScore, Is.False);
             Assert.That(creature.Abilities[ability].TemplateAdjustment, Is.Zero);
         }
@@ -614,7 +617,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             baseCreature.Skills = baseCreature.Skills.Union(skills);
 
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature.Skills, Is.SupersetOf(skills));
             Assert.That(skills[0].Name, Is.EqualTo("other skill 1"));
             Assert.That(skills[0].Bonus, Is.EqualTo(600));
@@ -662,7 +665,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Skills = new List<Skill>();
 
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature.Skills, Is.Empty);
         }
 
@@ -686,7 +689,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             baseCreature.Skills = baseCreature.Skills.Union(skills);
 
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature.Skills, Is.SupersetOf(skills));
             Assert.That(skills[0].Name, Is.EqualTo("other skill 1"));
             Assert.That(skills[0].Bonus, Is.EqualTo(600));
@@ -709,9 +712,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void ApplyTo_SwapConsitutionForCharismaForConcentration()
         {
             var concentration = new Skill(SkillConstants.Concentration, baseCreature.Abilities[AbilityConstants.Constitution], 42);
-            baseCreature.Skills = baseCreature.Skills.Union(new[] { concentration });
+            baseCreature.Skills = baseCreature.Skills.Union([concentration]);
 
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature.Skills, Contains.Item(concentration));
             Assert.That(concentration.BaseAbility, Is.EqualTo(creature.Abilities[AbilityConstants.Charisma]));
         }
@@ -719,7 +722,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_CreatureSkills_DoNotHaveFortitudeSave()
         {
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature.Saves[SaveConstants.Fortitude].HasSave, Is.False);
             Assert.That(creature.Saves[SaveConstants.Reflex].HasSave, Is.True);
             Assert.That(creature.Saves[SaveConstants.Will].HasSave, Is.True);
@@ -730,7 +733,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.ChallengeRating = original;
 
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ChallengeRating, Is.EqualTo(adjusted));
         }
@@ -762,7 +765,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Alignment.Lawfulness = lawfulness;
             baseCreature.Alignment.Goodness = goodness;
 
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Alignment.Full, Is.EqualTo(adjusted));
         }
@@ -775,7 +778,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = "preset Evil" };
 
-            var creature = applicator.ApplyTo(baseCreature, false, filters);
+            var creature = applicator.ApplyTo(baseCreature, true, filters);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Alignment.Full, Is.EqualTo("preset Evil"));
         }
@@ -816,15 +819,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(false, "subtype 1", ChallengeRatingConstants.CR3, "original Neutral", "Alignment filter 'original Neutral' is not valid")]
         [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original Evil", "CR filter 2 does not match updated creature CR 3 (from CR 1)")]
         [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR3, "original Evil", "Type filter 'wrong subtype' is not valid")]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR3, "original Evil", "",
-            Ignore = "As Character doesn't affect already-generated creature compatiblity")]
-        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR3, "original Evil", "CR filter 3 does not match updated creature CR 2 (from CR 0)")]
+        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(
+            bool asCharacter,
+            string type,
+            string challengeRating,
+            string alignment,
+            string reason)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
-            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
             baseCreature.HitPoints.HitDice[0].Quantity = 1;
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment("original alignment");
+            baseCreature.CasterLevel = 11;
 
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
@@ -836,10 +844,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             message.AppendLine($"\tCR: {challengeRating}");
             message.AppendLine($"\tAlignment: {alignment}");
 
-            var filters = new Filters();
-            filters.Type = type;
-            filters.ChallengeRating = challengeRating;
-            filters.Alignment = alignment;
+            var filters = new Filters
+            {
+                Type = type,
+                ChallengeRating = challengeRating,
+                Alignment = alignment
+            };
 
             await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, asCharacter, filters),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
@@ -850,7 +860,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Templates.Add("my other template");
 
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature.Templates, Has.Count.EqualTo(2));
             Assert.That(creature.Templates[0], Is.EqualTo("my other template"));
             Assert.That(creature.Templates[1], Is.EqualTo(CreatureConstants.Templates.Lich));
@@ -860,17 +870,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public async Task ApplyToAsync_ReturnsCreature_WithFilters()
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
-            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
             baseCreature.HitPoints.HitDice[0].Quantity = 1;
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment("original alignment");
+            baseCreature.CasterLevel = 11;
 
             mockDice
                 .Setup(d => d
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 9266 });
+                .Returns([9266]);
             mockDice
                 .Setup(d => d
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
@@ -878,10 +889,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .AsPotentialAverage())
                 .Returns(90210);
 
-            var filters = new Filters();
-            filters.Type = "subtype 1";
-            filters.ChallengeRating = ChallengeRatingConstants.CR3;
-            filters.Alignment = "original Evil";
+            var filters = new Filters
+            {
+                Type = "subtype 1",
+                ChallengeRating = ChallengeRatingConstants.CR3,
+                Alignment = "original Evil"
+            };
 
             var creature = await applicator.ApplyToAsync(baseCreature, false, filters);
             Assert.That(creature.Templates.Single(), Is.EqualTo(CreatureConstants.Templates.Lich));
@@ -899,7 +912,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     CreatureConstants.Templates.Lich + LanguageConstants.Groups.Automatic))
                 .Returns("Spoopy");
 
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -919,7 +932,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     CreatureConstants.Templates.Lich + LanguageConstants.Groups.Automatic))
                 .Returns("Spoopy");
 
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -930,13 +943,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public async Task ApplyToAsync_CreatureTypeChangesToUndead()
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
-            baseCreature.Type.SubTypes = new[]
-            {
+            baseCreature.Type.SubTypes =
+            [
                 "subtype 1",
                 "subtype 2",
-            };
+            ];
 
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
             Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(4));
@@ -958,7 +971,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Lich, false, false))
                 .Returns(templateDemographics);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Demographics, Is.EqualTo(templateDemographics));
         }
@@ -977,7 +990,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 9266, 90210 });
+                .Returns([9266, 90210]);
             mockDice
                 .Setup(d => d
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
@@ -985,7 +998,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .AsPotentialAverage())
                 .Returns(42);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(42));
@@ -1011,7 +1024,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .AsPotentialAverage())
                 .Returns(42);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(42));
@@ -1020,7 +1033,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_GainsNaturalArmor()
         {
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(5));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
 
@@ -1038,7 +1051,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, oldValue);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(5));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
@@ -1056,7 +1069,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(9266));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
@@ -1105,7 +1118,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
 
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length));
             Assert.That(creature.Attacks, Is.SupersetOf(newAttacks));
@@ -1191,7 +1204,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(attacksWithBonuses);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
 
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + attacksWithBonuses.Length));
             Assert.That(creature.Attacks, Is.SupersetOf(attacksWithBonuses));
@@ -1225,7 +1238,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(lichQualities);
 
             var originalCount = baseCreature.SpecialQualities.Count();
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
 
             Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(originalCount + lichQualities.Length));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(lichQualities));
@@ -1253,7 +1266,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(lichQualities);
 
             var originalCount = baseCreature.SpecialQualities.Count();
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
 
             Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(originalCount + lichQualities.Length));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(lichQualities));
@@ -1262,7 +1275,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_ModifyAbilities()
         {
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.Zero);
             Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
@@ -1289,7 +1302,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Abilities[ability].BaseScore = 0;
 
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature.Abilities[ability].HasScore, Is.False);
             Assert.That(creature.Abilities[ability].TemplateAdjustment, Is.Zero);
         }
@@ -1322,7 +1335,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             baseCreature.Skills = baseCreature.Skills.Union(skills);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature.Skills, Is.SupersetOf(skills));
             Assert.That(skills[0].Name, Is.EqualTo("other skill 1"));
             Assert.That(skills[0].Bonus, Is.EqualTo(600));
@@ -1370,7 +1383,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Skills = new List<Skill>();
 
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature.Skills, Is.Empty);
         }
 
@@ -1394,7 +1407,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             baseCreature.Skills = baseCreature.Skills.Union(skills);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature.Skills, Is.SupersetOf(skills));
             Assert.That(skills[0].Name, Is.EqualTo("other skill 1"));
             Assert.That(skills[0].Bonus, Is.EqualTo(600));
@@ -1417,9 +1430,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public async Task ApplyToAsync_SwapConsitutionForCharismaForConcentration()
         {
             var concentration = new Skill(SkillConstants.Concentration, baseCreature.Abilities[AbilityConstants.Constitution], 42);
-            baseCreature.Skills = baseCreature.Skills.Union(new[] { concentration });
+            baseCreature.Skills = baseCreature.Skills.Union([concentration]);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature.Skills, Contains.Item(concentration));
             Assert.That(concentration.BaseAbility, Is.EqualTo(creature.Abilities[AbilityConstants.Charisma]));
         }
@@ -1427,7 +1440,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_CreatureSkills_DoNotHaveFortitudeSave()
         {
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature.Saves[SaveConstants.Fortitude].HasSave, Is.False);
             Assert.That(creature.Saves[SaveConstants.Reflex].HasSave, Is.True);
             Assert.That(creature.Saves[SaveConstants.Will].HasSave, Is.True);
@@ -1438,7 +1451,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.ChallengeRating = original;
 
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ChallengeRating, Is.EqualTo(adjusted));
         }
@@ -1457,7 +1470,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Alignment.Lawfulness = lawfulness;
             baseCreature.Alignment.Goodness = goodness;
 
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Alignment.Full, Is.EqualTo(adjusted));
         }
@@ -1470,7 +1483,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = "preset Evil" };
 
-            var creature = await applicator.ApplyToAsync(baseCreature, false, filters);
+            var creature = await applicator.ApplyToAsync(baseCreature, true, filters);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Alignment.Full, Is.EqualTo("preset Evil"));
         }
@@ -1495,7 +1508,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_SetsTemplate()
         {
-            var creature = applicator.ApplyTo(baseCreature, false);
+            var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Templates.Single(), Is.EqualTo(CreatureConstants.Templates.Lich));
         }
@@ -1503,7 +1516,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_SetsTemplate()
         {
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Templates.Single(), Is.EqualTo(CreatureConstants.Templates.Lich));
         }
@@ -1528,9 +1541,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockCreatureDataSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData))
                 .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureData, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => data[c]);
 
             return data;
         }
@@ -1555,9 +1565,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice))
                 .Returns(hitDice);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => hitDice[c]);
 
             return hitDice;
         }
@@ -1575,6 +1582,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "wrong creature 3",
                 "wrong creature 4",
             };
+
+            var lichCreatures = creatures.Except(["no-brains creature", "undead creature", "good creature"]);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
             types["creature 1"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
@@ -1612,13 +1624,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 10 },
             };
 
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
             alignments["creature 2"] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
@@ -1643,6 +1648,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void GetCompatibleCreatures_ReturnEmpty_WhenAlignmentIsInvalid()
         {
             var creatures = new[] { "my creature", "wrong creature 1", "my other creature", "wrong creature 2", "wrong creature 3" };
+
+            var lichCreatures = creatures.Except(["no-brains creature", "undead creature", "good creature"]);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature"] = new[] { "other alignment", "preset alignment" };
@@ -1719,22 +1729,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "preset alignment"))
                 .Returns(["my creature", "wrong creature 2", "my other creature", "wrong creature 1"]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
-            {
-                ["my creature"] = [],
-                ["my other creature"] = [],
-                ["wrong creature 1"] = [],
-                ["wrong creature 2"] = [],
-                ["wrong creature 3"] = []
-            };
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
-
             var filters = new Filters { Alignment = "preset alignment" };
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
@@ -1745,6 +1739,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void GetCompatibleCreatures_ReturnCompatibleCreatures_WithPresetAlignment()
         {
             var creatures = new[] { "my creature", "wrong creature 1", "my other creature", "wrong creature 2", "wrong creature 3" };
+
+            var lichCreatures = creatures.Except(["no-brains creature", "undead creature", "good creature"]);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature"] = new[] { "preset Good", "preset alignment" };
@@ -1815,20 +1814,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             SetUpHitDice(2);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = [];
-            casters["my other creature"] = [];
-            casters["wrong creature 1"] = [];
-            casters["wrong creature 2"] = [];
-            casters["wrong creature 3"] = [];
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
-
             var filters = new Filters { Alignment = "preset Evil" };
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
@@ -1853,6 +1838,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "wrong creature 5",
             };
 
+            var lichCreatures = creatures.Except(["no-brains creature", "undead creature", "good creature"]);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
+
             var types = new Dictionary<string, IEnumerable<string>>();
             types["creature 1"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
             types["creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 3" };
@@ -1866,9 +1856,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types[c]);
 
             var data = SetUpCreatureData(original);
             data["wrong creature 5"] = [new() { ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(original, 1), LevelAdjustment = 0 }];
@@ -1893,13 +1880,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             };
             casters["wrong creature 5"] = [];
 
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
             alignments["creature 2"] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
@@ -1913,14 +1893,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => alignments[c]);
 
             var filters = new Filters { ChallengeRating = filter };
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "creature 1", "creature 2", "creature 3" }));
+            Assert.That(compatibleCreatures, Is.EquivalentTo(new[] { "creature 1", "creature 2", "creature 3" }));
         }
 
         [TestCase(CreatureConstants.Types.Undead)]
@@ -1937,6 +1914,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "wrong creature 3",
                 "wrong creature 4",
             };
+
+            var lichCreatures = creatures.Except(["no-brains creature", "undead creature", "good creature"]);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
             types["creature 1"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
@@ -1975,13 +1957,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 10 },
             };
 
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
             alignments["creature 2"] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
@@ -2018,6 +1993,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "wrong creature 4",
                 "wrong creature 5",
             };
+
+            var lichCreatures = creatures.Except(["no-brains creature", "undead creature", "good creature"]);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
             types["creature 1"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
@@ -2063,13 +2043,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             };
             casters["wrong creature 5"] = [];
 
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
             alignments["creature 2"] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
@@ -2108,6 +2081,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "wrong creature 5",
                 "wrong creature 6",
             };
+
+            var lichCreatures = creatures.Except(["no-brains creature", "undead creature", "good creature"]);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
             types["creature 1"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
@@ -2156,13 +2134,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             casters["wrong creature 5"] = [];
             casters["wrong creature 6"] = [];
 
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
             alignments["creature 2"] = new[] { "other alignment", AlignmentConstants.TrueNeutral };
@@ -2202,48 +2173,37 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Plant, false)]
         [TestCase(CreatureConstants.Types.Undead, false)]
         [TestCase(CreatureConstants.Types.Vermin, false)]
-        public void IsCompatible_BasedOnCreatureType(string creatureType, bool compatible)
+        public void GetCompatibleCreatures_BasedOnCreatureType(string creatureType, bool compatible)
         {
-            var types = new Dictionary<string, IEnumerable<string>>();
-            types["my creature"] = new[] { creatureType, "subtype 1", "subtype 2" };
-            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
+            var lichCreatures = new[] { "my lich creature", "my creature", "my other creature" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
+
+            var types = new Dictionary<string, IEnumerable<string>>
+            {
+                ["my creature"] = [creatureType, "subtype 1", "subtype 2"]
+            };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types[c]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var data = SetUpCreatureData();
             data["my creature"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = 0 }];
 
             SetUpHitDice();
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = [];
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
-
-            var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
+            var alignments = new Dictionary<string, IEnumerable<string>>
+            {
+                ["my creature"] = ["other alignment", AlignmentConstants.LawfulNeutral]
+            };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => alignments[c]);
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], true);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
@@ -2268,160 +2228,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(18, true)]
         [TestCase(19, true)]
         [TestCase(20, true)]
-        public void IsCompatible_HasCasterLevel_CreatureData(int casterLevel, bool compatible)
+        public void GetCompatibleCreatures_HasCasterLevel(int casterLevel, bool compatible)
         {
-            var types = new Dictionary<string, IEnumerable<string>>();
-            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
-
+            //INFO: Caster level compatibility handled by creature group
+            var lichCasterLevel = compatible ? $"lvl {casterLevel}" : "low-level";
+            var lichCreatures = new[] { "my lich creature", "my creature", "my other creature", $"my {lichCasterLevel} creature" };
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
-                .Returns(types);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types[c]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
 
-            var data = SetUpCreatureData();
-            data["my creature"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = casterLevel, LevelAdjustment = null }];
-
-            SetUpHitDice();
-
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = [];
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
-
-            var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
-
-            mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
-                .Returns(alignments);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => alignments[c]);
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false);
-            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
-        }
-
-        [TestCase(0, false)]
-        [TestCase(1, false)]
-        [TestCase(2, false)]
-        [TestCase(3, false)]
-        [TestCase(4, false)]
-        [TestCase(5, false)]
-        [TestCase(6, false)]
-        [TestCase(7, false)]
-        [TestCase(8, false)]
-        [TestCase(9, false)]
-        [TestCase(10, false)]
-        [TestCase(11, true)]
-        [TestCase(12, true)]
-        [TestCase(13, true)]
-        [TestCase(14, true)]
-        [TestCase(15, true)]
-        [TestCase(16, true)]
-        [TestCase(17, true)]
-        [TestCase(18, true)]
-        [TestCase(19, true)]
-        [TestCase(20, true)]
-        public void IsCompatible_HasCasterLevel_Spells(int casterLevel, bool compatible)
-        {
-            var types = new Dictionary<string, IEnumerable<string>>();
-            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
-
-            mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
-                .Returns(types);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types[c]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
-
-            var data = SetUpCreatureData();
-            data["my creature"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = null }];
-
-            SetUpHitDice();
-
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = new[] { new TypeAndAmountDataSelection { Type = "spellcaster", AmountAsDouble = casterLevel } };
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
-
-            var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
-
-            mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
-                .Returns(alignments);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => alignments[c]);
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false);
+            var compatibleCreatures = applicator.GetCompatibleCreatures([$"my lvl {casterLevel} creature"], false);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
         [Test]
-        public void IsCompatible_ReturnsFalse_HasNoSpellcasterLevel()
+        public void GetCompatibleCreatures_ReturnsFalse_HasNoSpellcasterLevel()
         {
-            var types = new Dictionary<string, IEnumerable<string>>();
-            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
-
+            //INFO: Caster level compatibility handled by creature group
+            var lichCreatures = new[] { "my lich creature", "my creature", "my other creature", "my caster creature" };
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
-                .Returns(types);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types[c]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
 
-            var data = SetUpCreatureData();
-            data["my creature"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = null }];
-
-            SetUpHitDice();
-
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = [];
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
-
-            var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
-
-            mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
-                .Returns(alignments);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => alignments[c]);
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, true);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(["my casterless creature"], false);
             Assert.That(compatibleCreatures, Is.Empty);
         }
 
@@ -2446,8 +2275,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(18)]
         [TestCase(19)]
         [TestCase(20)]
-        public void IsCompatible_CanBeCharacter(int levelAdjustment)
+        public void GetCompatibleCreatures_CanBeCharacter(int levelAdjustment)
         {
+            var lichCreatures = new[] { "my lich creature", "my creature", "my other creature" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
+
             var types = new Dictionary<string, IEnumerable<string>>();
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
             types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
@@ -2467,16 +2301,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             SetUpHitDice();
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = [];
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
-
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
 
@@ -2491,6 +2315,67 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature" }));
         }
 
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        [TestCase(4)]
+        [TestCase(5)]
+        [TestCase(6)]
+        [TestCase(7)]
+        [TestCase(8)]
+        [TestCase(9)]
+        [TestCase(10)]
+        [TestCase(11)]
+        [TestCase(12)]
+        [TestCase(13)]
+        [TestCase(14)]
+        [TestCase(15)]
+        [TestCase(16)]
+        [TestCase(17)]
+        [TestCase(18)]
+        [TestCase(19)]
+        [TestCase(20)]
+        public void GetCompatibleCreatures_CanBeCharacter_AsCharacter(int levelAdjustment)
+        {
+            var lichCreatures = new[] { "my lich creature", "my creature", "my other creature" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types[c]);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+
+            var data = SetUpCreatureData();
+            data["my creature"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = levelAdjustment }];
+
+            SetUpHitDice();
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => alignments[c]);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, true);
+            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature" }));
+        }
+
         [TestCase(null, true)]
         [TestCase(CreatureConstants.Types.Undead, true)]
         [TestCase(CreatureConstants.Types.Humanoid, true)]
@@ -2499,8 +2384,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Subtypes.Incorporeal, false)]
         [TestCase(CreatureConstants.Types.Subtypes.Augmented, true)]
         [TestCase("wrong type", false)]
-        public void IsCompatible_TypeMustMatch(string type, bool compatible)
+        public void GetCompatibleCreatures_TypeMustMatch(string type, bool compatible)
         {
+            var lichCreatures = new[] { "my lich creature", "my creature", "my other creature" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
+
             var types = new Dictionary<string, IEnumerable<string>>();
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
             types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
@@ -2519,16 +2409,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             data["my creature"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = 0 }];
 
             SetUpHitDice();
-
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = [];
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
@@ -2558,8 +2438,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
         [TestCase(ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, true)]
         [TestCase(ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
-        public void IsCompatible_ChallengeRatingMustMatch(string original, string challengeRating, bool compatible)
+        public void GetCompatibleCreatures_ChallengeRatingMustMatch(string original, string challengeRating, bool compatible)
         {
+            var lichCreatures = new[] { "my lich creature", "my creature", "my other creature" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
+
             var types = new Dictionary<string, IEnumerable<string>>();
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
 
@@ -2574,16 +2459,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             data["my creature"] = [new() { ChallengeRating = original, CasterLevel = 0, LevelAdjustment = 0 }];
 
             SetUpHitDice();
-
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = [];
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
@@ -2658,8 +2533,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(2, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
         [TestCase(2, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, true)]
         [TestCase(2, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
-        public void IsCompatible_ChallengeRatingMustMatch_HumanoidCharacter(double hitDiceQuantity, string original, string challengeRating, bool compatible)
+        public void GetCompatibleCreatures_ChallengeRatingMustMatch_HumanoidCharacter(double hitDiceQuantity, string original, string challengeRating, bool compatible)
         {
+            var lichCreatures = new[] { "my lich creature", "my creature", "my other creature" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
+
             var types = new Dictionary<string, IEnumerable<string>>();
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
 
@@ -2674,16 +2554,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             data["my creature"] = [new() { ChallengeRating = original, CasterLevel = 0, LevelAdjustment = 0 }];
 
             SetUpHitDice(hitDiceQuantity);
-
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = [];
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
@@ -2703,7 +2573,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
         [Test]
         [Ignore("Liches must be humanoid, so testing for non-humanoid characters isn't needed")]
-        public void IsCompatible_ChallengeRatingMustMatch_NonHumanoidCharacter()
+        public void GetCompatibleCreatures_ChallengeRatingMustMatch_NonHumanoidCharacter()
         {
             throw new NotImplementedException();
         }
@@ -2735,50 +2605,39 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.LawfulEvil, false)]
         [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.NeutralEvil, false)]
         [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.ChaoticEvil, true)]
-        public void IsCompatible_AlignmentMustMatch(string alignmentFilter, string creatureAlignment, bool compatible)
+        public void GetCompatibleCreatures_AlignmentMustMatch(string alignmentFilter, string creatureAlignment, bool compatible)
         {
-            var types = new Dictionary<string, IEnumerable<string>>();
-            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
+            var lichCreatures = new[] { "my lich creature", "my creature", "my other creature" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
+
+            var types = new Dictionary<string, IEnumerable<string>>
+            {
+                ["my creature"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"]
+            };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types[c]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
-            var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { "other alignment", creatureAlignment };
+            var alignments = new Dictionary<string, IEnumerable<string>>
+            {
+                ["my creature"] = ["other alignment", creatureAlignment]
+            };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => alignments[c]);
 
             var data = SetUpCreatureData();
             data["my creature"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
 
             SetUpHitDice(4);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = [];
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
-
             var filters = new Filters { Alignment = alignmentFilter };
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false, filters);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], true, filters);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
@@ -2790,47 +2649,39 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase("wrong subtype", ChallengeRatingConstants.CR3, AlignmentConstants.NeutralEvil, false)]
         [TestCase("wrong subtype", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulEvil, false)]
         [TestCase("wrong subtype", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil, false)]
-        public void IsCompatible_AllFiltersMustMatch(string type, string challengeRating, string alignment, bool compatible)
+        public void GetCompatibleCreatures_AllFiltersMustMatch(string type, string challengeRating, string alignment, bool compatible)
         {
-            var types = new Dictionary<string, IEnumerable<string>>();
-            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
+            var lichCreatures = new[] { "my lich creature", "my creature", "my other creature" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
+
+            var types = new Dictionary<string, IEnumerable<string>>
+            {
+                ["my creature"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"]
+            };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types[c]);
 
-            var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
+            var alignments = new Dictionary<string, IEnumerable<string>>
+            {
+                ["my creature"] = ["other alignment", AlignmentConstants.LawfulNeutral]
+            };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => alignments[c]);
 
             var data = SetUpCreatureData();
             data["my creature"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = 0 }];
 
             SetUpHitDice();
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = [];
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
-
             var filters = new Filters { Alignment = alignment, Type = type, ChallengeRating = challengeRating };
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false, filters);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], false, filters);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
@@ -2848,6 +2699,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "wrong creature 3",
                 "wrong creature 4",
             };
+
+            var lichCreatures = creatures.Except(["no-brains creature", "undead creature", "good creature"]);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
             types["creature 1"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
@@ -2884,13 +2740,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
                 new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 10 },
             };
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
@@ -3068,6 +2917,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creatures = new[] { "my creature", "wrong creature 1", "my other creature", "wrong creature 2", "wrong creature 3" };
 
+            var lichCreatures = creatures.Except(["no-brains creature", "undead creature", "good creature"]);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
+
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature"] = new[] { "other alignment", "preset alignment" };
             alignments["my other creature"] = new[] { "preset alignment", "original alignment" };
@@ -3143,20 +2997,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "preset alignment"))
                 .Returns(["my creature", "wrong creature 2", "my other creature", "wrong creature 1"]);
 
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = [];
-            casters["my other creature"] = [];
-            casters["wrong creature 1"] = [];
-            casters["wrong creature 2"] = [];
-            casters["wrong creature 3"] = [];
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
-
             var prototypes = new[]
             {
                 new CreaturePrototypeBuilder()
@@ -3208,6 +3048,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void GetCompatiblePrototypes_FromNames_ReturnCompatibleCreatures_WithPresetAlignment()
         {
             var creatures = new[] { "my creature", "wrong creature 1", "my other creature", "wrong creature 2", "wrong creature 3" };
+
+            var lichCreatures = creatures.Except(["no-brains creature", "undead creature", "good creature"]);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature"] = new[] { "preset Good", "preset alignment" };
@@ -3279,20 +3124,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             data["wrong creature 3"] = [new() { ChallengeRating = ChallengeRatingConstants.CR1, LevelAdjustment = 0 }];
 
             var hitDice = SetUpHitDice(2);
-
-            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>();
-            casters["my creature"] = [];
-            casters["my other creature"] = [];
-            casters["wrong creature 1"] = [];
-            casters["wrong creature 2"] = [];
-            casters["wrong creature 3"] = [];
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
 
             var prototypes = new[]
             {
@@ -3420,6 +3251,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "wrong creature 5",
             };
 
+            var lichCreatures = creatures.Except(["no-brains creature", "undead creature", "good creature"]);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
+
             var types = new Dictionary<string, IEnumerable<string>>();
             types["creature 1"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
             types["creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 3" };
@@ -3459,13 +3295,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 10 },
             };
             casters["wrong creature 5"] = [];
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
@@ -3656,6 +3485,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "wrong creature 4",
             };
 
+            var lichCreatures = creatures.Except(["no-brains creature", "undead creature", "good creature"]);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
+
             var types = new Dictionary<string, IEnumerable<string>>();
             types["creature 1"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
             types["creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 3" };
@@ -3692,13 +3526,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
                 new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 10 },
             };
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
@@ -3888,6 +3715,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "wrong creature 5",
             };
 
+            var lichCreatures = creatures.Except(["no-brains creature", "undead creature", "good creature"]);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
+
             var types = new Dictionary<string, IEnumerable<string>>();
             types["creature 1"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
             types["creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 2" };
@@ -3931,13 +3763,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 10 },
             };
             casters["wrong creature 5"] = [];
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
@@ -4131,6 +3956,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "wrong creature 6",
             };
 
+            var lichCreatures = creatures.Except(["no-brains creature", "undead creature", "good creature"]);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
+
             var types = new Dictionary<string, IEnumerable<string>>();
             types["creature 1"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
             types["creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 2" };
@@ -4177,13 +4007,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             };
             casters["wrong creature 5"] = [];
             casters["wrong creature 6"] = [];
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
@@ -4372,6 +4195,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "creature 3",
             };
 
+            var lichCreatures = creatures.Except(["no-brains creature", "undead creature", "good creature"]);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Lich))
+                .Returns(lichCreatures);
+
             var types = new Dictionary<string, IEnumerable<string>>();
             types["creature 1"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
             types["creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 2" };
@@ -4403,13 +4231,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new TypeAndAmountDataSelection { Type = "caster 1", AmountAsDouble = 10 },
                 new TypeAndAmountDataSelection { Type = "caster 2", AmountAsDouble = 11 },
             };
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
-                .Returns(casters);
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
-                .Returns((string t, string c) => casters[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["creature 1"] = new[] { "other alignment", AlignmentConstants.ChaoticEvil };
@@ -4734,6 +4555,182 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[2].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR3));
             Assert.That(compatibleCreatures[2].LevelAdjustment, Is.Null);
             Assert.That(compatibleCreatures[2].HitDiceQuantity, Is.EqualTo(1));
+        }
+
+        [TestCase(CreatureConstants.Types.Aberration, false)]
+        [TestCase(CreatureConstants.Types.Animal, false)]
+        [TestCase(CreatureConstants.Types.Construct, false)]
+        [TestCase(CreatureConstants.Types.Dragon, false)]
+        [TestCase(CreatureConstants.Types.Elemental, false)]
+        [TestCase(CreatureConstants.Types.Fey, false)]
+        [TestCase(CreatureConstants.Types.Giant, false)]
+        [TestCase(CreatureConstants.Types.Humanoid, true)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, false)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid, false)]
+        [TestCase(CreatureConstants.Types.Ooze, false)]
+        [TestCase(CreatureConstants.Types.Outsider, false)]
+        [TestCase(CreatureConstants.Types.Plant, false)]
+        [TestCase(CreatureConstants.Types.Undead, false)]
+        [TestCase(CreatureConstants.Types.Vermin, false)]
+        public void GetCompatiblePrototypes_FromPrototypes_BasedOnCreatureType(string creatureType, bool compatible)
+        {
+            var creatures = new[]
+            {
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    //.WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithCreatureType(creatureType, "subtype 1", "subtype 2")
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithLevelAdjustment(0)
+                    .WithCasterLevel(0)
+                    .WithAlignments("other alignment", AlignmentConstants.LawfulNeutral)
+                    .Build(),
+            };
+
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        [TestCase(0, false)]
+        [TestCase(1, false)]
+        [TestCase(2, false)]
+        [TestCase(3, false)]
+        [TestCase(4, false)]
+        [TestCase(5, false)]
+        [TestCase(6, false)]
+        [TestCase(7, false)]
+        [TestCase(8, false)]
+        [TestCase(9, false)]
+        [TestCase(10, false)]
+        [TestCase(11, true)]
+        [TestCase(12, true)]
+        [TestCase(13, true)]
+        [TestCase(14, true)]
+        [TestCase(15, true)]
+        [TestCase(16, true)]
+        [TestCase(17, true)]
+        [TestCase(18, true)]
+        [TestCase(19, true)]
+        [TestCase(20, true)]
+        public void GetCompatiblePrototypes_FromPrototypes_HasCasterLevel(int casterLevel, bool compatible)
+        {
+            var creatures = new[]
+            {
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithLevelAdjustment(null)
+                    .WithCasterLevel(casterLevel)
+                    .WithAlignments("other alignment", AlignmentConstants.LawfulNeutral)
+                    .Build(),
+            };
+
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void GetCompatiblePrototypes_FromPrototypes_ReturnsFalse_HasNoSpellcasterLevel(bool asCharacter)
+        {
+            var creatures = new[]
+            {
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithLevelAdjustment(null)
+                    .WithCasterLevel(0)
+                    .WithAlignments("other alignment", AlignmentConstants.LawfulNeutral)
+                    .Build(),
+            };
+
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, asCharacter);
+            Assert.That(compatibleCreatures, Is.Empty);
+        }
+
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        [TestCase(4)]
+        [TestCase(5)]
+        [TestCase(6)]
+        [TestCase(7)]
+        [TestCase(8)]
+        [TestCase(9)]
+        [TestCase(10)]
+        [TestCase(11)]
+        [TestCase(12)]
+        [TestCase(13)]
+        [TestCase(14)]
+        [TestCase(15)]
+        [TestCase(16)]
+        [TestCase(17)]
+        [TestCase(18)]
+        [TestCase(19)]
+        [TestCase(20)]
+        public void GetCompatiblePrototypes_FromPrototypes_CanBeCharacter(int levelAdjustment)
+        {
+            var creatures = new[]
+            {
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithLevelAdjustment(levelAdjustment)
+                    .WithCasterLevel(0)
+                    .WithAlignments("other alignment", AlignmentConstants.LawfulNeutral)
+                    .Build(),
+            };
+
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false);
+            Assert.That(compatibleCreatures, Is.Empty);
+        }
+
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        [TestCase(4)]
+        [TestCase(5)]
+        [TestCase(6)]
+        [TestCase(7)]
+        [TestCase(8)]
+        [TestCase(9)]
+        [TestCase(10)]
+        [TestCase(11)]
+        [TestCase(12)]
+        [TestCase(13)]
+        [TestCase(14)]
+        [TestCase(15)]
+        [TestCase(16)]
+        [TestCase(17)]
+        [TestCase(18)]
+        [TestCase(19)]
+        [TestCase(20)]
+        public void GetCompatiblePrototypes_FromPrototypes_CanBeCharacter_AsCharacter(int levelAdjustment)
+        {
+            var creatures = new[]
+            {
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithLevelAdjustment(levelAdjustment)
+                    .WithCasterLevel(0)
+                    .WithAlignments("other alignment", AlignmentConstants.LawfulNeutral)
+                    .Build(),
+            };
+
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, true);
+            Assert.That(compatibleCreatures, Is.Not.Empty);
         }
 
         [Test]
