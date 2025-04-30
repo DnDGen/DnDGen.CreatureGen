@@ -755,7 +755,7 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
-            var templateCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, LycanthropeSpecies);
+            var templateCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, LycanthropeSpecies + asCharacter);
             var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
             if (!filteredBaseCreatures.Any())
                 return [];

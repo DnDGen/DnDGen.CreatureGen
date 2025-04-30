@@ -411,7 +411,10 @@ namespace DnDGen.CreatureGen.Templates
                 }
             }
 
-            var templateCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.FiendishCreature);
+            var templateCreatures = collectionSelector.SelectFrom(
+                Config.Name,
+                TableNameConstants.Collection.CreatureGroups,
+                CreatureConstants.Templates.FiendishCreature + asCharacter);
             var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
             if (!filteredBaseCreatures.Any())
                 return [];

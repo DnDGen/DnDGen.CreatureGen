@@ -119,7 +119,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 .Union(challengeRatings.Select(cr => cr + GroupConstants.TREE))
                 .Union(alignments)
                 .Union(alignments.Select(a => a + GroupConstants.TREE))
-                .Union(templates);
+                .Union(templates.Select(t => t + bool.FalseString))
+                .Union(templates.Select(t => t + bool.TrueString));
 
             AssertCollectionNames(names);
         }

@@ -551,7 +551,18 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
-            var templateCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Skeleton);
+            //INFO: Since Skeletons cannot be characters (they explicitly lose their class levels), we can return an empty enumerable
+            if (asCharacter
+                || (!string.IsNullOrEmpty(filters?.Alignment) && filters.Alignment != AlignmentConstants.NeutralEvil)
+                || (!string.IsNullOrEmpty(filters?.Type) && invalidSubtypes.Contains(filters.Type)))
+            {
+                return [];
+            }
+
+            var templateCreatures = collectionSelector.SelectFrom(
+                Config.Name,
+                TableNameConstants.Collection.CreatureGroups,
+                CreatureConstants.Templates.Skeleton + asCharacter);
             var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
             if (!filteredBaseCreatures.Any())
                 return [];
@@ -560,14 +571,6 @@ namespace DnDGen.CreatureGen.Templates
                 && string.IsNullOrEmpty(filters?.Type)
                 && string.IsNullOrEmpty(filters?.Alignment))
                 return filteredBaseCreatures;
-
-            //INFO: Since Skeletons cannot be characters (they explicitly lose their class levels), we can return an empty enumerable
-            if (asCharacter
-                || (!string.IsNullOrEmpty(filters?.Alignment) && filters.Alignment != AlignmentConstants.NeutralEvil)
-                || (!string.IsNullOrEmpty(filters?.Type) && invalidSubtypes.Contains(filters.Type)))
-            {
-                return [];
-            }
 
             var allHitDice = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice);
             var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
