@@ -71,5 +71,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
             Assert.That(asCharacter, Is.Not.EquivalentTo(notAsCharacter));
         }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
+        public void TemplateGroup_HasNonEmptyVariation(string template)
+        {
+            Assert.That(table, Contains.Key(template + bool.TrueString)
+                .And.ContainKey(template + bool.FalseString));
+
+            var allVariations = table[template + bool.FalseString]
+                .Union(table[template + bool.TrueString]);
+            Assert.That(allVariations, Is.Not.Empty);
+        }
     }
 }
