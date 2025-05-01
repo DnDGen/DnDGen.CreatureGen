@@ -2564,31 +2564,47 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Magic, Is.EqualTo(dragonMagic));
         }
 
-        [Test]
-        public void GetCompatibleCreatures_ReturnCompatibleCreatures_NoFilters()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void GetCompatibleCreatures_ReturnCompatibleCreatures_NoFilters(bool asCharacter)
         {
             var creatures = new[] { "my creature", "undead creature", "my other creature" };
 
             var dragonCreatures = creatures.Except(["undead creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + asCharacter))
                 .Returns(dragonCreatures);
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, asCharacter);
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
         }
 
-        [Test]
-        public void GetCompatibleCreatures_ReturnCompatibleCreatures_NoneMatch()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void GetCompatibleCreatures_ReturnCompatibleCreatures_NoneMatch(bool asCharacter)
         {
             var creatures = new[] { "my creature", "undead creature", "my other creature" };
 
             var dragonCreatures = creatures.Except(["undead creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + asCharacter))
                 .Returns(dragonCreatures);
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(["undead creature", "other invalid creature"], false);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(["undead creature", "other invalid creature"], asCharacter);
+            Assert.That(compatibleCreatures, Is.Empty);
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void GetCompatibleCreatures_ReturnCompatibleCreatures_EmptyGroup(bool asCharacter)
+        {
+            var creatures = new[] { "my creature", "undead creature", "my other creature" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + asCharacter))
+                .Returns([]);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, asCharacter);
             Assert.That(compatibleCreatures, Is.Empty);
         }
 
@@ -2639,23 +2655,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creatures = new[] { "my creature", "wrong creature 1", "my other creature" };
 
-            var dragonCreatures = creatures;
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
-                .Returns(dragonCreatures);
-
-            var types = new Dictionary<string, IEnumerable<string>>();
-            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types["my other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 3" };
-            types["wrong creature 1"] = new[] { CreatureConstants.Types.Undead, "subtype 1", "subtype 2" };
-
-            mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
-                .Returns(types);
-
-            SetUpCreatureData();
-            SetUpHitDice();
-
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "my dragon species"))
                 .Returns(["my alignment", "other alignment", "other wrong alignment"]);
@@ -2673,7 +2672,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var dragonCreatures = creatures.Except(["undead creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -2704,7 +2703,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var dragonCreatures = creatures.Except(["undead creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -2734,7 +2733,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var dragonCreatures = creatures.Except(["undead creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -2770,7 +2769,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var dragonCreatures = creatures.Except(["undead creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -2798,7 +2797,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var dragonCreatures = creatures.Except(["undead creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -2829,7 +2828,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var dragonType = compatible ? creatureType : "wrong";
             var dragonCreatures = new[] { $"my {applicator.DragonSpecies} creature", "my creature", $"my {dragonType} creature", "my other creature" };
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures([$"my {creatureType} creature"], false);
@@ -2871,7 +2870,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var dragonCreatures = new[] { $"my {applicator.DragonSpecies} creature", "my creature", "my corporeal creature", "my other creature" };
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(["my incorporeal creature"], false);
@@ -2883,7 +2882,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var dragonCreatures = new[] { $"my {applicator.DragonSpecies} creature", "my creature", "my other creature" };
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -2921,7 +2920,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var dragonCreatures = new[] { $"my {applicator.DragonSpecies} creature", "my creature", "my other creature" };
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -2945,7 +2944,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var dragonCreatures = new[] { $"my {applicator.DragonSpecies} creature", "my creature", "my other creature" };
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.TrueString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -3011,7 +3010,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var dragonCreatures = new[] { $"my {applicator.DragonSpecies} creature", "my creature", "my other creature" };
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.TrueString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -3067,7 +3066,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var dragonCreatures = new[] { $"my {applicator.DragonSpecies} creature", "my creature", "my other creature" };
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -3107,7 +3106,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var dragonCreatures = new[] { $"my {applicator.DragonSpecies} creature", "my creature", "my other creature" };
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -3152,7 +3151,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var dragonCreatures = creatures.Except(["undead creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -3281,7 +3280,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var dragonCreatures = creatures.Except(["undead creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.TrueString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -3408,23 +3407,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creatures = new[] { "my creature", "wrong creature 1", "my other creature" };
 
-            var dragonCreatures = creatures;
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
-                .Returns(dragonCreatures);
-
-            var types = new Dictionary<string, IEnumerable<string>>();
-            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types["my other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 3" };
-            types["wrong creature 1"] = new[] { CreatureConstants.Types.Undead, "subtype 1", "subtype 2" };
-
-            mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
-                .Returns(types);
-
-            var data = SetUpCreatureData();
-            var hitDice = SetUpHitDice();
-
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "my dragon species"))
                 .Returns(["my alignment", "other alignment", "other wrong alignment"]);
@@ -3444,7 +3426,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var dragonCreatures = creatures.Except(["undead creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -3575,7 +3557,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var dragonCreatures = creatures.Except(["undead creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>
@@ -3711,7 +3693,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var dragonCreatures = creatures.Except(["undead creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>
@@ -3844,7 +3826,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var dragonCreatures = creatures.Except(["undead creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -3976,7 +3958,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var dragonCreatures = creatures.Except(["undead creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>
@@ -4113,7 +4095,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var dragonCreatures = creatures;
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
@@ -4249,7 +4231,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var dragonCreatures = creatures;
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, applicator.DragonSpecies + bool.FalseString))
                 .Returns(dragonCreatures);
 
             var types = new Dictionary<string, IEnumerable<string>>();
