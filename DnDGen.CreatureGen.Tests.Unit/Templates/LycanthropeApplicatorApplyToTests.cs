@@ -346,6 +346,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             SetUpRoll(hitDie, average);
 
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, animal))
+                .Returns(() => new() { AmountAsDouble = hitDie.Quantity });
+
             //Skills
             animalSkills.Add(new Skill("animal skill 1", baseCreature.Abilities[AbilityConstants.Strength], hitDie.RoundedQuantity + 3)
             {

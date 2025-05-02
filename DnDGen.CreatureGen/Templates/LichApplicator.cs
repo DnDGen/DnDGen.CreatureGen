@@ -451,11 +451,14 @@ namespace DnDGen.CreatureGen.Templates
             double creatureHitDiceQuantity,
             int? levelAdjustment,
             IEnumerable<int> casterLevels,
-            Filters filters)
+            Filters filters,
+            bool isPrototype = false)
         {
             var compatibility = IsCompatible(types, levelAdjustment, casterLevels, asCharacter);
             if (!compatibility.Compatible)
                 return (false, compatibility.Reason);
+
+            asCharacter &= !isPrototype;
 
             return AreFiltersCompatible(types, alignments, creatureChallengeRating, asCharacter, creatureHitDiceQuantity, filters);
         }
@@ -559,7 +562,8 @@ namespace DnDGen.CreatureGen.Templates
                     p.HitDiceQuantity,
                     p.LevelAdjustment,
                     [p.CasterLevel],
-                    filters).Compatible);
+                    filters,
+                    true).Compatible);
             var updatedPrototypes = compatiblePrototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));
 
             return updatedPrototypes;

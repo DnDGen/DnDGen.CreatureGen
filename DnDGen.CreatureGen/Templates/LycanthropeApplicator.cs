@@ -869,7 +869,7 @@ namespace DnDGen.CreatureGen.Templates
         {
             var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, filters);
             if (!compatibleCreatures.Any())
-                return Enumerable.Empty<CreaturePrototype>();
+                return [];
 
             var animalAbilityAdjustments = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, AnimalSpecies);
             var animalHitDice = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, AnimalSpecies);
@@ -893,7 +893,7 @@ namespace DnDGen.CreatureGen.Templates
 
             if (!string.IsNullOrEmpty(presetAlignment))
             {
-                prototype.Alignments = prototype.Alignments.Where(adjustmentSelector => adjustmentSelector.Full == presetAlignment).ToList();
+                prototype.Alignments = [.. prototype.Alignments.Where(adjustmentSelector => adjustmentSelector.Full == presetAlignment)];
             }
 
             return prototype;

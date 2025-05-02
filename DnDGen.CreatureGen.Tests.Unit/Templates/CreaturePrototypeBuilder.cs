@@ -75,12 +75,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             prototype.CasterLevel = 0;
             prototype.LevelAdjustment = null;
 
-            prototype.Type = new CreatureType();
-            prototype.Type.Name = $"creature type {Guid.NewGuid()}";
-            prototype.Type.SubTypes = new[]
+            prototype.Type = new CreatureType
             {
-                $"subtype {Guid.NewGuid()}",
-                $"subtype {Guid.NewGuid()}",
+                Name = $"creature type {Guid.NewGuid()}",
+                SubTypes =
+                [
+                    $"subtype {Guid.NewGuid()}",
+                    $"subtype {Guid.NewGuid()}",
+                ]
             };
 
             return this;
