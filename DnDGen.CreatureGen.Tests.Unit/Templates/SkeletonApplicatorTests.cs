@@ -2002,33 +2002,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void GetCompatibleCreatures_ReturnsCompatibleCreatures()
         {
-            var creatures = new[] { "my creature", "my other creature", "another creature" };
+            var creatures = new[] { "my creature", "my other creature", "boneless creature" };
 
-            var skeletonCreatures = creatures.Except(["wrong creature 1", "wrong creature 2", "wrong creature 3", "wrong creature 4"]);
+            var skeletonCreatures = creatures.Except(["boneless creature"]);
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Skeleton + bool.FalseString))
                 .Returns(skeletonCreatures);
-
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton))
-                .Returns(new[] { "my wrong creature", "my creature", "my other creature" });
-
-            var types = new Dictionary<string, IEnumerable<string>>();
-            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types["my other creature"] = new[] { CreatureConstants.Types.Animal, "subtype 3" };
-            types["another creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-
-            mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
-                .Returns(types);
-
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton))
-                .Returns(new[] { "my wrong creature", "my creature", "my other creature", "yet another creature" });
-
-            var hitDice = SetUpHitDice();
-            hitDice["my other creature"] = [new() { AmountAsDouble = 2 }];
-            hitDice["another creature"] = [new() { AmountAsDouble = 3 }];
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false);
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
@@ -2148,37 +2127,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(ChallengeRatingConstants.CR8, 17, 20)]
         public void GetCompatibleCreatures_WithChallengeRating_ReturnsCompatibleCreatures(string challengeRatingFilter, double lower, double upper)
         {
-            var creatures = new[] { "my creature", "my other creature", "another creature", "yet another creature" };
+            var creatures = new[] { "my creature", "my other creature", "boneless creature", "yet another creature" };
 
-            var skeletonCreatures = creatures.Except(["wrong creature 1", "wrong creature 2", "wrong creature 3", "wrong creature 4"]);
+            var skeletonCreatures = creatures.Except(["boneless creature"]);
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Skeleton + bool.FalseString))
                 .Returns(skeletonCreatures);
 
-            var types = new Dictionary<string, IEnumerable<string>>();
-            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types["my other creature"] = new[] { CreatureConstants.Types.Animal, "subtype 3" };
-            types["another creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types["yet another creature"] = new[] { CreatureConstants.Types.Giant };
+            var types = new Dictionary<string, IEnumerable<string>>
+            {
+                ["my creature"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"],
+                ["my other creature"] = [CreatureConstants.Types.Animal, "subtype 3"],
+                ["yet another creature"] = [CreatureConstants.Types.Giant]
+            };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
 
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton))
-                .Returns(["my wrong creature", "my creature", "my other creature", "yet another creature"]);
-
             var hitDice = SetUpHitDice();
             hitDice["my creature"] = [new() { AmountAsDouble = lower + 0.01 }];
             hitDice["my other creature"] = [new() { AmountAsDouble = upper }];
-            hitDice["another creature"] = [new() { AmountAsDouble = (lower + upper) / 2 }];
             hitDice["yet another creature"] = [new() { AmountAsDouble = (lower + upper) / 2 }];
 
             var filters = new Filters { ChallengeRating = challengeRatingFilter };
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature", "yet another creature" }));
+            Assert.That(compatibleCreatures, Is.EquivalentTo(new[] { "my creature", "my other creature", "yet another creature" }));
         }
 
         [TestCaseSource(nameof(InvalidChallengeRatings))]
@@ -2226,28 +2201,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creatures = new[] { "my creature", "my other creature", "another creature", "yet another creature" };
 
-            var skeletonCreatures = creatures.Except(["wrong creature 1", "wrong creature 2", "wrong creature 3", "wrong creature 4"]);
+            var skeletonCreatures = creatures
+                .Except(upper >= 20 ? ["my other creature"] : [])
+                .Except(lower <= 0 ? ["another creature"] : []);
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Skeleton + bool.FalseString))
                 .Returns(skeletonCreatures);
 
-            var types = new Dictionary<string, IEnumerable<string>>();
-            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
-            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types["my other creature"] = new[] { CreatureConstants.Types.Animal, "subtype 3" };
-            types["another creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types["yet another creature"] = new[] { CreatureConstants.Types.Giant };
+            var types = new Dictionary<string, IEnumerable<string>>
+            {
+                ["my creature"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"],
+                ["my other creature"] = [CreatureConstants.Types.Animal, "subtype 3"],
+                ["another creature"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"],
+                ["yet another creature"] = [CreatureConstants.Types.Giant]
+            };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types[c]);
-
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton))
-                .Returns(["my wrong creature", "my creature", "my other creature", "yet another creature"]);
 
             var hitDice = SetUpHitDice();
             hitDice["my creature"] = [new() { AmountAsDouble = lower + 0.01 }];
@@ -2267,29 +2238,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void GetCompatibleCreatures_WithType_ReturnsCompatibleCreatures()
         {
-            var creatures = new[] { "my creature", "my other creature", "another creature" };
+            var creatures = new[] { "my creature", "my other creature", "boneless creature" };
 
-            var skeletonCreatures = creatures.Except(["wrong creature 1", "wrong creature 2", "wrong creature 3", "wrong creature 4"]);
+            var skeletonCreatures = creatures.Except(["boneless creature"]);
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Skeleton + bool.FalseString))
                 .Returns(skeletonCreatures);
 
-            var types = new Dictionary<string, IEnumerable<string>>();
-            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
-            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types["my other creature"] = new[] { CreatureConstants.Types.Animal, "subtype 3" };
-            types["another creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            var types = new Dictionary<string, IEnumerable<string>>
+            {
+                ["my creature"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"],
+                ["my other creature"] = [CreatureConstants.Types.Animal, "subtype 3"]
+            };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types[c]);
-
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton))
-                .Returns(["my wrong creature", "my creature", "my other creature"]);
 
             var hitDice = SetUpHitDice();
             hitDice["my other creature"] = [new() { AmountAsDouble = 2 }];
@@ -3027,35 +2991,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(ChallengeRatingConstants.CR8, 17, 20)]
         public void GetCompatiblePrototypes_FromNames_WithChallengeRating_ReturnsCompatibleCreatures(string challengeRatingFilter, double lower, double upper)
         {
-            var creatures = new[] { "my creature", "my other creature", "another creature", "yet another creature" };
+            var creatures = new[] { "my creature", "my other creature", "boneless creature", "yet another creature" };
 
-            var skeletonCreatures = creatures.Except(["buff creature", "outsider creature"]);
+            var skeletonCreatures = creatures.Except(["boneless creature"]);
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Skeleton + bool.FalseString))
                 .Returns(skeletonCreatures);
 
-            var types = new Dictionary<string, IEnumerable<string>>();
-            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
-            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types["my other creature"] = new[] { CreatureConstants.Types.Animal, "subtype 3" };
-            types["another creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types["yet another creature"] = new[] { CreatureConstants.Types.Giant };
+            var types = new Dictionary<string, IEnumerable<string>>
+            {
+                ["my creature"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"],
+                ["my other creature"] = [CreatureConstants.Types.Animal, "subtype 3"],
+                ["yet another creature"] = [CreatureConstants.Types.Giant]
+            };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types[c]);
-
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton))
-                .Returns(new[] { "my wrong creature", "my creature", "my other creature", "yet another creature" });
 
             var hitDice = SetUpHitDice();
             hitDice["my creature"] = [new() { AmountAsDouble = lower + 0.01 }];
             hitDice["my other creature"] = [new() { AmountAsDouble = upper }];
-            hitDice["another creature"] = [new() { AmountAsDouble = (lower + upper) / 2 }];
             hitDice["yet another creature"] = [new() { AmountAsDouble = (lower + upper) / 2 }];
 
             var prototypes = new[]
@@ -3063,7 +3019,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new CreaturePrototypeBuilder()
                     .WithTestValues()
                     .WithName("my creature")
-                    .WithCreatureType(types["my creature"].ToArray())
+                    .WithCreatureType([.. types["my creature"]])
                     .WithHitDiceQuantity(hitDice["my creature"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
@@ -3197,15 +3153,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creatures = new[] { "my creature", "my other creature", "another creature", "yet another creature" };
 
-            var skeletonCreatures = creatures.Except(["buff creature", "outsider creature"]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Skeleton + bool.FalseString))
-                .Returns(skeletonCreatures);
-
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton))
-                .Returns(new[] { "my wrong creature", "my creature", "my other creature" });
-
             var filters = new Filters { ChallengeRating = challengeRatingFilter };
 
             var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters);
@@ -3231,28 +3178,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creatures = new[] { "my creature", "my other creature", "another creature", "yet another creature" };
 
-            var skeletonCreatures = creatures.Except(["buff creature", "outsider creature"]);
+            var skeletonCreatures = creatures
+                .Except(upper >= 20 ? ["my other creature"] : [])
+                .Except(lower <= 0 ? ["another creature"] : []);
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Skeleton + bool.FalseString))
                 .Returns(skeletonCreatures);
 
-            var types = new Dictionary<string, IEnumerable<string>>();
-            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
-            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types["my other creature"] = new[] { CreatureConstants.Types.Animal, "subtype 3" };
-            types["another creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types["yet another creature"] = new[] { CreatureConstants.Types.Giant };
+            var types = new Dictionary<string, IEnumerable<string>>
+            {
+                ["my creature"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"],
+                ["my other creature"] = [CreatureConstants.Types.Animal, "subtype 3"],
+                ["another creature"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"],
+                ["yet another creature"] = [CreatureConstants.Types.Giant]
+            };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types[c]);
-
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton))
-                .Returns(new[] { "my wrong creature", "my creature", "my other creature", "yet another creature" });
 
             var hitDice = SetUpHitDice();
             hitDice["my creature"] = [new() { AmountAsDouble = lower + 0.01 }];
@@ -3265,7 +3208,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new CreaturePrototypeBuilder()
                     .WithTestValues()
                     .WithName("my creature")
-                    .WithCreatureType(types["my creature"].ToArray())
+                    .WithCreatureType([.. types["my creature"]])
                     .WithHitDiceQuantity(hitDice["my creature"].Single().AmountAsDouble)
                     .WithoutAbility(AbilityConstants.Strength)
                     .WithAbility(AbilityConstants.Constitution, 90210)
@@ -3359,29 +3302,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void GetCompatiblePrototypes_FromNames_WithType_ReturnsCompatibleCreatures()
         {
-            var creatures = new[] { "my creature", "my other creature", "another creature" };
+            var creatures = new[] { "my creature", "my other creature", "boneless creature" };
 
-            var skeletonCreatures = creatures.Except(["buff creature", "outsider creature"]);
+            var skeletonCreatures = creatures.Except(["boneless creature"]);
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Skeleton + bool.FalseString))
                 .Returns(skeletonCreatures);
 
-            var types = new Dictionary<string, IEnumerable<string>>();
-            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
-            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types["my other creature"] = new[] { CreatureConstants.Types.Animal, "subtype 3" };
-            types["another creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            var types = new Dictionary<string, IEnumerable<string>>
+            {
+                ["my creature"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"],
+                ["my other creature"] = [CreatureConstants.Types.Animal, "subtype 3"]
+            };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => types[c]);
-
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton))
-                .Returns(new[] { "my wrong creature", "my creature", "my other creature" });
 
             var hitDice = SetUpHitDice();
             hitDice["my other creature"] = [new() { AmountAsDouble = 2 }];

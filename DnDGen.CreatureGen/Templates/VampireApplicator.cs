@@ -493,11 +493,14 @@ namespace DnDGen.CreatureGen.Templates
             bool asCharacter,
             int? levelAdjustment,
             double creatureHitDiceQuantity,
-            Filters filters)
+            Filters filters,
+            bool isPrototype = false)
         {
-            var compatibility = IsCompatible(types, levelAdjustment, creatureHitDiceQuantity);
+            var compatibility = IsCompatible(types, levelAdjustment, asCharacter, creatureHitDiceQuantity);
             if (!compatibility.Compatible)
                 return (false, compatibility.Reason);
+
+            asCharacter &= !isPrototype;
 
             return AreFiltersCompatible(types, alignments, creatureChallengeRating, asCharacter, creatureHitDiceQuantity, filters);
         }
@@ -545,12 +548,15 @@ namespace DnDGen.CreatureGen.Templates
             return (true, null);
         }
 
-        private (bool Compatible, string Reason) IsCompatible(IEnumerable<string> types, int? levelAdjustment, double creatureHitDiceQuantity)
+        private (bool Compatible, string Reason) IsCompatible(IEnumerable<string> types, int? levelAdjustment, bool asCharacter, double creatureHitDiceQuantity)
         {
             if (!creatureTypes.Contains(types.First()))
                 return (false, $"Type '{types.First()}' is not valid");
 
-            if (!levelAdjustment.HasValue && creatureHitDiceQuantity < MinimumVampireHitDice)
+            if (levelAdjustment.HasValue && asCharacter)
+                return (true, null);
+
+            if (creatureHitDiceQuantity < MinimumVampireHitDice)
                 return (false, $"Creature has insufficient Hit Dice ({creatureHitDiceQuantity} < {MinimumVampireHitDice})");
 
             return (true, null);
@@ -560,7 +566,7 @@ namespace DnDGen.CreatureGen.Templates
         {
             var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, filters);
             if (!compatibleCreatures.Any())
-                return Enumerable.Empty<CreaturePrototype>();
+                return [];
 
             var prototypes = prototypeFactory.Build(compatibleCreatures, asCharacter);
             var updatedPrototypes = prototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));
@@ -589,7 +595,8 @@ namespace DnDGen.CreatureGen.Templates
                     asCharacter,
                     p.LevelAdjustment,
                     p.HitDiceQuantity,
-                    filters).Compatible);
+                    filters,
+                    true).Compatible);
             var updatedPrototypes = compatiblePrototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));
 
             return updatedPrototypes;
