@@ -585,16 +585,6 @@ namespace DnDGen.CreatureGen.Templates
             return filteredBaseCreatures;
         }
 
-        private IEnumerable<string> GetPotentialTypes(IEnumerable<string> types)
-        {
-            var creatureType = types.First();
-            var subtypes = types.Skip(1);
-
-            var adjustedTypes = UpdateCreatureType(creatureType, subtypes);
-
-            return adjustedTypes;
-        }
-
         private (bool Compatible, string Reason) IsCompatible(
             IEnumerable<string> types,
             IEnumerable<string> hasSkeleton,
@@ -628,7 +618,7 @@ namespace DnDGen.CreatureGen.Templates
                     return (false, $"Type filter '{filters.Type}' is not valid");
                 }
 
-                var updatedTypes = GetPotentialTypes(types);
+                var updatedTypes = UpdateCreatureType(types.First(), types.Skip(1));
                 if (!updatedTypes.Contains(filters.Type))
                     return (false, $"Type filter '{filters.Type}' is not valid");
             }

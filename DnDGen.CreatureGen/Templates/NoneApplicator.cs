@@ -35,7 +35,7 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Type.AllTypes,
                 [creature.Alignment.Full],
                 creature.ChallengeRating,
-                asCharacter,
+                false,
                 creature.HitPoints.HitDiceQuantity,
                 filters);
             if (!compatibility.Compatible)
@@ -59,7 +59,7 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Type.AllTypes,
                 [creature.Alignment.Full],
                 creature.ChallengeRating,
-                asCharacter,
+                false,
                 creature.HitPoints.HitDiceQuantity,
                 filters);
             if (!compatibility.Compatible)
@@ -81,7 +81,7 @@ namespace DnDGen.CreatureGen.Templates
             IEnumerable<string> types,
             IEnumerable<string> alignments,
             string creatureChallengeRating,
-            bool asCharacter,
+            bool adjustCharacterChallengeRating,
             double creatureHitDiceQuantity,
             Filters filters)
         {
@@ -94,7 +94,7 @@ namespace DnDGen.CreatureGen.Templates
             {
                 var creatureType = types.First();
 
-                if (asCharacter && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
+                if (adjustCharacterChallengeRating && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
                 {
                     creatureChallengeRating = ChallengeRatingConstants.CR0;
                 }
@@ -162,7 +162,7 @@ namespace DnDGen.CreatureGen.Templates
                     p.Type.AllTypes,
                     p.Alignments.Select(a => a.Full),
                     p.ChallengeRating,
-                    asCharacter,
+                    false,
                     p.HitDiceQuantity,
                     filters).Compatible);
             var updatedPrototypes = compatiblePrototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));

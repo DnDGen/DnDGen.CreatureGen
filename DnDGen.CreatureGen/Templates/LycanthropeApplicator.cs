@@ -86,7 +86,6 @@ namespace DnDGen.CreatureGen.Templates
                 [creature.Alignment.Full],
                 creature.Size,
                 creature.ChallengeRating,
-                asCharacter,
                 creature.HitPoints.RoundedHitDiceQuantity,
                 animalData.Size,
                 animalHitDice.AmountAsDouble,
@@ -624,7 +623,6 @@ namespace DnDGen.CreatureGen.Templates
                 [creature.Alignment.Full],
                 creature.Size,
                 creature.ChallengeRating,
-                asCharacter,
                 creature.HitPoints.RoundedHitDiceQuantity,
                 animalData.Size,
                 animalHitDice.AmountAsDouble,
@@ -783,22 +781,11 @@ namespace DnDGen.CreatureGen.Templates
             return filteredBaseCreatures;
         }
 
-        private IEnumerable<string> GetPotentialTypes(IEnumerable<string> types)
-        {
-            var creatureType = types.First();
-            var subtypes = types.Skip(1);
-
-            var adjustedTypes = UpdateCreatureType(creatureType, subtypes);
-
-            return adjustedTypes;
-        }
-
         private (bool Compatible, string Reason) IsCompatible(
             IEnumerable<string> types,
             IEnumerable<string> alignments,
             string creatureSize,
             string creatureChallengeRating,
-            bool asCharacter,
             double creatureHitDiceQuantity,
             string animalSize,
             double animalHitDiceQuantity,
@@ -808,21 +795,23 @@ namespace DnDGen.CreatureGen.Templates
             if (!compatibility.Compatible)
                 return (false, compatibility.Reason);
 
-            return AreFiltersCompatible(types, alignments, creatureChallengeRating, asCharacter, creatureHitDiceQuantity, animalHitDiceQuantity, filters);
+            //INFO: This method is used when the creature has already been generated, either as Creature or Prototype
+            //The character challenge rating has already been accounted for
+            return AreFiltersCompatible(types, alignments, creatureChallengeRating, false, creatureHitDiceQuantity, animalHitDiceQuantity, filters);
         }
 
         private (bool Compatible, string Reason) AreFiltersCompatible(
             IEnumerable<string> types,
             IEnumerable<string> alignments,
             string creatureChallengeRating,
-            bool asCharacter,
+            bool adjustCharacterChallengeRating,
             double creatureHitDiceQuantity,
             double animalHitDiceQuantity,
             Filters filters)
         {
             if (!string.IsNullOrEmpty(filters?.Type))
             {
-                var updatedTypes = GetPotentialTypes(types);
+                var updatedTypes = UpdateCreatureType(types.First(), types.Skip(1));
                 if (!updatedTypes.Contains(filters.Type))
                     return (false, $"Type filter '{filters.Type}' is not valid");
             }
@@ -831,7 +820,7 @@ namespace DnDGen.CreatureGen.Templates
             {
                 var creatureType = types.First();
 
-                if (asCharacter && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
+                if (adjustCharacterChallengeRating && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
                 {
                     creatureChallengeRating = ChallengeRatingConstants.CR0;
                 }
@@ -911,7 +900,6 @@ namespace DnDGen.CreatureGen.Templates
                     p.Alignments.Select(a => a.Full),
                     p.Size,
                     p.ChallengeRating,
-                    asCharacter,
                     p.HitDiceQuantity,
                     animalData.Size,
                     animalHitDice.AmountAsDouble,
