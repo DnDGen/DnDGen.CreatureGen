@@ -117,10 +117,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.AnimatedObject_Colossal][CreatureConstants.AnimatedObject_Colossal] = "0";
             lengths[CreatureConstants.AnimatedObject_Colossal_Flexible][GenderConstants.Agender] = GetBaseFromRange(64 * 12, 128 * 12);
             lengths[CreatureConstants.AnimatedObject_Colossal_Flexible][CreatureConstants.AnimatedObject_Colossal_Flexible] = GetMultiplierFromRange(64 * 12, 128 * 12);
-            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][GenderConstants.Agender] = "0";
-            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][CreatureConstants.AnimatedObject_Colossal_MultipleLegs] = "0";
-            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][GenderConstants.Agender] = "0";
-            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden] = "0";
+            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long][GenderConstants.Agender] = GetBaseFromRange(64 * 12, 128 * 12);
+            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long][CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long] =
+                GetMultiplierFromRange(64 * 12, 128 * 12);
+            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden][GenderConstants.Agender] = GetBaseFromRange(64 * 12, 128 * 12);
+            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden][CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden] =
+                GetMultiplierFromRange(64 * 12, 128 * 12);
+            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall][CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall] = "0";
+            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden][CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden] = "0";
             lengths[CreatureConstants.AnimatedObject_Colossal_Sheetlike][GenderConstants.Agender] = GetBaseFromRange(64 * 12, 128 * 12);
             lengths[CreatureConstants.AnimatedObject_Colossal_Sheetlike][CreatureConstants.AnimatedObject_Colossal_Sheetlike] = GetMultiplierFromRange(64 * 12, 128 * 12);
             lengths[CreatureConstants.AnimatedObject_Colossal_TwoLegs][GenderConstants.Agender] = "0";
@@ -136,10 +142,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.AnimatedObject_Gargantuan][CreatureConstants.AnimatedObject_Gargantuan] = "0";
             lengths[CreatureConstants.AnimatedObject_Gargantuan_Flexible][GenderConstants.Agender] = GetBaseFromRange(32 * 12, 64 * 12);
             lengths[CreatureConstants.AnimatedObject_Gargantuan_Flexible][CreatureConstants.AnimatedObject_Gargantuan_Flexible] = GetMultiplierFromRange(32 * 12, 64 * 12);
-            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][GenderConstants.Agender] = "0";
-            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs] = "0";
-            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][GenderConstants.Agender] = "0";
-            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden] = "0";
+            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long][GenderConstants.Agender] = GetBaseFromRange(32 * 12, 64 * 12);
+            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long][CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long] =
+                GetMultiplierFromRange(32 * 12, 64 * 12);
+            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden][GenderConstants.Agender] = GetBaseFromRange(32 * 12, 64 * 12);
+            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden][CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden] =
+                GetMultiplierFromRange(32 * 12, 64 * 12);
+            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall][CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall] = "0";
+            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden][CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden] = "0";
             lengths[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike][GenderConstants.Agender] = GetBaseFromRange(32 * 12, 64 * 12);
             lengths[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike][CreatureConstants.AnimatedObject_Gargantuan_Sheetlike] = GetMultiplierFromRange(32 * 12, 64 * 12);
             lengths[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs][GenderConstants.Agender] = "0";
@@ -147,17 +159,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden][CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden] = "0";
             lengths[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden][GenderConstants.Agender] = GetBaseFromRange(32 * 12, 64 * 12);
-            lengths[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden][CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden] = GetMultiplierFromRange(32 * 12, 64 * 12);
+            lengths[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden][CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden] =
+                GetMultiplierFromRange(32 * 12, 64 * 12);
             lengths[CreatureConstants.AnimatedObject_Gargantuan_Wooden][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.AnimatedObject_Gargantuan_Wooden][CreatureConstants.AnimatedObject_Gargantuan_Wooden] = "0";
             lengths[CreatureConstants.AnimatedObject_Huge][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.AnimatedObject_Huge][CreatureConstants.AnimatedObject_Huge] = "0";
             lengths[CreatureConstants.AnimatedObject_Huge_Flexible][GenderConstants.Agender] = GetBaseFromRange(16 * 12, 32 * 12);
             lengths[CreatureConstants.AnimatedObject_Huge_Flexible][CreatureConstants.AnimatedObject_Huge_Flexible] = GetMultiplierFromRange(16 * 12, 32 * 12);
-            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs][GenderConstants.Agender] = "0";
-            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs][CreatureConstants.AnimatedObject_Huge_MultipleLegs] = "0";
-            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][GenderConstants.Agender] = "0";
-            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden] = "0";
+            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long][GenderConstants.Agender] = GetBaseFromRange(16 * 12, 32 * 12);
+            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long][CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long] =
+                GetMultiplierFromRange(16 * 12, 32 * 12);
+            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden][GenderConstants.Agender] = GetBaseFromRange(16 * 12, 32 * 12);
+            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden][CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden] =
+                GetMultiplierFromRange(16 * 12, 32 * 12);
+            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall][CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall] = "0";
+            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden][CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden] = "0";
             lengths[CreatureConstants.AnimatedObject_Huge_Sheetlike][GenderConstants.Agender] = GetBaseFromRange(16 * 12, 32 * 12);
             lengths[CreatureConstants.AnimatedObject_Huge_Sheetlike][CreatureConstants.AnimatedObject_Huge_Sheetlike] = GetMultiplierFromRange(16 * 12, 32 * 12);
             lengths[CreatureConstants.AnimatedObject_Huge_TwoLegs][GenderConstants.Agender] = "0";
@@ -172,10 +191,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.AnimatedObject_Large][CreatureConstants.AnimatedObject_Large] = "0";
             lengths[CreatureConstants.AnimatedObject_Large_Flexible][GenderConstants.Agender] = GetBaseFromRange(8 * 12, 16 * 12);
             lengths[CreatureConstants.AnimatedObject_Large_Flexible][CreatureConstants.AnimatedObject_Large_Flexible] = GetMultiplierFromRange(8 * 12, 16 * 12);
-            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs][GenderConstants.Agender] = "0";
-            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs][CreatureConstants.AnimatedObject_Large_MultipleLegs] = "0";
-            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][GenderConstants.Agender] = "0";
-            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden] = "0";
+            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long][GenderConstants.Agender] = GetBaseFromRange(8 * 12, 16 * 12);
+            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long][CreatureConstants.AnimatedObject_Large_MultipleLegs_Long] =
+                GetMultiplierFromRange(8 * 12, 16 * 12);
+            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden][GenderConstants.Agender] = GetBaseFromRange(8 * 12, 16 * 12);
+            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden][CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden] =
+                GetMultiplierFromRange(8 * 12, 16 * 12);
+            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall][CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall] = "0";
+            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden][CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden] = "0";
             lengths[CreatureConstants.AnimatedObject_Large_Sheetlike][GenderConstants.Agender] = GetBaseFromRange(8 * 12, 16 * 12);
             lengths[CreatureConstants.AnimatedObject_Large_Sheetlike][CreatureConstants.AnimatedObject_Large_Sheetlike] = GetMultiplierFromRange(8 * 12, 16 * 12);
             lengths[CreatureConstants.AnimatedObject_Large_TwoLegs][GenderConstants.Agender] = "0";
