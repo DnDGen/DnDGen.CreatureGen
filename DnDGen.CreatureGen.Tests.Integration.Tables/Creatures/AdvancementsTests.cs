@@ -1421,5 +1421,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             return naturalArmorAdjustment;
         }
+
+        [Test]
+        public void CreatureMeasurementsScaleCorrectlyWithAdvancedSizes()
+        {
+            //TODO: Get original height, length, weight
+            //For each advancement, scale to new size as generator does
+            //Verify that the scaled measurements matches the advanced size ranges
+            //Only do length or height, not both
+            Assert.Fail("not yet written");
+        }
     }
 }
