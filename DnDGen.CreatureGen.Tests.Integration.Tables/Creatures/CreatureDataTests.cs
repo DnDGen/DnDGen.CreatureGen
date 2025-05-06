@@ -99,6 +99,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 [CreatureConstants.Angel_Planetar] =
                     GetCreatureData(CreatureConstants.Angel_Planetar, SizeConstants.Large, ChallengeRatingConstants.CR16, null, true, 17, 19, 2),
                 [CreatureConstants.Angel_Solar] = GetCreatureData(CreatureConstants.Angel_Solar, SizeConstants.Large, ChallengeRatingConstants.CR23, null, true, 20, 21, 2),
+                [CreatureConstants.AnimatedObject_Colossal] =
+                    GetCreatureData(CreatureConstants.AnimatedObject_Colossal, SizeConstants.Colossal, ChallengeRatingConstants.CR10, null, false, 0, 12, 0),
+                [CreatureConstants.AnimatedObject_Colossal_Flexible] =
+                    GetCreatureData(CreatureConstants.AnimatedObject_Colossal_Flexible, SizeConstants.Colossal, ChallengeRatingConstants.CR10, null, false, 0, 12, 0),
+                [CreatureConstants.AnimatedObject_Colossal_MultipleLegs] =
+                    GetCreatureData(CreatureConstants.AnimatedObject_Colossal_MultipleLegs, SizeConstants.Colossal, ChallengeRatingConstants.CR10, null, false, 0, 12, 0),
                 [CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden] =
                     GetCreatureData(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden,
                         SizeConstants.Colossal, ChallengeRatingConstants.CR10, null, false, 0, 12, 0),

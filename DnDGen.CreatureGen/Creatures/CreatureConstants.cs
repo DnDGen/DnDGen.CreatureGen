@@ -292,10 +292,14 @@ namespace DnDGen.CreatureGen.Creatures
         public const string AnimatedObject_Colossal_TwoLegs_Wooden = "Animated Object, Colossal (Two Legs, Wooden)";
         //ladder, humanoid statue
         public const string AnimatedObject_Colossal_TwoLegs = "Animated Object, Colossal (Two Legs)";
-        //table, chair, stool, animal statue, desk, bed
-        public const string AnimatedObject_Colossal_MultipleLegs_Wooden = "Animated Object, Colossal (More Than Two Legs, Wooden)";
-        //table, chair, stool, animal statue, desk, bed
-        public const string AnimatedObject_Colossal_MultipleLegs = "Animated Object, Colossal (More Than Two Legs)";
+        //chair, stool
+        public const string AnimatedObject_Colossal_MultipleLegs_Tall_Wooden = "Animated Object, Colossal (More Than Two Legs, Tall, Wooden)";
+        //table, animal statue, desk, bed
+        public const string AnimatedObject_Colossal_MultipleLegs_Long_Wooden = "Animated Object, Colossal (More Than Two Legs, Long, Wooden)";
+        //chair, stool
+        public const string AnimatedObject_Colossal_MultipleLegs_Tall = "Animated Object, Colossal (More Than Two Legs, Tall)";
+        //table, animal statue, desk, bed
+        public const string AnimatedObject_Colossal_MultipleLegs_Long = "Animated Object, Colossal (More Than Two Legs, Long)";
         //wagon, carriage, cart
         public const string AnimatedObject_Colossal_Wheels_Wooden = "Animated Object, Colossal (Wheels, Wooden)";
         public const string AnimatedObject_Gargantuan = "Animated Object, Gargantuan";
@@ -304,8 +308,10 @@ namespace DnDGen.CreatureGen.Creatures
         public const string AnimatedObject_Gargantuan_Flexible = "Animated Object, Gargantuan (Flexible)";
         public const string AnimatedObject_Gargantuan_TwoLegs_Wooden = "Animated Object, Gargantuan (Two Legs, Wooden)";
         public const string AnimatedObject_Gargantuan_TwoLegs = "Animated Object, Gargantuan (Two Legs)";
-        public const string AnimatedObject_Gargantuan_MultipleLegs_Wooden = "Animated Object, Gargantuan (More Than Two Legs, Wooden)";
-        public const string AnimatedObject_Gargantuan_MultipleLegs = "Animated Object, Gargantuan (More Than Two Legs)";
+        public const string AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden = "Animated Object, Gargantuan (More Than Two Legs, Long, Wooden)";
+        public const string AnimatedObject_Gargantuan_MultipleLegs_Long = "Animated Object, Gargantuan (More Than Two Legs, Long)";
+        public const string AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden = "Animated Object, Gargantuan (More Than Two Legs, Tall, Wooden)";
+        public const string AnimatedObject_Gargantuan_MultipleLegs_Tall = "Animated Object, Gargantuan (More Than Two Legs, Tall)";
         public const string AnimatedObject_Gargantuan_Wheels_Wooden = "Animated Object, Gargantuan (Wheels, Wooden)";
         public const string AnimatedObject_Huge = "Animated Object, Huge";
         public const string AnimatedObject_Huge_Wooden = "Animated Object, Huge (Wooden)";
@@ -313,8 +319,10 @@ namespace DnDGen.CreatureGen.Creatures
         public const string AnimatedObject_Huge_Flexible = "Animated Object, Huge (Flexible)";
         public const string AnimatedObject_Huge_TwoLegs_Wooden = "Animated Object, Huge (Two Legs, Wooden)";
         public const string AnimatedObject_Huge_TwoLegs = "Animated Object, Huge (Two Legs)";
-        public const string AnimatedObject_Huge_MultipleLegs_Wooden = "Animated Object, Huge (More Than Two Legs, Wooden)";
-        public const string AnimatedObject_Huge_MultipleLegs = "Animated Object, Huge (More Than Two Legs)";
+        public const string AnimatedObject_Huge_MultipleLegs_Long_Wooden = "Animated Object, Huge (More Than Two Legs, Long, Wooden)";
+        public const string AnimatedObject_Huge_MultipleLegs_Long = "Animated Object, Huge (More Than Two Legs, Long)";
+        public const string AnimatedObject_Huge_MultipleLegs_Tall_Wooden = "Animated Object, Huge (More Than Two Legs, Tall, Wooden)";
+        public const string AnimatedObject_Huge_MultipleLegs_Tall = "Animated Object, Huge (More Than Two Legs, Tall)";
         public const string AnimatedObject_Huge_Wheels_Wooden = "Animated Object, Huge (Wheels, Wooden)";
         public const string AnimatedObject_Large = "Animated Object, Large";
         public const string AnimatedObject_Large_Wooden = "Animated Object, Large (Wooden)";
@@ -322,8 +330,10 @@ namespace DnDGen.CreatureGen.Creatures
         public const string AnimatedObject_Large_Flexible = "Animated Object, Large (Flexible)";
         public const string AnimatedObject_Large_TwoLegs_Wooden = "Animated Object, Large (Two Legs, Wooden)";
         public const string AnimatedObject_Large_TwoLegs = "Animated Object, Large (Two Legs)";
-        public const string AnimatedObject_Large_MultipleLegs_Wooden = "Animated Object, Large (More Than Two Legs, Wooden)";
-        public const string AnimatedObject_Large_MultipleLegs = "Animated Object, Large (More Than Two Legs)";
+        public const string AnimatedObject_Large_MultipleLegs_Long_Wooden = "Animated Object, Large (More Than Two Legs, Long, Wooden)";
+        public const string AnimatedObject_Large_MultipleLegs_Long = "Animated Object, Large (More Than Two Legs, Long)";
+        public const string AnimatedObject_Large_MultipleLegs_Tall_Wooden = "Animated Object, Large (More Than Two Legs, Tall, Wooden)";
+        public const string AnimatedObject_Large_MultipleLegs_Tall = "Animated Object, Large (More Than Two Legs, Tall)";
         public const string AnimatedObject_Large_Wheels_Wooden = "Animated Object, Large (Wheels, Wooden)";
         public const string AnimatedObject_Medium = "Animated Object, Medium";
         public const string AnimatedObject_Medium_Wooden = "Animated Object, Medium (Wooden)";
@@ -331,8 +341,10 @@ namespace DnDGen.CreatureGen.Creatures
         public const string AnimatedObject_Medium_Flexible = "Animated Object, Medium (Flexible)";
         public const string AnimatedObject_Medium_TwoLegs_Wooden = "Animated Object, Medium (Two Legs, Wooden)";
         public const string AnimatedObject_Medium_TwoLegs = "Animated Object, Medium (Two Legs)";
-        public const string AnimatedObject_Medium_MultipleLegs_Wooden = "Animated Object, Medium (More Than Two Legs, Wooden)";
-        public const string AnimatedObject_Medium_MultipleLegs = "Animated Object, Medium (More Than Two Legs)";
+        public const string AnimatedObject_Medium_MultipleLegs_Long_Wooden = "Animated Object, Medium (More Than Two Legs, Long, Wooden)";
+        public const string AnimatedObject_Medium_MultipleLegs_Long = "Animated Object, Medium (More Than Two Legs, Long)";
+        public const string AnimatedObject_Medium_MultipleLegs_Tall_Wooden = "Animated Object, Medium (More Than Two Legs, Tall, Wooden)";
+        public const string AnimatedObject_Medium_MultipleLegs_Tall = "Animated Object, Medium (More Than Two Legs, Tall)";
         public const string AnimatedObject_Medium_Wheels_Wooden = "Animated Object, Medium (Wheels, Wooden)";
         public const string AnimatedObject_Small = "Animated Object, Small";
         public const string AnimatedObject_Small_Wooden = "Animated Object, Small (Wooden)";
@@ -340,8 +352,10 @@ namespace DnDGen.CreatureGen.Creatures
         public const string AnimatedObject_Small_Flexible = "Animated Object, Small (Flexible)";
         public const string AnimatedObject_Small_TwoLegs_Wooden = "Animated Object, Small (Two Legs, Wooden)";
         public const string AnimatedObject_Small_TwoLegs = "Animated Object, Small (Two Legs)";
-        public const string AnimatedObject_Small_MultipleLegs_Wooden = "Animated Object, Small (More Than Two Legs, Wooden)";
-        public const string AnimatedObject_Small_MultipleLegs = "Animated Object, Small (More Than Two Legs)";
+        public const string AnimatedObject_Small_MultipleLegs_Long_Wooden = "Animated Object, Small (More Than Two Legs, Long, Wooden)";
+        public const string AnimatedObject_Small_MultipleLegs_Long = "Animated Object, Small (More Than Two Legs, Long)";
+        public const string AnimatedObject_Small_MultipleLegs_Tall_Wooden = "Animated Object, Small (More Than Two Legs, Tall, Wooden)";
+        public const string AnimatedObject_Small_MultipleLegs_Tall = "Animated Object, Small (More Than Two Legs, Tall)";
         public const string AnimatedObject_Small_Wheels_Wooden = "Animated Object, Small (Wheels, Wooden)";
         public const string AnimatedObject_Tiny = "Animated Object, Tiny";
         public const string AnimatedObject_Tiny_Wooden = "Animated Object, Tiny (Wooden)";
@@ -349,8 +363,10 @@ namespace DnDGen.CreatureGen.Creatures
         public const string AnimatedObject_Tiny_Flexible = "Animated Object, Tiny (Flexible)";
         public const string AnimatedObject_Tiny_TwoLegs_Wooden = "Animated Object, Tiny (Two Legs, Wooden)";
         public const string AnimatedObject_Tiny_TwoLegs = "Animated Object, Tiny (Two Legs)";
-        public const string AnimatedObject_Tiny_MultipleLegs_Wooden = "Animated Object, Tiny (More Than Two Legs, Wooden)";
-        public const string AnimatedObject_Tiny_MultipleLegs = "Animated Object, Tiny (More Than Two Legs)";
+        public const string AnimatedObject_Tiny_MultipleLegs_Long_Wooden = "Animated Object, Tiny (More Than Two Legs, Long, Wooden)";
+        public const string AnimatedObject_Tiny_MultipleLegs_Long = "Animated Object, Tiny (More Than Two Legs, Long)";
+        public const string AnimatedObject_Tiny_MultipleLegs_Tall_Wooden = "Animated Object, Tiny (More Than Two Legs, Tall, Wooden)";
+        public const string AnimatedObject_Tiny_MultipleLegs_Tall = "Animated Object, Tiny (More Than Two Legs, Tall)";
         public const string AnimatedObject_Tiny_Wheels_Wooden = "Animated Object, Tiny (Wheels, Wooden)";
         public const string Ankheg = "Ankheg";
         public const string Annis = "Annis";
