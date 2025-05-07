@@ -198,8 +198,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/combat/movementPositionAndDistance.htm
             weights[CreatureConstants.AnimatedObject_Colossal][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
             weights[CreatureConstants.AnimatedObject_Colossal_Flexible][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
-            weights[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
-            weights[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
+            weights[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
+            weights[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
+            weights[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
+            weights[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
             weights[CreatureConstants.AnimatedObject_Colossal_Sheetlike][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
             weights[CreatureConstants.AnimatedObject_Colossal_TwoLegs][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
             weights[CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
@@ -207,8 +209,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.AnimatedObject_Colossal_Wooden][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
             weights[CreatureConstants.AnimatedObject_Gargantuan][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
             weights[CreatureConstants.AnimatedObject_Gargantuan_Flexible][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
-            weights[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
-            weights[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
+            weights[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
+            weights[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
+            weights[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
+            weights[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
             weights[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
             weights[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
             weights[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
@@ -216,8 +220,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.AnimatedObject_Gargantuan_Wooden][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
             weights[CreatureConstants.AnimatedObject_Huge][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
             weights[CreatureConstants.AnimatedObject_Huge_Flexible][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
-            weights[CreatureConstants.AnimatedObject_Huge_MultipleLegs][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
-            weights[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
+            weights[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
+            weights[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
+            weights[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
+            weights[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
             weights[CreatureConstants.AnimatedObject_Huge_Sheetlike][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
             weights[CreatureConstants.AnimatedObject_Huge_TwoLegs][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
             weights[CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
@@ -225,8 +231,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.AnimatedObject_Huge_Wooden][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
             weights[CreatureConstants.AnimatedObject_Large][GenderConstants.Agender] = (500, 2 * 2000);
             weights[CreatureConstants.AnimatedObject_Large_Flexible][GenderConstants.Agender] = (500, 2 * 2000);
-            weights[CreatureConstants.AnimatedObject_Large_MultipleLegs][GenderConstants.Agender] = (500, 2 * 2000);
-            weights[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][GenderConstants.Agender] = (500, 2 * 2000);
+            weights[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long][GenderConstants.Agender] = (500, 2 * 2000);
+            weights[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden][GenderConstants.Agender] = (500, 2 * 2000);
+            weights[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall][GenderConstants.Agender] = (500, 2 * 2000);
+            weights[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden][GenderConstants.Agender] = (500, 2 * 2000);
             weights[CreatureConstants.AnimatedObject_Large_Sheetlike][GenderConstants.Agender] = (500, 2 * 2000);
             weights[CreatureConstants.AnimatedObject_Large_TwoLegs][GenderConstants.Agender] = (500, 2 * 2000);
             weights[CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden][GenderConstants.Agender] = (500, 2 * 2000);

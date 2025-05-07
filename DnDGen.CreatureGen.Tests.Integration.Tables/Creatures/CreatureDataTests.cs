@@ -103,10 +103,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     GetCreatureData(CreatureConstants.AnimatedObject_Colossal, SizeConstants.Colossal, ChallengeRatingConstants.CR10, null, false, 0, 12, 0),
                 [CreatureConstants.AnimatedObject_Colossal_Flexible] =
                     GetCreatureData(CreatureConstants.AnimatedObject_Colossal_Flexible, SizeConstants.Colossal, ChallengeRatingConstants.CR10, null, false, 0, 12, 0),
-                [CreatureConstants.AnimatedObject_Colossal_MultipleLegs] =
-                    GetCreatureData(CreatureConstants.AnimatedObject_Colossal_MultipleLegs, SizeConstants.Colossal, ChallengeRatingConstants.CR10, null, false, 0, 12, 0),
-                [CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden] =
-                    GetCreatureData(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden,
+                [CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long] =
+                    GetCreatureData(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long, SizeConstants.Colossal, ChallengeRatingConstants.CR10, null, false, 0, 12, 0),
+                [CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden] =
+                    GetCreatureData(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden,
+                        SizeConstants.Colossal, ChallengeRatingConstants.CR10, null, false, 0, 12, 0),
+                [CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall] =
+                    GetCreatureData(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall, SizeConstants.Colossal, ChallengeRatingConstants.CR10, null, false, 0, 12, 0),
+                [CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden] =
+                    GetCreatureData(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden,
                         SizeConstants.Colossal, ChallengeRatingConstants.CR10, null, false, 0, 12, 0),
                 [CreatureConstants.AnimatedObject_Colossal_Sheetlike] =
                     GetCreatureData(CreatureConstants.AnimatedObject_Colossal_Sheetlike, SizeConstants.Colossal, ChallengeRatingConstants.CR10, null, false, 0, 12, 0),
@@ -122,9 +127,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     GetCreatureData(CreatureConstants.AnimatedObject_Gargantuan, SizeConstants.Gargantuan, ChallengeRatingConstants.CR7, null, false, 0, 8, 0),
                 [CreatureConstants.AnimatedObject_Gargantuan_Flexible] =
                     GetCreatureData(CreatureConstants.AnimatedObject_Gargantuan_Flexible, SizeConstants.Gargantuan, ChallengeRatingConstants.CR7, null, false, 0, 8, 0),
-                [CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs] =
-                    GetCreatureData(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs, SizeConstants.Gargantuan, ChallengeRatingConstants.CR7, null, false, 0, 8, 0),
-                [CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden, SizeConstants.Gargantuan, ChallengeRatingConstants.CR7, null, false, 0, 8, 0),
+                [CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long] =
+                    GetCreatureData(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long, SizeConstants.Gargantuan, ChallengeRatingConstants.CR7, null, false, 0, 8, 0),
+                [CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden, SizeConstants.Gargantuan, ChallengeRatingConstants.CR7, null, false, 0, 8, 0),
+                [CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall] =
+                    GetCreatureData(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall, SizeConstants.Gargantuan, ChallengeRatingConstants.CR7, null, false, 0, 8, 0),
+                [CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden, SizeConstants.Gargantuan, ChallengeRatingConstants.CR7, null, false, 0, 8, 0),
                 [CreatureConstants.AnimatedObject_Gargantuan_Sheetlike] = GetCreatureData(CreatureConstants.AnimatedObject_Gargantuan_Sheetlike, SizeConstants.Gargantuan, ChallengeRatingConstants.CR7, null, false, 0, 8, 0),
                 [CreatureConstants.AnimatedObject_Gargantuan_TwoLegs] = GetCreatureData(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs, SizeConstants.Gargantuan, ChallengeRatingConstants.CR7, null, false, 0, 8, 0),
                 [CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden, SizeConstants.Gargantuan, ChallengeRatingConstants.CR7, null, false, 0, 8, 0),
@@ -132,8 +140,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 [CreatureConstants.AnimatedObject_Gargantuan_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Gargantuan_Wooden, SizeConstants.Gargantuan, ChallengeRatingConstants.CR7, null, false, 0, 8, 0),
                 [CreatureConstants.AnimatedObject_Huge] = GetCreatureData(CreatureConstants.AnimatedObject_Huge, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0),
                 [CreatureConstants.AnimatedObject_Huge_Flexible] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_Flexible, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0),
-                [CreatureConstants.AnimatedObject_Huge_MultipleLegs] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_MultipleLegs, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0),
-                [CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0),
+                [CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0),
+                [CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0),
+                [CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0),
+                [CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0),
                 [CreatureConstants.AnimatedObject_Huge_Sheetlike] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_TwoLegs, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0),
                 [CreatureConstants.AnimatedObject_Huge_TwoLegs] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_TwoLegs, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0),
                 [CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0),
@@ -141,8 +151,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 [CreatureConstants.AnimatedObject_Huge_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_Wooden, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0),
                 [CreatureConstants.AnimatedObject_Large] = GetCreatureData(CreatureConstants.AnimatedObject_Large, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 5, 0),
                 [CreatureConstants.AnimatedObject_Large_Flexible] = GetCreatureData(CreatureConstants.AnimatedObject_Large_Flexible, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 5, 0),
-                [CreatureConstants.AnimatedObject_Large_MultipleLegs] = GetCreatureData(CreatureConstants.AnimatedObject_Large_MultipleLegs, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 5, 0),
-                [CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 5, 0),
+                [CreatureConstants.AnimatedObject_Large_MultipleLegs_Long] = GetCreatureData(CreatureConstants.AnimatedObject_Large_MultipleLegs_Long, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 5, 0),
+                [CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 5, 0),
+                [CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall] = GetCreatureData(CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 5, 0),
+                [CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 5, 0),
                 [CreatureConstants.AnimatedObject_Large_Sheetlike] = GetCreatureData(CreatureConstants.AnimatedObject_Large_Sheetlike, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 5, 0),
                 [CreatureConstants.AnimatedObject_Large_TwoLegs] = GetCreatureData(CreatureConstants.AnimatedObject_Large_TwoLegs, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 5, 0),
                 [CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 5, 0),

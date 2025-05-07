@@ -100,6 +100,9 @@
     <EmbeddedResource Include="Tables\Creatures\Appearances\SkinAppearances.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\TemplateGroups.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tables\Creatures\MaxAgeDescriptions.xml" />
     <EmbeddedResource Include="Tables\Creatures\AerialManeuverability.xml" />
     <EmbeddedResource Include="Tables\Creatures\Genders.xml">

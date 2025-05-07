@@ -129,7 +129,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         {
             AssertDistinctCollection(name + GroupConstants.TREE, [.. entries]);
 
-            var exploded = ExplodeCollection(tableName, name + GroupConstants.TREE);
+            var exploded = ExplodeCollection(tableName, name + GroupConstants.TREE).Distinct();
             AssertDistinctCollection(name, [.. exploded]);
         }
     }

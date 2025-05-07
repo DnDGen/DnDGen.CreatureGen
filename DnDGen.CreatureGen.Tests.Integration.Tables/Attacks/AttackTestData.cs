@@ -335,17 +335,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 string.Empty,
                 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
-            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs].Add(BuildData("Slam",
+            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long].Add(BuildData("Slam",
                 string.Empty,
                 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs].Add(BuildData("Trample",
+            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long].Add(BuildData("Trample",
                 string.Empty,
                 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
-            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden].Add(BuildData("Slam",
+            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden].Add(BuildData("Slam",
                 string.Empty,
                 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden].Add(BuildData("Trample",
+            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden].Add(BuildData("Trample",
+                string.Empty,
+                1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+
+            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall].Add(BuildData("Slam",
+                string.Empty,
+                1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall].Add(BuildData("Trample",
+                string.Empty,
+                1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+
+            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden].Add(BuildData("Slam",
+                string.Empty,
+                1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden].Add(BuildData("Trample",
                 string.Empty,
                 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
@@ -407,17 +421,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 string.Empty,
                 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
-            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs].Add(BuildData("Slam",
+            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long].Add(BuildData("Slam",
                 string.Empty,
                 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs].Add(BuildData("Trample",
+            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long].Add(BuildData("Trample",
                 string.Empty,
                 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
-            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden].Add(BuildData("Slam",
+            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden].Add(BuildData("Slam",
                 string.Empty,
                 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden].Add(BuildData("Trample",
+            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden].Add(BuildData("Trample",
+                string.Empty,
+                1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+
+            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall].Add(BuildData("Slam",
+                string.Empty,
+                1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall].Add(BuildData("Trample",
+                string.Empty,
+                1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+
+            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden].Add(BuildData("Slam",
+                string.Empty,
+                1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden].Add(BuildData("Trample",
                 string.Empty,
                 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
@@ -479,17 +507,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 string.Empty,
                 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
-            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs].Add(BuildData("Slam",
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long].Add(BuildData("Slam",
                 string.Empty,
                 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs].Add(BuildData("Trample",
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long].Add(BuildData("Trample",
                 string.Empty,
                 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
-            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden].Add(BuildData("Slam",
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden].Add(BuildData("Slam",
                 string.Empty,
                 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden].Add(BuildData("Trample",
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden].Add(BuildData("Trample",
+                string.Empty,
+                1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall].Add(BuildData("Slam",
+                string.Empty,
+                1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall].Add(BuildData("Trample",
+                string.Empty,
+                1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden].Add(BuildData("Slam",
+                string.Empty,
+                1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden].Add(BuildData("Trample",
                 string.Empty,
                 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
@@ -551,17 +593,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 string.Empty,
                 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
-            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs].Add(BuildData("Slam",
+            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long].Add(BuildData("Slam",
                 string.Empty,
                 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs].Add(BuildData("Trample",
+            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long].Add(BuildData("Trample",
                 string.Empty,
                 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
-            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden].Add(BuildData("Slam",
+            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden].Add(BuildData("Slam",
                 string.Empty,
                 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden].Add(BuildData("Trample",
+            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden].Add(BuildData("Trample",
+                string.Empty,
+                1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+
+            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall].Add(BuildData("Slam",
+                string.Empty,
+                1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall].Add(BuildData("Trample",
+                string.Empty,
+                1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+
+            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden].Add(BuildData("Slam",
+                string.Empty,
+                1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden].Add(BuildData("Trample",
                 string.Empty,
                 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 

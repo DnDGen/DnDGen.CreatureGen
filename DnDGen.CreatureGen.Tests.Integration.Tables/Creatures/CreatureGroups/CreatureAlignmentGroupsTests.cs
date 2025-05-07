@@ -8,7 +8,7 @@ using System.Linq;
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 {
     [TestFixture]
-    public class TemplateAlignmentGroupsTests : CreatureGroupsTableTests
+    public class CreatureAlignmentGroupsTests : CreatureGroupsTableTests
     {
         [Test]
         public void CreatureGroupNames()

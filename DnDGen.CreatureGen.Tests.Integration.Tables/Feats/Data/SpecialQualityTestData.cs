@@ -849,8 +849,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
 
             testCases[CreatureConstants.AnimatedObject_Colossal] = [];
             testCases[CreatureConstants.AnimatedObject_Colossal_Flexible] = [];
-            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs] = [];
-            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden] = [];
+            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long] = [];
+            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden] = [];
+            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall] = [];
+            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden] = [];
             testCases[CreatureConstants.AnimatedObject_Colossal_Sheetlike] = [];
             testCases[CreatureConstants.AnimatedObject_Colossal_TwoLegs] = [];
             testCases[CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden] = [];
@@ -858,8 +860,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.AnimatedObject_Colossal_Wooden] = [];
             testCases[CreatureConstants.AnimatedObject_Gargantuan] = [];
             testCases[CreatureConstants.AnimatedObject_Gargantuan_Flexible] = [];
-            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs] = [];
-            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden] = [];
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long] = [];
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden] = [];
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall] = [];
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden] = [];
             testCases[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike] = [];
             testCases[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs] = [];
             testCases[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden] = [];
@@ -867,8 +871,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.AnimatedObject_Gargantuan_Wooden] = [];
             testCases[CreatureConstants.AnimatedObject_Huge] = [];
             testCases[CreatureConstants.AnimatedObject_Huge_Flexible] = [];
-            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs] = [];
-            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden] = [];
+            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long] = [];
+            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden] = [];
+            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall] = [];
+            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden] = [];
             testCases[CreatureConstants.AnimatedObject_Huge_Sheetlike] = [];
             testCases[CreatureConstants.AnimatedObject_Huge_TwoLegs] = [];
             testCases[CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden] = [];
@@ -876,8 +882,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.AnimatedObject_Huge_Wooden] = [];
             testCases[CreatureConstants.AnimatedObject_Large] = [];
             testCases[CreatureConstants.AnimatedObject_Large_Flexible] = [];
-            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs] = [];
-            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden] = [];
+            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long] = [];
+            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden] = [];
+            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall] = [];
+            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden] = [];
             testCases[CreatureConstants.AnimatedObject_Large_Sheetlike] = [];
             testCases[CreatureConstants.AnimatedObject_Large_TwoLegs] = [];
             testCases[CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden] = [];

@@ -667,12 +667,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                 commonEyes: new[] { "Radiant topaz eyes" });
             //Source: https://www.d20srd.org/srd/monsters/animatedObject.htm
             //https://forgottenrealms.fandom.com/wiki/Animated_object
-            appearances[CreatureConstants.AnimatedObject_Colossal][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
-            appearances[CreatureConstants.AnimatedObject_Colossal_Flexible][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = new[] { "Rope", "Vine", "Chain" };
-            appearances[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
-            appearances[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
-                "Wooden Stool" };
-            appearances[CreatureConstants.AnimatedObject_Colossal_Sheetlike][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
+            appearances[CreatureConstants.AnimatedObject_Colossal][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub"];
+            appearances[CreatureConstants.AnimatedObject_Colossal_Flexible][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Rope", "Vine", "Chain"];
+            appearances[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Stone Table", "Stone Dresser"];
+            appearances[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Wooden Table", "Wooden Dresser", "Wooden Ottoman",];
+            appearances[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Stone Chair", "Stone Dresser"];
+            appearances[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Wooden Chair", "Wooden Dresser", "Wooden Stool"];
+            appearances[CreatureConstants.AnimatedObject_Colossal_Sheetlike][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Carpet", "Tapestry", "Rug", "Blanket"];
             appearances[CreatureConstants.AnimatedObject_Colossal_TwoLegs] = GetAppearances(
                 commonOther: [ "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
                     "Half-Orc statue", "Suit of plate armor" ],
@@ -702,9 +703,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
             appearances[CreatureConstants.AnimatedObject_Colossal_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Clock", "Feather Duster", "Broom", "Bucket", "Barrel"];
             appearances[CreatureConstants.AnimatedObject_Gargantuan][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub"];
             appearances[CreatureConstants.AnimatedObject_Gargantuan_Flexible][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Rope", "Vine", "Chain"];
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Stone Table", "Stone Chair", "Stone Dresser"];
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = [ "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
-                "Wooden Stool" ];
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Stone Table", "Stone Dresser"];
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Wooden Table", "Wooden Dresser", "Wooden Ottoman"];
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Stone Chair", "Stone Dresser"];
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Wooden Chair", "Wooden Dresser", "Wooden Stool"];
             appearances[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Carpet", "Tapestry", "Rug", "Blanket"];
             appearances[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs] = GetAppearances(
                 commonOther: [ "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
@@ -733,12 +735,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                     "Half-Celestial wooden figurine", "Half-Fiend wooden figurine", "Half-Dragon wooden figurine" ]);
             appearances[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Cart", "Carriage"];
             appearances[CreatureConstants.AnimatedObject_Gargantuan_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Clock", "Feather Duster", "Broom", "Bucket", "Barrel"];
-            appearances[CreatureConstants.AnimatedObject_Huge][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
-            appearances[CreatureConstants.AnimatedObject_Huge_Flexible][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = new[] { "Rope", "Vine", "Chain" };
-            appearances[CreatureConstants.AnimatedObject_Huge_MultipleLegs][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
-            appearances[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
-                "Wooden Stool" };
-            appearances[CreatureConstants.AnimatedObject_Huge_Sheetlike][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
+            appearances[CreatureConstants.AnimatedObject_Huge][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub"];
+            appearances[CreatureConstants.AnimatedObject_Huge_Flexible][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Rope", "Vine", "Chain"];
+            appearances[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Stone Table", "Stone Dresser"];
+            appearances[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Wooden Table", "Wooden Dresser", "Wooden Ottoman"];
+            appearances[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Stone Chair", "Stone Dresser"];
+            appearances[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Wooden Chair", "Wooden Dresser", "Wooden Stool"];
+            appearances[CreatureConstants.AnimatedObject_Huge_Sheetlike][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Carpet", "Tapestry", "Rug", "Blanket"];
             appearances[CreatureConstants.AnimatedObject_Huge_TwoLegs] = GetAppearances(
                 commonOther: new[] { "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
                     "Half-Orc statue", "Suit of plate armor" },
@@ -764,14 +767,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                     "Hill Giant wooden figurine", "Frost Giant wooden figurine", "Fire Giant wooden figurine", "Stone Giant wooden figurine", "Cloud Giant wooden figurine",
                     "Storm Giant wooden figurine",
                     "Half-Celestial wooden figurine", "Half-Fiend wooden figurine", "Half-Dragon wooden figurine" ]);
-            appearances[CreatureConstants.AnimatedObject_Huge_Wheels_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = new[] { "Cart", "Carriage" };
-            appearances[CreatureConstants.AnimatedObject_Huge_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
-            appearances[CreatureConstants.AnimatedObject_Large][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
-            appearances[CreatureConstants.AnimatedObject_Large_Flexible][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = new[] { "Rope", "Vine", "Chain" };
-            appearances[CreatureConstants.AnimatedObject_Large_MultipleLegs][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
-            appearances[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
-                "Wooden Stool" };
-            appearances[CreatureConstants.AnimatedObject_Large_Sheetlike][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
+            appearances[CreatureConstants.AnimatedObject_Huge_Wheels_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Cart", "Carriage"];
+            appearances[CreatureConstants.AnimatedObject_Huge_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Clock", "Feather Duster", "Broom", "Bucket", "Barrel"];
+            appearances[CreatureConstants.AnimatedObject_Large][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub"];
+            appearances[CreatureConstants.AnimatedObject_Large_Flexible][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Rope", "Vine", "Chain"];
+            appearances[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Stone Table", "Stone Dresser"];
+            appearances[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Wooden Table", "Wooden Dresser", "Wooden Ottoman"];
+            appearances[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Stone Chair", "Stone Dresser"];
+            appearances[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Wooden Chair", "Wooden Dresser", "Wooden Stool"];
+            appearances[CreatureConstants.AnimatedObject_Large_Sheetlike][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Carpet", "Tapestry", "Rug", "Blanket"];
             appearances[CreatureConstants.AnimatedObject_Large_TwoLegs] = GetAppearances(
                 commonOther: new[] { "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
                     "Half-Orc statue", "Suit of plate armor" },

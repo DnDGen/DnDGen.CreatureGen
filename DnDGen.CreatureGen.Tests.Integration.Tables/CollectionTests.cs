@@ -117,14 +117,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
 
         public virtual void AssertDistinctCollection(string name, params string[] collection)
         {
-            Assert.That(table, Contains.Key(name));
+            Assert.That(table, Contains.Key(name), name);
             AssertDistinctCollection(table[name], collection, name);
         }
 
         public virtual void AssertDistinctCollection(IEnumerable<string> actual, IEnumerable<string> expected, string message = "")
         {
             AssertUniqueCollection(expected, $"{message}: Expected");
-            AssertCollection(actual, expected);
+            AssertCollection(actual, expected, message);
             AssertUniqueCollection(actual, $"{message}: Actual");
         }
 

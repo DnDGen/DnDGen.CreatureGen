@@ -75,14 +75,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.TemplateGroups
 
             AssertTemplateGroup(GroupConstants.All, entries);
 
-            var allTemplates = CreatureConstants.Templates.GetAll();
+            var allTemplates = CreatureConstants.Templates.GetAll().Except([CreatureConstants.Templates.None]);
             AssertDistinctCollection(GroupConstants.All, [.. allTemplates]);
-        }
-
-        [Test]
-        public void AnimatedObjectGroup()
-        {
-            AssertDistinctCollection(CreatureConstants.Groups.AnimatedObject, []);
         }
 
         [Test]

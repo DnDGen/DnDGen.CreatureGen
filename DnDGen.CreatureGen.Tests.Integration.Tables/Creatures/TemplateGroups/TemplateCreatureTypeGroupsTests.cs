@@ -33,7 +33,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.TemplateGroups
         [TestCase(CreatureConstants.Types.Subtypes.Angel)]
         [TestCase(CreatureConstants.Types.Subtypes.Aquatic)]
         [TestCase(CreatureConstants.Types.Subtypes.Archon)]
-        [TestCase(CreatureConstants.Types.Subtypes.Augmented)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented,
+            CreatureConstants.Templates.CelestialCreature,
+            CreatureConstants.Templates.FiendishCreature,
+            CreatureConstants.Templates.Ghost,
+            CreatureConstants.Templates.HalfCelestial,
+            CreatureConstants.Templates.HalfFiend,
+            CreatureConstants.Groups.HalfDragon,
+            CreatureConstants.Templates.Lich,
+            CreatureConstants.Templates.Vampire)]
         [TestCase(CreatureConstants.Types.Subtypes.Chaotic)]
         [TestCase(CreatureConstants.Types.Subtypes.Cold)]
         [TestCase(CreatureConstants.Types.Subtypes.Dwarf)]

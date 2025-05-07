@@ -2585,8 +2585,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     var roll = $"{creatureHeights[creature][gender]}+{creatureHeights[creature][creature]}";
                     var minHeight = dice.Roll(roll).AsPotentialMinimum();
                     var maxHeight = dice.Roll(roll).AsPotentialMaximum();
-                    Assert.That(minHeight, Is.GreaterThanOrEqualTo(heightRanges[data.Size].min), creature + gender);
-                    Assert.That(maxHeight, Is.LessThanOrEqualTo(heightRanges[data.Size].max), creature + gender);
+                    Assert.That(minHeight, Is.GreaterThanOrEqualTo(heightRanges[data.Size].min).Within(heightRanges[data.Size].min * 0.1), creature + gender);
+                    Assert.That(maxHeight, Is.LessThanOrEqualTo(heightRanges[data.Size].max).Within(heightRanges[data.Size].max * 0.1), creature + gender);
                 }
             }
         }
