@@ -119,6 +119,7 @@
             public const int CasterLevel = 6;
             public const int NaturalArmor = 7;
             public const int NumberOfHands = 8;
+            public const int BaseAttackQuality = 9;
         }
 
         internal static class AdvancementSelectionData

@@ -30,6 +30,7 @@ namespace DnDGen.CreatureGen.Generators.Attacks
             if (hitPoints.RoundedHitDiceQuantity == 0)
                 return 0;
 
+            //TODO: Alter this to be part of the creature data
             var baseAttackQuality = collectionSelector.FindCollectionOf(
                 Config.Name,
                 TableNameConstants.Collection.CreatureGroups,

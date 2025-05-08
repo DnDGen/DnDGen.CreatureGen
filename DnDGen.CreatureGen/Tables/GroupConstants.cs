@@ -21,7 +21,6 @@
         public const string PreparesSpells = "Prepares Spells";
         public const string Skills = "Skills";
         public const string SkillSynergy = "Skill Synergy";
-        public const string TREE = "TREE";
         public const string Unnatural = "Unnatural";
         public const string Untrained = "Untrained";
         public const string WeaponProficiency = "Weapon Proficiency";

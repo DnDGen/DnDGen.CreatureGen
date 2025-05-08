@@ -15,6 +15,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     {
         private Dictionary<string, string> creatureData;
         private SpaceReachHelper spaceReachHelper;
+        private Dictionary<string, BaseAttackQuality> baseAttackQualities;
 
         protected override string tableName => TableNameConstants.Collection.CreatureData;
 
@@ -23,6 +24,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             spaceReachHelper = GetNewInstanceOf<SpaceReachHelper>();
             creatureData = GetCreatureTestData();
+
+            baseAttackQualities = new Dictionary<string, BaseAttackQuality>
+            {
+                [CreatureConstants.Types.Aberration] = BaseAttackQuality.Average,
+                [CreatureConstants.Types.Animal] = BaseAttackQuality.Average,
+                [CreatureConstants.Types.Construct] = BaseAttackQuality.Average,
+                [CreatureConstants.Types.Elemental] = BaseAttackQuality.Average,
+                [CreatureConstants.Types.Giant] = BaseAttackQuality.Average,
+                [CreatureConstants.Types.Humanoid] = BaseAttackQuality.Average,
+                [CreatureConstants.Types.Ooze] = BaseAttackQuality.Average,
+                [CreatureConstants.Types.Plant] = BaseAttackQuality.Average,
+                [CreatureConstants.Types.Vermin] = BaseAttackQuality.Average,
+                [CreatureConstants.Types.Fey] = BaseAttackQuality.Poor,
+                [CreatureConstants.Types.Undead] = BaseAttackQuality.Poor,
+                [CreatureConstants.Types.Dragon] = BaseAttackQuality.Good,
+                [CreatureConstants.Types.MagicalBeast] = BaseAttackQuality.Good,
+                [CreatureConstants.Types.MonstrousHumanoid] = BaseAttackQuality.Good,
+                [CreatureConstants.Types.Outsider] = BaseAttackQuality.Good,
+            };
         }
 
         [Test]
@@ -30,6 +50,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             var names = CreatureConstants.GetAll();
             AssertCollectionNames(names);
+        }
+
+        [Test]
+        public void AllTypesHaveBaseAttackQuality()
+        {
+            var types = CreatureConstants.Types.GetAll();
+            Assert.That(baseAttackQualities.Keys, Is.EquivalentTo(types));
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
@@ -782,6 +809,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             int naturalArmor,
             int numberOfHands)
         {
+            var creatureType = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, creature).First();
+
             var selection = new CreatureDataSelection
             {
                 ChallengeRating = challengeRating,
@@ -793,6 +822,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 NaturalArmor = naturalArmor,
                 NumberOfHands = numberOfHands,
                 CasterLevel = casterLevel,
+                BaseAttackQuality = baseAttackQualities[creatureType],
             };
             var data = DataHelper.Parse(selection);
 

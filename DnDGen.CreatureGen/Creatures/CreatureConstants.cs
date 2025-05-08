@@ -25,8 +25,8 @@ namespace DnDGen.CreatureGen.Creatures
 
             public static IEnumerable<string> GetAll()
             {
-                return new[]
-                {
+                return
+                [
                     Aberration,
                     Animal,
                     Construct,
@@ -42,7 +42,7 @@ namespace DnDGen.CreatureGen.Creatures
                     Plant,
                     Undead,
                     Vermin,
-                };
+                ];
             }
 
             public static class Subtypes
@@ -77,8 +77,8 @@ namespace DnDGen.CreatureGen.Creatures
 
                 public static IEnumerable<string> GetAll()
                 {
-                    return new[]
-                    {
+                    return
+                    [
                         Air,
                         Angel,
                         Aquatic,
@@ -106,7 +106,7 @@ namespace DnDGen.CreatureGen.Creatures
                         Shapechanger,
                         Swarm,
                         Water,
-                    };
+                    ];
                 }
             }
         }
@@ -160,8 +160,8 @@ namespace DnDGen.CreatureGen.Creatures
 
             public static IEnumerable<string> GetAll()
             {
-                return new[]
-                {
+                return
+                [
                     CelestialCreature,
                     FiendishCreature,
                     Ghost,
@@ -206,71 +206,8 @@ namespace DnDGen.CreatureGen.Creatures
                     Lycanthrope_Wolf_Dire_Afflicted,
                     Lycanthrope_Wolf_Dire_Natural,
                     Zombie,
-                };
+                ];
             }
-        }
-
-        public static class Groups
-        {
-            public const string Angel = "Angel";
-            public const string AnimatedObject = "Animated Object";
-            public const string Ant_Giant = "Giant Ant";
-            public const string Archon = "Archon";
-            public const string Arrowhawk = "Arrowhawk";
-            public const string Bear = "Bear";
-            public const string Centipede_Monstrous = "Monstrous Centipede";
-            public const string Chimera = "Chimera";
-            public const string Cryohydra = "Cryohydra";
-            public const string Demon = "Demon";
-            public const string Devil = "Devil";
-            public const string Dinosaur = "Dinosaur";
-            public const string Dragon_Black = "Black Dragon";
-            public const string Dragon_Blue = "Blue Dragon";
-            public const string Dragon_Brass = "Brass Dragon";
-            public const string Dragon_Bronze = "Bronze Dragon";
-            public const string Dragon_Copper = "Copper Dragon";
-            public const string Dragon_Gold = "Gold Dragon";
-            public const string Dragon_Green = "Green Dragon";
-            public const string Dragon_Red = "Red Dragon";
-            public const string Dragon_Silver = "Silver Dragon";
-            public const string Dragon_White = "White Dragon";
-            public const string Dwarf = "Dwarf";
-            public const string Elemental = "Elemental";
-            public const string Elemental_Air = "Air Elemental";
-            public const string Elemental_Earth = "Earth Elemental";
-            public const string Elemental_Fire = "Fire Elemental";
-            public const string Elemental_Water = "Water Elemental";
-            public const string Elf = "Elf";
-            public const string Formian = "Formian";
-            public const string Fungus = "Fungus";
-            public const string Genie = "Genie";
-            public const string Gnome = "Gnome";
-            public const string Golem = "Golem";
-            public const string Hag = "Hag";
-            public const string HalfDragon = "Half-Dragon";
-            public const string Halfling = "Halfling";
-            public const string Horse = "Horse";
-            public const string Hydra = "Hydra";
-            public const string Inevitable = "Inevitable";
-            public const string Lycanthrope = "Lycanthrope";
-            public const string Mephit = "Mephit";
-            public const string Naga = "Naga";
-            public const string Nightshade = "Nightshade";
-            public const string Orc = "Orc";
-            public const string Planetouched = "Planetouched";
-            public const string Pyrohydra = "Pyrohydra";
-            public const string Salamander = "Salamander";
-            public const string Scorpion_Monstrous = "Monstrous Scorpion";
-            public const string Shark = "Shark";
-            public const string Slaad = "Slaad";
-            public const string Snake_Viper = "Viper Snake";
-            public const string Sphinx = "Sphinx";
-            public const string Spider_Monstrous = "Monstrous Spider";
-            public const string Sprite = "Sprite";
-            public const string Tojanida = "Tojanida";
-            public const string Whale = "Whale";
-            public const string Xorn = "Xorn";
-            public const string YuanTi = "Yuan-ti";
         }
 
         public const string Aasimar = "Aasimar";

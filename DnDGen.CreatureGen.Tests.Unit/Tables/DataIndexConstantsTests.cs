@@ -129,6 +129,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(DataIndexConstants.CreatureData.CasterLevel, 6)]
         [TestCase(DataIndexConstants.CreatureData.NaturalArmor, 7)]
         [TestCase(DataIndexConstants.CreatureData.NumberOfHands, 8)]
+        [TestCase(DataIndexConstants.CreatureData.BaseAttackQuality, 9)]
         public void CreatureDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));

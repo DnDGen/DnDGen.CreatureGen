@@ -2,6 +2,7 @@
 using DnDGen.Infrastructure.Selectors.Collections;
 using MoreLinq;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -128,6 +129,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
             AssertUniqueCollection(actual, $"{message}: Actual");
         }
 
+        [Obsolete("Just don't use this, make a proper flat collection")]
         protected IEnumerable<string> ExplodeCollection(string tableName, string collectionName) => ExplodeRecursive(tableName, collectionName);
 
         private List<string> ExplodeRecursive(string tableName, string collectionName)

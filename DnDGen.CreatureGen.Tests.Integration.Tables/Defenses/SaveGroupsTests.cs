@@ -23,6 +23,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             AssertCollectionNames(names);
         }
 
+        //TODO: Redo as individual test cases
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreatureSaveGroupHasStrongSaves(string creature)
         {
@@ -42,6 +43,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             Assert.That(saveGroup, Is.EquivalentTo(strongSaves));
         }
 
+        //TODO: Redo as individual test cases
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void TemplateSaveGroupHasStrongSaves(string template)
         {

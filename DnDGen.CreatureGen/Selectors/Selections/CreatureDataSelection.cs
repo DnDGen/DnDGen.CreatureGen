@@ -15,6 +15,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public int NumberOfHands { get; set; }
         public int NaturalArmor { get; set; }
         public bool CanUseEquipment { get; set; }
+        public BaseAttackQuality BaseAttackQuality { get; set; }
 
         public CreatureDataSelection()
         {
@@ -25,7 +26,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public override Func<string[], CreatureDataSelection> MapTo => Map;
         public override Func<CreatureDataSelection, string[]> MapFrom => Map;
 
-        public override int SectionCount => 9;
+        public override int SectionCount => 10;
 
         public static CreatureDataSelection Map(string[] splitData)
         {
@@ -39,6 +40,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
                 NumberOfHands = Convert.ToInt32(splitData[DataIndexConstants.CreatureData.NumberOfHands]),
                 NaturalArmor = Convert.ToInt32(splitData[DataIndexConstants.CreatureData.NaturalArmor]),
                 CanUseEquipment = Convert.ToBoolean(splitData[DataIndexConstants.CreatureData.CanUseEquipment]),
+                BaseAttackQuality = (BaseAttackQuality)Convert.ToInt32(splitData[DataIndexConstants.CreatureData.BaseAttackQuality]),
             };
 
             if (string.IsNullOrEmpty(splitData[DataIndexConstants.CreatureData.LevelAdjustment]))
@@ -65,6 +67,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             data[DataIndexConstants.CreatureData.NaturalArmor] = selection.NaturalArmor.ToString();
             data[DataIndexConstants.CreatureData.CanUseEquipment] = selection.CanUseEquipment.ToString();
             data[DataIndexConstants.CreatureData.LevelAdjustment] = selection.LevelAdjustment?.ToString() ?? string.Empty;
+            data[DataIndexConstants.CreatureData.BaseAttackQuality] = ((int)selection.BaseAttackQuality).ToString();
 
             return data;
         }
