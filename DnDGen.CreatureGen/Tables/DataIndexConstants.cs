@@ -121,6 +121,9 @@
             public const int NumberOfHands = 8;
             public const int BaseAttackQuality = 9;
             public const int Types = 10;
+            public const int HitDiceQuantity = 11;
+            public const int HitDie = 12;
+            public const int HasSkeleton = 13;
         }
 
         internal static class AdvancementSelectionData

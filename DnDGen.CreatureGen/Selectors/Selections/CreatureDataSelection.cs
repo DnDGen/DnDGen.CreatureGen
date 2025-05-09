@@ -1,7 +1,9 @@
-﻿using DnDGen.CreatureGen.Tables;
+﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Selectors.Selections
 {
@@ -18,6 +20,12 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public bool CanUseEquipment { get; set; }
         public BaseAttackQuality BaseAttackQuality { get; set; }
         public IEnumerable<string> Types { get; set; }
+        public double HitDiceQuantity { get; set; }
+        public int HitDie { get; set; }
+        public bool HasSkeleton { get; set; }
+
+        //TODO: Get Effective Hit Dice Quantity (as character humanoid check)
+        //TODO: Get Effective Challenge Rating (effective hit dice == 0 ? CR 0 : data CR)
 
         public CreatureDataSelection()
         {
@@ -29,7 +37,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public override Func<string[], CreatureDataSelection> MapTo => Map;
         public override Func<CreatureDataSelection, string[]> MapFrom => Map;
 
-        public override int SectionCount => 11;
+        public override int SectionCount => 14;
         public static char Delimiter => '|';
 
         public static CreatureDataSelection Map(string[] splitData)
@@ -46,6 +54,9 @@ namespace DnDGen.CreatureGen.Selectors.Selections
                 CanUseEquipment = Convert.ToBoolean(splitData[DataIndexConstants.CreatureData.CanUseEquipment]),
                 BaseAttackQuality = (BaseAttackQuality)Convert.ToInt32(splitData[DataIndexConstants.CreatureData.BaseAttackQuality]),
                 Types = splitData[DataIndexConstants.CreatureData.Types].Split(Delimiter),
+                HitDiceQuantity = Convert.ToDouble(splitData[DataIndexConstants.CreatureData.HitDiceQuantity]),
+                HitDie = Convert.ToInt32(splitData[DataIndexConstants.CreatureData.HitDie]),
+                HasSkeleton = Convert.ToBoolean(splitData[DataIndexConstants.CreatureData.HasSkeleton]),
             };
 
             if (string.IsNullOrEmpty(splitData[DataIndexConstants.CreatureData.LevelAdjustment]))
@@ -74,8 +85,32 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             data[DataIndexConstants.CreatureData.LevelAdjustment] = selection.LevelAdjustment?.ToString() ?? string.Empty;
             data[DataIndexConstants.CreatureData.BaseAttackQuality] = ((int)selection.BaseAttackQuality).ToString();
             data[DataIndexConstants.CreatureData.Types] = string.Join(Delimiter, selection.Types);
+            data[DataIndexConstants.CreatureData.HitDiceQuantity] = selection.HitDiceQuantity.ToString();
+            data[DataIndexConstants.CreatureData.HitDie] = selection.HitDie.ToString();
+            data[DataIndexConstants.CreatureData.HasSkeleton] = selection.HasSkeleton.ToString();
 
             return data;
+        }
+
+        public double GetEffectiveHitDiceQuantity(bool asCharacter)
+        {
+            if (asCharacter && HitDiceQuantity <= 1 && Types.First() == CreatureConstants.Types.Humanoid)
+            {
+                return 0;
+            }
+
+            return HitDiceQuantity;
+        }
+
+        public string GetEffectiveChallengeRating(bool asCharacter)
+        {
+            var hitDiceQuantity = GetEffectiveHitDiceQuantity(asCharacter);
+            if (hitDiceQuantity == 0)
+            {
+                return ChallengeRatingConstants.CR0;
+            }
+
+            return ChallengeRating;
         }
     }
 }

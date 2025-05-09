@@ -778,6 +778,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         [TestCase(CreatureConstants.Templates.Zombie, 10)]
         public void MaxHitDice(string template, double quantity)
         {
+            Assert.Fail("TODO: figure out how to handle max template hit dice without the hit dice table");
             Assert.That(quantity, Is.Positive);
             AssertAdjustment(template, quantity);
         }
