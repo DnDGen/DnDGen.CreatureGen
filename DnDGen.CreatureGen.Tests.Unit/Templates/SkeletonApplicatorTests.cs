@@ -154,7 +154,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(["my wrong creature", baseCreature.Name, "my other creature"]);
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Skeleton, false, true))
+                .Setup(s => s.UpdateByTemplate(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Skeleton, false, true))
                 .Returns(baseCreature.Demographics);
         }
 
@@ -360,7 +360,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Gender = "boney gender",
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Skeleton, false, true))
+                .Setup(s => s.UpdateByTemplate(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Skeleton, false, true))
                 .Returns(skeletonDemographics);
 
             mockAttacksGenerator
@@ -1252,7 +1252,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Gender = "boney gender",
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Skeleton, false, true))
+                .Setup(s => s.UpdateByTemplate(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Skeleton, false, true))
                 .Returns(skeletonDemographics);
 
             mockAttacksGenerator

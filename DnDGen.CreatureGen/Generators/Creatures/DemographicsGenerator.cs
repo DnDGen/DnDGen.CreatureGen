@@ -197,7 +197,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return ". ";
         }
 
-        public Demographics Update(Demographics source, string creature, string template, bool addWingspan = false, bool overwriteAppearance = false)
+        public Demographics UpdateByTemplate(Demographics source, string creature, string template, bool addWingspan = false, bool overwriteAppearance = false)
         {
             UpdateAppearance(source, template, overwriteAppearance);
             UpdateAge(source, template);
@@ -338,6 +338,29 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         {
             var maximum = dice.Roll(rawRoll).AsPotentialMaximum();
             return Convert.ToInt32((maximum - originalValue) / 2);
+        }
+
+        public Demographics AdjustDemographicsBySize(Demographics demographics, string originalSize, string advancedSize)
+        {
+            var orderedSizes = SizeConstants.GetOrdered();
+            var originalIndex = Array.IndexOf(orderedSizes, originalSize);
+            var advancedIndex = Array.IndexOf(orderedSizes, advancedSize);
+            var sizeDifference = advancedIndex - originalIndex;
+
+            //INFO: If the advancement has adjusted the size of the creature, we need to increase the demographics,
+            //specifically the height and weight. Roughly, x2 for each size category increase for height and x8 for the weight
+            if (sizeDifference > 0)
+            {
+                var heightMultiplier = Math.Pow(2, sizeDifference);
+                var weightMultiplier = Math.Pow(8, sizeDifference);
+
+                demographics.Height.Value *= heightMultiplier;
+                demographics.Length.Value *= heightMultiplier;
+                demographics.Wingspan.Value *= heightMultiplier;
+                demographics.Weight.Value *= weightMultiplier;
+            }
+
+            return demographics;
         }
     }
 }

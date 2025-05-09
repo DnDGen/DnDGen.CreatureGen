@@ -166,7 +166,7 @@ namespace DnDGen.CreatureGen.Templates
         {
             var addWings = IsAtLeastLarge(creature.Size) && creature.Speeds.ContainsKey(SpeedConstants.Land);
 
-            creature.Demographics = demographicsGenerator.Update(creature.Demographics, creature.Name, DragonSpecies, addWings);
+            creature.Demographics = demographicsGenerator.UpdateByTemplate(creature.Demographics, creature.Name, DragonSpecies, addWings);
 
             if (addWings && !creature.Demographics.Other.Contains("wing", StringComparison.OrdinalIgnoreCase))
             {

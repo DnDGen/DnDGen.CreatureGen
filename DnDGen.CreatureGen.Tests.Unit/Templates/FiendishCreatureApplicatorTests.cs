@@ -70,7 +70,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Build();
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.FiendishCreature, false, false))
+                .Setup(s => s.UpdateByTemplate(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.FiendishCreature, false, false))
                 .Returns(baseCreature.Demographics);
         }
 
@@ -237,7 +237,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Gender = "hellish gender"
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.FiendishCreature, false, false))
+                .Setup(s => s.UpdateByTemplate(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.FiendishCreature, false, false))
                 .Returns(templateDemographics);
 
             var smiteGood = new Attack
@@ -1286,7 +1286,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Gender = "hellish gender"
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.FiendishCreature, false, false))
+                .Setup(s => s.UpdateByTemplate(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.FiendishCreature, false, false))
                 .Returns(templateDemographics);
 
             var smiteGood = new Attack

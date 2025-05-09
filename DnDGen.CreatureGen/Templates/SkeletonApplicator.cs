@@ -187,7 +187,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            creature.Demographics = demographicsGenerator.Update(creature.Demographics, creature.Name, CreatureConstants.Templates.Skeleton, overwriteAppearance: true);
+            creature.Demographics = demographicsGenerator.UpdateByTemplate(creature.Demographics, creature.Name, CreatureConstants.Templates.Skeleton, overwriteAppearance: true);
         }
 
         private void UpdateCreatureHitPoints(Creature creature)

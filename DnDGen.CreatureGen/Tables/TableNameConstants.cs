@@ -13,7 +13,6 @@
             public const string CasterGroups = "CasterGroups";
             public const string CreatureData = "CreatureData";
             public const string CreatureGroups = "CreatureGroups";
-            public const string CreatureTypes = "CreatureTypes";
             public const string DamageData = "DamageData";
             public const string FeatData = "FeatData";
             public const string FeatFoci = "FeatFoci";

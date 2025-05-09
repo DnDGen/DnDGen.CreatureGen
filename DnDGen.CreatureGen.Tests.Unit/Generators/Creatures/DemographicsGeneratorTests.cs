@@ -2078,7 +2078,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Skin = appearance
             };
 
-            var updated = generator.Update(demographics, "my creature", "my template", overwriteAppearance: overwrite);
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template", overwriteAppearance: overwrite);
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Skin, Is.EqualTo(expected));
         }
@@ -2094,7 +2094,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Hair = appearance
             };
 
-            var updated = generator.Update(demographics, "my creature", "my template", overwriteAppearance: overwrite);
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template", overwriteAppearance: overwrite);
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Hair, Is.EqualTo(expected));
         }
@@ -2110,7 +2110,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Eyes = appearance
             };
 
-            var updated = generator.Update(demographics, "my creature", "my template", overwriteAppearance: overwrite);
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template", overwriteAppearance: overwrite);
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Eyes, Is.EqualTo(expected));
         }
@@ -2126,7 +2126,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Other = appearance
             };
 
-            var updated = generator.Update(demographics, "my creature", "my template", overwriteAppearance: overwrite);
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template", overwriteAppearance: overwrite);
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Other, Is.EqualTo(expected));
         }
@@ -2145,7 +2145,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Other = "my other",
             };
 
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Skin, Is.EqualTo("my skin. template skin"));
             Assert.That(updated.Hair, Is.EqualTo("my hair. template hair"));
@@ -2214,7 +2214,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
             };
 
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Age.Value, Is.EqualTo(9266.90210 * 42));
             Assert.That(updated.Age.Description, Is.EqualTo("my age category"));
@@ -2240,7 +2240,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
             };
 
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Age.Value, Is.EqualTo(9266.90210 + 42));
             Assert.That(updated.Age.Description, Is.EqualTo("template age category"));
@@ -2266,7 +2266,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
             };
 
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.MaximumAge.Value, Is.EqualTo(600 * 42));
             Assert.That(updated.MaximumAge.Description, Is.EqualTo("gonna die"));
@@ -2292,7 +2292,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
             };
 
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
             Assert.That(updated.MaximumAge.Description, Is.EqualTo("template age category"));
@@ -2322,7 +2322,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Length = new Measurement("inches") { Value = 42 },
                 Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template", true);
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template", true);
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Wingspan, Is.Not.Null);
             Assert.That(updated.Wingspan.Value, Is.EqualTo(123 + 345));
@@ -2368,7 +2368,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Length = new Measurement("inches") { Value = 42 },
                 Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template", true);
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template", true);
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Wingspan, Is.Not.Null);
             Assert.That(updated.Wingspan.Value, Is.EqualTo(123 + roll));
@@ -2400,7 +2400,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Length = new Measurement("inches") { Value = 1337 },
                 Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template", true);
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template", true);
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Wingspan, Is.Not.Null);
             Assert.That(updated.Wingspan.Value, Is.EqualTo(123 + 345));
@@ -2429,7 +2429,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Age = new Measurement("years") { Value = 9266.90210, Description = "my age category" },
                 MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
             };
-            var updated = generator.Update(demographics, "my creature", "my template", false);
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template", false);
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Wingspan, Is.Not.Null);
             Assert.That(updated.Wingspan.Value, Is.Zero);
@@ -2460,7 +2460,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Wingspan = new Measurement("inches") { Value = 1336, Description = "impressive" },
                 Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template", true);
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template", true);
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Wingspan, Is.Not.Null);
             Assert.That(updated.Wingspan.Value, Is.EqualTo(1336));
@@ -2488,7 +2488,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
                 Height = new Measurement("inches") { Value = 96, Description = "eh" },
             };
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Height, Is.Not.Null);
             Assert.That(updated.Height.Value, Is.EqualTo(96));
@@ -2516,7 +2516,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
                 Height = new Measurement("inches") { Value = 0, Description = "eh" },
             };
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Height, Is.Not.Null);
             Assert.That(updated.Height.Value, Is.EqualTo(0));
@@ -2563,7 +2563,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Height = new Measurement("inches") { Value = 96, Description = "eh" },
                 Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Height, Is.Not.Null);
             Assert.That(updated.Height.Value, Is.EqualTo(96 + 364));
@@ -2622,7 +2622,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Height = new Measurement("inches") { Value = height, Description = "eh" },
                 Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Height, Is.Not.Null);
             Assert.That(updated.Height.Value, Is.EqualTo(expectedHeight));
@@ -2669,7 +2669,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Height = new Measurement("inches") { Value = 96, Description = "eh" },
                 Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Height, Is.Not.Null);
             Assert.That(updated.Height.Value, Is.EqualTo(96 - 24));
@@ -2728,7 +2728,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Height = new Measurement("inches") { Value = height, Description = "eh" },
                 Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Height, Is.Not.Null);
             Assert.That(updated.Height.Value, Is.EqualTo(expectedHeight));
@@ -2756,7 +2756,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
                 Length = new Measurement("inches") { Value = 96, Description = "eh" },
             };
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Length, Is.Not.Null);
             Assert.That(updated.Length.Value, Is.EqualTo(96));
@@ -2784,7 +2784,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
                 Length = new Measurement("inches") { Value = 0, Description = "eh" },
             };
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Length, Is.Not.Null);
             Assert.That(updated.Length.Value, Is.EqualTo(0));
@@ -2831,7 +2831,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Length = new Measurement("inches") { Value = 96, Description = "eh" },
                 Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Length, Is.Not.Null);
             Assert.That(updated.Length.Value, Is.EqualTo(96 + 364));
@@ -2878,7 +2878,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Length = new Measurement("inches") { Value = 96, Description = "eh" },
                 Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Length, Is.Not.Null);
             Assert.That(updated.Length.Value, Is.EqualTo(96 - 24));
@@ -2906,7 +2906,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
                 Weight = new Measurement("pounds") { Value = 96, Description = "eh" },
             };
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Weight, Is.Not.Null);
             Assert.That(updated.Weight.Value, Is.EqualTo(96));
@@ -2934,7 +2934,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 MaximumAge = new Measurement("years") { Value = 600, Description = "gonna die" },
                 Weight = new Measurement("pounds") { Value = 0, Description = "eh" },
             };
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Weight, Is.Not.Null);
             Assert.That(updated.Weight.Value, Is.EqualTo(0));
@@ -2992,7 +2992,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Weight = new Measurement("pounds") { Value = 96, Description = "eh" },
                 Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Weight, Is.Not.Null);
             Assert.That(updated.Weight.Value, Is.EqualTo(96 + 14458));
@@ -3090,7 +3090,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Weight = new Measurement("pounds") { Value = weight, Description = "eh" },
                 Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Weight, Is.Not.Null);
             Assert.That(updated.Weight.Value, Is.EqualTo(expectedWeight));
@@ -3148,7 +3148,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Weight = new Measurement("pounds") { Value = 96, Description = "eh" },
                 Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Weight, Is.Not.Null);
             Assert.That(updated.Weight.Value, Is.EqualTo(96 + 14458));
@@ -3206,7 +3206,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Weight = new Measurement("pounds") { Value = 96, Description = "eh" },
                 Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Weight, Is.Not.Null);
             Assert.That(updated.Weight.Value, Is.EqualTo(96 - 8));
@@ -3305,7 +3305,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Weight = new Measurement("pounds") { Value = 96, Description = "eh" },
                 Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Weight, Is.Not.Null);
             Assert.That(updated.Weight.Value, Is.EqualTo(96 - 8));
@@ -3363,7 +3363,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Weight = new Measurement("pounds") { Value = 96, Description = "eh" },
                 Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template");
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template");
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Weight, Is.Not.Null);
             Assert.That(updated.Weight.Value, Is.EqualTo(96 - 8));
@@ -3487,7 +3487,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Weight = new Measurement("pounds") { Value = 45, Description = "eh" },
                 Gender = "my gender",
             };
-            var updated = generator.Update(demographics, "my creature", "my template", true);
+            var updated = generator.UpdateByTemplate(demographics, "my creature", "my template", true);
             Assert.That(updated, Is.EqualTo(demographics));
             Assert.That(updated.Skin, Is.EqualTo("my skin. template skin"));
             Assert.That(updated.Hair, Is.EqualTo("my hair. template hair"));

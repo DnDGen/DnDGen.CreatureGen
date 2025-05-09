@@ -398,29 +398,6 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return creature;
         }
 
-        private Demographics AdjustDemographics(Demographics demographics, string originalSize, string advancedSize)
-        {
-            var orderedSizes = SizeConstants.GetOrdered();
-            var originalIndex = Array.IndexOf(orderedSizes, originalSize);
-            var advancedIndex = Array.IndexOf(orderedSizes, advancedSize);
-            var sizeDifference = advancedIndex - originalIndex;
-
-            //INFO: If the advancement has adjusted the size of the creature, we need to increase the demographics,
-            //specifically the height and weight. Roughly, x2 for each size category increase for height and x8 for the weight
-            if (sizeDifference > 0)
-            {
-                var heightMultiplier = Math.Pow(2, sizeDifference);
-                var weightMultiplier = Math.Pow(8, sizeDifference);
-
-                demographics.Height.Value *= heightMultiplier;
-                demographics.Length.Value *= heightMultiplier;
-                demographics.Wingspan.Value *= heightMultiplier;
-                demographics.Weight.Value *= weightMultiplier;
-            }
-
-            return demographics;
-        }
-
         private int ComputeInitiativeBonus(IEnumerable<Feat> feats)
         {
             var initiativeBonus = 0;
@@ -432,19 +409,10 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return initiativeBonus;
         }
 
-        private CreatureType GetCreatureType(string creatureName)
-        {
-            var creatureType = new CreatureType();
-            var types = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, creatureName);
-
-            creatureType.Name = types.First();
-            creatureType.SubTypes = types.Skip(1);
-
-            return creatureType;
-        }
+        private CreatureType GetCreatureType(CreatureDataSelection data) => new(data.Types);
 
         public async Task<Creature> GenerateAsync(bool asCharacter, string creatureName, AbilityRandomizer abilityRandomizer, params string[] templates)
-            => await GenerateAsync(asCharacter, creatureName, abilityRandomizer, new Filters { Templates = new List<string>(templates) });
+            => await GenerateAsync(asCharacter, creatureName, abilityRandomizer, new Filters { Templates = [.. templates] });
 
         public async Task<Creature> GenerateRandomAsync(bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters = null)
         {

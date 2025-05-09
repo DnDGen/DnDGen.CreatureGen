@@ -32,7 +32,6 @@
     <None Remove="Tables\Creatures\AgeRolls.xml" />
     <None Remove="Tables\Creatures\CreatureData.xml" />
     <None Remove="Tables\Creatures\CreatureGroups.xml" />
-    <None Remove="Tables\Creatures\CreatureTypes.xml" />
     <None Remove="Tables\Creatures\Genders.xml" />
     <None Remove="Tables\Creatures\Heights.xml" />
     <None Remove="Tables\Creatures\Lengths.xml" />
@@ -112,9 +111,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Creatures\CreatureGroups.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tables\Creatures\CreatureTypes.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Creatures\AgeRolls.xml" />

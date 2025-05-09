@@ -153,7 +153,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            creature.Demographics = demographicsGenerator.Update(creature.Demographics, creature.Name, CreatureConstants.Templates.Ghost);
+            creature.Demographics = demographicsGenerator.UpdateByTemplate(creature.Demographics, creature.Name, CreatureConstants.Templates.Ghost);
 
             //As Ghosts are Incorporeal, they have no weight.
             //Will leave the weight description as-is, to inform what the ghost might have looked like in life.

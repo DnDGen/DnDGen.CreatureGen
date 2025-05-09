@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Models;
 using System;
+using System.Collections.Generic;
 
 namespace DnDGen.CreatureGen.Selectors.Selections
 {
@@ -16,17 +17,20 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public int NaturalArmor { get; set; }
         public bool CanUseEquipment { get; set; }
         public BaseAttackQuality BaseAttackQuality { get; set; }
+        public IEnumerable<string> Types { get; set; }
 
         public CreatureDataSelection()
         {
             Size = string.Empty;
             ChallengeRating = string.Empty;
+            Types = [];
         }
 
         public override Func<string[], CreatureDataSelection> MapTo => Map;
         public override Func<CreatureDataSelection, string[]> MapFrom => Map;
 
-        public override int SectionCount => 10;
+        public override int SectionCount => 11;
+        public static char Delimiter => '|';
 
         public static CreatureDataSelection Map(string[] splitData)
         {
@@ -41,6 +45,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
                 NaturalArmor = Convert.ToInt32(splitData[DataIndexConstants.CreatureData.NaturalArmor]),
                 CanUseEquipment = Convert.ToBoolean(splitData[DataIndexConstants.CreatureData.CanUseEquipment]),
                 BaseAttackQuality = (BaseAttackQuality)Convert.ToInt32(splitData[DataIndexConstants.CreatureData.BaseAttackQuality]),
+                Types = splitData[DataIndexConstants.CreatureData.Types].Split(Delimiter),
             };
 
             if (string.IsNullOrEmpty(splitData[DataIndexConstants.CreatureData.LevelAdjustment]))
@@ -68,6 +73,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             data[DataIndexConstants.CreatureData.CanUseEquipment] = selection.CanUseEquipment.ToString();
             data[DataIndexConstants.CreatureData.LevelAdjustment] = selection.LevelAdjustment?.ToString() ?? string.Empty;
             data[DataIndexConstants.CreatureData.BaseAttackQuality] = ((int)selection.BaseAttackQuality).ToString();
+            data[DataIndexConstants.CreatureData.Types] = string.Join(Delimiter, selection.Types);
 
             return data;
         }

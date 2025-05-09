@@ -111,7 +111,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((IEnumerable<Attack> aa) => aa.ElementAt(count++ % aa.Count()));
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Ghost, false, false))
+                .Setup(s => s.UpdateByTemplate(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Ghost, false, false))
                 .Returns(baseCreature.Demographics);
         }
 
@@ -300,7 +300,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Weight = new Measurement("pounds") { Value = 9, Description = "heavy-set" },
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Ghost, false, false))
+                .Setup(s => s.UpdateByTemplate(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Ghost, false, false))
                 .Returns(templateDemographics);
 
             SetUpAttacks(templateDemographics.Gender);
@@ -1381,7 +1381,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Weight = new Measurement("pounds") { Value = 9, Description = "heavy-set" },
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Ghost, false, false))
+                .Setup(s => s.UpdateByTemplate(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.Ghost, false, false))
                 .Returns(templateDemographics);
 
             SetUpAttacks(templateDemographics.Gender);

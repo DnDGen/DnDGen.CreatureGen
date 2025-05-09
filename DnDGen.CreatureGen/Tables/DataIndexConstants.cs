@@ -120,6 +120,7 @@
             public const int NaturalArmor = 7;
             public const int NumberOfHands = 8;
             public const int BaseAttackQuality = 9;
+            public const int Types = 10;
         }
 
         internal static class AdvancementSelectionData

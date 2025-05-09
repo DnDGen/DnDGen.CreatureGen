@@ -96,7 +96,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             SetUpAttacks();
 
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfFiend, true, false))
+                .Setup(s => s.UpdateByTemplate(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfFiend, true, false))
                 .Returns(baseCreature.Demographics);
         }
 
@@ -254,7 +254,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Gender = "hellish gender"
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfFiend, true, false))
+                .Setup(s => s.UpdateByTemplate(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfFiend, true, false))
                 .Returns(templateDemographics);
 
             SetUpAttacks(templateDemographics.Gender);
@@ -1428,7 +1428,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
                 hitDice.AddRange(new[]
                 {
-                    .1, .2, .3, .4, .5, .6, .7, .8, .9,
+                    .1, .2, .3, .4, .5,  .6 .7, .8, .9,
                 });
 
                 //INFO: Don't need to test every CR, since it is the basic Increase functionality, which is tested separately
@@ -1627,7 +1627,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Gender = "hellish gender"
             };
             mockDemographicsGenerator
-                .Setup(s => s.Update(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfFiend, true, false))
+                .Setup(s => s.UpdateByTemplate(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfFiend, true, false))
                 .Returns(templateDemographics);
 
             SetUpAttacks(templateDemographics.Gender);
