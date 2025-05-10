@@ -40,7 +40,6 @@
     <None Remove="Tables\Creatures\Weights.xml" />
     <None Remove="Tables\Creatures\Wingspans.xml" />
     <None Remove="Tables\Defenses\ArmorClassBonuses.xml" />
-    <None Remove="Tables\Defenses\HitDice.xml" />
     <None Remove="Tables\Defenses\SaveBonuses.xml" />
     <None Remove="Tables\Defenses\SaveGroups.xml" />
     <None Remove="Tables\Defenses\SizeModifiers.xml" />
@@ -123,7 +122,7 @@
     <EmbeddedResource Include="Tables\Defenses\ArmorClassBonuses.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tables\Defenses\HitDice.xml" />
+    <EmbeddedResource Include="Tables\Defenses\MaxHitDice.xml" />
     <EmbeddedResource Include="Tables\Defenses\SaveBonuses.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>

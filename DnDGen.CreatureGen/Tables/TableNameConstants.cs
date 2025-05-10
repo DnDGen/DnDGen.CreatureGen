@@ -50,7 +50,7 @@
             public const string Casters = "Casters";
             public const string GrappleBonuses = "GrappleBonuses";
             public const string Heights = "Heights";
-            public const string HitDice = "HitDice";
+            public const string MaxHitDice = "MaxHitDice";
             public const string KnownSpells = "KnownSpells";
             public const string Lengths = "Lengths";
             public const string SizeModifiers = "SizeModifiers";
