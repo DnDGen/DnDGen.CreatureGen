@@ -88,7 +88,6 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Type.AllTypes,
                 dragonAlignments,
                 creature.ChallengeRating,
-                creature.HitPoints.RoundedHitDiceQuantity,
                 filters);
 
             if (!compatibility.Compatible)
@@ -450,7 +449,6 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Type.AllTypes,
                 dragonAlignments,
                 creature.ChallengeRating,
-                creature.HitPoints.RoundedHitDiceQuantity,
                 filters);
 
             if (!compatibility.Compatible)
@@ -573,16 +571,12 @@ namespace DnDGen.CreatureGen.Templates
                 return filteredBaseCreatures;
 
             var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
-            var allHitDice = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice);
-            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
 
             filteredBaseCreatures = filteredBaseCreatures
                 .Where(c => AreFiltersCompatible(
-                    allTypes[c],
+                    allData[c].Single().Types,
                     dragonAlignments,
-                    allData[c].Single().ChallengeRating,
-                    asCharacter,
-                    allHitDice[c].Single().AmountAsDouble,
+                    allData[c].Single().GetEffectiveChallengeRating(asCharacter),
                     filters).Compatible);
 
             return filteredBaseCreatures;
@@ -592,24 +586,19 @@ namespace DnDGen.CreatureGen.Templates
             IEnumerable<string> types,
             IEnumerable<string> dragonAlignments,
             string creatureChallengeRating,
-            double creatureHitDiceQuantity,
             Filters filters)
         {
             var compatibility = IsCompatible(types);
             if (!compatibility.Compatible)
                 return (false, compatibility.Reason);
 
-            //INFO: This method is used when the creature has already been generated, either as Creature or Prototype
-            //The character challenge rating has already been accounted for
-            return AreFiltersCompatible(types, dragonAlignments, creatureChallengeRating, false, creatureHitDiceQuantity, filters);
+            return AreFiltersCompatible(types, dragonAlignments, creatureChallengeRating, filters);
         }
 
         private (bool Compatible, string Reason) AreFiltersCompatible(
             IEnumerable<string> types,
             IEnumerable<string> dragonAlignments,
             string creatureChallengeRating,
-            bool adjustCharacterChallengeRating,
-            double creatureHitDiceQuantity,
             Filters filters)
         {
             if (!string.IsNullOrEmpty(filters?.Alignment))
@@ -628,13 +617,6 @@ namespace DnDGen.CreatureGen.Templates
 
             if (!string.IsNullOrEmpty(filters?.ChallengeRating))
             {
-                var creatureType = types.First();
-
-                if (adjustCharacterChallengeRating && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
-                {
-                    creatureChallengeRating = ChallengeRatingConstants.CR0;
-                }
-
                 var cr = UpdateCreatureChallengeRating(creatureChallengeRating);
                 if (cr != filters.ChallengeRating)
                     return (false, $"CR filter {filters.ChallengeRating} does not match updated creature CR {cr} (from CR {creatureChallengeRating})");
@@ -686,7 +668,6 @@ namespace DnDGen.CreatureGen.Templates
                     p.Type.AllTypes,
                     dragonAlignments,
                     p.ChallengeRating,
-                    p.HitDiceQuantity,
                     filters).Compatible);
             var updatedPrototypes = compatiblePrototypes.Select(p => ApplyToPrototype(p, filters?.Alignment, dragonAlignments));
 

@@ -33,14 +33,14 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             this.dice = dice;
         }
 
-        public bool IsAdvanced(string creature, IEnumerable<string> templates, string challengeRatingFilter)
+        public bool IsAdvanced(string creature, IEnumerable<string> templates, double hitDiceQuantity, string challengeRatingFilter)
         {
             if (challengeRatingFilter != null)
                 return false;
 
             templates ??= [];
 
-            var advancements = GetValidAdvancements(creature, templates);
+            var advancements = GetValidAdvancements(creature, templates, hitDiceQuantity);
             if (!advancements.Any())
                 return false;
 
@@ -48,29 +48,28 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             return isAdvanced;
         }
 
-        private IEnumerable<AdvancementDataSelection> GetValidAdvancements(string creature, IEnumerable<string> templates)
+        private IEnumerable<AdvancementDataSelection> GetValidAdvancements(string creature, IEnumerable<string> templates, double hitDiceQuantity)
         {
             var advancements = advancementDataSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Advancements, creature);
-            var creatureHitDice = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, creature);
             var maxHitDice = int.MaxValue;
 
             foreach (var template in templates)
             {
-                var templateMaxHitDice = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, template);
+                var templateMaxHitDice = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.MaxHitDice, template);
                 maxHitDice = Math.Min(templateMaxHitDice.Amount, maxHitDice);
             }
 
-            var roundedhitDice = HitDice.GetRoundedQuantity(creatureHitDice.AmountAsDouble);
+            var roundedhitDice = HitDice.GetRoundedQuantity(hitDiceQuantity);
             var validAdvancements = advancements.Where(a => a.AdvancementIsValid(dice, maxHitDice - roundedhitDice));
 
             return validAdvancements;
         }
 
-        public AdvancementDataSelection SelectRandomFor(string creature, IEnumerable<string> templates)
+        public AdvancementDataSelection SelectRandomFor(string creature, IEnumerable<string> templates, double hitDiceQuantity)
         {
             templates ??= [];
 
-            var advancements = GetValidAdvancements(creature, templates);
+            var advancements = GetValidAdvancements(creature, templates, hitDiceQuantity);
             var randomAdvancement = collectionSelector.SelectRandomFrom(advancements);
             var selection = GetAdvancementSelection(creature, randomAdvancement);
 
@@ -92,9 +91,6 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             return selection;
         }
 
-        private bool IsBarghest(string creatureName)
-        {
-            return creatureName == CreatureConstants.Barghest || creatureName == CreatureConstants.Barghest_Greater;
-        }
+        private bool IsBarghest(string creatureName) => creatureName == CreatureConstants.Barghest || creatureName == CreatureConstants.Barghest_Greater;
     }
 }

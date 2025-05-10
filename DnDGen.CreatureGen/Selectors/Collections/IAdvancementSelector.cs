@@ -5,7 +5,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 {
     internal interface IAdvancementSelector
     {
-        AdvancementDataSelection SelectRandomFor(string creature, IEnumerable<string> templates);
-        bool IsAdvanced(string creature, IEnumerable<string> templates, string challengeRatingFilter);
+        AdvancementDataSelection SelectRandomFor(string creature, IEnumerable<string> templates, double hitDiceQuantity);
+        bool IsAdvanced(string creature, IEnumerable<string> templates, double hitDiceQuantity, string challengeRatingFilter);
     }
 }

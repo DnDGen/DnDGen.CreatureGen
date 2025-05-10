@@ -279,9 +279,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var hitDiceQuantity = creatureData.GetEffectiveHitDiceQuantity(asCharacter);
 
-            if (advancementSelector.IsAdvanced(creatureName, templates, filters?.ChallengeRating))
+            if (advancementSelector.IsAdvanced(creatureName, templates, hitDiceQuantity, filters?.ChallengeRating))
             {
-                var advancement = advancementSelector.SelectRandomFor(creatureName, templates);
+                var advancement = advancementSelector.SelectRandomFor(creatureName, templates, hitDiceQuantity);
 
                 creature.IsAdvanced = true;
                 creature.Size = advancement.Size;
