@@ -266,16 +266,18 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             creature.Space.Value = creatureData.Space;
             creature.Reach.Value = creatureData.Reach;
             creature.CanUseEquipment = creatureData.CanUseEquipment;
-            creature.ChallengeRating = creatureData.ChallengeRating;
+            creature.ChallengeRating = creatureData.GetEffectiveChallengeRating(asCharacter);
             creature.LevelAdjustment = creatureData.LevelAdjustment;
             creature.CasterLevel = creatureData.CasterLevel;
             creature.NumberOfHands = creatureData.NumberOfHands;
 
-            creature.Type = GetCreatureType(creatureName);
+            creature.Type = GetCreatureType(creatureData);
             creature.Demographics = demographicsGenerator.Generate(creatureName);
 
             abilityRandomizer ??= new AbilityRandomizer();
             creature.Abilities = abilitiesGenerator.GenerateFor(creatureName, abilityRandomizer, creature.Demographics);
+
+            var hitDiceQuantity = creatureData.GetEffectiveHitDiceQuantity(asCharacter);
 
             if (advancementSelector.IsAdvanced(creatureName, templates, filters?.ChallengeRating))
             {
@@ -294,23 +296,23 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment += advancement.ConstitutionAdjustment;
 
                 creature.HitPoints = hitPointsGenerator.GenerateFor(
-                    creatureName,
+                    hitDiceQuantity,
+                    creatureData.HitDie,
                     creature.Type,
                     creature.Abilities[AbilityConstants.Constitution],
                     creature.Size,
-                    advancement.AdditionalHitDice,
-                    asCharacter);
+                    advancement.AdditionalHitDice);
 
-                creature.Demographics = AdjustDemographics(creature.Demographics, creatureData.Size, advancement.Size);
+                creature.Demographics = demographicsGenerator.AdjustDemographicsBySize(creature.Demographics, creatureData.Size, advancement.Size);
             }
             else
             {
                 creature.HitPoints = hitPointsGenerator.GenerateFor(
-                    creatureName,
+                    hitDiceQuantity,
+                    creatureData.HitDie,
                     creature.Type,
                     creature.Abilities[AbilityConstants.Constitution],
-                    creature.Size,
-                    asCharacter: asCharacter);
+                    creature.Size);
             }
 
             if (creature.HitPoints.HitDiceQuantity == 0)

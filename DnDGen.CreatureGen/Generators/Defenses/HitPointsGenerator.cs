@@ -2,8 +2,6 @@
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
-using DnDGen.CreatureGen.Tables;
-using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,33 +11,23 @@ namespace DnDGen.CreatureGen.Generators.Defenses
     internal class HitPointsGenerator : IHitPointsGenerator
     {
         private readonly Dice dice;
-        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
 
-        public HitPointsGenerator(Dice dice, ICollectionTypeAndAmountSelector typeAndAmountSelector)
+        public HitPointsGenerator(Dice dice)
         {
             this.dice = dice;
-            this.typeAndAmountSelector = typeAndAmountSelector;
         }
 
-        public HitPoints GenerateFor(string creatureName, CreatureType creatureType, Ability constitution, string size, int additionalHitDice = 0, bool asCharacter = false)
+        public HitPoints GenerateFor(double quantity, int die, CreatureType creatureType, Ability constitution, string size, int additionalHitDice = 0)
         {
             var hitPoints = new HitPoints();
-
-            var quantitySelection = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, creatureName);
-            var dieSelection = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, creatureType.Name);
-            var quantity = quantitySelection.AmountAsDouble + additionalHitDice;
-
-            if (asCharacter && creatureType.Name == CreatureConstants.Types.Humanoid)
-            {
-                quantity--;
-            }
+            quantity += additionalHitDice;
 
             hitPoints.Constitution = constitution;
             hitPoints.Bonus = GetBonus(creatureType, size);
 
             if (quantity > 0)
             {
-                hitPoints.HitDice.Add(new HitDice { Quantity = quantity, HitDie = dieSelection.Amount });
+                hitPoints.HitDice.Add(new HitDice { Quantity = quantity, HitDie = die });
             }
 
             hitPoints.RollDefaultTotal(dice);

@@ -8,7 +8,7 @@ namespace DnDGen.CreatureGen.Generators.Defenses
 {
     internal interface IHitPointsGenerator
     {
-        HitPoints GenerateFor(string creatureName, CreatureType creatureType, Ability constitution, string size, int additionalHitDice = 0, bool asCharacter = false);
+        HitPoints GenerateFor(double quantity, int die, CreatureType creatureType, Ability constitution, string size, int additionalHitDice = 0);
         HitPoints RegenerateWith(HitPoints hitPoints, IEnumerable<Feat> feats);
     }
 }

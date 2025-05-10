@@ -29,8 +29,6 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         public IEnumerable<CreaturePrototype> Build(IEnumerable<string> creatureNames, bool asCharacter)
         {
             var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
-            var allHitDice = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice);
-            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
             var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
             var allAbilityAdjustments = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments);
             var allCasterLevels = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters);
@@ -39,7 +37,6 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             foreach (var creature in creatureNames)
             {
                 var creatureData = allData[creature].Single();
-                var hitDice = allHitDice[creature].Single();
                 var prototype = new CreaturePrototype
                 {
                     Name = creature,
@@ -47,16 +44,11 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                     Alignments = [.. allAlignments[creature].Select(a => new Alignment(a)).Distinct()],
                     CasterLevel = creatureData.CasterLevel,
                     Size = creatureData.Size,
-                    ChallengeRating = creatureData.ChallengeRating,
-                    HitDiceQuantity = hitDice.AmountAsDouble,
+                    ChallengeRating = creatureData.GetEffectiveChallengeRating(asCharacter),
+                    HitDiceQuantity = creatureData.GetEffectiveHitDiceQuantity(asCharacter),
                     LevelAdjustment = creatureData.LevelAdjustment,
-                    Type = new CreatureType(allTypes[creature])
+                    Type = new CreatureType(creatureData.Types)
                 };
-
-                if (asCharacter && prototype.HitDiceQuantity <= 1 && prototype.Type.Name == CreatureConstants.Types.Humanoid)
-                {
-                    prototype.ChallengeRating = ChallengeRatingConstants.CR0;
-                }
 
                 var missingAbilityNames = abilityNames.Except(prototype.Abilities.Keys).ToArray();
                 foreach (var missingAbility in missingAbilityNames)
