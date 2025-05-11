@@ -28,7 +28,6 @@ namespace DnDGen.CreatureGen.Templates
         private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
         private readonly IEnumerable<string> creatureTypes;
         private readonly ICreaturePrototypeFactory prototypeFactory;
-        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private readonly IDemographicsGenerator demographicsGenerator;
 
         private const int MinimumVampireHitDice = 5;
@@ -40,7 +39,6 @@ namespace DnDGen.CreatureGen.Templates
             ICollectionSelector collectionSelector,
             ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
             ICreaturePrototypeFactory prototypeFactory,
-            ICollectionTypeAndAmountSelector typeAndAmountSelector,
             IDemographicsGenerator demographicsGenerator)
         {
             this.dice = dice;
@@ -49,7 +47,6 @@ namespace DnDGen.CreatureGen.Templates
             this.collectionSelector = collectionSelector;
             this.creatureDataSelector = creatureDataSelector;
             this.prototypeFactory = prototypeFactory;
-            this.typeAndAmountSelector = typeAndAmountSelector;
             this.demographicsGenerator = demographicsGenerator;
 
             creatureTypes =

@@ -27,7 +27,6 @@ namespace DnDGen.CreatureGen.Templates
         private readonly ICollectionSelector collectionSelector;
         private readonly IFeatsGenerator featsGenerator;
         private readonly IItemsGenerator itemsGenerator;
-        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private readonly IEnumerable<string> creatureTypes;
         private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
         private readonly ICreaturePrototypeFactory prototypeFactory;
@@ -40,7 +39,6 @@ namespace DnDGen.CreatureGen.Templates
             ICollectionSelector collectionSelector,
             IFeatsGenerator featsGenerator,
             IItemsGenerator itemsGenerator,
-            ICollectionTypeAndAmountSelector typeAndAmountSelector,
             ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
             ICreaturePrototypeFactory prototypeFactory,
             IDemographicsGenerator demographicsGenerator)
@@ -51,7 +49,6 @@ namespace DnDGen.CreatureGen.Templates
             this.collectionSelector = collectionSelector;
             this.featsGenerator = featsGenerator;
             this.itemsGenerator = itemsGenerator;
-            this.typeAndAmountSelector = typeAndAmountSelector;
             this.creatureDataSelector = creatureDataSelector;
             this.prototypeFactory = prototypeFactory;
             this.demographicsGenerator = demographicsGenerator;

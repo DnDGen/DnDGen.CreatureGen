@@ -14,18 +14,15 @@ namespace DnDGen.CreatureGen.Templates
     {
         private readonly ICollectionSelector collectionSelector;
         private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
-        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private readonly ICreaturePrototypeFactory prototypeFactory;
 
         public NoneApplicator(
             ICollectionSelector collectionSelector,
             ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
-            ICollectionTypeAndAmountSelector typeAndAmountSelector,
             ICreaturePrototypeFactory prototypeFactory)
         {
             this.collectionSelector = collectionSelector;
             this.creatureDataSelector = creatureDataSelector;
-            this.typeAndAmountSelector = typeAndAmountSelector;
             this.prototypeFactory = prototypeFactory;
         }
 

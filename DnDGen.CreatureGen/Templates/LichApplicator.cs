@@ -26,7 +26,6 @@ namespace DnDGen.CreatureGen.Templates
         private readonly Dice dice;
         private readonly IAttacksGenerator attacksGenerator;
         private readonly IFeatsGenerator featsGenerator;
-        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private readonly ICreaturePrototypeFactory prototypeFactory;
         private readonly IDemographicsGenerator demographicsGenerator;
 
@@ -38,7 +37,6 @@ namespace DnDGen.CreatureGen.Templates
             Dice dice,
             IAttacksGenerator attacksGenerator,
             IFeatsGenerator featsGenerator,
-            ICollectionTypeAndAmountSelector typeAndAmountSelector,
             ICreaturePrototypeFactory prototypeFactory,
             IDemographicsGenerator demographicsGenerator)
         {
@@ -47,7 +45,6 @@ namespace DnDGen.CreatureGen.Templates
             this.dice = dice;
             this.attacksGenerator = attacksGenerator;
             this.featsGenerator = featsGenerator;
-            this.typeAndAmountSelector = typeAndAmountSelector;
             this.prototypeFactory = prototypeFactory;
             this.demographicsGenerator = demographicsGenerator;
         }

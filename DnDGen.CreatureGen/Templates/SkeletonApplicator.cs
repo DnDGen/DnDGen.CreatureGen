@@ -23,7 +23,6 @@ namespace DnDGen.CreatureGen.Templates
     internal class SkeletonApplicator : TemplateApplicator
     {
         private readonly ICollectionSelector collectionSelector;
-        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private readonly Dice dice;
         private readonly IAttacksGenerator attacksGenerator;
         private readonly IFeatsGenerator featsGenerator;
@@ -37,7 +36,6 @@ namespace DnDGen.CreatureGen.Templates
         public SkeletonApplicator(
             ICollectionSelector collectionSelector,
             ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
-            ICollectionTypeAndAmountSelector typeAndAmountSelector,
             Dice dice,
             IAttacksGenerator attacksGenerator,
             IFeatsGenerator featsGenerator,
@@ -46,7 +44,6 @@ namespace DnDGen.CreatureGen.Templates
             IDemographicsGenerator demographicsGenerator)
         {
             this.collectionSelector = collectionSelector;
-            this.typeAndAmountSelector = typeAndAmountSelector;
             this.dice = dice;
             this.attacksGenerator = attacksGenerator;
             this.featsGenerator = featsGenerator;

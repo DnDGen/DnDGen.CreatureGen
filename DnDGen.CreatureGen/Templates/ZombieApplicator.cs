@@ -8,6 +8,7 @@ using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Defenses;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Magics;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -32,9 +33,11 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IEnumerable<string> invalidSubtypes;
         private readonly ICreaturePrototypeFactory prototypeFactory;
         private readonly IDemographicsGenerator demographicsGenerator;
+        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
 
         public ZombieApplicator(
             ICollectionSelector collectionSelector,
+            ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
             ICollectionTypeAndAmountSelector typeAndAmountSelector,
             Dice dice,
             IAttacksGenerator attacksGenerator,
@@ -569,8 +572,7 @@ namespace DnDGen.CreatureGen.Templates
                 && string.IsNullOrEmpty(filters?.Alignment))
                 return filteredBaseCreatures;
 
-            var allHitDice = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice);
-            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
+            var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
 
             filteredBaseCreatures = filteredBaseCreatures
                 .Where(c => AreFiltersCompatible(

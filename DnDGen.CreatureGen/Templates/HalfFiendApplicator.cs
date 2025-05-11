@@ -25,7 +25,6 @@ namespace DnDGen.CreatureGen.Templates
     {
         private readonly ICollectionSelector collectionSelector;
         private readonly IEnumerable<string> creatureTypes;
-        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private readonly ISpeedsGenerator speedsGenerator;
         private readonly IAttacksGenerator attacksGenerator;
         private readonly IFeatsGenerator featsGenerator;
@@ -38,7 +37,6 @@ namespace DnDGen.CreatureGen.Templates
 
         public HalfFiendApplicator(
             ICollectionSelector collectionSelector,
-            ICollectionTypeAndAmountSelector typeAndAmountSelector,
             ISpeedsGenerator speedsGenerator,
             IAttacksGenerator attacksGenerator,
             IFeatsGenerator featsGenerator,
@@ -50,7 +48,6 @@ namespace DnDGen.CreatureGen.Templates
             IDemographicsGenerator demographicsGenerator)
         {
             this.collectionSelector = collectionSelector;
-            this.typeAndAmountSelector = typeAndAmountSelector;
             this.speedsGenerator = speedsGenerator;
             this.attacksGenerator = attacksGenerator;
             this.featsGenerator = featsGenerator;

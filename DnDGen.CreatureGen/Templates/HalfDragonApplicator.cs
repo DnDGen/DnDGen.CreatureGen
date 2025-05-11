@@ -36,7 +36,6 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IMagicGenerator magicGenerator;
         private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
         private readonly ICreaturePrototypeFactory prototypeFactory;
-        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private readonly IDemographicsGenerator demographicsGenerator;
 
         public HalfDragonApplicator(
@@ -50,7 +49,6 @@ namespace DnDGen.CreatureGen.Templates
             IMagicGenerator magicGenerator,
             ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
             ICreaturePrototypeFactory prototypeFactory,
-            ICollectionTypeAndAmountSelector typeAndAmountSelector,
             IDemographicsGenerator demographicsGenerator)
         {
             this.collectionSelector = collectionSelector;
@@ -63,7 +61,6 @@ namespace DnDGen.CreatureGen.Templates
             this.magicGenerator = magicGenerator;
             this.creatureDataSelector = creatureDataSelector;
             this.prototypeFactory = prototypeFactory;
-            this.typeAndAmountSelector = typeAndAmountSelector;
             this.demographicsGenerator = demographicsGenerator;
 
             creatureTypes =
