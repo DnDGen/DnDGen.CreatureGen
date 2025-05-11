@@ -35,8 +35,6 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Type.AllTypes,
                 [creature.Alignment.Full],
                 creature.ChallengeRating,
-                false,
-                creature.HitPoints.HitDiceQuantity,
                 filters);
             if (!compatibility.Compatible)
             {
@@ -59,8 +57,6 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Type.AllTypes,
                 [creature.Alignment.Full],
                 creature.ChallengeRating,
-                false,
-                creature.HitPoints.HitDiceQuantity,
                 filters);
             if (!compatibility.Compatible)
             {
@@ -81,8 +77,6 @@ namespace DnDGen.CreatureGen.Templates
             IEnumerable<string> types,
             IEnumerable<string> alignments,
             string creatureChallengeRating,
-            bool adjustCharacterChallengeRating,
-            double creatureHitDiceQuantity,
             Filters filters)
         {
             if (!string.IsNullOrEmpty(filters?.Type) && !types.Contains(filters.Type))
@@ -90,17 +84,9 @@ namespace DnDGen.CreatureGen.Templates
                 return (false, $"Type filter '{filters.Type}' is not valid");
             }
 
-            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
+            if (!string.IsNullOrEmpty(filters?.ChallengeRating) && creatureChallengeRating != filters.ChallengeRating)
             {
-                var creatureType = types.First();
-
-                if (adjustCharacterChallengeRating && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
-                {
-                    creatureChallengeRating = ChallengeRatingConstants.CR0;
-                }
-
-                if (creatureChallengeRating != filters.ChallengeRating)
-                    return (false, $"CR filter {filters.ChallengeRating} does not match creature CR {creatureChallengeRating}");
+                return (false, $"CR filter {filters.ChallengeRating} does not match creature CR {creatureChallengeRating}");
             }
 
             if (!string.IsNullOrEmpty(filters?.Alignment) && !alignments.Contains(filters.Alignment))
@@ -119,17 +105,13 @@ namespace DnDGen.CreatureGen.Templates
                 return sourceCreatures;
 
             var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
-            var allHitDice = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice);
-            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
             var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
 
             return sourceCreatures
                 .Where(c => AreFiltersCompatible(
-                    allTypes[c],
+                    allData[c].Single().Types,
                     allAlignments[c],
-                    allData[c].Single().ChallengeRating,
-                    asCharacter,
-                    allHitDice[c].Single().AmountAsDouble,
+                    allData[c].Single().GetEffectiveChallengeRating(asCharacter),
                     filters).Compatible);
         }
 
@@ -162,8 +144,6 @@ namespace DnDGen.CreatureGen.Templates
                     p.Type.AllTypes,
                     p.Alignments.Select(a => a.Full),
                     p.ChallengeRating,
-                    false,
-                    p.HitDiceQuantity,
                     filters).Compatible);
             var updatedPrototypes = compatiblePrototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));
 

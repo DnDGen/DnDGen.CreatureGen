@@ -8,6 +8,7 @@ using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Defenses;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Magics;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -31,9 +32,11 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IEnumerable<string> invalidSubtypes;
         private readonly ICreaturePrototypeFactory prototypeFactory;
         private readonly IDemographicsGenerator demographicsGenerator;
+        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
 
         public SkeletonApplicator(
             ICollectionSelector collectionSelector,
+            ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
             ICollectionTypeAndAmountSelector typeAndAmountSelector,
             Dice dice,
             IAttacksGenerator attacksGenerator,
@@ -50,6 +53,7 @@ namespace DnDGen.CreatureGen.Templates
             this.savesGenerator = savesGenerator;
             this.prototypeFactory = prototypeFactory;
             this.demographicsGenerator = demographicsGenerator;
+            this.creatureDataSelector = creatureDataSelector;
 
             creatureTypes =
             [
@@ -551,7 +555,7 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
-            //INFO: Since Skeletons cannot be characters (they explicitly lose their class levels), we can return an empty enumerable
+            //INFO: Since Skeletons cannot be characters (they explicitly lose their class levels), we can return an empty enumerable is we are generating as character
             if (asCharacter
                 || (!string.IsNullOrEmpty(filters?.Alignment) && filters.Alignment != AlignmentConstants.NeutralEvil)
                 || (!string.IsNullOrEmpty(filters?.Type) && invalidSubtypes.Contains(filters.Type)))
@@ -572,13 +576,12 @@ namespace DnDGen.CreatureGen.Templates
                 && string.IsNullOrEmpty(filters?.Alignment))
                 return filteredBaseCreatures;
 
-            var allHitDice = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice);
-            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
+            var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
 
             filteredBaseCreatures = filteredBaseCreatures
                 .Where(c => AreFiltersCompatible(
-                    allTypes[c],
-                    allHitDice[c].Single().AmountAsDouble,
+                    allData[c].Single().Types,
+                    allData[c].Single().GetEffectiveHitDiceQuantity(asCharacter),
                     c,
                     filters).Compatible);
 

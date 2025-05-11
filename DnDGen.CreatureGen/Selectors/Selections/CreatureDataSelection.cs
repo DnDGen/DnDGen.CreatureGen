@@ -10,7 +10,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
     internal class CreatureDataSelection : DataSelection<CreatureDataSelection>
     {
         public string Size { get; set; }
-        public string ChallengeRating { get; set; }
+        public string ChallengeRating { private get; set; }
         public double Space { get; set; }
         public double Reach { get; set; }
         public int? LevelAdjustment { get; set; }
@@ -20,12 +20,9 @@ namespace DnDGen.CreatureGen.Selectors.Selections
         public bool CanUseEquipment { get; set; }
         public BaseAttackQuality BaseAttackQuality { get; set; }
         public IEnumerable<string> Types { get; set; }
-        public double HitDiceQuantity { get; set; }
+        public double HitDiceQuantity { private get; set; }
         public int HitDie { get; set; }
         public bool HasSkeleton { get; set; }
-
-        //TODO: Get Effective Hit Dice Quantity (as character humanoid check)
-        //TODO: Get Effective Challenge Rating (effective hit dice == 0 ? CR 0 : data CR)
 
         public CreatureDataSelection()
         {
