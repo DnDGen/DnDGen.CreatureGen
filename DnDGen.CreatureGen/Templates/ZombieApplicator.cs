@@ -56,6 +56,7 @@ namespace DnDGen.CreatureGen.Templates
             this.hitPointsGenerator = hitPointsGenerator;
             this.prototypeFactory = prototypeFactory;
             this.demographicsGenerator = demographicsGenerator;
+            this.creatureDataSelector = creatureDataSelector;
 
             creatureTypes =
             [
@@ -576,8 +577,8 @@ namespace DnDGen.CreatureGen.Templates
 
             filteredBaseCreatures = filteredBaseCreatures
                 .Where(c => AreFiltersCompatible(
-                    allTypes[c],
-                    allHitDice[c].Single().AmountAsDouble,
+                    allData[c].Single().Types,
+                    allData[c].Single().GetEffectiveHitDiceQuantity(asCharacter),
                     c,
                     filters).Compatible);
 

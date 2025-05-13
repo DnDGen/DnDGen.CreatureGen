@@ -1,16 +1,19 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Creatures;
+using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
+namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 {
     [TestFixture]
-    public class CreatureTemplateGroupsTests : CreatureGroupsTableTests
+    public class CreatureGroupsTests : CollectionTests
     {
+        protected override string tableName => TableNameConstants.Collection.CreatureGroups;
+
         private ICreaturePrototypeFactory prototypeFactory;
 
         [SetUp]
@@ -22,7 +25,33 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         [Test]
         public void CreatureGroupNames()
         {
-            AssertCreatureGroupNamesAreComplete();
+            var templates = CreatureConstants.Templates.GetAll();
+
+            var entries = new[]
+            {
+                GroupConstants.All,
+                GroupConstants.Characters,
+            };
+
+            var names = entries
+                .Union(templates.Select(t => t + bool.FalseString))
+                .Union(templates.Select(t => t + bool.TrueString));
+
+            AssertCollectionNames(names);
+        }
+
+        [Test]
+        public void AllCreatureGroup()
+        {
+            var allCreatures = CreatureConstants.GetAll();
+            AssertDistinctCollection(GroupConstants.All, [.. allCreatures]);
+        }
+
+        [Test]
+        public void CharacterGroup()
+        {
+            var allCharacters = CreatureConstants.GetAllCharacters();
+            AssertDistinctCollection(GroupConstants.Characters, [.. allCharacters]);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
