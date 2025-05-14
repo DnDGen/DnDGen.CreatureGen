@@ -141,6 +141,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             creatureData.NumberOfHands = 96;
             creatureData.Space = 56.78;
             creatureData.Reach = 67.89;
+            creatureData.Types = types;
+            creatureData.HitDiceQuantity = 9266;
+            creatureData.HitDie = 90210;
 
             types.Add("type");
 
@@ -167,10 +170,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<TypeAndAmountDataSelection>>()))
                 .Returns((IEnumerable<TypeAndAmountDataSelection> c) => c.First());
             mockCollectionSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<(string, string)>>())).Returns((IEnumerable<(string, string)> c) => c.First());
-            mockCollectionSelector.Setup(s => s.FindCollectionOf(Config.Name, TableNameConstants.Collection.CreatureGroups, types[0],
-                GroupConstants.GoodBaseAttack,
-                GroupConstants.AverageBaseAttack,
-                GroupConstants.PoorBaseAttack)).Returns(GroupConstants.PoorBaseAttack);
         }
 
         protected List<Mock<TemplateApplicator>> SetUpCreature(
@@ -190,7 +189,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockAlignmentGenerator.Setup(g => g.Generate(creatureName, templateNames, alignmentFilter)).Returns(alignment);
 
-            mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), hitPoints)).Returns(753);
+            mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(creatureData.BaseAttackQuality, hitPoints)).Returns(753);
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(creatureName, creatureData.Size, 753, abilities, hitPoints.RoundedHitDiceQuantity, demographics.Gender))
                 .Returns(attacks);
@@ -378,16 +377,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockHitPointsGenerator
                 .Setup(g => g.GenerateFor(
-                    creatureName,
+                    creatureData.GetEffectiveHitDiceQuantity(asCharacter),
+                    creatureData.HitDie,
                     It.Is<CreatureType>(c => c.Name == types[0]),
                     abilities[AbilityConstants.Constitution],
                     creatureData.Size,
-                    0,
-                    asCharacter))
+                    0))
                 .Returns(hitPoints);
 
-            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, creatureName)).Returns(types);
-            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AerialManeuverability, creatureName)).Returns(new[] { string.Empty });
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AerialManeuverability, creatureName)).Returns([string.Empty]);
             mockArmorClassGenerator
                 .Setup(g => g.GenerateWith(
                     abilities,
@@ -442,7 +440,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var cleanedTemplates = templates.Where(t => !string.IsNullOrEmpty(t));
             mockAdvancementSelector
-                .Setup(s => s.IsAdvanced(creatureName, It.Is<IEnumerable<string>>(t => t.IsEquivalentTo(cleanedTemplates)), challengeRatingFilter))
+                .Setup(s => s.IsAdvanced(
+                    creatureName,
+                    It.Is<IEnumerable<string>>(t => t.IsEquivalentTo(cleanedTemplates)),
+                    creatureData.GetEffectiveHitDiceQuantity(asCharacter),
+                    challengeRatingFilter))
                 .Returns(true);
 
             var advancement = new AdvancementDataSelection
@@ -468,7 +470,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockAdvancementSelector
                 .Setup(s => s.SelectRandomFor(
                     creatureName,
-                    It.Is<IEnumerable<string>>(tt => tt.IsEquivalentTo(templates.Where(t => !string.IsNullOrEmpty(t))))))
+                    It.Is<IEnumerable<string>>(tt => tt.IsEquivalentTo(templates.Where(t => !string.IsNullOrEmpty(t)))),
+                    creatureData.GetEffectiveHitDiceQuantity(asCharacter)))
                 .Returns(advancement);
 
             var advancedHitPoints = new HitPoints
@@ -481,16 +484,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockHitPointsGenerator
                 .Setup(g => g.GenerateFor(
-                    creatureName,
+                    creatureData.GetEffectiveHitDiceQuantity(asCharacter),
+                    creatureData.HitDie,
                     It.Is<CreatureType>(c => c.Name == types[0]),
                     abilities[AbilityConstants.Constitution],
                     advancement.Size,
-                    advancementAmount,
-                    asCharacter))
+                    advancementAmount))
                 .Returns(advancedHitPoints);
             mockHitPointsGenerator.Setup(g => g.RegenerateWith(advancedHitPoints, It.IsAny<IEnumerable<Feat>>())).Returns(advancedHitPoints);
 
-            mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints)).Returns(999);
+            mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(creatureData.BaseAttackQuality, advancedHitPoints)).Returns(999);
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(creatureName, advancement.Size, 999, abilities, advancedHitPoints.RoundedHitDiceQuantity, demographics.Gender))
                 .Returns(attacks);

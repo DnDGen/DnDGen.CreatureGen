@@ -1,6 +1,5 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Attacks;
-using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Attacks;
@@ -21,26 +20,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
     public class AttacksGeneratorTests
     {
         private IAttacksGenerator attacksGenerator;
-        private Mock<ICollectionSelector> mockCollectionSelector;
         private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<IAttackSelector> mockAttackSelector;
-        private CreatureType creatureType;
         private HitPoints hitPoints;
         private Dictionary<string, Ability> abilities;
 
         [SetUp]
         public void Setup()
         {
-            mockCollectionSelector = new Mock<ICollectionSelector>();
             mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
             mockAttackSelector = new Mock<IAttackSelector>();
 
-            attacksGenerator = new AttacksGenerator(mockCollectionSelector.Object, mockTypeAndAmountSelector.Object, mockAttackSelector.Object);
-
-            creatureType = new CreatureType
-            {
-                Name = "creature type"
-            };
+            attacksGenerator = new AttacksGenerator(mockTypeAndAmountSelector.Object, mockAttackSelector.Object);
 
             hitPoints = new HitPoints();
 
@@ -59,81 +50,78 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
                 .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 0 });
         }
 
-        [TestCase(0, GroupConstants.GoodBaseAttack, 0)]
-        [TestCase(1, GroupConstants.GoodBaseAttack, 1)]
-        [TestCase(2, GroupConstants.GoodBaseAttack, 2)]
-        [TestCase(3, GroupConstants.GoodBaseAttack, 3)]
-        [TestCase(4, GroupConstants.GoodBaseAttack, 4)]
-        [TestCase(5, GroupConstants.GoodBaseAttack, 5)]
-        [TestCase(6, GroupConstants.GoodBaseAttack, 6)]
-        [TestCase(7, GroupConstants.GoodBaseAttack, 7)]
-        [TestCase(8, GroupConstants.GoodBaseAttack, 8)]
-        [TestCase(9, GroupConstants.GoodBaseAttack, 9)]
-        [TestCase(10, GroupConstants.GoodBaseAttack, 10)]
-        [TestCase(11, GroupConstants.GoodBaseAttack, 11)]
-        [TestCase(12, GroupConstants.GoodBaseAttack, 12)]
-        [TestCase(13, GroupConstants.GoodBaseAttack, 13)]
-        [TestCase(14, GroupConstants.GoodBaseAttack, 14)]
-        [TestCase(15, GroupConstants.GoodBaseAttack, 15)]
-        [TestCase(16, GroupConstants.GoodBaseAttack, 16)]
-        [TestCase(17, GroupConstants.GoodBaseAttack, 17)]
-        [TestCase(18, GroupConstants.GoodBaseAttack, 18)]
-        [TestCase(19, GroupConstants.GoodBaseAttack, 19)]
-        [TestCase(20, GroupConstants.GoodBaseAttack, 20)]
-        [TestCase(9266, GroupConstants.GoodBaseAttack, 9266)]
-        [TestCase(0, GroupConstants.AverageBaseAttack, 0)]
-        [TestCase(1, GroupConstants.AverageBaseAttack, 0)]
-        [TestCase(2, GroupConstants.AverageBaseAttack, 1)]
-        [TestCase(3, GroupConstants.AverageBaseAttack, 2)]
-        [TestCase(4, GroupConstants.AverageBaseAttack, 3)]
-        [TestCase(5, GroupConstants.AverageBaseAttack, 3)]
-        [TestCase(6, GroupConstants.AverageBaseAttack, 4)]
-        [TestCase(7, GroupConstants.AverageBaseAttack, 5)]
-        [TestCase(8, GroupConstants.AverageBaseAttack, 6)]
-        [TestCase(9, GroupConstants.AverageBaseAttack, 6)]
-        [TestCase(10, GroupConstants.AverageBaseAttack, 7)]
-        [TestCase(11, GroupConstants.AverageBaseAttack, 8)]
-        [TestCase(12, GroupConstants.AverageBaseAttack, 9)]
-        [TestCase(13, GroupConstants.AverageBaseAttack, 9)]
-        [TestCase(14, GroupConstants.AverageBaseAttack, 10)]
-        [TestCase(15, GroupConstants.AverageBaseAttack, 11)]
-        [TestCase(16, GroupConstants.AverageBaseAttack, 12)]
-        [TestCase(17, GroupConstants.AverageBaseAttack, 12)]
-        [TestCase(18, GroupConstants.AverageBaseAttack, 13)]
-        [TestCase(19, GroupConstants.AverageBaseAttack, 14)]
-        [TestCase(20, GroupConstants.AverageBaseAttack, 15)]
-        [TestCase(9266, GroupConstants.AverageBaseAttack, 6949)]
-        [TestCase(0, GroupConstants.PoorBaseAttack, 0)]
-        [TestCase(1, GroupConstants.PoorBaseAttack, 0)]
-        [TestCase(2, GroupConstants.PoorBaseAttack, 1)]
-        [TestCase(3, GroupConstants.PoorBaseAttack, 1)]
-        [TestCase(4, GroupConstants.PoorBaseAttack, 2)]
-        [TestCase(5, GroupConstants.PoorBaseAttack, 2)]
-        [TestCase(6, GroupConstants.PoorBaseAttack, 3)]
-        [TestCase(7, GroupConstants.PoorBaseAttack, 3)]
-        [TestCase(8, GroupConstants.PoorBaseAttack, 4)]
-        [TestCase(9, GroupConstants.PoorBaseAttack, 4)]
-        [TestCase(10, GroupConstants.PoorBaseAttack, 5)]
-        [TestCase(11, GroupConstants.PoorBaseAttack, 5)]
-        [TestCase(12, GroupConstants.PoorBaseAttack, 6)]
-        [TestCase(13, GroupConstants.PoorBaseAttack, 6)]
-        [TestCase(14, GroupConstants.PoorBaseAttack, 7)]
-        [TestCase(15, GroupConstants.PoorBaseAttack, 7)]
-        [TestCase(16, GroupConstants.PoorBaseAttack, 8)]
-        [TestCase(17, GroupConstants.PoorBaseAttack, 8)]
-        [TestCase(18, GroupConstants.PoorBaseAttack, 9)]
-        [TestCase(19, GroupConstants.PoorBaseAttack, 9)]
-        [TestCase(20, GroupConstants.PoorBaseAttack, 10)]
-        [TestCase(9266, GroupConstants.PoorBaseAttack, 4633)]
-        public void GenerateBaseAttackBonus(int hitDiceQuantity, string bonusQuality, int bonus)
+        [TestCase(0, BaseAttackQuality.Good, 0)]
+        [TestCase(1, BaseAttackQuality.Good, 1)]
+        [TestCase(2, BaseAttackQuality.Good, 2)]
+        [TestCase(3, BaseAttackQuality.Good, 3)]
+        [TestCase(4, BaseAttackQuality.Good, 4)]
+        [TestCase(5, BaseAttackQuality.Good, 5)]
+        [TestCase(6, BaseAttackQuality.Good, 6)]
+        [TestCase(7, BaseAttackQuality.Good, 7)]
+        [TestCase(8, BaseAttackQuality.Good, 8)]
+        [TestCase(9, BaseAttackQuality.Good, 9)]
+        [TestCase(10, BaseAttackQuality.Good, 10)]
+        [TestCase(11, BaseAttackQuality.Good, 11)]
+        [TestCase(12, BaseAttackQuality.Good, 12)]
+        [TestCase(13, BaseAttackQuality.Good, 13)]
+        [TestCase(14, BaseAttackQuality.Good, 14)]
+        [TestCase(15, BaseAttackQuality.Good, 15)]
+        [TestCase(16, BaseAttackQuality.Good, 16)]
+        [TestCase(17, BaseAttackQuality.Good, 17)]
+        [TestCase(18, BaseAttackQuality.Good, 18)]
+        [TestCase(19, BaseAttackQuality.Good, 19)]
+        [TestCase(20, BaseAttackQuality.Good, 20)]
+        [TestCase(9266, BaseAttackQuality.Good, 9266)]
+        [TestCase(0, BaseAttackQuality.Average, 0)]
+        [TestCase(1, BaseAttackQuality.Average, 0)]
+        [TestCase(2, BaseAttackQuality.Average, 1)]
+        [TestCase(3, BaseAttackQuality.Average, 2)]
+        [TestCase(4, BaseAttackQuality.Average, 3)]
+        [TestCase(5, BaseAttackQuality.Average, 3)]
+        [TestCase(6, BaseAttackQuality.Average, 4)]
+        [TestCase(7, BaseAttackQuality.Average, 5)]
+        [TestCase(8, BaseAttackQuality.Average, 6)]
+        [TestCase(9, BaseAttackQuality.Average, 6)]
+        [TestCase(10, BaseAttackQuality.Average, 7)]
+        [TestCase(11, BaseAttackQuality.Average, 8)]
+        [TestCase(12, BaseAttackQuality.Average, 9)]
+        [TestCase(13, BaseAttackQuality.Average, 9)]
+        [TestCase(14, BaseAttackQuality.Average, 10)]
+        [TestCase(15, BaseAttackQuality.Average, 11)]
+        [TestCase(16, BaseAttackQuality.Average, 12)]
+        [TestCase(17, BaseAttackQuality.Average, 12)]
+        [TestCase(18, BaseAttackQuality.Average, 13)]
+        [TestCase(19, BaseAttackQuality.Average, 14)]
+        [TestCase(20, BaseAttackQuality.Average, 15)]
+        [TestCase(9266, BaseAttackQuality.Average, 6949)]
+        [TestCase(0, BaseAttackQuality.Poor, 0)]
+        [TestCase(1, BaseAttackQuality.Poor, 0)]
+        [TestCase(2, BaseAttackQuality.Poor, 1)]
+        [TestCase(3, BaseAttackQuality.Poor, 1)]
+        [TestCase(4, BaseAttackQuality.Poor, 2)]
+        [TestCase(5, BaseAttackQuality.Poor, 2)]
+        [TestCase(6, BaseAttackQuality.Poor, 3)]
+        [TestCase(7, BaseAttackQuality.Poor, 3)]
+        [TestCase(8, BaseAttackQuality.Poor, 4)]
+        [TestCase(9, BaseAttackQuality.Poor, 4)]
+        [TestCase(10, BaseAttackQuality.Poor, 5)]
+        [TestCase(11, BaseAttackQuality.Poor, 5)]
+        [TestCase(12, BaseAttackQuality.Poor, 6)]
+        [TestCase(13, BaseAttackQuality.Poor, 6)]
+        [TestCase(14, BaseAttackQuality.Poor, 7)]
+        [TestCase(15, BaseAttackQuality.Poor, 7)]
+        [TestCase(16, BaseAttackQuality.Poor, 8)]
+        [TestCase(17, BaseAttackQuality.Poor, 8)]
+        [TestCase(18, BaseAttackQuality.Poor, 9)]
+        [TestCase(19, BaseAttackQuality.Poor, 9)]
+        [TestCase(20, BaseAttackQuality.Poor, 10)]
+        [TestCase(9266, BaseAttackQuality.Poor, 4633)]
+        internal void GenerateBaseAttackBonus(int hitDiceQuantity, BaseAttackQuality bonusQuality, int bonus)
         {
+            Assert.Fail("this should fail, if nunit can see internal methods");
             hitPoints.HitDice.Add(new HitDice { Quantity = hitDiceQuantity });
-            mockCollectionSelector.Setup(s => s.FindCollectionOf(Config.Name, TableNameConstants.Collection.CreatureGroups, creatureType.Name,
-                GroupConstants.GoodBaseAttack,
-                GroupConstants.AverageBaseAttack,
-                GroupConstants.PoorBaseAttack)).Returns(bonusQuality);
 
-            var baseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(creatureType, hitPoints);
+            var baseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(bonusQuality, hitPoints);
             Assert.That(baseAttackBonus, Is.EqualTo(bonus));
         }
 

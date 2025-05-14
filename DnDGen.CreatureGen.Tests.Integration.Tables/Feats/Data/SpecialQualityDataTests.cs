@@ -17,10 +17,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
     public class SpecialQualityDataTests : CollectionTests
     {
         private IFeatsSelector featsSelector;
-        private Dictionary<string, List<string>> templateData;
-        private Dictionary<string, List<string>> creatureData;
-        private Dictionary<string, List<string>> typeData;
-        private Dictionary<string, List<string>> subtypeData;
+        private Dictionary<string, List<string>> templateSpecialQualityData;
+        private Dictionary<string, List<string>> creatureSpecialQualityData;
+        private Dictionary<string, List<string>> typeSpecialQualityData;
+        private Dictionary<string, List<string>> subtypeSpecialQualityData;
         private Dictionary<string, CreatureDataSelection> creatureDataSelections;
 
         protected override string tableName => TableNameConstants.Collection.SpecialQualityData;
@@ -28,10 +28,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-            templateData = SpecialQualityTestData.GetTemplateData();
-            creatureData = SpecialQualityTestData.GetCreatureData();
-            typeData = SpecialQualityTestData.GetTypeData();
-            subtypeData = SpecialQualityTestData.GetSubtypeData();
+            templateSpecialQualityData = SpecialQualityTestData.GetTemplateData();
+            creatureSpecialQualityData = SpecialQualityTestData.GetCreatureData();
+            typeSpecialQualityData = SpecialQualityTestData.GetTypeData();
+            subtypeSpecialQualityData = SpecialQualityTestData.GetSubtypeData();
 
             var creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
             creatureDataSelections = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
@@ -53,10 +53,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
             var templates = CreatureConstants.Templates.GetAll();
 
-            Assert.That(creatureData.Keys, Is.EquivalentTo(creatures));
-            Assert.That(templateData.Keys, Is.EquivalentTo(templates));
-            Assert.That(typeData.Keys, Is.EquivalentTo(types));
-            Assert.That(subtypeData.Keys, Is.EquivalentTo(subtypes));
+            Assert.That(creatureSpecialQualityData.Keys, Is.EquivalentTo(creatures));
+            Assert.That(templateSpecialQualityData.Keys, Is.EquivalentTo(templates));
+            Assert.That(typeSpecialQualityData.Keys, Is.EquivalentTo(types));
+            Assert.That(subtypeSpecialQualityData.Keys, Is.EquivalentTo(subtypes));
 
             var names = creatures.Union(types).Union(subtypes).Union(templates);
             AssertCollectionNames(names);
@@ -65,8 +65,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void SpecialQualityData_Creature(string creature)
         {
-            Assert.That(creatureData.Keys, Contains.Item(creature));
-            AssertSpecialQualityData(creature, creatureData[creature]);
+            Assert.That(creatureSpecialQualityData.Keys, Contains.Item(creature));
+            AssertSpecialQualityData(creature, creatureSpecialQualityData[creature]);
 
             NoOverlapBetweenCreatureAndCreatureTypes(creature);
         }
@@ -74,22 +74,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void SpecialQualityData_Template(string template)
         {
-            Assert.That(templateData.Keys, Contains.Item(template));
-            AssertSpecialQualityData(template, templateData[template]);
+            Assert.That(templateSpecialQualityData.Keys, Contains.Item(template));
+            AssertSpecialQualityData(template, templateSpecialQualityData[template]);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
         public void SpecialQualityData_Type(string type)
         {
-            Assert.That(typeData.Keys, Contains.Item(type));
-            AssertSpecialQualityData(type, typeData[type]);
+            Assert.That(typeSpecialQualityData.Keys, Contains.Item(type));
+            AssertSpecialQualityData(type, typeSpecialQualityData[type]);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         public void SpecialQualityData_Subtype(string subtype)
         {
-            Assert.That(subtypeData.Keys, Contains.Item(subtype));
-            AssertSpecialQualityData(subtype, subtypeData[subtype]);
+            Assert.That(subtypeSpecialQualityData.Keys, Contains.Item(subtype));
+            AssertSpecialQualityData(subtype, subtypeSpecialQualityData[subtype]);
         }
 
         private void AssertSpecialQualityData(string creature, List<string> entries)
@@ -298,38 +298,37 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
                 }
             }
 
-            AssertCollection(creature, [.. creatureData[creature]]);
+            AssertCollection(creature, [.. creatureSpecialQualityData[creature]]);
         }
 
         private void NoOverlapBetweenCreatureAndCreatureTypes(string creature)
         {
-            var types = collectionMapper.Map(Config.Name, TableNameConstants.Collection.CreatureTypes);
-            var creatureTypes = types[creature].Except([creature]); //INFO: In case creature name duplicates as type, such as Gnoll
+            var creatureTypes = creatureDataSelections[creature].Types.Except([creature]); //INFO: In case creature name duplicates as type, such as Gnoll
 
             Assert.That(table.Keys, Is.SupersetOf(creatureTypes));
 
             foreach (var creatureType in creatureTypes)
             {
-                var overlap = table[creatureType].Intersect(creatureData[creature]);
+                var overlap = table[creatureType].Intersect(creatureSpecialQualityData[creature]);
                 Assert.That(overlap, Is.Empty, $"TEST CASE v TEST DATA: {creature} - {creatureType}");
 
                 overlap = table[creatureType].Intersect(table[creature]);
                 Assert.That(overlap, Is.Empty, $"XML v TEST DATA: {creature} - {creatureType}");
 
-                if (typeData.ContainsKey(creatureType))
+                if (typeSpecialQualityData.ContainsKey(creatureType))
                 {
-                    overlap = typeData[creatureType].Intersect(table[creature]);
+                    overlap = typeSpecialQualityData[creatureType].Intersect(table[creature]);
                     Assert.That(overlap, Is.Empty, $"XML v TEST CASE: {creature} - {creatureType}");
 
-                    overlap = typeData[creatureType].Intersect(creatureData[creature]);
+                    overlap = typeSpecialQualityData[creatureType].Intersect(creatureSpecialQualityData[creature]);
                     Assert.That(overlap, Is.Empty, $"TEST CASE v TEST CASE: {creature} - {creatureType}");
                 }
-                else if (subtypeData.ContainsKey(creatureType))
+                else if (subtypeSpecialQualityData.ContainsKey(creatureType))
                 {
-                    overlap = subtypeData[creatureType].Intersect(table[creature]);
+                    overlap = subtypeSpecialQualityData[creatureType].Intersect(table[creature]);
                     Assert.That(overlap, Is.Empty, $"XML v TEST CASE: {creature} - {creatureType}");
 
-                    overlap = subtypeData[creatureType].Intersect(creatureData[creature]);
+                    overlap = subtypeSpecialQualityData[creatureType].Intersect(creatureSpecialQualityData[creature]);
                     Assert.That(overlap, Is.Empty, $"TEST CASE v TEST CASE: {creature} - {creatureType}");
                 }
             }

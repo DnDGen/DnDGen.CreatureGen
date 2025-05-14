@@ -51,6 +51,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     ChallengeRating = ChallengeRatingConstants.CR2,
                     LevelAdjustment = null,
                     Size = SizeConstants.Diminutive,
+                    HitDiceQuantity = 0.5,
+                    Types = ["my creature type"],
                 }],
                 ["wrong creature"] = [new CreatureDataSelection
                 {
@@ -58,6 +60,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     ChallengeRating = 666.ToString(),
                     LevelAdjustment = 666,
                     Size = "wrong size",
+                    HitDiceQuantity = 666,
+                    Types = ["wrong creature type"],
                 }],
                 ["creature 2"] = [new CreatureDataSelection
                 {
@@ -65,6 +69,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     ChallengeRating = ChallengeRatingConstants.CR1,
                     LevelAdjustment = 0,
                     Size = SizeConstants.Colossal,
+                    HitDiceQuantity = 0.5,
+                    Types = [CreatureConstants.Types.Humanoid],
                 }],
                 ["creature 3"] = [new CreatureDataSelection
                 {
@@ -72,6 +78,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     ChallengeRating = ChallengeRatingConstants.CR1_2nd,
                     LevelAdjustment = 1,
                     Size = SizeConstants.Large,
+                    HitDiceQuantity = 1,
+                    Types = ["my other creature type", "my other subtype"],
                 }],
                 ["creature 4"] = [new CreatureDataSelection
                 {
@@ -79,6 +87,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     ChallengeRating = ChallengeRatingConstants.CR3,
                     LevelAdjustment = 2,
                     Size = SizeConstants.Fine,
+                    HitDiceQuantity = 1,
+                    Types = [CreatureConstants.Types.Humanoid, "my subtype"],
                 }],
                 ["creature 5"] = [new CreatureDataSelection
                 {
@@ -86,6 +96,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     ChallengeRating = ChallengeRatingConstants.CR1_3rd,
                     LevelAdjustment = 3,
                     Size = SizeConstants.Gargantuan,
+                    HitDiceQuantity = 2,
+                    Types = ["creature type 2", "subtype 1", "subtype 2"],
                 }],
                 ["creature 6"] = [new CreatureDataSelection
                 {
@@ -93,6 +105,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     ChallengeRating = ChallengeRatingConstants.CR4,
                     LevelAdjustment = 4,
                     Size = SizeConstants.Huge,
+                    HitDiceQuantity = 3,
+                    Types = ["creature type 3", "subtype 3"],
                 }],
                 ["creature 7"] = [new CreatureDataSelection
                 {
@@ -100,44 +114,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     ChallengeRating = ChallengeRatingConstants.CR1_4th,
                     LevelAdjustment = 5,
                     Size = SizeConstants.Medium,
+                    HitDiceQuantity = 4,
+                    Types = ["creature type 4"],
                 }]
             };
 
             mockCreatureDataSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData))
                 .Returns(data);
-
-            var hitDice = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
-            {
-                ["creature 1"] = [new TypeAndAmountDataSelection { AmountAsDouble = 0.5 }],
-                ["wrong creature"] = [new TypeAndAmountDataSelection { AmountAsDouble = 666 }],
-                ["creature 2"] = [new TypeAndAmountDataSelection { AmountAsDouble = 0.5 }],
-                ["creature 3"] = [new TypeAndAmountDataSelection { AmountAsDouble = 1 }],
-                ["creature 4"] = [new TypeAndAmountDataSelection { AmountAsDouble = 1 }],
-                ["creature 5"] = [new TypeAndAmountDataSelection { AmountAsDouble = 2 }],
-                ["creature 6"] = [new TypeAndAmountDataSelection { AmountAsDouble = 3 }],
-                ["creature 7"] = [new TypeAndAmountDataSelection { AmountAsDouble = 4 }]
-            };
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice))
-                .Returns(hitDice);
-
-            var types = new Dictionary<string, IEnumerable<string>>
-            {
-                ["creature 1"] = ["my creature type"],
-                ["wrong creature"] = ["wrong creature type"],
-                ["creature 2"] = [CreatureConstants.Types.Humanoid],
-                ["creature 3"] = ["my other creature type", "my other subtype"],
-                ["creature 4"] = [CreatureConstants.Types.Humanoid, "my subtype"],
-                ["creature 5"] = ["creature type 2", "subtype 1", "subtype 2"],
-                ["creature 6"] = ["creature type 3", "subtype 3"],
-                ["creature 7"] = ["creature type 4"]
-            };
-
-            mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
-                .Returns(types);
 
             var alignments = new Dictionary<string, IEnumerable<string>>
             {
@@ -290,10 +274,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
             Assert.That(prototypes[0].CasterLevel, Is.EqualTo(data["creature 1"].Single().CasterLevel));
             Assert.That(prototypes[0].Size, Is.EqualTo(data["creature 1"].Single().Size));
-            Assert.That(prototypes[0].ChallengeRating, Is.EqualTo(data["creature 1"].Single().ChallengeRating));
-            Assert.That(prototypes[0].HitDiceQuantity, Is.EqualTo(hitDice["creature 1"].Single().AmountAsDouble));
+            Assert.That(prototypes[0].ChallengeRating, Is.EqualTo(data["creature 1"].Single().GetEffectiveChallengeRating(false)));
+            Assert.That(prototypes[0].HitDiceQuantity, Is.EqualTo(data["creature 1"].Single().GetEffectiveHitDiceQuantity(false)));
             Assert.That(prototypes[0].LevelAdjustment, Is.EqualTo(data["creature 1"].Single().LevelAdjustment));
-            Assert.That(prototypes[0].Type.AllTypes, Is.EqualTo(types["creature 1"]));
+            Assert.That(prototypes[0].Type.AllTypes, Is.EqualTo(data["creature 1"].Single().Types));
 
             Assert.That(prototypes[1].Name, Is.EqualTo("creature 6"));
             Assert.That(prototypes[1].Alignments, Is.EqualTo(alignments["creature 6"].Select(a => new Alignment(a)).Distinct()));
@@ -318,10 +302,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(0));
             Assert.That(prototypes[1].CasterLevel, Is.EqualTo(data["creature 6"].Single().CasterLevel));
             Assert.That(prototypes[1].Size, Is.EqualTo(data["creature 6"].Single().Size));
-            Assert.That(prototypes[1].ChallengeRating, Is.EqualTo(data["creature 6"].Single().ChallengeRating));
-            Assert.That(prototypes[1].HitDiceQuantity, Is.EqualTo(hitDice["creature 6"].Single().AmountAsDouble));
+            Assert.That(prototypes[1].ChallengeRating, Is.EqualTo(data["creature 6"].Single().GetEffectiveChallengeRating(false)));
+            Assert.That(prototypes[1].HitDiceQuantity, Is.EqualTo(data["creature 6"].Single().GetEffectiveHitDiceQuantity(false)));
             Assert.That(prototypes[1].LevelAdjustment, Is.EqualTo(data["creature 6"].Single().LevelAdjustment));
-            Assert.That(prototypes[1].Type.AllTypes, Is.EqualTo(types["creature 6"]));
+            Assert.That(prototypes[1].Type.AllTypes, Is.EqualTo(data["creature 6"].Single().Types));
 
             Assert.That(prototypes[2].Name, Is.EqualTo("creature 2"));
             Assert.That(prototypes[2].Alignments, Is.EqualTo(alignments["creature 2"].Select(a => new Alignment(a)).Distinct()));
@@ -346,10 +330,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[2].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(7));
             Assert.That(prototypes[2].CasterLevel, Is.EqualTo(data["creature 2"].Single().CasterLevel));
             Assert.That(prototypes[2].Size, Is.EqualTo(data["creature 2"].Single().Size));
-            Assert.That(prototypes[2].ChallengeRating, Is.EqualTo(data["creature 2"].Single().ChallengeRating));
-            Assert.That(prototypes[2].HitDiceQuantity, Is.EqualTo(hitDice["creature 2"].Single().AmountAsDouble));
+            Assert.That(prototypes[2].ChallengeRating, Is.EqualTo(data["creature 2"].Single().GetEffectiveChallengeRating(false)));
+            Assert.That(prototypes[2].HitDiceQuantity, Is.EqualTo(data["creature 2"].Single().GetEffectiveHitDiceQuantity(false)));
             Assert.That(prototypes[2].LevelAdjustment, Is.EqualTo(data["creature 2"].Single().LevelAdjustment));
-            Assert.That(prototypes[2].Type.AllTypes, Is.EqualTo(types["creature 2"]));
+            Assert.That(prototypes[2].Type.AllTypes, Is.EqualTo(data["creature 2"].Single().Types));
 
             Assert.That(prototypes[3].Name, Is.EqualTo("creature 5"));
             Assert.That(prototypes[3].Alignments, Is.EqualTo(alignments["creature 5"].Select(a => new Alignment(a)).Distinct()));
@@ -374,10 +358,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[3].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
             Assert.That(prototypes[3].CasterLevel, Is.EqualTo(data["creature 5"].Single().CasterLevel));
             Assert.That(prototypes[3].Size, Is.EqualTo(data["creature 5"].Single().Size));
-            Assert.That(prototypes[3].ChallengeRating, Is.EqualTo(data["creature 5"].Single().ChallengeRating));
-            Assert.That(prototypes[3].HitDiceQuantity, Is.EqualTo(hitDice["creature 5"].Single().AmountAsDouble));
+            Assert.That(prototypes[3].ChallengeRating, Is.EqualTo(data["creature 5"].Single().GetEffectiveChallengeRating(false)));
+            Assert.That(prototypes[3].HitDiceQuantity, Is.EqualTo(data["creature 5"].Single().GetEffectiveHitDiceQuantity(false)));
             Assert.That(prototypes[3].LevelAdjustment, Is.EqualTo(data["creature 5"].Single().LevelAdjustment));
-            Assert.That(prototypes[3].Type.AllTypes, Is.EqualTo(types["creature 5"]));
+            Assert.That(prototypes[3].Type.AllTypes, Is.EqualTo(data["creature 5"].Single().Types));
 
             Assert.That(prototypes[4].Name, Is.EqualTo("creature 3"));
             Assert.That(prototypes[4].Alignments, Is.EqualTo(alignments["creature 3"].Select(a => new Alignment(a)).Distinct()));
@@ -402,10 +386,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[4].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
             Assert.That(prototypes[4].CasterLevel, Is.EqualTo(data["creature 3"].Single().CasterLevel));
             Assert.That(prototypes[4].Size, Is.EqualTo(data["creature 3"].Single().Size));
-            Assert.That(prototypes[4].ChallengeRating, Is.EqualTo(data["creature 3"].Single().ChallengeRating));
-            Assert.That(prototypes[4].HitDiceQuantity, Is.EqualTo(hitDice["creature 3"].Single().AmountAsDouble));
+            Assert.That(prototypes[4].ChallengeRating, Is.EqualTo(data["creature 3"].Single().GetEffectiveChallengeRating(false)));
+            Assert.That(prototypes[4].HitDiceQuantity, Is.EqualTo(data["creature 3"].Single().GetEffectiveHitDiceQuantity(false)));
             Assert.That(prototypes[4].LevelAdjustment, Is.EqualTo(data["creature 3"].Single().LevelAdjustment));
-            Assert.That(prototypes[4].Type.AllTypes, Is.EqualTo(types["creature 3"]));
+            Assert.That(prototypes[4].Type.AllTypes, Is.EqualTo(data["creature 3"].Single().Types));
 
             Assert.That(prototypes[5].Name, Is.EqualTo("creature 4"));
             Assert.That(prototypes[5].Alignments, Is.EqualTo(alignments["creature 4"].Select(a => new Alignment(a)).Distinct()));
@@ -430,10 +414,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[5].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(15));
             Assert.That(prototypes[5].CasterLevel, Is.EqualTo(data["creature 4"].Single().CasterLevel));
             Assert.That(prototypes[5].Size, Is.EqualTo(data["creature 4"].Single().Size));
-            Assert.That(prototypes[5].ChallengeRating, Is.EqualTo(data["creature 4"].Single().ChallengeRating));
-            Assert.That(prototypes[5].HitDiceQuantity, Is.EqualTo(hitDice["creature 4"].Single().AmountAsDouble));
+            Assert.That(prototypes[5].ChallengeRating, Is.EqualTo(data["creature 4"].Single().GetEffectiveChallengeRating(false)));
+            Assert.That(prototypes[5].HitDiceQuantity, Is.EqualTo(data["creature 4"].Single().GetEffectiveHitDiceQuantity(false)));
             Assert.That(prototypes[5].LevelAdjustment, Is.EqualTo(data["creature 4"].Single().LevelAdjustment));
-            Assert.That(prototypes[5].Type.AllTypes, Is.EqualTo(types["creature 4"]));
+            Assert.That(prototypes[5].Type.AllTypes, Is.EqualTo(data["creature 4"].Single().Types));
 
             Assert.That(prototypes[6].Name, Is.EqualTo("creature 7"));
             Assert.That(prototypes[6].Alignments, Is.EqualTo(alignments["creature 7"].Select(a => new Alignment(a)).Distinct()));
@@ -458,10 +442,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[6].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(27));
             Assert.That(prototypes[6].CasterLevel, Is.EqualTo(data["creature 7"].Single().CasterLevel));
             Assert.That(prototypes[6].Size, Is.EqualTo(data["creature 7"].Single().Size));
-            Assert.That(prototypes[6].ChallengeRating, Is.EqualTo(data["creature 7"].Single().ChallengeRating));
-            Assert.That(prototypes[6].HitDiceQuantity, Is.EqualTo(hitDice["creature 7"].Single().AmountAsDouble));
+            Assert.That(prototypes[6].ChallengeRating, Is.EqualTo(data["creature 7"].Single().GetEffectiveChallengeRating(false)));
+            Assert.That(prototypes[6].HitDiceQuantity, Is.EqualTo(data["creature 7"].Single().GetEffectiveHitDiceQuantity(false)));
             Assert.That(prototypes[6].LevelAdjustment, Is.EqualTo(data["creature 7"].Single().LevelAdjustment));
-            Assert.That(prototypes[6].Type.AllTypes, Is.EqualTo(types["creature 7"]));
+            Assert.That(prototypes[6].Type.AllTypes, Is.EqualTo(data["creature 7"].Single().Types));
         }
 
         [Test]
@@ -474,86 +458,78 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     CasterLevel = 0,
                     ChallengeRating = ChallengeRatingConstants.CR2,
                     LevelAdjustment = null,
+                    Size = SizeConstants.Diminutive,
+                    HitDiceQuantity = 0.5,
+                    Types = ["my creature type"],
                 }],
                 ["wrong creature"] = [new CreatureDataSelection
                 {
                     CasterLevel = 666,
                     ChallengeRating = 666.ToString(),
                     LevelAdjustment = 666,
+                    Size = "wrong size",
+                    HitDiceQuantity = 666,
+                    Types = ["wrong creature type"],
                 }],
                 ["creature 2"] = [new CreatureDataSelection
                 {
                     CasterLevel = 1,
                     ChallengeRating = ChallengeRatingConstants.CR1,
                     LevelAdjustment = 0,
+                    Size = SizeConstants.Colossal,
+                    HitDiceQuantity = 0.5,
+                    Types = [CreatureConstants.Types.Humanoid],
                 }],
                 ["creature 3"] = [new CreatureDataSelection
                 {
                     CasterLevel = 2,
                     ChallengeRating = ChallengeRatingConstants.CR1_2nd,
                     LevelAdjustment = 1,
+                    Size = SizeConstants.Large,
+                    HitDiceQuantity = 1,
+                    Types = ["my other creature type", "my other subtype"],
                 }],
                 ["creature 4"] = [new CreatureDataSelection
                 {
                     CasterLevel = 3,
                     ChallengeRating = ChallengeRatingConstants.CR3,
                     LevelAdjustment = 2,
+                    Size = SizeConstants.Fine,
+                    HitDiceQuantity = 1,
+                    Types = [CreatureConstants.Types.Humanoid, "my subtype"],
                 }],
                 ["creature 5"] = [new CreatureDataSelection
                 {
                     CasterLevel = 4,
                     ChallengeRating = ChallengeRatingConstants.CR1_3rd,
                     LevelAdjustment = 3,
+                    Size = SizeConstants.Gargantuan,
+                    HitDiceQuantity = 2,
+                    Types = ["creature type 2", "subtype 1", "subtype 2"],
                 }],
                 ["creature 6"] = [new CreatureDataSelection
                 {
                     CasterLevel = 5,
                     ChallengeRating = ChallengeRatingConstants.CR4,
                     LevelAdjustment = 4,
+                    Size = SizeConstants.Huge,
+                    HitDiceQuantity = 3,
+                    Types = ["creature type 3", "subtype 3"],
                 }],
                 ["creature 7"] = [new CreatureDataSelection
                 {
                     CasterLevel = 6,
                     ChallengeRating = ChallengeRatingConstants.CR1_4th,
                     LevelAdjustment = 5,
+                    Size = SizeConstants.Medium,
+                    HitDiceQuantity = 4,
+                    Types = ["creature type 4"],
                 }]
             };
 
             mockCreatureDataSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData))
                 .Returns(data);
-
-            var hitDice = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
-            {
-                ["creature 1"] = [new TypeAndAmountDataSelection { AmountAsDouble = 0.5 }],
-                ["wrong creature"] = [new TypeAndAmountDataSelection { AmountAsDouble = 666 }],
-                ["creature 2"] = [new TypeAndAmountDataSelection { AmountAsDouble = 0.5 }],
-                ["creature 3"] = [new TypeAndAmountDataSelection { AmountAsDouble = 1 }],
-                ["creature 4"] = [new TypeAndAmountDataSelection { AmountAsDouble = 1 }],
-                ["creature 5"] = [new TypeAndAmountDataSelection { AmountAsDouble = 2 }],
-                ["creature 6"] = [new TypeAndAmountDataSelection { AmountAsDouble = 3 }],
-                ["creature 7"] = [new TypeAndAmountDataSelection { AmountAsDouble = 4 }]
-            };
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice))
-                .Returns(hitDice);
-
-            var types = new Dictionary<string, IEnumerable<string>>
-            {
-                ["creature 1"] = ["my creature type"],
-                ["wrong creature"] = ["wrong creature type"],
-                ["creature 2"] = [CreatureConstants.Types.Humanoid],
-                ["creature 3"] = ["my other creature type", "my other subtype"],
-                ["creature 4"] = [CreatureConstants.Types.Humanoid, "my subtype"],
-                ["creature 5"] = ["creature type 2", "subtype 1", "subtype 2"],
-                ["creature 6"] = ["creature type 3", "subtype 3"],
-                ["creature 7"] = ["creature type 4"]
-            };
-
-            mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
-                .Returns(types);
 
             var alignments = new Dictionary<string, IEnumerable<string>>
             {
@@ -705,10 +681,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[0].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
             Assert.That(prototypes[0].CasterLevel, Is.EqualTo(data["creature 1"].Single().CasterLevel));
-            Assert.That(prototypes[0].ChallengeRating, Is.EqualTo(data["creature 1"].Single().ChallengeRating));
-            Assert.That(prototypes[0].HitDiceQuantity, Is.EqualTo(hitDice["creature 1"].Single().AmountAsDouble));
+            Assert.That(prototypes[0].ChallengeRating, Is.EqualTo(data["creature 1"].Single().GetEffectiveChallengeRating(true)));
+            Assert.That(prototypes[0].HitDiceQuantity, Is.EqualTo(data["creature 1"].Single().GetEffectiveHitDiceQuantity(true)));
             Assert.That(prototypes[0].LevelAdjustment, Is.EqualTo(data["creature 1"].Single().LevelAdjustment));
-            Assert.That(prototypes[0].Type.AllTypes, Is.EqualTo(types["creature 1"]));
+            Assert.That(prototypes[0].Type.AllTypes, Is.EqualTo(data["creature 1"].Single().Types));
 
             Assert.That(prototypes[1].Name, Is.EqualTo("creature 6"));
             Assert.That(prototypes[1].Alignments, Is.EqualTo(alignments["creature 6"].Select(a => new Alignment(a)).Distinct()));
@@ -732,10 +708,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[1].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(0));
             Assert.That(prototypes[1].CasterLevel, Is.EqualTo(data["creature 6"].Single().CasterLevel));
-            Assert.That(prototypes[1].ChallengeRating, Is.EqualTo(data["creature 6"].Single().ChallengeRating));
-            Assert.That(prototypes[1].HitDiceQuantity, Is.EqualTo(hitDice["creature 6"].Single().AmountAsDouble));
+            Assert.That(prototypes[1].ChallengeRating, Is.EqualTo(data["creature 6"].Single().GetEffectiveChallengeRating(true)));
+            Assert.That(prototypes[1].HitDiceQuantity, Is.EqualTo(data["creature 6"].Single().GetEffectiveHitDiceQuantity(true)));
             Assert.That(prototypes[1].LevelAdjustment, Is.EqualTo(data["creature 6"].Single().LevelAdjustment));
-            Assert.That(prototypes[1].Type.AllTypes, Is.EqualTo(types["creature 6"]));
+            Assert.That(prototypes[1].Type.AllTypes, Is.EqualTo(data["creature 6"].Single().Types));
 
             Assert.That(prototypes[2].Name, Is.EqualTo("creature 2"));
             Assert.That(prototypes[2].Alignments, Is.EqualTo(alignments["creature 2"].Select(a => new Alignment(a)).Distinct()));
@@ -760,9 +736,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[2].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(7));
             Assert.That(prototypes[2].CasterLevel, Is.EqualTo(data["creature 2"].Single().CasterLevel));
             Assert.That(prototypes[2].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR0));
-            Assert.That(prototypes[2].HitDiceQuantity, Is.EqualTo(hitDice["creature 2"].Single().AmountAsDouble));
+            Assert.That(prototypes[2].HitDiceQuantity, Is.EqualTo(data["creature 2"].Single().GetEffectiveHitDiceQuantity(true)));
             Assert.That(prototypes[2].LevelAdjustment, Is.EqualTo(data["creature 2"].Single().LevelAdjustment));
-            Assert.That(prototypes[2].Type.AllTypes, Is.EqualTo(types["creature 2"]));
+            Assert.That(prototypes[2].Type.AllTypes, Is.EqualTo(data["creature 2"].Single().Types));
 
             Assert.That(prototypes[3].Name, Is.EqualTo("creature 5"));
             Assert.That(prototypes[3].Alignments, Is.EqualTo(alignments["creature 5"].Select(a => new Alignment(a)).Distinct()));
@@ -786,10 +762,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[3].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
             Assert.That(prototypes[3].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
             Assert.That(prototypes[3].CasterLevel, Is.EqualTo(data["creature 5"].Single().CasterLevel));
-            Assert.That(prototypes[3].ChallengeRating, Is.EqualTo(data["creature 5"].Single().ChallengeRating));
-            Assert.That(prototypes[3].HitDiceQuantity, Is.EqualTo(hitDice["creature 5"].Single().AmountAsDouble));
+            Assert.That(prototypes[3].ChallengeRating, Is.EqualTo(data["creature 5"].Single().GetEffectiveChallengeRating(true)));
+            Assert.That(prototypes[3].HitDiceQuantity, Is.EqualTo(data["creature 5"].Single().GetEffectiveHitDiceQuantity(true)));
             Assert.That(prototypes[3].LevelAdjustment, Is.EqualTo(data["creature 5"].Single().LevelAdjustment));
-            Assert.That(prototypes[3].Type.AllTypes, Is.EqualTo(types["creature 5"]));
+            Assert.That(prototypes[3].Type.AllTypes, Is.EqualTo(data["creature 5"].Single().Types));
 
             Assert.That(prototypes[4].Name, Is.EqualTo("creature 3"));
             Assert.That(prototypes[4].Alignments, Is.EqualTo(alignments["creature 3"].Select(a => new Alignment(a)).Distinct()));
@@ -813,10 +789,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[4].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
             Assert.That(prototypes[4].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
             Assert.That(prototypes[4].CasterLevel, Is.EqualTo(data["creature 3"].Single().CasterLevel));
-            Assert.That(prototypes[4].ChallengeRating, Is.EqualTo(data["creature 3"].Single().ChallengeRating));
-            Assert.That(prototypes[4].HitDiceQuantity, Is.EqualTo(hitDice["creature 3"].Single().AmountAsDouble));
+            Assert.That(prototypes[4].ChallengeRating, Is.EqualTo(data["creature 3"].Single().GetEffectiveChallengeRating(true)));
+            Assert.That(prototypes[4].HitDiceQuantity, Is.EqualTo(data["creature 3"].Single().GetEffectiveHitDiceQuantity(true)));
             Assert.That(prototypes[4].LevelAdjustment, Is.EqualTo(data["creature 3"].Single().LevelAdjustment));
-            Assert.That(prototypes[4].Type.AllTypes, Is.EqualTo(types["creature 3"]));
+            Assert.That(prototypes[4].Type.AllTypes, Is.EqualTo(data["creature 3"].Single().Types));
 
             Assert.That(prototypes[5].Name, Is.EqualTo("creature 4"));
             Assert.That(prototypes[5].Alignments, Is.EqualTo(alignments["creature 4"].Select(a => new Alignment(a)).Distinct()));
@@ -841,9 +817,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[5].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(15));
             Assert.That(prototypes[5].CasterLevel, Is.EqualTo(data["creature 4"].Single().CasterLevel));
             Assert.That(prototypes[5].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR0));
-            Assert.That(prototypes[5].HitDiceQuantity, Is.EqualTo(hitDice["creature 4"].Single().AmountAsDouble));
+            Assert.That(prototypes[5].HitDiceQuantity, Is.EqualTo(data["creature 4"].Single().GetEffectiveHitDiceQuantity(true)));
             Assert.That(prototypes[5].LevelAdjustment, Is.EqualTo(data["creature 4"].Single().LevelAdjustment));
-            Assert.That(prototypes[5].Type.AllTypes, Is.EqualTo(types["creature 4"]));
+            Assert.That(prototypes[5].Type.AllTypes, Is.EqualTo(data["creature 4"].Single().Types));
 
             Assert.That(prototypes[6].Name, Is.EqualTo("creature 7"));
             Assert.That(prototypes[6].Alignments, Is.EqualTo(alignments["creature 7"].Select(a => new Alignment(a)).Distinct()));
@@ -867,10 +843,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[6].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
             Assert.That(prototypes[6].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(27));
             Assert.That(prototypes[6].CasterLevel, Is.EqualTo(data["creature 7"].Single().CasterLevel));
-            Assert.That(prototypes[6].ChallengeRating, Is.EqualTo(data["creature 7"].Single().ChallengeRating));
-            Assert.That(prototypes[6].HitDiceQuantity, Is.EqualTo(hitDice["creature 7"].Single().AmountAsDouble));
+            Assert.That(prototypes[6].ChallengeRating, Is.EqualTo(data["creature 7"].Single().GetEffectiveChallengeRating(true)));
+            Assert.That(prototypes[6].HitDiceQuantity, Is.EqualTo(data["creature 7"].Single().GetEffectiveHitDiceQuantity(true)));
             Assert.That(prototypes[6].LevelAdjustment, Is.EqualTo(data["creature 7"].Single().LevelAdjustment));
-            Assert.That(prototypes[6].Type.AllTypes, Is.EqualTo(types["creature 7"]));
+            Assert.That(prototypes[6].Type.AllTypes, Is.EqualTo(data["creature 7"].Single().Types));
         }
 
         //INFO: Since prototypes are for Template validation, we only want the Maximum caster level between spellcasting and at-will abilities
@@ -900,30 +876,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     CasterLevel = casterLevel,
                     ChallengeRating = ChallengeRatingConstants.CR2,
                     LevelAdjustment = null,
+                    HitDiceQuantity = 0.5,
+                    Types = ["my creature type"],
                 }]
             };
 
             mockCreatureDataSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData))
                 .Returns(data);
-
-            var hitDice = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
-            {
-                ["creature 1"] = [new TypeAndAmountDataSelection { AmountAsDouble = 0.5 }]
-            };
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice))
-                .Returns(hitDice);
-
-            var types = new Dictionary<string, IEnumerable<string>>
-            {
-                ["creature 1"] = ["my creature type"]
-            };
-
-            mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
-                .Returns(types);
 
             var alignments = new Dictionary<string, IEnumerable<string>>
             {
@@ -1000,10 +960,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[0].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
             Assert.That(prototypes[0].CasterLevel, Is.EqualTo(expected));
-            Assert.That(prototypes[0].ChallengeRating, Is.EqualTo(data["creature 1"].Single().ChallengeRating));
-            Assert.That(prototypes[0].HitDiceQuantity, Is.EqualTo(hitDice["creature 1"].Single().AmountAsDouble));
+            Assert.That(prototypes[0].ChallengeRating, Is.EqualTo(data["creature 1"].Single().GetEffectiveChallengeRating(false)));
+            Assert.That(prototypes[0].HitDiceQuantity, Is.EqualTo(data["creature 1"].Single().GetEffectiveHitDiceQuantity(false)));
             Assert.That(prototypes[0].LevelAdjustment, Is.EqualTo(data["creature 1"].Single().LevelAdjustment));
-            Assert.That(prototypes[0].Type.AllTypes, Is.EqualTo(types["creature 1"]));
+            Assert.That(prototypes[0].Type.AllTypes, Is.EqualTo(data["creature 1"].Single().Types));
         }
     }
 }

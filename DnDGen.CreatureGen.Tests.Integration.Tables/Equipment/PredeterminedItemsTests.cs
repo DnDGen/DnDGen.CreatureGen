@@ -2,8 +2,9 @@
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors;
 using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.TestData;
+using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.TreasureGen.Items;
 using DnDGen.TreasureGen.Items.Magical;
 using NUnit.Framework;
@@ -16,6 +17,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
     {
         private IItemSelector itemSelector;
         private IFeatsSelector featsSelector;
+        private ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
 
         protected override string tableName => TableNameConstants.Collection.PredeterminedItems;
 
@@ -24,6 +26,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         {
             itemSelector = GetNewInstanceOf<IItemSelector>();
             featsSelector = GetNewInstanceOf<IFeatsSelector>();
+            creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
         }
 
         [Test]
@@ -789,15 +792,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         {
             var longsword = FormatSetItem(WeaponConstants.Longsword, ItemTypeConstants.Weapon);
 
-            base.AssertCollection(CreatureConstants.Marilith, new[]
-            {
+            AssertCollection(CreatureConstants.Marilith,
+            [
                 longsword,
                 longsword,
                 longsword,
                 longsword,
                 longsword,
                 longsword
-            });
+            ]);
         }
 
         [Test]
@@ -899,41 +902,42 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         {
             var chain = FormatSetItem(WeaponConstants.SpikedChain, ItemTypeConstants.Weapon);
 
-            base.AssertCollection(CreatureConstants.Zelekhut, new[] { chain, chain });
+            AssertCollection(CreatureConstants.Zelekhut, [chain, chain]);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void BUG_IfCreatureHasOversizedFeat_WeaponsDoNotHaveSize(string creature)
+        [Test]
+        public void BUG_IfCreatureHasOversizedFeat_WeaponsDoNotHaveSize()
         {
-            Assert.That(table, Contains.Key(creature));
+            var creatures = CreatureConstants.GetAll();
+            var creatureDatas = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
 
-            if (!table[creature].Any())
+            foreach (var creature in creatures)
             {
-                Assert.Pass($"{creature} does not have any predetermiend items");
-            }
+                Assert.That(table, Contains.Key(creature));
 
-            var creatureType = new CreatureType();
-            var types = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, creature);
-
-            creatureType.Name = types.First();
-            creatureType.SubTypes = types.Skip(1);
-
-            var feats = featsSelector.SelectSpecialQualities(creature, creatureType);
-            if (!feats.Any(f => f.Feat == FeatConstants.SpecialQualities.OversizedWeapon))
-            {
-                Assert.Pass($"{creature} does not have the feat {FeatConstants.SpecialQualities.OversizedWeapon}");
-            }
-
-            var sizes = SizeConstants.GetOrdered();
-
-            foreach (var itemTemplate in table[creature])
-            {
-                var item = itemSelector.SelectFrom(itemTemplate);
-                if (item.ItemType != ItemTypeConstants.Weapon)
+                if (!table[creature].Any())
+                {
                     continue;
+                }
 
-                var sizeTraits = item.Traits.Intersect(sizes);
-                Assert.That(sizeTraits, Is.Empty, item.Name);
+                var creatureType = new CreatureType(creatureDatas[creature].Single().Types);
+                var feats = featsSelector.SelectSpecialQualities(creature, creatureType);
+                if (!feats.Any(f => f.Feat == FeatConstants.SpecialQualities.OversizedWeapon))
+                {
+                    continue;
+                }
+
+                var sizes = SizeConstants.GetOrdered();
+
+                foreach (var itemTemplate in table[creature])
+                {
+                    var item = itemSelector.SelectFrom(itemTemplate);
+                    if (item.ItemType != ItemTypeConstants.Weapon)
+                        continue;
+
+                    var sizeTraits = item.Traits.Intersect(sizes);
+                    Assert.That(sizeTraits, Is.Empty, item.Name);
+                }
             }
         }
     }

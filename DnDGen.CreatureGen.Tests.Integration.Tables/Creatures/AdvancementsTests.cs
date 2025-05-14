@@ -40,8 +40,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         };
         private string[] sizes;
         private Dictionary<string, CreatureDataSelection> creatureData;
-        private Dictionary<string, double> creatureHitDiceQuantities;
-        private Dictionary<string, IEnumerable<string>> creatureTypes;
         private SpaceReachHelper spaceReachHelper;
 
         protected override string tableName => TableNameConstants.Collection.Advancements;
@@ -54,13 +52,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
             creatureData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Single());
-
-            var typeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
-            creatureHitDiceQuantities = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice)
-                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Single().AmountAsDouble);
-
-            var collectionSelector = GetNewInstanceOf<ICollectionSelector>();
-            creatureTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
 
             spaceReachHelper = GetNewInstanceOf<SpaceReachHelper>();
             advancements = GetAdvancementsTestData();
@@ -1281,7 +1272,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         private string GetData(string creature, string advancedSize, int lowerHitDice, int upperHitDice)
         {
-            var creatureHitDiceQuantity = HitDice.GetRoundedQuantity(creatureHitDiceQuantities[creature]);
+            var creatureHitDiceQuantity = HitDice.GetRoundedQuantity(creatureData[creature].GetEffectiveHitDiceQuantity(false));
 
             var selection = new AdvancementDataSelection
             {
@@ -1294,7 +1285,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 DexterityAdjustment = GetDexterityAdjustment(creatureData[creature].Size, advancedSize),
                 NaturalArmorAdjustment = GetNaturalArmorAdjustment(creatureData[creature].Size, advancedSize),
                 ChallengeRatingDivisor = GetChallengeRatingDivisor(creature),
-                AdjustedChallengeRating = GetAdjustedChallengeRating(creatureData[creature].ChallengeRating, creatureData[creature].Size, advancedSize),
+                AdjustedChallengeRating = GetAdjustedChallengeRating(creatureData[creature].GetEffectiveChallengeRating(false), creatureData[creature].Size, advancedSize),
             };
 
             return DataHelper.Parse(selection);
@@ -1317,8 +1308,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         private int GetChallengeRatingDivisor(string creature)
         {
-            var types = creatureTypes[creature];
-            var creatureType = types.First();
+            var creatureType = creatureData[creature].Types.First();
             return typeDivisors[creatureType];
         }
 

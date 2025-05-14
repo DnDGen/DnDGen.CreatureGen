@@ -1,5 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System.Linq;
 
@@ -9,6 +11,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     internal class GendersTests : CollectionTests
     {
         protected override string tableName => TableNameConstants.Collection.Genders;
+
+        private ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
+
+        [SetUp]
+        public void Setup()
+        {
+            creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
+        }
 
         [Test]
         public void GendersNames()
@@ -551,7 +561,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Types.Subtypes.Swarm)]
         public void CreaturesOfTypeAreAgender(string type)
         {
-            var creatures = ExplodeCollection(TableNameConstants.Collection.CreatureGroups, type);
+            var creatures = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
+                .Where(kvp => kvp.Value.Single().Types.Contains(type))
+                .Select(kvp => kvp.Key);
             Assert.That(table.Keys, Is.SupersetOf(creatures));
 
             foreach (var creature in creatures)
@@ -563,11 +575,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void AnimalsAreMaleAndFemale()
         {
-            var animals = ExplodeCollection(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
-            var swarms = ExplodeCollection(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Swarm);
+            //INFO: Swarms are agender and don't count as normal animals
+            var animals = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
+                .Where(kvp => kvp.Value.Single().Types.Contains(CreatureConstants.Types.Animal)
+                    && !kvp.Value.Single().Types.Contains(CreatureConstants.Types.Subtypes.Swarm))
+                .Select(kvp => kvp.Key);
             Assert.That(table.Keys, Is.SupersetOf(animals));
 
-            foreach (var creature in animals.Except(swarms))
+            foreach (var creature in animals)
             {
                 AssertDistinctCollection(creature, GenderConstants.Female, GenderConstants.Male);
             }

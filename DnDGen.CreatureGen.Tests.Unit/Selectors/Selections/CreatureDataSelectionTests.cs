@@ -20,7 +20,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void CreatureDataSelectionInitialized()
         {
-            Assert.That(selection.ChallengeRating, Is.Empty);
             Assert.That(selection.Size, Is.Empty);
             Assert.That(selection.Reach, Is.Zero);
             Assert.That(selection.Space, Is.Zero);
@@ -31,7 +30,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(selection.CanUseEquipment, Is.False);
             Assert.That(selection.BaseAttackQuality, Is.EqualTo(BaseAttackQuality.Poor));
             Assert.That(selection.Types, Is.Empty);
-            Assert.That(selection.HitDiceQuantity, Is.Zero);
             Assert.That(selection.HitDie, Is.Zero);
             Assert.That(selection.HasSkeleton, Is.False);
         }
@@ -69,7 +67,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 
             var newSelection = CreatureDataSelection.Map(data);
             Assert.That(newSelection, Is.Not.Null);
-            Assert.That(newSelection.ChallengeRating, Is.EqualTo("my cr"));
+            Assert.That(newSelection.GetEffectiveChallengeRating(false), Is.EqualTo("my cr"));
             Assert.That(newSelection.Size, Is.EqualTo("my size"));
             Assert.That(newSelection.Reach, Is.EqualTo(926.6));
             Assert.That(newSelection.Space, Is.EqualTo(902.10));
@@ -80,7 +78,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(newSelection.CanUseEquipment, Is.EqualTo(true));
             Assert.That(newSelection.BaseAttackQuality, Is.EqualTo(BaseAttackQuality.Average));
             Assert.That(newSelection.Types, Is.EqualTo(["my type"]));
-            Assert.That(newSelection.HitDiceQuantity, Is.EqualTo(9.6));
+            Assert.That(newSelection.GetEffectiveHitDiceQuantity(false), Is.EqualTo(9.6));
             Assert.That(newSelection.HitDie, Is.EqualTo(783));
             Assert.That(newSelection.HasSkeleton, Is.EqualTo(true));
         }
@@ -101,7 +99,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 
             var newSelection = CreatureDataSelection.Map(data);
             Assert.That(newSelection, Is.Not.Null);
-            Assert.That(newSelection.ChallengeRating, Is.EqualTo("my cr"));
+            Assert.That(newSelection.GetEffectiveChallengeRating(false), Is.EqualTo("my cr"));
             Assert.That(newSelection.Size, Is.EqualTo("my size"));
             Assert.That(newSelection.Reach, Is.EqualTo(926.6));
             Assert.That(newSelection.Space, Is.EqualTo(902.10));
@@ -127,7 +125,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 
             var newSelection = CreatureDataSelection.Map(data);
             Assert.That(newSelection, Is.Not.Null);
-            Assert.That(newSelection.ChallengeRating, Is.EqualTo("my cr"));
+            Assert.That(newSelection.GetEffectiveChallengeRating(false), Is.EqualTo("my cr"));
             Assert.That(newSelection.Size, Is.EqualTo("my size"));
             Assert.That(newSelection.Reach, Is.EqualTo(926.6));
             Assert.That(newSelection.Space, Is.EqualTo(902.10));
@@ -154,7 +152,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 
             var newSelection = CreatureDataSelection.Map(data);
             Assert.That(newSelection, Is.Not.Null);
-            Assert.That(newSelection.ChallengeRating, Is.EqualTo("my cr"));
+            Assert.That(newSelection.GetEffectiveChallengeRating(false), Is.EqualTo("my cr"));
             Assert.That(newSelection.Size, Is.EqualTo("my size"));
             Assert.That(newSelection.Reach, Is.EqualTo(926.6));
             Assert.That(newSelection.Space, Is.EqualTo(902.10));
@@ -184,7 +182,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 
             var newSelection = CreatureDataSelection.Map(data);
             Assert.That(newSelection, Is.Not.Null);
-            Assert.That(newSelection.ChallengeRating, Is.EqualTo("my cr"));
+            Assert.That(newSelection.GetEffectiveChallengeRating(false), Is.EqualTo("my cr"));
             Assert.That(newSelection.Size, Is.EqualTo("my size"));
             Assert.That(newSelection.Reach, Is.EqualTo(926.6));
             Assert.That(newSelection.Space, Is.EqualTo(902.10));
@@ -214,7 +212,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 
             var newSelection = CreatureDataSelection.Map(data);
             Assert.That(newSelection, Is.Not.Null);
-            Assert.That(newSelection.ChallengeRating, Is.EqualTo("my cr"));
+            Assert.That(newSelection.GetEffectiveChallengeRating(false), Is.EqualTo("my cr"));
             Assert.That(newSelection.Size, Is.EqualTo("my size"));
             Assert.That(newSelection.Reach, Is.EqualTo(926.6));
             Assert.That(newSelection.Space, Is.EqualTo(902.10));
@@ -249,7 +247,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 
             var newSelection = CreatureDataSelection.Map(data);
             Assert.That(newSelection, Is.Not.Null);
-            Assert.That(newSelection.ChallengeRating, Is.EqualTo("my cr"));
+            Assert.That(newSelection.GetEffectiveChallengeRating(false), Is.EqualTo("my cr"));
             Assert.That(newSelection.Size, Is.EqualTo("my size"));
             Assert.That(newSelection.Reach, Is.EqualTo(926.6));
             Assert.That(newSelection.Space, Is.EqualTo(902.10));
@@ -260,7 +258,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(newSelection.CanUseEquipment, Is.EqualTo(true));
             Assert.That(newSelection.BaseAttackQuality, Is.EqualTo(BaseAttackQuality.Average));
             Assert.That(newSelection.Types, Is.EqualTo(["my type"]));
-            Assert.That(newSelection.HitDiceQuantity, Is.EqualTo(9.6));
+            Assert.That(newSelection.GetEffectiveHitDiceQuantity(false), Is.EqualTo(9.6));
             Assert.That(newSelection.HitDie, Is.EqualTo(783));
             Assert.That(newSelection.HasSkeleton, Is.EqualTo(hasSkeleton));
         }
@@ -522,7 +520,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 
             var newSelection = selection.MapTo(data);
             Assert.That(newSelection, Is.Not.Null);
-            Assert.That(newSelection.ChallengeRating, Is.EqualTo("my cr"));
+            Assert.That(newSelection.GetEffectiveChallengeRating(false), Is.EqualTo("my cr"));
             Assert.That(newSelection.Size, Is.EqualTo("my size"));
             Assert.That(newSelection.Reach, Is.EqualTo(926.6));
             Assert.That(newSelection.Space, Is.EqualTo(902.10));
@@ -533,7 +531,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(newSelection.CanUseEquipment, Is.EqualTo(true));
             Assert.That(newSelection.BaseAttackQuality, Is.EqualTo(BaseAttackQuality.Average));
             Assert.That(newSelection.Types, Is.EqualTo(["my type"]));
-            Assert.That(newSelection.HitDiceQuantity, Is.EqualTo(9.6));
+            Assert.That(newSelection.GetEffectiveHitDiceQuantity(false), Is.EqualTo(9.6));
             Assert.That(newSelection.HitDie, Is.EqualTo(783));
             Assert.That(newSelection.HasSkeleton, Is.EqualTo(true));
         }
@@ -554,7 +552,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 
             var newSelection = selection.MapTo(data);
             Assert.That(newSelection, Is.Not.Null);
-            Assert.That(newSelection.ChallengeRating, Is.EqualTo("my cr"));
+            Assert.That(newSelection.GetEffectiveChallengeRating(false), Is.EqualTo("my cr"));
             Assert.That(newSelection.Size, Is.EqualTo("my size"));
             Assert.That(newSelection.Reach, Is.EqualTo(926.6));
             Assert.That(newSelection.Space, Is.EqualTo(902.10));
@@ -580,7 +578,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 
             var newSelection = selection.MapTo(data);
             Assert.That(newSelection, Is.Not.Null);
-            Assert.That(newSelection.ChallengeRating, Is.EqualTo("my cr"));
+            Assert.That(newSelection.GetEffectiveChallengeRating(false), Is.EqualTo("my cr"));
             Assert.That(newSelection.Size, Is.EqualTo("my size"));
             Assert.That(newSelection.Reach, Is.EqualTo(926.6));
             Assert.That(newSelection.Space, Is.EqualTo(902.10));
@@ -607,7 +605,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 
             var newSelection = selection.MapTo(data);
             Assert.That(newSelection, Is.Not.Null);
-            Assert.That(newSelection.ChallengeRating, Is.EqualTo("my cr"));
+            Assert.That(newSelection.GetEffectiveChallengeRating(false), Is.EqualTo("my cr"));
             Assert.That(newSelection.Size, Is.EqualTo("my size"));
             Assert.That(newSelection.Reach, Is.EqualTo(926.6));
             Assert.That(newSelection.Space, Is.EqualTo(902.10));
@@ -637,7 +635,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 
             var newSelection = selection.MapTo(data);
             Assert.That(newSelection, Is.Not.Null);
-            Assert.That(newSelection.ChallengeRating, Is.EqualTo("my cr"));
+            Assert.That(newSelection.GetEffectiveChallengeRating(false), Is.EqualTo("my cr"));
             Assert.That(newSelection.Size, Is.EqualTo("my size"));
             Assert.That(newSelection.Reach, Is.EqualTo(926.6));
             Assert.That(newSelection.Space, Is.EqualTo(902.10));
@@ -667,7 +665,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 
             var newSelection = selection.MapTo(data);
             Assert.That(newSelection, Is.Not.Null);
-            Assert.That(newSelection.ChallengeRating, Is.EqualTo("my cr"));
+            Assert.That(newSelection.GetEffectiveChallengeRating(false), Is.EqualTo("my cr"));
             Assert.That(newSelection.Size, Is.EqualTo("my size"));
             Assert.That(newSelection.Reach, Is.EqualTo(926.6));
             Assert.That(newSelection.Space, Is.EqualTo(902.10));
@@ -702,7 +700,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 
             var newSelection = selection.MapTo(data);
             Assert.That(newSelection, Is.Not.Null);
-            Assert.That(newSelection.ChallengeRating, Is.EqualTo("my cr"));
+            Assert.That(newSelection.GetEffectiveChallengeRating(false), Is.EqualTo("my cr"));
             Assert.That(newSelection.Size, Is.EqualTo("my size"));
             Assert.That(newSelection.Reach, Is.EqualTo(926.6));
             Assert.That(newSelection.Space, Is.EqualTo(902.10));
@@ -713,7 +711,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(newSelection.CanUseEquipment, Is.EqualTo(true));
             Assert.That(newSelection.BaseAttackQuality, Is.EqualTo(BaseAttackQuality.Average));
             Assert.That(newSelection.Types, Is.EqualTo(["my type"]));
-            Assert.That(newSelection.HitDiceQuantity, Is.EqualTo(9.6));
+            Assert.That(newSelection.GetEffectiveHitDiceQuantity(false), Is.EqualTo(9.6));
             Assert.That(newSelection.HitDie, Is.EqualTo(783));
             Assert.That(newSelection.HasSkeleton, Is.EqualTo(hasSkeleton));
         }

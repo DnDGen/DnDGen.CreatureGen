@@ -1,9 +1,11 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
+using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System;
 using System.Linq;
@@ -14,6 +16,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
     public class SkillGroupsTests : CollectionTests
     {
         protected override string tableName => TableNameConstants.Collection.SkillGroups;
+
+        private ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
+
+        [SetUp]
+        public void Setup()
+        {
+            creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
+        }
 
         [Test]
         public void SkillGroupsNames()
@@ -4349,6 +4359,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Swim)]
         public void CreatureSkills(string creature, params string[] skills)
         {
+            NoDuplicationOfSkillsBetweenTypeAndCreature(creature, skills);
             base.AssertDistinctCollection(creature, skills);
         }
 
@@ -4617,11 +4628,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             base.AssertDistinctCollection(SkillConstants.Profession, foci);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void NoDuplicationOfSkillsBetweenTypeAndCreature(string creature)
+        private void NoDuplicationOfSkillsBetweenTypeAndCreature(string creature, string[] skills)
         {
-            var creatureTypes = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, creature);
-            creatureTypes = creatureTypes.Except([creature]);
+            var data = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, creature);
+            var creatureTypes = data.Types.Except([creature]);
 
             Assert.That(table.Keys, Contains.Item(creature)
                 .And.SupersetOf(creatureTypes));
@@ -4639,11 +4649,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         public void CreatureTypeSkillsContainSkillsCommonToAllCreatures(string creatureType)
         {
-            var creatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, creatureType);
-
-            //INFO: Excluding templates, since they have special rules
-            var templates = CreatureConstants.Templates.GetAll();
-            creatures = creatures.Except(templates);
+            var creatures = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
+                .Where(kvp => kvp.Value.Single().Types.Contains(creatureType))
+                .Select(kvp => kvp.Key);
 
             if (!creatures.Any())
             {

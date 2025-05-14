@@ -6,6 +6,7 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Items;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
@@ -1228,7 +1229,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreature("creature", asCharacter);
             var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
-            mockAdvancementSelector.Setup(s => s.IsAdvanced("creature", It.Is<IEnumerable<string>>(t => !t.Any()), null)).Returns(false);
+            mockAdvancementSelector
+                .Setup(s => s.IsAdvanced("creature", It.Is<IEnumerable<string>>(t => !t.Any()), creatureData.GetEffectiveHitDiceQuantity(asCharacter), null))
+                .Returns(false);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
@@ -1541,22 +1544,34 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.SpecialQualities, Is.EqualTo(advancedSpecialQualities));
         }
 
-        [TestCase(true)]
-        [TestCase(false)]
-        public async Task GenerateRandomAsync_GenerateCreatureBaseAttackBonus(bool asCharacter)
+        [TestCase(true, BaseAttackQuality.Good)]
+        [TestCase(true, BaseAttackQuality.Average)]
+        [TestCase(true, BaseAttackQuality.Poor)]
+        [TestCase(false, BaseAttackQuality.Good)]
+        [TestCase(false, BaseAttackQuality.Average)]
+        [TestCase(false, BaseAttackQuality.Poor)]
+        public async Task GenerateRandomAsync_GenerateCreatureBaseAttackBonus(bool asCharacter, BaseAttackQuality baseAttackQuality)
         {
+            creatureData.BaseAttackQuality = baseAttackQuality;
             SetUpCreature("creature", asCharacter);
+
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.BaseAttackBonus, Is.EqualTo(753));
         }
-        [TestCase(true)]
-        [TestCase(false)]
-        public async Task GenerateRandomAsync_GenerateAdvancedCreatureBaseAttackBonus(bool asCharacter)
-        {
-            SetUpCreature("creature", asCharacter);
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
 
-            mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints)).Returns(951);
+        [TestCase(true, BaseAttackQuality.Good)]
+        [TestCase(true, BaseAttackQuality.Average)]
+        [TestCase(true, BaseAttackQuality.Poor)]
+        [TestCase(false, BaseAttackQuality.Good)]
+        [TestCase(false, BaseAttackQuality.Average)]
+        [TestCase(false, BaseAttackQuality.Poor)]
+        public async Task GenerateRandomAsync_GenerateAdvancedCreatureBaseAttackBonus(bool asCharacter, BaseAttackQuality baseAttackQuality)
+        {
+            creatureData.BaseAttackQuality = baseAttackQuality;
+            SetUpCreature("creature", asCharacter);
+
+            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(baseAttackQuality, advancedHitPoints)).Returns(951);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.BaseAttackBonus, Is.EqualTo(951));

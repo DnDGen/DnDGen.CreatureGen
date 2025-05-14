@@ -206,7 +206,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             var creatureType = GetCreatureType(creature);
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             var hasSpellLikeAbilityAttack = table[creature]
-                .Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>)
+                .Select(DataHelper.Parse<AttackDataSelection>)
                 .Any(s => s.Name == FeatConstants.SpecialQualities.SpellLikeAbility);
 
             //INFO: Want to ignore constant effects such as Doppelganger's Detect Thoughts and Copper Dragon's Spider Climb
@@ -216,11 +216,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(hasSpellLikeAbilityAttack, Is.EqualTo(hasSpellLikeAbilitySpecialQuality));
         }
 
-        private CreatureType GetCreatureType(string creatureName)
-        {
-            var types = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, creatureName);
-            return new CreatureType(types);
-        }
+        private CreatureType GetCreatureType(string creatureName) => new(creatureData[creatureName].Types);
 
         private void CreatureWithPsionicAttack_HasPsionicSpecialQuality(string creature)
         {
@@ -229,7 +225,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             var creatureType = GetCreatureType(creature);
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
             var hasPsionicAttack = table[creature]
-                .Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>)
+                .Select(DataHelper.Parse<AttackDataSelection>)
                 .Any(s => s.Name == FeatConstants.SpecialQualities.Psionic);
 
             var hasPsionicSpecialQuality = specialQualities.Any(q => q.Feat == FeatConstants.SpecialQualities.Psionic);

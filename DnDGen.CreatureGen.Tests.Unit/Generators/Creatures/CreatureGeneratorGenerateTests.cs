@@ -5,6 +5,7 @@ using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Items;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
@@ -287,7 +288,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             SetUpCreature("creature", asCharacter, null, null, null, null, "template");
             var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null, 1337, null, "template");
             mockAdvancementSelector
-                .Setup(s => s.IsAdvanced("creature", It.Is<IEnumerable<string>>(t => t.IsEquivalentTo(new[] { "template" })), null))
+                .Setup(s => s.IsAdvanced(
+                    "creature",
+                    It.Is<IEnumerable<string>>(t => t.IsEquivalentTo(new[] { "template" })),
+                    creatureData.GetEffectiveHitDiceQuantity(asCharacter),
+                    null))
                 .Returns(false);
 
             var creature = creatureGenerator.Generate(asCharacter, "creature", null, "template");
@@ -601,22 +606,34 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.SpecialQualities, Is.EqualTo(advancedSpecialQualities));
         }
 
-        [TestCase(true)]
-        [TestCase(false)]
-        public void Generate_GenerateCreatureBaseAttackBonus(bool asCharacter)
+        [TestCase(true, BaseAttackQuality.Good)]
+        [TestCase(true, BaseAttackQuality.Average)]
+        [TestCase(true, BaseAttackQuality.Poor)]
+        [TestCase(false, BaseAttackQuality.Good)]
+        [TestCase(false, BaseAttackQuality.Average)]
+        [TestCase(false, BaseAttackQuality.Poor)]
+        public void Generate_GenerateCreatureBaseAttackBonus(bool asCharacter, BaseAttackQuality baseAttackQuality)
         {
+            creatureData.BaseAttackQuality = baseAttackQuality;
             SetUpCreature("creature", asCharacter, null, null, null, null, "template");
+
             var creature = creatureGenerator.Generate(asCharacter, "creature", null, "template");
             Assert.That(creature.BaseAttackBonus, Is.EqualTo(753));
         }
-        [TestCase(true)]
-        [TestCase(false)]
-        public void Generate_GenerateAdvancedCreatureBaseAttackBonus(bool asCharacter)
-        {
-            SetUpCreature("creature", asCharacter, null, null, null, null, "template");
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null, 1337, null, "template");
 
-            mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints)).Returns(951);
+        [TestCase(true, BaseAttackQuality.Good)]
+        [TestCase(true, BaseAttackQuality.Average)]
+        [TestCase(true, BaseAttackQuality.Poor)]
+        [TestCase(false, BaseAttackQuality.Good)]
+        [TestCase(false, BaseAttackQuality.Average)]
+        [TestCase(false, BaseAttackQuality.Poor)]
+        public void Generate_GenerateAdvancedCreatureBaseAttackBonus(bool asCharacter, BaseAttackQuality baseAttackQuality)
+        {
+            creatureData.BaseAttackQuality = baseAttackQuality;
+            SetUpCreature("creature", asCharacter, null, null, null, null, "template");
+
+            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null, 1337, null, "template");
+            mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(baseAttackQuality, advancedHitPoints)).Returns(951);
 
             var creature = creatureGenerator.Generate(asCharacter, "creature", null, "template");
             Assert.That(creature.BaseAttackBonus, Is.EqualTo(951));
