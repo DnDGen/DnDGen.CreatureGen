@@ -57,6 +57,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
             Assert.That(creature.Magic, Is.Not.Null);
             Assert.That(creature.Languages, Is.Empty);
             Assert.That(creature.Demographics, Is.Not.Null);
+            Assert.That(creature.IsAdvanced, Is.False);
+            Assert.That(creature.HasSkeleton, Is.False);
         }
 
         [TestCase(3, -4)]

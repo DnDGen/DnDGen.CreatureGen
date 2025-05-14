@@ -35,6 +35,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
+        public void Build_ReturnsHasSkeleton()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
         public void Build_ReturnsCreaturePrototypes()
         {
             var data = new Dictionary<string, IEnumerable<CreatureDataSelection>>

@@ -89,10 +89,9 @@ namespace DnDGen.CreatureGen.Templates
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
-            var hasSkeleton = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton);
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
-                hasSkeleton,
+                creature.HasSkeleton,
                 creature.HitPoints.HitDiceQuantity,
                 creature.Name,
                 asCharacter,
@@ -311,7 +310,8 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureAttacks(Creature creature)
         {
-            creature.BaseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(creature.Type, creature.HitPoints);
+            //INFO: Skeletons have a Poor base attack quality because they are undead
+            creature.BaseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(BaseAttackQuality.Poor, creature.HitPoints);
 
             var skeletonAttacks = attacksGenerator.GenerateAttacks(
                 CreatureConstants.Templates.Skeleton,
@@ -442,10 +442,9 @@ namespace DnDGen.CreatureGen.Templates
 
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
-            var hasSkeleton = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton);
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
-                hasSkeleton,
+                creature.HasSkeleton,
                 creature.HitPoints.HitDiceQuantity,
                 creature.Name,
                 asCharacter,
@@ -587,7 +586,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private (bool Compatible, string Reason) IsCompatible(
             IEnumerable<string> types,
-            IEnumerable<string> hasSkeleton,
+            bool hasSkeleton,
             double creatureHitDiceQuantity,
             string creature,
             bool asCharacter,
@@ -636,7 +635,7 @@ namespace DnDGen.CreatureGen.Templates
         private (bool Compatible, string Reason) IsCompatible(
             bool asCharacter,
             IEnumerable<string> types,
-            IEnumerable<string> hasSkeleton,
+            bool hasSkeleton,
             string creature,
             double creatureHitDiceQuantity)
         {
@@ -649,7 +648,7 @@ namespace DnDGen.CreatureGen.Templates
             if (types.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
                 return (false, "Creature is Incorporeal");
 
-            if (!hasSkeleton.Contains(creature))
+            if (!hasSkeleton)
                 return (false, "Creature does not have a skeleton");
 
             if (creatureHitDiceQuantity > 20)
@@ -686,11 +685,10 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, bool asCharacter, Filters filters = null)
         {
-            var hasSkeleton = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton);
             var compatiblePrototypes = sourceCreatures
                 .Where(p => IsCompatible(
                     p.Type.AllTypes,
-                    hasSkeleton,
+                    p.HasSkeleton,
                     p.HitDiceQuantity,
                     p.Name,
                     asCharacter,

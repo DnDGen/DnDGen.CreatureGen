@@ -23,6 +23,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
     [TestFixture]
     internal class CreatureGeneratorGenerateAsyncTests : CreatureGeneratorTests
     {
+        [Test]
+        public void GenerateAsync_ReturnsHasSkeleton()
+        {
+            Assert.Fail("not yet written");
+        }
+
         [TestCase(true)]
         [TestCase(false)]
         public async Task GenerateAsync_IfCreatureHasNotHitDice_ChallengeRatingIsZero(bool asCharacter)

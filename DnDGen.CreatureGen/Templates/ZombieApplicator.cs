@@ -23,7 +23,6 @@ namespace DnDGen.CreatureGen.Templates
     internal class ZombieApplicator : TemplateApplicator
     {
         private readonly ICollectionSelector collectionSelector;
-        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private readonly Dice dice;
         private readonly IAttacksGenerator attacksGenerator;
         private readonly IFeatsGenerator featsGenerator;
@@ -38,7 +37,6 @@ namespace DnDGen.CreatureGen.Templates
         public ZombieApplicator(
             ICollectionSelector collectionSelector,
             ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
-            ICollectionTypeAndAmountSelector typeAndAmountSelector,
             Dice dice,
             IAttacksGenerator attacksGenerator,
             IFeatsGenerator featsGenerator,
@@ -48,7 +46,6 @@ namespace DnDGen.CreatureGen.Templates
             IDemographicsGenerator demographicsGenerator)
         {
             this.collectionSelector = collectionSelector;
-            this.typeAndAmountSelector = typeAndAmountSelector;
             this.dice = dice;
             this.attacksGenerator = attacksGenerator;
             this.featsGenerator = featsGenerator;
@@ -95,10 +92,9 @@ namespace DnDGen.CreatureGen.Templates
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
-            var hasSkeleton = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton);
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
-                hasSkeleton,
+                creature.HasSkeleton,
                 creature.HitPoints.HitDiceQuantity,
                 creature.Name,
                 asCharacter,
@@ -320,7 +316,8 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureAttacks(Creature creature)
         {
-            creature.BaseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(creature.Type, creature.HitPoints);
+            //INFO: Zombies have a Poor base attack quality because they are undead
+            creature.BaseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(BaseAttackQuality.Poor, creature.HitPoints);
 
             var zombieAttacks = attacksGenerator.GenerateAttacks(
                 CreatureConstants.Templates.Zombie,
@@ -442,10 +439,9 @@ namespace DnDGen.CreatureGen.Templates
 
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
-            var hasSkeleton = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton);
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
-                hasSkeleton,
+                creature.HasSkeleton,
                 creature.HitPoints.HitDiceQuantity,
                 creature.Name,
                 asCharacter,
@@ -587,7 +583,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private (bool Compatible, string Reason) IsCompatible(
             IEnumerable<string> types,
-            IEnumerable<string> hasSkeleton,
+            bool hasSkeleton,
             double creatureHitDiceQuantity,
             string creature,
             bool asCharacter,
@@ -636,7 +632,7 @@ namespace DnDGen.CreatureGen.Templates
         private (bool Compatible, string Reason) IsCompatible(
             bool asCharacter,
             IEnumerable<string> types,
-            IEnumerable<string> hasSkeleton,
+            bool hasSkeleton,
             string creature,
             double creatureHitDiceQuantity)
         {
@@ -649,7 +645,7 @@ namespace DnDGen.CreatureGen.Templates
             if (types.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
                 return (false, "Creature is Incorporeal");
 
-            if (!hasSkeleton.Contains(creature))
+            if (!hasSkeleton)
                 return (false, "Creature does not have a skeleton");
 
             if (creatureHitDiceQuantity > 10)
@@ -687,11 +683,10 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, bool asCharacter, Filters filters = null)
         {
-            var hasSkeleton = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.HasSkeleton);
             var compatiblePrototypes = sourceCreatures
                 .Where(p => IsCompatible(
                     p.Type.AllTypes,
-                    hasSkeleton,
+                    p.HasSkeleton,
                     p.HitDiceQuantity,
                     p.Name,
                     asCharacter,

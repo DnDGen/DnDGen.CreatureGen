@@ -21,6 +21,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
     [TestFixture]
     internal class CreatureGeneratorGenerateTests : CreatureGeneratorTests
     {
+        [Test]
+        public void Generate_ReturnsHasSkeleton()
+        {
+            Assert.Fail("not yet written");
+        }
+
         [TestCase(true)]
         [TestCase(false)]
         public void Generate_InvalidCreatureTemplateComboThrowsException(bool asCharacter)

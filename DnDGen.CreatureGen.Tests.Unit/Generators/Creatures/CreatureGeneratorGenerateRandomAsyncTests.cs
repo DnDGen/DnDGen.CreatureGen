@@ -24,6 +24,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
     [TestFixture]
     internal class CreatureGeneratorGenerateRandomAsyncTests : CreatureGeneratorTests
     {
+        [Test]
+        public void GenerateRandomAsync_ReturnsHasSkeleton()
+        {
+            Assert.Fail("not yet written");
+        }
+
         [TestCase(true, null, null, null)]
         [TestCase(true, null, null, "my alignment")]
         [TestCase(true, null, "my challenge rating", null)]

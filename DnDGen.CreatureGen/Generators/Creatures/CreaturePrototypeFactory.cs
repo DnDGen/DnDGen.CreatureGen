@@ -47,7 +47,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                     ChallengeRating = creatureData.GetEffectiveChallengeRating(asCharacter),
                     HitDiceQuantity = creatureData.GetEffectiveHitDiceQuantity(asCharacter),
                     LevelAdjustment = creatureData.LevelAdjustment,
-                    Type = new CreatureType(creatureData.Types)
+                    Type = new CreatureType(creatureData.Types),
+                    HasSkeleton = creatureData.HasSkeleton,
                 };
 
                 var missingAbilityNames = abilityNames.Except(prototype.Abilities.Keys).ToArray();

@@ -140,7 +140,7 @@ namespace DnDGen.CreatureGen.Templates
 
             //INFO: This depends on special qualities
             // Attacks
-            var animalAttacks = UpdateCreatureAttacks(creature, animalCreatureType, animalHitPoints, animalData);
+            var animalAttacks = UpdateCreatureAttacks(creature, animalHitPoints, animalData);
 
             //INFO: This depends on special qualities, attacks, skills, abilities, hit points, 
             // Feats
@@ -514,11 +514,10 @@ namespace DnDGen.CreatureGen.Templates
 
         private (IEnumerable<Attack> AnimalAttacks, int AnimalBaseAttack) UpdateCreatureAttacks(
             Creature creature,
-            CreatureType animalCreatureType,
             HitPoints animalHitPoints,
             CreatureDataSelection animalData)
         {
-            var baseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(animalCreatureType, animalHitPoints);
+            var baseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(animalData.BaseAttackQuality, animalHitPoints);
             creature.BaseAttackBonus += baseAttackBonus;
 
             foreach (var attack in creature.Attacks)
@@ -712,7 +711,7 @@ namespace DnDGen.CreatureGen.Templates
 
             //INFO: This depends on special qualities
             // Attacks
-            var attackTask = Task.Run(() => UpdateCreatureAttacks(creature, animalCreatureType, animalHitPoints, animalData));
+            var attackTask = Task.Run(() => UpdateCreatureAttacks(creature, animalHitPoints, animalData));
             tasks.Add(attackTask);
 
             await Task.WhenAll(tasks);

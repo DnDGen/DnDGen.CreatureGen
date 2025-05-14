@@ -26,6 +26,7 @@ namespace DnDGen.CreatureGen.Creatures
         public IEnumerable<string> Languages { get; set; }
         public bool IsAdvanced { get; set; }
         public Demographics Demographics { get; set; }
+        public bool HasSkeleton { get; set; }
 
         public int InitiativeBonus { get; set; }
         public int TotalInitiativeBonus

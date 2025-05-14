@@ -1,5 +1,6 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
@@ -13,6 +14,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
     public class AbilityAdjustmentsTests : TypesAndAmountsTests
     {
         private ICollectionTypeAndAmountSelector typesAndAmountsSelector;
+        private ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
 
         protected override string tableName => TableNameConstants.TypeAndAmount.AbilityAdjustments;
 
@@ -20,6 +22,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         public void Setup()
         {
             typesAndAmountsSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
+            creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
         }
 
         [Test]
@@ -3896,7 +3899,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         [TestCase(CreatureConstants.Types.Vermin, AbilityConstants.Intelligence)]
         public void Type_DoesNotHaveAbility(string creatureType, string ability)
         {
-            var creatures = ExplodeCollection(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var creatures = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
+                .Where(kvp => kvp.Value.Single().Types.Contains(creatureType))
+                .Select(kvp => kvp.Key);
             var abilities = typesAndAmountsSelector.SelectAllFrom(Config.Name, tableName);
 
             foreach (var creature in creatures)
@@ -3919,7 +3924,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
         public void Type_HasAllAbilities(string creatureType)
         {
-            var creatures = ExplodeCollection(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var creatures = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
+                .Where(kvp => kvp.Value.Single().Types.Contains(creatureType))
+                .Select(kvp => kvp.Key);
             var abilities = typesAndAmountsSelector.SelectAllFrom(Config.Name, tableName);
             var templates = CreatureConstants.Templates.GetAll();
 
@@ -3938,7 +3945,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         [Test]
         public void AnimalsHaveLowIntelligence()
         {
-            var animals = ExplodeCollection(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
+            var animals = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
+                .Where(kvp => kvp.Value.Single().Types.Contains(CreatureConstants.Types.Animal))
+                .Select(kvp => kvp.Key);
             var abilities = typesAndAmountsSelector.SelectAllFrom(Config.Name, tableName);
 
             foreach (var animal in animals)

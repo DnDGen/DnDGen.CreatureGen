@@ -1,9 +1,9 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Attacks;
-using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using System;
@@ -14,35 +14,26 @@ namespace DnDGen.CreatureGen.Generators.Attacks
 {
     internal class AttacksGenerator : IAttacksGenerator
     {
-        private readonly ICollectionSelector collectionSelector;
         private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private readonly IAttackSelector attackSelector;
 
-        public AttacksGenerator(ICollectionSelector collectionSelector, ICollectionTypeAndAmountSelector typeAndAmountSelector, IAttackSelector attackSelector)
+        public AttacksGenerator(ICollectionTypeAndAmountSelector typeAndAmountSelector, IAttackSelector attackSelector)
         {
-            this.collectionSelector = collectionSelector;
             this.typeAndAmountSelector = typeAndAmountSelector;
             this.attackSelector = attackSelector;
         }
 
-        public int GenerateBaseAttackBonus(CreatureType creatureType, HitPoints hitPoints)
+        public int GenerateBaseAttackBonus(BaseAttackQuality baseAttackQuality, HitPoints hitPoints)
         {
             if (hitPoints.RoundedHitDiceQuantity == 0)
                 return 0;
 
-            //TODO: Alter this to be part of the creature data
-            var baseAttackQuality = collectionSelector.FindCollectionOf(
-                Config.Name,
-                TableNameConstants.Collection.CreatureGroups,
-                creatureType.Name,
-                GroupConstants.GoodBaseAttack, GroupConstants.AverageBaseAttack, GroupConstants.PoorBaseAttack);
-
             return baseAttackQuality switch
             {
-                GroupConstants.GoodBaseAttack => GetGoodBaseAttackBonus(hitPoints.RoundedHitDiceQuantity),
-                GroupConstants.AverageBaseAttack => GetAverageBaseAttackBonus(hitPoints.RoundedHitDiceQuantity),
-                GroupConstants.PoorBaseAttack => GetPoorBaseAttackBonus(hitPoints.RoundedHitDiceQuantity),
-                _ => throw new ArgumentException($"{creatureType.Name} has no base attack"),
+                BaseAttackQuality.Good => GetGoodBaseAttackBonus(hitPoints.RoundedHitDiceQuantity),
+                BaseAttackQuality.Average => GetAverageBaseAttackBonus(hitPoints.RoundedHitDiceQuantity),
+                BaseAttackQuality.Poor => GetPoorBaseAttackBonus(hitPoints.RoundedHitDiceQuantity),
+                _ => throw new ArgumentException($"Base Attack Quality {baseAttackQuality} is not valid"),
             };
         }
 

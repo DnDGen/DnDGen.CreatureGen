@@ -270,6 +270,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             creature.LevelAdjustment = creatureData.LevelAdjustment;
             creature.CasterLevel = creatureData.CasterLevel;
             creature.NumberOfHands = creatureData.NumberOfHands;
+            creature.HasSkeleton = creatureData.HasSkeleton;
 
             creature.Type = GetCreatureType(creatureData);
             creature.Demographics = demographicsGenerator.Generate(creatureName);
@@ -334,7 +335,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 creature.Size,
                 creature.Alignment);
 
-            creature.BaseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(creature.Type, creature.HitPoints);
+            creature.BaseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(creatureData.BaseAttackQuality, creature.HitPoints);
 
             creature.Attacks = attacksGenerator.GenerateAttacks(
                 creatureName,
