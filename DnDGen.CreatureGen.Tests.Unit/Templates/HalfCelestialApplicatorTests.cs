@@ -37,7 +37,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private TemplateApplicator applicator;
         private Creature baseCreature;
         private Mock<ICollectionSelector> mockCollectionSelector;
-        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<ISpeedsGenerator> mockSpeedsGenerator;
         private Mock<IAttacksGenerator> mockAttacksGenerator;
         private Mock<IFeatsGenerator> mockFeatsGenerator;
@@ -51,7 +50,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void Setup()
         {
             mockCollectionSelector = new Mock<ICollectionSelector>();
-            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
             mockSpeedsGenerator = new Mock<ISpeedsGenerator>();
             mockAttacksGenerator = new Mock<IAttacksGenerator>();
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
@@ -63,7 +61,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             applicator = new HalfCelestialApplicator(
                 mockCollectionSelector.Object,
-                mockTypeAndAmountSelector.Object,
                 mockSpeedsGenerator.Object,
                 mockAttacksGenerator.Object,
                 mockFeatsGenerator.Object,
@@ -79,8 +76,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithMinimumAbility(AbilityConstants.Intelligence, 6)
                 .Build();
 
-            var speeds = new Dictionary<string, Measurement>();
-            speeds[SpeedConstants.Fly] = new Measurement("furlongs");
+            var speeds = new Dictionary<string, Measurement>
+            {
+                [SpeedConstants.Fly] = new Measurement("furlongs")
+            };
             speeds[SpeedConstants.Fly].Description = "the goodest";
             speeds[SpeedConstants.Fly].Value = 666;
 
@@ -1779,46 +1778,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures, Is.Empty);
         }
 
-        private Dictionary<string, IEnumerable<CreatureDataSelection>> SetUpCreatureData(string cr = ChallengeRatingConstants.CR1)
+        private Dictionary<string, CreatureDataSelection> SetUpCreatureData(string cr = ChallengeRatingConstants.CR1, double amount = 1)
         {
-            var data = new Dictionary<string, IEnumerable<CreatureDataSelection>>
+            var data = new Dictionary<string, CreatureDataSelection>
             {
-                ["my creature"] = [new CreatureDataSelection { ChallengeRating = cr }],
-                ["my other creature"] = [new CreatureDataSelection { ChallengeRating = cr }],
-                ["wrong creature 1"] = [new CreatureDataSelection { ChallengeRating = cr }],
-                ["wrong creature 2"] = [new CreatureDataSelection { ChallengeRating = cr }],
-                ["wrong creature 3"] = [new CreatureDataSelection { ChallengeRating = cr }],
-                ["wrong creature 4"] = [new CreatureDataSelection { ChallengeRating = cr }],
-                ["wrong creature 5"] = [new CreatureDataSelection { ChallengeRating = cr }],
-                ["wrong creature 6"] = [new CreatureDataSelection { ChallengeRating = cr }],
+                ["my creature"] = new() { ChallengeRating = cr, HitDiceQuantity = amount },
+                ["my other creature"] = new() { ChallengeRating = cr, HitDiceQuantity = amount },
+                ["wrong creature 1"] = new() { ChallengeRating = cr, HitDiceQuantity = amount },
+                ["wrong creature 2"] = new() { ChallengeRating = cr, HitDiceQuantity = amount },
+                ["wrong creature 3"] = new() { ChallengeRating = cr, HitDiceQuantity = amount },
+                ["wrong creature 4"] = new() { ChallengeRating = cr, HitDiceQuantity = amount },
+                ["wrong creature 5"] = new() { ChallengeRating = cr, HitDiceQuantity = amount },
+                ["wrong creature 6"] = new() { ChallengeRating = cr, HitDiceQuantity = amount },
             };
 
             mockCreatureDataSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData))
-                .Returns(data);
+                .Returns(data.ToDictionary(kvp => kvp.Key, kvp => new[] { kvp.Value } as IEnumerable<CreatureDataSelection>));
 
             return data;
-        }
-
-        private Dictionary<string, IEnumerable<TypeAndAmountDataSelection>> SetUpHitDice(double amount = 1)
-        {
-            var hitDice = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
-            {
-                ["my creature"] = [new() { AmountAsDouble = amount }],
-                ["my other creature"] = [new() { AmountAsDouble = amount }],
-                ["wrong creature 1"] = [new() { AmountAsDouble = amount }],
-                ["wrong creature 2"] = [new() { AmountAsDouble = amount }],
-                ["wrong creature 3"] = [new() { AmountAsDouble = amount }],
-                ["wrong creature 4"] = [new() { AmountAsDouble = amount }],
-                ["wrong creature 5"] = [new() { AmountAsDouble = amount }],
-                ["wrong creature 6"] = [new() { AmountAsDouble = amount }],
-            };
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice))
-                .Returns(hitDice);
-
-            return hitDice;
         }
 
         [Test]
