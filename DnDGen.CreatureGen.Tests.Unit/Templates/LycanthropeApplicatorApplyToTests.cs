@@ -101,14 +101,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             animalHitPoints = new HitPoints();
             random = new Random();
             animalData = new CreatureDataSelection();
-            animalSkills = new List<Skill>();
-            animalAttacks = new List<Attack>();
-            animalSpecialQualities = new List<Feat>();
-            animalFeats = new List<Feat>();
-            animalSaves = new Dictionary<string, Save>();
-            animalSpeeds = new Dictionary<string, Measurement>();
-            rollSequences = new Dictionary<string, ISetupSequentialResult<IEnumerable<int>>>();
-            averageSequences = new Dictionary<string, ISetupSequentialResult<double>>();
+            animalSkills = [];
+            animalAttacks = [];
+            animalSpecialQualities = [];
+            animalFeats = [];
+            animalSaves = [];
+            animalSpeeds = [];
+            rollSequences = [];
+            averageSequences = [];
 
             mockHitPointsGenerator
                 .Setup(g => g.RegenerateWith(baseCreature.HitPoints, It.IsAny<IEnumerable<Feat>>()))
@@ -314,6 +314,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             animalData.CasterLevel = 0;
             animalData.NumberOfHands = random.Next(3);
             animalData.CanUseEquipment = false;
+            animalData.HitDiceQuantity = hitDiceQuantity > -1 ? hitDiceQuantity : random.Next(30) + 1;
+            animalData.HitDie = hitDiceDie > 0 ? hitDiceDie : random.Next(7) + 6;
+            animalData.BaseAttackQuality = BaseAttackQuality.Average;
             animalData.NaturalArmor = naturalArmor > -1 ? naturalArmor : random.Next(20);
 
             mockCreatureDataSelector
@@ -321,19 +324,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(animalData);
 
             //Hit points
-            var hitDie = new HitDice();
-            hitDie.Quantity = hitDiceQuantity > -1 ? hitDiceQuantity : random.Next(30) + 1;
-            hitDie.HitDie = hitDiceDie > 0 ? hitDiceDie : random.Next(7) + 6;
+            var hitDie = new HitDice
+            {
+                Quantity = animalData.GetEffectiveHitDiceQuantity(false),
+                HitDie = animalData.HitDie,
+            };
             animalHitPoints.HitDice.Add(hitDie);
 
             mockHitPointsGenerator
                 .Setup(g => g.GenerateFor(
-                    animal,
+                    hitDie.Quantity,
+                    hitDie.HitDie,
                     It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Animal),
                     baseCreature.Abilities[AbilityConstants.Constitution],
                     animalData.Size,
-                    0,
-                    false))
+                    0))
                 .Returns(animalHitPoints);
 
             if (roll == 0)
@@ -345,10 +350,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 average = hitDie.RoundedQuantity * hitDie.HitDie / 2d + hitDie.RoundedQuantity;
 
             SetUpRoll(hitDie, average);
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, animal))
-                .Returns(() => new() { AmountAsDouble = hitDie.Quantity });
 
             //Skills
             animalSkills.Add(new Skill("animal skill 1", baseCreature.Abilities[AbilityConstants.Strength], hitDie.RoundedQuantity + 3)
@@ -403,7 +404,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockAttacksGenerator
                 .Setup(g => g.GenerateBaseAttackBonus(
-                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
+                    animalData.BaseAttackQuality,
                     animalHitPoints))
                 .Returns(animalBaseAttack);
 

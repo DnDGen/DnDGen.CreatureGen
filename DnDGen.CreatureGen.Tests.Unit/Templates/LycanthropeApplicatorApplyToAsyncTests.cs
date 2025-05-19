@@ -153,6 +153,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             animalData.NumberOfHands = random.Next(3);
             animalData.CanUseEquipment = false;
             animalData.NaturalArmor = naturalArmor > -1 ? naturalArmor : random.Next(20);
+            animalData.HitDiceQuantity = hitDiceQuantity > -1 ? hitDiceQuantity : random.Next(30) + 1;
+            animalData.HitDie = hitDiceDie > 0 ? hitDiceDie : random.Next(7) + 6;
+            animalData.BaseAttackQuality = BaseAttackQuality.Average;
 
             mockCreatureDataSelector
                 .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, animal))
@@ -161,19 +164,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             //Hit points
             var hitDie = new HitDice
             {
-                Quantity = hitDiceQuantity > -1 ? hitDiceQuantity : random.Next(30) + 1,
-                HitDie = hitDiceDie > 0 ? hitDiceDie : random.Next(7) + 6
+                Quantity = animalData.GetEffectiveHitDiceQuantity(false),
+                HitDie = animalData.HitDie,
             };
             animalHitPoints.HitDice.Add(hitDie);
 
             mockHitPointsGenerator
                 .Setup(g => g.GenerateFor(
-                    animal,
+                    hitDie.Quantity,
+                    hitDie.HitDie,
                     It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Animal),
                     baseCreature.Abilities[AbilityConstants.Constitution],
                     animalData.Size,
-                    0,
-                    false))
+                    0))
                 .Returns(animalHitPoints);
 
             if (roll == 0)
@@ -185,10 +188,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 average = hitDie.RoundedQuantity * hitDie.HitDie / 2d + hitDie.RoundedQuantity;
 
             SetUpRoll(hitDie, average);
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.HitDice, animal))
-                .Returns(() => new() { AmountAsDouble = hitDie.Quantity });
 
             //Skills
             animalSkills.Add(new Skill("animal skill 1", baseCreature.Abilities[AbilityConstants.Strength], hitDie.RoundedQuantity + 3)
@@ -243,7 +242,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockAttacksGenerator
                 .Setup(g => g.GenerateBaseAttackBonus(
-                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
+                    animalData.BaseAttackQuality,
                     animalHitPoints))
                 .Returns(animalBaseAttack);
 

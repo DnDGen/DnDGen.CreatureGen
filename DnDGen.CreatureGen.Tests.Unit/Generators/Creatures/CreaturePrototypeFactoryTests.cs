@@ -45,7 +45,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var data = new Dictionary<string, IEnumerable<CreatureDataSelection>>
             {
-                ["creature 1"] = [new CreatureDataSelection
+                ["creature 1"] = [new()
                 {
                     CasterLevel = 0,
                     ChallengeRating = ChallengeRatingConstants.CR2,
@@ -54,7 +54,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     HitDiceQuantity = 0.5,
                     Types = ["my creature type"],
                 }],
-                ["wrong creature"] = [new CreatureDataSelection
+                ["wrong creature"] = [new()
                 {
                     CasterLevel = 666,
                     ChallengeRating = 666.ToString(),
@@ -63,7 +63,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     HitDiceQuantity = 666,
                     Types = ["wrong creature type"],
                 }],
-                ["creature 2"] = [new CreatureDataSelection
+                ["creature 2"] = [new()
                 {
                     CasterLevel = 1,
                     ChallengeRating = ChallengeRatingConstants.CR1,
@@ -72,7 +72,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     HitDiceQuantity = 0.5,
                     Types = [CreatureConstants.Types.Humanoid],
                 }],
-                ["creature 3"] = [new CreatureDataSelection
+                ["creature 3"] = [new()
                 {
                     CasterLevel = 2,
                     ChallengeRating = ChallengeRatingConstants.CR1_2nd,
@@ -81,7 +81,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     HitDiceQuantity = 1,
                     Types = ["my other creature type", "my other subtype"],
                 }],
-                ["creature 4"] = [new CreatureDataSelection
+                ["creature 4"] = [new()
                 {
                     CasterLevel = 3,
                     ChallengeRating = ChallengeRatingConstants.CR3,
@@ -90,7 +90,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     HitDiceQuantity = 1,
                     Types = [CreatureConstants.Types.Humanoid, "my subtype"],
                 }],
-                ["creature 5"] = [new CreatureDataSelection
+                ["creature 5"] = [new()
                 {
                     CasterLevel = 4,
                     ChallengeRating = ChallengeRatingConstants.CR1_3rd,
@@ -99,7 +99,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     HitDiceQuantity = 2,
                     Types = ["creature type 2", "subtype 1", "subtype 2"],
                 }],
-                ["creature 6"] = [new CreatureDataSelection
+                ["creature 6"] = [new()
                 {
                     CasterLevel = 5,
                     ChallengeRating = ChallengeRatingConstants.CR4,
@@ -108,7 +108,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     HitDiceQuantity = 3,
                     Types = ["creature type 3", "subtype 3"],
                 }],
-                ["creature 7"] = [new CreatureDataSelection
+                ["creature 7"] = [new()
                 {
                     CasterLevel = 6,
                     ChallengeRating = ChallengeRatingConstants.CR1_4th,
@@ -453,7 +453,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var data = new Dictionary<string, IEnumerable<CreatureDataSelection>>
             {
-                ["creature 1"] = [new CreatureDataSelection
+                ["creature 1"] = [new()
                 {
                     CasterLevel = 0,
                     ChallengeRating = ChallengeRatingConstants.CR2,
@@ -462,7 +462,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     HitDiceQuantity = 0.5,
                     Types = ["my creature type"],
                 }],
-                ["wrong creature"] = [new CreatureDataSelection
+                ["wrong creature"] = [new()
                 {
                     CasterLevel = 666,
                     ChallengeRating = 666.ToString(),
@@ -471,7 +471,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     HitDiceQuantity = 666,
                     Types = ["wrong creature type"],
                 }],
-                ["creature 2"] = [new CreatureDataSelection
+                ["creature 2"] = [new()
                 {
                     CasterLevel = 1,
                     ChallengeRating = ChallengeRatingConstants.CR1,
@@ -480,7 +480,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     HitDiceQuantity = 0.5,
                     Types = [CreatureConstants.Types.Humanoid],
                 }],
-                ["creature 3"] = [new CreatureDataSelection
+                ["creature 3"] = [new()
                 {
                     CasterLevel = 2,
                     ChallengeRating = ChallengeRatingConstants.CR1_2nd,
@@ -489,7 +489,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     HitDiceQuantity = 1,
                     Types = ["my other creature type", "my other subtype"],
                 }],
-                ["creature 4"] = [new CreatureDataSelection
+                ["creature 4"] = [new()
                 {
                     CasterLevel = 3,
                     ChallengeRating = ChallengeRatingConstants.CR3,
@@ -498,7 +498,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     HitDiceQuantity = 1,
                     Types = [CreatureConstants.Types.Humanoid, "my subtype"],
                 }],
-                ["creature 5"] = [new CreatureDataSelection
+                ["creature 5"] = [new()
                 {
                     CasterLevel = 4,
                     ChallengeRating = ChallengeRatingConstants.CR1_3rd,
@@ -507,7 +507,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     HitDiceQuantity = 2,
                     Types = ["creature type 2", "subtype 1", "subtype 2"],
                 }],
-                ["creature 6"] = [new CreatureDataSelection
+                ["creature 6"] = [new()
                 {
                     CasterLevel = 5,
                     ChallengeRating = ChallengeRatingConstants.CR4,
@@ -516,7 +516,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     HitDiceQuantity = 3,
                     Types = ["creature type 3", "subtype 3"],
                 }],
-                ["creature 7"] = [new CreatureDataSelection
+                ["creature 7"] = [new()
                 {
                     CasterLevel = 6,
                     ChallengeRating = ChallengeRatingConstants.CR1_4th,
@@ -871,7 +871,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var data = new Dictionary<string, IEnumerable<CreatureDataSelection>>
             {
-                ["creature 1"] = [new CreatureDataSelection
+                ["creature 1"] = [new()
                 {
                     CasterLevel = casterLevel,
                     ChallengeRating = ChallengeRatingConstants.CR2,
