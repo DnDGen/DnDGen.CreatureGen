@@ -4479,6 +4479,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithName("another creature")
                     .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
                     .WithHitDiceQuantity((lower + upper) / 2)
+                    .WithSkeleton(false)
                     .Build(),
                 new CreaturePrototypeBuilder()
                     .WithTestValues()
@@ -4629,6 +4630,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithName("another creature")
                     .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
                     .WithHitDiceQuantity(lower)
+                    .WithSkeleton(false)
                     .Build(),
                 new CreaturePrototypeBuilder()
                     .WithTestValues()
@@ -4725,6 +4727,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithTestValues()
                     .WithName("another creature")
                     .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithSkeleton(false)
                     .Build(),
             };
 

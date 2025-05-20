@@ -34,10 +34,82 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 mockTypeAndAmountSelector.Object);
         }
 
-        [Test]
-        public void Build_ReturnsHasSkeleton()
+        [TestCase(true, true)]
+        [TestCase(true, false)]
+        [TestCase(false, true)]
+        [TestCase(false, false)]
+        public void Build_ReturnsHasSkeleton(bool asCharacter, bool hasSkeleton)
         {
-            Assert.Fail("not yet written");
+            var data = new Dictionary<string, IEnumerable<CreatureDataSelection>>
+            {
+                ["creature 1"] = [new()
+                {
+                    CasterLevel = 0,
+                    ChallengeRating = ChallengeRatingConstants.CR2,
+                    LevelAdjustment = null,
+                    Size = SizeConstants.Diminutive,
+                    HitDiceQuantity = 0.5,
+                    Types = ["my creature type"],
+                    HasSkeleton = hasSkeleton,
+                }],
+            };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData))
+                .Returns(data);
+
+            var alignments = new Dictionary<string, IEnumerable<string>>
+            {
+                ["creature 1"] = [AlignmentConstants.ChaoticEvil],
+            };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+
+            var abilities = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                [CreatureConstants.Human] =
+                [
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
+                ],
+                ["creature 1"] =
+                [
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
+                ],
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments))
+                .Returns(abilities);
+
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["creature 1"] = [],
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+
+            var creatures = new[]
+            {
+                "creature 1",
+            };
+
+            var prototypes = prototypeFactory.Build(creatures, asCharacter).ToArray();
+            Assert.That(prototypes, Has.Length.EqualTo(1));
+            Assert.That(prototypes[0].Name, Is.EqualTo("creature 1"));
+            Assert.That(prototypes[0].HasSkeleton, Is.EqualTo(hasSkeleton));
         }
 
         [Test]

@@ -3276,7 +3276,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend + bool.TrueString))
                 .Returns(fiendishCreatures);
 
-            SetUpCreatureData(original, hitDiceQuantity);
+            var data = SetUpCreatureData(original, hitDiceQuantity);
+            data["my creature"].Types = [CreatureConstants.Types.Giant, "subtype 1", "subtype 2"];
 
             var alignments = new Dictionary<string, IEnumerable<string>>
             {
@@ -3397,7 +3398,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
 
-            var data = SetUpCreatureData();
+            var data = SetUpCreatureData(hitDiceAmount: 2);
 
             var prototypes = new[]
             {
@@ -3473,7 +3474,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
             Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
             Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(1));
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(2));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
@@ -3506,7 +3507,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
             Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(1));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(2));
         }
 
         [Test]

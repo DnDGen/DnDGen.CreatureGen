@@ -3454,7 +3454,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(false, 20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
         [TestCase(false, 20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
         [TestCase(false, 20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
-        public void GetCompatiblePrototypes_FromNames_WithChallengeRating_ReturnCompatibleCreatures(bool asCharacter, double hitDiceQuantity, string original, string challengeRating)
+        public void GetCompatiblePrototypes_FromNames_WithChallengeRating_ReturnCompatibleCreatures(
+            bool asCharacter,
+            double hitDiceQuantity,
+            string original,
+            string challengeRating)
         {
             var creatures = new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1", "wrong creature 3" };
 
@@ -3476,7 +3480,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
 
-            var data = SetUpCreatureData(original);
+            var data = SetUpCreatureData(original, hitDiceQuantity);
             data["my other creature"].Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"];
             data["wrong creature 1"].HitDiceQuantity = ChallengeRatingConstants.IsGreaterThan(challengeRating, original) ? 0 : 666;
             data["wrong creature 2"].Types = [CreatureConstants.Types.Giant, "subtype 1", "subtype 2"];
@@ -3559,7 +3563,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
             Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(challengeRating));
             Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(hitDiceQuantity));
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(data["my creature"].GetEffectiveHitDiceQuantity(asCharacter)));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
@@ -3592,7 +3596,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
             Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(challengeRating));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(hitDiceQuantity));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(data["my other creature"].GetEffectiveHitDiceQuantity(asCharacter)));
         }
 
         [TestCase(CreatureConstants.Types.Subtypes.Augmented)]

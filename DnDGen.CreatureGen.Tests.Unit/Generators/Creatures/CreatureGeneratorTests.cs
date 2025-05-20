@@ -559,6 +559,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(g => g.SetArmorCheckPenalties(creatureName, skills, advancedEquipment))
                 .Returns(skills);
 
+            mockDemographicsGenerator
+                .Setup(g => g.AdjustDemographicsBySize(demographics, creatureData.Size, advancement.Size))
+                .Returns(demographics);
+
             return advancedHitPoints;
         }
     }

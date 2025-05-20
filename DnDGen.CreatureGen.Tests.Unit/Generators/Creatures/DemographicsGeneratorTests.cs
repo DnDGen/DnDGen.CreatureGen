@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
@@ -3513,6 +3514,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(updated.Weight.Value, Is.EqualTo(4413));
             Assert.That(updated.Weight.Unit, Is.EqualTo("pounds"));
             Assert.That(updated.Weight.Description, Is.EqualTo("eh++"));
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.SizeIncreases))]
+        public void AdjustDemographicsBySize_AdjustsMeasurements(string originalSize, string advancedSize, int heightMultiplier, int weightMultiplier)
+        {
+            var demographics = new Demographics();
+            demographics.Weight.Value = 2;
+            demographics.Height.Value = 2435;
+            demographics.Length.Value = 922;
+            demographics.Wingspan.Value = 2022;
+            demographics.Age.Value = 3546;
+            demographics.MaximumAge.Value = 4657;
+
+            var adjustedDemographics = generator.AdjustDemographicsBySize(demographics, originalSize, advancedSize);
+            Assert.That(adjustedDemographics.Age.Value, Is.EqualTo(3546));
+            Assert.That(adjustedDemographics.MaximumAge.Value, Is.EqualTo(4657));
+            Assert.That(adjustedDemographics.Height.Value, Is.EqualTo(2435 * heightMultiplier));
+            Assert.That(adjustedDemographics.Length.Value, Is.EqualTo(922 * heightMultiplier));
+            Assert.That(adjustedDemographics.Wingspan.Value, Is.EqualTo(2022 * heightMultiplier));
+            Assert.That(adjustedDemographics.Weight.Value, Is.EqualTo(2 * weightMultiplier));
         }
     }
 }

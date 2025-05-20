@@ -2553,7 +2553,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
 
-            var data = SetUpCreatureData();
+            var data = SetUpCreatureData(amount: 2);
 
             var prototypes = new[]
             {
@@ -2629,7 +2629,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
             Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
             Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(1));
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(2));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
@@ -2662,7 +2662,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
             Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(1));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(2));
         }
 
         [Test]
@@ -3520,7 +3520,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             }));
             Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
             Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(9));
+            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(13));
             Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(4));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
@@ -3554,7 +3554,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             }));
             Assert.That(compatibleCreatures[1].CasterLevel, Is.EqualTo(2022));
             Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.EqualTo(22));
+            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.EqualTo(26));
             Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
         }
 

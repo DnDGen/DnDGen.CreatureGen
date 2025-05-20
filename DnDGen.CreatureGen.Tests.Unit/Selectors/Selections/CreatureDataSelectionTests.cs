@@ -46,8 +46,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(CreatureDataSelection.Delimiter, Is.EqualTo('|').And.Not.EqualTo(selection.Separator));
         }
 
-        [Test]
-        public void Map_FromString_ReturnsSelection()
+        private string[] SetUpTestData()
         {
             var data = new string[selection.SectionCount];
             data[DataIndexConstants.CreatureData.ChallengeRating] = "my cr";
@@ -64,6 +63,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             data[DataIndexConstants.CreatureData.HitDiceQuantity] = "9.6";
             data[DataIndexConstants.CreatureData.HitDie] = "783";
             data[DataIndexConstants.CreatureData.HasSkeleton] = bool.TrueString;
+
+            return data;
+        }
+
+        [Test]
+        public void Map_FromString_ReturnsSelection()
+        {
+            var data = SetUpTestData();
 
             var newSelection = CreatureDataSelection.Map(data);
             Assert.That(newSelection, Is.Not.Null);
@@ -86,16 +93,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void Map_FromString_ReturnsSelection_NullLevelAdjustment()
         {
-            var data = new string[selection.SectionCount];
-            data[DataIndexConstants.CreatureData.ChallengeRating] = "my cr";
-            data[DataIndexConstants.CreatureData.Size] = "my size";
-            data[DataIndexConstants.CreatureData.Reach] = "926.6";
-            data[DataIndexConstants.CreatureData.Space] = "902.10";
-            data[DataIndexConstants.CreatureData.NumberOfHands] = "42";
-            data[DataIndexConstants.CreatureData.NaturalArmor] = "600";
-            data[DataIndexConstants.CreatureData.CasterLevel] = "1337";
+            var data = SetUpTestData();
             data[DataIndexConstants.CreatureData.LevelAdjustment] = string.Empty;
-            data[DataIndexConstants.CreatureData.CanUseEquipment] = bool.TrueString;
 
             var newSelection = CreatureDataSelection.Map(data);
             Assert.That(newSelection, Is.Not.Null);
@@ -112,16 +111,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void Map_FromString_ReturnsSelection_ZeroLevelAdjustment()
         {
-            var data = new string[selection.SectionCount];
-            data[DataIndexConstants.CreatureData.ChallengeRating] = "my cr";
-            data[DataIndexConstants.CreatureData.Size] = "my size";
-            data[DataIndexConstants.CreatureData.Reach] = "926.6";
-            data[DataIndexConstants.CreatureData.Space] = "902.10";
-            data[DataIndexConstants.CreatureData.NumberOfHands] = "42";
-            data[DataIndexConstants.CreatureData.NaturalArmor] = "600";
-            data[DataIndexConstants.CreatureData.CasterLevel] = "1337";
+            var data = SetUpTestData();
             data[DataIndexConstants.CreatureData.LevelAdjustment] = "0";
-            data[DataIndexConstants.CreatureData.CanUseEquipment] = bool.TrueString;
 
             var newSelection = CreatureDataSelection.Map(data);
             Assert.That(newSelection, Is.Not.Null);
@@ -139,15 +130,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [TestCase(false)]
         public void Map_FromString_ReturnsSelection_CanUseEquipment(bool equipment)
         {
-            var data = new string[selection.SectionCount];
-            data[DataIndexConstants.CreatureData.ChallengeRating] = "my cr";
-            data[DataIndexConstants.CreatureData.Size] = "my size";
-            data[DataIndexConstants.CreatureData.Reach] = "926.6";
-            data[DataIndexConstants.CreatureData.Space] = "902.10";
-            data[DataIndexConstants.CreatureData.NumberOfHands] = "42";
-            data[DataIndexConstants.CreatureData.NaturalArmor] = "600";
-            data[DataIndexConstants.CreatureData.CasterLevel] = "1337";
-            data[DataIndexConstants.CreatureData.LevelAdjustment] = "1336";
+            var data = SetUpTestData();
             data[DataIndexConstants.CreatureData.CanUseEquipment] = equipment.ToString();
 
             var newSelection = CreatureDataSelection.Map(data);
@@ -163,22 +146,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(newSelection.CanUseEquipment, Is.EqualTo(equipment));
         }
 
-        [TestCase(BaseAttackQuality.Poor)]
-        [TestCase(BaseAttackQuality.Average)]
-        [TestCase(BaseAttackQuality.Good)]
-        internal void Map_FromString_ReturnsSelection_BaseAttackQuality(BaseAttackQuality quality)
+        [Test]
+        public void Map_FromString_ReturnsSelection_BaseAttackQuality_Poor()
         {
-            var data = new string[selection.SectionCount];
-            data[DataIndexConstants.CreatureData.ChallengeRating] = "my cr";
-            data[DataIndexConstants.CreatureData.Size] = "my size";
-            data[DataIndexConstants.CreatureData.Reach] = "926.6";
-            data[DataIndexConstants.CreatureData.Space] = "902.10";
-            data[DataIndexConstants.CreatureData.NumberOfHands] = "42";
-            data[DataIndexConstants.CreatureData.NaturalArmor] = "600";
-            data[DataIndexConstants.CreatureData.CasterLevel] = "1337";
-            data[DataIndexConstants.CreatureData.LevelAdjustment] = "1336";
-            data[DataIndexConstants.CreatureData.CanUseEquipment] = bool.TrueString;
-            data[DataIndexConstants.CreatureData.BaseAttackQuality] = Convert.ToInt32(quality).ToString();
+            var data = SetUpTestData();
+            data[DataIndexConstants.CreatureData.BaseAttackQuality] = Convert.ToInt32(BaseAttackQuality.Poor).ToString();
 
             var newSelection = CreatureDataSelection.Map(data);
             Assert.That(newSelection, Is.Not.Null);
@@ -191,23 +163,53 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(newSelection.CasterLevel, Is.EqualTo(1337));
             Assert.That(newSelection.LevelAdjustment, Is.EqualTo(1336));
             Assert.That(newSelection.CanUseEquipment, Is.EqualTo(true));
-            Assert.That(newSelection.BaseAttackQuality, Is.EqualTo(quality));
+            Assert.That(newSelection.BaseAttackQuality, Is.EqualTo(BaseAttackQuality.Poor));
+        }
+
+        [Test]
+        public void Map_FromString_ReturnsSelection_BaseAttackQuality_Average()
+        {
+            var data = SetUpTestData();
+            data[DataIndexConstants.CreatureData.BaseAttackQuality] = Convert.ToInt32(BaseAttackQuality.Average).ToString();
+
+            var newSelection = CreatureDataSelection.Map(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.GetEffectiveChallengeRating(false), Is.EqualTo("my cr"));
+            Assert.That(newSelection.Size, Is.EqualTo("my size"));
+            Assert.That(newSelection.Reach, Is.EqualTo(926.6));
+            Assert.That(newSelection.Space, Is.EqualTo(902.10));
+            Assert.That(newSelection.NumberOfHands, Is.EqualTo(42));
+            Assert.That(newSelection.NaturalArmor, Is.EqualTo(600));
+            Assert.That(newSelection.CasterLevel, Is.EqualTo(1337));
+            Assert.That(newSelection.LevelAdjustment, Is.EqualTo(1336));
+            Assert.That(newSelection.CanUseEquipment, Is.EqualTo(true));
+            Assert.That(newSelection.BaseAttackQuality, Is.EqualTo(BaseAttackQuality.Average));
+        }
+
+        [Test]
+        public void Map_FromString_ReturnsSelection_BaseAttackQuality_Good()
+        {
+            var data = SetUpTestData();
+            data[DataIndexConstants.CreatureData.BaseAttackQuality] = Convert.ToInt32(BaseAttackQuality.Good).ToString();
+
+            var newSelection = CreatureDataSelection.Map(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.GetEffectiveChallengeRating(false), Is.EqualTo("my cr"));
+            Assert.That(newSelection.Size, Is.EqualTo("my size"));
+            Assert.That(newSelection.Reach, Is.EqualTo(926.6));
+            Assert.That(newSelection.Space, Is.EqualTo(902.10));
+            Assert.That(newSelection.NumberOfHands, Is.EqualTo(42));
+            Assert.That(newSelection.NaturalArmor, Is.EqualTo(600));
+            Assert.That(newSelection.CasterLevel, Is.EqualTo(1337));
+            Assert.That(newSelection.LevelAdjustment, Is.EqualTo(1336));
+            Assert.That(newSelection.CanUseEquipment, Is.EqualTo(true));
+            Assert.That(newSelection.BaseAttackQuality, Is.EqualTo(BaseAttackQuality.Good));
         }
 
         [Test]
         public void Map_FromString_ReturnsSelection_WithSubtypes()
         {
-            var data = new string[selection.SectionCount];
-            data[DataIndexConstants.CreatureData.ChallengeRating] = "my cr";
-            data[DataIndexConstants.CreatureData.Size] = "my size";
-            data[DataIndexConstants.CreatureData.Reach] = "926.6";
-            data[DataIndexConstants.CreatureData.Space] = "902.10";
-            data[DataIndexConstants.CreatureData.NumberOfHands] = "42";
-            data[DataIndexConstants.CreatureData.NaturalArmor] = "600";
-            data[DataIndexConstants.CreatureData.CasterLevel] = "1337";
-            data[DataIndexConstants.CreatureData.LevelAdjustment] = "1336";
-            data[DataIndexConstants.CreatureData.CanUseEquipment] = bool.TrueString;
-            data[DataIndexConstants.CreatureData.BaseAttackQuality] = "1";
+            var data = SetUpTestData();
             data[DataIndexConstants.CreatureData.Types] = "my type|my subtype|my other subtype";
 
             var newSelection = CreatureDataSelection.Map(data);
@@ -229,20 +231,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [TestCase(false)]
         public void Map_FromString_ReturnsSelection_HasSkeleton(bool hasSkeleton)
         {
-            var data = new string[selection.SectionCount];
-            data[DataIndexConstants.CreatureData.ChallengeRating] = "my cr";
-            data[DataIndexConstants.CreatureData.Size] = "my size";
-            data[DataIndexConstants.CreatureData.Reach] = "926.6";
-            data[DataIndexConstants.CreatureData.Space] = "902.10";
-            data[DataIndexConstants.CreatureData.NumberOfHands] = "42";
-            data[DataIndexConstants.CreatureData.NaturalArmor] = "600";
-            data[DataIndexConstants.CreatureData.CasterLevel] = "1337";
-            data[DataIndexConstants.CreatureData.LevelAdjustment] = "1336";
-            data[DataIndexConstants.CreatureData.CanUseEquipment] = bool.TrueString;
-            data[DataIndexConstants.CreatureData.BaseAttackQuality] = "1";
-            data[DataIndexConstants.CreatureData.Types] = "my type";
-            data[DataIndexConstants.CreatureData.HitDiceQuantity] = "9.6";
-            data[DataIndexConstants.CreatureData.HitDie] = "783";
+            var data = SetUpTestData();
             data[DataIndexConstants.CreatureData.HasSkeleton] = hasSkeleton.ToString();
 
             var newSelection = CreatureDataSelection.Map(data);
@@ -390,13 +379,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(rawData[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(equipment.ToString()));
         }
 
-        [TestCase(BaseAttackQuality.Poor)]
-        [TestCase(BaseAttackQuality.Average)]
-        [TestCase(BaseAttackQuality.Good)]
-        internal void Map_FromSelection_ReturnsString_BaseAttackQuality(BaseAttackQuality quality)
+        [Test]
+        public void Map_FromSelection_ReturnsString_BaseAttackQuality_Poor()
         {
-            Assert.Fail("if NUnit is running this test, I should see this failure.");
-
             var selection = new CreatureDataSelection
             {
                 ChallengeRating = "my cr",
@@ -408,7 +393,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
                 CasterLevel = 1337,
                 LevelAdjustment = 1336,
                 CanUseEquipment = true,
-                BaseAttackQuality = quality,
+                BaseAttackQuality = BaseAttackQuality.Poor,
             };
 
             var rawData = CreatureDataSelection.Map(selection);
@@ -422,7 +407,69 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(rawData[DataIndexConstants.CreatureData.CasterLevel], Is.EqualTo("1337"));
             Assert.That(rawData[DataIndexConstants.CreatureData.LevelAdjustment], Is.EqualTo("1336"));
             Assert.That(rawData[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString));
-            Assert.That(rawData[DataIndexConstants.CreatureData.BaseAttackQuality], Is.EqualTo(Convert.ToInt32(quality).ToString()));
+            Assert.That(rawData[DataIndexConstants.CreatureData.BaseAttackQuality], Is.EqualTo(Convert.ToInt32(BaseAttackQuality.Poor).ToString()));
+        }
+
+        [Test]
+        public void Map_FromSelection_ReturnsString_BaseAttackQuality_Average()
+        {
+            var selection = new CreatureDataSelection
+            {
+                ChallengeRating = "my cr",
+                Size = "my size",
+                Reach = 926.6,
+                Space = 902.10,
+                NumberOfHands = 42,
+                NaturalArmor = 600,
+                CasterLevel = 1337,
+                LevelAdjustment = 1336,
+                CanUseEquipment = true,
+                BaseAttackQuality = BaseAttackQuality.Average,
+            };
+
+            var rawData = CreatureDataSelection.Map(selection);
+            Assert.That(rawData.Length, Is.EqualTo(selection.SectionCount));
+            Assert.That(rawData[DataIndexConstants.CreatureData.ChallengeRating], Is.EqualTo("my cr"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.Size], Is.EqualTo("my size"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.Reach], Is.EqualTo("926.6"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.Space], Is.EqualTo("902.1"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.NumberOfHands], Is.EqualTo("42"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.NaturalArmor], Is.EqualTo("600"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.CasterLevel], Is.EqualTo("1337"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.LevelAdjustment], Is.EqualTo("1336"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString));
+            Assert.That(rawData[DataIndexConstants.CreatureData.BaseAttackQuality], Is.EqualTo(Convert.ToInt32(BaseAttackQuality.Average).ToString()));
+        }
+
+        [Test]
+        public void Map_FromSelection_ReturnsString_BaseAttackQuality_Good()
+        {
+            var selection = new CreatureDataSelection
+            {
+                ChallengeRating = "my cr",
+                Size = "my size",
+                Reach = 926.6,
+                Space = 902.10,
+                NumberOfHands = 42,
+                NaturalArmor = 600,
+                CasterLevel = 1337,
+                LevelAdjustment = 1336,
+                CanUseEquipment = true,
+                BaseAttackQuality = BaseAttackQuality.Good,
+            };
+
+            var rawData = CreatureDataSelection.Map(selection);
+            Assert.That(rawData.Length, Is.EqualTo(selection.SectionCount));
+            Assert.That(rawData[DataIndexConstants.CreatureData.ChallengeRating], Is.EqualTo("my cr"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.Size], Is.EqualTo("my size"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.Reach], Is.EqualTo("926.6"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.Space], Is.EqualTo("902.1"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.NumberOfHands], Is.EqualTo("42"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.NaturalArmor], Is.EqualTo("600"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.CasterLevel], Is.EqualTo("1337"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.LevelAdjustment], Is.EqualTo("1336"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString));
+            Assert.That(rawData[DataIndexConstants.CreatureData.BaseAttackQuality], Is.EqualTo(Convert.ToInt32(BaseAttackQuality.Good).ToString()));
         }
 
         [Test]
@@ -502,21 +549,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void MapTo_ReturnsSelection()
         {
-            var data = new string[selection.SectionCount];
-            data[DataIndexConstants.CreatureData.ChallengeRating] = "my cr";
-            data[DataIndexConstants.CreatureData.Size] = "my size";
-            data[DataIndexConstants.CreatureData.Reach] = "926.6";
-            data[DataIndexConstants.CreatureData.Space] = "902.10";
-            data[DataIndexConstants.CreatureData.NumberOfHands] = "42";
-            data[DataIndexConstants.CreatureData.NaturalArmor] = "600";
-            data[DataIndexConstants.CreatureData.CasterLevel] = "1337";
-            data[DataIndexConstants.CreatureData.LevelAdjustment] = "1336";
-            data[DataIndexConstants.CreatureData.CanUseEquipment] = bool.TrueString;
-            data[DataIndexConstants.CreatureData.BaseAttackQuality] = "1";
-            data[DataIndexConstants.CreatureData.Types] = "my type";
-            data[DataIndexConstants.CreatureData.HitDiceQuantity] = "9.6";
-            data[DataIndexConstants.CreatureData.HitDie] = "783";
-            data[DataIndexConstants.CreatureData.HasSkeleton] = bool.TrueString;
+            var data = SetUpTestData();
 
             var newSelection = selection.MapTo(data);
             Assert.That(newSelection, Is.Not.Null);
@@ -539,16 +572,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void MapTo_FromString_ReturnsSelection_NullLevelAdjustment()
         {
-            var data = new string[selection.SectionCount];
-            data[DataIndexConstants.CreatureData.ChallengeRating] = "my cr";
-            data[DataIndexConstants.CreatureData.Size] = "my size";
-            data[DataIndexConstants.CreatureData.Reach] = "926.6";
-            data[DataIndexConstants.CreatureData.Space] = "902.10";
-            data[DataIndexConstants.CreatureData.NumberOfHands] = "42";
-            data[DataIndexConstants.CreatureData.NaturalArmor] = "600";
-            data[DataIndexConstants.CreatureData.CasterLevel] = "1337";
+            var data = SetUpTestData();
             data[DataIndexConstants.CreatureData.LevelAdjustment] = string.Empty;
-            data[DataIndexConstants.CreatureData.CanUseEquipment] = bool.TrueString;
 
             var newSelection = selection.MapTo(data);
             Assert.That(newSelection, Is.Not.Null);
@@ -565,16 +590,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void MapTo_FromString_ReturnsSelection_ZeroLevelAdjustment()
         {
-            var data = new string[selection.SectionCount];
-            data[DataIndexConstants.CreatureData.ChallengeRating] = "my cr";
-            data[DataIndexConstants.CreatureData.Size] = "my size";
-            data[DataIndexConstants.CreatureData.Reach] = "926.6";
-            data[DataIndexConstants.CreatureData.Space] = "902.10";
-            data[DataIndexConstants.CreatureData.NumberOfHands] = "42";
-            data[DataIndexConstants.CreatureData.NaturalArmor] = "600";
-            data[DataIndexConstants.CreatureData.CasterLevel] = "1337";
+            var data = SetUpTestData();
             data[DataIndexConstants.CreatureData.LevelAdjustment] = "0";
-            data[DataIndexConstants.CreatureData.CanUseEquipment] = bool.TrueString;
 
             var newSelection = selection.MapTo(data);
             Assert.That(newSelection, Is.Not.Null);
@@ -592,15 +609,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [TestCase(false)]
         public void MapTo_FromString_ReturnsSelection_CanUseEquipment(bool equipment)
         {
-            var data = new string[selection.SectionCount];
-            data[DataIndexConstants.CreatureData.ChallengeRating] = "my cr";
-            data[DataIndexConstants.CreatureData.Size] = "my size";
-            data[DataIndexConstants.CreatureData.Reach] = "926.6";
-            data[DataIndexConstants.CreatureData.Space] = "902.10";
-            data[DataIndexConstants.CreatureData.NumberOfHands] = "42";
-            data[DataIndexConstants.CreatureData.NaturalArmor] = "600";
-            data[DataIndexConstants.CreatureData.CasterLevel] = "1337";
-            data[DataIndexConstants.CreatureData.LevelAdjustment] = "1336";
+            var data = SetUpTestData();
             data[DataIndexConstants.CreatureData.CanUseEquipment] = equipment.ToString();
 
             var newSelection = selection.MapTo(data);
@@ -616,22 +625,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(newSelection.CanUseEquipment, Is.EqualTo(equipment));
         }
 
-        [TestCase(BaseAttackQuality.Poor)]
-        [TestCase(BaseAttackQuality.Average)]
-        [TestCase(BaseAttackQuality.Good)]
-        internal void MapTo_FromString_ReturnsSelection_BaseAttackQuality(BaseAttackQuality quality)
+        [Test]
+        public void MapTo_FromString_ReturnsSelection_BaseAttackQuality_Poor()
         {
-            var data = new string[selection.SectionCount];
-            data[DataIndexConstants.CreatureData.ChallengeRating] = "my cr";
-            data[DataIndexConstants.CreatureData.Size] = "my size";
-            data[DataIndexConstants.CreatureData.Reach] = "926.6";
-            data[DataIndexConstants.CreatureData.Space] = "902.10";
-            data[DataIndexConstants.CreatureData.NumberOfHands] = "42";
-            data[DataIndexConstants.CreatureData.NaturalArmor] = "600";
-            data[DataIndexConstants.CreatureData.CasterLevel] = "1337";
-            data[DataIndexConstants.CreatureData.LevelAdjustment] = "1336";
-            data[DataIndexConstants.CreatureData.CanUseEquipment] = bool.TrueString;
-            data[DataIndexConstants.CreatureData.BaseAttackQuality] = Convert.ToInt32(quality).ToString();
+            var data = SetUpTestData();
+            data[DataIndexConstants.CreatureData.BaseAttackQuality] = Convert.ToInt32(BaseAttackQuality.Poor).ToString();
 
             var newSelection = selection.MapTo(data);
             Assert.That(newSelection, Is.Not.Null);
@@ -644,23 +642,53 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(newSelection.CasterLevel, Is.EqualTo(1337));
             Assert.That(newSelection.LevelAdjustment, Is.EqualTo(1336));
             Assert.That(newSelection.CanUseEquipment, Is.EqualTo(true));
-            Assert.That(newSelection.BaseAttackQuality, Is.EqualTo(quality));
+            Assert.That(newSelection.BaseAttackQuality, Is.EqualTo(BaseAttackQuality.Poor));
+        }
+
+        [Test]
+        public void MapTo_FromString_ReturnsSelection_BaseAttackQuality_Average()
+        {
+            var data = SetUpTestData();
+            data[DataIndexConstants.CreatureData.BaseAttackQuality] = Convert.ToInt32(BaseAttackQuality.Average).ToString();
+
+            var newSelection = selection.MapTo(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.GetEffectiveChallengeRating(false), Is.EqualTo("my cr"));
+            Assert.That(newSelection.Size, Is.EqualTo("my size"));
+            Assert.That(newSelection.Reach, Is.EqualTo(926.6));
+            Assert.That(newSelection.Space, Is.EqualTo(902.10));
+            Assert.That(newSelection.NumberOfHands, Is.EqualTo(42));
+            Assert.That(newSelection.NaturalArmor, Is.EqualTo(600));
+            Assert.That(newSelection.CasterLevel, Is.EqualTo(1337));
+            Assert.That(newSelection.LevelAdjustment, Is.EqualTo(1336));
+            Assert.That(newSelection.CanUseEquipment, Is.EqualTo(true));
+            Assert.That(newSelection.BaseAttackQuality, Is.EqualTo(BaseAttackQuality.Average));
+        }
+
+        [Test]
+        public void MapTo_FromString_ReturnsSelection_BaseAttackQuality_Good()
+        {
+            var data = SetUpTestData();
+            data[DataIndexConstants.CreatureData.BaseAttackQuality] = Convert.ToInt32(BaseAttackQuality.Good).ToString();
+
+            var newSelection = selection.MapTo(data);
+            Assert.That(newSelection, Is.Not.Null);
+            Assert.That(newSelection.GetEffectiveChallengeRating(false), Is.EqualTo("my cr"));
+            Assert.That(newSelection.Size, Is.EqualTo("my size"));
+            Assert.That(newSelection.Reach, Is.EqualTo(926.6));
+            Assert.That(newSelection.Space, Is.EqualTo(902.10));
+            Assert.That(newSelection.NumberOfHands, Is.EqualTo(42));
+            Assert.That(newSelection.NaturalArmor, Is.EqualTo(600));
+            Assert.That(newSelection.CasterLevel, Is.EqualTo(1337));
+            Assert.That(newSelection.LevelAdjustment, Is.EqualTo(1336));
+            Assert.That(newSelection.CanUseEquipment, Is.EqualTo(true));
+            Assert.That(newSelection.BaseAttackQuality, Is.EqualTo(BaseAttackQuality.Good));
         }
 
         [Test]
         public void MapTo_FromString_ReturnsSelection_WithSubtypes()
         {
-            var data = new string[selection.SectionCount];
-            data[DataIndexConstants.CreatureData.ChallengeRating] = "my cr";
-            data[DataIndexConstants.CreatureData.Size] = "my size";
-            data[DataIndexConstants.CreatureData.Reach] = "926.6";
-            data[DataIndexConstants.CreatureData.Space] = "902.10";
-            data[DataIndexConstants.CreatureData.NumberOfHands] = "42";
-            data[DataIndexConstants.CreatureData.NaturalArmor] = "600";
-            data[DataIndexConstants.CreatureData.CasterLevel] = "1337";
-            data[DataIndexConstants.CreatureData.LevelAdjustment] = "1336";
-            data[DataIndexConstants.CreatureData.CanUseEquipment] = bool.TrueString;
-            data[DataIndexConstants.CreatureData.BaseAttackQuality] = "1";
+            var data = SetUpTestData();
             data[DataIndexConstants.CreatureData.Types] = "my type|my subtype|my other subtype";
 
             var newSelection = selection.MapTo(data);
@@ -682,20 +710,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [TestCase(false)]
         public void MapTo_FromString_ReturnsSelection_HasSkeleton(bool hasSkeleton)
         {
-            var data = new string[selection.SectionCount];
-            data[DataIndexConstants.CreatureData.ChallengeRating] = "my cr";
-            data[DataIndexConstants.CreatureData.Size] = "my size";
-            data[DataIndexConstants.CreatureData.Reach] = "926.6";
-            data[DataIndexConstants.CreatureData.Space] = "902.10";
-            data[DataIndexConstants.CreatureData.NumberOfHands] = "42";
-            data[DataIndexConstants.CreatureData.NaturalArmor] = "600";
-            data[DataIndexConstants.CreatureData.CasterLevel] = "1337";
-            data[DataIndexConstants.CreatureData.LevelAdjustment] = "1336";
-            data[DataIndexConstants.CreatureData.CanUseEquipment] = bool.TrueString;
-            data[DataIndexConstants.CreatureData.BaseAttackQuality] = "1";
-            data[DataIndexConstants.CreatureData.Types] = "my type";
-            data[DataIndexConstants.CreatureData.HitDiceQuantity] = "96.";
-            data[DataIndexConstants.CreatureData.HitDie] = "783";
+            var data = SetUpTestData();
             data[DataIndexConstants.CreatureData.HasSkeleton] = hasSkeleton.ToString();
 
             var newSelection = selection.MapTo(data);
@@ -843,10 +858,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(rawData[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(equipment.ToString()));
         }
 
-        [TestCase(BaseAttackQuality.Poor)]
-        [TestCase(BaseAttackQuality.Average)]
-        [TestCase(BaseAttackQuality.Good)]
-        internal void MapFrom_FromSelection_ReturnsString_BaseAttackQuality(BaseAttackQuality quality)
+        [Test]
+        public void MapFrom_FromSelection_ReturnsString_BaseAttackQuality_Poor()
         {
             var selection = new CreatureDataSelection
             {
@@ -859,7 +872,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
                 CasterLevel = 1337,
                 LevelAdjustment = 1336,
                 CanUseEquipment = true,
-                BaseAttackQuality = quality,
+                BaseAttackQuality = BaseAttackQuality.Poor,
             };
 
             var rawData = selection.MapFrom(selection);
@@ -873,7 +886,69 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(rawData[DataIndexConstants.CreatureData.CasterLevel], Is.EqualTo("1337"));
             Assert.That(rawData[DataIndexConstants.CreatureData.LevelAdjustment], Is.EqualTo("1336"));
             Assert.That(rawData[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString));
-            Assert.That(rawData[DataIndexConstants.CreatureData.BaseAttackQuality], Is.EqualTo(Convert.ToInt32(quality).ToString()));
+            Assert.That(rawData[DataIndexConstants.CreatureData.BaseAttackQuality], Is.EqualTo(Convert.ToInt32(BaseAttackQuality.Poor).ToString()));
+        }
+
+        [Test]
+        public void MapFrom_FromSelection_ReturnsString_BaseAttackQuality_Average()
+        {
+            var selection = new CreatureDataSelection
+            {
+                ChallengeRating = "my cr",
+                Size = "my size",
+                Reach = 926.6,
+                Space = 902.10,
+                NumberOfHands = 42,
+                NaturalArmor = 600,
+                CasterLevel = 1337,
+                LevelAdjustment = 1336,
+                CanUseEquipment = true,
+                BaseAttackQuality = BaseAttackQuality.Average,
+            };
+
+            var rawData = selection.MapFrom(selection);
+            Assert.That(rawData.Length, Is.EqualTo(selection.SectionCount));
+            Assert.That(rawData[DataIndexConstants.CreatureData.ChallengeRating], Is.EqualTo("my cr"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.Size], Is.EqualTo("my size"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.Reach], Is.EqualTo("926.6"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.Space], Is.EqualTo("902.1"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.NumberOfHands], Is.EqualTo("42"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.NaturalArmor], Is.EqualTo("600"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.CasterLevel], Is.EqualTo("1337"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.LevelAdjustment], Is.EqualTo("1336"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString));
+            Assert.That(rawData[DataIndexConstants.CreatureData.BaseAttackQuality], Is.EqualTo(Convert.ToInt32(BaseAttackQuality.Average).ToString()));
+        }
+
+        [Test]
+        public void MapFrom_FromSelection_ReturnsString_BaseAttackQuality_Good()
+        {
+            var selection = new CreatureDataSelection
+            {
+                ChallengeRating = "my cr",
+                Size = "my size",
+                Reach = 926.6,
+                Space = 902.10,
+                NumberOfHands = 42,
+                NaturalArmor = 600,
+                CasterLevel = 1337,
+                LevelAdjustment = 1336,
+                CanUseEquipment = true,
+                BaseAttackQuality = BaseAttackQuality.Good,
+            };
+
+            var rawData = selection.MapFrom(selection);
+            Assert.That(rawData.Length, Is.EqualTo(selection.SectionCount));
+            Assert.That(rawData[DataIndexConstants.CreatureData.ChallengeRating], Is.EqualTo("my cr"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.Size], Is.EqualTo("my size"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.Reach], Is.EqualTo("926.6"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.Space], Is.EqualTo("902.1"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.NumberOfHands], Is.EqualTo("42"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.NaturalArmor], Is.EqualTo("600"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.CasterLevel], Is.EqualTo("1337"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.LevelAdjustment], Is.EqualTo("1336"));
+            Assert.That(rawData[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString));
+            Assert.That(rawData[DataIndexConstants.CreatureData.BaseAttackQuality], Is.EqualTo(Convert.ToInt32(BaseAttackQuality.Good).ToString()));
         }
 
         [Test]

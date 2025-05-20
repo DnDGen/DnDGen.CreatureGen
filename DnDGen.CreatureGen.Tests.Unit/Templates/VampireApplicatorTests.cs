@@ -2009,6 +2009,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var data = SetUpCreatureData();
             data["my other creature"].Types = [CreatureConstants.Types.MonstrousHumanoid, "subtype 2"];
             data["my other creature"].HitDiceQuantity = 5;
+            data["wrong creature 3"].Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 3"];
             data["wrong creature 3"].LevelAdjustment = 0;
 
             var alignments = new Dictionary<string, IEnumerable<string>>
@@ -3013,6 +3014,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var data = SetUpCreatureData();
             data["my other creature"].Types = [CreatureConstants.Types.MonstrousHumanoid, "subtype 2"];
+            data["wrong creature 3"].Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 3"];
 
             var alignments = new Dictionary<string, IEnumerable<string>>
             {

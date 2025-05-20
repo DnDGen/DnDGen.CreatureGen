@@ -24,10 +24,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
     [TestFixture]
     internal class CreatureGeneratorGenerateRandomTests : CreatureGeneratorTests
     {
-        [Test]
-        public void GenerateRandom_ReturnsHasSkeleton()
+        [TestCase(true, true)]
+        [TestCase(true, false)]
+        [TestCase(false, true)]
+        [TestCase(false, false)]
+        public void GenerateRandom_ReturnsHasSkeleton(bool asCharacter, bool hasSkeleton)
         {
-            Assert.Fail("not yet written");
+            SetUpCreature("creature", false);
+            creatureData.HasSkeleton = hasSkeleton;
+
+            var creature = creatureGenerator.GenerateRandom(false);
+            Assert.That(creature.HasSkeleton, Is.EqualTo(hasSkeleton));
         }
 
         [TestCase(true, null, null, null)]
@@ -1267,19 +1274,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.IsAdvanced, Is.True);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.SizeIncreases))]
-        public void GenerateRandom_GenerateAdvancedCreature_AdjustDemographics(string originalSize, string advancedSize, int heightMultiplier, int weightMultiplier)
+        [Test]
+        public void GenerateRandom_GenerateAdvancedCreature_AdjustDemographics()
         {
-            creatureData.Size = originalSize;
-            demographics.Weight.Value = 2;
-            demographics.Height.Value = 2435;
-            demographics.Length.Value = 922;
-            demographics.Wingspan.Value = 2022;
-            demographics.Age.Value = 3546;
-            demographics.MaximumAge.Value = 4657;
-
             SetUpCreature("creature", false);
-            var advancedHitPoints = SetUpCreatureAdvancement(false, "creature", null, 1337, advancedSize);
+            var advancedHitPoints = SetUpCreatureAdvancement(false, "creature", null, 1337, "my advanced size");
+
+            var advancedDemographics = new Demographics();
+            mockDemographicsGenerator
+                .Setup(g => g.AdjustDemographicsBySize(demographics, creatureData.Size, "my advanced size"))
+                .Returns(advancedDemographics);
 
             var creature = creatureGenerator.GenerateRandom(false);
             Assert.That(creature.HitPoints, Is.EqualTo(advancedHitPoints));
@@ -1289,7 +1293,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(573));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(492));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(862));
-            Assert.That(creature.Size, Is.EqualTo(advancedSize));
+            Assert.That(creature.Size, Is.EqualTo("my advanced size"));
             Assert.That(creature.Space.Value, Is.EqualTo(54.32));
             Assert.That(creature.Reach.Value, Is.EqualTo(98.76));
             Assert.That(creature.Abilities[AbilityConstants.Strength].AdvancementAdjustment, Is.EqualTo(3456));
@@ -1299,12 +1303,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 6331));
             Assert.That(creature.IsAdvanced, Is.True);
 
-            Assert.That(creature.Demographics.Age.Value, Is.EqualTo(3546));
-            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(4657));
-            Assert.That(creature.Demographics.Height.Value, Is.EqualTo(2435 * heightMultiplier));
-            Assert.That(creature.Demographics.Length.Value, Is.EqualTo(922 * heightMultiplier));
-            Assert.That(creature.Demographics.Wingspan.Value, Is.EqualTo(2022 * heightMultiplier));
-            Assert.That(creature.Demographics.Weight.Value, Is.EqualTo(2 * weightMultiplier));
+            Assert.That(creature.Demographics, Is.EqualTo(advancedDemographics).And.Not.EqualTo(demographics));
         }
 
         [TestCase(true)]

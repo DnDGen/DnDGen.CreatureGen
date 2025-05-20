@@ -19,9 +19,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         private List<Feat> feats;
         private CreatureType creatureType;
 
-        private const int Quantity = 8245;
+        private const int Quantity = 9;
         private const int Die = 90210;
-        private const string CreatureName = "creature";
 
         [SetUp]
         public void Setup()
@@ -52,11 +51,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(hitPoints.Bonus, Is.Zero);
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.True);
-            Assert.That(hitPoints.DefaultRoll, Is.EqualTo("2d90210"));
+            Assert.That(hitPoints.DefaultRoll, Is.EqualTo("9d90210"));
             Assert.That(hitPoints.DefaultTotal, Is.EqualTo(600));
-            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(2));
+            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(9));
             Assert.That(hitPoints.HitDice, Has.Count.EqualTo(1));
-            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(2));
+            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(9));
             Assert.That(hitPoints.HitDice[0].HitDie, Is.EqualTo(90210));
             Assert.That(hitPoints.Total, Is.EqualTo(9266 + 42));
         }
@@ -65,36 +64,38 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         public void ConstitutionBonusAppliedPerHitDie()
         {
             constitution.BaseScore = 20;
+            SetUpRolls(2025, [9266, 42, 22, 2022, 227], 5);
 
-            var hitPoints = hitPointsGenerator.GenerateFor(Quantity, Die, creatureType, constitution, "size");
+            var hitPoints = hitPointsGenerator.GenerateFor(5, Die, creatureType, constitution, "size");
             Assert.That(hitPoints.Bonus, Is.Zero);
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.True);
-            Assert.That(hitPoints.DefaultRoll, Is.EqualTo($"2d90210+10"));
-            Assert.That(hitPoints.DefaultTotal, Is.EqualTo(600 + 10));
-            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(2));
+            Assert.That(hitPoints.DefaultRoll, Is.EqualTo($"5d90210+25"));
+            Assert.That(hitPoints.DefaultTotal, Is.EqualTo(2025 + 25));
+            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(5));
             Assert.That(hitPoints.HitDice, Has.Count.EqualTo(1));
-            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(2));
+            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(5));
             Assert.That(hitPoints.HitDice[0].HitDie, Is.EqualTo(90210));
-            Assert.That(hitPoints.Total, Is.EqualTo(9266 + 42 + 10));
+            Assert.That(hitPoints.Total, Is.EqualTo(9266 + 42 + 22 + 2022 + 227 + 25));
         }
 
         [Test]
         public void ConstitutionPenaltyAppliedPerHitDie()
         {
             constitution.BaseScore = 2;
+            SetUpRolls(2025, [9266, 42, 22, 2022, 227], 5);
 
-            var hitPoints = hitPointsGenerator.GenerateFor(Quantity, Die, creatureType, constitution, "size");
+            var hitPoints = hitPointsGenerator.GenerateFor(5, Die, creatureType, constitution, "size");
             Assert.That(hitPoints.Bonus, Is.Zero);
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.True);
-            Assert.That(hitPoints.DefaultRoll, Is.EqualTo($"2d90210-8"));
-            Assert.That(hitPoints.DefaultTotal, Is.EqualTo(600 - 8));
-            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(2));
+            Assert.That(hitPoints.DefaultRoll, Is.EqualTo($"5d90210-20"));
+            Assert.That(hitPoints.DefaultTotal, Is.EqualTo(2025 - 20));
+            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(5));
             Assert.That(hitPoints.HitDice, Has.Count.EqualTo(1));
-            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(2));
+            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(5));
             Assert.That(hitPoints.HitDice[0].HitDie, Is.EqualTo(90210));
-            Assert.That(hitPoints.Total, Is.EqualTo(9266 + 42 - 8));
+            Assert.That(hitPoints.Total, Is.EqualTo(9266 + 42 + 22 + 2022 + 227 - 20));
         }
 
         [Test]
@@ -106,11 +107,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(hitPoints.Bonus, Is.Zero);
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.False);
-            Assert.That(hitPoints.DefaultRoll, Is.EqualTo("2d90210"));
+            Assert.That(hitPoints.DefaultRoll, Is.EqualTo("9d90210"));
             Assert.That(hitPoints.DefaultTotal, Is.EqualTo(600));
-            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(2));
+            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(9));
             Assert.That(hitPoints.HitDice, Has.Count.EqualTo(1));
-            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(2));
+            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(9));
             Assert.That(hitPoints.HitDice[0].HitDie, Is.EqualTo(90210));
             Assert.That(hitPoints.Total, Is.EqualTo(9266 + 42));
         }
@@ -119,9 +120,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         public void CannotGainFewerThan1HitPointPerHitDie()
         {
             constitution.BaseScore = 1;
-            SetUpRolls(13.37, [1, 3, 5]);
+            SetUpRolls(13.37, [1, 3, 5], 3);
 
-            var hitPoints = hitPointsGenerator.GenerateFor(Quantity, Die, creatureType, constitution, "size");
+            var hitPoints = hitPointsGenerator.GenerateFor(3, Die, creatureType, constitution, "size");
             Assert.That(hitPoints.Bonus, Is.Zero);
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.True);
@@ -138,9 +139,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         public void MinimumCheckAppliedPerHitDieOnRoll()
         {
             constitution.BaseScore = 6;
-            SetUpRolls(13.37, [1, 2, 4]);
+            SetUpRolls(13.37, [1, 2, 4], 3);
 
-            var hitPoints = hitPointsGenerator.GenerateFor(Quantity, Die, creatureType, constitution, "size");
+            var hitPoints = hitPointsGenerator.GenerateFor(3, Die, creatureType, constitution, "size");
             Assert.That(hitPoints.Bonus, Is.Zero);
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.True);
@@ -157,17 +158,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         [Test]
         public void AddAdditionalHitDice()
         {
-            SetUpRolls(13.37, [42, 600, 1337, 1336]);
+            SetUpRolls(13.37, [42, 600, 1337, 1336], Quantity + 3);
 
             var hitPoints = hitPointsGenerator.GenerateFor(Quantity, Die, creatureType, constitution, "size", 3);
             Assert.That(hitPoints.Bonus, Is.Zero);
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.True);
-            Assert.That(hitPoints.DefaultRoll, Is.EqualTo($"4d90210"));
+            Assert.That(hitPoints.DefaultRoll, Is.EqualTo("12d90210"));
             Assert.That(hitPoints.DefaultTotal, Is.EqualTo(13));
-            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(4));
+            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(Quantity + 3));
             Assert.That(hitPoints.HitDice, Has.Count.EqualTo(1));
-            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(4));
+            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(Quantity + 3));
             Assert.That(hitPoints.HitDice[0].HitDie, Is.EqualTo(90210));
             Assert.That(hitPoints.Total, Is.EqualTo(42 + 600 + 1337 + 1336));
         }
@@ -183,11 +184,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(hitPoints.Bonus, Is.EqualTo(3));
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.True);
-            Assert.That(hitPoints.DefaultRoll, Is.EqualTo("2d90210+3"));
+            Assert.That(hitPoints.DefaultRoll, Is.EqualTo("9d90210+3"));
             Assert.That(hitPoints.DefaultTotal, Is.EqualTo(600 + 3));
-            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(2));
+            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(9));
             Assert.That(hitPoints.HitDice, Has.Count.EqualTo(1));
-            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(2));
+            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(9));
             Assert.That(hitPoints.HitDice[0].HitDie, Is.EqualTo(90210));
             Assert.That(hitPoints.Total, Is.EqualTo(9266 + 42 + 3));
         }
@@ -203,11 +204,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(hitPoints.Bonus, Is.Zero);
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.True);
-            Assert.That(hitPoints.DefaultRoll, Is.EqualTo("2d90210"));
+            Assert.That(hitPoints.DefaultRoll, Is.EqualTo("9d90210"));
             Assert.That(hitPoints.DefaultTotal, Is.EqualTo(600));
-            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(2));
+            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(9));
             Assert.That(hitPoints.HitDice, Has.Count.EqualTo(1));
-            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(2));
+            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(9));
             Assert.That(hitPoints.HitDice[0].HitDie, Is.EqualTo(90210));
             Assert.That(hitPoints.Total, Is.EqualTo(9266 + 42));
         }
@@ -224,11 +225,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(hitPoints.Bonus, Is.EqualTo(6));
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.True);
-            Assert.That(hitPoints.DefaultRoll, Is.EqualTo("2d90210+6"));
+            Assert.That(hitPoints.DefaultRoll, Is.EqualTo("9d90210+6"));
             Assert.That(hitPoints.DefaultTotal, Is.EqualTo(600 + 6));
-            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(2));
+            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(9));
             Assert.That(hitPoints.HitDice, Has.Count.EqualTo(1));
-            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(2));
+            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(9));
             Assert.That(hitPoints.HitDice[0].HitDie, Is.EqualTo(90210));
             Assert.That(hitPoints.Total, Is.EqualTo(9266 + 42 + 6));
         }
@@ -253,12 +254,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.True);
 
-            var roll = bonusHitPoints > 0 ? $"2d1336+{bonusHitPoints}" : "2d1336";
+            var roll = bonusHitPoints > 0 ? $"9d1336+{bonusHitPoints}" : "9d1336";
             Assert.That(hitPoints.DefaultRoll, Is.EqualTo(roll));
             Assert.That(hitPoints.DefaultTotal, Is.EqualTo(13 + bonusHitPoints));
-            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(2));
+            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(9));
             Assert.That(hitPoints.HitDice, Has.Count.EqualTo(1));
-            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(2));
+            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(9));
             Assert.That(hitPoints.HitDice[0].HitDie, Is.EqualTo(1336));
             Assert.That(hitPoints.Total, Is.EqualTo(96 + 783 + bonusHitPoints));
         }
@@ -287,12 +288,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.True);
 
-            var regeneratedRoll = $"2d1336+{bonusHitPoints + 3}";
+            var regeneratedRoll = $"9d1336+{bonusHitPoints + 3}";
             Assert.That(hitPoints.DefaultRoll, Is.EqualTo(regeneratedRoll));
             Assert.That(hitPoints.DefaultTotal, Is.EqualTo(13 + bonusHitPoints + 3));
-            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(2));
+            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(9));
             Assert.That(hitPoints.HitDice, Has.Count.EqualTo(1));
-            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(2));
+            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(9));
             Assert.That(hitPoints.HitDice[0].HitDie, Is.EqualTo(1336));
             Assert.That(hitPoints.Total, Is.EqualTo(96 + 783 + bonusHitPoints + 3));
         }
@@ -312,11 +313,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(hitPoints.Bonus, Is.Zero);
             Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
             Assert.That(hitPoints.Constitution.HasScore, Is.True);
-            Assert.That(hitPoints.DefaultRoll, Is.EqualTo("2d90210"));
+            Assert.That(hitPoints.DefaultRoll, Is.EqualTo("9d90210"));
             Assert.That(hitPoints.DefaultTotal, Is.EqualTo(600));
-            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(2));
+            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(9));
             Assert.That(hitPoints.HitDice, Has.Count.EqualTo(1));
-            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(2));
+            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(9));
             Assert.That(hitPoints.HitDice[0].HitDie, Is.EqualTo(90210));
             Assert.That(hitPoints.Total, Is.EqualTo(42 + 9266));
         }

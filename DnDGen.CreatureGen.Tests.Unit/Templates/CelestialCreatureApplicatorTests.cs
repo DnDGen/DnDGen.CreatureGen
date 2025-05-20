@@ -2474,7 +2474,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creatures = new[] { "my creature", "wrong creature 2", "my other creature", "outsider creature" };
 
-            var celestialCreatures = creatures;
+            var celestialCreatures = creatures.Except(["outsider creature"]);
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.CelestialCreature + bool.FalseString))
                 .Returns(celestialCreatures);
@@ -3561,7 +3561,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
             Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(challengeRating));
             Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(hitDiceQuantity));
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(data["my creature"].GetEffectiveHitDiceQuantity(asCharacter)));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
@@ -3594,7 +3594,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
             Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(challengeRating));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(hitDiceQuantity));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(data["my other creature"].GetEffectiveHitDiceQuantity(asCharacter)));
         }
 
         [TestCase(CreatureConstants.Types.Subtypes.Augmented)]

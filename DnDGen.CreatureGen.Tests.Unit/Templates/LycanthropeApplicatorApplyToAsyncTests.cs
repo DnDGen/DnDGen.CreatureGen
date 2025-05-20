@@ -156,6 +156,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             animalData.HitDiceQuantity = hitDiceQuantity > -1 ? hitDiceQuantity : random.Next(30) + 1;
             animalData.HitDie = hitDiceDie > 0 ? hitDiceDie : random.Next(7) + 6;
             animalData.BaseAttackQuality = BaseAttackQuality.Average;
+            animalData.Types = [CreatureConstants.Types.Animal];
 
             mockCreatureDataSelector
                 .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, animal))
