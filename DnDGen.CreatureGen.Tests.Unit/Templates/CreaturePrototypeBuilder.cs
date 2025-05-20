@@ -51,6 +51,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             return this;
         }
 
+        public CreaturePrototypeBuilder WithSkeleton(bool hasSkeleton)
+        {
+            prototype.HasSkeleton = hasSkeleton;
+
+            return this;
+        }
+
         public CreaturePrototypeBuilder WithMinimumAbility(string ability, int minValue)
         {
             while (prototype.Abilities[ability].FullScore < minValue)
@@ -74,6 +81,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             prototype.Name = $"creature {Guid.NewGuid()}";
             prototype.CasterLevel = 0;
             prototype.LevelAdjustment = null;
+            prototype.HasSkeleton = true;
 
             prototype.Type = new CreatureType
             {
