@@ -25,7 +25,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private TemplateApplicator templateApplicator;
         private Mock<ICollectionSelector> mockCollectionSelector;
         private Mock<ICollectionDataSelector<CreatureDataSelection>> mockCreatureDataSelector;
-        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
 
         [SetUp]
@@ -33,20 +32,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             mockCollectionSelector = new Mock<ICollectionSelector>();
             mockCreatureDataSelector = new Mock<ICollectionDataSelector<CreatureDataSelection>>();
-            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
 
             templateApplicator = new NoneApplicator(
                 mockCollectionSelector.Object,
                 mockCreatureDataSelector.Object,
-                mockTypeAndAmountSelector.Object,
                 mockPrototypeFactory.Object);
         }
 
         [Test]
+        [Ignore("Creatures with no filters are always compatible for None template")]
         public void ApplyTo_ThrowsException_WhenCreatureNotCompatible()
         {
-            Assert.Pass("Creatures with no filters are always compatible for None template");
+            Assert.Fail("not yet written");
         }
 
         [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, "wrong alignment", "Alignment filter 'wrong alignment' is not valid")]
@@ -78,10 +76,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             message.AppendLine($"\tCR: {challengeRating}");
             message.AppendLine($"\tAlignment: {alignment}");
 
-            var filters = new Filters();
-            filters.Type = type;
-            filters.ChallengeRating = challengeRating;
-            filters.Alignment = alignment;
+            var filters = new Filters
+            {
+                Type = type,
+                ChallengeRating = challengeRating,
+                Alignment = alignment
+            };
 
             Assert.That(() => templateApplicator.ApplyTo(clone, asCharacter, filters),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
