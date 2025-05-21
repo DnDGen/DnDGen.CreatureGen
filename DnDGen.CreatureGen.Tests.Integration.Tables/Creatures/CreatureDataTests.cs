@@ -1948,7 +1948,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var types = CreatureConstants.Types.GetAll();
             Assert.That(creatureTypes.Values.Select(t => t.First()).Distinct(), Is.EquivalentTo(types));
 
-            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
+            //INFO: Augmented only applies to Templates, so no creature will have that subtype
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll().Except([CreatureConstants.Types.Subtypes.Augmented]);
             Assert.That(creatureTypes.Values.SelectMany(t => t.Skip(1)).Distinct(), Is.EquivalentTo(subtypes));
         }
 
@@ -2028,11 +2029,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             var data = new Dictionary<string, string>
             {
-                [CreatureConstants.Aasimar] = GetCreatureData(CreatureConstants.Aasimar, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 1, true, 1, 0, 2, false),
-                [CreatureConstants.Aboleth] = GetCreatureData(CreatureConstants.Aboleth, SizeConstants.Huge, ChallengeRatingConstants.CR7, 0, false, 16, 7, 0, false),
+                [CreatureConstants.Aasimar] = GetCreatureData(CreatureConstants.Aasimar, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 1, true, 1, 0, 2, true),
+                [CreatureConstants.Aboleth] = GetCreatureData(CreatureConstants.Aboleth, SizeConstants.Huge, ChallengeRatingConstants.CR7, 0, false, 16, 7, 0, true),
                 [CreatureConstants.Achaierai] = GetCreatureData(CreatureConstants.Achaierai, SizeConstants.Large, ChallengeRatingConstants.CR5, null, false, 16, 10, 0, false),
                 [CreatureConstants.Allip] = GetCreatureData(CreatureConstants.Allip, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, false, 0, 0, 0, false),
-                [CreatureConstants.Androsphinx] = GetCreatureData(CreatureConstants.Androsphinx, SizeConstants.Large, ChallengeRatingConstants.CR9, 5, false, 6, 13, 0, false),
+                [CreatureConstants.Androsphinx] = GetCreatureData(CreatureConstants.Androsphinx, SizeConstants.Large, ChallengeRatingConstants.CR9, 5, false, 6, 13, 0, true),
                 [CreatureConstants.Angel_AstralDeva] =
                     GetCreatureData(CreatureConstants.Angel_AstralDeva, SizeConstants.Medium, ChallengeRatingConstants.CR14, 8, true, 12, 15, 2, false),
                 [CreatureConstants.Angel_Planetar] =
@@ -2083,7 +2084,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 [CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0, false),
                 [CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0, false),
                 [CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0, false),
-                [CreatureConstants.AnimatedObject_Huge_Sheetlike] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_TwoLegs, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0, false),
+                [CreatureConstants.AnimatedObject_Huge_Sheetlike] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_Sheetlike, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0, false),
                 [CreatureConstants.AnimatedObject_Huge_TwoLegs] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_TwoLegs, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0, false),
                 [CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0, false),
                 [CreatureConstants.AnimatedObject_Huge_Wheels_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Huge_Wheels_Wooden, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0, false),
@@ -2126,62 +2127,62 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 [CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden, SizeConstants.Tiny, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0, false),
                 [CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden, SizeConstants.Tiny, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0, false),
                 [CreatureConstants.AnimatedObject_Tiny_Wooden] = GetCreatureData(CreatureConstants.AnimatedObject_Tiny_Wooden, SizeConstants.Tiny, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0, false),
-                [CreatureConstants.Ankheg] = GetCreatureData(CreatureConstants.Ankheg, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 9, 0, false),
-                [CreatureConstants.Annis] = GetCreatureData(CreatureConstants.Annis, SizeConstants.Large, ChallengeRatingConstants.CR6, 0, true, 8, 10, 2, false),
+                [CreatureConstants.Ankheg] = GetCreatureData(CreatureConstants.Ankheg, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 9, 0, true),
+                [CreatureConstants.Annis] = GetCreatureData(CreatureConstants.Annis, SizeConstants.Large, ChallengeRatingConstants.CR6, 0, true, 8, 10, 2, true),
                 [CreatureConstants.Ant_Giant_Queen] = GetCreatureData(CreatureConstants.Ant_Giant_Queen, SizeConstants.Large, ChallengeRatingConstants.CR2, null, false, 0, 9, 0, false),
                 [CreatureConstants.Ant_Giant_Soldier] = GetCreatureData(CreatureConstants.Ant_Giant_Soldier, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 7, 0, false),
                 [CreatureConstants.Ant_Giant_Worker] = GetCreatureData(CreatureConstants.Ant_Giant_Worker, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 7, 0, false),
-                [CreatureConstants.Ape] = GetCreatureData(CreatureConstants.Ape, SizeConstants.Large, ChallengeRatingConstants.CR2, null, false, 0, 3, 0, false),
-                [CreatureConstants.Ape_Dire] = GetCreatureData(CreatureConstants.Ape_Dire, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 4, 0, false),
-                [CreatureConstants.Aranea] = GetCreatureData(CreatureConstants.Aranea, SizeConstants.Medium, ChallengeRatingConstants.CR4, 4, true, 3, 1, 0, false),
+                [CreatureConstants.Ape] = GetCreatureData(CreatureConstants.Ape, SizeConstants.Large, ChallengeRatingConstants.CR2, null, false, 0, 3, 0, true),
+                [CreatureConstants.Ape_Dire] = GetCreatureData(CreatureConstants.Ape_Dire, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 4, 0, true),
+                [CreatureConstants.Aranea] = GetCreatureData(CreatureConstants.Aranea, SizeConstants.Medium, ChallengeRatingConstants.CR4, 4, true, 3, 1, 0, true),
                 [CreatureConstants.Arrowhawk_Adult] = GetCreatureData(CreatureConstants.Arrowhawk_Adult, SizeConstants.Medium, ChallengeRatingConstants.CR5, null, false, 0, 6, 0, false),
                 [CreatureConstants.Arrowhawk_Elder] = GetCreatureData(CreatureConstants.Arrowhawk_Elder, SizeConstants.Large, ChallengeRatingConstants.CR8, null, false, 0, 8, 0, false),
                 [CreatureConstants.Arrowhawk_Juvenile] = GetCreatureData(CreatureConstants.Arrowhawk_Juvenile, SizeConstants.Small, ChallengeRatingConstants.CR3, null, false, 0, 4, 0, false),
-                [CreatureConstants.AssassinVine] = GetCreatureData(CreatureConstants.AssassinVine, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 4, 6, 0, false),
-                [CreatureConstants.Athach] = GetCreatureData(CreatureConstants.Athach, SizeConstants.Huge, ChallengeRatingConstants.CR8, 5, true, 15, 15, 3, false),
+                [CreatureConstants.AssassinVine] = GetCreatureData(CreatureConstants.AssassinVine, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 4, 6, 0, false, reach: 10),
+                [CreatureConstants.Athach] = GetCreatureData(CreatureConstants.Athach, SizeConstants.Huge, ChallengeRatingConstants.CR8, 5, true, 0, 8, 3, true),
                 [CreatureConstants.Avoral] = GetCreatureData(CreatureConstants.Avoral, SizeConstants.Medium, ChallengeRatingConstants.CR9, null, true, 8, 8, 2, false),
                 [CreatureConstants.Azer] = GetCreatureData(CreatureConstants.Azer, SizeConstants.Medium, ChallengeRatingConstants.CR2, 4, true, 0, 6, 2, false),
                 [CreatureConstants.Babau] = GetCreatureData(CreatureConstants.Babau, SizeConstants.Medium, ChallengeRatingConstants.CR6, null, true, 7, 8, 0, false),
-                [CreatureConstants.Baboon] = GetCreatureData(CreatureConstants.Baboon, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, null, false, 0, 1, 0, false),
-                [CreatureConstants.Badger] = GetCreatureData(CreatureConstants.Badger, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, null, false, 0, 1, 0, false),
-                [CreatureConstants.Badger_Dire] = GetCreatureData(CreatureConstants.Badger_Dire, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 3, 0, false),
+                [CreatureConstants.Baboon] = GetCreatureData(CreatureConstants.Baboon, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, null, false, 0, 1, 0, true),
+                [CreatureConstants.Badger] = GetCreatureData(CreatureConstants.Badger, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, null, false, 0, 1, 0, true),
+                [CreatureConstants.Badger_Dire] = GetCreatureData(CreatureConstants.Badger_Dire, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 3, 0, true),
                 [CreatureConstants.Balor] = GetCreatureData(CreatureConstants.Balor, SizeConstants.Large, ChallengeRatingConstants.CR20, null, true, 20, 19, 2, false),
                 [CreatureConstants.BarbedDevil_Hamatula] = GetCreatureData(CreatureConstants.BarbedDevil_Hamatula, SizeConstants.Medium, ChallengeRatingConstants.CR11, null, true, 12, 13, 2, false),
                 [CreatureConstants.Barghest] = GetCreatureData(CreatureConstants.Barghest, SizeConstants.Medium, ChallengeRatingConstants.CR4, null, true, 0, 6, 2, false),
-                [CreatureConstants.Barghest_Greater] = GetCreatureData(CreatureConstants.Barghest_Greater, SizeConstants.Large, ChallengeRatingConstants.CR5, null, true, 0, 9, 2, false),
-                [CreatureConstants.Basilisk] = GetCreatureData(CreatureConstants.Basilisk, SizeConstants.Medium, ChallengeRatingConstants.CR5, null, false, 0, 7, 0, false),
-                [CreatureConstants.Basilisk_Greater] = GetCreatureData(CreatureConstants.Basilisk_Greater, SizeConstants.Large, ChallengeRatingConstants.CR12, null, false, 0, 9, 0, false),
-                [CreatureConstants.Bat] = GetCreatureData(CreatureConstants.Bat, SizeConstants.Diminutive, ChallengeRatingConstants.CR1_10th, null, false, 0, 0, 0, false),
-                [CreatureConstants.Bat_Dire] = GetCreatureData(CreatureConstants.Bat_Dire, SizeConstants.Large, ChallengeRatingConstants.CR2, null, false, 0, 5, 0, false),
-                [CreatureConstants.Bat_Swarm] = GetCreatureData(CreatureConstants.Bat_Swarm, SizeConstants.Diminutive, ChallengeRatingConstants.CR2, null, false, 0, 0, 0, false),
-                [CreatureConstants.Bear_Black] = GetCreatureData(CreatureConstants.Bear_Black, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 2, 0, false),
-                [CreatureConstants.Bear_Brown] = GetCreatureData(CreatureConstants.Bear_Brown, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 5, 0, false),
-                [CreatureConstants.Bear_Dire] = GetCreatureData(CreatureConstants.Bear_Dire, SizeConstants.Large, ChallengeRatingConstants.CR7, null, false, 0, 7, 0, false),
-                [CreatureConstants.Bear_Polar] = GetCreatureData(CreatureConstants.Bear_Polar, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 5, 0, false),
+                [CreatureConstants.Barghest_Greater] = GetCreatureData(CreatureConstants.Barghest_Greater, SizeConstants.Large, ChallengeRatingConstants.CR5, null, true, 0, 9, 2, false, reach: 5),
+                [CreatureConstants.Basilisk] = GetCreatureData(CreatureConstants.Basilisk, SizeConstants.Medium, ChallengeRatingConstants.CR5, null, false, 0, 7, 0, true),
+                [CreatureConstants.Basilisk_Greater] = GetCreatureData(CreatureConstants.Basilisk_Greater, SizeConstants.Large, ChallengeRatingConstants.CR12, null, false, 0, 9, 0, true),
+                [CreatureConstants.Bat] = GetCreatureData(CreatureConstants.Bat, SizeConstants.Diminutive, ChallengeRatingConstants.CR1_10th, null, false, 0, 0, 0, true),
+                [CreatureConstants.Bat_Dire] = GetCreatureData(CreatureConstants.Bat_Dire, SizeConstants.Large, ChallengeRatingConstants.CR2, null, false, 0, 5, 0, true, reach: 5),
+                [CreatureConstants.Bat_Swarm] = GetCreatureData(CreatureConstants.Bat_Swarm, SizeConstants.Diminutive, ChallengeRatingConstants.CR2, null, false, 0, 0, 0, true, space: 10),
+                [CreatureConstants.Bear_Black] = GetCreatureData(CreatureConstants.Bear_Black, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 2, 0, true),
+                [CreatureConstants.Bear_Brown] = GetCreatureData(CreatureConstants.Bear_Brown, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 5, 0, true, reach: 5),
+                [CreatureConstants.Bear_Dire] = GetCreatureData(CreatureConstants.Bear_Dire, SizeConstants.Large, ChallengeRatingConstants.CR7, null, false, 0, 7, 0, true),
+                [CreatureConstants.Bear_Polar] = GetCreatureData(CreatureConstants.Bear_Polar, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 5, 0, true),
                 [CreatureConstants.BeardedDevil_Barbazu] = GetCreatureData(CreatureConstants.BeardedDevil_Barbazu, SizeConstants.Medium, ChallengeRatingConstants.CR5, 6, true, 12, 7, 2, false),
                 [CreatureConstants.Bebilith] = GetCreatureData(CreatureConstants.Bebilith, SizeConstants.Huge, ChallengeRatingConstants.CR10, null, false, 12, 13, 0, false),
                 [CreatureConstants.Bee_Giant] = GetCreatureData(CreatureConstants.Bee_Giant, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 2, 0, false),
-                [CreatureConstants.Behir] = GetCreatureData(CreatureConstants.Behir, SizeConstants.Huge, ChallengeRatingConstants.CR8, null, false, 0, 11, 0, false),
-                [CreatureConstants.Beholder] = GetCreatureData(CreatureConstants.Beholder, SizeConstants.Large, ChallengeRatingConstants.CR13, null, false, 13, 15, 0, false),
-                [CreatureConstants.Beholder_Gauth] = GetCreatureData(CreatureConstants.Beholder_Gauth, SizeConstants.Medium, ChallengeRatingConstants.CR6, null, false, 8, 7, 0, false),
+                [CreatureConstants.Behir] = GetCreatureData(CreatureConstants.Behir, SizeConstants.Huge, ChallengeRatingConstants.CR8, null, false, 0, 11, 0, true),
+                [CreatureConstants.Beholder] = GetCreatureData(CreatureConstants.Beholder, SizeConstants.Large, ChallengeRatingConstants.CR13, null, false, 13, 15, 0, true, reach: 5),
+                [CreatureConstants.Beholder_Gauth] = GetCreatureData(CreatureConstants.Beholder_Gauth, SizeConstants.Medium, ChallengeRatingConstants.CR6, null, false, 8, 7, 0, true, reach: 5),
                 [CreatureConstants.Belker] = GetCreatureData(CreatureConstants.Belker, SizeConstants.Large, ChallengeRatingConstants.CR6, null, false, 0, 8, 0, false),
-                [CreatureConstants.Bison] = GetCreatureData(CreatureConstants.Bison, SizeConstants.Large, ChallengeRatingConstants.CR2, null, false, 0, 4, 0, false),
+                [CreatureConstants.Bison] = GetCreatureData(CreatureConstants.Bison, SizeConstants.Large, ChallengeRatingConstants.CR2, null, false, 0, 4, 0, true),
                 [CreatureConstants.BlackPudding] = GetCreatureData(CreatureConstants.BlackPudding, SizeConstants.Huge, ChallengeRatingConstants.CR7, null, false, 0, 0, 0, false),
-                [CreatureConstants.BlackPudding_Elder] = GetCreatureData(CreatureConstants.BlackPudding_Elder, SizeConstants.Gargantuan, ChallengeRatingConstants.CR12, null, false, 0, 0, 0, false),
-                [CreatureConstants.BlinkDog] = GetCreatureData(CreatureConstants.BlinkDog, SizeConstants.Medium, ChallengeRatingConstants.CR2, 2, false, 8, 3, 0, false),
-                [CreatureConstants.Boar] = GetCreatureData(CreatureConstants.Boar, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 6, 0, false),
-                [CreatureConstants.Boar_Dire] = GetCreatureData(CreatureConstants.Boar_Dire, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 6, 0, false),
+                [CreatureConstants.BlackPudding_Elder] = GetCreatureData(CreatureConstants.BlackPudding_Elder, SizeConstants.Gargantuan, ChallengeRatingConstants.CR12, null, false, 0, 0, 0, false, reach: 20),
+                [CreatureConstants.BlinkDog] = GetCreatureData(CreatureConstants.BlinkDog, SizeConstants.Medium, ChallengeRatingConstants.CR2, 2, false, 8, 3, 0, true),
+                [CreatureConstants.Boar] = GetCreatureData(CreatureConstants.Boar, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 6, 0, true),
+                [CreatureConstants.Boar_Dire] = GetCreatureData(CreatureConstants.Boar_Dire, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 6, 0, true),
                 [CreatureConstants.Bodak] = GetCreatureData(CreatureConstants.Bodak, SizeConstants.Medium, ChallengeRatingConstants.CR8, null, false, 0, 8, 2, false),
                 [CreatureConstants.BombardierBeetle_Giant] = GetCreatureData(CreatureConstants.BombardierBeetle_Giant, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 6, 0, false),
                 [CreatureConstants.BoneDevil_Osyluth] = GetCreatureData(CreatureConstants.BoneDevil_Osyluth, SizeConstants.Large, ChallengeRatingConstants.CR9, null, true, 12, 11, 2, false),
                 [CreatureConstants.Bralani] = GetCreatureData(CreatureConstants.Bralani, SizeConstants.Medium, ChallengeRatingConstants.CR6, 5, true, 6, 6, 2, false),
-                [CreatureConstants.Bugbear] = GetCreatureData(CreatureConstants.Bugbear, SizeConstants.Medium, ChallengeRatingConstants.CR2, 1, true, 0, 3, 2, false),
-                [CreatureConstants.Bulette] = GetCreatureData(CreatureConstants.Bulette, SizeConstants.Huge, ChallengeRatingConstants.CR7, null, false, 0, 12, 0, false),
-                [CreatureConstants.Camel_Bactrian] = GetCreatureData(CreatureConstants.Camel_Bactrian, SizeConstants.Large, ChallengeRatingConstants.CR1, null, false, 0, 1, 0, false),
-                [CreatureConstants.Camel_Dromedary] = GetCreatureData(CreatureConstants.Camel_Dromedary, SizeConstants.Large, ChallengeRatingConstants.CR1, null, false, 0, 1, 0, false),
-                [CreatureConstants.CarrionCrawler] = GetCreatureData(CreatureConstants.CarrionCrawler, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 6, 0, false),
-                [CreatureConstants.Cat] = GetCreatureData(CreatureConstants.Cat, SizeConstants.Tiny, ChallengeRatingConstants.CR1_4th, null, false, 0, 0, 0, false),
-                [CreatureConstants.Centaur] = GetCreatureData(CreatureConstants.Centaur, SizeConstants.Large, ChallengeRatingConstants.CR3, 2, true, 0, 3, 2, false),
+                [CreatureConstants.Bugbear] = GetCreatureData(CreatureConstants.Bugbear, SizeConstants.Medium, ChallengeRatingConstants.CR2, 1, true, 0, 3, 2, true),
+                [CreatureConstants.Bulette] = GetCreatureData(CreatureConstants.Bulette, SizeConstants.Huge, ChallengeRatingConstants.CR7, null, false, 0, 12, 0, true),
+                [CreatureConstants.Camel_Bactrian] = GetCreatureData(CreatureConstants.Camel_Bactrian, SizeConstants.Large, ChallengeRatingConstants.CR1, null, false, 0, 1, 0, true),
+                [CreatureConstants.Camel_Dromedary] = GetCreatureData(CreatureConstants.Camel_Dromedary, SizeConstants.Large, ChallengeRatingConstants.CR1, null, false, 0, 1, 0, true),
+                [CreatureConstants.CarrionCrawler] = GetCreatureData(CreatureConstants.CarrionCrawler, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 6, 0, true),
+                [CreatureConstants.Cat] = GetCreatureData(CreatureConstants.Cat, SizeConstants.Tiny, ChallengeRatingConstants.CR1_4th, null, false, 0, 0, 0, true),
+                [CreatureConstants.Centaur] = GetCreatureData(CreatureConstants.Centaur, SizeConstants.Large, ChallengeRatingConstants.CR3, 2, true, 0, 3, 2, true, reach: 5),
                 [CreatureConstants.Centipede_Monstrous_Colossal] = GetCreatureData(CreatureConstants.Centipede_Monstrous_Colossal, SizeConstants.Colossal, ChallengeRatingConstants.CR9, null, false, 0, 16, 0, false),
                 [CreatureConstants.Centipede_Monstrous_Gargantuan] = GetCreatureData(CreatureConstants.Centipede_Monstrous_Gargantuan, SizeConstants.Gargantuan, ChallengeRatingConstants.CR6, null, false, 0, 10, 0, false),
                 [CreatureConstants.Centipede_Monstrous_Huge] = GetCreatureData(CreatureConstants.Centipede_Monstrous_Huge, SizeConstants.Huge, ChallengeRatingConstants.CR2, null, false, 0, 6, 0, false),
@@ -2189,180 +2190,180 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 [CreatureConstants.Centipede_Monstrous_Medium] = GetCreatureData(CreatureConstants.Centipede_Monstrous_Medium, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, null, false, 0, 2, 0, false),
                 [CreatureConstants.Centipede_Monstrous_Small] = GetCreatureData(CreatureConstants.Centipede_Monstrous_Small, SizeConstants.Small, ChallengeRatingConstants.CR1_4th, null, false, 0, 1, 0, false),
                 [CreatureConstants.Centipede_Monstrous_Tiny] = GetCreatureData(CreatureConstants.Centipede_Monstrous_Tiny, SizeConstants.Tiny, ChallengeRatingConstants.CR1_8th, null, false, 0, 0, 0, false),
-                [CreatureConstants.Centipede_Swarm] = GetCreatureData(CreatureConstants.Centipede_Swarm, SizeConstants.Diminutive, ChallengeRatingConstants.CR4, null, false, 0, 0, 0, false),
+                [CreatureConstants.Centipede_Swarm] = GetCreatureData(CreatureConstants.Centipede_Swarm, SizeConstants.Diminutive, ChallengeRatingConstants.CR4, null, false, 0, 0, 0, false, space: 10),
                 [CreatureConstants.ChainDevil_Kyton] = GetCreatureData(CreatureConstants.ChainDevil_Kyton, SizeConstants.Medium, ChallengeRatingConstants.CR6, 6, true, 0, 8, 2, false),
                 [CreatureConstants.ChaosBeast] = GetCreatureData(CreatureConstants.ChaosBeast, SizeConstants.Medium, ChallengeRatingConstants.CR7, null, false, 0, 5, 0, false),
-                [CreatureConstants.Cheetah] = GetCreatureData(CreatureConstants.Cheetah, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 1, 0, false),
-                [CreatureConstants.Chimera_Black] = GetCreatureData(CreatureConstants.Chimera_Black, SizeConstants.Large, ChallengeRatingConstants.CR7, 2, false, 0, 9, 0, false),
-                [CreatureConstants.Chimera_Blue] = GetCreatureData(CreatureConstants.Chimera_Blue, SizeConstants.Large, ChallengeRatingConstants.CR7, 2, false, 0, 9, 0, false),
-                [CreatureConstants.Chimera_Green] = GetCreatureData(CreatureConstants.Chimera_Green, SizeConstants.Large, ChallengeRatingConstants.CR7, 2, false, 0, 9, 0, false),
-                [CreatureConstants.Chimera_Red] = GetCreatureData(CreatureConstants.Chimera_Red, SizeConstants.Large, ChallengeRatingConstants.CR7, 2, false, 0, 9, 0, false),
-                [CreatureConstants.Chimera_White] = GetCreatureData(CreatureConstants.Chimera_White, SizeConstants.Large, ChallengeRatingConstants.CR7, 2, false, 0, 9, 0, false),
-                [CreatureConstants.Choker] = GetCreatureData(CreatureConstants.Choker, SizeConstants.Small, ChallengeRatingConstants.CR2, null, false, 0, 4, 0, false),
-                [CreatureConstants.Chuul] = GetCreatureData(CreatureConstants.Chuul, SizeConstants.Large, ChallengeRatingConstants.CR7, null, false, 0, 10, 0, false),
-                [CreatureConstants.Cloaker] = GetCreatureData(CreatureConstants.Cloaker, SizeConstants.Large, ChallengeRatingConstants.CR5, null, false, 0, 7, 0, false),
-                [CreatureConstants.Cockatrice] = GetCreatureData(CreatureConstants.Cockatrice, SizeConstants.Small, ChallengeRatingConstants.CR3, null, false, 0, 0, 0, false),
-                [CreatureConstants.Couatl] = GetCreatureData(CreatureConstants.Couatl, SizeConstants.Large, ChallengeRatingConstants.CR10, 7, true, 9, 9, 0, false),
-                [CreatureConstants.Criosphinx] = GetCreatureData(CreatureConstants.Criosphinx, SizeConstants.Large, ChallengeRatingConstants.CR7, 3, false, 0, 11, 0, false),
-                [CreatureConstants.Crocodile] = GetCreatureData(CreatureConstants.Crocodile, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 4, 0, false),
-                [CreatureConstants.Crocodile_Giant] = GetCreatureData(CreatureConstants.Crocodile_Giant, SizeConstants.Huge, ChallengeRatingConstants.CR4, null, false, 0, 7, 0, false),
-                [CreatureConstants.Cryohydra_5Heads] = GetCreatureData(CreatureConstants.Cryohydra_5Heads, SizeConstants.Huge, ChallengeRatingConstants.CR6, null, false, 0, 6, 0, false),
-                [CreatureConstants.Cryohydra_6Heads] = GetCreatureData(CreatureConstants.Cryohydra_6Heads, SizeConstants.Huge, ChallengeRatingConstants.CR7, null, false, 0, 7, 0, false),
-                [CreatureConstants.Cryohydra_7Heads] = GetCreatureData(CreatureConstants.Cryohydra_7Heads, SizeConstants.Huge, ChallengeRatingConstants.CR8, null, false, 0, 8, 0, false),
-                [CreatureConstants.Cryohydra_8Heads] = GetCreatureData(CreatureConstants.Cryohydra_8Heads, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 0, 9, 0, false),
-                [CreatureConstants.Cryohydra_9Heads] = GetCreatureData(CreatureConstants.Cryohydra_9Heads, SizeConstants.Huge, ChallengeRatingConstants.CR10, null, false, 0, 10, 0, false),
-                [CreatureConstants.Cryohydra_10Heads] = GetCreatureData(CreatureConstants.Cryohydra_10Heads, SizeConstants.Huge, ChallengeRatingConstants.CR11, null, false, 0, 11, 0, false),
-                [CreatureConstants.Cryohydra_11Heads] = GetCreatureData(CreatureConstants.Cryohydra_11Heads, SizeConstants.Huge, ChallengeRatingConstants.CR12, null, false, 0, 12, 0, false),
-                [CreatureConstants.Cryohydra_12Heads] = GetCreatureData(CreatureConstants.Cryohydra_12Heads, SizeConstants.Huge, ChallengeRatingConstants.CR13, null, false, 0, 13, 0, false),
-                [CreatureConstants.Darkmantle] = GetCreatureData(CreatureConstants.Darkmantle, SizeConstants.Small, ChallengeRatingConstants.CR1, null, false, 5, 6, 0, false),
-                [CreatureConstants.Deinonychus] = GetCreatureData(CreatureConstants.Deinonychus, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, false, 0, 5, 0, false),
-                [CreatureConstants.Delver] = GetCreatureData(CreatureConstants.Delver, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 15, 15, 0, false),
-                [CreatureConstants.Derro] = GetCreatureData(CreatureConstants.Derro, SizeConstants.Small, ChallengeRatingConstants.CR3, 0, true, 3, 2, 2, false),
-                [CreatureConstants.Derro_Sane] = GetCreatureData(CreatureConstants.Derro_Sane, SizeConstants.Small, ChallengeRatingConstants.CR3, 2, true, 3, 2, 2, false),
-                [CreatureConstants.Destrachan] = GetCreatureData(CreatureConstants.Destrachan, SizeConstants.Large, ChallengeRatingConstants.CR8, null, false, 0, 8, 0, false),
+                [CreatureConstants.Cheetah] = GetCreatureData(CreatureConstants.Cheetah, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 1, 0, true),
+                [CreatureConstants.Chimera_Black] = GetCreatureData(CreatureConstants.Chimera_Black, SizeConstants.Large, ChallengeRatingConstants.CR7, 2, false, 0, 9, 0, true),
+                [CreatureConstants.Chimera_Blue] = GetCreatureData(CreatureConstants.Chimera_Blue, SizeConstants.Large, ChallengeRatingConstants.CR7, 2, false, 0, 9, 0, true),
+                [CreatureConstants.Chimera_Green] = GetCreatureData(CreatureConstants.Chimera_Green, SizeConstants.Large, ChallengeRatingConstants.CR7, 2, false, 0, 9, 0, true),
+                [CreatureConstants.Chimera_Red] = GetCreatureData(CreatureConstants.Chimera_Red, SizeConstants.Large, ChallengeRatingConstants.CR7, 2, false, 0, 9, 0, true),
+                [CreatureConstants.Chimera_White] = GetCreatureData(CreatureConstants.Chimera_White, SizeConstants.Large, ChallengeRatingConstants.CR7, 2, false, 0, 9, 0, true),
+                [CreatureConstants.Choker] = GetCreatureData(CreatureConstants.Choker, SizeConstants.Small, ChallengeRatingConstants.CR2, null, false, 0, 4, 0, true, reach: 10),
+                [CreatureConstants.Chuul] = GetCreatureData(CreatureConstants.Chuul, SizeConstants.Large, ChallengeRatingConstants.CR7, null, false, 0, 10, 0, true),
+                [CreatureConstants.Cloaker] = GetCreatureData(CreatureConstants.Cloaker, SizeConstants.Large, ChallengeRatingConstants.CR5, null, false, 0, 7, 0, true, reach: 10),
+                [CreatureConstants.Cockatrice] = GetCreatureData(CreatureConstants.Cockatrice, SizeConstants.Small, ChallengeRatingConstants.CR3, null, false, 0, 0, 0, true),
+                [CreatureConstants.Couatl] = GetCreatureData(CreatureConstants.Couatl, SizeConstants.Large, ChallengeRatingConstants.CR10, 7, true, 9, 9, 0, true),
+                [CreatureConstants.Criosphinx] = GetCreatureData(CreatureConstants.Criosphinx, SizeConstants.Large, ChallengeRatingConstants.CR7, 3, false, 0, 11, 0, true),
+                [CreatureConstants.Crocodile] = GetCreatureData(CreatureConstants.Crocodile, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 4, 0, true),
+                [CreatureConstants.Crocodile_Giant] = GetCreatureData(CreatureConstants.Crocodile_Giant, SizeConstants.Huge, ChallengeRatingConstants.CR4, null, false, 0, 7, 0, true),
+                [CreatureConstants.Cryohydra_5Heads] = GetCreatureData(CreatureConstants.Cryohydra_5Heads, SizeConstants.Huge, ChallengeRatingConstants.CR6, null, false, 0, 6, 0, true),
+                [CreatureConstants.Cryohydra_6Heads] = GetCreatureData(CreatureConstants.Cryohydra_6Heads, SizeConstants.Huge, ChallengeRatingConstants.CR7, null, false, 0, 7, 0, true),
+                [CreatureConstants.Cryohydra_7Heads] = GetCreatureData(CreatureConstants.Cryohydra_7Heads, SizeConstants.Huge, ChallengeRatingConstants.CR8, null, false, 0, 8, 0, true),
+                [CreatureConstants.Cryohydra_8Heads] = GetCreatureData(CreatureConstants.Cryohydra_8Heads, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 0, 9, 0, true),
+                [CreatureConstants.Cryohydra_9Heads] = GetCreatureData(CreatureConstants.Cryohydra_9Heads, SizeConstants.Huge, ChallengeRatingConstants.CR10, null, false, 0, 10, 0, true),
+                [CreatureConstants.Cryohydra_10Heads] = GetCreatureData(CreatureConstants.Cryohydra_10Heads, SizeConstants.Huge, ChallengeRatingConstants.CR11, null, false, 0, 11, 0, true),
+                [CreatureConstants.Cryohydra_11Heads] = GetCreatureData(CreatureConstants.Cryohydra_11Heads, SizeConstants.Huge, ChallengeRatingConstants.CR12, null, false, 0, 12, 0, true),
+                [CreatureConstants.Cryohydra_12Heads] = GetCreatureData(CreatureConstants.Cryohydra_12Heads, SizeConstants.Huge, ChallengeRatingConstants.CR13, null, false, 0, 13, 0, true),
+                [CreatureConstants.Darkmantle] = GetCreatureData(CreatureConstants.Darkmantle, SizeConstants.Small, ChallengeRatingConstants.CR1, null, false, 5, 6, 0, true),
+                [CreatureConstants.Deinonychus] = GetCreatureData(CreatureConstants.Deinonychus, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, false, 0, 5, 0, true),
+                [CreatureConstants.Delver] = GetCreatureData(CreatureConstants.Delver, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 15, 15, 0, true, reach: 10),
+                [CreatureConstants.Derro] = GetCreatureData(CreatureConstants.Derro, SizeConstants.Small, ChallengeRatingConstants.CR3, 0, true, 3, 2, 2, true),
+                [CreatureConstants.Derro_Sane] = GetCreatureData(CreatureConstants.Derro_Sane, SizeConstants.Small, ChallengeRatingConstants.CR3, 2, true, 3, 2, 2, true),
+                [CreatureConstants.Destrachan] = GetCreatureData(CreatureConstants.Destrachan, SizeConstants.Large, ChallengeRatingConstants.CR8, null, false, 0, 8, 0, true),
                 [CreatureConstants.Devourer] = GetCreatureData(CreatureConstants.Devourer, SizeConstants.Large, ChallengeRatingConstants.CR11, null, false, 18, 15, 2, false),
-                [CreatureConstants.Digester] = GetCreatureData(CreatureConstants.Digester, SizeConstants.Medium, ChallengeRatingConstants.CR6, null, false, 0, 5, 0, false),
-                [CreatureConstants.DisplacerBeast] = GetCreatureData(CreatureConstants.DisplacerBeast, SizeConstants.Large, ChallengeRatingConstants.CR4, 4, false, 0, 5, 0, false),
-                [CreatureConstants.DisplacerBeast_PackLord] = GetCreatureData(CreatureConstants.DisplacerBeast_PackLord, SizeConstants.Huge, ChallengeRatingConstants.CR12, null, false, 0, 8, 0, false),
+                [CreatureConstants.Digester] = GetCreatureData(CreatureConstants.Digester, SizeConstants.Medium, ChallengeRatingConstants.CR6, null, false, 0, 5, 0, true),
+                [CreatureConstants.DisplacerBeast] = GetCreatureData(CreatureConstants.DisplacerBeast, SizeConstants.Large, ChallengeRatingConstants.CR4, 4, false, 0, 5, 0, true, reach: 5),
+                [CreatureConstants.DisplacerBeast_PackLord] = GetCreatureData(CreatureConstants.DisplacerBeast_PackLord, SizeConstants.Huge, ChallengeRatingConstants.CR12, null, false, 0, 8, 0, true),
                 [CreatureConstants.Djinni] = GetCreatureData(CreatureConstants.Djinni, SizeConstants.Large, ChallengeRatingConstants.CR5, 6, true, 20, 3, 2, false),
                 [CreatureConstants.Djinni_Noble] = GetCreatureData(CreatureConstants.Djinni_Noble, SizeConstants.Large, ChallengeRatingConstants.CR8, null, true, 20, 3, 2, false),
-                [CreatureConstants.Dog] = GetCreatureData(CreatureConstants.Dog, SizeConstants.Small, ChallengeRatingConstants.CR1_3rd, null, false, 0, 1, 0, false),
-                [CreatureConstants.Dog_Riding] = GetCreatureData(CreatureConstants.Dog_Riding, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 4, 0, false),
-                [CreatureConstants.Donkey] = GetCreatureData(CreatureConstants.Donkey, SizeConstants.Medium, ChallengeRatingConstants.CR1_6th, null, false, 0, 2, 0, false),
-                [CreatureConstants.Doppelganger] = GetCreatureData(CreatureConstants.Doppelganger, SizeConstants.Medium, ChallengeRatingConstants.CR3, 4, true, 18, 4, 2, false),
-                [CreatureConstants.Dragon_Black_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Black_Wyrmling, SizeConstants.Tiny, ChallengeRatingConstants.CR3, 3, false, 0, 3, 0, false),
-                [CreatureConstants.Dragon_Black_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Black_VeryYoung, SizeConstants.Small, ChallengeRatingConstants.CR4, 3, false, 0, 6, 0, false),
-                [CreatureConstants.Dragon_Black_Young] = GetCreatureData(CreatureConstants.Dragon_Black_Young, SizeConstants.Medium, ChallengeRatingConstants.CR5, 3, false, 0, 9, 0, false),
-                [CreatureConstants.Dragon_Black_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Black_Juvenile, SizeConstants.Medium, ChallengeRatingConstants.CR7, 4, false, 0, 12, 0, false),
-                [CreatureConstants.Dragon_Black_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Black_YoungAdult, SizeConstants.Large, ChallengeRatingConstants.CR9, null, false, 1, 15, 0, false),
-                [CreatureConstants.Dragon_Black_Adult] = GetCreatureData(CreatureConstants.Dragon_Black_Adult, SizeConstants.Large, ChallengeRatingConstants.CR11, null, false, 3, 18, 0, false),
-                [CreatureConstants.Dragon_Black_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Black_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR14, null, false, 5, 21, 0, false),
-                [CreatureConstants.Dragon_Black_Old] = GetCreatureData(CreatureConstants.Dragon_Black_Old, SizeConstants.Huge, ChallengeRatingConstants.CR16, null, false, 7, 24, 0, false),
-                [CreatureConstants.Dragon_Black_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Black_VeryOld, SizeConstants.Huge, ChallengeRatingConstants.CR18, null, false, 9, 27, 0, false),
-                [CreatureConstants.Dragon_Black_Ancient] = GetCreatureData(CreatureConstants.Dragon_Black_Ancient, SizeConstants.Huge, ChallengeRatingConstants.CR19, null, false, 11, 30, 0, false),
-                [CreatureConstants.Dragon_Black_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Black_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR20, null, false, 13, 33, 0, false),
-                [CreatureConstants.Dragon_Black_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Black_GreatWyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR22, null, false, 15, 36, 0, false),
-                [CreatureConstants.Dragon_Blue_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Blue_Wyrmling, SizeConstants.Small, ChallengeRatingConstants.CR3, 4, false, 0, 5, 0, false),
-                [CreatureConstants.Dragon_Blue_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Blue_VeryYoung, SizeConstants.Medium, ChallengeRatingConstants.CR4, 4, false, 0, 8, 0, false),
-                [CreatureConstants.Dragon_Blue_Young] = GetCreatureData(CreatureConstants.Dragon_Blue_Young, SizeConstants.Medium, ChallengeRatingConstants.CR6, 5, false, 0, 11, 0, false),
-                [CreatureConstants.Dragon_Blue_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Blue_Juvenile, SizeConstants.Large, ChallengeRatingConstants.CR8, null, false, 1, 14, 0, false),
-                [CreatureConstants.Dragon_Blue_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Blue_YoungAdult, SizeConstants.Large, ChallengeRatingConstants.CR11, null, false, 3, 17, 0, false),
-                [CreatureConstants.Dragon_Blue_Adult] = GetCreatureData(CreatureConstants.Dragon_Blue_Adult, SizeConstants.Huge, ChallengeRatingConstants.CR14, null, false, 5, 20, 0, false),
-                [CreatureConstants.Dragon_Blue_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Blue_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR16, null, false, 7, 23, 0, false),
-                [CreatureConstants.Dragon_Blue_Old] = GetCreatureData(CreatureConstants.Dragon_Blue_Old, SizeConstants.Huge, ChallengeRatingConstants.CR18, null, false, 9, 26, 0, false),
-                [CreatureConstants.Dragon_Blue_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Blue_VeryOld, SizeConstants.Huge, ChallengeRatingConstants.CR19, null, false, 11, 29, 0, false),
-                [CreatureConstants.Dragon_Blue_Ancient] = GetCreatureData(CreatureConstants.Dragon_Blue_Ancient, SizeConstants.Gargantuan, ChallengeRatingConstants.CR21, null, false, 13, 32, 0, false),
-                [CreatureConstants.Dragon_Blue_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Blue_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR23, null, false, 15, 35, 0, false),
-                [CreatureConstants.Dragon_Blue_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Blue_GreatWyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR25, null, false, 17, 38, 0, false),
-                [CreatureConstants.Dragon_Brass_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Brass_Wyrmling, SizeConstants.Tiny, ChallengeRatingConstants.CR3, 2, false, 0, 3, 0, false),
-                [CreatureConstants.Dragon_Brass_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Brass_VeryYoung, SizeConstants.Small, ChallengeRatingConstants.CR4, 3, false, 0, 6, 0, false),
-                [CreatureConstants.Dragon_Brass_Young] = GetCreatureData(CreatureConstants.Dragon_Brass_Young, SizeConstants.Medium, ChallengeRatingConstants.CR6, 4, false, 1, 9, 0, false),
-                [CreatureConstants.Dragon_Brass_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Brass_Juvenile, SizeConstants.Medium, ChallengeRatingConstants.CR8, 4, false, 3, 12, 0, false),
-                [CreatureConstants.Dragon_Brass_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Brass_YoungAdult, SizeConstants.Large, ChallengeRatingConstants.CR10, null, false, 5, 15, 0, false),
-                [CreatureConstants.Dragon_Brass_Adult] = GetCreatureData(CreatureConstants.Dragon_Brass_Adult, SizeConstants.Large, ChallengeRatingConstants.CR12, null, false, 7, 18, 0, false),
-                [CreatureConstants.Dragon_Brass_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Brass_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR15, null, false, 9, 21, 0, false),
-                [CreatureConstants.Dragon_Brass_Old] = GetCreatureData(CreatureConstants.Dragon_Brass_Old, SizeConstants.Huge, ChallengeRatingConstants.CR17, null, false, 11, 24, 0, false),
-                [CreatureConstants.Dragon_Brass_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Brass_VeryOld, SizeConstants.Huge, ChallengeRatingConstants.CR19, null, false, 13, 27, 0, false),
-                [CreatureConstants.Dragon_Brass_Ancient] = GetCreatureData(CreatureConstants.Dragon_Brass_Ancient, SizeConstants.Huge, ChallengeRatingConstants.CR20, null, false, 15, 30, 0, false),
-                [CreatureConstants.Dragon_Brass_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Brass_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR21, null, false, 17, 33, 0, false),
-                [CreatureConstants.Dragon_Brass_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Brass_GreatWyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR23, null, false, 19, 36, 0, false),
-                [CreatureConstants.Dragon_Bronze_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Bronze_Wyrmling, SizeConstants.Small, ChallengeRatingConstants.CR3, 4, false, 0, 5, 0, false),
-                [CreatureConstants.Dragon_Bronze_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Bronze_VeryYoung, SizeConstants.Medium, ChallengeRatingConstants.CR5, 4, false, 0, 8, 0, false),
-                [CreatureConstants.Dragon_Bronze_Young] = GetCreatureData(CreatureConstants.Dragon_Bronze_Young, SizeConstants.Medium, ChallengeRatingConstants.CR7, 6, true, 1, 11, 0, false),
-                [CreatureConstants.Dragon_Bronze_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Bronze_Juvenile, SizeConstants.Large, ChallengeRatingConstants.CR9, null, true, 3, 14, 0, false),
-                [CreatureConstants.Dragon_Bronze_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Bronze_YoungAdult, SizeConstants.Large, ChallengeRatingConstants.CR12, null, true, 5, 17, 0, false),
-                [CreatureConstants.Dragon_Bronze_Adult] = GetCreatureData(CreatureConstants.Dragon_Bronze_Adult, SizeConstants.Huge, ChallengeRatingConstants.CR15, null, true, 7, 20, 0, false),
-                [CreatureConstants.Dragon_Bronze_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Bronze_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR17, null, true, 9, 23, 0, false),
-                [CreatureConstants.Dragon_Bronze_Old] = GetCreatureData(CreatureConstants.Dragon_Bronze_Old, SizeConstants.Huge, ChallengeRatingConstants.CR19, null, true, 11, 26, 0, false),
-                [CreatureConstants.Dragon_Bronze_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Bronze_VeryOld, SizeConstants.Huge, ChallengeRatingConstants.CR20, null, true, 13, 29, 0, false),
-                [CreatureConstants.Dragon_Bronze_Ancient] = GetCreatureData(CreatureConstants.Dragon_Bronze_Ancient, SizeConstants.Gargantuan, ChallengeRatingConstants.CR22, null, true, 15, 32, 0, false),
-                [CreatureConstants.Dragon_Bronze_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Bronze_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR23, null, true, 17, 35, 0, false),
-                [CreatureConstants.Dragon_Bronze_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Bronze_GreatWyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR25, null, true, 19, 38, 0, false),
-                [CreatureConstants.Dragon_Copper_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Copper_Wyrmling, SizeConstants.Tiny, ChallengeRatingConstants.CR3, 2, false, 0, 4, 0, false),
-                [CreatureConstants.Dragon_Copper_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Copper_VeryYoung, SizeConstants.Small, ChallengeRatingConstants.CR5, 3, false, 0, 7, 0, false),
-                [CreatureConstants.Dragon_Copper_Young] = GetCreatureData(CreatureConstants.Dragon_Copper_Young, SizeConstants.Medium, ChallengeRatingConstants.CR7, 4, false, 1, 10, 0, false),
-                [CreatureConstants.Dragon_Copper_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Copper_Juvenile, SizeConstants.Medium, ChallengeRatingConstants.CR9, 4, false, 3, 13, 0, false),
-                [CreatureConstants.Dragon_Copper_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Copper_YoungAdult, SizeConstants.Large, ChallengeRatingConstants.CR11, null, false, 5, 16, 0, false),
-                [CreatureConstants.Dragon_Copper_Adult] = GetCreatureData(CreatureConstants.Dragon_Copper_Adult, SizeConstants.Large, ChallengeRatingConstants.CR14, null, false, 7, 19, 0, false),
-                [CreatureConstants.Dragon_Copper_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Copper_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR16, null, false, 9, 22, 0, false),
-                [CreatureConstants.Dragon_Copper_Old] = GetCreatureData(CreatureConstants.Dragon_Copper_Old, SizeConstants.Huge, ChallengeRatingConstants.CR19, null, false, 11, 25, 0, false),
-                [CreatureConstants.Dragon_Copper_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Copper_VeryOld, SizeConstants.Huge, ChallengeRatingConstants.CR20, null, false, 13, 28, 0, false),
-                [CreatureConstants.Dragon_Copper_Ancient] = GetCreatureData(CreatureConstants.Dragon_Copper_Ancient, SizeConstants.Huge, ChallengeRatingConstants.CR22, null, false, 15, 31, 0, false),
-                [CreatureConstants.Dragon_Copper_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Copper_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR23, null, false, 17, 34, 0, false),
-                [CreatureConstants.Dragon_Copper_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Copper_GreatWyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR25, null, false, 19, 37, 0, false),
-                [CreatureConstants.Dragon_Gold_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Gold_Wyrmling, SizeConstants.Medium, ChallengeRatingConstants.CR5, 4, true, 0, 7, 0, false),
-                [CreatureConstants.Dragon_Gold_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Gold_VeryYoung, SizeConstants.Large, ChallengeRatingConstants.CR7, 5, true, 0, 10, 0, false),
-                [CreatureConstants.Dragon_Gold_Young] = GetCreatureData(CreatureConstants.Dragon_Gold_Young, SizeConstants.Large, ChallengeRatingConstants.CR9, 6, true, 1, 13, 0, false),
-                [CreatureConstants.Dragon_Gold_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Gold_Juvenile, SizeConstants.Large, ChallengeRatingConstants.CR11, null, true, 3, 16, 0, false),
-                [CreatureConstants.Dragon_Gold_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Gold_YoungAdult, SizeConstants.Huge, ChallengeRatingConstants.CR14, null, true, 5, 19, 0, false),
-                [CreatureConstants.Dragon_Gold_Adult] = GetCreatureData(CreatureConstants.Dragon_Gold_Adult, SizeConstants.Huge, ChallengeRatingConstants.CR16, null, true, 7, 22, 0, false),
-                [CreatureConstants.Dragon_Gold_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Gold_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR19, null, true, 9, 25, 0, false),
-                [CreatureConstants.Dragon_Gold_Old] = GetCreatureData(CreatureConstants.Dragon_Gold_Old, SizeConstants.Gargantuan, ChallengeRatingConstants.CR21, null, true, 11, 28, 0, false),
-                [CreatureConstants.Dragon_Gold_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Gold_VeryOld, SizeConstants.Gargantuan, ChallengeRatingConstants.CR22, null, true, 13, 31, 0, false),
-                [CreatureConstants.Dragon_Gold_Ancient] = GetCreatureData(CreatureConstants.Dragon_Gold_Ancient, SizeConstants.Gargantuan, ChallengeRatingConstants.CR24, null, true, 15, 34, 0, false),
-                [CreatureConstants.Dragon_Gold_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Gold_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR25, null, true, 17, 37, 0, false),
-                [CreatureConstants.Dragon_Gold_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Gold_GreatWyrm, SizeConstants.Colossal, ChallengeRatingConstants.CR27, null, true, 19, 40, 0, false),
-                [CreatureConstants.Dragon_Green_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Green_Wyrmling, SizeConstants.Small, ChallengeRatingConstants.CR3, 5, false, 0, 4, 0, false),
-                [CreatureConstants.Dragon_Green_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Green_VeryYoung, SizeConstants.Medium, ChallengeRatingConstants.CR4, 5, false, 0, 7, 0, false),
-                [CreatureConstants.Dragon_Green_Young] = GetCreatureData(CreatureConstants.Dragon_Green_Young, SizeConstants.Medium, ChallengeRatingConstants.CR5, 5, false, 0, 10, 0, false),
-                [CreatureConstants.Dragon_Green_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Green_Juvenile, SizeConstants.Large, ChallengeRatingConstants.CR8, 6, false, 1, 13, 0, false),
-                [CreatureConstants.Dragon_Green_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Green_YoungAdult, SizeConstants.Large, ChallengeRatingConstants.CR11, null, false, 3, 16, 0, false),
-                [CreatureConstants.Dragon_Green_Adult] = GetCreatureData(CreatureConstants.Dragon_Green_Adult, SizeConstants.Huge, ChallengeRatingConstants.CR13, null, false, 5, 19, 0, false),
-                [CreatureConstants.Dragon_Green_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Green_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR16, null, false, 7, 22, 0, false),
-                [CreatureConstants.Dragon_Green_Old] = GetCreatureData(CreatureConstants.Dragon_Green_Old, SizeConstants.Huge, ChallengeRatingConstants.CR18, null, false, 9, 25, 0, false),
-                [CreatureConstants.Dragon_Green_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Green_VeryOld, SizeConstants.Huge, ChallengeRatingConstants.CR19, null, false, 11, 28, 0, false),
-                [CreatureConstants.Dragon_Green_Ancient] = GetCreatureData(CreatureConstants.Dragon_Green_Ancient, SizeConstants.Gargantuan, ChallengeRatingConstants.CR21, null, false, 13, 31, 0, false),
-                [CreatureConstants.Dragon_Green_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Green_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR22, null, false, 15, 34, 0, false),
-                [CreatureConstants.Dragon_Green_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Green_GreatWyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR24, null, false, 17, 37, 0, false),
-                [CreatureConstants.Dragon_Red_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Red_Wyrmling, SizeConstants.Medium, ChallengeRatingConstants.CR4, 4, false, 0, 6, 0, false),
-                [CreatureConstants.Dragon_Red_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Red_VeryYoung, SizeConstants.Large, ChallengeRatingConstants.CR5, 5, false, 0, 9, 0, false),
-                [CreatureConstants.Dragon_Red_Young] = GetCreatureData(CreatureConstants.Dragon_Red_Young, SizeConstants.Large, ChallengeRatingConstants.CR7, 6, false, 1, 12, 0, false),
-                [CreatureConstants.Dragon_Red_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Red_Juvenile, SizeConstants.Large, ChallengeRatingConstants.CR10, null, false, 3, 15, 0, false),
-                [CreatureConstants.Dragon_Red_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Red_YoungAdult, SizeConstants.Huge, ChallengeRatingConstants.CR13, null, false, 5, 18, 0, false),
-                [CreatureConstants.Dragon_Red_Adult] = GetCreatureData(CreatureConstants.Dragon_Red_Adult, SizeConstants.Huge, ChallengeRatingConstants.CR15, null, false, 7, 21, 0, false),
-                [CreatureConstants.Dragon_Red_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Red_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR18, null, false, 9, 24, 0, false),
-                [CreatureConstants.Dragon_Red_Old] = GetCreatureData(CreatureConstants.Dragon_Red_Old, SizeConstants.Gargantuan, ChallengeRatingConstants.CR20, null, false, 11, 27, 0, false),
-                [CreatureConstants.Dragon_Red_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Red_VeryOld, SizeConstants.Gargantuan, ChallengeRatingConstants.CR21, null, false, 13, 30, 0, false),
-                [CreatureConstants.Dragon_Red_Ancient] = GetCreatureData(CreatureConstants.Dragon_Red_Ancient, SizeConstants.Gargantuan, ChallengeRatingConstants.CR23, null, false, 15, 33, 0, false),
-                [CreatureConstants.Dragon_Red_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Red_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR24, null, false, 17, 36, 0, false),
-                [CreatureConstants.Dragon_Red_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Red_GreatWyrm, SizeConstants.Colossal, ChallengeRatingConstants.CR26, null, false, 19, 39, 0, false),
-                [CreatureConstants.Dragon_Silver_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Silver_Wyrmling, SizeConstants.Medium, ChallengeRatingConstants.CR4, 4, true, 0, 6, 0, false),
-                [CreatureConstants.Dragon_Silver_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Silver_VeryYoung, SizeConstants.Large, ChallengeRatingConstants.CR5, 4, true, 0, 9, 0, false),
-                [CreatureConstants.Dragon_Silver_Young] = GetCreatureData(CreatureConstants.Dragon_Silver_Young, SizeConstants.Large, ChallengeRatingConstants.CR7, 5, true, 1, 12, 0, false),
-                [CreatureConstants.Dragon_Silver_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Silver_Juvenile, SizeConstants.Large, ChallengeRatingConstants.CR10, null, true, 3, 15, 0, false),
-                [CreatureConstants.Dragon_Silver_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Silver_YoungAdult, SizeConstants.Huge, ChallengeRatingConstants.CR13, null, true, 5, 18, 0, false),
-                [CreatureConstants.Dragon_Silver_Adult] = GetCreatureData(CreatureConstants.Dragon_Silver_Adult, SizeConstants.Huge, ChallengeRatingConstants.CR15, null, true, 7, 21, 0, false),
-                [CreatureConstants.Dragon_Silver_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Silver_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR18, null, true, 9, 24, 0, false),
-                [CreatureConstants.Dragon_Silver_Old] = GetCreatureData(CreatureConstants.Dragon_Silver_Old, SizeConstants.Gargantuan, ChallengeRatingConstants.CR20, null, true, 11, 27, 0, false),
-                [CreatureConstants.Dragon_Silver_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Silver_VeryOld, SizeConstants.Gargantuan, ChallengeRatingConstants.CR21, null, true, 13, 30, 0, false),
-                [CreatureConstants.Dragon_Silver_Ancient] = GetCreatureData(CreatureConstants.Dragon_Silver_Ancient, SizeConstants.Gargantuan, ChallengeRatingConstants.CR23, null, true, 15, 33, 0, false),
-                [CreatureConstants.Dragon_Silver_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Silver_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR24, null, true, 17, 36, 0, false),
-                [CreatureConstants.Dragon_Silver_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Silver_GreatWyrm, SizeConstants.Colossal, ChallengeRatingConstants.CR26, null, true, 19, 39, 0, false),
-                [CreatureConstants.Dragon_White_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_White_Wyrmling, SizeConstants.Tiny, ChallengeRatingConstants.CR2, 2, false, 0, 2, 0, false),
-                [CreatureConstants.Dragon_White_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_White_VeryYoung, SizeConstants.Small, ChallengeRatingConstants.CR3, 3, false, 0, 5, 0, false),
-                [CreatureConstants.Dragon_White_Young] = GetCreatureData(CreatureConstants.Dragon_White_Young, SizeConstants.Medium, ChallengeRatingConstants.CR4, 3, false, 0, 8, 0, false),
-                [CreatureConstants.Dragon_White_Juvenile] = GetCreatureData(CreatureConstants.Dragon_White_Juvenile, SizeConstants.Medium, ChallengeRatingConstants.CR6, 5, false, 0, 11, 0, false),
-                [CreatureConstants.Dragon_White_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_White_YoungAdult, SizeConstants.Large, ChallengeRatingConstants.CR8, null, false, 0, 14, 0, false),
-                [CreatureConstants.Dragon_White_Adult] = GetCreatureData(CreatureConstants.Dragon_White_Adult, SizeConstants.Large, ChallengeRatingConstants.CR10, null, false, 1, 17, 0, false),
-                [CreatureConstants.Dragon_White_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_White_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR12, null, false, 3, 20, 0, false),
-                [CreatureConstants.Dragon_White_Old] = GetCreatureData(CreatureConstants.Dragon_White_Old, SizeConstants.Huge, ChallengeRatingConstants.CR15, null, false, 5, 23, 0, false),
-                [CreatureConstants.Dragon_White_VeryOld] = GetCreatureData(CreatureConstants.Dragon_White_VeryOld, SizeConstants.Huge, ChallengeRatingConstants.CR17, null, false, 7, 26, 0, false),
-                [CreatureConstants.Dragon_White_Ancient] = GetCreatureData(CreatureConstants.Dragon_White_Ancient, SizeConstants.Huge, ChallengeRatingConstants.CR18, null, false, 9, 29, 0, false),
-                [CreatureConstants.Dragon_White_Wyrm] = GetCreatureData(CreatureConstants.Dragon_White_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR19, null, false, 11, 32, 0, false),
-                [CreatureConstants.Dragon_White_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_White_GreatWyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR21, null, false, 13, 35, 0, false),
-                [CreatureConstants.DragonTurtle] = GetCreatureData(CreatureConstants.DragonTurtle, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 0, 17, 0, false),
-                [CreatureConstants.Dragonne] = GetCreatureData(CreatureConstants.Dragonne, SizeConstants.Large, ChallengeRatingConstants.CR7, 4, false, 0, 7, 0, false),
+                [CreatureConstants.Dog] = GetCreatureData(CreatureConstants.Dog, SizeConstants.Small, ChallengeRatingConstants.CR1_3rd, null, false, 0, 1, 0, true),
+                [CreatureConstants.Dog_Riding] = GetCreatureData(CreatureConstants.Dog_Riding, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 4, 0, true),
+                [CreatureConstants.Donkey] = GetCreatureData(CreatureConstants.Donkey, SizeConstants.Medium, ChallengeRatingConstants.CR1_6th, null, false, 0, 2, 0, true),
+                [CreatureConstants.Doppelganger] = GetCreatureData(CreatureConstants.Doppelganger, SizeConstants.Medium, ChallengeRatingConstants.CR3, 4, true, 18, 4, 2, true),
+                [CreatureConstants.Dragon_Black_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Black_Wyrmling, SizeConstants.Tiny, ChallengeRatingConstants.CR3, 3, false, 0, 3, 0, true),
+                [CreatureConstants.Dragon_Black_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Black_VeryYoung, SizeConstants.Small, ChallengeRatingConstants.CR4, 3, false, 0, 6, 0, true),
+                [CreatureConstants.Dragon_Black_Young] = GetCreatureData(CreatureConstants.Dragon_Black_Young, SizeConstants.Medium, ChallengeRatingConstants.CR5, 3, false, 0, 9, 0, true),
+                [CreatureConstants.Dragon_Black_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Black_Juvenile, SizeConstants.Medium, ChallengeRatingConstants.CR7, 4, false, 0, 12, 0, true),
+                [CreatureConstants.Dragon_Black_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Black_YoungAdult, SizeConstants.Large, ChallengeRatingConstants.CR9, null, false, 1, 15, 0, true),
+                [CreatureConstants.Dragon_Black_Adult] = GetCreatureData(CreatureConstants.Dragon_Black_Adult, SizeConstants.Large, ChallengeRatingConstants.CR11, null, false, 3, 18, 0, true),
+                [CreatureConstants.Dragon_Black_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Black_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR14, null, false, 5, 21, 0, true),
+                [CreatureConstants.Dragon_Black_Old] = GetCreatureData(CreatureConstants.Dragon_Black_Old, SizeConstants.Huge, ChallengeRatingConstants.CR16, null, false, 7, 24, 0, true),
+                [CreatureConstants.Dragon_Black_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Black_VeryOld, SizeConstants.Huge, ChallengeRatingConstants.CR18, null, false, 9, 27, 0, true),
+                [CreatureConstants.Dragon_Black_Ancient] = GetCreatureData(CreatureConstants.Dragon_Black_Ancient, SizeConstants.Huge, ChallengeRatingConstants.CR19, null, false, 11, 30, 0, true),
+                [CreatureConstants.Dragon_Black_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Black_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR20, null, false, 13, 33, 0, true),
+                [CreatureConstants.Dragon_Black_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Black_GreatWyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR22, null, false, 15, 36, 0, true),
+                [CreatureConstants.Dragon_Blue_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Blue_Wyrmling, SizeConstants.Small, ChallengeRatingConstants.CR3, 4, false, 0, 5, 0, true),
+                [CreatureConstants.Dragon_Blue_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Blue_VeryYoung, SizeConstants.Medium, ChallengeRatingConstants.CR4, 4, false, 0, 8, 0, true),
+                [CreatureConstants.Dragon_Blue_Young] = GetCreatureData(CreatureConstants.Dragon_Blue_Young, SizeConstants.Medium, ChallengeRatingConstants.CR6, 5, false, 0, 11, 0, true),
+                [CreatureConstants.Dragon_Blue_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Blue_Juvenile, SizeConstants.Large, ChallengeRatingConstants.CR8, null, false, 1, 14, 0, true),
+                [CreatureConstants.Dragon_Blue_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Blue_YoungAdult, SizeConstants.Large, ChallengeRatingConstants.CR11, null, false, 3, 17, 0, true),
+                [CreatureConstants.Dragon_Blue_Adult] = GetCreatureData(CreatureConstants.Dragon_Blue_Adult, SizeConstants.Huge, ChallengeRatingConstants.CR14, null, false, 5, 20, 0, true),
+                [CreatureConstants.Dragon_Blue_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Blue_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR16, null, false, 7, 23, 0, true),
+                [CreatureConstants.Dragon_Blue_Old] = GetCreatureData(CreatureConstants.Dragon_Blue_Old, SizeConstants.Huge, ChallengeRatingConstants.CR18, null, false, 9, 26, 0, true),
+                [CreatureConstants.Dragon_Blue_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Blue_VeryOld, SizeConstants.Huge, ChallengeRatingConstants.CR19, null, false, 11, 29, 0, true),
+                [CreatureConstants.Dragon_Blue_Ancient] = GetCreatureData(CreatureConstants.Dragon_Blue_Ancient, SizeConstants.Gargantuan, ChallengeRatingConstants.CR21, null, false, 13, 32, 0, true),
+                [CreatureConstants.Dragon_Blue_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Blue_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR23, null, false, 15, 35, 0, true),
+                [CreatureConstants.Dragon_Blue_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Blue_GreatWyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR25, null, false, 17, 38, 0, true),
+                [CreatureConstants.Dragon_Brass_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Brass_Wyrmling, SizeConstants.Tiny, ChallengeRatingConstants.CR3, 2, false, 0, 3, 0, true),
+                [CreatureConstants.Dragon_Brass_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Brass_VeryYoung, SizeConstants.Small, ChallengeRatingConstants.CR4, 3, false, 0, 6, 0, true),
+                [CreatureConstants.Dragon_Brass_Young] = GetCreatureData(CreatureConstants.Dragon_Brass_Young, SizeConstants.Medium, ChallengeRatingConstants.CR6, 4, false, 1, 9, 0, true),
+                [CreatureConstants.Dragon_Brass_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Brass_Juvenile, SizeConstants.Medium, ChallengeRatingConstants.CR8, 4, false, 3, 12, 0, true),
+                [CreatureConstants.Dragon_Brass_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Brass_YoungAdult, SizeConstants.Large, ChallengeRatingConstants.CR10, null, false, 5, 15, 0, true),
+                [CreatureConstants.Dragon_Brass_Adult] = GetCreatureData(CreatureConstants.Dragon_Brass_Adult, SizeConstants.Large, ChallengeRatingConstants.CR12, null, false, 7, 18, 0, true),
+                [CreatureConstants.Dragon_Brass_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Brass_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR15, null, false, 9, 21, 0, true),
+                [CreatureConstants.Dragon_Brass_Old] = GetCreatureData(CreatureConstants.Dragon_Brass_Old, SizeConstants.Huge, ChallengeRatingConstants.CR17, null, false, 11, 24, 0, true),
+                [CreatureConstants.Dragon_Brass_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Brass_VeryOld, SizeConstants.Huge, ChallengeRatingConstants.CR19, null, false, 13, 27, 0, true),
+                [CreatureConstants.Dragon_Brass_Ancient] = GetCreatureData(CreatureConstants.Dragon_Brass_Ancient, SizeConstants.Huge, ChallengeRatingConstants.CR20, null, false, 15, 30, 0, true),
+                [CreatureConstants.Dragon_Brass_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Brass_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR21, null, false, 17, 33, 0, true),
+                [CreatureConstants.Dragon_Brass_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Brass_GreatWyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR23, null, false, 19, 36, 0, true),
+                [CreatureConstants.Dragon_Bronze_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Bronze_Wyrmling, SizeConstants.Small, ChallengeRatingConstants.CR3, 4, false, 0, 5, 0, true),
+                [CreatureConstants.Dragon_Bronze_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Bronze_VeryYoung, SizeConstants.Medium, ChallengeRatingConstants.CR5, 4, false, 0, 8, 0, true),
+                [CreatureConstants.Dragon_Bronze_Young] = GetCreatureData(CreatureConstants.Dragon_Bronze_Young, SizeConstants.Medium, ChallengeRatingConstants.CR7, 6, true, 1, 11, 0, true),
+                [CreatureConstants.Dragon_Bronze_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Bronze_Juvenile, SizeConstants.Large, ChallengeRatingConstants.CR9, null, true, 3, 14, 0, true),
+                [CreatureConstants.Dragon_Bronze_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Bronze_YoungAdult, SizeConstants.Large, ChallengeRatingConstants.CR12, null, true, 5, 17, 0, true),
+                [CreatureConstants.Dragon_Bronze_Adult] = GetCreatureData(CreatureConstants.Dragon_Bronze_Adult, SizeConstants.Huge, ChallengeRatingConstants.CR15, null, true, 7, 20, 0, true),
+                [CreatureConstants.Dragon_Bronze_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Bronze_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR17, null, true, 9, 23, 0, true),
+                [CreatureConstants.Dragon_Bronze_Old] = GetCreatureData(CreatureConstants.Dragon_Bronze_Old, SizeConstants.Huge, ChallengeRatingConstants.CR19, null, true, 11, 26, 0, true),
+                [CreatureConstants.Dragon_Bronze_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Bronze_VeryOld, SizeConstants.Huge, ChallengeRatingConstants.CR20, null, true, 13, 29, 0, true),
+                [CreatureConstants.Dragon_Bronze_Ancient] = GetCreatureData(CreatureConstants.Dragon_Bronze_Ancient, SizeConstants.Gargantuan, ChallengeRatingConstants.CR22, null, true, 15, 32, 0, true),
+                [CreatureConstants.Dragon_Bronze_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Bronze_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR23, null, true, 17, 35, 0, true),
+                [CreatureConstants.Dragon_Bronze_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Bronze_GreatWyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR25, null, true, 19, 38, 0, true),
+                [CreatureConstants.Dragon_Copper_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Copper_Wyrmling, SizeConstants.Tiny, ChallengeRatingConstants.CR3, 2, false, 0, 4, 0, true),
+                [CreatureConstants.Dragon_Copper_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Copper_VeryYoung, SizeConstants.Small, ChallengeRatingConstants.CR5, 3, false, 0, 7, 0, true),
+                [CreatureConstants.Dragon_Copper_Young] = GetCreatureData(CreatureConstants.Dragon_Copper_Young, SizeConstants.Medium, ChallengeRatingConstants.CR7, 4, false, 1, 10, 0, true),
+                [CreatureConstants.Dragon_Copper_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Copper_Juvenile, SizeConstants.Medium, ChallengeRatingConstants.CR9, 4, false, 3, 13, 0, true),
+                [CreatureConstants.Dragon_Copper_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Copper_YoungAdult, SizeConstants.Large, ChallengeRatingConstants.CR11, null, false, 5, 16, 0, true),
+                [CreatureConstants.Dragon_Copper_Adult] = GetCreatureData(CreatureConstants.Dragon_Copper_Adult, SizeConstants.Large, ChallengeRatingConstants.CR14, null, false, 7, 19, 0, true),
+                [CreatureConstants.Dragon_Copper_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Copper_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR16, null, false, 9, 22, 0, true),
+                [CreatureConstants.Dragon_Copper_Old] = GetCreatureData(CreatureConstants.Dragon_Copper_Old, SizeConstants.Huge, ChallengeRatingConstants.CR19, null, false, 11, 25, 0, true),
+                [CreatureConstants.Dragon_Copper_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Copper_VeryOld, SizeConstants.Huge, ChallengeRatingConstants.CR20, null, false, 13, 28, 0, true),
+                [CreatureConstants.Dragon_Copper_Ancient] = GetCreatureData(CreatureConstants.Dragon_Copper_Ancient, SizeConstants.Huge, ChallengeRatingConstants.CR22, null, false, 15, 31, 0, true),
+                [CreatureConstants.Dragon_Copper_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Copper_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR23, null, false, 17, 34, 0, true),
+                [CreatureConstants.Dragon_Copper_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Copper_GreatWyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR25, null, false, 19, 37, 0, true),
+                [CreatureConstants.Dragon_Gold_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Gold_Wyrmling, SizeConstants.Medium, ChallengeRatingConstants.CR5, 4, true, 0, 7, 0, true),
+                [CreatureConstants.Dragon_Gold_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Gold_VeryYoung, SizeConstants.Large, ChallengeRatingConstants.CR7, 5, true, 0, 10, 0, true),
+                [CreatureConstants.Dragon_Gold_Young] = GetCreatureData(CreatureConstants.Dragon_Gold_Young, SizeConstants.Large, ChallengeRatingConstants.CR9, 6, true, 1, 13, 0, true),
+                [CreatureConstants.Dragon_Gold_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Gold_Juvenile, SizeConstants.Large, ChallengeRatingConstants.CR11, null, true, 3, 16, 0, true),
+                [CreatureConstants.Dragon_Gold_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Gold_YoungAdult, SizeConstants.Huge, ChallengeRatingConstants.CR14, null, true, 5, 19, 0, true),
+                [CreatureConstants.Dragon_Gold_Adult] = GetCreatureData(CreatureConstants.Dragon_Gold_Adult, SizeConstants.Huge, ChallengeRatingConstants.CR16, null, true, 7, 22, 0, true),
+                [CreatureConstants.Dragon_Gold_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Gold_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR19, null, true, 9, 25, 0, true),
+                [CreatureConstants.Dragon_Gold_Old] = GetCreatureData(CreatureConstants.Dragon_Gold_Old, SizeConstants.Gargantuan, ChallengeRatingConstants.CR21, null, true, 11, 28, 0, true),
+                [CreatureConstants.Dragon_Gold_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Gold_VeryOld, SizeConstants.Gargantuan, ChallengeRatingConstants.CR22, null, true, 13, 31, 0, true),
+                [CreatureConstants.Dragon_Gold_Ancient] = GetCreatureData(CreatureConstants.Dragon_Gold_Ancient, SizeConstants.Gargantuan, ChallengeRatingConstants.CR24, null, true, 15, 34, 0, true),
+                [CreatureConstants.Dragon_Gold_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Gold_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR25, null, true, 17, 37, 0, true),
+                [CreatureConstants.Dragon_Gold_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Gold_GreatWyrm, SizeConstants.Colossal, ChallengeRatingConstants.CR27, null, true, 19, 40, 0, true),
+                [CreatureConstants.Dragon_Green_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Green_Wyrmling, SizeConstants.Small, ChallengeRatingConstants.CR3, 5, false, 0, 4, 0, true),
+                [CreatureConstants.Dragon_Green_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Green_VeryYoung, SizeConstants.Medium, ChallengeRatingConstants.CR4, 5, false, 0, 7, 0, true),
+                [CreatureConstants.Dragon_Green_Young] = GetCreatureData(CreatureConstants.Dragon_Green_Young, SizeConstants.Medium, ChallengeRatingConstants.CR5, 5, false, 0, 10, 0, true),
+                [CreatureConstants.Dragon_Green_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Green_Juvenile, SizeConstants.Large, ChallengeRatingConstants.CR8, 6, false, 1, 13, 0, true),
+                [CreatureConstants.Dragon_Green_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Green_YoungAdult, SizeConstants.Large, ChallengeRatingConstants.CR11, null, false, 3, 16, 0, true),
+                [CreatureConstants.Dragon_Green_Adult] = GetCreatureData(CreatureConstants.Dragon_Green_Adult, SizeConstants.Huge, ChallengeRatingConstants.CR13, null, false, 5, 19, 0, true),
+                [CreatureConstants.Dragon_Green_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Green_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR16, null, false, 7, 22, 0, true),
+                [CreatureConstants.Dragon_Green_Old] = GetCreatureData(CreatureConstants.Dragon_Green_Old, SizeConstants.Huge, ChallengeRatingConstants.CR18, null, false, 9, 25, 0, true),
+                [CreatureConstants.Dragon_Green_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Green_VeryOld, SizeConstants.Huge, ChallengeRatingConstants.CR19, null, false, 11, 28, 0, true),
+                [CreatureConstants.Dragon_Green_Ancient] = GetCreatureData(CreatureConstants.Dragon_Green_Ancient, SizeConstants.Gargantuan, ChallengeRatingConstants.CR21, null, false, 13, 31, 0, true),
+                [CreatureConstants.Dragon_Green_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Green_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR22, null, false, 15, 34, 0, true),
+                [CreatureConstants.Dragon_Green_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Green_GreatWyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR24, null, false, 17, 37, 0, true),
+                [CreatureConstants.Dragon_Red_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Red_Wyrmling, SizeConstants.Medium, ChallengeRatingConstants.CR4, 4, false, 0, 6, 0, true),
+                [CreatureConstants.Dragon_Red_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Red_VeryYoung, SizeConstants.Large, ChallengeRatingConstants.CR5, 5, false, 0, 9, 0, true),
+                [CreatureConstants.Dragon_Red_Young] = GetCreatureData(CreatureConstants.Dragon_Red_Young, SizeConstants.Large, ChallengeRatingConstants.CR7, 6, false, 1, 12, 0, true),
+                [CreatureConstants.Dragon_Red_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Red_Juvenile, SizeConstants.Large, ChallengeRatingConstants.CR10, null, false, 3, 15, 0, true),
+                [CreatureConstants.Dragon_Red_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Red_YoungAdult, SizeConstants.Huge, ChallengeRatingConstants.CR13, null, false, 5, 18, 0, true),
+                [CreatureConstants.Dragon_Red_Adult] = GetCreatureData(CreatureConstants.Dragon_Red_Adult, SizeConstants.Huge, ChallengeRatingConstants.CR15, null, false, 7, 21, 0, true),
+                [CreatureConstants.Dragon_Red_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Red_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR18, null, false, 9, 24, 0, true),
+                [CreatureConstants.Dragon_Red_Old] = GetCreatureData(CreatureConstants.Dragon_Red_Old, SizeConstants.Gargantuan, ChallengeRatingConstants.CR20, null, false, 11, 27, 0, true),
+                [CreatureConstants.Dragon_Red_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Red_VeryOld, SizeConstants.Gargantuan, ChallengeRatingConstants.CR21, null, false, 13, 30, 0, true),
+                [CreatureConstants.Dragon_Red_Ancient] = GetCreatureData(CreatureConstants.Dragon_Red_Ancient, SizeConstants.Gargantuan, ChallengeRatingConstants.CR23, null, false, 15, 33, 0, true),
+                [CreatureConstants.Dragon_Red_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Red_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR24, null, false, 17, 36, 0, true),
+                [CreatureConstants.Dragon_Red_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Red_GreatWyrm, SizeConstants.Colossal, ChallengeRatingConstants.CR26, null, false, 19, 39, 0, true),
+                [CreatureConstants.Dragon_Silver_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Silver_Wyrmling, SizeConstants.Medium, ChallengeRatingConstants.CR4, 4, true, 0, 6, 0, true),
+                [CreatureConstants.Dragon_Silver_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Silver_VeryYoung, SizeConstants.Large, ChallengeRatingConstants.CR5, 4, true, 0, 9, 0, true),
+                [CreatureConstants.Dragon_Silver_Young] = GetCreatureData(CreatureConstants.Dragon_Silver_Young, SizeConstants.Large, ChallengeRatingConstants.CR7, 5, true, 1, 12, 0, true),
+                [CreatureConstants.Dragon_Silver_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Silver_Juvenile, SizeConstants.Large, ChallengeRatingConstants.CR10, null, true, 3, 15, 0, true),
+                [CreatureConstants.Dragon_Silver_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Silver_YoungAdult, SizeConstants.Huge, ChallengeRatingConstants.CR13, null, true, 5, 18, 0, true),
+                [CreatureConstants.Dragon_Silver_Adult] = GetCreatureData(CreatureConstants.Dragon_Silver_Adult, SizeConstants.Huge, ChallengeRatingConstants.CR15, null, true, 7, 21, 0, true),
+                [CreatureConstants.Dragon_Silver_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Silver_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR18, null, true, 9, 24, 0, true),
+                [CreatureConstants.Dragon_Silver_Old] = GetCreatureData(CreatureConstants.Dragon_Silver_Old, SizeConstants.Gargantuan, ChallengeRatingConstants.CR20, null, true, 11, 27, 0, true),
+                [CreatureConstants.Dragon_Silver_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Silver_VeryOld, SizeConstants.Gargantuan, ChallengeRatingConstants.CR21, null, true, 13, 30, 0, true),
+                [CreatureConstants.Dragon_Silver_Ancient] = GetCreatureData(CreatureConstants.Dragon_Silver_Ancient, SizeConstants.Gargantuan, ChallengeRatingConstants.CR23, null, true, 15, 33, 0, true),
+                [CreatureConstants.Dragon_Silver_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Silver_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR24, null, true, 17, 36, 0, true),
+                [CreatureConstants.Dragon_Silver_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Silver_GreatWyrm, SizeConstants.Colossal, ChallengeRatingConstants.CR26, null, true, 19, 39, 0, true),
+                [CreatureConstants.Dragon_White_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_White_Wyrmling, SizeConstants.Tiny, ChallengeRatingConstants.CR2, 2, false, 0, 2, 0, true),
+                [CreatureConstants.Dragon_White_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_White_VeryYoung, SizeConstants.Small, ChallengeRatingConstants.CR3, 3, false, 0, 5, 0, true),
+                [CreatureConstants.Dragon_White_Young] = GetCreatureData(CreatureConstants.Dragon_White_Young, SizeConstants.Medium, ChallengeRatingConstants.CR4, 3, false, 0, 8, 0, true),
+                [CreatureConstants.Dragon_White_Juvenile] = GetCreatureData(CreatureConstants.Dragon_White_Juvenile, SizeConstants.Medium, ChallengeRatingConstants.CR6, 5, false, 0, 11, 0, true),
+                [CreatureConstants.Dragon_White_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_White_YoungAdult, SizeConstants.Large, ChallengeRatingConstants.CR8, null, false, 0, 14, 0, true),
+                [CreatureConstants.Dragon_White_Adult] = GetCreatureData(CreatureConstants.Dragon_White_Adult, SizeConstants.Large, ChallengeRatingConstants.CR10, null, false, 1, 17, 0, true),
+                [CreatureConstants.Dragon_White_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_White_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR12, null, false, 3, 20, 0, true),
+                [CreatureConstants.Dragon_White_Old] = GetCreatureData(CreatureConstants.Dragon_White_Old, SizeConstants.Huge, ChallengeRatingConstants.CR15, null, false, 5, 23, 0, true),
+                [CreatureConstants.Dragon_White_VeryOld] = GetCreatureData(CreatureConstants.Dragon_White_VeryOld, SizeConstants.Huge, ChallengeRatingConstants.CR17, null, false, 7, 26, 0, true),
+                [CreatureConstants.Dragon_White_Ancient] = GetCreatureData(CreatureConstants.Dragon_White_Ancient, SizeConstants.Huge, ChallengeRatingConstants.CR18, null, false, 9, 29, 0, true),
+                [CreatureConstants.Dragon_White_Wyrm] = GetCreatureData(CreatureConstants.Dragon_White_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR19, null, false, 11, 32, 0, true),
+                [CreatureConstants.Dragon_White_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_White_GreatWyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR21, null, false, 13, 35, 0, true),
+                [CreatureConstants.DragonTurtle] = GetCreatureData(CreatureConstants.DragonTurtle, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 0, 17, 0, true),
+                [CreatureConstants.Dragonne] = GetCreatureData(CreatureConstants.Dragonne, SizeConstants.Large, ChallengeRatingConstants.CR7, 4, false, 0, 7, 0, true),
                 [CreatureConstants.Dretch] = GetCreatureData(CreatureConstants.Dretch, SizeConstants.Small, ChallengeRatingConstants.CR2, 2, true, 2, 5, 2, false),
-                [CreatureConstants.Drider] = GetCreatureData(CreatureConstants.Drider, SizeConstants.Large, ChallengeRatingConstants.CR7, 4, true, 6, 6, 2, false),
-                [CreatureConstants.Dryad] = GetCreatureData(CreatureConstants.Dryad, SizeConstants.Medium, ChallengeRatingConstants.CR3, 0, true, 6, 3, 2, false),
-                [CreatureConstants.Dwarf_Deep] = GetCreatureData(CreatureConstants.Dwarf_Deep, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, false),
-                [CreatureConstants.Dwarf_Duergar] = GetCreatureData(CreatureConstants.Dwarf_Duergar, SizeConstants.Medium, ChallengeRatingConstants.CR1, 1, true, 0, 0, 2, false),
-                [CreatureConstants.Dwarf_Hill] = GetCreatureData(CreatureConstants.Dwarf_Hill, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, false),
-                [CreatureConstants.Dwarf_Mountain] = GetCreatureData(CreatureConstants.Dwarf_Mountain, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, false),
-                [CreatureConstants.Eagle] = GetCreatureData(CreatureConstants.Eagle, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, null, false, 0, 1, 0, false),
-                [CreatureConstants.Eagle_Giant] = GetCreatureData(CreatureConstants.Eagle_Giant, SizeConstants.Large, ChallengeRatingConstants.CR3, 2, false, 0, 3, 0, false),
+                [CreatureConstants.Drider] = GetCreatureData(CreatureConstants.Drider, SizeConstants.Large, ChallengeRatingConstants.CR7, 4, true, 6, 6, 2, true, reach: 5),
+                [CreatureConstants.Dryad] = GetCreatureData(CreatureConstants.Dryad, SizeConstants.Medium, ChallengeRatingConstants.CR3, 0, true, 6, 3, 2, true),
+                [CreatureConstants.Dwarf_Deep] = GetCreatureData(CreatureConstants.Dwarf_Deep, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, true),
+                [CreatureConstants.Dwarf_Duergar] = GetCreatureData(CreatureConstants.Dwarf_Duergar, SizeConstants.Medium, ChallengeRatingConstants.CR1, 1, true, 0, 0, 2, true),
+                [CreatureConstants.Dwarf_Hill] = GetCreatureData(CreatureConstants.Dwarf_Hill, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, true),
+                [CreatureConstants.Dwarf_Mountain] = GetCreatureData(CreatureConstants.Dwarf_Mountain, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, true),
+                [CreatureConstants.Eagle] = GetCreatureData(CreatureConstants.Eagle, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, null, false, 0, 1, 0, true),
+                [CreatureConstants.Eagle_Giant] = GetCreatureData(CreatureConstants.Eagle_Giant, SizeConstants.Large, ChallengeRatingConstants.CR3, 2, false, 0, 3, 0, true),
                 [CreatureConstants.Efreeti] = GetCreatureData(CreatureConstants.Efreeti, SizeConstants.Large, ChallengeRatingConstants.CR8, null, true, 12, 6, 2, false),
-                [CreatureConstants.Elasmosaurus] = GetCreatureData(CreatureConstants.Elasmosaurus, SizeConstants.Huge, ChallengeRatingConstants.CR7, null, false, 0, 3, 0, false),
+                [CreatureConstants.Elasmosaurus] = GetCreatureData(CreatureConstants.Elasmosaurus, SizeConstants.Huge, ChallengeRatingConstants.CR7, null, false, 0, 3, 0, true),
                 [CreatureConstants.Elemental_Air_Elder] = GetCreatureData(CreatureConstants.Elemental_Air_Elder, SizeConstants.Huge, ChallengeRatingConstants.CR11, null, false, 0, 8, 0, false),
                 [CreatureConstants.Elemental_Air_Greater] = GetCreatureData(CreatureConstants.Elemental_Air_Greater, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 0, 8, 0, false),
                 [CreatureConstants.Elemental_Air_Huge] = GetCreatureData(CreatureConstants.Elemental_Air_Huge, SizeConstants.Huge, ChallengeRatingConstants.CR7, null, false, 0, 4, 0, false),
@@ -2387,19 +2388,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 [CreatureConstants.Elemental_Water_Large] = GetCreatureData(CreatureConstants.Elemental_Water_Large, SizeConstants.Large, ChallengeRatingConstants.CR5, null, false, 0, 9, 0, false),
                 [CreatureConstants.Elemental_Water_Medium] = GetCreatureData(CreatureConstants.Elemental_Water_Medium, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, false, 0, 8, 0, false),
                 [CreatureConstants.Elemental_Water_Small] = GetCreatureData(CreatureConstants.Elemental_Water_Small, SizeConstants.Small, ChallengeRatingConstants.CR1, null, false, 0, 6, 0, false),
-                [CreatureConstants.Elephant] = GetCreatureData(CreatureConstants.Elephant, SizeConstants.Huge, ChallengeRatingConstants.CR7, null, false, 0, 7, 0, false),
-                [CreatureConstants.Elf_Aquatic] = GetCreatureData(CreatureConstants.Elf_Aquatic, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, false),
-                [CreatureConstants.Elf_Drow] = GetCreatureData(CreatureConstants.Elf_Drow, SizeConstants.Medium, ChallengeRatingConstants.CR1, 2, true, 1, 0, 2, false),
-                [CreatureConstants.Elf_Gray] = GetCreatureData(CreatureConstants.Elf_Gray, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, false),
-                [CreatureConstants.Elf_Half] = GetCreatureData(CreatureConstants.Elf_Half, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, false),
-                [CreatureConstants.Elf_High] = GetCreatureData(CreatureConstants.Elf_High, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, false),
-                [CreatureConstants.Elf_Wild] = GetCreatureData(CreatureConstants.Elf_Wild, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, false),
-                [CreatureConstants.Elf_Wood] = GetCreatureData(CreatureConstants.Elf_Wood, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, false),
+                [CreatureConstants.Elephant] = GetCreatureData(CreatureConstants.Elephant, SizeConstants.Huge, ChallengeRatingConstants.CR7, null, false, 0, 7, 0, true),
+                [CreatureConstants.Elf_Aquatic] = GetCreatureData(CreatureConstants.Elf_Aquatic, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, true),
+                [CreatureConstants.Elf_Drow] = GetCreatureData(CreatureConstants.Elf_Drow, SizeConstants.Medium, ChallengeRatingConstants.CR1, 2, true, 1, 0, 2, true),
+                [CreatureConstants.Elf_Gray] = GetCreatureData(CreatureConstants.Elf_Gray, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, true),
+                [CreatureConstants.Elf_Half] = GetCreatureData(CreatureConstants.Elf_Half, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, true),
+                [CreatureConstants.Elf_High] = GetCreatureData(CreatureConstants.Elf_High, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, true),
+                [CreatureConstants.Elf_Wild] = GetCreatureData(CreatureConstants.Elf_Wild, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, true),
+                [CreatureConstants.Elf_Wood] = GetCreatureData(CreatureConstants.Elf_Wood, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, true),
                 [CreatureConstants.Erinyes] = GetCreatureData(CreatureConstants.Erinyes, SizeConstants.Medium, ChallengeRatingConstants.CR8, 7, true, 12, 8, 2, false),
-                [CreatureConstants.EtherealFilcher] = GetCreatureData(CreatureConstants.EtherealFilcher, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, false, 5, 3, 4, false),
-                [CreatureConstants.EtherealMarauder] = GetCreatureData(CreatureConstants.EtherealMarauder, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, false, 15, 3, 0, false),
-                [CreatureConstants.Ettercap] = GetCreatureData(CreatureConstants.Ettercap, SizeConstants.Medium, ChallengeRatingConstants.CR3, 4, false, 0, 1, 0, false),
-                [CreatureConstants.Ettin] = GetCreatureData(CreatureConstants.Ettin, SizeConstants.Large, ChallengeRatingConstants.CR6, 5, true, 0, 7, 2, false),
+                [CreatureConstants.EtherealFilcher] = GetCreatureData(CreatureConstants.EtherealFilcher, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, false, 5, 3, 4, true),
+                [CreatureConstants.EtherealMarauder] = GetCreatureData(CreatureConstants.EtherealMarauder, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, false, 15, 3, 0, true),
+                [CreatureConstants.Ettercap] = GetCreatureData(CreatureConstants.Ettercap, SizeConstants.Medium, ChallengeRatingConstants.CR3, 4, false, 0, 1, 0, true),
+                [CreatureConstants.Ettin] = GetCreatureData(CreatureConstants.Ettin, SizeConstants.Large, ChallengeRatingConstants.CR6, 5, true, 0, 7, 2, true),
                 [CreatureConstants.FireBeetle_Giant] = GetCreatureData(CreatureConstants.FireBeetle_Giant, SizeConstants.Small, ChallengeRatingConstants.CR1_3rd, null, false, 0, 5, 0, false),
                 [CreatureConstants.FormianMyrmarch] = GetCreatureData(CreatureConstants.FormianMyrmarch, SizeConstants.Large, ChallengeRatingConstants.CR10, null, true, 12, 15, 2, false),
                 [CreatureConstants.FormianQueen] = GetCreatureData(CreatureConstants.FormianQueen, SizeConstants.Large, ChallengeRatingConstants.CR17, null, true, 17, 14, 2, false),
@@ -2407,106 +2408,106 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 [CreatureConstants.FormianWarrior] = GetCreatureData(CreatureConstants.FormianWarrior, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, true, 0, 5, 2, false),
                 [CreatureConstants.FormianWorker] = GetCreatureData(CreatureConstants.FormianWorker, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, null, true, 0, 4, 2, false),
                 [CreatureConstants.FrostWorm] = GetCreatureData(CreatureConstants.FrostWorm, SizeConstants.Huge, ChallengeRatingConstants.CR12, null, false, 0, 10, 0, false),
-                [CreatureConstants.Gargoyle] = GetCreatureData(CreatureConstants.Gargoyle, SizeConstants.Medium, ChallengeRatingConstants.CR4, 5, true, 0, 4, 2, false),
-                [CreatureConstants.Gargoyle_Kapoacinth] = GetCreatureData(CreatureConstants.Gargoyle_Kapoacinth, SizeConstants.Medium, ChallengeRatingConstants.CR4, 5, true, 0, 4, 2, false),
-                [CreatureConstants.GelatinousCube] = GetCreatureData(CreatureConstants.GelatinousCube, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 0, 0, false),
+                [CreatureConstants.Gargoyle] = GetCreatureData(CreatureConstants.Gargoyle, SizeConstants.Medium, ChallengeRatingConstants.CR4, 5, true, 0, 4, 2, true),
+                [CreatureConstants.Gargoyle_Kapoacinth] = GetCreatureData(CreatureConstants.Gargoyle_Kapoacinth, SizeConstants.Medium, ChallengeRatingConstants.CR4, 5, true, 0, 4, 2, true),
+                [CreatureConstants.GelatinousCube] = GetCreatureData(CreatureConstants.GelatinousCube, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 0, 0, false, reach: 5),
                 [CreatureConstants.Ghaele] = GetCreatureData(CreatureConstants.Ghaele, SizeConstants.Medium, ChallengeRatingConstants.CR13, null, true, 12, 14, 2, false),
                 [CreatureConstants.Ghoul] = GetCreatureData(CreatureConstants.Ghoul, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 2, 2, false),
                 [CreatureConstants.Ghoul_Ghast] = GetCreatureData(CreatureConstants.Ghoul_Ghast, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, false, 0, 4, 2, false),
                 [CreatureConstants.Ghoul_Lacedon] = GetCreatureData(CreatureConstants.Ghoul_Lacedon, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 2, 2, false),
-                [CreatureConstants.Giant_Cloud] = GetCreatureData(CreatureConstants.Giant_Cloud, SizeConstants.Huge, ChallengeRatingConstants.CR11, 0, true, 15, 12, 2, false),
-                [CreatureConstants.Giant_Fire] = GetCreatureData(CreatureConstants.Giant_Fire, SizeConstants.Large, ChallengeRatingConstants.CR10, 4, true, 0, 8, 2, false),
-                [CreatureConstants.Giant_Frost] = GetCreatureData(CreatureConstants.Giant_Frost, SizeConstants.Large, ChallengeRatingConstants.CR9, 4, true, 0, 9, 2, false),
-                [CreatureConstants.Giant_Hill] = GetCreatureData(CreatureConstants.Giant_Hill, SizeConstants.Large, ChallengeRatingConstants.CR7, 4, true, 0, 9, 2, false),
-                [CreatureConstants.Giant_Stone] = GetCreatureData(CreatureConstants.Giant_Stone, SizeConstants.Large, ChallengeRatingConstants.CR8, 4, true, 0, 11, 2, false),
-                [CreatureConstants.Giant_Stone_Elder] = GetCreatureData(CreatureConstants.Giant_Stone_Elder, SizeConstants.Large, ChallengeRatingConstants.CR9, 6, true, 10, 11, 2, false),
-                [CreatureConstants.Giant_Storm] = GetCreatureData(CreatureConstants.Giant_Storm, SizeConstants.Huge, ChallengeRatingConstants.CR13, 0, true, 20, 12, 2, false),
+                [CreatureConstants.Giant_Cloud] = GetCreatureData(CreatureConstants.Giant_Cloud, SizeConstants.Huge, ChallengeRatingConstants.CR11, 0, true, 15, 12, 2, true),
+                [CreatureConstants.Giant_Fire] = GetCreatureData(CreatureConstants.Giant_Fire, SizeConstants.Large, ChallengeRatingConstants.CR10, 4, true, 0, 8, 2, true),
+                [CreatureConstants.Giant_Frost] = GetCreatureData(CreatureConstants.Giant_Frost, SizeConstants.Large, ChallengeRatingConstants.CR9, 4, true, 0, 9, 2, true),
+                [CreatureConstants.Giant_Hill] = GetCreatureData(CreatureConstants.Giant_Hill, SizeConstants.Large, ChallengeRatingConstants.CR7, 4, true, 0, 9, 2, true),
+                [CreatureConstants.Giant_Stone] = GetCreatureData(CreatureConstants.Giant_Stone, SizeConstants.Large, ChallengeRatingConstants.CR8, 4, true, 0, 11, 2, true),
+                [CreatureConstants.Giant_Stone_Elder] = GetCreatureData(CreatureConstants.Giant_Stone_Elder, SizeConstants.Large, ChallengeRatingConstants.CR9, 6, true, 10, 11, 2, true),
+                [CreatureConstants.Giant_Storm] = GetCreatureData(CreatureConstants.Giant_Storm, SizeConstants.Huge, ChallengeRatingConstants.CR13, 0, true, 20, 12, 2, true),
                 [CreatureConstants.GibberingMouther] = GetCreatureData(CreatureConstants.GibberingMouther, SizeConstants.Medium, ChallengeRatingConstants.CR5, null, false, 0, 8, 0, false),
-                [CreatureConstants.Girallon] = GetCreatureData(CreatureConstants.Girallon, SizeConstants.Large, ChallengeRatingConstants.CR6, null, false, 0, 4, 4, false),
-                [CreatureConstants.Githyanki] = GetCreatureData(CreatureConstants.Githyanki, SizeConstants.Medium, ChallengeRatingConstants.CR1, 2, true, 1, 0, 2, false),
-                [CreatureConstants.Githzerai] = GetCreatureData(CreatureConstants.Githzerai, SizeConstants.Medium, ChallengeRatingConstants.CR1, 2, true, 1, 0, 2, false),
+                [CreatureConstants.Girallon] = GetCreatureData(CreatureConstants.Girallon, SizeConstants.Large, ChallengeRatingConstants.CR6, null, false, 0, 4, 4, true),
+                [CreatureConstants.Githyanki] = GetCreatureData(CreatureConstants.Githyanki, SizeConstants.Medium, ChallengeRatingConstants.CR1, 2, true, 1, 0, 2, true),
+                [CreatureConstants.Githzerai] = GetCreatureData(CreatureConstants.Githzerai, SizeConstants.Medium, ChallengeRatingConstants.CR1, 2, true, 1, 0, 2, true),
                 [CreatureConstants.Glabrezu] = GetCreatureData(CreatureConstants.Glabrezu, SizeConstants.Huge, ChallengeRatingConstants.CR13, null, true, 14, 19, 2, false),
-                [CreatureConstants.Gnoll] = GetCreatureData(CreatureConstants.Gnoll, SizeConstants.Medium, ChallengeRatingConstants.CR1, 1, true, 0, 1, 2, false),
-                [CreatureConstants.Gnome_Forest] = GetCreatureData(CreatureConstants.Gnome_Forest, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, false),
-                [CreatureConstants.Gnome_Rock] = GetCreatureData(CreatureConstants.Gnome_Rock, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, false),
-                [CreatureConstants.Gnome_Svirfneblin] = GetCreatureData(CreatureConstants.Gnome_Svirfneblin, SizeConstants.Small, ChallengeRatingConstants.CR1, 3, true, 1, 0, 2, false),
-                [CreatureConstants.Goblin] = GetCreatureData(CreatureConstants.Goblin, SizeConstants.Small, ChallengeRatingConstants.CR1_3rd, 0, true, 0, 0, 2, false),
+                [CreatureConstants.Gnoll] = GetCreatureData(CreatureConstants.Gnoll, SizeConstants.Medium, ChallengeRatingConstants.CR1, 1, true, 0, 1, 2, true),
+                [CreatureConstants.Gnome_Forest] = GetCreatureData(CreatureConstants.Gnome_Forest, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, true),
+                [CreatureConstants.Gnome_Rock] = GetCreatureData(CreatureConstants.Gnome_Rock, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, true),
+                [CreatureConstants.Gnome_Svirfneblin] = GetCreatureData(CreatureConstants.Gnome_Svirfneblin, SizeConstants.Small, ChallengeRatingConstants.CR1, 3, true, 1, 0, 2, true),
+                [CreatureConstants.Goblin] = GetCreatureData(CreatureConstants.Goblin, SizeConstants.Small, ChallengeRatingConstants.CR1_3rd, 0, true, 0, 0, 2, true),
                 [CreatureConstants.Golem_Clay] = GetCreatureData(CreatureConstants.Golem_Clay, SizeConstants.Large, ChallengeRatingConstants.CR10, null, false, 0, 14, 2, false),
                 [CreatureConstants.Golem_Flesh] = GetCreatureData(CreatureConstants.Golem_Flesh, SizeConstants.Large, ChallengeRatingConstants.CR7, null, false, 0, 10, 2, false),
                 [CreatureConstants.Golem_Iron] = GetCreatureData(CreatureConstants.Golem_Iron, SizeConstants.Large, ChallengeRatingConstants.CR13, null, false, 0, 22, 2, false),
                 [CreatureConstants.Golem_Stone] = GetCreatureData(CreatureConstants.Golem_Stone, SizeConstants.Large, ChallengeRatingConstants.CR11, null, false, 0, 18, 2, false),
                 [CreatureConstants.Golem_Stone_Greater] = GetCreatureData(CreatureConstants.Golem_Stone_Greater, SizeConstants.Huge, ChallengeRatingConstants.CR16, null, false, 0, 21, 2, false),
-                [CreatureConstants.Gorgon] = GetCreatureData(CreatureConstants.Gorgon, SizeConstants.Large, ChallengeRatingConstants.CR8, null, false, 0, 11, 0, false),
+                [CreatureConstants.Gorgon] = GetCreatureData(CreatureConstants.Gorgon, SizeConstants.Large, ChallengeRatingConstants.CR8, null, false, 0, 11, 0, true, reach: 5),
                 [CreatureConstants.GrayOoze] = GetCreatureData(CreatureConstants.GrayOoze, SizeConstants.Medium, ChallengeRatingConstants.CR4, null, false, 0, 0, 0, false),
-                [CreatureConstants.GrayRender] = GetCreatureData(CreatureConstants.GrayRender, SizeConstants.Large, ChallengeRatingConstants.CR8, 5, false, 0, 10, 2, false),
-                [CreatureConstants.GreenHag] = GetCreatureData(CreatureConstants.GreenHag, SizeConstants.Medium, ChallengeRatingConstants.CR5, 0, true, 9, 11, 2, false),
-                [CreatureConstants.Grick] = GetCreatureData(CreatureConstants.Grick, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, false, 0, 4, 0, false),
-                [CreatureConstants.Grig] = GetCreatureData(CreatureConstants.Grig, SizeConstants.Tiny, ChallengeRatingConstants.CR1, 3, true, 9, 2, 2, false),
-                [CreatureConstants.Grig_WithFiddle] = GetCreatureData(CreatureConstants.Grig_WithFiddle, SizeConstants.Tiny, ChallengeRatingConstants.CR1, 3, true, 9, 2, 2, false),
-                [CreatureConstants.Griffon] = GetCreatureData(CreatureConstants.Griffon, SizeConstants.Large, ChallengeRatingConstants.CR4, 3, false, 0, 6, 0, false),
-                [CreatureConstants.Grimlock] = GetCreatureData(CreatureConstants.Grimlock, SizeConstants.Medium, ChallengeRatingConstants.CR1, 2, true, 0, 4, 2, false),
-                [CreatureConstants.Gynosphinx] = GetCreatureData(CreatureConstants.Gynosphinx, SizeConstants.Large, ChallengeRatingConstants.CR8, 4, false, 14, 11, 0, false),
-                [CreatureConstants.Halfling_Deep] = GetCreatureData(CreatureConstants.Halfling_Deep, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, false),
-                [CreatureConstants.Halfling_Lightfoot] = GetCreatureData(CreatureConstants.Halfling_Lightfoot, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, false),
-                [CreatureConstants.Halfling_Tallfellow] = GetCreatureData(CreatureConstants.Halfling_Tallfellow, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, false),
-                [CreatureConstants.Harpy] = GetCreatureData(CreatureConstants.Harpy, SizeConstants.Medium, ChallengeRatingConstants.CR4, 3, true, 0, 1, 2, false),
-                [CreatureConstants.Hawk] = GetCreatureData(CreatureConstants.Hawk, SizeConstants.Tiny, ChallengeRatingConstants.CR1_3rd, null, false, 0, 2, 0, false),
+                [CreatureConstants.GrayRender] = GetCreatureData(CreatureConstants.GrayRender, SizeConstants.Large, ChallengeRatingConstants.CR8, 5, false, 0, 10, 2, true),
+                [CreatureConstants.GreenHag] = GetCreatureData(CreatureConstants.GreenHag, SizeConstants.Medium, ChallengeRatingConstants.CR5, 0, true, 9, 11, 2, true),
+                [CreatureConstants.Grick] = GetCreatureData(CreatureConstants.Grick, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, false, 0, 4, 0, true),
+                [CreatureConstants.Grig] = GetCreatureData(CreatureConstants.Grig, SizeConstants.Tiny, ChallengeRatingConstants.CR1, 3, true, 9, 2, 2, true),
+                [CreatureConstants.Grig_WithFiddle] = GetCreatureData(CreatureConstants.Grig_WithFiddle, SizeConstants.Tiny, ChallengeRatingConstants.CR1, 3, true, 9, 2, 2, true),
+                [CreatureConstants.Griffon] = GetCreatureData(CreatureConstants.Griffon, SizeConstants.Large, ChallengeRatingConstants.CR4, 3, false, 0, 6, 0, true),
+                [CreatureConstants.Grimlock] = GetCreatureData(CreatureConstants.Grimlock, SizeConstants.Medium, ChallengeRatingConstants.CR1, 2, true, 0, 4, 2, true),
+                [CreatureConstants.Gynosphinx] = GetCreatureData(CreatureConstants.Gynosphinx, SizeConstants.Large, ChallengeRatingConstants.CR8, 4, false, 14, 11, 0, true, reach: 5),
+                [CreatureConstants.Halfling_Deep] = GetCreatureData(CreatureConstants.Halfling_Deep, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, true),
+                [CreatureConstants.Halfling_Lightfoot] = GetCreatureData(CreatureConstants.Halfling_Lightfoot, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, true),
+                [CreatureConstants.Halfling_Tallfellow] = GetCreatureData(CreatureConstants.Halfling_Tallfellow, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, true),
+                [CreatureConstants.Harpy] = GetCreatureData(CreatureConstants.Harpy, SizeConstants.Medium, ChallengeRatingConstants.CR4, 3, true, 0, 1, 2, true),
+                [CreatureConstants.Hawk] = GetCreatureData(CreatureConstants.Hawk, SizeConstants.Tiny, ChallengeRatingConstants.CR1_3rd, null, false, 0, 2, 0, true),
                 [CreatureConstants.Hellcat_Bezekira] = GetCreatureData(CreatureConstants.Hellcat_Bezekira, SizeConstants.Large, ChallengeRatingConstants.CR7, null, false, 0, 7, 0, false),
-                [CreatureConstants.Hellwasp_Swarm] = GetCreatureData(CreatureConstants.Hellwasp_Swarm, SizeConstants.Diminutive, ChallengeRatingConstants.CR8, null, false, 0, 0, 0, false),
+                [CreatureConstants.Hellwasp_Swarm] = GetCreatureData(CreatureConstants.Hellwasp_Swarm, SizeConstants.Diminutive, ChallengeRatingConstants.CR8, null, false, 0, 0, 0, false, space: 10),
                 [CreatureConstants.HellHound] = GetCreatureData(CreatureConstants.HellHound, SizeConstants.Medium, ChallengeRatingConstants.CR3, 3, false, 0, 5, 0, false),
-                [CreatureConstants.HellHound_NessianWarhound] = GetCreatureData(CreatureConstants.HellHound_NessianWarhound, SizeConstants.Large, ChallengeRatingConstants.CR9, 4, false, 0, 7, 0, false),
+                [CreatureConstants.HellHound_NessianWarhound] = GetCreatureData(CreatureConstants.HellHound_NessianWarhound, SizeConstants.Large, ChallengeRatingConstants.CR9, 4, false, 0, 7, 0, false, reach: 10),
                 [CreatureConstants.Hezrou] = GetCreatureData(CreatureConstants.Hezrou, SizeConstants.Large, ChallengeRatingConstants.CR11, 9, true, 13, 14, 2, false),
-                [CreatureConstants.Hieracosphinx] = GetCreatureData(CreatureConstants.Hieracosphinx, SizeConstants.Large, ChallengeRatingConstants.CR5, 3, false, 0, 8, 0, false),
-                [CreatureConstants.Hippogriff] = GetCreatureData(CreatureConstants.Hippogriff, SizeConstants.Large, ChallengeRatingConstants.CR2, null, false, 0, 4, 0, false),
-                [CreatureConstants.Hobgoblin] = GetCreatureData(CreatureConstants.Hobgoblin, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 1, true, 0, 0, 2, false),
+                [CreatureConstants.Hieracosphinx] = GetCreatureData(CreatureConstants.Hieracosphinx, SizeConstants.Large, ChallengeRatingConstants.CR5, 3, false, 0, 8, 0, true, reach: 5),
+                [CreatureConstants.Hippogriff] = GetCreatureData(CreatureConstants.Hippogriff, SizeConstants.Large, ChallengeRatingConstants.CR2, null, false, 0, 4, 0, true),
+                [CreatureConstants.Hobgoblin] = GetCreatureData(CreatureConstants.Hobgoblin, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 1, true, 0, 0, 2, true),
                 [CreatureConstants.Homunculus] = GetCreatureData(CreatureConstants.Homunculus, SizeConstants.Tiny, ChallengeRatingConstants.CR1, null, false, 0, 0, 0, false),
                 [CreatureConstants.HornedDevil_Cornugon] = GetCreatureData(CreatureConstants.HornedDevil_Cornugon, SizeConstants.Large, ChallengeRatingConstants.CR16, null, true, 15, 19, 2, false),
-                [CreatureConstants.Horse_Heavy] = GetCreatureData(CreatureConstants.Horse_Heavy, SizeConstants.Large, ChallengeRatingConstants.CR1, null, false, 0, 3, 0, false),
-                [CreatureConstants.Horse_Heavy_War] = GetCreatureData(CreatureConstants.Horse_Heavy_War, SizeConstants.Large, ChallengeRatingConstants.CR2, null, false, 0, 4, 0, false),
-                [CreatureConstants.Horse_Light] = GetCreatureData(CreatureConstants.Horse_Light, SizeConstants.Large, ChallengeRatingConstants.CR1, null, false, 0, 3, 0, false),
-                [CreatureConstants.Horse_Light_War] = GetCreatureData(CreatureConstants.Horse_Light_War, SizeConstants.Large, ChallengeRatingConstants.CR1, null, false, 0, 4, 0, false),
+                [CreatureConstants.Horse_Heavy] = GetCreatureData(CreatureConstants.Horse_Heavy, SizeConstants.Large, ChallengeRatingConstants.CR1, null, false, 0, 3, 0, true),
+                [CreatureConstants.Horse_Heavy_War] = GetCreatureData(CreatureConstants.Horse_Heavy_War, SizeConstants.Large, ChallengeRatingConstants.CR2, null, false, 0, 4, 0, true),
+                [CreatureConstants.Horse_Light] = GetCreatureData(CreatureConstants.Horse_Light, SizeConstants.Large, ChallengeRatingConstants.CR1, null, false, 0, 3, 0, true),
+                [CreatureConstants.Horse_Light_War] = GetCreatureData(CreatureConstants.Horse_Light_War, SizeConstants.Large, ChallengeRatingConstants.CR1, null, false, 0, 4, 0, true),
                 [CreatureConstants.HoundArchon] = GetCreatureData(CreatureConstants.HoundArchon, SizeConstants.Medium, ChallengeRatingConstants.CR4, 5, true, 6, 0, 2, false),
-                [CreatureConstants.Howler] = GetCreatureData(CreatureConstants.Howler, SizeConstants.Large, ChallengeRatingConstants.CR3, 3, false, 0, 5, 0, false),
-                [CreatureConstants.Human] = GetCreatureData(CreatureConstants.Human, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, false),
-                [CreatureConstants.Hydra_5Heads] = GetCreatureData(CreatureConstants.Hydra_5Heads, SizeConstants.Huge, ChallengeRatingConstants.CR4, null, false, 0, 6, 0, false),
-                [CreatureConstants.Hydra_6Heads] = GetCreatureData(CreatureConstants.Hydra_6Heads, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 7, 0, false),
-                [CreatureConstants.Hydra_7Heads] = GetCreatureData(CreatureConstants.Hydra_7Heads, SizeConstants.Huge, ChallengeRatingConstants.CR6, null, false, 0, 8, 0, false),
-                [CreatureConstants.Hydra_8Heads] = GetCreatureData(CreatureConstants.Hydra_8Heads, SizeConstants.Huge, ChallengeRatingConstants.CR7, null, false, 0, 9, 0, false),
-                [CreatureConstants.Hydra_9Heads] = GetCreatureData(CreatureConstants.Hydra_9Heads, SizeConstants.Huge, ChallengeRatingConstants.CR8, null, false, 0, 10, 0, false),
-                [CreatureConstants.Hydra_10Heads] = GetCreatureData(CreatureConstants.Hydra_10Heads, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 0, 11, 0, false),
-                [CreatureConstants.Hydra_11Heads] = GetCreatureData(CreatureConstants.Hydra_11Heads, SizeConstants.Huge, ChallengeRatingConstants.CR10, null, false, 0, 12, 0, false),
-                [CreatureConstants.Hydra_12Heads] = GetCreatureData(CreatureConstants.Hydra_12Heads, SizeConstants.Huge, ChallengeRatingConstants.CR11, null, false, 0, 13, 0, false),
-                [CreatureConstants.Hyena] = GetCreatureData(CreatureConstants.Hyena, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 2, 0, false),
+                [CreatureConstants.Howler] = GetCreatureData(CreatureConstants.Howler, SizeConstants.Large, ChallengeRatingConstants.CR3, 3, false, 0, 5, 0, false, reach: 5),
+                [CreatureConstants.Human] = GetCreatureData(CreatureConstants.Human, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, true),
+                [CreatureConstants.Hydra_5Heads] = GetCreatureData(CreatureConstants.Hydra_5Heads, SizeConstants.Huge, ChallengeRatingConstants.CR4, null, false, 0, 6, 0, true),
+                [CreatureConstants.Hydra_6Heads] = GetCreatureData(CreatureConstants.Hydra_6Heads, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 7, 0, true),
+                [CreatureConstants.Hydra_7Heads] = GetCreatureData(CreatureConstants.Hydra_7Heads, SizeConstants.Huge, ChallengeRatingConstants.CR6, null, false, 0, 8, 0, true),
+                [CreatureConstants.Hydra_8Heads] = GetCreatureData(CreatureConstants.Hydra_8Heads, SizeConstants.Huge, ChallengeRatingConstants.CR7, null, false, 0, 9, 0, true),
+                [CreatureConstants.Hydra_9Heads] = GetCreatureData(CreatureConstants.Hydra_9Heads, SizeConstants.Huge, ChallengeRatingConstants.CR8, null, false, 0, 10, 0, true),
+                [CreatureConstants.Hydra_10Heads] = GetCreatureData(CreatureConstants.Hydra_10Heads, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 0, 11, 0, true),
+                [CreatureConstants.Hydra_11Heads] = GetCreatureData(CreatureConstants.Hydra_11Heads, SizeConstants.Huge, ChallengeRatingConstants.CR10, null, false, 0, 12, 0, true),
+                [CreatureConstants.Hydra_12Heads] = GetCreatureData(CreatureConstants.Hydra_12Heads, SizeConstants.Huge, ChallengeRatingConstants.CR11, null, false, 0, 13, 0, true),
+                [CreatureConstants.Hyena] = GetCreatureData(CreatureConstants.Hyena, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 2, 0, true),
                 [CreatureConstants.IceDevil_Gelugon] = GetCreatureData(CreatureConstants.IceDevil_Gelugon, SizeConstants.Large, ChallengeRatingConstants.CR13, null, true, 13, 18, 2, false),
                 [CreatureConstants.Imp] = GetCreatureData(CreatureConstants.Imp, SizeConstants.Tiny, ChallengeRatingConstants.CR2, null, false, 6, 5, 0, false),
                 [CreatureConstants.InvisibleStalker] = GetCreatureData(CreatureConstants.InvisibleStalker, SizeConstants.Large, ChallengeRatingConstants.CR7, null, false, 0, 4, 0, false),
-                [CreatureConstants.Janni] = GetCreatureData(CreatureConstants.Janni, SizeConstants.Medium, ChallengeRatingConstants.CR4, 5, true, 12, 1, 2, false),
-                [CreatureConstants.Kobold] = GetCreatureData(CreatureConstants.Kobold, SizeConstants.Small, ChallengeRatingConstants.CR1_4th, 0, true, 0, 1, 2, false),
+                [CreatureConstants.Janni] = GetCreatureData(CreatureConstants.Janni, SizeConstants.Medium, ChallengeRatingConstants.CR4, 5, true, 12, 1, 2, true),
+                [CreatureConstants.Kobold] = GetCreatureData(CreatureConstants.Kobold, SizeConstants.Small, ChallengeRatingConstants.CR1_4th, 0, true, 0, 1, 2, true),
                 [CreatureConstants.Kolyarut] = GetCreatureData(CreatureConstants.Kolyarut, SizeConstants.Medium, ChallengeRatingConstants.CR12, null, true, 13, 10, 2, false),
                 [CreatureConstants.Kraken] = GetCreatureData(CreatureConstants.Kraken, SizeConstants.Gargantuan, ChallengeRatingConstants.CR12, null, false, 9, 14, 0, false),
-                [CreatureConstants.Krenshar] = GetCreatureData(CreatureConstants.Krenshar, SizeConstants.Medium, ChallengeRatingConstants.CR1, 2, false, 3, 3, 0, false),
-                [CreatureConstants.KuoToa] = GetCreatureData(CreatureConstants.KuoToa, SizeConstants.Medium, ChallengeRatingConstants.CR2, 3, true, 0, 6, 2, false),
-                [CreatureConstants.Lamia] = GetCreatureData(CreatureConstants.Lamia, SizeConstants.Large, ChallengeRatingConstants.CR6, 4, true, 9, 7, 2, false),
-                [CreatureConstants.Lammasu] = GetCreatureData(CreatureConstants.Lammasu, SizeConstants.Large, ChallengeRatingConstants.CR8, 5, false, 7, 10, 0, false),
+                [CreatureConstants.Krenshar] = GetCreatureData(CreatureConstants.Krenshar, SizeConstants.Medium, ChallengeRatingConstants.CR1, 2, false, 3, 3, 0, true),
+                [CreatureConstants.KuoToa] = GetCreatureData(CreatureConstants.KuoToa, SizeConstants.Medium, ChallengeRatingConstants.CR2, 3, true, 0, 6, 2, true),
+                [CreatureConstants.Lamia] = GetCreatureData(CreatureConstants.Lamia, SizeConstants.Large, ChallengeRatingConstants.CR6, 4, true, 9, 7, 2, true, reach: 5),
+                [CreatureConstants.Lammasu] = GetCreatureData(CreatureConstants.Lammasu, SizeConstants.Large, ChallengeRatingConstants.CR8, 5, false, 7, 10, 0, true, reach: 5),
                 [CreatureConstants.LanternArchon] = GetCreatureData(CreatureConstants.LanternArchon, SizeConstants.Small, ChallengeRatingConstants.CR2, null, false, 3, 4, 0, false),
                 [CreatureConstants.Lemure] = GetCreatureData(CreatureConstants.Lemure, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 4, 0, false),
                 [CreatureConstants.Leonal] = GetCreatureData(CreatureConstants.Leonal, SizeConstants.Medium, ChallengeRatingConstants.CR12, null, false, 10, 14, 2, false),
-                [CreatureConstants.Leopard] = GetCreatureData(CreatureConstants.Leopard, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 1, 0, false),
-                [CreatureConstants.Lillend] = GetCreatureData(CreatureConstants.Lillend, SizeConstants.Large, ChallengeRatingConstants.CR7, 6, true, 10, 5, 2, false),
-                [CreatureConstants.Lion] = GetCreatureData(CreatureConstants.Lion, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 3, 0, false),
-                [CreatureConstants.Lion_Dire] = GetCreatureData(CreatureConstants.Lion_Dire, SizeConstants.Large, ChallengeRatingConstants.CR5, null, false, 0, 4, 0, false),
-                [CreatureConstants.Lizard] = GetCreatureData(CreatureConstants.Lizard, SizeConstants.Tiny, ChallengeRatingConstants.CR1_6th, null, false, 0, 0, 0, false),
-                [CreatureConstants.Lizard_Monitor] = GetCreatureData(CreatureConstants.Lizard_Monitor, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 3, 0, false),
-                [CreatureConstants.Lizardfolk] = GetCreatureData(CreatureConstants.Lizardfolk, SizeConstants.Medium, ChallengeRatingConstants.CR1, 1, true, 0, 5, 2, false),
-                [CreatureConstants.Locathah] = GetCreatureData(CreatureConstants.Locathah, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 1, true, 0, 3, 2, false),
-                [CreatureConstants.Locust_Swarm] = GetCreatureData(CreatureConstants.Locust_Swarm, SizeConstants.Diminutive, ChallengeRatingConstants.CR3, null, false, 0, 0, 0, false),
+                [CreatureConstants.Leopard] = GetCreatureData(CreatureConstants.Leopard, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 1, 0, true),
+                [CreatureConstants.Lillend] = GetCreatureData(CreatureConstants.Lillend, SizeConstants.Large, ChallengeRatingConstants.CR7, 6, true, 10, 5, 2, false, reach: 10),
+                [CreatureConstants.Lion] = GetCreatureData(CreatureConstants.Lion, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 3, 0, true, reach: 5),
+                [CreatureConstants.Lion_Dire] = GetCreatureData(CreatureConstants.Lion_Dire, SizeConstants.Large, ChallengeRatingConstants.CR5, null, false, 0, 4, 0, true, reach: 5),
+                [CreatureConstants.Lizard] = GetCreatureData(CreatureConstants.Lizard, SizeConstants.Tiny, ChallengeRatingConstants.CR1_6th, null, false, 0, 0, 0, true),
+                [CreatureConstants.Lizard_Monitor] = GetCreatureData(CreatureConstants.Lizard_Monitor, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 3, 0, true),
+                [CreatureConstants.Lizardfolk] = GetCreatureData(CreatureConstants.Lizardfolk, SizeConstants.Medium, ChallengeRatingConstants.CR1, 1, true, 0, 5, 2, true),
+                [CreatureConstants.Locathah] = GetCreatureData(CreatureConstants.Locathah, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 1, true, 0, 3, 2, true),
+                [CreatureConstants.Locust_Swarm] = GetCreatureData(CreatureConstants.Locust_Swarm, SizeConstants.Diminutive, ChallengeRatingConstants.CR3, null, false, 0, 0, 0, false, space: 10),
                 [CreatureConstants.Magmin] = GetCreatureData(CreatureConstants.Magmin, SizeConstants.Small, ChallengeRatingConstants.CR3, null, false, 0, 6, 0, false),
-                [CreatureConstants.MantaRay] = GetCreatureData(CreatureConstants.MantaRay, SizeConstants.Large, ChallengeRatingConstants.CR1, null, false, 0, 3, 0, false),
-                [CreatureConstants.Manticore] = GetCreatureData(CreatureConstants.Manticore, SizeConstants.Large, ChallengeRatingConstants.CR5, 3, false, 0, 6, 0, false),
-                [CreatureConstants.Marilith] = GetCreatureData(CreatureConstants.Marilith, SizeConstants.Large, ChallengeRatingConstants.CR17, null, true, 16, 16, 6, false),
+                [CreatureConstants.MantaRay] = GetCreatureData(CreatureConstants.MantaRay, SizeConstants.Large, ChallengeRatingConstants.CR1, null, false, 0, 3, 0, true),
+                [CreatureConstants.Manticore] = GetCreatureData(CreatureConstants.Manticore, SizeConstants.Large, ChallengeRatingConstants.CR5, 3, false, 0, 6, 0, true),
+                [CreatureConstants.Marilith] = GetCreatureData(CreatureConstants.Marilith, SizeConstants.Large, ChallengeRatingConstants.CR17, null, true, 16, 16, 6, false, reach: 10),
                 [CreatureConstants.Marut] = GetCreatureData(CreatureConstants.Marut, SizeConstants.Large, ChallengeRatingConstants.CR15, null, false, 14, 16, 2, false),
-                [CreatureConstants.Medusa] = GetCreatureData(CreatureConstants.Medusa, SizeConstants.Medium, ChallengeRatingConstants.CR7, 0, true, 0, 3, 2, false),
-                [CreatureConstants.Megaraptor] = GetCreatureData(CreatureConstants.Megaraptor, SizeConstants.Large, ChallengeRatingConstants.CR6, null, false, 0, 6, 0, false),
+                [CreatureConstants.Medusa] = GetCreatureData(CreatureConstants.Medusa, SizeConstants.Medium, ChallengeRatingConstants.CR7, 0, true, 0, 3, 2, true),
+                [CreatureConstants.Megaraptor] = GetCreatureData(CreatureConstants.Megaraptor, SizeConstants.Large, ChallengeRatingConstants.CR6, null, false, 0, 6, 0, true),
                 [CreatureConstants.Mephit_Air] = GetCreatureData(CreatureConstants.Mephit_Air, SizeConstants.Small, ChallengeRatingConstants.CR3, 3, true, 3, 3, 2, false),
                 [CreatureConstants.Mephit_Dust] = GetCreatureData(CreatureConstants.Mephit_Dust, SizeConstants.Small, ChallengeRatingConstants.CR3, 3, true, 3, 3, 2, false),
                 [CreatureConstants.Mephit_Earth] = GetCreatureData(CreatureConstants.Mephit_Earth, SizeConstants.Small, ChallengeRatingConstants.CR3, 3, true, 6, 6, 2, false),
@@ -2517,18 +2518,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 [CreatureConstants.Mephit_Salt] = GetCreatureData(CreatureConstants.Mephit_Salt, SizeConstants.Small, ChallengeRatingConstants.CR3, 3, true, 3, 6, 2, false),
                 [CreatureConstants.Mephit_Steam] = GetCreatureData(CreatureConstants.Mephit_Steam, SizeConstants.Small, ChallengeRatingConstants.CR3, 3, true, 3, 4, 2, false),
                 [CreatureConstants.Mephit_Water] = GetCreatureData(CreatureConstants.Mephit_Water, SizeConstants.Small, ChallengeRatingConstants.CR3, 3, true, 3, 5, 2, false),
-                [CreatureConstants.Merfolk] = GetCreatureData(CreatureConstants.Merfolk, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 1, true, 0, 0, 2, false),
+                [CreatureConstants.Merfolk] = GetCreatureData(CreatureConstants.Merfolk, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 1, true, 0, 0, 2, true),
                 [CreatureConstants.Mimic] = GetCreatureData(CreatureConstants.Mimic, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 5, 0, false),
-                [CreatureConstants.MindFlayer] = GetCreatureData(CreatureConstants.MindFlayer, SizeConstants.Medium, ChallengeRatingConstants.CR8, 7, true, 8, 3, 2, false),
-                [CreatureConstants.Minotaur] = GetCreatureData(CreatureConstants.Minotaur, SizeConstants.Large, ChallengeRatingConstants.CR4, 2, true, 0, 5, 2, false),
+                [CreatureConstants.MindFlayer] = GetCreatureData(CreatureConstants.MindFlayer, SizeConstants.Medium, ChallengeRatingConstants.CR8, 7, true, 8, 3, 2, true),
+                [CreatureConstants.Minotaur] = GetCreatureData(CreatureConstants.Minotaur, SizeConstants.Large, ChallengeRatingConstants.CR4, 2, true, 0, 5, 2, true),
                 [CreatureConstants.Mohrg] = GetCreatureData(CreatureConstants.Mohrg, SizeConstants.Medium, ChallengeRatingConstants.CR8, null, false, 0, 9, 0, false),
-                [CreatureConstants.Monkey] = GetCreatureData(CreatureConstants.Monkey, SizeConstants.Tiny, ChallengeRatingConstants.CR1_6th, null, false, 0, 0, 0, false),
-                [CreatureConstants.Mule] = GetCreatureData(CreatureConstants.Mule, SizeConstants.Large, ChallengeRatingConstants.CR1, null, false, 0, 3, 0, false),
+                [CreatureConstants.Monkey] = GetCreatureData(CreatureConstants.Monkey, SizeConstants.Tiny, ChallengeRatingConstants.CR1_6th, null, false, 0, 0, 0, true),
+                [CreatureConstants.Mule] = GetCreatureData(CreatureConstants.Mule, SizeConstants.Large, ChallengeRatingConstants.CR1, null, false, 0, 3, 0, true),
                 [CreatureConstants.Mummy] = GetCreatureData(CreatureConstants.Mummy, SizeConstants.Medium, ChallengeRatingConstants.CR5, 0, true, 0, 10, 2, false),
-                [CreatureConstants.Naga_Dark] = GetCreatureData(CreatureConstants.Naga_Dark, SizeConstants.Large, ChallengeRatingConstants.CR8, null, false, 7, 3, 0, false),
-                [CreatureConstants.Naga_Guardian] = GetCreatureData(CreatureConstants.Naga_Guardian, SizeConstants.Large, ChallengeRatingConstants.CR10, null, false, 9, 7, 0, false),
-                [CreatureConstants.Naga_Spirit] = GetCreatureData(CreatureConstants.Naga_Spirit, SizeConstants.Large, ChallengeRatingConstants.CR9, null, false, 7, 6, 0, false),
-                [CreatureConstants.Naga_Water] = GetCreatureData(CreatureConstants.Naga_Water, SizeConstants.Large, ChallengeRatingConstants.CR7, null, false, 7, 5, 0, false),
+                [CreatureConstants.Naga_Dark] = GetCreatureData(CreatureConstants.Naga_Dark, SizeConstants.Large, ChallengeRatingConstants.CR8, null, false, 7, 3, 0, true),
+                [CreatureConstants.Naga_Guardian] = GetCreatureData(CreatureConstants.Naga_Guardian, SizeConstants.Large, ChallengeRatingConstants.CR10, null, false, 9, 7, 0, true),
+                [CreatureConstants.Naga_Spirit] = GetCreatureData(CreatureConstants.Naga_Spirit, SizeConstants.Large, ChallengeRatingConstants.CR9, null, false, 7, 6, 0, true),
+                [CreatureConstants.Naga_Water] = GetCreatureData(CreatureConstants.Naga_Water, SizeConstants.Large, ChallengeRatingConstants.CR7, null, false, 7, 5, 0, true),
                 [CreatureConstants.Nalfeshnee] = GetCreatureData(CreatureConstants.Nalfeshnee, SizeConstants.Huge, ChallengeRatingConstants.CR14, null, true, 12, 18, 2, false),
                 [CreatureConstants.NightHag] = GetCreatureData(CreatureConstants.NightHag, SizeConstants.Medium, ChallengeRatingConstants.CR9, null, true, 8, 11, 2, false),
                 [CreatureConstants.Nightcrawler] = GetCreatureData(CreatureConstants.Nightcrawler, SizeConstants.Gargantuan, ChallengeRatingConstants.CR18, null, false, 25, 29, 0, false),
@@ -2536,107 +2537,107 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 [CreatureConstants.Nightmare_Cauchemar] = GetCreatureData(CreatureConstants.Nightmare_Cauchemar, SizeConstants.Huge, ChallengeRatingConstants.CR11, 4, false, 20, 16, 0, false),
                 [CreatureConstants.Nightwalker] = GetCreatureData(CreatureConstants.Nightwalker, SizeConstants.Huge, ChallengeRatingConstants.CR16, null, false, 21, 22, 2, false),
                 [CreatureConstants.Nightwing] = GetCreatureData(CreatureConstants.Nightwing, SizeConstants.Huge, ChallengeRatingConstants.CR14, null, false, 17, 18, 0, false),
-                [CreatureConstants.Nixie] = GetCreatureData(CreatureConstants.Nixie, SizeConstants.Small, ChallengeRatingConstants.CR1, 3, true, 12, 0, 2, false),
-                [CreatureConstants.Nymph] = GetCreatureData(CreatureConstants.Nymph, SizeConstants.Medium, ChallengeRatingConstants.CR7, 7, true, 7, 0, 2, false),
+                [CreatureConstants.Nixie] = GetCreatureData(CreatureConstants.Nixie, SizeConstants.Small, ChallengeRatingConstants.CR1, 3, true, 12, 0, 2, true),
+                [CreatureConstants.Nymph] = GetCreatureData(CreatureConstants.Nymph, SizeConstants.Medium, ChallengeRatingConstants.CR7, 7, true, 7, 0, 2, true),
                 [CreatureConstants.OchreJelly] = GetCreatureData(CreatureConstants.OchreJelly, SizeConstants.Large, ChallengeRatingConstants.CR5, null, false, 0, 0, 0, false),
                 [CreatureConstants.Octopus] = GetCreatureData(CreatureConstants.Octopus, SizeConstants.Small, ChallengeRatingConstants.CR1, null, false, 0, 2, 0, false),
-                [CreatureConstants.Octopus_Giant] = GetCreatureData(CreatureConstants.Octopus_Giant, SizeConstants.Large, ChallengeRatingConstants.CR8, null, false, 0, 7, 0, false),
-                [CreatureConstants.Ogre] = GetCreatureData(CreatureConstants.Ogre, SizeConstants.Large, ChallengeRatingConstants.CR3, 2, true, 0, 5, 2, false),
-                [CreatureConstants.Ogre_Merrow] = GetCreatureData(CreatureConstants.Ogre_Merrow, SizeConstants.Large, ChallengeRatingConstants.CR3, 2, true, 0, 5, 2, false),
-                [CreatureConstants.OgreMage] = GetCreatureData(CreatureConstants.OgreMage, SizeConstants.Large, ChallengeRatingConstants.CR8, 7, true, 9, 5, 2, false),
-                [CreatureConstants.Orc] = GetCreatureData(CreatureConstants.Orc, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, false),
-                [CreatureConstants.Orc_Half] = GetCreatureData(CreatureConstants.Orc_Half, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, false),
-                [CreatureConstants.Otyugh] = GetCreatureData(CreatureConstants.Otyugh, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 8, 0, false),
-                [CreatureConstants.Owl] = GetCreatureData(CreatureConstants.Owl, SizeConstants.Tiny, ChallengeRatingConstants.CR1_4th, null, false, 0, 2, 0, false),
-                [CreatureConstants.Owl_Giant] = GetCreatureData(CreatureConstants.Owl_Giant, SizeConstants.Large, ChallengeRatingConstants.CR3, 2, false, 0, 3, 0, false),
-                [CreatureConstants.Owlbear] = GetCreatureData(CreatureConstants.Owlbear, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 5, 0, false),
-                [CreatureConstants.Pegasus] = GetCreatureData(CreatureConstants.Pegasus, SizeConstants.Large, ChallengeRatingConstants.CR3, 2, false, 5, 3, 0, false),
+                [CreatureConstants.Octopus_Giant] = GetCreatureData(CreatureConstants.Octopus_Giant, SizeConstants.Large, ChallengeRatingConstants.CR8, null, false, 0, 7, 0, false, reach: 10),
+                [CreatureConstants.Ogre] = GetCreatureData(CreatureConstants.Ogre, SizeConstants.Large, ChallengeRatingConstants.CR3, 2, true, 0, 5, 2, true),
+                [CreatureConstants.Ogre_Merrow] = GetCreatureData(CreatureConstants.Ogre_Merrow, SizeConstants.Large, ChallengeRatingConstants.CR3, 2, true, 0, 5, 2, true),
+                [CreatureConstants.OgreMage] = GetCreatureData(CreatureConstants.OgreMage, SizeConstants.Large, ChallengeRatingConstants.CR8, 7, true, 9, 5, 2, true),
+                [CreatureConstants.Orc] = GetCreatureData(CreatureConstants.Orc, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, true),
+                [CreatureConstants.Orc_Half] = GetCreatureData(CreatureConstants.Orc_Half, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2, true),
+                [CreatureConstants.Otyugh] = GetCreatureData(CreatureConstants.Otyugh, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 8, 0, true),
+                [CreatureConstants.Owl] = GetCreatureData(CreatureConstants.Owl, SizeConstants.Tiny, ChallengeRatingConstants.CR1_4th, null, false, 0, 2, 0, true),
+                [CreatureConstants.Owl_Giant] = GetCreatureData(CreatureConstants.Owl_Giant, SizeConstants.Large, ChallengeRatingConstants.CR3, 2, false, 0, 3, 0, true, reach: 5),
+                [CreatureConstants.Owlbear] = GetCreatureData(CreatureConstants.Owlbear, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 5, 0, true, reach: 5),
+                [CreatureConstants.Pegasus] = GetCreatureData(CreatureConstants.Pegasus, SizeConstants.Large, ChallengeRatingConstants.CR3, 2, false, 5, 3, 0, true, reach: 5),
                 [CreatureConstants.PhantomFungus] = GetCreatureData(CreatureConstants.PhantomFungus, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, false, 12, 4, 0, false),
                 [CreatureConstants.PhaseSpider] = GetCreatureData(CreatureConstants.PhaseSpider, SizeConstants.Large, ChallengeRatingConstants.CR5, null, false, 15, 3, 0, false),
                 [CreatureConstants.Phasm] = GetCreatureData(CreatureConstants.Phasm, SizeConstants.Medium, ChallengeRatingConstants.CR7, null, true, 0, 5, 0, false),
                 [CreatureConstants.PitFiend] = GetCreatureData(CreatureConstants.PitFiend, SizeConstants.Large, ChallengeRatingConstants.CR20, null, false, 18, 23, 2, false),
-                [CreatureConstants.Pixie] = GetCreatureData(CreatureConstants.Pixie, SizeConstants.Small, ChallengeRatingConstants.CR4, 4, true, 8, 1, 2, false),
-                [CreatureConstants.Pixie_WithIrresistibleDance] = GetCreatureData(CreatureConstants.Pixie_WithIrresistibleDance, SizeConstants.Small, ChallengeRatingConstants.CR5, 6, true, 8, 1, 2, false),
-                [CreatureConstants.Pony] = GetCreatureData(CreatureConstants.Pony, SizeConstants.Medium, ChallengeRatingConstants.CR1_4th, null, false, 0, 2, 0, false),
-                [CreatureConstants.Pony_War] = GetCreatureData(CreatureConstants.Pony_War, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, null, false, 0, 2, 0, false),
-                [CreatureConstants.Porpoise] = GetCreatureData(CreatureConstants.Porpoise, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, null, false, 0, 2, 0, false),
-                [CreatureConstants.PrayingMantis_Giant] = GetCreatureData(CreatureConstants.PrayingMantis_Giant, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 6, 0, false),
-                [CreatureConstants.Pseudodragon] = GetCreatureData(CreatureConstants.Pseudodragon, SizeConstants.Tiny, ChallengeRatingConstants.CR1, 3, false, 0, 4, 0, false),
+                [CreatureConstants.Pixie] = GetCreatureData(CreatureConstants.Pixie, SizeConstants.Small, ChallengeRatingConstants.CR4, 4, true, 8, 1, 2, true),
+                [CreatureConstants.Pixie_WithIrresistibleDance] = GetCreatureData(CreatureConstants.Pixie_WithIrresistibleDance, SizeConstants.Small, ChallengeRatingConstants.CR5, 6, true, 8, 1, 2, true),
+                [CreatureConstants.Pony] = GetCreatureData(CreatureConstants.Pony, SizeConstants.Medium, ChallengeRatingConstants.CR1_4th, null, false, 0, 2, 0, true),
+                [CreatureConstants.Pony_War] = GetCreatureData(CreatureConstants.Pony_War, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, null, false, 0, 2, 0, true),
+                [CreatureConstants.Porpoise] = GetCreatureData(CreatureConstants.Porpoise, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, null, false, 0, 2, 0, true),
+                [CreatureConstants.PrayingMantis_Giant] = GetCreatureData(CreatureConstants.PrayingMantis_Giant, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 6, 0, false, reach: 5),
+                [CreatureConstants.Pseudodragon] = GetCreatureData(CreatureConstants.Pseudodragon, SizeConstants.Tiny, ChallengeRatingConstants.CR1, 3, false, 0, 4, 0, true),
                 [CreatureConstants.PurpleWorm] = GetCreatureData(CreatureConstants.PurpleWorm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR12, null, false, 0, 15, 0, false),
-                [CreatureConstants.Pyrohydra_5Heads] = GetCreatureData(CreatureConstants.Pyrohydra_5Heads, SizeConstants.Huge, ChallengeRatingConstants.CR6, null, false, 0, 6, 0, false),
-                [CreatureConstants.Pyrohydra_6Heads] = GetCreatureData(CreatureConstants.Pyrohydra_6Heads, SizeConstants.Huge, ChallengeRatingConstants.CR7, null, false, 0, 7, 0, false),
-                [CreatureConstants.Pyrohydra_7Heads] = GetCreatureData(CreatureConstants.Pyrohydra_7Heads, SizeConstants.Huge, ChallengeRatingConstants.CR8, null, false, 0, 8, 0, false),
-                [CreatureConstants.Pyrohydra_8Heads] = GetCreatureData(CreatureConstants.Pyrohydra_8Heads, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 0, 9, 0, false),
-                [CreatureConstants.Pyrohydra_9Heads] = GetCreatureData(CreatureConstants.Pyrohydra_9Heads, SizeConstants.Huge, ChallengeRatingConstants.CR10, null, false, 0, 10, 0, false),
-                [CreatureConstants.Pyrohydra_10Heads] = GetCreatureData(CreatureConstants.Pyrohydra_10Heads, SizeConstants.Huge, ChallengeRatingConstants.CR11, null, false, 0, 11, 0, false),
-                [CreatureConstants.Pyrohydra_11Heads] = GetCreatureData(CreatureConstants.Pyrohydra_11Heads, SizeConstants.Huge, ChallengeRatingConstants.CR12, null, false, 0, 12, 0, false),
-                [CreatureConstants.Pyrohydra_12Heads] = GetCreatureData(CreatureConstants.Pyrohydra_12Heads, SizeConstants.Huge, ChallengeRatingConstants.CR13, null, false, 0, 13, 0, false),
+                [CreatureConstants.Pyrohydra_5Heads] = GetCreatureData(CreatureConstants.Pyrohydra_5Heads, SizeConstants.Huge, ChallengeRatingConstants.CR6, null, false, 0, 6, 0, true),
+                [CreatureConstants.Pyrohydra_6Heads] = GetCreatureData(CreatureConstants.Pyrohydra_6Heads, SizeConstants.Huge, ChallengeRatingConstants.CR7, null, false, 0, 7, 0, true),
+                [CreatureConstants.Pyrohydra_7Heads] = GetCreatureData(CreatureConstants.Pyrohydra_7Heads, SizeConstants.Huge, ChallengeRatingConstants.CR8, null, false, 0, 8, 0, true),
+                [CreatureConstants.Pyrohydra_8Heads] = GetCreatureData(CreatureConstants.Pyrohydra_8Heads, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 0, 9, 0, true),
+                [CreatureConstants.Pyrohydra_9Heads] = GetCreatureData(CreatureConstants.Pyrohydra_9Heads, SizeConstants.Huge, ChallengeRatingConstants.CR10, null, false, 0, 10, 0, true),
+                [CreatureConstants.Pyrohydra_10Heads] = GetCreatureData(CreatureConstants.Pyrohydra_10Heads, SizeConstants.Huge, ChallengeRatingConstants.CR11, null, false, 0, 11, 0, true),
+                [CreatureConstants.Pyrohydra_11Heads] = GetCreatureData(CreatureConstants.Pyrohydra_11Heads, SizeConstants.Huge, ChallengeRatingConstants.CR12, null, false, 0, 12, 0, true),
+                [CreatureConstants.Pyrohydra_12Heads] = GetCreatureData(CreatureConstants.Pyrohydra_12Heads, SizeConstants.Huge, ChallengeRatingConstants.CR13, null, false, 0, 13, 0, true),
                 [CreatureConstants.Quasit] = GetCreatureData(CreatureConstants.Quasit, SizeConstants.Tiny, ChallengeRatingConstants.CR2, null, false, 6, 3, 2, false),
-                [CreatureConstants.Rakshasa] = GetCreatureData(CreatureConstants.Rakshasa, SizeConstants.Medium, ChallengeRatingConstants.CR10, 7, true, 7, 9, 2, false),
+                [CreatureConstants.Rakshasa] = GetCreatureData(CreatureConstants.Rakshasa, SizeConstants.Medium, ChallengeRatingConstants.CR10, 7, true, 7, 9, 2, true),
                 [CreatureConstants.Rast] = GetCreatureData(CreatureConstants.Rast, SizeConstants.Medium, ChallengeRatingConstants.CR5, null, false, 0, 4, 0, false),
-                [CreatureConstants.Rat] = GetCreatureData(CreatureConstants.Rat, SizeConstants.Tiny, ChallengeRatingConstants.CR1_8th, null, false, 0, 0, 0, false),
-                [CreatureConstants.Rat_Dire] = GetCreatureData(CreatureConstants.Rat_Dire, SizeConstants.Small, ChallengeRatingConstants.CR1_3rd, null, false, 0, 1, 0, false),
-                [CreatureConstants.Rat_Swarm] = GetCreatureData(CreatureConstants.Rat_Swarm, SizeConstants.Tiny, ChallengeRatingConstants.CR2, null, false, 0, 0, 0, false),
-                [CreatureConstants.Raven] = GetCreatureData(CreatureConstants.Raven, SizeConstants.Tiny, ChallengeRatingConstants.CR1_6th, null, false, 0, 0, 0, false),
+                [CreatureConstants.Rat] = GetCreatureData(CreatureConstants.Rat, SizeConstants.Tiny, ChallengeRatingConstants.CR1_8th, null, false, 0, 0, 0, true),
+                [CreatureConstants.Rat_Dire] = GetCreatureData(CreatureConstants.Rat_Dire, SizeConstants.Small, ChallengeRatingConstants.CR1_3rd, null, false, 0, 1, 0, true),
+                [CreatureConstants.Rat_Swarm] = GetCreatureData(CreatureConstants.Rat_Swarm, SizeConstants.Tiny, ChallengeRatingConstants.CR2, null, false, 0, 0, 0, true, space: 10),
+                [CreatureConstants.Raven] = GetCreatureData(CreatureConstants.Raven, SizeConstants.Tiny, ChallengeRatingConstants.CR1_6th, null, false, 0, 0, 0, true),
                 [CreatureConstants.Ravid] = GetCreatureData(CreatureConstants.Ravid, SizeConstants.Medium, ChallengeRatingConstants.CR5, null, false, 20, 15, 1, false),
-                [CreatureConstants.RazorBoar] = GetCreatureData(CreatureConstants.RazorBoar, SizeConstants.Large, ChallengeRatingConstants.CR10, null, false, 0, 17, 0, false),
+                [CreatureConstants.RazorBoar] = GetCreatureData(CreatureConstants.RazorBoar, SizeConstants.Large, ChallengeRatingConstants.CR10, null, false, 0, 17, 0, true),
                 [CreatureConstants.Remorhaz] = GetCreatureData(CreatureConstants.Remorhaz, SizeConstants.Huge, ChallengeRatingConstants.CR7, null, false, 0, 11, 0, false),
-                [CreatureConstants.Retriever] = GetCreatureData(CreatureConstants.Retriever, SizeConstants.Huge, ChallengeRatingConstants.CR11, null, false, 0, 10, 0, false),
-                [CreatureConstants.Rhinoceras] = GetCreatureData(CreatureConstants.Rhinoceras, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 7, 0, false),
-                [CreatureConstants.Roc] = GetCreatureData(CreatureConstants.Roc, SizeConstants.Gargantuan, ChallengeRatingConstants.CR9, null, false, 0, 9, 0, false),
+                [CreatureConstants.Retriever] = GetCreatureData(CreatureConstants.Retriever, SizeConstants.Huge, ChallengeRatingConstants.CR11, null, false, 0, 10, 0, false, reach: 10),
+                [CreatureConstants.Rhinoceras] = GetCreatureData(CreatureConstants.Rhinoceras, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 7, 0, true),
+                [CreatureConstants.Roc] = GetCreatureData(CreatureConstants.Roc, SizeConstants.Gargantuan, ChallengeRatingConstants.CR9, null, false, 0, 9, 0, true),
                 [CreatureConstants.Roper] = GetCreatureData(CreatureConstants.Roper, SizeConstants.Large, ChallengeRatingConstants.CR12, null, false, 0, 14, 0, false),
-                [CreatureConstants.RustMonster] = GetCreatureData(CreatureConstants.RustMonster, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, false, 0, 5, 0, false),
-                [CreatureConstants.Sahuagin] = GetCreatureData(CreatureConstants.Sahuagin, SizeConstants.Medium, ChallengeRatingConstants.CR2, 2, true, 0, 5, 2, false),
-                [CreatureConstants.Sahuagin_Mutant] = GetCreatureData(CreatureConstants.Sahuagin_Mutant, SizeConstants.Medium, ChallengeRatingConstants.CR2, 3, true, 0, 5, 4, false),
-                [CreatureConstants.Sahuagin_Malenti] = GetCreatureData(CreatureConstants.Sahuagin_Malenti, SizeConstants.Medium, ChallengeRatingConstants.CR2, 2, true, 0, 5, 2, false),
+                [CreatureConstants.RustMonster] = GetCreatureData(CreatureConstants.RustMonster, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, false, 0, 5, 0, true),
+                [CreatureConstants.Sahuagin] = GetCreatureData(CreatureConstants.Sahuagin, SizeConstants.Medium, ChallengeRatingConstants.CR2, 2, true, 0, 5, 2, true),
+                [CreatureConstants.Sahuagin_Mutant] = GetCreatureData(CreatureConstants.Sahuagin_Mutant, SizeConstants.Medium, ChallengeRatingConstants.CR2, 3, true, 0, 5, 4, true),
+                [CreatureConstants.Sahuagin_Malenti] = GetCreatureData(CreatureConstants.Sahuagin_Malenti, SizeConstants.Medium, ChallengeRatingConstants.CR2, 2, true, 0, 5, 2, true),
                 [CreatureConstants.Salamander_Average] = GetCreatureData(CreatureConstants.Salamander_Average, SizeConstants.Medium, ChallengeRatingConstants.CR6, 5, true, 0, 7, 2, false),
                 [CreatureConstants.Salamander_Flamebrother] = GetCreatureData(CreatureConstants.Salamander_Flamebrother, SizeConstants.Small, ChallengeRatingConstants.CR3, 4, true, 0, 7, 2, false),
-                [CreatureConstants.Salamander_Noble] = GetCreatureData(CreatureConstants.Salamander_Noble, SizeConstants.Large, ChallengeRatingConstants.CR10, null, true, 15, 8, 2, false),
-                [CreatureConstants.Satyr] = GetCreatureData(CreatureConstants.Satyr, SizeConstants.Medium, ChallengeRatingConstants.CR2, 2, true, 0, 4, 2, false),
-                [CreatureConstants.Satyr_WithPipes] = GetCreatureData(CreatureConstants.Satyr_WithPipes, SizeConstants.Medium, ChallengeRatingConstants.CR4, 2, true, 10, 4, 2, false),
-                [CreatureConstants.Scorpion_Monstrous_Colossal] = GetCreatureData(CreatureConstants.Scorpion_Monstrous_Colossal, SizeConstants.Colossal, ChallengeRatingConstants.CR12, null, false, 0, 25, 0, false),
+                [CreatureConstants.Salamander_Noble] = GetCreatureData(CreatureConstants.Salamander_Noble, SizeConstants.Large, ChallengeRatingConstants.CR10, null, true, 15, 8, 2, false, reach: 10),
+                [CreatureConstants.Satyr] = GetCreatureData(CreatureConstants.Satyr, SizeConstants.Medium, ChallengeRatingConstants.CR2, 2, true, 0, 4, 2, true),
+                [CreatureConstants.Satyr_WithPipes] = GetCreatureData(CreatureConstants.Satyr_WithPipes, SizeConstants.Medium, ChallengeRatingConstants.CR4, 2, true, 10, 4, 2, true),
+                [CreatureConstants.Scorpion_Monstrous_Colossal] = GetCreatureData(CreatureConstants.Scorpion_Monstrous_Colossal, SizeConstants.Colossal, ChallengeRatingConstants.CR12, null, false, 0, 25, 0, false, space: 40, reach: 30),
                 [CreatureConstants.Scorpion_Monstrous_Gargantuan] = GetCreatureData(CreatureConstants.Scorpion_Monstrous_Gargantuan, SizeConstants.Gargantuan, ChallengeRatingConstants.CR10, null, false, 0, 18, 0, false),
                 [CreatureConstants.Scorpion_Monstrous_Huge] = GetCreatureData(CreatureConstants.Scorpion_Monstrous_Huge, SizeConstants.Huge, ChallengeRatingConstants.CR7, null, false, 0, 12, 0, false),
                 [CreatureConstants.Scorpion_Monstrous_Large] = GetCreatureData(CreatureConstants.Scorpion_Monstrous_Large, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 7, 0, false),
                 [CreatureConstants.Scorpion_Monstrous_Medium] = GetCreatureData(CreatureConstants.Scorpion_Monstrous_Medium, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 4, 0, false),
                 [CreatureConstants.Scorpion_Monstrous_Small] = GetCreatureData(CreatureConstants.Scorpion_Monstrous_Small, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, null, false, 0, 3, 0, false),
                 [CreatureConstants.Scorpion_Monstrous_Tiny] = GetCreatureData(CreatureConstants.Scorpion_Monstrous_Tiny, SizeConstants.Tiny, ChallengeRatingConstants.CR1_4th, null, false, 0, 2, 0, false),
-                [CreatureConstants.Scorpionfolk] = GetCreatureData(CreatureConstants.Scorpionfolk, SizeConstants.Large, ChallengeRatingConstants.CR7, 4, true, 10, 6, 2, false),
-                [CreatureConstants.SeaCat] = GetCreatureData(CreatureConstants.SeaCat, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 8, 0, false),
-                [CreatureConstants.SeaHag] = GetCreatureData(CreatureConstants.SeaHag, SizeConstants.Medium, ChallengeRatingConstants.CR4, 0, true, 0, 3, 2, false),
+                [CreatureConstants.Scorpionfolk] = GetCreatureData(CreatureConstants.Scorpionfolk, SizeConstants.Large, ChallengeRatingConstants.CR7, 4, true, 10, 6, 2, true),
+                [CreatureConstants.SeaCat] = GetCreatureData(CreatureConstants.SeaCat, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 8, 0, true),
+                [CreatureConstants.SeaHag] = GetCreatureData(CreatureConstants.SeaHag, SizeConstants.Medium, ChallengeRatingConstants.CR4, 0, true, 0, 3, 2, true),
                 [CreatureConstants.Shadow] = GetCreatureData(CreatureConstants.Shadow, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, false, 0, 0, 0, false),
                 [CreatureConstants.Shadow_Greater] = GetCreatureData(CreatureConstants.Shadow_Greater, SizeConstants.Medium, ChallengeRatingConstants.CR8, null, false, 0, 0, 0, false),
                 [CreatureConstants.ShadowMastiff] = GetCreatureData(CreatureConstants.ShadowMastiff, SizeConstants.Medium, ChallengeRatingConstants.CR5, 3, false, 0, 3, 0, false),
                 [CreatureConstants.ShamblingMound] = GetCreatureData(CreatureConstants.ShamblingMound, SizeConstants.Large, ChallengeRatingConstants.CR6, 6, false, 0, 11, 0, false),
-                [CreatureConstants.Shark_Dire] = GetCreatureData(CreatureConstants.Shark_Dire, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 0, 7, 0, false),
-                [CreatureConstants.Shark_Huge] = GetCreatureData(CreatureConstants.Shark_Huge, SizeConstants.Huge, ChallengeRatingConstants.CR4, null, false, 0, 5, 0, false),
-                [CreatureConstants.Shark_Large] = GetCreatureData(CreatureConstants.Shark_Large, SizeConstants.Large, ChallengeRatingConstants.CR2, null, false, 0, 4, 0, false),
-                [CreatureConstants.Shark_Medium] = GetCreatureData(CreatureConstants.Shark_Medium, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 3, 0, false),
+                [CreatureConstants.Shark_Dire] = GetCreatureData(CreatureConstants.Shark_Dire, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 0, 7, 0, true),
+                [CreatureConstants.Shark_Huge] = GetCreatureData(CreatureConstants.Shark_Huge, SizeConstants.Huge, ChallengeRatingConstants.CR4, null, false, 0, 5, 0, true),
+                [CreatureConstants.Shark_Large] = GetCreatureData(CreatureConstants.Shark_Large, SizeConstants.Large, ChallengeRatingConstants.CR2, null, false, 0, 4, 0, true),
+                [CreatureConstants.Shark_Medium] = GetCreatureData(CreatureConstants.Shark_Medium, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 3, 0, true),
                 [CreatureConstants.ShieldGuardian] = GetCreatureData(CreatureConstants.ShieldGuardian, SizeConstants.Large, ChallengeRatingConstants.CR8, null, false, 0, 15, 2, false),
-                [CreatureConstants.ShockerLizard] = GetCreatureData(CreatureConstants.ShockerLizard, SizeConstants.Small, ChallengeRatingConstants.CR2, null, false, 0, 3, 0, false),
-                [CreatureConstants.Shrieker] = GetCreatureData(CreatureConstants.Shrieker, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 3, 0, false),
-                [CreatureConstants.Skum] = GetCreatureData(CreatureConstants.Skum, SizeConstants.Medium, ChallengeRatingConstants.CR2, 3, true, 0, 2, 2, false),
+                [CreatureConstants.ShockerLizard] = GetCreatureData(CreatureConstants.ShockerLizard, SizeConstants.Small, ChallengeRatingConstants.CR2, null, false, 0, 3, 0, true),
+                [CreatureConstants.Shrieker] = GetCreatureData(CreatureConstants.Shrieker, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 3, 0, false, reach: 0),
+                [CreatureConstants.Skum] = GetCreatureData(CreatureConstants.Skum, SizeConstants.Medium, ChallengeRatingConstants.CR2, 3, true, 0, 2, 2, true),
                 [CreatureConstants.Slaad_Blue] = GetCreatureData(CreatureConstants.Slaad_Blue, SizeConstants.Large, ChallengeRatingConstants.CR8, 6, true, 8, 9, 2, false),
                 [CreatureConstants.Slaad_Death] = GetCreatureData(CreatureConstants.Slaad_Death, SizeConstants.Medium, ChallengeRatingConstants.CR13, null, true, 15, 12, 2, false),
                 [CreatureConstants.Slaad_Gray] = GetCreatureData(CreatureConstants.Slaad_Gray, SizeConstants.Medium, ChallengeRatingConstants.CR10, 6, true, 10, 11, 2, false),
                 [CreatureConstants.Slaad_Green] = GetCreatureData(CreatureConstants.Slaad_Green, SizeConstants.Large, ChallengeRatingConstants.CR9, 7, true, 9, 13, 2, false),
                 [CreatureConstants.Slaad_Red] = GetCreatureData(CreatureConstants.Slaad_Red, SizeConstants.Large, ChallengeRatingConstants.CR7, 6, true, 0, 8, 2, false),
-                [CreatureConstants.Snake_Constrictor] = GetCreatureData(CreatureConstants.Snake_Constrictor, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 2, 0, false),
-                [CreatureConstants.Snake_Constrictor_Giant] = GetCreatureData(CreatureConstants.Snake_Constrictor_Giant, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 4, 0, false),
-                [CreatureConstants.Snake_Viper_Huge] = GetCreatureData(CreatureConstants.Snake_Viper_Huge, SizeConstants.Huge, ChallengeRatingConstants.CR3, null, false, 0, 3, 0, false),
-                [CreatureConstants.Snake_Viper_Large] = GetCreatureData(CreatureConstants.Snake_Viper_Large, SizeConstants.Large, ChallengeRatingConstants.CR2, null, false, 0, 3, 0, false),
-                [CreatureConstants.Snake_Viper_Medium] = GetCreatureData(CreatureConstants.Snake_Viper_Medium, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 3, 0, false),
-                [CreatureConstants.Snake_Viper_Small] = GetCreatureData(CreatureConstants.Snake_Viper_Small, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, null, false, 0, 3, 0, false),
-                [CreatureConstants.Snake_Viper_Tiny] = GetCreatureData(CreatureConstants.Snake_Viper_Tiny, SizeConstants.Tiny, ChallengeRatingConstants.CR1_3rd, null, false, 0, 2, 0, false),
+                [CreatureConstants.Snake_Constrictor] = GetCreatureData(CreatureConstants.Snake_Constrictor, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 2, 0, true),
+                [CreatureConstants.Snake_Constrictor_Giant] = GetCreatureData(CreatureConstants.Snake_Constrictor_Giant, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 4, 0, true),
+                [CreatureConstants.Snake_Viper_Huge] = GetCreatureData(CreatureConstants.Snake_Viper_Huge, SizeConstants.Huge, ChallengeRatingConstants.CR3, null, false, 0, 3, 0, true),
+                [CreatureConstants.Snake_Viper_Large] = GetCreatureData(CreatureConstants.Snake_Viper_Large, SizeConstants.Large, ChallengeRatingConstants.CR2, null, false, 0, 3, 0, true),
+                [CreatureConstants.Snake_Viper_Medium] = GetCreatureData(CreatureConstants.Snake_Viper_Medium, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 3, 0, true),
+                [CreatureConstants.Snake_Viper_Small] = GetCreatureData(CreatureConstants.Snake_Viper_Small, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, null, false, 0, 3, 0, true),
+                [CreatureConstants.Snake_Viper_Tiny] = GetCreatureData(CreatureConstants.Snake_Viper_Tiny, SizeConstants.Tiny, ChallengeRatingConstants.CR1_3rd, null, false, 0, 2, 0, true),
                 [CreatureConstants.Spectre] = GetCreatureData(CreatureConstants.Spectre, SizeConstants.Medium, ChallengeRatingConstants.CR7, null, false, 0, 0, 0, false),
-                [CreatureConstants.Spider_Monstrous_Hunter_Colossal] = GetCreatureData(CreatureConstants.Spider_Monstrous_Hunter_Colossal, SizeConstants.Colossal, ChallengeRatingConstants.CR11, null, false, 0, 18, 0, false),
+                [CreatureConstants.Spider_Monstrous_Hunter_Colossal] = GetCreatureData(CreatureConstants.Spider_Monstrous_Hunter_Colossal, SizeConstants.Colossal, ChallengeRatingConstants.CR11, null, false, 0, 18, 0, false, space: 40, reach: 30),
                 [CreatureConstants.Spider_Monstrous_Hunter_Gargantuan] = GetCreatureData(CreatureConstants.Spider_Monstrous_Hunter_Gargantuan, SizeConstants.Gargantuan, ChallengeRatingConstants.CR8, null, false, 0, 10, 0, false),
                 [CreatureConstants.Spider_Monstrous_Hunter_Huge] = GetCreatureData(CreatureConstants.Spider_Monstrous_Hunter_Huge, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 5, 0, false),
                 [CreatureConstants.Spider_Monstrous_Hunter_Large] = GetCreatureData(CreatureConstants.Spider_Monstrous_Hunter_Large, SizeConstants.Large, ChallengeRatingConstants.CR2, null, false, 0, 2, 0, false),
                 [CreatureConstants.Spider_Monstrous_Hunter_Medium] = GetCreatureData(CreatureConstants.Spider_Monstrous_Hunter_Medium, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 1, 0, false),
                 [CreatureConstants.Spider_Monstrous_Hunter_Small] = GetCreatureData(CreatureConstants.Spider_Monstrous_Hunter_Small, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0, false),
                 [CreatureConstants.Spider_Monstrous_Hunter_Tiny] = GetCreatureData(CreatureConstants.Spider_Monstrous_Hunter_Tiny, SizeConstants.Tiny, ChallengeRatingConstants.CR1_4th, null, false, 0, 0, 0, false),
-                [CreatureConstants.Spider_Monstrous_WebSpinner_Colossal] = GetCreatureData(CreatureConstants.Spider_Monstrous_WebSpinner_Colossal, SizeConstants.Colossal, ChallengeRatingConstants.CR11, null, false, 0, 18, 0, false),
+                [CreatureConstants.Spider_Monstrous_WebSpinner_Colossal] = GetCreatureData(CreatureConstants.Spider_Monstrous_WebSpinner_Colossal, SizeConstants.Colossal, ChallengeRatingConstants.CR11, null, false, 0, 18, 0, false, space: 40, reach: 30),
                 [CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan] = GetCreatureData(CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan, SizeConstants.Gargantuan, ChallengeRatingConstants.CR8, null, false, 0, 10, 0, false),
                 [CreatureConstants.Spider_Monstrous_WebSpinner_Huge] = GetCreatureData(CreatureConstants.Spider_Monstrous_WebSpinner_Huge, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 5, 0, false),
                 [CreatureConstants.Spider_Monstrous_WebSpinner_Large] = GetCreatureData(CreatureConstants.Spider_Monstrous_WebSpinner_Large, SizeConstants.Large, ChallengeRatingConstants.CR2, null, false, 0, 2, 0, false),
@@ -2644,68 +2645,68 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 [CreatureConstants.Spider_Monstrous_WebSpinner_Small] = GetCreatureData(CreatureConstants.Spider_Monstrous_WebSpinner_Small, SizeConstants.Small, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0, false),
                 [CreatureConstants.Spider_Monstrous_WebSpinner_Tiny] = GetCreatureData(CreatureConstants.Spider_Monstrous_WebSpinner_Tiny, SizeConstants.Tiny, ChallengeRatingConstants.CR1_4th, null, false, 0, 0, 0, false),
                 [CreatureConstants.SpiderEater] = GetCreatureData(CreatureConstants.SpiderEater, SizeConstants.Large, ChallengeRatingConstants.CR5, null, false, 12, 4, 0, false),
-                [CreatureConstants.Spider_Swarm] = GetCreatureData(CreatureConstants.Spider_Swarm, SizeConstants.Diminutive, ChallengeRatingConstants.CR1, null, false, 0, 0, 0, false),
+                [CreatureConstants.Spider_Swarm] = GetCreatureData(CreatureConstants.Spider_Swarm, SizeConstants.Diminutive, ChallengeRatingConstants.CR1, null, false, 0, 0, 0, false, space: 10),
                 [CreatureConstants.Squid] = GetCreatureData(CreatureConstants.Squid, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 3, 0, false),
-                [CreatureConstants.Squid_Giant] = GetCreatureData(CreatureConstants.Squid_Giant, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 0, 6, 0, false),
+                [CreatureConstants.Squid_Giant] = GetCreatureData(CreatureConstants.Squid_Giant, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 0, 6, 0, false, reach: 15),
                 [CreatureConstants.StagBeetle_Giant] = GetCreatureData(CreatureConstants.StagBeetle_Giant, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 10, 0, false),
                 [CreatureConstants.Stirge] = GetCreatureData(CreatureConstants.Stirge, SizeConstants.Tiny, ChallengeRatingConstants.CR1_2nd, null, false, 0, 0, 0, false),
                 [CreatureConstants.Succubus] = GetCreatureData(CreatureConstants.Succubus, SizeConstants.Medium, ChallengeRatingConstants.CR7, 6, true, 12, 9, 2, false),
-                [CreatureConstants.Tarrasque] = GetCreatureData(CreatureConstants.Tarrasque, SizeConstants.Colossal, ChallengeRatingConstants.CR20, null, false, 0, 30, 2, false),
+                [CreatureConstants.Tarrasque] = GetCreatureData(CreatureConstants.Tarrasque, SizeConstants.Colossal, ChallengeRatingConstants.CR20, null, false, 0, 30, 2, true),
                 [CreatureConstants.Tendriculos] = GetCreatureData(CreatureConstants.Tendriculos, SizeConstants.Huge, ChallengeRatingConstants.CR6, null, false, 0, 9, 0, false),
                 [CreatureConstants.Thoqqua] = GetCreatureData(CreatureConstants.Thoqqua, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 7, 0, false),
-                [CreatureConstants.Tiefling] = GetCreatureData(CreatureConstants.Tiefling, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 1, true, 1, 0, 2, false),
-                [CreatureConstants.Tiger] = GetCreatureData(CreatureConstants.Tiger, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 3, 0, false),
-                [CreatureConstants.Tiger_Dire] = GetCreatureData(CreatureConstants.Tiger_Dire, SizeConstants.Large, ChallengeRatingConstants.CR8, null, false, 0, 6, 0, false),
+                [CreatureConstants.Tiefling] = GetCreatureData(CreatureConstants.Tiefling, SizeConstants.Medium, ChallengeRatingConstants.CR1_2nd, 1, true, 1, 0, 2, true),
+                [CreatureConstants.Tiger] = GetCreatureData(CreatureConstants.Tiger, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 3, 0, true),
+                [CreatureConstants.Tiger_Dire] = GetCreatureData(CreatureConstants.Tiger_Dire, SizeConstants.Large, ChallengeRatingConstants.CR8, null, false, 0, 6, 0, true),
                 [CreatureConstants.Titan] = GetCreatureData(CreatureConstants.Titan, SizeConstants.Huge, ChallengeRatingConstants.CR21, null, true, 20, 19, 2, false),
-                [CreatureConstants.Toad] = GetCreatureData(CreatureConstants.Toad, SizeConstants.Diminutive, ChallengeRatingConstants.CR1_10th, null, false, 0, 0, 0, false),
+                [CreatureConstants.Toad] = GetCreatureData(CreatureConstants.Toad, SizeConstants.Diminutive, ChallengeRatingConstants.CR1_10th, null, false, 0, 0, 0, true),
                 [CreatureConstants.Tojanida_Adult] = GetCreatureData(CreatureConstants.Tojanida_Adult, SizeConstants.Medium, ChallengeRatingConstants.CR5, null, false, 0, 12, 0, false),
                 [CreatureConstants.Tojanida_Elder] = GetCreatureData(CreatureConstants.Tojanida_Elder, SizeConstants.Large, ChallengeRatingConstants.CR9, null, false, 0, 14, 0, false),
                 [CreatureConstants.Tojanida_Juvenile] = GetCreatureData(CreatureConstants.Tojanida_Juvenile, SizeConstants.Small, ChallengeRatingConstants.CR3, null, false, 0, 10, 0, false),
                 [CreatureConstants.Treant] = GetCreatureData(CreatureConstants.Treant, SizeConstants.Huge, ChallengeRatingConstants.CR8, 5, false, 12, 13, 2, false),
-                [CreatureConstants.Triceratops] = GetCreatureData(CreatureConstants.Triceratops, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 0, 11, 0, false),
-                [CreatureConstants.Triton] = GetCreatureData(CreatureConstants.Triton, SizeConstants.Medium, ChallengeRatingConstants.CR2, 2, true, 7, 6, 2, false),
-                [CreatureConstants.Troglodyte] = GetCreatureData(CreatureConstants.Troglodyte, SizeConstants.Medium, ChallengeRatingConstants.CR1, 2, true, 0, 6, 2, false),
-                [CreatureConstants.Troll] = GetCreatureData(CreatureConstants.Troll, SizeConstants.Large, ChallengeRatingConstants.CR5, 5, true, 0, 5, 2, false),
-                [CreatureConstants.Troll_Scrag] = GetCreatureData(CreatureConstants.Troll_Scrag, SizeConstants.Large, ChallengeRatingConstants.CR5, 5, true, 0, 5, 2, false),
+                [CreatureConstants.Triceratops] = GetCreatureData(CreatureConstants.Triceratops, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 0, 11, 0, true),
+                [CreatureConstants.Triton] = GetCreatureData(CreatureConstants.Triton, SizeConstants.Medium, ChallengeRatingConstants.CR2, 2, true, 7, 6, 2, true),
+                [CreatureConstants.Troglodyte] = GetCreatureData(CreatureConstants.Troglodyte, SizeConstants.Medium, ChallengeRatingConstants.CR1, 2, true, 0, 6, 2, true),
+                [CreatureConstants.Troll] = GetCreatureData(CreatureConstants.Troll, SizeConstants.Large, ChallengeRatingConstants.CR5, 5, true, 0, 5, 2, true),
+                [CreatureConstants.Troll_Scrag] = GetCreatureData(CreatureConstants.Troll_Scrag, SizeConstants.Large, ChallengeRatingConstants.CR5, 5, true, 0, 5, 2, true),
                 [CreatureConstants.TrumpetArchon] = GetCreatureData(CreatureConstants.TrumpetArchon, SizeConstants.Medium, ChallengeRatingConstants.CR14, 8, true, 12, 14, 2, false),
-                [CreatureConstants.Tyrannosaurus] = GetCreatureData(CreatureConstants.Tyrannosaurus, SizeConstants.Huge, ChallengeRatingConstants.CR8, null, false, 0, 5, 0, false),
-                [CreatureConstants.UmberHulk] = GetCreatureData(CreatureConstants.UmberHulk, SizeConstants.Large, ChallengeRatingConstants.CR7, null, false, 8, 8, 0, false),
-                [CreatureConstants.UmberHulk_TrulyHorrid] = GetCreatureData(CreatureConstants.UmberHulk_TrulyHorrid, SizeConstants.Huge, ChallengeRatingConstants.CR14, null, false, 8, 14, 0, false),
-                [CreatureConstants.Unicorn] = GetCreatureData(CreatureConstants.Unicorn, SizeConstants.Large, ChallengeRatingConstants.CR3, 4, false, 5, 6, 0, false),
+                [CreatureConstants.Tyrannosaurus] = GetCreatureData(CreatureConstants.Tyrannosaurus, SizeConstants.Huge, ChallengeRatingConstants.CR8, null, false, 0, 5, 0, true),
+                [CreatureConstants.UmberHulk] = GetCreatureData(CreatureConstants.UmberHulk, SizeConstants.Large, ChallengeRatingConstants.CR7, null, false, 8, 8, 0, true, reach: 10),
+                [CreatureConstants.UmberHulk_TrulyHorrid] = GetCreatureData(CreatureConstants.UmberHulk_TrulyHorrid, SizeConstants.Huge, ChallengeRatingConstants.CR14, null, false, 8, 14, 0, true, reach: 15),
+                [CreatureConstants.Unicorn] = GetCreatureData(CreatureConstants.Unicorn, SizeConstants.Large, ChallengeRatingConstants.CR3, 4, false, 5, 6, 0, true),
                 [CreatureConstants.VampireSpawn] = GetCreatureData(CreatureConstants.VampireSpawn, SizeConstants.Medium, ChallengeRatingConstants.CR4, null, false, 6, 3, 2, false),
                 [CreatureConstants.Vargouille] = GetCreatureData(CreatureConstants.Vargouille, SizeConstants.Small, ChallengeRatingConstants.CR2, null, false, 0, 0, 0, false),
-                [CreatureConstants.VioletFungus] = GetCreatureData(CreatureConstants.VioletFungus, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, false, 0, 4, 0, false),
+                [CreatureConstants.VioletFungus] = GetCreatureData(CreatureConstants.VioletFungus, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, false, 0, 4, 0, false, reach: 10),
                 [CreatureConstants.Vrock] = GetCreatureData(CreatureConstants.Vrock, SizeConstants.Large, ChallengeRatingConstants.CR9, 8, true, 12, 11, 2, false),
                 [CreatureConstants.Wasp_Giant] = GetCreatureData(CreatureConstants.Wasp_Giant, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 4, 0, false),
-                [CreatureConstants.Weasel] = GetCreatureData(CreatureConstants.Weasel, SizeConstants.Tiny, ChallengeRatingConstants.CR1_4th, null, false, 0, 0, 0, false),
-                [CreatureConstants.Weasel_Dire] = GetCreatureData(CreatureConstants.Weasel_Dire, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 2, 0, false),
-                [CreatureConstants.Whale_Baleen] = GetCreatureData(CreatureConstants.Whale_Baleen, SizeConstants.Gargantuan, ChallengeRatingConstants.CR6, null, false, 0, 9, 0, false),
-                [CreatureConstants.Whale_Cachalot] = GetCreatureData(CreatureConstants.Whale_Cachalot, SizeConstants.Gargantuan, ChallengeRatingConstants.CR7, null, false, 0, 9, 0, false),
-                [CreatureConstants.Whale_Orca] = GetCreatureData(CreatureConstants.Whale_Orca, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0, false),
+                [CreatureConstants.Weasel] = GetCreatureData(CreatureConstants.Weasel, SizeConstants.Tiny, ChallengeRatingConstants.CR1_4th, null, false, 0, 0, 0, true),
+                [CreatureConstants.Weasel_Dire] = GetCreatureData(CreatureConstants.Weasel_Dire, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 2, 0, true),
+                [CreatureConstants.Whale_Baleen] = GetCreatureData(CreatureConstants.Whale_Baleen, SizeConstants.Gargantuan, ChallengeRatingConstants.CR6, null, false, 0, 9, 0, true),
+                [CreatureConstants.Whale_Cachalot] = GetCreatureData(CreatureConstants.Whale_Cachalot, SizeConstants.Gargantuan, ChallengeRatingConstants.CR7, null, false, 0, 9, 0, true),
+                [CreatureConstants.Whale_Orca] = GetCreatureData(CreatureConstants.Whale_Orca, SizeConstants.Huge, ChallengeRatingConstants.CR5, null, false, 0, 6, 0, true),
                 [CreatureConstants.Wight] = GetCreatureData(CreatureConstants.Wight, SizeConstants.Medium, ChallengeRatingConstants.CR3, null, false, 0, 4, 2, false),
                 [CreatureConstants.WillOWisp] = GetCreatureData(CreatureConstants.WillOWisp, SizeConstants.Small, ChallengeRatingConstants.CR6, null, false, 0, 0, 0, false),
-                [CreatureConstants.WinterWolf] = GetCreatureData(CreatureConstants.WinterWolf, SizeConstants.Large, ChallengeRatingConstants.CR5, 3, false, 0, 5, 0, false),
-                [CreatureConstants.Wolf] = GetCreatureData(CreatureConstants.Wolf, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 2, 0, false),
-                [CreatureConstants.Wolf_Dire] = GetCreatureData(CreatureConstants.Wolf_Dire, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 3, 0, false),
-                [CreatureConstants.Wolverine] = GetCreatureData(CreatureConstants.Wolverine, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 2, 0, false),
-                [CreatureConstants.Wolverine_Dire] = GetCreatureData(CreatureConstants.Wolverine_Dire, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 4, 0, false),
-                [CreatureConstants.Worg] = GetCreatureData(CreatureConstants.Worg, SizeConstants.Medium, ChallengeRatingConstants.CR2, 1, false, 0, 2, 0, false),
+                [CreatureConstants.WinterWolf] = GetCreatureData(CreatureConstants.WinterWolf, SizeConstants.Large, ChallengeRatingConstants.CR5, 3, false, 0, 5, 0, true),
+                [CreatureConstants.Wolf] = GetCreatureData(CreatureConstants.Wolf, SizeConstants.Medium, ChallengeRatingConstants.CR1, null, false, 0, 2, 0, true),
+                [CreatureConstants.Wolf_Dire] = GetCreatureData(CreatureConstants.Wolf_Dire, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 0, 3, 0, true),
+                [CreatureConstants.Wolverine] = GetCreatureData(CreatureConstants.Wolverine, SizeConstants.Medium, ChallengeRatingConstants.CR2, null, false, 0, 2, 0, true),
+                [CreatureConstants.Wolverine_Dire] = GetCreatureData(CreatureConstants.Wolverine_Dire, SizeConstants.Large, ChallengeRatingConstants.CR4, null, false, 0, 4, 0, true),
+                [CreatureConstants.Worg] = GetCreatureData(CreatureConstants.Worg, SizeConstants.Medium, ChallengeRatingConstants.CR2, 1, false, 0, 2, 0, true),
                 [CreatureConstants.Wraith] = GetCreatureData(CreatureConstants.Wraith, SizeConstants.Medium, ChallengeRatingConstants.CR5, null, false, 0, 0, 0, false),
                 [CreatureConstants.Wraith_Dread] = GetCreatureData(CreatureConstants.Wraith_Dread, SizeConstants.Large, ChallengeRatingConstants.CR11, null, false, 0, 0, 0, false),
-                [CreatureConstants.Wyvern] = GetCreatureData(CreatureConstants.Wyvern, SizeConstants.Large, ChallengeRatingConstants.CR6, null, false, 0, 8, 0, false),
+                [CreatureConstants.Wyvern] = GetCreatureData(CreatureConstants.Wyvern, SizeConstants.Large, ChallengeRatingConstants.CR6, null, false, 0, 8, 0, true),
                 [CreatureConstants.Xill] = GetCreatureData(CreatureConstants.Xill, SizeConstants.Medium, ChallengeRatingConstants.CR6, 4, true, 0, 7, 4, false),
                 [CreatureConstants.Xorn_Average] = GetCreatureData(CreatureConstants.Xorn_Average, SizeConstants.Medium, ChallengeRatingConstants.CR6, null, false, 0, 14, 0, false),
                 [CreatureConstants.Xorn_Elder] = GetCreatureData(CreatureConstants.Xorn_Elder, SizeConstants.Large, ChallengeRatingConstants.CR8, null, false, 0, 16, 0, false),
                 [CreatureConstants.Xorn_Minor] = GetCreatureData(CreatureConstants.Xorn_Minor, SizeConstants.Small, ChallengeRatingConstants.CR3, null, false, 0, 12, 0, false),
                 [CreatureConstants.YethHound] = GetCreatureData(CreatureConstants.YethHound, SizeConstants.Medium, ChallengeRatingConstants.CR3, 3, false, 0, 8, 0, false),
-                [CreatureConstants.Yrthak] = GetCreatureData(CreatureConstants.Yrthak, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 0, 8, 0, false),
-                [CreatureConstants.YuanTi_Abomination] = GetCreatureData(CreatureConstants.YuanTi_Abomination, SizeConstants.Large, ChallengeRatingConstants.CR7, 7, true, 2, 10, 2, false),
-                [CreatureConstants.YuanTi_Halfblood_SnakeHead] = GetCreatureData(CreatureConstants.YuanTi_Halfblood_SnakeHead, SizeConstants.Medium, ChallengeRatingConstants.CR5, 5, true, 4, 4, 2, false),
-                [CreatureConstants.YuanTi_Halfblood_SnakeArms] = GetCreatureData(CreatureConstants.YuanTi_Halfblood_SnakeArms, SizeConstants.Medium, ChallengeRatingConstants.CR5, 5, true, 4, 4, 0, false),
-                [CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] = GetCreatureData(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, SizeConstants.Medium, ChallengeRatingConstants.CR5, 5, true, 4, 4, 2, false),
-                [CreatureConstants.YuanTi_Halfblood_SnakeTail] = GetCreatureData(CreatureConstants.YuanTi_Halfblood_SnakeTail, SizeConstants.Medium, ChallengeRatingConstants.CR5, 5, true, 4, 4, 2, false),
-                [CreatureConstants.YuanTi_Pureblood] = GetCreatureData(CreatureConstants.YuanTi_Pureblood, SizeConstants.Medium, ChallengeRatingConstants.CR3, 2, true, 4, 1, 2, false),
-                [CreatureConstants.Zelekhut] = GetCreatureData(CreatureConstants.Zelekhut, SizeConstants.Large, ChallengeRatingConstants.CR9, 7, true, 8, 10, 2, true)
+                [CreatureConstants.Yrthak] = GetCreatureData(CreatureConstants.Yrthak, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 0, 8, 0, true),
+                [CreatureConstants.YuanTi_Abomination] = GetCreatureData(CreatureConstants.YuanTi_Abomination, SizeConstants.Large, ChallengeRatingConstants.CR7, 7, true, 2, 10, 2, true, reach: 10),
+                [CreatureConstants.YuanTi_Halfblood_SnakeHead] = GetCreatureData(CreatureConstants.YuanTi_Halfblood_SnakeHead, SizeConstants.Medium, ChallengeRatingConstants.CR5, 5, true, 4, 4, 2, true),
+                [CreatureConstants.YuanTi_Halfblood_SnakeArms] = GetCreatureData(CreatureConstants.YuanTi_Halfblood_SnakeArms, SizeConstants.Medium, ChallengeRatingConstants.CR5, 5, true, 4, 4, 0, true),
+                [CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] = GetCreatureData(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, SizeConstants.Medium, ChallengeRatingConstants.CR5, 5, true, 4, 4, 2, true),
+                [CreatureConstants.YuanTi_Halfblood_SnakeTail] = GetCreatureData(CreatureConstants.YuanTi_Halfblood_SnakeTail, SizeConstants.Medium, ChallengeRatingConstants.CR5, 5, true, 4, 4, 2, true),
+                [CreatureConstants.YuanTi_Pureblood] = GetCreatureData(CreatureConstants.YuanTi_Pureblood, SizeConstants.Medium, ChallengeRatingConstants.CR3, 2, true, 4, 1, 2, true),
+                [CreatureConstants.Zelekhut] = GetCreatureData(CreatureConstants.Zelekhut, SizeConstants.Large, ChallengeRatingConstants.CR9, 7, true, 8, 10, 2, false)
             };
 
             return data;
@@ -2720,16 +2721,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             int casterLevel,
             int naturalArmor,
             int numberOfHands,
-            bool hasSkeleton)
+            bool hasSkeleton,
+            double? space = null,
+            double? reach = null)
         {
             var creatureType = creatureTypes[creature].First();
             var selection = new CreatureDataSelection
             {
                 ChallengeRating = challengeRating,
                 LevelAdjustment = levelAdjustment,
-                Reach = spaceReachHelper.GetReach(creature, size),
+                Reach = reach ?? spaceReachHelper.GetDefaultReach(creature, size),
                 Size = size,
-                Space = spaceReachHelper.GetSpace(size),
+                Space = space ?? spaceReachHelper.GetDefaultSpace(size),
                 CanUseEquipment = canUseEquipment,
                 NaturalArmor = naturalArmor,
                 NumberOfHands = numberOfHands,
@@ -2791,7 +2794,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 CreatureConstants.Drider,
                 CreatureConstants.EtherealFilcher,
                 CreatureConstants.Ettercap,
-                CreatureConstants.GibberingMouther,
                 CreatureConstants.Grick,
                 CreatureConstants.MindFlayer,
                 CreatureConstants.Naga_Dark,
@@ -2832,6 +2834,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 CreatureConstants.Triceratops,
                 CreatureConstants.Tyrannosaurus,
                 CreatureConstants.Dog,
+                CreatureConstants.Dog_Riding,
                 CreatureConstants.Donkey,
                 CreatureConstants.Eagle,
                 CreatureConstants.Elephant,
@@ -2851,6 +2854,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 CreatureConstants.Mule,
                 CreatureConstants.Owl,
                 CreatureConstants.Pony,
+                CreatureConstants.Pony_War,
                 CreatureConstants.Porpoise,
                 CreatureConstants.Rat,
                 CreatureConstants.Rat_Dire,
@@ -2886,6 +2890,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 CreatureConstants.Ankheg,
                 CreatureConstants.Aranea,
                 CreatureConstants.Basilisk,
+                CreatureConstants.Basilisk_Greater,
                 CreatureConstants.Behir,
                 CreatureConstants.BlinkDog,
                 CreatureConstants.Bulette,
@@ -2959,39 +2964,745 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 CreatureConstants.Types.Giant,
                 CreatureConstants.Types.Humanoid,
                 CreatureConstants.Types.MonstrousHumanoid,
+                CreatureConstants.Types.Subtypes.Native,
             };
 
             var skeletalCreaturesOfType = creatureTypes
-                .Where(kvp => skeletalTypes.Contains(kvp.Value.First()))
+                .Where(kvp => skeletalTypes.Intersect(kvp.Value).Any())
                 .Select(kvp => kvp.Key);
-            var creaturesWithSkeletons = skeletalCreatures.Union(skeletalCreaturesOfType);
+            var expectedCreaturesWithSkeletons = skeletalCreatures.Union(skeletalCreaturesOfType);
             var allCreatures = CreatureConstants.GetAll();
 
-            foreach (var creature in creaturesWithSkeletons)
-            {
-                Assert.That(table, Contains.Key(creature));
+            var actualCreaturesWithSkeletons = creatureData
+                .Where(kvp => DataHelper.Parse<CreatureDataSelection>(kvp.Value).HasSkeleton)
+                .Select(kvp => kvp.Key);
 
-                //test data
-                var data = DataHelper.Parse<CreatureDataSelection>(creatureData[creature]);
-                Assert.That(data.HasSkeleton, Is.EqualTo(true), $"TEST DATA: {creature}");
+            Assert.That(actualCreaturesWithSkeletons, Is.SubsetOf(expectedCreaturesWithSkeletons));
+            Assert.That(allCreatures.Except(actualCreaturesWithSkeletons), Is.SubsetOf(allCreatures.Except(expectedCreaturesWithSkeletons)));
+        }
 
-                //XML data
-                data = DataHelper.Parse<CreatureDataSelection>(table[creature].Single());
-                Assert.That(data.HasSkeleton, Is.EqualTo(true), $"XML DATA: {creature}");
-            }
+        [TestCase(CreatureConstants.Types.Construct)]
+        [TestCase(CreatureConstants.Types.Elemental)]
+        [TestCase(CreatureConstants.Types.Ooze)]
+        [TestCase(CreatureConstants.Types.Plant)]
+        [TestCase(CreatureConstants.Types.Subtypes.Incorporeal)]
+        public void TypeDoesNotHaveSkeleton(string creatureType)
+        {
+            var creaturesOfType = creatureTypes
+                .Where(kvp => kvp.Value.Contains(creatureType))
+                .Select(kvp => kvp.Key);
 
-            foreach (var creature in allCreatures.Except(creaturesWithSkeletons))
-            {
-                Assert.That(table, Contains.Key(creature));
+            var bonelessCreatures = creatureData
+                .Where(kvp => !DataHelper.Parse<CreatureDataSelection>(kvp.Value).HasSkeleton)
+                .Select(kvp => kvp.Key);
 
-                //test data
-                var data = DataHelper.Parse<CreatureDataSelection>(creatureData[creature]);
-                Assert.That(data.HasSkeleton, Is.EqualTo(false), $"TEST DATA: {creature}");
+            Assert.That(creaturesOfType, Is.SubsetOf(bonelessCreatures));
+        }
 
-                //XML data
-                data = DataHelper.Parse<CreatureDataSelection>(table[creature].Single());
-                Assert.That(data.HasSkeleton, Is.EqualTo(false), $"XML DATA: {creature}");
-            }
+        [Test]
+        public void NonNativeOutsidersDoNotHaveSkeleton()
+        {
+            var creaturesOfType = creatureTypes
+                .Where(kvp => kvp.Value.Contains(CreatureConstants.Types.Outsider) && !kvp.Value.Contains(CreatureConstants.Types.Subtypes.Native))
+                .Select(kvp => kvp.Key);
+
+            var bonelessCreatures = creatureData
+                .Where(kvp => !DataHelper.Parse<CreatureDataSelection>(kvp.Value).HasSkeleton)
+                .Select(kvp => kvp.Key);
+
+            Assert.That(creaturesOfType, Is.SubsetOf(bonelessCreatures));
+        }
+
+        [TestCase(CreatureConstants.Types.Dragon)]
+        [TestCase(CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.Types.Subtypes.Native)]
+        public void TypeHasSkeleton(string creatureType)
+        {
+            var creaturesOfType = creatureTypes
+                .Where(kvp => kvp.Value.Contains(creatureType))
+                .Select(kvp => kvp.Key);
+
+            var skeletalCreatures = creatureData
+                .Where(kvp => DataHelper.Parse<CreatureDataSelection>(kvp.Value).HasSkeleton)
+                .Select(kvp => kvp.Key);
+
+            Assert.That(creaturesOfType, Is.SubsetOf(skeletalCreatures));
+        }
+
+        [TestCase(CreatureConstants.Aasimar, 5, 5)]
+        [TestCase(CreatureConstants.Aboleth, 15, 10)]
+        [TestCase(CreatureConstants.Achaierai, 10, 10)]
+        [TestCase(CreatureConstants.Allip, 5, 5)]
+        [TestCase(CreatureConstants.Androsphinx, 10, 5)]
+        [TestCase(CreatureConstants.Angel_AstralDeva, 5, 5)]
+        [TestCase(CreatureConstants.Angel_Planetar, 10, 10)]
+        [TestCase(CreatureConstants.Angel_Solar, 10, 10)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal, 30, 30)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Flexible, 30, 20)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long, 30, 20)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden, 30, 20)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall, 30, 30)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden, 30, 30)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Sheetlike, 30, 20)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs, 30, 30)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden, 30, 30)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden, 30, 20)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Wooden, 30, 30)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan, 20, 20)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Flexible, 20, 15)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long, 20, 15)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden, 20, 15)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall, 20, 20)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden, 20, 20)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Sheetlike, 20, 15)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs, 20, 20)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden, 20, 20)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden, 20, 15)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Wooden, 20, 20)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge, 15, 15)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_Flexible, 15, 10)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long, 15, 10)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden, 15, 10)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall, 15, 15)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden, 15, 15)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_Sheetlike, 15, 10)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs, 15, 15)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden, 15, 15)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_Wheels_Wooden, 15, 10)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_Wooden, 15, 15)]
+        [TestCase(CreatureConstants.AnimatedObject_Large, 10, 10)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_Flexible, 10, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Long, 10, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden, 10, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall, 10, 10)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden, 10, 10)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_Sheetlike, 10, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs, 10, 10)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden, 10, 10)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_Wheels_Wooden, 10, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_Wooden, 10, 10)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium, 5, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_Flexible, 5, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_MultipleLegs, 5, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden, 5, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_Sheetlike, 5, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_TwoLegs, 5, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden, 5, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_Wheels_Wooden, 5, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium_Wooden, 5, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Small, 5, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_Flexible, 5, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_MultipleLegs, 5, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden, 5, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_Sheetlike, 5, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_TwoLegs, 5, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden, 5, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_Wheels_Wooden, 5, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Small_Wooden, 5, 5)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny, 2.5, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_Flexible, 2.5, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_MultipleLegs, 2.5, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden, 2.5, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_Sheetlike, 2.5, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_TwoLegs, 2.5, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden, 2.5, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden, 2.5, 0)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny_Wooden, 2.5, 0)]
+        [TestCase(CreatureConstants.Ankheg, 10, 5)]
+        [TestCase(CreatureConstants.Annis, 10, 10)]
+        [TestCase(CreatureConstants.Ant_Giant_Queen, 10, 5)]
+        [TestCase(CreatureConstants.Ant_Giant_Soldier, 5, 5)]
+        [TestCase(CreatureConstants.Ant_Giant_Worker, 5, 5)]
+        [TestCase(CreatureConstants.Ape, 10, 10)]
+        [TestCase(CreatureConstants.Ape_Dire, 10, 10)]
+        [TestCase(CreatureConstants.Aranea, 5, 5)]
+        [TestCase(CreatureConstants.Arrowhawk_Adult, 5, 5)]
+        [TestCase(CreatureConstants.Arrowhawk_Elder, 10, 5)]
+        [TestCase(CreatureConstants.Arrowhawk_Juvenile, 5, 5)]
+        [TestCase(CreatureConstants.AssassinVine, 10, 10)]
+        [TestCase(CreatureConstants.Athach, 15, 15)]
+        [TestCase(CreatureConstants.Avoral, 5, 5)]
+        [TestCase(CreatureConstants.Azer, 5, 5)]
+        [TestCase(CreatureConstants.Babau, 5, 5)]
+        [TestCase(CreatureConstants.Baboon, 5, 5)]
+        [TestCase(CreatureConstants.Badger, 5, 5)]
+        [TestCase(CreatureConstants.Badger_Dire, 5, 5)]
+        [TestCase(CreatureConstants.Balor, 10, 10)]
+        [TestCase(CreatureConstants.BarbedDevil_Hamatula, 5, 5)]
+        [TestCase(CreatureConstants.Barghest, 5, 5)]
+        [TestCase(CreatureConstants.Barghest_Greater, 10, 5)]
+        [TestCase(CreatureConstants.Basilisk, 5, 5)]
+        [TestCase(CreatureConstants.Basilisk_Greater, 10, 5)]
+        [TestCase(CreatureConstants.Bat, 1, 0)]
+        [TestCase(CreatureConstants.Bat_Dire, 10, 5)]
+        [TestCase(CreatureConstants.Bat_Swarm, 10, 0)]
+        [TestCase(CreatureConstants.Bear_Black, 5, 5)]
+        [TestCase(CreatureConstants.Bear_Brown, 10, 5)]
+        [TestCase(CreatureConstants.Bear_Dire, 10, 5)]
+        [TestCase(CreatureConstants.Bear_Polar, 10, 5)]
+        [TestCase(CreatureConstants.BeardedDevil_Barbazu, 5, 5)]
+        [TestCase(CreatureConstants.Bebilith, 15, 10)]
+        [TestCase(CreatureConstants.Bee_Giant, 5, 5)]
+        [TestCase(CreatureConstants.Behir, 15, 10)]
+        [TestCase(CreatureConstants.Beholder, 10, 5)]
+        [TestCase(CreatureConstants.Beholder_Gauth, 5, 5)]
+        [TestCase(CreatureConstants.Belker, 10, 10)]
+        [TestCase(CreatureConstants.Bison, 10, 5)]
+        [TestCase(CreatureConstants.BlackPudding, 15, 10)]
+        [TestCase(CreatureConstants.BlackPudding_Elder, 20, 20)]
+        [TestCase(CreatureConstants.BlinkDog, 5, 5)]
+        [TestCase(CreatureConstants.Boar, 5, 5)]
+        [TestCase(CreatureConstants.Boar_Dire, 10, 5)]
+        [TestCase(CreatureConstants.Bodak, 5, 5)]
+        [TestCase(CreatureConstants.BombardierBeetle_Giant, 5, 5)]
+        [TestCase(CreatureConstants.BoneDevil_Osyluth, 10, 10)]
+        [TestCase(CreatureConstants.Bralani, 5, 5)]
+        [TestCase(CreatureConstants.Bugbear, 5, 5)]
+        [TestCase(CreatureConstants.Bulette, 15, 10)]
+        [TestCase(CreatureConstants.Camel_Bactrian, 10, 5)]
+        [TestCase(CreatureConstants.Camel_Dromedary, 10, 5)]
+        [TestCase(CreatureConstants.CarrionCrawler, 10, 5)]
+        [TestCase(CreatureConstants.Cat, 2.5, 0)]
+        [TestCase(CreatureConstants.Centaur, 10, 5)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Colossal, 30, 20)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Gargantuan, 20, 15)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Huge, 15, 10)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Large, 10, 5)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Medium, 5, 5)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Small, 5, 5)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Tiny, 2.5, 0)]
+        [TestCase(CreatureConstants.Centipede_Swarm, 10, 0)]
+        [TestCase(CreatureConstants.ChainDevil_Kyton, 5, 5)]
+        [TestCase(CreatureConstants.ChaosBeast, 5, 5)]
+        [TestCase(CreatureConstants.Cheetah, 5, 5)]
+        [TestCase(CreatureConstants.Chimera_Black, 10, 5)]
+        [TestCase(CreatureConstants.Chimera_Blue, 10, 5)]
+        [TestCase(CreatureConstants.Chimera_Green, 10, 5)]
+        [TestCase(CreatureConstants.Chimera_Red, 10, 5)]
+        [TestCase(CreatureConstants.Chimera_White, 10, 5)]
+        [TestCase(CreatureConstants.Choker, 5, 10)]
+        [TestCase(CreatureConstants.Chuul, 10, 5)]
+        [TestCase(CreatureConstants.Cloaker, 10, 10)]
+        [TestCase(CreatureConstants.Cockatrice, 5, 5)]
+        [TestCase(CreatureConstants.Couatl, 10, 5)]
+        [TestCase(CreatureConstants.Criosphinx, 10, 5)]
+        [TestCase(CreatureConstants.Crocodile, 5, 5)]
+        [TestCase(CreatureConstants.Crocodile_Giant, 15, 10)]
+        [TestCase(CreatureConstants.Cryohydra_5Heads, 15, 10)]
+        [TestCase(CreatureConstants.Cryohydra_6Heads, 15, 10)]
+        [TestCase(CreatureConstants.Cryohydra_7Heads, 15, 10)]
+        [TestCase(CreatureConstants.Cryohydra_8Heads, 15, 10)]
+        [TestCase(CreatureConstants.Cryohydra_9Heads, 15, 10)]
+        [TestCase(CreatureConstants.Cryohydra_10Heads, 15, 10)]
+        [TestCase(CreatureConstants.Cryohydra_11Heads, 15, 10)]
+        [TestCase(CreatureConstants.Cryohydra_12Heads, 15, 10)]
+        [TestCase(CreatureConstants.Darkmantle, 5, 5)]
+        [TestCase(CreatureConstants.Deinonychus, 5, 5)]
+        [TestCase(CreatureConstants.Delver, 15, 10)]
+        [TestCase(CreatureConstants.Derro, 5, 5)]
+        [TestCase(CreatureConstants.Derro_Sane, 5, 5)]
+        [TestCase(CreatureConstants.Destrachan, 10, 5)]
+        [TestCase(CreatureConstants.Devourer, 10, 10)]
+        [TestCase(CreatureConstants.Digester, 5, 5)]
+        [TestCase(CreatureConstants.DisplacerBeast, 10, 5)]
+        [TestCase(CreatureConstants.DisplacerBeast_PackLord, 15, 10)]
+        [TestCase(CreatureConstants.Djinni, 10, 10)]
+        [TestCase(CreatureConstants.Djinni_Noble, 10, 10)]
+        [TestCase(CreatureConstants.Dog, 5, 5)]
+        [TestCase(CreatureConstants.Dog_Riding, 5, 5)]
+        [TestCase(CreatureConstants.Donkey, 5, 5)]
+        [TestCase(CreatureConstants.Doppelganger, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Black_Wyrmling, 2.5, 0)]
+        [TestCase(CreatureConstants.Dragon_Black_VeryYoung, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Black_Young, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Black_Juvenile, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Black_YoungAdult, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Black_Adult, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Black_MatureAdult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Black_Old, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Black_VeryOld, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Black_Ancient, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Black_Wyrm, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Black_GreatWyrm, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Blue_Wyrmling, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Blue_VeryYoung, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Blue_Young, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Blue_Juvenile, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Blue_YoungAdult, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Blue_Adult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Blue_MatureAdult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Blue_Old, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Blue_VeryOld, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Blue_Ancient, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Blue_Wyrm, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Blue_GreatWyrm, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Brass_Wyrmling, 2.5, 0)]
+        [TestCase(CreatureConstants.Dragon_Brass_VeryYoung, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Brass_Young, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Brass_Juvenile, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Brass_YoungAdult, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Brass_Adult, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Brass_MatureAdult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Brass_Old, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Brass_VeryOld, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Brass_Ancient, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Brass_Wyrm, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Brass_GreatWyrm, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Wyrmling, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Bronze_VeryYoung, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Young, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Juvenile, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Bronze_YoungAdult, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Adult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Bronze_MatureAdult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Old, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Bronze_VeryOld, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Ancient, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Bronze_Wyrm, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Bronze_GreatWyrm, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Copper_Wyrmling, 2.5, 0)]
+        [TestCase(CreatureConstants.Dragon_Copper_VeryYoung, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Copper_Young, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Copper_Juvenile, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Copper_YoungAdult, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Copper_Adult, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Copper_MatureAdult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Copper_Old, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Copper_VeryOld, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Copper_Ancient, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Copper_Wyrm, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Copper_GreatWyrm, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Gold_Wyrmling, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Gold_VeryYoung, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Gold_Young, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Gold_Juvenile, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Gold_YoungAdult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Gold_Adult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Gold_MatureAdult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Gold_Old, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Gold_VeryOld, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Gold_Ancient, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Gold_Wyrm, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Gold_GreatWyrm, 30, 20)]
+        [TestCase(CreatureConstants.Dragon_Green_Wyrmling, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Green_VeryYoung, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Green_Young, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Green_Juvenile, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Green_YoungAdult, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Green_Adult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Green_MatureAdult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Green_Old, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Green_VeryOld, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Green_Ancient, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Green_Wyrm, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Green_GreatWyrm, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Red_Wyrmling, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Red_VeryYoung, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Red_Young, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Red_Juvenile, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Red_YoungAdult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Red_Adult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Red_MatureAdult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Red_Old, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Red_VeryOld, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Red_Ancient, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Red_Wyrm, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Red_GreatWyrm, 30, 20)]
+        [TestCase(CreatureConstants.Dragon_Silver_Wyrmling, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Silver_VeryYoung, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Silver_Young, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Silver_Juvenile, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Silver_YoungAdult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Silver_Adult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Silver_MatureAdult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Silver_Old, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Silver_VeryOld, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Silver_Ancient, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Silver_Wyrm, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Silver_GreatWyrm, 30, 20)]
+        [TestCase(CreatureConstants.Dragon_White_Wyrmling, 2.5, 0)]
+        [TestCase(CreatureConstants.Dragon_White_VeryYoung, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_White_Young, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_White_Juvenile, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_White_YoungAdult, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_White_Adult, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_White_MatureAdult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_White_Old, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_White_VeryOld, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_White_Ancient, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_White_Wyrm, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_White_GreatWyrm, 20, 15)]
+        [TestCase(CreatureConstants.DragonTurtle, 15, 10)]
+        [TestCase(CreatureConstants.Dragonne, 10, 5)]
+        [TestCase(CreatureConstants.Dretch, 5, 5)]
+        [TestCase(CreatureConstants.Drider, 10, 5)]
+        [TestCase(CreatureConstants.Dryad, 5, 5)]
+        [TestCase(CreatureConstants.Dwarf_Deep, 5, 5)]
+        [TestCase(CreatureConstants.Dwarf_Duergar, 5, 5)]
+        [TestCase(CreatureConstants.Dwarf_Hill, 5, 5)]
+        [TestCase(CreatureConstants.Dwarf_Mountain, 5, 5)]
+        [TestCase(CreatureConstants.Eagle, 5, 5)]
+        [TestCase(CreatureConstants.Eagle_Giant, 10, 5)]
+        [TestCase(CreatureConstants.Efreeti, 10, 10)]
+        [TestCase(CreatureConstants.Elasmosaurus, 15, 10)]
+        [TestCase(CreatureConstants.Elemental_Air_Elder, 15, 15)]
+        [TestCase(CreatureConstants.Elemental_Air_Greater, 15, 15)]
+        [TestCase(CreatureConstants.Elemental_Air_Huge, 15, 15)]
+        [TestCase(CreatureConstants.Elemental_Air_Large, 10, 10)]
+        [TestCase(CreatureConstants.Elemental_Air_Medium, 5, 5)]
+        [TestCase(CreatureConstants.Elemental_Air_Small, 5, 5)]
+        [TestCase(CreatureConstants.Elemental_Earth_Elder, 15, 15)]
+        [TestCase(CreatureConstants.Elemental_Earth_Greater, 15, 15)]
+        [TestCase(CreatureConstants.Elemental_Earth_Huge, 15, 15)]
+        [TestCase(CreatureConstants.Elemental_Earth_Large, 10, 10)]
+        [TestCase(CreatureConstants.Elemental_Earth_Medium, 5, 5)]
+        [TestCase(CreatureConstants.Elemental_Earth_Small, 5, 5)]
+        [TestCase(CreatureConstants.Elemental_Fire_Elder, 15, 15)]
+        [TestCase(CreatureConstants.Elemental_Fire_Greater, 15, 15)]
+        [TestCase(CreatureConstants.Elemental_Fire_Huge, 15, 15)]
+        [TestCase(CreatureConstants.Elemental_Fire_Large, 10, 10)]
+        [TestCase(CreatureConstants.Elemental_Fire_Medium, 5, 5)]
+        [TestCase(CreatureConstants.Elemental_Fire_Small, 5, 5)]
+        [TestCase(CreatureConstants.Elemental_Water_Elder, 15, 15)]
+        [TestCase(CreatureConstants.Elemental_Water_Greater, 15, 15)]
+        [TestCase(CreatureConstants.Elemental_Water_Huge, 15, 15)]
+        [TestCase(CreatureConstants.Elemental_Water_Large, 10, 10)]
+        [TestCase(CreatureConstants.Elemental_Water_Medium, 5, 5)]
+        [TestCase(CreatureConstants.Elemental_Water_Small, 5, 5)]
+        [TestCase(CreatureConstants.Elephant, 15, 10)]
+        [TestCase(CreatureConstants.Elf_Aquatic, 5, 5)]
+        [TestCase(CreatureConstants.Elf_Drow, 5, 5)]
+        [TestCase(CreatureConstants.Elf_Gray, 5, 5)]
+        [TestCase(CreatureConstants.Elf_Half, 5, 5)]
+        [TestCase(CreatureConstants.Elf_High, 5, 5)]
+        [TestCase(CreatureConstants.Elf_Wild, 5, 5)]
+        [TestCase(CreatureConstants.Elf_Wood, 5, 5)]
+        [TestCase(CreatureConstants.Erinyes, 5, 5)]
+        [TestCase(CreatureConstants.EtherealFilcher, 5, 5)]
+        [TestCase(CreatureConstants.EtherealMarauder, 5, 5)]
+        [TestCase(CreatureConstants.Ettercap, 5, 5)]
+        [TestCase(CreatureConstants.Ettin, 10, 10)]
+        [TestCase(CreatureConstants.FireBeetle_Giant, 5, 5)]
+        [TestCase(CreatureConstants.FormianMyrmarch, 10, 5)]
+        [TestCase(CreatureConstants.FormianQueen, 10, 5)]
+        [TestCase(CreatureConstants.FormianTaskmaster, 5, 5)]
+        [TestCase(CreatureConstants.FormianWarrior, 5, 5)]
+        [TestCase(CreatureConstants.FormianWorker, 5, 5)]
+        [TestCase(CreatureConstants.FrostWorm, 15, 10)]
+        [TestCase(CreatureConstants.Gargoyle, 5, 5)]
+        [TestCase(CreatureConstants.Gargoyle_Kapoacinth, 5, 5)]
+        [TestCase(CreatureConstants.GelatinousCube, 10, 5)]
+        [TestCase(CreatureConstants.Ghaele, 5, 5)]
+        [TestCase(CreatureConstants.Ghoul, 5, 5)]
+        [TestCase(CreatureConstants.Ghoul_Ghast, 5, 5)]
+        [TestCase(CreatureConstants.Ghoul_Lacedon, 5, 5)]
+        [TestCase(CreatureConstants.Giant_Cloud, 15, 15)]
+        [TestCase(CreatureConstants.Giant_Fire, 10, 10)]
+        [TestCase(CreatureConstants.Giant_Frost, 10, 10)]
+        [TestCase(CreatureConstants.Giant_Hill, 10, 10)]
+        [TestCase(CreatureConstants.Giant_Stone, 10, 10)]
+        [TestCase(CreatureConstants.Giant_Stone_Elder, 10, 10)]
+        [TestCase(CreatureConstants.Giant_Storm, 15, 15)]
+        [TestCase(CreatureConstants.GibberingMouther, 5, 5)]
+        [TestCase(CreatureConstants.Girallon, 10, 10)]
+        [TestCase(CreatureConstants.Githyanki, 5, 5)]
+        [TestCase(CreatureConstants.Githzerai, 5, 5)]
+        [TestCase(CreatureConstants.Glabrezu, 15, 15)]
+        [TestCase(CreatureConstants.Gnoll, 5, 5)]
+        [TestCase(CreatureConstants.Gnome_Forest, 5, 5)]
+        [TestCase(CreatureConstants.Gnome_Rock, 5, 5)]
+        [TestCase(CreatureConstants.Gnome_Svirfneblin, 5, 5)]
+        [TestCase(CreatureConstants.Goblin, 5, 5)]
+        [TestCase(CreatureConstants.Golem_Clay, 10, 10)]
+        [TestCase(CreatureConstants.Golem_Flesh, 10, 10)]
+        [TestCase(CreatureConstants.Golem_Iron, 10, 10)]
+        [TestCase(CreatureConstants.Golem_Stone, 10, 10)]
+        [TestCase(CreatureConstants.Golem_Stone_Greater, 15, 15)]
+        [TestCase(CreatureConstants.Gorgon, 10, 5)]
+        [TestCase(CreatureConstants.GrayOoze, 5, 5)]
+        [TestCase(CreatureConstants.GrayRender, 10, 10)]
+        [TestCase(CreatureConstants.GreenHag, 5, 5)]
+        [TestCase(CreatureConstants.Grick, 5, 5)]
+        [TestCase(CreatureConstants.Grig, 2.5, 0)]
+        [TestCase(CreatureConstants.Grig_WithFiddle, 2.5, 0)]
+        [TestCase(CreatureConstants.Griffon, 10, 5)]
+        [TestCase(CreatureConstants.Grimlock, 5, 5)]
+        [TestCase(CreatureConstants.Gynosphinx, 10, 5)]
+        [TestCase(CreatureConstants.Halfling_Deep, 5, 5)]
+        [TestCase(CreatureConstants.Halfling_Lightfoot, 5, 5)]
+        [TestCase(CreatureConstants.Halfling_Tallfellow, 5, 5)]
+        [TestCase(CreatureConstants.Harpy, 5, 5)]
+        [TestCase(CreatureConstants.Hawk, 2.5, 0)]
+        [TestCase(CreatureConstants.Hellcat_Bezekira, 10, 5)]
+        [TestCase(CreatureConstants.Hellwasp_Swarm, 10, 0)]
+        [TestCase(CreatureConstants.HellHound, 5, 5)]
+        [TestCase(CreatureConstants.HellHound_NessianWarhound, 10, 10)]
+        [TestCase(CreatureConstants.Hezrou, 10, 10)]
+        [TestCase(CreatureConstants.Hieracosphinx, 10, 5)]
+        [TestCase(CreatureConstants.Hippogriff, 10, 5)]
+        [TestCase(CreatureConstants.Hobgoblin, 5, 5)]
+        [TestCase(CreatureConstants.Homunculus, 2.5, 0)]
+        [TestCase(CreatureConstants.HornedDevil_Cornugon, 10, 10)]
+        [TestCase(CreatureConstants.Horse_Heavy, 10, 5)]
+        [TestCase(CreatureConstants.Horse_Heavy_War, 10, 5)]
+        [TestCase(CreatureConstants.Horse_Light, 10, 5)]
+        [TestCase(CreatureConstants.Horse_Light_War, 10, 5)]
+        [TestCase(CreatureConstants.HoundArchon, 5, 5)]
+        [TestCase(CreatureConstants.Howler, 10, 5)]
+        [TestCase(CreatureConstants.Human, 5, 5)]
+        [TestCase(CreatureConstants.Hydra_5Heads, 15, 10)]
+        [TestCase(CreatureConstants.Hydra_6Heads, 15, 10)]
+        [TestCase(CreatureConstants.Hydra_7Heads, 15, 10)]
+        [TestCase(CreatureConstants.Hydra_8Heads, 15, 10)]
+        [TestCase(CreatureConstants.Hydra_9Heads, 15, 10)]
+        [TestCase(CreatureConstants.Hydra_10Heads, 15, 10)]
+        [TestCase(CreatureConstants.Hydra_11Heads, 15, 10)]
+        [TestCase(CreatureConstants.Hydra_12Heads, 15, 10)]
+        [TestCase(CreatureConstants.Hyena, 5, 5)]
+        [TestCase(CreatureConstants.IceDevil_Gelugon, 10, 10)]
+        [TestCase(CreatureConstants.Imp, 2.5, 0)]
+        [TestCase(CreatureConstants.InvisibleStalker, 10, 10)]
+        [TestCase(CreatureConstants.Janni, 5, 5)]
+        [TestCase(CreatureConstants.Kobold, 5, 5)]
+        [TestCase(CreatureConstants.Kolyarut, 5, 5)]
+        [TestCase(CreatureConstants.Kraken, 20, 15)]
+        [TestCase(CreatureConstants.Krenshar, 5, 5)]
+        [TestCase(CreatureConstants.KuoToa, 5, 5)]
+        [TestCase(CreatureConstants.Lamia, 10, 5)]
+        [TestCase(CreatureConstants.Lammasu, 10, 5)]
+        [TestCase(CreatureConstants.LanternArchon, 5, 5)]
+        [TestCase(CreatureConstants.Lemure, 5, 5)]
+        [TestCase(CreatureConstants.Leonal, 5, 5)]
+        [TestCase(CreatureConstants.Leopard, 5, 5)]
+        [TestCase(CreatureConstants.Lillend, 10, 10)]
+        [TestCase(CreatureConstants.Lion, 10, 5)]
+        [TestCase(CreatureConstants.Lion_Dire, 10, 5)]
+        [TestCase(CreatureConstants.Lizard, 2.5, 0)]
+        [TestCase(CreatureConstants.Lizard_Monitor, 5, 5)]
+        [TestCase(CreatureConstants.Lizardfolk, 5, 5)]
+        [TestCase(CreatureConstants.Locathah, 5, 5)]
+        [TestCase(CreatureConstants.Locust_Swarm, 10, 0)]
+        [TestCase(CreatureConstants.Magmin, 5, 5)]
+        [TestCase(CreatureConstants.MantaRay, 10, 5)]
+        [TestCase(CreatureConstants.Manticore, 10, 5)]
+        [TestCase(CreatureConstants.Marilith, 10, 10)]
+        [TestCase(CreatureConstants.Marut, 10, 10)]
+        [TestCase(CreatureConstants.Medusa, 5, 5)]
+        [TestCase(CreatureConstants.Megaraptor, 10, 5)]
+        [TestCase(CreatureConstants.Mephit_Air, 5, 5)]
+        [TestCase(CreatureConstants.Mephit_Dust, 5, 5)]
+        [TestCase(CreatureConstants.Mephit_Earth, 5, 5)]
+        [TestCase(CreatureConstants.Mephit_Fire, 5, 5)]
+        [TestCase(CreatureConstants.Mephit_Ice, 5, 5)]
+        [TestCase(CreatureConstants.Mephit_Magma, 5, 5)]
+        [TestCase(CreatureConstants.Mephit_Ooze, 5, 5)]
+        [TestCase(CreatureConstants.Mephit_Salt, 5, 5)]
+        [TestCase(CreatureConstants.Mephit_Steam, 5, 5)]
+        [TestCase(CreatureConstants.Mephit_Water, 5, 5)]
+        [TestCase(CreatureConstants.Merfolk, 5, 5)]
+        [TestCase(CreatureConstants.Mimic, 10, 10)]
+        [TestCase(CreatureConstants.MindFlayer, 5, 5)]
+        [TestCase(CreatureConstants.Minotaur, 10, 10)]
+        [TestCase(CreatureConstants.Mohrg, 5, 5)]
+        [TestCase(CreatureConstants.Monkey, 2.5, 0)]
+        [TestCase(CreatureConstants.Mule, 10, 5)]
+        [TestCase(CreatureConstants.Mummy, 5, 5)]
+        [TestCase(CreatureConstants.Naga_Dark, 10, 5)]
+        [TestCase(CreatureConstants.Naga_Guardian, 10, 5)]
+        [TestCase(CreatureConstants.Naga_Spirit, 10, 5)]
+        [TestCase(CreatureConstants.Naga_Water, 10, 5)]
+        [TestCase(CreatureConstants.Nalfeshnee, 15, 15)]
+        [TestCase(CreatureConstants.NightHag, 5, 5)]
+        [TestCase(CreatureConstants.Nightcrawler, 20, 15)]
+        [TestCase(CreatureConstants.Nightmare, 10, 5)]
+        [TestCase(CreatureConstants.Nightmare_Cauchemar, 15, 10)]
+        [TestCase(CreatureConstants.Nightwalker, 15, 15)]
+        [TestCase(CreatureConstants.Nightwing, 15, 10)]
+        [TestCase(CreatureConstants.Nixie, 5, 5)]
+        [TestCase(CreatureConstants.Nymph, 5, 5)]
+        [TestCase(CreatureConstants.OchreJelly, 10, 5)]
+        [TestCase(CreatureConstants.Octopus, 5, 5)]
+        [TestCase(CreatureConstants.Octopus_Giant, 10, 10)]
+        [TestCase(CreatureConstants.Ogre, 10, 10)]
+        [TestCase(CreatureConstants.Ogre_Merrow, 10, 10)]
+        [TestCase(CreatureConstants.OgreMage, 10, 10)]
+        [TestCase(CreatureConstants.Orc, 5, 5)]
+        [TestCase(CreatureConstants.Orc_Half, 5, 5)]
+        [TestCase(CreatureConstants.Otyugh, 10, 10)]
+        [TestCase(CreatureConstants.Owl, 2.5, 0)]
+        [TestCase(CreatureConstants.Owl_Giant, 10, 5)]
+        [TestCase(CreatureConstants.Owlbear, 10, 5)]
+        [TestCase(CreatureConstants.Pegasus, 10, 5)]
+        [TestCase(CreatureConstants.PhantomFungus, 5, 5)]
+        [TestCase(CreatureConstants.PhaseSpider, 10, 5)]
+        [TestCase(CreatureConstants.Phasm, 5, 5)]
+        [TestCase(CreatureConstants.PitFiend, 10, 10)]
+        [TestCase(CreatureConstants.Pixie, 5, 5)]
+        [TestCase(CreatureConstants.Pixie_WithIrresistibleDance, 5, 5)]
+        [TestCase(CreatureConstants.Pony, 5, 5)]
+        [TestCase(CreatureConstants.Pony_War, 5, 5)]
+        [TestCase(CreatureConstants.Porpoise, 5, 5)]
+        [TestCase(CreatureConstants.PrayingMantis_Giant, 10, 5)]
+        [TestCase(CreatureConstants.Pseudodragon, 2.5, 0)]
+        [TestCase(CreatureConstants.PurpleWorm, 20, 15)]
+        [TestCase(CreatureConstants.Pyrohydra_5Heads, 15, 10)]
+        [TestCase(CreatureConstants.Pyrohydra_6Heads, 15, 10)]
+        [TestCase(CreatureConstants.Pyrohydra_7Heads, 15, 10)]
+        [TestCase(CreatureConstants.Pyrohydra_8Heads, 15, 10)]
+        [TestCase(CreatureConstants.Pyrohydra_9Heads, 15, 10)]
+        [TestCase(CreatureConstants.Pyrohydra_10Heads, 15, 10)]
+        [TestCase(CreatureConstants.Pyrohydra_11Heads, 15, 10)]
+        [TestCase(CreatureConstants.Pyrohydra_12Heads, 15, 10)]
+        [TestCase(CreatureConstants.Quasit, 2.5, 0)]
+        [TestCase(CreatureConstants.Rakshasa, 5, 5)]
+        [TestCase(CreatureConstants.Rast, 5, 5)]
+        [TestCase(CreatureConstants.Rat, 2.5, 0)]
+        [TestCase(CreatureConstants.Rat_Dire, 5, 5)]
+        [TestCase(CreatureConstants.Rat_Swarm, 10, 0)]
+        [TestCase(CreatureConstants.Raven, 2.5, 0)]
+        [TestCase(CreatureConstants.Ravid, 5, 5)]
+        [TestCase(CreatureConstants.RazorBoar, 10, 5)]
+        [TestCase(CreatureConstants.Remorhaz, 15, 10)]
+        [TestCase(CreatureConstants.Retriever, 15, 10)]
+        [TestCase(CreatureConstants.Rhinoceras, 10, 5)]
+        [TestCase(CreatureConstants.Roc, 20, 15)]
+        [TestCase(CreatureConstants.Roper, 10, 10)]
+        [TestCase(CreatureConstants.RustMonster, 5, 5)]
+        [TestCase(CreatureConstants.Sahuagin, 5, 5)]
+        [TestCase(CreatureConstants.Sahuagin_Mutant, 5, 5)]
+        [TestCase(CreatureConstants.Sahuagin_Malenti, 5, 5)]
+        [TestCase(CreatureConstants.Salamander_Average, 5, 5)]
+        [TestCase(CreatureConstants.Salamander_Flamebrother, 5, 5)]
+        [TestCase(CreatureConstants.Salamander_Noble, 10, 10)]
+        [TestCase(CreatureConstants.Satyr, 5, 5)]
+        [TestCase(CreatureConstants.Satyr_WithPipes, 5, 5)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Colossal, 40, 30)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Gargantuan, 20, 15)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Huge, 15, 10)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Large, 10, 5)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Medium, 5, 5)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Small, 5, 5)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Tiny, 2.5, 0)]
+        [TestCase(CreatureConstants.Scorpionfolk, 10, 5)]
+        [TestCase(CreatureConstants.SeaCat, 10, 5)]
+        [TestCase(CreatureConstants.SeaHag, 5, 5)]
+        [TestCase(CreatureConstants.Shadow, 5, 5)]
+        [TestCase(CreatureConstants.Shadow_Greater, 5, 5)]
+        [TestCase(CreatureConstants.ShadowMastiff, 5, 5)]
+        [TestCase(CreatureConstants.ShamblingMound, 10, 10)]
+        [TestCase(CreatureConstants.Shark_Dire, 15, 10)]
+        [TestCase(CreatureConstants.Shark_Huge, 15, 10)]
+        [TestCase(CreatureConstants.Shark_Large, 10, 5)]
+        [TestCase(CreatureConstants.Shark_Medium, 5, 5)]
+        [TestCase(CreatureConstants.ShieldGuardian, 10, 10)]
+        [TestCase(CreatureConstants.ShockerLizard, 5, 5)]
+        [TestCase(CreatureConstants.Shrieker, 5, 0)]
+        [TestCase(CreatureConstants.Skum, 5, 5)]
+        [TestCase(CreatureConstants.Slaad_Blue, 10, 10)]
+        [TestCase(CreatureConstants.Slaad_Death, 5, 5)]
+        [TestCase(CreatureConstants.Slaad_Gray, 5, 5)]
+        [TestCase(CreatureConstants.Slaad_Green, 10, 10)]
+        [TestCase(CreatureConstants.Slaad_Red, 10, 10)]
+        [TestCase(CreatureConstants.Snake_Constrictor, 5, 5)]
+        [TestCase(CreatureConstants.Snake_Constrictor_Giant, 15, 10)]
+        [TestCase(CreatureConstants.Snake_Viper_Huge, 15, 10)]
+        [TestCase(CreatureConstants.Snake_Viper_Large, 10, 5)]
+        [TestCase(CreatureConstants.Snake_Viper_Medium, 5, 5)]
+        [TestCase(CreatureConstants.Snake_Viper_Small, 5, 5)]
+        [TestCase(CreatureConstants.Snake_Viper_Tiny, 2.5, 0)]
+        [TestCase(CreatureConstants.Spectre, 5, 5)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Colossal, 40, 30)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Gargantuan, 20, 15)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Huge, 15, 10)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Large, 10, 5)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Medium, 5, 5)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Small, 5, 5)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Tiny, 2.5, 0)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Colossal, 40, 30)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan, 20, 15)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Huge, 15, 10)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Large, 10, 5)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Medium, 5, 5)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Small, 5, 5)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Tiny, 2.5, 0)]
+        [TestCase(CreatureConstants.SpiderEater, 10, 5)]
+        [TestCase(CreatureConstants.Spider_Swarm, 10, 0)]
+        [TestCase(CreatureConstants.Squid, 5, 5)]
+        [TestCase(CreatureConstants.Squid_Giant, 15, 15)]
+        [TestCase(CreatureConstants.StagBeetle_Giant, 10, 5)]
+        [TestCase(CreatureConstants.Stirge, 2.5, 0)]
+        [TestCase(CreatureConstants.Succubus, 5, 5)]
+        [TestCase(CreatureConstants.Tarrasque, 30, 20)]
+        [TestCase(CreatureConstants.Tendriculos, 15, 15)]
+        [TestCase(CreatureConstants.Thoqqua, 5, 5)]
+        [TestCase(CreatureConstants.Tiefling, 5, 5)]
+        [TestCase(CreatureConstants.Tiger, 10, 5)]
+        [TestCase(CreatureConstants.Tiger_Dire, 10, 5)]
+        [TestCase(CreatureConstants.Titan, 15, 15)]
+        [TestCase(CreatureConstants.Toad, 1, 0)]
+        [TestCase(CreatureConstants.Tojanida_Adult, 5, 5)]
+        [TestCase(CreatureConstants.Tojanida_Elder, 10, 5)]
+        [TestCase(CreatureConstants.Tojanida_Juvenile, 5, 5)]
+        [TestCase(CreatureConstants.Treant, 15, 15)]
+        [TestCase(CreatureConstants.Triceratops, 15, 10)]
+        [TestCase(CreatureConstants.Triton, 5, 5)]
+        [TestCase(CreatureConstants.Troglodyte, 5, 5)]
+        [TestCase(CreatureConstants.Troll, 10, 10)]
+        [TestCase(CreatureConstants.Troll_Scrag, 10, 10)]
+        [TestCase(CreatureConstants.TrumpetArchon, 5, 5)]
+        [TestCase(CreatureConstants.Tyrannosaurus, 15, 10)]
+        [TestCase(CreatureConstants.UmberHulk, 10, 10)]
+        [TestCase(CreatureConstants.UmberHulk_TrulyHorrid, 15, 15)]
+        [TestCase(CreatureConstants.Unicorn, 10, 5)]
+        [TestCase(CreatureConstants.VampireSpawn, 5, 5)]
+        [TestCase(CreatureConstants.Vargouille, 5, 5)]
+        [TestCase(CreatureConstants.VioletFungus, 5, 10)]
+        [TestCase(CreatureConstants.Vrock, 10, 10)]
+        [TestCase(CreatureConstants.Wasp_Giant, 10, 5)]
+        [TestCase(CreatureConstants.Weasel, 2.5, 0)]
+        [TestCase(CreatureConstants.Weasel_Dire, 5, 5)]
+        [TestCase(CreatureConstants.Whale_Baleen, 20, 15)]
+        [TestCase(CreatureConstants.Whale_Cachalot, 20, 15)]
+        [TestCase(CreatureConstants.Whale_Orca, 15, 10)]
+        [TestCase(CreatureConstants.Wight, 5, 5)]
+        [TestCase(CreatureConstants.WillOWisp, 5, 5)]
+        [TestCase(CreatureConstants.WinterWolf, 10, 5)]
+        [TestCase(CreatureConstants.Wolf, 5, 5)]
+        [TestCase(CreatureConstants.Wolf_Dire, 10, 5)]
+        [TestCase(CreatureConstants.Wolverine, 5, 5)]
+        [TestCase(CreatureConstants.Wolverine_Dire, 10, 5)]
+        [TestCase(CreatureConstants.Worg, 5, 5)]
+        [TestCase(CreatureConstants.Wraith, 5, 5)]
+        [TestCase(CreatureConstants.Wraith_Dread, 10, 10)]
+        [TestCase(CreatureConstants.Wyvern, 10, 5)]
+        [TestCase(CreatureConstants.Xill, 5, 5)]
+        [TestCase(CreatureConstants.Xorn_Average, 5, 5)]
+        [TestCase(CreatureConstants.Xorn_Elder, 10, 10)]
+        [TestCase(CreatureConstants.Xorn_Minor, 5, 5)]
+        [TestCase(CreatureConstants.YethHound, 5, 5)]
+        [TestCase(CreatureConstants.Yrthak, 15, 10)]
+        [TestCase(CreatureConstants.YuanTi_Abomination, 10, 10)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeHead, 5, 5)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeArms, 5, 5)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, 5, 5)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTail, 5, 5)]
+        [TestCase(CreatureConstants.YuanTi_Pureblood, 5, 5)]
+        [TestCase(CreatureConstants.Zelekhut, 10, 10)]
+        public void SpaceAndReachMatchOfficialCreatureData(string creature, double officialSpace, double officialReach)
+        {
+            var data = DataHelper.Parse<CreatureDataSelection>(creatureData[creature]);
+
+            //test data
+            Assert.That(data.Space, Is.EqualTo(officialSpace), $"TEST DATA: {creature}");
+            Assert.That(data.Reach, Is.EqualTo(officialReach), $"TEST DATA: {creature}");
+
+            //XML data
+            data = DataHelper.Parse<CreatureDataSelection>(table[creature].Single());
+            Assert.That(data.Space, Is.EqualTo(officialSpace), $"XML DATA: {creature}");
+            Assert.That(data.Reach, Is.EqualTo(officialReach), $"XML DATA: {creature}");
         }
     }
 }

@@ -1276,8 +1276,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             var selection = new AdvancementDataSelection
             {
-                Reach = spaceReachHelper.GetReach(creature, advancedSize),
-                Space = spaceReachHelper.GetSpace(advancedSize),
+                Reach = spaceReachHelper.GetAdvancedReach(creature, creatureData[creature].Size, creatureData[creature].Reach, advancedSize),
+                Space = spaceReachHelper.GetAdvancedSpace(creatureData[creature].Size, creatureData[creature].Reach, advancedSize),
                 Size = advancedSize,
                 AdditionalHitDiceRoll = RollHelper.GetRollWithMostEvenDistribution(creatureHitDiceQuantity, lowerHitDice, upperHitDice, true),
                 StrengthAdjustment = GetStrengthAdjustment(creatureData[creature].Size, advancedSize),

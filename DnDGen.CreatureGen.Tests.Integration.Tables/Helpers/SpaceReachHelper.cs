@@ -10,17 +10,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
     internal class SpaceReachHelper
     {
         private readonly Dice dice;
-        private readonly Dictionary<string, double> spaces;
-        private readonly Dictionary<string, double> tallReach;
-        private readonly Dictionary<string, double> longReach;
-        private readonly Dictionary<string, Dictionary<string, string>> creatureHeights;
-        private readonly Dictionary<string, Dictionary<string, string>> creatureLengths;
+        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
+        private readonly Dictionary<string, double> defaultSpace;
+        private readonly Dictionary<string, double> defaultTallReach;
+        private readonly Dictionary<string, double> defaultLongReach;
 
         public SpaceReachHelper(Dice dice, ICollectionTypeAndAmountSelector typeAndAmountSelector)
         {
             this.dice = dice;
+            this.typeAndAmountSelector = typeAndAmountSelector;
 
-            spaces = new Dictionary<string, double>
+            defaultSpace = new Dictionary<string, double>
             {
                 [SizeConstants.Fine] = 0.5,
                 [SizeConstants.Diminutive] = 1,
@@ -32,7 +32,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
                 [SizeConstants.Gargantuan] = 20,
                 [SizeConstants.Colossal] = 30,
             };
-            tallReach = new Dictionary<string, double>
+            defaultTallReach = new Dictionary<string, double>
             {
                 [SizeConstants.Fine] = 0,
                 [SizeConstants.Diminutive] = 0,
@@ -44,7 +44,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
                 [SizeConstants.Gargantuan] = 20,
                 [SizeConstants.Colossal] = 30,
             };
-            longReach = new Dictionary<string, double>
+            defaultLongReach = new Dictionary<string, double>
             {
                 [SizeConstants.Fine] = 0,
                 [SizeConstants.Diminutive] = 0,
@@ -56,24 +56,62 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
                 [SizeConstants.Gargantuan] = 15,
                 [SizeConstants.Colossal] = 20,
             };
-
-            creatureHeights = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights)
-                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToDictionary(v => v.Type, v => v.Roll));
-            creatureLengths = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths)
-                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToDictionary(v => v.Type, v => v.Roll));
         }
 
-        public double GetReach(string creature, string size)
+        public double GetDefaultReach(string creature, string size)
         {
-            var length = dice.Roll(creatureLengths[creature][creature]).AsPotentialAverage();
-            var height = dice.Roll(creatureHeights[creature][creature]).AsPotentialAverage();
+            if (IsTall(creature))
+                return defaultTallReach[size];
 
-            if (height >= length)
-                return tallReach[size];
-
-            return longReach[size];
+            return defaultLongReach[size];
         }
 
-        public double GetSpace(string size) => spaces[size];
+        private bool IsTall(string creature)
+        {
+            var lengthRoll = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, creature)
+                .Where(v => v.Type == creature)
+                .Select(v => v.Roll)
+                .Single();
+            var heightRoll = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, creature)
+                .Where(v => v.Type == creature)
+                .Select(v => v.Roll)
+                .Single();
+
+            var length = dice.Roll(lengthRoll).AsPotentialAverage();
+            var height = dice.Roll(heightRoll).AsPotentialAverage();
+
+            return height >= length;
+        }
+
+        public double GetDefaultSpace(string size) => defaultSpace[size];
+
+        public double GetAdvancedReach(string creature, string originalSize, double originalReach, string advancedSize)
+        {
+            if (advancedSize == originalSize)
+                return originalReach;
+
+            if (IsTall(creature))
+                return ComputeIncrease(originalReach, defaultTallReach[originalSize], defaultTallReach[advancedSize]);
+
+            return ComputeIncrease(originalReach, defaultLongReach[originalSize], defaultLongReach[advancedSize]);
+        }
+
+        public double GetAdvancedSpace(string originalSize, double originalSpace, string advancedSize)
+        {
+            if (originalSize == advancedSize)
+                return originalSpace;
+
+            return ComputeIncrease(originalSpace, defaultSpace[originalSize], defaultSpace[advancedSize]);
+        }
+
+        private double ComputeIncrease(double original, double originalDefault, double advancedDefault)
+        {
+            if (original == originalDefault)
+                return advancedDefault;
+
+            var divisor = originalDefault > 0 ? originalDefault : 1;
+            var multiplier = original / divisor;
+            return advancedDefault * multiplier;
+        }
     }
 }
