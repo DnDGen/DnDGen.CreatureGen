@@ -16,17 +16,33 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         protected override string tableName => TableNameConstants.Collection.AlignmentGroups;
 
         private string[][] alignmentGrid;
+        private string[] partialAlignmentsStarts;
+        private string[] partialAlignmentsEnds;
+        private string[] partialAlignments;
         private ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
 
         [SetUp]
         public void Setup()
         {
             alignmentGrid =
-                [
-                    [AlignmentConstants.LawfulGood, AlignmentConstants.LawfulNeutral, AlignmentConstants.LawfulEvil],
-                    [AlignmentConstants.NeutralGood, AlignmentConstants.TrueNeutral, AlignmentConstants.NeutralEvil],
-                    [AlignmentConstants.ChaoticGood, AlignmentConstants.ChaoticNeutral, AlignmentConstants.ChaoticEvil],
-                ];
+            [
+                [AlignmentConstants.LawfulGood, AlignmentConstants.LawfulNeutral, AlignmentConstants.LawfulEvil],
+                [AlignmentConstants.NeutralGood, AlignmentConstants.TrueNeutral, AlignmentConstants.NeutralEvil],
+                [AlignmentConstants.ChaoticGood, AlignmentConstants.ChaoticNeutral, AlignmentConstants.ChaoticEvil],
+            ];
+
+            partialAlignmentsStarts =
+            [
+                AlignmentConstants.Chaotic,
+                AlignmentConstants.Lawful,
+            ];
+            partialAlignmentsEnds =
+            [
+                AlignmentConstants.Good,
+                AlignmentConstants.Evil,
+                AlignmentConstants.Neutral,
+            ];
+            partialAlignments = [.. partialAlignmentsStarts.Union(partialAlignmentsEnds).Union([string.Empty])];
 
             creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
         }
@@ -1019,17 +1035,41 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             Assert.That(alignmentGroup, Is.EquivalentTo(computedCollection.Distinct()));
         }
 
+        private bool AlignmentMatchesPartial(string alignment, string partial)
+        {
+            return (partialAlignmentsStarts.Contains(partial) && alignment.StartsWith(partial))
+                || (partialAlignmentsEnds.Contains(partial) && alignment.EndsWith(partial))
+                || partial == string.Empty;
+        }
+
         private List<string> ComputeAlignmentGroup(string modifier, string alignment)
         {
+            if (partialAlignments.Contains(alignment))
+            {
+                var matchedAlignments = alignmentGrid.SelectMany(a => a).Where(a => AlignmentMatchesPartial(a, alignment));
+                var alignments = new List<string>();
+
+                foreach (var matchedAlignment in matchedAlignments)
+                {
+                    var computedAlignments = ComputeAlignmentGroup(modifier, matchedAlignment);
+                    alignments.AddRange(computedAlignments);
+                }
+
+                return alignments;
+            }
+
             var (l, g) = GetAlignmentIndex(alignment);
 
             if (l < 0 || g < 0)
                 throw new ArgumentException($"Alignment {alignment} is not supported");
 
+            var trueNeutralPadding = alignment == AlignmentConstants.TrueNeutral ? new[] { alignment } : [];
+
             return modifier switch
             {
                 AlignmentConstants.Modifiers.Often => TraverseAlignmentGrid(l, g, 2),
-                AlignmentConstants.Modifiers.Usually => TraverseAlignmentGrid(l, g, 1),
+                AlignmentConstants.Modifiers.Usually => [.. TraverseAlignmentGrid(l, g, 1), .. trueNeutralPadding],
+                AlignmentConstants.Modifiers.Any => TraverseAlignmentGrid(l, g, 0),
                 AlignmentConstants.Modifiers.Always => TraverseAlignmentGrid(l, g, 0),
                 _ => throw new ArgumentException($"Modifier {modifier} is not supported"),
             };
@@ -1047,7 +1087,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
 
         private List<string> TraverseAlignmentGrid(int l, int g, int travel)
         {
-            if (travel < 0 || l < 0 || g < 0 || l > alignmentGrid.Length || g > alignmentGrid[l].Length)
+            if (travel < 0 || l < 0 || g < 0 || l >= alignmentGrid.Length || g >= alignmentGrid[l].Length)
                 return [];
 
             var alignments = new List<string>();
@@ -1091,7 +1131,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             var alignmentGroup = ComputeAlignmentGroup(AlignmentConstants.Modifiers.Usually, alignment);
 
             var alignmentCount = alignmentGroup.Count(a => a == alignment);
-            var halfCount = alignmentGroup.Count() / 2;
+            var halfCount = alignmentGroup.Count / 2;
             Assert.That(alignmentCount, Is.AtLeast(halfCount));
         }
 
@@ -1118,6 +1158,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
                 .Single();
 
             Assert.That(mode, Is.EqualTo(alignment));
+
+            //INFO: Ideally, for often, while the alignment is the mode, it is not the outright majority
+            var alignmentCount = alignmentGroup.Count(a => a == alignment);
+            var halfCount = alignmentGroup.Count / 2;
+            Assert.That(alignmentCount, Is.AtMost(halfCount));
         }
 
         [TestCase(CreatureConstants.Types.Animal)]
