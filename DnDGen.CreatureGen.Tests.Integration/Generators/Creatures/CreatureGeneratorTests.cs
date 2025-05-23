@@ -872,5 +872,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             //Lower-level creature is better for faster iteration
             Assert.Fail("not yet written");
         }
+
+        [TestCase(CreatureConstants.Human, 0)]
+        [TestCase(CreatureConstants.Lizardfolk, 2)]
+        public void BUG_CreatureAsCharacterHasCorrectHitDice(string creatureName, double hitDiceQuantity)
+        {
+            var creature = creatureGenerator.Generate(true, creatureName);
+            creatureAsserter.AssertCreatureAsCharacter(creature);
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDiceQuantity), creature.Summary);
+        }
     }
 }

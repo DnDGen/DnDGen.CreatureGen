@@ -2763,15 +2763,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var creature in creatures)
             {
-                Assert.That(table, Contains.Key(creature));
+                Assert.That(creatureData, Contains.Key(creature));
 
-                //test data
                 var data = DataHelper.Parse<CreatureDataSelection>(creatureData[creature]);
                 Assert.That(data.CanUseEquipment, Is.EqualTo(useEquipment), $"TEST DATA: {creature}");
-
-                //XML data
-                data = DataHelper.Parse<CreatureDataSelection>(table[creature].Single());
-                Assert.That(data.CanUseEquipment, Is.EqualTo(useEquipment), $"XML DATA: {creature}");
             }
         }
 

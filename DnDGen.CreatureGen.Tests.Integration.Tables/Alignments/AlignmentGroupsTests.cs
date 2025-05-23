@@ -19,6 +19,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         private string[] partialAlignmentsStarts;
         private string[] partialAlignmentsEnds;
         private string[] partialAlignments;
+        private string[] creatures;
         private ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
 
         [SetUp]
@@ -43,6 +44,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
                 AlignmentConstants.Neutral,
             ];
             partialAlignments = [.. partialAlignmentsStarts, .. partialAlignmentsEnds, string.Empty];
+            creatures = [.. CreatureConstants.GetAll()];
 
             creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
         }
@@ -750,6 +752,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, AlignmentConstants.Modifiers.Usually + "|" + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.YuanTi_Pureblood, AlignmentConstants.Modifiers.Usually + "|" + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Zelekhut, AlignmentConstants.Modifiers.Always + "|" + AlignmentConstants.LawfulNeutral)]
+        public void CreatureAlignmentGroup(string name, params string[] collection)
+        {
+            var alignments = new List<string>();
+            foreach (var group in collection)
+            {
+                var (modifier, alignment) = ParseGroup(group);
+                var alignmentGroup = ComputeAlignmentGroup(modifier, alignment);
+                alignments.AddRange(alignmentGroup);
+            }
+
+            AssertCollection(name, [.. alignments]);
+        }
+
         [TestCase(CreatureConstants.Templates.CelestialCreature, AlignmentConstants.Modifiers.Any + "|" + AlignmentConstants.Good)]
         [TestCase(CreatureConstants.Templates.FiendishCreature, AlignmentConstants.Modifiers.Any + "|" + AlignmentConstants.Evil)]
         [TestCase(CreatureConstants.Templates.Ghost, AlignmentConstants.Modifiers.Any)]
@@ -794,7 +809,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Templates.Skeleton, AlignmentConstants.Modifiers.Always + "|" + AlignmentConstants.NeutralEvil)]
         [TestCase(CreatureConstants.Templates.Vampire, AlignmentConstants.Modifiers.Any + "|" + AlignmentConstants.Evil)]
         [TestCase(CreatureConstants.Templates.Zombie, AlignmentConstants.Modifiers.Always + "|" + AlignmentConstants.NeutralEvil)]
-        public void CreatureAlignmentGroup(string name, params string[] collection)
+        public void TemplateAlignmentGroup(string name, params string[] collection)
         {
             var alignments = new List<string>();
             foreach (var group in collection)
@@ -1217,6 +1232,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
 
         private List<string> ComputeAlignmentGroup(string modifier, string alignment)
         {
+            if (creatures.Contains(modifier))
+            {
+                return [.. table[modifier]];
+            }
+
             if (partialAlignments.Contains(alignment))
             {
                 var matchedAlignments = alignmentGrid.SelectMany(a => a).Where(a => AlignmentMatchesPartial(a, alignment));
@@ -1352,6 +1372,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             {
                 Assert.That(table, Contains.Key(creature), creature);
                 Assert.That(table[creature], Has.Count.EqualTo(1).And.Contains(AlignmentConstants.TrueNeutral), creature);
+            }
+        }
+
+        [TestCase(CreatureConstants.Types.Subtypes.Lawful, AlignmentConstants.Lawful)]
+        [TestCase(CreatureConstants.Types.Subtypes.Chaotic, AlignmentConstants.Chaotic)]
+        [TestCase(CreatureConstants.Types.Subtypes.Good, AlignmentConstants.Good)]
+        [TestCase(CreatureConstants.Types.Subtypes.Evil, AlignmentConstants.Evil)]
+        public void CreatureOfAlignmentTypeIsAtLeastUsuallyThatAlignment(string subtype, string partialAlignment)
+        {
+            var creatures = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
+                .Where(kvp => kvp.Value.Single().Types.Contains(subtype))
+                .Select(kvp => kvp.Key);
+
+            foreach (var creature in creatures)
+            {
+                Assert.That(table, Contains.Key(creature), creature);
+
+                var halfCount = table[creature].Count() / 2d;
+
+                if (partialAlignmentsStarts.Contains(partialAlignment))
+                    Assert.That(table[creature].Count(a => a.StartsWith(partialAlignment)), Is.AtLeast(halfCount), creature);
+                else if (partialAlignmentsEnds.Contains(partialAlignment))
+                    Assert.That(table[creature].Count(a => a.EndsWith(partialAlignment)), Is.AtLeast(halfCount), creature);
+                else
+                    Assert.Fail($"Partial alignment {partialAlignment} is not a supported partial alignment");
             }
         }
 
