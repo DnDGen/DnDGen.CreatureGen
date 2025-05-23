@@ -1308,20 +1308,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return testCases;
         }
 
-        [TestCase(CreatureConstants.Types.Subtypes.Aquatic)]
-        [TestCase(CreatureConstants.Types.Subtypes.Water)]
-        public void AllCreaturesOfSubtypeHaveSwimSpeeds(string subtype)
+        [TestCase(CreatureConstants.Types.Subtypes.Aquatic, SpeedConstants.Swim)]
+        [TestCase(CreatureConstants.Types.Subtypes.Incorporeal, SpeedConstants.Fly)]
+        [TestCase(CreatureConstants.Types.Subtypes.Water, SpeedConstants.Swim)]
+        public void AllCreaturesOfSubtypeHaveSpeed(string subtype, string speed)
         {
-            var aquaticCreatures = collectionDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
+            var creatures = collectionDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
                 .Where(kvp => kvp.Value.Single().Types.Contains(subtype))
                 .Select(kvp => kvp.Key);
-            Assert.That(table.Keys, Is.SupersetOf(aquaticCreatures));
 
-            foreach (var creature in aquaticCreatures)
+            foreach (var creature in creatures)
             {
-                Assert.That(creatureSpeedsData, Contains.Key(creature));
-                Assert.That(creatureSpeedsData[creature], Contains.Key(SpeedConstants.Swim));
-                Assert.That(creatureSpeedsData[creature][SpeedConstants.Swim], Is.Positive, creature);
+                Assert.That(creatureSpeedsData, Contains.Key(creature), creature);
+                Assert.That(creatureSpeedsData[creature], Contains.Key(speed), creature);
+                Assert.That(creatureSpeedsData[creature][speed], Is.Positive, creature);
             }
         }
     }
