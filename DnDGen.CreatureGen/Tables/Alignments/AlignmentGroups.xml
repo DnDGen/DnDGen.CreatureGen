@@ -90,7 +90,13 @@
 	<collection>
 		<name>UsuallyNeutral</name>
 		<entry>UsuallyLawful Neutral</entry>
-		<entry>UsuallyTrue Neutral</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>True Neutral</entry>
+		<entry>True Neutral</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Neutral Evil</entry>
 		<entry>UsuallyChaotic Neutral</entry>
 	</collection>
 	<collection>
@@ -104,7 +110,10 @@
 	</collection>
 	<collection>
 		<name>UsuallyChaotic</name>
-		<entry>UsuallyChaotic Good</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Neutral Good</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
 		<entry>UsuallyChaotic Neutral</entry>
 		<entry>UsuallyChaotic Evil</entry>
 	</collection>
@@ -248,7 +257,10 @@
 	<collection>
 		<name>OftenChaotic Good</name>
 		<entry>Chaotic Good</entry>
-		<entry>UsuallyChaotic Good</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Neutral Good</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
 		<entry>Neutral Good</entry>
 		<entry>Chaotic Good</entry>
 		<entry>Chaotic Evil</entry>
@@ -271,7 +283,13 @@
 	<collection>
 		<name>OftenTrue Neutral</name>
 		<entry>True Neutral</entry>
-		<entry>UsuallyTrue Neutral</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>True Neutral</entry>
+		<entry>True Neutral</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Neutral Evil</entry>
 		<entry>Lawful Good</entry>
 		<entry>Neutral Good</entry>
 		<entry>Chaotic Good</entry>
@@ -350,11 +368,15 @@
 	  <entry>Neutral Good</entry>
 	  <entry>Lawful Neutral</entry>
 	  <entry>UsuallyNeutral Good</entry>
-	  <entry>UsuallyChaotic Good</entry>
+	  <entry>Chaotic Good</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Chaotic Good</entry>
+	  <entry>Chaotic Neutral</entry>
   </collection>
   <collection>
     <name>Aboleth</name>
 	  <entry>Lawful Neutral</entry>
+	  <entry>Lawful Evil</entry>
 	  <entry>Lawful Evil</entry>
 	  <entry>Lawful Evil</entry>
 	  <entry>Neutral Evil</entry>
@@ -677,7 +699,13 @@
   </collection>
   <collection>
     <name>Aranea</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Assassin Vine</name>
@@ -925,7 +953,13 @@
   </collection>
   <collection>
     <name>Delver</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Derro</name>
@@ -1007,7 +1041,13 @@
   </collection>
   <collection>
     <name>Doppelganger</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Black Dragon, Wyrmling</name>
@@ -1491,11 +1531,23 @@
   </collection>
   <collection>
     <name>Dragon Turtle</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Dragonne</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Dretch</name>
@@ -1511,7 +1563,10 @@
   </collection>
   <collection>
     <name>Dryad</name>
-    <entry>UsuallyChaotic Good</entry>
+	  <entry>Chaotic Good</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Chaotic Good</entry>
+	  <entry>Chaotic Neutral</entry>
   </collection>
   <collection>
     <name>Duergar</name>
@@ -1520,7 +1575,13 @@
   <collection>
     <name>Deep Dwarf</name>
     <entry>UsuallyLawful Neutral</entry>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Hill Dwarf</name>
@@ -1556,99 +1617,243 @@
   </collection>
   <collection>
     <name>Air Elemental, Elder</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Air Elemental, Greater</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Air Elemental, Greater</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Air Elemental, Huge</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Air Elemental, Huge</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Air Elemental, Large</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Air Elemental, Large</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Air Elemental, Medium</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Air Elemental, Medium</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Air Elemental, Small</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Air Elemental, Small</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Elder</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Greater</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Earth Elemental, Huge</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Earth Elemental, Huge</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Earth Elemental, Large</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Earth Elemental, Large</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Earth Elemental, Medium</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Earth Elemental, Medium</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Earth Elemental, Small</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Earth Elemental, Small</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Fire Elemental, Elder</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Fire Elemental, Elder</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Greater</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Huge</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Fire Elemental, Large</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Fire Elemental, Large</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Fire Elemental, Medium</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Fire Elemental, Medium</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Small</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Water Elemental, Elder</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Water Elemental, Elder</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Water Elemental, Greater</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Water Elemental, Greater</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Water Elemental, Huge</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Water Elemental, Large</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Water Elemental, Medium</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Water Elemental, Small</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Elephant</name>
@@ -1656,37 +1861,64 @@
   </collection>
   <collection>
     <name>Aquatic Elf</name>
-    <entry>UsuallyChaotic Good</entry>
+	  <entry>Chaotic Good</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Chaotic Good</entry>
+	  <entry>Chaotic Neutral</entry>
   </collection>
   <collection>
     <name>Gray Elf</name>
-    <entry>UsuallyChaotic Good</entry>
+	  <entry>Chaotic Good</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Chaotic Good</entry>
+	  <entry>Chaotic Neutral</entry>
   </collection>
   <collection>
     <name>Half-Elf</name>
-    <entry>UsuallyChaotic Good</entry>
-    <entry>UsuallyChaotic Neutral</entry>
-    <entry>UsuallyNeutral Good</entry>
+	  <entry>Chaotic Good</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Chaotic Good</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>UsuallyChaotic Neutral</entry>
+	  <entry>UsuallyNeutral Good</entry>
   </collection>
   <collection>
-    <name>High Elf</name>
-    <entry>UsuallyChaotic Good</entry>
+	  <name>High Elf</name>
+	  <entry>Chaotic Good</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Chaotic Good</entry>
+	  <entry>Chaotic Neutral</entry>
   </collection>
   <collection>
     <name>Wild Elf</name>
-    <entry>UsuallyChaotic Good</entry>
+	  <entry>Chaotic Good</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Chaotic Good</entry>
+	  <entry>Chaotic Neutral</entry>
   </collection>
   <collection>
     <name>Wood Elf</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Erinyes</name>
-    <entry>Lawful Evil</entry>
+	  <name>Erinyes</name>
+	  <entry>Lawful Evil</entry>
   </collection>
   <collection>
-    <name>Ethereal Filcher</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Ethereal Filcher</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Ethereal Marauder</name>
@@ -1722,7 +1954,13 @@
   </collection>
   <collection>
     <name>Frost Worm</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Gargoyle</name>
@@ -1819,19 +2057,37 @@
   </collection>
   <collection>
     <name>Stone Giant</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Stone Giant Elder</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Stone Giant Elder</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Storm Giant</name>
-    <entry>OftenChaotic Good</entry>
+	  <name>Storm Giant</name>
+	  <entry>OftenChaotic Good</entry>
   </collection>
   <collection>
-    <name>Gibbering Mouther</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Gibbering Mouther</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Girallon</name>
@@ -1863,7 +2119,13 @@
   </collection>
   <collection>
     <name>Svirfneblin</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Goblin</name>
@@ -1899,19 +2161,31 @@
   </collection>
   <collection>
     <name>Gray Render</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Greater Barghest</name>
-    <entry>Lawful Evil</entry>
+	  <name>Greater Barghest</name>
+	  <entry>Lawful Evil</entry>
   </collection>
   <collection>
-    <name>Green Hag</name>
-    <entry>UsuallyChaotic Evil</entry>
+	  <name>Green Hag</name>
+	  <entry>UsuallyChaotic Evil</entry>
   </collection>
   <collection>
-    <name>Grick</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Grick</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Griffon</name>
@@ -1948,15 +2222,33 @@
   </collection>
   <collection>
     <name>Deep Halfling</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Lightfoot Halfling</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Tallfellow Halfling</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Tallfellow Halfling</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Harpy</name>
@@ -2035,99 +2327,243 @@
   </collection>
   <collection>
     <name>Five-Headed Cryohydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Six-Headed Cryohydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Seven-Headed Cryohydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Eight-Headed Cryohydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Eight-Headed Cryohydra</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Nine-Headed Cryohydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Nine-Headed Cryohydra</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Ten-Headed Cryohydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Ten-Headed Cryohydra</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Eleven-Headed Cryohydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Eleven-Headed Cryohydra</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Cryohydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Five-Headed Hydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Five-Headed Hydra</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Six-Headed Hydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Six-Headed Hydra</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Seven-Headed Hydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Eight-Headed Hydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Nine-Headed Hydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Nine-Headed Hydra</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Ten-Headed Hydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Hydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Hydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Five-Headed Pyrohydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Six-Headed Pyrohydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Seven-Headed Pyrohydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Eight-Headed Pyrohydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Nine-Headed Pyrohydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Ten-Headed Pyrohydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Eleven-Headed Pyrohydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Eleven-Headed Pyrohydra</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Pyrohydra</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Hyena</name>
@@ -2143,11 +2579,23 @@
   </collection>
   <collection>
     <name>Invisible Stalker</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Janni</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Juvenile Arrowhawk</name>
@@ -2170,7 +2618,13 @@
   </collection>
   <collection>
     <name>Krenshar</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Kuo-toa</name>
@@ -2214,11 +2668,23 @@
   </collection>
   <collection>
     <name>Lizardfolk</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Locathah</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Locust Swarm</name>
@@ -2260,47 +2726,113 @@
   </collection>
   <collection>
     <name>Air Mephit</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Dust Mephit</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Dust Mephit</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Earth Mephit</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Earth Mephit</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Fire Mephit</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Fire Mephit</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Ice Mephit</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Ice Mephit</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Magma Mephit</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Magma Mephit</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
-    <name>Ooze Mephit</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <name>Ooze Mephit</name>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Salt Mephit</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Steam Mephit</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Water Mephit</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Merfolk</name>
-    <entry>UsuallyTrue Neutral</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>True Neutral</entry>
+		<entry>True Neutral</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Merrow</name>
@@ -2308,7 +2840,13 @@
   </collection>
   <collection>
     <name>Mimic</name>
-    <entry>UsuallyTrue Neutral</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>True Neutral</entry>
+		<entry>True Neutral</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Mind Flayer (Illithid)</name>
@@ -2494,7 +3032,10 @@
   </collection>
   <collection>
     <name>Nymph</name>
-    <entry>UsuallyChaotic Good</entry>
+	  <entry>Chaotic Good</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Chaotic Good</entry>
+	  <entry>Chaotic Neutral</entry>
   </collection>
   <collection>
     <name>Ochre Jelly</name>
@@ -2525,7 +3066,13 @@
   </collection>
   <collection>
     <name>Otyugh</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Owl</name>
@@ -2541,7 +3088,10 @@
   </collection>
   <collection>
     <name>Pegasus</name>
-    <entry>UsuallyChaotic Good</entry>
+	  <entry>Chaotic Good</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Chaotic Good</entry>
+	  <entry>Chaotic Neutral</entry>
   </collection>
   <collection>
     <name>Phantom Fungus</name>
@@ -2605,7 +3155,13 @@
   </collection>
   <collection>
     <name>Rast</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Rat</name>
@@ -2633,7 +3189,13 @@
   </collection>
   <collection>
     <name>Remorhaz</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Retriever</name>
@@ -2729,7 +3291,13 @@
   </collection>
   <collection>
     <name>Shambling Mound</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Dire Shark</name>
@@ -2832,7 +3400,13 @@
   </collection>
   <collection>
     <name>Thoqqua</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Tiefling</name>
@@ -2944,7 +3518,13 @@
   </collection>
   <collection>
     <name>Water Naga</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Weasel</name>
@@ -2996,7 +3576,13 @@
   </collection>
   <collection>
     <name>Wyvern</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Xill</name>
@@ -3004,15 +3590,33 @@
   </collection>
   <collection>
     <name>Average Xorn</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Elder Xorn</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Minor Xorn</name>
-    <entry>UsuallyTrue Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Neutral Good</entry>
+	  <entry>Lawful Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>True Neutral</entry>
+	  <entry>Chaotic Neutral</entry>
+	  <entry>Neutral Evil</entry>
   </collection>
   <collection>
     <name>Yeth Hound</name>
