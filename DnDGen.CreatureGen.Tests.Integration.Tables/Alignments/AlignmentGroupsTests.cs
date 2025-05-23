@@ -42,7 +42,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
                 AlignmentConstants.Evil,
                 AlignmentConstants.Neutral,
             ];
-            partialAlignments = [.. partialAlignmentsStarts.Union(partialAlignmentsEnds).Union([string.Empty])];
+            partialAlignments = [.. partialAlignmentsStarts, .. partialAlignmentsEnds, string.Empty];
 
             creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
         }
@@ -826,13 +826,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.NeutralEvil,
             AlignmentConstants.ChaoticEvil)]
         [TestCase(AlignmentConstants.Modifiers.Any, AlignmentConstants.Good,
-            AlignmentConstants.LawfulGood,
-            AlignmentConstants.NeutralGood,
-            AlignmentConstants.ChaoticGood)]
+            AlignmentConstants.Modifiers.Always + "|" + AlignmentConstants.Good)]
         [TestCase(AlignmentConstants.Modifiers.Always, AlignmentConstants.Good,
-            AlignmentConstants.LawfulGood,
-            AlignmentConstants.NeutralGood,
-            AlignmentConstants.ChaoticGood)]
+            AlignmentConstants.Modifiers.Always + "|" + AlignmentConstants.LawfulGood,
+            AlignmentConstants.Modifiers.Always + "|" + AlignmentConstants.NeutralGood,
+            AlignmentConstants.Modifiers.Always + "|" + AlignmentConstants.ChaoticGood)]
         [TestCase(AlignmentConstants.Modifiers.Usually, AlignmentConstants.Good,
             AlignmentConstants.Modifiers.Usually + "|" + AlignmentConstants.LawfulGood,
             AlignmentConstants.Modifiers.Usually + "|" + AlignmentConstants.NeutralGood,
@@ -908,41 +906,59 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(AlignmentConstants.Modifiers.Always, AlignmentConstants.TrueNeutral, AlignmentConstants.TrueNeutral)]
         [TestCase(AlignmentConstants.Modifiers.Usually, AlignmentConstants.LawfulEvil,
             AlignmentConstants.LawfulEvil,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.LawfulEvil,
             AlignmentConstants.LawfulNeutral,
             AlignmentConstants.NeutralEvil)]
         [TestCase(AlignmentConstants.Modifiers.Usually, AlignmentConstants.LawfulGood,
             AlignmentConstants.LawfulGood,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.LawfulGood,
             AlignmentConstants.LawfulNeutral,
             AlignmentConstants.NeutralGood)]
         [TestCase(AlignmentConstants.Modifiers.Usually, AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.LawfulNeutral,
             AlignmentConstants.LawfulNeutral,
             AlignmentConstants.LawfulGood,
             AlignmentConstants.LawfulEvil,
             AlignmentConstants.TrueNeutral)]
         [TestCase(AlignmentConstants.Modifiers.Usually, AlignmentConstants.ChaoticEvil,
             AlignmentConstants.ChaoticEvil,
+            AlignmentConstants.ChaoticEvil,
+            AlignmentConstants.ChaoticEvil,
             AlignmentConstants.ChaoticNeutral,
             AlignmentConstants.NeutralEvil)]
         [TestCase(AlignmentConstants.Modifiers.Usually, AlignmentConstants.ChaoticGood,
             AlignmentConstants.ChaoticGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.ChaoticGood,
             AlignmentConstants.ChaoticNeutral,
             AlignmentConstants.NeutralGood)]
         [TestCase(AlignmentConstants.Modifiers.Usually, AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.ChaoticNeutral,
             AlignmentConstants.ChaoticNeutral,
             AlignmentConstants.TrueNeutral,
             AlignmentConstants.ChaoticGood,
             AlignmentConstants.ChaoticEvil)]
         [TestCase(AlignmentConstants.Modifiers.Usually, AlignmentConstants.NeutralEvil,
             AlignmentConstants.NeutralEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.NeutralEvil,
             AlignmentConstants.TrueNeutral,
             AlignmentConstants.LawfulEvil,
             AlignmentConstants.ChaoticEvil)]
         [TestCase(AlignmentConstants.Modifiers.Usually, AlignmentConstants.NeutralGood,
             AlignmentConstants.NeutralGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.NeutralGood,
             AlignmentConstants.TrueNeutral,
             AlignmentConstants.LawfulGood,
             AlignmentConstants.ChaoticGood)]
         [TestCase(AlignmentConstants.Modifiers.Usually, AlignmentConstants.TrueNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.TrueNeutral,
             AlignmentConstants.TrueNeutral,
             AlignmentConstants.TrueNeutral,
             AlignmentConstants.LawfulNeutral,
@@ -951,6 +967,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.ChaoticNeutral)]
         [TestCase(AlignmentConstants.Modifiers.Often, AlignmentConstants.LawfulEvil,
             AlignmentConstants.LawfulEvil,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.LawfulEvil,
             AlignmentConstants.LawfulNeutral,
             AlignmentConstants.NeutralEvil,
             AlignmentConstants.TrueNeutral,
@@ -958,12 +983,32 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.ChaoticEvil)]
         [TestCase(AlignmentConstants.Modifiers.Often, AlignmentConstants.LawfulGood,
             AlignmentConstants.LawfulGood,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.LawfulGood,
             AlignmentConstants.LawfulNeutral,
             AlignmentConstants.NeutralGood,
             AlignmentConstants.TrueNeutral,
             AlignmentConstants.LawfulEvil,
             AlignmentConstants.ChaoticGood)]
         [TestCase(AlignmentConstants.Modifiers.Often, AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.TrueNeutral,
             AlignmentConstants.LawfulNeutral,
             AlignmentConstants.LawfulGood,
             AlignmentConstants.LawfulEvil,
@@ -973,6 +1018,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.NeutralEvil)]
         [TestCase(AlignmentConstants.Modifiers.Often, AlignmentConstants.ChaoticEvil,
             AlignmentConstants.ChaoticEvil,
+            AlignmentConstants.ChaoticEvil,
+            AlignmentConstants.ChaoticEvil,
+            AlignmentConstants.ChaoticEvil,
+            AlignmentConstants.ChaoticEvil,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil,
             AlignmentConstants.ChaoticNeutral,
             AlignmentConstants.NeutralEvil,
             AlignmentConstants.TrueNeutral,
@@ -980,12 +1034,32 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.LawfulEvil)]
         [TestCase(AlignmentConstants.Modifiers.Often, AlignmentConstants.ChaoticGood,
             AlignmentConstants.ChaoticGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
             AlignmentConstants.ChaoticNeutral,
             AlignmentConstants.NeutralGood,
             AlignmentConstants.TrueNeutral,
             AlignmentConstants.ChaoticEvil,
             AlignmentConstants.LawfulGood)]
         [TestCase(AlignmentConstants.Modifiers.Often, AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.ChaoticEvil,
+            AlignmentConstants.ChaoticEvil,
             AlignmentConstants.ChaoticNeutral,
             AlignmentConstants.TrueNeutral,
             AlignmentConstants.ChaoticGood,
@@ -995,6 +1069,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.LawfulNeutral)]
         [TestCase(AlignmentConstants.Modifiers.Often, AlignmentConstants.NeutralEvil,
             AlignmentConstants.NeutralEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.ChaoticEvil,
+            AlignmentConstants.ChaoticEvil,
+            AlignmentConstants.NeutralEvil,
             AlignmentConstants.TrueNeutral,
             AlignmentConstants.LawfulEvil,
             AlignmentConstants.ChaoticEvil,
@@ -1003,6 +1088,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.NeutralGood)]
         [TestCase(AlignmentConstants.Modifiers.Often, AlignmentConstants.NeutralGood,
             AlignmentConstants.NeutralGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.NeutralGood,
             AlignmentConstants.TrueNeutral,
             AlignmentConstants.LawfulGood,
             AlignmentConstants.ChaoticGood,
@@ -1010,6 +1106,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.ChaoticNeutral,
             AlignmentConstants.NeutralEvil)]
         [TestCase(AlignmentConstants.Modifiers.Often, AlignmentConstants.TrueNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.ChaoticNeutral,
             AlignmentConstants.TrueNeutral,
             AlignmentConstants.LawfulNeutral,
             AlignmentConstants.NeutralGood,
@@ -1021,7 +1128,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.ChaoticEvil)]
         public void ComputedAlignmentGroupSpotCheck(string modifier, string alignment, params string[] collection)
         {
-            var alignmentGroup = ComputeAlignmentGroup(modifier, alignment).Distinct();
+            var alignmentGroup = ComputeAlignmentGroup(modifier, alignment);
 
             var subgroups = collection.Where(c => c.Contains('|'));
             var computedCollection = new List<string>(collection.Except(subgroups));
@@ -1032,7 +1139,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
                 computedCollection.AddRange(subgroupCollection);
             }
 
-            Assert.That(alignmentGroup, Is.EquivalentTo(computedCollection.Distinct()));
+            Assert.That(alignmentGroup, Is.EquivalentTo(computedCollection));
         }
 
         private bool AlignmentMatchesPartial(string alignment, string partial)
@@ -1094,6 +1201,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             while (alignments.Count < travel + 1)
                 alignments.Add(alignmentGrid[l][g]);
 
+            alignments.AddRange(TraverseAlignmentGrid(l, g, travel - 1));
             alignments.AddRange(TraverseAlignmentGrid(l - 1, g, travel - 1));
             alignments.AddRange(TraverseAlignmentGrid(l + 1, g, travel - 1));
             alignments.AddRange(TraverseAlignmentGrid(l, g - 1, travel - 1));
@@ -1131,7 +1239,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             var alignmentGroup = ComputeAlignmentGroup(AlignmentConstants.Modifiers.Usually, alignment);
 
             var alignmentCount = alignmentGroup.Count(a => a == alignment);
-            var halfCount = alignmentGroup.Count / 2;
+            var halfCount = alignmentGroup.Count / 2d;
             Assert.That(alignmentCount, Is.AtLeast(halfCount));
         }
 
@@ -1161,7 +1269,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
 
             //INFO: Ideally, for often, while the alignment is the mode, it is not the outright majority
             var alignmentCount = alignmentGroup.Count(a => a == alignment);
-            var halfCount = alignmentGroup.Count / 2;
+            var halfCount = alignmentGroup.Count / 2d;
             Assert.That(alignmentCount, Is.AtMost(halfCount));
         }
 
