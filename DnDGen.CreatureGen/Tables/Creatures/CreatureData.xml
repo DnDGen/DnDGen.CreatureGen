@@ -1419,7 +1419,7 @@
   </collection>
   <collection>
     <name>Hill Giant</name>
-    <entry>7@4@10@Large@10@True@0@9@2@1@ @1@8@True</entry>
+    <entry>7@4@10@Large@10@True@0@9@2@1@Giant@12@8@True</entry>
   </collection>
   <collection>
     <name>Stone Giant</name>
@@ -1607,71 +1607,71 @@
   </collection>
   <collection>
     <name>Hell Hound</name>
-    <entry>3@3@5@Medium@5@False@0@5@0@1@ @1@8@True</entry>
+    <entry>3@3@5@Medium@5@False@0@5@0@2@Outsider|Evil|Extraplanar|Fire|Lawful@4@8@False</entry>
   </collection>
   <collection>
     <name>Nessian Warhound</name>
-    <entry>9@4@10@Large@10@False@0@7@0@1@ @1@8@True</entry>
+    <entry>9@4@10@Large@10@False@0@7@0@2@Outsider|Evil|Extraplanar|Fire|Lawful@4@8@False</entry>
   </collection>
   <collection>
     <name>Hellcat (Bezekira)</name>
-    <entry>7@@5@Large@10@False@0@7@0@1@ @1@8@True</entry>
+    <entry>7@@5@Large@10@False@0@7@0@2@Outsider|Evil|Extraplanar|Lawful@8@8@False</entry>
   </collection>
   <collection>
     <name>Hellwasp Swarm</name>
-    <entry>8@@0@Diminutive@10@False@0@0@0@1@ @1@8@True</entry>
+    <entry>8@@0@Diminutive@10@False@0@0@0@2@Magical Beast|Evil|Extraplanar|Swarm@12@10@False</entry>
   </collection>
   <collection>
     <name>Hezrou</name>
-    <entry>11@9@10@Large@10@True@13@14@2@1@ @1@8@True</entry>
+    <entry>11@9@10@Large@10@True@13@14@2@2@Outsider|Evil|Extraplanar|Chaotic@10@8@False</entry>
   </collection>
   <collection>
     <name>Hieracosphinx</name>
-    <entry>5@3@5@Large@10@False@0@8@0@1@ @1@8@True</entry>
+    <entry>5@3@5@Large@10@False@0@8@0@2@Magical Beast@9@10@True</entry>
   </collection>
   <collection>
     <name>Hippogriff</name>
-    <entry>2@@5@Large@10@False@0@4@0@1@ @1@8@True</entry>
+    <entry>2@@5@Large@10@False@0@4@0@2@Magical Beast@3@10@True</entry>
   </collection>
   <collection>
     <name>Hobgoblin</name>
-    <entry>1/2@1@5@Medium@5@True@0@0@2@1@ @1@8@True</entry>
+    <entry>1/2@1@5@Medium@5@True@0@0@2@1@Humanoid|Goblinoid@1@8@True</entry>
   </collection>
   <collection>
     <name>Homunculus</name>
-    <entry>1@@0@Tiny@2.5@False@0@0@0@1@ @1@8@False</entry>
+    <entry>1@@0@Tiny@2.5@False@0@0@0@1@Construct@2@10@False</entry>
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)</name>
-    <entry>16@@10@Large@10@True@15@19@2@1@ @1@8@False</entry>
+    <entry>16@@10@Large@10@True@15@19@2@2@Outsider|Evil|Extraplanar|Lawful@15@8@False</entry>
   </collection>
   <collection>
     <name>Heavy Horse</name>
-    <entry>1@@5@Large@10@False@0@3@0@1@ @1@8@True</entry>
+    <entry>1@@5@Large@10@False@0@3@0@1@Animal@3@8@True</entry>
   </collection>
   <collection>
     <name>Heavy Warhorse</name>
-    <entry>2@@5@Large@10@False@0@4@0@1@ @1@8@True</entry>
+    <entry>2@@5@Large@10@False@0@4@0@1@Animal@4@8@True</entry>
   </collection>
   <collection>
     <name>Light Horse</name>
-    <entry>1@@5@Large@10@False@0@3@0@1@ @1@8@True</entry>
+    <entry>1@@5@Large@10@False@0@3@0@1@Animal@1@8@True</entry>
   </collection>
   <collection>
     <name>Light Warhorse</name>
-    <entry>1@@5@Large@10@False@0@4@0@1@ @1@8@True</entry>
+    <entry>1@@5@Large@10@False@0@4@0@1@Animal@2@8@True</entry>
   </collection>
   <collection>
     <name>Hound Archon</name>
-    <entry>4@5@5@Medium@5@True@6@0@2@1@ @1@8@False</entry>
+    <entry>4@5@5@Medium@5@True@6@0@2@2@Outsider|Archon|Extraplanar|Good|Lawful@6@8@False</entry>
   </collection>
   <collection>
     <name>Lantern Archon</name>
-    <entry>2@@5@Small@5@False@3@4@0@1@ @1@8@False</entry>
+    <entry>2@@5@Small@5@False@3@4@0@2@Outsider|Archon|Extraplanar|Good|Lawful@6@8@False</entry>
   </collection>
   <collection>
     <name>Trumpet Archon</name>
-    <entry>14@8@5@Medium@5@True@12@14@2@1@ @1@8@False</entry>
+    <entry>14@8@5@Medium@5@True@12@14@2@2@Outsider|Archon|Extraplanar|Good|Lawful@6@8@False</entry>
   </collection>
   <collection>
     <name>Howler</name>
@@ -1679,7 +1679,7 @@
   </collection>
   <collection>
     <name>Human</name>
-    <entry>1/2@0@5@Medium@5@True@0@0@2@1@ @1@8@True</entry>
+    <entry>1/2@0@5@Medium@5@True@0@0@2@1@Humanoid|Human@1@8@True</entry>
   </collection>
   <collection>
     <name>Five-Headed Hydra</name>
