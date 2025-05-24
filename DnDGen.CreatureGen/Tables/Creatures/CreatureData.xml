@@ -1403,7 +1403,7 @@
   </collection>
   <collection>
     <name>Lacedon</name>
-    <entry>1@@5@Medium@5@False@0@2@2@1@ @1@8@True</entry>
+    <entry>1@@5@Medium@5@False@0@2@2@0@Undead|Aquatic@2@12@False</entry>
   </collection>
   <collection>
     <name>Cloud Giant</name>
@@ -1519,11 +1519,11 @@
   </collection>
   <collection>
     <name>Iron Golem</name>
-    <entry>13@@10@Large@10@False@0@22@2@1@ @1@8@False</entry>
+    <entry>13@@10@Large@10@False@0@22@2@1@Construct@18@10@False</entry>
   </collection>
   <collection>
     <name>Stone Golem</name>
-    <entry>11@@10@Large@10@False@0@18@2@1@ @1@8@False</entry>
+    <entry>11@@10@Large@10@False@0@18@2@1@Construct@1@8@False</entry>
   </collection>
   <collection>
     <name>Greater Stone Golem</name>
@@ -1655,11 +1655,11 @@
   </collection>
   <collection>
     <name>Light Horse</name>
-    <entry>1@@5@Large@10@False@0@3@0@1@Animal@1@8@True</entry>
+    <entry>1@@5@Large@10@False@0@3@0@1@Animal@3@8@True</entry>
   </collection>
   <collection>
     <name>Light Warhorse</name>
-    <entry>1@@5@Large@10@False@0@4@0@1@Animal@2@8@True</entry>
+    <entry>1@@5@Large@10@False@0@4@0@1@Animal@3@8@True</entry>
   </collection>
   <collection>
     <name>Hound Archon</name>
@@ -1667,15 +1667,15 @@
   </collection>
   <collection>
     <name>Lantern Archon</name>
-    <entry>2@@5@Small@5@False@3@4@0@2@Outsider|Archon|Extraplanar|Good|Lawful@6@8@False</entry>
+    <entry>2@@5@Small@5@False@3@4@0@2@Outsider|Archon|Extraplanar|Good|Lawful@1@8@False</entry>
   </collection>
   <collection>
     <name>Trumpet Archon</name>
-    <entry>14@8@5@Medium@5@True@12@14@2@2@Outsider|Archon|Extraplanar|Good|Lawful@6@8@False</entry>
+    <entry>14@8@5@Medium@5@True@12@14@2@2@Outsider|Archon|Extraplanar|Good|Lawful@11@8@False</entry>
   </collection>
   <collection>
     <name>Howler</name>
-    <entry>3@3@5@Large@10@False@0@5@0@1@ @1@8@True</entry>
+    <entry>3@3@5@Large@10@False@0@5@0@2@Outsider|Chaotic|Evil|Extraplanar@6@8@False</entry>
   </collection>
   <collection>
     <name>Human</name>
@@ -1779,87 +1779,87 @@
   </collection>
   <collection>
     <name>Hyena</name>
-    <entry>1@@5@Medium@5@False@0@2@0@1@ @1@8@True</entry>
+    <entry>1@@5@Medium@5@False@0@2@0@1@Animal@2@8@True</entry>
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
-    <entry>13@@10@Large@10@True@13@18@2@1@ @1@8@False</entry>
+    <entry>13@@10@Large@10@True@13@18@2@2@Outsider|Evil|Extraplanar|Lawful@14@8@False</entry>
   </collection>
   <collection>
     <name>Imp</name>
-    <entry>2@@0@Tiny@2.5@False@6@5@0@1@ @1@8@False</entry>
+    <entry>2@@0@Tiny@2.5@False@6@5@0@2@Outsider|Evil|Extraplanar|Lawful@3@8@False</entry>
   </collection>
   <collection>
     <name>Invisible Stalker</name>
-    <entry>7@@10@Large@10@False@0@4@0@1@ @1@8@False</entry>
+    <entry>7@@10@Large@10@False@0@4@0@1@Elemental|Air|Extraplanar@8@8@False</entry>
   </collection>
   <collection>
     <name>Janni</name>
-    <entry>4@5@5@Medium@5@True@12@1@2@1@ @1@8@True</entry>
+    <entry>4@5@5@Medium@5@True@12@1@2@2@Outsider|Native@6@8@True</entry>
   </collection>
   <collection>
     <name>Juvenile Arrowhawk</name>
-    <entry>3@@5@Small@5@False@0@4@0@1@ @1@8@False</entry>
+    <entry>3@@5@Small@5@False@0@4@0@2@Outsider|Air|Extraplanar@3@8@False</entry>
   </collection>
   <collection>
     <name>Kobold</name>
-    <entry>1/4@0@5@Small@5@True@0@1@2@1@ @1@8@True</entry>
+    <entry>1/4@0@5@Small@5@True@0@1@2@1@Humanoid|Reptilian@1@8@True</entry>
   </collection>
   <collection>
     <name>Kolyarut</name>
-    <entry>12@@5@Medium@5@True@13@10@2@1@ @1@8@False</entry>
+    <entry>12@@5@Medium@5@True@13@10@2@1@Construct|Extraplanar|Lawful@13@10@False</entry>
   </collection>
   <collection>
     <name>Marut</name>
-    <entry>15@@10@Large@10@False@14@16@2@1@ @1@8@False</entry>
+    <entry>15@@10@Large@10@False@14@16@2@1@Construct|Extraplanar|Lawful@16@10@False</entry>
   </collection>
   <collection>
     <name>Zelekhut</name>
-    <entry>9@7@10@Large@10@True@8@10@2@1@ @1@8@False</entry>
+    <entry>9@7@10@Large@10@True@8@10@2@1@Construct|Extraplanar|Lawful@10@10@False</entry>
   </collection>
   <collection>
     <name>Kraken</name>
-    <entry>12@@15@Gargantuan@20@False@9@14@0@1@ @1@8@True</entry>
+    <entry>12@@15@Gargantuan@20@False@9@14@0@2@Magical Beast|Aquatic@20@10@False</entry>
   </collection>
   <collection>
     <name>Krenshar</name>
-    <entry>1@2@5@Medium@5@False@3@3@0@1@ @1@8@True</entry>
+    <entry>1@2@5@Medium@5@False@3@3@0@2@Magical Beast@2@10@True</entry>
   </collection>
   <collection>
     <name>Kuo-toa</name>
-    <entry>2@3@5@Medium@5@True@0@6@2@1@ @1@8@True</entry>
+    <entry>2@3@5@Medium@5@True@0@6@2@2@Monstrous Humanoid|Aquatic@2@8@True</entry>
   </collection>
   <collection>
     <name>Lamia</name>
-    <entry>6@4@5@Large@10@True@9@7@2@1@ @1@8@True</entry>
+    <entry>6@4@5@Large@10@True@9@7@2@2@Magical Beast@9@10@True</entry>
   </collection>
   <collection>
     <name>Lammasu</name>
-    <entry>8@5@5@Large@10@False@7@10@0@1@ @1@8@True</entry>
+    <entry>8@5@5@Large@10@False@7@10@0@2@Magical Beast@7@10@True</entry>
   </collection>
   <collection>
     <name>Lemure</name>
-    <entry>1@@5@Medium@5@False@0@4@0@1@ @1@8@True</entry>
+    <entry>1@@5@Medium@5@False@0@4@0@2@Outsider|Evil|Extraplanar|Lawful@2@8@False</entry>
   </collection>
   <collection>
     <name>Leonal</name>
-    <entry>12@@5@Medium@5@False@10@14@2@1@ @1@8@True</entry>
+    <entry>12@@5@Medium@5@False@10@14@2@2@Outsider|Extraplanar|Good@12@8@False</entry>
   </collection>
   <collection>
     <name>Leopard</name>
-    <entry>2@@5@Medium@5@False@0@1@0@1@ @1@8@True</entry>
+    <entry>2@@5@Medium@5@False@0@1@0@1@Animal@3@8@True</entry>
   </collection>
   <collection>
     <name>Lightfoot Halfling</name>
-    <entry>1/2@0@5@Small@5@True@0@0@2@1@ @1@8@True</entry>
+    <entry>1/2@0@5@Small@5@True@0@0@2@1@Humanoid|Halfling@1@8@True</entry>
   </collection>
   <collection>
     <name>Lillend</name>
-    <entry>7@6@10@Large@10@True@10@5@2@1@ @1@8@True</entry>
+    <entry>7@6@10@Large@10@True@10@5@2@2@Outsider|Chaotic|Extraplanar|Good@7@8@False</entry>
   </collection>
   <collection>
     <name>Lion</name>
-    <entry>3@@5@Large@10@False@0@3@0@1@ @1@8@True</entry>
+    <entry>3@@5@Large@10@False@0@3@0@1@Animal@5@8@True</entry>
   </collection>
   <collection>
     <name>Dire Lion</name>
@@ -1927,23 +1927,23 @@
   </collection>
   <collection>
     <name>Ice Mephit</name>
-    <entry>3@3@5@Small@5@True@3@4@2@2@Outsider|Air|Extraplanar@3@8@False</entry>
+    <entry>3@3@5@Small@5@True@3@4@2@2@Outsider|Air|Cold|Extraplanar@3@8@False</entry>
   </collection>
   <collection>
     <name>Magma Mephit</name>
-    <entry>3@3@5@Small@5@True@6@4@2@2@Outsider|Air|Extraplanar@3@8@False</entry>
+    <entry>3@3@5@Small@5@True@6@4@2@2@Outsider|Fire|Extraplanar@3@8@False</entry>
   </collection>
   <collection>
     <name>Ooze Mephit</name>
-    <entry>3@3@5@Small@5@True@3@5@2@2@Outsider|Air|Extraplanar@3@8@False</entry>
+    <entry>3@3@5@Small@5@True@3@5@2@2@Outsider|Water|Extraplanar@3@8@False</entry>
   </collection>
   <collection>
     <name>Salt Mephit</name>
-    <entry>3@3@5@Small@5@True@3@6@2@2@Outsider|Air|Extraplanar@3@8@False</entry>
+    <entry>3@3@5@Small@5@True@3@6@2@2@Outsider|Earth|Extraplanar@3@8@False</entry>
   </collection>
   <collection>
     <name>Steam Mephit</name>
-    <entry>3@3@5@Small@5@True@3@4@2@2@Outsider|Air|Extraplanar@3@8@False</entry>
+    <entry>3@3@5@Small@5@True@3@4@2@2@Outsider|Air|Water|Extraplanar@3@8@False</entry>
   </collection>
   <collection>
     <name>Water Mephit</name>
@@ -2423,7 +2423,7 @@
   </collection>
   <collection>
     <name>Tallfellow Halfling</name>
-    <entry>1/2@0@5@Small@5@True@0@0@2@1@ @1@8@True</entry>
+    <entry>1/2@0@5@Small@5@True@0@0@2@1@Humanoid|Halfling@1@8@True</entry>
   </collection>
   <collection>
     <name>Tarrasque</name>
@@ -2467,7 +2467,7 @@
   </collection>
   <collection>
     <name>Juvenile Tojanida</name>
-    <entry>3@@5@Small@5@False@0@10@0@1@ @1@8@True</entry>
+    <entry>3@@5@Small@5@False@0@10@0@2@Outsider|Water|Extraplanar@3@8@False</entry>
   </collection>
   <collection>
     <name>Treant</name>
