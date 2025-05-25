@@ -2700,7 +2700,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 [CreatureConstants.Xorn_Minor] = GetCreatureData(CreatureConstants.Xorn_Minor, SizeConstants.Small, ChallengeRatingConstants.CR3, null, false, 0, 12, 0, false),
                 [CreatureConstants.YethHound] = GetCreatureData(CreatureConstants.YethHound, SizeConstants.Medium, ChallengeRatingConstants.CR3, 3, false, 0, 8, 0, false),
                 [CreatureConstants.Yrthak] = GetCreatureData(CreatureConstants.Yrthak, SizeConstants.Huge, ChallengeRatingConstants.CR9, null, false, 0, 8, 0, true),
-                [CreatureConstants.YuanTi_Abomination] = GetCreatureData(CreatureConstants.YuanTi_Abomination, SizeConstants.Large, ChallengeRatingConstants.CR7, 7, true, 2, 10, 2, true, reach: 10),
+                [CreatureConstants.YuanTi_Abomination] = GetCreatureData(CreatureConstants.YuanTi_Abomination, SizeConstants.Large, ChallengeRatingConstants.CR7, 7, true, 10, 10, 2, true, reach: 10),
                 [CreatureConstants.YuanTi_Halfblood_SnakeHead] = GetCreatureData(CreatureConstants.YuanTi_Halfblood_SnakeHead, SizeConstants.Medium, ChallengeRatingConstants.CR5, 5, true, 4, 4, 2, true),
                 [CreatureConstants.YuanTi_Halfblood_SnakeArms] = GetCreatureData(CreatureConstants.YuanTi_Halfblood_SnakeArms, SizeConstants.Medium, ChallengeRatingConstants.CR5, 5, true, 4, 4, 0, true),
                 [CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] = GetCreatureData(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, SizeConstants.Medium, ChallengeRatingConstants.CR5, 5, true, 4, 4, 2, true),
