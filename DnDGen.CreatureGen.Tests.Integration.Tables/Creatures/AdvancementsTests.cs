@@ -1,12 +1,10 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
-using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.Tables.Helpers;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Helpers;
-using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
@@ -25,8 +23,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         private string[] sizes;
         private Dictionary<string, CreatureDataSelection> creatureData;
         private SpaceReachHelper spaceReachHelper;
-        private IDemographicsGenerator demographicsGenerator;
-        private ICollectionTypeAndAmountSelector typeAndAmountSelector;
 
         protected override string tableName => TableNameConstants.Collection.Advancements;
 
@@ -57,8 +53,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Single());
 
             spaceReachHelper = GetNewInstanceOf<SpaceReachHelper>();
-            demographicsGenerator = GetNewInstanceOf<IDemographicsGenerator>();
-            typeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
             advancements = GetAdvancementsTestData();
         }
 
@@ -80,16 +74,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void Advancement(string creature)
+        public void Advancements(string creature)
         {
             Assert.That(advancements, Contains.Key(creature));
 
             AssertHitDieOnlyIncreases(creature);
             AssertSizeOnlyIncreases(creature);
             AssertCollection(creature, advancements[creature]);
-
-            //INFO: More a test of the Demographics Generator logic than of the advancement data
-            AssertCreatureMeasurementsScaleCorrectlyWithAdvancedSizes(creature);
         }
 
         private void AssertHitDieOnlyIncreases(string creature)
@@ -167,63 +158,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                         Assert.That(sizeIndex, Is.GreaterThan(otherSizeIndex), $"{size} > {otherSize}");
                 }
             }
-        }
-
-        private void AssertCreatureMeasurementsScaleCorrectlyWithAdvancedSizes(string creature)
-        {
-            if (!advancements[creature].Any())
-                return;
-
-            var heights = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, creature);
-            var lengths = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, creature);
-            var weights = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, creature);
-            var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, creature);
-
-            foreach (var gender in genders)
-            {
-                var isTall = IsTall(heights, lengths, creature, gender);
-                var selections = isTall ? heights : lengths;
-                var roll = GetRoll(selections, creature, gender);
-                var weightRoll = GetWeightRoll(weights, heights, lengths, creature, gender);
-            }
-
-            //TODO: Get original height, length, weight
-            //For each advancement, scale to new size as generator does
-            //Verify that the scaled measurements matches the advanced size ranges
-            //Only do length or height, not both
-            Assert.Fail("not yet written");
-        }
-
-        private bool IsTall(
-            IEnumerable<TypeAndAmountDataSelection> heightSelections,
-            IEnumerable<TypeAndAmountDataSelection> lengthSelections,
-            string creature,
-            string gender)
-        {
-            var heightRoll = GetRoll(heightSelections, creature, gender);
-            var lengthRoll = GetRoll(lengthSelections, creature, gender);
-            var averageHeight = dice.Roll(heightRoll).AsPotentialAverage();
-            var averageLength = dice.Roll(lengthRoll).AsPotentialAverage();
-            return averageHeight >= averageLength;
-        }
-
-        private string GetRoll(IEnumerable<TypeAndAmountDataSelection> selections, string creature, string gender)
-        {
-            var baseSelection = selections.First(h => h.Type == gender);
-            var modifierSelection = selections.First(h => h.Type == creature);
-            return $"{baseSelection.Roll}+{modifierSelection.Roll}";
-        }
-
-        private string GetWeightRoll(
-            IEnumerable<TypeAndAmountDataSelection> weightSelections,
-            IEnumerable<TypeAndAmountDataSelection> multiplierSelections,
-            string creature, string gender)
-        {
-            var baseWeight = weightSelections.First(h => h.Type == gender);
-            var multiplierSelection = multiplierSelections.First(h => h.Type == creature);
-            var weightModifier = weightSelections.First(h => h.Type == creature);
-
-            return $"{baseWeight.Roll}+{multiplierSelection.Roll}*{weightModifier.Roll}";
         }
 
         private Dictionary<string, string[]> GetAdvancementsTestData()

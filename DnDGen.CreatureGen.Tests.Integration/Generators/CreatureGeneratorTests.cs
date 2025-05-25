@@ -12,7 +12,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
+namespace DnDGen.CreatureGen.Tests.Integration.Generators
 {
     [TestFixture]
     public class CreatureGeneratorTests : IntegrationTests
