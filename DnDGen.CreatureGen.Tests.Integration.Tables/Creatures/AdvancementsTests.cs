@@ -66,11 +66,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void AdvancementsNames()
         {
             var creatures = CreatureConstants.GetAll();
-            var creatureTypes = CreatureConstants.Types.GetAll();
-
-            var names = creatures.Union(creatureTypes);
-
-            AssertCollectionNames(names);
+            AssertCollectionNames(creatures);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
@@ -1276,7 +1272,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var selection = new AdvancementDataSelection
             {
                 Reach = spaceReachHelper.GetAdvancedReach(creature, creatureData[creature].Size, creatureData[creature].Reach, advancedSize),
-                Space = spaceReachHelper.GetAdvancedSpace(creatureData[creature].Size, creatureData[creature].Reach, advancedSize),
+                Space = spaceReachHelper.GetAdvancedSpace(creatureData[creature].Size, creatureData[creature].Space, advancedSize),
                 Size = advancedSize,
                 AdditionalHitDiceRoll = RollHelper.GetRollWithMostEvenDistribution(creatureHitDiceQuantity, lowerHitDice, upperHitDice, true),
                 StrengthAdjustment = GetStrengthAdjustment(creatureData[creature].Size, advancedSize),
