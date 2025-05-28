@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Integration.Tables.Helpers;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
@@ -15,6 +16,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     public class WeightsTests : TypesAndAmountsTests
     {
         private Dice dice;
+        private ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
+        private MeasurementHelper measurementHelper;
         private const int BASE_INDEX = 1;
         private const int MULTIPLIER_INDEX = 0;
 
@@ -24,6 +27,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         private Dictionary<string, Dictionary<string, string>> lengths;
         private Dictionary<string, Dictionary<string, (int Lower, int Upper)>> creatureWeightRanges;
         private Dictionary<string, Dictionary<string, string>> creatureWeightRolls;
+        private Dictionary<string, (int min, int max)> weightRanges;
 
         [OneTimeSetUp]
         public void OneTimeSetup()
@@ -36,12 +40,27 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             creatureWeightRanges = GetCreatureWeightRanges();
             creatureWeightRolls = GetCreatureWeightRolls();
+
+            weightRanges = new Dictionary<string, (int min, int max)>
+            {
+                [SizeConstants.Fine] = (0, 1),
+                [SizeConstants.Diminutive] = (0, 1),
+                [SizeConstants.Tiny] = (1, 8),
+                [SizeConstants.Small] = (8, 60),
+                [SizeConstants.Medium] = (60, 500),
+                [SizeConstants.Large] = (500, 2 * 2000),
+                [SizeConstants.Huge] = (2 * 2000, 16 * 2000),
+                [SizeConstants.Gargantuan] = (16 * 2000, 125 * 2000),
+                [SizeConstants.Colossal] = (125 * 2000, int.MaxValue),
+            };
         }
 
         [SetUp]
         public void Setup()
         {
             dice = GetNewInstanceOf<Dice>();
+            creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
+            measurementHelper = GetNewInstanceOf<MeasurementHelper>();
         }
 
         [Test]
@@ -71,6 +90,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
 
             AssertTypesAndAmounts(name, rolls);
+            AssertCreatureWeightIsAppropriateForSize(name);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -2240,42 +2260,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         // Source: https://www.d20srd.org/srd/combat/movementPositionAndDistance.htm
-        [Test]
-        public void CreatureWeightIsAppropriateForSize()
+        public void AssertCreatureWeightIsAppropriateForSize(string creature)
         {
-            var weightRanges = new Dictionary<string, (int min, int max)>
+            var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, creature);
+            var data = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, creature);
+            if (data.Types.Contains(CreatureConstants.Types.Subtypes.Incorporeal) || creature == CreatureConstants.LanternArchon)
+                return;
+
+            foreach (var gender in genders)
             {
-                [SizeConstants.Fine] = (0, 1),
-                [SizeConstants.Diminutive] = (0, 1),
-                [SizeConstants.Tiny] = (1, 8),
-                [SizeConstants.Small] = (8, 60),
-                [SizeConstants.Medium] = (60, 500),
-                [SizeConstants.Large] = (500, 2 * 2000),
-                [SizeConstants.Huge] = (2 * 2000, 16 * 2000),
-                [SizeConstants.Gargantuan] = (16 * 2000, 125 * 2000),
-                [SizeConstants.Colossal] = (125 * 2000, int.MaxValue),
-            };
-            var creatures = CreatureConstants.GetAll();
-            var creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
-
-            var genders = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.Genders);
-            var datas = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
-            var incorporealCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
-            var creaturesWithWeight = creatures.Except(incorporealCreatures).Except([CreatureConstants.LanternArchon]);
-
-            foreach (var creature in creaturesWithWeight)
-            {
-                Assert.That(creatureWeightRanges, Contains.Key(creature), "Weights");
-                Assert.That(datas, Contains.Key(creature), "Creature Data");
-
-                var data = datas[creature].Single();
-
-                foreach (var gender in genders[creature])
-                {
-                    Assert.That(creatureWeightRanges[creature], Contains.Key(gender));
-                    Assert.That(creatureWeightRanges[creature][gender].Lower, Is.GreaterThanOrEqualTo(weightRanges[data.Size].min), creature + gender);
-                    Assert.That(creatureWeightRanges[creature][gender].Upper, Is.LessThanOrEqualTo(weightRanges[data.Size].max), creature + gender);
-                }
+                var weight = measurementHelper.GetAverageWeight(creature, gender);
+                Assert.That(weight, Is.InRange(weightRanges[data.Size].min, weightRanges[data.Size].max), creature + gender);
             }
         }
     }

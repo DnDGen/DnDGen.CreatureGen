@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Integration.Tables.Helpers;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
@@ -16,7 +17,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     {
         private Dice dice;
         private ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
-        private ICollectionTypeAndAmountSelector typeAndAmountSelector;
+        private MeasurementHelper measurementHelper;
 
         protected override string tableName => TableNameConstants.TypeAndAmount.Heights;
         private Dictionary<string, Dictionary<string, string>> creatureHeights;
@@ -45,7 +46,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             dice = GetNewInstanceOf<Dice>();
             creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
-            typeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
+            measurementHelper = GetNewInstanceOf<MeasurementHelper>();
         }
 
         [Test]
@@ -72,8 +73,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 Assert.That(isValid, Is.True, roll);
             }
 
-            AssertCreatureHeightIsAppropriateForSize(name);
             AssertTypesAndAmounts(name, typesAndRolls);
+            AssertCreatureHeightIsAppropriateForSize(name);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -2577,39 +2578,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         // Source: https://www.d20srd.org/srd/combat/movementPositionAndDistance.htm
         private void AssertCreatureHeightIsAppropriateForSize(string creature)
         {
-            var lengths = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, creature)
-                .ToDictionary(v => v.Type, v => v.Roll);
             var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, creature);
             var data = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, creature);
 
-            Assert.That(creatureHeights, Contains.Key(creature));
-            Assert.That(creatureHeights[creature], Contains.Key(creature).And.ContainKey(genders.First()));
-            Assert.That(creatureHeights[creature][creature], Is.Not.Empty);
-            Assert.That(creatureHeights[creature][genders.First()], Is.Not.Empty);
-            Assert.That(lengths, Contains.Key(creature).And.ContainKey(genders.First()));
-            Assert.That(lengths[creature], Is.Not.Empty);
-            Assert.That(lengths[genders.First()], Is.Not.Empty);
-
-            var lengthRoll = BuildRoll(lengths[genders.First()], lengths[creature]);
-            var heightRoll = BuildRoll(creatureHeights[creature][genders.First()], creatureHeights[creature][creature]);
-            var length = dice.Roll(lengthRoll).AsPotentialAverage();
-            var height = dice.Roll(heightRoll).AsPotentialAverage();
-
-            if (length > height)
+            if (!measurementHelper.IsTall(creature))
                 return;
 
             foreach (var gender in genders)
             {
-                Assert.That(creatureHeights[creature], Contains.Key(gender));
-
-                var roll = BuildRoll(creatureHeights[creature][gender], creatureHeights[creature][creature]);
-                var minHeight = dice.Roll(roll).AsPotentialMinimum();
-                var maxHeight = dice.Roll(roll).AsPotentialMaximum();
-                Assert.That(minHeight, Is.GreaterThanOrEqualTo(heightRanges[data.Size].min).Within(heightRanges[data.Size].min * 0.1), creature + gender);
-                Assert.That(maxHeight, Is.LessThanOrEqualTo(heightRanges[data.Size].max).Within(heightRanges[data.Size].max * 0.1), creature + gender);
+                var height = measurementHelper.GetAverageHeight(creature, gender);
+                Assert.That(height, Is.InRange(heightRanges[data.Size].min, heightRanges[data.Size].max), creature + gender);
             }
         }
-
-        private string BuildRoll(string baseRoll, string modifierRoll) => $"{baseRoll}+{modifierRoll}";
     }
 }

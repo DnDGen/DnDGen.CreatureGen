@@ -1,24 +1,18 @@
 ﻿using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Tables;
-using DnDGen.Infrastructure.Selectors.Collections;
-using DnDGen.RollGen;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
 {
     internal class SpaceReachHelper
     {
-        private readonly Dice dice;
-        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private readonly Dictionary<string, double> defaultSpace;
         private readonly Dictionary<string, double> defaultTallReach;
         private readonly Dictionary<string, double> defaultLongReach;
+        private readonly MeasurementHelper measurementHelper;
 
-        public SpaceReachHelper(Dice dice, ICollectionTypeAndAmountSelector typeAndAmountSelector)
+        public SpaceReachHelper(MeasurementHelper measurementHelper)
         {
-            this.dice = dice;
-            this.typeAndAmountSelector = typeAndAmountSelector;
+            this.measurementHelper = measurementHelper;
 
             defaultSpace = new Dictionary<string, double>
             {
@@ -60,27 +54,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
 
         public double GetDefaultReach(string creature, string size)
         {
-            if (IsTall(creature))
+            if (measurementHelper.IsTall(creature))
                 return defaultTallReach[size];
 
             return defaultLongReach[size];
-        }
-
-        private bool IsTall(string creature)
-        {
-            var lengthRoll = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, creature)
-                .Where(v => v.Type == creature)
-                .Select(v => v.Roll)
-                .Single();
-            var heightRoll = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, creature)
-                .Where(v => v.Type == creature)
-                .Select(v => v.Roll)
-                .Single();
-
-            var length = dice.Roll(lengthRoll).AsPotentialAverage();
-            var height = dice.Roll(heightRoll).AsPotentialAverage();
-
-            return height >= length;
         }
 
         public double GetDefaultSpace(string size) => defaultSpace[size];
@@ -90,7 +67,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
             if (advancedSize == originalSize)
                 return originalReach;
 
-            if (IsTall(creature))
+            if (measurementHelper.IsTall(creature))
                 return ComputeIncrease(originalReach, defaultTallReach[originalSize], defaultTallReach[advancedSize]);
 
             return ComputeIncrease(originalReach, defaultLongReach[originalSize], defaultLongReach[advancedSize]);
