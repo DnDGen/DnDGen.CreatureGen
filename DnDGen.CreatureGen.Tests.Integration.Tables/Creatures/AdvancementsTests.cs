@@ -81,7 +81,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         private void AssertHitDieOnlyIncreases(string creature)
         {
-            if (!advancements[creature].Any())
+            if (advancements[creature].Length == 0)
                 return;
 
             var rolls = advancements[creature]
@@ -113,7 +113,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         private void AssertSizeOnlyIncreases(string creature)
         {
-            if (!advancements[creature].Any())
+            if (advancements[creature].Length == 0)
                 return;
 
             var sizes = advancements[creature]

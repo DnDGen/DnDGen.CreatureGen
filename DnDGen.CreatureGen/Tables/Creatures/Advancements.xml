@@ -369,8 +369,8 @@
   </collection>
   <collection>
     <name>Basilisk</name>
-    <entry>Medium@5@5@1d4</entry>
-    <entry>Large@10@5@1d8+4</entry>
+    <entry>Medium@5@5@1d4@0@0@0@0@3@5</entry>
+    <entry>Large@10@5@1d8+4@8@4@-2@2@3@6</entry>
   </collection>
   <collection>
     <name>Bat</name>
@@ -380,23 +380,23 @@
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>
-    <entry>Medium@5@5@1d3</entry>
-    <entry>Large@10@10@(1d3-1)*3+1d3+3</entry>
+    <entry>Medium@5@5@1d3@0@0@0@0@2@5</entry>
+    <entry>Large@10@10@(1d3-1)*3+1d3+3@8@4@-2@2@2@6</entry>
   </collection>
   <collection>
     <name>Bebilith</name>
-    <entry>Huge@15@10@1d6</entry>
-    <entry>Gargantuan@20@15@(1d6-1)*3+1d3+6</entry>
+    <entry>Huge@15@10@1d6@0@0@0@0@2@10</entry>
+    <entry>Gargantuan@20@15@(1d6-1)*3+1d3+6@8@4@0@4@2@11</entry>
   </collection>
   <collection>
     <name>Behir</name>
-    <entry>Huge@15@10@1d4</entry>
-    <entry>Gargantuan@20@15@(1d2-1)*7+1d6+1d2+3</entry>
+    <entry>Huge@15@10@1d4@0@0@0@0@3@8</entry>
+    <entry>Gargantuan@20@15@(1d2-1)*7+1d6+1d2+3@8@4@0@4@3@9</entry>
   </collection>
   <collection>
     <name>Beholder</name>
-    <entry>Large@10@5@1d4+1d2-1</entry>
-    <entry>Huge@15@10@1d12+1d6+4</entry>
+    <entry>Large@10@5@1d4+1d2-1@0@0@0@0@4@13</entry>
+    <entry>Huge@15@10@1d12+1d6+4@8@4@-2@3@4@14</entry>
   </collection>
   <collection>
     <name>Belker</name>

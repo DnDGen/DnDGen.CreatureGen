@@ -59,7 +59,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
             var height = GetAverageHeight(creature);
             var length = GetAverageLength(creature);
 
-            return height >= length;
+            return height > length;
         }
 
         public double GetAverageWeight(string creature, string gender)
