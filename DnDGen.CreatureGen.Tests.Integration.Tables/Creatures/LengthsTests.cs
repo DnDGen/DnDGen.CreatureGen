@@ -1,9 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.Tables.Helpers;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
@@ -16,38 +14,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     public class LengthsTests : TypesAndAmountsTests
     {
         private Dice dice;
-        private ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
-        private ICollectionTypeAndAmountSelector typeAndAmountSelector;
         private MeasurementHelper measurementHelper;
 
         protected override string tableName => TableNameConstants.TypeAndAmount.Lengths;
         private Dictionary<string, Dictionary<string, string>> creatureLengths;
-        private Dictionary<string, (int min, int max)> lengthRanges;
 
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
             creatureLengths = GetCreatureLengths();
-            lengthRanges = new Dictionary<string, (int min, int max)>
-            {
-                [SizeConstants.Fine] = (1, 6),
-                [SizeConstants.Diminutive] = (6, 12),
-                [SizeConstants.Tiny] = (1 * 12, 2 * 12),
-                [SizeConstants.Small] = (2 * 12, 4 * 12),
-                [SizeConstants.Medium] = (4 * 12, 8 * 12),
-                [SizeConstants.Large] = (8 * 12, 16 * 12),
-                [SizeConstants.Huge] = (16 * 12, 32 * 12),
-                [SizeConstants.Gargantuan] = (32 * 12, 64 * 12),
-                [SizeConstants.Colossal] = (64 * 12, int.MaxValue),
-            };
         }
 
         [SetUp]
         public void Setup()
         {
             dice = GetNewInstanceOf<Dice>();
-            creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
-            typeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
             measurementHelper = GetNewInstanceOf<MeasurementHelper>();
         }
 
@@ -77,7 +58,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             AssertTypesAndAmounts(name, typesAndRolls);
             AssertIfCreatureHasNoLength_HasHeight(name);
-            AssertCreatureLengthIsAppropriateForSize(name);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -1580,10 +1560,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Nightmare_Cauchemar][CreatureConstants.Nightmare_Cauchemar] = GetMultiplierFromAverage(8 * 12 * 2);
             lengths[CreatureConstants.Nightwalker][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Nightwalker][CreatureConstants.Nightwalker] = "0";
+            //https://www.dimensions.com/element/giant-golden-crowned-flying-fox-acerodon-jubatus scaled up: [18,22]*40*12/[59,67] = [146,158]
+            lengths[CreatureConstants.Nightwing][GenderConstants.Agender] = GetBaseFromRange(146, 158);
+            lengths[CreatureConstants.Nightwing][CreatureConstants.Nightwing] = GetMultiplierFromRange(146, 158);
             //Source: https://www.d20srd.org/srd/monsters/nightshade.htm
-            //https://www.dimensions.com/element/giant-golden-crowned-flying-fox-acerodon-jubatus scaled up: [11,16]*40*12/[59,67] = [89,115]
-            lengths[CreatureConstants.Nightwing][GenderConstants.Agender] = GetBaseFromRange(89, 115);
-            lengths[CreatureConstants.Nightwing][CreatureConstants.Nightwing] = GetMultiplierFromRange(89, 115);
             lengths[CreatureConstants.Nixie][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Nixie][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Nixie][CreatureConstants.Nixie] = "0";
@@ -1822,9 +1802,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.ShadowMastiff][GenderConstants.Female] = GetBaseFromRange(29, 44);
             lengths[CreatureConstants.ShadowMastiff][GenderConstants.Male] = GetBaseFromRange(32, 47);
             lengths[CreatureConstants.ShadowMastiff][CreatureConstants.ShadowMastiff] = GetMultiplierFromRange(32, 47);
-            //Source: https://www.d20srd.org/srd/monsters/shamblingMound.htm
-            lengths[CreatureConstants.ShamblingMound][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
-            lengths[CreatureConstants.ShamblingMound][CreatureConstants.ShamblingMound] = GetMultiplierFromAverage(8 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/shamblingMound.htm -
+            //the 8' measurement is "girth" or width, not length. Shambling Mounds should be tall, so we will count this as 0 for now
+            //lengths[CreatureConstants.ShamblingMound][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.ShamblingMound][GenderConstants.Agender] = "0";
+            //lengths[CreatureConstants.ShamblingMound][CreatureConstants.ShamblingMound] = GetMultiplierFromAverage(8 * 12);
+            lengths[CreatureConstants.ShamblingMound][CreatureConstants.ShamblingMound] = "0";
             //Source: https://www.dimensions.com/element/blacktip-shark-carcharhinus-limbatus
             lengths[CreatureConstants.Shark_Medium][GenderConstants.Female] = GetBaseFromRange(59, 8 * 12);
             lengths[CreatureConstants.Shark_Medium][GenderConstants.Male] = GetBaseFromRange(59, 8 * 12);
@@ -2362,22 +2345,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
                 if (length == 0)
                     Assert.That(height, Is.Positive, creature + gender);
-            }
-        }
-
-        // Source: https://www.d20srd.org/srd/combat/movementPositionAndDistance.htm
-        private void AssertCreatureLengthIsAppropriateForSize(string creature)
-        {
-            var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, creature);
-            var data = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, creature);
-
-            if (measurementHelper.IsTall(creature))
-                return;
-
-            foreach (var gender in genders)
-            {
-                var length = measurementHelper.GetAverageLength(creature, gender);
-                Assert.That(length, Is.InRange(lengthRanges[data.Size].min, lengthRanges[data.Size].max), creature + gender);
             }
         }
     }

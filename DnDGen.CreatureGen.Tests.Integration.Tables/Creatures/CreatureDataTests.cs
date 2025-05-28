@@ -3483,8 +3483,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void SpaceAndReachMatchOfficialCreatureData(string creature, double officialSpace, double officialReach)
         {
             var data = DataHelper.Parse<CreatureDataSelection>(creatureData[creature]);
-            Assert.That(data.Space, Is.EqualTo(officialSpace), $"TEST DATA: {creature}");
-            Assert.That(data.Reach, Is.EqualTo(officialReach), $"TEST DATA: {creature}");
+            Assert.That(data.Space, Is.EqualTo(officialSpace));
+            Assert.That(data.Reach, Is.EqualTo(officialReach));
         }
     }
 }

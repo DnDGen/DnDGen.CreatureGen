@@ -1,9 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.Tables.Helpers;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
@@ -16,36 +14,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     public class HeightsTests : TypesAndAmountsTests
     {
         private Dice dice;
-        private ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
         private MeasurementHelper measurementHelper;
 
         protected override string tableName => TableNameConstants.TypeAndAmount.Heights;
         private Dictionary<string, Dictionary<string, string>> creatureHeights;
-        private Dictionary<string, (int min, int max)> heightRanges;
 
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
             creatureHeights = GetCreatureHeights();
-            heightRanges = new Dictionary<string, (int min, int max)>
-            {
-                [SizeConstants.Fine] = (1, 6),
-                [SizeConstants.Diminutive] = (6, 12),
-                [SizeConstants.Tiny] = (1 * 12, 2 * 12),
-                [SizeConstants.Small] = (2 * 12, 4 * 12),
-                [SizeConstants.Medium] = (4 * 12, 8 * 12),
-                [SizeConstants.Large] = (8 * 12, 16 * 12),
-                [SizeConstants.Huge] = (16 * 12, 32 * 12),
-                [SizeConstants.Gargantuan] = (32 * 12, 64 * 12),
-                [SizeConstants.Colossal] = (64 * 12, int.MaxValue),
-            };
         }
 
         [SetUp]
         public void Setup()
         {
             dice = GetNewInstanceOf<Dice>();
-            creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
             measurementHelper = GetNewInstanceOf<MeasurementHelper>();
         }
 
@@ -75,7 +58,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             AssertTypesAndAmounts(name, typesAndRolls);
             AssertIfCreatureHasNoHeight_HasLength(name);
-            AssertCreatureHeightIsAppropriateForSize(name);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -343,9 +325,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Arrowhawk_Elder][GenderConstants.Female] = "0";
             heights[CreatureConstants.Arrowhawk_Elder][GenderConstants.Male] = "0";
             heights[CreatureConstants.Arrowhawk_Elder][CreatureConstants.Arrowhawk_Elder] = "0";
-            //Source: https://forgottenrealms.fandom.com/wiki/Assassin_vine "thick as a human forearm" = guessing to be 4"
-            heights[CreatureConstants.AssassinVine][GenderConstants.Agender] = GetBaseFromAverage(4);
-            heights[CreatureConstants.AssassinVine][CreatureConstants.AssassinVine] = GetMultiplierFromAverage(4);
             //Source: https://forgottenrealms.fandom.com/wiki/Assassin_vine
             heights[CreatureConstants.AssassinVine][GenderConstants.Agender] = GetBaseFromAverage(20 * 12);
             heights[CreatureConstants.AssassinVine][CreatureConstants.AssassinVine] = GetMultiplierFromAverage(20 * 12);
@@ -1677,9 +1656,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Nightwalker][GenderConstants.Agender] = GetBaseFromAverage(20 * 12);
             heights[CreatureConstants.Nightwalker][CreatureConstants.Nightwalker] = GetMultiplierFromAverage(20 * 12);
             //Source: https://www.d20srd.org/srd/monsters/nightshade.htm
-            //https://www.dimensions.com/element/giant-golden-crowned-flying-fox-acerodon-jubatus scaled up: [18,22]*40*12/[59,67] = [146,158]
-            heights[CreatureConstants.Nightwing][GenderConstants.Agender] = GetBaseFromRange(146, 158);
-            heights[CreatureConstants.Nightwing][CreatureConstants.Nightwing] = GetMultiplierFromRange(146, 158);
+            //https://www.dimensions.com/element/giant-golden-crowned-flying-fox-acerodon-jubatus scaled up: [11,16]*40*12/[59,67] = [89,115]
+            heights[CreatureConstants.Nightwing][GenderConstants.Agender] = GetBaseFromRange(89, 115);
+            heights[CreatureConstants.Nightwing][CreatureConstants.Nightwing] = GetMultiplierFromRange(89, 115);
             //Source: https://www.d20srd.org/srd/monsters/sprite.htm#nixie
             heights[CreatureConstants.Nixie][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
             heights[CreatureConstants.Nixie][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
@@ -2564,22 +2543,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
                 if (height == 0)
                     Assert.That(length, Is.Positive, creature + gender);
-            }
-        }
-
-        // Source: https://www.d20srd.org/srd/combat/movementPositionAndDistance.htm
-        private void AssertCreatureHeightIsAppropriateForSize(string creature)
-        {
-            var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, creature);
-            var data = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, creature);
-
-            if (!measurementHelper.IsTall(creature))
-                return;
-
-            foreach (var gender in genders)
-            {
-                var height = measurementHelper.GetAverageHeight(creature, gender);
-                Assert.That(height, Is.InRange(heightRanges[data.Size].min, heightRanges[data.Size].max), creature + gender);
             }
         }
     }

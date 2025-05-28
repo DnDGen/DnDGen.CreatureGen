@@ -487,8 +487,8 @@
   </collection>
   <collection>
     <name>Assassin Vine</name>
-	  <entry>Agender@2</entry>
-	  <entry>Assassin Vine@1d2</entry>
+	  <entry>Agender@200</entry>
+	  <entry>Assassin Vine@16d4</entry>
   </collection>
   <collection>
     <name>Athach</name>
@@ -2688,8 +2688,8 @@
   </collection>
   <collection>
     <name>Nightwing</name>
-	  <entry>Agender@142</entry>
-	  <entry>Nightwing@4d4</entry>
+	  <entry>Agender@76</entry>
+	  <entry>Nightwing@13d3</entry>
   </collection>
   <collection>
     <name>Nine-Headed Cryohydra</name>
