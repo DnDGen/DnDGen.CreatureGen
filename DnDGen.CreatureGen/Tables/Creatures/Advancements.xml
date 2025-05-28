@@ -745,10 +745,6 @@
     <entry>Large@10@5@1d4+1d2+1</entry>
   </collection>
   <collection>
-    <name>Construct</name>
-    <entry>Construct@4</entry>
-  </collection>
-  <collection>
     <name>Copper Dragon, Adult</name>
     <entry>Huge@15@10@1d2</entry>
   </collection>
@@ -941,10 +937,6 @@
     <name>Doppelganger</name>
   </collection>
   <collection>
-    <name>Dragon</name>
-    <entry>Dragon@2</entry>
-  </collection>
-  <collection>
     <name>Dragon Turtle</name>
     <entry>Huge@15@10@1d12</entry>
     <entry>Gargantuan@20@15@1d12+12</entry>
@@ -1048,10 +1040,6 @@
     <entry>Huge@15@15@(1d12-1)*2+1d2+6</entry>
   </collection>
   <collection>
-    <name>Elemental</name>
-    <entry>Elemental@4</entry>
-  </collection>
-  <collection>
     <name>Elephant</name>
     <entry>Huge@15@10@1d10+1d2-1</entry>
   </collection>
@@ -1085,10 +1073,6 @@
   </collection>
   <collection>
     <name>Ettin</name>
-  </collection>
-  <collection>
-    <name>Fey</name>
-    <entry>Fey@4</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Elder</name>
@@ -1202,10 +1186,6 @@
   <collection>
     <name>Ghoul</name>
     <entry>Medium@5@5@1</entry>
-  </collection>
-  <collection>
-    <name>Giant</name>
-    <entry>Giant@4</entry>
   </collection>
   <collection>
     <name>Giant Ant, Queen</name>
@@ -1555,10 +1535,6 @@
     <name>Human</name>
   </collection>
   <collection>
-    <name>Humanoid</name>
-    <entry>Humanoid@4</entry>
-  </collection>
-  <collection>
     <name>Hyena</name>
     <entry>Medium@5@5@1</entry>
     <entry>Large@10@5@1d2+1</entry>
@@ -1688,10 +1664,6 @@
     <name>Locust Swarm</name>
   </collection>
   <collection>
-    <name>Magical Beast</name>
-    <entry>Magical Beast@3</entry>
-  </collection>
-  <collection>
     <name>Magma Mephit</name>
     <entry>Small@5@5@1d3</entry>
     <entry>Medium@5@5@1d3+3</entry>
@@ -1791,10 +1763,6 @@
   </collection>
   <collection>
     <name>Monstrous Centipede, Tiny</name>
-  </collection>
-  <collection>
-    <name>Monstrous Humanoid</name>
-    <entry>Monstrous Humanoid@3</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Colossal</name>
@@ -1964,10 +1932,6 @@
     <name>Ogre Mage</name>
   </collection>
   <collection>
-    <name>Ooze</name>
-    <entry>Ooze@4</entry>
-  </collection>
-  <collection>
     <name>Ooze Mephit</name>
     <entry>Small@5@5@1d3</entry>
     <entry>Medium@5@5@1d3+3</entry>
@@ -1984,10 +1948,6 @@
     <name>Otyugh</name>
     <entry>Large@10@10@1d2</entry>
     <entry>Huge@15@15@1d10+2</entry>
-  </collection>
-  <collection>
-    <name>Outsider</name>
-    <entry>Outsider@2</entry>
   </collection>
   <collection>
     <name>Owl</name>
@@ -2029,10 +1989,6 @@
   <collection>
     <name>Pixie with Irresistible dance</name>
     <entry>Small@5@5@1d2</entry>
-  </collection>
-  <collection>
-    <name>Plant</name>
-    <entry>Plant@4</entry>
   </collection>
   <collection>
     <name>Polar Bear</name>
@@ -2458,10 +2414,6 @@
     <entry>Huge@15@15@1d12+4</entry>
   </collection>
   <collection>
-    <name>Undead</name>
-    <entry>Undead@4</entry>
-  </collection>
-  <collection>
     <name>Unicorn</name>
     <entry>Large@10@5@1d4</entry>
   </collection>
@@ -2471,10 +2423,6 @@
   <collection>
     <name>Vargouille</name>
     <entry>Small@5@5@1d2</entry>
-  </collection>
-  <collection>
-    <name>Vermin</name>
-    <entry>Vermin@4</entry>
   </collection>
   <collection>
     <name>Violet Fungus</name>

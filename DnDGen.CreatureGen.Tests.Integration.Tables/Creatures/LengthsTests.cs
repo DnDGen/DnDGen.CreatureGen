@@ -15,21 +15,37 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     public class LengthsTests : TypesAndAmountsTests
     {
         private Dice dice;
+        private ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
+        private ICollectionTypeAndAmountSelector typeAndAmountSelector;
 
         protected override string tableName => TableNameConstants.TypeAndAmount.Lengths;
         private Dictionary<string, Dictionary<string, string>> creatureLengths;
+        private Dictionary<string, (int min, int max)> lengthRanges;
 
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
             creatureLengths = GetCreatureLengths();
+            lengthRanges = new Dictionary<string, (int min, int max)>
+            {
+                [SizeConstants.Fine] = (1, 6),
+                [SizeConstants.Diminutive] = (6, 12),
+                [SizeConstants.Tiny] = (1 * 12, 2 * 12),
+                [SizeConstants.Small] = (2 * 12, 4 * 12),
+                [SizeConstants.Medium] = (4 * 12, 8 * 12),
+                [SizeConstants.Large] = (8 * 12, 16 * 12),
+                [SizeConstants.Huge] = (16 * 12, 32 * 12),
+                [SizeConstants.Gargantuan] = (32 * 12, 64 * 12),
+                [SizeConstants.Colossal] = (64 * 12, int.MaxValue),
+            };
         }
 
         [SetUp]
         public void Setup()
         {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             dice = GetNewInstanceOf<Dice>();
+            creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
+            typeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
         }
 
         [Test]
@@ -56,6 +72,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 Assert.That(isValid, Is.True, roll, $"TEST DATA: {name}");
             }
 
+            AssertCreatureLengthIsAppropriateForSize(name);
             AssertTypesAndAmounts(name, typesAndRolls);
         }
 
@@ -310,9 +327,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Arrowhawk_Elder][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
             lengths[CreatureConstants.Arrowhawk_Elder][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
             lengths[CreatureConstants.Arrowhawk_Elder][CreatureConstants.Arrowhawk_Elder] = GetMultiplierFromAverage(20 * 12);
-            //Source: https://forgottenrealms.fandom.com/wiki/Assassin_vine
-            lengths[CreatureConstants.AssassinVine][GenderConstants.Agender] = GetBaseFromAverage(20 * 12);
-            lengths[CreatureConstants.AssassinVine][CreatureConstants.AssassinVine] = GetMultiplierFromAverage(20 * 12);
+            //Source: https://forgottenrealms.fandom.com/wiki/Assassin_vine "thick as a human forearm" = guessing to be 4"
+            lengths[CreatureConstants.AssassinVine][GenderConstants.Agender] = GetBaseFromAverage(4);
+            lengths[CreatureConstants.AssassinVine][CreatureConstants.AssassinVine] = GetMultiplierFromAverage(4);
             //Source: https://www.d20srd.org/srd/monsters/athach.htm
             lengths[CreatureConstants.Athach][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Athach][GenderConstants.Male] = "0";
@@ -2355,60 +2372,41 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         // Source: https://www.d20srd.org/srd/combat/movementPositionAndDistance.htm
-        [Test]
-        public void CreatureLengthIsAppropriateForSize()
+        private void AssertCreatureLengthIsAppropriateForSize(string creature)
         {
-            var lengthRanges = new Dictionary<string, (int min, int max)>
+            var heights = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, creature)
+                .ToDictionary(v => v.Type, v => v.Roll);
+            var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, creature);
+            var data = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, creature);
+
+            Assert.That(creatureLengths, Contains.Key(creature), "Lengths");
+            Assert.That(creatureLengths[creature], Contains.Key(creature).And.ContainKey(genders.First()), $"Lengths[{creature}]");
+            Assert.That(creatureLengths[creature][creature], Is.Not.Empty, $"Lengths[{creature}][{creature}]");
+            Assert.That(creatureLengths[creature][genders.First()], Is.Not.Empty, $"Lengths[{creature}][{creature}]");
+            Assert.That(heights, Contains.Key(creature).And.ContainKey(genders.First()), "Heights");
+            Assert.That(heights[creature], Is.Not.Empty, $"Heights[{creature}][{creature}]");
+            Assert.That(heights[genders.First()], Is.Not.Empty, $"Heights[{creature}][{creature}]");
+
+            var lengthRoll = BuildRoll(creatureLengths[creature][genders.First()], creatureLengths[creature][creature]);
+            var heightRoll = BuildRoll(heights[genders.First()], heights[creature]);
+            var height = dice.Roll(heightRoll).AsPotentialAverage();
+            var length = dice.Roll(lengthRoll).AsPotentialAverage();
+
+            if (length <= height)
+                return;
+
+            foreach (var gender in genders)
             {
-                [SizeConstants.Fine] = (1, 6),
-                [SizeConstants.Diminutive] = (6, 12),
-                [SizeConstants.Tiny] = (1 * 12, 2 * 12),
-                [SizeConstants.Small] = (2 * 12, 4 * 12),
-                [SizeConstants.Medium] = (4 * 12, 8 * 12),
-                [SizeConstants.Large] = (8 * 12, 16 * 12),
-                [SizeConstants.Huge] = (16 * 12, 32 * 12),
-                [SizeConstants.Gargantuan] = (32 * 12, 64 * 12),
-                [SizeConstants.Colossal] = (64 * 12, int.MaxValue),
-            };
-            var creatures = CreatureConstants.GetAll();
-            var creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
-            var typeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
+                Assert.That(creatureLengths[creature], Contains.Key(gender));
 
-            var heights = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights)
-                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToDictionary(v => v.Type, v => v.Roll));
-            var genders = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.Genders);
-            var datas = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
-
-            foreach (var creature in creatures)
-            {
-                Assert.That(creatureLengths, Contains.Key(creature), "Lengths");
-                Assert.That(creatureLengths[creature], Contains.Key(creature), $"Lengths[{creature}]");
-                Assert.That(heights, Contains.Key(creature), "Heights");
-                Assert.That(heights[creature], Contains.Key(creature), $"Heights[{creature}]");
-                Assert.That(datas, Contains.Key(creature), "Creature Data");
-
-                Assert.That(creatureLengths[creature][creature], Is.Not.Empty, $"Lengths[{creature}][{creature}]");
-                Assert.That(heights[creature][creature], Is.Not.Empty, $"Heights[{creature}][{creature}]");
-
-                var height = dice.Roll(heights[creature][creature]).AsPotentialAverage();
-                var length = dice.Roll(creatureLengths[creature][creature]).AsPotentialAverage();
-
-                if (length <= height)
-                    continue;
-
-                var data = datas[creature].Single();
-
-                foreach (var gender in genders[creature])
-                {
-                    Assert.That(creatureLengths[creature], Contains.Key(gender));
-
-                    var roll = $"{creatureLengths[creature][gender]}+{creatureLengths[creature][creature]}";
-                    var minLength = dice.Roll(roll).AsPotentialMinimum();
-                    var maxLength = dice.Roll(roll).AsPotentialMaximum();
-                    Assert.That(minLength, Is.GreaterThanOrEqualTo(lengthRanges[data.Size].min), creature + gender);
-                    Assert.That(maxLength, Is.LessThanOrEqualTo(lengthRanges[data.Size].max), creature + gender);
-                }
+                var roll = BuildRoll(creatureLengths[creature][gender], creatureLengths[creature][creature]);
+                var minLength = dice.Roll(roll).AsPotentialMinimum();
+                var maxLength = dice.Roll(roll).AsPotentialMaximum();
+                Assert.That(minLength, Is.GreaterThanOrEqualTo(lengthRanges[data.Size].min), creature + gender);
+                Assert.That(maxLength, Is.LessThanOrEqualTo(lengthRanges[data.Size].max), creature + gender);
             }
         }
+
+        private string BuildRoll(string baseRoll, string modifierRoll) => $"{baseRoll}+{modifierRoll}";
     }
 }

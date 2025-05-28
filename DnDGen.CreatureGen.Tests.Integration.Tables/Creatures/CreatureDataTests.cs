@@ -2138,7 +2138,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 [CreatureConstants.Arrowhawk_Adult] = GetCreatureData(CreatureConstants.Arrowhawk_Adult, SizeConstants.Medium, ChallengeRatingConstants.CR5, null, false, 0, 6, 0, false),
                 [CreatureConstants.Arrowhawk_Elder] = GetCreatureData(CreatureConstants.Arrowhawk_Elder, SizeConstants.Large, ChallengeRatingConstants.CR8, null, false, 0, 8, 0, false),
                 [CreatureConstants.Arrowhawk_Juvenile] = GetCreatureData(CreatureConstants.Arrowhawk_Juvenile, SizeConstants.Small, ChallengeRatingConstants.CR3, null, false, 0, 4, 0, false),
-                [CreatureConstants.AssassinVine] = GetCreatureData(CreatureConstants.AssassinVine, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 4, 6, 0, false, reach: 10),
+                [CreatureConstants.AssassinVine] = GetCreatureData(CreatureConstants.AssassinVine, SizeConstants.Large, ChallengeRatingConstants.CR3, null, false, 4, 6, 0, false),
                 [CreatureConstants.Athach] = GetCreatureData(CreatureConstants.Athach, SizeConstants.Huge, ChallengeRatingConstants.CR8, 5, true, 0, 8, 3, true),
                 [CreatureConstants.Avoral] = GetCreatureData(CreatureConstants.Avoral, SizeConstants.Medium, ChallengeRatingConstants.CR9, null, true, 8, 8, 2, false),
                 [CreatureConstants.Azer] = GetCreatureData(CreatureConstants.Azer, SizeConstants.Medium, ChallengeRatingConstants.CR2, 4, true, 0, 6, 2, false),
