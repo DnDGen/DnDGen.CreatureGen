@@ -76,6 +76,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
 
             AssertTypesAndAmounts(name, typesAndRolls);
+            AssertIfCreatureHasNoLength_HasHeight(name);
             AssertCreatureLengthIsAppropriateForSize(name);
         }
 
@@ -2350,27 +2351,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(baseLength + multiplierMax, Is.EqualTo(max), $"Max; Theoretical: {theoreticalRoll}");
         }
 
-        [Test]
-        public void IfCreatureHasNoLength_HasHeight()
+        private void AssertIfCreatureHasNoLength_HasHeight(string creature)
         {
-            var typeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
-            var heights = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights)
-                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToDictionary(v => v.Type, v => v.Roll));
+            var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, creature);
 
-            var creatures = CreatureConstants.GetAll();
-
-            foreach (var creature in creatures)
+            foreach (var gender in genders)
             {
-                Assert.That(creatureLengths, Contains.Key(creature), "Lengths");
-                Assert.That(creatureLengths[creature], Contains.Key(creature), $"Lengths[{creature}]");
-                Assert.That(heights, Contains.Key(creature), "Heights");
-                Assert.That(heights[creature], Contains.Key(creature), $"Heights[{creature}]");
+                var height = measurementHelper.GetAverageHeight(creature, gender);
+                var length = measurementHelper.GetAverageLength(creature, gender);
 
-                Assert.That(creatureLengths[creature][creature], Is.Not.Empty, $"Lengths[{creature}][{creature}]");
-                Assert.That(heights[creature][creature], Is.Not.Empty, $"Heights[{creature}][{creature}]");
-
-                if (creatureLengths[creature][creature] == "0")
-                    Assert.That(heights[creature][creature], Is.Not.EqualTo("0"), creature);
+                if (length == 0)
+                    Assert.That(height, Is.Positive, creature + gender);
             }
         }
 

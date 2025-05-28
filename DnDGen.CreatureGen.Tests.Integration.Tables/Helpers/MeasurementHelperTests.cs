@@ -14,7 +14,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
             measurementHelper = GetNewInstanceOf<MeasurementHelper>();
         }
 
-        [Test]
+        [TestCase(CreatureConstants.Human, 5 * 12 + 6)]
         public void GetAverageHeight(string creature, double expected)
         {
             Assert.Fail("not yet written");
@@ -38,16 +38,27 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
             Assert.Fail("not yet written");
         }
 
-        [TestCase(CreatureConstants.Human, true)]
-        [TestCase(CreatureConstants.Wolf, false)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal, true)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Flexible, false)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long, false)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden, false)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall, true)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden, true)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Sheetlike, false)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs, true)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden, true)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden, false)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Wooden, true)]
+        [TestCase(CreatureConstants.AssassinVine, true)]
         [TestCase(CreatureConstants.Beholder, true)]
+        [TestCase(CreatureConstants.Human, true)]
         [TestCase(CreatureConstants.LanternArchon, true)]
         [TestCase(CreatureConstants.Snake_Constrictor, false)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long, false)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall, true)]
+        [TestCase(CreatureConstants.Wolf, false)]
         public void IsTall(string creature, bool expected)
         {
-            Assert.Fail("not yet written");
+            var isTall = measurementHelper.IsTall(creature);
+            Assert.That(isTall, Is.EqualTo(expected));
         }
 
         [Test]

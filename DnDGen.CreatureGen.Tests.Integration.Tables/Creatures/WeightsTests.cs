@@ -89,6 +89,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 Assert.That(isValid, Is.True, roll, $"TEST DATA: {name}");
             }
 
+            AssertIncorporealCreaturesAreWeightless(name);
             AssertTypesAndAmounts(name, rolls);
             AssertCreatureWeightIsAppropriateForSize(name);
         }
@@ -2215,31 +2216,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
-        [Test]
-        public void IncorporealCreaturesAreWeightless()
+        private void AssertIncorporealCreaturesAreWeightless(string creature)
         {
-            var incorporealCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
-
-            Assert.That(table.Keys, Is.SupersetOf(incorporealCreatures));
-
-            foreach (var creature in creatureWeightRanges.Keys)
+            var data = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, creature);
+            if (data.Types.Contains(CreatureConstants.Types.Subtypes.Incorporeal) || creature == CreatureConstants.LanternArchon)
             {
-                if (incorporealCreatures.Contains(creature) || creature == CreatureConstants.LanternArchon)
+                foreach (var genderKvp in creatureWeightRanges[creature])
                 {
-                    foreach (var genderKvp in creatureWeightRanges[creature])
-                    {
-                        Assert.That(genderKvp.Value.Lower, Is.Zero, $"Lower; {genderKvp.Key} {creature}");
-                        Assert.That(genderKvp.Value.Upper, Is.Zero, $"Upper; {genderKvp.Key} {creature}");
-                    }
-
-                    foreach (var genderKvp in creatureWeightRolls[creature])
-                    {
-                        Assert.That(genderKvp.Value, Is.EqualTo("0"), $"Roll; {genderKvp.Key} {creature}");
-                    }
-
-                    continue;
+                    Assert.That(genderKvp.Value.Lower, Is.Zero, $"Lower; {genderKvp.Key} {creature}");
+                    Assert.That(genderKvp.Value.Upper, Is.Zero, $"Upper; {genderKvp.Key} {creature}");
                 }
 
+                foreach (var genderKvp in creatureWeightRolls[creature])
+                {
+                    Assert.That(genderKvp.Value, Is.EqualTo("0"), $"Roll; {genderKvp.Key} {creature}");
+                }
+            }
+            else
+            {
                 foreach (var genderKvp in creatureWeightRanges[creature])
                 {
                     Assert.That(genderKvp.Value.Lower, Is.Positive, $"Lower; {genderKvp.Key} {creature}");

@@ -51,7 +51,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
         public double GetAverageLength(string creature)
         {
             var gender = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, creature).First();
-            return GetAverageHeight(creature, gender);
+            return GetAverageLength(creature, gender);
         }
 
         public bool IsTall(string creature)
