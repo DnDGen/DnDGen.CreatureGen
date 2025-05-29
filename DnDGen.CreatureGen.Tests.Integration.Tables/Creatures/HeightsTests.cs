@@ -376,14 +376,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Basilisk_Greater][GenderConstants.Female] = "0";
             heights[CreatureConstants.Basilisk_Greater][GenderConstants.Male] = "0";
             heights[CreatureConstants.Basilisk_Greater][CreatureConstants.Basilisk_Greater] = "0";
-            //Source: https://www.dimensions.com/element/little-brown-bat-myotis-lucifugus hanging height
-            heights[CreatureConstants.Bat][GenderConstants.Female] = GetBaseFromRange(4, 5);
-            heights[CreatureConstants.Bat][GenderConstants.Male] = GetBaseFromRange(4, 5);
-            heights[CreatureConstants.Bat][CreatureConstants.Bat] = GetMultiplierFromRange(4, 5);
+            //Source: https://www.dimensions.com/element/little-brown-bat-myotis-lucifugus
+            heights[CreatureConstants.Bat][GenderConstants.Female] = GetBaseFromRange(3, 4);
+            heights[CreatureConstants.Bat][GenderConstants.Male] = GetBaseFromRange(3, 4);
+            heights[CreatureConstants.Bat][CreatureConstants.Bat] = GetMultiplierFromRange(3, 4);
             //Scaled up from bat, x15 based on wingspan
-            heights[CreatureConstants.Bat_Dire][GenderConstants.Female] = GetBaseFromRange(60, 75);
-            heights[CreatureConstants.Bat_Dire][GenderConstants.Male] = GetBaseFromRange(60, 75);
-            heights[CreatureConstants.Bat_Dire][CreatureConstants.Bat_Dire] = GetMultiplierFromRange(60, 75);
+            heights[CreatureConstants.Bat_Dire][GenderConstants.Female] = GetBaseFromRange(45, 60);
+            heights[CreatureConstants.Bat_Dire][GenderConstants.Male] = GetBaseFromRange(45, 60);
+            heights[CreatureConstants.Bat_Dire][CreatureConstants.Bat_Dire] = GetMultiplierFromRange(45, 60);
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
             heights[CreatureConstants.Bat_Swarm][GenderConstants.Agender] = GetBaseFromAverage(10 * 12);
             heights[CreatureConstants.Bat_Swarm][CreatureConstants.Bat_Swarm] = GetMultiplierFromAverage(10 * 12);
@@ -561,8 +561,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Chuul][GenderConstants.Male] = "0";
             heights[CreatureConstants.Chuul][CreatureConstants.Chuul] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Cloaker and https://www.mojobob.com/roleplay/monstrousmanual/c/cloaker.html
-            heights[CreatureConstants.Cloaker][GenderConstants.Agender] = "0";
-            heights[CreatureConstants.Cloaker][CreatureConstants.Cloaker] = "0";
+            heights[CreatureConstants.Cloaker][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
+            heights[CreatureConstants.Cloaker][CreatureConstants.Cloaker] = GetMultiplierFromAverage(8 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Cockatrice
             heights[CreatureConstants.Cockatrice][GenderConstants.Female] = GetBaseFromAverage(3 * 12);
             heights[CreatureConstants.Cockatrice][GenderConstants.Male] = GetBaseFromAverage(3 * 12);
@@ -1669,14 +1669,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/ooze.htm#ochreJelly
             heights[CreatureConstants.OchreJelly][GenderConstants.Agender] = GetBaseFromAverage(6);
             heights[CreatureConstants.OchreJelly][CreatureConstants.OchreJelly] = GetMultiplierFromAverage(6);
-            //Source: https://www.dimensions.com/element/common-octopus-octopus-vulgaris (mantle length)
-            heights[CreatureConstants.Octopus][GenderConstants.Female] = GetBaseFromRange(6, 10);
-            heights[CreatureConstants.Octopus][GenderConstants.Male] = GetBaseFromRange(6, 10);
-            heights[CreatureConstants.Octopus][CreatureConstants.Octopus] = GetMultiplierFromRange(6, 10);
-            //Source: https://www.dimensions.com/element/giant-pacific-octopus-enteroctopus-dofleini (mantle length)
-            heights[CreatureConstants.Octopus_Giant][GenderConstants.Female] = GetBaseFromRange(20, 24);
-            heights[CreatureConstants.Octopus_Giant][GenderConstants.Male] = GetBaseFromRange(20, 24);
-            heights[CreatureConstants.Octopus_Giant][CreatureConstants.Octopus_Giant] = GetMultiplierFromRange(20, 24);
+            //Source: https://www.dimensions.com/element/common-octopus-octopus-vulgaris
+            heights[CreatureConstants.Octopus][GenderConstants.Female] = GetBaseFromRange(30, 39);
+            heights[CreatureConstants.Octopus][GenderConstants.Male] = GetBaseFromRange(30, 39);
+            heights[CreatureConstants.Octopus][CreatureConstants.Octopus] = GetMultiplierFromRange(30, 39);
+            //Source: https://www.d20srd.org/srd/monsters/octopusGiant.htm
+            heights[CreatureConstants.Octopus_Giant][GenderConstants.Female] = GetBaseFromAtLeast(10 * 12);
+            heights[CreatureConstants.Octopus_Giant][GenderConstants.Male] = GetBaseFromAtLeast(10 * 12);
+            heights[CreatureConstants.Octopus_Giant][CreatureConstants.Octopus_Giant] = GetMultiplierFromAtLeast(10 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Ogre
             heights[CreatureConstants.Ogre][GenderConstants.Female] = GetBaseFromRange(9 * 12 + 3, 10 * 12);
             heights[CreatureConstants.Ogre][GenderConstants.Male] = GetBaseFromRange(10 * 12 + 1, 10 * 12 + 10);
@@ -1750,10 +1750,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Porpoise][GenderConstants.Female] = GetBaseFromRange(14, 16);
             heights[CreatureConstants.Porpoise][GenderConstants.Male] = GetBaseFromRange(14, 16);
             heights[CreatureConstants.Porpoise][CreatureConstants.Porpoise] = GetMultiplierFromRange(14, 16);
-            //Source: https://forgottenrealms.fandom.com/wiki/Giant_praying_mantis
-            heights[CreatureConstants.PrayingMantis_Giant][GenderConstants.Female] = GetBaseFromRange(2 * 12, 5 * 12);
-            heights[CreatureConstants.PrayingMantis_Giant][GenderConstants.Male] = GetBaseFromRange(2 * 12, 5 * 12);
-            heights[CreatureConstants.PrayingMantis_Giant][CreatureConstants.PrayingMantis_Giant] = GetMultiplierFromRange(2 * 12, 5 * 12);
+            heights[CreatureConstants.PrayingMantis_Giant][GenderConstants.Female] = "0";
+            heights[CreatureConstants.PrayingMantis_Giant][GenderConstants.Male] = "0";
+            heights[CreatureConstants.PrayingMantis_Giant][CreatureConstants.PrayingMantis_Giant] = "0";
             //Source: https://www.d20srd.org/srd/monsters/pseudodragon.htm
             //Scale from Red Dragon Wyrmling: 48*3/16 = 9
             heights[CreatureConstants.Pseudodragon][GenderConstants.Female] = GetBaseFromAverage(9);
@@ -2055,13 +2054,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.SpiderEater][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
             heights[CreatureConstants.SpiderEater][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
             heights[CreatureConstants.SpiderEater][CreatureConstants.SpiderEater] = GetMultiplierFromAverage(4 * 12);
-            //Source: https://www.dimensions.com/element/humboldt-squid-dosidicus-gigas (mantle length)
-            heights[CreatureConstants.Squid][GenderConstants.Female] = GetBaseFromRange(29, 79);
-            heights[CreatureConstants.Squid][GenderConstants.Male] = GetBaseFromRange(29, 79);
-            heights[CreatureConstants.Squid][CreatureConstants.Squid] = GetMultiplierFromRange(29, 79);
-            heights[CreatureConstants.Squid_Giant][GenderConstants.Female] = "0";
-            heights[CreatureConstants.Squid_Giant][GenderConstants.Male] = "0";
-            heights[CreatureConstants.Squid_Giant][CreatureConstants.Squid_Giant] = "0";
+            //Source: https://www.dimensions.com/element/humboldt-squid-dosidicus-gigas
+            heights[CreatureConstants.Squid][GenderConstants.Female] = GetBaseFromRange(59, 98);
+            heights[CreatureConstants.Squid][GenderConstants.Male] = GetBaseFromRange(59, 98);
+            heights[CreatureConstants.Squid][CreatureConstants.Squid] = GetMultiplierFromRange(59, 98);
+            //Source: https://www.d20srd.org/srd/monsters/squidGiant.htm
+            heights[CreatureConstants.Squid_Giant][GenderConstants.Female] = GetBaseFromUpTo(20 * 20);
+            heights[CreatureConstants.Squid_Giant][GenderConstants.Male] = GetBaseFromUpTo(20 * 20);
+            heights[CreatureConstants.Squid_Giant][CreatureConstants.Squid_Giant] = GetMultiplierFromUpTo(20 * 20);
             //Source: https://www.d20srd.org/srd/monsters/giantStagBeetle.htm
             //https://www.dimensions.com/element/hercules-beetle-dynastes-hercules scale up: [.47,1.42]*10*12/[2.36,7.09] = [24,24]
             heights[CreatureConstants.StagBeetle_Giant][GenderConstants.Female] = GetBaseFromAverage(24);

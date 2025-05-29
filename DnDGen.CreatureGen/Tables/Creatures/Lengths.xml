@@ -567,8 +567,8 @@
 	</collection>
 	<collection>
 		<name>Bat</name>
-		<entry>Male@2</entry>
-		<entry>Female@2</entry>
+		<entry>Male@3</entry>
+		<entry>Female@3</entry>
 		<entry>Bat@1d2</entry>
 	</collection>
 	<collection>
@@ -1067,8 +1067,8 @@
 	</collection>
 	<collection>
 		<name>Cloaker</name>
-		<entry>Agender@85</entry>
-		<entry>Cloaker@1d20</entry>
+		<entry>Agender@0</entry>
+		<entry>Cloaker@0</entry>
 	</collection>
 	<collection>
 		<name>Cloud Giant</name>
@@ -1259,8 +1259,8 @@
 	</collection>
 	<collection>
 		<name>Dire Bat</name>
-		<entry>Male@42</entry>
-		<entry>Female@42</entry>
+		<entry>Male@57</entry>
+		<entry>Female@57</entry>
 		<entry>Dire Bat@3d6</entry>
 	</collection>
 	<collection>
@@ -1759,9 +1759,9 @@
 	</collection>
 	<collection>
 		<name>Giant Octopus</name>
-		<entry>Male@107</entry>
-		<entry>Female@107</entry>
-		<entry>Giant Octopus@13d3</entry>
+		<entry>Male@18</entry>
+		<entry>Female@18</entry>
+		<entry>Giant Octopus@2d3</entry>
 	</collection>
 	<collection>
 		<name>Giant Owl</name>
@@ -1771,15 +1771,15 @@
 	</collection>
 	<collection>
 		<name>Giant Praying Mantis</name>
-		<entry>Male@0</entry>
-		<entry>Female@0</entry>
-		<entry>Giant Praying Mantis@0</entry>
+		<entry>Male@20</entry>
+		<entry>Female@20</entry>
+		<entry>Giant Praying Mantis@4d10</entry>
 	</collection>
 	<collection>
 		<name>Giant Squid</name>
-		<entry>Male@254</entry>
-		<entry>Female@254</entry>
-		<entry>Giant Squid@73d2</entry>
+		<entry>Male@103</entry>
+		<entry>Female@103</entry>
+		<entry>Giant Squid@15d6</entry>
 	</collection>
 	<collection>
 		<name>Giant Stag Beetle</name>
@@ -1933,9 +1933,9 @@
 	</collection>
 	<collection>
 		<name>Greater Barghest</name>
-		<entry>Male@61</entry>
-		<entry>Female@61</entry>
-		<entry>Greater Barghest@3d6</entry>
+		<entry>Male@85</entry>
+		<entry>Female@85</entry>
+		<entry>Greater Barghest@1d20</entry>
 	</collection>
 	<collection>
 		<name>Greater Shadow</name>
@@ -2215,8 +2215,8 @@
 	</collection>
 	<collection>
 		<name>Invisible Stalker</name>
-		<entry>Agender@64</entry>
-		<entry>Invisible Stalker@32d4</entry>
+		<entry>Agender@32</entry>
+		<entry>Invisible Stalker@16d4</entry>
 	</collection>
 	<collection>
 		<name>Iron Golem</name>
@@ -2739,9 +2739,9 @@
 	</collection>
 	<collection>
 		<name>Octopus</name>
-		<entry>Female@29</entry>
-		<entry>Male@29</entry>
-		<entry>Octopus@1d10</entry>
+		<entry>Female@4</entry>
+		<entry>Male@4</entry>
+		<entry>Octopus@2d3</entry>
 	</collection>
 	<collection>
 		<name>Ogre Mage</name>
@@ -3267,9 +3267,9 @@
 	</collection>
 	<collection>
 		<name>Squid</name>
-		<entry>Female@46</entry>
-		<entry>Male@46</entry>
-		<entry>Squid@13d4</entry>
+		<entry>Female@19</entry>
+		<entry>Male@19</entry>
+		<entry>Squid@10d6</entry>
 	</collection>
 	<collection>
 		<name>Steam Mephit</name>
@@ -3414,9 +3414,9 @@
 	</collection>
 	<collection>
 		<name>Truly Horrid Umber Hulk</name>
-		<entry>Female@159</entry>
-		<entry>Male@159</entry>
-		<entry>Truly Horrid Umber Hulk@13d4</entry>
+		<entry>Female@186</entry>
+		<entry>Male@186</entry>
+		<entry>Truly Horrid Umber Hulk@6d8</entry>
 	</collection>
 	<collection>
 		<name>Trumpet Archon</name>

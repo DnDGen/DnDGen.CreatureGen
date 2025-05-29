@@ -1,5 +1,4 @@
 ﻿using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.Tables.Helpers;
@@ -91,7 +90,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             foreach (var roll in rolls)
             {
                 var minimum = dice.Roll(roll).AsPotentialMinimum();
-                Assert.That(minimum, Is.Positive);
+                Assert.That(minimum, Is.Positive, roll);
 
                 var maximum = dice.Roll(roll).AsPotentialMaximum();
 
@@ -501,7 +500,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             ];
             testCases[CreatureConstants.Deinonychus] =
             [
-                GetData(CreatureConstants.Deinonychus, SizeConstants.Huge, 5, 8),
+                GetData(CreatureConstants.Deinonychus, SizeConstants.Medium, 5, 8),
             ];
             testCases[CreatureConstants.Delver] =
             [
@@ -545,7 +544,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             testCases[CreatureConstants.Dragon_Black_YoungAdult] = [GetData(CreatureConstants.Dragon_Black_YoungAdult, SizeConstants.Large, 17, 18)];
             testCases[CreatureConstants.Dragon_Black_Adult] = [GetData(CreatureConstants.Dragon_Black_Adult, SizeConstants.Large, 20, 21)];
             testCases[CreatureConstants.Dragon_Black_MatureAdult] = [GetData(CreatureConstants.Dragon_Black_MatureAdult, SizeConstants.Huge, 23, 24)];
-            testCases[CreatureConstants.Dragon_Black_Old] = [GetData(CreatureConstants.Dragon_Black_Old, SizeConstants.Huge, 25, 27)];
+            testCases[CreatureConstants.Dragon_Black_Old] = [GetData(CreatureConstants.Dragon_Black_Old, SizeConstants.Huge, 26, 27)];
             testCases[CreatureConstants.Dragon_Black_VeryOld] = [GetData(CreatureConstants.Dragon_Black_VeryOld, SizeConstants.Huge, 29, 30)];
             testCases[CreatureConstants.Dragon_Black_Ancient] = [GetData(CreatureConstants.Dragon_Black_Ancient, SizeConstants.Huge, 32, 33)];
             testCases[CreatureConstants.Dragon_Black_Wyrm] = [GetData(CreatureConstants.Dragon_Black_Wyrm, SizeConstants.Gargantuan, 35, 36)];
@@ -652,7 +651,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             testCases[CreatureConstants.Dragon_Gold_Old] = [GetData(CreatureConstants.Dragon_Gold_Old, SizeConstants.Gargantuan, 30, 31)];
             testCases[CreatureConstants.Dragon_Gold_VeryOld] = [GetData(CreatureConstants.Dragon_Gold_VeryOld, SizeConstants.Gargantuan, 33, 34)];
             testCases[CreatureConstants.Dragon_Gold_Ancient] = [GetData(CreatureConstants.Dragon_Gold_Ancient, SizeConstants.Gargantuan, 36, 37)];
-            testCases[CreatureConstants.Dragon_Gold_Wyrm] = [GetData(CreatureConstants.Dragon_Gold_Wyrm, SizeConstants.Gargantuan, 39, 40)];
+            testCases[CreatureConstants.Dragon_Gold_Wyrm] = [GetData(CreatureConstants.Dragon_Gold_Wyrm, SizeConstants.Colossal, 39, 40)];
             testCases[CreatureConstants.Dragon_Gold_GreatWyrm] = [GetData(CreatureConstants.Dragon_Gold_GreatWyrm, SizeConstants.Colossal, 42, 100)];
 
             testCases[CreatureConstants.Dragon_Silver_Wyrmling] = [GetData(CreatureConstants.Dragon_Silver_Wyrmling, SizeConstants.Medium, 8, 9)];
@@ -1041,9 +1040,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 GetData(CreatureConstants.PitFiend, SizeConstants.Huge, 37, 54)];
             testCases[CreatureConstants.Pixie] = [GetData(CreatureConstants.Pixie, SizeConstants.Small, 2, 3)];
             testCases[CreatureConstants.Pixie_WithIrresistibleDance] = [GetData(CreatureConstants.Pixie_WithIrresistibleDance, SizeConstants.Small, 2, 3)];
-            testCases[CreatureConstants.Porpoise] =
-                [GetData(CreatureConstants.Porpoise, SizeConstants.Medium, 3, 4),
-                GetData(CreatureConstants.Porpoise, SizeConstants.Medium, 3, 4)];
+            testCases[CreatureConstants.Porpoise] = [GetData(CreatureConstants.Porpoise, SizeConstants.Medium, 3, 4)];
             testCases[CreatureConstants.PrayingMantis_Giant] =
                 [GetData(CreatureConstants.PrayingMantis_Giant, SizeConstants.Large, 5, 8),
                 GetData(CreatureConstants.PrayingMantis_Giant, SizeConstants.Huge, 9, 12)];
@@ -1267,7 +1264,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         private string GetData(string creature, string advancedSize, int lowerHitDice, int upperHitDice)
         {
-            var creatureHitDiceQuantity = HitDice.GetRoundedQuantity(creatureData[creature].GetEffectiveHitDiceQuantity(false));
+            var rawQuantity = creatureData[creature].GetEffectiveHitDiceQuantity(false);
+            var creatureHitDiceQuantity = rawQuantity < 1 ? 0 : (int)rawQuantity;
 
             var selection = new AdvancementDataSelection
             {

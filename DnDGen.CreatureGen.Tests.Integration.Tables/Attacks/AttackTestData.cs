@@ -20,7 +20,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Dictionary<string, IEnumerable<AdvancementDataSelection>> advancementData)
         {
             var attackDamageKeys = new List<string>();
-            var creatureAttackData = GetCreatureAttackData().ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(DataHelper.Parse<AttackDataSelection>));
+            var creatureAttackData = GetCreatureAttackData()
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Where(v => v != None).Select(DataHelper.Parse<AttackDataSelection>));
 
             foreach (var kvp in creatureAttackData)
             {
@@ -43,7 +44,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         internal static IEnumerable<string> GetTemplateDamageKeys()
         {
             var attackDamageKeys = new List<string>();
-            var templateAttackData = GetTemplateAttackData().ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Select(DataHelper.Parse<AttackDataSelection>));
+            var templateAttackData = GetTemplateAttackData()
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Where(v => v != None).Select(DataHelper.Parse<AttackDataSelection>));
             var sizes = SizeConstants.GetOrdered();
 
             foreach (var kvp in templateAttackData)

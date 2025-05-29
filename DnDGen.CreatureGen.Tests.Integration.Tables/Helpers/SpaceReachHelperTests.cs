@@ -59,6 +59,30 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
             Assert.That(reach, Is.EqualTo(expected));
         }
 
+        [TestCase(CreatureConstants.BlackPudding, SizeConstants.Huge, 10)]
+        [TestCase(CreatureConstants.BlackPudding_Elder, SizeConstants.Gargantuan, 20)]
+        [TestCase(CreatureConstants.HellHound, SizeConstants.Medium, 5)]
+        [TestCase(CreatureConstants.HellHound_NessianWarhound, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.InvisibleStalker, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.Lillend, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.Marilith, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.Mimic, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.Salamander_Flamebrother, SizeConstants.Small, 5)]
+        [TestCase(CreatureConstants.Salamander_Average, SizeConstants.Medium, 5)]
+        [TestCase(CreatureConstants.Salamander_Noble, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.UmberHulk, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.UmberHulk_TrulyHorrid, SizeConstants.Huge, 15)]
+        [TestCase(CreatureConstants.Xorn_Minor, SizeConstants.Small, 5)]
+        [TestCase(CreatureConstants.Xorn_Average, SizeConstants.Medium, 5)]
+        [TestCase(CreatureConstants.Xorn_Elder, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.YuanTi_Abomination, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.Zelekhut, SizeConstants.Large, 10)]
+        public void BUG_GetDefaultReach_ReturnsReach(string creature, string size, double expected)
+        {
+            var reach = spaceReachHelper.GetDefaultReach(creature, size);
+            Assert.That(reach, Is.EqualTo(expected));
+        }
+
         [TestCase(SizeConstants.Fine)]
         [TestCase(SizeConstants.Diminutive)]
         [TestCase(SizeConstants.Tiny)]
@@ -156,6 +180,38 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
         public void GetAdvancedReach_DefaultIncrease_Long(string size, double originalReach, string advancedSize, double expectedReach)
         {
             var advancedReach = spaceReachHelper.GetAdvancedReach(CreatureConstants.Wolf, size, originalReach, advancedSize);
+            Assert.That(advancedReach, Is.EqualTo(expectedReach));
+        }
+
+        [TestCase(CreatureConstants.BlackPudding, SizeConstants.Huge, 10, SizeConstants.Huge, 10)]
+        [TestCase(CreatureConstants.BlackPudding, SizeConstants.Huge, 10, SizeConstants.Gargantuan, 15)]
+        [TestCase(CreatureConstants.HellHound, SizeConstants.Medium, 5, SizeConstants.Medium, 5)]
+        [TestCase(CreatureConstants.HellHound, SizeConstants.Medium, 5, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.HellHound_NessianWarhound, SizeConstants.Large, 10, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.HellHound_NessianWarhound, SizeConstants.Large, 10, SizeConstants.Huge, 15)]
+        [TestCase(CreatureConstants.InvisibleStalker, SizeConstants.Large, 10, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.InvisibleStalker, SizeConstants.Large, 10, SizeConstants.Huge, 15)]
+        [TestCase(CreatureConstants.Lillend, SizeConstants.Large, 10, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.Lillend, SizeConstants.Large, 10, SizeConstants.Huge, 15)]
+        [TestCase(CreatureConstants.Marilith, SizeConstants.Large, 10, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.Marilith, SizeConstants.Large, 10, SizeConstants.Huge, 15)]
+        [TestCase(CreatureConstants.Mimic, SizeConstants.Large, 10, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.Mimic, SizeConstants.Large, 10, SizeConstants.Huge, 15)]
+        [TestCase(CreatureConstants.Salamander_Flamebrother, SizeConstants.Small, 5, SizeConstants.Small, 5)]
+        [TestCase(CreatureConstants.Salamander_Average, SizeConstants.Medium, 5, SizeConstants.Medium, 5)]
+        [TestCase(CreatureConstants.Salamander_Noble, SizeConstants.Large, 10, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.Salamander_Noble, SizeConstants.Large, 10, SizeConstants.Huge, 15)]
+        [TestCase(CreatureConstants.UmberHulk, SizeConstants.Large, 10, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.UmberHulk, SizeConstants.Large, 10, SizeConstants.Huge, 15)]
+        [TestCase(CreatureConstants.Zelekhut, SizeConstants.Large, 10, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.Zelekhut, SizeConstants.Large, 10, SizeConstants.Huge, 15)]
+        [TestCase(CreatureConstants.Xorn_Minor, SizeConstants.Small, 5, SizeConstants.Small, 5)]
+        [TestCase(CreatureConstants.Xorn_Average, SizeConstants.Medium, 5, SizeConstants.Medium, 5)]
+        [TestCase(CreatureConstants.Xorn_Elder, SizeConstants.Large, 10, SizeConstants.Large, 10)]
+        [TestCase(CreatureConstants.Xorn_Elder, SizeConstants.Large, 10, SizeConstants.Huge, 15)]
+        public void BUG_GetAdvancedReach_DefaultIncrease(string creature, string size, double originalReach, string advancedSize, double expectedReach)
+        {
+            var advancedReach = spaceReachHelper.GetAdvancedReach(creature, size, originalReach, advancedSize);
             Assert.That(advancedReach, Is.EqualTo(expectedReach));
         }
 
