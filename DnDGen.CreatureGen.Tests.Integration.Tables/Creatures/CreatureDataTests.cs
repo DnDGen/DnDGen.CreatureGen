@@ -3074,7 +3074,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Dragon_Gold_Old, 20, 15)]
         [TestCase(CreatureConstants.Dragon_Gold_VeryOld, 20, 15)]
         [TestCase(CreatureConstants.Dragon_Gold_Ancient, 20, 15)]
-        [TestCase(CreatureConstants.Dragon_Gold_Wyrm, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Gold_Wyrm, 30, 20)]
         [TestCase(CreatureConstants.Dragon_Gold_GreatWyrm, 30, 20)]
         [TestCase(CreatureConstants.Dragon_Green_Wyrmling, 5, 5)]
         [TestCase(CreatureConstants.Dragon_Green_VeryYoung, 5, 5)]
