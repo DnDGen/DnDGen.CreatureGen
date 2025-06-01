@@ -20,7 +20,10 @@
 	  <entry>Grick</entry>
 	  <entry>Mimic</entry>
 	  <entry>Mind Flayer (Illithid)</entry>
-	  <entry>Naga</entry>
+	  <entry>Dark Naga</entry>
+	  <entry>Guardian Naga</entry>
+	  <entry>Spirit Naga</entry>
+	  <entry>Water Naga</entry>
 	  <entry>Otyugh</entry>
 	  <entry>Phasm</entry>
 	  <entry>Rust Monster</entry>
@@ -157,6 +160,83 @@
 	  <entry>Angel, Astral Deva</entry>
 	  <entry>Angel, Planetar</entry>
 	  <entry>Angel, Solar</entry>
+  <entry>Animated Object, Colossal</entry>
+  <entry>Animated Object, Colossal (Flexible)</entry>
+  <entry>Animated Object, Colossal (More Than Two Legs, Long, Wooden)</entry>
+  <entry>Animated Object, Colossal (More Than Two Legs, Long)</entry>
+  <entry>Animated Object, Colossal (More Than Two Legs, Tall, Wooden)</entry>
+  <entry>Animated Object, Colossal (More Than Two Legs, Tall)</entry>
+  <entry>Animated Object, Colossal (Sheetlike)</entry>
+  <entry>Animated Object, Colossal (Two Legs, Wooden)</entry>
+  <entry>Animated Object, Colossal (Two Legs)</entry>
+  <entry>Animated Object, Colossal (Wheels, Wooden)</entry>
+  <entry>Animated Object, Colossal (Wooden)</entry>
+  <entry>Animated Object, Gargantuan</entry>
+  <entry>Animated Object, Gargantuan (Flexible)</entry>
+  <entry>Animated Object, Gargantuan (More Than Two Legs, Long, Wooden)</entry>
+  <entry>Animated Object, Gargantuan (More Than Two Legs, Long)</entry>
+  <entry>Animated Object, Gargantuan (More Than Two Legs, Tall, Wooden)</entry>
+  <entry>Animated Object, Gargantuan (More Than Two Legs, Tall)</entry>
+  <entry>Animated Object, Gargantuan (Sheetlike)</entry>
+  <entry>Animated Object, Gargantuan (Two Legs, Wooden)</entry>
+  <entry>Animated Object, Gargantuan (Two Legs)</entry>
+  <entry>Animated Object, Gargantuan (Wheels, Wooden)</entry>
+  <entry>Animated Object, Gargantuan (Wooden)</entry>
+  <entry>Animated Object, Huge</entry>
+  <entry>Animated Object, Huge (Flexible)</entry>
+  <entry>Animated Object, Huge (More Than Two Legs, Long, Wooden)</entry>
+  <entry>Animated Object, Huge (More Than Two Legs, Long)</entry>
+  <entry>Animated Object, Huge (More Than Two Legs, Tall, Wooden)</entry>
+  <entry>Animated Object, Huge (More Than Two Legs, Tall)</entry>
+  <entry>Animated Object, Huge (Sheetlike)</entry>
+  <entry>Animated Object, Huge (Two Legs, Wooden)</entry>
+  <entry>Animated Object, Huge (Two Legs)</entry>
+  <entry>Animated Object, Huge (Wheels, Wooden)</entry>
+  <entry>Animated Object, Huge (Wooden)</entry>
+  <entry>Animated Object, Large</entry>
+  <entry>Animated Object, Large (Flexible)</entry>
+  <entry>Animated Object, Large (More Than Two Legs, Long, Wooden)</entry>
+  <entry>Animated Object, Large (More Than Two Legs, Long)</entry>
+  <entry>Animated Object, Large (More Than Two Legs, Tall, Wooden)</entry>
+  <entry>Animated Object, Large (More Than Two Legs, Tall)</entry>
+  <entry>Animated Object, Large (Sheetlike)</entry>
+  <entry>Animated Object, Large (Two Legs, Wooden)</entry>
+  <entry>Animated Object, Large (Two Legs)</entry>
+  <entry>Animated Object, Large (Wheels, Wooden)</entry>
+  <entry>Animated Object, Large (Wooden)</entry>
+  <entry>Animated Object, Medium</entry>
+  <entry>Animated Object, Medium (Flexible)</entry>
+  <entry>Animated Object, Medium (More Than Two Legs, Long, Wooden)</entry>
+  <entry>Animated Object, Medium (More Than Two Legs, Long)</entry>
+  <entry>Animated Object, Medium (More Than Two Legs, Tall, Wooden)</entry>
+  <entry>Animated Object, Medium (More Than Two Legs, Tall)</entry>
+  <entry>Animated Object, Medium (Sheetlike)</entry>
+  <entry>Animated Object, Medium (Two Legs, Wooden)</entry>
+  <entry>Animated Object, Medium (Two Legs)</entry>
+  <entry>Animated Object, Medium (Wheels, Wooden)</entry>
+  <entry>Animated Object, Medium (Wooden)</entry>
+  <entry>Animated Object, Small</entry>
+  <entry>Animated Object, Small (Flexible)</entry>
+  <entry>Animated Object, Small (More Than Two Legs, Long, Wooden)</entry>
+  <entry>Animated Object, Small (More Than Two Legs, Long)</entry>
+  <entry>Animated Object, Small (More Than Two Legs, Tall, Wooden)</entry>
+  <entry>Animated Object, Small (More Than Two Legs, Tall)</entry>
+  <entry>Animated Object, Small (Sheetlike)</entry>
+  <entry>Animated Object, Small (Two Legs, Wooden)</entry>
+  <entry>Animated Object, Small (Two Legs)</entry>
+  <entry>Animated Object, Small (Wheels, Wooden)</entry>
+  <entry>Animated Object, Small (Wooden)</entry>
+  <entry>Animated Object, Tiny</entry>
+  <entry>Animated Object, Tiny (Flexible)</entry>
+  <entry>Animated Object, Tiny (More Than Two Legs, Long, Wooden)</entry>
+  <entry>Animated Object, Tiny (More Than Two Legs, Long)</entry>
+  <entry>Animated Object, Tiny (More Than Two Legs, Tall, Wooden)</entry>
+  <entry>Animated Object, Tiny (More Than Two Legs, Tall)</entry>
+  <entry>Animated Object, Tiny (Sheetlike)</entry>
+  <entry>Animated Object, Tiny (Two Legs, Wooden)</entry>
+  <entry>Animated Object, Tiny (Two Legs)</entry>
+  <entry>Animated Object, Tiny (Wheels, Wooden)</entry>
+  <entry>Animated Object, Tiny (Wooden)</entry>
   </collection>
   <collection>
     <name>Characters</name>
@@ -361,11 +441,96 @@
 		<entry>Annis</entry>
 		<entry>Ape</entry>
 		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
 		<entry>Aranea</entry>
 		<entry>Assassin Vine</entry>
 		<entry>Athach</entry>
 		<entry>Baboon</entry>
 		<entry>Badger</entry>
+		<entry>Baleen Whale</entry>
+		<entry>Cachalot Whale</entry>
+		<entry>Orca</entry>
+		<entry>Basilisk</entry>
+		<entry>Greater Basilisk</entry>
+		<entry>Bat</entry>
+		<entry>Dire Bat</entry>
+		<entry>Bat Swarm</entry>
+		<entry>Behir</entry>
+		<entry>Beholder</entry>
+		<entry>Gauth (Lesser Beholder)</entry>
+		<entry>Bison</entry>
+		<entry>Black Bear</entry>
+		<entry>Brown Bear</entry>
+		<entry>Dire Bear</entry>
+		<entry>Polar Bear</entry>
+		<entry>Blink Dog</entry>
+		<entry>Boar</entry>
+		<entry>Dire Boar</entry>
+		<entry>Brass Dragon, Wyrmling</entry>
+		<entry>Brass Dragon, Very Young</entry>
+		<entry>Brass Dragon, Young</entry>
+		<entry>Brass Dragon, Juvenile</entry>
+		<entry>Brass Dragon, Young Adult</entry>
+		<entry>Brass Dragon, Adult</entry>
+		<entry>Brass Dragon, Mature Adult</entry>
+		<entry>Brass Dragon, Old</entry>
+		<entry>Brass Dragon, Very Old</entry>
+		<entry>Brass Dragon, Ancient</entry>
+		<entry>Brass Dragon, Wyrm</entry>
+		<entry>Brass Dragon, Great Wyrm</entry>
+		<entry>Bronze Dragon, Wyrmling</entry>
+		<entry>Bronze Dragon, Very Young</entry>
+		<entry>Bronze Dragon, Young</entry>
+		<entry>Bronze Dragon, Juvenile</entry>
+		<entry>Bronze Dragon, Young Adult</entry>
+		<entry>Bronze Dragon, Adult</entry>
+		<entry>Bronze Dragon, Mature Adult</entry>
+		<entry>Bronze Dragon, Old</entry>
+		<entry>Bronze Dragon, Very Old</entry>
+		<entry>Bronze Dragon, Ancient</entry>
+		<entry>Bronze Dragon, Wyrm</entry>
+		<entry>Bronze Dragon, Great Wyrm</entry>
+		<entry>Copper Dragon, Wyrmling</entry>
+		<entry>Copper Dragon, Very Young</entry>
+		<entry>Copper Dragon, Young</entry>
+		<entry>Copper Dragon, Juvenile</entry>
+		<entry>Copper Dragon, Young Adult</entry>
+		<entry>Copper Dragon, Adult</entry>
+		<entry>Copper Dragon, Mature Adult</entry>
+		<entry>Copper Dragon, Old</entry>
+		<entry>Copper Dragon, Very Old</entry>
+		<entry>Copper Dragon, Ancient</entry>
+		<entry>Copper Dragon, Wyrm</entry>
+		<entry>Copper Dragon, Great Wyrm</entry>
+		<entry>Gold Dragon, Wyrmling</entry>
+		<entry>Gold Dragon, Very Young</entry>
+		<entry>Gold Dragon, Young</entry>
+		<entry>Gold Dragon, Juvenile</entry>
+		<entry>Gold Dragon, Young Adult</entry>
+		<entry>Gold Dragon, Adult</entry>
+		<entry>Gold Dragon, Mature Adult</entry>
+		<entry>Gold Dragon, Old</entry>
+		<entry>Gold Dragon, Very Old</entry>
+		<entry>Gold Dragon, Ancient</entry>
+		<entry>Gold Dragon, Wyrm</entry>
+		<entry>Gold Dragon, Great Wyrm</entry>
+		<entry>Silver Dragon, Wyrmling</entry>
+		<entry>Silver Dragon, Very Young</entry>
+		<entry>Silver Dragon, Young</entry>
+		<entry>Silver Dragon, Juvenile</entry>
+		<entry>Silver Dragon, Young Adult</entry>
+		<entry>Silver Dragon, Adult</entry>
+		<entry>Silver Dragon, Mature Adult</entry>
+		<entry>Silver Dragon, Old</entry>
+		<entry>Silver Dragon, Very Old</entry>
+		<entry>Silver Dragon, Ancient</entry>
+		<entry>Silver Dragon, Wyrm</entry>
+		<entry>Silver Dragon, Great Wyrm</entry>
 	</collection>
 	<collection>
 		<name>Celestial CreatureTrue</name>
@@ -375,11 +540,96 @@
 		<entry>Annis</entry>
 		<entry>Ape</entry>
 		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
 		<entry>Aranea</entry>
 		<entry>Assassin Vine</entry>
 		<entry>Athach</entry>
 		<entry>Baboon</entry>
 		<entry>Badger</entry>
+		<entry>Baleen Whale</entry>
+		<entry>Cachalot Whale</entry>
+		<entry>Orca</entry>
+		<entry>Basilisk</entry>
+		<entry>Greater Basilisk</entry>
+		<entry>Bat</entry>
+		<entry>Dire Bat</entry>
+		<entry>Bat Swarm</entry>
+		<entry>Behir</entry>
+		<entry>Beholder</entry>
+		<entry>Gauth (Lesser Beholder)</entry>
+		<entry>Bison</entry>
+		<entry>Black Bear</entry>
+		<entry>Brown Bear</entry>
+		<entry>Dire Bear</entry>
+		<entry>Polar Bear</entry>
+		<entry>Blink Dog</entry>
+		<entry>Boar</entry>
+		<entry>Dire Boar</entry>
+		<entry>Brass Dragon, Wyrmling</entry>
+		<entry>Brass Dragon, Very Young</entry>
+		<entry>Brass Dragon, Young</entry>
+		<entry>Brass Dragon, Juvenile</entry>
+		<entry>Brass Dragon, Young Adult</entry>
+		<entry>Brass Dragon, Adult</entry>
+		<entry>Brass Dragon, Mature Adult</entry>
+		<entry>Brass Dragon, Old</entry>
+		<entry>Brass Dragon, Very Old</entry>
+		<entry>Brass Dragon, Ancient</entry>
+		<entry>Brass Dragon, Wyrm</entry>
+		<entry>Brass Dragon, Great Wyrm</entry>
+		<entry>Bronze Dragon, Wyrmling</entry>
+		<entry>Bronze Dragon, Very Young</entry>
+		<entry>Bronze Dragon, Young</entry>
+		<entry>Bronze Dragon, Juvenile</entry>
+		<entry>Bronze Dragon, Young Adult</entry>
+		<entry>Bronze Dragon, Adult</entry>
+		<entry>Bronze Dragon, Mature Adult</entry>
+		<entry>Bronze Dragon, Old</entry>
+		<entry>Bronze Dragon, Very Old</entry>
+		<entry>Bronze Dragon, Ancient</entry>
+		<entry>Bronze Dragon, Wyrm</entry>
+		<entry>Bronze Dragon, Great Wyrm</entry>
+		<entry>Copper Dragon, Wyrmling</entry>
+		<entry>Copper Dragon, Very Young</entry>
+		<entry>Copper Dragon, Young</entry>
+		<entry>Copper Dragon, Juvenile</entry>
+		<entry>Copper Dragon, Young Adult</entry>
+		<entry>Copper Dragon, Adult</entry>
+		<entry>Copper Dragon, Mature Adult</entry>
+		<entry>Copper Dragon, Old</entry>
+		<entry>Copper Dragon, Very Old</entry>
+		<entry>Copper Dragon, Ancient</entry>
+		<entry>Copper Dragon, Wyrm</entry>
+		<entry>Copper Dragon, Great Wyrm</entry>
+		<entry>Gold Dragon, Wyrmling</entry>
+		<entry>Gold Dragon, Very Young</entry>
+		<entry>Gold Dragon, Young</entry>
+		<entry>Gold Dragon, Juvenile</entry>
+		<entry>Gold Dragon, Young Adult</entry>
+		<entry>Gold Dragon, Adult</entry>
+		<entry>Gold Dragon, Mature Adult</entry>
+		<entry>Gold Dragon, Old</entry>
+		<entry>Gold Dragon, Very Old</entry>
+		<entry>Gold Dragon, Ancient</entry>
+		<entry>Gold Dragon, Wyrm</entry>
+		<entry>Gold Dragon, Great Wyrm</entry>
+		<entry>Silver Dragon, Wyrmling</entry>
+		<entry>Silver Dragon, Very Young</entry>
+		<entry>Silver Dragon, Young</entry>
+		<entry>Silver Dragon, Juvenile</entry>
+		<entry>Silver Dragon, Young Adult</entry>
+		<entry>Silver Dragon, Adult</entry>
+		<entry>Silver Dragon, Mature Adult</entry>
+		<entry>Silver Dragon, Old</entry>
+		<entry>Silver Dragon, Very Old</entry>
+		<entry>Silver Dragon, Ancient</entry>
+		<entry>Silver Dragon, Wyrm</entry>
+		<entry>Silver Dragon, Great Wyrm</entry>
 	</collection>
 	<collection>
 		<name>Fiendish CreatureFalse</name>
@@ -388,11 +638,96 @@
 		<entry>Annis</entry>
 		<entry>Ape</entry>
 		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
 		<entry>Aranea</entry>
 		<entry>Assassin Vine</entry>
 		<entry>Athach</entry>
 		<entry>Baboon</entry>
 		<entry>Badger</entry>
+		<entry>Baleen Whale</entry>
+		<entry>Cachalot Whale</entry>
+		<entry>Orca</entry>
+		<entry>Basilisk</entry>
+		<entry>Greater Basilisk</entry>
+		<entry>Bat</entry>
+		<entry>Dire Bat</entry>
+		<entry>Bat Swarm</entry>
+		<entry>Behir</entry>
+		<entry>Beholder</entry>
+		<entry>Gauth (Lesser Beholder)</entry>
+		<entry>Bison</entry>
+		<entry>Black Bear</entry>
+		<entry>Brown Bear</entry>
+		<entry>Dire Bear</entry>
+		<entry>Polar Bear</entry>
+		<entry>Blink Dog</entry>
+		<entry>Boar</entry>
+		<entry>Dire Boar</entry>
+		<entry>Black Dragon, Wyrmling</entry>
+		<entry>Black Dragon, Very Young</entry>
+		<entry>Black Dragon, Young</entry>
+		<entry>Black Dragon, Juvenile</entry>
+		<entry>Black Dragon, Young Adult</entry>
+		<entry>Black Dragon, Adult</entry>
+		<entry>Black Dragon, Mature Adult</entry>
+		<entry>Black Dragon, Old</entry>
+		<entry>Black Dragon, Very Old</entry>
+		<entry>Black Dragon, Ancient</entry>
+		<entry>Black Dragon, Wyrm</entry>
+		<entry>Black Dragon, Great Wyrm</entry>
+		<entry>Blue Dragon, Wyrmling</entry>
+		<entry>Blue Dragon, Very Young</entry>
+		<entry>Blue Dragon, Young</entry>
+		<entry>Blue Dragon, Juvenile</entry>
+		<entry>Blue Dragon, Young Adult</entry>
+		<entry>Blue Dragon, Adult</entry>
+		<entry>Blue Dragon, Mature Adult</entry>
+		<entry>Blue Dragon, Old</entry>
+		<entry>Blue Dragon, Very Old</entry>
+		<entry>Blue Dragon, Ancient</entry>
+		<entry>Blue Dragon, Wyrm</entry>
+		<entry>Blue Dragon, Great Wyrm</entry>
+		<entry>Green Dragon, Wyrmling</entry>
+		<entry>Green Dragon, Very Young</entry>
+		<entry>Green Dragon, Young</entry>
+		<entry>Green Dragon, Juvenile</entry>
+		<entry>Green Dragon, Young Adult</entry>
+		<entry>Green Dragon, Adult</entry>
+		<entry>Green Dragon, Mature Adult</entry>
+		<entry>Green Dragon, Old</entry>
+		<entry>Green Dragon, Very Old</entry>
+		<entry>Green Dragon, Ancient</entry>
+		<entry>Green Dragon, Wyrm</entry>
+		<entry>Green Dragon, Great Wyrm</entry>
+		<entry>Red Dragon, Wyrmling</entry>
+		<entry>Red Dragon, Very Young</entry>
+		<entry>Red Dragon, Young</entry>
+		<entry>Red Dragon, Juvenile</entry>
+		<entry>Red Dragon, Young Adult</entry>
+		<entry>Red Dragon, Adult</entry>
+		<entry>Red Dragon, Mature Adult</entry>
+		<entry>Red Dragon, Old</entry>
+		<entry>Red Dragon, Very Old</entry>
+		<entry>Red Dragon, Ancient</entry>
+		<entry>Red Dragon, Wyrm</entry>
+		<entry>Red Dragon, Great Wyrm</entry>
+		<entry>White Dragon, Wyrmling</entry>
+		<entry>White Dragon, Very Young</entry>
+		<entry>White Dragon, Young</entry>
+		<entry>White Dragon, Juvenile</entry>
+		<entry>White Dragon, Young Adult</entry>
+		<entry>White Dragon, Adult</entry>
+		<entry>White Dragon, Mature Adult</entry>
+		<entry>White Dragon, Old</entry>
+		<entry>White Dragon, Very Old</entry>
+		<entry>White Dragon, Ancient</entry>
+		<entry>White Dragon, Wyrm</entry>
+		<entry>White Dragon, Great Wyrm</entry>
 	</collection>
 	<collection>
 		<name>Fiendish CreatureTrue</name>
@@ -401,11 +736,96 @@
 		<entry>Annis</entry>
 		<entry>Ape</entry>
 		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
 		<entry>Aranea</entry>
 		<entry>Assassin Vine</entry>
 		<entry>Athach</entry>
 		<entry>Baboon</entry>
 		<entry>Badger</entry>
+		<entry>Baleen Whale</entry>
+		<entry>Cachalot Whale</entry>
+		<entry>Orca</entry>
+		<entry>Basilisk</entry>
+		<entry>Greater Basilisk</entry>
+		<entry>Bat</entry>
+		<entry>Dire Bat</entry>
+		<entry>Bat Swarm</entry>
+		<entry>Behir</entry>
+		<entry>Beholder</entry>
+		<entry>Gauth (Lesser Beholder)</entry>
+		<entry>Bison</entry>
+		<entry>Black Bear</entry>
+		<entry>Brown Bear</entry>
+		<entry>Dire Bear</entry>
+		<entry>Polar Bear</entry>
+		<entry>Blink Dog</entry>
+		<entry>Boar</entry>
+		<entry>Dire Boar</entry>
+		<entry>Black Dragon, Wyrmling</entry>
+		<entry>Black Dragon, Very Young</entry>
+		<entry>Black Dragon, Young</entry>
+		<entry>Black Dragon, Juvenile</entry>
+		<entry>Black Dragon, Young Adult</entry>
+		<entry>Black Dragon, Adult</entry>
+		<entry>Black Dragon, Mature Adult</entry>
+		<entry>Black Dragon, Old</entry>
+		<entry>Black Dragon, Very Old</entry>
+		<entry>Black Dragon, Ancient</entry>
+		<entry>Black Dragon, Wyrm</entry>
+		<entry>Black Dragon, Great Wyrm</entry>
+		<entry>Blue Dragon, Wyrmling</entry>
+		<entry>Blue Dragon, Very Young</entry>
+		<entry>Blue Dragon, Young</entry>
+		<entry>Blue Dragon, Juvenile</entry>
+		<entry>Blue Dragon, Young Adult</entry>
+		<entry>Blue Dragon, Adult</entry>
+		<entry>Blue Dragon, Mature Adult</entry>
+		<entry>Blue Dragon, Old</entry>
+		<entry>Blue Dragon, Very Old</entry>
+		<entry>Blue Dragon, Ancient</entry>
+		<entry>Blue Dragon, Wyrm</entry>
+		<entry>Blue Dragon, Great Wyrm</entry>
+		<entry>Green Dragon, Wyrmling</entry>
+		<entry>Green Dragon, Very Young</entry>
+		<entry>Green Dragon, Young</entry>
+		<entry>Green Dragon, Juvenile</entry>
+		<entry>Green Dragon, Young Adult</entry>
+		<entry>Green Dragon, Adult</entry>
+		<entry>Green Dragon, Mature Adult</entry>
+		<entry>Green Dragon, Old</entry>
+		<entry>Green Dragon, Very Old</entry>
+		<entry>Green Dragon, Ancient</entry>
+		<entry>Green Dragon, Wyrm</entry>
+		<entry>Green Dragon, Great Wyrm</entry>
+		<entry>Red Dragon, Wyrmling</entry>
+		<entry>Red Dragon, Very Young</entry>
+		<entry>Red Dragon, Young</entry>
+		<entry>Red Dragon, Juvenile</entry>
+		<entry>Red Dragon, Young Adult</entry>
+		<entry>Red Dragon, Adult</entry>
+		<entry>Red Dragon, Mature Adult</entry>
+		<entry>Red Dragon, Old</entry>
+		<entry>Red Dragon, Very Old</entry>
+		<entry>Red Dragon, Ancient</entry>
+		<entry>Red Dragon, Wyrm</entry>
+		<entry>Red Dragon, Great Wyrm</entry>
+		<entry>White Dragon, Wyrmling</entry>
+		<entry>White Dragon, Very Young</entry>
+		<entry>White Dragon, Young</entry>
+		<entry>White Dragon, Juvenile</entry>
+		<entry>White Dragon, Young Adult</entry>
+		<entry>White Dragon, Adult</entry>
+		<entry>White Dragon, Mature Adult</entry>
+		<entry>White Dragon, Old</entry>
+		<entry>White Dragon, Very Old</entry>
+		<entry>White Dragon, Ancient</entry>
+		<entry>White Dragon, Wyrm</entry>
+		<entry>White Dragon, Great Wyrm</entry>
 	</collection>
 	<collection>
 		<name>GhostFalse</name>
@@ -415,10 +835,92 @@
 		<entry>Annis</entry>
 		<entry>Ape</entry>
 		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
 		<entry>Aranea</entry>
 		<entry>Assassin Vine</entry>
 		<entry>Athach</entry>
 		<entry>Badger</entry>
+		<entry>Baleen Whale</entry>
+		<entry>Cachalot Whale</entry>
+		<entry>Orca</entry>
+		<entry>Basilisk</entry>
+		<entry>Greater Basilisk</entry>
+		<entry>Behir</entry>
+		<entry>Beholder</entry>
+		<entry>Gauth (Lesser Beholder)</entry>
+		<entry>Bison</entry>
+		<entry>Black Bear</entry>
+		<entry>Brown Bear</entry>
+		<entry>Dire Bear</entry>
+		<entry>Polar Bear</entry>
+		<entry>Blink Dog</entry>
+		<entry>Boar</entry>
+		<entry>Dire Boar</entry>
+		<entry>Black Dragon, Wyrmling</entry>
+		<entry>Black Dragon, Very Young</entry>
+		<entry>Black Dragon, Young</entry>
+		<entry>Black Dragon, Juvenile</entry>
+		<entry>Black Dragon, Young Adult</entry>
+		<entry>Black Dragon, Adult</entry>
+		<entry>Black Dragon, Mature Adult</entry>
+		<entry>Black Dragon, Old</entry>
+		<entry>Black Dragon, Very Old</entry>
+		<entry>Black Dragon, Ancient</entry>
+		<entry>Black Dragon, Wyrm</entry>
+		<entry>Black Dragon, Great Wyrm</entry>
+		<entry>Blue Dragon, Wyrmling</entry>
+		<entry>Blue Dragon, Very Young</entry>
+		<entry>Blue Dragon, Young</entry>
+		<entry>Blue Dragon, Juvenile</entry>
+		<entry>Blue Dragon, Young Adult</entry>
+		<entry>Blue Dragon, Adult</entry>
+		<entry>Blue Dragon, Mature Adult</entry>
+		<entry>Blue Dragon, Old</entry>
+		<entry>Blue Dragon, Very Old</entry>
+		<entry>Blue Dragon, Ancient</entry>
+		<entry>Blue Dragon, Wyrm</entry>
+		<entry>Blue Dragon, Great Wyrm</entry>
+		<entry>Green Dragon, Wyrmling</entry>
+		<entry>Green Dragon, Very Young</entry>
+		<entry>Green Dragon, Young</entry>
+		<entry>Green Dragon, Juvenile</entry>
+		<entry>Green Dragon, Young Adult</entry>
+		<entry>Green Dragon, Adult</entry>
+		<entry>Green Dragon, Mature Adult</entry>
+		<entry>Green Dragon, Old</entry>
+		<entry>Green Dragon, Very Old</entry>
+		<entry>Green Dragon, Ancient</entry>
+		<entry>Green Dragon, Wyrm</entry>
+		<entry>Green Dragon, Great Wyrm</entry>
+		<entry>Red Dragon, Wyrmling</entry>
+		<entry>Red Dragon, Very Young</entry>
+		<entry>Red Dragon, Young</entry>
+		<entry>Red Dragon, Juvenile</entry>
+		<entry>Red Dragon, Young Adult</entry>
+		<entry>Red Dragon, Adult</entry>
+		<entry>Red Dragon, Mature Adult</entry>
+		<entry>Red Dragon, Old</entry>
+		<entry>Red Dragon, Very Old</entry>
+		<entry>Red Dragon, Ancient</entry>
+		<entry>Red Dragon, Wyrm</entry>
+		<entry>Red Dragon, Great Wyrm</entry>
+		<entry>White Dragon, Wyrmling</entry>
+		<entry>White Dragon, Very Young</entry>
+		<entry>White Dragon, Young</entry>
+		<entry>White Dragon, Juvenile</entry>
+		<entry>White Dragon, Young Adult</entry>
+		<entry>White Dragon, Adult</entry>
+		<entry>White Dragon, Mature Adult</entry>
+		<entry>White Dragon, Old</entry>
+		<entry>White Dragon, Very Old</entry>
+		<entry>White Dragon, Ancient</entry>
+		<entry>White Dragon, Wyrm</entry>
+		<entry>White Dragon, Great Wyrm</entry>
 	</collection>
 	<collection>
 		<name>GhostTrue</name>
@@ -428,10 +930,92 @@
 		<entry>Annis</entry>
 		<entry>Ape</entry>
 		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
 		<entry>Aranea</entry>
 		<entry>Assassin Vine</entry>
 		<entry>Athach</entry>
 		<entry>Badger</entry>
+		<entry>Baleen Whale</entry>
+		<entry>Cachalot Whale</entry>
+		<entry>Orca</entry>
+		<entry>Basilisk</entry>
+		<entry>Greater Basilisk</entry>
+		<entry>Behir</entry>
+		<entry>Beholder</entry>
+		<entry>Gauth (Lesser Beholder)</entry>
+		<entry>Bison</entry>
+		<entry>Black Bear</entry>
+		<entry>Brown Bear</entry>
+		<entry>Dire Bear</entry>
+		<entry>Polar Bear</entry>
+		<entry>Blink Dog</entry>
+		<entry>Boar</entry>
+		<entry>Dire Boar</entry>
+		<entry>Black Dragon, Wyrmling</entry>
+		<entry>Black Dragon, Very Young</entry>
+		<entry>Black Dragon, Young</entry>
+		<entry>Black Dragon, Juvenile</entry>
+		<entry>Black Dragon, Young Adult</entry>
+		<entry>Black Dragon, Adult</entry>
+		<entry>Black Dragon, Mature Adult</entry>
+		<entry>Black Dragon, Old</entry>
+		<entry>Black Dragon, Very Old</entry>
+		<entry>Black Dragon, Ancient</entry>
+		<entry>Black Dragon, Wyrm</entry>
+		<entry>Black Dragon, Great Wyrm</entry>
+		<entry>Blue Dragon, Wyrmling</entry>
+		<entry>Blue Dragon, Very Young</entry>
+		<entry>Blue Dragon, Young</entry>
+		<entry>Blue Dragon, Juvenile</entry>
+		<entry>Blue Dragon, Young Adult</entry>
+		<entry>Blue Dragon, Adult</entry>
+		<entry>Blue Dragon, Mature Adult</entry>
+		<entry>Blue Dragon, Old</entry>
+		<entry>Blue Dragon, Very Old</entry>
+		<entry>Blue Dragon, Ancient</entry>
+		<entry>Blue Dragon, Wyrm</entry>
+		<entry>Blue Dragon, Great Wyrm</entry>
+		<entry>Green Dragon, Wyrmling</entry>
+		<entry>Green Dragon, Very Young</entry>
+		<entry>Green Dragon, Young</entry>
+		<entry>Green Dragon, Juvenile</entry>
+		<entry>Green Dragon, Young Adult</entry>
+		<entry>Green Dragon, Adult</entry>
+		<entry>Green Dragon, Mature Adult</entry>
+		<entry>Green Dragon, Old</entry>
+		<entry>Green Dragon, Very Old</entry>
+		<entry>Green Dragon, Ancient</entry>
+		<entry>Green Dragon, Wyrm</entry>
+		<entry>Green Dragon, Great Wyrm</entry>
+		<entry>Red Dragon, Wyrmling</entry>
+		<entry>Red Dragon, Very Young</entry>
+		<entry>Red Dragon, Young</entry>
+		<entry>Red Dragon, Juvenile</entry>
+		<entry>Red Dragon, Young Adult</entry>
+		<entry>Red Dragon, Adult</entry>
+		<entry>Red Dragon, Mature Adult</entry>
+		<entry>Red Dragon, Old</entry>
+		<entry>Red Dragon, Very Old</entry>
+		<entry>Red Dragon, Ancient</entry>
+		<entry>Red Dragon, Wyrm</entry>
+		<entry>Red Dragon, Great Wyrm</entry>
+		<entry>White Dragon, Wyrmling</entry>
+		<entry>White Dragon, Very Young</entry>
+		<entry>White Dragon, Young</entry>
+		<entry>White Dragon, Juvenile</entry>
+		<entry>White Dragon, Young Adult</entry>
+		<entry>White Dragon, Adult</entry>
+		<entry>White Dragon, Mature Adult</entry>
+		<entry>White Dragon, Old</entry>
+		<entry>White Dragon, Very Old</entry>
+		<entry>White Dragon, Ancient</entry>
+		<entry>White Dragon, Wyrm</entry>
+		<entry>White Dragon, Great Wyrm</entry>
 	</collection>
 	<collection>
 		<name>Half-CelestialFalse</name>
@@ -463,6 +1047,79 @@
 		<entry>Androsphinx</entry>
 		<entry>Annis</entry>
 		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+	<entry>Aranea</entry>
+	<entry>Athach</entry>
+	<entry>Behir</entry>
+	<entry>Beholder</entry>
+	<entry>Gauth (Lesser Beholder)</entry>
+	<entry>Belker</entry>
+	<entry>Blink Dog</entry>
+		<entry>Brass Dragon, Wyrmling</entry>
+		<entry>Brass Dragon, Very Young</entry>
+		<entry>Brass Dragon, Young</entry>
+		<entry>Brass Dragon, Juvenile</entry>
+		<entry>Brass Dragon, Young Adult</entry>
+		<entry>Brass Dragon, Adult</entry>
+		<entry>Brass Dragon, Mature Adult</entry>
+		<entry>Brass Dragon, Old</entry>
+		<entry>Brass Dragon, Very Old</entry>
+		<entry>Brass Dragon, Ancient</entry>
+		<entry>Brass Dragon, Wyrm</entry>
+		<entry>Brass Dragon, Great Wyrm</entry>
+		<entry>Bronze Dragon, Wyrmling</entry>
+		<entry>Bronze Dragon, Very Young</entry>
+		<entry>Bronze Dragon, Young</entry>
+		<entry>Bronze Dragon, Juvenile</entry>
+		<entry>Bronze Dragon, Young Adult</entry>
+		<entry>Bronze Dragon, Adult</entry>
+		<entry>Bronze Dragon, Mature Adult</entry>
+		<entry>Bronze Dragon, Old</entry>
+		<entry>Bronze Dragon, Very Old</entry>
+		<entry>Bronze Dragon, Ancient</entry>
+		<entry>Bronze Dragon, Wyrm</entry>
+		<entry>Bronze Dragon, Great Wyrm</entry>
+		<entry>Copper Dragon, Wyrmling</entry>
+		<entry>Copper Dragon, Very Young</entry>
+		<entry>Copper Dragon, Young</entry>
+		<entry>Copper Dragon, Juvenile</entry>
+		<entry>Copper Dragon, Young Adult</entry>
+		<entry>Copper Dragon, Adult</entry>
+		<entry>Copper Dragon, Mature Adult</entry>
+		<entry>Copper Dragon, Old</entry>
+		<entry>Copper Dragon, Very Old</entry>
+		<entry>Copper Dragon, Ancient</entry>
+		<entry>Copper Dragon, Wyrm</entry>
+		<entry>Copper Dragon, Great Wyrm</entry>
+		<entry>Gold Dragon, Wyrmling</entry>
+		<entry>Gold Dragon, Very Young</entry>
+		<entry>Gold Dragon, Young</entry>
+		<entry>Gold Dragon, Juvenile</entry>
+		<entry>Gold Dragon, Young Adult</entry>
+		<entry>Gold Dragon, Adult</entry>
+		<entry>Gold Dragon, Mature Adult</entry>
+		<entry>Gold Dragon, Old</entry>
+		<entry>Gold Dragon, Very Old</entry>
+		<entry>Gold Dragon, Ancient</entry>
+		<entry>Gold Dragon, Wyrm</entry>
+		<entry>Gold Dragon, Great Wyrm</entry>
+		<entry>Silver Dragon, Wyrmling</entry>
+		<entry>Silver Dragon, Very Young</entry>
+		<entry>Silver Dragon, Young</entry>
+		<entry>Silver Dragon, Juvenile</entry>
+		<entry>Silver Dragon, Young Adult</entry>
+		<entry>Silver Dragon, Adult</entry>
+		<entry>Silver Dragon, Mature Adult</entry>
+		<entry>Silver Dragon, Old</entry>
+		<entry>Silver Dragon, Very Old</entry>
+		<entry>Silver Dragon, Ancient</entry>
+		<entry>Silver Dragon, Wyrm</entry>
+		<entry>Silver Dragon, Great Wyrm</entry>
 	</collection>
 	<collection>
 		<name>Half-CelestialTrue</name>
@@ -494,72 +1151,665 @@
 		<entry>Androsphinx</entry>
 		<entry>Annis</entry>
 		<entry>Aquatic Elf</entry>
-	</collection>
-	<collection>
-		<name>Half-FiendFalse</name>
-	</collection>
-	<collection>
-		<name>Half-FiendTrue</name>
-	</collection>
-	<collection>
-		<name>Half-Dragon (Blue)False</name>
-	</collection>
-	<collection>
-		<name>Half-Dragon (Blue)True</name>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+	<entry>Aranea</entry>
+	<entry>Athach</entry>
+	<entry>Behir</entry>
+	<entry>Beholder</entry>
+	<entry>Gauth (Lesser Beholder)</entry>
+	<entry>Belker</entry>
+	<entry>Blink Dog</entry>
+		<entry>Brass Dragon, Wyrmling</entry>
+		<entry>Brass Dragon, Very Young</entry>
+		<entry>Brass Dragon, Young</entry>
+		<entry>Brass Dragon, Juvenile</entry>
+		<entry>Brass Dragon, Young Adult</entry>
+		<entry>Brass Dragon, Adult</entry>
+		<entry>Brass Dragon, Mature Adult</entry>
+		<entry>Brass Dragon, Old</entry>
+		<entry>Brass Dragon, Very Old</entry>
+		<entry>Brass Dragon, Ancient</entry>
+		<entry>Brass Dragon, Wyrm</entry>
+		<entry>Brass Dragon, Great Wyrm</entry>
+		<entry>Bronze Dragon, Wyrmling</entry>
+		<entry>Bronze Dragon, Very Young</entry>
+		<entry>Bronze Dragon, Young</entry>
+		<entry>Bronze Dragon, Juvenile</entry>
+		<entry>Bronze Dragon, Young Adult</entry>
+		<entry>Bronze Dragon, Adult</entry>
+		<entry>Bronze Dragon, Mature Adult</entry>
+		<entry>Bronze Dragon, Old</entry>
+		<entry>Bronze Dragon, Very Old</entry>
+		<entry>Bronze Dragon, Ancient</entry>
+		<entry>Bronze Dragon, Wyrm</entry>
+		<entry>Bronze Dragon, Great Wyrm</entry>
+		<entry>Copper Dragon, Wyrmling</entry>
+		<entry>Copper Dragon, Very Young</entry>
+		<entry>Copper Dragon, Young</entry>
+		<entry>Copper Dragon, Juvenile</entry>
+		<entry>Copper Dragon, Young Adult</entry>
+		<entry>Copper Dragon, Adult</entry>
+		<entry>Copper Dragon, Mature Adult</entry>
+		<entry>Copper Dragon, Old</entry>
+		<entry>Copper Dragon, Very Old</entry>
+		<entry>Copper Dragon, Ancient</entry>
+		<entry>Copper Dragon, Wyrm</entry>
+		<entry>Copper Dragon, Great Wyrm</entry>
+		<entry>Gold Dragon, Wyrmling</entry>
+		<entry>Gold Dragon, Very Young</entry>
+		<entry>Gold Dragon, Young</entry>
+		<entry>Gold Dragon, Juvenile</entry>
+		<entry>Gold Dragon, Young Adult</entry>
+		<entry>Gold Dragon, Adult</entry>
+		<entry>Gold Dragon, Mature Adult</entry>
+		<entry>Gold Dragon, Old</entry>
+		<entry>Gold Dragon, Very Old</entry>
+		<entry>Gold Dragon, Ancient</entry>
+		<entry>Gold Dragon, Wyrm</entry>
+		<entry>Gold Dragon, Great Wyrm</entry>
+		<entry>Silver Dragon, Wyrmling</entry>
+		<entry>Silver Dragon, Very Young</entry>
+		<entry>Silver Dragon, Young</entry>
+		<entry>Silver Dragon, Juvenile</entry>
+		<entry>Silver Dragon, Young Adult</entry>
+		<entry>Silver Dragon, Adult</entry>
+		<entry>Silver Dragon, Mature Adult</entry>
+		<entry>Silver Dragon, Old</entry>
+		<entry>Silver Dragon, Very Old</entry>
+		<entry>Silver Dragon, Ancient</entry>
+		<entry>Silver Dragon, Wyrm</entry>
+		<entry>Silver Dragon, Great Wyrm</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Black)False</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Black)True</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Blue)False</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
+	</collection>
+	<collection>
+		<name>Half-Dragon (Blue)True</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Green)False</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Green)True</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Red)False</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Red)True</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (White)False</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (White)True</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Brass)False</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Brass)True</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Bronze)False</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Bronze)True</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Copper)False</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Copper)True</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Gold)False</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Gold)True</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Silver)False</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Silver)True</name>
+		<entry>Aboleth</entry>
+		<entry>Androsphinx</entry>
+		<entry>Criosphinx</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ankheg</entry>
+		<entry>Annisn</entry>
+		<entry>Ape</entry>
+		<entry>Dire Ape</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>High Elf</entry>
+		<entry>Gray Elf</entry>
+		<entry>Drow</entry>
+		<entry>Half-Elf</entry>
+		<entry>Wild Elf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Aranea</entry>
+		<entry>Assassin Vine</entry>
+		<entry>Athach</entry>
+		<entry>Baboon</entry>
+	</collection>
+	<collection>
+		<name>Half-FiendFalse</name>
+		<entry>Black Dragon, Wyrmling</entry>
+		<entry>Black Dragon, Very Young</entry>
+		<entry>Black Dragon, Young</entry>
+		<entry>Black Dragon, Juvenile</entry>
+		<entry>Black Dragon, Young Adult</entry>
+		<entry>Black Dragon, Adult</entry>
+		<entry>Black Dragon, Mature Adult</entry>
+		<entry>Black Dragon, Old</entry>
+		<entry>Black Dragon, Very Old</entry>
+		<entry>Black Dragon, Ancient</entry>
+		<entry>Black Dragon, Wyrm</entry>
+		<entry>Black Dragon, Great Wyrm</entry>
+		<entry>Blue Dragon, Wyrmling</entry>
+		<entry>Blue Dragon, Very Young</entry>
+		<entry>Blue Dragon, Young</entry>
+		<entry>Blue Dragon, Juvenile</entry>
+		<entry>Blue Dragon, Young Adult</entry>
+		<entry>Blue Dragon, Adult</entry>
+		<entry>Blue Dragon, Mature Adult</entry>
+		<entry>Blue Dragon, Old</entry>
+		<entry>Blue Dragon, Very Old</entry>
+		<entry>Blue Dragon, Ancient</entry>
+		<entry>Blue Dragon, Wyrm</entry>
+		<entry>Blue Dragon, Great Wyrm</entry>
+		<entry>Green Dragon, Wyrmling</entry>
+		<entry>Green Dragon, Very Young</entry>
+		<entry>Green Dragon, Young</entry>
+		<entry>Green Dragon, Juvenile</entry>
+		<entry>Green Dragon, Young Adult</entry>
+		<entry>Green Dragon, Adult</entry>
+		<entry>Green Dragon, Mature Adult</entry>
+		<entry>Green Dragon, Old</entry>
+		<entry>Green Dragon, Very Old</entry>
+		<entry>Green Dragon, Ancient</entry>
+		<entry>Green Dragon, Wyrm</entry>
+		<entry>Green Dragon, Great Wyrm</entry>
+		<entry>Red Dragon, Wyrmling</entry>
+		<entry>Red Dragon, Very Young</entry>
+		<entry>Red Dragon, Young</entry>
+		<entry>Red Dragon, Juvenile</entry>
+		<entry>Red Dragon, Young Adult</entry>
+		<entry>Red Dragon, Adult</entry>
+		<entry>Red Dragon, Mature Adult</entry>
+		<entry>Red Dragon, Old</entry>
+		<entry>Red Dragon, Very Old</entry>
+		<entry>Red Dragon, Ancient</entry>
+		<entry>Red Dragon, Wyrm</entry>
+		<entry>Red Dragon, Great Wyrm</entry>
+		<entry>White Dragon, Wyrmling</entry>
+		<entry>White Dragon, Very Young</entry>
+		<entry>White Dragon, Young</entry>
+		<entry>White Dragon, Juvenile</entry>
+		<entry>White Dragon, Young Adult</entry>
+		<entry>White Dragon, Adult</entry>
+		<entry>White Dragon, Mature Adult</entry>
+		<entry>White Dragon, Old</entry>
+		<entry>White Dragon, Very Old</entry>
+		<entry>White Dragon, Ancient</entry>
+		<entry>White Dragon, Wyrm</entry>
+		<entry>White Dragon, Great Wyrm</entry>
+	</collection>
+	<collection>
+		<name>Half-FiendTrue</name>
+		<entry>Black Dragon, Wyrmling</entry>
+		<entry>Black Dragon, Very Young</entry>
+		<entry>Black Dragon, Young</entry>
+		<entry>Black Dragon, Juvenile</entry>
+		<entry>Black Dragon, Young Adult</entry>
+		<entry>Black Dragon, Adult</entry>
+		<entry>Black Dragon, Mature Adult</entry>
+		<entry>Black Dragon, Old</entry>
+		<entry>Black Dragon, Very Old</entry>
+		<entry>Black Dragon, Ancient</entry>
+		<entry>Black Dragon, Wyrm</entry>
+		<entry>Black Dragon, Great Wyrm</entry>
+		<entry>Blue Dragon, Wyrmling</entry>
+		<entry>Blue Dragon, Very Young</entry>
+		<entry>Blue Dragon, Young</entry>
+		<entry>Blue Dragon, Juvenile</entry>
+		<entry>Blue Dragon, Young Adult</entry>
+		<entry>Blue Dragon, Adult</entry>
+		<entry>Blue Dragon, Mature Adult</entry>
+		<entry>Blue Dragon, Old</entry>
+		<entry>Blue Dragon, Very Old</entry>
+		<entry>Blue Dragon, Ancient</entry>
+		<entry>Blue Dragon, Wyrm</entry>
+		<entry>Blue Dragon, Great Wyrm</entry>
+		<entry>Green Dragon, Wyrmling</entry>
+		<entry>Green Dragon, Very Young</entry>
+		<entry>Green Dragon, Young</entry>
+		<entry>Green Dragon, Juvenile</entry>
+		<entry>Green Dragon, Young Adult</entry>
+		<entry>Green Dragon, Adult</entry>
+		<entry>Green Dragon, Mature Adult</entry>
+		<entry>Green Dragon, Old</entry>
+		<entry>Green Dragon, Very Old</entry>
+		<entry>Green Dragon, Ancient</entry>
+		<entry>Green Dragon, Wyrm</entry>
+		<entry>Green Dragon, Great Wyrm</entry>
+		<entry>Red Dragon, Wyrmling</entry>
+		<entry>Red Dragon, Very Young</entry>
+		<entry>Red Dragon, Young</entry>
+		<entry>Red Dragon, Juvenile</entry>
+		<entry>Red Dragon, Young Adult</entry>
+		<entry>Red Dragon, Adult</entry>
+		<entry>Red Dragon, Mature Adult</entry>
+		<entry>Red Dragon, Old</entry>
+		<entry>Red Dragon, Very Old</entry>
+		<entry>Red Dragon, Ancient</entry>
+		<entry>Red Dragon, Wyrm</entry>
+		<entry>Red Dragon, Great Wyrm</entry>
+		<entry>White Dragon, Wyrmling</entry>
+		<entry>White Dragon, Very Young</entry>
+		<entry>White Dragon, Young</entry>
+		<entry>White Dragon, Juvenile</entry>
+		<entry>White Dragon, Young Adult</entry>
+		<entry>White Dragon, Adult</entry>
+		<entry>White Dragon, Mature Adult</entry>
+		<entry>White Dragon, Old</entry>
+		<entry>White Dragon, Very Old</entry>
+		<entry>White Dragon, Ancient</entry>
+		<entry>White Dragon, Wyrm</entry>
+		<entry>White Dragon, Great Wyrm</entry>
 	</collection>
 	<collection>
 		<name>LichFalse</name>
@@ -610,16 +1860,16 @@
 		<name>Lycanthrope, Brown Bear (Werebear, Natural)True</name>
 	</collection>
 	<collection>
-		<name>Lycanthrope, Dire Bear (Werebear, Afflicted)False</name>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)False</name>
 	</collection>
 	<collection>
-		<name>Lycanthrope, Dire Bear (Werebear, Afflicted)True</name>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)True</name>
 	</collection>
 	<collection>
-		<name>Lycanthrope, Dire Bear (Werebear, Natural)False</name>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)False</name>
 	</collection>
 	<collection>
-		<name>Lycanthrope, Dire Bear (Werebear, Natural)True</name>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)True</name>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)False</name>
@@ -646,6 +1896,18 @@
 		<name>Lycanthrope, Boar (Wereboar, Natural)True</name>
 	</collection>
 	<collection>
+		<name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)False</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)True</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)False</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)True</name>
+	</collection>
+	<collection>
 		<name>Lycanthrope, Rat (Wererat, Afflicted)False</name>
 	</collection>
 	<collection>
@@ -656,6 +1918,18 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Rat (Wererat, Natural)True</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)False</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)True</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)False</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)True</name>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Tiger (Weretiger, Afflicted)False</name>
@@ -670,6 +1944,18 @@
 		<name>Lycanthrope, Tiger (Weretiger, Natural)True</name>
 	</collection>
 	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)False</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)True</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)False</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)True</name>
+	</collection>
+	<collection>
 		<name>Lycanthrope, Wolf (Werewolf, Afflicted)False</name>
 	</collection>
 	<collection>
@@ -680,5 +1966,17 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Wolf (Werewolf, Natural)True</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)False</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)True</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)False</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)True</name>
 	</collection>
 </collections>
