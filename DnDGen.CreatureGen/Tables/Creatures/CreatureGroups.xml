@@ -393,6 +393,94 @@
 	  <entry>Cat</entry>
 	  <entry>Centaur</entry>
 	  <entry>Chain Devil (Kyton)</entry>
+	  <entry>Cheetah</entry>
+	  <entry>Chimera (Black Dragon head)</entry>
+	  <entry>Chimera (Blue Dragon head)</entry>
+	  <entry>Chimera (Green Dragon head)</entry>
+	  <entry>Chimera (Red Dragon head)</entry>
+	  <entry>Chimera (White Dragon head)</entry>
+	  <entry>Cockatrice</entry>
+	  <entry>Constrictor Snake</entry>
+	  <entry>Giant Constrictor Snake</entry>
+	  <entry>Criosphinx</entry>
+	  <entry>Gynosphinx</entry>
+	  <entry>Crocodile</entry>
+	  <entry>Giant Crocodile</entry>
+	  <entry>Darkmantle</entry>
+	  <entry>Deinonychus</entry>
+	  <entry>Derro</entry>
+	  <entry>Derro (Sane)</entry>
+	  <entry>Digester</entry>
+	  <entry>Dire Badger</entry>
+	  <entry>Dire Lion</entry>
+	  <entry>Lion</entry>
+	  <entry>Dire Rat</entry>
+	  <entry>Rat</entry>
+	  <entry>Dire Shark</entry>
+	  <entry>Dire Tiger</entry>
+	  <entry>Tiger</entry>
+	  <entry>Dire Weasel</entry>
+	  <entry>Weasel</entry>
+	  <entry>Dire Wolf</entry>
+	  <entry>Wolf</entry>
+	  <entry>Dire Wolverine</entry>
+	  <entry>Wolverine</entry>
+	  <entry>Displacer Beast</entry>
+	  <entry>Displacer Beast Pack Lord</entry>
+	  <entry>Dog</entry>
+	  <entry>Dog, Riding</entry>
+	  <entry>Clay Golem</entry>
+	  <entry>Flesh Golem</entry>
+	  <entry>Stone Golem</entry>
+	  <entry>Greater Stone Golem</entry>
+	  <entry>Iron Golem</entry>
+	  <entry>Donkey</entry>
+	  <entry>Doppelganger</entry>
+	  <entry>Dragon Turtle</entry>
+	  <entry>Dragonne</entry>
+	  <entry>Dretch</entry>
+	  <entry>Dryad</entry>
+	  <entry>Dust Mephit</entry>
+	  <entry>Earth Mephit</entry>
+	  <entry>Fire Mephit</entry>
+	  <entry>Magma Mephit</entry>
+	  <entry>Ooze Mephit</entry>
+	  <entry>Salt Mephit</entry>
+	  <entry>Steam Mephit</entry>
+	  <entry>Water Mephit</entry>
+	  <entry>Eagle</entry>
+	  <entry>Giant Eagle</entry>
+	  <entry>Owl</entry>
+	  <entry>Giant Owl</entry>
+	  <entry>Deep Dwarf</entry>
+	  <entry>Five-Headed Cryohydra</entry>
+	  <entry>Five-Headed Hydra</entry>
+	  <entry>Five-Headed Pyrohydra</entry>
+	  <entry>Six-Headed Cryohydra</entry>
+	  <entry>Six-Headed Hydra</entry>
+	  <entry>Six-Headed Pyrohydra</entry>
+	  <entry>Seven-Headed Cryohydra</entry>
+	  <entry>Seven-Headed Hydra</entry>
+	  <entry>Seven-Headed Pyrohydra</entry>
+	  <entry>Eight-Headed Cryohydra</entry>
+	  <entry>Eight-Headed Hydra</entry>
+	  <entry>Eight-Headed Pyrohydra</entry>
+	  <entry>Nine-Headed Cryohydra</entry>
+	  <entry>Nine-Headed Hydra</entry>
+	  <entry>Nine-Headed Pyrohydra</entry>
+	  <entry>Ten-Headed Cryohydra</entry>
+	  <entry>Ten-Headed Hydra</entry>
+	  <entry>Ten-Headed Pyrohydra</entry>
+	  <entry>Eleven-Headed Cryohydra</entry>
+	  <entry>Eleven-Headed Hydra</entry>
+	  <entry>Eleven-Headed Pyrohydra</entry>
+	  <entry>Twelve-Headed Cryohydra</entry>
+	  <entry>Twelve-Headed Hydra</entry>
+	  <entry>Twelve-Headed Pyrohydra</entry>
+	  <entry>Elasmosaurus</entry>
+	  <entry>Elder Arrowhawk</entry>
+	  <entry>Elder Tojanida</entry>
+	  <entry>Elephant</entry>
   </collection>
   <collection>
     <name>Characters</name>
@@ -743,9 +831,6 @@
 		<entry>Dire Rat</entry>
 		<entry>Rat</entry>
 		<entry>Dire Shark</entry>
-		<entry>Medium Shark</entry>
-		<entry>Large Shark</entry>
-		<entry>Huge Shark</entry>
 		<entry>Dire Tiger</entry>
 		<entry>Tiger</entry>
 		<entry>Dire Weasel</entry>
@@ -757,7 +842,65 @@
 		<entry>Displacer Beast</entry>
 		<entry>Displacer Beast Pack Lord</entry>
 		<entry>Dog</entry>
-		<entry>Riding Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragon Turtle</entry>
+		<entry>Dragonne</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
+		<entry>Five-Headed Cryohydra</entry>
+		<entry>Five-Headed Hydra</entry>
+		<entry>Five-Headed Pyrohydra</entry>
+		<entry>Six-Headed Cryohydra</entry>
+		<entry>Six-Headed Hydra</entry>
+		<entry>Six-Headed Pyrohydra</entry>
+		<entry>Seven-Headed Cryohydra</entry>
+		<entry>Seven-Headed Hydra</entry>
+		<entry>Seven-Headed Pyrohydra</entry>
+		<entry>Eight-Headed Cryohydra</entry>
+		<entry>Eight-Headed Hydra</entry>
+		<entry>Eight-Headed Pyrohydra</entry>
+		<entry>Nine-Headed Cryohydra</entry>
+		<entry>Nine-Headed Hydra</entry>
+		<entry>Nine-Headed Pyrohydra</entry>
+		<entry>Ten-Headed Cryohydra</entry>
+		<entry>Ten-Headed Hydra</entry>
+		<entry>Ten-Headed Pyrohydra</entry>
+		<entry>Eleven-Headed Cryohydra</entry>
+		<entry>Eleven-Headed Hydra</entry>
+		<entry>Eleven-Headed Pyrohydra</entry>
+		<entry>Twelve-Headed Cryohydra</entry>
+		<entry>Twelve-Headed Hydra</entry>
+		<entry>Twelve-Headed Pyrohydra</entry>
+		<entry>Megaraptor</entry>
+		<entry>Tyrannosaurus</entry>
+		<entry>Triceratops</entry>
+		<entry>Elasmosaurus</entry>
+		<entry>Elephant</entry>
+		<entry>Ethereal Filcher</entry>
+		<entry>Ethereal Marauder</entry>
+		<entry>Ettercap</entry>
+		<entry>Ettin</entry>
+		<entry>Forest Gnome</entry>
+		<entry>Rock Gnome</entry>
+		<entry>Svirfneblin</entry>
+		<entry>Frost Worm</entry>
+		<entry>Gargoyle</entry>
+		<entry>Kapoacinth</entry>
+		<entry>Giant Ant, Queen</entry>
+		<entry>Giant Ant, Soldier</entry>
+		<entry>Giant Ant, Worker</entry>
+		<entry>Giant Bee</entry>
+		<entry>Giant Bombardier Beetle</entry>
+		<entry>Giant Eagle</entry>
+		<entry>Giant Fire Beetle</entry>
+		<entry>Giant Octopus</entry>
+		<entry>Giant Owl</entry>
+		<entry>Giant Praying Mantis</entry>
+		<entry>Giant Squid</entry>
+		<entry>Giant Stag Beetle</entry>
+		<entry>Giant Wasp</entry>
 	</collection>
 	<collection>
 		<name>Celestial CreatureTrue</name>
@@ -914,9 +1057,6 @@
 		<entry>Dire Rat</entry>
 		<entry>Rat</entry>
 		<entry>Dire Shark</entry>
-		<entry>Medium Shark</entry>
-		<entry>Large Shark</entry>
-		<entry>Huge Shark</entry>
 		<entry>Dire Tiger</entry>
 		<entry>Tiger</entry>
 		<entry>Dire Weasel</entry>
@@ -928,7 +1068,66 @@
 		<entry>Displacer Beast</entry>
 		<entry>Displacer Beast Pack Lord</entry>
 		<entry>Dog</entry>
-		<entry>Riding Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragon Turtle</entry>
+		<entry>Dragonne</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
+		<entry>Five-Headed Cryohydra</entry>
+		<entry>Five-Headed Hydra</entry>
+		<entry>Five-Headed Pyrohydra</entry>
+		<entry>Six-Headed Cryohydra</entry>
+		<entry>Six-Headed Hydra</entry>
+		<entry>Six-Headed Pyrohydra</entry>
+		<entry>Seven-Headed Cryohydra</entry>
+		<entry>Seven-Headed Hydra</entry>
+		<entry>Seven-Headed Pyrohydra</entry>
+		<entry>Eight-Headed Cryohydra</entry>
+		<entry>Eight-Headed Hydra</entry>
+		<entry>Eight-Headed Pyrohydra</entry>
+		<entry>Nine-Headed Cryohydra</entry>
+		<entry>Nine-Headed Hydra</entry>
+		<entry>Nine-Headed Pyrohydra</entry>
+		<entry>Ten-Headed Cryohydra</entry>
+		<entry>Ten-Headed Hydra</entry>
+		<entry>Ten-Headed Pyrohydra</entry>
+		<entry>Eleven-Headed Cryohydra</entry>
+		<entry>Eleven-Headed Hydra</entry>
+		<entry>Eleven-Headed Pyrohydra</entry>
+		<entry>Twelve-Headed Cryohydra</entry>
+		<entry>Twelve-Headed Hydra</entry>
+		<entry>Twelve-Headed Pyrohydra</entry>
+		<entry>Elasmosaurus</entry>
+		<entry>Megaraptor</entry>
+		<entry>Tyrannosaurus</entry>
+		<entry>Triceratops</entry>
+		<entry>Elasmosaurus</entry>
+		<entry>Elephant</entry>
+		<entry>Ethereal Filcher</entry>
+		<entry>Ethereal Marauder</entry>
+		<entry>Ettercap</entry>
+		<entry>Ettin</entry>
+		<entry>Forest Gnome</entry>
+		<entry>Rock Gnome</entry>
+		<entry>Svirfneblin</entry>
+		<entry>Frost Worm</entry>
+		<entry>Gargoyle</entry>
+		<entry>Kapoacinth</entry>
+		<entry>Giant Ant, Queen</entry>
+		<entry>Giant Ant, Soldier</entry>
+		<entry>Giant Ant, Worker</entry>
+		<entry>Giant Bee</entry>
+		<entry>Giant Bombardier Beetle</entry>
+		<entry>Giant Eagle</entry>
+		<entry>Giant Fire Beetle</entry>
+		<entry>Giant Octopus</entry>
+		<entry>Giant Owl</entry>
+		<entry>Giant Praying Mantis</entry>
+		<entry>Giant Squid</entry>
+		<entry>Giant Stag Beetle</entry>
+		<entry>Giant Wasp</entry>
 	</collection>
 	<collection>
 		<name>Fiendish CreatureFalse</name>
@@ -1086,9 +1285,6 @@
 		<entry>Dire Rat</entry>
 		<entry>Rat</entry>
 		<entry>Dire Shark</entry>
-		<entry>Medium Shark</entry>
-		<entry>Large Shark</entry>
-		<entry>Huge Shark</entry>
 		<entry>Dire Tiger</entry>
 		<entry>Tiger</entry>
 		<entry>Dire Weasel</entry>
@@ -1100,7 +1296,67 @@
 		<entry>Displacer Beast</entry>
 		<entry>Displacer Beast Pack Lord</entry>
 		<entry>Dog</entry>
-		<entry>Riding Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragon Turtle</entry>
+		<entry>Dragonne</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
+		<entry>Five-Headed Cryohydra</entry>
+		<entry>Five-Headed Hydra</entry>
+		<entry>Five-Headed Pyrohydra</entry>
+		<entry>Six-Headed Cryohydra</entry>
+		<entry>Six-Headed Hydra</entry>
+		<entry>Six-Headed Pyrohydra</entry>
+		<entry>Seven-Headed Cryohydra</entry>
+		<entry>Seven-Headed Hydra</entry>
+		<entry>Seven-Headed Pyrohydra</entry>
+		<entry>Eight-Headed Cryohydra</entry>
+		<entry>Eight-Headed Hydra</entry>
+		<entry>Eight-Headed Pyrohydra</entry>
+		<entry>Nine-Headed Cryohydra</entry>
+		<entry>Nine-Headed Hydra</entry>
+		<entry>Nine-Headed Pyrohydra</entry>
+		<entry>Ten-Headed Cryohydra</entry>
+		<entry>Ten-Headed Hydra</entry>
+		<entry>Ten-Headed Pyrohydra</entry>
+		<entry>Eleven-Headed Cryohydra</entry>
+		<entry>Eleven-Headed Hydra</entry>
+		<entry>Eleven-Headed Pyrohydra</entry>
+		<entry>Twelve-Headed Cryohydra</entry>
+		<entry>Twelve-Headed Hydra</entry>
+		<entry>Twelve-Headed Pyrohydra</entry>
+		<entry>Drider</entry>
+		<entry>Elasmosaurus</entry>
+		<entry>Megaraptor</entry>
+		<entry>Tyrannosaurus</entry>
+		<entry>Triceratops</entry>
+		<entry>Elasmosaurus</entry>
+		<entry>Elephant</entry>
+		<entry>Ethereal Filcher</entry>
+		<entry>Ethereal Marauder</entry>
+		<entry>Ettercap</entry>
+		<entry>Ettin</entry>
+		<entry>Forest Gnome</entry>
+		<entry>Rock Gnome</entry>
+		<entry>Svirfneblin</entry>
+		<entry>Frost Worm</entry>
+		<entry>Gargoyle</entry>
+		<entry>Kapoacinth</entry>
+		<entry>Giant Ant, Queen</entry>
+		<entry>Giant Ant, Soldier</entry>
+		<entry>Giant Ant, Worker</entry>
+		<entry>Giant Bee</entry>
+		<entry>Giant Bombardier Beetle</entry>
+		<entry>Giant Eagle</entry>
+		<entry>Giant Fire Beetle</entry>
+		<entry>Giant Octopus</entry>
+		<entry>Giant Owl</entry>
+		<entry>Giant Praying Mantis</entry>
+		<entry>Giant Squid</entry>
+		<entry>Giant Stag Beetle</entry>
+		<entry>Giant Wasp</entry>
 	</collection>
 	<collection>
 		<name>Fiendish CreatureTrue</name>
@@ -1258,9 +1514,6 @@
 		<entry>Dire Rat</entry>
 		<entry>Rat</entry>
 		<entry>Dire Shark</entry>
-		<entry>Medium Shark</entry>
-		<entry>Large Shark</entry>
-		<entry>Huge Shark</entry>
 		<entry>Dire Tiger</entry>
 		<entry>Tiger</entry>
 		<entry>Dire Weasel</entry>
@@ -1272,7 +1525,67 @@
 		<entry>Displacer Beast</entry>
 		<entry>Displacer Beast Pack Lord</entry>
 		<entry>Dog</entry>
-		<entry>Riding Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragon Turtle</entry>
+		<entry>Dragonne</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
+		<entry>Five-Headed Cryohydra</entry>
+		<entry>Five-Headed Hydra</entry>
+		<entry>Five-Headed Pyrohydra</entry>
+		<entry>Six-Headed Cryohydra</entry>
+		<entry>Six-Headed Hydra</entry>
+		<entry>Six-Headed Pyrohydra</entry>
+		<entry>Seven-Headed Cryohydra</entry>
+		<entry>Seven-Headed Hydra</entry>
+		<entry>Seven-Headed Pyrohydra</entry>
+		<entry>Eight-Headed Cryohydra</entry>
+		<entry>Eight-Headed Hydra</entry>
+		<entry>Eight-Headed Pyrohydra</entry>
+		<entry>Nine-Headed Cryohydra</entry>
+		<entry>Nine-Headed Hydra</entry>
+		<entry>Nine-Headed Pyrohydra</entry>
+		<entry>Ten-Headed Cryohydra</entry>
+		<entry>Ten-Headed Hydra</entry>
+		<entry>Ten-Headed Pyrohydra</entry>
+		<entry>Eleven-Headed Cryohydra</entry>
+		<entry>Eleven-Headed Hydra</entry>
+		<entry>Eleven-Headed Pyrohydra</entry>
+		<entry>Twelve-Headed Cryohydra</entry>
+		<entry>Twelve-Headed Hydra</entry>
+		<entry>Twelve-Headed Pyrohydra</entry>
+		<entry>Drider</entry>
+		<entry>Elasmosaurus</entry>
+		<entry>Megaraptor</entry>
+		<entry>Tyrannosaurus</entry>
+		<entry>Triceratops</entry>
+		<entry>Elasmosaurus</entry>
+		<entry>Elephant</entry>
+		<entry>Ethereal Filcher</entry>
+		<entry>Ethereal Marauder</entry>
+		<entry>Ettercap</entry>
+		<entry>Ettin</entry>
+		<entry>Forest Gnome</entry>
+		<entry>Rock Gnome</entry>
+		<entry>Svirfneblin</entry>
+		<entry>Frost Worm</entry>
+		<entry>Gargoyle</entry>
+		<entry>Kapoacinth</entry>
+		<entry>Giant Ant, Queen</entry>
+		<entry>Giant Ant, Soldier</entry>
+		<entry>Giant Ant, Worker</entry>
+		<entry>Giant Bee</entry>
+		<entry>Giant Bombardier Beetle</entry>
+		<entry>Giant Eagle</entry>
+		<entry>Giant Fire Beetle</entry>
+		<entry>Giant Octopus</entry>
+		<entry>Giant Owl</entry>
+		<entry>Giant Praying Mantis</entry>
+		<entry>Giant Squid</entry>
+		<entry>Giant Stag Beetle</entry>
+		<entry>Giant Wasp</entry>
 	</collection>
 	<collection>
 		<name>GhostFalse</name>
@@ -1472,20 +1785,65 @@
 		<entry>Dire Boar</entry>
 		<entry>Dire Lion</entry>
 		<entry>Lion</entry>
-		<entry>Dire Rat</entry>
-		<entry>Rat</entry>
 		<entry>Dire Shark</entry>
-		<entry>Medium Shark</entry>
-		<entry>Large Shark</entry>
-		<entry>Huge Shark</entry>
 		<entry>Dire Tiger</entry>
 		<entry>Tiger</entry>
 		<entry>Dire Weasel</entry>
-		<entry>Weasel</entry>
 		<entry>Dire Wolf</entry>
 		<entry>Wolf</entry>
 		<entry>Dire Wolverine</entry>
 		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragon Turtle</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Eagle</entry>
+		<entry>Five-Headed Cryohydra</entry>
+		<entry>Five-Headed Hydra</entry>
+		<entry>Five-Headed Pyrohydra</entry>
+		<entry>Six-Headed Cryohydra</entry>
+		<entry>Six-Headed Hydra</entry>
+		<entry>Six-Headed Pyrohydra</entry>
+		<entry>Seven-Headed Cryohydra</entry>
+		<entry>Seven-Headed Hydra</entry>
+		<entry>Seven-Headed Pyrohydra</entry>
+		<entry>Eight-Headed Cryohydra</entry>
+		<entry>Eight-Headed Hydra</entry>
+		<entry>Eight-Headed Pyrohydra</entry>
+		<entry>Nine-Headed Cryohydra</entry>
+		<entry>Nine-Headed Hydra</entry>
+		<entry>Nine-Headed Pyrohydra</entry>
+		<entry>Ten-Headed Cryohydra</entry>
+		<entry>Ten-Headed Hydra</entry>
+		<entry>Ten-Headed Pyrohydra</entry>
+		<entry>Eleven-Headed Cryohydra</entry>
+		<entry>Eleven-Headed Hydra</entry>
+		<entry>Eleven-Headed Pyrohydra</entry>
+		<entry>Twelve-Headed Cryohydra</entry>
+		<entry>Twelve-Headed Hydra</entry>
+		<entry>Twelve-Headed Pyrohydra</entry>
+		<entry>Elasmosaurus</entry>
+		<entry>Megaraptor</entry>
+		<entry>Tyrannosaurus</entry>
+		<entry>Triceratops</entry>
+		<entry>Elasmosaurus</entry>
+		<entry>Elephant</entry>
+		<entry>Ethereal Filcher</entry>
+		<entry>Ethereal Marauder</entry>
+		<entry>Ettercap</entry>
+		<entry>Ettin</entry>
+		<entry>Forest Gnome</entry>
+		<entry>Rock Gnome</entry>
+		<entry>Svirfneblin</entry>
+		<entry>Frost Worm</entry>
+		<entry>Gargoyle</entry>
+		<entry>Kapoacinth</entry>
+		<entry>Giant Eagle</entry>
+		<entry>Giant Owl</entry>
 	</collection>
 	<collection>
 		<name>GhostTrue</name>
@@ -1703,6 +2061,57 @@
 		<entry>Wolf</entry>
 		<entry>Dire Wolverine</entry>
 		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragon Turtle</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Eagle</entry>
+		<entry>Five-Headed Cryohydra</entry>
+		<entry>Five-Headed Hydra</entry>
+		<entry>Five-Headed Pyrohydra</entry>
+		<entry>Six-Headed Cryohydra</entry>
+		<entry>Six-Headed Hydra</entry>
+		<entry>Six-Headed Pyrohydra</entry>
+		<entry>Seven-Headed Cryohydra</entry>
+		<entry>Seven-Headed Hydra</entry>
+		<entry>Seven-Headed Pyrohydra</entry>
+		<entry>Eight-Headed Cryohydra</entry>
+		<entry>Eight-Headed Hydra</entry>
+		<entry>Eight-Headed Pyrohydra</entry>
+		<entry>Nine-Headed Cryohydra</entry>
+		<entry>Nine-Headed Hydra</entry>
+		<entry>Nine-Headed Pyrohydra</entry>
+		<entry>Ten-Headed Cryohydra</entry>
+		<entry>Ten-Headed Hydra</entry>
+		<entry>Ten-Headed Pyrohydra</entry>
+		<entry>Eleven-Headed Cryohydra</entry>
+		<entry>Eleven-Headed Hydra</entry>
+		<entry>Eleven-Headed Pyrohydra</entry>
+		<entry>Twelve-Headed Cryohydra</entry>
+		<entry>Twelve-Headed Hydra</entry>
+		<entry>Twelve-Headed Pyrohydra</entry>
+		<entry>Elasmosaurus</entry>
+		<entry>Megaraptor</entry>
+		<entry>Tyrannosaurus</entry>
+		<entry>Triceratops</entry>
+		<entry>Elasmosaurus</entry>
+		<entry>Elephant</entry>
+		<entry>Ethereal Filcher</entry>
+		<entry>Ethereal Marauder</entry>
+		<entry>Ettercap</entry>
+		<entry>Ettin</entry>
+		<entry>Forest Gnome</entry>
+		<entry>Rock Gnome</entry>
+		<entry>Svirfneblin</entry>
+		<entry>Frost Worm</entry>
+		<entry>Gargoyle</entry>
+		<entry>Kapoacinth</entry>
+		<entry>Giant Eagle</entry>
+		<entry>Giant Owl</entry>
 	</collection>
 	<collection>
 		<name>Half-CelestialFalse</name>
@@ -1857,6 +2266,26 @@
 		<entry>Gargoyle</entry>
 		<entry>Kapoacinth</entry>
 		<entry>Giant Eagle</entry>
+		<entry>Giant Owl</entry>
+		<entry>Gibbering Mouther</entry>
+		<entry>Githyanki</entry>
+		<entry>Githzerai</entry>
+		<entry>Gnoll</entry>
+		<entry>Goblin</entry>
+		<entry>Green Hag</entry>
+		<entry>Griffon</entry>
+		<entry>Grig</entry>
+		<entry>Grig with fiddle</entry>
+		<entry>Grimlock</entry>
+		<entry>Half-Orc</entry>
+		<entry>Harpy</entry>
+		<entry>Hobgoblin</entry>
+		<entry>Human</entry>
+		<entry>Invisible Stalker</entry>
+		<entry>Kobold</entry>
+		<entry>Kraken</entry>
+		<entry>Krenshar</entry>
+		<entry>Kuo-toa</entry>
 	</collection>
 	<collection>
 		<name>Half-CelestialTrue</name>
@@ -2021,6 +2450,26 @@
 		<entry>Gargoyle</entry>
 		<entry>Kapoacinth</entry>
 		<entry>Giant Eagle</entry>
+		<entry>Giant Owl</entry>
+		<entry>Gibbering Mouther</entry>
+		<entry>Githyanki</entry>
+		<entry>Githzerai</entry>
+		<entry>Gnoll</entry>
+		<entry>Goblin</entry>
+		<entry>Green Hag</entry>
+		<entry>Griffon</entry>
+		<entry>Grig</entry>
+		<entry>Grig with fiddle</entry>
+		<entry>Grimlock</entry>
+		<entry>Half-Orc</entry>
+		<entry>Harpy</entry>
+		<entry>Hobgoblin</entry>
+		<entry>Human</entry>
+		<entry>Invisible Stalker</entry>
+		<entry>Kobold</entry>
+		<entry>Kraken</entry>
+		<entry>Krenshar</entry>
+		<entry>Kuo-toa</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Black)False</name>
@@ -2109,6 +2558,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Black)True</name>
@@ -2197,6 +2674,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Blue)False</name>
@@ -2285,6 +2790,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Blue)True</name>
@@ -2373,6 +2906,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Green)False</name>
@@ -2461,6 +3022,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Green)True</name>
@@ -2549,6 +3138,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Red)False</name>
@@ -2637,6 +3254,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Red)True</name>
@@ -2725,6 +3370,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (White)False</name>
@@ -2813,6 +3486,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (White)True</name>
@@ -2901,6 +3602,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Brass)False</name>
@@ -2989,6 +3718,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Brass)True</name>
@@ -3077,6 +3834,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Bronze)False</name>
@@ -3165,6 +3950,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Bronze)True</name>
@@ -3253,6 +4066,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Copper)False</name>
@@ -3341,6 +4182,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Copper)True</name>
@@ -3429,6 +4298,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Gold)False</name>
@@ -3491,6 +4388,60 @@
 		<entry>Choker</entry>
 		<entry>Chuul</entry>
 		<entry>Cloaker</entry>
+		<entry>Hill Giant</entry>
+		<entry>Stone Giant</entry>
+		<entry>Stone Giant Elder</entry>
+		<entry>Fire Giant</entry>
+		<entry>Frost Giant</entry>
+		<entry>Storm Giant</entry>
+		<entry>Cloud Giant</entry>
+		<entry>Cockatrice</entry>
+		<entry>Constrictor Snake</entry>
+		<entry>Giant Constrictor Snake</entry>
+		<entry>Crocodile</entry>
+		<entry>Giant Crocodile</entry>
+		<entry>Dark Naga</entry>
+		<entry>Guardian Naga</entry>
+		<entry>Spirit Naga</entry>
+		<entry>Water Naga</entry>
+		<entry>Darkmantle</entry>
+		<entry>Deep Dwarf</entry>
+		<entry>Hill Dwarf</entry>
+		<entry>Mountain Dwarf</entry>
+		<entry>Duergar</entry>
+		<entry>Deep Halfling</entry>
+		<entry>Lightfoot Halfling</entry>
+		<entry>Tallfellow Halfling</entry>
+		<entry>Deinonychus</entry>
+		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Gold)True</name>
@@ -3579,6 +4530,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Silver)False</name>
@@ -3667,6 +4646,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-Dragon (Silver)True</name>
@@ -3755,6 +4762,34 @@
 		<entry>Tallfellow Halfling</entry>
 		<entry>Deinonychus</entry>
 		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Tiger</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolf</entry>
+		<entry>Wolf</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Eagle</entry>
 	</collection>
 	<collection>
 		<name>Half-FiendFalse</name>
