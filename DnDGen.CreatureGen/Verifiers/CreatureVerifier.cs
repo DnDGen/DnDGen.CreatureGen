@@ -40,27 +40,19 @@ namespace DnDGen.CreatureGen.Verifiers
 
             if (filters?.CleanTemplates?.Any() == true)
             {
-                //INFO: Humans should be compatible with all templates
-                //This is a shortcut to validate that multiple templates are compatible with each other
-                //If we are also filtering to challenge rating or creature type, we cannot use this shortcut
-                if (baseCreatures.Contains(CreatureConstants.Human) && filters.ChallengeRating == null && filters.Type == null)
-                {
-                    baseCreatures = [CreatureConstants.Human];
-                }
-
                 compatible = TemplatesAreCompatible(filters.CleanTemplates, baseCreatures, asCharacter, filters);
                 return compatible;
             }
 
-            //INFO: We can cheat and use the None template applicator
+            //INFO: We can cheat and use the None template applicator to verify the filters
             compatible = TemplatesAreCompatible([CreatureConstants.Templates.None], baseCreatures, asCharacter, filters);
             if (compatible)
                 return true;
 
             var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All);
-            foreach (var otherTemplate in templates)
+            foreach (var template in templates)
             {
-                compatible = TemplatesAreCompatible([otherTemplate], baseCreatures, asCharacter, filters);
+                compatible = TemplatesAreCompatible([template], baseCreatures, asCharacter, filters);
                 if (compatible)
                     return true;
             }

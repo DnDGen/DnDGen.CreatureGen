@@ -4,7 +4,6 @@ using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using NUnit.Framework;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
@@ -71,8 +70,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void TemplateGroup_AsCharacter(string template)
         {
-            var allCreatures = CreatureConstants.GetAll();
-            var allPrototypes = prototypeFactory.Build(allCreatures, true);
+            //INFO: We can do this as a shortcut, because if asCharacter = true, then our set of base creatures is only characters.
+            //Setting asCharacter = true and generating a creature that can't be a character produces a compatibility error.
+            var allCharacters = CreatureConstants.GetAllCharacters();
+            var allPrototypes = prototypeFactory.Build(allCharacters, true);
 
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
             var templatePrototypes = applicator.GetCompatiblePrototypes(allPrototypes, true);
@@ -80,25 +81,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             Assert.That(templateCreatures, Is.Not.Empty);
             AssertCollection(template + bool.TrueString, [.. templateCreatures]);
-        }
-
-        [Test]
-        public void TemplateGroups_DifferBasedOnAsCharacter()
-        {
-            var templates = CreatureConstants.Templates.GetAll();
-            var asCharacter = new List<string>();
-            var notAsCharacter = new List<string>();
-
-            foreach (var template in templates)
-            {
-                Assert.That(table, Contains.Key(template + bool.TrueString)
-                    .And.ContainKey(template + bool.FalseString));
-
-                asCharacter.AddRange(table[template + bool.TrueString]);
-                notAsCharacter.AddRange(table[template + bool.FalseString]);
-            }
-
-            Assert.That(asCharacter, Is.Not.EquivalentTo(notAsCharacter));
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]

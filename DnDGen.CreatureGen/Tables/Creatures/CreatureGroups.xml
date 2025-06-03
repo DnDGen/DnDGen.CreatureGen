@@ -481,6 +481,17 @@
 	  <entry>Elder Arrowhawk</entry>
 	  <entry>Elder Tojanida</entry>
 	  <entry>Elephant</entry>
+	  <entry>Erinyes</entry>
+	  <entry>Ethereal Marauder</entry>
+	  <entry>Formian Myrmarch</entry>
+	  <entry>Formian Queen</entry>
+	  <entry>Formian Taskmaster</entry>
+	  <entry>Formian Warrior</entry>
+	  <entry>Formian Worker</entry>
+	  <entry>Frost Worm</entry>
+	  <entry>Gargoyle</entry>
+	  <entry>Kapoacinth</entry>
+	  <entry>Ghaele</entry>
   </collection>
   <collection>
     <name>Characters</name>
@@ -901,6 +912,16 @@
 		<entry>Giant Squid</entry>
 		<entry>Giant Stag Beetle</entry>
 		<entry>Giant Wasp</entry>
+		<entry>Gibbering Mouther</entry>
+		<entry>Girallon</entry>
+		<entry>Githyanki</entry>
+		<entry>Githzerai</entry>
+		<entry>Gnoll</entry>
+		<entry>Goblin</entry>
+		<entry>Gorgon</entry>
+		<entry>Gray Render</entry>
+		<entry>Green Hag</entry>
+		<entry>Grick</entry>
 	</collection>
 	<collection>
 		<name>Celestial CreatureTrue</name>
@@ -1128,6 +1149,16 @@
 		<entry>Giant Squid</entry>
 		<entry>Giant Stag Beetle</entry>
 		<entry>Giant Wasp</entry>
+		<entry>Gibbering Mouther</entry>
+		<entry>Girallon</entry>
+		<entry>Githyanki</entry>
+		<entry>Githzerai</entry>
+		<entry>Gnoll</entry>
+		<entry>Goblin</entry>
+		<entry>Gorgon</entry>
+		<entry>Gray Render</entry>
+		<entry>Green Hag</entry>
+		<entry>Grick</entry>
 	</collection>
 	<collection>
 		<name>Fiendish CreatureFalse</name>
@@ -1328,7 +1359,6 @@
 		<entry>Twelve-Headed Hydra</entry>
 		<entry>Twelve-Headed Pyrohydra</entry>
 		<entry>Drider</entry>
-		<entry>Elasmosaurus</entry>
 		<entry>Megaraptor</entry>
 		<entry>Tyrannosaurus</entry>
 		<entry>Triceratops</entry>
@@ -1357,6 +1387,18 @@
 		<entry>Giant Squid</entry>
 		<entry>Giant Stag Beetle</entry>
 		<entry>Giant Wasp</entry>
+		<entry>Gibbering Mouther</entry>
+		<entry>Girallon</entry>
+		<entry>Githyanki</entry>
+		<entry>Githzerai</entry>
+		<entry>Gnoll</entry>
+		<entry>Goblin</entry>
+		<entry>Gorgon</entry>
+		<entry>Gelatinous Cube</entry>
+		<entry>Gray Ooze</entry>
+		<entry>Gray Render</entry>
+		<entry>Green Hag</entry>
+		<entry>Grick</entry>
 	</collection>
 	<collection>
 		<name>Fiendish CreatureTrue</name>
@@ -1557,7 +1599,6 @@
 		<entry>Twelve-Headed Hydra</entry>
 		<entry>Twelve-Headed Pyrohydra</entry>
 		<entry>Drider</entry>
-		<entry>Elasmosaurus</entry>
 		<entry>Megaraptor</entry>
 		<entry>Tyrannosaurus</entry>
 		<entry>Triceratops</entry>
@@ -1586,6 +1627,18 @@
 		<entry>Giant Squid</entry>
 		<entry>Giant Stag Beetle</entry>
 		<entry>Giant Wasp</entry>
+		<entry>Gibbering Mouther</entry>
+		<entry>Girallon</entry>
+		<entry>Githyanki</entry>
+		<entry>Githzerai</entry>
+		<entry>Gnoll</entry>
+		<entry>Goblin</entry>
+		<entry>Gorgon</entry>
+		<entry>Gelatinous Cube</entry>
+		<entry>Gray Ooze</entry>
+		<entry>Gray Render</entry>
+		<entry>Green Hag</entry>
+		<entry>Grick</entry>
 	</collection>
 	<collection>
 		<name>GhostFalse</name>
@@ -1826,7 +1879,6 @@
 		<entry>Twelve-Headed Cryohydra</entry>
 		<entry>Twelve-Headed Hydra</entry>
 		<entry>Twelve-Headed Pyrohydra</entry>
-		<entry>Elasmosaurus</entry>
 		<entry>Megaraptor</entry>
 		<entry>Tyrannosaurus</entry>
 		<entry>Triceratops</entry>
@@ -1844,6 +1896,16 @@
 		<entry>Kapoacinth</entry>
 		<entry>Giant Eagle</entry>
 		<entry>Giant Owl</entry>
+		<entry>Gibbering Mouther</entry>
+		<entry>Girallon</entry>
+		<entry>Githyanki</entry>
+		<entry>Githzerai</entry>
+		<entry>Gnoll</entry>
+		<entry>Goblin</entry>
+		<entry>Gorgon</entry>
+		<entry>Gray Render</entry>
+		<entry>Green Hag</entry>
+		<entry>Griffon</entry>
 	</collection>
 	<collection>
 		<name>GhostTrue</name>
@@ -2112,6 +2174,16 @@
 		<entry>Kapoacinth</entry>
 		<entry>Giant Eagle</entry>
 		<entry>Giant Owl</entry>
+		<entry>Gibbering Mouther</entry>
+		<entry>Girallon</entry>
+		<entry>Githyanki</entry>
+		<entry>Githzerai</entry>
+		<entry>Gnoll</entry>
+		<entry>Goblin</entry>
+		<entry>Gorgon</entry>
+		<entry>Gray Render</entry>
+		<entry>Green Hag</entry>
+		<entry>Griffon</entry>
 	</collection>
 	<collection>
 		<name>Half-CelestialFalse</name>
