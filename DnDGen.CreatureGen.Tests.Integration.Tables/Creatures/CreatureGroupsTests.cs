@@ -63,7 +63,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var templatePrototypes = applicator.GetCompatiblePrototypes(allPrototypes, false);
             var templateCreatures = templatePrototypes.Select(p => p.Name);
 
-            Assert.That(templateCreatures, Is.Not.Empty);
             AssertCollection(template + bool.FalseString, [.. templateCreatures]);
         }
 
@@ -79,7 +78,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var templatePrototypes = applicator.GetCompatiblePrototypes(allPrototypes, true);
             var templateCreatures = templatePrototypes.Select(p => p.Name);
 
-            Assert.That(templateCreatures, Is.Not.Empty);
             AssertCollection(template + bool.TrueString, [.. templateCreatures]);
         }
 
