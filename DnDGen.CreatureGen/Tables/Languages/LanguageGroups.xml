@@ -1487,10 +1487,16 @@
 		<name>Animated Object, Colossal (Flexible)Bonus</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Colossal (More Than Two Legs)Bonus</name>
+		<name>Animated Object, Colossal (More Than Two Legs, Long)Bonus</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Colossal (More Than Two Legs, Wooden)Bonus</name>
+		<name>Animated Object, Colossal (More Than Two Legs, Long, Wooden)Bonus</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall)Bonus</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall, Wooden)Bonus</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Sheetlike)Bonus</name>
@@ -1514,10 +1520,16 @@
 		<name>Animated Object, Gargantuan (Flexible)Bonus</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs)Bonus</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long)Bonus</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)Bonus</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long, Wooden)Bonus</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall)Bonus</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall, Wooden)Bonus</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Sheetlike)Bonus</name>
@@ -1541,10 +1553,16 @@
 		<name>Animated Object, Huge (Flexible)Bonus</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs)Bonus</name>
+		<name>Animated Object, Huge (More Than Two Legs, Long)Bonus</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs, Wooden)Bonus</name>
+		<name>Animated Object, Huge (More Than Two Legs, Long, Wooden)Bonus</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall)Bonus</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall, Wooden)Bonus</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Sheetlike)Bonus</name>
@@ -1568,10 +1586,16 @@
 		<name>Animated Object, Large (Flexible)Bonus</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs)Bonus</name>
+		<name>Animated Object, Large (More Than Two Legs, Long)Bonus</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs, Wooden)Bonus</name>
+		<name>Animated Object, Large (More Than Two Legs, Long, Wooden)Bonus</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall)Bonus</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall, Wooden)Bonus</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Sheetlike)Bonus</name>
@@ -1676,10 +1700,16 @@
 		<name>Animated Object, Colossal (Flexible)Automatic</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Colossal (More Than Two Legs)Automatic</name>
+		<name>Animated Object, Colossal (More Than Two Legs, Long)Automatic</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Colossal (More Than Two Legs, Wooden)Automatic</name>
+		<name>Animated Object, Colossal (More Than Two Legs, Long, Wooden)Automatic</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall)Automatic</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall, Wooden)Automatic</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Sheetlike)Automatic</name>
@@ -1703,10 +1733,16 @@
 		<name>Animated Object, Gargantuan (Flexible)Automatic</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs)Automatic</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long)Automatic</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)Automatic</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long, Wooden)Automatic</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall)Automatic</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall, Wooden)Automatic</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Sheetlike)Automatic</name>
@@ -1730,10 +1766,16 @@
 		<name>Animated Object, Huge (Flexible)Automatic</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs)Automatic</name>
+		<name>Animated Object, Huge (More Than Two Legs, Long)Automatic</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs, Wooden)Automatic</name>
+		<name>Animated Object, Huge (More Than Two Legs, Long, Wooden)Automatic</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall)Automatic</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall, Wooden)Automatic</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Sheetlike)Automatic</name>
@@ -1757,10 +1799,16 @@
 		<name>Animated Object, Large (Flexible)Automatic</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs)Automatic</name>
+		<name>Animated Object, Large (More Than Two Legs, Long)Automatic</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs, Wooden)Automatic</name>
+		<name>Animated Object, Large (More Than Two Legs, Long, Wooden)Automatic</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall)Automatic</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall, Wooden)Automatic</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Sheetlike)Automatic</name>

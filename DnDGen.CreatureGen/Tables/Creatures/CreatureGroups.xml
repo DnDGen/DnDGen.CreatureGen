@@ -7245,6 +7245,36 @@
 	</collection>
 	<collection>
 		<name>Half-FiendTrue</name>
+		<entry>Shambling Mound</entry>
+		<entry>Skum</entry>
+		<entry>Treant</entry>
+		<entry>Troglodyte</entry>
+		<entry>Winter Wolf</entry>
+		<entry>Worg</entry>
+		<entry>Mind Flayer (Illithid)</entry>
+		<entry>Minotaur</entry>
+		<entry>Nixie</entry>
+		<entry>Nymph</entry>
+		<entry>Ogre Mage</entry>
+		<entry>Pegasus</entry>
+		<entry>Satyr</entry>
+		<entry>Satyr with pipes</entry>
+		<entry>Scorpionfolk</entry>
+		<entry>Scrag</entry>
+		<entry>Troll</entry>
+		<entry>Krenshar</entry>
+		<entry>Kuo-toa</entry>
+		<entry>Lamia</entry>
+		<entry>Lizardfolk</entry>
+		<entry>Locathah</entry>
+		<entry>Malenti</entry>
+		<entry>Sahuagin</entry>
+		<entry>Sahuagin Mutant</entry>
+		<entry>Manticore</entry>
+		<entry>Medusa</entry>
+		<entry>Merfolk</entry>
+		<entry>Merrow</entry>
+		<entry>Ogre</entry>
 		<entry>Ettin</entry>
 		<entry>Gargoyle</entry>
 		<entry>Kapoacinth</entry>
@@ -7447,6 +7477,39 @@
 	</collection>
 	<collection>
 		<name>SkeletonFalse</name>
+		<entry>Yrthak</entry>
+		<entry>Stone Giant</entry>
+		<entry>Stone Giant Elder</entry>
+		<entry>Storm Giant</entry>
+		<entry>Triceratops</entry>
+		<entry>Truly Horrid Umber Hulk</entry>
+		<entry>Tyrannosaurus</entry>
+		<entry>White Dragon, Adult</entry>
+		<entry>White Dragon, Juvenile</entry>
+		<entry>White Dragon, Young Adult</entry>
+		<entry>Guardian Naga</entry>
+		<entry>Hill Giant</entry>
+		<entry>Razor Boar</entry>
+		<entry>Red Dragon, Juvenile</entry>
+		<entry>Red Dragon, Young</entry>
+		<entry>Red Dragon, Young Adult</entry>
+		<entry>Roc</entry>
+		<entry>Scorpionfolk</entry>
+		<entry>Silver Dragon, Young</entry>
+		<entry>Silver Dragon, Juvenile</entry>
+		<entry>Silver Dragon, Young Adult</entry>
+		<entry>Fire Giant</entry>
+		<entry>Frost Giant</entry>
+		<entry>Giant Constrictor Snake</entry>
+		<entry>Gold Dragon, Juvenile</entry>
+		<entry>Gold Dragon, Very Young</entry>
+		<entry>Gold Dragon, Young</entry>
+		<entry>Gold Dragon, Young Adult</entry>
+		<entry>Greater Basilisk</entry>
+		<entry>Green Dragon, Young</entry>
+		<entry>Green Dragon, Juvenile</entry>
+		<entry>Green Dragon, Young Adult</entry>
+		<entry>Green Dragon, Adult</entry>
 		<entry>Choker</entry>
 		<entry>Chuul</entry>
 		<entry>Cloaker</entry>
@@ -7537,12 +7600,347 @@
 		<entry>Chimera (Green Dragon head)</entry>
 		<entry>Chimera (Red Dragon head)</entry>
 		<entry>Chimera (White Dragon head)</entry>
+		<entry>Criosphinx</entry>
+		<entry>Crocodile</entry>
+		<entry>Dark Naga</entry>
+		<entry>Darkmantle</entry>
+		<entry>Deinonychus</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Ape</entry>
+		<entry>Dire Badger</entry>
+		<entry>Dire Bat</entry>
+		<entry>Dire Boar</entry>
+		<entry>Dire Lion</entry>
+		<entry>Lion</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Rat Swarm</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Dryad</entry>
+		<entry>Duergar</entry>
+		<entry>Eagle</entry>
+		<entry>Five-Headed Cryohydra</entry>
+		<entry>Five-Headed Hydra</entry>
+		<entry>Five-Headed Pyrohydra</entry>
+		<entry>Six-Headed Cryohydra</entry>
+		<entry>Six-Headed Hydra</entry>
+		<entry>Six-Headed Pyrohydra</entry>
+		<entry>Seven-Headed Cryohydra</entry>
+		<entry>Seven-Headed Hydra</entry>
+		<entry>Seven-Headed Pyrohydra</entry>
+		<entry>Eight-Headed Cryohydra</entry>
+		<entry>Eight-Headed Hydra</entry>
+		<entry>Eight-Headed Pyrohydra</entry>
+		<entry>Elasmosaurus</entry>
+		<entry>Ethereal Filcher</entry>
+		<entry>Ethereal Marauder</entry>
+		<entry>Ettercap</entry>
+		<entry>Ettin</entry>
+		<entry>Gargoyle</entry>
+		<entry>Giant Crocodile</entry>
+		<entry>Giant Eagle</entry>
+		<entry>Giant Owl</entry>
+		<entry>Girallon</entry>
+		<entry>Githyanki</entry>
+		<entry>Githzerai</entry>
+		<entry>Gnoll</entry>
+		<entry>Goblin</entry>
+		<entry>Gold Dragon, Wyrmling</entry>
+		<entry>Gorgon</entry>
+		<entry>Gray Render</entry>
+		<entry>Green Dragon, Very Young</entry>
+		<entry>Green Dragon, Wyrmling</entry>
+		<entry>Green Hag</entry>
+		<entry>Grick</entry>
+		<entry>Griffon</entry>
+		<entry>Grig</entry>
+		<entry>Grig with fiddle</entry>
+		<entry>Grimlock</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Harpy</entry>
+		<entry>Hawk</entry>
+		<entry>Heavy Horse</entry>
+		<entry>Heavy Warhorse</entry>
+		<entry>Light Horse</entry>
+		<entry>Light Warhorse</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Hippogriff</entry>
+		<entry>Hobgoblin</entry>
+		<entry>Hyena</entry>
+		<entry>Pony</entry>
+		<entry>Warpony</entry>
+		<entry>Kapoacinth</entry>
+		<entry>Kobold</entry>
+		<entry>Krenshar</entry>
+		<entry>Kuo-toa</entry>
+		<entry>Lamia</entry>
+		<entry>Lammasu</entry>
+		<entry>Leopard</entry>
+		<entry>Lizard</entry>
+		<entry>Lizardfolk</entry>
+		<entry>Locathah</entry>
+		<entry>Malenti</entry>
+		<entry>Sahuagin</entry>
+		<entry>Sahuagin Mutant</entry>
+		<entry>Manta Ray</entry>
+		<entry>Manticore</entry>
+		<entry>Medusa</entry>
+		<entry>Megaraptor</entry>
+		<entry>Merfolk</entry>
+		<entry>Merrow</entry>
+		<entry>Ogre</entry>
+		<entry>Mind Flayer (Illithid)</entry>
+		<entry>Minotaur</entry>
+		<entry>Monitor Lizard</entry>
+		<entry>Monkey</entry>
+		<entry>Mule</entry>
+		<entry>Nine-Headed Cryohydra</entry>
+		<entry>Nine-Headed Hydra</entry>
+		<entry>Nine-Headed Pyrohydra</entry>
+		<entry>Nixie</entry>
+		<entry>Nymph</entry>
+		<entry>Ogre Mage</entry>
+		<entry>Orca Whale</entry>
+		<entry>Otyugh</entry>
+		<entry>Owl</entry>
+		<entry>Owlbear</entry>
+		<entry>Pegasus</entry>
+		<entry>Pixie</entry>
+		<entry>Pixie with Irresistible dance</entry>
+		<entry>Polar Bear</entry>
+		<entry>Porpoise</entry>
+		<entry>Pseudodragon</entry>
+		<entry>Raven</entry>
+		<entry>Red Dragon, Wyrmling</entry>
+		<entry>Red Dragon, Very Young</entry>
+		<entry>Rhinoceras</entry>
+		<entry>Rust Monster</entry>
+		<entry>Satyr</entry>
+		<entry>Satyr with pipes</entry>
+		<entry>Scrag</entry>
+		<entry>Troll</entry>
+		<entry>Sea Cat</entry>
+		<entry>Sea Hag</entry>
+		<entry>Shark, Huge</entry>
+		<entry>Shark, Large</entry>
+		<entry>Shark, Medium</entry>
+		<entry>Shocker Lizard</entry>
+		<entry>Silver Dragon, Very Young</entry>
+		<entry>Silver Dragon, Wyrmling</entry>
+		<entry>Skum</entry>
+		<entry>Spirit Naga</entry>
+		<entry>Ten-Headed Cryohydra</entry>
+		<entry>Ten-Headed Hydra</entry>
+		<entry>Ten-Headed Pyrohydra</entry>
+		<entry>Tiger</entry>
+		<entry>Toad</entry>
+		<entry>Troglodyte</entry>
+		<entry>Umber Hulk</entry>
+		<entry>Unicorn</entry>
+		<entry>Viper Snake, Huge</entry>
+		<entry>Viper Snake, Large</entry>
+		<entry>Viper Snake, Medium</entry>
+		<entry>Viper Snake, Small</entry>
+		<entry>Viper Snake, Tiny</entry>
+		<entry>Water Naga</entry>
+		<entry>White Dragon, Wyrmling</entry>
+		<entry>White Dragon, Very Young</entry>
+		<entry>Yuan-ti Pureblood</entry>
+		<entry>Yuan-ti Halfblood (Human Head, Arms are Snakes)</entry>
+		<entry>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</entry>
+		<entry>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</entry>
+		<entry>Yuan-ti Halfblood (Snake Head)</entry>
+		<entry>Yuan-ti Abomination</entry>
+		<entry>White Dragon, Young</entry>
+		<entry>Winter Wolf</entry>
+		<entry>Worg</entry>
+		<entry>Wyvern</entry>
+		<entry>Delver</entry>
+		<entry>Dire Bear</entry>
+		<entry>Dire Shark</entry>
+		<entry>Dire Tiger</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Dragon Turtle</entry>
+		<entry>Elephant</entry>
+		<entry>Eleven-Headed Cryohydra</entry>
+		<entry>Eleven-Headed Hydra</entry>
+		<entry>Eleven-Headed Pyrohydra</entry>
+		<entry>Twelve-Headed Cryohydra</entry>
+		<entry>Twelve-Headed Hydra</entry>
+		<entry>Twelve-Headed Pyrohydra</entry>
 	</collection>
 	<collection>
 		<name>SkeletonTrue</name>
 	</collection>
 	<collection>
 		<name>ZombieFalse</name>
+		<entry>Yuan-ti Pureblood</entry>
+		<entry>Yuan-ti Halfblood (Human Head, Arms are Snakes)</entry>
+		<entry>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</entry>
+		<entry>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</entry>
+		<entry>Yuan-ti Halfblood (Snake Head)</entry>
+		<entry>Yuan-ti Abomination</entry>
+		<entry>White Dragon, Young</entry>
+		<entry>Winter Wolf</entry>
+		<entry>Worg</entry>
+		<entry>Wyvern</entry>
+		<entry>Troglodyte</entry>
+		<entry>Umber Hulk</entry>
+		<entry>Unicorn</entry>
+		<entry>Viper Snake, Huge</entry>
+		<entry>Viper Snake, Large</entry>
+		<entry>Viper Snake, Medium</entry>
+		<entry>Viper Snake, Small</entry>
+		<entry>Viper Snake, Tiny</entry>
+		<entry>Water Naga</entry>
+		<entry>White Dragon, Wyrmling</entry>
+		<entry>White Dragon, Very Young</entry>
+		<entry>Shocker Lizard</entry>
+		<entry>Silver Dragon, Very Young</entry>
+		<entry>Silver Dragon, Wyrmling</entry>
+		<entry>Skum</entry>
+		<entry>Spirit Naga</entry>
+		<entry>Ten-Headed Cryohydra</entry>
+		<entry>Ten-Headed Hydra</entry>
+		<entry>Ten-Headed Pyrohydra</entry>
+		<entry>Tiger</entry>
+		<entry>Toad</entry>
+		<entry>Rhinoceras</entry>
+		<entry>Rust Monster</entry>
+		<entry>Satyr</entry>
+		<entry>Satyr with pipes</entry>
+		<entry>Scrag</entry>
+		<entry>Troll</entry>
+		<entry>Sea Cat</entry>
+		<entry>Sea Hag</entry>
+		<entry>Shark, Huge</entry>
+		<entry>Shark, Large</entry>
+		<entry>Shark, Medium</entry>
+		<entry>Owl</entry>
+		<entry>Owlbear</entry>
+		<entry>Pegasus</entry>
+		<entry>Pixie</entry>
+		<entry>Pixie with Irresistible dance</entry>
+		<entry>Polar Bear</entry>
+		<entry>Porpoise</entry>
+		<entry>Pseudodragon</entry>
+		<entry>Raven</entry>
+		<entry>Red Dragon, Wyrmling</entry>
+		<entry>Red Dragon, Very Young</entry>
+		<entry>Monkey</entry>
+		<entry>Mule</entry>
+		<entry>Nine-Headed Cryohydra</entry>
+		<entry>Nine-Headed Hydra</entry>
+		<entry>Nine-Headed Pyrohydra</entry>
+		<entry>Nixie</entry>
+		<entry>Nymph</entry>
+		<entry>Ogre Mage</entry>
+		<entry>Orca Whale</entry>
+		<entry>Otyugh</entry>
+		<entry>Malenti</entry>
+		<entry>Sahuagin</entry>
+		<entry>Sahuagin Mutant</entry>
+		<entry>Manta Ray</entry>
+		<entry>Manticore</entry>
+		<entry>Medusa</entry>
+		<entry>Megaraptor</entry>
+		<entry>Merfolk</entry>
+		<entry>Merrow</entry>
+		<entry>Ogre</entry>
+		<entry>Mind Flayer (Illithid)</entry>
+		<entry>Minotaur</entry>
+		<entry>Monitor Lizard</entry>
+		<entry>Kapoacinth</entry>
+		<entry>Kobold</entry>
+		<entry>Krenshar</entry>
+		<entry>Kuo-toa</entry>
+		<entry>Lamia</entry>
+		<entry>Lammasu</entry>
+		<entry>Leopard</entry>
+		<entry>Lizard</entry>
+		<entry>Lizardfolk</entry>
+		<entry>Locathah</entry>
+		<entry>Grimlock</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Harpy</entry>
+		<entry>Hawk</entry>
+		<entry>Heavy Horse</entry>
+		<entry>Heavy Warhorse</entry>
+		<entry>Light Horse</entry>
+		<entry>Light Warhorse</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Hippogriff</entry>
+		<entry>Hobgoblin</entry>
+		<entry>Hyena</entry>
+		<entry>Pony</entry>
+		<entry>Warpony</entry>
+		<entry>Goblin</entry>
+		<entry>Gold Dragon, Wyrmling</entry>
+		<entry>Gorgon</entry>
+		<entry>Gray Render</entry>
+		<entry>Green Dragon, Very Young</entry>
+		<entry>Green Dragon, Wyrmling</entry>
+		<entry>Green Hag</entry>
+		<entry>Grick</entry>
+		<entry>Griffon</entry>
+		<entry>Grig</entry>
+		<entry>Grig with fiddle</entry>
+		<entry>Ettin</entry>
+		<entry>Gargoyle</entry>
+		<entry>Gauth (Lesser Beholder)</entry>
+		<entry>Giant Crocodile</entry>
+		<entry>Giant Eagle</entry>
+		<entry>Giant Owl</entry>
+		<entry>Girallon</entry>
+		<entry>Githyanki</entry>
+		<entry>Githzerai</entry>
+		<entry>Gnoll</entry>
+		<entry>Dryad</entry>
+		<entry>Duergar</entry>
+		<entry>Eagle</entry>
+		<entry>Five-Headed Cryohydra</entry>
+		<entry>Five-Headed Hydra</entry>
+		<entry>Five-Headed Pyrohydra</entry>
+		<entry>Six-Headed Cryohydra</entry>
+		<entry>Six-Headed Hydra</entry>
+		<entry>Six-Headed Pyrohydra</entry>
+		<entry>Seven-Headed Cryohydra</entry>
+		<entry>Seven-Headed Hydra</entry>
+		<entry>Seven-Headed Pyrohydra</entry>
+		<entry>Eight-Headed Cryohydra</entry>
+		<entry>Eight-Headed Hydra</entry>
+		<entry>Eight-Headed Pyrohydra</entry>
+		<entry>Elasmosaurus</entry>
+		<entry>Ethereal Filcher</entry>
+		<entry>Ethereal Marauder</entry>
+		<entry>Ettercap</entry>
+		<entry>Dire Rat</entry>
+		<entry>Rat</entry>
+		<entry>Rat Swarm</entry>
+		<entry>Dire Weasel</entry>
+		<entry>Weasel</entry>
+		<entry>Dire Wolverine</entry>
+		<entry>Wolverine</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Dog</entry>
+		<entry>Dog, Riding</entry>
+		<entry>Donkey</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
 		<entry>Deinonychus</entry>
 		<entry>Derro</entry>
 		<entry>Derro (Sane)</entry>

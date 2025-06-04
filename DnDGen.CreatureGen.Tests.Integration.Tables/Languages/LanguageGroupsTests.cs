@@ -2274,6 +2274,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
             var creatures = CreatureConstants.GetAll();
             foreach (var creature in creatures)
             {
+                Assert.That(table, Contains.Key(creature + LanguageConstants.Groups.Automatic)
+                    .And.ContainKey(creature + LanguageConstants.Groups.Bonus), creature);
+
                 var automatic = table[creature + LanguageConstants.Groups.Automatic];
                 var bonus = table[creature + LanguageConstants.Groups.Bonus];
 
@@ -2299,6 +2302,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
                 var intelligence = allAbilities[creature].FirstOrDefault(a => a.Type == AbilityConstants.Intelligence);
                 if (intelligence == null || intelligence.Amount + Ability.DefaultScore <= 3)
                 {
+                    Assert.That(table, Contains.Key(creature + LanguageConstants.Groups.Automatic)
+                        .And.ContainKey(creature + LanguageConstants.Groups.Bonus), creature);
                     Assert.That(table[creature + LanguageConstants.Groups.Automatic], Is.Empty, creature);
                     Assert.That(table[creature + LanguageConstants.Groups.Bonus], Is.Empty, creature);
                 }
