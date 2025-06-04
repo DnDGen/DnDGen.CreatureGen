@@ -4,6 +4,7 @@ using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
@@ -57,13 +58,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void TemplateGroup(string template)
         {
             var allCreatures = CreatureConstants.GetAll();
-            var allPrototypes = prototypeFactory.Build(allCreatures, false);
+            AssertTemplateGroup(template, allCreatures, false);
+        }
+
+        private void AssertTemplateGroup(string template, IEnumerable<string> source, bool asCharacter)
+        {
+            var sourcePrototypes = prototypeFactory.Build(source, asCharacter);
 
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
-            var templatePrototypes = applicator.GetCompatiblePrototypes(allPrototypes, false);
+            var templatePrototypes = applicator.GetCompatiblePrototypes(sourcePrototypes, asCharacter);
             var templateCreatures = templatePrototypes.Select(p => p.Name);
 
-            AssertCollection(template + bool.FalseString, [.. templateCreatures]);
+            AssertDistinctCollection(template + asCharacter.ToString(), [.. templateCreatures]);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -72,13 +78,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //INFO: We can do this as a shortcut, because if asCharacter = true, then our set of base creatures is only characters.
             //Setting asCharacter = true and generating a creature that can't be a character produces a compatibility error.
             var allCharacters = CreatureConstants.GetAllCharacters();
-            var allPrototypes = prototypeFactory.Build(allCharacters, true);
-
-            var applicator = GetNewInstanceOf<TemplateApplicator>(template);
-            var templatePrototypes = applicator.GetCompatiblePrototypes(allPrototypes, true);
-            var templateCreatures = templatePrototypes.Select(p => p.Name);
-
-            AssertCollection(template + bool.TrueString, [.. templateCreatures]);
+            AssertTemplateGroup(template, allCharacters, true);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]

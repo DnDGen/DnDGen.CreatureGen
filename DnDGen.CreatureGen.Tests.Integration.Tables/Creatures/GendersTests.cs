@@ -549,7 +549,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void MedusaAre99PercentFemale()
         {
             var genders = Enumerable.Repeat(GenderConstants.Female, 99).Concat([GenderConstants.Male]);
-            Assert.That(genders, Has.Length.EqualTo(100));
+            Assert.That(genders.Count(), Is.EqualTo(100));
             Assert.That(genders.Count(g => g == GenderConstants.Female), Is.EqualTo(99));
             Assert.That(genders.Count(g => g == GenderConstants.Male), Is.EqualTo(1));
 
