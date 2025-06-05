@@ -53,7 +53,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
 
         public void AssertCollection(string name, params string[] collection)
         {
-            Assert.That(table, Contains.Key(name));
+            Assert.That(table, Contains.Key(name), name);
             AssertCollection(table[name], collection, name);
         }
 

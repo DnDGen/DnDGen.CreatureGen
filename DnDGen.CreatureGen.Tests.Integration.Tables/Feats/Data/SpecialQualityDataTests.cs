@@ -260,7 +260,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             {
                 Assert.That(data.FocusType, Is.Not.Empty, "TEST DATA: Focus");
                 Assert.That(energies, Contains.Item(data.FocusType), $"TEST DATA: Focus");
-                Assert.That(data.FrequencyQuantity, Is.EqualTo(1.ToString()), $"TEST DATA: {data.FocusType} - Frequency Quantity");
+                Assert.That(data.FrequencyQuantity, Is.EqualTo(1), $"TEST DATA: {data.FocusType} - Frequency Quantity");
                 Assert.That(data.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round), $"TEST DATA: {data.FocusType} - Frequency Time Period");
                 Assert.That(data.Power, Is.Positive, $"TEST DATA: {data.FocusType} - Power");
                 Assert.That(data.Power % 5, Is.Zero, $"TEST DATA: {data.FocusType} - Power");

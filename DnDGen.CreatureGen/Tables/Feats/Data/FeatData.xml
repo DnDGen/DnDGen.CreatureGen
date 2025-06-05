@@ -141,6 +141,18 @@
     <name>Exotic Weapon Proficiency</name>
     <entry>1@All@0@0@@0@False@False@False@0@1@True@Exotic Weapon Proficiency@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
+	<collection>
+		<name>Exotic Weapon ProficiencyBastard sword</name>
+		<entry>1@All@0@0@@0@False@False@False@0@1@True@Exotic Weapon Proficiency@@@0@0@0@0@0@0@0@False@</entry>
+	</collection>
+	<collection>
+		<name>Exotic Weapon ProficiencyDwarven waraxe</name>
+		<entry>1@All@0@0@@0@False@False@False@0@1@True@Exotic Weapon Proficiency@@@0@0@0@0@0@0@0@False@</entry>
+	</collection>
+	<collection>
+		<name>Martial Weapon ProficiencyDwarven waraxe</name>
+		<entry>0@All@0@0@@0@False@False@False@0@1@True@Martial Weapon Proficiency@@@0@0@0@0@0@0@0@False@</entry>
+	</collection>
   <collection>
     <name>Extend Spell</name>
     <entry>0@@0@0@@1@False@False@False@0@0@False@Extend Spell@@@0@0@0@0@0@0@0@False@</entry>
@@ -231,7 +243,7 @@
   </collection>
   <collection>
     <name>Improved Natural Armor</name>
-    <entry>0@@1@0@@0@False@False@True@0@0@False@Improved Natural Armor@@@0@13@0@0@0@0@0@False@</entry>
+    <entry>0@@1@0@@0@False@False@True@0@0@False@Improved Natural Armor@@@0@13@0@0@0@0@0@True@</entry>
   </collection>
   <collection>
     <name>Improved Natural Attack</name>
@@ -247,19 +259,19 @@
   </collection>
   <collection>
     <name>Improved Shield Bash</name>
-    <entry>0@@0@0@@0@False@False@False@0@1@True@Improved Shield Bash@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@0@0@@0@False@False@False@0@1@True@Improved Shield Bash@Shield Proficiency#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Sunder</name>
-    <entry>0@@4@0@@0@False@False@False@0@0@False@Improved Sunder@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@4@0@@0@False@False@False@0@0@False@Improved Sunder@Power Attack#@@13@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Trip</name>
-    <entry>0@@4@0@@0@False@False@False@0@0@False@Improved Trip@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@4@0@@0@False@False@False@0@0@False@Improved Trip@Combat Expertise#@@0@0@0@13@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Two-Weapon Fighting</name>
-    <entry>6@@0@0@@0@False@False@False@0@2@True@Improved Two-Weapon Fighting@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>6@@0@0@@0@False@False@False@0@2@True@Improved Two-Weapon Fighting@Two-Weapon Fighting#@@0@0@17@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Unarmed Strike</name>
@@ -283,7 +295,7 @@
   </collection>
   <collection>
     <name>Manyshot</name>
-    <entry>6@@0@0@@0@False@False@False@0@0@False@Manyshot@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>6@@0@0@@0@False@False@False@0@0@False@Manyshot@Point Blank Shot#|Rapid Shot#@@0@0@17@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Martial Weapon Proficiency</name>
@@ -295,15 +307,15 @@
   </collection>
   <collection>
     <name>Mobility</name>
-    <entry>0@@4@0@@0@False@False@False@0@0@False@Mobility@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@4@0@@0@False@False@False@0@0@False@Mobility@Dodge#@@0@0@13@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Mounted Archery</name>
-    <entry>0@@0@0@@0@False@False@False@0@0@False@Mounted Archery@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Mounted Archery@Mounted Combat#@Ride##1@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Mounted Combat</name>
-    <entry>0@@0@0@@0@False@False@False@0@0@False@Mounted Combat@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Mounted Combat@@Ride##1@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Multiattack</name>
@@ -311,7 +323,7 @@
   </collection>
   <collection>
     <name>Multiweapon Fighting</name>
-    <entry>0@@0@0@@0@False@False@False@0@3@True@Multiweapon Fighting@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@0@0@@0@False@False@False@0@3@True@Multiweapon Fighting@@@0@0@13@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Negotiator</name>
@@ -331,11 +343,11 @@
   </collection>
   <collection>
     <name>Power Attack</name>
-    <entry>0@@0@0@@0@False@False@False@0@0@False@Power Attack@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Power Attack@@@13@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Precise Shot</name>
-    <entry>0@@0@0@@0@False@False@False@0@0@False@Precise Shot@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Precise Shot@Point Blank Shot#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Quick Draw</name>
@@ -351,15 +363,15 @@
   </collection>
   <collection>
     <name>Rapid Reload</name>
-    <entry>0@Manual Crossbows@0@0@@0@False@False@False@0@2@True@Rapid Reload@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@Manual Crossbows@0@0@@0@False@False@False@0@2@True@Rapid Reload@Weapon Proficiency#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Rapid Shot</name>
-    <entry>0@@0@0@@0@False@False@False@0@0@False@Rapid Shot@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Rapid Shot@Point Blank Shot#@@0@0@13@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Ride-By Attack</name>
-    <entry>0@@0@0@@0@False@False@False@0@0@False@Ride-By Attack@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Ride-By Attack@Mounted Combat#@Ride##1@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Run</name>
@@ -379,7 +391,7 @@
   </collection>
   <collection>
     <name>Shot On The Run</name>
-    <entry>4@@0@0@@0@False@False@False@0@0@False@Shot On The Run@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>4@@0@0@@0@False@False@False@0@0@False@Shot On The Run@Dodge#|Mobility#|Point Blank Shot#@@0@0@13@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Silent Spell</name>
@@ -395,11 +407,11 @@
   </collection>
   <collection>
     <name>Snatch</name>
-    <entry>0@@0@0@@0@False@False@False@0@0@False@Snatch@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Snatch@@@0@0@0@0@0@0@0@False@Huge|Gargantuan|Colossal</entry>
   </collection>
   <collection>
     <name>Snatch Arrows</name>
-    <entry>0@@0@0@@0@False@False@False@0@0@False@Snatch Arrows@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Snatch Arrows@Deflect Arrows#|Improved Unarmed Strike#@@0@0@15@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Spell Focus</name>
@@ -411,11 +423,11 @@
   </collection>
   <collection>
     <name>Spirited Charge</name>
-    <entry>0@@0@0@@0@False@False@False@0@0@False@Spirited Charge@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Spirited Charge@Mounted Combat#|Ride-By Attack#@Ride##1@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Spring Attack</name>
-    <entry>4@@0@0@@0@False@False@False@0@0@False@Spring Attack@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>4@@0@0@@0@False@False@False@0@0@False@Spring Attack@Dodge#|Mobility#@@0@0@13@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Stealthy</name>
@@ -427,15 +439,15 @@
   </collection>
   <collection>
     <name>Stunning Fist</name>
-    <entry>8@@0@0@@0@False@False@False@0@0@False@Stunning Fist@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>8@@0@0@@0@False@False@False@0@0@False@Stunning Fist@Improved Unarmed Strike#@@0@0@13@0@13@0@0@False@</entry>
   </collection>
   <collection>
     <name>Toughness</name>
-    <entry>0@@3@0@@0@False@False@False@0@0@False@Toughness@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@3@0@@0@False@False@False@0@0@False@Toughness@@@0@0@0@0@0@0@0@True@</entry>
   </collection>
   <collection>
     <name>Tower Shield Proficiency</name>
-    <entry>0@@0@0@@0@False@False@False@0@1@True@Tower Shield Proficiency@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@0@0@@0@False@False@False@0@1@True@Tower Shield Proficiency@Shield Proficiency#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Track</name>
@@ -443,15 +455,15 @@
   </collection>
   <collection>
     <name>Trample</name>
-    <entry>0@@0@0@@0@False@False@False@0@0@False@Trample@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Trample@Mounted Combat#@Ride##1@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Two-Weapon Defense</name>
-    <entry>0@@0@0@@0@False@False@False@0@2@True@Two-Weapon Defense@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@0@0@@0@False@False@False@0@2@True@Two-Weapon Defense@Two-Weapon Fighting#@@0@0@15@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Two-Weapon Fighting</name>
-    <entry>0@@0@0@@0@False@False@False@0@2@True@Two-Weapon Fighting@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@0@0@@0@False@False@False@0@2@True@Two-Weapon Fighting@@@0@0@15@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Weapon Finesse</name>
@@ -459,11 +471,11 @@
   </collection>
   <collection>
     <name>Weapon Focus</name>
-    <entry>0@Weapon@0@0@@0@False@False@False@0@0@False@Weapon Focus@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@Weapon@0@0@@0@False@False@False@0@0@False@Weapon Focus@Weapon Proficiency#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Whirlwind Attack</name>
-    <entry>4@@0@0@@0@False@False@False@0@0@False@Whirlwind Attack@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>4@@0@0@@0@False@False@False@0@0@False@Whirlwind Attack@Combat Expertise#|Dodge#|Mobility#|Spring Attack#@@0@0@13@13@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Widen Spell</name>
@@ -471,6 +483,6 @@
   </collection>
   <collection>
     <name>Wingover</name>
-    <entry>0@@0@1@Round (6 seconds)@0@False@False@False@0@0@False@Wingover@@@0@0@0@0@0@0@0@False@</entry>
+    <entry>0@@0@1@Round (6 seconds)@0@False@False@False@0@0@False@Wingover@@@0@0@0@0@0@0@1@False@</entry>
   </collection>
 </collections>
