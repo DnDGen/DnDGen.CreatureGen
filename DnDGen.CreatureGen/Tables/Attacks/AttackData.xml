@@ -840,41 +840,41 @@
   </collection>
   <collection>
     <name>Chimera (Black Dragon head)</name>
-    <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Gore@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (Dragon)@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (Lion)@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore (Goat)@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Breath weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Chimera (Blue Dragon head)</name>
-    <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Gore@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (Dragon)@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (Lion)@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore (Goat)@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Breath weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Chimera (Green Dragon head)</name>
-    <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Gore@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (Dragon)@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (Lion)@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore (Goat)@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Breath weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Chimera (Red Dragon head)</name>
-    <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Gore@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (Dragon)@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (Lion)@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore (Goat)@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Breath weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Chimera (White Dragon head)</name>
-    <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Gore@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (Dragon)@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (Lion)@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore (Goat)@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Breath weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
@@ -3878,9 +3878,10 @@
   <collection>
     <name>Night Hag</name>
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@Disease@1.5@0</entry>
-    <entry>Disease@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
+    <entry>Disease@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Demon Fever@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Dream Haunting@@True@True@True@True@1@Day@@@supernatural ability@@0@0</entry>
+	  <entry>Demon Fever@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Nightmare</name>
@@ -4331,7 +4332,7 @@
     <entry>Sting@@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1@0</entry>
     <entry>Bite@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Paralysis for 1d8+5 weeks (Secondary)@0@0</entry>
-    <entry>Implant@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0@Female</entry>
+    <entry>Implant@Female@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Spider Swarm</name>

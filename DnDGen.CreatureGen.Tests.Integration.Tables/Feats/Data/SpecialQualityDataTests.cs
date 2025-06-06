@@ -56,7 +56,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             Assert.That(creatureSpecialQualityData.Keys, Is.EquivalentTo(creatures));
             Assert.That(templateSpecialQualityData.Keys, Is.EquivalentTo(templates));
             Assert.That(typeSpecialQualityData.Keys, Is.EquivalentTo(types));
-            Assert.That(subtypeSpecialQualityData.Keys, Is.EquivalentTo(subtypes));
+            Assert.That(subtypeSpecialQualityData.Keys, Is.EquivalentTo(subtypes.Except(creatures)));
 
             var names = creatures.Union(types).Union(subtypes).Union(templates);
             AssertCollectionNames(names);
@@ -88,6 +88,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         public void SpecialQualityData_Subtype(string subtype)
         {
+            var creatures = CreatureConstants.GetAll();
+            if (creatures.Contains(subtype))
+                Assert.Pass($"{subtype} is duplicate of the creature entry");
+
             Assert.That(subtypeSpecialQualityData.Keys, Contains.Item(subtype));
             AssertSpecialQualityData(subtype, subtypeSpecialQualityData[subtype]);
         }
@@ -298,7 +302,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
                 }
             }
 
-            AssertCollection(creature, [.. creatureSpecialQualityData[creature]]);
+            AssertCollection(creature, [.. entries]);
         }
 
         private void NoOverlapBetweenCreatureAndCreatureTypes(string creature)

@@ -23,7 +23,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         private Dictionary<string, List<string>> creatureAttackData;
         private Dictionary<string, List<string>> templateAttackData;
         private Dictionary<string, CreatureDataSelection> creatureData;
-        private Dictionary<string, IEnumerable<AdvancementDataSelection>> advancementsData;
 
         protected override string tableName => TableNameConstants.Collection.AttackData;
 
@@ -36,9 +35,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             var creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
             creatureData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Single());
-
-            var advancementsDataSelector = GetNewInstanceOf<ICollectionDataSelector<AdvancementDataSelection>>();
-            advancementsData = advancementsDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.Advancements);
         }
 
         [SetUp]
@@ -59,15 +55,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             var names = creatureAttackData.Keys.Union(templateAttackData.Keys);
 
             AssertCollectionNames(names);
-        }
-
-        [Test]
-        public void AttackDamageKeysAreUnique()
-        {
-            var creatureAttackDamageKeys = AttackTestData.GetCreatureDamageKeys(creatureData, advancementsData);
-            var templateAttackDamageKeys = AttackTestData.GetTemplateDamageKeys();
-            var damageKeys = creatureAttackDamageKeys.Concat(templateAttackDamageKeys);
-            Assert.That(damageKeys, Is.Unique);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]

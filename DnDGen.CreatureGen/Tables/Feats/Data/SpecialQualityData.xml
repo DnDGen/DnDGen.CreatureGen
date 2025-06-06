@@ -25,7 +25,7 @@
     <name>Aberration</name>
     <entry>Darkvision@60@@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Simple Weapon Proficiency@0@All@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Shield Proficiency@0@@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Shield Proficiency@0@@0@@0@True@@@0@0@2147483647@Armor Proficiency (Light)#@@@0@0@0@0@0@0</entry>
   </collection>
   <collection>
     <name>Greater Basilisk</name>
@@ -2076,7 +2076,7 @@
     <entry>Immunity@0@Poison@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Immunity@0@Sleep@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Immunity@0@Stunning@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Shield Proficiency@0@@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Shield Proficiency@0@@0@@0@True@@@0@0@2147483647@Armor Proficiency (Light)#@@@0@0@0@0@0@0</entry>
     <entry>Simple Weapon Proficiency@0@All@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
   </collection>
   <collection>
@@ -2155,7 +2155,7 @@
   <collection>
     <name>Fey</name>
     <entry>Low-Light Vision@0@@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Shield Proficiency@0@@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Shield Proficiency@0@@0@@0@True@@@0@0@2147483647@Armor Proficiency (Light)#@@@0@0@0@0@0@0</entry>
     <entry>Simple Weapon Proficiency@0@All@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
   </collection>
   <collection>
@@ -2248,8 +2248,8 @@
     <entry>Martial Weapon Proficiency@0@Longsword@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Spell-Like Ability@0@Dancing lights@1@Day@0@False@@@0@0@2147483647@@@@0@0@0@0@0@10</entry>
     <entry>Spell-Like Ability@0@Ghost sound@1@Day@0@False@Charisma@Will@10@0@2147483647@@@@0@0@0@0@0@10</entry>
-    <entry>Spell-Like Ability@0@Pass without trace: self only@0@At Will@0@False@@@0@0@2147483647@@@@0@0@0@0@0@10</entry>
-    <entry>Spell-Like Ability@0@Prestidigitation@1@Day@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Spell-Like Ability@0@Pass without trace: self only@0@At Will@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Spell-Like Ability@0@Prestidigitation@1@Day@0@False@@@0@0@2147483647@@@@0@0@0@0@0@10</entry>
     <entry>Spell-Like Ability@0@Speak with animals: on a very basic level with forest animals@0@At Will@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
   </collection>
   <collection>
@@ -2407,7 +2407,7 @@
     <name>Giant</name>
     <entry>Low-Light Vision@0@@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Martial Weapon Proficiency@0@All@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Shield Proficiency@0@@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Shield Proficiency@0@@0@@0@True@@@0@0@2147483647@Armor Proficiency (Light)#@@@0@0@0@0@0@0</entry>
     <entry>Simple Weapon Proficiency@0@All@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
   </collection>
   <collection>
@@ -3078,7 +3078,7 @@
   <collection>
     <name>Hill Dwarf</name>
     <entry>Darkvision@60@@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Martial Weapon Proficiency@0@Dwarven waraxe@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Martial Weapon Proficiency@0@Dwarven waraxe@0@@0@True@@@0@0@2147483647@@@@13@0@0@0@0@0</entry>
     <entry>Martial Weapon Proficiency@0@Shortbow@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Weapon Familiarity@0@Dwarven urgrosh@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Weapon Familiarity@0@Dwarven waraxe@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
@@ -3147,7 +3147,7 @@
   </collection>
   <collection>
     <name>Humanoid</name>
-    <entry>Shield Proficiency@0@@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Shield Proficiency@0@@0@@0@True@@@0@0@2147483647@Armor Proficiency (Light)#@@@0@0@0@0@0@0</entry>
     <entry>Simple Weapon Proficiency@0@All@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
   </collection>
   <collection>
@@ -3599,7 +3599,7 @@
   <collection>
     <name>Monstrous Humanoid</name>
     <entry>Darkvision@60@@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Shield Proficiency@0@@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Shield Proficiency@0@@0@@0@True@@@0@0@2147483647@Armor Proficiency (Light)#@@@0@0@0@0@0@0</entry>
     <entry>Simple Weapon Proficiency@0@All@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
   </collection>
   <collection>
@@ -3697,7 +3697,7 @@
   <collection>
     <name>Mountain Dwarf</name>
     <entry>Darkvision@60@@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Martial Weapon Proficiency@0@Dwarven waraxe@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Martial Weapon Proficiency@0@Dwarven waraxe@0@@0@True@@@0@0@2147483647@@@@13@0@0@0@0@0</entry>
     <entry>Martial Weapon Proficiency@0@Shortbow@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Weapon Familiarity@0@Dwarven urgrosh@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Weapon Familiarity@0@Dwarven waraxe@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
@@ -3978,7 +3978,7 @@
     <name>Outsider</name>
     <entry>Darkvision@60@@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Martial Weapon Proficiency@0@All@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Shield Proficiency@0@@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Shield Proficiency@0@@0@@0@True@@@0@0@2147483647@Armor Proficiency (Light)#@@@0@0@0@0@0@0</entry>
     <entry>Simple Weapon Proficiency@0@All@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
   </collection>
   <collection>
@@ -4298,9 +4298,9 @@
   <collection>
     <name>Rock Gnome</name>
     <entry>Martial Weapon Proficiency@0@Longsword@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Dancing lights@1@Day@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Ghost sound@1@Day@0@False@Charisma@Will@10@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Prestidigitation@1@Day@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Spell-Like Ability@0@Dancing lights@1@Day@0@False@@@0@0@2147483647@@@@0@0@0@0@0@10</entry>
+    <entry>Spell-Like Ability@0@Ghost sound@1@Day@0@False@Charisma@Will@10@0@2147483647@@@@0@0@0@0@0@10</entry>
+    <entry>Spell-Like Ability@0@Prestidigitation@1@Day@0@False@@@0@0@2147483647@@@@0@0@0@0@0@10</entry>
     <entry>Spell-Like Ability@0@Speak with animals: burrowing mammals only, duration 1 minute@1@Day@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
   </collection>
   <collection>
@@ -4426,7 +4426,7 @@
   </collection>
   <collection>
     <name>Shapechanger</name>
-    <entry>Shield Proficiency@0@@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Shield Proficiency@0@@0@@0@True@@@0@0@2147483647@Armor Proficiency (Light)#@@@0@0@0@0@0@0</entry>
     <entry>Simple Weapon Proficiency@0@All@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
   </collection>
   <collection>
@@ -4742,8 +4742,8 @@
   </collection>
   <collection>
     <name>Swarm</name>
-    <entry>Half Damage@0@Piercing@1@Hit@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Half Damage@0@Slashing@1@Hit@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Half Damage@0@Piercing@1@Hit@0@False@@@0@0@2147483647@@Tiny@@0@0@0@0@0@0</entry>
+    <entry>Half Damage@0@Slashing@1@Hit@0@False@@@0@0@2147483647@@Tiny@@0@0@0@0@0@0</entry>
     <entry>Immunity@0@Any spell that targets a specific number of creatures, including single-target spells@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Immunity@0@Bull Rush@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Immunity@0@Critical hits@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
@@ -4752,9 +4752,9 @@
     <entry>Immunity@0@Grapple@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Immunity@0@Staggering@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Immunity@0@Trip@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Immunity@0@Weapon damage@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Immunity@0@Weapon damage@0@@0@False@@@0@0@2147483647@@Diminutive|Fine@@0@0@0@0@0@0</entry>
     <entry>Vulnerability@0@Area-of-effect spells@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Vulnerability@0@High winds@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Vulnerability@0@High winds@0@@0@False@@@0@0@2147483647@@Diminutive|Fine@@0@0@0@0@0@0</entry>
     <entry>Vulnerability@0@Splash damage@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
   </collection>
   <collection>
@@ -4820,33 +4820,33 @@
     <entry>Change Shape@0@Any Small or Medium Humanoid@0@At Will@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Damage Reduction@15@Vulnerable to lawful weapons@1@Hit@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Martial Weapon Proficiency@0@Warhammer@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Oversized Weapon@0@Gargantuan@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Oversized Weapon@0@Colossal@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Oversized Weapon@0@Gargantuan@0@@0@True@@@0@0@2147483647@@Huge@@0@0@0@0@0@0</entry>
+    <entry>Oversized Weapon@0@Colossal@0@@0@True@@@0@0@2147483647@@Gargantuan@@0@0@0@0@0@0</entry>
     <entry>Simple Weapon Proficiency@0@Javelin@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Spell Resistance@32@@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Bestow curse@0@At Will@0@False@Charisma@Will@14@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Spell-Like Ability@0@Bestow curse@0@At Will@0@False@Charisma@Will@14@0@2147483647@@@Chaotic Evil@0@0@0@0@0@0</entry>
     <entry>Spell-Like Ability@0@Chain lightning@0@At Will@0@False@Charisma@Reflex@16@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Spell-Like Ability@0@Charm monster@0@At Will@0@False@Charisma@Will@14@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Crushing hand@1@Day@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Spell-Like Ability@0@Crushing hand@1@Day@0@False@@@0@0@2147483647@@@Chaotic Evil@0@0@0@0@0@0</entry>
     <entry>Spell-Like Ability@0@Cure critical wounds@0@At Will@0@False@Charisma@Will@14@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Daylight@0@At Will@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Deeper darkness@0@At Will@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Spell-Like Ability@0@Daylight@0@At Will@0@False@@@0@0@2147483647@@@Chaotic Good|Chaotic Neutral@0@0@0@0@0@0</entry>
+    <entry>Spell-Like Ability@0@Deeper darkness@0@At Will@0@False@@@0@0@2147483647@@@Chaotic Evil@0@0@0@0@0@0</entry>
     <entry>Spell-Like Ability@0@Etherealness@3@Day@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Spell-Like Ability@0@Fire storm@0@At Will@0@False@Charisma@Reflex@17@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Spell-Like Ability@0@Gate@1@Day@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Spell-Like Ability@0@Greater dispel magic@0@At Will@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Greater restoration@1@Day@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Spell-Like Ability@0@Greater restoration@1@Day@0@False@@@0@0@2147483647@@@Chaotic Good|Chaotic Neutral@0@0@0@0@0@0</entry>
     <entry>Spell-Like Ability@0@Hold monster@0@At Will@0@False@Charisma@Will@15@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Holy smite@0@At Will@0@False@Charisma@Will@14@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Spell-Like Ability@0@Holy smite@0@At Will@0@False@Charisma@Will@14@0@2147483647@@@Chaotic Good|Chaotic Neutral@0@0@0@0@0@0</entry>
     <entry>Spell-Like Ability@0@Invisibility@0@At Will@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Spell-Like Ability@0@Invisibility purge@0@At Will@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Spell-Like Ability@0@Levitate@0@At Will@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Spell-Like Ability@0@Maze@1@Day@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Spell-Like Ability@0@Meteor swarm@1@Day@0@False@Charisma@Reflex@19@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Spell-Like Ability@0@Persistent image@0@At Will@0@False@Charisma@Will@15@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Remove curse@0@At Will@0@False@Charisma@Will@14@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Spell-Like Ability@0@Remove curse@0@At Will@0@False@Charisma@Will@14@0@2147483647@@@Chaotic Good|Chaotic Neutral@0@0@0@0@0@0</entry>
     <entry>Spell-Like Ability@0@Summon nature's ally IX@3@Day@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Unholy blight@0@At Will@0@False@Charisma@Will@14@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Spell-Like Ability@0@Unholy blight@0@At Will@0@False@Charisma@Will@14@0@2147483647@@@Chaotic Evil@0@0@0@0@0@0</entry>
     <entry>Spell-Like Ability@0@Word of chaos@3@Day@0@False@Charisma@Will@15@0@2147483647@@@@0@0@0@0@0@0</entry>
   </collection>
   <collection>
@@ -4938,7 +4938,7 @@
     <entry>Immunity@0@Poison@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Immunity@0@Sleep@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Immunity@0@Stunning@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Shield Proficiency@0@@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Shield Proficiency@0@@0@@0@True@@@0@0@2147483647@Armor Proficiency (Light)#@@@0@0@0@0@0@0</entry>
     <entry>Simple Weapon Proficiency@0@All@0@@0@True@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
   </collection>
   <collection>
@@ -5495,21 +5495,21 @@
     <entry>Damage Reduction@5@Vulnerable to magic@1@Hit@0@False@@@0@0@11@@@@0@0@0@0@0@0</entry>
     <entry>Damage Reduction@10@Vulnerable to magic@1@Hit@0@False@@@0@12@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Spell-Like Ability@0@Daylight@0@At Will@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Protection from evil@3@Day@0@False@@@0@1@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Bless@1@Day@0@False@@@0@1@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Aid@1@Day@0@False@@@0@3@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Detect evil@1@Day@0@False@@@0@3@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Cure serious wounds@1@Day@0@False@@@0@5@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Neutralize poison@1@Day@0@False@@@0@5@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Holy smite@1@Day@0@False@Charisma@Will@14@7@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Remove disease@1@Day@0@False@@@0@7@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Holy aura@3@Day@0@False@Charisma@Will@18@13@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Hallow@1@Day@0@False@@@0@13@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Dispel evil@1@Day@0@False@Charisma@Will@15@9@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Holy word@1@Day@0@False@Charisma@Will@17@11@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Mass charm monster@1@Day@0@False@Charisma@Will@18@15@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Summon monster IX@1@Day@0@False@@@0@17@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Resurrection@1@Day@0@False@@@0@19@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Spell-Like Ability@0@Protection from evil@3@Day@0@False@@@0@1@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Bless@1@Day@0@False@@@0@1@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Aid@1@Day@0@False@@@0@3@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Detect evil@1@Day@0@False@@@0@3@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Cure serious wounds@1@Day@0@False@@@0@5@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Neutralize poison@1@Day@0@False@@@0@5@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Holy smite@1@Day@0@False@Charisma@Will@14@7@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Remove disease@1@Day@0@False@@@0@7@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Holy aura@3@Day@0@False@Charisma@Will@18@13@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Hallow@1@Day@0@False@@@0@13@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Dispel evil@1@Day@0@False@Charisma@Will@15@9@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Holy word@1@Day@0@False@Charisma@Will@17@11@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Mass charm monster@1@Day@0@False@Charisma@Will@18@15@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Summon monster IX@1@Day@0@False@@@0@17@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Resurrection@1@Day@0@False@@@0@19@2147483647@@@@0@0@0@8@8@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Black)</name>
@@ -5626,17 +5626,17 @@
     <entry>Energy Resistance@10@Electricity@1@Round (6 seconds)@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Damage Reduction@5@Vulnerable to magic@1@Hit@0@False@@@0@0@11@@@@0@0@0@0@0@0</entry>
     <entry>Damage Reduction@10@Vulnerable to magic@1@Hit@0@False@@@0@12@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Darkness@3@Day@0@False@@@0@1@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Desecrate@1@Day@0@False@@@0@3@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Unholy blight@1@Day@0@False@Charisma@Will@14@5@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Poison@3@Day@0@False@Charisma@Fortitude@14@7@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Contagion@1@Day@0@False@Charisma@Fortitude@13@9@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Blasphemy@1@Day@0@False@Charisma@Will@17@11@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Unholy aura@3@Day@0@False@Charisma@Will@18@13@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Unhallow@1@Day@0@False@@@0@13@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Horrid wilting@1@Day@0@False@Charisma@Fortitude@18@15@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Summon monster IX@1@Day@0@False@@@0@17@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Spell-Like Ability@0@Destruction@1@Day@0@False@Charisma@Fortitude@17@19@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Spell-Like Ability@0@Darkness@3@Day@0@False@@@0@1@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Desecrate@1@Day@0@False@@@0@3@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Unholy blight@1@Day@0@False@Charisma@Will@14@5@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Poison@3@Day@0@False@Charisma@Fortitude@14@7@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Contagion@1@Day@0@False@Charisma@Fortitude@13@9@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Blasphemy@1@Day@0@False@Charisma@Will@17@11@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Unholy aura@3@Day@0@False@Charisma@Will@18@13@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Unhallow@1@Day@0@False@@@0@13@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Horrid wilting@1@Day@0@False@Charisma@Fortitude@18@15@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Summon monster IX@1@Day@0@False@@@0@17@2147483647@@@@0@0@0@8@8@0</entry>
+    <entry>Spell-Like Ability@0@Destruction@1@Day@0@False@Charisma@Fortitude@17@19@2147483647@@@@0@0@0@8@8@0</entry>
   </collection>
   <collection>
     <name>Ghost</name>
@@ -5667,7 +5667,7 @@
     <entry>Improved Initiative@4@@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Lightning Reflexes@2@@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
     <entry>Combat Reflexes@0@@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
-    <entry>Dodge@1@@0@@0@False@@@0@0@2147483647@@@@0@0@0@0@0@0</entry>
+    <entry>Dodge@1@@0@@0@False@@@0@0@2147483647@@@@0@0@13@0@0@0</entry>
   </collection>
   <collection>
     <name>Zombie</name>

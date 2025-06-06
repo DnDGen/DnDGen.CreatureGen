@@ -7,61 +7,12 @@ using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.Infrastructure.Helpers;
 using DnDGen.TreasureGen.Items;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 {
     public static class AttackTestData
     {
         public const string None = "NONE";
-
-        internal static IEnumerable<string> GetCreatureDamageKeys(
-            Dictionary<string, CreatureDataSelection> creatureData,
-            Dictionary<string, IEnumerable<AdvancementDataSelection>> advancementData)
-        {
-            var attackDamageKeys = new List<string>();
-            var creatureAttackData = GetCreatureAttackData()
-                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Where(v => v != None).Select(DataHelper.Parse<AttackDataSelection>));
-
-            foreach (var kvp in creatureAttackData)
-            {
-                var creature = kvp.Key;
-                var sizes = advancementData[creature]
-                    .Select(a => a.Size)
-                    .Union([creatureData[creature].Size]);
-                var attackSelections = kvp.Value;
-
-                foreach (var size in sizes)
-                {
-                    var keys = attackSelections.Select(s => s.BuildDamageKey(creature, size));
-                    attackDamageKeys.AddRange(keys);
-                }
-            }
-
-            return attackDamageKeys;
-        }
-
-        internal static IEnumerable<string> GetTemplateDamageKeys()
-        {
-            var attackDamageKeys = new List<string>();
-            var templateAttackData = GetTemplateAttackData()
-                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.Where(v => v != None).Select(DataHelper.Parse<AttackDataSelection>));
-            var sizes = SizeConstants.GetOrdered();
-
-            foreach (var kvp in templateAttackData)
-            {
-                var template = kvp.Key;
-                var attackSelections = kvp.Value;
-
-                foreach (var size in sizes)
-                {
-                    var keys = attackSelections.Select(s => s.BuildDamageKey(template, size));
-                    attackDamageKeys.AddRange(keys);
-                }
-            }
-
-            return attackDamageKeys;
-        }
 
         internal static Dictionary<string, List<string>> GetCreatureAttackData()
         {
@@ -3593,10 +3544,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             testCases[CreatureConstants.NightHag].Add(BuildData("Bite", "Disease", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.NightHag].Add(BuildData("Disease",
-                string.Empty,
+                "Demon Fever",
                 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.NightHag].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.NightHag].Add(BuildData("Dream Haunting", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+            testCases[CreatureConstants.NightHag].Add(BuildData("Demon Fever",
+                string.Empty,
+                0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
             testCases[CreatureConstants.Nightcrawler].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Nightcrawler].Add(BuildData("Sting", "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));

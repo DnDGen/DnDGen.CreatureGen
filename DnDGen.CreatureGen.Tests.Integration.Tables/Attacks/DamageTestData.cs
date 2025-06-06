@@ -32,12 +32,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             var stingDamageType = $"{AttributeConstants.DamageTypes.Piercing}";
             var tentacleDamageType = $"{AttributeConstants.DamageTypes.Bludgeoning}";
 
-            var damageKeys = AttackTestData.GetCreatureDamageKeys(creatureData, advancementData);
-            foreach (var key in damageKeys)
-            {
-                testCases[key] = [];
-            }
-
             Dictionary<string, List<string>> BuildData(string creature, string attackName,
                 string roll, string type = "", string condition = "",
                 string roll2 = null, string type2 = null, string condition2 = null,
@@ -221,8 +215,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             attackDamages.Add(BuildData(CreatureConstants.Ant_Giant_Worker, "Bite", "1d6", biteDamageType));
 
-            attackDamages.Add(BuildData(CreatureConstants.Ant_Giant_Worker, "Bite", "2d4", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Ant_Giant_Worker, "Acid Sting", "1d4", stingDamageType, roll2: "1d4", type2: FeatConstants.Foci.Elements.Acid));
+            attackDamages.Add(BuildData(CreatureConstants.Ant_Giant_Soldier, "Bite", "2d4", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Ant_Giant_Soldier, "Acid Sting", "1d4", stingDamageType, roll2: "1d4", type2: FeatConstants.Foci.Elements.Acid));
 
             attackDamages.Add(BuildData(CreatureConstants.Ant_Giant_Queen, "Bite", "2d6", biteDamageType));
 
@@ -470,9 +464,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Choker, "Tentacle", "1d3", tentacleDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Choker, "Constrict", "1d3", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages.Add(BuildData(CreatureConstants.Choker, "Claw", "2d6", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Choker, "Constrict", "3d6", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Choker, "Paralytic Tentacles", "1d8", tentacleDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chuul, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Chuul, "Constrict", "3d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Chuul, "Paralytic Tentacles", "1d8", tentacleDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.Cloaker, "Tail slap", "1d6", slapSlamDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Cloaker, "Bite", "1d4", biteDamageType));
@@ -555,7 +549,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Digester, "Acid Spray (Stream)", "8d8", FeatConstants.Foci.Elements.Acid));
 
             attackDamages.Add(BuildData(CreatureConstants.DisplacerBeast, "Tentacle", "1d6", tentacleDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.DisplacerBeast, "Claw", "1d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.DisplacerBeast, "Bite", "1d8", biteDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.DisplacerBeast_PackLord, "Tentacle", "1d8", tentacleDamageType));
             attackDamages.Add(BuildData(CreatureConstants.DisplacerBeast_PackLord, "Bite", "2d6", biteDamageType));
@@ -1541,23 +1535,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Elemental_Earth_Greater, "Slam", "2d10", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Elemental_Earth_Elder, "Slam", "2d10", AttributeConstants.DamageTypes.Bludgeoning));
 
-            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Small, "Slam", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Small, "Burn", "1d4", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Fire_Small, "Slam", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Fire_Small, "Burn", "1d4", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Medium, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Medium, "Burn", "1d6", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Fire_Medium, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Fire_Medium, "Burn", "1d6", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Large, "Slam", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Large, "Burn", "2d6", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Fire_Large, "Slam", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Fire_Large, "Burn", "2d6", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Huge, "Slam", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Huge, "Burn", "2d8", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Fire_Huge, "Slam", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Fire_Huge, "Burn", "2d8", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Greater, "Slam", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Greater, "Burn", "2d8", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Fire_Greater, "Slam", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Fire_Greater, "Burn", "2d8", FeatConstants.Foci.Elements.Fire));
 
-            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Elder, "Slam", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Elemental_Air_Elder, "Burn", "2d8", FeatConstants.Foci.Elements.Fire));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Fire_Elder, "Slam", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Elemental_Fire_Elder, "Burn", "2d8", FeatConstants.Foci.Elements.Fire));
 
             attackDamages.Add(BuildData(CreatureConstants.Elemental_Water_Small, "Slam", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Elemental_Water_Small, "Vortex", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
@@ -2028,7 +2022,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Nalfeshnee, "Claw", "1d8", clawDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.NightHag, "Bite", "2d6", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.NightHag, "Disease", "1d6", AbilityConstants.Constitution, "Incubation period 1 day"));
+            attackDamages.Add(BuildData(CreatureConstants.NightHag, "Demon Fever", "1d6", AbilityConstants.Constitution, "Incubation period 1 day"));
 
             attackDamages.Add(BuildData(CreatureConstants.Nightcrawler, "Bite", "4d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Nightcrawler, "Sting", "2d8", AttributeConstants.DamageTypes.Piercing));
@@ -2730,12 +2724,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             var slapSlamDamageType = $"{AttributeConstants.DamageTypes.Bludgeoning}";
             var stingDamageType = $"{AttributeConstants.DamageTypes.Piercing}";
             var tentacleDamageType = $"{AttributeConstants.DamageTypes.Bludgeoning}";
-
-            var damageKeys = AttackTestData.GetTemplateDamageKeys();
-            foreach (var key in damageKeys)
-            {
-                testCases[key] = [];
-            }
 
             Dictionary<string, List<string>> BuildData(string creature, string attackName,
                 string roll, string type = "", string condition = "",

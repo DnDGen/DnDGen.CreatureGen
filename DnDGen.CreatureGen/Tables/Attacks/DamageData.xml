@@ -2,12 +2,18 @@
 
 <collections>
   <collection>
-    <name>Aasimar</name>
-    <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0@</entry>
-    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0@</entry>
-    <entry>Unarmed Strike@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0@</entry>
-    <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0@</entry>
+    <name>AasimarMediumMeleeTrue</name>
   </collection>
+	<collection>
+		<name>AasimarMediumRangedTrue</name>
+	</collection>
+	<collection>
+		<name>AasimarMediumUnarmed StrikeTrue</name>
+		<entry>1d3@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>AasimarMediumSpell-Like AbilityTrue</name>
+	</collection>
   <collection>
     <name>Aboleth</name>
     <entry>Tentacle@1d6#Bludgeoning#@True@True@True@False@4@Round (6 seconds)@@@melee@Slime@1@0@</entry>

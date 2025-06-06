@@ -2,6 +2,7 @@
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Integration.Tables.Helpers;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Helpers;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -22,6 +23,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         private Dictionary<string, List<string>> templateAttackDamageData;
         private Dictionary<string, IEnumerable<AdvancementDataSelection>> advancementData;
         private Dictionary<string, CreatureDataSelection> creatureData;
+        private DamageHelper damageHelper;
 
         protected override string tableName => TableNameConstants.Collection.DamageData;
 
@@ -42,20 +44,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             templateAttackDamageData = DamageTestData.GetTemplateDamageData(attackData);
         }
 
+        [SetUp]
+        public void Setup()
+        {
+            damageHelper = GetNewInstanceOf<DamageHelper>();
+        }
+
         [Test]
         public void DamageDataNames()
         {
-            var creatureKeys = AttackTestData.GetCreatureDamageKeys(creatureData, advancementData);
-            var templateKeys = AttackTestData.GetTemplateDamageKeys();
+            var creatureKeys = damageHelper.GetAllCreatureDamageKeys();
+            var templateKeys = damageHelper.GetAllTemplateDamageKeys();
             var names = creatureKeys.Concat(templateKeys);
 
             var testKeys = creatureAttackDamageData.Keys.Union(templateAttackDamageData.Keys);
             Assert.That(testKeys, Is.Unique.And.EquivalentTo(names));
-
-            var computedKeys = CreatureConstants.GetAll()
-                .SelectMany(GetCreatureDamageKeys)
-                .Concat(CreatureConstants.Templates.GetAll().SelectMany(GetTemplateDamageKeys));
-            Assert.That(computedKeys, Is.Unique.And.EquivalentTo(names));
 
             AssertCollectionNames(names);
         }
@@ -63,31 +66,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreatureAttackDamageData(string creature)
         {
-            var keys = GetCreatureDamageKeys(creature);
+            var keys = damageHelper.GetCreatureDamageKeys(creature);
             foreach (var key in keys)
             {
                 AssertCreatureAttackDamages(key, creature);
             }
         }
 
-        private IEnumerable<string> GetCreatureDamageKeys(string creature)
-        {
-            var attacks = attackData[creature];
-            var sizes = advancementData[creature]
-                .Select(a => a.Size)
-                .Union([creatureData[creature].Size]);
-
-            foreach (var attack in attacks)
-            {
-                foreach (var size in sizes)
-                {
-                    yield return attack.BuildDamageKey(creature, size);
-                }
-            }
-        }
-
         private void AssertCreatureAttackDamages(string key, string creature)
         {
+            //TODO: Currenly only attacks with damage are in the dictionary, so non-damage attacks fail this assertion
+            //However, non-damage attacks still should be in the table, just empty.
+            //Need to update the damage test data to include non-damage attacks, defaulted to empty.
+            //But also, would prefer an error occur if a non-damage attack is expected, but not found.
+            //AKA, we added a new creature or attack, and a test failure happens to tell me that I need to explicitly say whether the attack has damage or not
+            //So, need to think about it
             Assert.That(creatureAttackDamageData, Contains.Key(key));
 
             AssertCorrectImprovedGrab(key, creatureAttackDamageData[key]);
@@ -105,24 +98,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void TemplateAttackDamageData(string template)
         {
-            var keys = GetTemplateDamageKeys(template);
+            var keys = damageHelper.GetTemplateDamageKeys(template);
             foreach (var key in keys)
             {
                 AssertTemplateAttackDamages(key, template);
-            }
-        }
-
-        private IEnumerable<string> GetTemplateDamageKeys(string template)
-        {
-            var attacks = attackData[template];
-            var sizes = SizeConstants.GetOrdered();
-
-            foreach (var attack in attacks)
-            {
-                foreach (var size in sizes)
-                {
-                    yield return attack.BuildDamageKey(template, size);
-                }
             }
         }
 
