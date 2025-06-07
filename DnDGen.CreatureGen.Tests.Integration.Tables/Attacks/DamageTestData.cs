@@ -2,6 +2,7 @@
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Selections;
+using DnDGen.CreatureGen.Tests.Integration.Tables.Helpers;
 using DnDGen.Infrastructure.Helpers;
 using DnDGen.TreasureGen.Items;
 using System;
@@ -15,9 +16,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         internal static Dictionary<string, List<string>> GetCreatureAttackDamageData(
             Dictionary<string, IEnumerable<AttackDataSelection>> attackDataSelections,
             Dictionary<string, CreatureDataSelection> creatureData,
-            Dictionary<string, IEnumerable<AdvancementDataSelection>> advancementData)
+            Dictionary<string, IEnumerable<AdvancementDataSelection>> advancementData,
+            DamageHelper damageHelper)
         {
             var testCases = new Dictionary<string, List<string>>();
+            var damageKeys = damageHelper.GetAllCreatureDamageKeys();
+
+            foreach (var key in damageKeys)
+                testCases[key] = [];
+
             var attackDamages = new List<Dictionary<string, List<string>>>();
             var attackData = attackDataSelections.ToDictionary(
                 kvp => kvp.Key,
@@ -2706,9 +2713,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             return testCases;
         }
 
-        internal static Dictionary<string, List<string>> GetTemplateDamageData(Dictionary<string, IEnumerable<AttackDataSelection>> attackDataSelections)
+        internal static Dictionary<string, List<string>> GetTemplateDamageData(
+            Dictionary<string, IEnumerable<AttackDataSelection>> attackDataSelections,
+            DamageHelper damageHelper)
         {
             var testCases = new Dictionary<string, List<string>>();
+            var damageKeys = damageHelper.GetAllTemplateDamageKeys();
+
+            foreach (var key in damageKeys)
+                testCases[key] = [];
+
             var attackDamages = new List<Dictionary<string, List<string>>>();
             var templates = CreatureConstants.Templates.GetAll();
 

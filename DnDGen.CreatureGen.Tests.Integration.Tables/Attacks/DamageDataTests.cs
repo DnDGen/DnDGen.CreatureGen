@@ -40,14 +40,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             var advancementsDataSelector = GetNewInstanceOf<ICollectionDataSelector<AdvancementDataSelection>>();
             advancementData = advancementsDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.Advancements);
 
-            creatureAttackDamageData = DamageTestData.GetCreatureAttackDamageData(attackData, creatureData, advancementData);
-            templateAttackDamageData = DamageTestData.GetTemplateDamageData(attackData);
-        }
-
-        [SetUp]
-        public void Setup()
-        {
             damageHelper = GetNewInstanceOf<DamageHelper>();
+
+            creatureAttackDamageData = DamageTestData.GetCreatureAttackDamageData(attackData, creatureData, advancementData, damageHelper);
+            templateAttackDamageData = DamageTestData.GetTemplateDamageData(attackData, damageHelper);
         }
 
         [Test]
@@ -75,12 +71,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
         private void AssertCreatureAttackDamages(string key, string creature)
         {
-            //TODO: Currenly only attacks with damage are in the dictionary, so non-damage attacks fail this assertion
-            //However, non-damage attacks still should be in the table, just empty.
-            //Need to update the damage test data to include non-damage attacks, defaulted to empty.
-            //But also, would prefer an error occur if a non-damage attack is expected, but not found.
-            //AKA, we added a new creature or attack, and a test failure happens to tell me that I need to explicitly say whether the attack has damage or not
-            //So, need to think about it
             Assert.That(creatureAttackDamageData, Contains.Key(key));
 
             AssertCorrectImprovedGrab(key, creatureAttackDamageData[key]);
@@ -673,14 +663,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         [TestCase(SizeConstants.Fine, SizeConstants.Gargantuan, "1d10", "3d8")]
         [TestCase(SizeConstants.Fine, SizeConstants.Gargantuan, "2d6", "3d6")]
         [TestCase(SizeConstants.Fine, SizeConstants.Gargantuan, "2d8", "3d8")]
-        [TestCase(SizeConstants.Fine, SizeConstants.Colossal, "1d2", "3d6")]
-        [TestCase(SizeConstants.Fine, SizeConstants.Colossal, "1d3", "3d6")]
-        [TestCase(SizeConstants.Fine, SizeConstants.Colossal, "1d4", "3d6")]
-        [TestCase(SizeConstants.Fine, SizeConstants.Colossal, "1d6", "3d6")]
-        [TestCase(SizeConstants.Fine, SizeConstants.Colossal, "1d8", "3d6")]
+        [TestCase(SizeConstants.Fine, SizeConstants.Colossal, "0", "3d6")]
         [TestCase(SizeConstants.Fine, SizeConstants.Colossal, "1d10", "3d8")]
-        [TestCase(SizeConstants.Fine, SizeConstants.Colossal, "2d6", "3d6")]
-        [TestCase(SizeConstants.Fine, SizeConstants.Colossal, "2d8", "3d8")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Diminutive, "1d2", "1d2")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Diminutive, "1d3", "1d3")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Diminutive, "1d4", "1d4")]
@@ -703,48 +687,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         [TestCase(SizeConstants.Diminutive, SizeConstants.Small, "1d6", "2d6")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Small, "1d8", "3d6")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Small, "1d10", "3d8")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Small, "2d6", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Small, "2d8", "3d8")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Medium, "1d2", "1d6")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Medium, "1d3", "1d8")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Medium, "1d4", "2d6")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Medium, "1d6", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Medium, "1d8", "3d6")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Medium, "1d10", "3d8")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Medium, "2d6", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Medium, "2d8", "3d8")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Large, "1d2", "1d8")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Large, "1d3", "2d6")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Large, "1d4", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Large, "1d6", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Large, "1d8", "3d6")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Large, "1d10", "3d8")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Large, "2d6", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Large, "2d8", "3d8")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Huge, "1d2", "2d6")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Huge, "1d3", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Huge, "1d4", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Huge, "1d6", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Huge, "1d8", "3d6")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Huge, "1d10", "3d8")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Huge, "2d6", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Huge, "2d8", "3d8")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Gargantuan, "1d2", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Gargantuan, "1d3", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Gargantuan, "1d4", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Gargantuan, "1d6", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Gargantuan, "1d8", "3d6")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Gargantuan, "1d10", "3d8")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Gargantuan, "2d6", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Gargantuan, "2d8", "3d8")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Colossal, "1d2", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Colossal, "1d3", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Colossal, "1d4", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Colossal, "1d6", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Colossal, "1d8", "3d6")]
+        [TestCase(SizeConstants.Diminutive, SizeConstants.Colossal, "1", "3d6")]
         [TestCase(SizeConstants.Diminutive, SizeConstants.Colossal, "1d10", "3d8")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Colossal, "2d6", "3d6")]
-        [TestCase(SizeConstants.Diminutive, SizeConstants.Colossal, "2d8", "3d8")]
         [TestCase(SizeConstants.Tiny, SizeConstants.Tiny, "1d2", "1d2")]
         [TestCase(SizeConstants.Tiny, SizeConstants.Tiny, "1d3", "1d3")]
         [TestCase(SizeConstants.Tiny, SizeConstants.Tiny, "1d4", "1d4")]
