@@ -592,7 +592,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         [TestCase(SizeConstants.Colossal, SizeConstants.Colossal, "1d10", "1d10")]
         [TestCase(SizeConstants.Colossal, SizeConstants.Colossal, "2d6", "2d6")]
         [TestCase(SizeConstants.Colossal, SizeConstants.Colossal, "2d8", "2d8")]
-        public void AdjustDamageUpForAdvancedSizeForNaturalAttack(string originalSize, string advancedSize, string originalDamage, string advancedDamage)
+        public void AdjustNaturalAttackDamageUpBySize(string originalSize, string advancedSize, string originalDamage, string advancedDamage)
         {
             var attack = new AttackDataSelection { IsNatural = true };
             var adjustedDamage = DamageTestData.GetAdjustedDamage(attack, originalDamage, originalSize, advancedSize);
@@ -927,7 +927,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         [TestCase(SizeConstants.Colossal, SizeConstants.Colossal, "1d10", "1d10")]
         [TestCase(SizeConstants.Colossal, SizeConstants.Colossal, "2d6", "2d6")]
         [TestCase(SizeConstants.Colossal, SizeConstants.Colossal, "2d8", "2d8")]
-        public void AdjustDamageDownForAdvancedSizeForNaturalAttack(string adjustedSize, string originalSize, string adjustedDamage, string originalDamage)
+        public void AdjustNaturalAttackDamageDownBySize(string adjustedSize, string originalSize, string adjustedDamage, string originalDamage)
         {
             var attack = new AttackDataSelection { IsNatural = true };
             var damage = DamageTestData.GetAdjustedDamage(attack, originalDamage, originalSize, adjustedSize);
@@ -935,7 +935,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         }
 
         [TestCaseSource(nameof(VerboseDamages))]
-        public void AdjustDamageForAdvancedSizeForNaturalAttackWithVerboseRollDamage(string[] originalDamageData, string[] adjustedDamageData)
+        public void AdjustNaturalAttackDamageUpBySize_VerboseRollDamage(string[] originalDamageData, string[] adjustedDamageData)
         {
             var attack = new AttackDataSelection { IsNatural = true };
             for (var i = 0; i < originalDamageData.Length; i++)
@@ -987,7 +987,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
         [TestCase("4d6")]
         [TestCase("4d4")]
-        public void AdjustDamageForAdvancedSizeForNaturalAttackWithNonAdjustableRollDamage(string originalDamage)
+        public void AdjustNaturalAttackDamageBySize_NonAdjustableRollDamage(string originalDamage)
         {
             var attack = new AttackDataSelection { IsNatural = true };
             var adjustedDamage = DamageTestData.GetAdjustedDamage(attack, originalDamage, SizeConstants.Fine, SizeConstants.Colossal);
@@ -995,7 +995,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         }
 
         [Test]
-        public void DoNotAdjustDamageForAdvancedSizeForUnnaturalAttack()
+        public void DoNotAdjustUnnaturalAttackDamageBySize()
         {
             var attack = new AttackDataSelection { IsNatural = false };
             var adjustedDamage = DamageTestData.GetAdjustedDamage(attack, "1d2", SizeConstants.Fine, SizeConstants.Colossal);
@@ -1003,7 +1003,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         }
 
         [Test]
-        public void DoNotAdjustEffectRolls()
+        public void DoNotAdjustNaturalAttackEffectRolls()
         {
             var attack = new AttackDataSelection { IsNatural = true, DamageEffect = "1d2" };
             var adjustedDamage = DamageTestData.GetAdjustedDamage(attack, "1d2", SizeConstants.Fine, SizeConstants.Colossal);
