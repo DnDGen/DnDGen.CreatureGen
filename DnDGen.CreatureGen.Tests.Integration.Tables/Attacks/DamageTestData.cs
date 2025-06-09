@@ -2970,23 +2970,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             ["2d8"] = "3d8",
             ["1d10"] = "2d8",
-            ["2d4"] = "1d10",
-            ["2d3"] = "2d4",
-            ["2d2"] = "2d3",
-            ["2"] = "2d2",
-            //INFO: Doing decimals so 1 and 0 stay unique as keys
-            ["1.0"] = "2",
-            ["0.0"] = "1.0",
             ["2d6"] = "3d6",
             ["1d8"] = "2d6",
             ["1d6"] = "1d8",
             ["1d4"] = "1d6",
             ["1d3"] = "1d4",
             ["1d2"] = "1d3",
-            ["1"] = "1d2",
-            ["0"] = "1",
         };
         private static readonly Dictionary<string, string> damageDecreases = damageIncreases.ToDictionary(kvp => kvp.Value, kvp => kvp.Key);
+        private static readonly Dictionary<string, string> dieDecreases = new()
+        {
+            ["100"] = "20",
+            ["20"] = "12",
+            ["12"] = "10",
+            ["10"] = "8",
+        };
 
         internal static string GetAdjustedDamage(AttackDataSelection attack, string originalDamage, string originalSize, string adjustedSize)
         {
@@ -3001,20 +2999,72 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             if (sizeDifference > 0)
             {
-                while (sizeDifference-- > 0 && damageIncreases.ContainsKey(adjustedDamage))
+                while (sizeDifference-- > 0)
                 {
-                    adjustedDamage = damageIncreases[adjustedDamage];
+                    adjustedDamage = IncreaseDamage(adjustedDamage);
                 }
             }
             else if (sizeDifference < 0)
             {
-                while (sizeDifference++ < 0 && damageDecreases.ContainsKey(adjustedDamage))
+                while (sizeDifference++ < 0)
                 {
-                    adjustedDamage = damageDecreases[adjustedDamage];
+                    adjustedDamage = DecreaseDamage(adjustedDamage);
                 }
             }
 
             return adjustedDamage;
+        }
+
+        private static string IncreaseDamage(string damage)
+        {
+            var roll = GetRoll(damage);
+            if (damageIncreases.ContainsKey(roll) && damage.Contains('+'))
+                return $"{damageIncreases[roll]}+{damage.Split('+')[1]}";
+            else if (damageIncreases.ContainsKey(roll))
+                return damageIncreases[roll];
+
+            var sections = roll.Split('d', '+');
+            var quantity = Convert.ToInt32(sections[0]) + 1;
+
+            if (sections.Length == 1 && quantity == 2)
+                return "1d2";
+            else if (sections.Length == 1)
+                return quantity.ToString();
+
+            return $"{quantity}d{sections[1]}";
+        }
+
+        private static string GetRoll(string damage) => damage.Split('+')[0];
+
+        private static string DecreaseDamage(string damage)
+        {
+            var roll = GetRoll(damage);
+            if (damageDecreases.ContainsKey(roll) && damage.Contains('+'))
+                return $"{damageDecreases[roll]}+{damage.Split('+')[1]}";
+            else if (damageDecreases.ContainsKey(roll))
+                return damageDecreases[roll];
+
+            var sections = roll.Split('d', '+');
+            var quantity = Convert.ToInt32(sections[0]) - 1;
+
+            if (sections.Length == 1 && quantity <= 0)
+            {
+                return "0";
+            }
+            else if (sections.Length == 1)
+            {
+                return quantity.ToString();
+            }
+            else if (quantity <= 0)
+            {
+                var die = sections[1];
+                if (die == "2")
+                    return "1";
+
+                return $"1d{dieDecreases[die]}";
+            }
+
+            return $"{quantity}d{sections[1]}";
         }
 
         internal static string BuildData(string roll, string type, string condition = "")
