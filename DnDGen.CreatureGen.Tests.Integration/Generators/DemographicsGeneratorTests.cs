@@ -133,5 +133,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
 
             return $"{roll}*{multiplierSelection.Roll}";
         }
+
+        [TestCase(CreatureConstants.Human)]
+        [TestCase(CreatureConstants.Orc_Half)]
+        public void DEBUG_GenerateBetaDemographics(string creature)
+        {
+            var demographics = demographicsGenerator.Generate(creature);
+            Assert.That(demographics, Is.Not.Null);
+        }
     }
 }
