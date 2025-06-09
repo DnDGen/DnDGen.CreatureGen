@@ -540,7 +540,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             selection.DamageEffect = effect;
 
             var key = selection.BuildDamageKey("creature", "my size");
-            Assert.That(key, Is.EqualTo($"creaturemy sizeMy Attack{primary}{effect}"));
+            Assert.That(key, Is.EqualTo($"creature-my size-My Attack-{primary}-{effect}"));
         }
     }
 }

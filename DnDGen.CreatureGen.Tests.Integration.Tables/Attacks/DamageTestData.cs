@@ -2969,8 +2969,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         private static readonly Dictionary<string, string> damageIncreases = new()
         {
             ["2d8"] = "3d8",
-            ["2d6"] = "3d6",
             ["1d10"] = "2d8",
+            ["2d4"] = "1d10",
+            ["2d3"] = "2d4",
+            ["2d2"] = "2d3",
+            ["2"] = "2d2",
+            //INFO: Doing decimals so 1 and 0 stay unique as keys
+            ["1.0"] = "2",
+            ["0.0"] = "1.0",
+            ["2d6"] = "3d6",
             ["1d8"] = "2d6",
             ["1d6"] = "1d8",
             ["1d4"] = "1d6",

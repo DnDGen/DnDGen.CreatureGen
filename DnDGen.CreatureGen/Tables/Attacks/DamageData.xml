@@ -2,24 +2,30 @@
 
 <collections>
   <collection>
-    <name>AasimarMediumMeleeTrue</name>
+    <name>Aasimar-Medium-Melee-True-</name>
   </collection>
 	<collection>
-		<name>AasimarMediumRangedTrue</name>
+		<name>Aasimar-Medium-Ranged-True-</name>
 	</collection>
 	<collection>
-		<name>AasimarMediumUnarmed StrikeTrue</name>
+		<name>Aasimar-Medium-Unarmed Strike-True-</name>
 		<entry>1d3@Bludgeoning@</entry>
 	</collection>
 	<collection>
-		<name>AasimarMediumSpell-Like AbilityTrue</name>
+		<name>Aasimar-Medium-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Aboleth-Huge-Tentacle-True-Slime</name>
+		<entry>1d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Aboleth-Huge-Enslave-True</name>
+	</collection>
+	<collection>
+		<name>Aboleth-Huge-Slime-False</name>
 	</collection>
   <collection>
-    <name>Aboleth</name>
-    <entry>Tentacle@1d6#Bludgeoning#@True@True@True@False@4@Round (6 seconds)@@@melee@Slime@1@0@</entry>
-    <entry>Enslave@@True@False@True@True@3@Day@Charisma@Will@supernatural ability@@0@0@</entry>
-    <entry>Slime@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0@</entry>
-    <entry>Psionic@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0@</entry>
+    <name>Aboleth-Huge-Psionic-True</name>
   </collection>
   <collection>
     <name>Greater Basilisk</name>

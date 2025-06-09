@@ -81,16 +81,8 @@ namespace DnDGen.CreatureGen.Selectors.Selections
 
         public bool RequirementsMet(string gender) => string.IsNullOrEmpty(RequiredGender) || RequiredGender == gender;
 
-        private static string BuildKeyFromSections(params string[] keySections) => string.Join(string.Empty, keySections);
+        private static string BuildKeyFromSections(params string[] keySections) => string.Join("-", keySections);
 
-        public string BuildDamageKey(string creature, string size)
-        {
-            var data = MapFrom(this);
-            return BuildKeyFromSections(creature,
-                size,
-                data[DataIndexConstants.AttackData.NameIndex],
-                data[DataIndexConstants.AttackData.IsPrimaryIndex],
-                data[DataIndexConstants.AttackData.DamageEffectIndex]);
-        }
+        public string BuildDamageKey(string creature, string size) => BuildKeyFromSections(creature, size, Name, IsPrimary.ToString(), DamageEffect);
     }
 }
