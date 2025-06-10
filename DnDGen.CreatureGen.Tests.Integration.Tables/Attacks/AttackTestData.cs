@@ -755,7 +755,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             testCases[CreatureConstants.BarbedDevil_Hamatula].Add(BuildData("Claw",
-                "fear",
+                "Fear",
                 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.BarbedDevil_Hamatula].Add(BuildData("Fear",
                 string.Empty,
@@ -3519,58 +3519,63 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Naga_Guardian].Add(BuildData("Bite", "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Naga_Guardian].Add(BuildData("Spit", "Poison", 0, "ranged touch", 1, FeatConstants.Frequencies.Round, false, true, false, false));
             testCases[CreatureConstants.Naga_Guardian].Add(BuildData("Poison",
-                string.Empty,
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            testCases[CreatureConstants.Naga_Guardian].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true,
+                saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            testCases[CreatureConstants.Naga_Guardian].Add(BuildData("Spells",
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             testCases[CreatureConstants.Naga_Spirit].Add(BuildData("Bite", "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Naga_Spirit].Add(BuildData("Charming Gaze", SpellConstants.CharmPerson, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Naga_Spirit].Add(BuildData("Charming Gaze",
+                SpellConstants.CharmPerson, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true,
+                saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
             testCases[CreatureConstants.Naga_Spirit].Add(BuildData("Poison",
-                string.Empty,
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true,
+                saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Naga_Spirit].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             testCases[CreatureConstants.Naga_Water].Add(BuildData("Bite", "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Naga_Water].Add(BuildData("Poison",
-                string.Empty,
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true,
+                saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Naga_Water].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             testCases[CreatureConstants.Nalfeshnee].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Nalfeshnee].Add(BuildData("Claw", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Nalfeshnee].Add(BuildData("Smite", string.Empty, 1, "supernatural ability", 3, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
-            testCases[CreatureConstants.Nalfeshnee].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Nalfeshnee].Add(BuildData("Summon Demon", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+            testCases[CreatureConstants.Nalfeshnee].Add(BuildData("Smite",
+                string.Empty, 1, "supernatural ability", 3, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
+            testCases[CreatureConstants.Nalfeshnee].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            testCases[CreatureConstants.Nalfeshnee].Add(BuildData("Summon Demon",
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
 
             testCases[CreatureConstants.NightHag].Add(BuildData("Bite", "Disease", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.NightHag].Add(BuildData("Disease",
-                "Demon Fever",
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            testCases[CreatureConstants.NightHag].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.NightHag].Add(BuildData("Dream Haunting", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+            testCases[CreatureConstants.NightHag].Add(BuildData("Disease", "Demon Fever", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
+            testCases[CreatureConstants.NightHag].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            testCases[CreatureConstants.NightHag].Add(BuildData("Dream Haunting",
+                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
             testCases[CreatureConstants.NightHag].Add(BuildData("Demon Fever",
-                string.Empty,
-                0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
             testCases[CreatureConstants.Nightcrawler].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Nightcrawler].Add(BuildData("Sting", "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Nightcrawler].Add(BuildData("Improved Grab", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            testCases[CreatureConstants.Nightcrawler].Add(BuildData("Desecrating Aura", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true));
+            testCases[CreatureConstants.Nightcrawler].Add(BuildData("Improved Grab",
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            testCases[CreatureConstants.Nightcrawler].Add(BuildData("Desecrating Aura",
+                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true));
             testCases[CreatureConstants.Nightcrawler].Add(BuildData("Energy Drain",
-                string.Empty,
-                0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-            testCases[CreatureConstants.Nightcrawler].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true,
+                saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
+            testCases[CreatureConstants.Nightcrawler].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Nightcrawler].Add(BuildData("Poison",
-                string.Empty,
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
-            testCases[CreatureConstants.Nightcrawler].Add(BuildData("Summon Undead", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
-            testCases[CreatureConstants.Nightcrawler].Add(BuildData("Swallow Whole",
-                "Energy Drain",
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true,
+                saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+            testCases[CreatureConstants.Nightcrawler].Add(BuildData("Summon Undead",
+                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+            testCases[CreatureConstants.Nightcrawler].Add(BuildData("Swallow Whole", "Energy Drain", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-            testCases[CreatureConstants.Nightmare].Add(BuildData("Hoof",
-                string.Empty,
-                1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Nightmare].Add(BuildData("Hoof", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Nightmare].Add(BuildData("Bite", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.Nightmare].Add(BuildData("Flaming Hooves", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
             testCases[CreatureConstants.Nightmare].Add(BuildData("Smoke", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));

@@ -894,7 +894,7 @@
 		<entry>1d6@Piercing/Slashing@</entry>
 	</collection>
 	<collection>
-		<name>Annis-Large-Rend-True-</name>
+		<name>Annis-Large-Rend-False-</name>
 		<entry>2d6@Piercing/Slashing@</entry>
 	</collection>
 	<collection>
@@ -929,7 +929,7 @@
     <entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
 	<collection>
-		<name>Aranea-Medium-Poison-True-</name>
+		<name>Aranea-Medium-Poison-False-</name>
 		<entry>1d6@Strength@Initial</entry>
 		<entry>2d6@Strength@Secondary</entry>
 	</collection>
@@ -939,13 +939,27 @@
 	<collection>
 		<name>Aranea-Medium-Spells-True-</name>
 	</collection>
+	<collection>
+		<name>Assassin Vine-Large-Slam-True-</name>
+		<entry>1d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Assassin Vine-Large-Constrict-True-</name>
+		<entry>1d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Assassin Vine-Large-Entangle-True-</name>
+	</collection>
+	<collection>
+		<name>Assassin Vine-Large-Improved Grab-False-</name>
+	</collection>
   <collection>
     <name>Assassin Vine-Huge-Slam-True-</name>
-    <entry>1d6@Bludgeoning@</entry>
+    <entry>1d8@Bludgeoning@</entry>
   </collection>
 	<collection>
 		<name>Assassin Vine-Huge-Constrict-True-</name>
-		<entry>1d6@Bludgeoning@</entry>
+		<entry>1d8@Bludgeoning@</entry>
 	</collection>
 	<collection>
 		<name>Assassin Vine-Huge-Entangle-True-</name>
@@ -960,7 +974,7 @@
 		<name>Athach-Huge-Melee-False-</name>
 	</collection>
 	<collection>
-		<name>Athach-Huge-Bite-True-Poison</name>
+		<name>Athach-Huge-Bite-False-Poison</name>
 		<entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
 	</collection>
 	<collection>
@@ -977,50 +991,92 @@
 		<entry>2d6@Strength@Secondary</entry>
 	</collection>
   <collection>
-    <name>Average Salamander</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Tail Slap%2d6@Bludgeoning@%True%True%False%False%1%Round (6 seconds)%%%melee%Heat%0.5%0%</entry>
-    <entry>Constrict%2d6@Bludgeoning@%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%Heat%0.5%0%</entry>
-    <entry>Improved Grab%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-    <entry>Heat%1d6@Fire@%True%True%False%True%1%Hit%%%extraordinary ability%%0%0%</entry>
+    <name>Average Salamander-Medium-Melee-True-</name>
+  </collection>
+	<collection>
+		<name>Average Salamander-Medium-Tail Slap-True-Heat</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Average Salamander-Medium-Constrict-True-Heat</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Average Salamander-Medium-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Average Salamander-Medium-Heat-False-</name>
+		<entry>1d6@Fire@</entry>
+	</collection>
+  <collection>
+    <name>Average Xorn-Medium-Bite-True-</name>
+    <entry>4d6@Piercing/Slashing/Bludgeoning@</entry>
+  </collection>
+	<collection>
+		<name>Average Xorn-Medium-Claw-False-</name>
+		<entry>1d4@Piercing/Slashing@</entry>
+	</collection>
+  <collection>
+    <name>Avoral-Medium-Claw-True-</name>
+    <entry>2d6@Piercing/Slashing@</entry>
+  </collection>
+	<collection>
+		<name>Avoral-Medium-Wing-False-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Avoral-Medium-Fear Aura-False-</name>
+	</collection>
+	<collection>
+		<name>Avoral-Medium-Spell-Like Ability-True-</name>
+	</collection>
+  <collection>
+    <name>Azer-Medium-Melee-True-</name>
+  </collection>
+	<collection>
+		<name>Azer-Medium-Ranged-True-</name>
+	</collection>
+	<collection>
+		<name>Azer-Medium-Unarmed Strike-True-Heat</name>
+		<entry>1d3@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Azer-Medium-Heat-False-</name>
+		<entry>1@Fire@</entry>
+	</collection>
+  <collection>
+    <name>Babau-Large-Claw-True-</name>
+    <entry>1d6@Piercing/Slashing@</entry>
+  </collection>
+	<collection>
+		<name>Babau-Large-Bite-False-</name>
+		<entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Babau-Large-Sneak Attack-True-</name>
+		<entry>2d6@@</entry>
+	</collection>
+	<collection>
+		<name>Babau-Large-Summon Demon-True-</name>
+	</collection>
+	<collection>
+		<name>Babau-Large-Spell-Like Ability-True-</name>
+	</collection>
+  <collection>
+    <name>Baboon-Medium-Bite-True-</name>
+    <entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
   <collection>
-    <name>Average Xorn</name>
-    <entry>Bite%4d6@Piercing/Slashing/Bludgeoning@%True%True%True%False%1%Round (6 seconds)%%%melee%%1%0%</entry>
-    <entry>Claw%1d4@Piercing/Slashing@%True%True%False%False%3%Round (6 seconds)%%%melee%%0.5%0%</entry>
+    <name>Badger-Small-Claw-True-</name>
+    <entry>1d2@Piercing/Slashing@</entry>
   </collection>
-  <collection>
-    <name>Avoral</name>
-    <entry>Claw%2d6@Piercing/Slashing@%True%True%True%False%2%Round (6 seconds)%%%melee%%1%0%</entry>
-    <entry>Wing%2d8@Bludgeoning@%True%True%True%False%2%Round (6 seconds)%%%melee%%1%0%</entry>
-    <entry>Fear Aura%%True%False%True%True%1%Round (6 seconds)%%%supernatural ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Azer</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Ranged%%False%False%True%False%1%Round (6 seconds)%%%ranged%%1.5%0%</entry>
-    <entry>Unarmed Strike%1d3@Bludgeoning@%True%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Heat%1@Fire@%True%True%False%True%1%Hit%%%extraordinary ability%%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Babau</name>
-    <entry>Claw%1d6@Piercing/Slashing@%True%True%True%False%2%Round (6 seconds)%%%melee%%1%0%</entry>
-    <entry>Bite%1d6@Piercing/Slashing/Bludgeoning@%True%True%False%False%1%Round (6 seconds)%%%melee%%0.5%0%</entry>
-    <entry>Sneak Attack%2d6@@%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-    <entry>Summon Demon%%True%False%True%True%1%Day%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Baboon</name>
-    <entry>Bite%1d6@Piercing/Slashing/Bludgeoning@%True%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-  </collection>
-  <collection>
-    <name>Badger</name>
-    <entry>Claw%1d2@Piercing/Slashing@%True%True%True%False%2%Round (6 seconds)%%%melee%%1%0%</entry>
-    <entry>Bite%1d3@Piercing/Slashing/Bludgeoning@%True%True%False%False%1%Round (6 seconds)%%%melee%%0.5%0%</entry>
-    <entry>Rage%%True%False%True%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-  </collection>
+	<collection>
+		<name>Badger-Small-Bite-False-</name>
+		<entry>1d3@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Badger-Small-Rage-True-</name>
+	</collection>
   <collection>
     <name>Dire Badger</name>
     <entry>Claw%1d4@Piercing/Slashing@%True%True%True%False%2%Round (6 seconds)%%%melee%%1%0%</entry>
@@ -1028,28 +1084,52 @@
     <entry>Rage%%True%False%True%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
   </collection>
   <collection>
-    <name>Baleen Whale</name>
-    <entry>Tail Slap%1d8@Bludgeoning@%True%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
+    <name>Baleen Whale-Gargantuan-Tail Slap-True-</name>
+    <entry>1d8@Bludgeoning@</entry>
   </collection>
   <collection>
-    <name>Balor</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1%0%</entry>
-    <entry>Melee%%False%True%False%False%1%Round (6 seconds)%%%melee%%0.5%0%</entry>
-    <entry>Slam%1d10@Bludgeoning@%True%True%True%False%2%Round (6 seconds)%%%melee%%1%0%</entry>
-    <entry>Death Throes%100@@%True%False%False%True%1%Life%Constitution%Reflex%extraordinary ability%%1%0%</entry>
-    <entry>Entangle%%False%True%False%True%1%Hit%%%extraordinary ability%%1%0%</entry>
-    <entry>Summon Demon%%True%False%True%True%1%Day%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Balor-Large-Melee-True-</name>
   </collection>
+	<collection>
+		<name>Balor-Large-Melee-False-</name>
+	</collection>
+	<collection>
+		<name>Balor-Large-Melee-Slam-</name>
+		<entry>1d10@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Balor-Large-Death Throes-False-</name>
+		<entry>100@@</entry>
+	</collection>
+	<collection>
+		<name>Balor-Large-Entangle-False-</name>
+	</collection>
+	<collection>
+		<name>Balor-Large-Summon Demon-True-</name>
+	</collection>
+	<collection>
+		<name>Balor-Large-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
-    <name>Barbed Devil (Hamatula)</name>
-    <entry>Claw%2d8@Piercing/Slashing@%True%True%True%False%2%Round (6 seconds)%%%melee%fear%1%0%</entry>
-    <entry>Fear%%True%True%True%True%1%Hit%Charisma%Will%supernatural ability%%0%0%</entry>
-    <entry>Improved Grab%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-    <entry>Impale%3d8@Piercing@%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%1.5%0%</entry>
-    <entry>Summon Devil%%True%False%True%True%1%Day%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Barbed Devil (Hamatula)-Medium-Claw-True-Fear</name>
+    <entry>2d8@Piercing/Slashing@</entry>
   </collection>
+	<collection>
+		<name>Barbed Devil (Hamatula)-Medium-Fear-False-</name>
+	</collection>
+	<collection>
+		<name>Barbed Devil (Hamatula)-Medium-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Barbed Devil (Hamatula)-Medium-Impale-True-</name>
+		<entry>3d8@Piercing@</entry>
+	</collection>
+	<collection>
+		<name>Barbed Devil (Hamatula)-Medium-Summon Devil-True-</name>
+	</collection>
+	<collection>
+		<name>Barbed Devil (Hamatula)-Medium-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
     <name>Barghest</name>
     <entry>Bite%1d6@Piercing/Slashing/Bludgeoning@%True%True%True%False%1%Round (6 seconds)%%%melee%%1%0%</entry>
