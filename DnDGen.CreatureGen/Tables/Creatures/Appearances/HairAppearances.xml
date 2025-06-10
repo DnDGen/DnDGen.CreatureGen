@@ -20,7 +20,6 @@
   </collection>
   <collection>
     <name>AasimarUncommon</name>
-    <entry>Bald</entry>
     <entry>Straight red hair with feathers mized in</entry>
     <entry>Straight blond hair with feathers mized in</entry>
     <entry>Straight brown hair with feathers mized in</entry>
@@ -884,7 +883,6 @@
   </collection>
   <collection>
     <name>AraneaUncommon</name>
-    <entry>Bald</entry>
     <entry>Straight red hair</entry>
     <entry>Straight blond hair</entry>
     <entry>Straight brown hair</entry>
@@ -912,7 +910,6 @@
   </collection>
   <collection>
     <name>AraneaRare</name>
-    <entry>Bald</entry>
     <entry>Straight black hair with silvery hues</entry>
     <entry>Straight black hair with blond hues</entry>
     <entry>Straight black hair with copper hues</entry>
@@ -1040,7 +1037,6 @@
     <entry>Kinky yellow hair</entry>
     <entry>Kinky blond hair</entry>
     <entry>Kinky copper-red hair</entry>
-    <entry>Bald</entry>
     <entry>Straight black hair with silvery hues</entry>
     <entry>Straight black hair with blond hues</entry>
     <entry>Straight black hair with copper hues</entry>
@@ -1120,7 +1116,6 @@
     <entry>Straight pale gold hair</entry>
     <entry>Curly pale gold hair</entry>
     <entry>Kinky pale gold hair</entry>
-    <entry>Bald</entry>
     <entry>Straight black hair with silvery hues</entry>
     <entry>Straight black hair with blond hues</entry>
     <entry>Straight black hair with copper hues</entry>
@@ -1707,7 +1702,6 @@
   </collection>
   <collection>
     <name>CentaurUncommon</name>
-    <entry>Bald</entry>
   </collection>
   <collection>
     <name>CentaurRare</name>
@@ -2177,7 +2171,6 @@
   </collection>
   <collection>
     <name>DjinniUncommon</name>
-    <entry>Bald</entry>
   </collection>
   <collection>
     <name>DjinniRare</name>
@@ -2201,7 +2194,6 @@
   </collection>
   <collection>
     <name>Noble DjinniUncommon</name>
-    <entry>Bald</entry>
   </collection>
   <collection>
     <name>Noble DjinniRare</name>
@@ -3564,7 +3556,6 @@
   </collection>
   <collection>
     <name>DriderRare</name>
-    <entry>Bald</entry>
     <entry>Straight black hair with silvery hues</entry>
     <entry>Straight black hair with blond hues</entry>
     <entry>Straight black hair with copper hues</entry>
@@ -3653,7 +3644,6 @@
   </collection>
   <collection>
     <name>DrowRare</name>
-    <entry>Bald</entry>
     <entry>Straight black hair with silvery hues</entry>
     <entry>Straight black hair with blond hues</entry>
     <entry>Straight black hair with copper hues</entry>
@@ -4109,7 +4099,6 @@
   </collection>
   <collection>
     <name>Half-ElfUncommon</name>
-    <entry>Bald</entry>
     <entry>Straight black hair with silvery hues</entry>
     <entry>Straight black hair with blond hues</entry>
     <entry>Straight black hair with copper hues</entry>
@@ -4240,7 +4229,6 @@
     <entry>Kinky yellow hair</entry>
     <entry>Kinky blond hair</entry>
     <entry>Kinky copper-red hair</entry>
-    <entry>Bald</entry>
     <entry>Straight black hair with silvery hues</entry>
     <entry>Straight black hair with blond hues</entry>
     <entry>Straight black hair with copper hues</entry>
@@ -4412,7 +4400,6 @@
   </collection>
   <collection>
     <name>ErinyesUncommon</name>
-    <entry>Bald</entry>
   </collection>
   <collection>
     <name>ErinyesRare</name>
@@ -5808,7 +5795,6 @@
   </collection>
   <collection>
     <name>HumanUncommon</name>
-    <entry>Bald</entry>
   </collection>
   <collection>
     <name>HumanRare</name>
@@ -5964,8 +5950,6 @@
   </collection>
   <collection>
     <name>JanniUncommon</name>
-    <entry>Bald</entry>
-    <entry>Bald</entry>
     <entry>Straight black hair with silvery hues</entry>
     <entry>Straight black hair with blond hues</entry>
     <entry>Straight black hair with copper hues</entry>
@@ -6096,7 +6080,6 @@
     <entry>Kinky yellow hair</entry>
     <entry>Kinky blond hair</entry>
     <entry>Kinky copper-red hair</entry>
-    <entry>Bald</entry>
     <entry>Straight black hair with silvery hues</entry>
     <entry>Straight black hair with blond hues</entry>
     <entry>Straight black hair with copper hues</entry>
@@ -6476,7 +6459,6 @@
   </collection>
   <collection>
     <name>MarilithUncommon</name>
-    <entry>Bald</entry>
   </collection>
   <collection>
     <name>MarilithRare</name>
@@ -6627,7 +6609,6 @@
   </collection>
   <collection>
     <name>MerfolkRare</name>
-    <entry>Bald</entry>
     <entry>Blue hair</entry>
     <entry>Silver hair</entry>
   </collection>
@@ -6977,7 +6958,6 @@
   </collection>
   <collection>
     <name>Half-OrcRare</name>
-    <entry>Bald</entry>
   </collection>
   <collection>
     <name>OtyughCommon</name>
@@ -8295,7 +8275,6 @@
   </collection>
   <collection>
     <name>TitanUncommon</name>
-    <entry>Bald</entry>
   </collection>
   <collection>
     <name>TitanRare</name>
@@ -8724,7 +8703,6 @@
   </collection>
   <collection>
     <name>Vampire SpawnUncommon</name>
-    <entry>Bald</entry>
   </collection>
   <collection>
     <name>Vampire SpawnRare</name>
@@ -8838,7 +8816,6 @@
   </collection>
   <collection>
     <name>WightUncommon</name>
-    <entry>Bald</entry>
   </collection>
   <collection>
     <name>WightRare</name>
@@ -9058,7 +9035,6 @@
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Uncommon</name>
-    <entry>Bald</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Rare</name>
@@ -9090,7 +9066,6 @@
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Uncommon</name>
-    <entry>Bald</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Rare</name>
@@ -9112,7 +9087,6 @@
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Uncommon</name>
-    <entry>Bald</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Rare</name>
@@ -9134,7 +9108,6 @@
   </collection>
   <collection>
     <name>Yuan-ti PurebloodUncommon</name>
-    <entry>Bald</entry>
   </collection>
   <collection>
     <name>Yuan-ti PurebloodRare</name>

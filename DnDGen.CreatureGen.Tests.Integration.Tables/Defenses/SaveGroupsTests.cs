@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using NUnit.Framework;
@@ -32,7 +33,29 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             foreach (var template in templates)
                 groups[template] = [];
 
-            //TODO: Fill in settings based on eisting groups
+            groups[CreatureConstants.Aasimar] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Aboleth] = [SaveConstants.Will];
+            groups[CreatureConstants.Achaierai] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Arrowhawk_Juvenile] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Arrowhawk_Adult] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Arrowhawk_Elder] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Elemental_Air_Elder] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Elemental_Air_Greater] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Elemental_Air_Huge] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Elemental_Air_Large] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Elemental_Air_Medium] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Elemental_Air_Small] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Elemental_Fire_Elder] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Elemental_Fire_Greater] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Elemental_Fire_Huge] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Elemental_Fire_Large] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Elemental_Fire_Medium] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Elemental_Fire_Small] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Tojanida_Juvenile] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Tojanida_Adult] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Tojanida_Elder] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+
+            //TODO: Fill in settings based on existing groups
 
             return groups;
         }

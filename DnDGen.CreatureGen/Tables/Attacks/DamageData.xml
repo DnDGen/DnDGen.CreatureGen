@@ -866,16 +866,28 @@
 		<name>Ankheg-Large-Spit Acid-True-</name>
 		<entry>4d4@Acid@</entry>
 	</collection>
+	<collection>
+		<name>Ankheg-Huge-Bite-True-</name>
+		<entry>3d6@Piercing/Slashing/Bludgeoning@</entry>
+		<entry>1d6@Acid@</entry>
+	</collection>
+	<collection>
+		<name>Ankheg-Huge-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Ankheg-Huge-Spit Acid-True-</name>
+		<entry>5d4@Acid@</entry>
+	</collection>
   <collection>
     <name>Annis-Large-Claw-True-</name>
     <entry>1d6@Piercing/Slashing@</entry>
   </collection>
 	<collection>
-		<name>Annis-Large-Bite-True-</name>
+		<name>Annis-Large-Bite-False-</name>
 		<entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
 	</collection>
 	<collection>
-		<name>Annis-Large-Improved Grab-True-</name>
+		<name>Annis-Large-Improved Grab-False-</name>
 	</collection>
 	<collection>
 		<name>Annis-Large-Rake-True-</name>
@@ -893,7 +905,7 @@
     <entry>1d6@Piercing/Slashing@</entry>
   </collection>
 	<collection>
-		<name>Ape-Large-Bite-True-</name>
+		<name>Ape-Large-Bite-False-</name>
 		<entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
 	</collection>
   <collection>
@@ -913,7 +925,7 @@
     <entry>Rend%2d6@Piercing/Slashing@%True%True%True%True%1%Round (6 seconds)%%%extraordinary ability%%1.5%0%</entry>
   </collection>
   <collection>
-    <name>Aranea-Medium-Bite-True-</name>
+    <name>Aranea-Medium-Bite-True-Poison</name>
     <entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
 	<collection>
@@ -928,21 +940,42 @@
 		<name>Aranea-Medium-Spells-True-</name>
 	</collection>
   <collection>
-    <name>Assassin Vine</name>
-    <entry>Slam%1d6@Bludgeoning@%True%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Constrict%1d6@Bludgeoning@%True%True%True%True%1%Round (6 seconds)%%%extraordinary ability%%1.5%0%</entry>
-    <entry>Entangle%%True%False%True%True%1%Round (6 seconds)%%%supernatural ability%%0%0%</entry>
-    <entry>Improved Grab%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
+    <name>Assassin Vine-Huge-Slam-True-</name>
+    <entry>1d6@Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Assassin Vine-Huge-Constrict-True-</name>
+		<entry>1d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Assassin Vine-Huge-Entangle-True-</name>
+	</collection>
+	<collection>
+		<name>Assassin Vine-Huge-Improved Grab-False-</name>
+	</collection>
   <collection>
-    <name>Athach</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1%0%</entry>
-    <entry>Melee%%False%True%False%False%2%Round (6 seconds)%%%melee%%0.5%0%</entry>
-    <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@%True%True%False%False%1%Round (6 seconds)%%%melee%Poison%1.5%0%</entry>
-    <entry>Rock%2d8@Bludgeoning@%True%False%True%False%1%Round (6 seconds)%%%ranged%%1%0%</entry>
-    <entry>Rock%2d8@Bludgeoning@%True%False%False%False%2%Round (6 seconds)%%%ranged%%0.5%0%</entry>
-    <entry>Poison%1d6@Strength@Initial,2d6@Strength@Secondary%True%True%False%True%1%Hit%Constitution%Fortitude%extraordinary ability%%0%0%</entry>
+    <name>Athach-Huge-Melee-True-</name>
   </collection>
+	<collection>
+		<name>Athach-Huge-Melee-False-</name>
+	</collection>
+	<collection>
+		<name>Athach-Huge-Bite-True-Poison</name>
+		<entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Athach-Huge-Rock-True-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Athach-Huge-Rock-False-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Athach-Huge-Poison-False-</name>
+		<entry>1d6@Strength@Initial</entry>
+		<entry>2d6@Strength@Secondary</entry>
+	</collection>
   <collection>
     <name>Average Salamander</name>
     <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>

@@ -169,9 +169,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                 return;
             }
 
-            AssertCollection(key + Rarity.Common.ToString(), creatureAppearances[key][category][Rarity.Common].ToArray());
-            AssertCollection(key + Rarity.Uncommon.ToString(), creatureAppearances[key][category][Rarity.Uncommon].ToArray());
-            AssertCollection(key + Rarity.Rare.ToString(), creatureAppearances[key][category][Rarity.Rare].ToArray());
+            AssertCollection(key + Rarity.Common.ToString(), [.. creatureAppearances[key][category][Rarity.Common]]);
+            AssertCollection(key + Rarity.Uncommon.ToString(), [.. creatureAppearances[key][category][Rarity.Uncommon]]);
+            AssertCollection(key + Rarity.Rare.ToString(), [.. creatureAppearances[key][category][Rarity.Rare]]);
         }
 
         private Dictionary<string, Dictionary<string, Dictionary<Rarity, IEnumerable<string>>>> GetCreatureAppearances()
@@ -196,7 +196,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                 "Kinky red hair", "Kinky blond hair", "Kinky brown hair", "Kinky black hair"
             ];
             appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Common] = ["Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes"];
-            appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Uncommon] = ["Bald"];
 
             appearances[CreatureConstants.Horse_Heavy][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Common] = [
                 "Belgian Draught", "Shire horse", "Clydesdale horse", "Percheron", "Suffolk Punch",
@@ -290,7 +289,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                 appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Common],
                 ["with silvery hues", "with blond hues", "with copper hues"]);
             appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Common] = ["Green eyes"];
-            appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Uncommon] = new[] { "Golden eyes", "Blue eyes", "Light blue eyes" }
+            appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Uncommon] =
+                new[] { "Golden eyes", "Blue eyes", "Light blue eyes" }
                 .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Common]
                     .Select(e => $"{e} speckled with gold"));
             appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Rare] = new[]

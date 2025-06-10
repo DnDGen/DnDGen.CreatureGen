@@ -146,7 +146,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
         private void AssertPoisonAttacksHaveCorrectDamageTypes(string creature, string key, List<string> entries)
         {
-            if (!key.Contains("Poison"))
+            if (!key.Contains("-Poison-"))
                 return;
 
             var damageSelections = entries.Select(DataHelper.Parse<DamageDataSelection>).ToArray();
