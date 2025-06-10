@@ -546,7 +546,7 @@
     <name>Azer</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
-    <entry>Unarmed Strike@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Unarmed Strike@@True@True@True@False@1@Round (6 seconds)@@@melee@Heat@1.5@0</entry>
     <entry>Heat@@True@True@False@True@1@Hit@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
@@ -589,7 +589,7 @@
   </collection>
   <collection>
     <name>Barbed Devil (Hamatula)</name>
-    <entry>Claw@@True@True@True@False@2@Round (6 seconds)@@@melee@fear@1@0</entry>
+    <entry>Claw@@True@True@True@False@2@Round (6 seconds)@@@melee@Fear@1@0</entry>
     <entry>Fear@@True@True@True@True@1@Hit@Charisma@Will@supernatural ability@@0@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Impale@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
@@ -3878,10 +3878,10 @@
   <collection>
     <name>Night Hag</name>
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@Disease@1.5@0</entry>
-    <entry>Disease@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Demon Fever@0@0</entry>
+    <entry>Disease@@True@True@False@True@1@Hit@@@extraordinary ability@Demon Fever@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Dream Haunting@@True@True@True@True@1@Day@@@supernatural ability@@0@0</entry>
-	  <entry>Demon Fever@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@@0@0</entry>
+	  <entry>Demon Fever@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Nightmare</name>

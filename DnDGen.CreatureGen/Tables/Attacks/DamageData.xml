@@ -967,6 +967,20 @@
 	<collection>
 		<name>Assassin Vine-Huge-Improved Grab-False-</name>
 	</collection>
+	<collection>
+		<name>Assassin Vine-Gargantuan-Slam-True-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Assassin Vine-Gargantuan-Constrict-True-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Assassin Vine-Gargantuan-Entangle-True-</name>
+	</collection>
+	<collection>
+		<name>Assassin Vine-Gargantuan-Improved Grab-False-</name>
+	</collection>
   <collection>
     <name>Athach-Huge-Melee-True-</name>
   </collection>
@@ -994,7 +1008,7 @@
     <name>Average Salamander-Medium-Melee-True-</name>
   </collection>
 	<collection>
-		<name>Average Salamander-Medium-Tail Slap-True-Heat</name>
+		<name>Average Salamander-Medium-Tail Slap-False-Heat</name>
 		<entry>2d6@Bludgeoning@</entry>
 	</collection>
 	<collection>
@@ -1021,7 +1035,7 @@
     <entry>2d6@Piercing/Slashing@</entry>
   </collection>
 	<collection>
-		<name>Avoral-Medium-Wing-False-</name>
+		<name>Avoral-Medium-Wing-True-</name>
 		<entry>2d8@Bludgeoning@</entry>
 	</collection>
 	<collection>
@@ -1044,13 +1058,31 @@
 		<name>Azer-Medium-Heat-False-</name>
 		<entry>1@Fire@</entry>
 	</collection>
+	<collection>
+		<name>Babau-Medium-Claw-True-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Babau-Medium-Bite-False-</name>
+		<entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Babau-Medium-Sneak Attack-True-</name>
+		<entry>2d6@@</entry>
+	</collection>
+	<collection>
+		<name>Babau-Medium-Summon Demon-True-</name>
+	</collection>
+	<collection>
+		<name>Babau-Medium-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
     <name>Babau-Large-Claw-True-</name>
-    <entry>1d6@Piercing/Slashing@</entry>
+    <entry>1d8@Piercing/Slashing@</entry>
   </collection>
 	<collection>
 		<name>Babau-Large-Bite-False-</name>
-		<entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
+		<entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
 	</collection>
 	<collection>
 		<name>Babau-Large-Sneak Attack-True-</name>
@@ -1087,6 +1119,10 @@
     <name>Baleen Whale-Gargantuan-Tail Slap-True-</name>
     <entry>1d8@Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Baleen Whale-Colossal-Tail Slap-True-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
   <collection>
     <name>Balor-Large-Melee-True-</name>
   </collection>
@@ -1094,7 +1130,7 @@
 		<name>Balor-Large-Melee-False-</name>
 	</collection>
 	<collection>
-		<name>Balor-Large-Melee-Slam-</name>
+		<name>Balor-Large-Slam-True-</name>
 		<entry>1d10@Bludgeoning@</entry>
 	</collection>
 	<collection>
@@ -1131,17 +1167,26 @@
 		<name>Barbed Devil (Hamatula)-Medium-Spell-Like Ability-True-</name>
 	</collection>
   <collection>
-    <name>Barghest</name>
-    <entry>Bite%1d6@Piercing/Slashing/Bludgeoning@%True%True%True%False%1%Round (6 seconds)%%%melee%%1%0%</entry>
-    <entry>Claw%1d4@Piercing/Slashing@%True%True%False%False%2%Round (6 seconds)%%%melee%%0.5%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Feed%%True%True%True%True%1%Round (6 seconds)%%%supernatural ability%%0%0%</entry>
+    <name>Barghest-Medium-Bite-True-</name>
+    <entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Barghest-Medium-Claw-False-</name>
+		<entry>1d4@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Barghest-Medium-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Barghest-Medium-Feed-True-</name>
+	</collection>
   <collection>
-    <name>Basilisk</name>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@%True%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Petrifying Gaze%%True%False%True%True%1%Round (6 seconds)%Charisma%Fortitude%supernatural ability%%0%0%</entry>
+    <name>Basilisk-Medium-Bite-True-</name>
+    <entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Basilisk-Medium-Petrifying Gaze-True-</name>
+	</collection>
   <collection>
     <name>Bat</name>
   </collection>
@@ -1150,23 +1195,47 @@
     <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@%True%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
   </collection>
   <collection>
-    <name>Bat Swarm</name>
-    <entry>Swarm%1d6@@%True%True%True%False%1%Round (6 seconds)%%%swarm%%0%0%</entry>
-    <entry>Distraction%%True%True%True%True%1%Round (6 seconds)%Constitution%Fortitude%extraordinary ability%%0%0%</entry>
-    <entry>Wounding%1@@%True%True%True%True%1%Hit%%%extraordinary ability%%0%0%</entry>
+    <name>Bat Swarm-Diminutive-Swarm-True-</name>
+    <entry>1d6@@</entry>
   </collection>
+	<collection>
+		<name>Bat Swarm-Diminutive-Distraction-False-</name>
+	</collection>
+	<collection>
+		<name>Bat Swarm-Diminutive-Wounding-False-</name>
+		<entry>1@@</entry>
+	</collection>
   <collection>
-    <name>Bearded Devil (Barbazu)</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Claw%2d8@Piercing/Slashing@%True%True%True%False%2%Round (6 seconds)%%%melee%Infernal Wound%1%0%</entry>
-    <entry>Infernal Wound%2@@%True%True%False%True%1%Hit%Constitution%%supernatural ability%%0%0%</entry>
-    <entry>Beard%1d8@@%True%True%False%True%1%Round (6 seconds)%Constitution%Fortitude%melee%Disease%1%0%</entry>
-    <entry>Battle Frenzy%%True%False%True%True%2%Day%%%extraordinary ability%%0%0%</entry>
-    <entry>Summon Devil%%True%False%True%True%1%Day%%%spell-like ability%%0%0%</entry>
-    <entry>Disease%%True%True%False%True%1%Hit%%%extraordinary ability%Devil Chills%0%0%</entry>
-    <entry>Devil Chills%1d4@Strength@Incubation period 1d4 days%True%True%False%True%1%Hit%Constitution%Fortitude%extraordinary ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Bearded Devil (Barbazu)-Medium-Melee-True-</name>
   </collection>
+	<collection>
+		<name>Bearded Devil (Barbazu)-Medium-Claw-True-</name>
+		<entry>2d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Bearded Devil (Barbazu)-Medium-Infernal Wound-False-</name>
+		<entry>2@@</entry>
+	</collection>
+	<collection>
+		<name>Bearded Devil (Barbazu)-Medium-Beard-True-</name>
+		<entry>1d8@@</entry>
+	</collection>
+	<collection>
+		<name>Bearded Devil (Barbazu)-Medium-Battle Frenzy-False-</name>
+	</collection>
+	<collection>
+		<name>Bearded Devil (Barbazu)-Medium-Summon Devil-True-</name>
+	</collection>
+	<collection>
+		<name>Bearded Devil (Barbazu)-Medium-Disease-False-</name>
+	</collection>
+	<collection>
+		<name>Bearded Devil (Barbazu)-Medium-Devil Chills-False-</name>
+		<entry>1d4@Strength@Incubation period 1d4 days</entry>
+	</collection>
+	<collection>
+		<name>Bearded Devil (Barbazu)-Medium-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
     <name>Black Bear</name>
     <entry>Claw%1d4@Piercing/Slashing@%True%True%True%False%2%Round (6 seconds)%%%melee%%1%0%</entry>
@@ -1191,37 +1260,86 @@
     <entry>Improved Grab%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
   </collection>
   <collection>
-    <name>Bebilith</name>
-    <entry>Bite%2d6@Piercing/Slashing/Bludgeoning@%True%True%True%False%1%Round (6 seconds)%%%melee%Poison%1%0%</entry>
-    <entry>Claw%2d6@Piercing/Slashing@%True%True%False%False%2%Round (6 seconds)%%%melee%%0.5%0%</entry>
-    <entry>Web%%True%False%True%True%4%Day%Constitution%%extraordinary ability%%0%0%</entry>
-    <entry>Poison%1d6@Constitution@Initial,2d6@Constitution@Secondary%True%True%False%True%1%Hit%Constitution%Fortitude%extraordinary ability%%0%0%</entry>
-    <entry>Rend Armor%4d6@@%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%2%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Bebilith-Huge-Bite-True-Poison</name>
+    <entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Bebilith-Huge-Claw-True-</name>
+		<entry>2d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Bebilith-Huge-Web-True-</name>
+	</collection>
+	<collection>
+		<name>Bebilith-Huge-Poison-False-</name>
+		<entry>1d6@Constitution@Initial</entry>
+		<entry>2d6@Constitution@Secondary</entry>
+	</collection>
+	<collection>
+		<name>Bebilith-Huge-Rend Armor-False-</name>
+		<entry>4d6@@</entry>
+	</collection>
+	<collection>
+		<name>Bebilith-Huge-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
-    <name>Behir</name>
-    <entry>Bite%2d4@Piercing/Slashing/Bludgeoning@%True%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Breath Weapon%7d6@Electricity@%True%False%True%True%1%Minute (10 rounds)%Constitution%Reflex%supernatural ability%%0%0%</entry>
-    <entry>Constrict%2d8@Bludgeoning@%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%1%0%</entry>
-    <entry>Improved Grab%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-    <entry>Rake%1d4@Piercing/Slashing@%True%True%True%True%6%Round (6 seconds)%%%extraordinary ability%%0.5%0%</entry>
-    <entry>Swallow Whole%2d8+8@Bludgeoning@,8@Acid@%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
+    <name>Behir-Huge-Bite-True-</name>
+    <entry>2d4@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Behir-Huge-Breath Weapon-True-</name>
+		<entry>7d6@Electricity@</entry>
+	</collection>
+	<collection>
+		<name>Behir-Huge-Constrict-True-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Behir-Huge-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Behir-Huge-Rake-True-</name>
+		<entry>1d4@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Behir-Huge-Swallow Whole-True-</name>
+		<entry>2d8+8@Bludgeoning@</entry>
+		<entry>8@Acid@</entry>
+	</collection>
   <collection>
-    <name>Beholder</name>
-    <entry>Bite%2d4@Piercing/Slashing/Bludgeoning@%True%True%False%False%1%Round (6 seconds)%%%melee%%0.5%0%</entry>
-    <entry>Eye ray%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%supernatural ability%Charm monster%0%0%</entry>
-    <entry>Eye ray%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%supernatural ability%Charm person%0%0%</entry>
-    <entry>Eye ray%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%supernatural ability%Inflict moderate wounds%0%0%</entry>
-    <entry>Eye ray%%True%False%True%True%1%Round (6 seconds)%Charisma%Fortitude%supernatural ability%Disintegrate%0%0%</entry>
-    <entry>Eye ray%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%supernatural ability%Fear%0%0%</entry>
-    <entry>Eye ray%%True%False%True%True%1%Round (6 seconds)%Charisma%Fortitude%supernatural ability%Finger of death%0%0%</entry>
-    <entry>Eye ray%%True%False%True%True%1%Round (6 seconds)%Charisma%Fortitude%supernatural ability%Flesh to stone%0%0%</entry>
-    <entry>Eye ray%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%supernatural ability%Sleep%0%0%</entry>
-    <entry>Eye ray%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%supernatural ability%Slow%0%0%</entry>
-    <entry>Eye ray%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%supernatural ability%Telekinesis%0%0%</entry>
+    <name>Beholder-Large-Bite-False-</name>
+    <entry>2d4@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Beholder-Large-Eye ray-True-Charm monster</name>
+	</collection>
+	<collection>
+		<name>Beholder-Large-Eye ray-True-Charm person</name>
+	</collection>
+	<collection>
+		<name>Beholder-Large-Eye ray-True-Inflict moderate wounds</name>
+	</collection>
+	<collection>
+		<name>Beholder-Large-Eye ray-True-Disintegrate</name>
+	</collection>
+	<collection>
+		<name>Beholder-Large-Eye ray-True-Fear</name>
+	</collection>
+	<collection>
+		<name>Beholder-Large-Eye ray-True-Finger of death</name>
+	</collection>
+	<collection>
+		<name>Beholder-Large-Eye ray-True-Flesh to stone</name>
+	</collection>
+	<collection>
+		<name>Beholder-Large-Eye ray-True-Sleep</name>
+	</collection>
+	<collection>
+		<name>Beholder-Large-Eye ray-True-Slow</name>
+	</collection>
+	<collection>
+		<name>Beholder-Large-Eye ray-True-Telekinesis</name>
+	</collection>
   <collection>
     <name>Gauth (Lesser Beholder)</name>
     <entry>Bite%1d6@Piercing/Slashing/Bludgeoning@%True%True%False%False%1%Round (6 seconds)%%%melee%%0.5%0%</entry>

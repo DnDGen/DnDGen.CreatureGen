@@ -113,22 +113,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             var damageTypes = new Dictionary<string, string>
             {
-                ["bite"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}/{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["claw"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
-                ["talon"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
-                ["talons"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
-                ["rake"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
-                ["rend"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
-                ["gore"] = $"{AttributeConstants.DamageTypes.Piercing}",
-                ["slap"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["tail slap"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["slam"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["sting"] = $"{AttributeConstants.DamageTypes.Piercing}",
-                ["tentacle"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["arm"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["wing"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["trample"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["unarmed strike"] = $"{AttributeConstants.DamageTypes.Bludgeoning}"
+                ["-bite-"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}/{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-claw-"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["-talon-"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["-talons-"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["-rake-"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["-rend-"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["-gore-"] = $"{AttributeConstants.DamageTypes.Piercing}",
+                ["-slap-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-tail slap-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-slam-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-sting-"] = $"{AttributeConstants.DamageTypes.Piercing}",
+                ["-tentacle-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-arm-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-wing-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-trample-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-unarmed strike-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}"
             };
 
             foreach (var kvp in damageTypes)

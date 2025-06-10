@@ -709,7 +709,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 string.Empty,
                 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
             testCases[CreatureConstants.Azer].Add(BuildData("Unarmed Strike",
-                string.Empty,
+                "Heat",
                 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Azer].Add(BuildData("Heat",
                 string.Empty,
