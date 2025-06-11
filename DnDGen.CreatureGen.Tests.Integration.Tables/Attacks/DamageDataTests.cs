@@ -421,8 +421,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(adjustedDamage, Is.EqualTo("1d2"));
         }
 
+        //INFO: We do not want to increase damage for special attacks
+        //The Improving Monsters rules state that a "special attack that increases combat effectiveness" would increase the CR even more than normal
+        //Since doing more damage would definitely be more combat-effective, it means special attacks should not increase damage
+        //There are some oddities to this (such as Constrict attacks not increasing when a Slam does), but we'll accept that for now
         [Test]
-        public void DoNotAdjustNaturalAttackEffectRolls()
+        public void DoNotAdjustNaturalSpecialAttackDamageBySize()
+        {
+            var attack = new AttackDataSelection { IsNatural = true, IsSpecial = true };
+            var adjustedDamage = DamageTestData.GetAdjustedDamage(attack, "1d2", SizeConstants.Fine, SizeConstants.Colossal);
+            Assert.That(adjustedDamage, Is.EqualTo("1d2"));
+        }
+
+        [Test]
+        public void DoNotAdjustNaturalMeleeAttackEffectRolls()
         {
             var attack = new AttackDataSelection { IsNatural = true, DamageEffect = "1d2" };
             var adjustedDamage = DamageTestData.GetAdjustedDamage(attack, "1d2", SizeConstants.Fine, SizeConstants.Colossal);

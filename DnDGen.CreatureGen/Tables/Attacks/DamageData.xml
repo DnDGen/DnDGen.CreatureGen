@@ -67,7 +67,7 @@
 	</collection>
 	<collection>
 		<name>Achaierai-Huge-Black cloud-True-Insanity</name>
-		<entry>3d6@@</entry>
+		<entry>2d6@@</entry>
 	</collection>
   <collection>
     <name>Adult Arrowhawk-Medium-Bite-True-</name>
@@ -177,7 +177,7 @@
 	</collection>
 	<collection>
 		<name>Air Mephit-Medium-Breath weapon-True-</name>
-		<entry>2d6@@</entry>
+		<entry>1d8@@</entry>
 	</collection>
 	<collection>
 		<name>Air Mephit-Medium-Spell-Like Ability-True-</name>
@@ -225,7 +225,7 @@
 	</collection>
 	<collection>
 		<name>Androsphinx-Huge-Rake-True-</name>
-		<entry>3d4@Piercing/Slashing@</entry>
+		<entry>2d4@Piercing/Slashing@</entry>
 	</collection>
 	<collection>
 		<name>Androsphinx-Huge-Roar-True-</name>
@@ -876,7 +876,7 @@
 	</collection>
 	<collection>
 		<name>Ankheg-Huge-Spit Acid-True-</name>
-		<entry>5d4@Acid@</entry>
+		<entry>4d4@Acid@</entry>
 	</collection>
   <collection>
     <name>Annis-Large-Claw-True-</name>
@@ -959,7 +959,7 @@
   </collection>
 	<collection>
 		<name>Assassin Vine-Huge-Constrict-True-</name>
-		<entry>1d8@Bludgeoning@</entry>
+		<entry>1d6@Bludgeoning@</entry>
 	</collection>
 	<collection>
 		<name>Assassin Vine-Huge-Entangle-True-</name>
@@ -973,7 +973,7 @@
 	</collection>
 	<collection>
 		<name>Assassin Vine-Gargantuan-Constrict-True-</name>
-		<entry>2d6@Bludgeoning@</entry>
+		<entry>1d6@Bludgeoning@</entry>
 	</collection>
 	<collection>
 		<name>Assassin Vine-Gargantuan-Entangle-True-</name>
@@ -987,7 +987,7 @@
 	</collection>
 	<collection>
 		<name>Assassin Vine-Colossal-Constrict-True-</name>
-		<entry>3d6@Bludgeoning@</entry>
+		<entry>1d6@Bludgeoning@</entry>
 	</collection>
 	<collection>
 		<name>Assassin Vine-Colossal-Entangle-True-</name>
@@ -1122,6 +1122,24 @@
 	<collection>
 		<name>Babau-Large-Spell-Like Ability-True-</name>
 	</collection>
+	<collection>
+		<name>Babau-Huge-Claw-True-</name>
+		<entry>2d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Babau-Huge-Bite-False-</name>
+		<entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Babau-Huge-Sneak Attack-False-</name>
+		<entry>2d6@@</entry>
+	</collection>
+	<collection>
+		<name>Babau-Huge-Summon Demon-True-</name>
+	</collection>
+	<collection>
+		<name>Babau-Huge-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
     <name>Baboon-Medium-Bite-True-</name>
     <entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
@@ -1186,7 +1204,7 @@
 	</collection>
 	<collection>
 		<name>Balor-Huge-Death Throes-False-</name>
-		<entry>101@@</entry>
+		<entry>100@@</entry>
 	</collection>
 	<collection>
 		<name>Balor-Huge-Entangle-False-</name>
@@ -1208,7 +1226,7 @@
 		<name>Barbed Devil (Hamatula)-Medium-Improved Grab-False-</name>
 	</collection>
 	<collection>
-		<name>Barbed Devil (Hamatula)-Medium-Impale-True-</name>
+		<name>Barbed Devil (Hamatula)-Medium-Impale-False-</name>
 		<entry>3d8@Piercing@</entry>
 	</collection>
 	<collection>
@@ -1216,6 +1234,26 @@
 	</collection>
 	<collection>
 		<name>Barbed Devil (Hamatula)-Medium-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Barbed Devil (Hamatula)-Large-Claw-True-Fear</name>
+		<entry>3d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Barbed Devil (Hamatula)-Large-Fear-False-</name>
+	</collection>
+	<collection>
+		<name>Barbed Devil (Hamatula)-Large-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Barbed Devil (Hamatula)-Large-Impale-False-</name>
+		<entry>3d8@Piercing@</entry>
+	</collection>
+	<collection>
+		<name>Barbed Devil (Hamatula)-Large-Summon Devil-True-</name>
+	</collection>
+	<collection>
+		<name>Barbed Devil (Hamatula)-Large-Spell-Like Ability-True-</name>
 	</collection>
   <collection>
     <name>Barghest-Medium-Bite-True-</name>
@@ -1275,17 +1313,17 @@
 		<entry>2@@</entry>
 	</collection>
 	<collection>
-		<name>Bearded Devil (Barbazu)-Medium-Beard-False-</name>
+		<name>Bearded Devil (Barbazu)-Medium-Beard-False-Disease</name>
 		<entry>1d8@@</entry>
 	</collection>
 	<collection>
-		<name>Bearded Devil (Barbazu)-Medium-Battle Frenzy-False-</name>
+		<name>Bearded Devil (Barbazu)-Medium-Battle Frenzy-True-</name>
 	</collection>
 	<collection>
 		<name>Bearded Devil (Barbazu)-Medium-Summon Devil-True-</name>
 	</collection>
 	<collection>
-		<name>Bearded Devil (Barbazu)-Medium-Disease-False-</name>
+		<name>Bearded Devil (Barbazu)-Medium-Disease-False-Devil Chills</name>
 	</collection>
 	<collection>
 		<name>Bearded Devil (Barbazu)-Medium-Devil Chills-False-</name>
@@ -1293,6 +1331,37 @@
 	</collection>
 	<collection>
 		<name>Bearded Devil (Barbazu)-Medium-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Bearded Devil (Barbazu)-Large-Melee-True-</name>
+	</collection>
+	<collection>
+		<name>Bearded Devil (Barbazu)-Large-Claw-True-Infernal Wound</name>
+		<entry>3d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Bearded Devil (Barbazu)-Large-Infernal Wound-False-</name>
+		<entry>2@@</entry>
+	</collection>
+	<collection>
+		<name>Bearded Devil (Barbazu)-Large-Beard-False-Disease</name>
+		<entry>1d8@@</entry>
+	</collection>
+	<collection>
+		<name>Bearded Devil (Barbazu)-Large-Battle Frenzy-True-</name>
+	</collection>
+	<collection>
+		<name>Bearded Devil (Barbazu)-Large-Summon Devil-True-</name>
+	</collection>
+	<collection>
+		<name>Bearded Devil (Barbazu)-Large-Disease-False-Devil Chills</name>
+	</collection>
+	<collection>
+		<name>Bearded Devil (Barbazu)-Large-Devil Chills-False-</name>
+		<entry>1d4@Strength@Incubation period 1d4 days</entry>
+	</collection>
+	<collection>
+		<name>Bearded Devil (Barbazu)-Large-Spell-Like Ability-True-</name>
 	</collection>
   <collection>
     <name>Black Bear-Medium-Claw-True-</name>
@@ -1361,7 +1430,7 @@
 	</collection>
 	<collection>
 		<name>Bebilith-Gargantuan-Rend Armor-False-</name>
-		<entry>5d6@@</entry>
+		<entry>4d6@@</entry>
 	</collection>
 	<collection>
 		<name>Bebilith-Gargantuan-Spell-Like Ability-True-</name>
@@ -1387,6 +1456,30 @@
 	</collection>
 	<collection>
 		<name>Behir-Huge-Swallow Whole-False-</name>
+		<entry>2d8+8@Bludgeoning@</entry>
+		<entry>8@Acid@</entry>
+	</collection>
+	<collection>
+		<name>Behir-Gargantuan-Bite-True-</name>
+		<entry>3d4@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Behir-Gargantuan-Breath Weapon-True-</name>
+		<entry>7d6@Electricity@</entry>
+	</collection>
+	<collection>
+		<name>Behir-Gargantuan-Constrict-False-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Behir-Gargantuan-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Behir-Gargantuan-Rake-True-</name>
+		<entry>1d4@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Behir-Gargantuan-Swallow Whole-False-</name>
 		<entry>2d8+8@Bludgeoning@</entry>
 		<entry>8@Acid@</entry>
 	</collection>
@@ -1498,7 +1591,7 @@
 	</collection>
 	<collection>
 		<name>Belker-Huge-Smoke Claw-True-</name>
-		<entry>4d4@Piercing/Slashing@</entry>
+		<entry>3d4@Piercing/Slashing@</entry>
 	</collection>
   <collection>
     <name>Bison-Large-Gore-True-</name>
@@ -1878,7 +1971,7 @@
 		<name>Black Dragon, Adult-Large-Spell-Like Ability-True-</name>
 	</collection>
 	<collection>
-		<name>Black Dragon, Adult-Large-Frightful Presence-False-</name>
+		<name>Black Dragon, Adult-Large-Frightful Presence-True-</name>
 	</collection>
   <collection>
     <name>Black Dragon, Ancient-Huge-Bite-True-</name>
@@ -1897,7 +1990,7 @@
 		<entry>2d6@Bludgeoning@</entry>
 	</collection>
 	<collection>
-		<name>Black Dragon, Ancient-Huge-Crush-False-</name>
+		<name>Black Dragon, Ancient-Huge-Crush-True-</name>
 		<entry>2d8@Bludgeoning@</entry>
 	</collection>
 	<collection>
@@ -1914,18 +2007,42 @@
 		<name>Black Dragon, Ancient-Huge-Frightful Presence-False-</name>
 	</collection>
   <collection>
-    <name>Black Dragon, Great Wyrm</name>
-    <entry>Bite%4d6@Piercing/Slashing/Bludgeoning@%True%True%True%False%1%Round (6 seconds)%%%melee%%1%0%</entry>
-    <entry>Claw%2d8@Piercing/Slashing@%True%True%False%False%2%Round (6 seconds)%%%melee%%0.5%0%</entry>
-    <entry>Wing%2d6@Bludgeoning@%True%True%False%False%2%Round (6 seconds)%%%melee%%0.5%0%</entry>
-    <entry>Tail Slap%2d8@Bludgeoning@%True%True%False%False%1%Round (6 seconds)%%%melee%%0.5%0%</entry>
-    <entry>Crush%4d6@Bludgeoning@%True%True%True%True%1%Round (6 seconds)%Constitution%Reflex%extraordinary ability%%1.5%0%</entry>
-    <entry>Tail Sweep%2d6@Bludgeoning@%True%True%True%True%1%Round (6 seconds)%Constitution%Reflex%extraordinary ability%%1.5%0%</entry>
-    <entry>Breath Weapon%24d4@Acid@%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Reflex%supernatural ability%%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
+    <name>Black Dragon, Great Wyrm-Gargantuan-Bite-True-</name>
+    <entry>4d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Black Dragon, Great Wyrm-Gargantuan-Claw-True-</name>
+		<entry>2d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Black Dragon, Great Wyrm-Gargantuan-Wing-True-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Black Dragon, Great Wyrm-Gargantuan-Tail Slap-True-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Black Dragon, Great Wyrm-Gargantuan-Crush-True-</name>
+		<entry>4d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Black Dragon, Great Wyrm-Gargantuan-Tail Sweep-False-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Black Dragon, Great Wyrm-Gargantuan-Breath Weapon-True-</name>
+		<entry>24d4@Acid@</entry>
+	</collection>
+	<collection>
+		<name>Black Dragon, Great Wyrm-Gargantuan-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Black Dragon, Great Wyrm-Gargantuan-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Black Dragon, Great Wyrm-Gargantuan-Frightful Presence-True-</name>
+	</collection>
   <collection>
     <name>Black Dragon, Juvenile</name>
     <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@%True%True%True%False%1%Round (6 seconds)%%%melee%%1%0%</entry>

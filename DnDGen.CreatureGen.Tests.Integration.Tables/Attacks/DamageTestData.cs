@@ -2988,28 +2988,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
         internal static string GetAdjustedDamage(AttackDataSelection attack, string originalDamage, string originalSize, string adjustedSize)
         {
-            if (!attack.IsNatural)
-                return originalDamage;
-
-            if (string.IsNullOrEmpty(originalDamage))
+            if (!attack.IsNatural || attack.IsSpecial || string.IsNullOrEmpty(originalDamage))
                 return originalDamage;
 
             var adjustedDamage = originalDamage;
             var sizeDifference = Array.IndexOf(orderedSizes, adjustedSize) - Array.IndexOf(orderedSizes, originalSize);
+            var increase = sizeDifference > 0;
+            sizeDifference = Math.Abs(sizeDifference);
 
-            if (sizeDifference > 0)
+            while (sizeDifference-- > 0)
             {
-                while (sizeDifference-- > 0)
-                {
-                    adjustedDamage = IncreaseDamage(adjustedDamage);
-                }
-            }
-            else if (sizeDifference < 0)
-            {
-                while (sizeDifference++ < 0)
-                {
-                    adjustedDamage = DecreaseDamage(adjustedDamage);
-                }
+                adjustedDamage = increase ? IncreaseDamage(adjustedDamage) : DecreaseDamage(adjustedDamage);
             }
 
             return adjustedDamage;

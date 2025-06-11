@@ -553,7 +553,7 @@
     <name>Babau</name>
     <entry>Claw@@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Sneak Attack@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Sneak Attack@@False@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Summon Demon@@True@False@True@True@1@Day@@@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
@@ -590,7 +590,7 @@
   <collection>
     <name>Barbed Devil (Hamatula)</name>
     <entry>Claw@@True@True@True@False@2@Round (6 seconds)@@@melee@Fear@1@0</entry>
-    <entry>Fear@@True@True@True@True@1@Hit@Charisma@Will@supernatural ability@@0@0</entry>
+    <entry>Fear@@True@True@False@True@1@Hit@Charisma@Will@supernatural ability@@0@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Impale@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
     <entry>Summon Devil@@True@False@True@True@1@Day@@@spell-like ability@@0@0</entry>
@@ -618,8 +618,8 @@
   <collection>
     <name>Bat Swarm</name>
     <entry>Swarm@@True@True@True@False@1@Round (6 seconds)@@@swarm@@0@0</entry>
-    <entry>Distraction@@True@True@True@True@1@Round (6 seconds)@Constitution@Fortitude@extraordinary ability@@0@0</entry>
-    <entry>Wounding@@True@True@True@True@1@Hit@@@extraordinary ability@@0@0</entry>
+    <entry>Distraction@@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@extraordinary ability@@0@0</entry>
+    <entry>Wounding@@True@True@False@True@1@Hit@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>
