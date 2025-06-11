@@ -291,8 +291,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             attackDamages.Add(BuildData(CreatureConstants.Bat_Dire, "Bite", "1d8", biteDamageType));
 
-            attackDamages.Add(BuildData(CreatureConstants.Bat_Swarm, "Swarm", "1d6", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Bat_Swarm, "Wounding", "1", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Bat_Swarm, "Swarm", "1d6"));
+            attackDamages.Add(BuildData(CreatureConstants.Bat_Swarm, "Wounding", "1"));
 
             attackDamages.Add(BuildData(CreatureConstants.Bear_Black, "Claw", "1d4", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Bear_Black, "Bite", "1d6", biteDamageType));

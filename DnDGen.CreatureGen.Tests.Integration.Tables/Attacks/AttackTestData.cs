@@ -703,112 +703,104 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Avoral].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             testCases[CreatureConstants.Azer].Add(BuildData(AttributeConstants.Melee,
-                string.Empty,
-                1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
+                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
             testCases[CreatureConstants.Azer].Add(BuildData(AttributeConstants.Ranged,
-                string.Empty,
-                1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
+                string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
             testCases[CreatureConstants.Azer].Add(BuildData("Unarmed Strike",
-                "Heat",
-                1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                "Heat", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Azer].Add(BuildData("Heat",
-                string.Empty,
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
 
             testCases[CreatureConstants.Babau].Add(BuildData("Claw", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Babau].Add(BuildData("Bite", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Babau].Add(BuildData("Sneak Attack", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            testCases[CreatureConstants.Babau].Add(BuildData("Summon Demon", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
-            testCases[CreatureConstants.Babau].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            testCases[CreatureConstants.Babau].Add(BuildData("Sneak Attack",
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, false, false, true));
+            testCases[CreatureConstants.Babau].Add(BuildData("Summon Demon",
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+            testCases[CreatureConstants.Babau].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             testCases[CreatureConstants.Baboon].Add(BuildData("Bite", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
             testCases[CreatureConstants.Badger].Add(BuildData("Claw", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Badger].Add(BuildData("Bite", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Badger].Add(BuildData("Rage", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            testCases[CreatureConstants.Badger].Add(BuildData("Rage",
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             testCases[CreatureConstants.Badger_Dire].Add(BuildData("Claw", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Badger_Dire].Add(BuildData("Bite", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Badger_Dire].Add(BuildData("Rage", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            testCases[CreatureConstants.Badger_Dire].Add(BuildData("Rage",
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             testCases[CreatureConstants.Balor].Add(BuildData(AttributeConstants.Melee,
-                string.Empty,
-                1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
+                string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
             testCases[CreatureConstants.Balor].Add(BuildData(AttributeConstants.Melee,
-                string.Empty,
-                0.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, false, false));
+                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, false, false));
             testCases[CreatureConstants.Balor].Add(BuildData("Slam",
-                string.Empty,
-                1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Balor].Add(BuildData("Death Throes",
-                string.Empty,
-                1, "extraordinary ability", 1, FeatConstants.Frequencies.Life, false, true, false, true, SaveConstants.Reflex,
-                AbilityConstants.Constitution));
+                string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Life, false, true, false, true,
+                SaveConstants.Reflex, AbilityConstants.Constitution));
             testCases[CreatureConstants.Balor].Add(BuildData("Entangle",
-                string.Empty,
-                1, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, false, false, true));
+                string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, false, false, true));
             testCases[CreatureConstants.Balor].Add(BuildData("Summon Demon",
-                string.Empty,
-                0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
             testCases[CreatureConstants.Balor].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
-                string.Empty,
-                0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-            testCases[CreatureConstants.BarbedDevil_Hamatula].Add(BuildData("Claw",
-                "Fear",
-                1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.BarbedDevil_Hamatula].Add(BuildData("Claw", "Fear", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.BarbedDevil_Hamatula].Add(BuildData("Fear",
-                string.Empty,
-                0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
+                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Will, AbilityConstants.Charisma));
             testCases[CreatureConstants.BarbedDevil_Hamatula].Add(BuildData("Improved Grab",
-                string.Empty,
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
             testCases[CreatureConstants.BarbedDevil_Hamatula].Add(BuildData("Impale",
-                string.Empty,
-                1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
             testCases[CreatureConstants.BarbedDevil_Hamatula].Add(BuildData("Summon Devil",
-                string.Empty,
-                0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
             testCases[CreatureConstants.BarbedDevil_Hamatula].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
-                string.Empty,
-                0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             testCases[CreatureConstants.Barghest].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Barghest].Add(BuildData("Claw", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Barghest].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Barghest].Add(BuildData("Feed", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            testCases[CreatureConstants.Barghest].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            testCases[CreatureConstants.Barghest].Add(BuildData("Feed",
+                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
             testCases[CreatureConstants.Barghest_Greater].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Barghest_Greater].Add(BuildData("Claw", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Barghest_Greater].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Barghest_Greater].Add(BuildData("Feed", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            testCases[CreatureConstants.Barghest_Greater].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            testCases[CreatureConstants.Barghest_Greater].Add(BuildData("Feed",
+                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
             testCases[CreatureConstants.Basilisk].Add(BuildData("Bite", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Basilisk].Add(BuildData("Petrifying Gaze", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
+            testCases[CreatureConstants.Basilisk].Add(BuildData("Petrifying Gaze",
+                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
 
             testCases[CreatureConstants.Basilisk_Greater].Add(BuildData("Bite", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Basilisk_Greater].Add(BuildData("Petrifying Gaze", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
+            testCases[CreatureConstants.Basilisk_Greater].Add(BuildData("Petrifying Gaze",
+                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
 
             testCases[CreatureConstants.Bat].Add(None);
 
             testCases[CreatureConstants.Bat_Dire].Add(BuildData("Bite", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
             testCases[CreatureConstants.Bat_Swarm].Add(BuildData("Swarm",
-                string.Empty,
-                0, "swarm", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                string.Empty, 0, "swarm", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Bat_Swarm].Add(BuildData("Distraction",
-                string.Empty,
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true,
+                SaveConstants.Fortitude, AbilityConstants.Constitution));
             testCases[CreatureConstants.Bat_Swarm].Add(BuildData("Wounding",
-                string.Empty,
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
 
             testCases[CreatureConstants.Bear_Black].Add(BuildData("Claw", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Bear_Black].Add(BuildData("Bite", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
             testCases[CreatureConstants.Bear_Brown].Add(BuildData("Claw", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Bear_Brown].Add(BuildData("Bite", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Bear_Brown].Add(BuildData("Improved Grab", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            testCases[CreatureConstants.Bear_Brown].Add(BuildData("Improved Grab",
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
             testCases[CreatureConstants.Bear_Dire].Add(BuildData("Claw", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Bear_Dire].Add(BuildData("Bite", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
