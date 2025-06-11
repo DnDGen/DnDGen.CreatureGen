@@ -2004,22 +2004,22 @@
 		<name>Black Dragon, Ancient-Huge-Spell-Like Ability-True-</name>
 	</collection>
 	<collection>
-		<name>Black Dragon, Ancient-Huge-Frightful Presence-False-</name>
+		<name>Black Dragon, Ancient-Huge-Frightful Presence-True-</name>
 	</collection>
   <collection>
     <name>Black Dragon, Great Wyrm-Gargantuan-Bite-True-</name>
     <entry>4d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
 	<collection>
-		<name>Black Dragon, Great Wyrm-Gargantuan-Claw-True-</name>
+		<name>Black Dragon, Great Wyrm-Gargantuan-Claw-False-</name>
 		<entry>2d8@Piercing/Slashing@</entry>
 	</collection>
 	<collection>
-		<name>Black Dragon, Great Wyrm-Gargantuan-Wing-True-</name>
+		<name>Black Dragon, Great Wyrm-Gargantuan-Wing-False-</name>
 		<entry>2d6@Bludgeoning@</entry>
 	</collection>
 	<collection>
-		<name>Black Dragon, Great Wyrm-Gargantuan-Tail Slap-True-</name>
+		<name>Black Dragon, Great Wyrm-Gargantuan-Tail Slap-False-</name>
 		<entry>2d8@Bludgeoning@</entry>
 	</collection>
 	<collection>
@@ -2027,7 +2027,7 @@
 		<entry>4d6@Bludgeoning@</entry>
 	</collection>
 	<collection>
-		<name>Black Dragon, Great Wyrm-Gargantuan-Tail Sweep-False-</name>
+		<name>Black Dragon, Great Wyrm-Gargantuan-Tail Sweep-True-</name>
 		<entry>2d6@Bludgeoning@</entry>
 	</collection>
 	<collection>
@@ -2044,25 +2044,57 @@
 		<name>Black Dragon, Great Wyrm-Gargantuan-Frightful Presence-True-</name>
 	</collection>
   <collection>
-    <name>Black Dragon, Juvenile</name>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@%True%True%True%False%1%Round (6 seconds)%%%melee%%1%0%</entry>
-    <entry>Claw%1d6@Piercing/Slashing@%True%True%False%False%2%Round (6 seconds)%%%melee%%0.5%0%</entry>
-    <entry>Wing%1d4@Bludgeoning@%True%True%False%False%2%Round (6 seconds)%%%melee%%0.5%0%</entry>
-    <entry>Breath Weapon%8d4@Acid@%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Reflex%supernatural ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Black Dragon, Juvenile-Medium-Bite-True-</name>
+    <entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Black Dragon, Juvenile-Medium-Claw-False-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Black Dragon, Juvenile-Medium-Wing-False-</name>
+		<entry>1d4@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Black Dragon, Juvenile-Medium-Breath Weapon-True-</name>
+		<entry>8d4@Acid@</entry>
+	</collection>
+	<collection>
+		<name>Black Dragon, Juvenile-Medium-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
-    <name>Black Dragon, Mature Adult</name>
-    <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@%True%True%True%False%1%Round (6 seconds)%%%melee%%1%0%</entry>
-    <entry>Claw%2d6@Piercing/Slashing@%True%True%False%False%2%Round (6 seconds)%%%melee%%0.5%0%</entry>
-    <entry>Wing%1d8@Bludgeoning@%True%True%False%False%2%Round (6 seconds)%%%melee%%0.5%0%</entry>
-    <entry>Tail Slap%2d6@Bludgeoning@%True%True%False%False%1%Round (6 seconds)%%%melee%%0.5%0%</entry>
-    <entry>Crush%2d8@Bludgeoning@%True%True%True%True%1%Round (6 seconds)%Constitution%Reflex%extraordinary ability%%1.5%0%</entry>
-    <entry>Breath Weapon%14d4@Acid@%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Reflex%supernatural ability%%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
+    <name>Black Dragon, Mature Adult-Huge-Bite-True-</name>
+    <entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Black Dragon, Mature Adult-Huge-Claw-False-</name>
+		<entry>2d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Black Dragon, Mature Adult-Huge-Wing-False-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Black Dragon, Mature Adult-Huge-Tail Slap-False-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Black Dragon, Mature Adult-Huge-Crush-True-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Black Dragon, Mature Adult-Huge-Breath Weapon-True-</name>
+		<entry>14d4@Acid@</entry>
+	</collection>
+	<collection>
+		<name>Black Dragon, Mature Adult-Huge-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Black Dragon, Mature Adult-Huge-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Black Dragon, Mature Adult-Huge-Frightful Presence-True-</name>
+	</collection>
   <collection>
     <name>Black Dragon, Old</name>
     <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@%True%True%True%False%1%Round (6 seconds)%%%melee%%1%0%</entry>
