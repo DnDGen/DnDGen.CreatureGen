@@ -134,6 +134,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             return $"{roll}*{multiplierSelection.Roll}";
         }
 
+        [TestCase(CreatureConstants.Gnome_Rock)]
         [TestCase(CreatureConstants.Human)]
         [TestCase(CreatureConstants.Orc_Half)]
         public void DEBUG_GenerateBetaDemographics(string creature)

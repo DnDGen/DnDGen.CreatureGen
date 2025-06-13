@@ -910,20 +910,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Bison].Add(BuildData("Stampede", "1d12 per 5 bison in herd", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, SaveConstants.Reflex, AbilityConstants.Strength));
 
             testCases[CreatureConstants.BlackPudding].Add(BuildData("Slam",
-                string.Empty,
+                "Acid",
                 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.BlackPudding].Add(BuildData("Acid", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+            testCases[CreatureConstants.BlackPudding].Add(BuildData("Acid", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Reflex, AbilityConstants.Constitution));
             testCases[CreatureConstants.BlackPudding].Add(BuildData("Constrict",
-                string.Empty,
+                "Acid",
                 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
             testCases[CreatureConstants.BlackPudding].Add(BuildData("Improved Grab", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
             testCases[CreatureConstants.BlackPudding_Elder].Add(BuildData("Slam",
-                string.Empty,
+                "Acid",
                 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.BlackPudding_Elder].Add(BuildData("Acid", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+            testCases[CreatureConstants.BlackPudding_Elder].Add(BuildData("Acid", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Reflex, AbilityConstants.Constitution));
             testCases[CreatureConstants.BlackPudding_Elder].Add(BuildData("Constrict",
-                string.Empty,
+                "Acid",
                 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
             testCases[CreatureConstants.BlackPudding_Elder].Add(BuildData("Improved Grab", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 

@@ -712,16 +712,16 @@
   </collection>
   <collection>
     <name>Black Pudding</name>
-    <entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Acid@@True@True@True@True@1@Hit@Constitution@Reflex@extraordinary ability@@0@0</entry>
-    <entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+    <entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@Acid@1.5@0</entry>
+    <entry>Acid@@True@True@False@True@1@Hit@Constitution@Reflex@extraordinary ability@@0@0</entry>
+    <entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@Acid@1.5@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Elder Black Pudding</name>
-    <entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Acid@@True@True@True@True@1@Hit@Constitution@Reflex@extraordinary ability@@0@0</entry>
-    <entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+    <entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@Acid@1.5@0</entry>
+    <entry>Acid@@True@True@False@True@1@Hit@Constitution@Reflex@extraordinary ability@@0@0</entry>
+    <entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@Acid@1.5@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
