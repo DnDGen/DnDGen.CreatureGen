@@ -59,8 +59,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
             Assert.That(constant, Is.EqualTo(value));
         }
 
-        [TestCase(DataIndexConstants.BonusData.BonusIndex, 0)]
-        [TestCase(DataIndexConstants.BonusData.TargetIndex, 1)]
+        [TestCase(DataIndexConstants.BonusData.TargetIndex, 0)]
+        [TestCase(DataIndexConstants.BonusData.BonusIndex, 1)]
         [TestCase(DataIndexConstants.BonusData.ConditionIndex, 2)]
         public void BonusDataIndex(int constant, int value)
         {

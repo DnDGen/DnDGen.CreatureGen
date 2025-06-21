@@ -1372,11 +1372,16 @@
 		<entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
 	</collection>
   <collection>
-    <name>Brown Bear</name>
-    <entry>Claw%1d8@Piercing/Slashing@</entry>
-    <entry>Bite%2d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Improved Grab%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
+    <name>Brown Bear-Large-Claw-True-</name>
+    <entry>1d8@Piercing/Slashing@</entry>
   </collection>
+	<collection>
+		<name>Brown Bear-Large-Bite-False-</name>
+		<entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brown Bear-Large-Improved Grab-False-</name>
+	</collection>
   <collection>
     <name>Polar Bear</name>
     <entry>Claw%1d8@Piercing/Slashing@</entry>
@@ -1642,11 +1647,11 @@
     <entry>2d6@Piercing/Slashing@</entry>
   </collection>
 	<collection>
-		<name>Blue Slaad-Large-Bite-False-</name>
+		<name>Blue Slaad-Large-Bite-False-Disease</name>
 		<entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
 	</collection>
 	<collection>
-		<name>Blue Slaad-Large-Disease-False-</name>
+		<name>Blue Slaad-Large-Disease-False-Slaad Fever</name>
 	</collection>
 	<collection>
 		<name>Blue Slaad-Large-Spell-Like Ability-True-</name>
@@ -1658,6 +1663,28 @@
 	</collection>
 	<collection>
 		<name>Blue Slaad-Large-Summon Slaad-True-</name>
+	</collection>
+	<collection>
+		<name>Blue Slaad-Huge-Claw-True-</name>
+		<entry>3d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Blue Slaad-Huge-Bite-False-Disease</name>
+		<entry>3d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Blue Slaad-Huge-Disease-False-Slaad Fever</name>
+	</collection>
+	<collection>
+		<name>Blue Slaad-Huge-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Blue Slaad-Huge-Slaad Fever-False-</name>
+		<entry>1d3@Dexterity@Incubation period 1 day</entry>
+		<entry>1d3@Charisma@Incubation period 1 day</entry>
+	</collection>
+	<collection>
+		<name>Blue Slaad-Huge-Summon Slaad-True-</name>
 	</collection>
   <collection>
     <name>Boar-Medium-Gore-True-</name>
@@ -1676,7 +1703,14 @@
     <entry>1d8@Bludgeoning@</entry>
   </collection>
 	<collection>
-		<name>Bodak-Medium-Death Gaze-True-</name>
+		<name>Bodak-Medium-Death Gaze-True-Death</name>
+	</collection>
+	<collection>
+		<name>Bodak-Large-Slam-True-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bodak-Large-Death Gaze-True-Death</name>
 	</collection>
   <collection>
     <name>Bone Devil (Osyluth)-Large-Bite-True-</name>
@@ -1704,6 +1738,32 @@
 	<collection>
 		<name>Bone Devil (Osyluth)-Large-Summon Devil-True-</name>
 	</collection>
+	<collection>
+		<name>Bone Devil (Osyluth)-Huge-Bite-True-</name>
+		<entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bone Devil (Osyluth)-Huge-Claw-False-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Bone Devil (Osyluth)-Huge-Sting-False-Poison</name>
+		<entry>4d4@Piercing@</entry>
+	</collection>
+	<collection>
+		<name>Bone Devil (Osyluth)-Huge-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Bone Devil (Osyluth)-Huge-Fear Aura-True-</name>
+	</collection>
+	<collection>
+		<name>Bone Devil (Osyluth)-Huge-Poison-False-</name>
+		<entry>1d6@Strength@Initial</entry>
+		<entry>2d6@Strength@Secondary</entry>
+	</collection>
+	<collection>
+		<name>Bone Devil (Osyluth)-Huge-Summon Devil-True-</name>
+	</collection>
   <collection>
     <name>Bralani-Medium-Melee-True-</name>
   </collection>
@@ -1721,67 +1781,125 @@
 		<name>Bralani-Medium-Whirlwind blast-True-</name>
 		<entry>3d6@Bludgeoning@</entry>
 	</collection>
+	<collection>
+		<name>Bralani-Large-Melee-True-</name>
+	</collection>
+	<collection>
+		<name>Bralani-Large-Ranged-True-</name>
+	</collection>
+	<collection>
+		<name>Bralani-Large-Slam-True-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bralani-Large-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Bralani-Large-Whirlwind blast-True-</name>
+		<entry>3d6@Bludgeoning@</entry>
+	</collection>
   <collection>
-    <name>Bugbear</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Ranged%%False%False%True%False%1%Round (6 seconds)%%%ranged%%1.5%0%</entry>
-    <entry>Unarmed Strike%1d3@Bludgeoning@</entry>
+    <name>Bugbear-Medium-Melee-True-</name>
+  </collection>
+	<collection>
+		<name>Bugbear-Medium-Ranged-True-</name>
+	</collection>
+	<collection>
+		<name>Bugbear-Medium-Unarmed Strike-True-</name>
+		<entry>1d3@Bludgeoning@</entry>
+	</collection>
+  <collection>
+    <name>Bulette-Huge-Bite-True-</name>
+    <entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
+  </collection>
+	<collection>
+		<name>Bulette-Huge-Claw-True-</name>
+		<entry>2d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Bulette-Huge-Leap-True-</name>
+	</collection>
+  <collection>
+    <name>Cachalot Whale-Gargantuan-Bite-True-</name>
+    <entry>4d6@Piercing/Slashing/Bludgeoning@</entry>
+  </collection>
+	<collection>
+		<name>Cachalot Whale-Gargantuan-Tail Slap-True-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+  <collection>
+    <name>Camel, Bactrian (Two-Humped)-Large-Bite-False-</name>
+    <entry>1d4@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
   <collection>
-    <name>Bulette</name>
-    <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d6@Piercing/Slashing@</entry>
-    <entry>Leap%%True%False%True%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
+    <name>Camel, Dromedary (One-Humped)-Large-Bite-False-</name>
+    <entry>1d4@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
   <collection>
-    <name>Cachalot Whale</name>
-    <entry>Bite%4d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Tail Slap%1d8@Bludgeoning@</entry>
+    <name>Carrion Crawler-Large-Tentacle-True-Paralysis</name>
+    <entry>0@Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Carrion Crawler-Large-Bite-False-</name>
+		<entry>1d4@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Carrion Crawler-Large-Paralysis-False-paralyzed for 2d4 rounds</name>
+	</collection>
   <collection>
-    <name>Camel, Bactrian (Two-Humped)</name>
-    <entry>Bite%1d4@Piercing/Slashing/Bludgeoning@</entry>
+    <name>Cat-Tiny-Claw-True-</name>
+    <entry>1d2@Piercing/Slashing@</entry>
   </collection>
+	<collection>
+		<name>Cat-Tiny-Bite-False-</name>
+		<entry>1d3@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
   <collection>
-    <name>Camel, Dromedary (One-Humped)</name>
-    <entry>Bite%1d4@Piercing/Slashing/Bludgeoning@</entry>
+    <name>Centaur-Large-Melee-True-</name>
   </collection>
+	<collection>
+		<name>Centaur-Large-Ranged-True-</name>
+	</collection>
+	<collection>
+		<name>Centaur-Large-Unarmed Strike-True-</name>
+		<entry>1d4@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Centaur-Large-Hoof-False-</name>
+		<entry>1d6@Bludgeoning@</entry>
+	</collection>
   <collection>
-    <name>Carrion Crawler</name>
-    <entry>Tentacle%0@Bludgeoning@</entry>
-    <entry>Bite%1d4@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Paralysis%%True%True%False%False%1%Hit%Constitution%Fortitude%extraordinary ability%paralyzed for 2d4 rounds%0%0%</entry>
+    <name>Centipede Swarm-Diminutive-Swarm-True-Poison</name>
+    <entry>2d6@@</entry>
   </collection>
+	<collection>
+		<name>Centipede Swarm-Diminutive-Distraction-True-</name>
+	</collection>
+	<collection>
+		<name>Centipede Swarm-Diminutive-Poison-False-</name>
+		<entry>1d4@Dexterity@Initial</entry>
+		<entry>1d4@Dexterity@Secondary</entry>
+	</collection>
   <collection>
-    <name>Cat</name>
-    <entry>Claw%1d2@Piercing/Slashing@</entry>
-    <entry>Bite%1d3@Piercing/Slashing/Bludgeoning@</entry>
+    <name>Chain Devil (Kyton)-Medium-Melee-True-</name>
   </collection>
+	<collection>
+		<name>Chain Devil (Kyton)-Medium-Unarmed Strike-True-</name>
+		<entry>1d3@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Chain Devil (Kyton)-Medium-Dancing Chains-True-</name>
+	</collection>
+	<collection>
+		<name>Chain Devil (Kyton)-Medium-Unnerving Gaze-True-</name>
+	</collection>
   <collection>
-    <name>Centaur</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Ranged%%False%False%True%False%1%Round (6 seconds)%%%ranged%%1.5%0%</entry>
-    <entry>Unarmed Strike%1d4@Bludgeoning@</entry>
-    <entry>Hoof%1d6@Bludgeoning@</entry>
+    <name>Chaos Beast-Medium-Claw-True-Corporeal Instability</name>
+    <entry>1d3@Piercing/Slashing@</entry>
   </collection>
-  <collection>
-    <name>Centipede Swarm</name>
-    <entry>Swarm%2d6@@</entry>
-    <entry>Distraction%%True%True%True%True%1%Round (6 seconds)%Constitution%Fortitude%extraordinary ability%%0%0%</entry>
-    <entry>Poison%1d4@Dexterity@Initial,1d4@Dexterity@Secondary%True%True%False%True%1%Hit%Constitution%Fortitude%extraordinary ability%%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Chain Devil (Kyton)</name>
-    <entry>Melee%%False%True%True%False%2%Round (6 seconds)%%%melee%%1%0%</entry>
-    <entry>Unarmed Strike%1d3@Bludgeoning@</entry>
-    <entry>Dancing Chains%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%supernatural ability%%0%0%</entry>
-    <entry>Unnerving Gaze%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%supernatural ability%%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Chaos Beast</name>
-    <entry>Claw%1d3@Piercing/Slashing@</entry>
-    <entry>Corporeal Instability%%True%True%False%True%1%Hit%Constitution%Fortitude%supernatural ability%%0%0%</entry>
-  </collection>
+	<collection>
+		<name>Chaos Beast-Medium-Corporeal Instability-False-</name>
+	</collection>
   <collection>
     <name>Cheetah</name>
     <entry>Bite%1d6@Piercing/Slashing/Bludgeoning@</entry>
@@ -3047,289 +3165,769 @@
     <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
   </collection>
   <collection>
-    <name>Brass Dragon, Adult</name>
-    <entry>Bite%2d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%1d8@Piercing/Slashing@</entry>
-    <entry>Wing%1d6@Bludgeoning@</entry>
-    <entry>Tail Slap%1d8@Bludgeoning@</entry>
-    <entry>Breath Weapon (fire)%6d6@Fire@</entry>
-    <entry>Breath Weapon (sleep)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Sleep for 1d6+6 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
+    <name>Brass Dragon, Adult-Large-Bite-True-</name>
+    <entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Brass Dragon, Adult-Large-Claw-False-</name>
+		<entry>1d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Adult-Large-Wing-False-</name>
+		<entry>1d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Adult-Large-Tail Slap-False-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Adult-Large-Breath Weapon (fire)-True-</name>
+		<entry>6d6@Fire@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Adult-Large-Breath Weapon (sleep)-True-Sleep for 1d6+6 rounds</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Adult-Large-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Adult-Large-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Adult-Large-Frightful Presence-True-</name>
+	</collection>
   <collection>
-    <name>Brass Dragon, Ancient</name>
-    <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d6@Piercing/Slashing@</entry>
-    <entry>Wing%1d8@Bludgeoning@</entry>
-    <entry>Tail Slap%2d6@Bludgeoning@</entry>
-    <entry>Crush%2d8@Bludgeoning@</entry>
-    <entry>Breath Weapon (fire)%10d6@Fire@</entry>
-    <entry>Breath Weapon (sleep)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Sleep for 1d6+10 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
+    <name>Brass Dragon, Ancient-Huge-Bite-True-</name>
+    <entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Brass Dragon, Ancient-Huge-Claw-False-</name>
+		<entry>2d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Ancient-Huge-Wing-False-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Ancient-Huge-Tail Slap-False-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Ancient-Huge-Crush-True-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Ancient-Huge-Breath Weapon (fire)-True-</name>
+		<entry>10d6@Fire@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Ancient-Huge-Breath Weapon (sleep)-True-Sleep for 1d6+10 rounds</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Ancient-Huge-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Ancient-Huge-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Ancient-Huge-Frightful Presence-True-</name>
+	</collection>
   <collection>
-    <name>Brass Dragon, Great Wyrm</name>
-    <entry>Bite%4d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d8@Piercing/Slashing@</entry>
-    <entry>Wing%2d6@Bludgeoning@</entry>
-    <entry>Tail Slap%2d8@Bludgeoning@</entry>
-    <entry>Crush%4d6@Bludgeoning@</entry>
-    <entry>Tail Sweep%2d6@Bludgeoning@</entry>
-    <entry>Breath Weapon (fire)%12d6@Fire@</entry>
-    <entry>Breath Weapon (sleep)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Sleep for 1d6+12 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
+    <name>Brass Dragon, Great Wyrm-Gargantuan-Bite-True-</name>
+    <entry>4d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Brass Dragon, Great Wyrm-Gargantuan-Claw-False-</name>
+		<entry>2d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Great Wyrm-Gargantuan-Wing-False-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Great Wyrm-Gargantuan-Tail Slap-False-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Great Wyrm-Gargantuan-Crush-True-</name>
+		<entry>4d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Great Wyrm-Gargantuan-Tail Sweep-True-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Great Wyrm-Gargantuan-Breath Weapon (fire)-True-</name>
+		<entry>12d6@Fire@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Great Wyrm-Gargantuan-Breath Weapon (sleep)-True-Sleep for 1d6+12 rounds</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Great Wyrm-Gargantuan-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Great Wyrm-Gargantuan-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Great Wyrm-Gargantuan-Frightful Presence-True-</name>
+	</collection>
   <collection>
-    <name>Brass Dragon, Juvenile</name>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%1d6@Piercing/Slashing@</entry>
-    <entry>Wing%1d4@Bludgeoning@</entry>
-    <entry>Breath Weapon (fire)%4d6@Fire@</entry>
-    <entry>Breath Weapon (sleep)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Sleep for 1d6+4 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Brass Dragon, Juvenile-Medium-Bite-True-</name>
+    <entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Brass Dragon, Juvenile-Medium-Claw-False-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Juvenile-Medium-Wing-False-</name>
+		<entry>1d4@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Juvenile-Medium-Breath Weapon (fire)-True-</name>
+		<entry>4d6@Fire@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Juvenile-Medium-Breath Weapon (sleep)-True-Sleep for 1d6+4 rounds</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Juvenile-Medium-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Juvenile-Medium-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Mature Adult-Huge-Bite-True-</name>
+		<entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Mature Adult-Huge-Claw-False-</name>
+		<entry>2d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Mature Adult-Huge-Wing-False-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Mature Adult-Huge-Tail Slap-False-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Mature Adult-Huge-Crush-True-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Mature Adult-Huge-Breath Weapon (fire)-True-</name>
+		<entry>7d6@Fire@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Mature Adult-Huge-Breath Weapon (sleep)-True-Sleep for 1d6+7 rounds</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Mature Adult-Huge-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Mature Adult-Huge-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Mature Adult-Huge-Frightful Presence-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Old-Huge-Bite-True-</name>
+		<entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Old-Huge-Claw-False-</name>
+		<entry>2d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Old-Huge-Wing-False-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Old-Huge-Tail Slap-False-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Old-Huge-Crush-True-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Old-Huge-Breath Weapon (fire)-True-</name>
+		<entry>8d6@Fire@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Old-Huge-Breath Weapon (sleep)-True-Sleep for 1d6+8 rounds</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Old-Huge-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Old-Huge-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Old-Huge-Frightful Presence-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Very Old-Huge-Bite-True-</name>
+		<entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Very Old-Huge-Claw-False-</name>
+		<entry>2d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Very Old-Huge-Wing-False-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Very Old-Huge-Tail Slap-False-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Very Old-Huge-Crush-True-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Very Old-Huge-Breath Weapon (fire)-True-</name>
+		<entry>9d6@Fire@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Very Old-Huge-Breath Weapon (sleep)-True-Sleep for 1d6+9 rounds</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Very Old-Huge-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Very Old-Huge-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Very Old-Huge-Frightful Presence-True-</name>
+	</collection>
   <collection>
-    <name>Brass Dragon, Mature Adult</name>
-    <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d6@Piercing/Slashing@</entry>
-    <entry>Wing%1d8@Bludgeoning@</entry>
-    <entry>Tail Slap%2d6@Bludgeoning@</entry>
-    <entry>Crush%2d8@Bludgeoning@</entry>
-    <entry>Breath Weapon (fire)%7d6@Fire@</entry>
-    <entry>Breath Weapon (sleep)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Sleep for 1d6+7 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
+    <name>Brass Dragon, Very Young-Small-Bite-True-</name>
+    <entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Brass Dragon, Very Young-Small-Claw-False-</name>
+		<entry>1d4@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Very Young-Small-Breath Weapon (fire)-True-</name>
+		<entry>2d6@Fire@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Very Young-Small-Breath Weapon (sleep)-True-Sleep for 1d6+2 rounds</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Very Young-Small-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Wyrm-Gargantuan-Bite-True-</name>
+		<entry>4d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Wyrm-Gargantuan-Claw-False-</name>
+		<entry>2d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Wyrm-Gargantuan-Wing-False-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Wyrm-Gargantuan-Tail Slap-False-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Wyrm-Gargantuan-Crush-True-</name>
+		<entry>4d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Wyrm-Gargantuan-Tail Sweep-True-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Wyrm-Gargantuan-Breath Weapon (fire)-True-</name>
+		<entry>11d6@Fire@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Wyrm-Gargantuan-Breath Weapon (sleep)-True-Sleep for 1d6+11 rounds</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Wyrm-Gargantuan-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Wyrm-Gargantuan-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Wyrm-Gargantuan-Frightful Presence-True-</name>
+	</collection>
   <collection>
-    <name>Brass Dragon, Old</name>
-    <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d6@Piercing/Slashing@</entry>
-    <entry>Wing%1d8@Bludgeoning@</entry>
-    <entry>Tail Slap%2d6@Bludgeoning@</entry>
-    <entry>Crush%2d8@Bludgeoning@</entry>
-    <entry>Breath Weapon (fire)%8d6@Fire@</entry>
-    <entry>Breath Weapon (sleep)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Sleep for 1d6+8 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
+    <name>Brass Dragon, Wyrmling-Tiny-Bite-True-</name>
+    <entry>1d4@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Brass Dragon, Wyrmling-Tiny-Claw-False-</name>
+		<entry>1d3@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Wyrmling-Tiny-Breath Weapon (fire)-True-</name>
+		<entry>1d6@Fire@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Wyrmling-Tiny-Breath Weapon (sleep)-True-Sleep for 1d6+1 rounds</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Wyrmling-Tiny-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
-    <name>Brass Dragon, Very Old</name>
-    <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d6@Piercing/Slashing@</entry>
-    <entry>Wing%1d8@Bludgeoning@</entry>
-    <entry>Tail Slap%2d6@Bludgeoning@</entry>
-    <entry>Crush%2d8@Bludgeoning@</entry>
-    <entry>Breath Weapon (fire)%9d6@Fire@</entry>
-    <entry>Breath Weapon (sleep)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Sleep for 1d6+9 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
+    <name>Brass Dragon, Young-Medium-Bite-True-</name>
+    <entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Brass Dragon, Young-Medium-Claw-False-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Young-Medium-Wing-False-</name>
+		<entry>1d4@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Young-Medium-Breath Weapon (fire)-True-</name>
+		<entry>3d6@Fire@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Young-Medium-Breath Weapon (sleep)-True-Sleep for 1d6+3 rounds</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Young-Medium-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Young-Medium-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Young Adult-Large-Bite-True-</name>
+		<entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Young Adult-Large-Claw-False-</name>
+		<entry>1d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Young Adult-Large-Wing-False-</name>
+		<entry>1d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Young Adult-Large-Tail Slap-False-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Young Adult-Large-Breath Weapon (fire)-True-</name>
+		<entry>5d6@Fire@</entry>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Young Adult-Large-Breath Weapon (sleep)-True-Sleep for 1d6+5 rounds</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Young Adult-Large-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Young Adult-Large-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Brass Dragon, Young Adult-Large-Frightful Presence-True-</name>
+	</collection>
   <collection>
-    <name>Brass Dragon, Very Young</name>
-    <entry>Bite%1d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%1d4@Piercing/Slashing@</entry>
-    <entry>Breath Weapon (fire)%2d6@Fire@</entry>
-    <entry>Breath Weapon (sleep)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Sleep for 1d6+2 rounds%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Bronze Dragon, Adult-Huge-Bite-True-</name>
+    <entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Bronze Dragon, Adult-Huge-Claw-False-</name>
+		<entry>2d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Adult-Huge-Wing-False-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Adult-Huge-Tail Slap-False-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Adult-Huge-Crush-True-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Adult-Huge-Breath Weapon (electricity)-True-</name>
+		<entry>12d6@Electricity@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Adult-Huge-Breath Weapon (repulsion gas)-True-Compelled for 1d6+6 rounds</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Adult-Huge-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Adult-Huge-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Adult-Huge-Frightful Presence-True-</name>
+	</collection>
   <collection>
-    <name>Brass Dragon, Wyrm</name>
-    <entry>Bite%4d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d8@Piercing/Slashing@</entry>
-    <entry>Wing%2d6@Bludgeoning@</entry>
-    <entry>Tail Slap%2d8@Bludgeoning@</entry>
-    <entry>Crush%4d6@Bludgeoning@</entry>
-    <entry>Tail Sweep%2d6@Bludgeoning@</entry>
-    <entry>Breath Weapon (fire)%11d6@Fire@</entry>
-    <entry>Breath Weapon (sleep)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Sleep for 1d6+11 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
+    <name>Bronze Dragon, Ancient-Gargantuan-Bite-True-</name>
+    <entry>4d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Bronze Dragon, Ancient-Gargantuan-Claw-False-</name>
+		<entry>2d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Ancient-Gargantuan-Wing-False-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Ancient-Gargantuan-Tail Slap-False-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Ancient-Gargantuan-Crush-True-</name>
+		<entry>4d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Ancient-Gargantuan-Tail Sweep-True-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Ancient-Gargantuan-Breath Weapon (electricity)-True-</name>
+		<entry>20d6@Electricity@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Ancient-Gargantuan-Breath Weapon (repulsion gas)-True-Compelled for 1d6+10 rounds</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Ancient-Gargantuan-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Ancient-Gargantuan-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Ancient-Gargantuan-Frightful Presence-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Great Wyrm-Gargantuan-Bite-True-</name>
+		<entry>4d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Great Wyrm-Gargantuan-Claw-False-</name>
+		<entry>2d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Great Wyrm-Gargantuan-Wing-False-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Great Wyrm-Gargantuan-Tail Slap-False-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Great Wyrm-Gargantuan-Crush-True-</name>
+		<entry>4d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Great Wyrm-Gargantuan-Tail Sweep-True-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Great Wyrm-Gargantuan-Breath Weapon (electricity)-True-</name>
+		<entry>24d6@Electricity@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Great Wyrm-Gargantuan-Breath Weapon (repulsion gas)-True-Compelled for 1d6+12 rounds</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Great Wyrm-Gargantuan-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Great Wyrm-Gargantuan-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Great Wyrm-Gargantuan-Frightful Presence-True-</name>
+	</collection>
   <collection>
-    <name>Brass Dragon, Wyrmling</name>
-    <entry>Bite%1d4@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%1d3@Piercing/Slashing@</entry>
-    <entry>Breath Weapon (fire)%1d6@Fire@</entry>
-    <entry>Breath Weapon (sleep)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Sleep for 1d6+1 rounds%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Bronze Dragon, Juvenile-Large-Bite-True-</name>
+    <entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Bronze Dragon, Juvenile-Large-Claw-False-</name>
+		<entry>1d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Juvenile-Large-Wing-False-</name>
+		<entry>1d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Juvenile-Large-Tail Slap-False-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Juvenile-Large-Breath Weapon (electricity)-True-</name>
+		<entry>8d6@Electricity@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Juvenile-Large-Breath Weapon (repulsion gas)-True-Compelled for 1d6+4 rounds</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Juvenile-Large-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Juvenile-Large-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Mature Adult-Huge-Bite-True-</name>
+		<entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Mature Adult-Huge-Claw-False-</name>
+		<entry>2d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Mature Adult-Huge-Wing-False-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Mature Adult-Huge-Tail Slap-False-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Mature Adult-Huge-Crush-True-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Mature Adult-Huge-Breath Weapon (electricity)-True-</name>
+		<entry>14d6@Electricity@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Mature Adult-Huge-Breath Weapon (repulsion gas)-True-Compelled for 1d6+7 rounds</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Mature Adult-Huge-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Mature Adult-Huge-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Mature Adult-Huge-Frightful Presence-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Old-Huge-Bite-True-</name>
+		<entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Old-Huge-Claw-False-</name>
+		<entry>2d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Old-Huge-Wing-False-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Old-Huge-Tail Slap-False-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Old-Huge-Crush-True-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Old-Huge-Breath Weapon (electricity)-True-</name>
+		<entry>16d6@Electricity@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Old-Huge-Breath Weapon (repulsion gas)-True-Compelled for 1d6+8 rounds</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Old-Huge-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Old-Huge-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Old-Huge-Frightful Presence-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Very Old-Huge-Bite-True-</name>
+		<entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Very Old-Huge-Claw-False-</name>
+		<entry>2d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Very Old-Huge-Wing-False-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Very Old-Huge-Tail Slap-False-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Very Old-Huge-Crush-True-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Very Old-Huge-Breath Weapon (electricity)-True-</name>
+		<entry>18d6@Electricity@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Very Old-Huge-Breath Weapon (repulsion gas)-True-Compelled for 1d6+9 rounds</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Very Old-Huge-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Very Old-Huge-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Very Old-Huge-Frightful Presence-True-</name>
+	</collection>
   <collection>
-    <name>Brass Dragon, Young</name>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%1d6@Piercing/Slashing@</entry>
-    <entry>Wing%1d4@Bludgeoning@</entry>
-    <entry>Breath Weapon (fire)%3d6@Fire@</entry>
-    <entry>Breath Weapon (sleep)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Sleep for 1d6+3 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Bronze Dragon, Very Young-Medium-Bite-True-</name>
+    <entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Bronze Dragon, Very Young-Medium-Claw-False-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Very Young-Medium-Wing-False-</name>
+		<entry>1d4@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Very Young-Medium-Breath Weapon (electricity)-True-</name>
+		<entry>4d6@Electricity@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Very Young-Medium-Breath Weapon (repulsion gas)-True-Compelled for 1d6+2 rounds</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Very Young-Medium-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Wyrm-Gargantuan-Bite-True-</name>
+		<entry>4d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Wyrm-Gargantuan-Claw-False-</name>
+		<entry>2d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Wyrm-Gargantuan-Wing-False-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Wyrm-Gargantuan-Tail Slap-False-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Wyrm-Gargantuan-Crush-True-</name>
+		<entry>4d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Wyrm-Gargantuan-Tail Sweep-True-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Wyrm-Gargantuan-Breath Weapon (electricity)-True-</name>
+		<entry>22d6@Electricity@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Wyrm-Gargantuan-Breath Weapon (repulsion gas)-True-Compelled for 1d6+11 rounds</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Wyrm-Gargantuan-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Wyrm-Gargantuan-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Wyrm-Gargantuan-Frightful Presence-True-</name>
+	</collection>
   <collection>
-    <name>Brass Dragon, Young Adult</name>
-    <entry>Bite%2d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%1d8@Piercing/Slashing@</entry>
-    <entry>Wing%1d6@Bludgeoning@</entry>
-    <entry>Tail Slap%1d8@Bludgeoning@</entry>
-    <entry>Breath Weapon (fire)%5d6@Fire@</entry>
-    <entry>Breath Weapon (sleep)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Sleep for 1d6+5 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
+    <name>Bronze Dragon, Wyrmling-Small-Bite-True-</name>
+    <entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Bronze Dragon, Wyrmling-Small-Claw-False-</name>
+		<entry>1d4@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Wyrmling-Small-Breath Weapon (electricity)-True-</name>
+		<entry>2d6@Electricity@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Wyrmling-Small-Breath Weapon (repulsion gas)-True-Compelled for 1d6+1 rounds</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Wyrmling-Small-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
-    <name>Bronze Dragon, Adult</name>
-    <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d6@Piercing/Slashing@</entry>
-    <entry>Wing%1d8@Bludgeoning@</entry>
-    <entry>Tail Slap%2d6@Bludgeoning@</entry>
-    <entry>Crush%2d8@Bludgeoning@</entry>
-    <entry>Breath Weapon (electricity)%12d6@Electricity@</entry>
-    <entry>Breath Weapon (repulsion gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Compelled for 1d6+6 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
+    <name>Bronze Dragon, Young-Medium-Bite-True-</name>
+    <entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
-  <collection>
-    <name>Bronze Dragon, Ancient</name>
-    <entry>Bite%4d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d8@Piercing/Slashing@</entry>
-    <entry>Wing%2d6@Bludgeoning@</entry>
-    <entry>Tail Slap%2d8@Bludgeoning@</entry>
-    <entry>Crush%4d6@Bludgeoning@</entry>
-    <entry>Tail Sweep%2d6@Bludgeoning@</entry>
-    <entry>Breath Weapon (electricity)%20d6@Electricity@</entry>
-    <entry>Breath Weapon (repulsion gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Compelled for 1d6+10 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Bronze Dragon, Great Wyrm</name>
-    <entry>Bite%4d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d8@Piercing/Slashing@</entry>
-    <entry>Wing%2d6@Bludgeoning@</entry>
-    <entry>Tail Slap%2d8@Bludgeoning@</entry>
-    <entry>Crush%4d6@Bludgeoning@</entry>
-    <entry>Tail Sweep%2d6@Bludgeoning@</entry>
-    <entry>Breath Weapon (electricity)%24d6@Electricity@</entry>
-    <entry>Breath Weapon (repulsion gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Compelled for 1d6+12 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Bronze Dragon, Juvenile</name>
-    <entry>Bite%2d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%1d8@Piercing/Slashing@</entry>
-    <entry>Wing%1d6@Bludgeoning@</entry>
-    <entry>Tail Slap%1d8@Bludgeoning@</entry>
-    <entry>Breath Weapon (electricity)%8d6@Electricity@</entry>
-    <entry>Breath Weapon (repulsion gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Compelled for 1d6+4 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Bronze Dragon, Mature Adult</name>
-    <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d6@Piercing/Slashing@</entry>
-    <entry>Wing%1d8@Bludgeoning@</entry>
-    <entry>Tail Slap%2d6@Bludgeoning@</entry>
-    <entry>Crush%2d8@Bludgeoning@</entry>
-    <entry>Breath Weapon (electricity)%14d6@Electricity@</entry>
-    <entry>Breath Weapon (repulsion gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Compelled for 1d6+7 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Bronze Dragon, Old</name>
-    <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d6@Piercing/Slashing@</entry>
-    <entry>Wing%1d8@Bludgeoning@</entry>
-    <entry>Tail Slap%2d6@Bludgeoning@</entry>
-    <entry>Crush%2d8@Bludgeoning@</entry>
-    <entry>Breath Weapon (electricity)%16d6@Electricity@</entry>
-    <entry>Breath Weapon (repulsion gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Compelled for 1d6+8 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Bronze Dragon, Very Old</name>
-    <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d6@Piercing/Slashing@</entry>
-    <entry>Wing%1d8@Bludgeoning@</entry>
-    <entry>Tail Slap%2d6@Bludgeoning@</entry>
-    <entry>Crush%2d8@Bludgeoning@</entry>
-    <entry>Breath Weapon (electricity)%18d6@Electricity@</entry>
-    <entry>Breath Weapon (repulsion gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Compelled for 1d6+9 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Bronze Dragon, Very Young</name>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%1d6@Piercing/Slashing@</entry>
-    <entry>Wing%1d4@Bludgeoning@</entry>
-    <entry>Breath Weapon (electricity)%4d6@Electricity@</entry>
-    <entry>Breath Weapon (repulsion gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Compelled for 1d6+2 rounds%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Bronze Dragon, Wyrm</name>
-    <entry>Bite%4d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d8@Piercing/Slashing@</entry>
-    <entry>Wing%2d6@Bludgeoning@</entry>
-    <entry>Tail Slap%2d8@Bludgeoning@</entry>
-    <entry>Crush%4d6@Bludgeoning@</entry>
-    <entry>Tail Sweep%2d6@Bludgeoning@</entry>
-    <entry>Breath Weapon (electricity)%22d6@Electricity@</entry>
-    <entry>Breath Weapon (repulsion gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Compelled for 1d6+11 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Bronze Dragon, Wyrmling</name>
-    <entry>Bite%1d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%1d4@Piercing/Slashing@</entry>
-    <entry>Breath Weapon (electricity)%2d6@Electricity@</entry>
-    <entry>Breath Weapon (repulsion gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Compelled for 1d6+1 rounds%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Bronze Dragon, Young</name>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%1d6@Piercing/Slashing@</entry>
-    <entry>Wing%1d4@Bludgeoning@</entry>
-    <entry>Breath Weapon (electricity)%6d6@Electricity@</entry>
-    <entry>Breath Weapon (repulsion gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Compelled for 1d6+3 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Bronze Dragon, Young Adult</name>
-    <entry>Bite%2d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%1d8@Piercing/Slashing@</entry>
-    <entry>Wing%1d6@Bludgeoning@</entry>
-    <entry>Tail Slap%1d8@Bludgeoning@</entry>
-    <entry>Breath Weapon (electricity)%10d6@Electricity@</entry>
-    <entry>Breath Weapon (repulsion gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Will%supernatural ability%Compelled for 1d6+5 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
-  </collection>
+	<collection>
+		<name>Bronze Dragon, Young-Medium-Claw-False-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Young-Medium-Wing-False-</name>
+		<entry>1d4@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Young-Medium-Breath Weapon (electricity)-True-</name>
+		<entry>6d6@Electricity@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Young-Medium-Breath Weapon (repulsion gas)-True-Compelled for 1d6+3 rounds</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Young-Medium-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Young-Medium-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Young Adult-Large-Bite-True-</name>
+		<entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Young Adult-Large-Claw-False-</name>
+		<entry>1d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Young Adult-Large-Wing-False-</name>
+		<entry>1d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Young Adult-Large-Tail Slap-False-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Young Adult-Large-Breath Weapon (electricity)-True-</name>
+		<entry>10d6@Electricity@</entry>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Young Adult-Large-Breath Weapon (repulsion gas)-True-Compelled for 1d6+5 rounds</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Young Adult-Large-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Young Adult-Large-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Bronze Dragon, Young Adult-Large-Frightful Presence-True-</name>
+	</collection>
   <collection>
     <name>Copper Dragon, Adult</name>
     <entry>Bite%2d6@Piercing/Slashing/Bludgeoning@</entry>

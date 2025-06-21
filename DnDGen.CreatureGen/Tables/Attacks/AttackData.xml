@@ -733,7 +733,7 @@
     <name>Blue Slaad</name>
     <entry>Claw@@True@True@True@False@4@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@@True@True@False@False@1@Round (6 seconds)@@@melee@Disease@0.5@0</entry>
-    <entry>Disease@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@Slaad Fever@0@0</entry>
+    <entry>Disease@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@Slaad Fever@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Slaad Fever@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@@0@0</entry>
     <entry>Summon Slaad@@True@False@True@True@1@Day@@@extraordinary ability@@0@0</entry>
@@ -3837,8 +3837,8 @@
     <name>Mummy</name>
     <entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@Disease@1.5@0</entry>
     <entry>Despair@@True@True@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@1d4 rounds fear@0@0</entry>
-    <entry>Disease@@True@True@True@True@1@Hit@Charisma@Fortitude@supernatural ability@Mummy Rot@0@0</entry>
-    <entry>Mummy Rot@@True@True@True@True@1@Hit@Charisma@Fortitude@supernatural ability@@0@0</entry>
+    <entry>Disease@@True@True@False@True@1@Hit@@@supernatural ability@Mummy Rot@0@0</entry>
+    <entry>Mummy Rot@@True@True@False@True@1@Hit@Charisma@Fortitude@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Dark Naga</name>
@@ -4086,14 +4086,14 @@
   <collection>
     <name>Dire Rat</name>
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@Disease@1.5@0</entry>
-    <entry>Disease@@True@True@True@True@1@Hit@@@extraordinary ability@Filth Fever@0@0</entry>
-    <entry>Filth Fever@@True@True@True@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
+    <entry>Disease@@True@True@False@True@1@Hit@@@extraordinary ability@Filth Fever@0@0</entry>
+    <entry>Filth Fever@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Rat Swarm</name>
     <entry>Swarm@@True@True@True@False@1@Round (6 seconds)@@@swarm@Disease@0@0</entry>
-    <entry>Disease@@True@True@True@True@1@Hit@@@extraordinary ability@Filth Fever@0@0</entry>
-    <entry>Filth Fever@@True@True@True@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
+    <entry>Disease@@True@True@False@True@1@Hit@@@extraordinary ability@Filth Fever@0@0</entry>
+    <entry>Filth Fever@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Distraction@@True@True@True@True@1@Minute (10 rounds)@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>

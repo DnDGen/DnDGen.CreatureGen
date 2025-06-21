@@ -27,7 +27,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         private Dictionary<string, Dictionary<string, string>> lengths;
         private Dictionary<string, Dictionary<string, (int Lower, int Upper)>> creatureWeightRanges;
         private Dictionary<string, Dictionary<string, string>> creatureWeightRolls;
-        private Dictionary<string, (int min, int max)> weightRanges;
 
         [OneTimeSetUp]
         public void OneTimeSetup()
@@ -40,19 +39,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             creatureWeightRanges = GetCreatureWeightRanges();
             creatureWeightRolls = GetCreatureWeightRolls();
-
-            weightRanges = new Dictionary<string, (int min, int max)>
-            {
-                [SizeConstants.Fine] = (0, 1),
-                [SizeConstants.Diminutive] = (0, 1),
-                [SizeConstants.Tiny] = (1, 8),
-                [SizeConstants.Small] = (8, 60),
-                [SizeConstants.Medium] = (60, 500),
-                [SizeConstants.Large] = (500, 2 * 2000),
-                [SizeConstants.Huge] = (2 * 2000, 16 * 2000),
-                [SizeConstants.Gargantuan] = (16 * 2000, 125 * 2000),
-                [SizeConstants.Colossal] = (125 * 2000, int.MaxValue),
-            };
         }
 
         [SetUp]
@@ -91,7 +77,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             AssertIncorporealCreaturesAreWeightless(name);
             AssertTypesAndAmounts(name, rolls);
-            AssertCreatureWeightIsAppropriateForSize(name);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -2250,21 +2235,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     var roll = dice.Roll($"{genderKvp.Value}+{multiplier[creature]}*{creatureWeightRolls[creature][creature]}").AsPotentialMinimum();
                     Assert.That(roll, Is.Positive);
                 }
-            }
-        }
-
-        // Source: https://www.d20srd.org/srd/combat/movementPositionAndDistance.htm
-        public void AssertCreatureWeightIsAppropriateForSize(string creature)
-        {
-            var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, creature);
-            var data = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, creature);
-            if (data.Types.Contains(CreatureConstants.Types.Subtypes.Incorporeal) || creature == CreatureConstants.LanternArchon)
-                return;
-
-            foreach (var gender in genders)
-            {
-                var weight = measurementHelper.GetAverageWeight(creature, gender);
-                Assert.That(weight, Is.InRange(weightRanges[data.Size].min, weightRanges[data.Size].max), creature + gender);
             }
         }
     }

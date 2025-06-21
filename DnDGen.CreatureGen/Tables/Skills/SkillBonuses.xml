@@ -3,8 +3,8 @@
 <collections>
   <collection>
     <name>Aasimar</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Aberration</name>
@@ -263,36 +263,36 @@
   </collection>
   <collection>
     <name>Ape</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Aquatic</name>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Aquatic Elf</name>
-    <entry>Listen@2</entry>
-    <entry>Search@2</entry>
-    <entry>Search$passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
-    <entry>Spot@2</entry>
+    <entry>Listen@2@</entry>
+    <entry>Search@2@</entry>
+    <entry>Search@0@passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Aranea</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Jump@2</entry>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Jump@2@</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Archon</name>
   </collection>
   <collection>
     <name>Assassin Vine</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Athach</name>
@@ -302,94 +302,94 @@
   </collection>
   <collection>
     <name>Average Salamander</name>
-    <entry>Craft/Blacksmithing@4</entry>
+    <entry>Craft/Blacksmithing@4@</entry>
   </collection>
   <collection>
     <name>Average Xorn</name>
   </collection>
   <collection>
     <name>Avoral</name>
-    <entry>Spot@8</entry>
+    <entry>Spot@8@</entry>
   </collection>
   <collection>
     <name>Azer</name>
   </collection>
   <collection>
     <name>Babau</name>
-    <entry>Hide@8</entry>
-    <entry>Listen@8</entry>
-    <entry>Move Silently@8</entry>
-    <entry>Search@8</entry>
+    <entry>Hide@8@</entry>
+    <entry>Listen@8@</entry>
+    <entry>Move Silently@8@</entry>
+    <entry>Search@8@</entry>
   </collection>
   <collection>
     <name>Baboon</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Badger</name>
-    <entry>Escape Artist@4</entry>
+    <entry>Escape Artist@4@</entry>
   </collection>
   <collection>
     <name>Baleen Whale</name>
-    <entry>Listen@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Listen@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Balor</name>
-    <entry>Listen@8</entry>
-    <entry>Spot@8</entry>
+    <entry>Listen@8@</entry>
+    <entry>Spot@8@</entry>
   </collection>
   <collection>
     <name>Barbed Devil (Hamatula)</name>
   </collection>
   <collection>
     <name>Barghest</name>
-    <entry>Hide$in wolf form@4</entry>
+    <entry>Hide@4@in wolf form</entry>
   </collection>
   <collection>
     <name>Basilisk</name>
-    <entry>Hide$in natural settings@4</entry>
+    <entry>Hide@4@in natural settings</entry>
   </collection>
   <collection>
     <name>Greater Basilisk</name>
-    <entry>Hide$in natural settings@4</entry>
+    <entry>Hide@4@in natural settings</entry>
   </collection>
   <collection>
     <name>Bat</name>
-    <entry>Listen$while able to use blindsense@4</entry>
-    <entry>Spot$while able to use blindsense@4</entry>
+    <entry>Listen@4@while able to use blindsense</entry>
+    <entry>Spot@4@while able to use blindsense</entry>
   </collection>
   <collection>
     <name>Bat Swarm</name>
-    <entry>Listen$while able to use blindsense@4</entry>
-    <entry>Spot$while able to use blindsense@4</entry>
+    <entry>Listen@4@while able to use blindsense</entry>
+    <entry>Spot@4@while able to use blindsense</entry>
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>
   </collection>
   <collection>
     <name>Bebilith</name>
-    <entry>Hide@8</entry>
+    <entry>Hide@8@</entry>
   </collection>
   <collection>
     <name>Behir</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Beholder</name>
   </collection>
   <collection>
     <name>Belker</name>
-    <entry>Move Silently@4</entry>
+    <entry>Move Silently@4@</entry>
   </collection>
   <collection>
     <name>Bison</name>
   </collection>
   <collection>
     <name>Black Bear</name>
-    <entry>Swim@4</entry>
+    <entry>Swim@4@</entry>
   </collection>
   <collection>
     <name>Black Dragon, Adult</name>
@@ -429,8 +429,8 @@
   </collection>
   <collection>
     <name>Black Pudding</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Blink Dog</name>
@@ -560,19 +560,19 @@
   </collection>
   <collection>
     <name>Brown Bear</name>
-    <entry>Swim@4</entry>
+    <entry>Swim@4@</entry>
   </collection>
   <collection>
     <name>Bugbear</name>
-    <entry>Move Silently@4</entry>
+    <entry>Move Silently@4@</entry>
   </collection>
   <collection>
     <name>Bulette</name>
   </collection>
   <collection>
     <name>Cachalot Whale</name>
-    <entry>Listen@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Listen@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Camel, Bactrian (Two-Humped)</name>
@@ -582,30 +582,30 @@
   </collection>
   <collection>
     <name>Carrion Crawler</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Cat</name>
-    <entry>Balance@8</entry>
-    <entry>Climb@4</entry>
-    <entry>Hide@4</entry>
-    <entry>Hide$in areas of tall grass or heavy undergrowth@4</entry>
-    <entry>Jump@8</entry>
-    <entry>Move Silently@4</entry>
+    <entry>Balance@8@</entry>
+    <entry>Climb@4@</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$in areas of tall grass or heavy undergrowth@4@</entry>
+    <entry>Jump@8@</entry>
+    <entry>Move Silently@4@</entry>
   </collection>
   <collection>
     <name>Centaur</name>
   </collection>
   <collection>
     <name>Centipede Swarm</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Chain Devil (Kyton)</name>
-    <entry>Craft$involving metalwork@8</entry>
+    <entry>Craft$involving metalwork@8@</entry>
   </collection>
   <collection>
     <name>Chaos Beast</name>
@@ -618,38 +618,38 @@
   </collection>
   <collection>
     <name>Chimera (Black Dragon head)</name>
-    <entry>Hide$in areas of scrubland or brush@4</entry>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
+    <entry>Hide$in areas of scrubland or brush@4@</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Chimera (Blue Dragon head)</name>
-    <entry>Hide$in areas of scrubland or brush@4</entry>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
+    <entry>Hide$in areas of scrubland or brush@4@</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Chimera (Green Dragon head)</name>
-    <entry>Hide$in areas of scrubland or brush@4</entry>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
+    <entry>Hide$in areas of scrubland or brush@4@</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Chimera (Red Dragon head)</name>
-    <entry>Hide$in areas of scrubland or brush@4</entry>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
+    <entry>Hide$in areas of scrubland or brush@4@</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Chimera (White Dragon head)</name>
-    <entry>Hide$in areas of scrubland or brush@4</entry>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
+    <entry>Hide$in areas of scrubland or brush@4@</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Choker</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Chuul</name>
@@ -719,19 +719,19 @@
   </collection>
   <collection>
     <name>Crocodile</name>
-    <entry>Hide$in water@4</entry>
-    <entry>Hide$laying in water with only its eyes and nostrils showing@10</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Hide$in water@4@</entry>
+    <entry>Hide$laying in water with only its eyes and nostrils showing@10@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Dark Naga</name>
   </collection>
   <collection>
     <name>Darkmantle</name>
-    <entry>Hide@4</entry>
-    <entry>Listen$while able to use blindsight@4</entry>
-    <entry>Spot$while able to use blindsight@4</entry>
+    <entry>Hide@4@</entry>
+    <entry>Listen$while able to use blindsight@4@</entry>
+    <entry>Spot$while able to use blindsight@4@</entry>
   </collection>
   <collection>
     <name>Death Slaad</name>
@@ -744,11 +744,11 @@
   </collection>
   <collection>
     <name>Deinonychus</name>
-    <entry>Hide@8</entry>
-    <entry>Jump@8</entry>
-    <entry>Listen@8</entry>
-    <entry>Spot@8</entry>
-    <entry>Survival@8</entry>
+    <entry>Hide@8@</entry>
+    <entry>Jump@8@</entry>
+    <entry>Listen@8@</entry>
+    <entry>Spot@8@</entry>
+    <entry>Survival@8@</entry>
   </collection>
   <collection>
     <name>Delver</name>
@@ -761,28 +761,28 @@
   </collection>
   <collection>
     <name>Destrachan</name>
-    <entry>Listen@10</entry>
+    <entry>Listen@10@</entry>
   </collection>
   <collection>
     <name>Devourer</name>
   </collection>
   <collection>
     <name>Digester</name>
-    <entry>Hide@4</entry>
-    <entry>Jump@4</entry>
+    <entry>Hide@4@</entry>
+    <entry>Jump@4@</entry>
   </collection>
   <collection>
     <name>Dire Ape</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Dire Badger</name>
   </collection>
   <collection>
     <name>Dire Bat</name>
-    <entry>Listen$while able to use blindsense@4</entry>
-    <entry>Spot$while able to use blindsense@4</entry>
+    <entry>Listen$while able to use blindsense@4@</entry>
+    <entry>Spot$while able to use blindsense@4@</entry>
   </collection>
   <collection>
     <name>Dire Bear</name>
@@ -792,86 +792,86 @@
   </collection>
   <collection>
     <name>Dire Lion</name>
-    <entry>Hide@4</entry>
-    <entry>Hide$in tall grass or heavy undergrowth@4</entry>
-    <entry>Move Silently@4</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$in tall grass or heavy undergrowth@4@</entry>
+    <entry>Move Silently@4@</entry>
   </collection>
   <collection>
     <name>Dire Rat</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Swim@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Swim@8@</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Dire Shark</name>
   </collection>
   <collection>
     <name>Dire Tiger</name>
-    <entry>Hide@4</entry>
-    <entry>Hide$in tall grass or heavy undergrowth@4</entry>
-    <entry>Move Silently@4</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$in tall grass or heavy undergrowth@4@</entry>
+    <entry>Move Silently@4@</entry>
   </collection>
   <collection>
     <name>Dire Weasel</name>
   </collection>
   <collection>
     <name>Dire Wolf</name>
-    <entry>Hide@2</entry>
-    <entry>Listen@2</entry>
-    <entry>Move Silently@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Survival$tracking by scent@4</entry>
+    <entry>Hide@2@</entry>
+    <entry>Listen@2@</entry>
+    <entry>Move Silently@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Survival$tracking by scent@4@</entry>
   </collection>
   <collection>
     <name>Dire Wolverine</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Displacer Beast</name>
-    <entry>Hide@8</entry>
+    <entry>Hide@8@</entry>
   </collection>
   <collection>
     <name>Displacer Beast Pack Lord</name>
-    <entry>Hide@8</entry>
+    <entry>Hide@8@</entry>
   </collection>
   <collection>
     <name>Djinni</name>
   </collection>
   <collection>
     <name>Dog</name>
-    <entry>Jump@4</entry>
-    <entry>Survival$tracking by scent@4</entry>
+    <entry>Jump@4@</entry>
+    <entry>Survival$tracking by scent@4@</entry>
   </collection>
   <collection>
     <name>Dog, Riding</name>
-    <entry>Jump@4</entry>
-    <entry>Survival$tracking by scent@4</entry>
+    <entry>Jump@4@</entry>
+    <entry>Survival$tracking by scent@4@</entry>
   </collection>
   <collection>
     <name>Donkey</name>
-    <entry>Balance@2</entry>
+    <entry>Balance@2@</entry>
   </collection>
   <collection>
     <name>Doppelganger</name>
-    <entry>Bluff@4</entry>
-    <entry>Bluff$when reading an opponent's mind@4</entry>
-    <entry>Disguise@4</entry>
-    <entry>Disguise$when reading an opponent's mind@4</entry>
-    <entry>Disguise$when using Change Shape@10</entry>
+    <entry>Bluff@4@</entry>
+    <entry>Bluff$when reading an opponent's mind@4@</entry>
+    <entry>Disguise@4@</entry>
+    <entry>Disguise$when reading an opponent's mind@4@</entry>
+    <entry>Disguise$when using Change Shape@10@</entry>
   </collection>
   <collection>
     <name>Dragon</name>
   </collection>
   <collection>
     <name>Dragon Turtle</name>
-    <entry>Hide$when submerged@8</entry>
+    <entry>Hide$when submerged@8@</entry>
   </collection>
   <collection>
     <name>Dragonne</name>
-    <entry>Listen@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Listen@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Dread Wraith</name>
@@ -881,39 +881,39 @@
   </collection>
   <collection>
     <name>Drider</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Move Silently@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Move Silently@4@</entry>
   </collection>
   <collection>
     <name>Drow</name>
-    <entry>Listen@2</entry>
-    <entry>Search@2</entry>
-    <entry>Search$passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
-    <entry>Spot@2</entry>
+    <entry>Listen@2@</entry>
+    <entry>Search@2@</entry>
+    <entry>Search$passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Dryad</name>
-    <entry>Diplomacy$when using Wild Empathy@6</entry>
+    <entry>Diplomacy$when using Wild Empathy@6@</entry>
   </collection>
   <collection>
     <name>Duergar</name>
-    <entry>Listen@1</entry>
-    <entry>Move Silently@4</entry>
-    <entry>Spot@1</entry>
+    <entry>Listen@1@</entry>
+    <entry>Move Silently@4@</entry>
+    <entry>Spot@1@</entry>
   </collection>
   <collection>
     <name>Dust Mephit</name>
   </collection>
   <collection>
     <name>Dwarf</name>
-    <entry>Appraise$for items related to stone or metal@2</entry>
-    <entry>Craft$for items related to stone or metal@2</entry>
+    <entry>Appraise$for items related to stone or metal@2@</entry>
+    <entry>Craft$for items related to stone or metal@2@</entry>
   </collection>
   <collection>
     <name>Eagle</name>
-    <entry>Spot@8</entry>
+    <entry>Spot@8@</entry>
   </collection>
   <collection>
     <name>Earth</name>
@@ -944,36 +944,36 @@
   </collection>
   <collection>
     <name>Eight-Headed Cryohydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Eight-Headed Hydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Eight-Headed Pyrohydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Elasmosaurus</name>
-    <entry>Hide$in water@8</entry>
+    <entry>Hide$in water@8@</entry>
   </collection>
   <collection>
     <name>Elder Arrowhawk</name>
   </collection>
   <collection>
     <name>Elder Black Pudding</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Elder Tojanida</name>
@@ -989,24 +989,24 @@
   </collection>
   <collection>
     <name>Eleven-Headed Cryohydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Hydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Pyrohydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Elf</name>
@@ -1016,29 +1016,29 @@
   </collection>
   <collection>
     <name>Ethereal Filcher</name>
-    <entry>Listen@4</entry>
-    <entry>Sleight of Hand@8</entry>
-    <entry>Spot@4</entry>
+    <entry>Listen@4@</entry>
+    <entry>Sleight of Hand@8@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Ethereal Marauder</name>
-    <entry>Listen@2</entry>
-    <entry>Move Silently@2</entry>
-    <entry>Spot@2</entry>
+    <entry>Listen@2@</entry>
+    <entry>Move Silently@2@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Ettercap</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Craft/Trapmaking@4</entry>
-    <entry>Hide@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Craft/Trapmaking@4@</entry>
+    <entry>Hide@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Ettin</name>
-    <entry>Listen@2</entry>
-    <entry>Search@2</entry>
-    <entry>Spot@2</entry>
+    <entry>Listen@2@</entry>
+    <entry>Search@2@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Evil</name>
@@ -1078,36 +1078,36 @@
   </collection>
   <collection>
     <name>Five-Headed Cryohydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Five-Headed Hydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Five-Headed Pyrohydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Flamebrother Salamander</name>
-    <entry>Craft/Blacksmithing@4</entry>
+    <entry>Craft/Blacksmithing@4@</entry>
   </collection>
   <collection>
     <name>Flesh Golem</name>
   </collection>
   <collection>
     <name>Forest Gnome</name>
-    <entry>Hide@4</entry>
-    <entry>Hide$in a wooded area@8</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$in a wooded area@8@</entry>
   </collection>
   <collection>
     <name>Formian Myrmarch</name>
@@ -1129,22 +1129,22 @@
   </collection>
   <collection>
     <name>Frost Worm</name>
-    <entry>Hide$on Cold Plains@10</entry>
+    <entry>Hide$on Cold Plains@10@</entry>
   </collection>
   <collection>
     <name>Gargoyle</name>
-    <entry>Hide@2</entry>
-    <entry>Hide$concealed against a background of stone@8</entry>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
+    <entry>Hide@2@</entry>
+    <entry>Hide$concealed against a background of stone@8@</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Gauth (Lesser Beholder)</name>
   </collection>
   <collection>
     <name>Gelatinous Cube</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Ghaele</name>
@@ -1160,26 +1160,26 @@
   </collection>
   <collection>
     <name>Giant Ant, Queen</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Survival$tracking by scent@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Survival$tracking by scent@4@</entry>
   </collection>
   <collection>
     <name>Giant Ant, Soldier</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Survival$tracking by scent@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Survival$tracking by scent@4@</entry>
   </collection>
   <collection>
     <name>Giant Ant, Worker</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Survival$tracking by scent@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Survival$tracking by scent@4@</entry>
   </collection>
   <collection>
     <name>Giant Bee</name>
-    <entry>Spot@4</entry>
-    <entry>Survival$To orient itself@4</entry>
+    <entry>Spot@4@</entry>
+    <entry>Survival$To orient itself@4@</entry>
   </collection>
   <collection>
     <name>Giant Bombardier Beetle</name>
@@ -1189,34 +1189,34 @@
   </collection>
   <collection>
     <name>Giant Crocodile</name>
-    <entry>Hide$in water@4</entry>
-    <entry>Hide$laying in water with only its eyes and nostrils showing@10</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Hide$in water@4@</entry>
+    <entry>Hide$laying in water with only its eyes and nostrils showing@10@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Giant Eagle</name>
-    <entry>Spot@4</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Giant Fire Beetle</name>
   </collection>
   <collection>
     <name>Giant Octopus</name>
-    <entry>Hide@4</entry>
-    <entry>Escape Artist@10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Escape Artist@10@</entry>
   </collection>
   <collection>
     <name>Giant Owl</name>
-    <entry>Listen@8</entry>
-    <entry>Move Silently$in flight@8</entry>
-    <entry>Spot@4</entry>
+    <entry>Listen@8@</entry>
+    <entry>Move Silently$in flight@8@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Giant Praying Mantis</name>
-    <entry>Hide@4</entry>
-    <entry>Hide$surrounded by foliage@8</entry>
-    <entry>Spot@4</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$surrounded by foliage@8@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Giant Squid</name>
@@ -1226,19 +1226,19 @@
   </collection>
   <collection>
     <name>Giant Wasp</name>
-    <entry>Spot@8</entry>
-    <entry>Survival$to orient itself@4</entry>
+    <entry>Spot@8@</entry>
+    <entry>Survival$to orient itself@4@</entry>
   </collection>
   <collection>
     <name>Gibbering Mouther</name>
-    <entry>Spot@4</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Spot@4@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Girallon</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Githyanki</name>
@@ -1248,21 +1248,21 @@
   </collection>
   <collection>
     <name>Glabrezu</name>
-    <entry>Listen@8</entry>
-    <entry>Spot@8</entry>
+    <entry>Listen@8@</entry>
+    <entry>Spot@8@</entry>
   </collection>
   <collection>
     <name>Gnoll</name>
   </collection>
   <collection>
     <name>Gnome</name>
-    <entry>Craft/Alchemy@2</entry>
-    <entry>Listen@2</entry>
+    <entry>Craft/Alchemy@2@</entry>
+    <entry>Listen@2@</entry>
   </collection>
   <collection>
     <name>Goblin</name>
-    <entry>Move Silently@4</entry>
-    <entry>Ride@4</entry>
+    <entry>Move Silently@4@</entry>
+    <entry>Ride@4@</entry>
   </collection>
   <collection>
     <name>Goblinoid</name>
@@ -1311,34 +1311,34 @@
   </collection>
   <collection>
     <name>Gray Elf</name>
-    <entry>Listen@2</entry>
-    <entry>Search@2</entry>
-    <entry>Search$passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
-    <entry>Spot@2</entry>
+    <entry>Listen@2@</entry>
+    <entry>Search@2@</entry>
+    <entry>Search$passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Gray Ooze</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Gray Render</name>
-    <entry>Spot@4</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Gray Slaad</name>
   </collection>
   <collection>
     <name>Greater Barghest</name>
-    <entry>Hide$in wolf form@4</entry>
+    <entry>Hide$in wolf form@4@</entry>
   </collection>
   <collection>
     <name>Greater Shadow</name>
-    <entry>Hide$in areas of shadowy illumination@4</entry>
-    <entry>Hide$in brightly lit areas@-4</entry>
-    <entry>Listen@2</entry>
-    <entry>Search@4</entry>
-    <entry>Spot@2</entry>
+    <entry>Hide$in areas of shadowy illumination@4@</entry>
+    <entry>Hide$in brightly lit areas@-4@</entry>
+    <entry>Listen@2@</entry>
+    <entry>Search@4@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Greater Stone Golem</name>
@@ -1387,28 +1387,28 @@
   </collection>
   <collection>
     <name>Grick</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide$in natural, rocky areas@8</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide$in natural, rocky areas@8@</entry>
   </collection>
   <collection>
     <name>Griffon</name>
-    <entry>Jump@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Jump@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Grig</name>
-    <entry>Jump@8</entry>
-    <entry>Move Silently$in a forest setting@5</entry>
+    <entry>Jump@8@</entry>
+    <entry>Move Silently$in a forest setting@5@</entry>
   </collection>
   <collection>
     <name>Grig with fiddle</name>
-    <entry>Jump@8</entry>
-    <entry>Move Silently$in a forest setting@5</entry>
+    <entry>Jump@8@</entry>
+    <entry>Move Silently$in a forest setting@5@</entry>
   </collection>
   <collection>
     <name>Grimlock</name>
-    <entry>Hide$in mountains or underground@10</entry>
+    <entry>Hide$in mountains or underground@10@</entry>
   </collection>
   <collection>
     <name>Guardian Naga</name>
@@ -1418,27 +1418,27 @@
   </collection>
   <collection>
     <name>Half-Elf</name>
-    <entry>Diplomacy@2</entry>
-    <entry>Gather Information@2</entry>
-    <entry>Listen@1</entry>
-    <entry>Search@1</entry>
-    <entry>Spot@1</entry>
+    <entry>Diplomacy@2@</entry>
+    <entry>Gather Information@2@</entry>
+    <entry>Listen@1@</entry>
+    <entry>Search@1@</entry>
+    <entry>Spot@1@</entry>
   </collection>
   <collection>
     <name>Half-Orc</name>
   </collection>
   <collection>
     <name>Halfling</name>
-    <entry>Listen@2</entry>
+    <entry>Listen@2@</entry>
   </collection>
   <collection>
     <name>Harpy</name>
-    <entry>Bluff@4</entry>
-    <entry>Listen@4</entry>
+    <entry>Bluff@4@</entry>
+    <entry>Listen@4@</entry>
   </collection>
   <collection>
     <name>Hawk</name>
-    <entry>Spot@8</entry>
+    <entry>Spot@8@</entry>
   </collection>
   <collection>
     <name>Heavy Horse</name>
@@ -1448,32 +1448,32 @@
   </collection>
   <collection>
     <name>Hell Hound</name>
-    <entry>Hide@5</entry>
-    <entry>Move Silently@5</entry>
+    <entry>Hide@5@</entry>
+    <entry>Move Silently@5@</entry>
   </collection>
   <collection>
     <name>Hellcat (Bezekira)</name>
-    <entry>Listen@4</entry>
-    <entry>Move Silently@4</entry>
+    <entry>Listen@4@</entry>
+    <entry>Move Silently@4@</entry>
   </collection>
   <collection>
     <name>Hellwasp Swarm</name>
   </collection>
   <collection>
     <name>Hezrou</name>
-    <entry>Listen@8</entry>
-    <entry>Spot@8</entry>
+    <entry>Listen@8@</entry>
+    <entry>Spot@8@</entry>
   </collection>
   <collection>
     <name>Hieracosphinx</name>
-    <entry>Spot@4</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>High Elf</name>
-    <entry>Listen@2</entry>
-    <entry>Search@2</entry>
-    <entry>Search$passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
-    <entry>Spot@2</entry>
+    <entry>Listen@2@</entry>
+    <entry>Search@2@</entry>
+    <entry>Search$passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Hill Dwarf</name>
@@ -1483,11 +1483,11 @@
   </collection>
   <collection>
     <name>Hippogriff</name>
-    <entry>Spot@4</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Hobgoblin</name>
-    <entry>Move Silently@4</entry>
+    <entry>Move Silently@4@</entry>
   </collection>
   <collection>
     <name>Homunculus</name>
@@ -1497,8 +1497,8 @@
   </collection>
   <collection>
     <name>Hound Archon</name>
-    <entry>Hide$in canine form@4</entry>
-    <entry>Survival$in canine form@4</entry>
+    <entry>Hide$in canine form@4@</entry>
+    <entry>Survival$in canine form@4@</entry>
   </collection>
   <collection>
     <name>Howler</name>
@@ -1511,7 +1511,7 @@
   </collection>
   <collection>
     <name>Hyena</name>
-    <entry>Hide$in tall grass or heavy undergrowth@4</entry>
+    <entry>Hide$in tall grass or heavy undergrowth@4@</entry>
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
@@ -1527,7 +1527,7 @@
   </collection>
   <collection>
     <name>Incorporeal</name>
-    <entry>Move Silently$always succeeds, and cannot be heard by Listen checks unless it wants to be@9000</entry>
+    <entry>Move Silently$always succeeds, and cannot be heard by Listen checks unless it wants to be@9000@</entry>
   </collection>
   <collection>
     <name>Iron Golem</name>
@@ -1543,48 +1543,48 @@
   </collection>
   <collection>
     <name>Kapoacinth</name>
-    <entry>Hide@2</entry>
-    <entry>Hide$concealed against a background of stone@8</entry>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
+    <entry>Hide@2@</entry>
+    <entry>Hide$concealed against a background of stone@8@</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Kobold</name>
-    <entry>Craft/Trapmaking@2</entry>
-    <entry>Profession/Miner@2</entry>
-    <entry>Search@2</entry>
+    <entry>Craft/Trapmaking@2@</entry>
+    <entry>Profession/Miner@2@</entry>
+    <entry>Search@2@</entry>
   </collection>
   <collection>
     <name>Kolyarut</name>
-    <entry>Disguise@4</entry>
-    <entry>Gather Information@4</entry>
-    <entry>Sense Motive@4</entry>
+    <entry>Disguise@4@</entry>
+    <entry>Gather Information@4@</entry>
+    <entry>Sense Motive@4@</entry>
   </collection>
   <collection>
     <name>Kraken</name>
   </collection>
   <collection>
     <name>Krenshar</name>
-    <entry>Jump@4</entry>
-    <entry>Move Silently@4</entry>
+    <entry>Jump@4@</entry>
+    <entry>Move Silently@4@</entry>
   </collection>
   <collection>
     <name>Kuo-toa</name>
-    <entry>Escape Artist@8</entry>
-    <entry>Search@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Escape Artist@8@</entry>
+    <entry>Search@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Lacedon</name>
   </collection>
   <collection>
     <name>Lamia</name>
-    <entry>Bluff@4</entry>
-    <entry>Hide@4</entry>
+    <entry>Bluff@4@</entry>
+    <entry>Hide@4@</entry>
   </collection>
   <collection>
     <name>Lammasu</name>
-    <entry>Spot@2</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Lantern Archon</name>
@@ -1597,19 +1597,19 @@
   </collection>
   <collection>
     <name>Leonal</name>
-    <entry>Balance@4</entry>
-    <entry>Hide@4</entry>
-    <entry>Move Silently@4</entry>
+    <entry>Balance@4@</entry>
+    <entry>Hide@4@</entry>
+    <entry>Move Silently@4@</entry>
   </collection>
   <collection>
     <name>Leopard</name>
-    <entry>Balance@8</entry>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Hide$in areas of tall grass or heavy undergrowth@4</entry>
-    <entry>Jump@8</entry>
-    <entry>Move Silently@4</entry>
+    <entry>Balance@8@</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$in areas of tall grass or heavy undergrowth@4@</entry>
+    <entry>Jump@8@</entry>
+    <entry>Move Silently@4@</entry>
   </collection>
   <collection>
     <name>Light Horse</name>
@@ -1619,40 +1619,40 @@
   </collection>
   <collection>
     <name>Lightfoot Halfling</name>
-    <entry>Climb@2</entry>
-    <entry>Jump@2</entry>
-    <entry>Move Silently@2</entry>
+    <entry>Climb@2@</entry>
+    <entry>Jump@2@</entry>
+    <entry>Move Silently@2@</entry>
   </collection>
   <collection>
     <name>Lillend</name>
-    <entry>Survival@4</entry>
+    <entry>Survival@4@</entry>
   </collection>
   <collection>
     <name>Lion</name>
-    <entry>Balance@4</entry>
-    <entry>Hide@4</entry>
-    <entry>Hide$in tall grass or heavy undergrowth@8</entry>
-    <entry>Move Silently@4</entry>
+    <entry>Balance@4@</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$in tall grass or heavy undergrowth@8@</entry>
+    <entry>Move Silently@4@</entry>
   </collection>
   <collection>
     <name>Lizard</name>
-    <entry>Balance@8</entry>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
+    <entry>Balance@8@</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Lizardfolk</name>
-    <entry>Balance@4</entry>
-    <entry>Jump@4</entry>
-    <entry>Swim@4</entry>
+    <entry>Balance@4@</entry>
+    <entry>Jump@4@</entry>
+    <entry>Swim@4@</entry>
   </collection>
   <collection>
     <name>Locathah</name>
   </collection>
   <collection>
     <name>Locust Swarm</name>
-    <entry>Listen@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Listen@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Magical Beast</name>
@@ -1665,41 +1665,41 @@
   </collection>
   <collection>
     <name>Malenti</name>
-    <entry>Handle Animal$when working with sharks@4</entry>
-    <entry>Hide$underwater@4</entry>
-    <entry>Listen$underwater@4</entry>
-    <entry>Profession/Hunter$within 50 miles of its home@4</entry>
-    <entry>Spot$underwater@4</entry>
-    <entry>Survival$within 50 miles of its home@4</entry>
+    <entry>Handle Animal$when working with sharks@4@</entry>
+    <entry>Hide$underwater@4@</entry>
+    <entry>Listen$underwater@4@</entry>
+    <entry>Profession/Hunter$within 50 miles of its home@4@</entry>
+    <entry>Spot$underwater@4@</entry>
+    <entry>Survival$within 50 miles of its home@4@</entry>
   </collection>
   <collection>
     <name>Manta Ray</name>
   </collection>
   <collection>
     <name>Manticore</name>
-    <entry>Spot@4</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Marilith</name>
-    <entry>Listen@8</entry>
-    <entry>Spot@8</entry>
+    <entry>Listen@8@</entry>
+    <entry>Spot@8@</entry>
   </collection>
   <collection>
     <name>Marut</name>
-    <entry>Concentration@4</entry>
-    <entry>Listen@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Concentration@4@</entry>
+    <entry>Listen@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Medusa</name>
   </collection>
   <collection>
     <name>Megaraptor</name>
-    <entry>Hide@8</entry>
-    <entry>Jump@8</entry>
-    <entry>Listen@8</entry>
-    <entry>Spot@8</entry>
-    <entry>Survival@8</entry>
+    <entry>Hide@8@</entry>
+    <entry>Jump@8@</entry>
+    <entry>Listen@8@</entry>
+    <entry>Spot@8@</entry>
+    <entry>Survival@8@</entry>
   </collection>
   <collection>
     <name>Merfolk</name>
@@ -1709,7 +1709,7 @@
   </collection>
   <collection>
     <name>Mimic</name>
-    <entry>Disguise@8</entry>
+    <entry>Disguise@8@</entry>
   </collection>
   <collection>
     <name>Mind Flayer (Illithid)</name>
@@ -1719,262 +1719,262 @@
   </collection>
   <collection>
     <name>Minotaur</name>
-    <entry>Listen@4</entry>
-    <entry>Search@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Listen@4@</entry>
+    <entry>Search@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Mohrg</name>
   </collection>
   <collection>
     <name>Monitor Lizard</name>
-    <entry>Hide@4</entry>
-    <entry>Hide$in forested or overgrown areas@4</entry>
-    <entry>Move Silently@4</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$in forested or overgrown areas@4@</entry>
+    <entry>Move Silently@4@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Monkey</name>
-    <entry>Balance@8</entry>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
+    <entry>Balance@8@</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Colossal</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@8</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@8@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Gargantuan</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@8</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@8@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Huge</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@8</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@8@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Large</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@8</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@8@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Medium</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@8</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@8@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Small</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@8</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@8@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Tiny</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@8</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@8@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Humanoid</name>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Colossal</name>
-    <entry>Climb@4</entry>
-    <entry>Hide@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@4@</entry>
+    <entry>Hide@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Gargantuan</name>
-    <entry>Climb@4</entry>
-    <entry>Hide@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@4@</entry>
+    <entry>Hide@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Huge</name>
-    <entry>Climb@4</entry>
-    <entry>Hide@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@4@</entry>
+    <entry>Hide@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Large</name>
-    <entry>Climb@4</entry>
-    <entry>Hide@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@4@</entry>
+    <entry>Hide@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Medium</name>
-    <entry>Climb@4</entry>
-    <entry>Hide@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@4@</entry>
+    <entry>Hide@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Small</name>
-    <entry>Climb@4</entry>
-    <entry>Hide@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@4@</entry>
+    <entry>Hide@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Tiny</name>
-    <entry>Climb@4</entry>
-    <entry>Hide@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@4@</entry>
+    <entry>Hide@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Colossal</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Jump@10</entry>
-    <entry>Spot@8</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Jump@10@</entry>
+    <entry>Spot@8@</entry>
   </collection>             
   <collection>              
     <name>Monstrous Spider, Hunter, Gargantuan</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Jump@10</entry>
-    <entry>Spot@8</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Jump@10@</entry>
+    <entry>Spot@8@</entry>
   </collection>             
   <collection>              
     <name>Monstrous Spider, Hunter, Huge</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Jump@10</entry>
-    <entry>Spot@8</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Jump@10@</entry>
+    <entry>Spot@8@</entry>
   </collection>             
   <collection>              
     <name>Monstrous Spider, Hunter, Large</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Jump@10</entry>
-    <entry>Spot@8</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Jump@10@</entry>
+    <entry>Spot@8@</entry>
   </collection>             
   <collection>              
     <name>Monstrous Spider, Hunter, Medium</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Jump@10</entry>
-    <entry>Spot@8</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Jump@10@</entry>
+    <entry>Spot@8@</entry>
   </collection>             
   <collection>              
     <name>Monstrous Spider, Hunter, Small</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Jump@10</entry>
-    <entry>Spot@8</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Jump@10@</entry>
+    <entry>Spot@8@</entry>
   </collection>             
   <collection>              
     <name>Monstrous Spider, Hunter, Tiny</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Jump@10</entry>
-    <entry>Spot@8</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Jump@10@</entry>
+    <entry>Spot@8@</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Colossal</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Hide$when using their webs@8</entry>
-    <entry>Move Silently$when using their webs@8</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$when using their webs@8@</entry>
+    <entry>Move Silently$when using their webs@8@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Hide$when using their webs@8</entry>
-    <entry>Move Silently$when using their webs@8</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$when using their webs@8@</entry>
+    <entry>Move Silently$when using their webs@8@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Huge</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Hide$when using their webs@8</entry>
-    <entry>Move Silently$when using their webs@8</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$when using their webs@8@</entry>
+    <entry>Move Silently$when using their webs@8@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Large</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Hide$when using their webs@8</entry>
-    <entry>Move Silently$when using their webs@8</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$when using their webs@8@</entry>
+    <entry>Move Silently$when using their webs@8@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Medium</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Hide$when using their webs@8</entry>
-    <entry>Move Silently$when using their webs@8</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$when using their webs@8@</entry>
+    <entry>Move Silently$when using their webs@8@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Small</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Hide$when using their webs@8</entry>
-    <entry>Move Silently$when using their webs@8</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$when using their webs@8@</entry>
+    <entry>Move Silently$when using their webs@8@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Tiny</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Hide$when using their webs@8</entry>
-    <entry>Move Silently$when using their webs@8</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$when using their webs@8@</entry>
+    <entry>Move Silently$when using their webs@8@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Mountain Dwarf</name>
   </collection>
   <collection>
     <name>Mule</name>
-    <entry>Balance$To avoid slipping or falling@2</entry>
+    <entry>Balance$To avoid slipping or falling@2@</entry>
   </collection>
   <collection>
     <name>Mummy</name>
   </collection>
   <collection>
     <name>Nalfeshnee</name>
-    <entry>Listen@8</entry>
-    <entry>Spot@8</entry>
+    <entry>Listen@8@</entry>
+    <entry>Spot@8@</entry>
   </collection>
   <collection>
     <name>Native</name>
   </collection>
   <collection>
     <name>Nessian Warhound</name>
-    <entry>Hide@5</entry>
-    <entry>Move Silently@5</entry>
+    <entry>Hide@5@</entry>
+    <entry>Move Silently@5@</entry>
   </collection>
   <collection>
     <name>Night Hag</name>
@@ -1990,58 +1990,58 @@
   </collection>
   <collection>
     <name>Nightwalker</name>
-    <entry>Hide$in a dark area@8</entry>
+    <entry>Hide$in a dark area@8@</entry>
   </collection>
   <collection>
     <name>Nightwing</name>
-    <entry>Hide$in a dark area or flying in a dark sky@8</entry>
+    <entry>Hide$in a dark area or flying in a dark sky@8@</entry>
   </collection>
   <collection>
     <name>Nine-Headed Cryohydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Nine-Headed Hydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Nine-Headed Pyrohydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Nixie</name>
-    <entry>Hide$in water@5</entry>
+    <entry>Hide$in water@5@</entry>
   </collection>
   <collection>
     <name>Noble Djinni</name>
   </collection>
   <collection>
     <name>Noble Salamander</name>
-    <entry>Craft/Blacksmithing@4</entry>
+    <entry>Craft/Blacksmithing@4@</entry>
   </collection>
   <collection>
     <name>Nymph</name>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Ochre Jelly</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Octopus</name>
-    <entry>Hide@4</entry>
-    <entry>Escape Artist@10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Escape Artist@10@</entry>
   </collection>
   <collection>
     <name>Ogre</name>
@@ -2060,120 +2060,120 @@
   </collection>
   <collection>
     <name>Orca Whale</name>
-    <entry>Listen@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Listen@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Otyugh</name>
-    <entry>Hide$in its lair@8</entry>
+    <entry>Hide$in its lair@8@</entry>
   </collection>
   <collection>
     <name>Outsider</name>
   </collection>
   <collection>
     <name>Owl</name>
-    <entry>Listen@8</entry>
-    <entry>Move Silently@14</entry>
-    <entry>Spot$in areas of shadowy illumination@8</entry>
+    <entry>Listen@8@</entry>
+    <entry>Move Silently@14@</entry>
+    <entry>Spot$in areas of shadowy illumination@8@</entry>
   </collection>
   <collection>
     <name>Owlbear</name>
   </collection>
   <collection>
     <name>Pegasus</name>
-    <entry>Listen@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Listen@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Phantom Fungus</name>
-    <entry>Move Silently@5</entry>
+    <entry>Move Silently@5@</entry>
   </collection>
   <collection>
     <name>Phase Spider</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Phasm</name>
-    <entry>Disguise$when using Shapechange@10</entry>
+    <entry>Disguise$when using Shapechange@10@</entry>
   </collection>
   <collection>
     <name>Pit Fiend</name>
   </collection>
   <collection>
     <name>Pixie</name>
-    <entry>Listen@2</entry>
-    <entry>Search@2</entry>
-    <entry>Spot@2</entry>
+    <entry>Listen@2@</entry>
+    <entry>Search@2@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Pixie with Irresistible dance</name>
-    <entry>Listen@2</entry>
-    <entry>Search@2</entry>
-    <entry>Spot@2</entry>
+    <entry>Listen@2@</entry>
+    <entry>Search@2@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Plant</name>
   </collection>
   <collection>
     <name>Polar Bear</name>
-    <entry>Hide$in snowy settings@12</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Hide$in snowy settings@12@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Pony</name>
   </collection>
   <collection>
     <name>Porpoise</name>
-    <entry>Listen$while able to use blindsight@4</entry>
-    <entry>Spot$while able to use blindsight@4</entry>
+    <entry>Listen$while able to use blindsight@4@</entry>
+    <entry>Spot$while able to use blindsight@4@</entry>
   </collection>
   <collection>
     <name>Pseudodragon</name>
-    <entry>Hide@4</entry>
-    <entry>Hide$in forests or overgrown areas@4</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$in forests or overgrown areas@4@</entry>
   </collection>
   <collection>
     <name>Purple Worm</name>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Quasit</name>
   </collection>
   <collection>
     <name>Rakshasa</name>
-    <entry>Bluff@4</entry>
-    <entry>Bluff$when using Change Shape@10</entry>
-    <entry>Bluff$when reading an opponent's mind@4</entry>
-    <entry>Disguise@4</entry>
-    <entry>Disguise$when reading an opponent's mind@4</entry>
+    <entry>Bluff@4@</entry>
+    <entry>Bluff$when using Change Shape@10@</entry>
+    <entry>Bluff$when reading an opponent's mind@4@</entry>
+    <entry>Disguise@4@</entry>
+    <entry>Disguise$when reading an opponent's mind@4@</entry>
   </collection>
   <collection>
     <name>Rast</name>
   </collection>
   <collection>
     <name>Rat</name>
-    <entry>Balance@8</entry>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Move Silently@4</entry>
-    <entry>Swim@8</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Balance@8@</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Move Silently@4@</entry>
+    <entry>Swim@8@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Rat Swarm</name>
-    <entry>Balance@8</entry>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Move Silently@4</entry>
-    <entry>Swim@8</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Balance@8@</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Move Silently@4@</entry>
+    <entry>Swim@8@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Raven</name>
@@ -2225,7 +2225,7 @@
   </collection>
   <collection>
     <name>Remorhaz</name>
-    <entry>Listen@4</entry>
+    <entry>Listen@4@</entry>
   </collection>
   <collection>
     <name>Reptilian</name>
@@ -2238,54 +2238,54 @@
   </collection>
   <collection>
     <name>Roc</name>
-    <entry>Spot@4</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Rock Gnome</name>
   </collection>
   <collection>
     <name>Roper</name>
-    <entry>Hide$in stony or icy areas@8</entry>
+    <entry>Hide$in stony or icy areas@8@</entry>
   </collection>
   <collection>
     <name>Rust Monster</name>
   </collection>
   <collection>
     <name>Sahuagin</name>
-    <entry>Handle Animal$when working with sharks@4</entry>
-    <entry>Hide$underwater@4</entry>
-    <entry>Listen$underwater@4</entry>
-    <entry>Profession/Hunter$within 50 miles of its home@4</entry>
-    <entry>Spot$underwater@4</entry>
-    <entry>Survival$within 50 miles of its home@4</entry>
+    <entry>Handle Animal$when working with sharks@4@</entry>
+    <entry>Hide$underwater@4@</entry>
+    <entry>Listen$underwater@4@</entry>
+    <entry>Profession/Hunter$within 50 miles of its home@4@</entry>
+    <entry>Spot$underwater@4@</entry>
+    <entry>Survival$within 50 miles of its home@4@</entry>
   </collection>
   <collection>
     <name>Sahuagin Mutant</name>
-    <entry>Handle Animal$when working with sharks@4</entry>
-    <entry>Hide$underwater@4</entry>
-    <entry>Listen$underwater@4</entry>
-    <entry>Profession/Hunter$within 50 miles of its home@4</entry>
-    <entry>Spot$underwater@4</entry>
-    <entry>Survival$within 50 miles of its home@4</entry>
+    <entry>Handle Animal$when working with sharks@4@</entry>
+    <entry>Hide$underwater@4@</entry>
+    <entry>Listen$underwater@4@</entry>
+    <entry>Profession/Hunter$within 50 miles of its home@4@</entry>
+    <entry>Spot$underwater@4@</entry>
+    <entry>Survival$within 50 miles of its home@4@</entry>
   </collection>
   <collection>
     <name>Salt Mephit</name>
   </collection>
   <collection>
     <name>Satyr</name>
-    <entry>Hide@4</entry>
-    <entry>Listen@4</entry>
-    <entry>Move Silently@4</entry>
-    <entry>Perform@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Hide@4@</entry>
+    <entry>Listen@4@</entry>
+    <entry>Move Silently@4@</entry>
+    <entry>Perform@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Satyr with pipes</name>
-    <entry>Hide@4</entry>
-    <entry>Listen@4</entry>
-    <entry>Move Silently@4</entry>
-    <entry>Perform@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Hide@4@</entry>
+    <entry>Listen@4@</entry>
+    <entry>Move Silently@4@</entry>
+    <entry>Perform@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Scorpionfolk</name>
@@ -2301,43 +2301,43 @@
   </collection>
   <collection>
     <name>Seven-Headed Cryohydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Seven-Headed Hydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Seven-Headed Pyrohydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Shadow</name>
-    <entry>Hide$in areas of shadowy illumination@4</entry>
-    <entry>Hide$in brightly lit areas@-4</entry>
-    <entry>Listen@2</entry>
-    <entry>Search@4</entry>
-    <entry>Spot@2</entry>
+    <entry>Hide$in areas of shadowy illumination@4@</entry>
+    <entry>Hide$in brightly lit areas@-4@</entry>
+    <entry>Listen@2@</entry>
+    <entry>Search@4@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Shadow Mastiff</name>
-    <entry>Survival$when tracking by scent@4</entry>
+    <entry>Survival$when tracking by scent@4@</entry>
   </collection>
   <collection>
     <name>Shambling Mound</name>
-    <entry>Hide@4</entry>
-    <entry>Hide$in a swampy or forested area@8</entry>
-    <entry>Listen@4</entry>
-    <entry>Move Silently@4</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$in a swampy or forested area@8@</entry>
+    <entry>Listen@4@</entry>
+    <entry>Move Silently@4@</entry>
   </collection>
   <collection>
     <name>Shapechanger</name>
@@ -2356,13 +2356,13 @@
   </collection>
   <collection>
     <name>Shocker Lizard</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Shrieker</name>
@@ -2405,45 +2405,45 @@
   </collection>
   <collection>
     <name>Six-Headed Cryohydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Six-Headed Hydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Six-Headed Pyrohydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Skum</name>
-    <entry>Hide$underwater@4</entry>
-    <entry>Listen$underwater@4</entry>
-    <entry>Spot$underwater@4</entry>
+    <entry>Hide$underwater@4@</entry>
+    <entry>Listen$underwater@4@</entry>
+    <entry>Spot$underwater@4@</entry>
   </collection>
   <collection>
     <name>Spectre</name>
   </collection>
   <collection>
     <name>Spider Eater</name>
-    <entry>Listen@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Listen@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Spider Swarm</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Spirit Naga</name>
@@ -2459,30 +2459,30 @@
   </collection>
   <collection>
     <name>Stone Giant</name>
-    <entry>Hide$in rocky terrain@8</entry>
+    <entry>Hide$in rocky terrain@8@</entry>
   </collection>
   <collection>
     <name>Stone Giant Elder</name>
-    <entry>Hide$in rocky terrain@8</entry>
+    <entry>Hide$in rocky terrain@8@</entry>
   </collection>
   <collection>
     <name>Stone Golem</name>
   </collection>
   <collection>
     <name>Storm Giant</name>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Succubus</name>
-    <entry>Disguise$when using Change Shape@10</entry>
-    <entry>Listen@8</entry>
-    <entry>Spot@8</entry>
+    <entry>Disguise$when using Change Shape@10@</entry>
+    <entry>Listen@8@</entry>
+    <entry>Spot@8@</entry>
   </collection>
   <collection>
     <name>Svirfneblin</name>
-    <entry>Hide@2</entry>
-    <entry>Hide$underground@2</entry>
+    <entry>Hide@2@</entry>
+    <entry>Hide$underground@2@</entry>
   </collection>
   <collection>
     <name>Swarm</name>
@@ -2492,29 +2492,29 @@
   </collection>
   <collection>
     <name>Tarrasque</name>
-    <entry>Listen@8</entry>
-    <entry>Spot@8</entry>
+    <entry>Listen@8@</entry>
+    <entry>Spot@8@</entry>
   </collection>
   <collection>
     <name>Ten-Headed Cryohydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Ten-Headed Hydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Ten-Headed Pyrohydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Tendriculos</name>
@@ -2524,22 +2524,22 @@
   </collection>
   <collection>
     <name>Tiefling</name>
-    <entry>Bluff@2</entry>
-    <entry>Hide@2</entry>
+    <entry>Bluff@2@</entry>
+    <entry>Hide@2@</entry>
   </collection>
   <collection>
     <name>Tiger</name>
-    <entry>Balance@4</entry>
-    <entry>Hide@4</entry>
-    <entry>Hide$in tall grass or heavy undergrowth@4</entry>
-    <entry>Move Silently@4</entry>
+    <entry>Balance@4@</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$in tall grass or heavy undergrowth@4@</entry>
+    <entry>Move Silently@4@</entry>
   </collection>
   <collection>
     <name>Titan</name>
   </collection>
   <collection>
     <name>Toad</name>
-    <entry>Hide@4</entry>
+    <entry>Hide@4@</entry>
   </collection>
   <collection>
     <name>Treant</name>
@@ -2552,8 +2552,8 @@
   </collection>
   <collection>
     <name>Troglodyte</name>
-    <entry>Hide@4</entry>
-    <entry>Hide$in rocky or underground settings@4</entry>
+    <entry>Hide@4@</entry>
+    <entry>Hide$in rocky or underground settings@4@</entry>
   </collection>
   <collection>
     <name>Troll</name>
@@ -2566,29 +2566,29 @@
   </collection>
   <collection>
     <name>Twelve-Headed Cryohydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Hydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Pyrohydra</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Tyrannosaurus</name>
-    <entry>Listen@2</entry>
-    <entry>Spot@2</entry>
+    <entry>Listen@2@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Umber Hulk</name>
@@ -2598,18 +2598,18 @@
   </collection>
   <collection>
     <name>Unicorn</name>
-    <entry>Move Silently@4</entry>
-    <entry>Survival$within the boundaries of their forest@3</entry>
+    <entry>Move Silently@4@</entry>
+    <entry>Survival$within the boundaries of their forest@3@</entry>
   </collection>
   <collection>
     <name>Vampire Spawn</name>
-    <entry>Bluff@4</entry>
-    <entry>Hide@4</entry>
-    <entry>Listen@4</entry>
-    <entry>Move Silently@4</entry>
-    <entry>Search@4</entry>
-    <entry>Sense Motive@4</entry>
-    <entry>Spot@4</entry>
+    <entry>Bluff@4@</entry>
+    <entry>Hide@4@</entry>
+    <entry>Listen@4@</entry>
+    <entry>Move Silently@4@</entry>
+    <entry>Search@4@</entry>
+    <entry>Sense Motive@4@</entry>
+    <entry>Spot@4@</entry>
   </collection>
   <collection>
     <name>Vargouille</name>
@@ -2637,8 +2637,8 @@
   </collection>
   <collection>
     <name>Vrock</name>
-    <entry>Listen@8</entry>
-    <entry>Spot@8</entry>
+    <entry>Listen@8@</entry>
+    <entry>Spot@8@</entry>
   </collection>
   <collection>
     <name>Warpony</name>
@@ -2669,10 +2669,10 @@
   </collection>
   <collection>
     <name>Weasel</name>
-    <entry>Balance@8</entry>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Move Silently@4</entry>
+    <entry>Balance@8@</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Move Silently@4@</entry>
   </collection>
   <collection>
     <name>White Dragon, Adult</name>
@@ -2712,117 +2712,117 @@
   </collection>
   <collection>
     <name>Wight</name>
-    <entry>Move Silently@8</entry>
+    <entry>Move Silently@8@</entry>
   </collection>
   <collection>
     <name>Wild Elf</name>
-    <entry>Listen@2</entry>
-    <entry>Search@2</entry>
-    <entry>Search$passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
-    <entry>Spot@2</entry>
+    <entry>Listen@2@</entry>
+    <entry>Search@2@</entry>
+    <entry>Search$passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Will-O'-Wisp</name>
   </collection>
   <collection>
     <name>Winter Wolf</name>
-    <entry>Listen@1</entry>
-    <entry>Move Silently@1</entry>
-    <entry>Spot@1</entry>
-    <entry>Hide@2</entry>
-    <entry>Hide$in areas of snow and ice@5</entry>
-    <entry>Survival$tracking by scent@4</entry>
+    <entry>Listen@1@</entry>
+    <entry>Move Silently@1@</entry>
+    <entry>Spot@1@</entry>
+    <entry>Hide@2@</entry>
+    <entry>Hide$in areas of snow and ice@5@</entry>
+    <entry>Survival$tracking by scent@4@</entry>
   </collection>
   <collection>
     <name>Wolf</name>
-    <entry>Survival$tracking by scent@4</entry>
+    <entry>Survival$tracking by scent@4@</entry>
   </collection>
   <collection>
     <name>Wolverine</name>
-    <entry>Climb@8</entry>
-    <entry>Climb$can always take 10@10</entry>
+    <entry>Climb@8@</entry>
+    <entry>Climb@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Worg</name>
-    <entry>Listen@1</entry>
-    <entry>Move Silently@1</entry>
-    <entry>Spot@1</entry>
-    <entry>Hide@2</entry>
-    <entry>Survival$tracking by scent@4</entry>
+    <entry>Listen@1@</entry>
+    <entry>Move Silently@1@</entry>
+    <entry>Spot@1@</entry>
+    <entry>Hide@2@</entry>
+    <entry>Survival$tracking by scent@4@</entry>
   </collection>
   <collection>
     <name>Wood Elf</name>
-    <entry>Listen@2</entry>
-    <entry>Search@2</entry>
-    <entry>Search$passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0</entry>
-    <entry>Spot@2</entry>
+    <entry>Listen@2@</entry>
+    <entry>Search@2@</entry>
+    <entry>Search$passing within 5 feet of a secret or concealed door allows a Search check to notice it as if the door was being actively looked for@0@</entry>
+    <entry>Spot@2@</entry>
   </collection>
   <collection>
     <name>Wraith</name>
   </collection>
   <collection>
     <name>Wyvern</name>
-    <entry>Spot@3</entry>
+    <entry>Spot@3@</entry>
   </collection>
   <collection>
     <name>Xill</name>
   </collection>
   <collection>
     <name>Yeth Hound</name>
-    <entry>Survival$tracking by scent@4</entry>
+    <entry>Survival$tracking by scent@4@</entry>
   </collection>
   <collection>
     <name>Yrthak</name>
-    <entry>Listen@4</entry>
+    <entry>Listen@4@</entry>
   </collection>
   <collection>
     <name>Yuan-ti Abomination</name>
-    <entry>Climb$can always take 10@10</entry>
-    <entry>Hide$when using Chameleon Power@10</entry>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Climb@10@can always take 10</entry>
+    <entry>Hide$when using Chameleon Power@10@</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head)</name>
-    <entry>Hide$when using Chameleon Power@10</entry>
+    <entry>Hide$when using Chameleon Power@10@</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
-    <entry>Hide$when using Chameleon Power@10</entry>
+    <entry>Hide$when using Chameleon Power@10@</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
-    <entry>Hide$when using Chameleon Power@10</entry>
+    <entry>Hide$when using Chameleon Power@10@</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</name>
-    <entry>Hide$when using Chameleon Power@10</entry>
+    <entry>Hide$when using Chameleon Power@10@</entry>
   </collection>
   <collection>
     <name>Yuan-ti Pureblood</name>
-    <entry>Disguise$when impersonating a human@5</entry>
+    <entry>Disguise$when impersonating a human@5@</entry>
   </collection>
   <collection>
     <name>Zelekhut</name>
-    <entry>Search@4</entry>
-    <entry>Sense Motive@4</entry>
+    <entry>Search@4@</entry>
+    <entry>Sense Motive@4@</entry>
   </collection>
   <collection>
     <name>Appraise</name>
-    <entry>Profession/Appraiser@2</entry>
-    <entry>Profession/Trader@2</entry>
+    <entry>Profession/Appraiser@2@</entry>
+    <entry>Profession/Trader@2@</entry>
   </collection>
   <collection>
     <name>Balance</name>
   </collection>
   <collection>
     <name>Bluff</name>
-    <entry>Diplomacy@2</entry>
-    <entry>Disguise$acting@2</entry>
-    <entry>Intimidate@2</entry>
-    <entry>Profession/Dowser@2</entry>
-    <entry>Profession/Soothsayer@2</entry>
-    <entry>Sleight of Hand@2</entry>
+    <entry>Diplomacy@2@</entry>
+    <entry>Disguise$acting@2@</entry>
+    <entry>Intimidate@2@</entry>
+    <entry>Profession/Dowser@2@</entry>
+    <entry>Profession/Soothsayer@2@</entry>
+    <entry>Sleight of Hand@2@</entry>
   </collection>
   <collection>
     <name>Climb</name>
@@ -2832,192 +2832,192 @@
   </collection>
   <collection>
     <name>Craft</name>
-    <entry>Appraise$related to items made with your Craft skill@2</entry>
-    <entry>Profession/Craftsman@2</entry>
+    <entry>Appraise$related to items made with your Craft skill@2@</entry>
+    <entry>Profession/Craftsman@2@</entry>
   </collection>
   <collection>
     <name>Craft/Alchemy</name>
-    <entry>Profession/Alchemist@2</entry>
-    <entry>Profession/Embalmer@2</entry>
+    <entry>Profession/Alchemist@2@</entry>
+    <entry>Profession/Embalmer@2@</entry>
   </collection>
   <collection>
     <name>Craft/Armorsmithing</name>
-    <entry>Profession/Armorer@2</entry>
+    <entry>Profession/Armorer@2@</entry>
   </collection>
   <collection>
     <name>Craft/Blacksmithing</name>
-    <entry>Profession/Blacksmith@2</entry>
+    <entry>Profession/Blacksmith@2@</entry>
   </collection>
   <collection>
     <name>Craft/Bookbinding</name>
-    <entry>Profession/Bookbinder@2</entry>
+    <entry>Profession/Bookbinder@2@</entry>
   </collection>
   <collection>
     <name>Craft/Bowmaking</name>
-    <entry>Profession/Bowyer@2</entry>
-    <entry>Profession/Fletcher@2</entry>
+    <entry>Profession/Bowyer@2@</entry>
+    <entry>Profession/Fletcher@2@</entry>
   </collection>
   <collection>
     <name>Craft/Brassmaking</name>
-    <entry>Profession/Brazier@2</entry>
+    <entry>Profession/Brazier@2@</entry>
   </collection>
   <collection>
     <name>Craft/Brewing</name>
-    <entry>Profession/Brewer@2</entry>
+    <entry>Profession/Brewer@2@</entry>
   </collection>
   <collection>
     <name>Craft/Candlemaking</name>
-    <entry>Profession/Chandler@2</entry>
+    <entry>Profession/Chandler@2@</entry>
   </collection>
   <collection>
     <name>Craft/Cloth</name>
   </collection>
   <collection>
     <name>Craft/Coppersmithing</name>
-    <entry>Profession/Coppersmith@2</entry>
+    <entry>Profession/Coppersmith@2@</entry>
   </collection>
   <collection>
     <name>Craft/Dyemaking</name>
-    <entry>Profession/Dyer@2</entry>
+    <entry>Profession/Dyer@2@</entry>
   </collection>
   <collection>
     <name>Craft/Gemcutting</name>
-    <entry>Profession/Gemcutter@2</entry>
+    <entry>Profession/Gemcutter@2@</entry>
   </collection>
   <collection>
     <name>Craft/Glass</name>
   </collection>
   <collection>
     <name>Craft/Goldsmithing</name>
-    <entry>Profession/Goldsmith@2</entry>
+    <entry>Profession/Goldsmith@2@</entry>
   </collection>
   <collection>
     <name>Craft/Hatmaking</name>
-    <entry>Profession/Haberdasher@2</entry>
+    <entry>Profession/Haberdasher@2@</entry>
   </collection>
   <collection>
     <name>Craft/Hornworking</name>
-    <entry>Profession/Horner@2</entry>
+    <entry>Profession/Horner@2@</entry>
   </collection>
   <collection>
     <name>Craft/Jewelmaking</name>
-    <entry>Profession/Jeweler@2</entry>
+    <entry>Profession/Jeweler@2@</entry>
   </collection>
   <collection>
     <name>Craft/Leather</name>
   </collection>
   <collection>
     <name>Craft/Locksmithing</name>
-    <entry>Profession/Locksmith@2</entry>
+    <entry>Profession/Locksmith@2@</entry>
   </collection>
   <collection>
     <name>Craft/Mapmaking</name>
-    <entry>Profession/Cartographer@2</entry>
+    <entry>Profession/Cartographer@2@</entry>
   </collection>
   <collection>
     <name>Craft/Milling</name>
-    <entry>Profession/Miller@2</entry>
+    <entry>Profession/Miller@2@</entry>
   </collection>
   <collection>
     <name>Craft/Painting</name>
-    <entry>Profession/Limner@2</entry>
-    <entry>Profession/Painter@2</entry>
+    <entry>Profession/Limner@2@</entry>
+    <entry>Profession/Painter@2@</entry>
   </collection>
   <collection>
     <name>Craft/Parchmentmaking</name>
-    <entry>Profession/Parchmentmaker@2</entry>
+    <entry>Profession/Parchmentmaker@2@</entry>
   </collection>
   <collection>
     <name>Craft/Pewtermaking</name>
-    <entry>Profession/Pewterer@2</entry>
+    <entry>Profession/Pewterer@2@</entry>
   </collection>
   <collection>
     <name>Craft/Potterymaking</name>
-    <entry>Profession/Potter@2</entry>
+    <entry>Profession/Potter@2@</entry>
   </collection>
   <collection>
     <name>Craft/Sculpting</name>
-    <entry>Profession/Sculptor@2</entry>
+    <entry>Profession/Sculptor@2@</entry>
   </collection>
   <collection>
     <name>Craft/Shipmaking</name>
-    <entry>Profession/Shipwright@2</entry>
+    <entry>Profession/Shipwright@2@</entry>
   </collection>
   <collection>
     <name>Craft/Shoemaking</name>
-    <entry>Profession/Cobbler@2</entry>
+    <entry>Profession/Cobbler@2@</entry>
   </collection>
   <collection>
     <name>Craft/Silversmithing</name>
-    <entry>Profession/Silversmith@2</entry>
+    <entry>Profession/Silversmith@2@</entry>
   </collection>
   <collection>
     <name>Craft/Skinning</name>
-    <entry>Profession/Skinner@2</entry>
+    <entry>Profession/Skinner@2@</entry>
   </collection>
   <collection>
     <name>Craft/Soapmaking</name>
-    <entry>Profession/Soapmaker@2</entry>
+    <entry>Profession/Soapmaker@2@</entry>
   </collection>
   <collection>
     <name>Craft/Stonemasonry</name>
   </collection>
   <collection>
     <name>Craft/Tanning</name>
-    <entry>Profession/Tanner@2</entry>
+    <entry>Profession/Tanner@2@</entry>
   </collection>
   <collection>
     <name>Craft/Trapmaking</name>
-    <entry>Profession/Hunter@2</entry>
-    <entry>Profession/Trapper@2</entry>
-    <entry>Search$finding traps@2</entry>
+    <entry>Profession/Hunter@2@</entry>
+    <entry>Profession/Trapper@2@</entry>
+    <entry>Search$finding traps@2@</entry>
   </collection>
   <collection>
     <name>Craft/Weaponsmithing</name>
-    <entry>Profession/Weaponsmith@2</entry>
+    <entry>Profession/Weaponsmith@2@</entry>
   </collection>
   <collection>
     <name>Craft/Weaving</name>
-    <entry>Profession/Weaver@2</entry>
+    <entry>Profession/Weaver@2@</entry>
   </collection>
   <collection>
     <name>Craft/Wheelmaking</name>
-    <entry>Profession/Wheelwright@2</entry>
+    <entry>Profession/Wheelwright@2@</entry>
   </collection>
   <collection>
     <name>Craft/Winemaking</name>
-    <entry>Profession/Vintner@2</entry>
+    <entry>Profession/Vintner@2@</entry>
   </collection>
   <collection>
     <name>Craft/Woodworking</name>
-    <entry>Profession/Carpenter@2</entry>
-    <entry>Profession/Cartwright@2</entry>
-    <entry>Profession/Coffinmaker@2</entry>
+    <entry>Profession/Carpenter@2@</entry>
+    <entry>Profession/Cartwright@2@</entry>
+    <entry>Profession/Coffinmaker@2@</entry>
   </collection>
   <collection>
     <name>Decipher Script</name>
-    <entry>Use Magic Device$with scrolls@2</entry>
+    <entry>Use Magic Device$with scrolls@2@</entry>
   </collection>
   <collection>
     <name>Diplomacy</name>
-    <entry>Profession/Barrister@2</entry>
-    <entry>Profession/Butler@2</entry>
-    <entry>Profession/City Guide@2</entry>
-    <entry>Profession/Footman@2</entry>
-    <entry>Profession/Governess@2</entry>
-    <entry>Profession/Matchmaker@2</entry>
-    <entry>Profession/Valet@2</entry>
+    <entry>Profession/Barrister@2@</entry>
+    <entry>Profession/Butler@2@</entry>
+    <entry>Profession/City Guide@2@</entry>
+    <entry>Profession/Footman@2@</entry>
+    <entry>Profession/Governess@2@</entry>
+    <entry>Profession/Matchmaker@2@</entry>
+    <entry>Profession/Valet@2@</entry>
   </collection>
   <collection>
     <name>Disable Device</name>
   </collection>
   <collection>
     <name>Disguise</name>
-    <entry>Perform/Act$in costume@2</entry>
+    <entry>Perform/Act$in costume@2@</entry>
   </collection>
   <collection>
     <name>Escape Artist</name>
-    <entry>Use Rope$binding someone@2</entry>
+    <entry>Use Rope$binding someone@2@</entry>
   </collection>
   <collection>
     <name>Forgery</name>
@@ -3027,93 +3027,93 @@
   </collection>
   <collection>
     <name>Handle Animal</name>
-    <entry>Diplomacy$wild empathy@2</entry>
-    <entry>Profession/Animal Groomer@2</entry>
-    <entry>Profession/Animal Trainer@2</entry>
-    <entry>Profession/Exotic Animal Trainer@2</entry>
-    <entry>Profession/Shepherd@2</entry>
-    <entry>Profession/Teamster@2</entry>
-    <entry>Ride@2</entry>
+    <entry>Diplomacy$wild empathy@2@</entry>
+    <entry>Profession/Animal Groomer@2@</entry>
+    <entry>Profession/Animal Trainer@2@</entry>
+    <entry>Profession/Exotic Animal Trainer@2@</entry>
+    <entry>Profession/Shepherd@2@</entry>
+    <entry>Profession/Teamster@2@</entry>
+    <entry>Ride@2@</entry>
   </collection>
   <collection>
     <name>Heal</name>
-    <entry>Profession/Healer@2</entry>
-    <entry>Profession/Masseuse@2</entry>
-    <entry>Profession/Midwife@2</entry>
+    <entry>Profession/Healer@2@</entry>
+    <entry>Profession/Masseuse@2@</entry>
+    <entry>Profession/Midwife@2@</entry>
   </collection>
   <collection>
     <name>Hide</name>
   </collection>
   <collection>
     <name>Intimidate</name>
-    <entry>Profession/Sailor Mate@2</entry>
+    <entry>Profession/Sailor Mate@2@</entry>
   </collection>
   <collection>
     <name>Jump</name>
-    <entry>Tumble@2</entry>
+    <entry>Tumble@2@</entry>
   </collection>
   <collection>
     <name>Knowledge</name>
-    <entry>Profession/Adviser@2</entry>
-    <entry>Profession/Sage@2</entry>
-    <entry>Profession/Teacher@2</entry>
+    <entry>Profession/Adviser@2@</entry>
+    <entry>Profession/Sage@2@</entry>
+    <entry>Profession/Teacher@2@</entry>
   </collection>
   <collection>
     <name>Knowledge/Arcana</name>
-    <entry>Spellcraft@2</entry>
+    <entry>Spellcraft@2@</entry>
   </collection>
   <collection>
     <name>Knowledge/Architecture and Engineering</name>
-    <entry>Profession/Architect@2</entry>
-    <entry>Profession/Engineer@2</entry>
-    <entry>Search$find secret doors or compartments@2</entry>
+    <entry>Profession/Architect@2@</entry>
+    <entry>Profession/Engineer@2@</entry>
+    <entry>Search$find secret doors or compartments@2@</entry>
   </collection>
   <collection>
     <name>Knowledge/Dungeoneering</name>
-    <entry>Profession/Miner@2</entry>
-    <entry>Survival$underground@2</entry>
+    <entry>Profession/Miner@2@</entry>
+    <entry>Survival$underground@2@</entry>
   </collection>
   <collection>
     <name>Knowledge/Geography</name>
-    <entry>Profession/Miner@2</entry>
-    <entry>Survival$keep from getting lost or avoid natural hazards@2</entry>
+    <entry>Profession/Miner@2@</entry>
+    <entry>Survival$keep from getting lost or avoid natural hazards@2@</entry>
   </collection>
   <collection>
     <name>Knowledge/History</name>
-    <entry>Knowledge/bardic@2</entry>
+    <entry>Knowledge/bardic@2@</entry>
   </collection>
   <collection>
     <name>Knowledge/Local</name>
-    <entry>Gather Information@2</entry>
-    <entry>Profession/City Guide@2</entry>
-    <entry>Profession/Local Courier@2</entry>
-    <entry>Profession/Out-of-Town Courier@2</entry>
-    <entry>Profession/Wilderness Guide@2</entry>
+    <entry>Gather Information@2@</entry>
+    <entry>Profession/City Guide@2@</entry>
+    <entry>Profession/Local Courier@2@</entry>
+    <entry>Profession/Out-of-Town Courier@2@</entry>
+    <entry>Profession/Wilderness Guide@2@</entry>
   </collection>
   <collection>
     <name>Knowledge/Nature</name>
-    <entry>Profession/Apothecary@2</entry>
-    <entry>Profession/Farmer@2</entry>
-    <entry>Profession/Hunter@2</entry>
-    <entry>Profession/Miner@2</entry>
-    <entry>Profession/Trapper@2</entry>
-    <entry>Profession/Wilderness Guide@2</entry>
-    <entry>Survival$in aboveground natural environments@2</entry>
+    <entry>Profession/Apothecary@2@</entry>
+    <entry>Profession/Farmer@2@</entry>
+    <entry>Profession/Hunter@2@</entry>
+    <entry>Profession/Miner@2@</entry>
+    <entry>Profession/Trapper@2@</entry>
+    <entry>Profession/Wilderness Guide@2@</entry>
+    <entry>Survival$in aboveground natural environments@2@</entry>
   </collection>
   <collection>
     <name>Knowledge/Nobility and Royalty</name>
-    <entry>Diplomacy@2</entry>
-    <entry>Profession/Butler@2</entry>
-    <entry>Profession/Footman@2</entry>
-    <entry>Profession/Governess@2</entry>
-    <entry>Profession/Maid@2</entry>
+    <entry>Diplomacy@2@</entry>
+    <entry>Profession/Butler@2@</entry>
+    <entry>Profession/Footman@2@</entry>
+    <entry>Profession/Governess@2@</entry>
+    <entry>Profession/Maid@2@</entry>
   </collection>
   <collection>
     <name>Knowledge/Religion</name>
   </collection>
   <collection>
     <name>Knowledge/The Planes</name>
-    <entry>Survival$on other planes@2</entry>
+    <entry>Survival$on other planes@2@</entry>
   </collection>
   <collection>
     <name>Listen</name>
@@ -3126,11 +3126,11 @@
   </collection>
   <collection>
     <name>Perform</name>
-    <entry>Profession/Entertainer@2</entry>
+    <entry>Profession/Entertainer@2@</entry>
   </collection>
   <collection>
     <name>Perform/Act</name>
-    <entry>Disguise$impersonating someone else@2</entry>
+    <entry>Disguise$impersonating someone else@2@</entry>
   </collection>
   <collection>
     <name>Perform/Comedy</name>
@@ -3161,97 +3161,97 @@
   </collection>
   <collection>
     <name>Profession/Adviser</name>
-    <entry>Diplomacy@2</entry>
-    <entry>Knowledge@2</entry>
+    <entry>Diplomacy@2@</entry>
+    <entry>Knowledge@2@</entry>
   </collection>
   <collection>
     <name>Profession/Alchemist</name>
-    <entry>Craft/Alchemy@2</entry>
+    <entry>Craft/Alchemy@2@</entry>
   </collection>
   <collection>
     <name>Profession/Animal Groomer</name>
-    <entry>Handle Animal@2</entry>
+    <entry>Handle Animal@2@</entry>
   </collection>
   <collection>
     <name>Profession/Animal Trainer</name>
-    <entry>Handle Animal@2</entry>
+    <entry>Handle Animal@2@</entry>
   </collection>
   <collection>
     <name>Profession/Apothecary</name>
-    <entry>Knowledge/Nature@2</entry>
+    <entry>Knowledge/Nature@2@</entry>
   </collection>
   <collection>
     <name>Profession/Appraiser</name>
-    <entry>Appraise@2</entry>
+    <entry>Appraise@2@</entry>
   </collection>
   <collection>
     <name>Profession/Architect</name>
-    <entry>Knowledge/Architecture and Engineering@2</entry>
+    <entry>Knowledge/Architecture and Engineering@2@</entry>
   </collection>
   <collection>
     <name>Profession/Armorer</name>
-    <entry>Craft/Armorsmithing@2</entry>
+    <entry>Craft/Armorsmithing@2@</entry>
   </collection>
   <collection>
     <name>Profession/Barrister</name>
-    <entry>Diplomacy@2</entry>
+    <entry>Diplomacy@2@</entry>
   </collection>
   <collection>
     <name>Profession/Blacksmith</name>
-    <entry>Craft/Blacksmithing@2</entry>
+    <entry>Craft/Blacksmithing@2@</entry>
   </collection>
   <collection>
     <name>Profession/Bookbinder</name>
-    <entry>Craft/Bookbinding@2</entry>
+    <entry>Craft/Bookbinding@2@</entry>
   </collection>
   <collection>
     <name>Profession/Bowyer</name>
-    <entry>Craft/Bowmaking@2</entry>
+    <entry>Craft/Bowmaking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Brazier</name>
-    <entry>Craft/Brassmaking@2</entry>
+    <entry>Craft/Brassmaking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Brewer</name>
-    <entry>Craft/Brewing@2</entry>
+    <entry>Craft/Brewing@2@</entry>
   </collection>
   <collection>
     <name>Profession/Butler</name>
-    <entry>Diplomacy@2</entry>
-    <entry>Knowledge/Nobility and Royalty@2</entry>
+    <entry>Diplomacy@2@</entry>
+    <entry>Knowledge/Nobility and Royalty@2@</entry>
   </collection>
   <collection>
     <name>Profession/Carpenter</name>
-    <entry>Craft/Woodworking@2</entry>
+    <entry>Craft/Woodworking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Cartographer</name>
-    <entry>Craft/Mapmaking@2</entry>
+    <entry>Craft/Mapmaking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Cartwright</name>
-    <entry>Craft/Woodworking@2</entry>
+    <entry>Craft/Woodworking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Chandler</name>
-    <entry>Craft/Candlemaking@2</entry>
+    <entry>Craft/Candlemaking@2@</entry>
   </collection>
   <collection>
     <name>Profession/City Guide</name>
-    <entry>Diplomacy@2</entry>
-    <entry>Knowledge/Local@2</entry>
+    <entry>Diplomacy@2@</entry>
+    <entry>Knowledge/Local@2@</entry>
   </collection>
   <collection>
     <name>Profession/Clerk</name>
   </collection>
   <collection>
     <name>Profession/Cobbler</name>
-    <entry>Craft/Shoemaking@2</entry>
+    <entry>Craft/Shoemaking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Coffinmaker</name>
-    <entry>Craft/Woodworking@2</entry>
+    <entry>Craft/Woodworking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Coiffeur</name>
@@ -3261,86 +3261,86 @@
   </collection>
   <collection>
     <name>Profession/Coppersmith</name>
-    <entry>Craft/Coppersmithing@2</entry>
+    <entry>Craft/Coppersmithing@2@</entry>
   </collection>
   <collection>
     <name>Profession/Craftsman</name>
-    <entry>Craft@2</entry>
+    <entry>Craft@2@</entry>
   </collection>
   <collection>
     <name>Profession/Dowser</name>
-    <entry>Bluff@2</entry>
-    <entry>Survival@2</entry>
+    <entry>Bluff@2@</entry>
+    <entry>Survival@2@</entry>
   </collection>
   <collection>
     <name>Profession/Dyer</name>
-    <entry>Craft/Dyemaking@2</entry>
+    <entry>Craft/Dyemaking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Embalmer</name>
-    <entry>Craft/Alchemy@2</entry>
+    <entry>Craft/Alchemy@2@</entry>
   </collection>
   <collection>
     <name>Profession/Engineer</name>
-    <entry>Knowledge/Architecture and Engineering@2</entry>
+    <entry>Knowledge/Architecture and Engineering@2@</entry>
   </collection>
   <collection>
     <name>Profession/Entertainer</name>
-    <entry>Perform@2</entry>
+    <entry>Perform@2@</entry>
   </collection>
   <collection>
     <name>Profession/Exotic Animal Trainer</name>
-    <entry>Handle Animal@2</entry>
+    <entry>Handle Animal@2@</entry>
   </collection>
   <collection>
     <name>Profession/Farmer</name>
-    <entry>Knowledge/Nature@2</entry>
+    <entry>Knowledge/Nature@2@</entry>
   </collection>
   <collection>
     <name>Profession/Fletcher</name>
-    <entry>Craft/Bowmaking@2</entry>
+    <entry>Craft/Bowmaking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Footman</name>
-    <entry>Diplomacy@2</entry>
-    <entry>Knowledge/Nobility and Royalty@2</entry>
+    <entry>Diplomacy@2@</entry>
+    <entry>Knowledge/Nobility and Royalty@2@</entry>
   </collection>
   <collection>
     <name>Profession/Gemcutter</name>
-    <entry>Craft/Gemcutting@2</entry>
+    <entry>Craft/Gemcutting@2@</entry>
   </collection>
   <collection>
     <name>Profession/Goldsmith</name>
-    <entry>Craft/Goldsmithing@2</entry>
+    <entry>Craft/Goldsmithing@2@</entry>
   </collection>
   <collection>
     <name>Profession/Governess</name>
-    <entry>Diplomacy@2</entry>
-    <entry>Knowledge/Nobility and Royalty@2</entry>
+    <entry>Diplomacy@2@</entry>
+    <entry>Knowledge/Nobility and Royalty@2@</entry>
   </collection>
   <collection>
     <name>Profession/Haberdasher</name>
-    <entry>Craft/Hatmaking@2</entry>
+    <entry>Craft/Hatmaking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Healer</name>
-    <entry>Heal@2</entry>
+    <entry>Heal@2@</entry>
   </collection>
   <collection>
     <name>Profession/Horner</name>
-    <entry>Craft/Hornworking@2</entry>
+    <entry>Craft/Hornworking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Hunter</name>
-    <entry>Craft/Trapmaking@2</entry>
-    <entry>Survival@2</entry>
+    <entry>Craft/Trapmaking@2@</entry>
+    <entry>Survival@2@</entry>
   </collection>
   <collection>
     <name>Profession/Interpreter</name>
   </collection>
   <collection>
     <name>Profession/Jeweler</name>
-    <entry>Craft/Jewelmaking@2</entry>
+    <entry>Craft/Jewelmaking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Laborer</name>
@@ -3350,66 +3350,66 @@
   </collection>
   <collection>
     <name>Profession/Limner</name>
-    <entry>Craft/Painting@2</entry>
+    <entry>Craft/Painting@2@</entry>
   </collection>
   <collection>
     <name>Profession/Local Courier</name>
-    <entry>Knowledge/Local@2</entry>
+    <entry>Knowledge/Local@2@</entry>
   </collection>
   <collection>
     <name>Profession/Locksmith</name>
-    <entry>Craft/Locksmithing@2</entry>
+    <entry>Craft/Locksmithing@2@</entry>
   </collection>
   <collection>
     <name>Profession/Maid</name>
-    <entry>Knowledge/Nobility and Royalty@2</entry>
+    <entry>Knowledge/Nobility and Royalty@2@</entry>
   </collection>
   <collection>
     <name>Profession/Masseuse</name>
-    <entry>Heal@2</entry>
+    <entry>Heal@2@</entry>
   </collection>
   <collection>
     <name>Profession/Matchmaker</name>
-    <entry>Diplomacy@2</entry>
-    <entry>Sense Motive@2</entry>
+    <entry>Diplomacy@2@</entry>
+    <entry>Sense Motive@2@</entry>
   </collection>
   <collection>
     <name>Profession/Midwife</name>
-    <entry>Heal@2</entry>
+    <entry>Heal@2@</entry>
   </collection>
   <collection>
     <name>Profession/Miller</name>
-    <entry>Craft/Milling@2</entry>
+    <entry>Craft/Milling@2@</entry>
   </collection>
   <collection>
     <name>Profession/Miner</name>
-    <entry>Knowledge/Geography@2</entry>
-    <entry>Knowledge/Nature@2</entry>
-    <entry>Knowledge/Dungeoneering@2</entry>
+    <entry>Knowledge/Geography@2@</entry>
+    <entry>Knowledge/Nature@2@</entry>
+    <entry>Knowledge/Dungeoneering@2@</entry>
   </collection>
   <collection>
     <name>Profession/Navigator</name>
-    <entry>Survival@2</entry>
+    <entry>Survival@2@</entry>
   </collection>
   <collection>
     <name>Profession/Nursemaid</name>
   </collection>
   <collection>
     <name>Profession/Out-of-Town Courier</name>
-    <entry>Knowledge/Local@2</entry>
-    <entry>Ride@2</entry>
+    <entry>Knowledge/Local@2@</entry>
+    <entry>Ride@2@</entry>
   </collection>
   <collection>
     <name>Profession/Painter</name>
-    <entry>Craft/Painting@2</entry>
+    <entry>Craft/Painting@2@</entry>
   </collection>
   <collection>
     <name>Profession/Parchmentmaker</name>
-    <entry>Craft/Parchmentmaking@2</entry>
+    <entry>Craft/Parchmentmaking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Pewterer</name>
-    <entry>Craft/Pewtermaking@2</entry>
+    <entry>Craft/Pewtermaking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Polisher</name>
@@ -3419,156 +3419,156 @@
   </collection>
   <collection>
     <name>Profession/Potter</name>
-    <entry>Craft/Potterymaking@2</entry>
+    <entry>Craft/Potterymaking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Sage</name>
-    <entry>Knowledge@2</entry>
+    <entry>Knowledge@2@</entry>
   </collection>
   <collection>
     <name>Profession/Sailor Crewmember</name>
-    <entry>Swim@2</entry>
+    <entry>Swim@2@</entry>
   </collection>
   <collection>
     <name>Profession/Sailor Mate</name>
-    <entry>Intimidate@2</entry>
-    <entry>Swim@2</entry>
+    <entry>Intimidate@2@</entry>
+    <entry>Swim@2@</entry>
   </collection>
   <collection>
     <name>Profession/Scribe</name>
   </collection>
   <collection>
     <name>Profession/Sculptor</name>
-    <entry>Craft/Sculpting@2</entry>
+    <entry>Craft/Sculpting@2@</entry>
   </collection>
   <collection>
     <name>Profession/Shepherd</name>
-    <entry>Handle Animal@2</entry>
+    <entry>Handle Animal@2@</entry>
   </collection>
   <collection>
     <name>Profession/Shipwright</name>
-    <entry>Craft/Shipmaking@2</entry>
+    <entry>Craft/Shipmaking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Silversmith</name>
-    <entry>Craft/Silversmithing@2</entry>
+    <entry>Craft/Silversmithing@2@</entry>
   </collection>
   <collection>
     <name>Profession/Skinner</name>
-    <entry>Craft/Skinning@2</entry>
+    <entry>Craft/Skinning@2@</entry>
   </collection>
   <collection>
     <name>Profession/Soapmaker</name>
-    <entry>Craft/Soapmaking@2</entry>
+    <entry>Craft/Soapmaking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Soothsayer</name>
-    <entry>Bluff@2</entry>
+    <entry>Bluff@2@</entry>
   </collection>
   <collection>
     <name>Profession/Tanner</name>
-    <entry>Craft/Tanning@2</entry>
+    <entry>Craft/Tanning@2@</entry>
   </collection>
   <collection>
     <name>Profession/Teacher</name>
-    <entry>Knowledge@2</entry>
+    <entry>Knowledge@2@</entry>
   </collection>
   <collection>
     <name>Profession/Teamster</name>
-    <entry>Handle Animal@2</entry>
-    <entry>Ride@2</entry>
+    <entry>Handle Animal@2@</entry>
+    <entry>Ride@2@</entry>
   </collection>
   <collection>
     <name>Profession/Trader</name>
-    <entry>Appraise@2</entry>
-    <entry>Sense Motive@2</entry>
+    <entry>Appraise@2@</entry>
+    <entry>Sense Motive@2@</entry>
   </collection>
   <collection>
     <name>Profession/Trapper</name>
-    <entry>Craft/Trapmaking@2</entry>
-    <entry>Knowledge/Nature@2</entry>
-    <entry>Survival@2</entry>
+    <entry>Craft/Trapmaking@2@</entry>
+    <entry>Knowledge/Nature@2@</entry>
+    <entry>Survival@2@</entry>
   </collection>
   <collection>
     <name>Profession/Valet</name>
-    <entry>Diplomacy@2</entry>
+    <entry>Diplomacy@2@</entry>
   </collection>
   <collection>
     <name>Profession/Vintner</name>
-    <entry>Craft/Winemaking@2</entry>
+    <entry>Craft/Winemaking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Weaponsmith</name>
-    <entry>Craft/Weaponsmithing@2</entry>
+    <entry>Craft/Weaponsmithing@2@</entry>
   </collection>
   <collection>
     <name>Profession/Weaver</name>
-    <entry>Craft/Weaving@2</entry>
+    <entry>Craft/Weaving@2@</entry>
   </collection>
   <collection>
     <name>Profession/Wheelwright</name>
-    <entry>Craft/Wheelmaking@2</entry>
+    <entry>Craft/Wheelmaking@2@</entry>
   </collection>
   <collection>
     <name>Profession/Wilderness Guide</name>
-    <entry>Knowledge/Local@2</entry>
-    <entry>Knowledge/Nature@2</entry>
+    <entry>Knowledge/Local@2@</entry>
+    <entry>Knowledge/Nature@2@</entry>
   </collection>
   <collection>
     <name>Ride</name>
-    <entry>Profession/Out-of-Town Courier@2</entry>
-    <entry>Profession/Teamster@2</entry>
+    <entry>Profession/Out-of-Town Courier@2@</entry>
+    <entry>Profession/Teamster@2@</entry>
   </collection>
   <collection>
     <name>Search</name>
-    <entry>Survival$following tracks@2</entry>
+    <entry>Survival$following tracks@2@</entry>
   </collection>
   <collection>
     <name>Sense Motive</name>
-    <entry>Diplomacy@2</entry>
-    <entry>Profession/Matchmaker@2</entry>
-    <entry>Profession/Trader@2</entry>
+    <entry>Diplomacy@2@</entry>
+    <entry>Profession/Matchmaker@2@</entry>
+    <entry>Profession/Trader@2@</entry>
   </collection>
   <collection>
     <name>Sleight of Hand</name>
   </collection>
   <collection>
     <name>Spellcraft</name>
-    <entry>Use Magic Device$with scrolls@2</entry>
+    <entry>Use Magic Device$with scrolls@2@</entry>
   </collection>
   <collection>
     <name>Spot</name>
   </collection>
   <collection>
     <name>Survival</name>
-    <entry>Knowledge/Nature@2</entry>
-    <entry>Profession/Dowser@2</entry>
-    <entry>Profession/Hunter@2</entry>
-    <entry>Profession/Navigator@2</entry>
-    <entry>Profession/Trapper@2</entry>
+    <entry>Knowledge/Nature@2@</entry>
+    <entry>Profession/Dowser@2@</entry>
+    <entry>Profession/Hunter@2@</entry>
+    <entry>Profession/Navigator@2@</entry>
+    <entry>Profession/Trapper@2@</entry>
   </collection>
   <collection>
     <name>Swim</name>
-    <entry>Profession/Sailor Crewmember@2</entry>
-    <entry>Profession/Sailor Mate@2</entry>
+    <entry>Profession/Sailor Crewmember@2@</entry>
+    <entry>Profession/Sailor Mate@2@</entry>
   </collection>
   <collection>
     <name>Tumble</name>
-    <entry>Balance@2</entry>
-    <entry>Jump@2</entry>
+    <entry>Balance@2@</entry>
+    <entry>Jump@2@</entry>
   </collection>
   <collection>
     <name>Use Magic Device</name>
-    <entry>Spellcraft$decipher scrolls@2</entry>
+    <entry>Spellcraft$decipher scrolls@2@</entry>
   </collection>
   <collection>
     <name>Use Rope</name>
-    <entry>Climb$with rope@2</entry>
-    <entry>Escape Artist$escaping rope bonds@2</entry>
+    <entry>Climb$with rope@2@</entry>
+    <entry>Escape Artist$escaping rope bonds@2@</entry>
   </collection>
   <collection>
     <name>Water</name>
-    <entry>Swim$special action or avoid a hazard@8</entry>
-    <entry>Swim$can always take 10@10</entry>
+    <entry>Swim@8@special action or avoid a hazard</entry>
+    <entry>Swim@10@can always take 10</entry>
   </collection>
 </collections>

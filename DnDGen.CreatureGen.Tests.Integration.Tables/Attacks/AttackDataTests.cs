@@ -177,11 +177,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             if (disease == null)
                 return;
 
+            Assert.That(disease.IsSpecial, Is.True);
+            Assert.That(disease.IsPrimary, Is.False);
+            Assert.That(disease.SaveAbility, Is.Empty);
+            Assert.That(disease.Save, Is.Empty);
+            Assert.That(disease.DamageEffect, Is.Not.Empty);
+
             var specificDisease = selections.FirstOrDefault(s => s.Name == disease.DamageEffect);
             if (specificDisease == null)
                 Assert.Fail($"Could not find disease '{disease.DamageEffect}'");
 
             Assert.That(specificDisease.IsSpecial, Is.True);
+            Assert.That(specificDisease.IsPrimary, Is.False);
             Assert.That(specificDisease.SaveAbility, Is.Not.Empty);
             Assert.That(specificDisease.Save, Is.Not.Empty);
         }

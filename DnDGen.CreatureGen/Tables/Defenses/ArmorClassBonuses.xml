@@ -54,7 +54,7 @@
   </collection>
   <collection>
     <name>Angel</name>
-    <entry>4@Deflection@Protective Aura</entry>
+    <entry>Deflection@4@Protective Aura</entry>
   </collection>
   <collection>
     <name>Angel, Astral Deva</name>
@@ -793,7 +793,7 @@
   </collection>
   <collection>
     <name>Dwarf</name>
-    <entry>4@Dodge@Giant</entry>
+    <entry>Dodge@4@Giant</entry>
   </collection>
   <collection>
     <name>Eagle</name>

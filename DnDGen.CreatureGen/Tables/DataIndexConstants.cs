@@ -29,8 +29,8 @@
 
         internal static class BonusData
         {
-            public const int BonusIndex = 0;
-            public const int TargetIndex = 1;
+            public const int TargetIndex = 0;
+            public const int BonusIndex = 1;
             public const int ConditionIndex = 2;
         }
 
