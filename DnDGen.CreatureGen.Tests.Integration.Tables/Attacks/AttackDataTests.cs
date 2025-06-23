@@ -66,10 +66,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             if (creatureAttackData[creature][0] == AttackTestData.None)
                 creatureAttackData[creature].Clear();
 
-            AssertCreatureHasCorrectImprovedGrab(creatureAttackData[creature]);
-            AssertCreatureHasCorrectSpellLikeAbility(creatureAttackData[creature]);
-            AssertCreatureHasCorrectSpells(creatureAttackData[creature]);
-            AssertCreatureEffectDoesNotHaveDamage(creatureAttackData[creature]);
+            AssertImprovedGrabAttack(creatureAttackData[creature]);
+            AssertConstrictAttack(creatureAttackData[creature]);
+            AssertSpellLikeAbilityAttack(creatureAttackData[creature]);
+            AssertSpellsAttack(creatureAttackData[creature]);
+            AssertDamageEffectDoesNotHaveDamage(creatureAttackData[creature]);
+            AssertDamageEffectAttackIsNotPrimary(creatureAttackData[creature]);
             AssertPoisonAttacks(creatureAttackData[creature]);
             AssertDiseaseAttacks(creatureAttackData[creature]);
 
@@ -90,17 +92,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             if (templateAttackData[template][0] == AttackTestData.None)
                 templateAttackData[template].Clear();
 
-            AssertCreatureHasCorrectImprovedGrab(templateAttackData[template]);
-            AssertCreatureHasCorrectSpellLikeAbility(templateAttackData[template]);
-            AssertCreatureHasCorrectSpells(templateAttackData[template]);
-            AssertCreatureEffectDoesNotHaveDamage(templateAttackData[template]);
+            AssertImprovedGrabAttack(templateAttackData[template]);
+            AssertConstrictAttack(templateAttackData[template]);
+            AssertSpellLikeAbilityAttack(templateAttackData[template]);
+            AssertSpellsAttack(templateAttackData[template]);
+            AssertDamageEffectDoesNotHaveDamage(templateAttackData[template]);
+            AssertDamageEffectAttackIsNotPrimary(templateAttackData[template]);
             AssertPoisonAttacks(templateAttackData[template]);
             AssertDiseaseAttacks(templateAttackData[template]);
 
             AssertCollection(template, [.. templateAttackData[template]]);
         }
 
-        private void AssertCreatureEffectDoesNotHaveDamage(List<string> entries)
+        private void AssertDamageEffectDoesNotHaveDamage(List<string> entries)
         {
             var damageTypes = new[]
             {
@@ -131,21 +135,28 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 "negative"
             };
 
-            var selections = entries.Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>);
+            var selections = entries.Select(DataHelper.Parse<AttackDataSelection>);
             var attackNames = selections.Select(s => s.Name);
+            var nonDamageEffectAttacks = selections.Where(s => !attackNames.Contains(s.DamageEffect));
 
-            foreach (var selection in selections)
+            foreach (var selection in nonDamageEffectAttacks)
             {
-                if (attackNames.Contains(selection.DamageEffect))
-                {
-                    continue;
-                }
+                var damageEffectWords = selection.DamageEffect.ToLower().Split(' ');
+                Assert.That(damageEffectWords.Intersect(damageTypes), Is.Empty, selection.Name);
+            }
+        }
 
-                foreach (var damageType in damageTypes)
-                {
-                    var words = selection.DamageEffect.ToLower().Split(' ');
-                    Assert.That(words, Does.Not.Contain(damageType), selection.Name);
-                }
+        private void AssertDamageEffectAttackIsNotPrimary(List<string> entries)
+        {
+            var selections = entries.Select(DataHelper.Parse<AttackDataSelection>);
+            var damageEffects = selections.Select(s => s.DamageEffect);
+            var damageEffectAttacks = selections.Where(s => damageEffects.Contains(s.Name));
+
+            foreach (var selection in damageEffectAttacks)
+            {
+                Assert.That(selection.IsSpecial, Is.True, selection.Name);
+                Assert.That(selection.IsPrimary, Is.False, selection.Name);
+                Assert.That(selection.IsNatural, Is.True, selection.Name);
             }
         }
 
@@ -269,7 +280,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(naturalAttack.IsSpecial, Is.False, naturalAttack.Name);
         }
 
-        private void AssertCreatureHasCorrectImprovedGrab(List<string> entries)
+        private void AssertImprovedGrabAttack(List<string> entries)
         {
             var selections = entries.Select(DataHelper.Parse<AttackDataSelection>);
 
@@ -290,13 +301,36 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(improvedGrab.IsSpecial, Is.True);
             Assert.That(improvedGrab.Name, Is.EqualTo("Improved Grab"));
             Assert.That(improvedGrab.SaveAbility, Is.Empty);
-            Assert.That(improvedGrab.SaveDcBonus, Is.EqualTo(0));
+            Assert.That(improvedGrab.SaveDcBonus, Is.Zero);
             Assert.That(improvedGrab.Save, Is.Empty);
         }
 
-        private void AssertCreatureHasCorrectSpells(List<string> entries)
+        private void AssertConstrictAttack(List<string> entries)
         {
-            var selections = entries.Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>);
+            var selections = entries.Select(DataHelper.Parse<AttackDataSelection>);
+
+            var constrict = selections.FirstOrDefault(s => s.Name == "Constrict");
+            if (constrict == null)
+            {
+                return;
+            }
+
+            Assert.That(constrict.AttackType, Is.EqualTo("extraordinary ability"));
+            Assert.That(constrict.FrequencyQuantity, Is.EqualTo(1));
+            Assert.That(constrict.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(constrict.IsMelee, Is.True);
+            Assert.That(constrict.IsNatural, Is.True);
+            Assert.That(constrict.IsPrimary, Is.False);
+            Assert.That(constrict.IsSpecial, Is.True);
+            Assert.That(constrict.Name, Is.EqualTo("Constrict"));
+            Assert.That(constrict.SaveAbility, Is.Empty);
+            Assert.That(constrict.SaveDcBonus, Is.Zero);
+            Assert.That(constrict.Save, Is.Empty);
+        }
+
+        private void AssertSpellsAttack(List<string> entries)
+        {
+            var selections = entries.Select(DataHelper.Parse<AttackDataSelection>);
 
             var spells = selections.FirstOrDefault(s => s.Name == "Spells");
             if (spells == null)
@@ -319,9 +353,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(spells.Save, Is.Empty);
         }
 
-        private void AssertCreatureHasCorrectSpellLikeAbility(List<string> entries)
+        private void AssertSpellLikeAbilityAttack(List<string> entries)
         {
-            var selections = entries.Select(Infrastructure.Helpers.DataHelper.Parse<AttackDataSelection>);
+            var selections = entries.Select(DataHelper.Parse<AttackDataSelection>);
 
             var spellLikeAbility = selections.FirstOrDefault(s => s.Name == FeatConstants.SpecialQualities.SpellLikeAbility);
             if (spellLikeAbility == null)

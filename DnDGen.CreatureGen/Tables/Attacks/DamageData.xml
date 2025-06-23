@@ -1813,19 +1813,38 @@
     <entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
 	<collection>
-		<name>Bulette-Huge-Claw-True-</name>
+		<name>Bulette-Huge-Claw-False-</name>
 		<entry>2d6@Piercing/Slashing@</entry>
 	</collection>
 	<collection>
 		<name>Bulette-Huge-Leap-True-</name>
+	</collection>
+	<collection>
+		<name>Bulette-Gargantuan-Bite-True-</name>
+		<entry>3d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Bulette-Gargantuan-Claw-False-</name>
+		<entry>3d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Bulette-Gargantuan-Leap-True-</name>
 	</collection>
   <collection>
     <name>Cachalot Whale-Gargantuan-Bite-True-</name>
     <entry>4d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
 	<collection>
-		<name>Cachalot Whale-Gargantuan-Tail Slap-True-</name>
+		<name>Cachalot Whale-Gargantuan-Tail Slap-False-</name>
 		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Cachalot Whale-Colossal-Bite-True-</name>
+		<entry>5d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Cachalot Whale-Colossal-Tail Slap-False-</name>
+		<entry>2d8@Bludgeoning@</entry>
 	</collection>
   <collection>
     <name>Camel, Bactrian (Two-Humped)-Large-Bite-False-</name>
@@ -1845,6 +1864,17 @@
 	</collection>
 	<collection>
 		<name>Carrion Crawler-Large-Paralysis-False-paralyzed for 2d4 rounds</name>
+	</collection>
+	<collection>
+		<name>Carrion Crawler-Huge-Tentacle-True-Paralysis</name>
+		<entry>1@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Carrion Crawler-Huge-Bite-False-</name>
+		<entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Carrion Crawler-Huge-Paralysis-False-paralyzed for 2d4 rounds</name>
 	</collection>
   <collection>
     <name>Cat-Tiny-Claw-True-</name>
@@ -1900,83 +1930,182 @@
 	<collection>
 		<name>Chaos Beast-Medium-Corporeal Instability-False-</name>
 	</collection>
+	<collection>
+		<name>Chaos Beast-Large-Claw-True-Corporeal Instability</name>
+		<entry>1d4@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Chaos Beast-Large-Corporeal Instability-False-</name>
+	</collection>
   <collection>
-    <name>Cheetah</name>
-    <entry>Bite%1d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%1d2@Piercing/Slashing@</entry>
-    <entry>Trip%%True%True%True%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
+    <name>Cheetah-Medium-Bite-True-</name>
+    <entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Cheetah-Medium-Claw-False-</name>
+		<entry>1d2@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Cheetah-Medium-Trip-False-</name>
+	</collection>
   <collection>
-    <name>Chimera (Black Dragon head)</name>
-    <entry>Bite%2d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Gore%1d8@Piercing@</entry>
-    <entry>Claw%1d6@Piercing/Slashing@</entry>
-    <entry>Breath weapon%3d8@Acid@</entry>
+    <name>Chimera (Black Dragon head)-Large-Bite (Dragon)-True-</name>
+    <entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Chimera (Black Dragon head)-Large-Bite (Lion)-True-</name>
+		<entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (Black Dragon head)-Large-Gore (Goat)-True-</name>
+		<entry>1d8@Piercing@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (Black Dragon head)-Large-Claw-False-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (Black Dragon head)-Large-Breath weapon-True-</name>
+		<entry>3d8@Acid@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (Blue Dragon head)-Large-Bite (Dragon)-True-</name>
+		<entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (Blue Dragon head)-Large-Bite (Lion)-True-</name>
+		<entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (Blue Dragon head)-Large-Gore (Goat)-True-</name>
+		<entry>1d8@Piercing@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (Blue Dragon head)-Large-Claw-False-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (Blue Dragon head)-Large-Breath weapon-True-</name>
+		<entry>3d8@Electricity@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (Green Dragon head)-Large-Bite (Dragon)-True-</name>
+		<entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (Green Dragon head)-Large-Bite (Lion)-True-</name>
+		<entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (Green Dragon head)-Large-Gore (Goat)-True-</name>
+		<entry>1d8@Piercing@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (Green Dragon head)-Large-Claw-False-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (Green Dragon head)-Large-Breath weapon-True-</name>
+		<entry>3d8@Acid@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (Red Dragon head)-Large-Bite (Dragon)-True-</name>
+		<entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (Red Dragon head)-Large-Bite (Lion)-True-</name>
+		<entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (Red Dragon head)-Large-Gore (Goat)-True-</name>
+		<entry>1d8@Piercing@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (Red Dragon head)-Large-Claw-False-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (Red Dragon head)-Large-Breath weapon-True-</name>
+		<entry>3d8@Fire@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (White Dragon head)-Large-Bite (Dragon)-True-</name>
+		<entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (White Dragon head)-Large-Bite (Lion)-True-</name>
+		<entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (White Dragon head)-Large-Gore (Goat)-True-</name>
+		<entry>1d8@Piercing@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (White Dragon head)-Large-Claw-False-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Chimera (White Dragon head)-Large-Breath weapon-True-</name>
+		<entry>3d8@Cold@</entry>
+	</collection>
   <collection>
-    <name>Chimera (Blue Dragon head)</name>
-    <entry>Bite%2d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Gore%1d8@Piercing@</entry>
-    <entry>Claw%1d6@Piercing/Slashing@</entry>
-    <entry>Breath weapon%3d8@Electricity@</entry>
+    <name>Choker-Small-Tentacle-True-</name>
+    <entry>1d3@Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Choker-Small-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Choker-Small-Constrict-False-</name>
+		<entry>1d3@Bludgeoning@</entry>
+	</collection>
   <collection>
-    <name>Chimera (Green Dragon head)</name>
-    <entry>Bite%2d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Gore%1d8@Piercing@</entry>
-    <entry>Claw%1d6@Piercing/Slashing@</entry>
-    <entry>Breath weapon%3d8@Acid@</entry>
+    <name>Chuul-Large-Claw-True-</name>
+    <entry>2d6@Piercing/Slashing@</entry>
   </collection>
+	<collection>
+		<name>Chuul-Large-Constrict-False-</name>
+		<entry>3d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Chuul-Large-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Chuul-Large-Paralytic Tentacles-True-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
   <collection>
-    <name>Chimera (Red Dragon head)</name>
-    <entry>Bite%2d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Gore%1d8@Piercing@</entry>
-    <entry>Claw%1d6@Piercing/Slashing@</entry>
-    <entry>Breath weapon%3d8@Fire@</entry>
+    <name>Cloaker-Large-Tail slap-True-</name>
+    <entry>1d6@Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Cloaker-Large-Bite-False-</name>
+		<entry>1d4@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Cloaker-Large-Moan-True-</name>
+	</collection>
+	<collection>
+		<name>Cloaker-Large-Engulf-True-</name>
+	</collection>
   <collection>
-    <name>Chimera (White Dragon head)</name>
-    <entry>Bite%2d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Gore%1d8@Piercing@</entry>
-    <entry>Claw%1d6@Piercing/Slashing@</entry>
-    <entry>Breath weapon%3d8@Cold@</entry>
+    <name>Cockatrice-Small-Bite-True-Petrification</name>
+    <entry>1d4@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Cockatrice-Small-Petrification-False-</name>
+	</collection>
   <collection>
-    <name>Choker</name>
-    <entry>Tentacle%1d3@Bludgeoning@</entry>
-    <entry>Improved Grab%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-    <entry>Constrict%1d3@Bludgeoning@</entry>
+    <name>Constrictor Snake-Medium-Bite-True-</name>
+    <entry>1d3@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
-  <collection>
-    <name>Chuul</name>
-    <entry>Claw%2d6@Piercing/Slashing@</entry>
-    <entry>Constrict%3d6@Bludgeoning@</entry>
-    <entry>Improved Grab%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-    <entry>Paralytic Tentacles%1d8@Bludgeoning@</entry>
-  </collection>
-  <collection>
-    <name>Cloaker</name>
-    <entry>Tail slap%1d6@Bludgeoning@</entry>
-    <entry>Bite%1d4@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Moan%%True%False%False%True%1%Round (6 seconds)%Charisma%%extraordinary ability%%0%0%</entry>
-    <entry>Engulf%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Cockatrice</name>
-    <entry>Bite%1d4@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Petrification%%True%False%False%True%1%Round (6 seconds)%Constitution%Fortitude%supernatural ability%%1%0%</entry>
-  </collection>
-  <collection>
-    <name>Constrictor Snake</name>
-    <entry>Bite%1d3@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Improved Grab%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-    <entry>Constrict%1d3@Bludgeoning@</entry>
-  </collection>
+	<collection>
+		<name>Constrictor Snake-Medium-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Constrictor Snake-Medium-Constrict-False-</name>
+		<entry>1d3@Bludgeoning@</entry>
+	</collection>
   <collection>
     <name>Couatl</name>
     <entry>Bite%1d3@Piercing/Slashing/Bludgeoning@</entry>
@@ -4724,13 +4853,22 @@
     <entry>Paralysis%%True%True%False%True%1%Hit%Charisma%Fortitude%extraordinary ability%1d4+1 rounds%0%0%</entry>
   </collection>
   <collection>
-    <name>Cloud Giant</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Slam%1d6@Bludgeoning@</entry>
-    <entry>Rock%2d8@Bludgeoning@</entry>
-    <entry>Rock Throwing%%True%False%True%True%1%Round (6 seconds)%%%extraordinary ability%%1%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Cloud Giant-Huge-Melee-True-</name>
   </collection>
+	<collection>
+		<name>Cloud Giant-Huge-Slam-True-</name>
+		<entry>1d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Cloud Giant-Huge-Rock-True-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Cloud Giant-Huge-Rock Throwing-True-</name>
+	</collection>
+	<collection>
+		<name>Cloud Giant-Huge-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
     <name>Fire Giant</name>
     <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
@@ -4893,12 +5031,18 @@
     <entry>Unarmed Strike%1d2@Bludgeoning@</entry>
   </collection>
   <collection>
-    <name>Clay Golem</name>
-    <entry>Slam%2d10@Bludgeoning@</entry>
-    <entry>Berserk%%True%True%True%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-    <entry>Cursed Wound%%True%True%True%True%1%Hit%%%extraordinary ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Clay Golem-Large-Slam-True-Cursed Wound</name>
+    <entry>2d10@Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Clay Golem-Large-Berserk-True-</name>
+	</collection>
+	<collection>
+		<name>Clay Golem-Large-Cursed Wound-False-</name>
+	</collection>
+	<collection>
+		<name>Clay Golem-Large-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
     <name>Flesh Golem</name>
     <entry>Slam%2d8@Bludgeoning@</entry>

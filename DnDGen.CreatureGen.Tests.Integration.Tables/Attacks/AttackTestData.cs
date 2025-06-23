@@ -1039,8 +1039,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.ChaosBeast].Add(BuildData("Claw", "Corporeal Instability", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.ChaosBeast].Add(BuildData("Corporeal Instability", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
 
-            testCases[CreatureConstants.Cheetah].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Cheetah].Add(BuildData("Claw", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Cheetah].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Cheetah].Add(BuildData("Claw", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.Cheetah].Add(BuildData("Trip", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
             testCases[CreatureConstants.Chimera_Black].Add(BuildData("Bite (Dragon)", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1083,7 +1083,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Chuul].Add(BuildData("Paralytic Tentacles", "6 round paralysis", 0.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
 
             testCases[CreatureConstants.Cloaker].Add(BuildData("Tail slap", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Cloaker].Add(BuildData("Bite", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+            testCases[CreatureConstants.Cloaker].Add(BuildData("Bite", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.Cloaker].Add(BuildData("Moan", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Charisma));
             testCases[CreatureConstants.Cloaker].Add(BuildData("Engulf", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
@@ -2978,7 +2978,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             testCases[CreatureConstants.Golem_Clay].Add(BuildData("Slam", "Cursed Wound", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Golem_Clay].Add(BuildData("Berserk", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
-            testCases[CreatureConstants.Golem_Clay].Add(BuildData("Cursed Wound", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true));
+            testCases[CreatureConstants.Golem_Clay].Add(BuildData("Cursed Wound", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
             testCases[CreatureConstants.Golem_Clay].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             testCases[CreatureConstants.Golem_Flesh].Add(BuildData("Slam", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));

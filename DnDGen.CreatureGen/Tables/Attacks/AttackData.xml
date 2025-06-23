@@ -834,8 +834,8 @@
   </collection>
   <collection>
     <name>Cheetah</name>
-    <entry>Bite@@True@True@False@False@1@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Claw@@True@True@True@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Trip@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
@@ -894,7 +894,7 @@
   <collection>
     <name>Cloaker</name>
     <entry>Tail slap@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Bite@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Moan@@True@False@False@True@1@Round (6 seconds)@Charisma@@extraordinary ability@@0@0</entry>
     <entry>Engulf@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
@@ -2938,7 +2938,7 @@
     <name>Clay Golem</name>
     <entry>Slam@@True@True@True@False@2@Round (6 seconds)@@@melee@Cursed Wound@1@0</entry>
     <entry>Berserk@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Cursed Wound@@True@True@True@True@1@Hit@@@extraordinary ability@@0@0</entry>
+    <entry>Cursed Wound@@True@True@False@True@1@Hit@@@extraordinary ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
