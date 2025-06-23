@@ -127,7 +127,7 @@
 		<name>Animated Object, Colossal (Flexible)</name>
 		<entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
 		<entry>Trample@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-		<entry>Constrict@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (More Than Two Legs, Tall)</name>
@@ -154,7 +154,7 @@
 		<entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
 		<entry>Trample@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
 		<entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-		<entry>Constrict@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Two Legs)</name>
@@ -185,7 +185,7 @@
 		<name>Animated Object, Gargantuan (Flexible)</name>
 		<entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
 		<entry>Trample@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-		<entry>Constrict@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (More Than Two Legs, Tall)</name>
@@ -212,7 +212,7 @@
 		<entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
 		<entry>Trample@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
 		<entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-		<entry>Constrict@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Two Legs)</name>
@@ -243,7 +243,7 @@
 		<name>Animated Object, Huge (Flexible)</name>
 		<entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
 		<entry>Trample@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-		<entry>Constrict@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (More Than Two Legs, Tall)</name>
@@ -270,7 +270,7 @@
 		<entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
 		<entry>Trample@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
 		<entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-		<entry>Constrict@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Two Legs)</name>
@@ -301,7 +301,7 @@
 		<name>Animated Object, Large (Flexible)</name>
 		<entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
 		<entry>Trample@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-		<entry>Constrict@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (More Than Two Legs, Tall)</name>
@@ -328,7 +328,7 @@
 		<entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
 		<entry>Trample@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
 		<entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-		<entry>Constrict@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Two Legs)</name>
@@ -357,7 +357,7 @@
 	<collection>
 		<name>Animated Object, Medium (Flexible)</name>
 		<entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-		<entry>Constrict@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (More Than Two Legs)</name>
@@ -371,7 +371,7 @@
 		<name>Animated Object, Medium (Sheetlike)</name>
 		<entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
 		<entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-		<entry>Constrict@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Two Legs)</name>
@@ -396,7 +396,7 @@
 	<collection>
 		<name>Animated Object, Small (Flexible)</name>
 		<entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-		<entry>Constrict@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (More Than Two Legs)</name>
@@ -410,7 +410,7 @@
 		<name>Animated Object, Small (Sheetlike)</name>
 		<entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
 		<entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-		<entry>Constrict@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Two Legs)</name>
@@ -435,7 +435,7 @@
 	<collection>
 		<name>Animated Object, Tiny (Flexible)</name>
 		<entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-		<entry>Constrict@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (More Than Two Legs)</name>
@@ -449,7 +449,7 @@
 		<name>Animated Object, Tiny (Sheetlike)</name>
 		<entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
 		<entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-		<entry>Constrict@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Two Legs)</name>
@@ -509,7 +509,7 @@
   <collection>
     <name>Assassin Vine</name>
     <entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Constrict@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+    <entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
     <entry>Entangle@@True@False@True@True@1@Round (6 seconds)@@@supernatural ability@@0@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
@@ -800,7 +800,7 @@
     <name>Carrion Crawler</name>
     <entry>Tentacle@@True@True@True@False@8@Round (6 seconds)@@@melee@Paralysis@0@0</entry>
     <entry>Bite@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Paralysis@@True@True@False@False@1@Hit@Constitution@Fortitude@extraordinary ability@paralyzed for 2d4 rounds@0@0</entry>
+    <entry>Paralysis@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@paralyzed for 2d4 rounds@0@0</entry>
   </collection>
   <collection>
     <name>Cat</name>
@@ -949,7 +949,7 @@
     <name>Death Slaad</name>
     <entry>Claw@@True@True@True@False@2@Round (6 seconds)@@@melee@Stun@1@0</entry>
     <entry>Bite@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Stun@@True@False@True@True@3@Day@Wisdom@Fortitude@extraordinary ability@Stunned 1 round@0@0</entry>
+    <entry>Stun@@True@False@False@True@3@Day@Wisdom@Fortitude@extraordinary ability@Stunned 1 round@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Summon Slaad@@True@False@True@True@1@Day@@@extraordinary ability@@0@0</entry>
   </collection>
@@ -2468,7 +2468,7 @@
     <name>Efreeti</name>
     <entry>Slam@@True@True@True@False@2@Round (6 seconds)@@@melee@Heat@1@0</entry>
     <entry>Change Size@@True@False@True@True@2@Day@Charisma@Fortitude@spell-like ability@@0@0</entry>
-    <entry>Heat@@True@False@True@True@1@Hit@@@extraordinary ability@@0@0</entry>
+    <entry>Heat@@True@False@False@True@1@Hit@@@extraordinary ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
@@ -2950,7 +2950,7 @@
     <name>Iron Golem</name>
     <entry>Slam@@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Breath weapon@@True@False@True@True@1@1d4+1 Round (6 seconds)@@@supernatural ability@Poisonous Gas@0@0</entry>
-    <entry>Poisonous Gas@@True@False@True@True@1@Round (6 seconds)@Constitution@Fortitude@melee@@0@0</entry>
+    <entry>Poisonous Gas@@True@False@False@True@1@Round (6 seconds)@Constitution@Fortitude@melee@@0@0</entry>
   </collection>
   <collection>
     <name>Stone Golem</name>
@@ -3093,13 +3093,13 @@
   <collection>
     <name>Hell Hound</name>
     <entry>Bite@@True@True@False@False@1@Round (6 seconds)@@@melee@Fiery Bite@1.5@0</entry>
-    <entry>Fiery Bite@@True@True@False@False@1@Round (6 seconds)@@@supernatural ability@@0@0</entry>
+    <entry>Fiery Bite@@True@True@False@True@1@Round (6 seconds)@@@supernatural ability@@0@0</entry>
     <entry>Breath weapon@@True@False@True@True@1@2d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Nessian Warhound</name>
     <entry>Bite@@True@True@False@False@1@Round (6 seconds)@@@melee@Fiery Bite@1.5@0</entry>
-    <entry>Fiery Bite@@True@True@False@False@1@Round (6 seconds)@@@supernatural ability@@0@0</entry>
+    <entry>Fiery Bite@@True@True@False@True@1@Round (6 seconds)@@@supernatural ability@@0@0</entry>
     <entry>Breath weapon@@True@False@True@True@1@2d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
@@ -3380,8 +3380,8 @@
     <name>Marut</name>
     <entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@Fist of Thunder@1@0</entry>
     <entry>Slam@@True@True@True@False@1@Round (6 seconds)@@@melee@Fist of Lightning@1@0</entry>
-    <entry>Fist of Thunder@@True@True@True@True@1@Round (6 seconds)@Strength@Fortitude@supernatural ability@deafened 2d6 rounds@0@0</entry>
-    <entry>Fist of Lightning@@True@True@True@True@1@Round (6 seconds)@Strength@Fortitude@supernatural ability@blinded 2d6 rounds@0@0</entry>
+    <entry>Fist of Thunder@@True@True@False@True@1@Round (6 seconds)@Strength@Fortitude@supernatural ability@deafened 2d6 rounds@0@0</entry>
+    <entry>Fist of Lightning@@True@True@False@True@1@Round (6 seconds)@Strength@Fortitude@supernatural ability@blinded 2d6 rounds@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
@@ -3526,7 +3526,7 @@
     <entry>Claw@@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Spikes@@True@False@True@False@6@Round (6 seconds)@@@ranged@Tail Spikes@0@0</entry>
-    <entry>Tail Spikes@@True@False@True@True@24@Day@@@extraordinary ability@@0.5@0</entry>
+    <entry>Tail Spikes@@True@False@False@True@24@Day@@@extraordinary ability@@0.5@0</entry>
   </collection>
   <collection>
     <name>Marilith</name>
@@ -3534,7 +3534,8 @@
     <entry>Melee@@False@True@False@False@5@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Slam@@True@True@True@False@6@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Constrict@@True@True@False@True@1@Round (6 seconds)@Strength@Fortitude@extraordinary ability@@1.5@0</entry>
+	  <entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@Lose Consciousness@1.5@0</entry>
+	  <entry>Lose Consciousness@@True@True@False@True@1@Round (6 seconds)@Strength@Fortitude@extraordinary ability@lose consciousness while in coils and for 2d4 rounds thereafter@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Summon Demon@@True@False@True@True@1@Day@@@spell-like ability@@0@0</entry>

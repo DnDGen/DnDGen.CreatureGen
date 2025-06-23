@@ -74,6 +74,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertDamageEffectAttackIsNotPrimary(creatureAttackData[creature]);
             AssertPoisonAttacks(creatureAttackData[creature]);
             AssertDiseaseAttacks(creatureAttackData[creature]);
+            AssertSpecialAttacks(creatureAttackData[creature]);
 
             AssertCollection(creature, [.. creatureAttackData[creature]]);
 
@@ -100,6 +101,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertDamageEffectAttackIsNotPrimary(templateAttackData[template]);
             AssertPoisonAttacks(templateAttackData[template]);
             AssertDiseaseAttacks(templateAttackData[template]);
+            AssertSpecialAttacks(templateAttackData[template]);
 
             AssertCollection(template, [.. templateAttackData[template]]);
         }
@@ -157,6 +159,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 Assert.That(selection.IsSpecial, Is.True, selection.Name);
                 Assert.That(selection.IsPrimary, Is.False, selection.Name);
                 Assert.That(selection.IsNatural, Is.True, selection.Name);
+            }
+        }
+
+        private void AssertSpecialAttacks(List<string> entries)
+        {
+            var attackTypes = new[]
+            {
+                "spell-like",
+                "supernatural",
+                "extraordinary"
+            };
+            var specialAttacks = entries
+                .Select(DataHelper.Parse<AttackDataSelection>)
+                .Where(s => attackTypes.Any(a => s.AttackType.Contains(a)));
+
+            foreach (var selection in specialAttacks)
+            {
+                Assert.That(selection.IsSpecial, Is.True, selection.Name);
             }
         }
 
@@ -291,8 +311,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             }
 
             Assert.That(improvedGrab.AttackType, Is.EqualTo("extraordinary ability"));
-            Assert.That(improvedGrab.DamageBonusMultiplier, Is.EqualTo(0));
-            Assert.That(improvedGrab.DamageEffect, Is.Empty);
+            Assert.That(improvedGrab.DamageBonusMultiplier, Is.Zero);
             Assert.That(improvedGrab.FrequencyQuantity, Is.EqualTo(1));
             Assert.That(improvedGrab.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
             Assert.That(improvedGrab.IsMelee, Is.True);
