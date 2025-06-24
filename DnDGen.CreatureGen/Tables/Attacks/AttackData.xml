@@ -895,8 +895,8 @@
     <name>Cloaker</name>
     <entry>Tail slap@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Moan@@True@False@False@True@1@Round (6 seconds)@Charisma@@extraordinary ability@@0@0</entry>
-    <entry>Engulf@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Moan@@True@False@True@True@1@Round (6 seconds)@Charisma@@extraordinary ability@@0@0</entry>
+    <entry>Engulf@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Cockatrice</name>

@@ -2239,6 +2239,17 @@
 		<name>Constrictor Snake-Medium-Constrict-False-</name>
 		<entry>1d3@Bludgeoning@</entry>
 	</collection>
+	<collection>
+		<name>Constrictor Snake-Large-Bite-True-</name>
+		<entry>1d4@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Constrictor Snake-Large-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Constrictor Snake-Large-Constrict-False-</name>
+		<entry>1d3@Bludgeoning@</entry>
+	</collection>
   <collection>
     <name>Couatl</name>
     <entry>Bite%1d3@Piercing/Slashing/Bludgeoning@</entry>
@@ -4192,7 +4203,7 @@
 	</collection>
   <collection>
     <name>Copper Dragon, Adult-Huge-Bite-True-</name>
-    <entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
+    <entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
 	<collection>
 		<name>Copper Dragon, Adult-Huge-Claw-False-</name>

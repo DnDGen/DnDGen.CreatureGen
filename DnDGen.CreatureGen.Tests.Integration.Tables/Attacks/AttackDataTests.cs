@@ -75,6 +75,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertPoisonAttacks(creatureAttackData[creature]);
             AssertDiseaseAttacks(creatureAttackData[creature]);
             AssertSpecialAttacks(creatureAttackData[creature]);
+            AssertDragonAttacks(creature);
 
             AssertCollection(creature, [.. creatureAttackData[creature]]);
 
@@ -160,6 +161,55 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 Assert.That(selection.IsPrimary, Is.False, selection.Name);
                 Assert.That(selection.IsNatural, Is.True, selection.Name);
             }
+        }
+
+        private void AssertDragonAttacks(string creature)
+        {
+            if (!creature.Contains("Dragon,"))
+                return;
+
+            var size = creatureData[creature].Size;
+
+            var bite = selections.FirstOrDefault(s => s.Name == "Bite");
+            AssertDragonAttack(creature, "Bite", SizeConstants.Tiny, primary: true);
+
+            var claw = selections.FirstOrDefault(s => s.Name == "Claw");
+            AssertDragonAttack(claw, primary: true);
+        }
+
+        private void AssertDragonAttack(string creature, string name, string minimumSize, int frequency, bool primary)
+        {
+            var size = creatureData[creature].Size;
+            var selection = creatureAttackData[creature]
+                .Select(DataHelper.Parse<AttackDataSelection>)
+                .FirstOrDefault(s => s.Name == name);
+
+            if (!SizeIsAtLeast(creatureData[creature].Size, minimumSize))
+            {
+                Assert.That(selection, Is.Null);
+                return;
+            }
+
+            Assert.That(selection, Is.Not.Null);
+            Assert.That(selection.AttackType, Is.EqualTo("melee"));
+            Assert.That(selection.DamageBonusMultiplier, Is.EqualTo(1));
+            Assert.That(selection.DamageEffect, Is.Empty);
+            Assert.That(selection.FrequencyQuantity, Is.EqualTo(frequency));
+            Assert.That(selection.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(selection.IsMelee, Is.True);
+            Assert.That(selection.IsPrimary, Is.EqualTo(primary));
+            Assert.That(selection.IsNatural, Is.True);
+            Assert.That(selection.IsSpecial, Is.False);
+            Assert.That(selection.RequiredGender, Is.Empty);
+            Assert.That(selection.Save, Is.Empty);
+            Assert.That(selection.SaveAbility, Is.Empty);
+            Assert.That(selection.SaveDcBonus, Is.Zero);
+        }
+
+        private bool SizeIsAtLeast(string size, string minimumSize)
+        {
+            var sizes = SizeConstants.GetOrdered();
+            return Array.IndexOf(sizes, size) >= Array.IndexOf(sizes, minimumSize);
         }
 
         private void AssertSpecialAttacks(List<string> entries)
