@@ -1066,8 +1066,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             testCases[CreatureConstants.Cloaker].Add(BuildData("Tail slap", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Cloaker].Add(BuildData("Bite", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Cloaker].Add(BuildData("Moan", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Charisma));
-            testCases[CreatureConstants.Cloaker].Add(BuildData("Engulf", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            testCases[CreatureConstants.Cloaker].Add(BuildData("Moan", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma));
+            testCases[CreatureConstants.Cloaker].Add(BuildData("Engulf", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
             testCases[CreatureConstants.Cockatrice].Add(BuildData("Bite", "Petrification", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Cockatrice].Add(BuildData("Petrification", string.Empty, 1, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
@@ -4213,31 +4213,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             testCases[CreatureConstants.Tarrasque].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Tarrasque].Add(BuildData("Horn",
-                string.Empty,
-                0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.Tarrasque].Add(BuildData("Claw",
-                string.Empty,
-                0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.Tarrasque].Add(BuildData("Tail Slap",
-                string.Empty,
-                0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.Tarrasque].Add(BuildData("Augmented Critical", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
             testCases[CreatureConstants.Tarrasque].Add(BuildData("Frightful Presence", "Shaken", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
             testCases[CreatureConstants.Tarrasque].Add(BuildData("Improved Grab", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
             testCases[CreatureConstants.Tarrasque].Add(BuildData("Rush", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Minute, false, true, true, true));
             testCases[CreatureConstants.Tarrasque].Add(BuildData("Swallow Whole",
-                string.Empty,
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
             testCases[CreatureConstants.Tendriculos].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Tendriculos].Add(BuildData("Tendril",
-                string.Empty,
-                0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.Tendriculos].Add(BuildData("Improved Grab", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
             testCases[CreatureConstants.Tendriculos].Add(BuildData("Swallow Whole",
-                "Paralysis",
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-            testCases[CreatureConstants.Tendriculos].Add(BuildData("Paralysis", "paralyzed for 3d6 rounds", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, false, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                "Paralysis", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+            testCases[CreatureConstants.Tendriculos].Add(BuildData("Paralysis", "paralyzed for 3d6 rounds", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
 
             testCases[CreatureConstants.Thoqqua].Add(BuildData("Slam", "Heat, Burn", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Thoqqua].Add(BuildData("Heat", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
@@ -4392,8 +4386,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 "Blood Drain",
                 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
             testCases[CreatureConstants.Weasel_Dire].Add(BuildData("Blood Drain",
-                string.Empty,
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
             testCases[CreatureConstants.Whale_Baleen].Add(BuildData("Tail Slap", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
@@ -4407,16 +4400,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Wight].Add(BuildData("Create Spawn", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
             testCases[CreatureConstants.WillOWisp].Add(BuildData("Shock",
-                string.Empty,
-                0, "melee touch", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                string.Empty, 0, "melee touch", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
             testCases[CreatureConstants.WinterWolf].Add(BuildData("Bite", "Freezing Bite", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.WinterWolf].Add(BuildData("Breath Weapon",
-                string.Empty,
-                0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
             testCases[CreatureConstants.WinterWolf].Add(BuildData("Freezing Bite",
-                string.Empty,
-                0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true));
+                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
             testCases[CreatureConstants.WinterWolf].Add(BuildData("Trip", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
             testCases[CreatureConstants.Wolf].Add(BuildData("Bite", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -4532,82 +4522,58 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs].Add(BuildData(AttributeConstants.Melee,
-                string.Empty,
-                1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
+                string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
             testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs].Add(BuildData(AttributeConstants.Ranged,
-                string.Empty,
-                1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
+                string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
             testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs].Add(BuildData("Bite",
-                "Poison",
-                0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs].Add(BuildData("Poison",
-                string.Empty,
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs].Add(BuildData("Produce Acid",
-                string.Empty,
-                0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs].Add(BuildData("Constrict",
-                string.Empty,
-                1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+                string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
             testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
-                string.Empty,
-                0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail].Add(BuildData(AttributeConstants.Melee,
-                string.Empty,
-                1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
+                string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
             testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail].Add(BuildData(AttributeConstants.Ranged,
-                string.Empty,
-                1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
+                string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
             testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail].Add(BuildData("Bite",
-                "Poison",
-                0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail].Add(BuildData("Poison",
-                string.Empty,
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail].Add(BuildData("Produce Acid",
-                string.Empty,
-                0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail].Add(BuildData("Constrict",
-                string.Empty,
-                1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+                string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
             testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
-                string.Empty,
-                0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             testCases[CreatureConstants.YuanTi_Abomination].Add(BuildData(AttributeConstants.Melee,
-                string.Empty,
-                1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
+                string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
             testCases[CreatureConstants.YuanTi_Abomination].Add(BuildData(AttributeConstants.Ranged,
-                string.Empty,
-                1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
+                string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
             testCases[CreatureConstants.YuanTi_Abomination].Add(BuildData("Bite",
-                "Poison",
-                0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.YuanTi_Abomination].Add(BuildData("Poison",
-                string.Empty,
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.YuanTi_Abomination].Add(BuildData("Aversion",
-                "aversion 10 minutes",
-                0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+                "aversion 10 minutes", 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
             testCases[CreatureConstants.YuanTi_Abomination].Add(BuildData("Produce Acid",
-                string.Empty,
-                0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.YuanTi_Abomination].Add(BuildData("Constrict",
-                string.Empty,
-                1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+                string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
             testCases[CreatureConstants.YuanTi_Abomination].Add(BuildData("Improved Grab",
-                string.Empty,
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
             testCases[CreatureConstants.YuanTi_Abomination].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
-                string.Empty,
-                0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             testCases[CreatureConstants.Zelekhut].Add(BuildData(AttributeConstants.Melee, string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, false, true, false));
             testCases[CreatureConstants.Zelekhut].Add(BuildData("Unarmed Strike", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Zelekhut].Add(BuildData("Electrified Weapon",
-                string.Empty,
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
             testCases[CreatureConstants.Zelekhut].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             return testCases;

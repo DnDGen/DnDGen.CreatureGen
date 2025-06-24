@@ -2840,7 +2840,7 @@
   <collection>
     <name>Giant Bombardier Beetle</name>
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Acid Spray@@True@True@True@False@1@Round (6 seconds)@Constitution@Fortitude@extraordinary ability@@2@0</entry>
+    <entry>Acid Spray@@True@True@True@True@1@Round (6 seconds)@Constitution@Fortitude@extraordinary ability@@2@0</entry>
   </collection>
   <collection>
     <name>Giant Constrictor Snake</name>
@@ -3412,7 +3412,7 @@
     <name>Kuo-toa</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Lightning Bolt@@True@True@True@False@1@1d4 Round (6 seconds)@@Reflex@supernatural ability@@0@0</entry>
+    <entry>Lightning Bolt@@True@True@True@True@1@1d4 Round (6 seconds)@@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Lamia</name>
@@ -4391,7 +4391,7 @@
     <entry>Tendril@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Swallow Whole@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@Paralysis@0@0</entry>
-    <entry>Paralysis@@True@True@False@False@1@Hit@Constitution@Fortitude@extraordinary ability@paralyzed for 3d6 rounds@0@0</entry>
+    <entry>Paralysis@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@paralyzed for 3d6 rounds@0@0</entry>
   </collection>
   <collection>
     <name>Thoqqua</name>
@@ -4580,7 +4580,7 @@
     <name>Winter Wolf</name>
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@Freezing Bite@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
-    <entry>Freezing Bite@@True@True@True@True@1@Hit@@@supernatural ability@@0@0</entry>
+    <entry>Freezing Bite@@True@True@False@True@1@Hit@@@supernatural ability@@0@0</entry>
     <entry>Trip@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
@@ -4673,7 +4673,7 @@
     <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Aversion@@True@False@False@True@1@Round (6 seconds)@Charisma@Will@spell-like ability@aversion 10 minutes@0@0</entry>
     <entry>Produce Acid@@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@spell-like ability@@0@0</entry>
-    <entry>Constrict@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+    <entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
@@ -4701,7 +4701,7 @@
     <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Produce Acid@@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
-    <entry>Constrict@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+    <entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
@@ -4711,7 +4711,7 @@
     <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Produce Acid@@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
-    <entry>Constrict@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+    <entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
   </collection>
   <collection>
     <name>Yuan-ti Pureblood</name>
