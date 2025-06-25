@@ -168,16 +168,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             if (!creature.Contains("Dragon,"))
                 return;
 
-            var size = creatureData[creature].Size;
+            AssertDragonAttack(creature, "Bite", SizeConstants.Tiny, 1, true, "melee", 1, false);
+            AssertDragonAttack(creature, "Claw", SizeConstants.Tiny, 2, false, "melee", 0.5, false);
+            AssertDragonAttack(creature, "Wing", SizeConstants.Medium, 2, false, "melee", 0.5, false);
+            AssertDragonAttack(creature, "Tail Slap", SizeConstants.Large, 1, false, "melee", 0.5, false);
+            AssertDragonAttack(creature, "Crush", SizeConstants.Huge, 1, true, "extraordinary ability", 1.5, true);
+            AssertDragonAttack(creature, "Tail Sweep", SizeConstants.Gargantuan, 1, true, "extraordinary ability", 1.5, true);
 
-            var bite = selections.FirstOrDefault(s => s.Name == "Bite");
-            AssertDragonAttack(creature, "Bite", SizeConstants.Tiny, primary: true);
-
-            var claw = selections.FirstOrDefault(s => s.Name == "Claw");
-            AssertDragonAttack(claw, primary: true);
+            Assert.Fail("assert breath weapon attacks");
+            Assert.Fail("assert frightful presence attacks");
         }
 
-        private void AssertDragonAttack(string creature, string name, string minimumSize, int frequency, bool primary)
+        private void AssertDragonAttack(string creature, string name, string minimumSize, int frequency, bool primary, string attackType, double multiplier, bool special)
         {
             var size = creatureData[creature].Size;
             var selection = creatureAttackData[creature]
@@ -191,15 +193,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             }
 
             Assert.That(selection, Is.Not.Null);
-            Assert.That(selection.AttackType, Is.EqualTo("melee"));
-            Assert.That(selection.DamageBonusMultiplier, Is.EqualTo(1));
+            Assert.That(selection.AttackType, Is.EqualTo(attackType));
+            Assert.That(selection.DamageBonusMultiplier, Is.EqualTo(multiplier));
             Assert.That(selection.DamageEffect, Is.Empty);
             Assert.That(selection.FrequencyQuantity, Is.EqualTo(frequency));
             Assert.That(selection.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
             Assert.That(selection.IsMelee, Is.True);
             Assert.That(selection.IsPrimary, Is.EqualTo(primary));
             Assert.That(selection.IsNatural, Is.True);
-            Assert.That(selection.IsSpecial, Is.False);
+            Assert.That(selection.IsSpecial, Is.EqualTo(special));
             Assert.That(selection.RequiredGender, Is.Empty);
             Assert.That(selection.Save, Is.Empty);
             Assert.That(selection.SaveAbility, Is.Empty);
