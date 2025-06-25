@@ -1230,11 +1230,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_YoungAdult, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_YoungAdult, "Breath Weapon (acid)", "10d4", FeatConstants.Foci.Elements.Acid));
 
-            //huge
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Adult, "Bite", "2d8", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Adult, "Claw", "2d6", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Adult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Adult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            //large
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Adult, "Bite", "2d6", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Adult, "Claw", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Adult, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Adult, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Adult, "Breath Weapon (acid)", "12d4", FeatConstants.Foci.Elements.Acid));
 
             //huge
@@ -1261,12 +1261,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_VeryOld, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_VeryOld, "Breath Weapon (acid)", "18d4", FeatConstants.Foci.Elements.Acid));
 
-            //gargantuan
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Bite", "4d6", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Claw", "2d8", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
+            //huge
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Bite", "2d8", biteDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Claw", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Breath Weapon (acid)", "20d4", FeatConstants.Foci.Elements.Acid));
 
             //gargantuan

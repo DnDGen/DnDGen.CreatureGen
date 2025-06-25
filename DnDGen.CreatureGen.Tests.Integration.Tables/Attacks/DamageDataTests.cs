@@ -182,8 +182,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 return;
 
             var selection = creatureAttackDamageData[key].Select(DataHelper.Parse<DamageDataSelection>).Single();
+            var size = creatureData[creature].Size;
             Assert.That(selection, Is.Not.Null, name);
-            Assert.That(selection.Roll, Is.EqualTo(dragonDamages[name][creatureData[creature].Size]), name);
+            Assert.That(selection.Roll, Is.EqualTo(dragonDamages[name][size]), name + size);
             Assert.That(selection.Type, Is.EqualTo(damageTypes[$"-{name}-"]), name);
             Assert.That(selection.Condition, Is.Empty, name);
         }
