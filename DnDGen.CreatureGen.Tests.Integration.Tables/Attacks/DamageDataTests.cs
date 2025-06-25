@@ -24,6 +24,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         private Dictionary<string, IEnumerable<AdvancementDataSelection>> advancementData;
         private Dictionary<string, CreatureDataSelection> creatureData;
         private DamageHelper damageHelper;
+        private Dictionary<string, Dictionary<string, string>> dragonDamages;
+        private Dictionary<string, string> damageTypes;
 
         protected override string tableName => TableNameConstants.Collection.DamageData;
 
@@ -41,6 +43,78 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             advancementData = advancementsDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.Advancements);
 
             damageHelper = GetNewInstanceOf<DamageHelper>();
+
+            dragonDamages = new()
+            {
+                ["Bite"] = new()
+                {
+                    [SizeConstants.Tiny] = "1d4",
+                    [SizeConstants.Small] = "1d6",
+                    [SizeConstants.Medium] = "1d8",
+                    [SizeConstants.Large] = "2d6",
+                    [SizeConstants.Huge] = "2d8",
+                    [SizeConstants.Gargantuan] = "4d6",
+                    [SizeConstants.Colossal] = "4d8",
+                },
+                ["Claw"] = new()
+                {
+                    [SizeConstants.Tiny] = "1d3",
+                    [SizeConstants.Small] = "1d4",
+                    [SizeConstants.Medium] = "1d6",
+                    [SizeConstants.Large] = "1d8",
+                    [SizeConstants.Huge] = "2d6",
+                    [SizeConstants.Gargantuan] = "2d8",
+                    [SizeConstants.Colossal] = "4d6",
+                },
+                ["Wing"] = new()
+                {
+                    [SizeConstants.Medium] = "1d4",
+                    [SizeConstants.Large] = "1d6",
+                    [SizeConstants.Huge] = "1d8",
+                    [SizeConstants.Gargantuan] = "2d6",
+                    [SizeConstants.Colossal] = "2d8",
+                },
+                ["Tail Slap"] = new()
+                {
+                    [SizeConstants.Large] = "1d8",
+                    [SizeConstants.Huge] = "2d6",
+                    [SizeConstants.Gargantuan] = "2d8",
+                    [SizeConstants.Colossal] = "4d6",
+                },
+                ["Crush"] = new()
+                {
+                    [SizeConstants.Huge] = "2d8",
+                    [SizeConstants.Gargantuan] = "4d6",
+                    [SizeConstants.Colossal] = "4d8",
+                },
+                ["Tail Sweep"] = new()
+                {
+                    [SizeConstants.Gargantuan] = "2d6",
+                    [SizeConstants.Colossal] = "2d8",
+                },
+            };
+
+            damageTypes = new Dictionary<string, string>
+            {
+                ["-Bite-"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}/{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-Claw-"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["-Talon-"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["-Talons-"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["-Rake-"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["-Rend-"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
+                ["-Gore-"] = $"{AttributeConstants.DamageTypes.Piercing}",
+                ["-Slap-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-Tail Slap-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-Tail Sweep-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-Crush-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-Slam-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-Sting-"] = $"{AttributeConstants.DamageTypes.Piercing}",
+                ["-Tentacle-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-Arm-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-Wing-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-Trample-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-Unarmed Strike-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}"
+            };
 
             creatureAttackDamageData = DamageTestData.GetCreatureAttackDamageData(attackData, creatureData, advancementData, damageHelper);
             templateAttackDamageData = DamageTestData.GetTemplateDamageData(attackData, damageHelper);
@@ -79,10 +153,92 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertNaturalAttacksHaveCorrectDamageTypes(key, creatureAttackDamageData[key]);
             AssertPoisonAttacksHaveCorrectDamageTypes(creature, key, creatureAttackDamageData[key]);
             AssertDiseaseAttacksHaveCorrectDamageTypes(creature, key, creatureAttackDamageData[key]);
+            AssertDragonAttacks(creature, key);
 
             AssertCollection(key, [.. creatureAttackDamageData[key]]);
 
             CreatureWithUnnaturalAttack_CanUseEquipment(creature, key);
+        }
+
+        private void AssertDragonAttacks(string creature, string key)
+        {
+            if (!creature.Contains("Dragon,"))
+                return;
+
+            AssertDragonPhysicalAttack(creature, key, "Bite");
+            AssertDragonPhysicalAttack(creature, key, "Claw");
+            AssertDragonPhysicalAttack(creature, key, "Wing");
+            AssertDragonPhysicalAttack(creature, key, "Tail Slap");
+            AssertDragonPhysicalAttack(creature, key, "Crush");
+            AssertDragonPhysicalAttack(creature, key, "Tail Sweep");
+
+            AssertDragonBreathWeaponAttacks(creature, key);
+            AssertDragonFrightfulPresenceAttack(creature, key);
+        }
+
+        private void AssertDragonPhysicalAttack(string creature, string key, string name)
+        {
+            if (!key.Contains($"-{name}-"))
+                return;
+
+            var selection = creatureAttackDamageData[key].Select(DataHelper.Parse<DamageDataSelection>).Single();
+            Assert.That(selection, Is.Not.Null, name);
+            Assert.That(selection.Roll, Is.EqualTo(dragonDamages[name][creatureData[creature].Size]), name);
+            Assert.That(selection.Type, Is.EqualTo(damageTypes[$"-{name}-"]), name);
+            Assert.That(selection.Condition, Is.Empty, name);
+        }
+
+        private void AssertDragonBreathWeaponAttacks(string creature, string key)
+        {
+            if (!key.Contains("-Breath Weapon"))
+                return;
+
+            var breathWeaponDamages = creatureAttackDamageData[key].Select(DataHelper.Parse<DamageDataSelection>);
+            var ageCategory = GetNumericDragonAgeCategory(creature.Split(',')[1].Trim());
+
+            //Ending in - indicates no effect, so it should have damage
+            if (key.EndsWith('-'))
+            {
+                var selection = breathWeaponDamages.Single();
+                Assert.That(selection, Is.Not.Null, key);
+
+                var quantity = Convert.ToInt32(selection.Roll.Split('d')[0]);
+                Assert.That(quantity, Is.EqualTo(ageCategory).Or.EqualTo(ageCategory * 2), key);
+                Assert.That(selection.Type, Is.Not.Empty, key);
+                Assert.That(selection.Condition, Is.Empty, key);
+            }
+            else
+            {
+                Assert.That(breathWeaponDamages, Is.Empty);
+            }
+        }
+
+        private void AssertDragonFrightfulPresenceAttack(string creature, string key)
+        {
+            if (!key.Contains("-Frightful Presence-"))
+                return;
+
+            Assert.That(creatureAttackDamageData[key], Is.Empty, key);
+        }
+
+        private int GetNumericDragonAgeCategory(string dragonAge)
+        {
+            var ages = new[]
+            {
+                "Wyrmling",
+                "Very Young",
+                "Young",
+                "Juvenile",
+                "Young Adult",
+                "Adult",
+                "Mature Adult",
+                "Old",
+                "Very Old",
+                "Ancient",
+                "Wyrm",
+                "Great Wyrm",
+            };
+            return Array.IndexOf(ages, dragonAge) + 1;
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -111,26 +267,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
         private void AssertNaturalAttacksHaveCorrectDamageTypes(string key, List<string> entries)
         {
-            var damageTypes = new Dictionary<string, string>
-            {
-                ["-bite-"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}/{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["-claw-"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
-                ["-talon-"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
-                ["-talons-"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
-                ["-rake-"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
-                ["-rend-"] = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}",
-                ["-gore-"] = $"{AttributeConstants.DamageTypes.Piercing}",
-                ["-slap-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["-tail slap-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["-slam-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["-sting-"] = $"{AttributeConstants.DamageTypes.Piercing}",
-                ["-tentacle-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["-arm-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["-wing-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["-trample-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["-unarmed strike-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}"
-            };
-
             foreach (var kvp in damageTypes)
             {
                 if (!key.Contains(kvp.Key, StringComparison.CurrentCultureIgnoreCase))

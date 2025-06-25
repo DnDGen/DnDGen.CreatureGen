@@ -2235,15 +2235,15 @@
   </collection>
   <collection>
     <name>Silver Dragon, Old</name>
-    <entry>Gargantuan@20@15@1d2@0@0@0@0@2@20</entry>
+    <entry>Huge@15@10@1d2@0@0@0@0@2@20</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Very Old</name>
-    <entry>Gargantuan@20@15@1d2@0@0@0@0@2@21</entry>
+    <entry>Huge@15@10@1d2@0@0@0@0@2@21</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Very Young</name>
-    <entry>Large@10@5@1d2@0@0@0@0@2@5</entry>
+    <entry>Medium@5@5@1d2@0@0@0@0@2@5</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Wyrm</name>
@@ -2251,15 +2251,15 @@
   </collection>
   <collection>
     <name>Silver Dragon, Wyrmling</name>
-    <entry>Medium@5@5@1d2@0@0@0@0@2@4</entry>
+    <entry>Small@5@5@1d2@0@0@0@0@2@4</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Young</name>
-    <entry>Large@10@5@1d2@0@0@0@0@2@7</entry>
+    <entry>Medium@5@5@1d2@0@0@0@0@2@7</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Young Adult</name>
-    <entry>Huge@15@10@1d2@0@0@0@0@2@13</entry>
+    <entry>Large@10@5@1d2@0@0@0@0@2@13</entry>
   </collection>
   <collection>
     <name>Six-Headed Cryohydra</name>

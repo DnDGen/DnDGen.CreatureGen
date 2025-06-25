@@ -2327,15 +2327,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 [CreatureConstants.Dragon_Red_Ancient] = GetCreatureData(CreatureConstants.Dragon_Red_Ancient, SizeConstants.Gargantuan, ChallengeRatingConstants.CR23, null, false, 15, 33, 0, true),
                 [CreatureConstants.Dragon_Red_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Red_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR24, null, false, 17, 36, 0, true),
                 [CreatureConstants.Dragon_Red_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Red_GreatWyrm, SizeConstants.Colossal, ChallengeRatingConstants.CR26, null, false, 19, 39, 0, true),
-                [CreatureConstants.Dragon_Silver_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Silver_Wyrmling, SizeConstants.Medium, ChallengeRatingConstants.CR4, 4, true, 0, 6, 0, true),
-                [CreatureConstants.Dragon_Silver_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Silver_VeryYoung, SizeConstants.Large, ChallengeRatingConstants.CR5, 4, true, 0, 9, 0, true),
-                [CreatureConstants.Dragon_Silver_Young] = GetCreatureData(CreatureConstants.Dragon_Silver_Young, SizeConstants.Large, ChallengeRatingConstants.CR7, 5, true, 1, 12, 0, true),
+                [CreatureConstants.Dragon_Silver_Wyrmling] = GetCreatureData(CreatureConstants.Dragon_Silver_Wyrmling, SizeConstants.Small, ChallengeRatingConstants.CR4, 4, true, 0, 6, 0, true),
+                [CreatureConstants.Dragon_Silver_VeryYoung] = GetCreatureData(CreatureConstants.Dragon_Silver_VeryYoung, SizeConstants.Medium, ChallengeRatingConstants.CR5, 4, true, 0, 9, 0, true),
+                [CreatureConstants.Dragon_Silver_Young] = GetCreatureData(CreatureConstants.Dragon_Silver_Young, SizeConstants.Medium, ChallengeRatingConstants.CR7, 5, true, 1, 12, 0, true),
                 [CreatureConstants.Dragon_Silver_Juvenile] = GetCreatureData(CreatureConstants.Dragon_Silver_Juvenile, SizeConstants.Large, ChallengeRatingConstants.CR10, null, true, 3, 15, 0, true),
-                [CreatureConstants.Dragon_Silver_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Silver_YoungAdult, SizeConstants.Huge, ChallengeRatingConstants.CR13, null, true, 5, 18, 0, true),
+                [CreatureConstants.Dragon_Silver_YoungAdult] = GetCreatureData(CreatureConstants.Dragon_Silver_YoungAdult, SizeConstants.Large, ChallengeRatingConstants.CR13, null, true, 5, 18, 0, true),
                 [CreatureConstants.Dragon_Silver_Adult] = GetCreatureData(CreatureConstants.Dragon_Silver_Adult, SizeConstants.Huge, ChallengeRatingConstants.CR15, null, true, 7, 21, 0, true),
                 [CreatureConstants.Dragon_Silver_MatureAdult] = GetCreatureData(CreatureConstants.Dragon_Silver_MatureAdult, SizeConstants.Huge, ChallengeRatingConstants.CR18, null, true, 9, 24, 0, true),
-                [CreatureConstants.Dragon_Silver_Old] = GetCreatureData(CreatureConstants.Dragon_Silver_Old, SizeConstants.Gargantuan, ChallengeRatingConstants.CR20, null, true, 11, 27, 0, true),
-                [CreatureConstants.Dragon_Silver_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Silver_VeryOld, SizeConstants.Gargantuan, ChallengeRatingConstants.CR21, null, true, 13, 30, 0, true),
+                [CreatureConstants.Dragon_Silver_Old] = GetCreatureData(CreatureConstants.Dragon_Silver_Old, SizeConstants.Huge, ChallengeRatingConstants.CR20, null, true, 11, 27, 0, true),
+                [CreatureConstants.Dragon_Silver_VeryOld] = GetCreatureData(CreatureConstants.Dragon_Silver_VeryOld, SizeConstants.Huge, ChallengeRatingConstants.CR21, null, true, 13, 30, 0, true),
                 [CreatureConstants.Dragon_Silver_Ancient] = GetCreatureData(CreatureConstants.Dragon_Silver_Ancient, SizeConstants.Gargantuan, ChallengeRatingConstants.CR23, null, true, 15, 33, 0, true),
                 [CreatureConstants.Dragon_Silver_Wyrm] = GetCreatureData(CreatureConstants.Dragon_Silver_Wyrm, SizeConstants.Gargantuan, ChallengeRatingConstants.CR24, null, true, 17, 36, 0, true),
                 [CreatureConstants.Dragon_Silver_GreatWyrm] = GetCreatureData(CreatureConstants.Dragon_Silver_GreatWyrm, SizeConstants.Colossal, ChallengeRatingConstants.CR26, null, true, 19, 39, 0, true),
@@ -3101,14 +3101,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Dragon_Red_Wyrm, 20, 15)]
         [TestCase(CreatureConstants.Dragon_Red_GreatWyrm, 30, 20)]
         [TestCase(CreatureConstants.Dragon_Silver_Wyrmling, 5, 5)]
-        [TestCase(CreatureConstants.Dragon_Silver_VeryYoung, 10, 5)]
-        [TestCase(CreatureConstants.Dragon_Silver_Young, 10, 5)]
+        [TestCase(CreatureConstants.Dragon_Silver_VeryYoung, 5, 5)]
+        [TestCase(CreatureConstants.Dragon_Silver_Young, 5, 5)]
         [TestCase(CreatureConstants.Dragon_Silver_Juvenile, 10, 5)]
-        [TestCase(CreatureConstants.Dragon_Silver_YoungAdult, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Silver_YoungAdult, 10, 5)]
         [TestCase(CreatureConstants.Dragon_Silver_Adult, 15, 10)]
         [TestCase(CreatureConstants.Dragon_Silver_MatureAdult, 15, 10)]
-        [TestCase(CreatureConstants.Dragon_Silver_Old, 20, 15)]
-        [TestCase(CreatureConstants.Dragon_Silver_VeryOld, 20, 15)]
+        [TestCase(CreatureConstants.Dragon_Silver_Old, 15, 10)]
+        [TestCase(CreatureConstants.Dragon_Silver_VeryOld, 15, 10)]
         [TestCase(CreatureConstants.Dragon_Silver_Ancient, 20, 15)]
         [TestCase(CreatureConstants.Dragon_Silver_Wyrm, 20, 15)]
         [TestCase(CreatureConstants.Dragon_Silver_GreatWyrm, 30, 20)]

@@ -1241,7 +1241,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //large
             testCases[CreatureConstants.Dragon_Black_Adult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1251,7 +1251,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Black_Adult].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Black_Adult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Black_Adult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Black_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Black_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1262,7 +1262,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Black_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Black_Old].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1273,7 +1273,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Black_Old].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Black_Old].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Black_Old].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Black_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Black_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Black_VeryOld].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1284,7 +1284,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Black_VeryOld].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Black_VeryOld].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Black_VeryOld].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Black_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Black_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Black_Ancient].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1295,7 +1295,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Black_Ancient].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Black_Ancient].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Black_Ancient].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Black_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Black_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Black_Wyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1307,7 +1307,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Black_Wyrm].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Black_Wyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Black_Wyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Black_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Black_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1319,7 +1319,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Black_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //small
             testCases[CreatureConstants.Dragon_Blue_Wyrmling].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1353,7 +1353,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(BuildData("Tail Slap", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Blue_Adult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1364,7 +1364,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Blue_Adult].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Blue_Adult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Blue_Adult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Blue_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Blue_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1375,7 +1375,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Blue_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Blue_Old].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1386,7 +1386,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Blue_Old].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Blue_Old].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Blue_Old].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Blue_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Blue_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1397,7 +1397,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Blue_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Blue_Ancient].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1409,7 +1409,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Blue_Ancient].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Blue_Ancient].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Blue_Ancient].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Blue_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Blue_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1421,7 +1421,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Blue_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1433,7 +1433,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Blue_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //small
             testCases[CreatureConstants.Dragon_Green_Wyrmling].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1467,7 +1467,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(BuildData("Tail Slap", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Green_Adult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1478,7 +1478,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Green_Adult].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Green_Adult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Green_Adult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Green_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Green_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1489,7 +1489,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Green_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Green_Old].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1500,7 +1500,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Green_Old].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Green_Old].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Green_Old].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Green_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Green_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Green_VeryOld].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1511,7 +1511,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Green_VeryOld].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Green_VeryOld].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Green_VeryOld].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Green_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Green_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Green_Ancient].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1523,7 +1523,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Green_Ancient].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Green_Ancient].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Green_Ancient].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Green_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Green_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Green_Wyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1535,7 +1535,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Green_Wyrm].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Green_Wyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Green_Wyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Green_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Green_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1547,7 +1547,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Green_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //medium
             testCases[CreatureConstants.Dragon_Red_Wyrmling].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1588,7 +1588,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Red_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Red_Adult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1599,7 +1599,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Red_Adult].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Red_Adult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Red_Adult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Red_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Red_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1610,7 +1610,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Red_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Red_Old].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1622,7 +1622,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Red_Old].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Red_Old].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Red_Old].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Red_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Red_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Red_VeryOld].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1634,7 +1634,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Red_VeryOld].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Red_VeryOld].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Red_VeryOld].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Red_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Red_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Red_Ancient].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1646,7 +1646,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Red_Ancient].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Red_Ancient].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Red_Ancient].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Red_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Red_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Red_Wyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1658,7 +1658,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Red_Wyrm].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Red_Wyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Red_Wyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Red_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Red_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //colossal
             testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1670,7 +1670,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //tiny
             testCases[CreatureConstants.Dragon_White_Wyrmling].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1702,7 +1702,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_White_YoungAdult].Add(BuildData("Tail Slap", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.Dragon_White_YoungAdult].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_White_YoungAdult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_White_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_White_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //large
             testCases[CreatureConstants.Dragon_White_Adult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1712,7 +1712,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_White_Adult].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_White_Adult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_White_Adult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_White_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_White_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_White_MatureAdult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1723,7 +1723,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_White_MatureAdult].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_White_MatureAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_White_MatureAdult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_White_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_White_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_White_Old].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1734,7 +1734,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_White_Old].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_White_Old].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_White_Old].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_White_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_White_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_White_VeryOld].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1745,7 +1745,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_White_VeryOld].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_White_VeryOld].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_White_VeryOld].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_White_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_White_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_White_Ancient].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1756,7 +1756,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_White_Ancient].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_White_Ancient].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_White_Ancient].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_White_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_White_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_White_Wyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1768,7 +1768,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_White_Wyrm].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_White_Wyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_White_Wyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_White_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_White_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1780,7 +1780,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(BuildData("Breath Weapon", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //tiny
             testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1823,7 +1823,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(BuildData("Breath Weapon (sleep)", "Sleep for 1d6+5 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
             testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //large
             testCases[CreatureConstants.Dragon_Brass_Adult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1834,7 +1834,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Brass_Adult].Add(BuildData("Breath Weapon (sleep)", "Sleep for 1d6+6 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
             testCases[CreatureConstants.Dragon_Brass_Adult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Brass_Adult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Brass_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Brass_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1846,7 +1846,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(BuildData("Breath Weapon (sleep)", "Sleep for 1d6+7 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
             testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Brass_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Brass_Old].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1858,7 +1858,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Brass_Old].Add(BuildData("Breath Weapon (sleep)", "Sleep for 1d6+8 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
             testCases[CreatureConstants.Dragon_Brass_Old].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Brass_Old].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Brass_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Brass_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1870,7 +1870,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(BuildData("Breath Weapon (sleep)", "Sleep for 1d6+9 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
             testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Brass_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Brass_Ancient].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1882,7 +1882,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Brass_Ancient].Add(BuildData("Breath Weapon (sleep)", "Sleep for 1d6+10 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
             testCases[CreatureConstants.Dragon_Brass_Ancient].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Brass_Ancient].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Brass_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Brass_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1895,7 +1895,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(BuildData("Breath Weapon (sleep)", "Sleep for 1d6+11 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
             testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Brass_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1908,7 +1908,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(BuildData("Breath Weapon (sleep)", "Sleep for 1d6+12 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
             testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Brass_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //small
             testCases[CreatureConstants.Dragon_Bronze_Wyrmling].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1953,7 +1953,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(BuildData("Breath Weapon (repulsion gas)", "Compelled for 1d6+5 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
             testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Bronze_Adult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1965,7 +1965,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Bronze_Adult].Add(BuildData("Breath Weapon (repulsion gas)", "Compelled for 1d6+6 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
             testCases[CreatureConstants.Dragon_Bronze_Adult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Bronze_Adult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Bronze_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Bronze_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1977,7 +1977,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(BuildData("Breath Weapon (repulsion gas)", "Compelled for 1d6+7 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
             testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Bronze_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Bronze_Old].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1989,7 +1989,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Bronze_Old].Add(BuildData("Breath Weapon (repulsion gas)", "Compelled for 1d6+8 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
             testCases[CreatureConstants.Dragon_Bronze_Old].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Bronze_Old].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Bronze_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Bronze_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2001,7 +2001,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(BuildData("Breath Weapon (repulsion gas)", "Compelled for 1d6+9 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
             testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Bronze_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2014,7 +2014,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(BuildData("Breath Weapon (repulsion gas)", "Compelled for 1d6+10 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
             testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Bronze_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2027,7 +2027,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(BuildData("Breath Weapon (repulsion gas)", "Compelled for 1d6+11 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
             testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Bronze_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2040,7 +2040,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(BuildData("Breath Weapon (repulsion gas)", "Compelled for 1d6+12 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
             testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //tiny
             testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2078,6 +2078,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(BuildData("Breath Weapon (acid)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
             testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(BuildData("Breath Weapon (slow gas)", "Slowed for 1d6+5 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+            testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //large
             testCases[CreatureConstants.Dragon_Copper_Adult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2088,7 +2089,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Copper_Adult].Add(BuildData("Breath Weapon (slow gas)", "Slowed for 1d6+6 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Copper_Adult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Copper_Adult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Copper_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Copper_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2100,7 +2101,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(BuildData("Breath Weapon (slow gas)", "Slowed for 1d6+7 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Copper_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Copper_Old].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2112,7 +2113,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Copper_Old].Add(BuildData("Breath Weapon (slow gas)", "Slowed for 1d6+8 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Copper_Old].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Copper_Old].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Copper_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Copper_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2124,7 +2125,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(BuildData("Breath Weapon (slow gas)", "Slowed for 1d6+9 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Copper_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Copper_Ancient].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2136,7 +2137,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Copper_Ancient].Add(BuildData("Breath Weapon (slow gas)", "Slowed for 1d6+10 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Copper_Ancient].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Copper_Ancient].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Copper_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Copper_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2149,7 +2150,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(BuildData("Breath Weapon (slow gas)", "Slowed for 1d6+11 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Copper_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2162,7 +2163,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(BuildData("Breath Weapon (slow gas)", "Slowed for 1d6+12 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Copper_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //medium
             testCases[CreatureConstants.Dragon_Gold_Wyrmling].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2208,7 +2209,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(BuildData("Breath Weapon (weakening gas)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Gold_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Gold_Adult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2220,7 +2221,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Gold_Adult].Add(BuildData("Breath Weapon (weakening gas)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Gold_Adult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Gold_Adult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Gold_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Gold_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2232,7 +2233,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(BuildData("Breath Weapon (weakening gas)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Gold_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Gold_Old].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2245,7 +2246,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Gold_Old].Add(BuildData("Breath Weapon (weakening gas)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Gold_Old].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Gold_Old].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Gold_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Gold_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2258,7 +2259,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(BuildData("Breath Weapon (weakening gas)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Gold_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Gold_Ancient].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2271,7 +2272,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Gold_Ancient].Add(BuildData("Breath Weapon (weakening gas)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Gold_Ancient].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Gold_Ancient].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Gold_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Gold_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //colossal
             testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2284,7 +2285,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(BuildData("Breath Weapon (weakening gas)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Gold_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //colossal
             testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2297,7 +2298,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(BuildData("Breath Weapon (weakening gas)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Gold_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //small
             testCases[CreatureConstants.Dragon_Silver_Wyrmling].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2339,7 +2340,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(BuildData("Breath Weapon (paralyzing gas)", "Paralyzed for 1d6+5 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Silver_Adult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2351,7 +2352,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Silver_Adult].Add(BuildData("Breath Weapon (paralyzing gas)", "Paralyzed for 1d6+6 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Silver_Adult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Silver_Adult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Silver_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Silver_Adult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2363,7 +2364,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(BuildData("Breath Weapon (paralyzing gas)", "Paralyzed for 1d6+7 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Silver_MatureAdult].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Silver_Old].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2375,7 +2376,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Silver_Old].Add(BuildData("Breath Weapon (paralyzing gas)", "Paralyzed for 1d6+8 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Silver_Old].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Silver_Old].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Silver_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Silver_Old].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //huge
             testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2387,7 +2388,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(BuildData("Breath Weapon (paralyzing gas)", "Paralyzed for 1d6+9 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Silver_VeryOld].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Silver_Ancient].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2400,7 +2401,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Silver_Ancient].Add(BuildData("Breath Weapon (paralyzing gas)", "Paralyzed for 1d6+10 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Silver_Ancient].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Silver_Ancient].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Silver_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Silver_Ancient].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //gargantuan
             testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2413,7 +2414,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(BuildData("Breath Weapon (paralyzing gas)", "Paralyzed for 1d6+11 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Silver_Wyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             //colossal
             testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -2426,7 +2427,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(BuildData("Breath Weapon (paralyzing gas)", "Paralyzed for 1d6+12 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
             testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(BuildData("Spells", string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-            testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
+            testCases[CreatureConstants.Dragon_Silver_GreatWyrm].Add(BuildData("Frightful Presence", string.Empty, 0, "extraordinary ability", 0, FeatConstants.Frequencies.Constant, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
             testCases[CreatureConstants.Dragonne].Add(BuildData("Bite", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Dragonne].Add(BuildData("Claw", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));

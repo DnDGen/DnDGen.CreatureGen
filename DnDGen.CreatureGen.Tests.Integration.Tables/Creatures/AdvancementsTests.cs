@@ -654,15 +654,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             testCases[CreatureConstants.Dragon_Gold_Wyrm] = [GetData(CreatureConstants.Dragon_Gold_Wyrm, SizeConstants.Colossal, 39, 40)];
             testCases[CreatureConstants.Dragon_Gold_GreatWyrm] = [GetData(CreatureConstants.Dragon_Gold_GreatWyrm, SizeConstants.Colossal, 42, 100)];
 
-            testCases[CreatureConstants.Dragon_Silver_Wyrmling] = [GetData(CreatureConstants.Dragon_Silver_Wyrmling, SizeConstants.Medium, 8, 9)];
-            testCases[CreatureConstants.Dragon_Silver_VeryYoung] = [GetData(CreatureConstants.Dragon_Silver_VeryYoung, SizeConstants.Large, 11, 12)];
-            testCases[CreatureConstants.Dragon_Silver_Young] = [GetData(CreatureConstants.Dragon_Silver_Young, SizeConstants.Large, 14, 15)];
+            testCases[CreatureConstants.Dragon_Silver_Wyrmling] = [GetData(CreatureConstants.Dragon_Silver_Wyrmling, SizeConstants.Small, 8, 9)];
+            testCases[CreatureConstants.Dragon_Silver_VeryYoung] = [GetData(CreatureConstants.Dragon_Silver_VeryYoung, SizeConstants.Medium, 11, 12)];
+            testCases[CreatureConstants.Dragon_Silver_Young] = [GetData(CreatureConstants.Dragon_Silver_Young, SizeConstants.Medium, 14, 15)];
             testCases[CreatureConstants.Dragon_Silver_Juvenile] = [GetData(CreatureConstants.Dragon_Silver_Juvenile, SizeConstants.Large, 17, 18)];
-            testCases[CreatureConstants.Dragon_Silver_YoungAdult] = [GetData(CreatureConstants.Dragon_Silver_YoungAdult, SizeConstants.Huge, 20, 21)];
+            testCases[CreatureConstants.Dragon_Silver_YoungAdult] = [GetData(CreatureConstants.Dragon_Silver_YoungAdult, SizeConstants.Large, 20, 21)];
             testCases[CreatureConstants.Dragon_Silver_Adult] = [GetData(CreatureConstants.Dragon_Silver_Adult, SizeConstants.Huge, 23, 24)];
             testCases[CreatureConstants.Dragon_Silver_MatureAdult] = [GetData(CreatureConstants.Dragon_Silver_MatureAdult, SizeConstants.Huge, 26, 27)];
-            testCases[CreatureConstants.Dragon_Silver_Old] = [GetData(CreatureConstants.Dragon_Silver_Old, SizeConstants.Gargantuan, 29, 30)];
-            testCases[CreatureConstants.Dragon_Silver_VeryOld] = [GetData(CreatureConstants.Dragon_Silver_VeryOld, SizeConstants.Gargantuan, 32, 33)];
+            testCases[CreatureConstants.Dragon_Silver_Old] = [GetData(CreatureConstants.Dragon_Silver_Old, SizeConstants.Huge, 29, 30)];
+            testCases[CreatureConstants.Dragon_Silver_VeryOld] = [GetData(CreatureConstants.Dragon_Silver_VeryOld, SizeConstants.Huge, 32, 33)];
             testCases[CreatureConstants.Dragon_Silver_Ancient] = [GetData(CreatureConstants.Dragon_Silver_Ancient, SizeConstants.Gargantuan, 35, 36)];
             testCases[CreatureConstants.Dragon_Silver_Wyrm] = [GetData(CreatureConstants.Dragon_Silver_Wyrm, SizeConstants.Gargantuan, 38, 39)];
             testCases[CreatureConstants.Dragon_Silver_GreatWyrm] = [GetData(CreatureConstants.Dragon_Silver_GreatWyrm, SizeConstants.Colossal, 41, 100)];

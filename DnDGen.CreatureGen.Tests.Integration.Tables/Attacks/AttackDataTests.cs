@@ -168,48 +168,149 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             if (!creature.Contains("Dragon,"))
                 return;
 
-            AssertDragonAttack(creature, "Bite", SizeConstants.Tiny, 1, true, "melee", 1, false);
-            AssertDragonAttack(creature, "Claw", SizeConstants.Tiny, 2, false, "melee", 0.5, false);
-            AssertDragonAttack(creature, "Wing", SizeConstants.Medium, 2, false, "melee", 0.5, false);
-            AssertDragonAttack(creature, "Tail Slap", SizeConstants.Large, 1, false, "melee", 0.5, false);
-            AssertDragonAttack(creature, "Crush", SizeConstants.Huge, 1, true, "extraordinary ability", 1.5, true);
-            AssertDragonAttack(creature, "Tail Sweep", SizeConstants.Gargantuan, 1, true, "extraordinary ability", 1.5, true);
+            AssertDragonPhysicalAttack(creature, "Bite", SizeConstants.Tiny, 1, true, "melee", 1, false);
+            AssertDragonPhysicalAttack(creature, "Claw", SizeConstants.Tiny, 2, false, "melee", 0.5, false);
+            AssertDragonPhysicalAttack(creature, "Wing", SizeConstants.Medium, 2, false, "melee", 0.5, false);
+            AssertDragonPhysicalAttack(creature, "Tail Slap", SizeConstants.Large, 1, false, "melee", 0.5, false);
+            AssertDragonPhysicalAttack(creature, "Crush", SizeConstants.Huge, 1, true, "extraordinary ability", 1.5, true);
+            AssertDragonPhysicalAttack(creature, "Tail Sweep", SizeConstants.Gargantuan, 1, true, "extraordinary ability", 1.5, true);
 
-            Assert.Fail("assert breath weapon attacks");
-            Assert.Fail("assert frightful presence attacks");
+            AssertDragonBreathWeaponAttacks(creature);
+            AssertDragonFrightfulPresenceAttack(creature);
         }
 
-        private void AssertDragonAttack(string creature, string name, string minimumSize, int frequency, bool primary, string attackType, double multiplier, bool special)
+        private void AssertDragonPhysicalAttack(string creature, string name, string minimumSize, int frequency, bool primary, string attackType, double multiplier, bool special)
         {
-            var size = creatureData[creature].Size;
             var selection = creatureAttackData[creature]
                 .Select(DataHelper.Parse<AttackDataSelection>)
                 .FirstOrDefault(s => s.Name == name);
 
-            if (!SizeIsAtLeast(creatureData[creature].Size, minimumSize))
+            if (!SizeIsAtLeast(creature, minimumSize))
             {
                 Assert.That(selection, Is.Null);
                 return;
             }
 
-            Assert.That(selection, Is.Not.Null);
-            Assert.That(selection.AttackType, Is.EqualTo(attackType));
-            Assert.That(selection.DamageBonusMultiplier, Is.EqualTo(multiplier));
-            Assert.That(selection.DamageEffect, Is.Empty);
-            Assert.That(selection.FrequencyQuantity, Is.EqualTo(frequency));
-            Assert.That(selection.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
-            Assert.That(selection.IsMelee, Is.True);
-            Assert.That(selection.IsPrimary, Is.EqualTo(primary));
-            Assert.That(selection.IsNatural, Is.True);
-            Assert.That(selection.IsSpecial, Is.EqualTo(special));
-            Assert.That(selection.RequiredGender, Is.Empty);
-            Assert.That(selection.Save, Is.Empty);
-            Assert.That(selection.SaveAbility, Is.Empty);
-            Assert.That(selection.SaveDcBonus, Is.Zero);
+            Assert.That(selection, Is.Not.Null, name);
+            Assert.That(selection.AttackType, Is.EqualTo(attackType), name);
+            Assert.That(selection.DamageBonusMultiplier, Is.EqualTo(multiplier), name);
+            Assert.That(selection.DamageEffect, Is.Empty, name);
+            Assert.That(selection.FrequencyQuantity, Is.EqualTo(frequency), name);
+            Assert.That(selection.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round), name);
+            Assert.That(selection.IsMelee, Is.True, name);
+            Assert.That(selection.IsPrimary, Is.EqualTo(primary), name);
+            Assert.That(selection.IsNatural, Is.True, name);
+            Assert.That(selection.IsSpecial, Is.EqualTo(special), name);
+            Assert.That(selection.RequiredGender, Is.Empty, name);
+
+            if (special)
+            {
+                Assert.That(selection.Save, Is.EqualTo(SaveConstants.Reflex), name);
+                Assert.That(selection.SaveAbility, Is.EqualTo(AbilityConstants.Constitution), name);
+                Assert.That(selection.SaveDcBonus, Is.Zero, name);
+            }
+            else
+            {
+                Assert.That(selection.Save, Is.Empty, name);
+                Assert.That(selection.SaveAbility, Is.Empty, name);
+                Assert.That(selection.SaveDcBonus, Is.Zero, name);
+            }
         }
 
-        private bool SizeIsAtLeast(string size, string minimumSize)
+        private void AssertDragonBreathWeaponAttacks(string creature)
         {
+            var breathWeaponAttacks = creatureAttackData[creature]
+                .Select(DataHelper.Parse<AttackDataSelection>)
+                .Where(s => s.Name.StartsWith("Breath Weapon"));
+
+            Assert.That(breathWeaponAttacks, Is.Not.Empty.And.All.Not.Null);
+
+            foreach (var breathWeapon in breathWeaponAttacks)
+            {
+                Assert.That(breathWeapon.AttackType, Is.EqualTo("supernatural ability"), breathWeapon.Name);
+                Assert.That(breathWeapon.DamageBonusMultiplier, Is.Zero, breathWeapon.Name);
+                Assert.That(breathWeapon.FrequencyQuantity, Is.EqualTo(1), breathWeapon.Name);
+                Assert.That(breathWeapon.FrequencyTimePeriod, Is.EqualTo($"1d4 {FeatConstants.Frequencies.Round}"), breathWeapon.Name);
+                Assert.That(breathWeapon.IsMelee, Is.False, breathWeapon.Name);
+                Assert.That(breathWeapon.IsPrimary, Is.True, breathWeapon.Name);
+                Assert.That(breathWeapon.IsNatural, Is.True, breathWeapon.Name);
+                Assert.That(breathWeapon.IsSpecial, Is.True, breathWeapon.Name);
+                Assert.That(breathWeapon.RequiredGender, Is.Empty, breathWeapon.Name);
+                Assert.That(breathWeapon.SaveAbility, Is.EqualTo(AbilityConstants.Constitution), breathWeapon.Name);
+                Assert.That(breathWeapon.SaveDcBonus, Is.Zero, breathWeapon.Name);
+
+                //INFO: Indicates this is a damaging breath weapon
+                if (string.IsNullOrEmpty(breathWeapon.DamageEffect))
+                {
+                    Assert.That(breathWeapon.Save, Is.EqualTo(SaveConstants.Reflex).Or.EqualTo(SaveConstants.Fortitude), breathWeapon.Name);
+                }
+                else
+                {
+                    Assert.That(breathWeapon.Save, Is.EqualTo(SaveConstants.Will).Or.EqualTo(SaveConstants.Fortitude), breathWeapon.Name);
+
+                    var ageCategory = GetNumericDragonAgeCategory(creature.Split(',')[1].Trim());
+                    Assert.That(breathWeapon.DamageEffect, Contains.Substring($"+{ageCategory}"), breathWeapon.Name);
+                }
+            }
+        }
+
+        private void AssertDragonFrightfulPresenceAttack(string creature)
+        {
+            var frightfulPresence = creatureAttackData[creature]
+                .Select(DataHelper.Parse<AttackDataSelection>)
+                .FirstOrDefault(s => s.Name == "Frightful Presence");
+
+            if (!DragonAgeIsAtLeast(creature, "Young Adult"))
+            {
+                Assert.That(frightfulPresence, Is.Null, "Frightful Presence");
+                return;
+            }
+
+            Assert.That(frightfulPresence, Is.Not.Null);
+            Assert.That(frightfulPresence.AttackType, Is.EqualTo("extraordinary ability"), frightfulPresence.Name);
+            Assert.That(frightfulPresence.DamageBonusMultiplier, Is.Zero, frightfulPresence.Name);
+            Assert.That(frightfulPresence.DamageEffect, Is.Empty, frightfulPresence.Name);
+            Assert.That(frightfulPresence.FrequencyQuantity, Is.Zero, frightfulPresence.Name);
+            Assert.That(frightfulPresence.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Constant), frightfulPresence.Name);
+            Assert.That(frightfulPresence.IsMelee, Is.False, frightfulPresence.Name);
+            Assert.That(frightfulPresence.IsPrimary, Is.False, frightfulPresence.Name);
+            Assert.That(frightfulPresence.IsNatural, Is.True, frightfulPresence.Name);
+            Assert.That(frightfulPresence.IsSpecial, Is.True, frightfulPresence.Name);
+            Assert.That(frightfulPresence.RequiredGender, Is.Empty, frightfulPresence.Name);
+            Assert.That(frightfulPresence.Save, Is.EqualTo(SaveConstants.Will), frightfulPresence.Name);
+            Assert.That(frightfulPresence.SaveAbility, Is.EqualTo(AbilityConstants.Charisma), frightfulPresence.Name);
+            Assert.That(frightfulPresence.SaveDcBonus, Is.Zero, frightfulPresence.Name);
+        }
+
+        private bool DragonAgeIsAtLeast(string creature, string minimumAge)
+        {
+            var dragonAge = creature.Split(',')[1].Trim();
+            return GetNumericDragonAgeCategory(dragonAge) >= GetNumericDragonAgeCategory(minimumAge);
+        }
+
+        private int GetNumericDragonAgeCategory(string dragonAge)
+        {
+            var ages = new[]
+            {
+                "Wyrmling",
+                "Very Young",
+                "Young",
+                "Juvenile",
+                "Young Adult",
+                "Adult",
+                "Mature Adult",
+                "Old",
+                "Very Old",
+                "Ancient",
+                "Wyrm",
+                "Great Wyrm",
+            };
+            return Array.IndexOf(ages, dragonAge) + 1;
+        }
+
+        private bool SizeIsAtLeast(string creature, string minimumSize)
+        {
+            var size = creatureData[creature].Size;
             var sizes = SizeConstants.GetOrdered();
             return Array.IndexOf(sizes, size) >= Array.IndexOf(sizes, minimumSize);
         }

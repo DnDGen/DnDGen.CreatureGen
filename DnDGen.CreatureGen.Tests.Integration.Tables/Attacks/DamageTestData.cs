@@ -1267,7 +1267,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Wing", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Copper_Ancient, "Breath Weapon (acid)", "20d4", FeatConstants.Foci.Elements.Acid));
 
             //gargantuan
