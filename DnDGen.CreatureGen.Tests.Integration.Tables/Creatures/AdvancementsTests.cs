@@ -75,6 +75,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             AssertHitDieOnlyIncreases(creature);
             AssertSizeOnlyIncreases(creature);
+            AssertDragonSizesStayTheSame(creature);
             AssertCollection(creature, advancements[creature]);
         }
 
@@ -153,6 +154,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                         Assert.That(sizeIndex, Is.GreaterThan(otherSizeIndex), $"{size} > {otherSize}");
                 }
             }
+        }
+
+        private void AssertDragonSizesStayTheSame(string creature)
+        {
+            if (advancements[creature].Length == 0)
+                return;
+
+            if (!creature.Contains("Dragon,"))
+                return;
+
+            var advancedSizes = advancements[creature]
+                .Select(DataHelper.Parse<AdvancementDataSelection>)
+                .Select(s => s.Size);
+            Assert.That(advancedSizes, Is.Unique.And.EqualTo(new[] { creatureData[creature].Size }));
         }
 
         private Dictionary<string, string[]> GetAdvancementsTestData()
@@ -628,16 +643,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             testCases[CreatureConstants.Dragon_Bronze_Wyrm] = [GetData(CreatureConstants.Dragon_Bronze_Wyrm, SizeConstants.Gargantuan, 37, 38)];
             testCases[CreatureConstants.Dragon_Bronze_GreatWyrm] = [GetData(CreatureConstants.Dragon_Bronze_GreatWyrm, SizeConstants.Gargantuan, 40, 100)];
 
-            testCases[CreatureConstants.Dragon_Copper_Wyrmling] = [GetData(CreatureConstants.Dragon_Copper_Wyrmling, SizeConstants.Small, 6, 7)];
-            testCases[CreatureConstants.Dragon_Copper_VeryYoung] = [GetData(CreatureConstants.Dragon_Copper_VeryYoung, SizeConstants.Medium, 9, 10)];
+            testCases[CreatureConstants.Dragon_Copper_Wyrmling] = [GetData(CreatureConstants.Dragon_Copper_Wyrmling, SizeConstants.Tiny, 6, 7)];
+            testCases[CreatureConstants.Dragon_Copper_VeryYoung] = [GetData(CreatureConstants.Dragon_Copper_VeryYoung, SizeConstants.Small, 9, 10)];
             testCases[CreatureConstants.Dragon_Copper_Young] = [GetData(CreatureConstants.Dragon_Copper_Young, SizeConstants.Medium, 12, 13)];
-            testCases[CreatureConstants.Dragon_Copper_Juvenile] = [GetData(CreatureConstants.Dragon_Copper_Juvenile, SizeConstants.Large, 15, 16)];
+            testCases[CreatureConstants.Dragon_Copper_Juvenile] = [GetData(CreatureConstants.Dragon_Copper_Juvenile, SizeConstants.Medium, 15, 16)];
             testCases[CreatureConstants.Dragon_Copper_YoungAdult] = [GetData(CreatureConstants.Dragon_Copper_YoungAdult, SizeConstants.Large, 18, 19)];
-            testCases[CreatureConstants.Dragon_Copper_Adult] = [GetData(CreatureConstants.Dragon_Copper_Adult, SizeConstants.Huge, 21, 22)];
+            testCases[CreatureConstants.Dragon_Copper_Adult] = [GetData(CreatureConstants.Dragon_Copper_Adult, SizeConstants.Large, 21, 22)];
             testCases[CreatureConstants.Dragon_Copper_MatureAdult] = [GetData(CreatureConstants.Dragon_Copper_MatureAdult, SizeConstants.Huge, 24, 25)];
             testCases[CreatureConstants.Dragon_Copper_Old] = [GetData(CreatureConstants.Dragon_Copper_Old, SizeConstants.Huge, 27, 28)];
             testCases[CreatureConstants.Dragon_Copper_VeryOld] = [GetData(CreatureConstants.Dragon_Copper_VeryOld, SizeConstants.Huge, 30, 31)];
-            testCases[CreatureConstants.Dragon_Copper_Ancient] = [GetData(CreatureConstants.Dragon_Copper_Ancient, SizeConstants.Gargantuan, 33, 34)];
+            testCases[CreatureConstants.Dragon_Copper_Ancient] = [GetData(CreatureConstants.Dragon_Copper_Ancient, SizeConstants.Huge, 33, 34)];
             testCases[CreatureConstants.Dragon_Copper_Wyrm] = [GetData(CreatureConstants.Dragon_Copper_Wyrm, SizeConstants.Gargantuan, 36, 37)];
             testCases[CreatureConstants.Dragon_Copper_GreatWyrm] = [GetData(CreatureConstants.Dragon_Copper_GreatWyrm, SizeConstants.Gargantuan, 39, 100)];
 

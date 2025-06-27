@@ -1059,7 +1059,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1070,7 +1070,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1082,7 +1082,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1103,7 +1103,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1115,7 +1115,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1127,7 +1127,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1145,7 +1145,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1171,7 +1171,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1182,7 +1182,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1194,7 +1194,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1207,7 +1207,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1220,7 +1220,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
@@ -1229,7 +1229,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1241,7 +1241,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1253,7 +1253,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1272,7 +1272,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1298,7 +1298,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Frightful Presence@@True@False@False@True@0@Constant@Charisma@Will@extraordinary ability@@0@0</entry>
@@ -1308,7 +1308,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1320,7 +1320,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1333,7 +1333,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1346,7 +1346,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
@@ -1355,7 +1355,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1367,7 +1367,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1379,7 +1379,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1398,7 +1398,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1424,7 +1424,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Frightful Presence@@True@False@False@True@0@Constant@Charisma@Will@extraordinary ability@@0@0</entry>
@@ -1434,7 +1434,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1446,7 +1446,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1459,7 +1459,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1472,7 +1472,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1482,7 +1482,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1494,7 +1494,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1507,7 +1507,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1520,7 +1520,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
@@ -1528,7 +1528,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1548,7 +1548,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
@@ -1557,7 +1557,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1569,7 +1569,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1580,7 +1580,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1592,7 +1592,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1613,7 +1613,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1625,7 +1625,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1637,7 +1637,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1655,7 +1655,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1681,7 +1681,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Frightful Presence@@True@False@False@True@0@Constant@Charisma@Will@extraordinary ability@@0@0</entry>
@@ -1691,7 +1691,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon (fire)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (sleep)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Sleep for 1d6+6 rounds@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1703,7 +1703,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (fire)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (sleep)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Sleep for 1d6+10 rounds@0@0</entry>
@@ -1716,7 +1716,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (fire)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1740,7 +1740,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (fire)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (sleep)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Sleep for 1d6+7 rounds@0@0</entry>
@@ -1753,7 +1753,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (fire)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (sleep)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Sleep for 1d6+8 rounds@0@0</entry>
@@ -1766,7 +1766,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (fire)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (sleep)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Sleep for 1d6+9 rounds@0@0</entry>
@@ -1787,7 +1787,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (fire)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1819,7 +1819,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon (fire)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (sleep)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Sleep for 1d6+5 rounds@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1831,7 +1831,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (electricity)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+6 rounds@0@0</entry>
@@ -1844,7 +1844,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (electricity)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1858,7 +1858,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (electricity)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1872,7 +1872,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon (electricity)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+4 rounds@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1883,7 +1883,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (electricity)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+7 rounds@0@0</entry>
@@ -1896,7 +1896,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (electricity)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+8 rounds@0@0</entry>
@@ -1909,7 +1909,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (electricity)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+9 rounds@0@0</entry>
@@ -1931,7 +1931,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (electricity)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -1963,7 +1963,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon (electricity)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (repulsion gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Will@supernatural ability@Compelled for 1d6+5 rounds@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1975,7 +1975,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon (acid)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (slow gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Fortitude@supernatural ability@Slowed for 1d6+6 rounds@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -1987,7 +1987,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (acid)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (slow gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Fortitude@supernatural ability@Slowed for 1d6+10 rounds@0@0</entry>
@@ -2000,7 +2000,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (acid)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -2023,7 +2023,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (acid)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (slow gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Fortitude@supernatural ability@Slowed for 1d6+7 rounds@0@0</entry>
@@ -2036,7 +2036,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (acid)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (slow gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Fortitude@supernatural ability@Slowed for 1d6+8 rounds@0@0</entry>
@@ -2049,7 +2049,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (acid)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (slow gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Fortitude@supernatural ability@Slowed for 1d6+9 rounds@0@0</entry>
@@ -2069,7 +2069,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (acid)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -2099,7 +2099,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon (acid)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (slow gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Fortitude@supernatural ability@Slowed for 1d6+5 rounds@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -2110,7 +2110,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (fire)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (weakening gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Fortitude@supernatural ability@@0@0</entry>
@@ -2123,7 +2123,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (fire)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -2142,7 +2142,7 @@
     <entry>Frightful Presence@@True@False@False@True@0@Constant@Charisma@Will@extraordinary ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
@@ -2151,7 +2151,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon (fire)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (weakening gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Fortitude@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -2162,7 +2162,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (fire)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (weakening gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Fortitude@supernatural ability@@0@0</entry>
@@ -2175,7 +2175,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (fire)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -2189,7 +2189,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (fire)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -2203,7 +2203,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon (fire)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (weakening gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Fortitude@supernatural ability@@0@0</entry>
   </collection>
@@ -2217,7 +2217,7 @@
     <entry>Frightful Presence@@True@False@False@True@0@Constant@Charisma@Will@extraordinary ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
@@ -2234,7 +2234,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon (fire)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (weakening gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Fortitude@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -2244,7 +2244,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (fire)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (weakening gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Fortitude@supernatural ability@@0@0</entry>
@@ -2257,7 +2257,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (cold)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (paralyzing gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Fortitude@supernatural ability@Paralyzed for 1d6+6 rounds@0@0</entry>
@@ -2270,7 +2270,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (cold)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -2289,7 +2289,7 @@
     <entry>Frightful Presence@@True@False@False@True@0@Constant@Charisma@Will@extraordinary ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
@@ -2298,7 +2298,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon (cold)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (paralyzing gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Fortitude@supernatural ability@Paralyzed for 1d6+4 rounds@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -2309,7 +2309,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (cold)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (paralyzing gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Fortitude@supernatural ability@Paralyzed for 1d6+7 rounds@0@0</entry>
@@ -2322,7 +2322,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (cold)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (paralyzing gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Fortitude@supernatural ability@Paralyzed for 1d6+8 rounds@0@0</entry>
@@ -2335,7 +2335,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (cold)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (paralyzing gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Fortitude@supernatural ability@Paralyzed for 1d6+9 rounds@0@0</entry>
@@ -2356,7 +2356,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Crush@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Breath Weapon (cold)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
@@ -2386,7 +2386,7 @@
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Tail Slap@@True@True@False@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Breath Weapon (cold)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Breath Weapon (paralyzing gas)@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Fortitude@supernatural ability@Paralyzed for 1d6+5 rounds@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>

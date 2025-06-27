@@ -4216,72 +4216,72 @@
 		<name>Bronze Dragon, Young Adult-Large-Frightful Presence-False-</name>
 	</collection>
   <collection>
-    <name>Copper Dragon, Adult-Huge-Bite-True-</name>
+    <name>Copper Dragon, Adult-Large-Bite-True-</name>
     <entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
 	<collection>
-		<name>Copper Dragon, Adult-Huge-Claw-False-</name>
+		<name>Copper Dragon, Adult-Large-Claw-False-</name>
 		<entry>1d8@Piercing/Slashing@</entry>
 	</collection>
 	<collection>
-		<name>Copper Dragon, Adult-Huge-Wing-False-</name>
+		<name>Copper Dragon, Adult-Large-Wing-False-</name>
 		<entry>1d6@Bludgeoning@</entry>
 	</collection>
 	<collection>
-		<name>Copper Dragon, Adult-Huge-Tail Slap-False-</name>
+		<name>Copper Dragon, Adult-Large-Tail Slap-False-</name>
 		<entry>1d8@Bludgeoning@</entry>
 	</collection>
 	<collection>
-		<name>Copper Dragon, Adult-Huge-Breath Weapon (acid)-True-</name>
+		<name>Copper Dragon, Adult-Large-Breath Weapon (acid)-True-</name>
 		<entry>12d4@Acid@</entry>
 	</collection>
 	<collection>
-		<name>Copper Dragon, Adult-Huge-Breath Weapon (slow gas)-True-Slowed for 1d6+6 rounds</name>
+		<name>Copper Dragon, Adult-Large-Breath Weapon (slow gas)-True-Slowed for 1d6+6 rounds</name>
 	</collection>
 	<collection>
-		<name>Copper Dragon, Adult-Huge-Spells-True-</name>
+		<name>Copper Dragon, Adult-Large-Spells-True-</name>
 	</collection>
 	<collection>
-		<name>Copper Dragon, Adult-Huge-Spell-Like Ability-True-</name>
+		<name>Copper Dragon, Adult-Large-Spell-Like Ability-True-</name>
 	</collection>
 	<collection>
-		<name>Copper Dragon, Adult-Huge-Frightful Presence-False-</name>
+		<name>Copper Dragon, Adult-Large-Frightful Presence-False-</name>
 	</collection>
   <collection>
-    <name>Copper Dragon, Ancient-Gargantuan-Bite-True-</name>
+    <name>Copper Dragon, Ancient-Huge-Bite-True-</name>
     <entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
 	<collection>
-		<name>Copper Dragon, Ancient-Gargantuan-Claw-False-</name>
+		<name>Copper Dragon, Ancient-Huge-Claw-False-</name>
 		<entry>2d6@Piercing/Slashing@</entry>
 	</collection>
 	<collection>
-		<name>Copper Dragon, Ancient-Gargantuan-Wing-False-</name>
+		<name>Copper Dragon, Ancient-Huge-Wing-False-</name>
 		<entry>1d8@Bludgeoning@</entry>
 	</collection>
 	<collection>
-		<name>Copper Dragon, Ancient-Gargantuan-Tail Slap-False-</name>
+		<name>Copper Dragon, Ancient-Huge-Tail Slap-False-</name>
 		<entry>2d6@Bludgeoning@</entry>
 	</collection>
 	<collection>
-		<name>Copper Dragon, Ancient-Gargantuan-Crush-True-</name>
+		<name>Copper Dragon, Ancient-Huge-Crush-True-</name>
 		<entry>2d8@Bludgeoning@</entry>
 	</collection>
 	<collection>
-		<name>Copper Dragon, Ancient-Gargantuan-Breath Weapon (acid)-True-</name>
+		<name>Copper Dragon, Ancient-Huge-Breath Weapon (acid)-True-</name>
 		<entry>20d4@Acid@</entry>
 	</collection>
 	<collection>
-		<name>Copper Dragon, Ancient-Gargantuan-Breath Weapon (slow gas)-True-Slowed for 1d6+10 rounds</name>
+		<name>Copper Dragon, Ancient-Huge-Breath Weapon (slow gas)-True-Slowed for 1d6+10 rounds</name>
 	</collection>
 	<collection>
-		<name>Copper Dragon, Ancient-Gargantuan-Spells-True-</name>
+		<name>Copper Dragon, Ancient-Huge-Spells-True-</name>
 	</collection>
 	<collection>
-		<name>Copper Dragon, Ancient-Gargantuan-Spell-Like Ability-True-</name>
+		<name>Copper Dragon, Ancient-Huge-Spell-Like Ability-True-</name>
 	</collection>
 	<collection>
-		<name>Copper Dragon, Ancient-Gargantuan-Frightful Presence-False-</name>
+		<name>Copper Dragon, Ancient-Huge-Frightful Presence-False-</name>
 	</collection>
   <collection>
     <name>Copper Dragon, Great Wyrm-Gargantuan-Bite-True-</name>
@@ -4324,73 +4324,141 @@
 		<name>Copper Dragon, Great Wyrm-Gargantuan-Frightful Presence-False-</name>
 	</collection>
   <collection>
-    <name>Copper Dragon, Juvenile</name>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%1d6@Piercing/Slashing@</entry>
-    <entry>Wing%1d4@Bludgeoning@</entry>
-    <entry>Breath Weapon (acid)%8d4@Acid@</entry>
-    <entry>Breath Weapon (slow gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Fortitude%supernatural ability%Slowed for 1d6+4 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Copper Dragon, Juvenile-Medium-Bite-True-</name>
+    <entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
-  <collection>
-    <name>Copper Dragon, Mature Adult</name>
-    <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d6@Piercing/Slashing@</entry>
-    <entry>Wing%1d8@Bludgeoning@</entry>
-    <entry>Tail Slap%2d6@Bludgeoning@</entry>
-    <entry>Crush%2d8@Bludgeoning@</entry>
-    <entry>Breath Weapon (acid)%14d4@Acid@</entry>
-    <entry>Breath Weapon (slow gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Fortitude%supernatural ability%Slowed for 1d6+7 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Copper Dragon, Old</name>
-    <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d6@Piercing/Slashing@</entry>
-    <entry>Wing%1d8@Bludgeoning@</entry>
-    <entry>Tail Slap%2d6@Bludgeoning@</entry>
-    <entry>Crush%2d8@Bludgeoning@</entry>
-    <entry>Breath Weapon (acid)%16d4@Acid@</entry>
-    <entry>Breath Weapon (slow gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Fortitude%supernatural ability%Slowed for 1d6+8 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Copper Dragon, Very Old</name>
-    <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d6@Piercing/Slashing@</entry>
-    <entry>Wing%1d8@Bludgeoning@</entry>
-    <entry>Tail Slap%2d6@Bludgeoning@</entry>
-    <entry>Crush%2d8@Bludgeoning@</entry>
-    <entry>Breath Weapon (acid)%18d4@Acid@</entry>
-    <entry>Breath Weapon (slow gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Fortitude%supernatural ability%Slowed for 1d6+9 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
-  </collection>
+	<collection>
+		<name>Copper Dragon, Juvenile-Medium-Claw-False-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Juvenile-Medium-Bite-False-</name>
+		<entry>1d4@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Juvenile-Medium-Breath Weapon (acid)-False-</name>
+		<entry>8d4@Acid@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Juvenile-Medium-Breath Weapon (slow gas)-True-Slowed for 1d6+4 rounds</name>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Juvenile-Medium-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Mature Adult-Huge-Bite-True-</name>
+		<entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Mature Adult-Huge-Claw-False-</name>
+		<entry>2d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Mature Adult-Huge-Wing-False-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Mature Adult-Huge-Tail Slap-False-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Mature Adult-Huge-Crush-True-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Mature Adult-Huge-Breath Weapon (acid)-True-</name>
+		<entry>14d4@Acid@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Mature Adult-Huge-Breath Weapon (slow gas)-True-Slowed for 1d6+7 rounds</name>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Mature Adult-Huge-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Mature Adult-Huge-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Mature Adult-Huge-Frightful Presence-False-</name>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Old-Huge-Bite-True-</name>
+		<entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Old-Huge-Claw-False-</name>
+		<entry>2d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Old-Huge-Wing-False-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Old-Huge-Tail Slap-False-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Old-Huge-Crush-True-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Old-Huge-Breath Weapon (acid)-True-</name>
+		<entry>16d4@Acid@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Old-Huge-Breath Weapon (slow gas)-True-Slowed for 1d6+8 rounds</name>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Old-Huge-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Old-Huge-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Old-Huge-Frightful Presence-False-</name>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Very Old-Huge-Bite-True-</name>
+		<entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Very Old-Huge-Claw-False-</name>
+		<entry>2d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Very Old-Huge-Wing-False-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Very Old-Huge-Tail Slap-False-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Very Old-Huge-Crush-True-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Very Old-Huge-Breath Weapon (acid)-True-</name>
+		<entry>18d4@Acid@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Very Old-Huge-Breath Weapon (slow gas)-True-Slowed for 1d6+9 rounds</name>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Very Old-Huge-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Very Old-Huge-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Very Old-Huge-Frightful Presence-False-</name>
+	</collection>
   <collection>
     <name>Copper Dragon, Very Young</name>
     <entry>Bite%1d6@Piercing/Slashing/Bludgeoning@</entry>
     <entry>Claw%1d4@Piercing/Slashing@</entry>
     <entry>Breath Weapon (acid)%4d4@Acid@</entry>
     <entry>Breath Weapon (slow gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Fortitude%supernatural ability%Slowed for 1d6+2 rounds%0%0%</entry>
-  </collection>
-  <collection>
-    <name>Copper Dragon, Wyrm</name>
-    <entry>Bite%4d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d8@Piercing/Slashing@</entry>
-    <entry>Wing%2d6@Bludgeoning@</entry>
-    <entry>Tail Slap%2d8@Bludgeoning@</entry>
-    <entry>Crush%4d6@Bludgeoning@</entry>
-    <entry>Tail Sweep%2d6@Bludgeoning@</entry>
-    <entry>Breath Weapon (acid)%22d4@Acid@</entry>
-    <entry>Breath Weapon (slow gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Fortitude%supernatural ability%Slowed for 1d6+11 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
   </collection>
 	<collection>
 		<name>Copper Dragon, Wyrm-Gargantuan-Bite-True-</name>

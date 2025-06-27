@@ -746,11 +746,11 @@
   </collection>
   <collection>
     <name>Copper Dragon, Adult</name>
-    <entry>Huge@15@10@1d2@8@4@-2@3@2@15</entry>
+    <entry>Large@10@5@1d2@0@0@0@0@2@14</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Ancient</name>
-    <entry>Gargantuan@20@15@1d2@8@4@0@4@2@23</entry>
+    <entry>Huge@15@10@1d2@0@0@0@0@2@22</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Great Wyrm</name>
@@ -758,7 +758,7 @@
   </collection>
   <collection>
     <name>Copper Dragon, Juvenile</name>
-    <entry>Large@10@5@1d2@8@4@-2@2@2@10</entry>
+    <entry>Medium@5@5@1d2@0@0@0@0@2@9</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Mature Adult</name>
@@ -774,7 +774,7 @@
   </collection>
   <collection>
     <name>Copper Dragon, Very Young</name>
-    <entry>Medium@5@5@1d2@4@2@-2@0@2@5</entry>
+    <entry>Small@5@5@1d2@0@0@0@0@2@5</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Wyrm</name>
@@ -782,7 +782,7 @@
   </collection>
   <collection>
     <name>Copper Dragon, Wyrmling</name>
-    <entry>Small@5@5@1d2@4@0@-2@0@2@3</entry>
+    <entry>Tiny@2.5@0@1d2@0@0@0@0@2@3</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Young</name>

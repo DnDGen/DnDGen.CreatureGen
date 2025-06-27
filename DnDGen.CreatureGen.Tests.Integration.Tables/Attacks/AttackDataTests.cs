@@ -171,7 +171,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertDragonPhysicalAttack(creature, "Bite", SizeConstants.Tiny, 1, true, "melee", 1, false);
             AssertDragonPhysicalAttack(creature, "Claw", SizeConstants.Tiny, 2, false, "melee", 0.5, false);
             AssertDragonPhysicalAttack(creature, "Wing", SizeConstants.Medium, 2, false, "melee", 0.5, false);
-            AssertDragonPhysicalAttack(creature, "Tail Slap", SizeConstants.Large, 1, false, "melee", 0.5, false);
+            AssertDragonPhysicalAttack(creature, "Tail Slap", SizeConstants.Large, 1, false, "melee", 1.5, false);
             AssertDragonPhysicalAttack(creature, "Crush", SizeConstants.Huge, 1, true, "extraordinary ability", 1.5, true);
             AssertDragonPhysicalAttack(creature, "Tail Sweep", SizeConstants.Gargantuan, 1, true, "extraordinary ability", 1.5, true);
 
