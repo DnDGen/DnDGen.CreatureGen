@@ -2265,28 +2265,56 @@
 		<entry>1d3@Bludgeoning@</entry>
 	</collection>
   <collection>
-    <name>Couatl</name>
-    <entry>Bite%1d3@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Poison%2d4@Strength@Initial,4d4@Strength@Secondary%True%True%False%True%1%Hit%Constitution%Fortitude%extraordinary ability%%0%0%</entry>
-    <entry>Constrict%2d8@Bludgeoning@</entry>
-    <entry>Improved Grab%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-    <entry>Psionic%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Couatl-Large-Bite-True-Poison</name>
+    <entry>1d3@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Couatl-Large-Poison-False-</name>
+		<entry>2d4@Strength@Initial</entry>
+		<entry>4d4@Strength@Secondary</entry>
+	</collection>
+	<collection>
+		<name>Couatl-Large-Constrict-False-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Couatl-Large-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Couatl-Large-Psionic-True-</name>
+	</collection>
+	<collection>
+		<name>Couatl-Large-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Couatl-Large-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
-    <name>Criosphinx</name>
-    <entry>Gore%2d6@Piercing@</entry>
-    <entry>Claw%1d6@Piercing/Slashing@</entry>
-    <entry>Pounce%%True%True%True%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-    <entry>Rake%1d6@Piercing/Slashing@</entry>
+    <name>Criosphinx-Large-Gore-True-</name>
+    <entry>2d6@Piercing@</entry>
   </collection>
+	<collection>
+		<name>Criosphinx-Large-Claw-False-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Criosphinx-Large-Pounce-True-</name>
+	</collection>
+	<collection>
+		<name>Criosphinx-Large-Rake-False-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
   <collection>
-    <name>Crocodile</name>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Tail Slap%1d12@Bludgeoning@</entry>
-    <entry>Improved Grab%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
+    <name>Crocodile-Medium-Bite-True-</name>
+    <entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Crocodile-Medium-Tail Slap-False-</name>
+		<entry>1d12@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Crocodile-Medium-Improved Grab-False-</name>
+	</collection>
   <collection>
     <name>Giant Crocodile</name>
     <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
@@ -2294,26 +2322,46 @@
     <entry>Improved Grab%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
   </collection>
   <collection>
-    <name>Darkmantle</name>
-    <entry>Slam%1d4@Bludgeoning@</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Improved Grab%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-    <entry>Constrict%1d4@Bludgeoning@</entry>
+    <name>Darkmantle-Small-Slam-True-</name>
+    <entry>1d4@Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Darkmantle-Small-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Darkmantle-Small-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Darkmantle-Small-Constrict-False-</name>
+		<entry>1d4@Bludgeoning@</entry>
+	</collection>
   <collection>
-    <name>Death Slaad</name>
-    <entry>Claw%3d6@Piercing/Slashing@</entry>
-    <entry>Bite%2d10@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Stun%%True%False%True%True%3%Day%Wisdom%Fortitude%extraordinary ability%Stunned 1 round%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Summon Slaad%%True%False%True%True%1%Day%%%extraordinary ability%%0%0%</entry>
+    <name>Death Slaad-Medium-Claw-True-Stun</name>
+    <entry>3d6@Piercing/Slashing@</entry>
   </collection>
+	<collection>
+		<name>Death Slaad-Medium-Bite-False-</name>
+		<entry>2d10@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Death Slaad-Medium-Stun-False-Stunned 1 round</name>
+	</collection>
+	<collection>
+		<name>Death Slaad-Medium-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Death Slaad-Medium-Summon Slaad-True-</name>
+	</collection>
   <collection>
-    <name>Deep Halfling</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Ranged%%False%False%True%False%1%Round (6 seconds)%%%ranged%%1.5%0%</entry>
-    <entry>Unarmed Strike%1d2@Bludgeoning@</entry>
+    <name>Deep Halfling-Small-Melee-True-</name>
   </collection>
+	<collection>
+		<name>Deep Halfling-Small-Ranged-True-</name>
+	</collection>
+	<collection>
+		<name>Deep Halfling-Small-Unarmed Strike-True-</name>
+		<entry>1d2@Bludgeoning@</entry>
+	</collection>
   <collection>
     <name>Deinonychus</name>
     <entry>Talons%1d8@Piercing/Slashing@</entry>
@@ -4217,7 +4265,7 @@
 	</collection>
   <collection>
     <name>Copper Dragon, Adult-Large-Bite-True-</name>
-    <entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
+    <entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
 	<collection>
 		<name>Copper Dragon, Adult-Large-Claw-False-</name>
@@ -4332,7 +4380,7 @@
 		<entry>1d6@Piercing/Slashing@</entry>
 	</collection>
 	<collection>
-		<name>Copper Dragon, Juvenile-Medium-Bite-False-</name>
+		<name>Copper Dragon, Juvenile-Medium-Wing-False-</name>
 		<entry>1d4@Bludgeoning@</entry>
 	</collection>
 	<collection>
@@ -4454,15 +4502,23 @@
 		<name>Copper Dragon, Very Old-Huge-Frightful Presence-False-</name>
 	</collection>
   <collection>
-    <name>Copper Dragon, Very Young</name>
-    <entry>Bite%1d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%1d4@Piercing/Slashing@</entry>
-    <entry>Breath Weapon (acid)%4d4@Acid@</entry>
-    <entry>Breath Weapon (slow gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Fortitude%supernatural ability%Slowed for 1d6+2 rounds%0%0%</entry>
+    <name>Copper Dragon, Very Young-Small-Bite-True-</name>
+    <entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
 	<collection>
+		<name>Copper Dragon, Very Young-Small-Claw-False-</name>
+		<entry>1d4@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Very Young-Small-Breath Weapon (acid)-True-</name>
+		<entry>4d4@Acid@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Very Young-Small-Breath Weapon (slow gas)-True-Slowed for 1d6+2 rounds</name>
+	</collection>
+	<collection>
 		<name>Copper Dragon, Wyrm-Gargantuan-Bite-True-</name>
-		<entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
+		<entry>4d6@Piercing/Slashing/Bludgeoning@</entry>
 	</collection>
 	<collection>
 		<name>Copper Dragon, Wyrm-Gargantuan-Claw-False-</name>
@@ -4497,31 +4553,68 @@
 		<name>Copper Dragon, Wyrm-Gargantuan-Frightful Presence-False-</name>
 	</collection>
   <collection>
-    <name>Copper Dragon, Wyrmling</name>
-    <entry>Bite%1d4@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%1d3@Piercing/Slashing@</entry>
-    <entry>Breath Weapon (acid)%2d4@Acid@</entry>
-    <entry>Breath Weapon (slow gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Fortitude%supernatural ability%Slowed for 1d6+1 rounds%0%0%</entry>
+    <name>Copper Dragon, Wyrmling-Tiny-Bite-True-</name>
+    <entry>1d4@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Copper Dragon, Wyrmling-Tiny-Claw-False-</name>
+		<entry>1d3@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Wyrmling-Tiny-Breath Weapon (acid)-True-</name>
+		<entry>2d4@Acid@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Wyrmling-Tiny-Breath Weapon (slow gas)-True-Slowed for 1d6+1 rounds</name>
+	</collection>
   <collection>
-    <name>Copper Dragon, Young</name>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%1d6@Piercing/Slashing@</entry>
-    <entry>Wing%1d4@Bludgeoning@</entry>
-    <entry>Breath Weapon (acid)%6d4@Acid@</entry>
-    <entry>Breath Weapon (slow gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Fortitude%supernatural ability%Slowed for 1d6+3 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Copper Dragon, Young-Medium-Bite-True-</name>
+    <entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Copper Dragon, Young-Medium-Claw-False-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Young-Medium-Wing-False-</name>
+		<entry>1d4@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Young-Medium-Breath Weapon (acid)-True-</name>
+		<entry>6d4@Acid@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Young-Medium-Breath Weapon (slow gas)-True-Slowed for 1d6+3 rounds</name>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Young-Medium-Spells-True-</name>
+	</collection>
   <collection>
-    <name>Copper Dragon, Young Adult</name>
-    <entry>Bite%2d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%1d8@Piercing/Slashing@</entry>
-    <entry>Wing%1d6@Bludgeoning@</entry>
-    <entry>Tail Slap%1d8@Bludgeoning@</entry>
-    <entry>Breath Weapon (acid)%10d4@Acid@</entry>
-    <entry>Breath Weapon (slow gas)%%True%False%True%True%1%1d4 Round (6 seconds)%Constitution%Fortitude%supernatural ability%Slowed for 1d6+5 rounds%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Copper Dragon, Young Adult-Large-Bite-True-</name>
+    <entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Copper Dragon, Young Adult-Large-Claw-False-</name>
+		<entry>1d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Young Adult-Large-Wing-False-</name>
+		<entry>1d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Young Adult-Large-Tail Slap-False-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Young Adult-Large-Breath Weapon (acid)-True-</name>
+		<entry>10d4@Acid@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Young Adult-Large-Breath Weapon (slow gas)-True-Slowed for 1d6+5 rounds</name>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Young Adult-Large-Spells-True-</name>
+	</collection>
   <collection>
     <name>Gold Dragon, Adult</name>
     <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@</entry>
@@ -4848,30 +4941,48 @@
     <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
   </collection>
   <collection>
-    <name>Deep Dwarf</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Ranged%%False%False%True%False%1%Round (6 seconds)%%%ranged%%1.5%0%</entry>
-    <entry>Unarmed Strike%1d3@Bludgeoning@</entry>
+    <name>Deep Dwarf-Medium-Melee-True-</name>
   </collection>
+	<collection>
+		<name>Deep Dwarf-Medium-Ranged-True-</name>
+	</collection>
+	<collection>
+		<name>Deep Dwarf-Medium-Unarmed Strike-True-</name>
+		<entry>1d3@Bludgeoning@</entry>
+	</collection>
   <collection>
-    <name>Duergar</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Ranged%%False%False%True%False%1%Round (6 seconds)%%%ranged%%1.5%0%</entry>
-    <entry>Unarmed Strike%1d3@Bludgeoning@</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Duergar-Medium-Melee-True-</name>
   </collection>
+	<collection>
+		<name>Duergar-Medium-Ranged-True-</name>
+	</collection>
+	<collection>
+		<name>Duergar-Medium-Unarmed Strike-True-</name>
+		<entry>1d3@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Duergar-Medium-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
-    <name>Hill Dwarf</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Ranged%%False%False%True%False%1%Round (6 seconds)%%%ranged%%1.5%0%</entry>
-    <entry>Unarmed Strike%1d3@Bludgeoning@</entry>
+    <name>Hill Dwarf-Medium-Melee-True-</name>
   </collection>
+	<collection>
+		<name>Hill Dwarf-Medium-Ranged-True-</name>
+	</collection>
+	<collection>
+		<name>Hill Dwarf-Medium-Unarmed Strike-True-</name>
+		<entry>1d3@Bludgeoning@</entry>
+	</collection>
   <collection>
-    <name>Mountain Dwarf</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Ranged%%False%False%True%False%1%Round (6 seconds)%%%ranged%%1.5%0%</entry>
-    <entry>Unarmed Strike%1d3@Bludgeoning@</entry>
+    <name>Mountain Dwarf-Medium-Melee-True-</name>
   </collection>
+	<collection>
+		<name>Mountain Dwarf-Medium-Ranged-True-</name>
+	</collection>
+	<collection>
+		<name>Mountain Dwarf-Medium-Unarmed Strike-True-</name>
+		<entry>1d3@Bludgeoning@</entry>
+	</collection>
   <collection>
     <name>Eagle</name>
     <entry>Talons%1d4@Piercing/Slashing@</entry>
@@ -6287,12 +6398,19 @@
     <entry>Mummy Rot%1d6@Constitution@Incubation period 1 minute,1d6@Charisma@Incubation period 1 minute%True%True%True%True%1%Hit%Charisma%Fortitude%supernatural ability%%0%0%</entry>
   </collection>
   <collection>
-    <name>Dark Naga</name>
-    <entry>Sting%2d4@Piercing@</entry>
-    <entry>Bite%1d4@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Poison%%True%True%False%True%1%Hit%Constitution%Fortitude%extraordinary ability%lapse into a nightmare-haunted sleep for 2d4 minutes%0%0%</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Dark Naga-Large-Sting-True-Poison</name>
+    <entry>2d4@Piercing@</entry>
   </collection>
+	<collection>
+		<name>Dark Naga-Large-Bite-True-</name>
+		<entry>1d4@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Dark Naga-Large-Poison-False-lapse into a nightmare-haunted sleep for 2d4 minutes</name>
+	</collection>
+	<collection>
+		<name>Dark Naga-Large-Spells-True-</name>
+	</collection>
   <collection>
     <name>Guardian Naga</name>
     <entry>Bite%2d6@Piercing/Slashing/Bludgeoning@</entry>

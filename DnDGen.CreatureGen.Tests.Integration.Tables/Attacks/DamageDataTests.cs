@@ -113,7 +113,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 ["-Arm-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
                 ["-Wing-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
                 ["-Trample-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
-                ["-Unarmed Strike-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}"
+                ["-Unarmed Strike-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
+                ["-Constrict-"] = $"{AttributeConstants.DamageTypes.Bludgeoning}",
             };
 
             creatureAttackDamageData = DamageTestData.GetCreatureAttackDamageData(attackData, creatureData, advancementData, damageHelper);
@@ -147,9 +148,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             Assert.That(creatureAttackDamageData, Contains.Key(key));
 
-            AssertCorrectImprovedGrab(key, creatureAttackDamageData[key]);
-            AssertCorrectSpellLikeAbility(key, creatureAttackDamageData[key]);
-            AssertCorrectSpells(key, creatureAttackDamageData[key]);
+            AssertImprovedGrabAttackDamage(key, creatureAttackDamageData[key]);
+            AssertSpellLikeAbilityAttackDamage(key, creatureAttackDamageData[key]);
+            AssertSpellsAttackDamage(key, creatureAttackDamageData[key]);
+            AssertPsionicAttackDamage(key, creatureAttackDamageData[key]);
             AssertNaturalAttacksHaveCorrectDamageTypes(key, creatureAttackDamageData[key]);
             AssertPoisonAttacksHaveCorrectDamageTypes(creature, key, creatureAttackDamageData[key]);
             AssertDiseaseAttacksHaveCorrectDamageTypes(creature, key, creatureAttackDamageData[key]);
@@ -256,9 +258,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             Assert.That(templateAttackDamageData, Contains.Key(key));
 
-            AssertCorrectImprovedGrab(key, templateAttackDamageData[key]);
-            AssertCorrectSpellLikeAbility(key, templateAttackDamageData[key]);
-            AssertCorrectSpells(key, templateAttackDamageData[key]);
+            AssertImprovedGrabAttackDamage(key, templateAttackDamageData[key]);
+            AssertSpellLikeAbilityAttackDamage(key, templateAttackDamageData[key]);
+            AssertSpellsAttackDamage(key, templateAttackDamageData[key]);
+            AssertPsionicAttackDamage(key, templateAttackDamageData[key]);
             AssertNaturalAttacksHaveCorrectDamageTypes(key, templateAttackDamageData[key]);
             AssertPoisonAttacksHaveCorrectDamageTypes(template, key, templateAttackDamageData[key]);
             AssertDiseaseAttacksHaveCorrectDamageTypes(template, key, templateAttackDamageData[key]);
@@ -356,9 +359,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
         private bool IsEquipmentAttack(string key) => key.Contains(AttributeConstants.Melee) || key.Contains(AttributeConstants.Ranged);
 
-        private void AssertCorrectImprovedGrab(string key, List<string> entries) => AssertEmpty(key, entries, "Improved Grab");
-        private void AssertCorrectSpells(string key, List<string> entries) => AssertEmpty(key, entries, "Spells");
-        private void AssertCorrectSpellLikeAbility(string key, List<string> entries) => AssertEmpty(key, entries, FeatConstants.SpecialQualities.SpellLikeAbility);
+        private void AssertImprovedGrabAttackDamage(string key, List<string> entries) => AssertEmpty(key, entries, "Improved Grab");
+        private void AssertSpellsAttackDamage(string key, List<string> entries) => AssertEmpty(key, entries, "Spells");
+        private void AssertSpellLikeAbilityAttackDamage(string key, List<string> entries) => AssertEmpty(key, entries, FeatConstants.SpecialQualities.SpellLikeAbility);
+        private void AssertPsionicAttackDamage(string key, List<string> entries) => AssertEmpty(key, entries, FeatConstants.SpecialQualities.Psionic);
 
         private void AssertEmpty(string key, List<string> entries, string attackName)
         {

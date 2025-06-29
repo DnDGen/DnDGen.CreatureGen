@@ -70,6 +70,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertConstrictAttack(creatureAttackData[creature]);
             AssertSpellLikeAbilityAttack(creatureAttackData[creature]);
             AssertSpellsAttack(creatureAttackData[creature]);
+            AssertPsionicAttack(creatureAttackData[creature]);
             AssertDamageEffectDoesNotHaveDamage(creatureAttackData[creature]);
             AssertDamageEffectAttackIsNotPrimary(creatureAttackData[creature]);
             AssertPoisonAttacks(creatureAttackData[creature]);
@@ -98,6 +99,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertConstrictAttack(templateAttackData[template]);
             AssertSpellLikeAbilityAttack(templateAttackData[template]);
             AssertSpellsAttack(templateAttackData[template]);
+            AssertPsionicAttack(templateAttackData[template]);
             AssertDamageEffectDoesNotHaveDamage(templateAttackData[template]);
             AssertDamageEffectAttackIsNotPrimary(templateAttackData[template]);
             AssertPoisonAttacks(templateAttackData[template]);
@@ -521,7 +523,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(spells.IsSpecial, Is.True);
             Assert.That(spells.Name, Is.EqualTo("Spells"));
             Assert.That(spells.SaveAbility, Is.Empty);
-            Assert.That(spells.SaveDcBonus, Is.EqualTo(0));
+            Assert.That(spells.SaveDcBonus, Is.Zero);
             Assert.That(spells.Save, Is.Empty);
         }
 
@@ -546,8 +548,33 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(spellLikeAbility.IsSpecial, Is.True);
             Assert.That(spellLikeAbility.Name, Is.EqualTo(FeatConstants.SpecialQualities.SpellLikeAbility));
             Assert.That(spellLikeAbility.SaveAbility, Is.Empty);
-            Assert.That(spellLikeAbility.SaveDcBonus, Is.EqualTo(0));
+            Assert.That(spellLikeAbility.SaveDcBonus, Is.Zero);
             Assert.That(spellLikeAbility.Save, Is.Empty);
+        }
+
+        private void AssertPsionicAttack(List<string> entries)
+        {
+            var selections = entries.Select(DataHelper.Parse<AttackDataSelection>);
+
+            var psionic = selections.FirstOrDefault(s => s.Name == FeatConstants.SpecialQualities.Psionic);
+            if (psionic == null)
+            {
+                return;
+            }
+
+            Assert.That(psionic.AttackType, Is.EqualTo("spell-like ability"));
+            Assert.That(psionic.DamageBonusMultiplier, Is.EqualTo(0));
+            Assert.That(psionic.DamageEffect, Is.Empty);
+            Assert.That(psionic.FrequencyQuantity, Is.EqualTo(1));
+            Assert.That(psionic.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(psionic.IsMelee, Is.False);
+            Assert.That(psionic.IsNatural, Is.True);
+            Assert.That(psionic.IsPrimary, Is.True);
+            Assert.That(psionic.IsSpecial, Is.True);
+            Assert.That(psionic.Name, Is.EqualTo(FeatConstants.SpecialQualities.Psionic));
+            Assert.That(psionic.SaveAbility, Is.Empty);
+            Assert.That(psionic.SaveDcBonus, Is.Zero);
+            Assert.That(psionic.Save, Is.Empty);
         }
     }
 }
