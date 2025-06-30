@@ -2289,6 +2289,31 @@
 	<collection>
 		<name>Couatl-Large-Spell-Like Ability-True-</name>
 	</collection>
+	<collection>
+		<name>Couatl-Huge-Bite-True-Poison</name>
+		<entry>1d4@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Couatl-Huge-Poison-False-</name>
+		<entry>2d4@Strength@Initial</entry>
+		<entry>4d4@Strength@Secondary</entry>
+	</collection>
+	<collection>
+		<name>Couatl-Huge-Constrict-False-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Couatl-Huge-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Couatl-Huge-Psionic-True-</name>
+	</collection>
+	<collection>
+		<name>Couatl-Huge-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Couatl-Huge-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
     <name>Criosphinx-Large-Gore-True-</name>
     <entry>2d6@Piercing@</entry>
@@ -4384,7 +4409,7 @@
 		<entry>1d4@Bludgeoning@</entry>
 	</collection>
 	<collection>
-		<name>Copper Dragon, Juvenile-Medium-Breath Weapon (acid)-False-</name>
+		<name>Copper Dragon, Juvenile-Medium-Breath Weapon (acid)-True-</name>
 		<entry>8d4@Acid@</entry>
 	</collection>
 	<collection>
@@ -4522,7 +4547,7 @@
 	</collection>
 	<collection>
 		<name>Copper Dragon, Wyrm-Gargantuan-Claw-False-</name>
-		<entry>2d6@Piercing/Slashing@</entry>
+		<entry>2d8@Piercing/Slashing@</entry>
 	</collection>
 	<collection>
 		<name>Copper Dragon, Wyrm-Gargantuan-Wing-False-</name>
@@ -4614,6 +4639,9 @@
 	</collection>
 	<collection>
 		<name>Copper Dragon, Young Adult-Large-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Young Adult-Large-Frightful Presence-False-</name>
 	</collection>
   <collection>
     <name>Gold Dragon, Adult</name>

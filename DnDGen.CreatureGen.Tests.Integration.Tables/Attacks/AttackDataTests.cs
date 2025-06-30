@@ -68,6 +68,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             AssertImprovedGrabAttack(creatureAttackData[creature]);
             AssertConstrictAttack(creatureAttackData[creature]);
+            AssertRakeAttack(creatureAttackData[creature]);
             AssertSpellLikeAbilityAttack(creatureAttackData[creature]);
             AssertSpellsAttack(creatureAttackData[creature]);
             AssertPsionicAttack(creatureAttackData[creature]);
@@ -97,6 +98,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             AssertImprovedGrabAttack(templateAttackData[template]);
             AssertConstrictAttack(templateAttackData[template]);
+            AssertRakeAttack(templateAttackData[template]);
             AssertSpellLikeAbilityAttack(templateAttackData[template]);
             AssertSpellsAttack(templateAttackData[template]);
             AssertPsionicAttack(templateAttackData[template]);
@@ -455,126 +457,61 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(naturalAttack.IsSpecial, Is.False, naturalAttack.Name);
         }
 
-        private void AssertImprovedGrabAttack(List<string> entries)
+        private void AssertPhysicalAttack(List<string> entries, string name, double multiplier, int frequency)
         {
             var selections = entries.Select(DataHelper.Parse<AttackDataSelection>);
 
-            var improvedGrab = selections.FirstOrDefault(s => s.Name == "Improved Grab");
-            if (improvedGrab == null)
+            var selection = selections.FirstOrDefault(s => s.Name == name);
+            if (selection == null)
             {
                 return;
             }
 
-            Assert.That(improvedGrab.AttackType, Is.EqualTo("extraordinary ability"));
-            Assert.That(improvedGrab.DamageBonusMultiplier, Is.Zero);
-            Assert.That(improvedGrab.FrequencyQuantity, Is.EqualTo(1));
-            Assert.That(improvedGrab.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
-            Assert.That(improvedGrab.IsMelee, Is.True);
-            Assert.That(improvedGrab.IsNatural, Is.True);
-            Assert.That(improvedGrab.IsPrimary, Is.False);
-            Assert.That(improvedGrab.IsSpecial, Is.True);
-            Assert.That(improvedGrab.Name, Is.EqualTo("Improved Grab"));
-            Assert.That(improvedGrab.SaveAbility, Is.Empty);
-            Assert.That(improvedGrab.SaveDcBonus, Is.Zero);
-            Assert.That(improvedGrab.Save, Is.Empty);
+            Assert.That(selection.AttackType, Is.EqualTo("extraordinary ability"), name);
+            Assert.That(selection.DamageBonusMultiplier, Is.EqualTo(multiplier), name);
+            Assert.That(selection.FrequencyQuantity, Is.EqualTo(frequency), name);
+            Assert.That(selection.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round), name);
+            Assert.That(selection.IsMelee, Is.True, name);
+            Assert.That(selection.IsNatural, Is.True, name);
+            Assert.That(selection.IsPrimary, Is.False, name);
+            Assert.That(selection.IsSpecial, Is.True, name);
+            Assert.That(selection.Name, Is.EqualTo(name), name);
+            Assert.That(selection.SaveAbility, Is.Empty, name);
+            Assert.That(selection.SaveDcBonus, Is.Zero, name);
+            Assert.That(selection.Save, Is.Empty, name);
         }
 
-        private void AssertConstrictAttack(List<string> entries)
+        private void AssertImprovedGrabAttack(List<string> entries) => AssertPhysicalAttack(entries, "Improved Grab", 0, 1);
+        private void AssertConstrictAttack(List<string> entries) => AssertPhysicalAttack(entries, "Constrict", 1, 1);
+        private void AssertRakeAttack(List<string> entries) => AssertPhysicalAttack(entries, "Rake", 0.5, 2);
+
+        private void AssertMagicAttack(List<string> entries, string name)
         {
             var selections = entries.Select(DataHelper.Parse<AttackDataSelection>);
 
-            var constrict = selections.FirstOrDefault(s => s.Name == "Constrict");
-            if (constrict == null)
+            var selection = selections.FirstOrDefault(s => s.Name == name);
+            if (selection == null)
             {
                 return;
             }
 
-            Assert.That(constrict.AttackType, Is.EqualTo("extraordinary ability"));
-            Assert.That(constrict.FrequencyQuantity, Is.EqualTo(1));
-            Assert.That(constrict.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
-            Assert.That(constrict.IsMelee, Is.True);
-            Assert.That(constrict.IsNatural, Is.True);
-            Assert.That(constrict.IsPrimary, Is.False);
-            Assert.That(constrict.IsSpecial, Is.True);
-            Assert.That(constrict.Name, Is.EqualTo("Constrict"));
-            Assert.That(constrict.SaveAbility, Is.Empty);
-            Assert.That(constrict.SaveDcBonus, Is.Zero);
-            Assert.That(constrict.Save, Is.Empty);
+            Assert.That(selection.AttackType, Is.EqualTo("spell-like ability"), name);
+            Assert.That(selection.DamageBonusMultiplier, Is.Zero, name);
+            Assert.That(selection.DamageEffect, Is.Empty, name);
+            Assert.That(selection.FrequencyQuantity, Is.EqualTo(1), name);
+            Assert.That(selection.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round), name);
+            Assert.That(selection.IsMelee, Is.False, name);
+            Assert.That(selection.IsNatural, Is.True, name);
+            Assert.That(selection.IsPrimary, Is.True, name);
+            Assert.That(selection.IsSpecial, Is.True, name);
+            Assert.That(selection.Name, Is.EqualTo(name), name);
+            Assert.That(selection.SaveAbility, Is.Empty, name);
+            Assert.That(selection.SaveDcBonus, Is.Zero, name);
+            Assert.That(selection.Save, Is.Empty, name);
         }
 
-        private void AssertSpellsAttack(List<string> entries)
-        {
-            var selections = entries.Select(DataHelper.Parse<AttackDataSelection>);
-
-            var spells = selections.FirstOrDefault(s => s.Name == "Spells");
-            if (spells == null)
-            {
-                return;
-            }
-
-            Assert.That(spells.AttackType, Is.EqualTo("spell-like ability"));
-            Assert.That(spells.DamageBonusMultiplier, Is.EqualTo(0));
-            Assert.That(spells.DamageEffect, Is.Empty);
-            Assert.That(spells.FrequencyQuantity, Is.EqualTo(1));
-            Assert.That(spells.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
-            Assert.That(spells.IsMelee, Is.False);
-            Assert.That(spells.IsNatural, Is.True);
-            Assert.That(spells.IsPrimary, Is.True);
-            Assert.That(spells.IsSpecial, Is.True);
-            Assert.That(spells.Name, Is.EqualTo("Spells"));
-            Assert.That(spells.SaveAbility, Is.Empty);
-            Assert.That(spells.SaveDcBonus, Is.Zero);
-            Assert.That(spells.Save, Is.Empty);
-        }
-
-        private void AssertSpellLikeAbilityAttack(List<string> entries)
-        {
-            var selections = entries.Select(DataHelper.Parse<AttackDataSelection>);
-
-            var spellLikeAbility = selections.FirstOrDefault(s => s.Name == FeatConstants.SpecialQualities.SpellLikeAbility);
-            if (spellLikeAbility == null)
-            {
-                return;
-            }
-
-            Assert.That(spellLikeAbility.AttackType, Is.EqualTo("spell-like ability"));
-            Assert.That(spellLikeAbility.DamageBonusMultiplier, Is.EqualTo(0));
-            Assert.That(spellLikeAbility.DamageEffect, Is.Empty);
-            Assert.That(spellLikeAbility.FrequencyQuantity, Is.EqualTo(1));
-            Assert.That(spellLikeAbility.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
-            Assert.That(spellLikeAbility.IsMelee, Is.False);
-            Assert.That(spellLikeAbility.IsNatural, Is.True);
-            Assert.That(spellLikeAbility.IsPrimary, Is.True);
-            Assert.That(spellLikeAbility.IsSpecial, Is.True);
-            Assert.That(spellLikeAbility.Name, Is.EqualTo(FeatConstants.SpecialQualities.SpellLikeAbility));
-            Assert.That(spellLikeAbility.SaveAbility, Is.Empty);
-            Assert.That(spellLikeAbility.SaveDcBonus, Is.Zero);
-            Assert.That(spellLikeAbility.Save, Is.Empty);
-        }
-
-        private void AssertPsionicAttack(List<string> entries)
-        {
-            var selections = entries.Select(DataHelper.Parse<AttackDataSelection>);
-
-            var psionic = selections.FirstOrDefault(s => s.Name == FeatConstants.SpecialQualities.Psionic);
-            if (psionic == null)
-            {
-                return;
-            }
-
-            Assert.That(psionic.AttackType, Is.EqualTo("spell-like ability"));
-            Assert.That(psionic.DamageBonusMultiplier, Is.EqualTo(0));
-            Assert.That(psionic.DamageEffect, Is.Empty);
-            Assert.That(psionic.FrequencyQuantity, Is.EqualTo(1));
-            Assert.That(psionic.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
-            Assert.That(psionic.IsMelee, Is.False);
-            Assert.That(psionic.IsNatural, Is.True);
-            Assert.That(psionic.IsPrimary, Is.True);
-            Assert.That(psionic.IsSpecial, Is.True);
-            Assert.That(psionic.Name, Is.EqualTo(FeatConstants.SpecialQualities.Psionic));
-            Assert.That(psionic.SaveAbility, Is.Empty);
-            Assert.That(psionic.SaveDcBonus, Is.Zero);
-            Assert.That(psionic.Save, Is.Empty);
-        }
+        private void AssertSpellsAttack(List<string> entries) => AssertMagicAttack(entries, "Spells");
+        private void AssertSpellLikeAbilityAttack(List<string> entries) => AssertMagicAttack(entries, FeatConstants.SpecialQualities.SpellLikeAbility);
+        private void AssertPsionicAttack(List<string> entries) => AssertMagicAttack(entries, FeatConstants.SpecialQualities.Psionic);
     }
 }

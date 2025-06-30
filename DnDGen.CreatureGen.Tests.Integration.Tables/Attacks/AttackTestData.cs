@@ -56,69 +56,49 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 string.Empty,
                 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Achaierai].Add(BuildData("Bite",
-                string.Empty,
-                0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.Achaierai].Add(BuildData("Black cloud",
-                SpellConstants.Insanity,
-                0, "extraordinary ability", 3, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Fortitude,
-                AbilityConstants.Constitution));
+                SpellConstants.Insanity, 0, "extraordinary ability", 3, FeatConstants.Frequencies.Day, false, true, true, true,
+                SaveConstants.Fortitude, AbilityConstants.Constitution));
 
             testCases[CreatureConstants.Allip].Add(BuildData("Incorporeal touch",
-                "Wisdom drain",
-                0, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                "Wisdom drain", 0, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Allip].Add(BuildData("Babble",
-                SpellConstants.Hypnotism,
-                0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, SaveConstants.Will,
-                AbilityConstants.Charisma));
+                SpellConstants.Hypnotism, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true,
+                SaveConstants.Will, AbilityConstants.Charisma));
             testCases[CreatureConstants.Allip].Add(BuildData("Madness",
-                string.Empty,
-                0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true));
+                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true));
             testCases[CreatureConstants.Allip].Add(BuildData("Wisdom drain",
-                "Allip gains 5 temporary hit points",
-                0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
+                "Allip gains 5 temporary hit points", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
 
             testCases[CreatureConstants.Androsphinx].Add(BuildData("Claw",
-                string.Empty,
-                1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Androsphinx].Add(BuildData("Pounce",
-                string.Empty,
-                0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
             testCases[CreatureConstants.Androsphinx].Add(BuildData("Rake",
-                string.Empty,
-                0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, true, true));
+                string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, false, true));
             testCases[CreatureConstants.Androsphinx].Add(BuildData("Roar",
-                string.Empty,
-                0, "supernatural ability", 3, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Will,
-                AbilityConstants.Charisma));
+                string.Empty, 0, "supernatural ability", 3, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
             testCases[CreatureConstants.Androsphinx].Add(BuildData("Spells",
-                string.Empty,
-                0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             testCases[CreatureConstants.Angel_AstralDeva].Add(BuildData(AttributeConstants.Melee,
-                string.Empty,
-                1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
+                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
             testCases[CreatureConstants.Angel_AstralDeva].Add(BuildData("Slam",
-                string.Empty,
-                1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Angel_AstralDeva].Add(BuildData("Stun",
-                string.Empty,
-                0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
             testCases[CreatureConstants.Angel_AstralDeva].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
-                string.Empty,
-                0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             testCases[CreatureConstants.Angel_Planetar].Add(BuildData(AttributeConstants.Melee,
-                string.Empty,
-                1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
+                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
             testCases[CreatureConstants.Angel_Planetar].Add(BuildData("Slam",
-                string.Empty,
-                1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Angel_Planetar].Add(BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
-                string.Empty,
-                0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
             testCases[CreatureConstants.Angel_Planetar].Add(BuildData("Spells",
-                string.Empty,
-                0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             testCases[CreatureConstants.Angel_Solar].Add(BuildData(AttributeConstants.Melee,
                 string.Empty,
