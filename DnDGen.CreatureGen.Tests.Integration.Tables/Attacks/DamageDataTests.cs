@@ -156,6 +156,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertPoisonAttacksHaveCorrectDamageTypes(creature, key, creatureAttackDamageData[key]);
             AssertDiseaseAttacksHaveCorrectDamageTypes(creature, key, creatureAttackDamageData[key]);
             AssertDragonAttacks(creature, key);
+            AssertEnergyDrainAttack(creature, key, creatureAttackDamageData[key]);
 
             AssertCollection(key, [.. creatureAttackDamageData[key]]);
 
@@ -244,6 +245,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             return Array.IndexOf(ages, dragonAge) + 1;
         }
 
+        private void AssertEnergyDrainAttack(string creature, string key, List<string> entries)
+        {
+            if (!key.Contains("-Energy Drain-"))
+                return;
+
+            var damageSelections = entries.Select(DataHelper.Parse<DamageDataSelection>).ToArray();
+            Assert.That(damageSelections, Has.Length.EqualTo(1), key);
+            Assert.That(damageSelections[0].Roll, Is.EqualTo("1").Or.EqualTo("2"), key);
+            Assert.That(damageSelections[0].Type, Is.EqualTo("Negative Level"), key);
+            Assert.That(damageSelections[0].Condition, Is.Empty, key);
+        }
+
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void TemplateAttackDamageData(string template)
         {
@@ -265,6 +278,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertNaturalAttacksHaveCorrectDamageTypes(key, templateAttackDamageData[key]);
             AssertPoisonAttacksHaveCorrectDamageTypes(template, key, templateAttackDamageData[key]);
             AssertDiseaseAttacksHaveCorrectDamageTypes(template, key, templateAttackDamageData[key]);
+            AssertEnergyDrainAttack(template, key, templateAttackDamageData[key]);
 
             AssertCollection(key, [.. templateAttackDamageData[key]]);
         }

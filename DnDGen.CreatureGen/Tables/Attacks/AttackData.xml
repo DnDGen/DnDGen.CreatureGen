@@ -92,7 +92,7 @@
     <name>Androsphinx</name>
     <entry>Claw@@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Rake@@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Rake@@True@True@False@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
     <entry>Roar@@True@False@True@True@3@Day@Charisma@Will@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
@@ -478,7 +478,7 @@
     <entry>Claw@@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Rake@@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Rake@@True@True@False@True@2@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
     <entry>Rend@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
@@ -671,7 +671,7 @@
     <entry>Breath Weapon@@True@False@True@True@1@Minute (10 rounds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Constrict@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Rake@@True@True@True@True@6@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Rake@@True@True@False@True@6@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
     <entry>Swallow Whole@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
@@ -924,7 +924,7 @@
     <entry>Gore@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Rake@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Rake@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
   </collection>
   <collection>
     <name>Crocodile</name>
@@ -968,29 +968,29 @@
   </collection>
   <collection>
     <name>Delver</name>
-    <entry>Slam@@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Corrosive Slime@@True@True@True@True@1@Hit@Constitution@Reflex@extraordinary ability@@1@0</entry>
+    <entry>Slam@@True@True@True@False@2@Round (6 seconds)@@@melee@Corrosive Slime@1@0</entry>
+    <entry>Corrosive Slime@@True@True@False@True@1@Hit@Constitution@Reflex@extraordinary ability@@1@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Derro</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
+    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@Poison use@1.5@0</entry>
     <entry>Unarmed Strike@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Poison use@@True@True@True@True@1@Hit@Constitution@Reflex@extraordinary ability@Greenblood Oil or Monstrous Spider Venom@0@0</entry>
-    <entry>Greenblood Oil@@False@True@True@True@1@Hit@@Fortitude@extraordinary ability@@0@3</entry>
-    <entry>Monstrous Spider Venom@@False@True@True@True@1@Hit@@Fortitude@extraordinary ability@@0@2</entry>
+    <entry>Poison use@@True@True@False@True@1@Hit@Constitution@Reflex@extraordinary ability@Greenblood Oil or Monstrous Spider Venom@0@0</entry>
+    <entry>Greenblood Oil@@False@True@False@True@1@Hit@@Fortitude@extraordinary ability@@0@3</entry>
+    <entry>Monstrous Spider Venom@@False@True@False@True@1@Hit@@Fortitude@extraordinary ability@@0@2</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Sneak Attack@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Derro (Sane)</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
+    <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@Poison use@1.5@0</entry>
     <entry>Unarmed Strike@@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Poison use@@True@True@True@True@1@Hit@Constitution@Reflex@extraordinary ability@Greenblood Oil or Monstrous Spider Venom@0@0</entry>
-    <entry>Greenblood Oil@@False@True@True@True@1@Hit@@Fortitude@extraordinary ability@@0@3</entry>
-    <entry>Monstrous Spider Venom@@False@True@True@True@1@Hit@@Fortitude@extraordinary ability@@0@2</entry>
+    <entry>Poison use@@True@True@False@True@1@Hit@Constitution@Reflex@extraordinary ability@Greenblood Oil or Monstrous Spider Venom@0@0</entry>
+    <entry>Greenblood Oil@@False@True@False@True@1@Hit@@Fortitude@extraordinary ability@@0@3</entry>
+    <entry>Monstrous Spider Venom@@False@True@False@True@1@Hit@@Fortitude@extraordinary ability@@0@2</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Sneak Attack@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
@@ -1001,8 +1001,8 @@
   </collection>
   <collection>
     <name>Devourer</name>
-    <entry>Claw@@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Energy Drain@@True@True@True@True@1@Hit@Charisma@@supernatural ability@@0@0</entry>
+    <entry>Claw@@True@True@True@False@2@Round (6 seconds)@@@melee@Energy Drain@1@0</entry>
+    <entry>Energy Drain@@True@True@False@True@1@Hit@Charisma@@supernatural ability@@0@0</entry>
     <entry>Trap Essence@@True@True@True@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
@@ -3427,7 +3427,7 @@
     <name>Lammasu</name>
     <entry>Claw@@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Rake@@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Rake@@True@True@False@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
@@ -3442,7 +3442,7 @@
     <entry>Roar@@True@False@True@True@3@Day@Charisma@Fortitude@supernatural ability@@0@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Rake@@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Rake@@True@True@False@True@2@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
@@ -3451,7 +3451,7 @@
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Rake@@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Rake@@True@True@False@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
   </collection>
   <collection>
     <name>Lightfoot Halfling</name>
@@ -3475,7 +3475,7 @@
     <entry>Bite@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Rake@@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Rake@@True@True@False@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
   </collection>
   <collection>
     <name>Dire Lion</name>
@@ -3483,7 +3483,7 @@
     <entry>Bite@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Rake@@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Rake@@True@True@False@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
   </collection>
   <collection>
     <name>Lizard</name>
@@ -4321,7 +4321,7 @@
     <name>Skum</name>
     <entry>Bite@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Rake@@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Rake@@True@True@False@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
   </collection>
   <collection>
     <name>Spectre</name>
@@ -4413,7 +4413,7 @@
     <entry>Claw@@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Rake@@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Rake@@True@True@False@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
   </collection>
   <collection>
     <name>Dire Tiger</name>
@@ -4421,7 +4421,7 @@
     <entry>Bite@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Rake@@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Rake@@True@True@False@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
   </collection>
   <collection>
     <name>Titan</name>

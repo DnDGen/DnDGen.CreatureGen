@@ -207,7 +207,7 @@
 		<name>Androsphinx-Large-Pounce-True-</name>
 	</collection>
 	<collection>
-		<name>Androsphinx-Large-Rake-True-</name>
+		<name>Androsphinx-Large-Rake-False-</name>
 		<entry>2d4@Piercing/Slashing@</entry>
 	</collection>
 	<collection>
@@ -224,7 +224,7 @@
 		<name>Androsphinx-Huge-Pounce-True-</name>
 	</collection>
 	<collection>
-		<name>Androsphinx-Huge-Rake-True-</name>
+		<name>Androsphinx-Huge-Rake-False-</name>
 		<entry>2d4@Piercing/Slashing@</entry>
 	</collection>
 	<collection>
@@ -890,7 +890,7 @@
 		<name>Annis-Large-Improved Grab-False-</name>
 	</collection>
 	<collection>
-		<name>Annis-Large-Rake-True-</name>
+		<name>Annis-Large-Rake-False-</name>
 		<entry>1d6@Piercing/Slashing@</entry>
 	</collection>
 	<collection>
@@ -919,11 +919,17 @@
 		<entry>1d3@Bludgeoning@</entry>
 	</collection>
   <collection>
-    <name>Dire Ape</name>
-    <entry>Claw%1d6@Piercing/Slashing@</entry>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Rend%2d6@Piercing/Slashing@</entry>
+    <name>Dire Ape-Large-Claw-True-</name>
+    <entry>1d6@Piercing/Slashing@</entry>
   </collection>
+	<collection>
+		<name>Dire Ape-Large-Bite-False-</name>
+		<entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Dire Ape-Large-Rend-False-</name>
+		<entry>2d6@Piercing/Slashing@</entry>
+	</collection>
   <collection>
     <name>Aranea-Medium-Bite-True-Poison</name>
     <entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
@@ -1155,12 +1161,28 @@
 	<collection>
 		<name>Badger-Small-Rage-True-</name>
 	</collection>
+	<collection>
+		<name>Dire Badger-Medium-Claw-True-</name>
+		<entry>1d4@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Dire Badger-Medium-Bite-False-</name>
+		<entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Dire Badger-Medium-Rage-False-</name>
+	</collection>
   <collection>
-    <name>Dire Badger</name>
-    <entry>Claw%1d4@Piercing/Slashing@</entry>
-    <entry>Bite%1d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Rage%%True%False%True%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
+    <name>Dire Badger-Large-Claw-True-</name>
+    <entry>1d6@Piercing/Slashing@</entry>
   </collection>
+	<collection>
+		<name>Dire Badger-Large-Bite-False-</name>
+		<entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Dire Badger-Large-Rage-False-</name>
+	</collection>
   <collection>
     <name>Baleen Whale-Gargantuan-Tail Slap-True-</name>
     <entry>1d8@Bludgeoning@</entry>
@@ -1287,8 +1309,8 @@
     <name>Bat</name>
   </collection>
   <collection>
-    <name>Dire Bat</name>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
+    <name>Dire Bat-Large-Bite-True-</name>
+    <entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
   <collection>
     <name>Bat Swarm-Diminutive-Swarm-True-</name>
@@ -1456,7 +1478,7 @@
 		<name>Behir-Huge-Improved Grab-False-</name>
 	</collection>
 	<collection>
-		<name>Behir-Huge-Rake-True-</name>
+		<name>Behir-Huge-Rake-False-</name>
 		<entry>1d4@Piercing/Slashing@</entry>
 	</collection>
 	<collection>
@@ -1480,7 +1502,7 @@
 		<name>Behir-Gargantuan-Improved Grab-False-</name>
 	</collection>
 	<collection>
-		<name>Behir-Gargantuan-Rake-True-</name>
+		<name>Behir-Gargantuan-Rake-False-</name>
 		<entry>1d4@Piercing/Slashing@</entry>
 	</collection>
 	<collection>
@@ -2329,12 +2351,27 @@
 		<name>Criosphinx-Large-Rake-False-</name>
 		<entry>1d6@Piercing/Slashing@</entry>
 	</collection>
+	<collection>
+		<name>Criosphinx-Huge-Gore-True-</name>
+		<entry>3d6@Piercing@</entry>
+	</collection>
+	<collection>
+		<name>Criosphinx-Huge-Claw-False-</name>
+		<entry>1d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Criosphinx-Huge-Pounce-True-</name>
+	</collection>
+	<collection>
+		<name>Criosphinx-Huge-Rake-False-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
   <collection>
     <name>Crocodile-Medium-Bite-True-</name>
     <entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
 	<collection>
-		<name>Crocodile-Medium-Tail Slap-False-</name>
+		<name>Crocodile-Medium-Tail Slap-True-</name>
 		<entry>1d12@Bludgeoning@</entry>
 	</collection>
 	<collection>
@@ -2377,6 +2414,23 @@
 	<collection>
 		<name>Death Slaad-Medium-Summon Slaad-True-</name>
 	</collection>
+	<collection>
+		<name>Death Slaad-Large-Claw-True-Stun</name>
+		<entry>4d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Death Slaad-Large-Bite-False-</name>
+		<entry>3d10@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Death Slaad-Large-Stun-False-Stunned 1 round</name>
+	</collection>
+	<collection>
+		<name>Death Slaad-Large-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Death Slaad-Large-Summon Slaad-True-</name>
+	</collection>
   <collection>
     <name>Deep Halfling-Small-Melee-True-</name>
   </collection>
@@ -2388,58 +2442,147 @@
 		<entry>1d2@Bludgeoning@</entry>
 	</collection>
   <collection>
-    <name>Deinonychus</name>
-    <entry>Talons%1d8@Piercing/Slashing@</entry>
-    <entry>Foreclaw%1d3@Piercing/Slashing@</entry>
-    <entry>Bite%2d4@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Pounce%%True%True%True%True%1%Round (6 seconds)%%%extraordinary ability%%1%0%</entry>
+    <name>Deinonychus-Medium-Talons-True-</name>
+    <entry>1d8@Piercing/Slashing@</entry>
   </collection>
+	<collection>
+		<name>Deinonychus-Medium-Foreclaw-False-</name>
+		<entry>1d3@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Deinonychus-Medium-Bite-False-</name>
+		<entry>2d4@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Deinonychus-Medium-Pounce-True-</name>
+	</collection>
   <collection>
-    <name>Delver</name>
-    <entry>Slam%1d6@Bludgeoning@,2d6@Acid@</entry>
-    <entry>Corrosive Slime%%True%True%True%True%1%Hit%Constitution%Reflex%extraordinary ability%%1%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Delver-Huge-Slam-True-Corrosive Slime</name>
+    <entry>1d6@Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Delver-Huge-Corrosive Slime-True-</name>
+		<entry>2d6@Acid@</entry>
+		<entry>4d8@Acid@</entry>
+		<entry>8d10@Acid@</entry>
+	</collection>
+	<collection>
+		<name>Delver-Huge-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
-    <name>Derro</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Ranged%%False%False%True%False%1%Round (6 seconds)%%%ranged%%1.5%0%</entry>
-    <entry>Unarmed Strike%1d2@Bludgeoning@</entry>
-    <entry>Poison use%%True%True%True%True%1%Hit%Constitution%Reflex%extraordinary ability%Greenblood Oil or Monstrous Spider Venom%0%0%</entry>
-    <entry>Greenblood Oil%1@Constitution@Initial,1d2@Constitution@Secondary%False%True%True%True%1%Hit%%Fortitude%extraordinary ability%%0%3%</entry>
-    <entry>Monstrous Spider Venom%1d4@Strength@Initial,1d4@Strength@Secondary%False%True%True%True%1%Hit%%Fortitude%extraordinary ability%%0%2%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Sneak Attack%1d6@@</entry>
+    <name>Derro-Small-Melee-True-</name>
   </collection>
+	<collection>
+		<name>Derro-Small-Ranged-True-Poison use</name>
+	</collection>
+	<collection>
+		<name>Derro-Small-Unarmed Strike-True-</name>
+		<entry>1d2@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Derro-Small-Poison use-False-Greenblood Oil or Monstrous Spider Venom</name>
+	</collection>
+	<collection>
+		<name>Derro-Small-Greenblood Oil-False-</name>
+		<entry>1@Constitution@Initial</entry>
+		<entry>1d2@Constitution@Secondary</entry>
+	</collection>
+	<collection>
+		<name>Derro-Small-Monstrous Spider Venom-False-</name>
+		<entry>1d4@Strength@Initial</entry>
+		<entry>1d4@Strength@Secondary</entry>
+	</collection>
+	<collection>
+		<name>Derro-Small-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Derro-Small-Sneak Attack-False-</name>
+		<entry>1d6@@</entry>
+	</collection>
   <collection>
-    <name>Derro (Sane)</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Ranged%%False%False%True%False%1%Round (6 seconds)%%%ranged%%1.5%0%</entry>
-    <entry>Unarmed Strike%1d2@Bludgeoning@</entry>
-    <entry>Poison use%%True%True%True%True%1%Hit%Constitution%Reflex%extraordinary ability%Greenblood Oil or Monstrous Spider Venom%0%0%</entry>
-    <entry>Greenblood Oil%1@Constitution@Initial,1d2@Constitution@Secondary%False%True%True%True%1%Hit%%Fortitude%extraordinary ability%%0%3%</entry>
-    <entry>Monstrous Spider Venom%1d4@Strength@Initial,1d4@Strength@Secondary%False%True%True%True%1%Hit%%Fortitude%extraordinary ability%%0%2%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Sneak Attack%1d6@@</entry>
+    <name>Derro (Sane)-Small-Melee-True-</name>
   </collection>
+	<collection>
+		<name>Derro (Sane)-Small-Ranged-True-Poison use</name>
+	</collection>
+	<collection>
+		<name>Derro (Sane)-Small-Unarmed Strike-True-</name>
+		<entry>1d2@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Derro (Sane)-Small-Poison use-False-Greenblood Oil or Monstrous Spider Venom</name>
+	</collection>
+	<collection>
+		<name>Derro (Sane)-Small-Greenblood Oil-False-</name>
+		<entry>1@Constitution@Initial</entry>
+		<entry>1d2@Constitution@Secondary</entry>
+	</collection>
+	<collection>
+		<name>Derro (Sane)-Small-Monstrous Spider Venom-False-</name>
+		<entry>1d4@Strength@Initial</entry>
+		<entry>1d4@Strength@Secondary</entry>
+	</collection>
+	<collection>
+		<name>Derro (Sane)-Small-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Derro (Sane)-Small-Sneak Attack-False-</name>
+		<entry>1d6@@</entry>
+	</collection>
   <collection>
-    <name>Destrachan</name>
-    <entry>Claw%1d6@Piercing/Slashing@</entry>
-    <entry>Destructive harmonics%%True%True%True%True%1%Round (6 seconds)%Charisma%%supernatural ability%%1%0%</entry>
+    <name>Destrachan-Large-Claw-True-</name>
+    <entry>1d6@Piercing/Slashing@</entry>
   </collection>
+	<collection>
+		<name>Destrachan-Large-Destructive harmonics-True-</name>
+	</collection>
+	<collection>
+		<name>Destrachan-Huge-Claw-True-</name>
+		<entry>1d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Destrachan-Huge-Destructive harmonics-True-</name>
+	</collection>
   <collection>
-    <name>Devourer</name>
-    <entry>Claw%1d6@Piercing/Slashing@</entry>
-    <entry>Energy Drain%%True%True%True%True%1%Hit%Charisma%%supernatural ability%%0%0%</entry>
-    <entry>Trap Essence%%True%True%True%True%1%Round (6 seconds)%Charisma%Fortitude%supernatural ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Devourer-Large-Claw-True-Energy Drain</name>
+    <entry>1d6@Piercing/Slashing@</entry>
   </collection>
-  <collection>
-    <name>Digester</name>
-    <entry>Claw%1d8@Piercing/Slashing@</entry>
-    <entry>Acid Spray (Cone)%4d8@Acid@</entry>
-    <entry>Acid Spray (Stream)%8d8@Acid@</entry>
+	<collection>
+		<name>Devourer-Large-Energy Drain-False-</name>
+		<entry>1@Negative Level@</entry>
+	</collection>
+	<collection>
+		<name>Devourer-Large-Trap Essence-True-</name>
+	</collection>
+	<collection>
+		<name>Devourer-Large-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Devourer-Huge-Claw-True-Energy Drain</name>
+		<entry>1d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Devourer-Huge-Energy Drain-False-</name>
+		<entry>1@Negative Level@</entry>
+	</collection>
+	<collection>
+		<name>Devourer-Huge-Trap Essence-True-</name>
+	</collection>
+	<collection>
+		<name>Devourer-Huge-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+    <name>Digester-Medium-Claw-True-</name>
+    <entry>1d8@Piercing/Slashing@</entry>
   </collection>
+	<collection>
+		<name>Digester-Medium-Acid Spray (Cone)-True-</name>
+		<entry>4d8@Acid@</entry>
+	</collection>
+	<collection>
+		<name>Digester-Medium-Acid Spray (Stream)-True-</name>
+		<entry>8d8@Acid@</entry>
+	</collection>
   <collection>
     <name>Displacer Beast</name>
     <entry>Tentacle%1d6@Bludgeoning@</entry>
@@ -4551,15 +4694,15 @@
 	</collection>
 	<collection>
 		<name>Copper Dragon, Wyrm-Gargantuan-Wing-False-</name>
-		<entry>1d8@Bludgeoning@</entry>
-	</collection>
-	<collection>
-		<name>Copper Dragon, Wyrm-Gargantuan-Tail Slap-False-</name>
 		<entry>2d6@Bludgeoning@</entry>
 	</collection>
 	<collection>
-		<name>Copper Dragon, Wyrm-Gargantuan-Crush-True-</name>
+		<name>Copper Dragon, Wyrm-Gargantuan-Tail Slap-False-</name>
 		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Copper Dragon, Wyrm-Gargantuan-Crush-True-</name>
+		<entry>4d6@Bludgeoning@</entry>
 	</collection>
 	<collection>
 		<name>Copper Dragon, Wyrm-Gargantuan-Breath Weapon (acid)-True-</name>
@@ -6438,6 +6581,20 @@
 	</collection>
 	<collection>
 		<name>Dark Naga-Large-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Dark Naga-Huge-Sting-True-Poison</name>
+		<entry>3d4@Piercing@</entry>
+	</collection>
+	<collection>
+		<name>Dark Naga-Huge-Bite-True-</name>
+		<entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Dark Naga-Huge-Poison-False-lapse into a nightmare-haunted sleep for 2d4 minutes</name>
+	</collection>
+	<collection>
+		<name>Dark Naga-Huge-Spells-True-</name>
 	</collection>
   <collection>
     <name>Guardian Naga</name>

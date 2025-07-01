@@ -69,6 +69,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertImprovedGrabAttack(creatureAttackData[creature]);
             AssertConstrictAttack(creatureAttackData[creature]);
             AssertRakeAttack(creatureAttackData[creature]);
+            AssertRendAttack(creatureAttackData[creature]);
             AssertSpellLikeAbilityAttack(creatureAttackData[creature]);
             AssertSpellsAttack(creatureAttackData[creature]);
             AssertPsionicAttack(creatureAttackData[creature]);
@@ -99,6 +100,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertImprovedGrabAttack(templateAttackData[template]);
             AssertConstrictAttack(templateAttackData[template]);
             AssertRakeAttack(templateAttackData[template]);
+            AssertRendAttack(templateAttackData[template]);
+            AssertSneakAttack(templateAttackData[template]);
             AssertSpellLikeAbilityAttack(templateAttackData[template]);
             AssertSpellsAttack(templateAttackData[template]);
             AssertPsionicAttack(templateAttackData[template]);
@@ -457,7 +460,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(naturalAttack.IsSpecial, Is.False, naturalAttack.Name);
         }
 
-        private void AssertPhysicalAttack(List<string> entries, string name, double multiplier, int frequency)
+        private void AssertPhysicalAttack(List<string> entries, string name, double? multiplier, int? frequency)
         {
             var selections = entries.Select(DataHelper.Parse<AttackDataSelection>);
 
@@ -468,8 +471,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             }
 
             Assert.That(selection.AttackType, Is.EqualTo("extraordinary ability"), name);
-            Assert.That(selection.DamageBonusMultiplier, Is.EqualTo(multiplier), name);
-            Assert.That(selection.FrequencyQuantity, Is.EqualTo(frequency), name);
+
+            if (multiplier.HasValue)
+                Assert.That(selection.DamageBonusMultiplier, Is.EqualTo(multiplier), name);
+
+            if (frequency.HasValue)
+                Assert.That(selection.FrequencyQuantity, Is.EqualTo(frequency), name);
+
             Assert.That(selection.FrequencyTimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round), name);
             Assert.That(selection.IsMelee, Is.True, name);
             Assert.That(selection.IsNatural, Is.True, name);
@@ -482,8 +490,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         }
 
         private void AssertImprovedGrabAttack(List<string> entries) => AssertPhysicalAttack(entries, "Improved Grab", 0, 1);
-        private void AssertConstrictAttack(List<string> entries) => AssertPhysicalAttack(entries, "Constrict", 1, 1);
-        private void AssertRakeAttack(List<string> entries) => AssertPhysicalAttack(entries, "Rake", 0.5, 2);
+        // INFO: Salamanders constrict with bonus 0.5, while others constrict with bonus 1.5
+        private void AssertConstrictAttack(List<string> entries) => AssertPhysicalAttack(entries, "Constrict", null, 1);
+        // INFO: Behir get 6 rake attacks, while other animals only get 2
+        // INFO: Annis Rakes with bonus 1, while other animals rake with bonus 0.5
+        private void AssertRakeAttack(List<string> entries) => AssertPhysicalAttack(entries, "Rake", null, null);
+        private void AssertRendAttack(List<string> entries) => AssertPhysicalAttack(entries, "Rend", 1.5, 1);
+        private void AssertSneakAttack(List<string> entries) => AssertPhysicalAttack(entries, "Sneak Attack", 0, 1);
 
         private void AssertMagicAttack(List<string> entries, string name)
         {

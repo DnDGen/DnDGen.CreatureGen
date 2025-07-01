@@ -527,7 +527,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Deinonychus, "Foreclaw", "1d3", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Deinonychus, "Bite", "2d4", biteDamageType));
 
-            attackDamages.Add(BuildData(CreatureConstants.Delver, "Slam", "1d6", slapSlamDamageType, roll2: "2d6", type2: FeatConstants.Foci.Elements.Acid));
+            attackDamages.Add(BuildData(CreatureConstants.Delver, "Slam", "1d6", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Delver, "Corrosive Slime",
+                "2d6", FeatConstants.Foci.Elements.Acid, "Organic creatures or objects",
+                "4d8", FeatConstants.Foci.Elements.Acid, "Metallic creatures or objects",
+                "8d10", FeatConstants.Foci.Elements.Acid, "Stony creatures (including earth elementals) or objects"));
 
             attackDamages.Add(BuildData(CreatureConstants.Derro, "Unarmed Strike", "1d2", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Derro, "Greenblood Oil",
@@ -550,6 +554,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Destrachan, "Claw", "1d6", clawDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.Devourer, "Claw", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Devourer, "Energy Drain", "1", "Negative Level"));
 
             attackDamages.Add(BuildData(CreatureConstants.Digester, "Claw", "1d8", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Digester, "Acid Spray (Cone)", "4d8", FeatConstants.Foci.Elements.Acid));

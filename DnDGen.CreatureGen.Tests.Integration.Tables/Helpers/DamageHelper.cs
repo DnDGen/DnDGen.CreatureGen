@@ -43,7 +43,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Helpers
 
             var sizes = advancementData
                 .Select(a => a.Size)
-                .Union([creatureData.Size]);
+                .Union([creatureData.Size])
+                //INFO: This ensures smaller sizes come first
+                .OrderDescending();
 
             foreach (var size in sizes)
             {
