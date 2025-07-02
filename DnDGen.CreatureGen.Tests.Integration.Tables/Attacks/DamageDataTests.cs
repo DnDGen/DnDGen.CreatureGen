@@ -148,19 +148,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             Assert.That(creatureAttackDamageData, Contains.Key(key));
 
-            AssertImprovedGrabAttackDamage(key, creatureAttackDamageData[key]);
-            AssertSpellLikeAbilityAttackDamage(key, creatureAttackDamageData[key]);
-            AssertSpellsAttackDamage(key, creatureAttackDamageData[key]);
-            AssertPsionicAttackDamage(key, creatureAttackDamageData[key]);
-            AssertNaturalAttacksHaveCorrectDamageTypes(key, creatureAttackDamageData[key]);
-            AssertPoisonAttacksHaveCorrectDamageTypes(creature, key, creatureAttackDamageData[key]);
-            AssertDiseaseAttacksHaveCorrectDamageTypes(creature, key, creatureAttackDamageData[key]);
+            AssertCommonAttacks(creature, key, creatureAttackDamageData[key]);
             AssertDragonAttacks(creature, key);
-            AssertEnergyDrainAttack(creature, key, creatureAttackDamageData[key]);
 
             AssertCollection(key, [.. creatureAttackDamageData[key]]);
 
             CreatureWithUnnaturalAttack_CanUseEquipment(creature, key);
+        }
+
+        private void AssertCommonAttacks(string creature, string key, List<string> entries)
+        {
+            AssertDiseaseAttacksHaveCorrectDamageTypes(creature, key, entries);
+            AssertEnergyDrainAttack(creature, key, entries);
+            AssertImprovedGrabAttackDamage(key, entries);
+            AssertNaturalAttacksHaveCorrectDamageTypes(key, entries);
+            AssertPoisonAttacksHaveCorrectDamageTypes(creature, key, entries);
+            AssertPsionicAttackDamage(key, entries);
+            AssertSpellLikeAbilityAttackDamage(key, entries);
+            AssertSpellsAttackDamage(key, entries);
         }
 
         private void AssertDragonAttacks(string creature, string key)
@@ -200,7 +205,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             var breathWeaponDamages = creatureAttackDamageData[key].Select(DataHelper.Parse<DamageDataSelection>);
             var ageCategory = GetNumericDragonAgeCategory(creature.Split(',')[1].Trim());
 
-            //Ending in - indicates no effect, so it should have damage
+            //INFO: This indicates no effect, so it should have damage
             if (key.EndsWith('-'))
             {
                 var selection = breathWeaponDamages.Single();
@@ -271,14 +276,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         {
             Assert.That(templateAttackDamageData, Contains.Key(key));
 
-            AssertImprovedGrabAttackDamage(key, templateAttackDamageData[key]);
-            AssertSpellLikeAbilityAttackDamage(key, templateAttackDamageData[key]);
-            AssertSpellsAttackDamage(key, templateAttackDamageData[key]);
-            AssertPsionicAttackDamage(key, templateAttackDamageData[key]);
-            AssertNaturalAttacksHaveCorrectDamageTypes(key, templateAttackDamageData[key]);
-            AssertPoisonAttacksHaveCorrectDamageTypes(template, key, templateAttackDamageData[key]);
-            AssertDiseaseAttacksHaveCorrectDamageTypes(template, key, templateAttackDamageData[key]);
-            AssertEnergyDrainAttack(template, key, templateAttackDamageData[key]);
+            AssertCommonAttacks(template, key, templateAttackDamageData[key]);
 
             AssertCollection(key, [.. templateAttackDamageData[key]]);
         }

@@ -1159,7 +1159,7 @@
 		<entry>1d3@Piercing/Slashing/Bludgeoning@</entry>
 	</collection>
 	<collection>
-		<name>Badger-Small-Rage-True-</name>
+		<name>Badger-Small-Rage-False-</name>
 	</collection>
 	<collection>
 		<name>Dire Badger-Medium-Claw-True-</name>
@@ -1420,6 +1420,17 @@
 	</collection>
 	<collection>
 		<name>Dire Bear-Large-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Dire Bear-Huge-Claw-True-</name>
+		<entry>3d4@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Dire Bear-Huge-Bite-False-</name>
+		<entry>3d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Dire Bear-Huge-Improved Grab-False-</name>
 	</collection>
   <collection>
     <name>Bebilith-Huge-Bite-True-Poison</name>
@@ -1726,6 +1737,13 @@
   </collection>
 	<collection>
 		<name>Dire Boar-Large-Ferocity-False-</name>
+	</collection>
+	<collection>
+		<name>Dire Boar-Huge-Gore-True-</name>
+		<entry>2d6@Piercing@</entry>
+	</collection>
+	<collection>
+		<name>Dire Boar-Huge-Ferocity-False-</name>
 	</collection>
   <collection>
     <name>Bodak-Medium-Slam-True-</name>
@@ -2469,12 +2487,25 @@
   </collection>
 	<collection>
 		<name>Delver-Huge-Corrosive Slime-False-</name>
-		<entry>2d6@Acid@</entry>
-		<entry>4d8@Acid@</entry>
-		<entry>8d10@Acid@</entry>
+		<entry>2d6@Acid@Organic creatures or objects</entry>
+		<entry>4d8@Acid@Metallic creatures or objects</entry>
+		<entry>8d10@Acid@Stony creatures (including earth elementals) or objects</entry>
 	</collection>
 	<collection>
 		<name>Delver-Huge-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Delver-Gargantuan-Slam-True-Corrosive Slime</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Delver-Gargantuan-Corrosive Slime-False-</name>
+		<entry>2d6@Acid@Organic creatures or objects</entry>
+		<entry>4d8@Acid@Metallic creatures or objects</entry>
+		<entry>8d10@Acid@Stony creatures (including earth elementals) or objects</entry>
+	</collection>
+	<collection>
+		<name>Delver-Gargantuan-Spell-Like Ability-True-</name>
 	</collection>
   <collection>
     <name>Derro-Small-Melee-True-</name>
@@ -2587,23 +2618,54 @@
 		<entry>4d8@Acid@Cone</entry>
 		<entry>8d8@Acid@Stream</entry>
 	</collection>
+	<collection>
+		<name>Digester-Large-Claw-True-</name>
+		<entry>2d6@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Digester-Large-Acid Spray-True-</name>
+		<entry>4d8@Acid@Cone</entry>
+		<entry>8d8@Acid@Stream</entry>
+	</collection>
   <collection>
-    <name>Displacer Beast</name>
-    <entry>Tentacle%1d6@Bludgeoning@</entry>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
+    <name>Displacer Beast-Large-Tentacle-True-</name>
+    <entry>1d6@Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Displacer Beast-Large-Bite-False-</name>
+		<entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Displacer Beast-Huge-Tentacle-True-</name>
+		<entry>1d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Displacer Beast-Huge-Bite-False-</name>
+		<entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
   <collection>
-    <name>Displacer Beast Pack Lord</name>
-    <entry>Tentacle%1d8@Bludgeoning@</entry>
-    <entry>Bite%2d6@Piercing/Slashing/Bludgeoning@</entry>
+    <name>Displacer Beast Pack Lord-Huge-Tentacle-True-</name>
+    <entry>1d8@Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Displacer Beast Pack Lord-Huge-Bite-False-</name>
+		<entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
   <collection>
-    <name>Djinni</name>
-    <entry>Slam%1d8@Bludgeoning@</entry>
-    <entry>Air mastery%%True%False%True%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-    <entry>Whirlwind%%True%False%True%True%1%10 Minute (10 rounds)%Strength%Reflex%supernatural ability%%0%3%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Djinni-Large-Slam-True-</name>
+    <entry>1d8@Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Djinni-Large-Air mastery-True-</name>
+	</collection>
+	<collection>
+		<name>Djinni-Large-Whirlwind-True-</name>
+		<entry>3d6@Bludgeoning@On contact</entry>
+		<entry>1d8@Bludgeoning@While suspended in winds</entry>
+	</collection>
+	<collection>
+		<name>Djinni-Large-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
     <name>Noble Djinni</name>
     <entry>Slam%1d8@Bludgeoning@</entry>
@@ -2612,23 +2674,27 @@
     <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
   </collection>
   <collection>
-    <name>Dog</name>
-    <entry>Bite%1d4@Piercing/Slashing/Bludgeoning@</entry>
+    <name>Dog-Small-Bite-True-</name>
+    <entry>1d4@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
   <collection>
-    <name>Dog, Riding</name>
-    <entry>Bite%1d6@Piercing/Slashing/Bludgeoning@</entry>
+    <name>Dog, Riding-Medium-Bite-True-</name>
+    <entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
   <collection>
-    <name>Donkey</name>
-    <entry>Bite%1d2@Piercing/Slashing/Bludgeoning@</entry>
+    <name>Donkey-Medium-Bite-True-</name>
+    <entry>1d2@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
   <collection>
-    <name>Doppelganger</name>
-    <entry>Slam%1d6@Bludgeoning@</entry>
-    <entry>Detect Thoughts%%True%False%True%True%0%Constant%%%supernatural ability%%1%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Doppelganger-Medium-Slam-True-</name>
+    <entry>1d6@Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Doppelganger-Medium-Detect Thoughts-True-</name>
+	</collection>
+	<collection>
+		<name>Doppelganger-Medium-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
     <name>Black Dragon, Adult-Large-Bite-True-</name>
     <entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
@@ -4710,7 +4776,7 @@
 	</collection>
 	<collection>
 		<name>Copper Dragon, Wyrm-Gargantuan-Tail Sweep-True-</name>
-		<entry>2d8@Bludgeoning@</entry>
+		<entry>2d6@Bludgeoning@</entry>
 	</collection>
 	<collection>
 		<name>Copper Dragon, Wyrm-Gargantuan-Breath Weapon (acid)-True-</name>
@@ -5083,12 +5149,20 @@
     <entry>Frightful Presence%%True%False%True%True%1%Round (6 seconds)%Charisma%Will%extraordinary ability%%0%0%</entry>
   </collection>
   <collection>
-    <name>Dragon Turtle</name>
-    <entry>Bite%4d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d8@Piercing/Slashing@</entry>
-    <entry>Breath Weapon%12d6@Fire@</entry>
-    <entry>Capsize%%True%False%True%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
+    <name>Dragon Turtle-Huge-Bite-True-</name>
+    <entry>4d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Dragon Turtle-Huge-Claw-False-</name>
+		<entry>2d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Dragon Turtle-Huge-Breath Weapon-True-</name>
+		<entry>12d6@Fire@</entry>
+	</collection>
+	<collection>
+		<name>Dragon Turtle-Huge-Capsize-True-</name>
+	</collection>
   <collection>
     <name>Dragonne</name>
     <entry>Bite%2d6@Piercing/Slashing/Bludgeoning@</entry>
@@ -6230,6 +6304,24 @@
 		<name>Dire Lion-Large-Rake-False-</name>
 		<entry>1d6@Piercing/Slashing@</entry>
 	</collection>
+	<collection>
+		<name>Dire Lion-Huge-Claw-True-</name>
+		<entry>1d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Dire Lion-Huge-Bite-False-</name>
+		<entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Dire Lion-Huge-Pounce-True-</name>
+	</collection>
+	<collection>
+		<name>Dire Lion-Huge-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Dire Lion-Huge-Rake-False-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
   <collection>
     <name>Lizard</name>
     <entry>Bite%1d4@Piercing/Slashing/Bludgeoning@</entry>
@@ -6854,10 +6946,22 @@
     <entry>1d3@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
 	<collection>
-		<name>Dire Rat-Small-Disease-False-</name>
+		<name>Dire Rat-Small-Disease-False-Filth Fever</name>
 	</collection>
 	<collection>
 		<name>Dire Rat-Small-Filth Fever-False-</name>
+		<entry>1d3@Dexterity@Incubation period 1d3 days</entry>
+		<entry>1d3@Constitution@Incubation period 1d3 days</entry>
+	</collection>
+	<collection>
+		<name>Dire Rat-Medium-Bite-True-Disease</name>
+		<entry>1d4@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Dire Rat-Medium-Disease-False-Filth Fever</name>
+	</collection>
+	<collection>
+		<name>Dire Rat-Medium-Filth Fever-False-</name>
 		<entry>1d3@Dexterity@Incubation period 1d3 days</entry>
 		<entry>1d3@Constitution@Incubation period 1d3 days</entry>
 	</collection>
@@ -6967,6 +7071,18 @@
 	  <entry>2d6+6@Bludgeoning@</entry>
 	  <entry>1d8+4@Acid@</entry>
   </collection>
+	<collection>
+		<name>Dire Shark-Gargantuan-Bite-True-</name>
+		<entry>3d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Dire Shark-Gargantuan-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Dire Shark-Gargantuan-Swallow Whole-False-</name>
+		<entry>2d6+6@Bludgeoning@</entry>
+		<entry>1d8+4@Acid@</entry>
+	</collection>
   <collection>
     <name>Red Slaad</name>
     <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@</entry>
@@ -7209,6 +7325,24 @@
 		<name>Dire Tiger-Large-Rake-False-</name>
 		<entry>2d4@Piercing/Slashing@</entry>
 	</collection>
+	<collection>
+		<name>Dire Tiger-Huge-Claw-True-</name>
+		<entry>3d4@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Dire Tiger-Huge-Bite-False-</name>
+		<entry>3d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Dire Tiger-Huge-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Dire Tiger-Huge-Pounce-True-</name>
+	</collection>
+	<collection>
+		<name>Dire Tiger-Huge-Rake-False-</name>
+		<entry>2d4@Piercing/Slashing@</entry>
+	</collection>
   <collection>
     <name>Titan</name>
     <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
@@ -7358,6 +7492,17 @@
 		<name>Dire Weasel-Medium-Blood Drain-False-</name>
 		<entry>1d4@Constitution@</entry>
 	</collection>
+	<collection>
+		<name>Dire Weasel-Large-Bite-True-Attach</name>
+		<entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Dire Weasel-Large-Attach-False-Blood Drain</name>
+	</collection>
+	<collection>
+		<name>Dire Weasel-Large-Blood Drain-False-</name>
+		<entry>1d4@Constitution@</entry>
+	</collection>
   <collection>
     <name>Wight</name>
     <entry>Slam%1d4@Bludgeoning@</entry>
@@ -7381,10 +7526,12 @@
     <entry>Trip%%True%True%True%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
   </collection>
   <collection>
-    <name>Dire Wolf</name>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Trip%%True%True%True%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
+    <name>Dire Wolf-Large-Bite-True-</name>
+    <entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Dire Wolf-Large-Trip-True-</name>
+	</collection>
   <collection>
     <name>Wolverine</name>
     <entry>Bite%1d6@Piercing/Slashing/Bludgeoning@</entry>
@@ -7392,11 +7539,16 @@
     <entry>Rage%%True%False%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
   </collection>
   <collection>
-    <name>Dire Wolverine</name>
-    <entry>Claw%1d6@Piercing/Slashing@</entry>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Rage%%True%False%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
+    <name>Dire Wolverine-Large-Claw-True-</name>
+    <entry>1d6@Piercing/Slashing@</entry>
   </collection>
+	<collection>
+		<name>Dire Wolverine-Large-Bite-False-</name>
+		<entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Dire Wolverine-Large-Rage-False-</name>
+	</collection>
   <collection>
     <name>Worg</name>
     <entry>Bite%1d6@Piercing/Slashing/Bludgeoning@</entry>

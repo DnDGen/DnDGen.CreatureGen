@@ -66,19 +66,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             if (creatureAttackData[creature][0] == AttackTestData.None)
                 creatureAttackData[creature].Clear();
 
-            AssertImprovedGrabAttack(creatureAttackData[creature]);
-            AssertConstrictAttack(creatureAttackData[creature]);
-            AssertRakeAttack(creatureAttackData[creature]);
-            AssertRendAttack(creatureAttackData[creature]);
-            AssertRageAttack(creatureAttackData[creature]);
-            AssertSpellLikeAbilityAttack(creatureAttackData[creature]);
-            AssertSpellsAttack(creatureAttackData[creature]);
-            AssertPsionicAttack(creatureAttackData[creature]);
-            AssertDamageEffectDoesNotHaveDamage(creatureAttackData[creature]);
-            AssertDamageEffectAttackIsNotPrimary(creatureAttackData[creature]);
-            AssertPoisonAttacks(creatureAttackData[creature]);
-            AssertDiseaseAttacks(creatureAttackData[creature]);
-            AssertSpecialAttacks(creatureAttackData[creature]);
+            AssertCommonAttacks(creatureAttackData[creature]);
             AssertDragonAttacks(creature);
 
             AssertCollection(creature, [.. creatureAttackData[creature]]);
@@ -87,6 +75,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             CreatureWithPsionicAttack_HasPsionicSpecialQuality(creature);
             CreatureWithSpellsAttack_HasMagicSpells(creature);
             CreatureWithUnnaturalAttack_CanUseEquipment(creature);
+        }
+
+        private void AssertCommonAttacks(List<string> entries)
+        {
+            AssertConstrictAttack(entries);
+            AssertDiseaseAttacks(entries);
+            AssertImprovedGrabAttack(entries);
+            AssertPoisonAttacks(entries);
+            AssertPsionicAttack(entries);
+            AssertRageAttack(entries);
+            AssertRakeAttack(entries);
+            AssertRendAttack(entries);
+            AssertSpellLikeAbilityAttack(entries);
+            AssertSpellsAttack(entries);
+
+            AssertSpecialAttacks(entries);
+            AssertDamageEffectDoesNotHaveDamage(entries);
+            AssertDamageEffectAttackIsNotPrimary(entries);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -98,20 +104,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             if (templateAttackData[template][0] == AttackTestData.None)
                 templateAttackData[template].Clear();
 
-            AssertImprovedGrabAttack(templateAttackData[template]);
-            AssertConstrictAttack(templateAttackData[template]);
-            AssertRakeAttack(templateAttackData[template]);
-            AssertRendAttack(templateAttackData[template]);
-            AssertRageAttack(templateAttackData[template]);
-            AssertSneakAttack(templateAttackData[template]);
-            AssertSpellLikeAbilityAttack(templateAttackData[template]);
-            AssertSpellsAttack(templateAttackData[template]);
-            AssertPsionicAttack(templateAttackData[template]);
-            AssertDamageEffectDoesNotHaveDamage(templateAttackData[template]);
-            AssertDamageEffectAttackIsNotPrimary(templateAttackData[template]);
-            AssertPoisonAttacks(templateAttackData[template]);
-            AssertDiseaseAttacks(templateAttackData[template]);
-            AssertSpecialAttacks(templateAttackData[template]);
+            AssertCommonAttacks(templateAttackData[template]);
 
             AssertCollection(template, [.. templateAttackData[template]]);
         }

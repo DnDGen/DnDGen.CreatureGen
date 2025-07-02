@@ -568,8 +568,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.DisplacerBeast_PackLord, "Bite", "2d6", biteDamageType));
 
             attackDamages.Add(BuildData(CreatureConstants.Djinni, "Slam", "1d8", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Djinni, "Whirlwind",
+                "3d6", slapSlamDamageType, "On contact",
+                "1d8", slapSlamDamageType, "While suspended in winds"));
 
             attackDamages.Add(BuildData(CreatureConstants.Djinni_Noble, "Slam", "1d8", slapSlamDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Djinni_Noble, "Whirlwind",
+                "3d6", slapSlamDamageType, "On contact",
+                "1d8", slapSlamDamageType, "While suspended in winds"));
 
             attackDamages.Add(BuildData(CreatureConstants.Dog, "Bite", "1d4", biteDamageType));
 
