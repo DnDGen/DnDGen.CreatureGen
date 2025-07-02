@@ -497,7 +497,7 @@
     <name>Dire Ape</name>
     <entry>Claw@@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Rend@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+    <entry>Rend@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
   </collection>
   <collection>
     <name>Aranea</name>
@@ -1009,8 +1009,7 @@
   <collection>
     <name>Digester</name>
     <entry>Claw@@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Acid Spray (Cone)@@True@True@False@True@1@1d4 Round (6 seconds)@Constitution@Reflex@extraordinary ability@@0@0</entry>
-    <entry>Acid Spray (Stream)@@True@True@False@True@1@1d4 Round (6 seconds)@Constitution@Reflex@extraordinary ability@@0@0</entry>
+    <entry>Acid Spray@@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Displacer Beast</name>

@@ -557,8 +557,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Devourer, "Energy Drain", "1", "Negative Level"));
 
             attackDamages.Add(BuildData(CreatureConstants.Digester, "Claw", "1d8", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Digester, "Acid Spray (Cone)", "4d8", FeatConstants.Foci.Elements.Acid));
-            attackDamages.Add(BuildData(CreatureConstants.Digester, "Acid Spray (Stream)", "8d8", FeatConstants.Foci.Elements.Acid));
+            attackDamages.Add(BuildData(CreatureConstants.Digester, "Acid Spray",
+                "4d8", FeatConstants.Foci.Elements.Acid, "Cone",
+                "8d8", FeatConstants.Foci.Elements.Acid, "Stream"));
 
             attackDamages.Add(BuildData(CreatureConstants.DisplacerBeast, "Tentacle", "1d6", tentacleDamageType));
             attackDamages.Add(BuildData(CreatureConstants.DisplacerBeast, "Bite", "1d8", biteDamageType));

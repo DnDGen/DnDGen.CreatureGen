@@ -1411,11 +1411,16 @@
     <entry>Improved Grab%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
   </collection>
   <collection>
-    <name>Dire Bear</name>
-    <entry>Claw%2d4@Piercing/Slashing@</entry>
-    <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Improved Grab%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
+    <name>Dire Bear-Large-Claw-True-</name>
+    <entry>2d4@Piercing/Slashing@</entry>
   </collection>
+	<collection>
+		<name>Dire Bear-Large-Bite-False-</name>
+		<entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Dire Bear-Large-Improved Grab-False-</name>
+	</collection>
   <collection>
     <name>Bebilith-Huge-Bite-True-Poison</name>
     <entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
@@ -1716,10 +1721,12 @@
 		<name>Boar-Medium-Ferocity-False-</name>
 	</collection>
   <collection>
-    <name>Dire Boar</name>
-    <entry>Gore%1d8@Piercing@</entry>
-    <entry>Ferocity%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
+    <name>Dire Boar-Large-Gore-True-</name>
+    <entry>1d8@Piercing@</entry>
   </collection>
+	<collection>
+		<name>Dire Boar-Large-Ferocity-False-</name>
+	</collection>
   <collection>
     <name>Bodak-Medium-Slam-True-</name>
     <entry>1d8@Bludgeoning@</entry>
@@ -2461,7 +2468,7 @@
     <entry>1d6@Bludgeoning@</entry>
   </collection>
 	<collection>
-		<name>Delver-Huge-Corrosive Slime-True-</name>
+		<name>Delver-Huge-Corrosive Slime-False-</name>
 		<entry>2d6@Acid@</entry>
 		<entry>4d8@Acid@</entry>
 		<entry>8d10@Acid@</entry>
@@ -2576,12 +2583,9 @@
     <entry>1d8@Piercing/Slashing@</entry>
   </collection>
 	<collection>
-		<name>Digester-Medium-Acid Spray (Cone)-True-</name>
-		<entry>4d8@Acid@</entry>
-	</collection>
-	<collection>
-		<name>Digester-Medium-Acid Spray (Stream)-True-</name>
-		<entry>8d8@Acid@</entry>
+		<name>Digester-Medium-Acid Spray-True-</name>
+		<entry>4d8@Acid@Cone</entry>
+		<entry>8d8@Acid@Stream</entry>
 	</collection>
   <collection>
     <name>Displacer Beast</name>
@@ -4705,6 +4709,10 @@
 		<entry>4d6@Bludgeoning@</entry>
 	</collection>
 	<collection>
+		<name>Copper Dragon, Wyrm-Gargantuan-Tail Sweep-True-</name>
+		<entry>2d8@Bludgeoning@</entry>
+	</collection>
+	<collection>
 		<name>Copper Dragon, Wyrm-Gargantuan-Breath Weapon (acid)-True-</name>
 		<entry>22d4@Acid@</entry>
 	</collection>
@@ -6205,13 +6213,23 @@
     <entry>Rake%1d4@Piercing/Slashing@</entry>
   </collection>
   <collection>
-    <name>Dire Lion</name>
-    <entry>Claw%1d6@Piercing/Slashing@</entry>
-    <entry>Bite%1d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Pounce%%True%True%True%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-    <entry>Improved Grab%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-    <entry>Rake%1d6@Piercing/Slashing@</entry>
+    <name>Dire Lion-Large-Claw-True-</name>
+    <entry>1d6@Piercing/Slashing@</entry>
   </collection>
+	<collection>
+		<name>Dire Lion-Large-Bite-False-</name>
+		<entry>1d8@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Dire Lion-Large-Pounce-True-</name>
+	</collection>
+	<collection>
+		<name>Dire Lion-Large-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Dire Lion-Large-Rake-False-</name>
+		<entry>1d6@Piercing/Slashing@</entry>
+	</collection>
   <collection>
     <name>Lizard</name>
     <entry>Bite%1d4@Piercing/Slashing/Bludgeoning@</entry>
@@ -6832,11 +6850,17 @@
     <entry>Bite%1d3@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
   <collection>
-    <name>Dire Rat</name>
-    <entry>Bite%1d3@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Disease%%True%True%True%True%1%Hit%%%extraordinary ability%Filth Fever%0%0%</entry>
-    <entry>Filth Fever%1d3@Dexterity@Incubation period 1d3 days,1d3@Constitution@Incubation period 1d3 days%True%True%True%True%1%Hit%Constitution%Fortitude%extraordinary ability%%0%0%</entry>
+    <name>Dire Rat-Small-Bite-True-Disease</name>
+    <entry>1d3@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Dire Rat-Small-Disease-False-</name>
+	</collection>
+	<collection>
+		<name>Dire Rat-Small-Filth Fever-False-</name>
+		<entry>1d3@Dexterity@Incubation period 1d3 days</entry>
+		<entry>1d3@Constitution@Incubation period 1d3 days</entry>
+	</collection>
   <collection>
     <name>Rat Swarm</name>
     <entry>Swarm%1d6@@</entry>
@@ -6932,10 +6956,16 @@
     <entry>Bite%1d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
   <collection>
-    <name>Dire Shark</name>
-    <entry>Bite%2d8@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Improved Grab%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-    <entry>Swallow Whole%2d6+6@Bludgeoning@,1d8+4@Acid@</entry>
+    <name>Dire Shark-Huge-Bite-True-</name>
+    <entry>2d8@Piercing/Slashing/Bludgeoning@</entry>
+  </collection>
+	<collection>
+		<name>Dire Shark-Huge-Improved Grab-False-</name>
+	</collection>
+  <collection>
+    <name>Dire Shark-Huge-Swallow Whole-False-</name>
+	  <entry>2d6+6@Bludgeoning@</entry>
+	  <entry>1d8+4@Acid@</entry>
   </collection>
   <collection>
     <name>Red Slaad</name>
@@ -7162,13 +7192,23 @@
     <entry>Rake%1d8@Piercing/Slashing@</entry>
   </collection>
   <collection>
-    <name>Dire Tiger</name>
-    <entry>Claw%2d4@Piercing/Slashing@</entry>
-    <entry>Bite%2d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Improved Grab%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-    <entry>Pounce%%True%True%True%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
-    <entry>Rake%2d4@Piercing/Slashing@</entry>
+    <name>Dire Tiger-Large-Claw-True-</name>
+    <entry>2d4@Piercing/Slashing@</entry>
   </collection>
+	<collection>
+		<name>Dire Tiger-Large-Bite-False-</name>
+		<entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Dire Tiger-Large-Improved Grab-False-</name>
+	</collection>
+	<collection>
+		<name>Dire Tiger-Large-Pounce-True-</name>
+	</collection>
+	<collection>
+		<name>Dire Tiger-Large-Rake-False-</name>
+		<entry>2d4@Piercing/Slashing@</entry>
+	</collection>
   <collection>
     <name>Titan</name>
     <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
@@ -7308,11 +7348,16 @@
     <entry>Attach%1d3@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
   <collection>
-    <name>Dire Weasel</name>
-    <entry>Bite%1d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Attach%%True%True%False%True%1%Round (6 seconds)%%%extraordinary ability%Blood Drain%1.5%0%</entry>
-    <entry>Blood Drain%1d4@Constitution@</entry>
+    <name>Dire Weasel-Medium-Bite-True-Attach</name>
+    <entry>1d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Dire Weasel-Medium-Attach-False-Blood Drain</name>
+	</collection>
+	<collection>
+		<name>Dire Weasel-Medium-Blood Drain-False-</name>
+		<entry>1d4@Constitution@</entry>
+	</collection>
   <collection>
     <name>Wight</name>
     <entry>Slam%1d4@Bludgeoning@</entry>

@@ -619,7 +619,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             testCases[CreatureConstants.Ape_Dire].Add(BuildData("Claw", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Ape_Dire].Add(BuildData("Bite", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-            testCases[CreatureConstants.Ape_Dire].Add(BuildData("Rend", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+            testCases[CreatureConstants.Ape_Dire].Add(BuildData("Rend", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
             testCases[CreatureConstants.Aranea].Add(BuildData("Bite", "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Aranea].Add(BuildData("Poison",
@@ -691,12 +691,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             testCases[CreatureConstants.Badger].Add(BuildData("Claw", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Badger].Add(BuildData("Bite", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.Badger].Add(BuildData("Rage",
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, false, true));
 
             testCases[CreatureConstants.Badger_Dire].Add(BuildData("Claw", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
             testCases[CreatureConstants.Badger_Dire].Add(BuildData("Bite", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
             testCases[CreatureConstants.Badger_Dire].Add(BuildData("Rage",
-                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, false, true));
 
             testCases[CreatureConstants.Balor].Add(BuildData(AttributeConstants.Melee,
                 string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
@@ -1203,11 +1203,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
             testCases[CreatureConstants.Digester].Add(BuildData("Claw", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-            testCases[CreatureConstants.Digester].Add(BuildData("Acid Spray (Cone)",
-                string.Empty, 0, "extraordinary ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", true, true, true, true,
-                saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
-            testCases[CreatureConstants.Digester].Add(BuildData("Acid Spray (Stream)",
-                string.Empty, 0, "extraordinary ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", true, true, true, true,
+            testCases[CreatureConstants.Digester].Add(BuildData("Acid Spray",
+                string.Empty, 0, "extraordinary ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true,
                 saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
             testCases[CreatureConstants.DisplacerBeast].Add(BuildData("Tentacle", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
