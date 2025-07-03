@@ -41,21 +41,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         [Test]
-        public void AllCreatureGroup()
+        public void CreatureGroup_All()
         {
             var allCreatures = CreatureConstants.GetAll();
             AssertDistinctCollection(GroupConstants.All, [.. allCreatures]);
         }
 
         [Test]
-        public void CharacterGroup()
+        public void CreatureGroup_Characters()
         {
             var allCharacters = CreatureConstants.GetAllCharacters();
             AssertDistinctCollection(GroupConstants.Characters, [.. allCharacters]);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void TemplateGroup(string template)
+        public void CreatureGroup_Template(string template)
         {
             var allCreatures = CreatureConstants.GetAll();
             AssertTemplateGroup(template, allCreatures, false);
@@ -73,7 +73,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void TemplateGroup_AsCharacter(string template)
+        public void CreatureGroup_TemplateAsCharacter(string template)
         {
             //INFO: We can do this as a shortcut, because if asCharacter = true, then our set of base creatures is only characters.
             //Setting asCharacter = true and generating a creature that can't be a character produces a compatibility error.
@@ -82,7 +82,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void TemplateGroup_HasNonEmptyVariation(string template)
+        public void CreatureGroup_Template_HasNonEmptyVariation(string template)
         {
             Assert.That(table, Contains.Key(template + bool.TrueString)
                 .And.ContainKey(template + bool.FalseString));
