@@ -40,14 +40,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         public void SaveBonuses(string source)
         {
             Assert.That(saveBonusesData, Contains.Key(source));
+            //INFO: Doing this because of the Clear() call later - don't want to modify the original data collection
+            var entries = new List<string>(saveBonusesData[source]);
 
-            if (!saveBonusesData[source].Any())
+            if (!entries.Any())
                 Assert.Fail("Test case did not specify saves bonuses or NONE");
 
-            if (saveBonusesData[source][0] == SaveBonusesTestData.None)
-                saveBonusesData[source].Clear();
+            if (entries[0] == SaveBonusesTestData.None)
+                entries.Clear();
 
-            AssertCollection(source, [.. saveBonusesData[source]]);
+            AssertCollection(source, [.. entries]);
         }
     }
 }

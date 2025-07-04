@@ -4255,6 +4255,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Survival,
             SkillConstants.Spot)]
+        public void CreatureSkills(string creature, params string[] skills)
+        {
+            NoDuplicationOfSkillsBetweenTypeAndCreature(creature, skills);
+            AssertDistinctCollection(creature, skills);
+        }
+
         [TestCase(CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Types.Construct)]
@@ -4357,10 +4363,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Listen,
             SkillConstants.Spot,
             SkillConstants.Swim)]
-        public void CreatureSkills(string creature, params string[] skills)
+        public void CreatureTypeSkills(string creature, params string[] skills)
         {
-            NoDuplicationOfSkillsBetweenTypeAndCreature(creature, skills);
-            base.AssertDistinctCollection(creature, skills);
+            AssertDistinctCollection(creature, skills);
         }
 
         [Test]
@@ -4405,7 +4410,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 SkillConstants.UseRope,
             };
 
-            base.AssertDistinctCollection(GroupConstants.All, skills);
+            AssertDistinctCollection(GroupConstants.All, skills);
         }
 
         [TestCase(SkillConstants.Appraise)]
@@ -4490,7 +4495,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 SkillConstants.Foci.Craft.Woodworking,
             };
 
-            base.AssertDistinctCollection(SkillConstants.Craft, foci);
+            AssertDistinctCollection(SkillConstants.Craft, foci);
         }
 
         [Test]
@@ -4510,7 +4515,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 SkillConstants.Foci.Knowledge.ThePlanes,
             };
 
-            base.AssertDistinctCollection(SkillConstants.Knowledge, foci);
+            AssertDistinctCollection(SkillConstants.Knowledge, foci);
         }
 
         [Test]
@@ -4529,7 +4534,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 SkillConstants.Foci.Perform.WindInstruments,
             };
 
-            base.AssertDistinctCollection(SkillConstants.Perform, foci);
+            AssertDistinctCollection(SkillConstants.Perform, foci);
         }
 
         [Test]
@@ -4625,7 +4630,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 SkillConstants.Foci.Profession.WildernessGuide,
             };
 
-            base.AssertDistinctCollection(SkillConstants.Profession, foci);
+            AssertDistinctCollection(SkillConstants.Profession, foci);
         }
 
         private void NoDuplicationOfSkillsBetweenTypeAndCreature(string creature, string[] skills)

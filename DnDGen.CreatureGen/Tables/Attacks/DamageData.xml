@@ -2666,6 +2666,21 @@
 	<collection>
 		<name>Djinni-Large-Spell-Like Ability-True-</name>
 	</collection>
+	<collection>
+		<name>Djinni-Huge-Slam-True-</name>
+		<entry>2d6@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Djinni-Huge-Air mastery-True-</name>
+	</collection>
+	<collection>
+		<name>Djinni-Huge-Whirlwind-True-</name>
+		<entry>3d6@Bludgeoning@On contact</entry>
+		<entry>1d8@Bludgeoning@While suspended in winds</entry>
+	</collection>
+	<collection>
+		<name>Djinni-Huge-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
     <name>Noble Djinni</name>
     <entry>Slam%1d8@Bludgeoning@</entry>
@@ -5163,29 +5178,70 @@
 	<collection>
 		<name>Dragon Turtle-Huge-Capsize-True-</name>
 	</collection>
+	<collection>
+		<name>Dragon Turtle-Gargantuan-Bite-True-</name>
+		<entry>5d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Dragon Turtle-Gargantuan-Claw-False-</name>
+		<entry>3d8@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Dragon Turtle-Gargantuan-Breath Weapon-True-</name>
+		<entry>12d6@Fire@</entry>
+	</collection>
+	<collection>
+		<name>Dragon Turtle-Gargantuan-Capsize-True-</name>
+	</collection>
   <collection>
-    <name>Dragonne</name>
-    <entry>Bite%2d6@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Claw%2d4@Piercing/Slashing@</entry>
-    <entry>Pounce%%True%True%True%True%1%Round (6 seconds)%%%extraordinary ability%%1%0%</entry>
-    <entry>Roar%%True%False%True%True%1%1d4 Round (6 seconds)%Charisma%Will%supernatural ability%%0%0%</entry>
+    <name>Dragonne-Large-Bite-True-</name>
+    <entry>2d6@Piercing/Slashing/Bludgeoning@</entry>
   </collection>
+	<collection>
+		<name>Dragonne-Large-Claw-False-</name>
+		<entry>2d4@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Dragonne-Large-Pounce-True-</name>
+	</collection>
+	<collection>
+		<name>Dragonne-Large-Roar-True-</name>
+	</collection>
   <collection>
-    <name>Dretch</name>
-    <entry>Claw%1d6@Piercing/Slashing@</entry>
-    <entry>Bite%1d4@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Summon Demon%%True%False%True%True%1%Day%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Dretch-Small-Claw-True-</name>
+    <entry>1d6@Piercing/Slashing@</entry>
   </collection>
+	<collection>
+		<name>Dretch-Small-Bite-False-</name>
+		<entry>1d4@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Dretch-Small-Summon Demon-True-</name>
+	</collection>
+	<collection>
+		<name>Dretch-Small-Spell-Like Ability-True-</name>
+	</collection>
   <collection>
-    <name>Drider</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Ranged%%False%False%True%False%1%Round (6 seconds)%%%ranged%%1.5%0%</entry>
-    <entry>Bite%1d4@Piercing/Slashing/Bludgeoning@</entry>
-    <entry>Spells%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
-    <entry>Poison%1d6@Strength@Initial,1d6@Strength@Secondary%True%True%False%True%1%Hit%Constitution%Fortitude%extraordinary ability%%0%0%</entry>
+    <name>Drider-Large-Melee-True-</name>
   </collection>
+	<collection>
+		<name>Drider-Large-Ranged-True-</name>
+	</collection>
+	<collection>
+		<name>Drider-Large-Bite-False-</name>
+		<entry>1d4@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Drider-Large-Spells-True-</name>
+	</collection>
+	<collection>
+		<name>Drider-Large-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Drider-Large-Poison-False-</name>
+		<entry>1d6@Strength@Initial</entry>
+		<entry>1d6@Strength@Secondary</entry>
+	</collection>
   <collection>
     <name>Dryad</name>
     <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
@@ -7561,11 +7617,16 @@
     <entry>Incorporeal touch%1d4@@</entry>
   </collection>
   <collection>
-    <name>Dread Wraith</name>
-    <entry>Incorporeal touch%2d6@@</entry>
-    <entry>Constitution Drain%1d8@Constitution@</entry>
-    <entry>Create Spawn%%True%True%False%True%1%Round (6 seconds)%%%supernatural ability%%0%0%</entry>
+    <name>Dread Wraith-Large-Incorporeal touch-True-Constitution Drain</name>
+    <entry>2d6@@</entry>
   </collection>
+	<collection>
+		<name>Dread Wraith-Large-Constitution Drain-False-</name>
+		<entry>1d8@Constitution@</entry>
+	</collection>
+	<collection>
+		<name>Dread Wraith-Large-Create Spawn-True-</name>
+	</collection>
   <collection>
     <name>Wyvern</name>
     <entry>Sting%1d6@Piercing@</entry>

@@ -41,7 +41,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
             var names = creatures.Union(types).Union(subtypes).Union(skills).Union(nonFociSkills);
             Assert.That(skillBonusesData.Keys, Is.EquivalentTo(names));
-            Assert.That(SkillBonusesTestData.SkillSynergyNames, Is.EquivalentTo(names));
+            Assert.That(SkillBonusesTestData.SkillSynergyNames, Is.EquivalentTo(skills.Union(nonFociSkills)));
             AssertCollectionNames(names);
         }
 
