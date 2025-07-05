@@ -45,26 +45,107 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             groups[CreatureConstants.Aasimar] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Aboleth] = [SaveConstants.Will];
             groups[CreatureConstants.Achaierai] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Ape] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Ape_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Arrowhawk_Juvenile] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Arrowhawk_Adult] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Arrowhawk_Elder] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Athach] = [SaveConstants.Fortitude, SaveConstants.Will];
+            groups[CreatureConstants.Baboon] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Badger] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Badger_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Bat] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Bat_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Bear_Black] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Bear_Brown] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Bear_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Bear_Polar] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Beholder] = [SaveConstants.Will];
+            groups[CreatureConstants.Beholder_Gauth] = [SaveConstants.Will];
+            groups[CreatureConstants.Belker] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Boar] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Boar_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Bugbear] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Dwarf_Deep] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Dwarf_Duergar] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Dwarf_Hill] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Dwarf_Mountain] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Elemental_Air_Elder] = [SaveConstants.Reflex];
             groups[CreatureConstants.Elemental_Air_Greater] = [SaveConstants.Reflex];
             groups[CreatureConstants.Elemental_Air_Huge] = [SaveConstants.Reflex];
             groups[CreatureConstants.Elemental_Air_Large] = [SaveConstants.Reflex];
             groups[CreatureConstants.Elemental_Air_Medium] = [SaveConstants.Reflex];
             groups[CreatureConstants.Elemental_Air_Small] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Elemental_Earth_Elder] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Elemental_Earth_Greater] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Elemental_Earth_Huge] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Elemental_Earth_Large] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Elemental_Earth_Medium] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Elemental_Earth_Small] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Elemental_Fire_Elder] = [SaveConstants.Reflex];
             groups[CreatureConstants.Elemental_Fire_Greater] = [SaveConstants.Reflex];
             groups[CreatureConstants.Elemental_Fire_Huge] = [SaveConstants.Reflex];
             groups[CreatureConstants.Elemental_Fire_Large] = [SaveConstants.Reflex];
             groups[CreatureConstants.Elemental_Fire_Medium] = [SaveConstants.Reflex];
             groups[CreatureConstants.Elemental_Fire_Small] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Elemental_Water_Elder] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Elemental_Water_Greater] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Elemental_Water_Huge] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Elemental_Water_Large] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Elemental_Water_Medium] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Elemental_Water_Small] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Elf_Aquatic] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Elf_Drow] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Elf_Gray] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Elf_Half] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Elf_High] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Elf_Wild] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Elf_Wood] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Githyanki] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Githzerai] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Gnoll] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Gnome_Forest] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Gnome_Rock] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Gnome_Svirfneblin] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Goblin] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Halfling_Deep] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Halfling_Lightfoot] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Halfling_Tallfellow] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Hobgoblin] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Human] = [SaveConstants.Reflex];
+            groups[CreatureConstants.InvisibleStalker] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Kobold] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Lion] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Lion_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Lizard] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Reflex];
+            groups[CreatureConstants.Lizardfolk] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Locathah] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Magmin] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Merfolk] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Orc] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Orc_Half] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Rat] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Rat_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Shark_Dire] = [SaveConstants.Fortitude, SaveConstants.Will];
+            groups[CreatureConstants.Shark_Huge] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Shark_Large] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Shark_Medium] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Thoqqua] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Tiger] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Tiger_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Tojanida_Juvenile] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Tojanida_Adult] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Tojanida_Elder] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Troglodyte] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Weasel] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Weasel_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Wolf] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Wolf_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Wolverine] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Wolverine_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
 
-            //TODO: Fill in settings based on existing groups
+            groups[CreatureConstants.Templates.Skeleton] = [SaveConstants.Will];
+            groups[CreatureConstants.Templates.Zombie] = [SaveConstants.Will];
 
             return groups;
         }
@@ -209,7 +290,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
                 foreach (var creature in typeCreatures)
                 {
                     Assert.That(saveGroups, Contains.Key(creature), creature);
-                    Assert.That(saveGroups[creature], Contains.Item(save), $"{creature} should have {save} save");
+                    Assert.That(saveGroups[creature], Contains.Item(save), $"{creature} ({creatureType}) should have {save} save");
                 }
             }
         }
