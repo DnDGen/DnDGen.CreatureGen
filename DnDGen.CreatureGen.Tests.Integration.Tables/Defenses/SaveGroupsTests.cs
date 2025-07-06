@@ -46,8 +46,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             groups[CreatureConstants.Aboleth] = [SaveConstants.Will];
             groups[CreatureConstants.Achaierai] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Androsphinx] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Ankheg] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Annis] = [SaveConstants.Will];
             groups[CreatureConstants.Ape] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Ape_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Aranea] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Arrowhawk_Juvenile] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Arrowhawk_Adult] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Arrowhawk_Elder] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
@@ -55,6 +58,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             groups[CreatureConstants.Baboon] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Badger] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Badger_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Basilisk] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Basilisk_Greater] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Bat] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Bat_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Bat_Swarm] = [SaveConstants.Fortitude, SaveConstants.Reflex];
@@ -62,6 +67,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             groups[CreatureConstants.Bear_Brown] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Bear_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Bear_Polar] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Behir] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Beholder] = [SaveConstants.Will];
             groups[CreatureConstants.Beholder_Gauth] = [SaveConstants.Will];
             groups[CreatureConstants.Belker] = [SaveConstants.Reflex];
@@ -70,23 +76,46 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             groups[CreatureConstants.Boar] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Boar_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Bugbear] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Bulette] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Camel_Bactrian] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Camel_Dromedary] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.CarrionCrawler] = [SaveConstants.Will];
             groups[CreatureConstants.Cat] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Centaur] = [SaveConstants.Will];
             groups[CreatureConstants.Cheetah] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Chimera_Black] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Chimera_Blue] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Chimera_Green] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Chimera_Red] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Chimera_White] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Choker] = [SaveConstants.Will];
             groups[CreatureConstants.Chuul] = [SaveConstants.Will];
             groups[CreatureConstants.Cloaker] = [SaveConstants.Will];
+            groups[CreatureConstants.Cockatrice] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Criosphinx] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Crocodile] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Crocodile_Giant] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Cryohydra_5Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Cryohydra_6Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Cryohydra_7Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Cryohydra_8Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Cryohydra_9Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Cryohydra_10Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Cryohydra_11Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Cryohydra_12Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Darkmantle] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Deinonychus] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Delver] = [SaveConstants.Will];
+            groups[CreatureConstants.Derro] = [SaveConstants.Will];
+            groups[CreatureConstants.Derro_Sane] = [SaveConstants.Will];
             groups[CreatureConstants.Destrachan] = [SaveConstants.Will];
+            groups[CreatureConstants.Digester] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.DisplacerBeast] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.DisplacerBeast_PackLord] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Dog] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Dog_Riding] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Donkey] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Doppelganger] = [SaveConstants.Will];
             groups[CreatureConstants.Dragon_Black_Wyrmling] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Dragon_Black_VeryYoung] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Dragon_Black_Young] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
@@ -208,8 +237,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             groups[CreatureConstants.Dragon_White_Wyrm] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Dragon_White_GreatWyrm] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.DragonTurtle] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Dragonne] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Drider] = [SaveConstants.Will];
-            groups[CreatureConstants.Dryad] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Dryad] = [SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Dwarf_Deep] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Dwarf_Duergar] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Dwarf_Hill] = [SaveConstants.Fortitude];
@@ -250,8 +280,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             groups[CreatureConstants.Elf_Wild] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Elf_Wood] = [SaveConstants.Fortitude];
             groups[CreatureConstants.EtherealFilcher] = [SaveConstants.Will];
+            groups[CreatureConstants.EtherealMarauder] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Ettercap] = [SaveConstants.Will];
             groups[CreatureConstants.Ettin] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.FrostWorm] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Gargoyle] = [SaveConstants.Will];
+            groups[CreatureConstants.Gargoyle_Kapoacinth] = [SaveConstants.Will];
             groups[CreatureConstants.Giant_Cloud] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Giant_Fire] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Giant_Frost] = [SaveConstants.Fortitude];
@@ -260,6 +294,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             groups[CreatureConstants.Giant_Stone_Elder] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Giant_Storm] = [SaveConstants.Fortitude];
             groups[CreatureConstants.GibberingMouther] = [SaveConstants.Will];
+            groups[CreatureConstants.Girallon] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Githyanki] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Githzerai] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Gnoll] = [SaveConstants.Fortitude];
@@ -267,24 +302,45 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             groups[CreatureConstants.Gnome_Rock] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Gnome_Svirfneblin] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Goblin] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Gorgon] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.GrayRender] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.GreenHag] = [SaveConstants.Will];
             groups[CreatureConstants.Grick] = [SaveConstants.Will];
-            groups[CreatureConstants.Grig] = [SaveConstants.Reflex];
-            groups[CreatureConstants.Grig_WithFiddle] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Griffon] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Grig] = [SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Grig_WithFiddle] = [SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Grimlock] = [SaveConstants.Will];
             groups[CreatureConstants.Gynosphinx] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Halfling_Deep] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Halfling_Lightfoot] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Halfling_Tallfellow] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Harpy] = [SaveConstants.Will];
             groups[CreatureConstants.Hawk] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Hellwasp_Swarm] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Hieracosphinx] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Hippogriff] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Hobgoblin] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Horse_Heavy] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Horse_Heavy_War] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Horse_Light] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Horse_Light_War] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Human] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Hydra_5Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Hydra_6Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Hydra_7Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Hydra_8Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Hydra_9Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Hydra_10Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Hydra_11Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Hydra_12Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Hyena] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.InvisibleStalker] = [SaveConstants.Reflex];
             groups[CreatureConstants.Kobold] = [SaveConstants.Fortitude];
+            groups[CreatureConstants.Kraken] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Krenshar] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.KuoToa] = [SaveConstants.Will];
+            groups[CreatureConstants.Lamia] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Lammasu] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Leopard] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Lion] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Lion_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
@@ -294,18 +350,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             groups[CreatureConstants.Locathah] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Magmin] = [SaveConstants.Reflex];
             groups[CreatureConstants.MantaRay] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Manticore] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Medusa] = [SaveConstants.Will];
             groups[CreatureConstants.Megaraptor] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Merfolk] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Mimic] = [SaveConstants.Will];
             groups[CreatureConstants.MindFlayer] = [SaveConstants.Will];
+            groups[CreatureConstants.Minotaur] = [SaveConstants.Will];
             groups[CreatureConstants.Monkey] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Mule] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Naga_Dark] = [SaveConstants.Will];
             groups[CreatureConstants.Naga_Guardian] = [SaveConstants.Will];
             groups[CreatureConstants.Naga_Spirit] = [SaveConstants.Will];
             groups[CreatureConstants.Naga_Water] = [SaveConstants.Will];
-            groups[CreatureConstants.Nixie] = [SaveConstants.Reflex];
-            groups[CreatureConstants.Nymph] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Nixie] = [SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Nymph] = [SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Octopus] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Octopus_Giant] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Ogre] = [SaveConstants.Fortitude];
@@ -316,28 +375,49 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             groups[CreatureConstants.Otyugh] = [SaveConstants.Will];
             groups[CreatureConstants.Owl] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Owl_Giant] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Owlbear] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Pegasus] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.PhaseSpider] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Phasm] = [SaveConstants.Will];
-            groups[CreatureConstants.Pixie] = [SaveConstants.Reflex];
-            groups[CreatureConstants.Pixie_WithIrresistibleDance] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Pixie] = [SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Pixie_WithIrresistibleDance] = [SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Pony] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Pony_War] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Porpoise] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Pseudodragon] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.PurpleWorm] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Pyrohydra_5Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Pyrohydra_6Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Pyrohydra_7Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Pyrohydra_8Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Pyrohydra_9Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Pyrohydra_10Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Pyrohydra_11Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Pyrohydra_12Heads] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Rat] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Rat_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Rat_Swarm] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Raven] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.RazorBoar] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Remorhaz] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Rhinoceras] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Roc] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Roper] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.RustMonster] = [SaveConstants.Will];
-            groups[CreatureConstants.Satyr] = [SaveConstants.Reflex];
-            groups[CreatureConstants.Satyr_WithPipes] = [SaveConstants.Reflex];
+            groups[CreatureConstants.Sahuagin] = [SaveConstants.Will];
+            groups[CreatureConstants.Sahuagin_Malenti] = [SaveConstants.Will];
+            groups[CreatureConstants.Sahuagin_Mutant] = [SaveConstants.Will];
+            groups[CreatureConstants.Satyr] = [SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Satyr_WithPipes] = [SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.Scorpionfolk] = [SaveConstants.Will];
+            groups[CreatureConstants.SeaCat] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.SeaHag] = [SaveConstants.Will];
             groups[CreatureConstants.Shark_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Shark_Huge] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Shark_Large] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Shark_Medium] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.ShockerLizard] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.Skum] = [SaveConstants.Will];
             groups[CreatureConstants.Snake_Constrictor] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Snake_Constrictor_Giant] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Snake_Viper_Huge] = [SaveConstants.Fortitude, SaveConstants.Reflex];
@@ -359,16 +439,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             groups[CreatureConstants.Troll] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Troll_Scrag] = [SaveConstants.Fortitude];
             groups[CreatureConstants.Tyrannosaurus] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.UmberHulk] = [SaveConstants.Will];
+            groups[CreatureConstants.UmberHulk_TrulyHorrid] = [SaveConstants.Will];
+            groups[CreatureConstants.Unicorn] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Weasel] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Weasel_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Whale_Baleen] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Whale_Cachalot] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Whale_Orca] = [SaveConstants.Fortitude, SaveConstants.Reflex];
+            groups[CreatureConstants.WillOWisp] = [SaveConstants.Will];
             groups[CreatureConstants.Wolf] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Wolf_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Wolverine] = [SaveConstants.Fortitude, SaveConstants.Reflex];
             groups[CreatureConstants.Wolverine_Dire] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
             groups[CreatureConstants.Wyvern] = [SaveConstants.Fortitude, SaveConstants.Reflex, SaveConstants.Will];
+            groups[CreatureConstants.YuanTi_Abomination] = [SaveConstants.Will];
+            groups[CreatureConstants.YuanTi_Halfblood_SnakeArms] = [SaveConstants.Will];
+            groups[CreatureConstants.YuanTi_Halfblood_SnakeHead] = [SaveConstants.Will];
+            groups[CreatureConstants.YuanTi_Halfblood_SnakeTail] = [SaveConstants.Will];
+            groups[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] = [SaveConstants.Will];
+            groups[CreatureConstants.YuanTi_Pureblood] = [SaveConstants.Will];
 
             groups[CreatureConstants.Templates.Skeleton] = [SaveConstants.Will];
             groups[CreatureConstants.Templates.Zombie] = [SaveConstants.Will];
@@ -502,7 +592,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             foreach (var creature in group.Intersect(creatures))
             {
                 Assert.That(saveGroups, Contains.Key(creature), creature);
-                Assert.That(saveGroups[creature], Contains.Item(save), $"{creature} should have {save} save");
+                Assert.That(saveGroups[creature], Contains.Item(save), creature);
             }
 
             var creatureData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
@@ -512,12 +602,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
                 var typeCreatures = creatureData
                     .Where(d => d.Value.Single().Types.Contains(creatureType))
                     .Select(d => d.Key);
+                var creaturesWithSave = saveGroups
+                    .Where(sg => sg.Value.Contains(save))
+                    .Select(sg => sg.Key);
 
-                foreach (var creature in typeCreatures)
-                {
-                    Assert.That(saveGroups, Contains.Key(creature), creature);
-                    Assert.That(saveGroups[creature], Contains.Item(save), $"{creature} ({creatureType}) should have {save} save");
-                }
+                Assert.That(saveGroups.Keys, Is.SupersetOf(typeCreatures), creatureType);
+                Assert.That(creaturesWithSave, Is.SupersetOf(typeCreatures), creatureType);
             }
         }
     }
