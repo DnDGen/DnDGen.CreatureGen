@@ -5207,6 +5207,20 @@
 	<collection>
 		<name>Dragonne-Large-Roar-True-</name>
 	</collection>
+	<collection>
+		<name>Dragonne-Huge-Bite-True-</name>
+		<entry>3d6@Piercing/Slashing/Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Dragonne-Huge-Claw-False-</name>
+		<entry>3d4@Piercing/Slashing@</entry>
+	</collection>
+	<collection>
+		<name>Dragonne-Huge-Pounce-True-</name>
+	</collection>
+	<collection>
+		<name>Dragonne-Huge-Roar-True-</name>
+	</collection>
   <collection>
     <name>Dretch-Small-Claw-True-</name>
     <entry>1d6@Piercing/Slashing@</entry>
@@ -5228,7 +5242,7 @@
 		<name>Drider-Large-Ranged-True-</name>
 	</collection>
 	<collection>
-		<name>Drider-Large-Bite-False-</name>
+		<name>Drider-Large-Bite-False-Poison</name>
 		<entry>1d4@Piercing/Slashing/Bludgeoning@</entry>
 	</collection>
 	<collection>
@@ -5243,12 +5257,18 @@
 		<entry>1d6@Strength@Secondary</entry>
 	</collection>
   <collection>
-    <name>Dryad</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Ranged%%False%False%True%False%1%Round (6 seconds)%%%ranged%%1.5%0%</entry>
-    <entry>Unarmed Strike%1d3@Bludgeoning@</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Dryad-Medium-Melee-True-</name>
   </collection>
+	  <collection>
+		  <name>Dryad-Medium-Ranged-True-</name>
+	  </collection>
+	  <collection>
+		  <name>Dryad-Medium-Unarmed Strike-True-</name>
+		  <entry>1d3@Bludgeoning@</entry>
+	  </collection>
+	  <collection>
+		  <name>Dryad-Medium-Spell-Like Ability-True-</name>
+	  </collection>
   <collection>
     <name>Deep Dwarf-Medium-Melee-True-</name>
   </collection>
@@ -5434,43 +5454,71 @@
     <entry>Trample%2d8@Bludgeoning@</entry>
   </collection>
   <collection>
-    <name>Drow</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Ranged%%False%False%True%False%1%Round (6 seconds)%%%ranged%%1.5%0%</entry>
-    <entry>Unarmed Strike%1d3@Bludgeoning@</entry>
-    <entry>Poison%%False%True%False%True%1%Hit%%Fortitude%extraordinary ability%1 minute unconscious (Initial), 2d4 hours unconscious (Secondary)%0%3%</entry>
-    <entry>Spell-Like Ability%%True%False%True%True%1%Round (6 seconds)%%%spell-like ability%%0%0%</entry>
+    <name>Drow-Medium-Melee-True-</name>
   </collection>
-  <collection>
-    <name>Gray Elf</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Ranged%%False%False%True%False%1%Round (6 seconds)%%%ranged%%1.5%0%</entry>
-    <entry>Unarmed Strike%1d3@Bludgeoning@</entry>
-  </collection>
-  <collection>
-    <name>Half-Elf</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Ranged%%False%False%True%False%1%Round (6 seconds)%%%ranged%%1.5%0%</entry>
-    <entry>Unarmed Strike%1d3@Bludgeoning@</entry>
-  </collection>
-  <collection>
-    <name>High Elf</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Ranged%%False%False%True%False%1%Round (6 seconds)%%%ranged%%1.5%0%</entry>
-    <entry>Unarmed Strike%1d3@Bludgeoning@</entry>
-  </collection>
-  <collection>
-    <name>Wild Elf</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Ranged%%False%False%True%False%1%Round (6 seconds)%%%ranged%%1.5%0%</entry>
-    <entry>Unarmed Strike%1d3@Bludgeoning@</entry>
-  </collection>
-  <collection>
-    <name>Wood Elf</name>
-    <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1.5%0%</entry>
-    <entry>Ranged%%False%False%True%False%1%Round (6 seconds)%%%ranged%%1.5%0%</entry>
-    <entry>Unarmed Strike%1d3@Bludgeoning@</entry>
-  </collection>
+	<collection>
+		<name>Drow-Medium-Ranged-True-</name>
+	</collection>
+	<collection>
+		<name>Drow-Medium-Unarmed Strike-True-</name>
+		<entry>1d3@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Drow-Medium-Poison-False-1 minute unconscious (Initial), 2d4 hours unconscious (Secondary)</name>
+	</collection>
+	<collection>
+		<name>Drow-Medium-Spell-Like Ability-True-</name>
+	</collection>
+	<collection>
+		<name>Gray Elf-Medium-Melee-True-</name>
+	</collection>
+	<collection>
+		<name>Gray Elf-Medium-Ranged-True-</name>
+	</collection>
+	<collection>
+		<name>Gray Elf-Medium-Unarmed Strike-True-</name>
+		<entry>1d3@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Half-Elf-Medium-Melee-True-</name>
+	</collection>
+	<collection>
+		<name>Half-Elf-Medium-Ranged-True-</name>
+	</collection>
+	<collection>
+		<name>Half-Elf-Medium-Unarmed Strike-True-</name>
+		<entry>1d3@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>High Elf-Medium-Melee-True-</name>
+	</collection>
+	<collection>
+		<name>High Elf-Medium-Ranged-True-</name>
+	</collection>
+	<collection>
+		<name>High Elf-Medium-Unarmed Strike-True-</name>
+		<entry>1d3@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Wild Elf-Medium-Melee-True-</name>
+	</collection>
+	<collection>
+		<name>Wild Elf-Medium-Ranged-True-</name>
+	</collection>
+	<collection>
+		<name>Wild Elf-Medium-Unarmed Strike-True-</name>
+		<entry>1d3@Bludgeoning@</entry>
+	</collection>
+	<collection>
+		<name>Wood Elf-Medium-Melee-True-</name>
+	</collection>
+	<collection>
+		<name>Wood Elf-Medium-Ranged-True-</name>
+	</collection>
+	<collection>
+		<name>Wood Elf-Medium-Unarmed Strike-True-</name>
+		<entry>1d3@Bludgeoning@</entry>
+	</collection>
   <collection>
     <name>Erinyes</name>
     <entry>Melee%%False%True%True%False%1%Round (6 seconds)%%%melee%%1%0%</entry>
@@ -7611,17 +7659,22 @@
     <entry>Trip%%True%True%True%True%1%Round (6 seconds)%%%extraordinary ability%%0%0%</entry>
   </collection>
   <collection>
-    <name>Wraith</name>
-    <entry>Constitution Drain%1d4@Constitution@</entry>
-    <entry>Create Spawn%%True%True%False%True%1%Round (6 seconds)%%%supernatural ability%%0%0%</entry>
-    <entry>Incorporeal touch%1d4@@</entry>
+    <name>Wraith-Medium-Incorporeal touch-True-Constitution Drain</name>
+    <entry>1d4@@</entry>
   </collection>
+	<collection>
+		<name>Wraith-Medium-Create Spawn-True-</name>
+	</collection>
+	<collection>
+		<name>Wraith-Medium-Constitution Drain-False-Wraith gains 5 temporary hit points</name>
+		<entry>1d4@Constitution@</entry>
+	</collection>
   <collection>
     <name>Dread Wraith-Large-Incorporeal touch-True-Constitution Drain</name>
     <entry>2d6@@</entry>
   </collection>
 	<collection>
-		<name>Dread Wraith-Large-Constitution Drain-False-</name>
+		<name>Dread Wraith-Large-Constitution Drain-False-Dread Wraith gains 5 temporary hit points</name>
 		<entry>1d8@Constitution@</entry>
 	</collection>
 	<collection>
