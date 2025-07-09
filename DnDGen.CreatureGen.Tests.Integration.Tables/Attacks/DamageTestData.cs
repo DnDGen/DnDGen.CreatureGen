@@ -768,33 +768,33 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             //small
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrmling, "Bite", "1d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrmling, "Claw", "1d4", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrmling, "Breath Weapon", "2d6", FeatConstants.Foci.Elements.Acid, "Gas"));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrmling, "Breath Weapon", "2d6", FeatConstants.Foci.Elements.Acid));
 
             //medium
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryYoung, "Bite", "1d8", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryYoung, "Claw", "1d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryYoung, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryYoung, "Breath Weapon", "4d6", FeatConstants.Foci.Elements.Acid, "Gas"));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryYoung, "Breath Weapon", "4d6", FeatConstants.Foci.Elements.Acid));
 
             //medium
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Young, "Bite", "1d8", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Young, "Claw", "1d6", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Young, "Wing", "1d4", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Young, "Breath Weapon", "6d6", FeatConstants.Foci.Elements.Acid, "Gas"));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Young, "Breath Weapon", "6d6", FeatConstants.Foci.Elements.Acid));
 
             //large
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Juvenile, "Bite", "2d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Juvenile, "Claw", "1d8", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Juvenile, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Juvenile, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Juvenile, "Breath Weapon", "8d6", FeatConstants.Foci.Elements.Acid, "Gas"));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Juvenile, "Breath Weapon", "8d6", FeatConstants.Foci.Elements.Acid));
 
             //large
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_YoungAdult, "Bite", "2d6", biteDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_YoungAdult, "Claw", "1d8", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_YoungAdult, "Wing", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_YoungAdult, "Tail Slap", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_YoungAdult, "Breath Weapon", "10d6", FeatConstants.Foci.Elements.Acid, "Gas"));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_YoungAdult, "Breath Weapon", "10d6", FeatConstants.Foci.Elements.Acid));
 
             //huge
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Adult, "Bite", "2d8", biteDamageType));
@@ -802,7 +802,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Adult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Adult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Adult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Adult, "Breath Weapon", "12d6", FeatConstants.Foci.Elements.Acid, "Gas"));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Adult, "Breath Weapon", "12d6", FeatConstants.Foci.Elements.Acid));
 
             //huge
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_MatureAdult, "Bite", "2d8", biteDamageType));
@@ -810,7 +810,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_MatureAdult, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_MatureAdult, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_MatureAdult, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_MatureAdult, "Breath Weapon", "14d6", FeatConstants.Foci.Elements.Acid, "Gas"));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_MatureAdult, "Breath Weapon", "14d6", FeatConstants.Foci.Elements.Acid));
 
             //huge
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Old, "Bite", "2d8", biteDamageType));
@@ -818,7 +818,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Old, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Old, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Old, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Old, "Breath Weapon", "16d6", FeatConstants.Foci.Elements.Acid, "Gas"));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Old, "Breath Weapon", "16d6", FeatConstants.Foci.Elements.Acid));
 
             //huge
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryOld, "Bite", "2d8", biteDamageType));
@@ -826,7 +826,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryOld, "Wing", "1d8", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryOld, "Tail Slap", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryOld, "Crush", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryOld, "Breath Weapon", "18d6", FeatConstants.Foci.Elements.Acid, "Gas"));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_VeryOld, "Breath Weapon", "18d6", FeatConstants.Foci.Elements.Acid));
 
             //gargantuan
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Ancient, "Bite", "4d6", biteDamageType));
@@ -835,7 +835,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Ancient, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Ancient, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Ancient, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Ancient, "Breath Weapon", "20d6", FeatConstants.Foci.Elements.Acid, "Gas"));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Ancient, "Breath Weapon", "20d6", FeatConstants.Foci.Elements.Acid));
 
             //gargantuan
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrm, "Bite", "4d6", biteDamageType));
@@ -844,7 +844,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrm, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrm, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrm, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrm, "Breath Weapon", "22d6", FeatConstants.Foci.Elements.Acid, "Gas"));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_Wyrm, "Breath Weapon", "22d6", FeatConstants.Foci.Elements.Acid));
 
             //gargantuan
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_GreatWyrm, "Bite", "4d6", biteDamageType));
@@ -853,7 +853,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_GreatWyrm, "Tail Slap", "2d8", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_GreatWyrm, "Crush", "4d6", AttributeConstants.DamageTypes.Bludgeoning));
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_GreatWyrm, "Tail Sweep", "2d6", AttributeConstants.DamageTypes.Bludgeoning));
-            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_GreatWyrm, "Breath Weapon", "24d6", FeatConstants.Foci.Elements.Acid, "Gas"));
+            attackDamages.Add(BuildData(CreatureConstants.Dragon_Green_GreatWyrm, "Breath Weapon", "24d6", FeatConstants.Foci.Elements.Acid));
 
             //medium
             attackDamages.Add(BuildData(CreatureConstants.Dragon_Red_Wyrmling, "Bite", "1d8", biteDamageType));
@@ -2269,50 +2269,50 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             attackDamages.Add(BuildData(CreatureConstants.Satyr_WithPipes, "Head butt", "1d6", AttributeConstants.DamageTypes.Bludgeoning));
 
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Tiny, "Claw", "1d2", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Tiny, "Sting", "1d2", AttributeConstants.DamageTypes.Piercing));
-            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Tiny, "Constrict", "1d2", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Tiny, "Sting", "1d2", stingDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Tiny, "Constrict", "1d2", slapSlamDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Tiny, "Poison",
                     "1", AbilityConstants.Constitution, "Initial",
                     "1", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Small, "Claw", "1d3", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Small, "Sting", "1d3", AttributeConstants.DamageTypes.Piercing));
-            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Small, "Constrict", "1d3", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Small, "Sting", "1d3", stingDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Small, "Constrict", "1d3", slapSlamDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Small, "Poison",
                     "1d2", AbilityConstants.Constitution, "Initial",
                     "1d2", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Medium, "Claw", "1d4", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Medium, "Sting", "1d4", AttributeConstants.DamageTypes.Piercing));
-            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Medium, "Constrict", "1d4", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Medium, "Sting", "1d4", stingDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Medium, "Constrict", "1d4", slapSlamDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Medium, "Poison",
                     "1d3", AbilityConstants.Constitution, "Initial",
                     "1d3", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Large, "Claw", "1d6", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Large, "Sting", "1d6", AttributeConstants.DamageTypes.Piercing));
-            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Large, "Constrict", "1d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Large, "Sting", "1d6", stingDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Large, "Constrict", "1d6", slapSlamDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Large, "Poison",
                     "1d4", AbilityConstants.Constitution, "Initial",
                     "1d4", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Huge, "Claw", "1d8", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Huge, "Sting", "1d8", AttributeConstants.DamageTypes.Piercing));
-            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Huge, "Constrict", "1d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Huge, "Sting", "1d8", stingDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Huge, "Constrict", "1d8", slapSlamDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Huge, "Poison",
                     "1d6", AbilityConstants.Constitution, "Initial",
                     "1d6", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Gargantuan, "Claw", "2d6", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Gargantuan, "Sting", "2d6", AttributeConstants.DamageTypes.Piercing));
-            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Gargantuan, "Constrict", "2d6", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Gargantuan, "Sting", "2d6", stingDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Gargantuan, "Constrict", "2d6", slapSlamDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Gargantuan, "Poison",
                     "1d8", AbilityConstants.Constitution, "Initial",
                     "1d8", AbilityConstants.Constitution, "Secondary"));
 
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Colossal, "Claw", "2d8", clawDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Colossal, "Sting", "2d8", AttributeConstants.DamageTypes.Piercing));
-            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Colossal, "Constrict", "2d8", clawDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Colossal, "Sting", "2d8", stingDamageType));
+            attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Colossal, "Constrict", "2d8", slapSlamDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Scorpion_Monstrous_Colossal, "Poison",
                     "1d10", AbilityConstants.Constitution, "Initial",
                     "1d10", AbilityConstants.Constitution, "Secondary"));
@@ -2804,7 +2804,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Green, "Claw", "1d4", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Green, "Bite", "1d6", biteDamageType));
-            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Green, "Breath Weapon", "6d8", FeatConstants.Foci.Elements.Acid, "Gas"));
+            attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Green, "Breath Weapon", "6d8", FeatConstants.Foci.Elements.Acid));
 
             attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Red, "Claw", "1d4", clawDamageType));
             attackDamages.Add(BuildData(CreatureConstants.Templates.HalfDragon_Red, "Bite", "1d6", biteDamageType));

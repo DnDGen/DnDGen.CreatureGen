@@ -2,37 +2,11 @@
 using NUnit.Framework;
 using System;
 using System.Collections;
-using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Unit.TestCaseSources
 {
     public class CreatureTestData
     {
-        public static IEnumerable Creatures => CreatureConstants.GetAll().Select(c => new TestCaseData(c));
-        public static IEnumerable CharacterCreatures => CreatureConstants.GetAllCharacters().Select(c => new TestCaseData(c));
-        public static IEnumerable NonCharacterCreatures => CreatureConstants.GetAllNonCharacters().Select(c => new TestCaseData(c));
-        public static IEnumerable Templates => CreatureConstants.Templates.GetAll().Select(c => new TestCaseData(c));
-
-        public static IEnumerable CreatureTemplatePairs
-        {
-            get
-            {
-                var templates = CreatureConstants.Templates.GetAll();
-                var creatures = CreatureConstants.GetAll();
-
-                foreach (var template in templates)
-                {
-                    foreach (var creature in creatures)
-                    {
-                        yield return new TestCaseData(creature, template);
-                    }
-                }
-            }
-        }
-
-        public static IEnumerable Types => CreatureConstants.Types.GetAll().Select(c => new TestCaseData(c));
-        public static IEnumerable Subtypes => CreatureConstants.Types.Subtypes.GetAll().Select(c => new TestCaseData(c));
-
         public static IEnumerable SizeIncreases
         {
             get
@@ -41,19 +15,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.TestCaseSources
 
                 for (var o = 0; o < sizes.Length; o++)
                 {
-                    var heightMultiplier = (int)Math.Pow(2, o);
-                    var weightMultiplier = (int)Math.Pow(8, o);
+                    var heightMultiplier = GetHeightMultiplier(o);
+                    //INFO: index 0 is Fine, which has special rules for scaling weight
+                    var weightMultiplier = GetWeightMultiplier(o - 1);
                     yield return new TestCaseData(sizes[0], sizes[o], heightMultiplier, weightMultiplier);
                     yield return new TestCaseData(sizes[o], sizes[o], 1, 1);
                 }
 
-                yield return new TestCaseData(SizeConstants.Small, SizeConstants.Large, (int)Math.Pow(2, 2), (int)Math.Pow(8, 2));
-                yield return new TestCaseData(SizeConstants.Small, SizeConstants.Medium, (int)Math.Pow(2, 1), (int)Math.Pow(8, 1));
-                yield return new TestCaseData(SizeConstants.Medium, SizeConstants.Large, (int)Math.Pow(2, 1), (int)Math.Pow(8, 1));
-                yield return new TestCaseData(SizeConstants.Large, SizeConstants.Huge, (int)Math.Pow(2, 1), (int)Math.Pow(8, 1));
-                yield return new TestCaseData(SizeConstants.Large, SizeConstants.Gargantuan, (int)Math.Pow(2, 2), (int)Math.Pow(8, 2));
-                yield return new TestCaseData(SizeConstants.Large, SizeConstants.Colossal, (int)Math.Pow(2, 3), (int)Math.Pow(8, 3));
+                yield return new TestCaseData(SizeConstants.Small, SizeConstants.Large, GetHeightMultiplier(2), GetWeightMultiplier(2));
+                yield return new TestCaseData(SizeConstants.Small, SizeConstants.Medium, GetHeightMultiplier(1), GetWeightMultiplier(1));
+                yield return new TestCaseData(SizeConstants.Medium, SizeConstants.Large, GetHeightMultiplier(1), GetWeightMultiplier(1));
+                yield return new TestCaseData(SizeConstants.Large, SizeConstants.Huge, GetHeightMultiplier(1), GetWeightMultiplier(1));
+                yield return new TestCaseData(SizeConstants.Large, SizeConstants.Gargantuan, GetHeightMultiplier(2), GetWeightMultiplier(2));
+                yield return new TestCaseData(SizeConstants.Large, SizeConstants.Colossal, GetHeightMultiplier(3), GetWeightMultiplier(3));
             }
         }
+
+        private static int GetHeightMultiplier(int increase) => GetMultiplier(2, increase);
+        private static int GetWeightMultiplier(int increase) => GetMultiplier(8, increase);
+        private static int GetMultiplier(int root, int exponent) => (int)Math.Pow(root, Math.Max(exponent, 0));
     }
 }

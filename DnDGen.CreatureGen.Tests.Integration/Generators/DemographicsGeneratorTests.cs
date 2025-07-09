@@ -1,40 +1,22 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Creatures;
-using DnDGen.CreatureGen.Selectors.Selections;
-using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.Infrastructure.Models;
-using DnDGen.Infrastructure.Selectors.Collections;
-using DnDGen.RollGen;
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Generators
 {
     [TestFixture]
     internal class DemographicsGeneratorTests : IntegrationTests
     {
-        private CreatureAsserter creatureAsserter;
         private IDemographicsGenerator demographicsGenerator;
-        private ICollectionTypeAndAmountSelector typeAndAmountSelector;
-        private ICollectionDataSelector<AdvancementDataSelection> advancementSelector;
-        private ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
-        private ICollectionSelector collectionSelector;
         private Dictionary<string, (int min, int max)> rollRanges;
         private Dictionary<string, (int min, int max)> weightRanges;
-        private Dice dice;
 
         [SetUp]
         public void Setup()
         {
-            creatureAsserter = GetNewInstanceOf<CreatureAsserter>();
             demographicsGenerator = GetNewInstanceOf<IDemographicsGenerator>();
-            typeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
-            advancementSelector = GetNewInstanceOf<ICollectionDataSelector<AdvancementDataSelection>>();
-            creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
-            dice = GetNewInstanceOf<Dice>();
 
             rollRanges = new Dictionary<string, (int min, int max)>
             {
@@ -62,77 +44,44 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             };
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreatureMeasurementsScaleCorrectlyWithAdvancedSizes(string creature)
+        public static IEnumerable SizeAdvancements
         {
-            var advancements = advancementSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Advancements, creature);
-            if (!advancements.Any())
-                Assert.Pass($"Creature {creature} has no advancements");
-
-            var heights = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights, creature);
-            var lengths = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths, creature);
-            var weights = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Weights, creature);
-            var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, creature);
-            var data = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, creature);
-
-            foreach (var gender in genders)
+            get
             {
-                var isTall = IsTall(heights, lengths, creature, gender);
-                var heightRoll = GetRoll(heights, creature, gender);
-                var lengthRoll = GetRoll(lengths, creature, gender);
-                var weightRoll = GetMultipliedRoll(weights, isTall ? heights : lengths, creature, gender);
+                var sizes = SizeConstants.GetOrdered();
 
-                foreach (var advancement in advancements)
+                for (var o = 0; o < sizes.Length; o++)
                 {
-                    var demographics = new Demographics
+                    for (var a = o; a < sizes.Length; a++)
                     {
-                        Height = new("inches") { Value = dice.Roll(heightRoll).AsPotentialAverage() },
-                        Length = new("inches") { Value = dice.Roll(lengthRoll).AsPotentialAverage() },
-                        Weight = new("pounds") { Value = dice.Roll(weightRoll).AsPotentialAverage() },
-                    };
-
-                    var scaledDemographics = demographicsGenerator.AdjustDemographicsBySize(demographics, data.Size, advancement.Size);
-                    if (isTall)
-                        Assert.That(scaledDemographics.Height.Value, Is.InRange(rollRanges[advancement.Size].min, rollRanges[advancement.Size].max));
-                    else
-                        Assert.That(scaledDemographics.Length.Value, Is.InRange(rollRanges[advancement.Size].min, rollRanges[advancement.Size].max));
-
-                    if (scaledDemographics.Weight.Value > 0)
-                        Assert.That(scaledDemographics.Weight.Value, Is.InRange(weightRanges[advancement.Size].min, weightRanges[advancement.Size].max));
+                        yield return new TestCaseData(sizes[o], sizes[a]);
+                    }
                 }
             }
         }
 
-        private bool IsTall(
-            IEnumerable<TypeAndAmountDataSelection> heightSelections,
-            IEnumerable<TypeAndAmountDataSelection> lengthSelections,
-            string creature,
-            string gender)
+        private void AssertDemographicsScaleCorrectly(string originalSize, string advancedSize, double originalValue, double originalWeight)
         {
-            var heightRoll = GetRoll(heightSelections, creature, gender);
-            var lengthRoll = GetRoll(lengthSelections, creature, gender);
-            var averageHeight = dice.Roll(heightRoll).AsPotentialAverage();
-            var averageLength = dice.Roll(lengthRoll).AsPotentialAverage();
-            return averageHeight >= averageLength;
+            var demographics = new Demographics
+            {
+                Height = new("inches") { Value = originalValue },
+                Length = new("inches") { Value = originalValue },
+                Wingspan = new("inches") { Value = originalValue },
+                Weight = new("pounds") { Value = originalWeight },
+            };
+
+            var scaledDemographics = demographicsGenerator.AdjustDemographicsBySize(demographics, originalSize, advancedSize);
+            Assert.That(scaledDemographics.Height.Value, Is.InRange(rollRanges[advancedSize].min, rollRanges[advancedSize].max));
+            Assert.That(scaledDemographics.Length.Value, Is.InRange(rollRanges[advancedSize].min, rollRanges[advancedSize].max));
+            Assert.That(scaledDemographics.Wingspan.Value, Is.InRange(rollRanges[advancedSize].min, rollRanges[advancedSize].max));
+            Assert.That(scaledDemographics.Weight.Value, Is.InRange(weightRanges[advancedSize].min, weightRanges[advancedSize].max));
         }
 
-        private string GetRoll(IEnumerable<TypeAndAmountDataSelection> selections, string creature, string gender)
-        {
-            var baseSelection = selections.First(h => h.Type == gender);
-            var modifierSelection = selections.First(h => h.Type == creature);
-            return $"{baseSelection.Roll}+{modifierSelection.Roll}";
-        }
-
-        private string GetMultipliedRoll(
-            IEnumerable<TypeAndAmountDataSelection> weightSelections,
-            IEnumerable<TypeAndAmountDataSelection> multiplierSelections,
-            string creature, string gender)
-        {
-            var roll = GetRoll(weightSelections, creature, gender);
-            var multiplierSelection = multiplierSelections.First(h => h.Type == creature);
-
-            return $"{roll}*{multiplierSelection.Roll}";
-        }
+        [TestCaseSource(nameof(SizeAdvancements))]
+        public void DemographicsScaleCorrectly_Average(string originalSize, string advancedSize)
+            => AssertDemographicsScaleCorrectly(originalSize, advancedSize,
+                rollRanges[originalSize].min / 2d + rollRanges[originalSize].max / 2d,
+                weightRanges[originalSize].min / 2d + weightRanges[originalSize].max / 2d);
 
         [TestCase(CreatureConstants.Gnome_Rock)]
         [TestCase(CreatureConstants.Human)]

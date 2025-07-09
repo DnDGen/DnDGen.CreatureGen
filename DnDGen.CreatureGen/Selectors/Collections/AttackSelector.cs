@@ -2,6 +2,7 @@
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Selectors.Collections
 {
@@ -18,7 +19,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 
         public IEnumerable<AttackDataSelection> Select(string creatureName, string size)
         {
-            var attackSelections = attackDataSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, creatureName);
+            var attackSelections = attackDataSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, creatureName).ToArray();
 
             foreach (var selection in attackSelections)
             {

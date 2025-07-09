@@ -868,9 +868,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [Test]
         public void AdvancedCreatureHappens()
         {
-            //TODO: Pick a creature with advancements, iterate 100 times - at least one of those iterations should be an advanced creature
-            //Lower-level creature is better for faster iteration
-            Assert.Fail("not yet written");
+            var iterations = 100;
+            var advancedHappened = false;
+            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer([]);
+
+            while (iterations-- > 0 && !advancedHappened)
+            {
+                var creature = GenerateAndAssertCreature(CreatureConstants.Badger, false, randomizer);
+                advancedHappened |= creature.IsAdvanced;
+            }
+
+            Assert.That(advancedHappened, Is.True);
         }
 
         [TestCase(CreatureConstants.Human, 0)]

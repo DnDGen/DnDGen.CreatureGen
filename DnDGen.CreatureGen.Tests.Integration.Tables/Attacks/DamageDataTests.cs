@@ -11,7 +11,9 @@ using NUnit.Framework;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 {
@@ -270,6 +272,40 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             {
                 AssertTemplateAttackDamages(key, template);
             }
+        }
+
+        [Test]
+        [Ignore("Don't run this unless you need to bulk update the damage data file")]
+        public void DEBUG_WriteXml()
+        {
+            var collections = new XElement("collections");
+
+            foreach (var creatureKvp in creatureAttackDamageData)
+            {
+                var collection = new XElement("collection", new XElement("name", creatureKvp.Key));
+
+                foreach (var damageData in creatureKvp.Value)
+                {
+                    collection.Add(new XElement("entry", damageData));
+                }
+
+                collections.Add(collection);
+            }
+
+            foreach (var templateKvp in templateAttackDamageData)
+            {
+                var collection = new XElement("collection", new XElement("name", templateKvp.Key));
+
+                foreach (var damageData in templateKvp.Value)
+                {
+                    collection.Add(new XElement("entry", damageData));
+                }
+
+                collections.Add(collection);
+            }
+
+            var path = Path.Combine(Environment.CurrentDirectory, $"{tableName}.xml");
+            collections.Save(path);
         }
 
         private void AssertTemplateAttackDamages(string key, string template)

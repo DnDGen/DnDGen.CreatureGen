@@ -354,6 +354,10 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 var heightMultiplier = Math.Pow(2, sizeDifference);
                 var weightMultiplier = Math.Pow(8, sizeDifference);
 
+                //INFO: Fine -> Diminutive does not increase weight
+                if (originalSize == SizeConstants.Fine)
+                    weightMultiplier = Math.Pow(8, sizeDifference - 1);
+
                 demographics.Height.Value *= heightMultiplier;
                 demographics.Length.Value *= heightMultiplier;
                 demographics.Wingspan.Value *= heightMultiplier;

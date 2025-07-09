@@ -81,7 +81,6 @@
   <collection>
     <name>Animated Object, Colossal (More Than Two Legs, Long)Common</name>
     <entry>Stone Table</entry>
-    <entry>Stone Chair</entry>
     <entry>Stone Dresser</entry>
   </collection>
   <collection>
@@ -93,10 +92,8 @@
   <collection>
     <name>Animated Object, Colossal (More Than Two Legs, Long, Wooden)Common</name>
     <entry>Wooden Table</entry>
-    <entry>Wooden Chair</entry>
     <entry>Wooden Dresser</entry>
     <entry>Wooden Ottoman</entry>
-    <entry>Wooden Stool</entry>
   </collection>
   <collection>
     <name>Animated Object, Colossal (More Than Two Legs, Long, Wooden)Uncommon</name>
@@ -106,7 +103,6 @@
   </collection>
 	<collection>
 		<name>Animated Object, Colossal (More Than Two Legs, Tall)Common</name>
-		<entry>Stone Table</entry>
 		<entry>Stone Chair</entry>
 		<entry>Stone Dresser</entry>
 	</collection>
@@ -118,10 +114,8 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (More Than Two Legs, Tall, Wooden)Common</name>
-		<entry>Wooden Table</entry>
 		<entry>Wooden Chair</entry>
 		<entry>Wooden Dresser</entry>
-		<entry>Wooden Ottoman</entry>
 		<entry>Wooden Stool</entry>
 	</collection>
 	<collection>
@@ -292,7 +286,6 @@
   <collection>
     <name>Animated Object, Gargantuan (More Than Two Legs, Long)Common</name>
     <entry>Stone Table</entry>
-    <entry>Stone Chair</entry>
     <entry>Stone Dresser</entry>
   </collection>
   <collection>
@@ -304,10 +297,8 @@
   <collection>
     <name>Animated Object, Gargantuan (More Than Two Legs, Long, Wooden)Common</name>
     <entry>Wooden Table</entry>
-    <entry>Wooden Chair</entry>
     <entry>Wooden Dresser</entry>
     <entry>Wooden Ottoman</entry>
-    <entry>Wooden Stool</entry>
   </collection>
   <collection>
     <name>Animated Object, Gargantuan (More Than Two Legs, Long, Wooden)Uncommon</name>
@@ -317,7 +308,6 @@
   </collection>
 	<collection>
 		<name>Animated Object, Gargantuan (More Than Two Legs, Tall)Common</name>
-		<entry>Stone Table</entry>
 		<entry>Stone Chair</entry>
 		<entry>Stone Dresser</entry>
 	</collection>
@@ -329,10 +319,8 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (More Than Two Legs, Tall, Wooden)Common</name>
-		<entry>Wooden Table</entry>
 		<entry>Wooden Chair</entry>
 		<entry>Wooden Dresser</entry>
-		<entry>Wooden Ottoman</entry>
 		<entry>Wooden Stool</entry>
 	</collection>
 	<collection>
@@ -503,7 +491,6 @@
   <collection>
     <name>Animated Object, Huge (More Than Two Legs, Long)Common</name>
     <entry>Stone Table</entry>
-    <entry>Stone Chair</entry>
     <entry>Stone Dresser</entry>
   </collection>
   <collection>
@@ -515,10 +502,8 @@
   <collection>
     <name>Animated Object, Huge (More Than Two Legs, Long, Wooden)Common</name>
     <entry>Wooden Table</entry>
-    <entry>Wooden Chair</entry>
     <entry>Wooden Dresser</entry>
     <entry>Wooden Ottoman</entry>
-    <entry>Wooden Stool</entry>
   </collection>
   <collection>
     <name>Animated Object, Huge (More Than Two Legs, Long, Wooden)Uncommon</name>
@@ -528,7 +513,6 @@
   </collection>
 	<collection>
 		<name>Animated Object, Huge (More Than Two Legs, Tall)Common</name>
-		<entry>Stone Table</entry>
 		<entry>Stone Chair</entry>
 		<entry>Stone Dresser</entry>
 	</collection>
@@ -540,10 +524,8 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (More Than Two Legs, Tall, Wooden)Common</name>
-		<entry>Wooden Table</entry>
 		<entry>Wooden Chair</entry>
 		<entry>Wooden Dresser</entry>
-		<entry>Wooden Ottoman</entry>
 		<entry>Wooden Stool</entry>
 	</collection>
 	<collection>
@@ -714,7 +696,6 @@
   <collection>
     <name>Animated Object, Large (More Than Two Legs, Long)Common</name>
     <entry>Stone Table</entry>
-    <entry>Stone Chair</entry>
     <entry>Stone Dresser</entry>
   </collection>
   <collection>
@@ -726,10 +707,8 @@
   <collection>
     <name>Animated Object, Large (More Than Two Legs, Long, Wooden)Common</name>
     <entry>Wooden Table</entry>
-    <entry>Wooden Chair</entry>
     <entry>Wooden Dresser</entry>
     <entry>Wooden Ottoman</entry>
-    <entry>Wooden Stool</entry>
   </collection>
   <collection>
     <name>Animated Object, Large (More Than Two Legs, Long, Wooden)Uncommon</name>
@@ -739,7 +718,6 @@
   </collection>
 	<collection>
 		<name>Animated Object, Large (More Than Two Legs, Tall)Common</name>
-		<entry>Stone Table</entry>
 		<entry>Stone Chair</entry>
 		<entry>Stone Dresser</entry>
 	</collection>
@@ -751,10 +729,8 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Large (More Than Two Legs, Tall, Wooden)Common</name>
-		<entry>Wooden Table</entry>
 		<entry>Wooden Chair</entry>
 		<entry>Wooden Dresser</entry>
-		<entry>Wooden Ottoman</entry>
 		<entry>Wooden Stool</entry>
 	</collection>
 	<collection>

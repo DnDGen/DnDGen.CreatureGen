@@ -1536,7 +1536,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 [CreatureConstants.Spider_Monstrous_Hunter_Colossal] =
                 [GetData(SkillConstants.Climb, 8),
                     GetData(SkillConstants.Hide, 4),
-                    GetData(SkillConstants.Spot, 4),
                     GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
                     GetData(SkillConstants.Jump, 10),
                     GetData(SkillConstants.Spot, 8)],
@@ -1544,7 +1543,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 [CreatureConstants.Spider_Monstrous_Hunter_Gargantuan] =
                 [GetData(SkillConstants.Climb, 8),
                     GetData(SkillConstants.Hide, 4),
-                    GetData(SkillConstants.Spot, 4),
                     GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
                     GetData(SkillConstants.Jump, 10),
                     GetData(SkillConstants.Spot, 8)],
@@ -1552,7 +1550,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 [CreatureConstants.Spider_Monstrous_Hunter_Huge] =
                 [GetData(SkillConstants.Climb, 8),
                     GetData(SkillConstants.Hide, 4),
-                    GetData(SkillConstants.Spot, 4),
                     GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
                     GetData(SkillConstants.Jump, 10),
                     GetData(SkillConstants.Spot, 8)],
@@ -1560,7 +1557,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 [CreatureConstants.Spider_Monstrous_Hunter_Large] =
                 [GetData(SkillConstants.Climb, 8),
                     GetData(SkillConstants.Hide, 4),
-                    GetData(SkillConstants.Spot, 4),
                     GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
                     GetData(SkillConstants.Jump, 10),
                     GetData(SkillConstants.Spot, 8)],
@@ -1568,7 +1564,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 [CreatureConstants.Spider_Monstrous_Hunter_Medium] =
                 [GetData(SkillConstants.Climb, 8),
                     GetData(SkillConstants.Hide, 4),
-                    GetData(SkillConstants.Spot, 4),
                     GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
                     GetData(SkillConstants.Jump, 10),
                     GetData(SkillConstants.Spot, 8)],
@@ -1576,7 +1571,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 [CreatureConstants.Spider_Monstrous_Hunter_Small] =
                 [GetData(SkillConstants.Climb, 8),
                     GetData(SkillConstants.Hide, 4),
-                    GetData(SkillConstants.Spot, 4),
                     GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
                     GetData(SkillConstants.Jump, 10),
                     GetData(SkillConstants.Spot, 8)],
@@ -1584,7 +1578,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 [CreatureConstants.Spider_Monstrous_Hunter_Tiny] =
                 [GetData(SkillConstants.Climb, 8),
                     GetData(SkillConstants.Hide, 4),
-                    GetData(SkillConstants.Spot, 4),
                     GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
                     GetData(SkillConstants.Jump, 10),
                     GetData(SkillConstants.Spot, 8)],
@@ -1594,7 +1587,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Hide, 4),
                     GetData(SkillConstants.Spot, 4),
                     GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
-                    GetData(SkillConstants.Hide, 8, condition: "when using their webs"),
+                    GetData(SkillConstants.Hide, 4, condition: "when using their webs"),
                     GetData(SkillConstants.MoveSilently, 8, condition: "when using their webs")],
 
                 [CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan] =
@@ -1602,7 +1595,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Hide, 4),
                     GetData(SkillConstants.Spot, 4),
                     GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
-                    GetData(SkillConstants.Hide, 8, condition: "when using their webs"),
+                    GetData(SkillConstants.Hide, 4, condition: "when using their webs"),
                     GetData(SkillConstants.MoveSilently, 8, condition: "when using their webs")],
 
                 [CreatureConstants.Spider_Monstrous_WebSpinner_Huge] =
@@ -1610,7 +1603,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Hide, 4),
                     GetData(SkillConstants.Spot, 4),
                     GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
-                    GetData(SkillConstants.Hide, 8, condition: "when using their webs"),
+                    GetData(SkillConstants.Hide, 4, condition: "when using their webs"),
                     GetData(SkillConstants.MoveSilently, 8, condition: "when using their webs")],
 
                 [CreatureConstants.Spider_Monstrous_WebSpinner_Large] =
@@ -1618,7 +1611,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Hide, 4),
                     GetData(SkillConstants.Spot, 4),
                     GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
-                    GetData(SkillConstants.Hide, 8, condition: "when using their webs"),
+                    GetData(SkillConstants.Hide, 4, condition: "when using their webs"),
                     GetData(SkillConstants.MoveSilently, 8, condition: "when using their webs")],
 
                 [CreatureConstants.Spider_Monstrous_WebSpinner_Medium] =
@@ -1626,7 +1619,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Hide, 4),
                     GetData(SkillConstants.Spot, 4),
                     GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
-                    GetData(SkillConstants.Hide, 8, condition: "when using their webs"),
+                    GetData(SkillConstants.Hide, 4, condition: "when using their webs"),
                     GetData(SkillConstants.MoveSilently, 8, condition: "when using their webs")],
 
                 [CreatureConstants.Spider_Monstrous_WebSpinner_Small] =
@@ -1634,7 +1627,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Hide, 4),
                     GetData(SkillConstants.Spot, 4),
                     GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
-                    GetData(SkillConstants.Hide, 8, condition: "when using their webs"),
+                    GetData(SkillConstants.Hide, 4, condition: "when using their webs"),
                     GetData(SkillConstants.MoveSilently, 8, condition: "when using their webs")],
 
                 [CreatureConstants.Spider_Monstrous_WebSpinner_Tiny] =
@@ -1642,7 +1635,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                     GetData(SkillConstants.Hide, 4),
                     GetData(SkillConstants.Spot, 4),
                     GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
-                    GetData(SkillConstants.Hide, 8, condition: "when using their webs"),
+                    GetData(SkillConstants.Hide, 4, condition: "when using their webs"),
                     GetData(SkillConstants.MoveSilently, 8, condition: "when using their webs")],
 
                 [CreatureConstants.Spider_Swarm] =
