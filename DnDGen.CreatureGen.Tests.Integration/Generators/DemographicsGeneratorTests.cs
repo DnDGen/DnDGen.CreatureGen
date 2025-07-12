@@ -83,12 +83,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
                 rollRanges[originalSize].min / 2d + rollRanges[originalSize].max / 2d,
                 weightRanges[originalSize].min / 2d + weightRanges[originalSize].max / 2d);
 
-        [TestCase(CreatureConstants.Gnome_Rock)]
-        [TestCase(CreatureConstants.Human)]
-        [TestCase(CreatureConstants.Orc_Half)]
-        public void DEBUG_GenerateBetaDemographics(string creature)
+        [Test]
+        public void DEBUG_GenerateBetaDemographics()
         {
-            var demographics = demographicsGenerator.Generate(creature);
+            var demographics = demographicsGenerator.Generate(CreatureConstants.Shrieker);
             Assert.That(demographics, Is.Not.Null);
         }
     }
