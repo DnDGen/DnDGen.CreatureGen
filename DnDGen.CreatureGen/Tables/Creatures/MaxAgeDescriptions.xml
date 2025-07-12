@@ -82,11 +82,19 @@
 		<entry>Construct</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Colossal (More Than Two Legs)</name>
+		<name>Animated Object, Colossal (More Than Two Legs, Long)</name>
 		<entry>Construct</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Colossal (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Colossal (More Than Two Legs, Long, Wooden)</name>
+		<entry>Construct</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall)</name>
+		<entry>Construct</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall, Wooden)</name>
 		<entry>Construct</entry>
 	</collection>
 	<collection>
@@ -118,11 +126,19 @@
 		<entry>Construct</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs)</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long)</name>
 		<entry>Construct</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long, Wooden)</name>
+		<entry>Construct</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall)</name>
+		<entry>Construct</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall, Wooden)</name>
 		<entry>Construct</entry>
 	</collection>
 	<collection>
@@ -154,11 +170,19 @@
 		<entry>Construct</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs)</name>
+		<name>Animated Object, Huge (More Than Two Legs, Long)</name>
 		<entry>Construct</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Huge (More Than Two Legs, Long, Wooden)</name>
+		<entry>Construct</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall)</name>
+		<entry>Construct</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall, Wooden)</name>
 		<entry>Construct</entry>
 	</collection>
 	<collection>
@@ -190,11 +214,19 @@
 		<entry>Construct</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs)</name>
+		<name>Animated Object, Large (More Than Two Legs, Long)</name>
 		<entry>Construct</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Large (More Than Two Legs, Long, Wooden)</name>
+		<entry>Construct</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall)</name>
+		<entry>Construct</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall, Wooden)</name>
 		<entry>Construct</entry>
 	</collection>
 	<collection>

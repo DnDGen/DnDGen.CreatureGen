@@ -75,25 +75,45 @@
     <name>Animated Object, Colossal (Flexible)Rare</name>
   </collection>
   <collection>
-    <name>Animated Object, Colossal (More Than Two Legs)Common</name>
+    <name>Animated Object, Colossal (More Than Two Legs, Long)Common</name>
     <entry></entry>
   </collection>
   <collection>
-    <name>Animated Object, Colossal (More Than Two Legs)Uncommon</name>
+    <name>Animated Object, Colossal (More Than Two Legs, Long)Uncommon</name>
   </collection>
   <collection>
-    <name>Animated Object, Colossal (More Than Two Legs)Rare</name>
+    <name>Animated Object, Colossal (More Than Two Legs, Long)Rare</name>
   </collection>
   <collection>
-    <name>Animated Object, Colossal (More Than Two Legs, Wooden)Common</name>
+    <name>Animated Object, Colossal (More Than Two Legs, Long, Wooden)Common</name>
     <entry></entry>
   </collection>
   <collection>
-    <name>Animated Object, Colossal (More Than Two Legs, Wooden)Uncommon</name>
+    <name>Animated Object, Colossal (More Than Two Legs, Long, Wooden)Uncommon</name>
   </collection>
   <collection>
-    <name>Animated Object, Colossal (More Than Two Legs, Wooden)Rare</name>
+    <name>Animated Object, Colossal (More Than Two Legs, Long, Wooden)Rare</name>
   </collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall)Rare</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall, Wooden)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall, Wooden)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall, Wooden)Rare</name>
+	</collection>
   <collection>
     <name>Animated Object, Colossal (Sheetlike)Common</name>
     <entry></entry>
@@ -165,25 +185,45 @@
     <name>Animated Object, Gargantuan (Flexible)Rare</name>
   </collection>
   <collection>
-    <name>Animated Object, Gargantuan (More Than Two Legs)Common</name>
+    <name>Animated Object, Gargantuan (More Than Two Legs, Long)Common</name>
     <entry></entry>
   </collection>
   <collection>
-    <name>Animated Object, Gargantuan (More Than Two Legs)Uncommon</name>
+    <name>Animated Object, Gargantuan (More Than Two Legs, Long)Uncommon</name>
   </collection>
   <collection>
-    <name>Animated Object, Gargantuan (More Than Two Legs)Rare</name>
+    <name>Animated Object, Gargantuan (More Than Two Legs, Long)Rare</name>
   </collection>
   <collection>
-    <name>Animated Object, Gargantuan (More Than Two Legs, Wooden)Common</name>
+    <name>Animated Object, Gargantuan (More Than Two Legs, Long, Wooden)Common</name>
     <entry></entry>
   </collection>
   <collection>
-    <name>Animated Object, Gargantuan (More Than Two Legs, Wooden)Uncommon</name>
+    <name>Animated Object, Gargantuan (More Than Two Legs, Long, Wooden)Uncommon</name>
   </collection>
   <collection>
-    <name>Animated Object, Gargantuan (More Than Two Legs, Wooden)Rare</name>
+    <name>Animated Object, Gargantuan (More Than Two Legs, Long, Wooden)Rare</name>
   </collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall)Rare</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall, Wooden)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall, Wooden)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall, Wooden)Rare</name>
+	</collection>
   <collection>
     <name>Animated Object, Gargantuan (Sheetlike)Common</name>
     <entry></entry>
@@ -255,25 +295,45 @@
     <name>Animated Object, Huge (Flexible)Rare</name>
   </collection>
   <collection>
-    <name>Animated Object, Huge (More Than Two Legs)Common</name>
+    <name>Animated Object, Huge (More Than Two Legs, Long)Common</name>
     <entry></entry>
   </collection>
   <collection>
-    <name>Animated Object, Huge (More Than Two Legs)Uncommon</name>
+    <name>Animated Object, Huge (More Than Two Legs, Long)Uncommon</name>
   </collection>
   <collection>
-    <name>Animated Object, Huge (More Than Two Legs)Rare</name>
+    <name>Animated Object, Huge (More Than Two Legs, Long)Rare</name>
   </collection>
   <collection>
-    <name>Animated Object, Huge (More Than Two Legs, Wooden)Common</name>
+    <name>Animated Object, Huge (More Than Two Legs, Long, Wooden)Common</name>
     <entry></entry>
   </collection>
   <collection>
-    <name>Animated Object, Huge (More Than Two Legs, Wooden)Uncommon</name>
+    <name>Animated Object, Huge (More Than Two Legs, Long, Wooden)Uncommon</name>
   </collection>
   <collection>
-    <name>Animated Object, Huge (More Than Two Legs, Wooden)Rare</name>
+    <name>Animated Object, Huge (More Than Two Legs, Long, Wooden)Rare</name>
   </collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall)Rare</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall, Wooden)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall, Wooden)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall, Wooden)Rare</name>
+	</collection>
   <collection>
     <name>Animated Object, Huge (Sheetlike)Common</name>
     <entry></entry>
@@ -345,25 +405,45 @@
     <name>Animated Object, Large (Flexible)Rare</name>
   </collection>
   <collection>
-    <name>Animated Object, Large (More Than Two Legs)Common</name>
+    <name>Animated Object, Large (More Than Two Legs, Long)Common</name>
     <entry></entry>
   </collection>
   <collection>
-    <name>Animated Object, Large (More Than Two Legs)Uncommon</name>
+    <name>Animated Object, Large (More Than Two Legs, Long)Uncommon</name>
   </collection>
   <collection>
-    <name>Animated Object, Large (More Than Two Legs)Rare</name>
+    <name>Animated Object, Large (More Than Two Legs, Long)Rare</name>
   </collection>
   <collection>
-    <name>Animated Object, Large (More Than Two Legs, Wooden)Common</name>
+    <name>Animated Object, Large (More Than Two Legs, Long, Wooden)Common</name>
     <entry></entry>
   </collection>
   <collection>
-    <name>Animated Object, Large (More Than Two Legs, Wooden)Uncommon</name>
+    <name>Animated Object, Large (More Than Two Legs, Long, Wooden)Uncommon</name>
   </collection>
   <collection>
-    <name>Animated Object, Large (More Than Two Legs, Wooden)Rare</name>
+    <name>Animated Object, Large (More Than Two Legs, Long, Wooden)Rare</name>
   </collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall)Rare</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall, Wooden)Common</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall, Wooden)Uncommon</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall, Wooden)Rare</name>
+	</collection>
   <collection>
     <name>Animated Object, Large (Sheetlike)Common</name>
     <entry></entry>

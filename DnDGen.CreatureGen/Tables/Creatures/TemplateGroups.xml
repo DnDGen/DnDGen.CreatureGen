@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>All</name>
+	  <entry>Half-Dragon (Black)</entry>
+	  <entry>Half-Dragon (Blue)</entry>
+	  <entry>Half-Dragon (Green)</entry>
+	  <entry>Half-Dragon (Red)</entry>
+	  <entry>Half-Dragon (White)</entry>
+	  <entry>Half-Dragon (Brass)</entry>
+	  <entry>Half-Dragon (Bronze)</entry>
+	  <entry>Half-Dragon (Copper)</entry>
+	  <entry>Half-Dragon (Gold)</entry>
+	  <entry>Half-Dragon (Silver)</entry>
+	  <entry>Lycanthrope, Black Bear (Werebear, Afflicted)</entry>
+	  <entry>Lycanthrope, Black Bear (Werebear, Natural)</entry>
+	  <entry>Lycanthrope, Brown Bear (Werebear, Afflicted)</entry>
+	  <entry>Lycanthrope, Brown Bear (Werebear, Natural)</entry>
+	  <entry>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)</entry>
+	  <entry>Lycanthrope, Dire Bear (Dire Werebear, Natural)</entry>
+	  <entry>Lycanthrope, Polar Bear (Werebear, Afflicted)</entry>
+	  <entry>Lycanthrope, Polar Bear (Werebear, Natural)</entry>
+	  <entry>Lycanthrope, Boar (Wereboar, Afflicted)</entry>
+	  <entry>Lycanthrope, Boar (Wereboar, Natural)</entry>
+	  <entry>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)</entry>
+	  <entry>Lycanthrope, Dire Boar (Dire Wereboar, Natural)</entry>
+	  <entry>Lycanthrope, Rat (Wererat, Afflicted)</entry>
+	  <entry>Lycanthrope, Rat (Wererat, Natural)</entry>
+	  <entry>Lycanthrope, Dire Rat (Wererat, Afflicted)</entry>
+	  <entry>Lycanthrope, Dire Rat (Wererat, Natural)</entry>
+	  <entry>Lycanthrope, Tiger (Weretiger, Afflicted)</entry>
+	  <entry>Lycanthrope, Tiger (Weretiger, Natural)</entry>
+	  <entry>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)</entry>
+	  <entry>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)</entry>
+	  <entry>Lycanthrope, Wolf (Werewolf, Afflicted)</entry>
+	  <entry>Lycanthrope, Wolf (Werewolf, Natural)</entry>
+	  <entry>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)</entry>
+	  <entry>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)</entry>
+	  <entry>Skeleton</entry>
+	  <entry>Zombie</entry>
+	  <entry>Lich</entry>
+	  <entry>Ghost</entry>
+	  <entry>Celestial Creature</entry>
+	  <entry>Fiendish Creature</entry>
+	  <entry>Half-Celestial</entry>
+	  <entry>Half-Fiend</entry>
+	  <entry>Vampire</entry>
+  </collection>
+</collections>

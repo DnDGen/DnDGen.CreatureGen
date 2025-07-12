@@ -27,6 +27,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
             Assert.That(creature.Type.SubTypes, Is.Empty);
             Assert.That(creature.CasterLevel, Is.Zero);
             Assert.That(creature.HitDiceQuantity, Is.Zero);
+            Assert.That(creature.HasSkeleton, Is.False);
         }
 
         [TestCase(0, 0)]

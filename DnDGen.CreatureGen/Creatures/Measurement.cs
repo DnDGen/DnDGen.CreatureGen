@@ -21,5 +21,10 @@ namespace DnDGen.CreatureGen.Creatures
         {
             Bonuses.Add(new Bonus { Value = value, Condition = condition });
         }
+
+        public override string ToString()
+        {
+            return $"{Value} {Unit} ({Description})";
+        }
     }
 }

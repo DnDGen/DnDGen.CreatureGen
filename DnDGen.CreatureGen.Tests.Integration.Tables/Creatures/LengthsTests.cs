@@ -1,7 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Integration.Tables.Helpers;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
@@ -13,8 +13,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     [TestFixture]
     public class LengthsTests : TypesAndAmountsTests
     {
-        private ICollectionSelector collectionSelector;
         private Dice dice;
+        private MeasurementHelper measurementHelper;
 
         protected override string tableName => TableNameConstants.TypeAndAmount.Lengths;
         private Dictionary<string, Dictionary<string, string>> creatureLengths;
@@ -28,8 +28,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [SetUp]
         public void Setup()
         {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             dice = GetNewInstanceOf<Dice>();
+            measurementHelper = GetNewInstanceOf<MeasurementHelper>();
         }
 
         [Test]
@@ -57,6 +57,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
 
             AssertTypesAndAmounts(name, typesAndRolls);
+            AssertIfCreatureHasNoLength_HasHeight(name);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -77,14 +78,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertTypesAndAmounts(name, typesAndRolls);
         }
 
-        public static Dictionary<string, Dictionary<string, string>> GetCreatureLengths()
+        private Dictionary<string, Dictionary<string, string>> GetCreatureLengths()
         {
             var creatures = CreatureConstants.GetAll();
             var lengths = new Dictionary<string, Dictionary<string, string>>();
 
             foreach (var creature in creatures)
             {
-                lengths[creature] = new Dictionary<string, string>();
+                lengths[creature] = [];
             }
 
             lengths[CreatureConstants.Aasimar][GenderConstants.Female] = "0";
@@ -118,10 +119,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.AnimatedObject_Colossal][CreatureConstants.AnimatedObject_Colossal] = "0";
             lengths[CreatureConstants.AnimatedObject_Colossal_Flexible][GenderConstants.Agender] = GetBaseFromRange(64 * 12, 128 * 12);
             lengths[CreatureConstants.AnimatedObject_Colossal_Flexible][CreatureConstants.AnimatedObject_Colossal_Flexible] = GetMultiplierFromRange(64 * 12, 128 * 12);
-            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][GenderConstants.Agender] = "0";
-            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][CreatureConstants.AnimatedObject_Colossal_MultipleLegs] = "0";
-            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][GenderConstants.Agender] = "0";
-            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden] = "0";
+            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long][GenderConstants.Agender] = GetBaseFromRange(64 * 12, 128 * 12);
+            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long][CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long] =
+                GetMultiplierFromRange(64 * 12, 128 * 12);
+            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden][GenderConstants.Agender] = GetBaseFromRange(64 * 12, 128 * 12);
+            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden][CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden] =
+                GetMultiplierFromRange(64 * 12, 128 * 12);
+            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall][GenderConstants.Agender] = GetBaseFromRange(64 * 12 / 2, 128 * 12 / 2);
+            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall][CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall] =
+                GetMultiplierFromRange(64 * 12 / 2, 128 * 12 / 2);
+            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden][GenderConstants.Agender] = GetBaseFromRange(64 * 12 / 2, 128 * 12 / 2);
+            lengths[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden][CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden] =
+                GetMultiplierFromRange(64 * 12 / 2, 128 * 12 / 2);
             lengths[CreatureConstants.AnimatedObject_Colossal_Sheetlike][GenderConstants.Agender] = GetBaseFromRange(64 * 12, 128 * 12);
             lengths[CreatureConstants.AnimatedObject_Colossal_Sheetlike][CreatureConstants.AnimatedObject_Colossal_Sheetlike] = GetMultiplierFromRange(64 * 12, 128 * 12);
             lengths[CreatureConstants.AnimatedObject_Colossal_TwoLegs][GenderConstants.Agender] = "0";
@@ -129,17 +138,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden][CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden] = "0";
             lengths[CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden][GenderConstants.Agender] = GetBaseFromRange(64 * 12, 128 * 12);
-            lengths[CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden][CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden] = GetMultiplierFromRange(64 * 12, 128 * 12);
+            lengths[CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden][CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden] =
+                GetMultiplierFromRange(64 * 12, 128 * 12);
             lengths[CreatureConstants.AnimatedObject_Colossal_Wooden][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.AnimatedObject_Colossal_Wooden][CreatureConstants.AnimatedObject_Colossal_Wooden] = "0";
             lengths[CreatureConstants.AnimatedObject_Gargantuan][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.AnimatedObject_Gargantuan][CreatureConstants.AnimatedObject_Gargantuan] = "0";
             lengths[CreatureConstants.AnimatedObject_Gargantuan_Flexible][GenderConstants.Agender] = GetBaseFromRange(32 * 12, 64 * 12);
             lengths[CreatureConstants.AnimatedObject_Gargantuan_Flexible][CreatureConstants.AnimatedObject_Gargantuan_Flexible] = GetMultiplierFromRange(32 * 12, 64 * 12);
-            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][GenderConstants.Agender] = "0";
-            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs] = "0";
-            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][GenderConstants.Agender] = "0";
-            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden] = "0";
+            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long][GenderConstants.Agender] = GetBaseFromRange(32 * 12, 64 * 12);
+            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long][CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long] =
+                GetMultiplierFromRange(32 * 12, 64 * 12);
+            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden][GenderConstants.Agender] = GetBaseFromRange(32 * 12, 64 * 12);
+            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden][CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden] =
+                GetMultiplierFromRange(32 * 12, 64 * 12);
+            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall][GenderConstants.Agender] = GetBaseFromRange(32 * 12 / 2, 64 * 12 / 2);
+            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall][CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall] =
+                GetMultiplierFromRange(32 * 12 / 2, 64 * 12 / 2);
+            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden][GenderConstants.Agender] = GetBaseFromRange(32 * 12 / 2, 64 * 12 / 2);
+            lengths[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden][CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden] =
+                GetMultiplierFromRange(32 * 12 / 2, 64 * 12 / 2);
             lengths[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike][GenderConstants.Agender] = GetBaseFromRange(32 * 12, 64 * 12);
             lengths[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike][CreatureConstants.AnimatedObject_Gargantuan_Sheetlike] = GetMultiplierFromRange(32 * 12, 64 * 12);
             lengths[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs][GenderConstants.Agender] = "0";
@@ -147,17 +165,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden][CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden] = "0";
             lengths[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden][GenderConstants.Agender] = GetBaseFromRange(32 * 12, 64 * 12);
-            lengths[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden][CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden] = GetMultiplierFromRange(32 * 12, 64 * 12);
+            lengths[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden][CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden] =
+                GetMultiplierFromRange(32 * 12, 64 * 12);
             lengths[CreatureConstants.AnimatedObject_Gargantuan_Wooden][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.AnimatedObject_Gargantuan_Wooden][CreatureConstants.AnimatedObject_Gargantuan_Wooden] = "0";
             lengths[CreatureConstants.AnimatedObject_Huge][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.AnimatedObject_Huge][CreatureConstants.AnimatedObject_Huge] = "0";
             lengths[CreatureConstants.AnimatedObject_Huge_Flexible][GenderConstants.Agender] = GetBaseFromRange(16 * 12, 32 * 12);
             lengths[CreatureConstants.AnimatedObject_Huge_Flexible][CreatureConstants.AnimatedObject_Huge_Flexible] = GetMultiplierFromRange(16 * 12, 32 * 12);
-            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs][GenderConstants.Agender] = "0";
-            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs][CreatureConstants.AnimatedObject_Huge_MultipleLegs] = "0";
-            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][GenderConstants.Agender] = "0";
-            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden] = "0";
+            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long][GenderConstants.Agender] = GetBaseFromRange(16 * 12, 32 * 12);
+            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long][CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long] =
+                GetMultiplierFromRange(16 * 12, 32 * 12);
+            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden][GenderConstants.Agender] = GetBaseFromRange(16 * 12, 32 * 12);
+            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden][CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden] =
+                GetMultiplierFromRange(16 * 12, 32 * 12);
+            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall][GenderConstants.Agender] = GetBaseFromRange(16 * 12 / 2, 32 * 12 / 2);
+            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall][CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall] =
+                GetMultiplierFromRange(16 * 12 / 2, 32 * 12 / 2);
+            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden][GenderConstants.Agender] = GetBaseFromRange(16 * 12 / 2, 32 * 12 / 2);
+            lengths[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden][CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden] =
+                GetMultiplierFromRange(16 * 12 / 2, 32 * 12 / 2);
             lengths[CreatureConstants.AnimatedObject_Huge_Sheetlike][GenderConstants.Agender] = GetBaseFromRange(16 * 12, 32 * 12);
             lengths[CreatureConstants.AnimatedObject_Huge_Sheetlike][CreatureConstants.AnimatedObject_Huge_Sheetlike] = GetMultiplierFromRange(16 * 12, 32 * 12);
             lengths[CreatureConstants.AnimatedObject_Huge_TwoLegs][GenderConstants.Agender] = "0";
@@ -172,10 +199,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.AnimatedObject_Large][CreatureConstants.AnimatedObject_Large] = "0";
             lengths[CreatureConstants.AnimatedObject_Large_Flexible][GenderConstants.Agender] = GetBaseFromRange(8 * 12, 16 * 12);
             lengths[CreatureConstants.AnimatedObject_Large_Flexible][CreatureConstants.AnimatedObject_Large_Flexible] = GetMultiplierFromRange(8 * 12, 16 * 12);
-            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs][GenderConstants.Agender] = "0";
-            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs][CreatureConstants.AnimatedObject_Large_MultipleLegs] = "0";
-            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][GenderConstants.Agender] = "0";
-            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden] = "0";
+            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long][GenderConstants.Agender] = GetBaseFromRange(8 * 12, 16 * 12);
+            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long][CreatureConstants.AnimatedObject_Large_MultipleLegs_Long] =
+                GetMultiplierFromRange(8 * 12, 16 * 12);
+            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden][GenderConstants.Agender] = GetBaseFromRange(8 * 12, 16 * 12);
+            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden][CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden] =
+                GetMultiplierFromRange(8 * 12, 16 * 12);
+            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall][GenderConstants.Agender] = GetBaseFromRange(8 * 12 / 2, 16 * 12 / 2);
+            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall][CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall] =
+                GetMultiplierFromRange(8 * 12 / 2, 16 * 12 / 2);
+            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden][GenderConstants.Agender] = GetBaseFromRange(8 * 12 / 2, 16 * 12 / 2);
+            lengths[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden][CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden] =
+                GetMultiplierFromRange(8 * 12 / 2, 16 * 12 / 2);
             lengths[CreatureConstants.AnimatedObject_Large_Sheetlike][GenderConstants.Agender] = GetBaseFromRange(8 * 12, 16 * 12);
             lengths[CreatureConstants.AnimatedObject_Large_Sheetlike][CreatureConstants.AnimatedObject_Large_Sheetlike] = GetMultiplierFromRange(8 * 12, 16 * 12);
             lengths[CreatureConstants.AnimatedObject_Large_TwoLegs][GenderConstants.Agender] = "0";
@@ -276,9 +311,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Arrowhawk_Elder][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
             lengths[CreatureConstants.Arrowhawk_Elder][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
             lengths[CreatureConstants.Arrowhawk_Elder][CreatureConstants.Arrowhawk_Elder] = GetMultiplierFromAverage(20 * 12);
-            //Source: https://forgottenrealms.fandom.com/wiki/Assassin_vine
-            lengths[CreatureConstants.AssassinVine][GenderConstants.Agender] = GetBaseFromAverage(20 * 12);
-            lengths[CreatureConstants.AssassinVine][CreatureConstants.AssassinVine] = GetMultiplierFromAverage(20 * 12);
+            //Source: https://forgottenrealms.fandom.com/wiki/Assassin_vine "thick as a human forearm" = guessing to be 4"
+            lengths[CreatureConstants.AssassinVine][GenderConstants.Agender] = GetBaseFromAverage(4);
+            lengths[CreatureConstants.AssassinVine][CreatureConstants.AssassinVine] = GetMultiplierFromAverage(4);
             //Source: https://www.d20srd.org/srd/monsters/athach.htm
             lengths[CreatureConstants.Athach][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Athach][GenderConstants.Male] = "0";
@@ -316,9 +351,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Barghest][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
             lengths[CreatureConstants.Barghest][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
             lengths[CreatureConstants.Barghest][CreatureConstants.Barghest] = GetMultiplierFromAverage(6 * 12);
-            lengths[CreatureConstants.Barghest_Greater][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
-            lengths[CreatureConstants.Barghest_Greater][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
-            lengths[CreatureConstants.Barghest_Greater][CreatureConstants.Barghest_Greater] = GetMultiplierFromAverage(6 * 12);
+            //Greater Barghest height increases by 2', so increasing length accordingly
+            lengths[CreatureConstants.Barghest_Greater][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.Barghest_Greater][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.Barghest_Greater][CreatureConstants.Barghest_Greater] = GetMultiplierFromAverage(8 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Basilisk
             lengths[CreatureConstants.Basilisk][GenderConstants.Female] = GetBaseFromRange(11 * 12, 13 * 12);
             lengths[CreatureConstants.Basilisk][GenderConstants.Male] = GetBaseFromRange(11 * 12, 13 * 12);
@@ -327,14 +363,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Basilisk_Greater][GenderConstants.Female] = GetBaseFromRange(22 * 12, 26 * 12);
             lengths[CreatureConstants.Basilisk_Greater][GenderConstants.Male] = GetBaseFromRange(22 * 12, 26 * 12);
             lengths[CreatureConstants.Basilisk_Greater][CreatureConstants.Basilisk_Greater] = GetMultiplierFromRange(22 * 12, 26 * 12);
-            //Source: https://www.dimensions.com/element/little-brown-bat-myotis-lucifugus
-            lengths[CreatureConstants.Bat][GenderConstants.Female] = GetBaseFromRange(3, 4);
-            lengths[CreatureConstants.Bat][GenderConstants.Male] = GetBaseFromRange(3, 4);
-            lengths[CreatureConstants.Bat][CreatureConstants.Bat] = GetMultiplierFromRange(3, 4);
+            //Source: https://www.dimensions.com/element/little-brown-bat-myotis-lucifugus hanging height
+            lengths[CreatureConstants.Bat][GenderConstants.Female] = GetBaseFromRange(4, 5);
+            lengths[CreatureConstants.Bat][GenderConstants.Male] = GetBaseFromRange(4, 5);
+            lengths[CreatureConstants.Bat][CreatureConstants.Bat] = GetMultiplierFromRange(4, 5);
             //Scaled up from bat, x15 based on wingspan
-            lengths[CreatureConstants.Bat_Dire][GenderConstants.Female] = GetBaseFromRange(45, 60);
-            lengths[CreatureConstants.Bat_Dire][GenderConstants.Male] = GetBaseFromRange(45, 60);
-            lengths[CreatureConstants.Bat_Dire][CreatureConstants.Bat_Dire] = GetMultiplierFromRange(45, 60);
+            lengths[CreatureConstants.Bat_Dire][GenderConstants.Female] = GetBaseFromRange(60, 75);
+            lengths[CreatureConstants.Bat_Dire][GenderConstants.Male] = GetBaseFromRange(60, 75);
+            lengths[CreatureConstants.Bat_Dire][CreatureConstants.Bat_Dire] = GetMultiplierFromRange(60, 75);
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
             lengths[CreatureConstants.Bat_Swarm][GenderConstants.Agender] = GetBaseFromAverage(10 * 12);
             lengths[CreatureConstants.Bat_Swarm][CreatureConstants.Bat_Swarm] = GetMultiplierFromAverage(10 * 12);
@@ -502,8 +538,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Chuul][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
             lengths[CreatureConstants.Chuul][CreatureConstants.Chuul] = GetMultiplierFromAverage(8 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Cloaker and https://www.mojobob.com/roleplay/monstrousmanual/c/cloaker.html
-            lengths[CreatureConstants.Cloaker][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
-            lengths[CreatureConstants.Cloaker][CreatureConstants.Cloaker] = GetMultiplierFromAverage(8 * 12);
+            lengths[CreatureConstants.Cloaker][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Cloaker][CreatureConstants.Cloaker] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Cockatrice
             lengths[CreatureConstants.Cockatrice][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Cockatrice][GenderConstants.Male] = "0";
@@ -1338,8 +1374,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Imp][CreatureConstants.Imp] = "0";
             //Source: https://www.d20srd.org/srd/monsters/invisibleStalker.htm
             //https://www.d20srd.org/srd/combat/movementPositionAndDistance.htm using Large, since actual form is unknown
-            lengths[CreatureConstants.InvisibleStalker][GenderConstants.Agender] = GetBaseFromRange(8 * 12, 16 * 12);
-            lengths[CreatureConstants.InvisibleStalker][CreatureConstants.InvisibleStalker] = GetMultiplierFromRange(8 * 12, 16 * 12);
+            //Halving since by space/reach, this is a Tall creature
+            lengths[CreatureConstants.InvisibleStalker][GenderConstants.Agender] = GetBaseFromRange(8 * 12 / 2, 16 * 12 / 2);
+            lengths[CreatureConstants.InvisibleStalker][CreatureConstants.InvisibleStalker] = GetMultiplierFromRange(8 * 12 / 2, 16 * 12 / 2);
             //Source: https://forgottenrealms.fandom.com/wiki/Janni
             lengths[CreatureConstants.Janni][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Janni][GenderConstants.Female] = "0";
@@ -1525,10 +1562,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Nightmare_Cauchemar][CreatureConstants.Nightmare_Cauchemar] = GetMultiplierFromAverage(8 * 12 * 2);
             lengths[CreatureConstants.Nightwalker][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Nightwalker][CreatureConstants.Nightwalker] = "0";
+            //https://www.dimensions.com/element/giant-golden-crowned-flying-fox-acerodon-jubatus scaled up: [18,22]*40*12/[59,67] = [146,158]
+            lengths[CreatureConstants.Nightwing][GenderConstants.Agender] = GetBaseFromRange(146, 158);
+            lengths[CreatureConstants.Nightwing][CreatureConstants.Nightwing] = GetMultiplierFromRange(146, 158);
             //Source: https://www.d20srd.org/srd/monsters/nightshade.htm
-            //https://www.dimensions.com/element/giant-golden-crowned-flying-fox-acerodon-jubatus scaled up: [11,16]*40*12/[59,67] = [89,115]
-            lengths[CreatureConstants.Nightwing][GenderConstants.Agender] = GetBaseFromRange(89, 115);
-            lengths[CreatureConstants.Nightwing][CreatureConstants.Nightwing] = GetMultiplierFromRange(89, 115);
             lengths[CreatureConstants.Nixie][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Nixie][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Nixie][CreatureConstants.Nixie] = "0";
@@ -1537,14 +1574,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/ooze.htm#ochreJelly
             lengths[CreatureConstants.OchreJelly][GenderConstants.Agender] = GetBaseFromAverage(15 * 12);
             lengths[CreatureConstants.OchreJelly][CreatureConstants.OchreJelly] = GetMultiplierFromAverage(15 * 12);
-            //Source: https://www.dimensions.com/element/common-octopus-octopus-vulgaris
-            lengths[CreatureConstants.Octopus][GenderConstants.Female] = GetBaseFromRange(30, 39);
-            lengths[CreatureConstants.Octopus][GenderConstants.Male] = GetBaseFromRange(30, 39);
-            lengths[CreatureConstants.Octopus][CreatureConstants.Octopus] = GetMultiplierFromRange(30, 39);
-            //Source: https://www.d20srd.org/srd/monsters/octopusGiant.htm
-            lengths[CreatureConstants.Octopus_Giant][GenderConstants.Female] = GetBaseFromAtLeast(10 * 12);
-            lengths[CreatureConstants.Octopus_Giant][GenderConstants.Male] = GetBaseFromAtLeast(10 * 12);
-            lengths[CreatureConstants.Octopus_Giant][CreatureConstants.Octopus_Giant] = GetMultiplierFromAtLeast(10 * 12);
+            //Source: https://www.dimensions.com/element/common-octopus-octopus-vulgaris (mantle length)
+            lengths[CreatureConstants.Octopus][GenderConstants.Female] = GetBaseFromRange(6, 10);
+            lengths[CreatureConstants.Octopus][GenderConstants.Male] = GetBaseFromRange(6, 10);
+            lengths[CreatureConstants.Octopus][CreatureConstants.Octopus] = GetMultiplierFromRange(6, 10);
+            //Source: https://www.dimensions.com/element/giant-pacific-octopus-enteroctopus-dofleini (mantle length)
+            lengths[CreatureConstants.Octopus_Giant][GenderConstants.Female] = GetBaseFromRange(20, 24);
+            lengths[CreatureConstants.Octopus_Giant][GenderConstants.Male] = GetBaseFromRange(20, 24);
+            lengths[CreatureConstants.Octopus_Giant][CreatureConstants.Octopus_Giant] = GetMultiplierFromRange(20, 24);
             lengths[CreatureConstants.Ogre][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Ogre][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Ogre][CreatureConstants.Ogre] = "0";
@@ -1611,9 +1648,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Porpoise][GenderConstants.Female] = GetBaseFromRange(4 * 12, 6 * 12);
             lengths[CreatureConstants.Porpoise][GenderConstants.Male] = GetBaseFromRange(4 * 12, 6 * 12);
             lengths[CreatureConstants.Porpoise][CreatureConstants.Porpoise] = GetMultiplierFromRange(4 * 12, 6 * 12);
-            lengths[CreatureConstants.PrayingMantis_Giant][GenderConstants.Female] = "0";
-            lengths[CreatureConstants.PrayingMantis_Giant][GenderConstants.Male] = "0";
-            lengths[CreatureConstants.PrayingMantis_Giant][CreatureConstants.PrayingMantis_Giant] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Giant_praying_mantis
+            lengths[CreatureConstants.PrayingMantis_Giant][GenderConstants.Female] = GetBaseFromRange(2 * 12, 5 * 12);
+            lengths[CreatureConstants.PrayingMantis_Giant][GenderConstants.Male] = GetBaseFromRange(2 * 12, 5 * 12);
+            lengths[CreatureConstants.PrayingMantis_Giant][CreatureConstants.PrayingMantis_Giant] = GetMultiplierFromRange(2 * 12, 5 * 12);
             //Source: https://www.d20srd.org/srd/monsters/pseudodragon.htm
             lengths[CreatureConstants.Pseudodragon][GenderConstants.Female] = GetBaseFromAverage(3 * 12);
             lengths[CreatureConstants.Pseudodragon][GenderConstants.Male] = GetBaseFromAverage(3 * 12);
@@ -1767,9 +1805,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.ShadowMastiff][GenderConstants.Female] = GetBaseFromRange(29, 44);
             lengths[CreatureConstants.ShadowMastiff][GenderConstants.Male] = GetBaseFromRange(32, 47);
             lengths[CreatureConstants.ShadowMastiff][CreatureConstants.ShadowMastiff] = GetMultiplierFromRange(32, 47);
-            //Source: https://www.d20srd.org/srd/monsters/shamblingMound.htm
-            lengths[CreatureConstants.ShamblingMound][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
-            lengths[CreatureConstants.ShamblingMound][CreatureConstants.ShamblingMound] = GetMultiplierFromAverage(8 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/shamblingMound.htm -
+            //the 8' measurement is "girth" or width, not length. Shambling Mounds should be tall, so we will count this as 0 for now
+            //lengths[CreatureConstants.ShamblingMound][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.ShamblingMound][GenderConstants.Agender] = "0";
+            //lengths[CreatureConstants.ShamblingMound][CreatureConstants.ShamblingMound] = GetMultiplierFromAverage(8 * 12);
+            lengths[CreatureConstants.ShamblingMound][CreatureConstants.ShamblingMound] = "0";
             //Source: https://www.dimensions.com/element/blacktip-shark-carcharhinus-limbatus
             lengths[CreatureConstants.Shark_Medium][GenderConstants.Female] = GetBaseFromRange(59, 8 * 12);
             lengths[CreatureConstants.Shark_Medium][GenderConstants.Male] = GetBaseFromRange(59, 8 * 12);
@@ -1906,14 +1947,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.SpiderEater][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
             lengths[CreatureConstants.SpiderEater][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
             lengths[CreatureConstants.SpiderEater][CreatureConstants.SpiderEater] = GetMultiplierFromAverage(10 * 12);
-            //Source: https://www.dimensions.com/element/humboldt-squid-dosidicus-gigas
-            lengths[CreatureConstants.Squid][GenderConstants.Female] = GetBaseFromRange(59, 98);
-            lengths[CreatureConstants.Squid][GenderConstants.Male] = GetBaseFromRange(59, 98);
-            lengths[CreatureConstants.Squid][CreatureConstants.Squid] = GetMultiplierFromRange(59, 98);
-            //Source: https://www.d20srd.org/srd/monsters/squidGiant.htm
-            lengths[CreatureConstants.Squid_Giant][GenderConstants.Female] = GetBaseFromUpTo(20 * 20);
-            lengths[CreatureConstants.Squid_Giant][GenderConstants.Male] = GetBaseFromUpTo(20 * 20);
-            lengths[CreatureConstants.Squid_Giant][CreatureConstants.Squid_Giant] = GetMultiplierFromUpTo(20 * 20);
+            //Source: https://www.dimensions.com/element/humboldt-squid-dosidicus-gigas (mantle length)
+            lengths[CreatureConstants.Squid][GenderConstants.Female] = GetBaseFromRange(29, 79);
+            lengths[CreatureConstants.Squid][GenderConstants.Male] = GetBaseFromRange(29, 79);
+            lengths[CreatureConstants.Squid][CreatureConstants.Squid] = GetMultiplierFromRange(29, 79);
+            //Scaled up from squid based on height: [29,79]*(20*12)/[59,98] = [118,193]
+            lengths[CreatureConstants.Squid_Giant][GenderConstants.Female] = GetBaseFromRange(118, 193);
+            lengths[CreatureConstants.Squid_Giant][GenderConstants.Male] = GetBaseFromRange(118, 193);
+            lengths[CreatureConstants.Squid_Giant][CreatureConstants.Squid_Giant] = GetMultiplierFromRange(118, 193);
             //Source: https://www.d20srd.org/srd/monsters/giantStagBeetle.htm
             lengths[CreatureConstants.StagBeetle_Giant][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
             lengths[CreatureConstants.StagBeetle_Giant][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
@@ -1989,9 +2030,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.UmberHulk][GenderConstants.Female] = GetBaseFromRange(8 * 12, 9 * 12);
             lengths[CreatureConstants.UmberHulk][GenderConstants.Male] = GetBaseFromRange(8 * 12, 9 * 12);
             lengths[CreatureConstants.UmberHulk][CreatureConstants.UmberHulk] = GetMultiplierFromRange(8 * 12, 9 * 12);
-            lengths[CreatureConstants.UmberHulk_TrulyHorrid][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            lengths[CreatureConstants.UmberHulk_TrulyHorrid][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            lengths[CreatureConstants.UmberHulk_TrulyHorrid][CreatureConstants.UmberHulk_TrulyHorrid] = GetMultiplierFromAverage(16 * 12);
+            //Monster Manual says "more than 16 feet"
+            lengths[CreatureConstants.UmberHulk_TrulyHorrid][GenderConstants.Female] = GetBaseFromAtLeast(16 * 12);
+            lengths[CreatureConstants.UmberHulk_TrulyHorrid][GenderConstants.Male] = GetBaseFromAtLeast(16 * 12);
+            lengths[CreatureConstants.UmberHulk_TrulyHorrid][CreatureConstants.UmberHulk_TrulyHorrid] = GetMultiplierFromAtLeast(16 * 12);
             //Source: https://www.d20srd.org/srd/monsters/unicorn.htm Females "slightly smaller", so 90%
             lengths[CreatureConstants.Unicorn][GenderConstants.Female] = GetBaseFromAverage(86, 8 * 12);
             lengths[CreatureConstants.Unicorn][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
@@ -2296,24 +2338,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(baseLength + multiplierMax, Is.EqualTo(max), $"Max; Theoretical: {theoreticalRoll}");
         }
 
-        [Test]
-        public void IfCreatureHasNoLength_HasHeight()
+        private void AssertIfCreatureHasNoLength_HasHeight(string creature)
         {
-            var heights = HeightsTests.GetCreatureHeights();
-            var creatures = CreatureConstants.GetAll();
+            var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, creature);
 
-            foreach (var creature in creatures)
+            foreach (var gender in genders)
             {
-                Assert.That(creatureLengths, Contains.Key(creature), "Lengths");
-                Assert.That(creatureLengths[creature], Contains.Key(creature), $"Lengths[{creature}]");
-                Assert.That(heights, Contains.Key(creature), "Heights");
-                Assert.That(heights[creature], Contains.Key(creature), $"Heights[{creature}]");
+                var height = measurementHelper.GetAverageHeight(creature, gender);
+                var length = measurementHelper.GetAverageLength(creature, gender);
 
-                Assert.That(creatureLengths[creature][creature], Is.Not.Empty, $"Lengths[{creature}][{creature}]");
-                Assert.That(heights[creature][creature], Is.Not.Empty, $"Heights[{creature}][{creature}]");
-
-                if (creatureLengths[creature][creature] == "0")
-                    Assert.That(heights[creature][creature], Is.Not.EqualTo("0"), creature);
+                if (length == 0)
+                    Assert.That(height, Is.Positive, creature + gender);
             }
         }
     }

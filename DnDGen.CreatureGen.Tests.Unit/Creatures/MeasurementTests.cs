@@ -57,5 +57,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(measurement.Bonuses[1].Condition, Is.EqualTo("my other condition"));
             Assert.That(measurement.Bonuses[1].IsConditional, Is.True);
         }
+
+        [Test]
+        public void ToString_ReturnsDescription()
+        {
+            measurement.Value = 9266;
+            measurement.Description = "my description";
+
+            Assert.That(measurement.ToString(), Is.EqualTo("9266 my unit (my description)"));
+        }
     }
 }

@@ -62,19 +62,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
         public CreatureBuilder Clone(Creature source)
         {
-            creature.Abilities = new Dictionary<string, Ability>();
+            creature.Abilities = [];
             foreach (var kvp in source.Abilities)
             {
-                creature.Abilities[kvp.Key] = new Ability(kvp.Value.Name);
-                creature.Abilities[kvp.Key].AdvancementAdjustment = kvp.Value.AdvancementAdjustment;
-                creature.Abilities[kvp.Key].BaseScore = kvp.Value.BaseScore;
-                creature.Abilities[kvp.Key].RacialAdjustment = kvp.Value.RacialAdjustment;
+                creature.Abilities[kvp.Key] = new Ability(kvp.Value.Name)
+                {
+                    AdvancementAdjustment = kvp.Value.AdvancementAdjustment,
+                    BaseScore = kvp.Value.BaseScore,
+                    RacialAdjustment = kvp.Value.RacialAdjustment
+                };
             }
 
             creature.Alignment = new Alignment { Goodness = source.Alignment.Goodness, Lawfulness = source.Alignment.Lawfulness };
 
-            creature.ArmorClass = new ArmorClass();
-            creature.ArmorClass.Dexterity = creature.Abilities[AbilityConstants.Dexterity];
+            creature.ArmorClass = new ArmorClass
+            {
+                Dexterity = creature.Abilities[AbilityConstants.Dexterity]
+            };
             creature.ArmorClass.MaxDexterityBonus = source.ArmorClass.MaxDexterityBonus;
             creature.ArmorClass.SizeModifier = source.ArmorClass.SizeModifier;
 
@@ -85,7 +89,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 BaseAttackBonus = a.BaseAttackBonus,
                 DamageBonus = a.DamageBonus,
                 DamageEffect = a.DamageEffect,
-                Damages = new List<Damage>(a.Damages.Select(d => new Damage { Roll = d.Roll, Type = d.Type, Condition = d.Condition })),
+                Damages = [.. a.Damages.Select(d => new Damage { Roll = d.Roll, Type = d.Type, Condition = d.Condition })],
                 Frequency = new Frequency
                 {
                     Quantity = a.Frequency.Quantity,
@@ -204,7 +208,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
         public CreatureBuilder WithHitDiceQuantityNoMoreThan(int quantity)
         {
-            creature.HitPoints.HitDice[0].Quantity = random.Next(quantity) + 1;
+            var randomQuantity = random.Next(quantity) + 1;
+            return WithHitDiceQuantity(randomQuantity);
+        }
+
+        public CreatureBuilder WithHitDiceQuantity(double quantity)
+        {
+            creature.HitPoints.HitDice[0].Quantity = quantity;
             creature.HitPoints.DefaultTotal = creature.HitPoints.RoundedHitDiceQuantity * creature.HitPoints.HitDice[0].HitDie / 2;
             creature.HitPoints.Total = random.Next(creature.HitPoints.RoundedHitDiceQuantity * creature.HitPoints.HitDice[0].HitDie) + creature.HitPoints.HitDice[0].RoundedQuantity;
 

@@ -3,7 +3,7 @@ using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Verifiers;
-using DnDGen.Infrastructure.Generators;
+using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Selectors.Collections;
 using Moq;
 using NUnit.Framework;
@@ -46,8 +46,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
-                .Returns(new[] { "character", "creature", "wrong creature" });
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Returns(["character", "creature", "wrong creature"]);
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, "creature", filters);
             Assert.That(isCompatible, Is.EqualTo(compatible));
@@ -82,7 +82,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator2.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, "creature", filters);
@@ -131,7 +131,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator3.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, "creature", filters);
@@ -157,7 +157,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, "creature", filters);
@@ -181,7 +181,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
             var isCompatible = verifier.VerifyCompatibility(true, "creature", filters);
@@ -205,7 +205,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
             var isCompatible = verifier.VerifyCompatibility(true, "creature", filters);
@@ -228,7 +228,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "wrong creature" });
 
             var isCompatible = verifier.VerifyCompatibility(true, "creature", filters);
@@ -251,7 +251,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "wrong creature" });
 
             var isCompatible = verifier.VerifyCompatibility(true, "creature", filters);
@@ -274,7 +274,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
             var isCompatible = verifier.VerifyCompatibility(false, null, filters);
@@ -300,7 +300,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
             var isCompatible = verifier.VerifyCompatibility(false, null, filters);
@@ -324,7 +324,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, filters);
@@ -348,7 +348,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, filters);
@@ -371,7 +371,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "wrong creature" });
 
             var isCompatible = verifier.VerifyCompatibility(true, null, filters);
@@ -412,10 +412,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature", "wrong character" });
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature", "wrong character" });
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, filters);
@@ -456,10 +456,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature", "wrong character" });
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature", "wrong character" });
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, filters);
@@ -500,7 +500,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, filters);
@@ -541,7 +541,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, filters);
@@ -574,7 +574,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "wrong creature" });
 
             var isCompatible = verifier.VerifyCompatibility(true, null, filters);
@@ -607,7 +607,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Returns(mockApplicator.Object);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "wrong creature" });
 
             var isCompatible = verifier.VerifyCompatibility(true, null, filters);
@@ -638,10 +638,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             filters.Alignment = alignment;
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature", "wrong character" });
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature", "wrong character" });
 
             var noneApplicator = new Mock<TemplateApplicator>();
@@ -655,7 +655,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
             foreach (var template in templates)
@@ -694,10 +694,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             filters.Alignment = alignment;
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature", "wrong character" });
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature", "wrong character" });
 
             var noneApplicator = new Mock<TemplateApplicator>();
@@ -711,7 +711,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
             foreach (var template in templates)
@@ -742,10 +742,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             filters.Templates.Add(empty);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature", "wrong character" });
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature", "wrong character" });
 
             var noneApplicator = new Mock<TemplateApplicator>();
@@ -759,7 +759,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
             foreach (var template in templates)
@@ -804,10 +804,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             filters.Templates.Add(CreatureConstants.Templates.None);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature", "wrong character" });
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature", "wrong character" });
 
             var noneApplicator = new Mock<TemplateApplicator>();
@@ -821,7 +821,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
             foreach (var template in templates)
@@ -851,13 +851,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         [TestCase("my challenge rating", "my type", "my alignment")]
         public void VerifyCompatiblity_WithFiltersAsCharacter_NotCompatible_IfNotCharacter(string cr, string type, string alignment)
         {
-            var filters = new Filters();
-            filters.Type = type;
-            filters.ChallengeRating = cr;
-            filters.Alignment = alignment;
+            var filters = new Filters
+            {
+                Type = type,
+                ChallengeRating = cr,
+                Alignment = alignment
+            };
 
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(["character", "wrong creature"]);
 
             var noneApplicator = new Mock<TemplateApplicator>();
@@ -871,7 +873,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
             foreach (var template in templates)
@@ -880,7 +882,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 var isTemplate = template == "template";
                 mockApplicator
                     .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), true, filters))
-                    .Returns((IEnumerable<string> cc, bool asc, Filters f) => cc.Intersect(new[] { "creature" }).Where(c => isTemplate));
+                    .Returns((IEnumerable<string> cc, bool asc, Filters f) => cc.Intersect(["creature"]).Where(c => isTemplate));
 
                 mockJustInTimeFactory
                     .Setup(f => f.Build<TemplateApplicator>(template))

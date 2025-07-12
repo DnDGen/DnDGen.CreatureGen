@@ -52,7 +52,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         public void Generate_Alignment()
         {
             mockCollectionSelector
-                .Setup(s => s.ExplodeAndPreserveDuplicates(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[] { "lawfulness goodness" });
 
             var alignment = alignmentGenerator.Generate("creature name", null, null);
@@ -63,7 +63,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         public void Generate_Alignment_WithTemplate()
         {
             mockCollectionSelector
-                .Setup(s => s.ExplodeAndPreserveDuplicates(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[] { "other wrong alignment", "lawfulness goodness", "wrong alignment" });
 
             mockCollectionSelector
@@ -78,7 +78,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         public void Generate_Alignment_WithMultipleTemplates()
         {
             mockCollectionSelector
-                .Setup(s => s.ExplodeAndPreserveDuplicates(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[] { "lawfulness goodness", "wrong alignment" });
 
             mockCollectionSelector
@@ -97,7 +97,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         public void Generate_RandomAlignment()
         {
             mockCollectionSelector
-                .Setup(s => s.ExplodeAndPreserveDuplicates(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[]
                 {
                     "lawfulness goodness",
@@ -114,7 +114,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         public void Generate_RandomAlignment_WithTemplate()
         {
             mockCollectionSelector
-                .Setup(s => s.ExplodeAndPreserveDuplicates(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[]
                 {
                     "lawfulness goodness",
@@ -136,7 +136,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         public void Generate_RandomAlignment_WithMultipleTemplates()
         {
             mockCollectionSelector
-                .Setup(s => s.ExplodeAndPreserveDuplicates(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[]
                 {
                     "lawfulness goodness",
@@ -162,7 +162,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         public void Generate_RandomWeightedAlignment()
         {
             mockCollectionSelector
-                .Setup(s => s.ExplodeAndPreserveDuplicates(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[]
                 {
                     "lawfulness goodness",
@@ -180,7 +180,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         public void Generate_RandomWeightedAlignment_WithTemplate()
         {
             mockCollectionSelector
-                .Setup(s => s.ExplodeAndPreserveDuplicates(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[]
                 {
                     "lawfulness goodness",
@@ -203,7 +203,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         public void Generate_RandomWeightedAlignment_WithMultipleTemplates()
         {
             mockCollectionSelector
-                .Setup(s => s.ExplodeAndPreserveDuplicates(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[]
                 {
                     "lawfulness goodness",
@@ -230,7 +230,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         public void Generate_RandomAlignmentFromMultipleGroups()
         {
             mockCollectionSelector
-                .Setup(s => s.ExplodeAndPreserveDuplicates(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[]
                 {
                     "lawfulness goodness",
@@ -249,7 +249,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         public void Generate_RandomAlignmentFromMultipleGroups_WithTemplate()
         {
             mockCollectionSelector
-                .Setup(s => s.ExplodeAndPreserveDuplicates(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[]
                 {
                     "lawfulness goodness",
@@ -274,7 +274,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         public void Generate_RandomAlignmentFromMultipleGroups_WithMultipleTemplates()
         {
             mockCollectionSelector
-                .Setup(s => s.ExplodeAndPreserveDuplicates(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[]
                 {
                     "lawfulness goodness",
@@ -303,7 +303,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         public void Generate_RandomWeightedAlignmentFromMultipleGroups()
         {
             mockCollectionSelector
-                .Setup(s => s.ExplodeAndPreserveDuplicates(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[]
                 {
                     "lawfulness goodness",
@@ -324,7 +324,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         public void Generate_RandomWeightedAlignmentFromMultipleGroups_WithTemplate()
         {
             mockCollectionSelector
-                .Setup(s => s.ExplodeAndPreserveDuplicates(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[]
                 {
                     "lawfulness goodness",
@@ -354,7 +354,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         public void Generate_RandomWeightedAlignmentFromMultipleGroups_WithMultipleTemplates()
         {
             mockCollectionSelector
-                .Setup(s => s.ExplodeAndPreserveDuplicates(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(new[]
                 {
                     "lawfulness goodness",

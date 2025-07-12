@@ -53,11 +53,19 @@
 		<entry>Agender</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Colossal (More Than Two Legs)</name>
+		<name>Animated Object, Colossal (More Than Two Legs, Long)</name>
 		<entry>Agender</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Colossal (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Colossal (More Than Two Legs, Long, Wooden)</name>
+		<entry>Agender</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall)</name>
+		<entry>Agender</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall, Wooden)</name>
 		<entry>Agender</entry>
 	</collection>
 	<collection>
@@ -89,11 +97,19 @@
 		<entry>Agender</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs)</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long)</name>
 		<entry>Agender</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long, Wooden)</name>
+		<entry>Agender</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall)</name>
+		<entry>Agender</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall, Wooden)</name>
 		<entry>Agender</entry>
 	</collection>
 	<collection>
@@ -125,11 +141,19 @@
 		<entry>Agender</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs)</name>
+		<name>Animated Object, Huge (More Than Two Legs, Long)</name>
 		<entry>Agender</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Huge (More Than Two Legs, Long, Wooden)</name>
+		<entry>Agender</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall)</name>
+		<entry>Agender</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall, Wooden)</name>
 		<entry>Agender</entry>
 	</collection>
 	<collection>
@@ -161,11 +185,19 @@
 		<entry>Agender</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs)</name>
+		<name>Animated Object, Large (More Than Two Legs, Long)</name>
 		<entry>Agender</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Large (More Than Two Legs, Long, Wooden)</name>
+		<entry>Agender</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall)</name>
+		<entry>Agender</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall, Wooden)</name>
 		<entry>Agender</entry>
 	</collection>
 	<collection>

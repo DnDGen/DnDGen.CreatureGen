@@ -1,6 +1,6 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
@@ -13,23 +13,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
     [TestFixture]
     public class AbilityAdjustmentsTests : TypesAndAmountsTests
     {
-        private ICollectionSelector collectionSelector;
-        private ITypeAndAmountSelector typesAndAmountsSelector;
+        private ICollectionTypeAndAmountSelector typesAndAmountsSelector;
+        private ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
 
         protected override string tableName => TableNameConstants.TypeAndAmount.AbilityAdjustments;
 
         [SetUp]
         public void Setup()
         {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
-            typesAndAmountsSelector = GetNewInstanceOf<ITypeAndAmountSelector>();
+            typesAndAmountsSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
+            creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
         }
 
         [Test]
         public void AbilityAdjustmentsNames()
         {
             var creatures = CreatureConstants.GetAll();
-            var allAges = typesAndAmountsSelector.SelectAll(TableNameConstants.TypeAndAmount.AgeRolls);
+            var allAges = typesAndAmountsSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AgeRolls);
             var ages = allAges.Values.SelectMany(v => v.Select(t => t.Type)).Distinct();
             var names = creatures
                 .Union(ages)
@@ -61,7 +61,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
 
             var creatures = CreatureConstants.GetAll();
             if (!creatures.Contains(name))
-                Assert.Pass();
+                Assert.Pass($"Only creatures have ability adjustments as multiples of 2. '{name}' is not a creature");
 
             foreach (var kvp in typesAndAmounts)
             {
@@ -207,14 +207,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 testCases[CreatureConstants.AnimatedObject_Colossal_Flexible][AbilityConstants.Dexterity] = -6;
                 testCases[CreatureConstants.AnimatedObject_Colossal_Flexible][AbilityConstants.Strength] = 18;
                 testCases[CreatureConstants.AnimatedObject_Colossal_Flexible][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][AbilityConstants.Dexterity] = -6;
-                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][AbilityConstants.Strength] = 18;
-                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long][AbilityConstants.Dexterity] = -6;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long][AbilityConstants.Strength] = 18;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden][AbilityConstants.Dexterity] = -6;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden][AbilityConstants.Strength] = 18;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall][AbilityConstants.Dexterity] = -6;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall][AbilityConstants.Strength] = 18;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden][AbilityConstants.Dexterity] = -6;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden][AbilityConstants.Strength] = 18;
+                testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden][AbilityConstants.Wisdom] = -10;
                 testCases[CreatureConstants.AnimatedObject_Colossal_Sheetlike][AbilityConstants.Charisma] = -10;
                 testCases[CreatureConstants.AnimatedObject_Colossal_Sheetlike][AbilityConstants.Dexterity] = -6;
                 testCases[CreatureConstants.AnimatedObject_Colossal_Sheetlike][AbilityConstants.Strength] = 18;
@@ -243,14 +251,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 testCases[CreatureConstants.AnimatedObject_Gargantuan_Flexible][AbilityConstants.Dexterity] = -4;
                 testCases[CreatureConstants.AnimatedObject_Gargantuan_Flexible][AbilityConstants.Strength] = 14;
                 testCases[CreatureConstants.AnimatedObject_Gargantuan_Flexible][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][AbilityConstants.Dexterity] = -4;
-                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][AbilityConstants.Strength] = 14;
-                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long][AbilityConstants.Dexterity] = -4;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long][AbilityConstants.Strength] = 14;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden][AbilityConstants.Dexterity] = -4;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden][AbilityConstants.Strength] = 14;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall][AbilityConstants.Dexterity] = -4;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall][AbilityConstants.Strength] = 14;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden][AbilityConstants.Dexterity] = -4;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden][AbilityConstants.Strength] = 14;
+                testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden][AbilityConstants.Wisdom] = -10;
                 testCases[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike][AbilityConstants.Charisma] = -10;
                 testCases[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike][AbilityConstants.Dexterity] = -4;
                 testCases[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike][AbilityConstants.Strength] = 14;
@@ -279,14 +295,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 testCases[CreatureConstants.AnimatedObject_Huge_Flexible][AbilityConstants.Dexterity] = -2;
                 testCases[CreatureConstants.AnimatedObject_Huge_Flexible][AbilityConstants.Strength] = 10;
                 testCases[CreatureConstants.AnimatedObject_Huge_Flexible][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][AbilityConstants.Dexterity] = -2;
-                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][AbilityConstants.Strength] = 10;
-                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long][AbilityConstants.Dexterity] = -2;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long][AbilityConstants.Strength] = 10;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden][AbilityConstants.Dexterity] = -2;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden][AbilityConstants.Strength] = 10;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall][AbilityConstants.Dexterity] = -2;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall][AbilityConstants.Strength] = 10;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden][AbilityConstants.Dexterity] = -2;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden][AbilityConstants.Strength] = 10;
+                testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden][AbilityConstants.Wisdom] = -10;
                 testCases[CreatureConstants.AnimatedObject_Huge_Sheetlike][AbilityConstants.Charisma] = -10;
                 testCases[CreatureConstants.AnimatedObject_Huge_Sheetlike][AbilityConstants.Dexterity] = -2;
                 testCases[CreatureConstants.AnimatedObject_Huge_Sheetlike][AbilityConstants.Strength] = 10;
@@ -315,14 +339,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 testCases[CreatureConstants.AnimatedObject_Large_Flexible][AbilityConstants.Dexterity] = 0;
                 testCases[CreatureConstants.AnimatedObject_Large_Flexible][AbilityConstants.Strength] = 6;
                 testCases[CreatureConstants.AnimatedObject_Large_Flexible][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs][AbilityConstants.Wisdom] = -10;
-                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][AbilityConstants.Charisma] = -10;
-                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][AbilityConstants.Dexterity] = 0;
-                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][AbilityConstants.Strength] = 6;
-                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long][AbilityConstants.Strength] = 6;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden][AbilityConstants.Strength] = 6;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall][AbilityConstants.Strength] = 6;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall][AbilityConstants.Wisdom] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden][AbilityConstants.Charisma] = -10;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden][AbilityConstants.Strength] = 6;
+                testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden][AbilityConstants.Wisdom] = -10;
                 testCases[CreatureConstants.AnimatedObject_Large_Sheetlike][AbilityConstants.Charisma] = -10;
                 testCases[CreatureConstants.AnimatedObject_Large_Sheetlike][AbilityConstants.Dexterity] = 0;
                 testCases[CreatureConstants.AnimatedObject_Large_Sheetlike][AbilityConstants.Strength] = 6;
@@ -3867,8 +3899,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         [TestCase(CreatureConstants.Types.Vermin, AbilityConstants.Intelligence)]
         public void Type_DoesNotHaveAbility(string creatureType, string ability)
         {
-            var creatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, creatureType);
-            var abilities = typesAndAmountsSelector.SelectAll(tableName);
+            var creatures = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
+                .Where(kvp => kvp.Value.Single().Types.Contains(creatureType))
+                .Select(kvp => kvp.Key);
+            var abilities = typesAndAmountsSelector.SelectAllFrom(Config.Name, tableName);
 
             foreach (var creature in creatures)
             {
@@ -3890,8 +3924,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
         public void Type_HasAllAbilities(string creatureType)
         {
-            var creatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, creatureType);
-            var abilities = typesAndAmountsSelector.SelectAll(tableName);
+            var creatures = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
+                .Where(kvp => kvp.Value.Single().Types.Contains(creatureType))
+                .Select(kvp => kvp.Key);
+            var abilities = typesAndAmountsSelector.SelectAllFrom(Config.Name, tableName);
             var templates = CreatureConstants.Templates.GetAll();
 
             //INFO: Templates handle typing differently, so we want to ignore those for this test
@@ -3909,8 +3945,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         [Test]
         public void AnimalsHaveLowIntelligence()
         {
-            var animals = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
-            var abilities = typesAndAmountsSelector.SelectAll(tableName);
+            var animals = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
+                .Where(kvp => kvp.Value.Single().Types.Contains(CreatureConstants.Types.Animal))
+                .Select(kvp => kvp.Key);
+            var abilities = typesAndAmountsSelector.SelectAllFrom(Config.Name, tableName);
 
             foreach (var animal in animals)
             {

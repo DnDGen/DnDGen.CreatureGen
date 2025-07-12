@@ -44,7 +44,7 @@ namespace DnDGen.CreatureGen.Defenses
                 var conditionalBonuses = Constitution.Bonuses.Where(b => b.IsConditional);
 
                 if (!conditionalBonuses.Any())
-                    return Enumerable.Empty<(string, int)>();
+                    return [];
 
                 return conditionalBonuses.Select(b => (b.Condition, b.Value / 2 * RoundedHitDiceQuantity));
             }

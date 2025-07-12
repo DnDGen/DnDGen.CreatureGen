@@ -7,21 +7,20 @@ namespace DnDGen.CreatureGen.Defenses
         public int HitDie { get; set; }
         public double Quantity { get; set; }
 
-        public int RoundedQuantity
+        public int RoundedQuantity => GetRoundedQuantity(Quantity);
+
+        public static int GetRoundedQuantity(double input)
         {
-            get
-            {
-                if (Quantity == 0)
-                    return 0;
+            if (input == 0)
+                return 0;
 
-                if (Quantity < 1)
-                    return 1;
+            if (input < 1)
+                return 1;
 
-                var rawRoundedHitDiceQuantity = Math.Floor(Quantity);
-                var roundedHitDiceQuantity = Convert.ToInt32(rawRoundedHitDiceQuantity);
+            var rawRoundedHitDiceQuantity = Math.Floor(input);
+            var roundedHitDiceQuantity = Convert.ToInt32(rawRoundedHitDiceQuantity);
 
-                return roundedHitDiceQuantity;
-            }
+            return roundedHitDiceQuantity;
         }
 
         public string DefaultRoll

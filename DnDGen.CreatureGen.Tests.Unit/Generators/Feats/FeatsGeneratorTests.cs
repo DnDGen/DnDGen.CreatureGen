@@ -27,8 +27,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         private Dictionary<string, Ability> abilities;
         private Dictionary<string, Measurement> speeds;
         private List<Skill> skills;
-        private List<FeatSelection> featSelections;
-        private List<SpecialQualitySelection> specialQualitySelections;
+        private List<FeatDataSelection> featSelections;
+        private List<SpecialQualityDataSelection> specialQualitySelections;
         private Mock<Dice> mockDice;
         private HitPoints hitPoints;
         private List<Attack> attacks;
@@ -47,8 +47,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
 
             abilities = new Dictionary<string, Ability>();
             skills = new List<Skill>();
-            featSelections = new List<FeatSelection>();
-            specialQualitySelections = new List<SpecialQualitySelection>();
+            featSelections = new List<FeatDataSelection>();
+            specialQualitySelections = new List<SpecialQualityDataSelection>();
             hitPoints = new HitPoints();
             attacks = new List<Attack>();
             specialQualities = new List<Feat>();
@@ -63,7 +63,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
 
             mockFeatsSelector.Setup(s => s.SelectFeats()).Returns(featSelections);
             mockFeatsSelector.Setup(s => s.SelectSpecialQualities("creature", creatureType)).Returns(specialQualitySelections);
-            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<FeatSelection>>())).Returns((IEnumerable<FeatSelection> fs) => fs.First());
+            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<FeatDataSelection>>())).Returns((IEnumerable<FeatDataSelection> fs) => fs.First());
         }
 
         [Test]
@@ -116,7 +116,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         {
             for (var i = 0; i < quantity; i++)
             {
-                var selection = new FeatSelection();
+                var selection = new FeatDataSelection();
                 selection.Feat = $"feat{i + 1}";
 
                 featSelections.Add(selection);
@@ -146,10 +146,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             hitPoints.HitDice[0].Quantity = 3;
             AddFeatSelections(3);
 
-            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<FeatSelection>>(fs => fs.Count() == 3)))
-                .Returns((IEnumerable<FeatSelection> fs) => fs.Last());
-            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<FeatSelection>>(fs => fs.Count() == 2)))
-                .Returns((IEnumerable<FeatSelection> fs) => fs.First());
+            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<FeatDataSelection>>(fs => fs.Count() == 3)))
+                .Returns((IEnumerable<FeatDataSelection> fs) => fs.Last());
+            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<FeatDataSelection>>(fs => fs.Count() == 2)))
+                .Returns((IEnumerable<FeatDataSelection> fs) => fs.First());
 
             var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             var featNames = feats.Select(f => f.Name);
@@ -203,10 +203,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         {
             hitPoints.HitDice[0].Quantity = 3;
             AddFeatSelections(3);
-            featSelections[1].RequiredFeats = new[] { new RequiredFeatSelection { Feat = featSelections[0].Feat } };
+            featSelections[1].RequiredFeats = [new FeatDataSelection.RequiredFeatDataSelection { Feat = featSelections[0].Feat }];
 
             var index = 0;
-            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<FeatSelection>>())).Returns((IEnumerable<FeatSelection> fs) => fs.ElementAt(index++ % fs.Count()));
+            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<FeatDataSelection>>())).Returns((IEnumerable<FeatDataSelection> fs) => fs.ElementAt(index++ % fs.Count()));
 
             var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             var featNames = feats.Select(f => f.Name);
@@ -259,7 +259,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
                 .Returns("focus 2");
 
             var index = 0;
-            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<FeatSelection>>()))
+            mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<FeatDataSelection>>()))
                 .Returns(() => featSelections[index])
                 .Callback(() => index++);
 
@@ -354,17 +354,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void AllDataFromFeatSelectionIsCopiedToFeat()
         {
-            var selection = new FeatSelection();
-            selection.Feat = "additional feat";
-            selection.FocusType = "focus type";
-            selection.Frequency.Quantity = 9266;
-            selection.Frequency.TimePeriod = "frequency time period";
-            selection.Power = 12345;
+            var selection = new FeatDataSelection
+            {
+                Feat = "additional feat",
+                FocusType = "focus type",
+                FrequencyQuantity = 9266,
+                FrequencyTimePeriod = "frequency time period",
+                Power = 12345
+            };
 
             featSelections.Add(selection);
 
-            mockFeatFocusGenerator.SetupSequence(g => g.GenerateFrom("additional feat", "focus type", skills, featSelections[0].RequiredFeats, It.IsAny<IEnumerable<Feat>>(), 90210, abilities, attacks))
-                .Returns("focus").Returns("wrong focus");
+            mockFeatFocusGenerator
+                .SetupSequence(g => g.GenerateFrom(
+                    "additional feat",
+                    "focus type",
+                    skills,
+                    featSelections[0].RequiredFeats,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    90210,
+                    abilities,
+                    attacks))
+                .Returns("focus")
+                .Returns("wrong focus");
 
             var feats = featsGenerator.GenerateFeats(hitPoints, 9266, abilities, skills, attacks, specialQualities, 90210, speeds, 600, 1337, "size", false);
             var feat = feats.Single();
@@ -378,14 +390,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void GetSpecialQualities()
         {
-            var feat1 = new SpecialQualitySelection();
-            feat1.Feat = "special quality 1";
+            var feat1 = new SpecialQualityDataSelection
+            {
+                Feat = "special quality 1"
+            };
 
-            var feat2 = new SpecialQualitySelection();
-            feat2.Feat = "special quality 2";
-            feat2.Power = 9266;
-            feat2.Frequency.Quantity = 42;
-            feat2.Frequency.TimePeriod = "fortnight";
+            var feat2 = new SpecialQualityDataSelection
+            {
+                Feat = "special quality 2",
+                Power = 9266,
+                FrequencyQuantity = 42,
+                FrequencyTimePeriod = "fortnight"
+            };
 
             specialQualitySelections.Add(feat1);
             specialQualitySelections.Add(feat2);
@@ -410,7 +426,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         {
             abilities[AbilityConstants.Intelligence].BaseScore = 0;
 
-            var feat1 = new SpecialQualitySelection();
+            var feat1 = new SpecialQualityDataSelection();
             feat1.Feat = "special quality 1";
 
             specialQualitySelections.Add(feat1);
@@ -429,8 +445,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void DoNotGetSpecialQualityThatDoNotMeetRequirements()
         {
-            var specialQualitySelection = new SpecialQualitySelection();
-            specialQualitySelection.Feat = "base race feat";
+            var specialQualitySelection = new SpecialQualityDataSelection
+            {
+                Feat = "base race feat"
+            };
             specialQualitySelection.MinimumAbilities[AbilityConstants.Intelligence] = 11;
             specialQualitySelections.Add(specialQualitySelection);
 
@@ -441,8 +459,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void GetSpecialQualityThatMeetRequirements()
         {
-            var specialQualitySelection = new SpecialQualitySelection();
-            specialQualitySelection.Feat = "base race feat";
+            var specialQualitySelection = new SpecialQualityDataSelection
+            {
+                Feat = "base race feat"
+            };
             specialQualitySelection.MinimumAbilities[AbilityConstants.Intelligence] = 11;
             specialQualitySelections.Add(specialQualitySelection);
 
@@ -455,14 +475,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void BUG_GetSpecialQualityThatMeetRequirements_OutOfOrder()
         {
-            var specialQualitySelection = new SpecialQualitySelection();
-            specialQualitySelection.Feat = "special quality";
-            specialQualitySelection.RequiredFeats = new[]
+            var specialQualitySelection = new SpecialQualityDataSelection
             {
-                new RequiredFeatSelection { Feat = "required feat" }
+                Feat = "special quality",
+                RequiredFeats =
+                [
+                    new FeatDataSelection.RequiredFeatDataSelection { Feat = "required feat" }
+                ]
             };
-            var requirementSelection = new SpecialQualitySelection();
-            requirementSelection.Feat = "required feat";
+            var requirementSelection = new SpecialQualityDataSelection
+            {
+                Feat = "required feat"
+            };
             specialQualitySelections.Add(specialQualitySelection);
             specialQualitySelections.Add(requirementSelection);
 
@@ -473,9 +497,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void GetFociForSpecialQualities()
         {
-            var specialQualitySelection = new SpecialQualitySelection();
-            specialQualitySelection.Feat = "special quality";
-            specialQualitySelection.FocusType = "base focus type";
+            var specialQualitySelection = new SpecialQualityDataSelection
+            {
+                Feat = "special quality",
+                FocusType = "base focus type"
+            };
             specialQualitySelections.Add(specialQualitySelection);
 
             mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("special quality", "base focus type", skills, abilities)).Returns("base focus");
@@ -489,10 +515,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void BUG_GetFociForSpecialQualities_WithZeroRandomFoci_ButPreset()
         {
-            var specialQualitySelection = new SpecialQualitySelection();
+            var specialQualitySelection = new SpecialQualityDataSelection();
             specialQualitySelection.Feat = "special quality";
             specialQualitySelection.FocusType = "my specific focus";
-            specialQualitySelection.RandomFociQuantity = "0";
+            specialQualitySelection.RandomFociQuantityRoll = "0";
 
             specialQualitySelections.Add(specialQualitySelection);
 
@@ -508,7 +534,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void DoNotGetEmptyFociStrings()
         {
-            var specialQualitySelectionselection = new SpecialQualitySelection();
+            var specialQualitySelectionselection = new SpecialQualityDataSelection();
             specialQualitySelectionselection.Feat = "special quality";
             specialQualitySelectionselection.FocusType = string.Empty;
             specialQualitySelections.Add(specialQualitySelectionselection);
@@ -524,7 +550,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void DoNotAddHitDiceToPower()
         {
-            var specialQualitySelectionselection = new SpecialQualitySelection();
+            var specialQualitySelectionselection = new SpecialQualityDataSelection();
             specialQualitySelectionselection.Feat = "different feat";
             specialQualitySelectionselection.Power = 10;
             specialQualitySelections.Add(specialQualitySelectionselection);
@@ -541,7 +567,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void GetOneRandomFociForSpecialQualityIfNoRandomFociQuantity()
         {
-            var featSelection = new SpecialQualitySelection();
+            var featSelection = new SpecialQualityDataSelection();
             featSelection.Feat = "special quality";
             featSelection.FocusType = "focus type";
 
@@ -561,10 +587,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void GetRandomFociForSpecialQuality()
         {
-            var featSelection = new SpecialQualitySelection();
+            var featSelection = new SpecialQualityDataSelection();
             featSelection.Feat = "special quality";
             featSelection.FocusType = "focus type";
-            featSelection.RandomFociQuantity = "dice roll";
+            featSelection.RandomFociQuantityRoll = "dice roll";
 
             var count = 1;
             mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("special quality", "focus type", skills, abilities)).Returns(() => $"focus {count++}");
@@ -582,10 +608,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void GetNoDuplicateRandomFociForSpecialQuality()
         {
-            var featSelection = new SpecialQualitySelection();
+            var featSelection = new SpecialQualityDataSelection();
             featSelection.Feat = "special quality";
             featSelection.FocusType = "focus type";
-            featSelection.RandomFociQuantity = "dice roll";
+            featSelection.RandomFociQuantityRoll = "dice roll";
 
             var count = 1;
             mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("special quality", "focus type", skills, abilities)).Returns(() => $"focus {count++ / 2}");
@@ -604,9 +630,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void GetNoRandomFociForSpecialQualityIfNoFocusType()
         {
-            var featSelection = new SpecialQualitySelection();
+            var featSelection = new SpecialQualityDataSelection();
             featSelection.Feat = "special quality";
-            featSelection.RandomFociQuantity = "dice roll";
+            featSelection.RandomFociQuantityRoll = "dice roll";
 
             var count = 1;
             mockFeatFocusGenerator.Setup(g => g.GenerateAllowingFocusOfAllFrom("special quality", "focus type", skills, abilities)).Returns(() => $"focus {count++}");
@@ -624,7 +650,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void GetSpecialQualityRequiringCanUseEquipment()
         {
-            var specialQualitySelection = new SpecialQualitySelection();
+            var specialQualitySelection = new SpecialQualityDataSelection();
             specialQualitySelection.Feat = "special quality";
             specialQualitySelection.RequiresEquipment = true;
 
@@ -637,7 +663,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void DoNotGetSpecialQualityRequiringCanUseEquipment()
         {
-            var specialQualitySelection = new SpecialQualitySelection();
+            var specialQualitySelection = new SpecialQualityDataSelection();
             specialQualitySelection.Feat = "special quality";
             specialQualitySelection.RequiresEquipment = true;
 
@@ -650,7 +676,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void GetSpecialQualityNotRequiringCanUseEquipment()
         {
-            var specialQualitySelection = new SpecialQualitySelection();
+            var specialQualitySelection = new SpecialQualityDataSelection();
             specialQualitySelection.Feat = "special quality";
             specialQualitySelection.RequiresEquipment = false;
 
@@ -663,7 +689,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void GetSpecialQualityRequiringNoSize()
         {
-            var specialQualitySelection = new SpecialQualitySelection();
+            var specialQualitySelection = new SpecialQualityDataSelection();
             specialQualitySelection.Feat = "special quality";
             specialQualitySelection.RequiredSizes = Enumerable.Empty<string>();
 
@@ -676,7 +702,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void GetSpecialQualityRequiringSize()
         {
-            var specialQualitySelection = new SpecialQualitySelection();
+            var specialQualitySelection = new SpecialQualityDataSelection();
             specialQualitySelection.Feat = "special quality";
             specialQualitySelection.RequiredSizes = new[] { "size" };
 
@@ -689,7 +715,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void DoNotGetSpecialQualityRequiringSize()
         {
-            var specialQualitySelection = new SpecialQualitySelection();
+            var specialQualitySelection = new SpecialQualityDataSelection();
             specialQualitySelection.Feat = "special quality";
             specialQualitySelection.RequiredSizes = new[] { "size" };
 
@@ -703,7 +729,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void GetSpecialQualityRequiringAlignment()
         {
-            var specialQualitySelection = new SpecialQualitySelection();
+            var specialQualitySelection = new SpecialQualityDataSelection();
             specialQualitySelection.Feat = "special quality";
             specialQualitySelection.RequiredAlignments = new[] { "lawfulness goodness" };
 
@@ -720,7 +746,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void DoNotGetSpecialQualityRequiringAlignment()
         {
-            var specialQualitySelection = new SpecialQualitySelection();
+            var specialQualitySelection = new SpecialQualityDataSelection();
             specialQualitySelection.Feat = "special quality";
             specialQualitySelection.RequiredAlignments = new[] { "lawfulness goodness" };
 
@@ -736,7 +762,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void GetSpecialQualityWithSave()
         {
-            var specialQualitySelection = new SpecialQualitySelection();
+            var specialQualitySelection = new SpecialQualityDataSelection();
             specialQualitySelection.Feat = "special quality";
             specialQualitySelection.SaveAbility = "save ability";
             specialQualitySelection.Save = "save";
@@ -759,7 +785,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void GetSpecialQualityWithoutSave()
         {
-            var specialQualitySelection = new SpecialQualitySelection();
+            var specialQualitySelection = new SpecialQualityDataSelection();
             specialQualitySelection.Feat = "special quality";
             specialQualitySelection.SaveAbility = string.Empty;
             specialQualitySelection.Save = "save";
@@ -779,17 +805,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [Test]
         public void BUG_HalfOrcIsNotSensitiveToLight()
         {
-            var feat1 = new SpecialQualitySelection();
-            feat1.Feat = "special quality 1";
+            var feat1 = new SpecialQualityDataSelection
+            {
+                Feat = "special quality 1"
+            };
 
-            var lightSensitivity = new SpecialQualitySelection();
-            lightSensitivity.Feat = FeatConstants.SpecialQualities.LightSensitivity;
+            var lightSensitivity = new SpecialQualityDataSelection
+            {
+                Feat = FeatConstants.SpecialQualities.LightSensitivity
+            };
 
-            var feat2 = new SpecialQualitySelection();
-            feat2.Feat = "special quality 2";
-            feat2.Power = 9266;
-            feat2.Frequency.Quantity = 42;
-            feat2.Frequency.TimePeriod = "fortnight";
+            var feat2 = new SpecialQualityDataSelection
+            {
+                Feat = "special quality 2",
+                Power = 9266,
+                FrequencyQuantity = 42,
+                FrequencyTimePeriod = "fortnight"
+            };
 
             specialQualitySelections.Add(feat1);
             specialQualitySelections.Add(lightSensitivity);
@@ -806,24 +838,30 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
         [TestCase(FeatConstants.SpecialQualities.Blind)]
         public void BUG_IfBlind_RemoveSightFeats(string blindFeatName)
         {
-            var feat1 = new SpecialQualitySelection();
-            feat1.Feat = "special quality 1";
+            var feat1 = new SpecialQualityDataSelection
+            {
+                Feat = "special quality 1"
+            };
 
-            var blindFeat = new SpecialQualitySelection();
-            blindFeat.Feat = blindFeatName;
+            var blindFeat = new SpecialQualityDataSelection
+            {
+                Feat = blindFeatName
+            };
 
-            var feat2 = new SpecialQualitySelection();
-            feat2.Feat = "special quality 2";
-            feat2.Power = 9266;
-            feat2.Frequency.Quantity = 42;
-            feat2.Frequency.TimePeriod = "fortnight";
+            var feat2 = new SpecialQualityDataSelection
+            {
+                Feat = "special quality 2",
+                Power = 9266,
+                FrequencyQuantity = 42,
+                FrequencyTimePeriod = "fortnight"
+            };
 
             var sightedFeats = new[]
             {
-                new SpecialQualitySelection { Feat = FeatConstants.SpecialQualities.AllAroundVision },
-                new SpecialQualitySelection { Feat = FeatConstants.SpecialQualities.Darkvision },
-                new SpecialQualitySelection { Feat = FeatConstants.SpecialQualities.LowLightVision },
-                new SpecialQualitySelection { Feat = FeatConstants.SpecialQualities.LowLightVision_Superior },
+                new SpecialQualityDataSelection { Feat = FeatConstants.SpecialQualities.AllAroundVision },
+                new SpecialQualityDataSelection { Feat = FeatConstants.SpecialQualities.Darkvision },
+                new SpecialQualityDataSelection { Feat = FeatConstants.SpecialQualities.LowLightVision },
+                new SpecialQualityDataSelection { Feat = FeatConstants.SpecialQualities.LowLightVision_Superior },
             };
 
             specialQualitySelections.Add(feat1);

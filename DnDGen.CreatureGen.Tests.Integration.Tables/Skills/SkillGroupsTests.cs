@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
@@ -14,17 +15,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
     [TestFixture]
     public class SkillGroupsTests : CollectionTests
     {
-        private ICollectionSelector collectionSelector;
+        protected override string tableName => TableNameConstants.Collection.SkillGroups;
 
-        protected override string tableName
-        {
-            get { return TableNameConstants.Collection.SkillGroups; }
-        }
+        private ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
 
         [SetUp]
         public void Setup()
         {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
+            creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
         }
 
         [Test]
@@ -324,8 +322,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden)]
@@ -333,8 +333,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden)]
@@ -342,8 +344,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Huge)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden)]
@@ -351,8 +355,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.AnimatedObject_Huge_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Large)]
         [TestCase(CreatureConstants.AnimatedObject_Large_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Large_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden)]
@@ -4249,6 +4255,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.SenseMotive,
             SkillConstants.Survival,
             SkillConstants.Spot)]
+        public void CreatureSkills(string creature, params string[] skills)
+        {
+            NoDuplicationOfSkillsBetweenTypeAndCreature(creature, skills);
+            AssertDistinctCollection(creature, skills);
+        }
+
         [TestCase(CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Types.Construct)]
@@ -4351,9 +4363,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Listen,
             SkillConstants.Spot,
             SkillConstants.Swim)]
-        public void CreatureSkills(string creature, params string[] skills)
+        public void CreatureTypeSkills(string creature, params string[] skills)
         {
-            base.AssertDistinctCollection(creature, skills);
+            AssertDistinctCollection(creature, skills);
         }
 
         [Test]
@@ -4398,7 +4410,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 SkillConstants.UseRope,
             };
 
-            base.AssertDistinctCollection(GroupConstants.All, skills);
+            AssertDistinctCollection(GroupConstants.All, skills);
         }
 
         [TestCase(SkillConstants.Appraise)]
@@ -4483,7 +4495,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 SkillConstants.Foci.Craft.Woodworking,
             };
 
-            base.AssertDistinctCollection(SkillConstants.Craft, foci);
+            AssertDistinctCollection(SkillConstants.Craft, foci);
         }
 
         [Test]
@@ -4503,7 +4515,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 SkillConstants.Foci.Knowledge.ThePlanes,
             };
 
-            base.AssertDistinctCollection(SkillConstants.Knowledge, foci);
+            AssertDistinctCollection(SkillConstants.Knowledge, foci);
         }
 
         [Test]
@@ -4522,7 +4534,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 SkillConstants.Foci.Perform.WindInstruments,
             };
 
-            base.AssertDistinctCollection(SkillConstants.Perform, foci);
+            AssertDistinctCollection(SkillConstants.Perform, foci);
         }
 
         [Test]
@@ -4618,14 +4630,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 SkillConstants.Foci.Profession.WildernessGuide,
             };
 
-            base.AssertDistinctCollection(SkillConstants.Profession, foci);
+            AssertDistinctCollection(SkillConstants.Profession, foci);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void NoDuplicationOfSkillsBetweenTypeAndCreature(string creature)
+        private void NoDuplicationOfSkillsBetweenTypeAndCreature(string creature, string[] skills)
         {
-            var creatureTypes = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureTypes, creature);
-            creatureTypes = creatureTypes.Except(new[] { creature });
+            var data = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, creature);
+            var creatureTypes = data.Types.Except([creature]);
 
             Assert.That(table.Keys, Contains.Item(creature)
                 .And.SupersetOf(creatureTypes));
@@ -4643,11 +4654,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         public void CreatureTypeSkillsContainSkillsCommonToAllCreatures(string creatureType)
         {
-            var creatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, creatureType);
-
-            //INFO: Excluding templates, since they have special rules
-            var templates = CreatureConstants.Templates.GetAll();
-            creatures = creatures.Except(templates);
+            var creatures = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
+                .Where(kvp => kvp.Value.Single().Types.Contains(creatureType))
+                .Select(kvp => kvp.Key);
 
             if (!creatures.Any())
             {

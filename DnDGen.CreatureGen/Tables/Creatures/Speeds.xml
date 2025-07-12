@@ -90,11 +90,20 @@
 		<entry>Climb@5</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Colossal (More Than Two Legs)</name>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall)</name>
 		<entry>Land@30</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Colossal (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall, Wooden)</name>
+		<entry>Land@30</entry>
+		<entry>Swim@15</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Long)</name>
+		<entry>Land@30</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Long, Wooden)</name>
 		<entry>Land@30</entry>
 		<entry>Swim@15</entry>
 	</collection>
@@ -132,11 +141,20 @@
 		<entry>Climb@5</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs)</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall)</name>
 		<entry>Land@30</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall, Wooden)</name>
+		<entry>Land@30</entry>
+		<entry>Swim@15</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long)</name>
+		<entry>Land@30</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long, Wooden)</name>
 		<entry>Land@30</entry>
 		<entry>Swim@15</entry>
 	</collection>
@@ -174,11 +192,20 @@
 		<entry>Climb@10</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs)</name>
+		<name>Animated Object, Huge (More Than Two Legs, Tall)</name>
 		<entry>Land@40</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Huge (More Than Two Legs, Tall, Wooden)</name>
+		<entry>Land@40</entry>
+		<entry>Swim@20</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Long)</name>
+		<entry>Land@40</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Long, Wooden)</name>
 		<entry>Land@40</entry>
 		<entry>Swim@20</entry>
 	</collection>
@@ -216,11 +243,20 @@
 		<entry>Climb@10</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs)</name>
+		<name>Animated Object, Large (More Than Two Legs, Tall)</name>
 		<entry>Land@40</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Large (More Than Two Legs, Tall, Wooden)</name>
+		<entry>Land@40</entry>
+		<entry>Swim@20</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Long)</name>
+		<entry>Land@40</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Long, Wooden)</name>
 		<entry>Land@40</entry>
 		<entry>Swim@20</entry>
 	</collection>

@@ -1,5 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Integration.Tables.Helpers;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
@@ -13,8 +15,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     [TestFixture]
     public class WeightsTests : TypesAndAmountsTests
     {
-        private ICollectionSelector collectionSelector;
         private Dice dice;
+        private ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
+        private MeasurementHelper measurementHelper;
         private const int BASE_INDEX = 1;
         private const int MULTIPLIER_INDEX = 0;
 
@@ -28,8 +31,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-            heights = HeightsTests.GetCreatureHeights();
-            lengths = LengthsTests.GetCreatureLengths();
+            var typeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
+            heights = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Heights)
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToDictionary(v => v.Type, v => v.Roll));
+            lengths = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Lengths)
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToDictionary(v => v.Type, v => v.Roll));
+
             creatureWeightRanges = GetCreatureWeightRanges();
             creatureWeightRolls = GetCreatureWeightRolls();
         }
@@ -37,8 +44,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [SetUp]
         public void Setup()
         {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             dice = GetNewInstanceOf<Dice>();
+            creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
+            measurementHelper = GetNewInstanceOf<MeasurementHelper>();
         }
 
         [Test]
@@ -67,6 +75,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 Assert.That(isValid, Is.True, roll, $"TEST DATA: {name}");
             }
 
+            AssertIncorporealCreaturesAreWeightless(name);
             AssertTypesAndAmounts(name, rolls);
         }
 
@@ -195,8 +204,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/combat/movementPositionAndDistance.htm
             weights[CreatureConstants.AnimatedObject_Colossal][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
             weights[CreatureConstants.AnimatedObject_Colossal_Flexible][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
-            weights[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
-            weights[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
+            weights[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
+            weights[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
+            weights[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
+            weights[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
             weights[CreatureConstants.AnimatedObject_Colossal_Sheetlike][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
             weights[CreatureConstants.AnimatedObject_Colossal_TwoLegs][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
             weights[CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
@@ -204,8 +215,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.AnimatedObject_Colossal_Wooden][GenderConstants.Agender] = (125 * 2000, 1000 * 2000);
             weights[CreatureConstants.AnimatedObject_Gargantuan][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
             weights[CreatureConstants.AnimatedObject_Gargantuan_Flexible][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
-            weights[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
-            weights[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
+            weights[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
+            weights[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
+            weights[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
+            weights[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
             weights[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
             weights[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
             weights[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
@@ -213,8 +226,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.AnimatedObject_Gargantuan_Wooden][GenderConstants.Agender] = (16 * 2000, 125 * 2000);
             weights[CreatureConstants.AnimatedObject_Huge][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
             weights[CreatureConstants.AnimatedObject_Huge_Flexible][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
-            weights[CreatureConstants.AnimatedObject_Huge_MultipleLegs][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
-            weights[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
+            weights[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
+            weights[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
+            weights[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
+            weights[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
             weights[CreatureConstants.AnimatedObject_Huge_Sheetlike][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
             weights[CreatureConstants.AnimatedObject_Huge_TwoLegs][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
             weights[CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
@@ -222,8 +237,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.AnimatedObject_Huge_Wooden][GenderConstants.Agender] = (2 * 2000, 16 * 2000);
             weights[CreatureConstants.AnimatedObject_Large][GenderConstants.Agender] = (500, 2 * 2000);
             weights[CreatureConstants.AnimatedObject_Large_Flexible][GenderConstants.Agender] = (500, 2 * 2000);
-            weights[CreatureConstants.AnimatedObject_Large_MultipleLegs][GenderConstants.Agender] = (500, 2 * 2000);
-            weights[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][GenderConstants.Agender] = (500, 2 * 2000);
+            weights[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long][GenderConstants.Agender] = (500, 2 * 2000);
+            weights[CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden][GenderConstants.Agender] = (500, 2 * 2000);
+            weights[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall][GenderConstants.Agender] = (500, 2 * 2000);
+            weights[CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden][GenderConstants.Agender] = (500, 2 * 2000);
             weights[CreatureConstants.AnimatedObject_Large_Sheetlike][GenderConstants.Agender] = (500, 2 * 2000);
             weights[CreatureConstants.AnimatedObject_Large_TwoLegs][GenderConstants.Agender] = (500, 2 * 2000);
             weights[CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden][GenderConstants.Agender] = (500, 2 * 2000);
@@ -2184,31 +2201,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
-        [Test]
-        public void IncorporealCreaturesAreWeightless()
+        private void AssertIncorporealCreaturesAreWeightless(string creature)
         {
-            var incorporealCreatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
-
-            Assert.That(table.Keys, Is.SupersetOf(incorporealCreatures));
-
-            foreach (var creature in creatureWeightRanges.Keys)
+            var data = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, creature);
+            if (data.Types.Contains(CreatureConstants.Types.Subtypes.Incorporeal) || creature == CreatureConstants.LanternArchon)
             {
-                if (incorporealCreatures.Contains(creature) || creature == CreatureConstants.LanternArchon)
+                foreach (var genderKvp in creatureWeightRanges[creature])
                 {
-                    foreach (var genderKvp in creatureWeightRanges[creature])
-                    {
-                        Assert.That(genderKvp.Value.Lower, Is.Zero, $"Lower; {genderKvp.Key} {creature}");
-                        Assert.That(genderKvp.Value.Upper, Is.Zero, $"Upper; {genderKvp.Key} {creature}");
-                    }
-
-                    foreach (var genderKvp in creatureWeightRolls[creature])
-                    {
-                        Assert.That(genderKvp.Value, Is.EqualTo("0"), $"Roll; {genderKvp.Key} {creature}");
-                    }
-
-                    continue;
+                    Assert.That(genderKvp.Value.Lower, Is.Zero, $"Lower; {genderKvp.Key} {creature}");
+                    Assert.That(genderKvp.Value.Upper, Is.Zero, $"Upper; {genderKvp.Key} {creature}");
                 }
 
+                foreach (var genderKvp in creatureWeightRolls[creature])
+                {
+                    Assert.That(genderKvp.Value, Is.EqualTo("0"), $"Roll; {genderKvp.Key} {creature}");
+                }
+            }
+            else
+            {
                 foreach (var genderKvp in creatureWeightRanges[creature])
                 {
                     Assert.That(genderKvp.Value.Lower, Is.Positive, $"Lower; {genderKvp.Key} {creature}");

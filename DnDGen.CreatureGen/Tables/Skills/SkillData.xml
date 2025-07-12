@@ -3,1353 +3,774 @@
 <collections>
   <collection>
     <name>Appraise</name>
-    <entry>Intelligence</entry>
-    <entry>Appraise</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Intelligence@Appraise@0@</entry>
   </collection>
   <collection>
     <name>Balance</name>
-    <entry>Dexterity</entry>
-    <entry>Balance</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Dexterity@Balance@0@</entry>
   </collection>
   <collection>
     <name>Bluff</name>
-    <entry>Charisma</entry>
-    <entry>Bluff</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Charisma@Bluff@0@</entry>
   </collection>
   <collection>
     <name>Climb</name>
-    <entry>Strength</entry>
-    <entry>Climb</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Strength@Climb@0@</entry>
   </collection>
   <collection>
     <name>ClimbDexterity</name>
-    <entry>Dexterity</entry>
-    <entry>Climb</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Dexterity@Climb@0@</entry>
   </collection>
   <collection>
     <name>Concentration</name>
-    <entry>Constitution</entry>
-    <entry>Concentration</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Constitution@Concentration@0@</entry>
   </collection>
   <collection>
     <name>ConcentrationCharisma</name>
-    <entry>Charisma</entry>
-    <entry>Concentration</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Charisma@Concentration@0@</entry>
   </collection>
   <collection>
     <name>Craft</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>1</entry>
-    <entry></entry>
+    <entry>Intelligence@Craft@1@</entry>
   </collection>
   <collection>
     <name>Craft2</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>2</entry>
-    <entry></entry>
+    <entry>Intelligence@Craft@2@</entry>
   </collection>
   <collection>
     <name>Craft3</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>3</entry>
-    <entry></entry>
+    <entry>Intelligence@Craft@3@</entry>
   </collection>
   <collection>
     <name>Craft4</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>4</entry>
-    <entry></entry>
+    <entry>Intelligence@Craft@4@</entry>
   </collection>
   <collection>
     <name>Craft5</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>5</entry>
-    <entry></entry>
+    <entry>Intelligence@Craft@5@</entry>
   </collection>
   <collection>
     <name>Craft/Alchemy</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Alchemy</entry>
+    <entry>Intelligence@Craft@0@Alchemy</entry>
   </collection>
   <collection>
     <name>Craft/Armorsmithing</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Armorsmithing</entry>
+    <entry>Intelligence@Craft@0@Armorsmithing</entry>
   </collection>
   <collection>
     <name>Craft/Blacksmithing</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Blacksmithing</entry>
+    <entry>Intelligence@Craft@0@Blacksmithing</entry>
   </collection>
   <collection>
     <name>Craft/Bookbinding</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Bookbinding</entry>
+    <entry>Intelligence@Craft@0@Bookbinding</entry>
   </collection>
   <collection>
     <name>Craft/Bowmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Bowmaking</entry>
+    <entry>Intelligence@Craft@0@Bowmaking</entry>
   </collection>
   <collection>
     <name>Craft/Brassmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Brassmaking</entry>
+    <entry>Intelligence@Craft@0@Brassmaking</entry>
   </collection>
   <collection>
     <name>Craft/Brewing</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Brewing</entry>
+    <entry>Intelligence@Craft@0@Brewing</entry>
   </collection>
   <collection>
     <name>Craft/Candlemaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Candlemaking</entry>
+    <entry>Intelligence@Craft@0@Candlemaking</entry>
   </collection>
   <collection>
     <name>Craft/Cloth</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Cloth</entry>
+    <entry>Intelligence@Craft@0@Cloth</entry>
   </collection>
   <collection>
     <name>Craft/Coppersmithing</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Coppersmithing</entry>
+    <entry>Intelligence@Craft@0@Coppersmithing</entry>
   </collection>
   <collection>
     <name>Craft/Dyemaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Dyemaking</entry>
+    <entry>Intelligence@Craft@0@Dyemaking</entry>
   </collection>
   <collection>
     <name>Craft/Gemcutting</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Gemcutting</entry>
+    <entry>Intelligence@Craft@0@Gemcutting</entry>
   </collection>
   <collection>
     <name>Craft/Glass</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Glass</entry>
+    <entry>Intelligence@Craft@0@Glass</entry>
   </collection>
   <collection>
     <name>Craft/Goldsmithing</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Goldsmithing</entry>
+    <entry>Intelligence@Craft@0@Goldsmithing</entry>
   </collection>
   <collection>
     <name>Craft/Hatmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Hatmaking</entry>
+    <entry>Intelligence@Craft@0@Hatmaking</entry>
   </collection>
   <collection>
     <name>Craft/Hornworking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Hornworking</entry>
+    <entry>Intelligence@Craft@0@Hornworking</entry>
   </collection>
   <collection>
     <name>Craft/Jewelmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Jewelmaking</entry>
+    <entry>Intelligence@Craft@0@Jewelmaking</entry>
   </collection>
   <collection>
     <name>Craft/Leather</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Leather</entry>
+    <entry>Intelligence@Craft@0@Leather</entry>
   </collection>
   <collection>
     <name>Craft/Locksmithing</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Locksmithing</entry>
+    <entry>Intelligence@Craft@0@Locksmithing</entry>
   </collection>
   <collection>
     <name>Craft/Mapmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Mapmaking</entry>
+    <entry>Intelligence@Craft@0@Mapmaking</entry>
   </collection>
   <collection>
     <name>Craft/Milling</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Milling</entry>
+    <entry>Intelligence@Craft@0@Milling</entry>
   </collection>
   <collection>
     <name>Craft/Painting</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Painting</entry>
+    <entry>Intelligence@Craft@0@Painting</entry>
   </collection>
   <collection>
     <name>Craft/Parchmentmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Parchmentmaking</entry>
+    <entry>Intelligence@Craft@0@Parchmentmaking</entry>
   </collection>
   <collection>
     <name>Craft/Pewtermaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Pewtermaking</entry>
+    <entry>Intelligence@Craft@0@Pewtermaking</entry>
   </collection>
   <collection>
     <name>Craft/Potterymaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Potterymaking</entry>
+    <entry>Intelligence@Craft@0@Potterymaking</entry>
   </collection>
   <collection>
     <name>Craft/Sculpting</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Sculpting</entry>
+    <entry>Intelligence@Craft@0@Sculpting</entry>
   </collection>
   <collection>
     <name>Craft/Shipmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Shipmaking</entry>
+    <entry>Intelligence@Craft@0@Shipmaking</entry>
   </collection>
   <collection>
     <name>Craft/Shoemaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Shoemaking</entry>
+    <entry>Intelligence@Craft@0@Shoemaking</entry>
   </collection>
   <collection>
     <name>Craft/Silversmithing</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Silversmithing</entry>
+    <entry>Intelligence@Craft@0@Silversmithing</entry>
   </collection>
   <collection>
     <name>Craft/Skinning</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Skinning</entry>
+    <entry>Intelligence@Craft@0@Skinning</entry>
   </collection>
   <collection>
     <name>Craft/Soapmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Soapmaking</entry>
+    <entry>Intelligence@Craft@0@Soapmaking</entry>
   </collection>
   <collection>
     <name>Craft/Stonemasonry</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Stonemasonry</entry>
+    <entry>Intelligence@Craft@0@Stonemasonry</entry>
   </collection>
   <collection>
     <name>Craft/Tanning</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Tanning</entry>
+    <entry>Intelligence@Craft@0@Tanning</entry>
   </collection>
   <collection>
     <name>Craft/Trapmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Trapmaking</entry>
+    <entry>Intelligence@Craft@0@Trapmaking</entry>
   </collection>
   <collection>
     <name>Craft/Weaponsmithing</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Weaponsmithing</entry>
+    <entry>Intelligence@Craft@0@Weaponsmithing</entry>
   </collection>
   <collection>
     <name>Craft/Weaving</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Weaving</entry>
+    <entry>Intelligence@Craft@0@Weaving</entry>
   </collection>
   <collection>
     <name>Craft/Wheelmaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Wheelmaking</entry>
+    <entry>Intelligence@Craft@0@Wheelmaking</entry>
   </collection>
   <collection>
     <name>Craft/Winemaking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Winemaking</entry>
+    <entry>Intelligence@Craft@0@Winemaking</entry>
   </collection>
   <collection>
     <name>Craft/Woodworking</name>
-    <entry>Intelligence</entry>
-    <entry>Craft</entry>
-    <entry>0</entry>
-    <entry>Woodworking</entry>
+    <entry>Intelligence@Craft@0@Woodworking</entry>
   </collection>
   <collection>
     <name>Decipher Script</name>
-    <entry>Intelligence</entry>
-    <entry>Decipher Script</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Intelligence@Decipher Script@0@</entry>
   </collection>
   <collection>
     <name>Diplomacy</name>
-    <entry>Charisma</entry>
-    <entry>Diplomacy</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Charisma@Diplomacy@0@</entry>
   </collection>
   <collection>
     <name>Disable Device</name>
-    <entry>Intelligence</entry>
-    <entry>Disable Device</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Intelligence@Disable Device@0@</entry>
   </collection>
   <collection>
     <name>Disguise</name>
-    <entry>Charisma</entry>
-    <entry>Disguise</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Charisma@Disguise@0@</entry>
   </collection>
   <collection>
     <name>Escape Artist</name>
-    <entry>Dexterity</entry>
-    <entry>Escape Artist</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Dexterity@Escape Artist@0@</entry>
   </collection>
   <collection>
     <name>Forgery</name>
-    <entry>Intelligence</entry>
-    <entry>Forgery</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Intelligence@Forgery@0@</entry>
   </collection>
   <collection>
     <name>Gather Information</name>
-    <entry>Charisma</entry>
-    <entry>Gather Information</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Charisma@Gather Information@0@</entry>
   </collection>
   <collection>
     <name>Handle Animal</name>
-    <entry>Charisma</entry>
-    <entry>Handle Animal</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Charisma@Handle Animal@0@</entry>
   </collection>
   <collection>
     <name>Heal</name>
-    <entry>Wisdom</entry>
-    <entry>Heal</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Wisdom@Heal@0@</entry>
   </collection>
   <collection>
     <name>Hide</name>
-    <entry>Dexterity</entry>
-    <entry>Hide</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Dexterity@Hide@0@</entry>
   </collection>
   <collection>
     <name>Intimidate</name>
-    <entry>Charisma</entry>
-    <entry>Intimidate</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Charisma@Intimidate@0@</entry>
   </collection>
   <collection>
     <name>Jump</name>
-    <entry>Strength</entry>
-    <entry>Jump</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Strength@Jump@0@</entry>
   </collection>
   <collection>
     <name>JumpDexterity</name>
-    <entry>Dexterity</entry>
-    <entry>Jump</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Dexterity@Jump@0@</entry>
   </collection>
   <collection>
     <name>Knowledge</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>1</entry>
-    <entry></entry>
+    <entry>Intelligence@Knowledge@1@</entry>
   </collection>
   <collection>
     <name>Knowledge2</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>2</entry>
-    <entry></entry>
+    <entry>Intelligence@Knowledge@2@</entry>
   </collection>
   <collection>
     <name>Knowledge3</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>3</entry>
-    <entry></entry>
+    <entry>Intelligence@Knowledge@3@</entry>
   </collection>
   <collection>
     <name>Knowledge4</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>4</entry>
-    <entry></entry>
+    <entry>Intelligence@Knowledge@4@</entry>
   </collection>
   <collection>
     <name>Knowledge5</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>5</entry>
-    <entry></entry>
+    <entry>Intelligence@Knowledge@5@</entry>
   </collection>
   <collection>
     <name>KnowledgeAll</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>2147483647</entry>
-    <entry></entry>
+    <entry>Intelligence@Knowledge@2147483647@</entry>
   </collection>
   <collection>
     <name>Knowledge/Arcana</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>Arcana</entry>
+    <entry>Intelligence@Knowledge@0@Arcana</entry>
   </collection>
   <collection>
     <name>Knowledge/Architecture and Engineering</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>Architecture and Engineering</entry>
+    <entry>Intelligence@Knowledge@0@Architecture and Engineering</entry>
   </collection>
   <collection>
     <name>Knowledge/Dungeoneering</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>Dungeoneering</entry>
+    <entry>Intelligence@Knowledge@0@Dungeoneering</entry>
   </collection>
   <collection>
     <name>Knowledge/Geography</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>Geography</entry>
+    <entry>Intelligence@Knowledge@0@Geography</entry>
   </collection>
   <collection>
     <name>Knowledge/History</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>History</entry>
+    <entry>Intelligence@Knowledge@0@History</entry>
   </collection>
   <collection>
     <name>Knowledge/Local</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>Local</entry>
+    <entry>Intelligence@Knowledge@0@Local</entry>
   </collection>
   <collection>
     <name>Knowledge/Nature</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>Nature</entry>
+    <entry>Intelligence@Knowledge@0@Nature</entry>
   </collection>
   <collection>
     <name>Knowledge/Nobility and Royalty</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>Nobility and Royalty</entry>
+    <entry>Intelligence@Knowledge@0@Nobility and Royalty</entry>
   </collection>
   <collection>
     <name>Knowledge/Religion</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>Religion</entry>
+    <entry>Intelligence@Knowledge@0@Religion</entry>
   </collection>
   <collection>
     <name>Knowledge/The Planes</name>
-    <entry>Intelligence</entry>
-    <entry>Knowledge</entry>
-    <entry>0</entry>
-    <entry>The Planes</entry>
+    <entry>Intelligence@Knowledge@0@The Planes</entry>
   </collection>
   <collection>
     <name>Listen</name>
-    <entry>Wisdom</entry>
-    <entry>Listen</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Wisdom@Listen@0@</entry>
   </collection>
   <collection>
     <name>Move Silently</name>
-    <entry>Dexterity</entry>
-    <entry>Move Silently</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Dexterity@Move Silently@0@</entry>
   </collection>
   <collection>
     <name>Open Lock</name>
-    <entry>Dexterity</entry>
-    <entry>Open Lock</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Dexterity@Open Lock@0@</entry>
   </collection>
   <collection>
     <name>Perform</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>1</entry>
-    <entry></entry>
+    <entry>Charisma@Perform@1@</entry>
   </collection>
   <collection>
     <name>Perform/Act</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>0</entry>
-    <entry>Act</entry>
+    <entry>Charisma@Perform@0@Act</entry>
   </collection>
   <collection>
     <name>Perform/Comedy</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>0</entry>
-    <entry>Comedy</entry>
+    <entry>Charisma@Perform@0@Comedy</entry>
   </collection>
   <collection>
     <name>Perform/Dance</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>0</entry>
-    <entry>Dance</entry>
+    <entry>Charisma@Perform@0@Dance</entry>
   </collection>
   <collection>
     <name>Perform/Keyboard instruments</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>0</entry>
-    <entry>Keyboard instruments</entry>
+    <entry>Charisma@Perform@0@Keyboard instruments</entry>
   </collection>
   <collection>
     <name>Perform/Oratory</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>0</entry>
-    <entry>Oratory</entry>
+    <entry>Charisma@Perform@0@Oratory</entry>
   </collection>
   <collection>
     <name>Perform/Percussion instruments</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>0</entry>
-    <entry>Percussion instruments</entry>
+    <entry>Charisma@Perform@0@Percussion instruments</entry>
   </collection>
   <collection>
     <name>Perform/Sing</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>0</entry>
-    <entry>Sing</entry>
+    <entry>Charisma@Perform@0@Sing</entry>
   </collection>
   <collection>
     <name>Perform/String instruments</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>0</entry>
-    <entry>String instruments</entry>
+    <entry>Charisma@Perform@0@String instruments</entry>
   </collection>
   <collection>
     <name>Perform/Wind instruments</name>
-    <entry>Charisma</entry>
-    <entry>Perform</entry>
-    <entry>0</entry>
-    <entry>Wind instruments</entry>
+    <entry>Charisma@Perform@0@Wind instruments</entry>
   </collection>
   <collection>
     <name>Profession</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>1</entry>
-    <entry></entry>
+    <entry>Wisdom@Profession@1@</entry>
   </collection>
   <collection>
     <name>Profession/Adviser</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Adviser</entry>
+    <entry>Wisdom@Profession@0@Adviser</entry>
   </collection>
   <collection>
     <name>Profession/Alchemist</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Alchemist</entry>
+    <entry>Wisdom@Profession@0@Alchemist</entry>
   </collection>
   <collection>
     <name>Profession/Animal Groomer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Animal Groomer</entry>
+    <entry>Wisdom@Profession@0@Animal Groomer</entry>
   </collection>
   <collection>
     <name>Profession/Animal Trainer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Animal Trainer</entry>
+    <entry>Wisdom@Profession@0@Animal Trainer</entry>
   </collection>
   <collection>
     <name>Profession/Apothecary</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Apothecary</entry>
+    <entry>Wisdom@Profession@0@Apothecary</entry>
   </collection>
   <collection>
     <name>Profession/Appraiser</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Appraiser</entry>
+    <entry>Wisdom@Profession@0@Appraiser</entry>
   </collection>
   <collection>
     <name>Profession/Architect</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Architect</entry>
+    <entry>Wisdom@Profession@0@Architect</entry>
   </collection>
   <collection>
     <name>Profession/Armorer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Armorer</entry>
+    <entry>Wisdom@Profession@0@Armorer</entry>
   </collection>
   <collection>
     <name>Profession/Barrister</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Barrister</entry>
+    <entry>Wisdom@Profession@0@Barrister</entry>
   </collection>
   <collection>
     <name>Profession/Blacksmith</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Blacksmith</entry>
+    <entry>Wisdom@Profession@0@Blacksmith</entry>
   </collection>
   <collection>
     <name>Profession/Bookbinder</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Bookbinder</entry>
+    <entry>Wisdom@Profession@0@Bookbinder</entry>
   </collection>
   <collection>
     <name>Profession/Bowyer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Bowyer</entry>
+    <entry>Wisdom@Profession@0@Bowyer</entry>
   </collection>
   <collection>
     <name>Profession/Brazier</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Brazier</entry>
+    <entry>Wisdom@Profession@0@Brazier</entry>
   </collection>
   <collection>
     <name>Profession/Brewer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Brewer</entry>
+    <entry>Wisdom@Profession@0@Brewer</entry>
   </collection>
   <collection>
     <name>Profession/Butler</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Butler</entry>
+    <entry>Wisdom@Profession@0@Butler</entry>
   </collection>
   <collection>
     <name>Profession/Carpenter</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Carpenter</entry>
+    <entry>Wisdom@Profession@0@Carpenter</entry>
   </collection>
   <collection>
     <name>Profession/Cartographer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Cartographer</entry>
+    <entry>Wisdom@Profession@0@Cartographer</entry>
   </collection>
   <collection>
     <name>Profession/Cartwright</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Cartwright</entry>
+    <entry>Wisdom@Profession@0@Cartwright</entry>
   </collection>
   <collection>
     <name>Profession/Chandler</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Chandler</entry>
+    <entry>Wisdom@Profession@0@Chandler</entry>
   </collection>
   <collection>
     <name>Profession/City Guide</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>City Guide</entry>
+    <entry>Wisdom@Profession@0@City Guide</entry>
   </collection>
   <collection>
     <name>Profession/Clerk</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Clerk</entry>
+    <entry>Wisdom@Profession@0@Clerk</entry>
   </collection>
   <collection>
     <name>Profession/Cobbler</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Cobbler</entry>
+    <entry>Wisdom@Profession@0@Cobbler</entry>
   </collection>
   <collection>
     <name>Profession/Coffinmaker</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Coffinmaker</entry>
+    <entry>Wisdom@Profession@0@Coffinmaker</entry>
   </collection>
   <collection>
     <name>Profession/Coiffeur</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Coiffeur</entry>
+    <entry>Wisdom@Profession@0@Coiffeur</entry>
   </collection>
   <collection>
     <name>Profession/Cook</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Cook</entry>
+    <entry>Wisdom@Profession@0@Cook</entry>
   </collection>
   <collection>
     <name>Profession/Coppersmith</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Coppersmith</entry>
+    <entry>Wisdom@Profession@0@Coppersmith</entry>
   </collection>
   <collection>
     <name>Profession/Craftsman</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Craftsman</entry>
+    <entry>Wisdom@Profession@0@Craftsman</entry>
   </collection>
   <collection>
     <name>Profession/Dowser</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Dowser</entry>
+    <entry>Wisdom@Profession@0@Dowser</entry>
   </collection>
   <collection>
     <name>Profession/Dyer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Dyer</entry>
+    <entry>Wisdom@Profession@0@Dyer</entry>
   </collection>
   <collection>
     <name>Profession/Engineer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Engineer</entry>
+    <entry>Wisdom@Profession@0@Engineer</entry>
   </collection>
   <collection>
     <name>Profession/Embalmer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Embalmer</entry>
+    <entry>Wisdom@Profession@0@Embalmer</entry>
   </collection>
   <collection>
     <name>Profession/Entertainer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Entertainer</entry>
+    <entry>Wisdom@Profession@0@Entertainer</entry>
   </collection>
   <collection>
     <name>Profession/Exotic Animal Trainer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Exotic Animal Trainer</entry>
+    <entry>Wisdom@Profession@0@Exotic Animal Trainer</entry>
   </collection>
   <collection>
     <name>Profession/Farmer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Farmer</entry>
+    <entry>Wisdom@Profession@0@Farmer</entry>
   </collection>
   <collection>
     <name>Profession/Fletcher</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Fletcher</entry>
+    <entry>Wisdom@Profession@0@Fletcher</entry>
   </collection>
   <collection>
     <name>Profession/Footman</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Footman</entry>
+    <entry>Wisdom@Profession@0@Footman</entry>
   </collection>
   <collection>
     <name>Profession/Gemcutter</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Gemcutter</entry>
+    <entry>Wisdom@Profession@0@Gemcutter</entry>
   </collection>
   <collection>
     <name>Profession/Goldsmith</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Goldsmith</entry>
+    <entry>Wisdom@Profession@0@Goldsmith</entry>
   </collection>
   <collection>
     <name>Profession/Governess</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Governess</entry>
+    <entry>Wisdom@Profession@0@Governess</entry>
   </collection>
   <collection>
     <name>Profession/Haberdasher</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Haberdasher</entry>
+    <entry>Wisdom@Profession@0@Haberdasher</entry>
   </collection>
   <collection>
     <name>Profession/Healer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Healer</entry>
+    <entry>Wisdom@Profession@0@Healer</entry>
   </collection>
   <collection>
     <name>Profession/Horner</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Horner</entry>
+    <entry>Wisdom@Profession@0@Horner</entry>
   </collection>
   <collection>
     <name>Profession/Hunter</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Hunter</entry>
+    <entry>Wisdom@Profession@0@Hunter</entry>
   </collection>
   <collection>
     <name>Profession/Interpreter</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Interpreter</entry>
+    <entry>Wisdom@Profession@0@Interpreter</entry>
   </collection>
   <collection>
     <name>Profession/Jeweler</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Jeweler</entry>
+    <entry>Wisdom@Profession@0@Jeweler</entry>
   </collection>
   <collection>
     <name>Profession/Laborer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Laborer</entry>
+    <entry>Wisdom@Profession@0@Laborer</entry>
   </collection>
   <collection>
     <name>Profession/Launderer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Launderer</entry>
+    <entry>Wisdom@Profession@0@Launderer</entry>
   </collection>
   <collection>
     <name>Profession/Limner</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Limner</entry>
+    <entry>Wisdom@Profession@0@Limner</entry>
   </collection>
   <collection>
     <name>Profession/Local Courier</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Local Courier</entry>
+    <entry>Wisdom@Profession@0@Local Courier</entry>
   </collection>
   <collection>
     <name>Profession/Locksmith</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Locksmith</entry>
+    <entry>Wisdom@Profession@0@Locksmith</entry>
   </collection>
   <collection>
     <name>Profession/Maid</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Maid</entry>
+    <entry>Wisdom@Profession@0@Maid</entry>
   </collection>
   <collection>
     <name>Profession/Masseuse</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Masseuse</entry>
+    <entry>Wisdom@Profession@0@Masseuse</entry>
   </collection>
   <collection>
     <name>Profession/Matchmaker</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Matchmaker</entry>
+    <entry>Wisdom@Profession@0@Matchmaker</entry>
   </collection>
   <collection>
     <name>Profession/Midwife</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Midwife</entry>
+    <entry>Wisdom@Profession@0@Midwife</entry>
   </collection>
   <collection>
     <name>Profession/Miller</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Miller</entry>
+    <entry>Wisdom@Profession@0@Miller</entry>
   </collection>
   <collection>
     <name>Profession/Miner</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Miner</entry>
+    <entry>Wisdom@Profession@0@Miner</entry>
   </collection>
   <collection>
     <name>Profession/Navigator</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Navigator</entry>
+    <entry>Wisdom@Profession@0@Navigator</entry>
   </collection>
   <collection>
     <name>Profession/Nursemaid</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Nursemaid</entry>
+    <entry>Wisdom@Profession@0@Nursemaid</entry>
   </collection>
   <collection>
     <name>Profession/Out-of-Town Courier</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Out-of-Town Courier</entry>
+    <entry>Wisdom@Profession@0@Out-of-Town Courier</entry>
   </collection>
   <collection>
     <name>Profession/Painter</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Painter</entry>
+    <entry>Wisdom@Profession@0@Painter</entry>
   </collection>
   <collection>
     <name>Profession/Parchmentmaker</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Parchmentmaker</entry>
+    <entry>Wisdom@Profession@0@Parchmentmaker</entry>
   </collection>
   <collection>
     <name>Profession/Pewterer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Pewterer</entry>
+    <entry>Wisdom@Profession@0@Pewterer</entry>
   </collection>
   <collection>
     <name>Profession/Polisher</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Polisher</entry>
+    <entry>Wisdom@Profession@0@Polisher</entry>
   </collection>
   <collection>
     <name>Profession/Porter</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Porter</entry>
+    <entry>Wisdom@Profession@0@Porter</entry>
   </collection>
   <collection>
     <name>Profession/Potter</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Potter</entry>
+    <entry>Wisdom@Profession@0@Potter</entry>
   </collection>
   <collection>
     <name>Profession/Sage</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Sage</entry>
+    <entry>Wisdom@Profession@0@Sage</entry>
   </collection>
   <collection>
     <name>Profession/Sailor Crewmember</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Sailor Crewmember</entry>
+    <entry>Wisdom@Profession@0@Sailor Crewmember</entry>
   </collection>
   <collection>
     <name>Profession/Sailor Mate</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Sailor Mate</entry>
+    <entry>Wisdom@Profession@0@Sailor Mate</entry>
   </collection>
   <collection>
     <name>Profession/Scribe</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Scribe</entry>
+    <entry>Wisdom@Profession@0@Scribe</entry>
   </collection>
   <collection>
     <name>Profession/Sculptor</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Sculptor</entry>
+    <entry>Wisdom@Profession@0@Sculptor</entry>
   </collection>
   <collection>
     <name>Profession/Shepherd</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Shepherd</entry>
+    <entry>Wisdom@Profession@0@Shepherd</entry>
   </collection>
   <collection>
     <name>Profession/Shipwright</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Shipwright</entry>
+    <entry>Wisdom@Profession@0@Shipwright</entry>
   </collection>
   <collection>
     <name>Profession/Silversmith</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Silversmith</entry>
+    <entry>Wisdom@Profession@0@Silversmith</entry>
   </collection>
   <collection>
     <name>Profession/Skinner</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Skinner</entry>
+    <entry>Wisdom@Profession@0@Skinner</entry>
   </collection>
   <collection>
     <name>Profession/Soapmaker</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Soapmaker</entry>
+    <entry>Wisdom@Profession@0@Soapmaker</entry>
   </collection>
   <collection>
     <name>Profession/Soothsayer</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Soothsayer</entry>
+    <entry>Wisdom@Profession@0@Soothsayer</entry>
   </collection>
   <collection>
     <name>Profession/Tanner</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Tanner</entry>
+    <entry>Wisdom@Profession@0@Tanner</entry>
   </collection>
   <collection>
     <name>Profession/Trapper</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Trapper</entry>
+    <entry>Wisdom@Profession@0@Trapper</entry>
   </collection>
   <collection>
     <name>Profession/Teacher</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Teacher</entry>
+    <entry>Wisdom@Profession@0@Teacher</entry>
   </collection>
   <collection>
     <name>Profession/Teamster</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Teamster</entry>
+    <entry>Wisdom@Profession@0@Teamster</entry>
   </collection>
   <collection>
     <name>Profession/Trader</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Trader</entry>
+    <entry>Wisdom@Profession@0@Trader</entry>
   </collection>
   <collection>
     <name>Profession/Valet</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Valet</entry>
+    <entry>Wisdom@Profession@0@Valet</entry>
   </collection>
   <collection>
     <name>Profession/Vintner</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Vintner</entry>
+    <entry>Wisdom@Profession@0@Vintner</entry>
   </collection>
   <collection>
     <name>Profession/Weaponsmith</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Weaponsmith</entry>
+    <entry>Wisdom@Profession@0@Weaponsmith</entry>
   </collection>
   <collection>
     <name>Profession/Weaver</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Weaver</entry>
+    <entry>Wisdom@Profession@0@Weaver</entry>
   </collection>
   <collection>
     <name>Profession/Wheelwright</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Wheelwright</entry>
+    <entry>Wisdom@Profession@0@Wheelwright</entry>
   </collection>
   <collection>
     <name>Profession/Wilderness Guide</name>
-    <entry>Wisdom</entry>
-    <entry>Profession</entry>
-    <entry>0</entry>
-    <entry>Wilderness Guide</entry>
+    <entry>Wisdom@Profession@0@Wilderness Guide</entry>
   </collection>
   <collection>
     <name>Ride</name>
-    <entry>Dexterity</entry>
-    <entry>Ride</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Dexterity@Ride@0@</entry>
   </collection>
   <collection>
     <name>Search</name>
-    <entry>Intelligence</entry>
-    <entry>Search</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Intelligence@Search@0@</entry>
   </collection>
   <collection>
     <name>Sense Motive</name>
-    <entry>Wisdom</entry>
-    <entry>Sense Motive</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Wisdom@Sense Motive@0@</entry>
   </collection>
   <collection>
     <name>Sleight of Hand</name>
-    <entry>Dexterity</entry>
-    <entry>Sleight of Hand</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Dexterity@Sleight of Hand@0@</entry>
   </collection>
   <collection>
     <name>Spellcraft</name>
-    <entry>Intelligence</entry>
-    <entry>Spellcraft</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Intelligence@Spellcraft@0@</entry>
   </collection>
   <collection>
     <name>Spot</name>
-    <entry>Wisdom</entry>
-    <entry>Spot</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Wisdom@Spot@0@</entry>
   </collection>
   <collection>
     <name>Survival</name>
-    <entry>Wisdom</entry>
-    <entry>Survival</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Wisdom@Survival@0@</entry>
   </collection>
   <collection>
     <name>Swim</name>
-    <entry>Strength</entry>
-    <entry>Swim</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Strength@Swim@0@</entry>
   </collection>
   <collection>
     <name>SwimDexterity</name>
-    <entry>Dexterity</entry>
-    <entry>Swim</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Dexterity@Swim@0@</entry>
   </collection>
   <collection>
     <name>Tumble</name>
-    <entry>Dexterity</entry>
-    <entry>Tumble</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Dexterity@Tumble@0@</entry>
   </collection>
   <collection>
     <name>Use Magic Device</name>
-    <entry>Charisma</entry>
-    <entry>Use Magic Device</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Charisma@Use Magic Device@0@</entry>
   </collection>
   <collection>
     <name>Use Rope</name>
-    <entry>Dexterity</entry>
-    <entry>Use Rope</entry>
-    <entry>0</entry>
-    <entry></entry>
+    <entry>Dexterity@Use Rope@0@</entry>
   </collection>
 </collections>

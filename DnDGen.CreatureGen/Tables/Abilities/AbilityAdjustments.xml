@@ -185,14 +185,28 @@
 		<entry>Wisdom@-10</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Colossal (More Than Two Legs)</name>
+		<name>Animated Object, Colossal (More Than Two Legs, Long)</name>
 		<entry>Charisma@-10</entry>
 		<entry>Dexterity@-6</entry>
 		<entry>Strength@18</entry>
 		<entry>Wisdom@-10</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Colossal (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Colossal (More Than Two Legs, Long, Wooden)</name>
+		<entry>Charisma@-10</entry>
+		<entry>Dexterity@-6</entry>
+		<entry>Strength@18</entry>
+		<entry>Wisdom@-10</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall)</name>
+		<entry>Charisma@-10</entry>
+		<entry>Dexterity@-6</entry>
+		<entry>Strength@18</entry>
+		<entry>Wisdom@-10</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall, Wooden)</name>
 		<entry>Charisma@-10</entry>
 		<entry>Dexterity@-6</entry>
 		<entry>Strength@18</entry>
@@ -248,14 +262,28 @@
 		<entry>Wisdom@-10</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs)</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long)</name>
 		<entry>Charisma@-10</entry>
 		<entry>Dexterity@-4</entry>
 		<entry>Strength@14</entry>
 		<entry>Wisdom@-10</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long, Wooden)</name>
+		<entry>Charisma@-10</entry>
+		<entry>Dexterity@-4</entry>
+		<entry>Strength@14</entry>
+		<entry>Wisdom@-10</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall)</name>
+		<entry>Charisma@-10</entry>
+		<entry>Dexterity@-4</entry>
+		<entry>Strength@14</entry>
+		<entry>Wisdom@-10</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall, Wooden)</name>
 		<entry>Charisma@-10</entry>
 		<entry>Dexterity@-4</entry>
 		<entry>Strength@14</entry>
@@ -311,14 +339,28 @@
 		<entry>Wisdom@-10</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs)</name>
+		<name>Animated Object, Huge (More Than Two Legs, Long)</name>
 		<entry>Charisma@-10</entry>
 		<entry>Dexterity@-2</entry>
 		<entry>Strength@10</entry>
 		<entry>Wisdom@-10</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Huge (More Than Two Legs, Long, Wooden)</name>
+		<entry>Charisma@-10</entry>
+		<entry>Dexterity@-2</entry>
+		<entry>Strength@10</entry>
+		<entry>Wisdom@-10</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall)</name>
+		<entry>Charisma@-10</entry>
+		<entry>Dexterity@-2</entry>
+		<entry>Strength@10</entry>
+		<entry>Wisdom@-10</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall, Wooden)</name>
 		<entry>Charisma@-10</entry>
 		<entry>Dexterity@-2</entry>
 		<entry>Strength@10</entry>
@@ -374,14 +416,28 @@
 		<entry>Wisdom@-10</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs)</name>
+		<name>Animated Object, Large (More Than Two Legs, Long)</name>
 		<entry>Charisma@-10</entry>
 		<entry>Dexterity@0</entry>
 		<entry>Strength@6</entry>
 		<entry>Wisdom@-10</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Large (More Than Two Legs, Long, Wooden)</name>
+		<entry>Charisma@-10</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Strength@6</entry>
+		<entry>Wisdom@-10</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall)</name>
+		<entry>Charisma@-10</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Strength@6</entry>
+		<entry>Wisdom@-10</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall, Wooden)</name>
 		<entry>Charisma@-10</entry>
 		<entry>Dexterity@0</entry>
 		<entry>Strength@6</entry>

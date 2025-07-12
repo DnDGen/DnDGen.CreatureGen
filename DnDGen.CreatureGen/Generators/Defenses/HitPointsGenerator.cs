@@ -2,8 +2,6 @@
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
-using DnDGen.CreatureGen.Selectors.Collections;
-using DnDGen.CreatureGen.Tables;
 using DnDGen.RollGen;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,26 +11,16 @@ namespace DnDGen.CreatureGen.Generators.Defenses
     internal class HitPointsGenerator : IHitPointsGenerator
     {
         private readonly Dice dice;
-        private readonly IAdjustmentsSelector adjustmentSelector;
 
-        public HitPointsGenerator(Dice dice, IAdjustmentsSelector adjustmentSelector)
+        public HitPointsGenerator(Dice dice)
         {
             this.dice = dice;
-            this.adjustmentSelector = adjustmentSelector;
         }
 
-        public HitPoints GenerateFor(string creatureName, CreatureType creatureType, Ability constitution, string size, int additionalHitDice = 0, bool asCharacter = false)
+        public HitPoints GenerateFor(double quantity, int die, CreatureType creatureType, Ability constitution, string size, int additionalHitDice = 0)
         {
             var hitPoints = new HitPoints();
-
-            var quantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creatureName);
-            var die = adjustmentSelector.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, creatureType.Name);
             quantity += additionalHitDice;
-
-            if (asCharacter && creatureType.Name == CreatureConstants.Types.Humanoid)
-            {
-                quantity--;
-            }
 
             hitPoints.Constitution = constitution;
             hitPoints.Bonus = GetBonus(creatureType, size);
@@ -53,19 +41,16 @@ namespace DnDGen.CreatureGen.Generators.Defenses
             if (creatureType.Name != CreatureConstants.Types.Construct)
                 return 0;
 
-            switch (size)
+            return size switch
             {
-                case SizeConstants.Colossal: return 80;
-                case SizeConstants.Gargantuan: return 60;
-                case SizeConstants.Huge: return 40;
-                case SizeConstants.Large: return 30;
-                case SizeConstants.Medium: return 20;
-                case SizeConstants.Small: return 10;
-                case SizeConstants.Tiny:
-                case SizeConstants.Diminutive:
-                case SizeConstants.Fine:
-                default: return 0;
-            }
+                SizeConstants.Colossal => 80,
+                SizeConstants.Gargantuan => 60,
+                SizeConstants.Huge => 40,
+                SizeConstants.Large => 30,
+                SizeConstants.Medium => 20,
+                SizeConstants.Small => 10,
+                _ => 0,
+            };
         }
 
         public HitPoints RegenerateWith(HitPoints hitPoints, IEnumerable<Feat> feats)

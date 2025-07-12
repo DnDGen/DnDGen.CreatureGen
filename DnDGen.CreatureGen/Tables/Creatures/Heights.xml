@@ -107,15 +107,25 @@
 	  <entry>Animated Object, Colossal (Flexible)@0</entry>
   </collection>
   <collection>
-    <name>Animated Object, Colossal (More Than Two Legs)</name>
-	  <entry>Agender@512</entry>
-	  <entry>Animated Object, Colossal (More Than Two Legs)@256d4</entry>
+    <name>Animated Object, Colossal (More Than Two Legs, Long)</name>
+	  <entry>Agender@256</entry>
+	  <entry>Animated Object, Colossal (More Than Two Legs, Long)@128d4</entry>
   </collection>
   <collection>
-    <name>Animated Object, Colossal (More Than Two Legs, Wooden)</name>
-	  <entry>Agender@512</entry>
-	  <entry>Animated Object, Colossal (More Than Two Legs, Wooden)@256d4</entry>
+    <name>Animated Object, Colossal (More Than Two Legs, Long, Wooden)</name>
+	  <entry>Agender@256</entry>
+	  <entry>Animated Object, Colossal (More Than Two Legs, Long, Wooden)@128d4</entry>
   </collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall)</name>
+		<entry>Agender@512</entry>
+		<entry>Animated Object, Colossal (More Than Two Legs, Tall)@256d4</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall, Wooden)</name>
+		<entry>Agender@512</entry>
+		<entry>Animated Object, Colossal (More Than Two Legs, Tall, Wooden)@256d4</entry>
+	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Two Legs)</name>
 		<entry>Agender@512</entry>
@@ -133,8 +143,8 @@
   </collection>
   <collection>
     <name>Animated Object, Colossal (Wheels, Wooden)</name>
-	  <entry>Agender@512</entry>
-	  <entry>Animated Object, Colossal (Wheels, Wooden)@256d4</entry>
+	  <entry>Agender@256</entry>
+	  <entry>Animated Object, Colossal (Wheels, Wooden)@128d4</entry>
   </collection>
   <collection>
     <name>Animated Object, Colossal (Wooden)</name>
@@ -152,14 +162,24 @@
 		<entry>Animated Object, Gargantuan (Flexible)@0</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs)</name>
-		<entry>Agender@256</entry>
-		<entry>Animated Object, Gargantuan (More Than Two Legs)@128d4</entry>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long)</name>
+		<entry>Agender@128</entry>
+		<entry>Animated Object, Gargantuan (More Than Two Legs, Long)@64d4</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long, Wooden)</name>
+		<entry>Agender@128</entry>
+		<entry>Animated Object, Gargantuan (More Than Two Legs, Long, Wooden)@64d4</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall)</name>
 		<entry>Agender@256</entry>
-		<entry>Animated Object, Gargantuan (More Than Two Legs, Wooden)@128d4</entry>
+		<entry>Animated Object, Gargantuan (More Than Two Legs, Tall)@128d4</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall, Wooden)</name>
+		<entry>Agender@256</entry>
+		<entry>Animated Object, Gargantuan (More Than Two Legs, Tall, Wooden)@128d4</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Two Legs)</name>
@@ -178,8 +198,8 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Wheels, Wooden)</name>
-		<entry>Agender@256</entry>
-		<entry>Animated Object, Gargantuan (Wheels, Wooden)@128d4</entry>
+		<entry>Agender@128</entry>
+		<entry>Animated Object, Gargantuan (Wheels, Wooden)@64d4</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Wooden)</name>
@@ -197,14 +217,24 @@
 		<entry>Animated Object, Huge (Flexible)@0</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs)</name>
-		<entry>Agender@128</entry>
-		<entry>Animated Object, Huge (More Than Two Legs)@64d4</entry>
+		<name>Animated Object, Huge (More Than Two Legs, Long)</name>
+		<entry>Agender@64</entry>
+		<entry>Animated Object, Huge (More Than Two Legs, Long)@32d4</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Huge (More Than Two Legs, Long, Wooden)</name>
+		<entry>Agender@64</entry>
+		<entry>Animated Object, Huge (More Than Two Legs, Long, Wooden)@32d4</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall)</name>
 		<entry>Agender@128</entry>
-		<entry>Animated Object, Huge (More Than Two Legs, Wooden)@64d4</entry>
+		<entry>Animated Object, Huge (More Than Two Legs, Tall)@64d4</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall, Wooden)</name>
+		<entry>Agender@128</entry>
+		<entry>Animated Object, Huge (More Than Two Legs, Tall, Wooden)@64d4</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Two Legs)</name>
@@ -223,8 +253,8 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Wheels, Wooden)</name>
-		<entry>Agender@128</entry>
-		<entry>Animated Object, Huge (Wheels, Wooden)@64d4</entry>
+		<entry>Agender@64</entry>
+		<entry>Animated Object, Huge (Wheels, Wooden)@32d4</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Wooden)</name>
@@ -242,14 +272,24 @@
 		<entry>Animated Object, Large (Flexible)@0</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs)</name>
-		<entry>Agender@64</entry>
-		<entry>Animated Object, Large (More Than Two Legs)@32d4</entry>
+		<name>Animated Object, Large (More Than Two Legs, Long)</name>
+		<entry>Agender@32</entry>
+		<entry>Animated Object, Large (More Than Two Legs, Long)@16d4</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Large (More Than Two Legs, Long, Wooden)</name>
+		<entry>Agender@32</entry>
+		<entry>Animated Object, Large (More Than Two Legs, Long, Wooden)@16d4</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall)</name>
 		<entry>Agender@64</entry>
-		<entry>Animated Object, Large (More Than Two Legs, Wooden)@32d4</entry>
+		<entry>Animated Object, Large (More Than Two Legs, Tall)@32d4</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall, Wooden)</name>
+		<entry>Agender@64</entry>
+		<entry>Animated Object, Large (More Than Two Legs, Tall, Wooden)@32d4</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Two Legs)</name>
@@ -268,8 +308,8 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Wheels, Wooden)</name>
-		<entry>Agender@64</entry>
-		<entry>Animated Object, Large (Wheels, Wooden)@32d4</entry>
+		<entry>Agender@32</entry>
+		<entry>Animated Object, Large (Wheels, Wooden)@16d4</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Wooden)</name>
@@ -313,8 +353,8 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Wheels, Wooden)</name>
-		<entry>Agender@32</entry>
-		<entry>Animated Object, Medium (Wheels, Wooden)@16d4</entry>
+		<entry>Agender@16</entry>
+		<entry>Animated Object, Medium (Wheels, Wooden)@8d4</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Wooden)</name>
@@ -358,8 +398,8 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Wheels, Wooden)</name>
-		<entry>Agender@16</entry>
-		<entry>Animated Object, Small (Wheels, Wooden)@8d4</entry>
+		<entry>Agender@8</entry>
+		<entry>Animated Object, Small (Wheels, Wooden)@4d4</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Wooden)</name>
@@ -403,8 +443,8 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Wheels, Wooden)</name>
-		<entry>Agender@8</entry>
-		<entry>Animated Object, Tiny (Wheels, Wooden)@4d4</entry>
+		<entry>Agender@4</entry>
+		<entry>Animated Object, Tiny (Wheels, Wooden)@2d4</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Wooden)</name>
@@ -447,8 +487,8 @@
   </collection>
   <collection>
     <name>Assassin Vine</name>
-	  <entry>Agender@2</entry>
-	  <entry>Assassin Vine@1d2</entry>
+	  <entry>Agender@200</entry>
+	  <entry>Assassin Vine@16d4</entry>
   </collection>
   <collection>
     <name>Athach</name>
@@ -527,8 +567,8 @@
   </collection>
   <collection>
     <name>Bat</name>
-	  <entry>Male@3</entry>
-	  <entry>Female@3</entry>
+	  <entry>Male@2</entry>
+	  <entry>Female@2</entry>
 	  <entry>Bat@1d2</entry>
   </collection>
   <collection>
@@ -1027,8 +1067,8 @@
   </collection>
   <collection>
     <name>Cloaker</name>
-	  <entry>Agender@0</entry>
-	  <entry>Cloaker@0</entry>
+	  <entry>Agender@85</entry>
+	  <entry>Cloaker@1d20</entry>
   </collection>
   <collection>
     <name>Cloud Giant</name>
@@ -1219,8 +1259,8 @@
   </collection>
   <collection>
     <name>Dire Bat</name>
-	  <entry>Male@57</entry>
-	  <entry>Female@57</entry>
+	  <entry>Male@42</entry>
+	  <entry>Female@42</entry>
 	  <entry>Dire Bat@3d6</entry>
   </collection>
   <collection>
@@ -1719,9 +1759,9 @@
   </collection>
   <collection>
     <name>Giant Octopus</name>
-	  <entry>Male@18</entry>
-	  <entry>Female@18</entry>
-	  <entry>Giant Octopus@2d3</entry>
+	  <entry>Male@107</entry>
+	  <entry>Female@107</entry>
+	  <entry>Giant Octopus@13d3</entry>
   </collection>
   <collection>
     <name>Giant Owl</name>
@@ -1731,15 +1771,15 @@
   </collection>
   <collection>
     <name>Giant Praying Mantis</name>
-	  <entry>Male@20</entry>
-	  <entry>Female@20</entry>
-	  <entry>Giant Praying Mantis@4d10</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Giant Praying Mantis@0</entry>
   </collection>
   <collection>
     <name>Giant Squid</name>
-	  <entry>Male@0</entry>
-	  <entry>Female@0</entry>
-	  <entry>Giant Squid@0</entry>
+	  <entry>Male@254</entry>
+	  <entry>Female@254</entry>
+	  <entry>Giant Squid@73d2</entry>
   </collection>
   <collection>
     <name>Giant Stag Beetle</name>
@@ -2648,8 +2688,8 @@
   </collection>
   <collection>
     <name>Nightwing</name>
-	  <entry>Agender@142</entry>
-	  <entry>Nightwing@4d4</entry>
+	  <entry>Agender@76</entry>
+	  <entry>Nightwing@13d3</entry>
   </collection>
   <collection>
     <name>Nine-Headed Cryohydra</name>
@@ -2699,9 +2739,9 @@
   </collection>
   <collection>
     <name>Octopus</name>
-	  <entry>Female@4</entry>
-	  <entry>Male@4</entry>
-	  <entry>Octopus@2d3</entry>
+	  <entry>Female@29</entry>
+	  <entry>Male@29</entry>
+	  <entry>Octopus@1d10</entry>
   </collection>
   <collection>
     <name>Ogre Mage</name>
@@ -3227,9 +3267,9 @@
   </collection>
   <collection>
     <name>Squid</name>
-	  <entry>Female@19</entry>
-	  <entry>Male@19</entry>
-	  <entry>Squid@10d6</entry>
+	  <entry>Female@46</entry>
+	  <entry>Male@46</entry>
+	  <entry>Squid@13d4</entry>
   </collection>
   <collection>
     <name>Steam Mephit</name>

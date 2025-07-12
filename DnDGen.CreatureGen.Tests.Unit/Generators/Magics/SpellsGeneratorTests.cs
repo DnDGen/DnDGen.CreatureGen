@@ -2,9 +2,8 @@
 using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Magics;
-using DnDGen.CreatureGen.Selectors.Collections;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
 using Moq;
 using NUnit.Framework;
@@ -16,14 +15,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
     [TestFixture]
     public class SpellsGeneratorTests
     {
-        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<ICollectionSelector> mockCollectionsSelector;
         private ISpellsGenerator spellsGenerator;
         private Ability castingAbility;
-        private List<TypeAndAmountSelection> spellsPerDayForClass;
-        private List<TypeAndAmountSelection> spellsKnownForClass;
+        private List<TypeAndAmountDataSelection> spellsPerDayForClass;
+        private List<TypeAndAmountDataSelection> spellsKnownForClass;
         private List<string> classSpells;
-        private List<TypeAndAmountSelection> spellLevels;
+        private List<TypeAndAmountDataSelection> spellLevels;
         private List<string> divineCasters;
         private string caster;
         private int casterLevel;
@@ -32,32 +31,32 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
         [SetUp]
         public void Setup()
         {
-            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
             mockCollectionsSelector = new Mock<ICollectionSelector>();
             spellsGenerator = new SpellsGenerator(mockCollectionsSelector.Object, mockTypeAndAmountSelector.Object);
             castingAbility = new Ability("casting ability");
-            spellsPerDayForClass = new List<TypeAndAmountSelection>();
-            spellsKnownForClass = new List<TypeAndAmountSelection>();
-            classSpells = new List<string>();
-            spellLevels = new List<TypeAndAmountSelection>();
-            divineCasters = new List<string>();
+            spellsPerDayForClass = [];
+            spellsKnownForClass = [];
+            classSpells = [];
+            spellLevels = [];
+            divineCasters = [];
             alignment = new Alignment();
 
             caster = "class name";
             casterLevel = 9;
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 90210, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 42, });
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 2, });
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 90210, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 42, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 2, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 1, });
             castingAbility.BaseScore = 11;
             classSpells.Add("spell 1");
             classSpells.Add("spell 2");
             classSpells.Add("spell 3");
             classSpells.Add("spell 4");
-            spellLevels.Add(new TypeAndAmountSelection { Type = classSpells[0], Amount = 0, });
-            spellLevels.Add(new TypeAndAmountSelection { Type = classSpells[1], Amount = 0, });
-            spellLevels.Add(new TypeAndAmountSelection { Type = classSpells[2], Amount = 1, });
-            spellLevels.Add(new TypeAndAmountSelection { Type = classSpells[3], Amount = 1, });
+            spellLevels.Add(new TypeAndAmountDataSelection { Type = classSpells[0], AmountAsDouble = 0, });
+            spellLevels.Add(new TypeAndAmountDataSelection { Type = classSpells[1], AmountAsDouble = 0, });
+            spellLevels.Add(new TypeAndAmountDataSelection { Type = classSpells[2], AmountAsDouble = 1, });
+            spellLevels.Add(new TypeAndAmountDataSelection { Type = classSpells[3], AmountAsDouble = 1, });
             divineCasters.Add("other divine class");
             alignment.Goodness = "goodly";
             alignment.Lawfulness = "lawly";
@@ -65,19 +64,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Divine)).Returns(divineCasters);
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellsPerDay, $"{caster}:{casterLevel}"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.SpellsPerDay, $"{caster}:{casterLevel}"))
                 .Returns(spellsPerDayForClass);
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.KnownSpells, $"{caster}:{casterLevel}"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.KnownSpells, $"{caster}:{casterLevel}"))
                 .Returns(spellsKnownForClass);
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, caster)).Returns(classSpells);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "domain 1")).Returns(new[] { classSpells[0], classSpells[2] });
-            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "domain 2")).Returns(new[] { classSpells[1], classSpells[3] });
+            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "domain 1")).Returns([classSpells[0], classSpells[2]]);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "domain 2")).Returns([classSpells[1], classSpells[3]]);
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, caster))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.SpellLevels, caster))
                 .Returns(spellLevels);
 
             var index = 0;
@@ -152,16 +151,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             castingAbility.RacialAdjustment = -2;
 
             spellsPerDayForClass.Clear();
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 10, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 9, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "2", Amount = 8, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "3", Amount = 7, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "4", Amount = 6, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "5", Amount = 5, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "6", Amount = 4, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "7", Amount = 3, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "8", Amount = 2, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "9", Amount = 1, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 10, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 9, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "2", AmountAsDouble = 8, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "3", AmountAsDouble = 7, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "4", AmountAsDouble = 6, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "5", AmountAsDouble = 5, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "6", AmountAsDouble = 4, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "7", AmountAsDouble = 3, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "8", AmountAsDouble = 2, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "9", AmountAsDouble = 1, });
 
             var generatedSpellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility);
 
@@ -210,7 +209,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
         public void CanGetBonusSpellsPerDayInLevelWithQuantityOf0()
         {
             castingAbility.BaseScore = 45;
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "2", Amount = 0, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "2", AmountAsDouble = 0, });
 
             var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility);
             Assert.That(spellsPerDay.Count, Is.EqualTo(3));
@@ -233,8 +232,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
         public void IfTotalSpellsPerDayIs0AndDoesNotHaveDomainSpell_RemoveSpellLevel()
         {
             spellsPerDayForClass.Clear();
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 90210, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 0, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 90210, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 0, });
 
             var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility);
             var cantrips = spellsPerDay.First(s => s.Level == 0);
@@ -247,8 +246,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
         public void IfTotalSpellsPerDayIs0AndHasDomainSpell_DoNotRemoveSpellLevel()
         {
             spellsPerDayForClass.Clear();
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 90210, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 0, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 90210, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 0, });
 
             var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility, "specialist");
             Assert.That(spellsPerDay.Count, Is.EqualTo(2));
@@ -266,8 +265,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
         public void IfTotalSpellsPerDayIsGreaterThan0AndDoesNotHaveDomainSpell_DoNotRemoveSpellLevel()
         {
             spellsPerDayForClass.Clear();
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 90210, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 90210, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 1, });
 
             var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility);
             Assert.That(spellsPerDay.Count, Is.EqualTo(2));
@@ -285,16 +284,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
         public void AllSpellLevelsPerDayExcept0GetDomainSpellIfClassHasSpecialistFields()
         {
             spellsPerDayForClass.Clear();
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 10, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 9, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "2", Amount = 8, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "3", Amount = 7, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "4", Amount = 6, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "5", Amount = 5, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "6", Amount = 4, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "7", Amount = 3, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "8", Amount = 2, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "9", Amount = 1, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 10, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 9, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "2", AmountAsDouble = 8, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "3", AmountAsDouble = 7, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "4", AmountAsDouble = 6, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "5", AmountAsDouble = 5, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "6", AmountAsDouble = 4, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "7", AmountAsDouble = 3, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "8", AmountAsDouble = 2, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "9", AmountAsDouble = 1, });
 
             var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility, "specialist");
 
@@ -310,16 +309,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
         public void AllSpellLevelsPerDayExcept0GetDomainSpellIfClassHasMultipleSpecialistFields()
         {
             spellsPerDayForClass.Clear();
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 10, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 9, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "2", Amount = 8, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "3", Amount = 7, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "4", Amount = 6, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "5", Amount = 5, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "6", Amount = 4, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "7", Amount = 3, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "8", Amount = 2, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "9", Amount = 1, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 10, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 9, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "2", AmountAsDouble = 8, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "3", AmountAsDouble = 7, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "4", AmountAsDouble = 6, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "5", AmountAsDouble = 5, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "6", AmountAsDouble = 4, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "7", AmountAsDouble = 3, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "8", AmountAsDouble = 2, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "9", AmountAsDouble = 1, });
 
             var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility, "specialist", "also specialist");
 
@@ -334,16 +333,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
         [Test]
         public void NoSpellLevelsPerDayGetDomainSpellIfClassDoesNotHaveSpecialistFields()
         {
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 10, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 9, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "2", Amount = 8, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "3", Amount = 7, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "4", Amount = 6, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "5", Amount = 5, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "6", Amount = 4, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "7", Amount = 3, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "8", Amount = 2, });
-            spellsPerDayForClass.Add(new TypeAndAmountSelection { Type = "9", Amount = 1, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 10, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 9, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "2", AmountAsDouble = 8, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "3", AmountAsDouble = 7, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "4", AmountAsDouble = 6, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "5", AmountAsDouble = 5, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "6", AmountAsDouble = 4, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "7", AmountAsDouble = 3, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "8", AmountAsDouble = 2, });
+            spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "9", AmountAsDouble = 1, });
 
             var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility);
 
@@ -370,8 +369,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
         public void KnowAllSpellsBySheerQuantity()
         {
             spellsKnownForClass.Clear();
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 3, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 3, });
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility);
             Assert.That(spellsKnown.Count(), Is.EqualTo(3));
@@ -389,8 +388,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             divineCasters.Add(caster);
 
             spellsKnownForClass.Clear();
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 1, });
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility);
             Assert.That(spellsKnown.Count(), Is.EqualTo(4));
@@ -408,19 +407,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             divineCasters.Add(caster);
 
             spellsKnownForClass.Clear();
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 1, });
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "special domain"))
-                .Returns(new[] { "spell 5", "other special domain spell" });
+                .Returns(["spell 5", "other special domain spell"]);
 
-            var specialDomainSpellLevels = new List<TypeAndAmountSelection>();
-            specialDomainSpellLevels.Add(new TypeAndAmountSelection { Type = "spell 5", Amount = 1, });
-            specialDomainSpellLevels.Add(new TypeAndAmountSelection { Type = "other special domain spell", Amount = 2, });
+            var specialDomainSpellLevels = new List<TypeAndAmountDataSelection>
+            {
+                new() { Type = "spell 5", AmountAsDouble = 1, },
+                new() { Type = "other special domain spell", AmountAsDouble = 2, }
+            };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
                 .Returns(specialDomainSpellLevels);
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "special domain");
@@ -440,15 +441,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             divineCasters.Add(caster);
 
             classSpells.Add("spell 5");
-            spellLevels.Add(new TypeAndAmountSelection { Type = classSpells[4], Amount = 0, });
+            spellLevels.Add(new TypeAndAmountDataSelection { Type = classSpells[4], AmountAsDouble = 0, });
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "creature:Prohibited"))
                 .Returns(new[] { "other forbidden spell", classSpells[4] });
 
             spellsKnownForClass.Clear();
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 1, });
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "specialist field");
             Assert.That(spellsKnown.Count(), Is.EqualTo(4));
@@ -467,15 +468,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             divineCasters.Add(caster);
 
             classSpells.Add("spell 5");
-            spellLevels.Add(new TypeAndAmountSelection { Type = classSpells[4], Amount = 0, });
+            spellLevels.Add(new TypeAndAmountDataSelection { Type = classSpells[4], AmountAsDouble = 0, });
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "specialist field:Prohibited"))
                 .Returns(new[] { "other forbidden spell", classSpells[4] });
 
             spellsKnownForClass.Clear();
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 1, });
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "specialist field");
             Assert.That(spellsKnown.Count(), Is.EqualTo(4));
@@ -494,15 +495,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             divineCasters.Add(caster);
 
             classSpells.Add("spell 5");
-            spellLevels.Add(new TypeAndAmountSelection { Type = classSpells[4], Amount = 0, });
+            spellLevels.Add(new TypeAndAmountDataSelection { Type = classSpells[4], AmountAsDouble = 0, });
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "goodly:Prohibited"))
                 .Returns(new[] { "other forbidden spell", classSpells[4] });
 
             spellsKnownForClass.Clear();
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 1, });
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "specialist field");
             Assert.That(spellsKnown.Count(), Is.EqualTo(4));
@@ -521,15 +522,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             divineCasters.Add(caster);
 
             classSpells.Add("spell 5");
-            spellLevels.Add(new TypeAndAmountSelection { Type = classSpells[4], Amount = 0, });
+            spellLevels.Add(new TypeAndAmountDataSelection { Type = classSpells[4], AmountAsDouble = 0, });
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "lawly:Prohibited"))
                 .Returns(new[] { "other forbidden spell", classSpells[4] });
 
             spellsKnownForClass.Clear();
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 1, });
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "specialist field");
             Assert.That(spellsKnown.Count(), Is.EqualTo(4));
@@ -548,8 +549,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             divineCasters.Add(caster);
 
             spellsKnownForClass.Clear();
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 0, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 0, });
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility);
             Assert.That(spellsKnown.Count(), Is.EqualTo(4));
@@ -567,11 +568,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             divineCasters.Add(caster);
 
             spellsKnownForClass.Clear();
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 1, });
 
             classSpells.Add("spell 5");
-            spellLevels.Add(new TypeAndAmountSelection { Type = classSpells[4], Amount = 2, });
+            spellLevels.Add(new TypeAndAmountDataSelection { Type = classSpells[4], AmountAsDouble = 2, });
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility);
             Assert.That(spellsKnown.Count(), Is.EqualTo(4));
@@ -589,19 +590,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             divineCasters.Add(caster);
 
             spellsKnownForClass.Clear();
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 1, });
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "special domain"))
-                .Returns(new[] { "spell 5", "other special domain spell" });
+                .Returns(["spell 5", "other special domain spell"]);
 
-            var specialDomainSpellLevels = new List<TypeAndAmountSelection>();
-            specialDomainSpellLevels.Add(new TypeAndAmountSelection { Type = "spell 5", Amount = 2, });
-            specialDomainSpellLevels.Add(new TypeAndAmountSelection { Type = "other special domain spell", Amount = 2, });
+            var specialDomainSpellLevels = new List<TypeAndAmountDataSelection>
+            {
+                new() { Type = "spell 5", AmountAsDouble = 2, },
+                new() { Type = "other special domain spell", AmountAsDouble = 2, }
+            };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
                 .Returns(specialDomainSpellLevels);
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "special domain");
@@ -620,19 +623,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             divineCasters.Add(caster);
 
             spellsKnownForClass.Clear();
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 0, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 0, });
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "special domain"))
-                .Returns(new[] { "spell 5", "other special domain spell" });
+                .Returns(["spell 5", "other special domain spell"]);
 
-            var specialDomainSpellLevels = new List<TypeAndAmountSelection>();
-            specialDomainSpellLevels.Add(new TypeAndAmountSelection { Type = "spell 5", Amount = 1, });
-            specialDomainSpellLevels.Add(new TypeAndAmountSelection { Type = "other special domain spell", Amount = 2, });
+            var specialDomainSpellLevels = new List<TypeAndAmountDataSelection>
+            {
+                new() { Type = "spell 5", AmountAsDouble = 1, },
+                new() { Type = "other special domain spell", AmountAsDouble = 2, }
+            };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
                 .Returns(specialDomainSpellLevels);
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "special domain");
@@ -652,8 +657,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             divineCasters.Add(caster);
 
             spellsKnownForClass.Clear();
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 1, });
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility);
             Assert.That(spellsKnown.Count(), Is.EqualTo(2));
@@ -669,19 +674,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             divineCasters.Add(caster);
 
             spellsKnownForClass.Clear();
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "0", Amount = 1, });
-            spellsKnownForClass.Add(new TypeAndAmountSelection { Type = "1", Amount = 0, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "0", AmountAsDouble = 1, });
+            spellsKnownForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 0, });
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "special domain"))
-                .Returns(new[] { "spell 5", "other special domain spell" });
+                .Returns(["spell 5", "other special domain spell"]);
 
-            var specialDomainSpellLevels = new List<TypeAndAmountSelection>();
-            specialDomainSpellLevels.Add(new TypeAndAmountSelection { Type = "spell 5", Amount = 1, });
-            specialDomainSpellLevels.Add(new TypeAndAmountSelection { Type = "other special domain spell", Amount = 2, });
+            var specialDomainSpellLevels = new List<TypeAndAmountDataSelection>
+            {
+                new() { Type = "spell 5", AmountAsDouble = 1, },
+                new() { Type = "other special domain spell", AmountAsDouble = 2, }
+            };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
                 .Returns(specialDomainSpellLevels);
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "special domain");
@@ -695,18 +702,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
         public void GetRandomKnownSpecialistSpells()
         {
             classSpells.Add("spell 5");
-            spellLevels.Add(new TypeAndAmountSelection { Type = classSpells[4], Amount = 1, });
+            spellLevels.Add(new TypeAndAmountDataSelection { Type = classSpells[4], AmountAsDouble = 1, });
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "special domain"))
-                .Returns(new[] { "other special domain spell", classSpells[4] });
+                .Returns(["other special domain spell", classSpells[4]]);
 
-            var specialDomainSpellLevels = new List<TypeAndAmountSelection>();
-            specialDomainSpellLevels.Add(new TypeAndAmountSelection { Type = "spell 5", Amount = 1, });
-            specialDomainSpellLevels.Add(new TypeAndAmountSelection { Type = "other special domain spell", Amount = 2, });
+            var specialDomainSpellLevels = new List<TypeAndAmountDataSelection>
+            {
+                new() { Type = "spell 5", AmountAsDouble = 1, },
+                new() { Type = "other special domain spell", AmountAsDouble = 2, }
+            };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
                 .Returns(specialDomainSpellLevels);
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "special domain");
@@ -723,17 +732,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
         public void GetRandomKnownNonSpecialistSpellIfAllSpecialistSpellsAreKnown()
         {
             classSpells.Add("spell 5");
-            spellLevels.Add(new TypeAndAmountSelection { Type = classSpells[4], Amount = 1, });
+            spellLevels.Add(new TypeAndAmountDataSelection { Type = classSpells[4], AmountAsDouble = 1, });
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "special domain"))
-                .Returns(new[] { classSpells[3] });
+                .Returns([classSpells[3]]);
 
-            var specialDomainSpellLevels = new List<TypeAndAmountSelection>();
-            specialDomainSpellLevels.Add(new TypeAndAmountSelection { Type = classSpells[3], Amount = 1, });
+            var specialDomainSpellLevels = new List<TypeAndAmountDataSelection>
+            {
+                new() { Type = classSpells[3], AmountAsDouble = 1, }
+            };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
                 .Returns(specialDomainSpellLevels);
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "special domain");
@@ -826,18 +837,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
         public void RandomKnownSpellsAreSpecialistSpellsEvenIfQuantityForLevelIs0()
         {
             var selection = spellsKnownForClass.First(s => s.Type == "1");
-            selection.Amount = 0;
+            selection.AmountAsDouble = 0;
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "special domain"))
-                .Returns(new[] { "spell 5", "other special domain spell" });
+                .Returns(["spell 5", "other special domain spell"]);
 
-            var specialDomainSpellLevels = new List<TypeAndAmountSelection>();
-            specialDomainSpellLevels.Add(new TypeAndAmountSelection { Type = "spell 5", Amount = 1, });
-            specialDomainSpellLevels.Add(new TypeAndAmountSelection { Type = "other special domain spell", Amount = 2, });
+            var specialDomainSpellLevels = new List<TypeAndAmountDataSelection>
+            {
+                new() { Type = "spell 5", AmountAsDouble = 1, },
+                new() { Type = "other special domain spell", AmountAsDouble = 2, }
+            };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
                 .Returns(specialDomainSpellLevels);
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "special domain");
@@ -898,38 +911,44 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
         [Test]
         public void KnownSpellsFromDomainCanBeOtherCasterSpells()
         {
-            var otherClassSpells = new List<string>();
-            otherClassSpells.Add("other spell 1");
-            otherClassSpells.Add("other spell 2");
-            otherClassSpells.Add("other spell 3");
-            otherClassSpells.Add("other spell 4");
-            otherClassSpells.Add("other spell 5");
+            var otherClassSpells = new List<string>
+            {
+                "other spell 1",
+                "other spell 2",
+                "other spell 3",
+                "other spell 4",
+                "other spell 5"
+            };
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "other class name"))
                 .Returns(otherClassSpells);
 
-            var otherSpellLevels = new List<TypeAndAmountSelection>();
-            otherSpellLevels.Add(new TypeAndAmountSelection { Type = otherClassSpells[0], Amount = 0, });
-            otherSpellLevels.Add(new TypeAndAmountSelection { Type = otherClassSpells[1], Amount = 0, });
-            otherSpellLevels.Add(new TypeAndAmountSelection { Type = otherClassSpells[2], Amount = 1, });
-            otherSpellLevels.Add(new TypeAndAmountSelection { Type = otherClassSpells[3], Amount = 1, });
-            otherSpellLevels.Add(new TypeAndAmountSelection { Type = otherClassSpells[4], Amount = 1, });
+            var otherSpellLevels = new List<TypeAndAmountDataSelection>
+            {
+                new() { Type = otherClassSpells[0], AmountAsDouble = 0, },
+                new() { Type = otherClassSpells[1], AmountAsDouble = 0, },
+                new() { Type = otherClassSpells[2], AmountAsDouble = 1, },
+                new() { Type = otherClassSpells[3], AmountAsDouble = 1, },
+                new() { Type = otherClassSpells[4], AmountAsDouble = 1, }
+            };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, "other class name"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.SpellLevels, "other class name"))
                 .Returns(otherSpellLevels);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, "special domain"))
-                .Returns(new[] { "other special domain spell", otherClassSpells[4] });
+                .Returns(["other special domain spell", otherClassSpells[4]]);
 
-            var specialDomainSpellLevels = new List<TypeAndAmountSelection>();
-            specialDomainSpellLevels.Add(new TypeAndAmountSelection { Type = otherClassSpells[4], Amount = 1, });
-            specialDomainSpellLevels.Add(new TypeAndAmountSelection { Type = "other special domain spell", Amount = 2, });
+            var specialDomainSpellLevels = new List<TypeAndAmountDataSelection>
+            {
+                new() { Type = otherClassSpells[4], AmountAsDouble = 1, },
+                new() { Type = "other special domain spell", AmountAsDouble = 2, }
+            };
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.SpellLevels, "special domain"))
                 .Returns(specialDomainSpellLevels);
 
             var spellsKnown = spellsGenerator.GenerateKnown("creature", caster, casterLevel, alignment, castingAbility, "other class name", "special domain");

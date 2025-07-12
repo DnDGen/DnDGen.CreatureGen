@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
@@ -9,14 +10,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     [TestFixture]
     internal class GendersTests : CollectionTests
     {
-        private ICollectionSelector collectionSelector;
-
         protected override string tableName => TableNameConstants.Collection.Genders;
+
+        private ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
 
         [SetUp]
         public void Setup()
         {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
+            creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
         }
 
         [Test]
@@ -547,11 +548,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void MedusaAre99PercentFemale()
         {
-            var genders = Enumerable.Repeat(GenderConstants.Female, 99).Concat(new[] { GenderConstants.Male }).ToArray();
-            AssertCollection(CreatureConstants.Medusa, genders);
-            Assert.That(genders, Has.Length.EqualTo(100));
+            var genders = Enumerable.Repeat(GenderConstants.Female, 99).Concat([GenderConstants.Male]);
+            Assert.That(genders.Count(), Is.EqualTo(100));
             Assert.That(genders.Count(g => g == GenderConstants.Female), Is.EqualTo(99));
             Assert.That(genders.Count(g => g == GenderConstants.Male), Is.EqualTo(1));
+
+            AssertCollection(CreatureConstants.Medusa, [.. genders]);
         }
 
         [TestCase(CreatureConstants.Types.Construct)]
@@ -559,7 +561,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Types.Subtypes.Swarm)]
         public void CreaturesOfTypeAreAgender(string type)
         {
-            var creatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, type);
+            var creatures = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
+                .Where(kvp => kvp.Value.Single().Types.Contains(type))
+                .Select(kvp => kvp.Key);
             Assert.That(table.Keys, Is.SupersetOf(creatures));
 
             foreach (var creature in creatures)
@@ -571,11 +575,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void AnimalsAreMaleAndFemale()
         {
-            var animals = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
-            var swarms = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Swarm);
+            //INFO: Swarms are agender and don't count as normal animals
+            var animals = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
+                .Where(kvp => kvp.Value.Single().Types.Contains(CreatureConstants.Types.Animal)
+                    && !kvp.Value.Single().Types.Contains(CreatureConstants.Types.Subtypes.Swarm))
+                .Select(kvp => kvp.Key);
             Assert.That(table.Keys, Is.SupersetOf(animals));
 
-            foreach (var creature in animals.Except(swarms))
+            foreach (var creature in animals)
             {
                 AssertDistinctCollection(creature, GenderConstants.Female, GenderConstants.Male);
             }

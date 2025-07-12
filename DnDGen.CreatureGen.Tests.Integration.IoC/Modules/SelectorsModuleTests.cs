@@ -1,5 +1,7 @@
 ﻿using DnDGen.CreatureGen.Selectors;
 using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
+using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 
 namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
@@ -8,33 +10,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
     public class SelectorsModuleTests : IoCTests
     {
         [Test]
-        public void AdjustmentsSelectorsAreNotGeneratedAsSingletons()
-        {
-            AssertNotSingleton<IAdjustmentsSelector>();
-        }
-
-        [Test]
-        public void SkillSelectorsAreNotGeneratedAsSingletons()
-        {
-            AssertNotSingleton<ISkillSelector>();
-        }
-
-        [Test]
         public void FeatsSelectorsAreNotGeneratedAsSingletons()
         {
             AssertNotSingleton<IFeatsSelector>();
-        }
-
-        [Test]
-        public void TypeAndAmountSelectorIsInjected()
-        {
-            AssertNotSingleton<ITypeAndAmountSelector>();
-        }
-
-        [Test]
-        public void CreatureDataSelectorIsInjected()
-        {
-            AssertNotSingleton<ICreatureDataSelector>();
         }
 
         [Test]
@@ -50,15 +28,57 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         }
 
         [Test]
-        public void BonusSelectorIsInjected()
-        {
-            AssertNotSingleton<IBonusSelector>();
-        }
-
-        [Test]
         public void ItemSelectorIsInjected()
         {
             AssertNotSingleton<IItemSelector>();
+        }
+
+        [Test]
+        public void CollectionData_AdvancementDataSelectorIsNotConstructedAsSingleton()
+        {
+            AssertNotSingleton<ICollectionDataSelector<AdvancementDataSelection>>();
+        }
+
+        [Test]
+        public void CollectionData_AttackDataSelectorIsNotConstructedAsSingleton()
+        {
+            AssertNotSingleton<ICollectionDataSelector<AttackDataSelection>>();
+        }
+
+        [Test]
+        public void CollectionData_DamageDataSelectorIsNotConstructedAsSingleton()
+        {
+            AssertNotSingleton<ICollectionDataSelector<DamageDataSelection>>();
+        }
+
+        [Test]
+        public void CollectionData_BonusDataSelectorIsNotConstructedAsSingleton()
+        {
+            AssertNotSingleton<ICollectionDataSelector<BonusDataSelection>>();
+        }
+
+        [Test]
+        public void CollectionData_CreatureDataSelectorIsNotConstructedAsSingleton()
+        {
+            AssertNotSingleton<ICollectionDataSelector<CreatureDataSelection>>();
+        }
+
+        [Test]
+        public void CollectionData_FeatDataSelectorIsNotConstructedAsSingleton()
+        {
+            AssertNotSingleton<ICollectionDataSelector<FeatDataSelection>>();
+        }
+
+        [Test]
+        public void CollectionData_SpecialQualityDataSelectorIsNotConstructedAsSingleton()
+        {
+            AssertNotSingleton<ICollectionDataSelector<SpecialQualityDataSelection>>();
+        }
+
+        [Test]
+        public void CollectionData_SkillDataSelectorIsNotConstructedAsSingleton()
+        {
+            AssertNotSingleton<ICollectionDataSelector<SkillDataSelection>>();
         }
     }
 }

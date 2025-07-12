@@ -107,14 +107,24 @@
 		<entry>Animated Object, Colossal (Flexible)@977d2</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Colossal (More Than Two Legs)</name>
+		<name>Animated Object, Colossal (More Than Two Legs, Long)</name>
 		<entry>Agender@-896</entry>
-		<entry>Animated Object, Colossal (More Than Two Legs)@977d2</entry>
+		<entry>Animated Object, Colossal (More Than Two Legs, Long)@977d2</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Colossal (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Colossal (More Than Two Legs, Long, Wooden)</name>
 		<entry>Agender@-896</entry>
-		<entry>Animated Object, Colossal (More Than Two Legs, Wooden)@977d2</entry>
+		<entry>Animated Object, Colossal (More Than Two Legs, Long, Wooden)@977d2</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall)</name>
+		<entry>Agender@-896</entry>
+		<entry>Animated Object, Colossal (More Than Two Legs, Tall)@977d2</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall, Wooden)</name>
+		<entry>Agender@-896</entry>
+		<entry>Animated Object, Colossal (More Than Two Legs, Tall, Wooden)@977d2</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Two Legs)</name>
@@ -152,14 +162,24 @@
 		<entry>Animated Object, Gargantuan (Flexible)@74d6</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs)</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long)</name>
 		<entry>Agender@22672</entry>
-		<entry>Animated Object, Gargantuan (More Than Two Legs)@74d6</entry>
+		<entry>Animated Object, Gargantuan (More Than Two Legs, Long)@74d6</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long, Wooden)</name>
 		<entry>Agender@22672</entry>
-		<entry>Animated Object, Gargantuan (More Than Two Legs, Wooden)@74d6</entry>
+		<entry>Animated Object, Gargantuan (More Than Two Legs, Long, Wooden)@74d6</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall)</name>
+		<entry>Agender@22672</entry>
+		<entry>Animated Object, Gargantuan (More Than Two Legs, Tall)@74d6</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall, Wooden)</name>
+		<entry>Agender@22672</entry>
+		<entry>Animated Object, Gargantuan (More Than Two Legs, Tall, Wooden)@74d6</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Two Legs)</name>
@@ -197,14 +217,24 @@
 		<entry>Animated Object, Huge (Flexible)@19d6</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs)</name>
+		<name>Animated Object, Huge (More Than Two Legs, Long)</name>
 		<entry>Agender@2816</entry>
-		<entry>Animated Object, Huge (More Than Two Legs)@19d6</entry>
+		<entry>Animated Object, Huge (More Than Two Legs, Long)@19d6</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Huge (More Than Two Legs, Long, Wooden)</name>
 		<entry>Agender@2816</entry>
-		<entry>Animated Object, Huge (More Than Two Legs, Wooden)@19d6</entry>
+		<entry>Animated Object, Huge (More Than Two Legs, Long, Wooden)@19d6</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall)</name>
+		<entry>Agender@2816</entry>
+		<entry>Animated Object, Huge (More Than Two Legs, Tall)@19d6</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall, Wooden)</name>
+		<entry>Agender@2816</entry>
+		<entry>Animated Object, Huge (More Than Two Legs, Tall, Wooden)@19d6</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Two Legs)</name>
@@ -242,14 +272,24 @@
 		<entry>Animated Object, Large (Flexible)@10d3</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs)</name>
+		<name>Animated Object, Large (More Than Two Legs, Long)</name>
 		<entry>Agender@160</entry>
-		<entry>Animated Object, Large (More Than Two Legs)@10d3</entry>
+		<entry>Animated Object, Large (More Than Two Legs, Long)@10d3</entry>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Large (More Than Two Legs, Long, Wooden)</name>
 		<entry>Agender@160</entry>
-		<entry>Animated Object, Large (More Than Two Legs, Wooden)@10d3</entry>
+		<entry>Animated Object, Large (More Than Two Legs, Long, Wooden)@10d3</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall)</name>
+		<entry>Agender@160</entry>
+		<entry>Animated Object, Large (More Than Two Legs, Tall)@10d3</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall, Wooden)</name>
+		<entry>Agender@160</entry>
+		<entry>Animated Object, Large (More Than Two Legs, Tall, Wooden)@10d3</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Two Legs)</name>
@@ -3070,8 +3110,8 @@
 	</collection>
 	<collection>
 		<name>Shambling Mound</name>
-		<entry>Agender@3400</entry>
-		<entry>Shambling Mound@13d3</entry>
+		<entry>Agender@3388</entry>
+		<entry>Shambling Mound@11d4</entry>
 	</collection>
 	<collection>
 		<name>Shark, Huge</name>
@@ -3374,9 +3414,9 @@
 	</collection>
 	<collection>
 		<name>Truly Horrid Umber Hulk</name>
-		<entry>Female@7136</entry>
-		<entry>Male@7136</entry>
-		<entry>Truly Horrid Umber Hulk@4d8</entry>
+		<entry>Female@7072</entry>
+		<entry>Male@7072</entry>
+		<entry>Truly Horrid Umber Hulk@18d2</entry>
 	</collection>
 	<collection>
 		<name>Trumpet Archon</name>

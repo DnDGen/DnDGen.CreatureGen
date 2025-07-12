@@ -4,10 +4,11 @@ using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Defenses;
 using DnDGen.CreatureGen.Items;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
+using DnDGen.Infrastructure.Models;
+using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.TreasureGen.Items;
 using Moq;
 using NUnit.Framework;
@@ -23,37 +24,39 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
     {
         private IArmorClassGenerator armorClassGenerator;
         private List<Feat> feats;
-        private Mock<IAdjustmentsSelector> mockAdjustmentsSelector;
-        private Mock<IBonusSelector> mockBonusSelector;
+        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<ICollectionDataSelector<BonusDataSelection>> mockBonusSelector;
         private CreatureType creatureType;
         private Dictionary<string, Ability> abilities;
-        private Dictionary<string, List<BonusSelection>> racialBonuses;
+        private Dictionary<string, List<BonusDataSelection>> racialBonuses;
         private Equipment equipment;
 
         [SetUp]
         public void Setup()
         {
-            mockAdjustmentsSelector = new Mock<IAdjustmentsSelector>();
-            mockBonusSelector = new Mock<IBonusSelector>();
-            armorClassGenerator = new ArmorClassGenerator(mockBonusSelector.Object, mockAdjustmentsSelector.Object);
+            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
+            mockBonusSelector = new Mock<ICollectionDataSelector<BonusDataSelection>>();
+            armorClassGenerator = new ArmorClassGenerator(mockBonusSelector.Object, mockTypeAndAmountSelector.Object);
 
-            feats = new List<Feat>();
+            feats = [];
             creatureType = new CreatureType();
-            abilities = new Dictionary<string, Ability>();
-            racialBonuses = new Dictionary<string, List<BonusSelection>>();
+            abilities = [];
+            racialBonuses = [];
             equipment = new Equipment();
 
             creatureType.Name = "creature type";
             abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
             abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
-            racialBonuses["creature"] = new List<BonusSelection>();
-            racialBonuses[creatureType.Name] = new List<BonusSelection>();
+            racialBonuses["creature"] = [];
+            racialBonuses[creatureType.Name] = [];
 
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(0);
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.SizeModifiers, "size"))
+                .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 0 });
 
             mockBonusSelector
-                .Setup(s => s.SelectFor(TableNameConstants.TypeAndAmount.ArmorClassBonuses, It.IsAny<string>()))
-                .Returns((string t, string s) => racialBonuses[s]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.ArmorClassBonuses, It.IsAny<string>()))
+                .Returns((string a, string t, string s) => racialBonuses[s]);
         }
 
         [Test]
@@ -62,7 +65,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             GenerateAndAssertArmorClass();
         }
 
-        private ArmorClass GenerateAndAssertArmorClass(int full = ArmorClass.BaseArmorClass, int flatFooted = ArmorClass.BaseArmorClass, int touch = ArmorClass.BaseArmorClass, bool isConditional = false, int naturalArmor = 0)
+        private ArmorClass GenerateAndAssertArmorClass(
+            int full = ArmorClass.BaseArmorClass,
+            int flatFooted = ArmorClass.BaseArmorClass,
+            int touch = ArmorClass.BaseArmorClass,
+            bool isConditional = false,
+            int naturalArmor = 0)
         {
             var armorClass = armorClassGenerator.GenerateWith(abilities, "size", "creature", creatureType, feats, naturalArmor, equipment);
 
@@ -140,8 +148,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
             creatureType.SubTypes = new[] { "other subtype", CreatureConstants.Types.Subtypes.Incorporeal };
 
-            racialBonuses["other subtype"] = new List<BonusSelection>();
-            racialBonuses[CreatureConstants.Types.Subtypes.Incorporeal] = new List<BonusSelection>();
+            racialBonuses["other subtype"] = new List<BonusDataSelection>();
+            racialBonuses[CreatureConstants.Types.Subtypes.Incorporeal] = new List<BonusDataSelection>();
 
             var armorClass = GenerateAndAssertArmorClass(10 + bonus, 10 + bonus, 10 + bonus);
             Assert.That(armorClass.DeflectionBonus, Is.EqualTo(bonus));
@@ -154,8 +162,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
             creatureType.SubTypes = new[] { "other subtype", CreatureConstants.Types.Subtypes.Incorporeal };
 
-            racialBonuses["other subtype"] = new List<BonusSelection>();
-            racialBonuses[CreatureConstants.Types.Subtypes.Incorporeal] = new List<BonusSelection>();
+            racialBonuses["other subtype"] = new List<BonusDataSelection>();
+            racialBonuses[CreatureConstants.Types.Subtypes.Incorporeal] = new List<BonusDataSelection>();
 
             var bonus = abilities[AbilityConstants.Charisma].Modifier;
 
@@ -170,8 +178,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
             creatureType.SubTypes = new[] { "other subtype", "subtype" };
 
-            racialBonuses["other subtype"] = new List<BonusSelection>();
-            racialBonuses["subtype"] = new List<BonusSelection>();
+            racialBonuses["other subtype"] = new List<BonusDataSelection>();
+            racialBonuses["subtype"] = new List<BonusDataSelection>();
 
             var armorClass = GenerateAndAssertArmorClass(10, 10, 10);
             Assert.That(armorClass.DeflectionBonus, Is.Zero);
@@ -180,7 +188,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.AllTestValues))]
         public void SizeModifiesArmorClass(int modifier)
         {
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(modifier);
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.SizeModifiers, "size"))
+                .Returns(new TypeAndAmountDataSelection { AmountAsDouble = modifier });
 
             var expected = Math.Max(1, ArmorClass.BaseArmorClass + modifier);
             var armorClass = GenerateAndAssertArmorClass(expected, expected, expected);
@@ -213,22 +223,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         {
             abilities[AbilityConstants.Dexterity].BaseScore = 12;
 
-            var feat = new Feat();
-            feat.Name = FeatConstants.SpecialQualities.InertialArmor;
-            feat.Power = 1;
+            var feat = new Feat
+            {
+                Name = FeatConstants.SpecialQualities.InertialArmor,
+                Power = 1
+            };
             feats.Add(feat);
 
-            var otherFeat = new Feat();
-            otherFeat.Name = "feat 2";
-            otherFeat.Power = 1;
+            var otherFeat = new Feat
+            {
+                Name = "feat 2",
+                Power = 1
+            };
             feats.Add(otherFeat);
 
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(1);
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.SizeModifiers, "size"))
+                .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 1 });
 
-            creatureType.SubTypes = new[] { "other subtype", CreatureConstants.Types.Subtypes.Incorporeal };
+            creatureType.SubTypes = ["other subtype", CreatureConstants.Types.Subtypes.Incorporeal];
 
-            racialBonuses["other subtype"] = new List<BonusSelection>();
-            racialBonuses[CreatureConstants.Types.Subtypes.Incorporeal] = new List<BonusSelection>();
+            racialBonuses["other subtype"] = [];
+            racialBonuses[CreatureConstants.Types.Subtypes.Incorporeal] = [];
 
             var armorClass = GenerateAndAssertArmorClass(15, 14, 13, naturalArmor: 1);
             Assert.That(armorClass.ArmorBonus, Is.EqualTo(1));
@@ -294,10 +310,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             var counter = 1;
 
             if (!string.IsNullOrEmpty(creatureSource))
-                racialBonuses["creature"].Add(new BonusSelection { Target = creatureSource, Bonus = counter++ });
+                racialBonuses["creature"].Add(new BonusDataSelection { Target = creatureSource, Bonus = counter++ });
 
             if (!string.IsNullOrEmpty(creatureTypeSource))
-                racialBonuses[creatureType.Name].Add(new BonusSelection { Target = creatureTypeSource, Bonus = counter++ });
+                racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = creatureTypeSource, Bonus = counter++ });
 
             var subtypes = Enumerable.Range(1, subtypeSources.Count()).Select(i => $"subtype {i}");
             creatureType.SubTypes = subtypes;
@@ -307,10 +323,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
                 var subtype = creatureType.SubTypes.ElementAt(i);
                 var source = subtypeSources.ElementAt(i);
 
-                racialBonuses[subtype] = new List<BonusSelection>();
+                racialBonuses[subtype] = new List<BonusDataSelection>();
 
                 if (!string.IsNullOrEmpty(source))
-                    racialBonuses[subtype].Add(new BonusSelection { Target = source, Bonus = counter++ });
+                    racialBonuses[subtype].Add(new BonusDataSelection { Target = source, Bonus = counter++ });
             }
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
@@ -361,10 +377,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             var counter = 1;
 
             if (!string.IsNullOrEmpty(creatureSource))
-                racialBonuses["creature"].Add(new BonusSelection { Target = creatureSource, Bonus = counter++ });
+                racialBonuses["creature"].Add(new BonusDataSelection { Target = creatureSource, Bonus = counter++ });
 
             if (!string.IsNullOrEmpty(creatureTypeSource))
-                racialBonuses[creatureType.Name].Add(new BonusSelection { Target = creatureTypeSource, Bonus = counter++ });
+                racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = creatureTypeSource, Bonus = counter++ });
 
             var subtypes = Enumerable.Range(1, subtypeSources.Count()).Select(i => $"subtype {i}");
             creatureType.SubTypes = subtypes;
@@ -374,10 +390,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
                 var subtype = creatureType.SubTypes.ElementAt(i);
                 var source = subtypeSources.ElementAt(i);
 
-                racialBonuses[subtype] = new List<BonusSelection>();
+                racialBonuses[subtype] = new List<BonusDataSelection>();
 
                 if (!string.IsNullOrEmpty(source))
-                    racialBonuses[subtype].Add(new BonusSelection { Target = source, Bonus = counter++ });
+                    racialBonuses[subtype].Add(new BonusDataSelection { Target = source, Bonus = counter++ });
             }
 
             foreach (var bonuses in racialBonuses.Values.Where(v => v.Any()))
@@ -433,10 +449,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             var counter = 1;
 
             if (!string.IsNullOrEmpty(creatureSource))
-                racialBonuses["creature"].Add(new BonusSelection { Target = creatureSource, Bonus = counter++, Condition = $"condition {counter}" });
+                racialBonuses["creature"].Add(new BonusDataSelection { Target = creatureSource, Bonus = counter++, Condition = $"condition {counter}" });
 
             if (!string.IsNullOrEmpty(creatureTypeSource))
-                racialBonuses[creatureType.Name].Add(new BonusSelection { Target = creatureTypeSource, Bonus = counter++, Condition = $"condition {counter}" });
+                racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = creatureTypeSource, Bonus = counter++, Condition = $"condition {counter}" });
 
             var subtypes = Enumerable.Range(1, subtypeSources.Count()).Select(i => $"subtype {i}");
             creatureType.SubTypes = subtypes;
@@ -446,10 +462,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
                 var subtype = creatureType.SubTypes.ElementAt(i);
                 var source = subtypeSources.ElementAt(i);
 
-                racialBonuses[subtype] = new List<BonusSelection>();
+                racialBonuses[subtype] = new List<BonusDataSelection>();
 
                 if (!string.IsNullOrEmpty(source))
-                    racialBonuses[subtype].Add(new BonusSelection { Target = source, Bonus = counter++, Condition = $"condition {counter}" });
+                    racialBonuses[subtype].Add(new BonusDataSelection { Target = source, Bonus = counter++, Condition = $"condition {counter}" });
             }
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
@@ -499,8 +515,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         {
             var counter = 1;
 
-            racialBonuses["creature"].Add(new BonusSelection { Target = source1, Bonus = counter++ });
-            racialBonuses["creature"].Add(new BonusSelection { Target = source2, Bonus = counter++ });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = source1, Bonus = counter++ });
+            racialBonuses["creature"].Add(new BonusDataSelection { Target = source2, Bonus = counter++ });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -549,8 +565,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         {
             var counter = 1;
 
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = source1, Bonus = counter++ });
-            racialBonuses[creatureType.Name].Add(new BonusSelection { Target = source2, Bonus = counter++ });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = source1, Bonus = counter++ });
+            racialBonuses[creatureType.Name].Add(new BonusDataSelection { Target = source2, Bonus = counter++ });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -601,9 +617,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
             creatureType.SubTypes = new[] { "subtype" };
 
-            racialBonuses["subtype"] = new List<BonusSelection>();
-            racialBonuses["subtype"].Add(new BonusSelection { Target = source1, Bonus = counter++ });
-            racialBonuses["subtype"].Add(new BonusSelection { Target = source2, Bonus = counter++ });
+            racialBonuses["subtype"] = new List<BonusDataSelection>();
+            racialBonuses["subtype"].Add(new BonusDataSelection { Target = source1, Bonus = counter++ });
+            racialBonuses["subtype"].Add(new BonusDataSelection { Target = source2, Bonus = counter++ });
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -660,7 +676,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
             Assert.That(armorClass.ShieldBonus, Is.Zero);
             Assert.That(armorClass.ShieldBonuses, Is.Empty);
-
         }
 
         [Test]
@@ -864,8 +879,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             otherFeat.Power = 1;
             feats.Add(otherFeat);
 
-            racialBonuses["other subtype"] = new List<BonusSelection>();
-            racialBonuses[CreatureConstants.Types.Subtypes.Incorporeal] = new List<BonusSelection>();
+            racialBonuses["other subtype"] = new List<BonusDataSelection>();
+            racialBonuses[CreatureConstants.Types.Subtypes.Incorporeal] = new List<BonusDataSelection>();
 
             var armorClass = GenerateAndAssertArmorClass(ArmorClass.BaseArmorClass + abilities[AbilityConstants.Charisma].Modifier, ArmorClass.BaseArmorClass + abilities[AbilityConstants.Charisma].Modifier, ArmorClass.BaseArmorClass + abilities[AbilityConstants.Charisma].Modifier);
             Assert.That(armorClass.ArmorBonus, Is.Zero);

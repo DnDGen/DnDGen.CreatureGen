@@ -1314,19 +1314,15 @@
   </collection>
   <collection>
     <name>Androsphinx:Prohibited</name>
-
   </collection>
   <collection>
     <name>Angel, Astral Deva:Prohibited</name>
-
   </collection>
   <collection>
     <name>Angel, Planetar:Prohibited</name>
-
   </collection>
   <collection>
     <name>Angel, Solar:Prohibited</name>
-
   </collection>
 	<collection>
 		<name>Animated Object, Colossal:Prohibited</name>
@@ -1335,10 +1331,16 @@
 		<name>Animated Object, Colossal (Flexible):Prohibited</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Colossal (More Than Two Legs):Prohibited</name>
+		<name>Animated Object, Colossal (More Than Two Legs, Long):Prohibited</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Colossal (More Than Two Legs, Wooden):Prohibited</name>
+		<name>Animated Object, Colossal (More Than Two Legs, Long, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall, Wooden):Prohibited</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Sheetlike):Prohibited</name>
@@ -1362,10 +1364,16 @@
 		<name>Animated Object, Gargantuan (Flexible):Prohibited</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs):Prohibited</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long):Prohibited</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden):Prohibited</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall, Wooden):Prohibited</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Sheetlike):Prohibited</name>
@@ -1389,10 +1397,16 @@
 		<name>Animated Object, Huge (Flexible):Prohibited</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs):Prohibited</name>
+		<name>Animated Object, Huge (More Than Two Legs, Long):Prohibited</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs, Wooden):Prohibited</name>
+		<name>Animated Object, Huge (More Than Two Legs, Long, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Tall, Wooden):Prohibited</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Sheetlike):Prohibited</name>
@@ -1416,10 +1430,16 @@
 		<name>Animated Object, Large (Flexible):Prohibited</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs):Prohibited</name>
+		<name>Animated Object, Large (More Than Two Legs, Long):Prohibited</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs, Wooden):Prohibited</name>
+		<name>Animated Object, Large (More Than Two Legs, Long, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Tall, Wooden):Prohibited</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Sheetlike):Prohibited</name>

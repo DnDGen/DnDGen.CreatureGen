@@ -2,8 +2,8 @@
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors;
 using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.TreasureGen.Items;
 using DnDGen.TreasureGen.Items.Magical;
@@ -17,7 +17,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
     {
         private IItemSelector itemSelector;
         private IFeatsSelector featsSelector;
-        private ICollectionSelector collectionSelector;
+        private ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
 
         protected override string tableName => TableNameConstants.Collection.PredeterminedItems;
 
@@ -26,7 +26,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         {
             itemSelector = GetNewInstanceOf<IItemSelector>();
             featsSelector = GetNewInstanceOf<IFeatsSelector>();
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
+            creatureDataSelector = GetNewInstanceOf<ICollectionDataSelector<CreatureDataSelection>>();
         }
 
         [Test]
@@ -43,8 +43,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         [TestCase(CreatureConstants.Androsphinx)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden)]
@@ -52,8 +54,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden)]
@@ -61,8 +65,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Huge)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden)]
@@ -70,8 +76,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         [TestCase(CreatureConstants.AnimatedObject_Huge_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Large)]
         [TestCase(CreatureConstants.AnimatedObject_Large_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Large_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden)]
@@ -784,15 +792,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         {
             var longsword = FormatSetItem(WeaponConstants.Longsword, ItemTypeConstants.Weapon);
 
-            base.AssertCollection(CreatureConstants.Marilith, new[]
-            {
+            AssertCollection(CreatureConstants.Marilith,
+            [
                 longsword,
                 longsword,
                 longsword,
                 longsword,
                 longsword,
                 longsword
-            });
+            ]);
         }
 
         [Test]
@@ -894,41 +902,42 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         {
             var chain = FormatSetItem(WeaponConstants.SpikedChain, ItemTypeConstants.Weapon);
 
-            base.AssertCollection(CreatureConstants.Zelekhut, new[] { chain, chain });
+            AssertCollection(CreatureConstants.Zelekhut, [chain, chain]);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void BUG_IfCreatureHasOversizedFeat_WeaponsDoNotHaveSize(string creature)
+        [Test]
+        public void BUG_IfCreatureHasOversizedFeat_WeaponsDoNotHaveSize()
         {
-            Assert.That(table, Contains.Key(creature));
+            var creatures = CreatureConstants.GetAll();
+            var creatureDatas = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
 
-            if (!table[creature].Any())
+            foreach (var creature in creatures)
             {
-                Assert.Pass($"{creature} does not have any predetermiend items");
-            }
+                Assert.That(table, Contains.Key(creature));
 
-            var creatureType = new CreatureType();
-            var types = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, creature);
-
-            creatureType.Name = types.First();
-            creatureType.SubTypes = types.Skip(1);
-
-            var feats = featsSelector.SelectSpecialQualities(creature, creatureType);
-            if (!feats.Any(f => f.Feat == FeatConstants.SpecialQualities.OversizedWeapon))
-            {
-                Assert.Pass($"{creature} does not have the feat {FeatConstants.SpecialQualities.OversizedWeapon}");
-            }
-
-            var sizes = SizeConstants.GetOrdered();
-
-            foreach (var itemTemplate in table[creature])
-            {
-                var item = itemSelector.SelectFrom(itemTemplate);
-                if (item.ItemType != ItemTypeConstants.Weapon)
+                if (!table[creature].Any())
+                {
                     continue;
+                }
 
-                var sizeTraits = item.Traits.Intersect(sizes);
-                Assert.That(sizeTraits, Is.Empty, item.Name);
+                var creatureType = new CreatureType(creatureDatas[creature].Single().Types);
+                var feats = featsSelector.SelectSpecialQualities(creature, creatureType);
+                if (!feats.Any(f => f.Feat == FeatConstants.SpecialQualities.OversizedWeapon))
+                {
+                    continue;
+                }
+
+                var sizes = SizeConstants.GetOrdered();
+
+                foreach (var itemTemplate in table[creature])
+                {
+                    var item = itemSelector.SelectFrom(itemTemplate);
+                    if (item.ItemType != ItemTypeConstants.Weapon)
+                        continue;
+
+                    var sizeTraits = item.Traits.Intersect(sizes);
+                    Assert.That(sizeTraits, Is.Empty, item.Name);
+                }
             }
         }
     }

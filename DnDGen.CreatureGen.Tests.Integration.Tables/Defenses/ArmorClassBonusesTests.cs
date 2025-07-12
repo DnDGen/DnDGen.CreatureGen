@@ -4,15 +4,14 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using NUnit.Framework;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
 {
     [TestFixture]
-    public class ArmorClassBonusesTests : TypesAndAmountsTests
+    public class ArmorClassBonusesTests : CollectionTests
     {
-        protected override string tableName => TableNameConstants.TypeAndAmount.ArmorClassBonuses;
+        protected override string tableName => TableNameConstants.Collection.ArmorClassBonuses;
 
         [Test]
         public void ArmorClassBonusesNames()
@@ -35,8 +34,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         [TestCase(CreatureConstants.Ankheg)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden)]
@@ -44,8 +45,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden)]
@@ -53,8 +56,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Huge)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden)]
@@ -62,8 +67,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         [TestCase(CreatureConstants.AnimatedObject_Huge_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Large)]
         [TestCase(CreatureConstants.AnimatedObject_Large_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Large_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden)]
@@ -720,18 +727,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         [TestCase(CreatureConstants.Types.Subtypes.Water)]
         public void ArmorClassBonus(string name, string target = null, int bonus = 0, string condition = null)
         {
-            var typesAndAmounts = new Dictionary<string, int>();
-
-            if (!string.IsNullOrEmpty(target))
+            if (string.IsNullOrEmpty(target))
             {
-                var type = target;
-                if (!string.IsNullOrEmpty(condition))
-                    type += $"{BonusSelection.Divider}{condition}";
-
-                typesAndAmounts[type] = bonus;
+                AssertCollection(name, []);
+                return;
             }
 
-            AssertTypesAndAmounts(name, typesAndAmounts);
+            var data = Infrastructure.Helpers.DataHelper.Parse(new BonusDataSelection
+            {
+                Target = target,
+                Bonus = bonus,
+                Condition = condition
+            });
+
+            AssertCollection(name, data);
         }
     }
 }

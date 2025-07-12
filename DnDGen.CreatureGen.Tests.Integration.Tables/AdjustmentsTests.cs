@@ -1,29 +1,15 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Linq;
+using System.Collections.Generic;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables
 {
     [TestFixture]
-    public abstract class AdjustmentsTests : CollectionTests
+    public abstract class AdjustmentsTests : TypesAndAmountsTests
     {
-        protected const string TrueString = "True";
-        protected const string FalseString = "False";
-
         public virtual void AssertAdjustment(string name, double adjustment)
         {
-            Assert.That(table.Keys, Contains.Item(name), tableName);
-
-            var actualAdjustment = GetAdjustment(name);
-            Assert.That(actualAdjustment, Is.EqualTo(adjustment));
-        }
-
-        protected double GetAdjustment(string name)
-        {
-            Assert.That(table.Keys, Contains.Item(name), tableName);
-
-            var adjustment = table[name].Single();
-            return Convert.ToDouble(adjustment);
+            var typesAndAmounts = new Dictionary<string, string> { [string.Empty] = adjustment.ToString() };
+            AssertTypesAndAmounts(name, typesAndAmounts);
         }
     }
 }

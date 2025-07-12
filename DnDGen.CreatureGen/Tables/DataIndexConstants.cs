@@ -2,21 +2,10 @@
 {
     internal static class DataIndexConstants
     {
-        private static string[] InitializeData(int maxIndex)
-        {
-            var capacity = maxIndex + 1;
-            var data = new string[capacity];
-
-            for (var i = 0; i < data.Length; i++)
-                data[i] = string.Empty;
-
-            return data;
-        }
-
         internal static class AttackData
         {
             public const int NameIndex = 0;
-            public const int DamageDataIndex = 1;
+            public const int RequiredGenderIndex = 1;
             public const int IsNaturalIndex = 2;
             public const int IsMeleeIndex = 3;
             public const int IsPrimaryIndex = 4;
@@ -29,24 +18,20 @@
             public const int DamageEffectIndex = 11;
             public const int DamageBonusMultiplierIndex = 12;
             public const int SaveDcBonusIndex = 13;
-            public const int RequiredGenderIndex = 14;
-
-            public static string[] InitializeData()
-            {
-                return DataIndexConstants.InitializeData(RequiredGenderIndex);
-            }
 
             internal static class DamageData
             {
                 public const int RollIndex = 0;
                 public const int TypeIndex = 1;
                 public const int ConditionIndex = 2;
-
-                public static string[] InitializeData()
-                {
-                    return DataIndexConstants.InitializeData(ConditionIndex);
-                }
             }
+        }
+
+        internal static class BonusData
+        {
+            public const int TargetIndex = 0;
+            public const int BonusIndex = 1;
+            public const int ConditionIndex = 2;
         }
 
         internal static class SpecialQualityData
@@ -63,11 +48,15 @@
             public const int SaveBaseValueIndex = 9;
             public const int MinHitDiceIndex = 10;
             public const int MaxHitDiceIndex = 11;
-
-            public static string[] InitializeData()
-            {
-                return DataIndexConstants.InitializeData(MaxHitDiceIndex);
-            }
+            public const int RequiredFeatsIndex = 12;
+            public const int RequiredSizesIndex = 13;
+            public const int RequiredAlignmentsIndex = 14;
+            public const int RequiredStrengthIndex = 15;
+            public const int RequiredConstitutionIndex = 16;
+            public const int RequiredDexterityIndex = 17;
+            public const int RequiredIntelligenceIndex = 18;
+            public const int RequiredWisdomIndex = 19;
+            public const int RequiredCharismaIndex = 20;
         }
 
         internal static class FeatData
@@ -84,10 +73,30 @@
             public const int RequiredNaturalWeaponQuantityIndex = 9;
             public const int RequiredHandQuantityIndex = 10;
             public const int RequiresEquipmentIndex = 11;
+            public const int NameIndex = 12;
+            public const int RequiredFeatsIndex = 13;
+            public const int RequiredSkillsIndex = 14;
+            public const int RequiredStrengthIndex = 15;
+            public const int RequiredConstitutionIndex = 16;
+            public const int RequiredDexterityIndex = 17;
+            public const int RequiredIntelligenceIndex = 18;
+            public const int RequiredWisdomIndex = 19;
+            public const int RequiredCharismaIndex = 20;
+            public const int RequiredFlySpeedIndex = 21;
+            public const int TakenMultipleTimesIndex = 22;
+            public const int RequiredSizesIndex = 23;
 
-            public static string[] InitializeData()
+            internal static class RequiredSkillData
             {
-                return DataIndexConstants.InitializeData(RequiresEquipmentIndex);
+                public const int SkillIndex = 0;
+                public const int FocusIndex = 1;
+                public const int RanksIndex = 2;
+            }
+
+            internal static class RequiredFeatData
+            {
+                public const int FeatIndex = 0;
+                public const int FociIndex = 1;
             }
         }
 
@@ -110,11 +119,11 @@
             public const int CasterLevel = 6;
             public const int NaturalArmor = 7;
             public const int NumberOfHands = 8;
-
-            public static string[] InitializeData()
-            {
-                return DataIndexConstants.InitializeData(NumberOfHands);
-            }
+            public const int BaseAttackQuality = 9;
+            public const int Types = 10;
+            public const int HitDiceQuantity = 11;
+            public const int HitDie = 12;
+            public const int HasSkeleton = 13;
         }
 
         internal static class AdvancementSelectionData
@@ -122,6 +131,13 @@
             public const int Size = 0;
             public const int Space = 1;
             public const int Reach = 2;
+            public const int AdditionalHitDiceRoll = 3;
+            public const int StrengthAdjustment = 4;
+            public const int ConstitutionAdjustment = 5;
+            public const int DexterityAdjustment = 6;
+            public const int NaturalArmorAdjustment = 7;
+            public const int ChallengeRatingDivisor = 8;
+            public const int AdjustedChallengeRating = 9;
         }
     }
 }

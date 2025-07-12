@@ -3,9 +3,9 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Items;
-using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.TreasureGen.Items;
+using DnDGen.Infrastructure.Selectors.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,19 +14,21 @@ namespace DnDGen.CreatureGen.Generators.Defenses
 {
     internal class ArmorClassGenerator : IArmorClassGenerator
     {
-        private readonly IBonusSelector bonusSelector;
-        private readonly IAdjustmentsSelector adjustmentsSelector;
+        private readonly ICollectionDataSelector<BonusDataSelection> bonusSelector;
+        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
 
-        public ArmorClassGenerator(IBonusSelector bonusSelector, IAdjustmentsSelector adjustmentsSelector)
+        public ArmorClassGenerator(ICollectionDataSelector<BonusDataSelection> bonusSelector, ICollectionTypeAndAmountSelector typeAndAmountSelector)
         {
             this.bonusSelector = bonusSelector;
-            this.adjustmentsSelector = adjustmentsSelector;
+            this.typeAndAmountSelector = typeAndAmountSelector;
         }
 
         public ArmorClass GenerateWith(Dictionary<string, Ability> abilities, string size, string creatureName, CreatureType creatureType, IEnumerable<Feat> feats, int naturalArmor, Equipment equipment)
         {
-            var armorClass = new ArmorClass();
-            armorClass.Dexterity = abilities[AbilityConstants.Dexterity];
+            var armorClass = new ArmorClass
+            {
+                Dexterity = abilities[AbilityConstants.Dexterity]
+            };
 
             if (creatureType.SubTypes.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
             {
@@ -34,7 +36,7 @@ namespace DnDGen.CreatureGen.Generators.Defenses
                 armorClass.AddBonus(ArmorClassConstants.Deflection, deflectionBonus);
             }
 
-            armorClass.SizeModifier = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, size);
+            armorClass.SizeModifier = typeAndAmountSelector.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.SizeModifiers, size).Amount;
 
             var inertialArmorFeat = feats.FirstOrDefault(f => f.Name == FeatConstants.SpecialQualities.InertialArmor);
             if (inertialArmorFeat != null)
@@ -67,14 +69,14 @@ namespace DnDGen.CreatureGen.Generators.Defenses
         {
             if (equipment.Armor != null)
             {
-                var armor = equipment.Armor as Armor;
+                var armor = equipment.Armor;
                 var bonus = armor.ArmorBonus + armor.Magic.Bonus;
                 armorClass.AddBonus(ArmorClassConstants.Armor, bonus);
             }
 
             if (equipment.Shield != null)
             {
-                var shield = equipment.Shield as Armor;
+                var shield = equipment.Shield;
                 var bonus = shield.ArmorBonus + shield.Magic.Bonus;
                 armorClass.AddBonus(ArmorClassConstants.Shield, bonus);
             }
@@ -84,14 +86,14 @@ namespace DnDGen.CreatureGen.Generators.Defenses
 
         private ArmorClass GetRacialArmorClassBonuses(ArmorClass armorClass, string creatureName, CreatureType creatureType)
         {
-            var creatureBonuses = bonusSelector.SelectFor(TableNameConstants.TypeAndAmount.ArmorClassBonuses, creatureName);
-            var creatureTypeBonuses = bonusSelector.SelectFor(TableNameConstants.TypeAndAmount.ArmorClassBonuses, creatureType.Name);
+            var creatureBonuses = bonusSelector.SelectFrom(Config.Name, TableNameConstants.Collection.ArmorClassBonuses, creatureName);
+            var creatureTypeBonuses = bonusSelector.SelectFrom(Config.Name, TableNameConstants.Collection.ArmorClassBonuses, creatureType.Name);
 
             var bonuses = creatureBonuses.Union(creatureTypeBonuses);
 
             foreach (var subtype in creatureType.SubTypes)
             {
-                var subtypeBonuses = bonusSelector.SelectFor(TableNameConstants.TypeAndAmount.ArmorClassBonuses, subtype);
+                var subtypeBonuses = bonusSelector.SelectFrom(Config.Name, TableNameConstants.Collection.ArmorClassBonuses, subtype);
                 bonuses = bonuses.Union(subtypeBonuses);
             }
 

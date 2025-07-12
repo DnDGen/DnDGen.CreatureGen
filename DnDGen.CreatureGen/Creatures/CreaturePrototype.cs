@@ -16,23 +16,18 @@ namespace DnDGen.CreatureGen.Creatures
         public int? LevelAdjustment { get; set; }
         public int CasterLevel { get; set; }
         public double HitDiceQuantity { get; set; }
+        public bool HasSkeleton { get; set; }
 
         public CreaturePrototype()
         {
-            Abilities = new Dictionary<string, Ability>();
-            Alignments = new List<Alignment>();
+            Abilities = [];
+            Alignments = [];
             Size = string.Empty;
             ChallengeRating = string.Empty;
             Name = string.Empty;
             Type = new CreatureType();
         }
 
-        public int GetRoundedHitDiceQuantity()
-        {
-            var hitDice = new HitDice();
-            hitDice.Quantity = HitDiceQuantity;
-
-            return hitDice.RoundedQuantity;
-        }
+        public int GetRoundedHitDiceQuantity() => HitDice.GetRoundedQuantity(HitDiceQuantity);
     }
 }

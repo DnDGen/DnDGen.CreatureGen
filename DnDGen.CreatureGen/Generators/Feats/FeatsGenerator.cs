@@ -42,38 +42,25 @@ namespace DnDGen.CreatureGen.Generators.Feats
         {
             var specialQualitySelections = featsSelector.SelectSpecialQualities(creatureName, creatureType);
             var specialQualities = new List<Feat>();
-            var addedNames = new HashSet<string>();
 
-            var newSelections = specialQualitySelections
-                .Where(s => s.RequirementsMet(abilities, specialQualities, canUseEquipment, size, alignment, hitPoints)
-                    && !addedNames.Contains(s.Feat));
+            var possibleSelections = specialQualitySelections.ToList();
+            var availableSelections = possibleSelections
+                .Where(s => s.RequirementsMet(abilities, specialQualities, canUseEquipment, size, alignment, hitPoints))
+                .ToList();
 
             do
             {
-                //INFO: Need to do this, or the foreach loop gets angry
-                var setNewSelections = newSelections.ToArray();
-
-                foreach (var selection in setNewSelections)
+                foreach (var selection in availableSelections)
                 {
-                    var specialQuality = new Feat();
-                    specialQuality.Name = selection.Feat;
+                    var specialQuality = Feat.From(selection, abilities);
                     specialQuality.Foci = GetFoci(selection, skills, abilities);
 
-                    specialQuality.Frequency = selection.Frequency;
-                    specialQuality.Power = selection.Power;
-
-                    if (!string.IsNullOrEmpty(selection.SaveAbility))
-                    {
-                        specialQuality.Save = new SaveDieCheck();
-                        specialQuality.Save.BaseAbility = abilities[selection.SaveAbility];
-                        specialQuality.Save.Save = selection.Save;
-                        specialQuality.Save.BaseValue = selection.SaveBaseValue;
-                    }
-
                     specialQualities.Add(specialQuality);
-                    addedNames.Add(specialQuality.Name);
                 }
-            } while (newSelections.Any());
+
+                possibleSelections = [.. possibleSelections.Except(availableSelections)];
+                availableSelections = [.. possibleSelections.Where(s => s.RequirementsMet(abilities, specialQualities, canUseEquipment, size, alignment, hitPoints))];
+            } while (availableSelections.Any());
 
             //HACK: Handling this usecase because the orc creature and orc creature type are identical
             if (creatureName == CreatureConstants.Orc_Half)
@@ -93,25 +80,23 @@ namespace DnDGen.CreatureGen.Generators.Feats
 
             if (specialQualities.Any(f => f.Name == FeatConstants.SpecialQualities.Blind))
             {
-                specialQualities = specialQualities
-                    .Where(f => !visionFeatNames.Contains(f.Name))
-                    .ToList();
+                specialQualities = [.. specialQualities.Where(f => !visionFeatNames.Contains(f.Name))];
             }
 
             return specialQualities;
         }
 
-        private IEnumerable<string> GetFoci(SpecialQualitySelection specialQualitySelection, IEnumerable<Skill> skills, Dictionary<string, Ability> abilities)
+        private HashSet<string> GetFoci(SpecialQualityDataSelection specialQualitySelection, IEnumerable<Skill> skills, Dictionary<string, Ability> abilities)
         {
             if (string.IsNullOrEmpty(specialQualitySelection.FocusType))
-                return Enumerable.Empty<string>();
+                return [];
 
             var foci = new HashSet<string>();
 
             var fociQuantity = 1;
-            if (specialQualitySelection.RandomFociQuantity.Any())
+            if (specialQualitySelection.RandomFociQuantityRoll.Any())
             {
-                var roll = dice.Roll(specialQualitySelection.RandomFociQuantity).AsSum();
+                var roll = dice.Roll(specialQualitySelection.RandomFociQuantityRoll).AsSum();
                 if (roll > fociQuantity)
                     fociQuantity = roll;
             }
@@ -141,7 +126,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
             bool canUseEquipment)
         {
             if (!abilities[AbilityConstants.Intelligence].HasScore || hitPoints.HitDiceQuantity == 0)
-                return Enumerable.Empty<Feat>();
+                return [];
 
             var numberOfAdditionalFeats = GetFeatQuantity(hitPoints);
 
@@ -162,16 +147,13 @@ namespace DnDGen.CreatureGen.Generators.Feats
             return feats;
         }
 
-        private int GetFeatQuantity(HitPoints hitPoints)
-        {
-            return hitPoints.RoundedHitDiceQuantity / 3 + 1;
-        }
+        private int GetFeatQuantity(HitPoints hitPoints) => hitPoints.RoundedHitDiceQuantity / 3 + 1;
 
         private List<Feat> PopulateFeatsRandomlyFrom(
             Dictionary<string, Ability> abilities,
             IEnumerable<Skill> skills,
             IEnumerable<Feat> preselectedFeats,
-            IEnumerable<FeatSelection> sourceFeatSelections,
+            IEnumerable<FeatDataSelection> sourceFeatSelections,
             int quantity,
             int casterLevel,
             IEnumerable<Attack> attacks)
@@ -179,11 +161,11 @@ namespace DnDGen.CreatureGen.Generators.Feats
             var feats = new List<Feat>();
             var chosenFeats = new List<Feat>(preselectedFeats);
 
-            var chosenFeatSelections = new List<FeatSelection>();
+            var chosenFeatSelections = new List<FeatDataSelection>();
             var preselectedFeatSelections = GetSelectedSelections(sourceFeatSelections, preselectedFeats);
             chosenFeatSelections.AddRange(preselectedFeatSelections);
 
-            var availableFeatSelections = new List<FeatSelection>();
+            var availableFeatSelections = new List<FeatDataSelection>();
 
             var newAvailableFeatSelections = AddNewlyAvailableFeatSelections(availableFeatSelections, sourceFeatSelections, chosenFeatSelections, chosenFeats);
             availableFeatSelections.AddRange(newAvailableFeatSelections);
@@ -192,7 +174,16 @@ namespace DnDGen.CreatureGen.Generators.Feats
             {
                 var featSelection = collectionsSelector.SelectRandomFrom(availableFeatSelections);
 
-                var preliminaryFocus = featFocusGenerator.GenerateFrom(featSelection.Feat, featSelection.FocusType, skills, featSelection.RequiredFeats, chosenFeats, casterLevel, abilities, attacks);
+                var preliminaryFocus = featFocusGenerator.GenerateFrom(
+                    featSelection.Feat,
+                    featSelection.FocusType,
+                    skills,
+                    featSelection.RequiredFeats,
+                    chosenFeats,
+                    casterLevel,
+                    abilities,
+                    attacks);
+
                 if (preliminaryFocus == FeatConstants.Foci.NoValidFociAvailable)
                 {
                     quantity++;
@@ -206,20 +197,10 @@ namespace DnDGen.CreatureGen.Generators.Feats
                     continue;
                 }
 
-                var feat = new Feat();
-                var hasMatchingFeat = feats.Any(f => FeatsWithFociMatch(f, featSelection));
-
-                if (hasMatchingFeat)
+                var feat = feats.FirstOrDefault(f => f.FociMatch(featSelection));
+                if (feat == null)
                 {
-                    feat = feats.First(f => FeatsWithFociMatch(f, featSelection));
-                }
-                else
-                {
-                    feat.Name = featSelection.Feat;
-                    feat.Frequency = featSelection.Frequency;
-                    feat.Power = featSelection.Power;
-                    feat.CanBeTakenMultipleTimes = featSelection.CanBeTakenMultipleTimes;
-
+                    feat = Feat.From(featSelection);
                     feats.Add(feat);
                     chosenFeats.Add(feat);
                 }
@@ -234,13 +215,13 @@ namespace DnDGen.CreatureGen.Generators.Feats
                 availableFeatSelections.AddRange(newAvailableFeatSelections);
 
                 if (!string.IsNullOrEmpty(preliminaryFocus))
-                    feat.Foci = feat.Foci.Union(new[] { preliminaryFocus });
+                    feat.Foci = feat.Foci.Union([preliminaryFocus]);
             }
 
             return feats;
         }
 
-        private IEnumerable<FeatSelection> GetSelectedSelections(IEnumerable<FeatSelection> sourceFeatSelections, IEnumerable<Feat> preselectedFeats)
+        private IEnumerable<FeatDataSelection> GetSelectedSelections(IEnumerable<FeatDataSelection> sourceFeatSelections, IEnumerable<Feat> preselectedFeats)
         {
             var featNames = preselectedFeats.Select(f => f.Name);
             var featSelections = sourceFeatSelections.Where(s => featNames.Contains(s.Feat));
@@ -249,7 +230,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
             return nonRepeatableFeatSelections;
         }
 
-        private bool FeatSelectionCanBeSelectedAgain(FeatSelection featSelection)
+        private bool FeatSelectionCanBeSelectedAgain(FeatDataSelection featSelection)
         {
             var isEmpty = string.IsNullOrEmpty(featSelection.FocusType);
 
@@ -257,16 +238,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
                 || featSelection.CanBeTakenMultipleTimes;
         }
 
-        private bool FeatsWithFociMatch(Feat feat, FeatSelection featSelection)
-        {
-            return feat.Frequency.TimePeriod == string.Empty
-                && feat.Name == featSelection.Feat
-                && feat.Power == featSelection.Power
-                && feat.Foci.Any()
-                && !string.IsNullOrEmpty(featSelection.FocusType);
-        }
-
-        private IEnumerable<FeatSelection> AddNewlyAvailableFeatSelections(IEnumerable<FeatSelection> currentFeatSelections, IEnumerable<FeatSelection> sourceFeatSelections, IEnumerable<FeatSelection> chosenFeatSelections, IEnumerable<Feat> chosenFeats)
+        private IEnumerable<FeatDataSelection> AddNewlyAvailableFeatSelections(IEnumerable<FeatDataSelection> currentFeatSelections, IEnumerable<FeatDataSelection> sourceFeatSelections, IEnumerable<FeatDataSelection> chosenFeatSelections, IEnumerable<Feat> chosenFeats)
         {
             var missingSelections = sourceFeatSelections.Except(currentFeatSelections);
             var newPossibleSelections = missingSelections.Except(chosenFeatSelections);

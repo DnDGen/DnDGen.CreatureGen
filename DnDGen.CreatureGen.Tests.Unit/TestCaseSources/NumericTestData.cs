@@ -8,15 +8,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.TestCaseSources
 {
     public class NumericTestData
     {
-        public static IEnumerable<int> BaseTestNumbers => new[]
-        {
+        public static IEnumerable<int> BaseTestNumbers =>
+        [
             0, 1, 2, 10, 100
-        };
+        ];
 
-        public static IEnumerable<int> BaseAbilityTestNumbers => new[]
-        {
+        public static IEnumerable<int> BaseAbilityTestNumbers =>
+        [
             3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18
-        };
+        ];
 
         public static IEnumerable<int> AllTestValues => NegativeValues.Union(NonNegativeValues);
         public static IEnumerable<int> AllBaseTestValues => BaseTestNumbers.Union(NegativeBaseValues);

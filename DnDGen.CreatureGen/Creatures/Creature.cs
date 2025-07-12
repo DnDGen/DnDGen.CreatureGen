@@ -26,6 +26,7 @@ namespace DnDGen.CreatureGen.Creatures
         public IEnumerable<string> Languages { get; set; }
         public bool IsAdvanced { get; set; }
         public Demographics Demographics { get; set; }
+        public bool HasSkeleton { get; set; }
 
         public int InitiativeBonus { get; set; }
         public int TotalInitiativeBonus
@@ -123,26 +124,26 @@ namespace DnDGen.CreatureGen.Creatures
 
         public Creature()
         {
-            Abilities = new Dictionary<string, Ability>();
+            Abilities = [];
             Alignment = new Alignment();
             ChallengeRating = string.Empty;
             Name = string.Empty;
             Type = new CreatureType();
             ArmorClass = new ArmorClass();
-            Attacks = Enumerable.Empty<Attack>();
-            Feats = Enumerable.Empty<Feat>();
+            Attacks = [];
+            Feats = [];
             HitPoints = new HitPoints();
             Reach = new Measurement("feet");
-            Saves = new Dictionary<string, Save>();
+            Saves = [];
             Size = string.Empty;
-            Skills = Enumerable.Empty<Skill>();
+            Skills = [];
             Space = new Measurement("feet");
-            SpecialQualities = Enumerable.Empty<Feat>();
-            Templates = new List<string>();
-            Speeds = new Dictionary<string, Measurement>();
+            SpecialQualities = [];
+            Templates = [];
+            Speeds = [];
             Equipment = new Equipment();
             Magic = new Magic();
-            Languages = new List<string>();
+            Languages = [];
             Demographics = new Demographics();
         }
     }

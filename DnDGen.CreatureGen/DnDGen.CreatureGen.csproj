@@ -5,7 +5,7 @@
     <Authors>Karl M. Speer</Authors>
     <Company>DnDGen</Company>
     <Product>CreatureGen</Product>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Description>This generates creatures for the Dungeons and Dragons 3.5 system.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/DnDGen/CreatureGen</PackageProjectUrl>
@@ -13,7 +13,8 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/DnDGen/CreatureGen</RepositoryUrl>
     <PackageTags>creature generator dice dungeons dragons d20 dnd 3.5 gen</PackageTags>
-    <PackageReleaseNotes>#55 - Code Coverage in build pipelines</PackageReleaseNotes>
+    <PackageReleaseNotes>#56 - Update DnDGen.Infrastructure and use pre-built selectors</PackageReleaseNotes>
+	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Generators\Magic\**" />
@@ -31,7 +32,6 @@
     <None Remove="Tables\Creatures\AgeRolls.xml" />
     <None Remove="Tables\Creatures\CreatureData.xml" />
     <None Remove="Tables\Creatures\CreatureGroups.xml" />
-    <None Remove="Tables\Creatures\CreatureTypes.xml" />
     <None Remove="Tables\Creatures\Genders.xml" />
     <None Remove="Tables\Creatures\Heights.xml" />
     <None Remove="Tables\Creatures\Lengths.xml" />
@@ -40,7 +40,6 @@
     <None Remove="Tables\Creatures\Weights.xml" />
     <None Remove="Tables\Creatures\Wingspans.xml" />
     <None Remove="Tables\Defenses\ArmorClassBonuses.xml" />
-    <None Remove="Tables\Defenses\HitDice.xml" />
     <None Remove="Tables\Defenses\SaveBonuses.xml" />
     <None Remove="Tables\Defenses\SaveGroups.xml" />
     <None Remove="Tables\Defenses\SizeModifiers.xml" />
@@ -51,12 +50,6 @@
     <None Remove="Tables\Feats\Data\SpecialQualityData.xml" />
     <None Remove="Tables\Feats\FeatFoci.xml" />
     <None Remove="Tables\Feats\FeatGroups.xml" />
-    <None Remove="Tables\Feats\Requirements\FeatAbilityRequirements.xml" />
-    <None Remove="Tables\Feats\Requirements\FeatSkillRankRequirements.xml" />
-    <None Remove="Tables\Feats\Requirements\FeatSpeedRequirements.xml" />
-    <None Remove="Tables\Feats\Requirements\RequiredAlignments.xml" />
-    <None Remove="Tables\Feats\Requirements\RequiredFeats.xml" />
-    <None Remove="Tables\Feats\Requirements\RequiredSizes.xml" />
     <None Remove="Tables\Languages\LanguageGroups.xml" />
     <None Remove="Tables\Magics\CasterGroups.xml" />
     <None Remove="Tables\Magics\Casters.xml" />
@@ -83,6 +76,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Alignments\AlignmentGroups.xml" />
+    <EmbeddedResource Include="Tables\Attacks\DamageData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tables\Attacks\AttackData.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -102,6 +98,9 @@
     <EmbeddedResource Include="Tables\Creatures\Appearances\SkinAppearances.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\TemplateGroups.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tables\Creatures\MaxAgeDescriptions.xml" />
     <EmbeddedResource Include="Tables\Creatures\AerialManeuverability.xml" />
     <EmbeddedResource Include="Tables\Creatures\Genders.xml">
@@ -111,9 +110,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Creatures\CreatureGroups.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tables\Creatures\CreatureTypes.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Creatures\AgeRolls.xml" />
@@ -126,7 +122,7 @@
     <EmbeddedResource Include="Tables\Defenses\ArmorClassBonuses.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tables\Defenses\HitDice.xml" />
+    <EmbeddedResource Include="Tables\Defenses\MaxHitDice.xml" />
     <EmbeddedResource Include="Tables\Defenses\SaveBonuses.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -144,14 +140,6 @@
     <EmbeddedResource Include="Tables\Feats\FeatGroups.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tables\Feats\Requirements\FeatAbilityRequirements.xml" />
-    <EmbeddedResource Include="Tables\Feats\Requirements\FeatSkillRankRequirements.xml" />
-    <EmbeddedResource Include="Tables\Feats\Requirements\FeatSpeedRequirements.xml" />
-    <EmbeddedResource Include="Tables\Feats\Requirements\RequiredAlignments.xml" />
-    <EmbeddedResource Include="Tables\Feats\Requirements\RequiredFeats.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tables\Feats\Requirements\RequiredSizes.xml" />
     <EmbeddedResource Include="Tables\Languages\LanguageGroups.xml" />
     <EmbeddedResource Include="Tables\Magics\CasterGroups.xml">
       <SubType>Designer</SubType>
@@ -186,8 +174,8 @@
     <EmbeddedResource Include="Tables\Skills\SkillPoints.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DnDGen.Infrastructure" Version="6.0.1" />
+    <PackageReference Include="DnDGen.Infrastructure" Version="7.0.1" />
     <PackageReference Include="DnDGen.RollGen" Version="16.0.1" />
-    <PackageReference Include="DnDGen.TreasureGen" Version="12.0.0" />
+    <PackageReference Include="DnDGen.TreasureGen" Version="12.0.1" />
   </ItemGroup>
 </Project>

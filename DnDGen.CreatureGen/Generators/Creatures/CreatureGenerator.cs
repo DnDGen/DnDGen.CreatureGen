@@ -11,11 +11,12 @@ using DnDGen.CreatureGen.Generators.Languages;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Verifiers;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
-using DnDGen.Infrastructure.Generators;
+using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Selectors.Collections;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private readonly IAbilitiesGenerator abilitiesGenerator;
         private readonly ISkillsGenerator skillsGenerator;
         private readonly IFeatsGenerator featsGenerator;
-        private readonly ICreatureDataSelector creatureDataSelector;
+        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
         private readonly IHitPointsGenerator hitPointsGenerator;
         private readonly IArmorClassGenerator armorClassGenerator;
         private readonly ISavesGenerator savesGenerator;
@@ -51,7 +52,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             IAbilitiesGenerator abilitiesGenerator,
             ISkillsGenerator skillsGenerator,
             IFeatsGenerator featsGenerator,
-            ICreatureDataSelector creatureDataSelector,
+            ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
             IHitPointsGenerator hitPointsGenerator,
             IArmorClassGenerator armorClassGenerator,
             ISavesGenerator savesGenerator,
@@ -85,7 +86,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         }
 
         public Creature Generate(bool asCharacter, string creatureName, AbilityRandomizer abilityRandomizer = null, params string[] templates)
-            => Generate(asCharacter, creatureName, abilityRandomizer, new Filters { Templates = new List<string>(templates) });
+            => Generate(asCharacter, creatureName, abilityRandomizer, new Filters { Templates = [.. templates] });
 
         public (string Creature, string[] Templates) GenerateRandomName(bool asCharacter, Filters filters = null)
         {
@@ -96,7 +97,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             }
 
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
-            var validCreatures = collectionsSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, group);
+            var validCreatures = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, group);
 
             if (filters?.CleanTemplates?.Any() != true)
             {
@@ -117,7 +118,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private IEnumerable<string> GetCreaturesOfTemplates(IEnumerable<string> creatureGroup, bool asCharacter, Filters filters)
         {
             if (filters?.CleanTemplates.Any() != true)
-                return Enumerable.Empty<string>();
+                return [];
 
             var template = filters.CleanTemplates[0] ?? string.Empty;
             var applicator = justInTimeFactory.Build<TemplateApplicator>(template);
@@ -182,7 +183,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var compatibleCreatures = GetCreaturesOfTemplate(CreatureConstants.Templates.None, creatureGroup, asCharacter, filters);
             validCreatures.AddRange(compatibleCreatures);
 
-            var templates = collectionsSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
+            var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All);
 
             //This will weight things in favor of non-templated creatures
             //INFO: Using this instead of the creature verifier, so that we can ensure compatiblity with the specified creature group
@@ -206,7 +207,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var randomCreature = collectionsSelector.SelectRandomFrom(validCreatures);
 
-            var templates = collectionsSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
+            var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All);
             if (!templates.Contains(randomCreature))
                 return (randomCreature, CreatureConstants.Templates.None);
 
@@ -233,7 +234,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             if (!compatible)
                 throw new InvalidCreatureException(null, asCharacter, creatureName, filters);
 
-            var creature = GeneratePrototype(creatureName, asCharacter, abilityRandomizer, filters);
+            var creature = GenerateBaseCreature(creatureName, asCharacter, abilityRandomizer, filters);
 
             if (filters?.CleanTemplates?.Any() == true)
             {
@@ -251,7 +252,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return creature;
         }
 
-        private Creature GeneratePrototype(string creatureName, bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters)
+        private Creature GenerateBaseCreature(string creatureName, bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters)
         {
             var templates = filters?.CleanTemplates ?? [];
 
@@ -260,25 +261,28 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 Name = creatureName
             };
 
-            var creatureData = creatureDataSelector.SelectFor(creatureName);
+            var creatureData = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, creatureName);
             creature.Size = creatureData.Size;
             creature.Space.Value = creatureData.Space;
             creature.Reach.Value = creatureData.Reach;
             creature.CanUseEquipment = creatureData.CanUseEquipment;
-            creature.ChallengeRating = creatureData.ChallengeRating;
+            creature.ChallengeRating = creatureData.GetEffectiveChallengeRating(asCharacter);
             creature.LevelAdjustment = creatureData.LevelAdjustment;
             creature.CasterLevel = creatureData.CasterLevel;
             creature.NumberOfHands = creatureData.NumberOfHands;
+            creature.HasSkeleton = creatureData.HasSkeleton;
 
-            creature.Type = GetCreatureType(creatureName);
+            creature.Type = GetCreatureType(creatureData);
             creature.Demographics = demographicsGenerator.Generate(creatureName);
 
             abilityRandomizer ??= new AbilityRandomizer();
             creature.Abilities = abilitiesGenerator.GenerateFor(creatureName, abilityRandomizer, creature.Demographics);
 
-            if (advancementSelector.IsAdvanced(creatureName, filters?.ChallengeRating))
+            var hitDiceQuantity = creatureData.GetEffectiveHitDiceQuantity(asCharacter);
+
+            if (advancementSelector.IsAdvanced(creatureName, templates, hitDiceQuantity, filters?.ChallengeRating))
             {
-                var advancement = advancementSelector.SelectRandomFor(creatureName, templates, creature.Type, creature.Size, creature.ChallengeRating);
+                var advancement = advancementSelector.SelectRandomFor(creatureName, templates, hitDiceQuantity);
 
                 creature.IsAdvanced = true;
                 creature.Size = advancement.Size;
@@ -293,23 +297,23 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment += advancement.ConstitutionAdjustment;
 
                 creature.HitPoints = hitPointsGenerator.GenerateFor(
-                    creatureName,
+                    hitDiceQuantity,
+                    creatureData.HitDie,
                     creature.Type,
                     creature.Abilities[AbilityConstants.Constitution],
                     creature.Size,
-                    advancement.AdditionalHitDice,
-                    asCharacter);
+                    advancement.AdditionalHitDice);
 
-                creature.Demographics = AdjustDemographics(creature.Demographics, creatureData.Size, advancement.Size);
+                creature.Demographics = demographicsGenerator.AdjustDemographicsBySize(creature.Demographics, creatureData.Size, advancement.Size);
             }
             else
             {
                 creature.HitPoints = hitPointsGenerator.GenerateFor(
-                    creatureName,
+                    hitDiceQuantity,
+                    creatureData.HitDie,
                     creature.Type,
                     creature.Abilities[AbilityConstants.Constitution],
-                    creature.Size,
-                    asCharacter: asCharacter);
+                    creature.Size);
             }
 
             if (creature.HitPoints.HitDiceQuantity == 0)
@@ -331,11 +335,10 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 creature.Size,
                 creature.Alignment);
 
-            creature.BaseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(creature.Type, creature.HitPoints);
+            creature.BaseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(creatureData.BaseAttackQuality, creature.HitPoints);
 
             creature.Attacks = attacksGenerator.GenerateAttacks(
                 creatureName,
-                creatureData.Size,
                 creature.Size,
                 creature.BaseAttackBonus,
                 creature.Abilities,
@@ -398,29 +401,6 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return creature;
         }
 
-        private Demographics AdjustDemographics(Demographics demographics, string originalSize, string advancedSize)
-        {
-            var orderedSizes = SizeConstants.GetOrdered();
-            var originalIndex = Array.IndexOf(orderedSizes, originalSize);
-            var advancedIndex = Array.IndexOf(orderedSizes, advancedSize);
-            var sizeDifference = advancedIndex - originalIndex;
-
-            //INFO: If the advancement has adjusted the size of the creature, we need to increase the demographics,
-            //specifically the height and weight. Roughly, x2 for each size category increase for height and x8 for the weight
-            if (sizeDifference > 0)
-            {
-                var heightMultiplier = Math.Pow(2, sizeDifference);
-                var weightMultiplier = Math.Pow(8, sizeDifference);
-
-                demographics.Height.Value *= heightMultiplier;
-                demographics.Length.Value *= heightMultiplier;
-                demographics.Wingspan.Value *= heightMultiplier;
-                demographics.Weight.Value *= weightMultiplier;
-            }
-
-            return demographics;
-        }
-
         private int ComputeInitiativeBonus(IEnumerable<Feat> feats)
         {
             var initiativeBonus = 0;
@@ -432,19 +412,10 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return initiativeBonus;
         }
 
-        private CreatureType GetCreatureType(string creatureName)
-        {
-            var creatureType = new CreatureType();
-            var types = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, creatureName);
-
-            creatureType.Name = types.First();
-            creatureType.SubTypes = types.Skip(1);
-
-            return creatureType;
-        }
+        private CreatureType GetCreatureType(CreatureDataSelection data) => new(data.Types);
 
         public async Task<Creature> GenerateAsync(bool asCharacter, string creatureName, AbilityRandomizer abilityRandomizer, params string[] templates)
-            => await GenerateAsync(asCharacter, creatureName, abilityRandomizer, new Filters { Templates = new List<string>(templates) });
+            => await GenerateAsync(asCharacter, creatureName, abilityRandomizer, new Filters { Templates = [.. templates] });
 
         public async Task<Creature> GenerateRandomAsync(bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters = null)
         {
@@ -466,7 +437,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             if (!compatible)
                 throw new InvalidCreatureException(null, asCharacter, creatureName, filters);
 
-            var creature = GeneratePrototype(creatureName, asCharacter, abilityRandomizer, filters);
+            var creature = GenerateBaseCreature(creatureName, asCharacter, abilityRandomizer, filters);
 
             if (filters?.CleanTemplates?.Any() == true)
             {

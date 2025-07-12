@@ -46,10 +46,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
             var mockNoneApplicator = new Mock<TemplateApplicator>();
@@ -103,10 +103,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var group = GroupConstants.All;
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
             var mockNoneApplicator = new Mock<TemplateApplicator>();
@@ -175,7 +175,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -223,7 +223,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -273,7 +273,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
 
             var mockTemplateApplicator1 = new Mock<TemplateApplicator>();
@@ -326,10 +326,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
             var mockNoneApplicator = new Mock<TemplateApplicator>();
@@ -396,10 +396,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
             var mockNoneApplicator = new Mock<TemplateApplicator>();
@@ -470,10 +470,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
             var mockNoneApplicator = new Mock<TemplateApplicator>();
@@ -545,10 +545,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
             var mockNoneApplicator = new Mock<TemplateApplicator>();
@@ -599,10 +599,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -655,10 +655,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
             var mockTemplateApplicator1 = new Mock<TemplateApplicator>();
@@ -715,10 +715,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
             mockCollectionSelector
-                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
             var mockNoneApplicator = new Mock<TemplateApplicator>();

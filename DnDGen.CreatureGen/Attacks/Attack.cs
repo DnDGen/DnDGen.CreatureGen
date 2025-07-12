@@ -1,6 +1,8 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.TreasureGen.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -52,18 +54,18 @@ namespace DnDGen.CreatureGen.Attacks
                 }
                 while (BaseAttackBonus - decrement > 0 && bonuses.Count < MaxNumberOfAttacks);
 
-                return bonuses.ToArray();
+                return [.. bonuses];
             }
         }
 
-        public string DamageDescription
+        public string DamageSummary
         {
             get
             {
                 if (!Damages.Any())
                     return DamageEffect;
 
-                var damage = string.Join(" + ", Damages.Select(d => d.Description));
+                var damage = string.Join(" + ", Damages.Select(d => d.Summary));
                 if (DamageBonus > 0)
                 {
                     var regex = new Regex(Regex.Escape(Damages[0].Roll));
@@ -87,12 +89,71 @@ namespace DnDGen.CreatureGen.Attacks
         public Attack()
         {
             Name = string.Empty;
-            Damages = new List<Damage>();
+            Damages = [];
             DamageEffect = string.Empty;
-            AttackBonuses = new List<int>();
+            AttackBonuses = [];
             MaxNumberOfAttacks = 1;
             Frequency = new Frequency();
             AttackType = string.Empty;
+        }
+
+        internal static Attack From(AttackDataSelection selection, Dictionary<string, Ability> abilities, int hitDiceQuantity, int baseAttackBonus, int sizeModifier)
+        {
+            var attack = new Attack
+            {
+                Damages = [.. selection.Damages.Select(d => d.To())],
+                DamageEffect = selection.DamageEffect,
+                DamageBonus = GetDamageBonus(abilities, selection.DamageBonusMultiplier),
+                Name = selection.Name,
+                IsMelee = selection.IsMelee,
+                IsNatural = selection.IsNatural,
+                IsPrimary = selection.IsPrimary,
+                IsSpecial = selection.IsSpecial,
+                AttackType = selection.AttackType,
+                Frequency = new Frequency
+                {
+                    Quantity = selection.FrequencyQuantity,
+                    TimePeriod = selection.FrequencyTimePeriod
+                }
+            };
+
+            if (!string.IsNullOrEmpty(selection.SaveAbility) || !string.IsNullOrEmpty(selection.Save))
+            {
+                attack.Save = new SaveDieCheck
+                {
+                    BaseValue = 10 + selection.SaveDcBonus,
+                    Save = selection.Save ?? string.Empty
+                };
+
+                if (attack.IsNatural && !string.IsNullOrEmpty(selection.SaveAbility))
+                {
+                    attack.Save.BaseAbility = abilities[selection.SaveAbility];
+                    attack.Save.BaseValue += hitDiceQuantity / 2;
+                }
+            }
+
+            attack.BaseAttackBonus = baseAttackBonus;
+            attack.SizeModifier = sizeModifier;
+            attack.BaseAbility = GetAbilityForAttack(abilities, selection);
+
+            return attack;
+        }
+
+        private static int GetDamageBonus(Dictionary<string, Ability> abilities, double multiplier)
+        {
+            var modifier = abilities[AbilityConstants.Strength].Modifier;
+            if (modifier < 0)
+                return modifier;
+
+            return Convert.ToInt32(Math.Floor(abilities[AbilityConstants.Strength].Modifier * multiplier));
+        }
+
+        private static Ability GetAbilityForAttack(Dictionary<string, Ability> abilities, AttackDataSelection attackSelection)
+        {
+            if (!attackSelection.IsMelee || !abilities[AbilityConstants.Strength].HasScore)
+                return abilities[AbilityConstants.Dexterity];
+
+            return abilities[AbilityConstants.Strength];
         }
     }
 }

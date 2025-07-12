@@ -1,8 +1,9 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Magics;
-using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
+using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
     {
         protected override string tableName => TableNameConstants.TypeAndAmount.Casters;
 
-        private IAttackSelector attackSelector;
+        private ICollectionDataSelector<AttackDataSelection> attackDataSelector;
 
         [SetUp]
         public void Setup()
         {
-            attackSelector = GetNewInstanceOf<IAttackSelector>();
+            attackDataSelector = GetNewInstanceOf<ICollectionDataSelector<AttackDataSelection>>();
         }
 
         [Test]
@@ -141,8 +142,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         [TestCase(CreatureConstants.TrumpetArchon, SpellConstants.Casters.Cleric, 14)]
         public void CreatureCaster(string creature, string caster, int casterLevel)
         {
-            var typeAndAmount = new Dictionary<string, int>();
-            typeAndAmount[caster] = casterLevel;
+            var typeAndAmount = new Dictionary<string, int>
+            {
+                [caster] = casterLevel
+            };
 
             AssertTypesAndAmounts(creature, typeAndAmount);
         }
@@ -150,7 +153,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreaturesWithCasterHaveSpellAttack(string creature)
         {
-            var attacks = attackSelector.Select(creature, SizeConstants.Medium, SizeConstants.Medium);
+            var attacks = attackDataSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, creature);
             var hasCaster = table[creature].Any();
 
             Assert.That(attacks.Any(a => a.Name == "Spells"), Is.EqualTo(hasCaster));

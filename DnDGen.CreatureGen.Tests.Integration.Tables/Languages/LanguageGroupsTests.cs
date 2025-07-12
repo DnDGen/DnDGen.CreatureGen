@@ -1,8 +1,8 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Languages;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System.Linq;
 
@@ -13,12 +13,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
     {
         protected override string tableName => TableNameConstants.Collection.LanguageGroups;
 
-        private ITypeAndAmountSelector typeAndAmountSelector;
+        private ICollectionTypeAndAmountSelector typeAndAmountSelector;
 
         [SetUp]
         public void Setup()
         {
-            typeAndAmountSelector = GetNewInstanceOf<ITypeAndAmountSelector>();
+            typeAndAmountSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
         }
 
         [Test]
@@ -362,8 +362,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
             LanguageConstants.Draconic)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden)]
@@ -371,8 +373,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden)]
@@ -380,8 +384,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Huge)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden)]
@@ -389,8 +395,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.AnimatedObject_Huge_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Large)]
         [TestCase(CreatureConstants.AnimatedObject_Large_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Large_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden)]
@@ -1603,8 +1611,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.Hieracosphinx)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden)]
@@ -1612,8 +1622,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden)]
@@ -1621,8 +1633,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Huge)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden)]
@@ -1630,8 +1644,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.AnimatedObject_Huge_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Large)]
         [TestCase(CreatureConstants.AnimatedObject_Large_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Large_Sheetlike)]
         [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden)]
@@ -2258,6 +2274,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
             var creatures = CreatureConstants.GetAll();
             foreach (var creature in creatures)
             {
+                Assert.That(table, Contains.Key(creature + LanguageConstants.Groups.Automatic)
+                    .And.ContainKey(creature + LanguageConstants.Groups.Bonus), creature);
+
                 var automatic = table[creature + LanguageConstants.Groups.Automatic];
                 var bonus = table[creature + LanguageConstants.Groups.Bonus];
 
@@ -2276,13 +2295,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         public void IfLowOrNoIntelligence_NoLanguages()
         {
             var creatures = CreatureConstants.GetAll();
-            var allAbilities = typeAndAmountSelector.SelectAll(TableNameConstants.TypeAndAmount.AbilityAdjustments);
+            var allAbilities = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments);
 
             foreach (var creature in creatures)
             {
                 var intelligence = allAbilities[creature].FirstOrDefault(a => a.Type == AbilityConstants.Intelligence);
                 if (intelligence == null || intelligence.Amount + Ability.DefaultScore <= 3)
                 {
+                    Assert.That(table, Contains.Key(creature + LanguageConstants.Groups.Automatic)
+                        .And.ContainKey(creature + LanguageConstants.Groups.Bonus), creature);
                     Assert.That(table[creature + LanguageConstants.Groups.Automatic], Is.Empty, creature);
                     Assert.That(table[creature + LanguageConstants.Groups.Bonus], Is.Empty, creature);
                 }

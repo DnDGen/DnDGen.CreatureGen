@@ -54,7 +54,7 @@
   </collection>
   <collection>
     <name>Angel</name>
-    <entry>Deflection$Protective Aura@4</entry>
+    <entry>Deflection@4@Protective Aura</entry>
   </collection>
   <collection>
     <name>Angel, Astral Deva</name>
@@ -75,10 +75,16 @@
 		<name>Animated Object, Colossal (Flexible)</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Colossal (More Than Two Legs)</name>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall)</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Colossal (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Colossal (More Than Two Legs, Tall, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Long)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Long, Wooden)</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Sheetlike)</name>
@@ -102,10 +108,16 @@
 		<name>Animated Object, Gargantuan (Flexible)</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs)</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall)</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Tall, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Long, Wooden)</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Sheetlike)</name>
@@ -129,10 +141,16 @@
 		<name>Animated Object, Huge (Flexible)</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs)</name>
+		<name>Animated Object, Huge (More Than Two Legs, Tall)</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Huge (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Huge (More Than Two Legs, Tall, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Long)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Long, Wooden)</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Sheetlike)</name>
@@ -156,10 +174,16 @@
 		<name>Animated Object, Large (Flexible)</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs)</name>
+		<name>Animated Object, Large (More Than Two Legs, Tall)</name>
 	</collection>
 	<collection>
-		<name>Animated Object, Large (More Than Two Legs, Wooden)</name>
+		<name>Animated Object, Large (More Than Two Legs, Tall, Wooden)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Long)</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Long, Wooden)</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Sheetlike)</name>
@@ -769,7 +793,7 @@
   </collection>
   <collection>
     <name>Dwarf</name>
-    <entry>Dodge$Giant@4</entry>
+    <entry>Dodge@4@Giant</entry>
   </collection>
   <collection>
     <name>Eagle</name>

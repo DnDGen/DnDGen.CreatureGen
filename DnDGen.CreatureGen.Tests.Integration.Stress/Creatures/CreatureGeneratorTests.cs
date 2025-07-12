@@ -6,7 +6,7 @@ using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
-using System.Collections.Generic;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -180,7 +180,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 var validTemplates = allTemplates.Where(t => creatureVerifier.VerifyCompatibility(
                     asCharacter,
                     null,
-                    new Filters { Templates = new List<string> { t } }));
+                    new Filters { Templates = [t] }));
 
                 template = collectionSelector.SelectRandomFrom(validTemplates);
             }
@@ -282,19 +282,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             if (templates.Any(t => !string.IsNullOrEmpty(t)))
                 Assert.That(creature.Templates, Is.EqualTo(templates.Where(t => t != CreatureConstants.Templates.None)), message.ToString());
 
-            if (type != null)
+            if (!string.IsNullOrEmpty(type))
                 creatureAsserter.AssertCreatureIsType(creature, type, message.ToString());
 
-            if (challengeRating != null)
+            if (!string.IsNullOrEmpty(challengeRating))
                 Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), message.ToString());
 
-            if (alignment != null)
+            if (!string.IsNullOrEmpty(alignment))
                 Assert.That(creature.Alignment.Full, Is.EqualTo(alignment), message.ToString());
 
             if (asCharacter)
                 creatureAsserter.AssertCreatureAsCharacter(creature, message.ToString());
             else
-                creatureAsserter.AssertCreature(creature, message.ToString());
+                creatureAsserter.AssertCreature(creature, asCharacter, message.ToString());
         }
 
         [Test]
@@ -360,6 +360,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 randomFilters.Filters.Alignment,
                 true,
                 [.. randomFilters.Filters.Templates]);
+        }
+
+        [TestCase(ChallengeRatingConstants.CR10)]
+        public void StressRandomCreature_MinimumCR(string cr)
+        {
+            stressor.Stress(() => GenerateAndAssertRandomCreatureOfMinimumCR(cr));
+        }
+
+        private void GenerateAndAssertRandomCreatureOfMinimumCR(string minimumCr)
+        {
+            var crs = ChallengeRatingConstants.GetOrdered();
+            var minIndex = Array.IndexOf(crs, minimumCr);
+            var randomCr = collectionSelector.SelectRandomFrom(crs.Skip(minIndex));
+
+            GenerateAndAssertRandomCreature(false, string.Empty, randomCr, string.Empty, true);
         }
     }
 }

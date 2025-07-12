@@ -1,7 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
+using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System.Linq;
 
@@ -10,14 +10,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     [TestFixture]
     public class AerialManeuverabilityTests : CollectionTests
     {
-        private ITypeAndAmountSelector typesAndAmountsSelector;
+        private ICollectionTypeAndAmountSelector typesAndAmountsSelector;
 
         protected override string tableName => TableNameConstants.Collection.AerialManeuverability;
 
         [SetUp]
         public void Setup()
         {
-            typesAndAmountsSelector = GetNewInstanceOf<ITypeAndAmountSelector>();
+            typesAndAmountsSelector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
         }
 
         [Test]
@@ -40,8 +40,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Angel_Solar, "Good Maneuverability (Wings)")]
         [TestCase(CreatureConstants.AnimatedObject_Colossal)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Sheetlike, "Clumsy Maneuverability (Magic)")]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden)]
@@ -49,8 +51,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Sheetlike, "Clumsy Maneuverability (Magic)")]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden)]
@@ -58,8 +62,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Huge)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Huge_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_Sheetlike, "Clumsy Maneuverability (Magic)")]
         [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden)]
@@ -67,8 +73,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.AnimatedObject_Huge_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Large)]
         [TestCase(CreatureConstants.AnimatedObject_Large_Flexible)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs)]
-        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Long)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Long_Wooden)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall)]
+        [TestCase(CreatureConstants.AnimatedObject_Large_MultipleLegs_Tall_Wooden)]
         [TestCase(CreatureConstants.AnimatedObject_Large_Sheetlike, "Clumsy Maneuverability (Magic)")]
         [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs)]
         [TestCase(CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden)]
@@ -734,7 +742,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreatureWithAerialSpeedHaveManeuverability(string creature)
         {
-            var speeds = typesAndAmountsSelector.Select(TableNameConstants.Collection.Speeds, creature);
+            var speeds = typesAndAmountsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Speeds, creature);
             var maneuverability = GetCollection(creature);
 
             if (speeds.Any(s => s.Type == SpeedConstants.Fly))
@@ -754,7 +762,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void TemplateWithAerialSpeedHaveManeuverability(string template)
         {
-            var speeds = typesAndAmountsSelector.Select(TableNameConstants.Collection.Speeds, template);
+            var speeds = typesAndAmountsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Speeds, template);
             var maneuverability = GetCollection(template);
 
             if (speeds.Any(s => s.Type == SpeedConstants.Fly))

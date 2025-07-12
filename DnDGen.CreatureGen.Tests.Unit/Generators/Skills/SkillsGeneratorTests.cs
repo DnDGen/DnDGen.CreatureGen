@@ -4,10 +4,10 @@ using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Items;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using DnDGen.TreasureGen.Items;
@@ -23,14 +23,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
     public class SkillsGeneratorTests
     {
         private ISkillsGenerator skillsGenerator;
-        private Mock<IAdjustmentsSelector> mockAdjustmentsSelector;
+        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<ICollectionSelector> mockCollectionsSelector;
         private Mock<Dice> mockDice;
         private Dictionary<string, Ability> abilities;
         private List<string> creatureSkills;
         private List<string> creatureTypeSkills;
         private List<string> untrainedSkills;
-        private Mock<ISkillSelector> mockSkillSelector;
+        private Mock<ICollectionDataSelector<SkillDataSelection>> mockSkillSelector;
+        private Mock<ICollectionDataSelector<BonusDataSelection>> mockBonusSelector;
         private int creatureTypeSkillPoints;
         private List<string> allSkills;
         private HitPoints hitPoints;
@@ -41,21 +42,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         [SetUp]
         public void Setup()
         {
-            mockAdjustmentsSelector = new Mock<IAdjustmentsSelector>();
+            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
             mockCollectionsSelector = new Mock<ICollectionSelector>();
-            mockSkillSelector = new Mock<ISkillSelector>();
+            mockSkillSelector = new Mock<ICollectionDataSelector<SkillDataSelection>>();
+            mockBonusSelector = new Mock<ICollectionDataSelector<BonusDataSelection>>();
             mockDice = new Mock<Dice>();
-            skillsGenerator = new SkillsGenerator(mockSkillSelector.Object, mockCollectionsSelector.Object, mockAdjustmentsSelector.Object, mockDice.Object);
+            skillsGenerator = new SkillsGenerator(
+                mockSkillSelector.Object,
+                mockBonusSelector.Object,
+                mockCollectionsSelector.Object,
+                mockTypeAndAmountSelector.Object,
+                mockDice.Object);
 
-            abilities = new Dictionary<string, Ability>();
-            abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
-            allSkills = new List<string>();
-            creatureSkills = new List<string>();
-            untrainedSkills = new List<string>();
-            unnaturalSkills = new List<string>();
+            abilities = new Dictionary<string, Ability>
+            {
+                [AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence)
+            };
+            allSkills = [];
+            creatureSkills = [];
+            untrainedSkills = [];
+            unnaturalSkills = [];
             hitPoints = new HitPoints();
             creatureType = new CreatureType();
-            creatureTypeSkills = new List<string>();
+            creatureTypeSkills = [];
 
             allSkills.Add("skill 1");
             allSkills.Add("skill 2");
@@ -75,7 +84,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, GroupConstants.Unnatural)).Returns(unnaturalSkills);
             mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, GroupConstants.Untrained)).Returns(untrainedSkills);
 
-            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SkillPoints, creatureType.Name)).Returns(() => creatureTypeSkillPoints);
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.SkillPoints, creatureType.Name))
+                .Returns(() => new TypeAndAmountDataSelection { AmountAsDouble = creatureTypeSkillPoints });
 
             var index = 0;
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> s) => s.ElementAt(index++ % s.Count()));
@@ -89,8 +100,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
                 .Returns((IEnumerable<Skill> c, IEnumerable<Skill> u, IEnumerable<Skill> r, IEnumerable<Skill> v) => c.Union(u).ElementAt(index++ % c.Union(u).Count()));
 
             mockSkillSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string skill) => new SkillSelection { SkillName = skill, BaseAbilityName = AbilityConstants.Intelligence });
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, It.IsAny<string>()))
+                .Returns((string a, string t, string skill) => new SkillDataSelection { SkillName = skill, BaseAbilityName = AbilityConstants.Intelligence });
 
             mockDice
                 .Setup(d => d.Roll(It.IsAny<string>()).AsSum<int>())
@@ -168,11 +179,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         {
             AddCreatureSkills(1);
 
-            var creatureSkillSelection = new SkillSelection();
-            creatureSkillSelection.BaseAbilityName = "ability 1";
-            creatureSkillSelection.SkillName = "class skill name";
+            var creatureSkillSelection = new SkillDataSelection
+            {
+                BaseAbilityName = "ability 1",
+                SkillName = "class skill name"
+            };
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(creatureSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(creatureSkillSelection);
 
             abilities["ability 1"] = new Ability("ability 1");
 
@@ -284,12 +297,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(2);
             creatureSkills.Add(untrainedSkills[0]);
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection.SkillName = "changed name";
             skillSelection.RandomFociQuantity = 1;
 
-            mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, untrainedSkills[0])).Returns(skillSelection);
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, skillSelection.SkillName))
                 .Returns(["random", "other random"]);
@@ -314,12 +327,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(2);
             creatureSkills.Add(untrainedSkills[0]);
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection.SkillName = "untrained skill 2";
             skillSelection.RandomFociQuantity = 1;
 
-            mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, untrainedSkills[0])).Returns(skillSelection);
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, skillSelection.SkillName))
                 .Returns(["random", "other random"]);
@@ -343,13 +356,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddUntrainedSkills(2);
             AddCreatureSkills(2);
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection.SkillName = creatureSkills[0];
             skillSelection.RandomFociQuantity = 1;
 
-            mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[0])).Returns(skillSelection);
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, untrainedSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, skillSelection.SkillName))
@@ -381,12 +394,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(2);
             creatureSkills.Add(untrainedSkills[0]);
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection.SkillName = "untrained skill 2";
             skillSelection.Focus = "set focus";
 
-            mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, untrainedSkills[0])).Returns(skillSelection);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
 
@@ -408,12 +421,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(2);
             creatureSkills.Add(untrainedSkills[0]);
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection.SkillName = "untrained skill 2";
             skillSelection.RandomFociQuantity = 2;
 
-            mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, untrainedSkills[0])).Returns(skillSelection);
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, skillSelection.SkillName))
                 .Returns(["random", "other random", "another random"]);
@@ -576,12 +589,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         {
             AddCreatureSkills(1);
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection.SkillName = Guid.NewGuid().ToString();
             skillSelection.Focus = Guid.NewGuid().ToString();
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             var skill = skills.Single();
@@ -595,12 +608,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         {
             AddCreatureSkills(1);
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection.SkillName = Guid.NewGuid().ToString();
             skillSelection.RandomFociQuantity = 1;
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection);
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, skillSelection.SkillName))
                 .Returns(["random", "other random"]);
@@ -617,12 +630,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         {
             AddCreatureSkills(1);
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection.SkillName = Guid.NewGuid().ToString();
             skillSelection.RandomFociQuantity = 2;
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection);
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, skillSelection.SkillName))
                 .Returns(["random", "other random", "third random"]);
@@ -645,12 +658,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         {
             AddCreatureSkills(1);
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection.SkillName = Guid.NewGuid().ToString();
             skillSelection.RandomFociQuantity = 2;
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection);
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, skillSelection.SkillName))
                 .Returns(["random", "other random", "third random"]);
@@ -676,12 +689,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         {
             AddCreatureSkills(1);
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection.SkillName = Guid.NewGuid().ToString();
             skillSelection.RandomFociQuantity = SkillConstants.Foci.QuantityOfAll;
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection);
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, skillSelection.SkillName))
                 .Returns(["random", "other random", "third random"]);
@@ -1066,7 +1079,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
 
-            mockSkillSelector.Setup(s => s.SelectFor("skill 2")).Returns(() => new SkillSelection { BaseAbilityName = AbilityConstants.Constitution, SkillName = "skill 2" });
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, "skill 2")).Returns(() => new SkillDataSelection { BaseAbilityName = AbilityConstants.Constitution, SkillName = "skill 2" });
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             var skillNames = skills.Select(s => s.Name);
@@ -1082,7 +1095,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureSkills.Add("skill 1");
             creatureSkills.Add("skill 2");
 
-            mockSkillSelector.Setup(s => s.SelectFor("skill 2")).Returns(() => new SkillSelection { BaseAbilityName = AbilityConstants.Constitution, SkillName = "skill 2" });
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, "skill 2")).Returns(() => new SkillDataSelection { BaseAbilityName = AbilityConstants.Constitution, SkillName = "skill 2" });
 
             abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution) { BaseScore = 0 };
 
@@ -1103,8 +1116,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureSkills.Add("skill 1");
             creatureSkills.Add("skill 2");
 
-            var constitutionSelection = new SkillSelection { BaseAbilityName = AbilityConstants.Constitution, SkillName = "skill 2" };
-            mockSkillSelector.Setup(s => s.SelectFor("skill 2")).Returns(constitutionSelection);
+            var constitutionSelection = new SkillDataSelection { BaseAbilityName = AbilityConstants.Constitution, SkillName = "skill 2" };
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, "skill 2")).Returns(constitutionSelection);
 
             abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution) { BaseScore = 0 };
 
@@ -1124,8 +1137,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureTypeSkillPoints = 2;
             creatureSkills.Add(creatureSkill);
 
-            var selection = new SkillSelection { BaseAbilityName = AbilityConstants.Intelligence, SkillName = "skill 1" };
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkill)).Returns(selection);
+            var selection = new SkillDataSelection { BaseAbilityName = AbilityConstants.Intelligence, SkillName = "skill 1" };
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkill)).Returns(selection);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills.Count, Is.EqualTo(1));
@@ -1145,8 +1158,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureSkills.Add("skill 1");
             creatureSkills.Add("skill 2");
 
-            var selection = new SkillSelection { BaseAbilityName = AbilityConstants.Charisma, Focus = "focus", SkillName = "skill with focus" };
-            mockSkillSelector.Setup(s => s.SelectFor("skill 2")).Returns(selection);
+            var selection = new SkillDataSelection { BaseAbilityName = AbilityConstants.Charisma, Focus = "focus", SkillName = "skill with focus" };
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, "skill 2")).Returns(selection);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, "skill with random foci"))
@@ -1175,8 +1188,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureSkills.Add("skill 1");
             creatureSkills.Add("skill 2");
 
-            var randomSelection = new SkillSelection { BaseAbilityName = AbilityConstants.Charisma, RandomFociQuantity = 1, SkillName = "skill with random foci" };
-            mockSkillSelector.Setup(s => s.SelectFor("skill 2")).Returns(randomSelection);
+            var randomSelection = new SkillDataSelection { BaseAbilityName = AbilityConstants.Charisma, RandomFociQuantity = 1, SkillName = "skill with random foci" };
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, "skill 2")).Returns(randomSelection);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, "skill with random foci"))
@@ -1208,8 +1221,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureSkills.Add("skill 1");
             creatureSkills.Add("skill 2");
 
-            var randomSelection = new SkillSelection { BaseAbilityName = AbilityConstants.Charisma, RandomFociQuantity = 2, SkillName = "skill with random foci" };
-            mockSkillSelector.Setup(s => s.SelectFor("skill 2")).Returns(randomSelection);
+            var randomSelection = new SkillDataSelection { BaseAbilityName = AbilityConstants.Charisma, RandomFociQuantity = 2, SkillName = "skill with random foci" };
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, "skill 2")).Returns(randomSelection);
 
             var count = 0;
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
@@ -1249,8 +1262,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureSkills.Add("skill 1");
             creatureSkills.Add("skill 2");
 
-            var randomSelection = new SkillSelection { BaseAbilityName = AbilityConstants.Charisma, RandomFociQuantity = 2, SkillName = "skill with random foci" };
-            mockSkillSelector.Setup(s => s.SelectFor("skill 2")).Returns(randomSelection);
+            var randomSelection = new SkillDataSelection { BaseAbilityName = AbilityConstants.Charisma, RandomFociQuantity = 2, SkillName = "skill with random foci" };
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, "skill 2")).Returns(randomSelection);
 
             var count = 0;
             mockCollectionsSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> ss) => ss.ElementAt(count++ / 2 % ss.Count()));
@@ -1290,8 +1303,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureSkills.Add("skill 1");
             creatureSkills.Add("skill 2");
 
-            var randomSelection = new SkillSelection { BaseAbilityName = AbilityConstants.Charisma, RandomFociQuantity = 3, SkillName = "skill with random foci" };
-            mockSkillSelector.Setup(s => s.SelectFor("skill 2")).Returns(randomSelection);
+            var randomSelection = new SkillDataSelection { BaseAbilityName = AbilityConstants.Charisma, RandomFociQuantity = 3, SkillName = "skill with random foci" };
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, "skill 2")).Returns(randomSelection);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, "skill with random foci"))
@@ -1329,29 +1342,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             abilities["ability 2"] = new Ability("ability 2");
             abilities["ability 3"] = new Ability("ability 3");
 
-            var professionSkillSelection = new SkillSelection();
+            var professionSkillSelection = new SkillDataSelection();
             professionSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             professionSkillSelection.SkillName = SkillConstants.Profession;
             professionSkillSelection.Focus = "software developer";
 
-            var professionBonusSkillSelection = new SkillSelection();
+            var professionBonusSkillSelection = new SkillDataSelection();
             professionBonusSkillSelection.BaseAbilityName = "ability 1";
             professionBonusSkillSelection.SkillName = "professional skill 1";
 
-            var professionBonusWithSetFocusSkillSelection = new SkillSelection();
+            var professionBonusWithSetFocusSkillSelection = new SkillDataSelection();
             professionBonusWithSetFocusSkillSelection.BaseAbilityName = "ability 2";
             professionBonusWithSetFocusSkillSelection.SkillName = "professional skill 2";
             professionBonusWithSetFocusSkillSelection.Focus = "set focus";
 
-            var professionBonusWithRandomFocusSkillSelection = new SkillSelection();
+            var professionBonusWithRandomFocusSkillSelection = new SkillDataSelection();
             professionBonusWithRandomFocusSkillSelection.BaseAbilityName = "ability 3";
             professionBonusWithRandomFocusSkillSelection.SkillName = "professional skill 3";
             professionBonusWithRandomFocusSkillSelection.RandomFociQuantity = 1;
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(professionSkillSelection);
-            mockSkillSelector.Setup(s => s.SelectFor("professional skill 1")).Returns(professionBonusSkillSelection);
-            mockSkillSelector.Setup(s => s.SelectFor("professional skill 2")).Returns(professionBonusWithSetFocusSkillSelection);
-            mockSkillSelector.Setup(s => s.SelectFor("professional skill 3")).Returns(professionBonusWithRandomFocusSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(professionSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, "professional skill 1")).Returns(professionBonusSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, "professional skill 2")).Returns(professionBonusWithSetFocusSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, "professional skill 3")).Returns(professionBonusWithRandomFocusSkillSelection);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, "professional skill 3"))
@@ -1394,29 +1407,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             abilities["ability 2"] = new Ability("ability 2");
             abilities["ability 3"] = new Ability("ability 3");
 
-            var professionSkillSelection = new SkillSelection();
+            var professionSkillSelection = new SkillDataSelection();
             professionSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             professionSkillSelection.SkillName = SkillConstants.Profession;
             professionSkillSelection.RandomFociQuantity = 1;
 
-            var professionBonusSkillSelection = new SkillSelection();
+            var professionBonusSkillSelection = new SkillDataSelection();
             professionBonusSkillSelection.BaseAbilityName = "ability 1";
             professionBonusSkillSelection.SkillName = "professional skill 1";
 
-            var professionBonusWithSetFocusSkillSelection = new SkillSelection();
+            var professionBonusWithSetFocusSkillSelection = new SkillDataSelection();
             professionBonusWithSetFocusSkillSelection.BaseAbilityName = "ability 2";
             professionBonusWithSetFocusSkillSelection.SkillName = "professional skill 2";
             professionBonusWithSetFocusSkillSelection.Focus = "set focus";
 
-            var professionBonusWithRandomFocusSkillSelection = new SkillSelection();
+            var professionBonusWithRandomFocusSkillSelection = new SkillDataSelection();
             professionBonusWithRandomFocusSkillSelection.BaseAbilityName = "ability 3";
             professionBonusWithRandomFocusSkillSelection.SkillName = "professional skill 3";
             professionBonusWithRandomFocusSkillSelection.RandomFociQuantity = 1;
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(professionSkillSelection);
-            mockSkillSelector.Setup(s => s.SelectFor("professional skill 1")).Returns(professionBonusSkillSelection);
-            mockSkillSelector.Setup(s => s.SelectFor("professional skill 2")).Returns(professionBonusWithSetFocusSkillSelection);
-            mockSkillSelector.Setup(s => s.SelectFor("professional skill 3")).Returns(professionBonusWithRandomFocusSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(professionSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, "professional skill 1")).Returns(professionBonusSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, "professional skill 2")).Returns(professionBonusWithSetFocusSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, "professional skill 3")).Returns(professionBonusWithRandomFocusSkillSelection);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, "professional skill 3"))
@@ -1462,29 +1475,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             abilities["ability 2"] = new Ability("ability 2");
             abilities["ability 3"] = new Ability("ability 3");
 
-            var professionSkillSelection = new SkillSelection();
+            var professionSkillSelection = new SkillDataSelection();
             professionSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             professionSkillSelection.SkillName = SkillConstants.Profession;
             professionSkillSelection.Focus = "software developer";
 
-            var professionBonusSkillSelection = new SkillSelection();
+            var professionBonusSkillSelection = new SkillDataSelection();
             professionBonusSkillSelection.BaseAbilityName = "ability 1";
             professionBonusSkillSelection.SkillName = "professional skill 1";
 
-            var professionBonusWithSetFocusSkillSelection = new SkillSelection();
+            var professionBonusWithSetFocusSkillSelection = new SkillDataSelection();
             professionBonusWithSetFocusSkillSelection.BaseAbilityName = "ability 2";
             professionBonusWithSetFocusSkillSelection.SkillName = "professional skill 2";
             professionBonusWithSetFocusSkillSelection.Focus = "set focus";
 
-            var professionBonusWithRandomFocusSkillSelection = new SkillSelection();
+            var professionBonusWithRandomFocusSkillSelection = new SkillDataSelection();
             professionBonusWithRandomFocusSkillSelection.BaseAbilityName = "ability 3";
             professionBonusWithRandomFocusSkillSelection.SkillName = "professional skill 3";
             professionBonusWithRandomFocusSkillSelection.RandomFociQuantity = 1;
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(professionSkillSelection);
-            mockSkillSelector.Setup(s => s.SelectFor("professional skill 1")).Returns(professionBonusSkillSelection);
-            mockSkillSelector.Setup(s => s.SelectFor("professional skill 2")).Returns(professionBonusWithSetFocusSkillSelection);
-            mockSkillSelector.Setup(s => s.SelectFor("professional skill 3")).Returns(professionBonusWithRandomFocusSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(professionSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, "professional skill 1")).Returns(professionBonusSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, "professional skill 2")).Returns(professionBonusWithSetFocusSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, "professional skill 3")).Returns(professionBonusWithRandomFocusSkillSelection);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, "professional skill 3"))
@@ -1523,12 +1536,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             abilities["stat 2"] = new Ability("stat 2");
             abilities["stat 3"] = new Ability("stat 3");
 
-            var professionSkillSelection = new SkillSelection();
+            var professionSkillSelection = new SkillDataSelection();
             professionSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             professionSkillSelection.SkillName = SkillConstants.Profession;
             professionSkillSelection.Focus = "software developer";
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(professionSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(professionSkillSelection);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
 
@@ -1548,12 +1561,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             abilities["stat 2"] = new Ability("stat 2");
             abilities["stat 3"] = new Ability("stat 3");
 
-            var otherSkillSelection = new SkillSelection();
-            otherSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
-            otherSkillSelection.SkillName = "other skill";
-            otherSkillSelection.Focus = "software developer";
+            var otherSkillSelection = new SkillDataSelection
+            {
+                BaseAbilityName = AbilityConstants.Intelligence,
+                SkillName = "other skill",
+                Focus = "software developer"
+            };
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(otherSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(otherSkillSelection);
 
             var professionSkills = new[] { "profession skill 1", "profession skill 2", "professional skill 3" };
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
@@ -1577,7 +1592,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureTypeSkillPoints = 10;
             hitPoints.HitDice[0].Quantity = 10;
 
-            mockSkillSelector.Setup(s => s.SelectFor(It.IsAny<string>())).Returns((string skill) => new SkillSelection { SkillName = skill, BaseAbilityName = AbilityConstants.Strength });
+            mockSkillSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, It.IsAny<string>()))
+                .Returns((string a, string t, string skill) => new SkillDataSelection { SkillName = skill, BaseAbilityName = AbilityConstants.Strength });
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);
@@ -1607,7 +1624,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             var hideSkill = skills.Single(s => s.Name == SkillConstants.Hide);
             Assert.That(hideSkill.Bonus, Is.EqualTo(bonus), size);
 
-            var otherSkills = skills.Except(new[] { hideSkill });
+            var otherSkills = skills.Except([hideSkill]);
             var otherBonuses = otherSkills.Select(s => s.Bonus);
             Assert.That(otherBonuses, Is.All.Zero);
         }
@@ -1632,9 +1649,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266 }
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266 }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills.Count, Is.EqualTo(2));
@@ -1660,10 +1677,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266 },
-                new BonusSelection { Target = creatureSkills[1], Bonus = 90210 },
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266 },
+                new BonusDataSelection { Target = creatureSkills[1], Bonus = 90210 },
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills.Count, Is.EqualTo(2));
@@ -1694,10 +1711,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266 },
-                new BonusSelection { Target = creatureSkills[0], Bonus = 90210 }
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266 },
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 90210 }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills.Count, Is.EqualTo(2));
@@ -1729,9 +1746,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266, Condition = "condition" }
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266, Condition = "condition" }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills.Count, Is.EqualTo(2));
@@ -1757,10 +1774,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266, Condition = "condition" },
-                new BonusSelection { Target = creatureSkills[0], Bonus = 90210, Condition = "other condition" }
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266, Condition = "condition" },
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 90210, Condition = "other condition" }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills.Count, Is.EqualTo(2));
@@ -1792,10 +1809,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266, Condition = "condition" },
-                new BonusSelection { Target = creatureSkills[0], Bonus = 90210 }
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266, Condition = "condition" },
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 90210 }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills.Count, Is.EqualTo(2));
@@ -1825,24 +1842,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         {
             AddCreatureSkills(2);
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection.SkillName = "skill";
             skillSelection.Focus = "focus";
 
-            var wrongSkillSelection = new SkillSelection();
+            var wrongSkillSelection = new SkillDataSelection();
             wrongSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             wrongSkillSelection.SkillName = "skill";
             wrongSkillSelection.Focus = "other focus";
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[1])).Returns(wrongSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[1])).Returns(wrongSkillSelection);
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = SkillConstants.Build("skill", "focus"), Bonus = 9266 }
+                new BonusDataSelection { Target = SkillConstants.Build("skill", "focus"), Bonus = 9266 }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills.Count, Is.EqualTo(2));
@@ -1866,24 +1883,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         {
             AddCreatureSkills(2);
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection.SkillName = "skill";
             skillSelection.Focus = "focus";
 
-            var wrongSkillSelection = new SkillSelection();
+            var wrongSkillSelection = new SkillDataSelection();
             wrongSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             wrongSkillSelection.SkillName = "skill";
             wrongSkillSelection.Focus = "other focus";
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[1])).Returns(wrongSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[1])).Returns(wrongSkillSelection);
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = SkillConstants.Build("skill", "focus"), Bonus = 9266, Condition = "condition" }
+                new BonusDataSelection { Target = SkillConstants.Build("skill", "focus"), Bonus = 9266, Condition = "condition" }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills.Count, Is.EqualTo(2));
@@ -1907,29 +1924,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         {
             AddCreatureSkills(3);
 
-            var skillSelection1 = new SkillSelection();
+            var skillSelection1 = new SkillDataSelection();
             skillSelection1.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection1.SkillName = "skill";
             skillSelection1.Focus = "focus";
 
-            var skillSelection2 = new SkillSelection();
+            var skillSelection2 = new SkillDataSelection();
             skillSelection2.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection2.SkillName = "skill";
             skillSelection2.Focus = "other focus";
 
-            var wrongSkillSelection = new SkillSelection();
+            var wrongSkillSelection = new SkillDataSelection();
             wrongSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             wrongSkillSelection.SkillName = "other skill";
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection1);
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[1])).Returns(wrongSkillSelection);
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[2])).Returns(skillSelection2);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection1);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[1])).Returns(wrongSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[2])).Returns(skillSelection2);
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = "skill", Bonus = 9266 }
+                new BonusDataSelection { Target = "skill", Bonus = 9266 }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills.Count, Is.EqualTo(3));
@@ -1959,29 +1976,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         {
             AddCreatureSkills(3);
 
-            var skillSelection1 = new SkillSelection();
+            var skillSelection1 = new SkillDataSelection();
             skillSelection1.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection1.SkillName = "skill";
             skillSelection1.Focus = "focus";
 
-            var skillSelection2 = new SkillSelection();
+            var skillSelection2 = new SkillDataSelection();
             skillSelection2.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection2.SkillName = "skill";
             skillSelection2.Focus = "other focus";
 
-            var wrongSkillSelection = new SkillSelection();
+            var wrongSkillSelection = new SkillDataSelection();
             wrongSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             wrongSkillSelection.SkillName = "other skill";
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection1);
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[1])).Returns(wrongSkillSelection);
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[2])).Returns(skillSelection2);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection1);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[1])).Returns(wrongSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[2])).Returns(skillSelection2);
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = "skill", Bonus = 9266, Condition = "condition" }
+                new BonusDataSelection { Target = "skill", Bonus = 9266, Condition = "condition" }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills.Count, Is.EqualTo(3));
@@ -2013,10 +2030,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266 },
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266 }
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266 },
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266 }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills.Count, Is.EqualTo(2));
@@ -2049,11 +2066,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             AddCreatureSkills(1);
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Dexterity;
             skillSelection.SkillName = SkillConstants.Climb;
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection);
             mockCollectionsSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, skillSelection.SkillName))
                 .Returns(["random", "other random"]);
@@ -2381,11 +2398,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             AddCreatureSkills(1);
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Dexterity;
             skillSelection.SkillName = SkillConstants.Climb;
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             var skill = skills.Single();
@@ -2454,17 +2471,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(1);
             creatureTypeSkills.Add("creature type skill");
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Constitution;
             skillSelection.SkillName = SkillConstants.Concentration;
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection);
 
-            var typeSkillSelection = new SkillSelection();
+            var typeSkillSelection = new SkillDataSelection();
             typeSkillSelection.BaseAbilityName = AbilityConstants.Charisma;
             typeSkillSelection.SkillName = SkillConstants.Concentration;
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureTypeSkills[0])).Returns(typeSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureTypeSkills[0])).Returns(typeSkillSelection);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             var skill = skills.Single();
@@ -2485,17 +2502,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             creatureTypeSkills.Add("creature type skill");
             untrainedSkills.Add(SkillConstants.Concentration);
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Constitution;
             skillSelection.SkillName = SkillConstants.Concentration;
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection);
 
-            var typeSkillSelection = new SkillSelection();
+            var typeSkillSelection = new SkillDataSelection();
             typeSkillSelection.BaseAbilityName = AbilityConstants.Charisma;
             typeSkillSelection.SkillName = SkillConstants.Concentration;
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureTypeSkills[0])).Returns(typeSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureTypeSkills[0])).Returns(typeSkillSelection);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             var skill = skills.Single();
@@ -2515,17 +2532,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(1);
             creatureTypeSkills.Add("creature type skill");
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Constitution;
             skillSelection.SkillName = SkillConstants.Concentration;
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection);
 
-            var typeSkillSelection = new SkillSelection();
+            var typeSkillSelection = new SkillDataSelection();
             typeSkillSelection.BaseAbilityName = AbilityConstants.Charisma;
             typeSkillSelection.SkillName = SkillConstants.Concentration;
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureTypeSkills[0])).Returns(typeSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureTypeSkills[0])).Returns(typeSkillSelection);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Empty);
@@ -2544,9 +2561,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266 }
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266 }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor("creature")).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills.Count, Is.EqualTo(2));
@@ -2572,9 +2589,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266 }
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266 }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureType.Name)).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, creatureType.Name)).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills.Count, Is.EqualTo(2));
@@ -2602,9 +2619,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[0], Bonus = 9266 }
+                new BonusDataSelection { Target = creatureSkills[0], Bonus = 9266 }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor("subtype")).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "subtype")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills.Count, Is.EqualTo(2));
@@ -2654,9 +2671,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[1], Bonus = 9266 }
+                new BonusDataSelection { Target = creatureSkills[1], Bonus = 9266 }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, creatureSkills[0])).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);
@@ -2683,9 +2700,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[1], Bonus = 9266 }
+                new BonusDataSelection { Target = creatureSkills[1], Bonus = 9266 }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor("creature skill 3")).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature skill 3")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);
@@ -2710,18 +2727,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 2;
 
-            var skillSelection1 = new SkillSelection();
+            var skillSelection1 = new SkillDataSelection();
             skillSelection1.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection1.SkillName = "creature skill";
             skillSelection1.Focus = "focus";
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection1);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection1);
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = creatureSkills[1], Bonus = 9266 }
+                new BonusDataSelection { Target = creatureSkills[1], Bonus = 9266 }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(SkillConstants.Build("creature skill", "wrong focus"))).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, SkillConstants.Build("creature skill", "wrong focus"))).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);
@@ -2748,9 +2765,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = "creature skill 3", Bonus = 9266 }
+                new BonusDataSelection { Target = "creature skill 3", Bonus = 9266 }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, creatureSkills[0])).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);
@@ -2775,18 +2792,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 2;
 
-            var skillSelection1 = new SkillSelection();
+            var skillSelection1 = new SkillDataSelection();
             skillSelection1.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection1.SkillName = "creature skill";
             skillSelection1.Focus = "focus";
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[1])).Returns(skillSelection1);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[1])).Returns(skillSelection1);
 
             var bonuses = new[]
             {
-                new BonusSelection { Target = SkillConstants.Build("creature skill", "wrong focus"), Bonus = 9266 }
+                new BonusDataSelection { Target = SkillConstants.Build("creature skill", "wrong focus"), Bonus = 9266 }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, creatureSkills[0])).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);
@@ -2812,8 +2829,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 2;
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[0] } };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = untrainedSkills[0] } };
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, creatureSkills[0])).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);
@@ -2847,8 +2864,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 2;
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[0], Condition = "condition" } };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = untrainedSkills[0], Condition = "condition" } };
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, creatureSkills[0])).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);
@@ -2882,11 +2899,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 3;
 
-            var bonuses1 = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[0] } };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses1);
+            var bonuses1 = new[] { new BonusDataSelection { Bonus = 9266, Target = untrainedSkills[0] } };
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, creatureSkills[0])).Returns(bonuses1);
 
-            var bonuses2 = new[] { new BonusSelection { Bonus = 90210, Target = untrainedSkills[1] } };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[1])).Returns(bonuses2);
+            var bonuses2 = new[] { new BonusDataSelection { Bonus = 90210, Target = untrainedSkills[1] } };
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, creatureSkills[1])).Returns(bonuses2);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
@@ -2936,10 +2953,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var bonuses1 = new[]
             {
-                new BonusSelection { Bonus = 9266, Target = untrainedSkills[0] },
-                new BonusSelection { Bonus = 90210, Target = untrainedSkills[1] }
+                new BonusDataSelection { Bonus = 9266, Target = untrainedSkills[0] },
+                new BonusDataSelection { Bonus = 90210, Target = untrainedSkills[1] }
             };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses1);
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, creatureSkills[0])).Returns(bonuses1);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
@@ -2987,11 +3004,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 3;
 
-            var bonuses1 = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[1] } };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses1);
+            var bonuses1 = new[] { new BonusDataSelection { Bonus = 9266, Target = untrainedSkills[1] } };
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, creatureSkills[0])).Returns(bonuses1);
 
-            var bonuses2 = new[] { new BonusSelection { Bonus = 90210, Target = untrainedSkills[1] } };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[1])).Returns(bonuses2);
+            var bonuses2 = new[] { new BonusDataSelection { Bonus = 90210, Target = untrainedSkills[1] } };
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, creatureSkills[1])).Returns(bonuses2);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
@@ -3038,25 +3055,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 2;
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection.SkillName = "skill name";
             skillSelection.Focus = "focus";
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection);
 
-            var wrongSkillSelection = new SkillSelection();
+            var wrongSkillSelection = new SkillDataSelection();
             wrongSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             wrongSkillSelection.SkillName = "skill name";
             wrongSkillSelection.Focus = "wrong focus";
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[1])).Returns(wrongSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[1])).Returns(wrongSkillSelection);
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[0] } };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(SkillConstants.Build("skill name", "focus"))).Returns(bonuses);
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = untrainedSkills[0] } };
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, SkillConstants.Build("skill name", "focus"))).Returns(bonuses);
 
-            var wrongBonuses = new[] { new BonusSelection { Bonus = 666, Target = untrainedSkills[0] } };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(SkillConstants.Build("skill name", "other focus"))).Returns(wrongBonuses);
+            var wrongBonuses = new[] { new BonusDataSelection { Bonus = 666, Target = untrainedSkills[0] } };
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, SkillConstants.Build("skill name", "other focus"))).Returns(wrongBonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
@@ -3096,25 +3113,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 3;
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection.SkillName = "skill name";
             skillSelection.Focus = "focus";
 
-            mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, untrainedSkills[0])).Returns(skillSelection);
 
-            var wrongSkillSelection = new SkillSelection();
+            var wrongSkillSelection = new SkillDataSelection();
             wrongSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             wrongSkillSelection.SkillName = "skill name";
             wrongSkillSelection.Focus = "other focus";
 
-            mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[1])).Returns(wrongSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, untrainedSkills[1])).Returns(wrongSkillSelection);
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = SkillConstants.Build("skill name", "focus") } };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = SkillConstants.Build("skill name", "focus") } };
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, creatureSkills[0])).Returns(bonuses);
 
-            var wrongBonuses = new[] { new BonusSelection { Bonus = 90210, Target = SkillConstants.Build("skill name", "other focus") } };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[1])).Returns(wrongBonuses);
+            var wrongBonuses = new[] { new BonusDataSelection { Bonus = 90210, Target = SkillConstants.Build("skill name", "other focus") } };
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, creatureSkills[1])).Returns(wrongBonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
@@ -3166,22 +3183,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 2;
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection.SkillName = "skill name";
             skillSelection.Focus = "focus";
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection);
 
-            var wrongSkillSelection = new SkillSelection();
+            var wrongSkillSelection = new SkillDataSelection();
             wrongSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             wrongSkillSelection.SkillName = "other skill name";
             wrongSkillSelection.Focus = "other focus";
 
-            mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[0])).Returns(wrongSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, untrainedSkills[0])).Returns(wrongSkillSelection);
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = SkillConstants.Build("other skill name", "other focus") } };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(SkillConstants.Build("skill name", "focus"))).Returns(bonuses);
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = SkillConstants.Build("other skill name", "other focus") } };
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, SkillConstants.Build("skill name", "focus"))).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
@@ -3215,22 +3232,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 2;
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection.SkillName = "skill name";
             skillSelection.Focus = "focus";
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection);
 
-            var wrongSkillSelection = new SkillSelection();
+            var wrongSkillSelection = new SkillDataSelection();
             wrongSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             wrongSkillSelection.SkillName = "other skill name";
             wrongSkillSelection.Focus = "other focus";
 
-            mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[0])).Returns(wrongSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, untrainedSkills[0])).Returns(wrongSkillSelection);
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = SkillConstants.Build("other skill name", "other focus") } };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor("skill name")).Returns(bonuses);
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = SkillConstants.Build("other skill name", "other focus") } };
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "skill name")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
@@ -3264,22 +3281,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 2;
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection.SkillName = "skill name";
             skillSelection.Focus = "focus";
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection);
 
-            var wrongSkillSelection = new SkillSelection();
+            var wrongSkillSelection = new SkillDataSelection();
             wrongSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             wrongSkillSelection.SkillName = "other skill name";
             wrongSkillSelection.Focus = "other focus";
 
-            mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[0])).Returns(wrongSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, untrainedSkills[0])).Returns(wrongSkillSelection);
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = "other skill name" } };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(SkillConstants.Build("skill name", "focus"))).Returns(bonuses);
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = "other skill name" } };
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, SkillConstants.Build("skill name", "focus"))).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
@@ -3313,22 +3330,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 2;
 
-            var skillSelection = new SkillSelection();
+            var skillSelection = new SkillDataSelection();
             skillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             skillSelection.SkillName = "skill name";
             skillSelection.Focus = "focus";
 
-            mockSkillSelector.Setup(s => s.SelectFor(creatureSkills[0])).Returns(skillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(skillSelection);
 
-            var wrongSkillSelection = new SkillSelection();
+            var wrongSkillSelection = new SkillDataSelection();
             wrongSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
             wrongSkillSelection.SkillName = "other skill name";
             wrongSkillSelection.Focus = "other focus";
 
-            mockSkillSelector.Setup(s => s.SelectFor(untrainedSkills[0])).Returns(wrongSkillSelection);
+            mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, untrainedSkills[0])).Returns(wrongSkillSelection);
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = "other skill name" } };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor("skill name")).Returns(bonuses);
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = "other skill name" } };
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "skill name")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
@@ -3361,8 +3378,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 7;
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = untrainedSkills[1] } };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(untrainedSkills[0])).Returns(bonuses);
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = untrainedSkills[1] } };
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, untrainedSkills[0])).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
@@ -3394,8 +3411,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             hitPoints.HitDice[0].Quantity = 2;
 
-            var bonuses = new[] { new BonusSelection { Bonus = 9266, Target = creatureSkills[1] } };
-            mockSkillSelector.Setup(s => s.SelectBonusesFor(creatureSkills[0])).Returns(bonuses);
+            var bonuses = new[] { new BonusDataSelection { Bonus = 9266, Target = creatureSkills[1] } };
+            mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, creatureSkills[0])).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
@@ -4141,7 +4158,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             {
                 var skill = new Skill($"skill {unrankedSkills.Count + 1}", abilities[AbilityConstants.Charisma], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true };
                 unrankedSkills.Add((skill));
-            };
+            }
+            ;
 
             var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true);
             var totalRanks = skills.Sum(s => s.Ranks);
@@ -4220,7 +4238,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             {
                 var skill = new Skill($"skill {unrankedSkills.Count + 1}", abilities[AbilityConstants.Charisma], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true };
                 unrankedSkills.Add((skill));
-            };
+            }
+            ;
 
             var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, false);
             var totalRanks = skills.Sum(s => s.Ranks);
@@ -4345,7 +4364,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             {
                 var skill = new Skill($"skill {unrankedSkills.Count + 1}", abilities[AbilityConstants.Charisma], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true };
                 unrankedSkills.Add((skill));
-            };
+            }
+            ;
 
             var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true);
             var totalRanks = skills.Sum(s => s.Ranks);
@@ -4365,7 +4385,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             {
                 var skill = new Skill($"skill {unrankedSkills.Count + 1}", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true };
                 unrankedSkills.Add(skill);
-            };
+            }
+            ;
 
             //[1,103]
             mockDice

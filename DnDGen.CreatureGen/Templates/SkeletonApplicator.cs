@@ -8,8 +8,7 @@ using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Defenses;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Magics;
-using DnDGen.CreatureGen.Selectors.Collections;
-using DnDGen.CreatureGen.Skills;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -24,7 +23,6 @@ namespace DnDGen.CreatureGen.Templates
     internal class SkeletonApplicator : TemplateApplicator
     {
         private readonly ICollectionSelector collectionSelector;
-        private readonly IAdjustmentsSelector adjustmentSelector;
         private readonly Dice dice;
         private readonly IAttacksGenerator attacksGenerator;
         private readonly IFeatsGenerator featsGenerator;
@@ -33,10 +31,11 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IEnumerable<string> invalidSubtypes;
         private readonly ICreaturePrototypeFactory prototypeFactory;
         private readonly IDemographicsGenerator demographicsGenerator;
+        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
 
         public SkeletonApplicator(
             ICollectionSelector collectionSelector,
-            IAdjustmentsSelector adjustmentSelector,
+            ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
             Dice dice,
             IAttacksGenerator attacksGenerator,
             IFeatsGenerator featsGenerator,
@@ -45,13 +44,13 @@ namespace DnDGen.CreatureGen.Templates
             IDemographicsGenerator demographicsGenerator)
         {
             this.collectionSelector = collectionSelector;
-            this.adjustmentSelector = adjustmentSelector;
             this.dice = dice;
             this.attacksGenerator = attacksGenerator;
             this.featsGenerator = featsGenerator;
             this.savesGenerator = savesGenerator;
             this.prototypeFactory = prototypeFactory;
             this.demographicsGenerator = demographicsGenerator;
+            this.creatureDataSelector = creatureDataSelector;
 
             creatureTypes =
             [
@@ -90,10 +89,9 @@ namespace DnDGen.CreatureGen.Templates
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
-            var hasSkeleton = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
-                hasSkeleton,
+                creature.HasSkeleton,
                 creature.HitPoints.HitDiceQuantity,
                 creature.Name,
                 asCharacter,
@@ -108,7 +106,7 @@ namespace DnDGen.CreatureGen.Templates
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
-                    creature.Templates.Union(new[] { CreatureConstants.Templates.Skeleton }).ToArray());
+                    [.. creature.Templates.Union([CreatureConstants.Templates.Skeleton])]);
             }
 
             // Template
@@ -189,7 +187,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            creature.Demographics = demographicsGenerator.Update(creature.Demographics, creature.Name, CreatureConstants.Templates.Skeleton, overwriteAppearance: true);
+            creature.Demographics = demographicsGenerator.UpdateByTemplate(creature.Demographics, creature.Name, CreatureConstants.Templates.Skeleton, overwriteAppearance: true);
         }
 
         private void UpdateCreatureHitPoints(Creature creature)
@@ -285,38 +283,6 @@ namespace DnDGen.CreatureGen.Templates
             throw new ArgumentException($"Skeleton hit dice cannot be greater than 20, but was {hitDiceQuantity} for creature {creature}");
         }
 
-        private IEnumerable<string> GetChallengeRatings() => new[]
-        {
-            ChallengeRatingConstants.CR1_6th,
-            ChallengeRatingConstants.CR1_3rd,
-            ChallengeRatingConstants.CR1,
-            ChallengeRatingConstants.CR2,
-            ChallengeRatingConstants.CR3,
-            ChallengeRatingConstants.CR4,
-            ChallengeRatingConstants.CR5,
-            ChallengeRatingConstants.CR6,
-            ChallengeRatingConstants.CR7,
-            ChallengeRatingConstants.CR8,
-        };
-
-        private (double? Lower, double? Upper) GetHitDiceRange(string challengeRating)
-        {
-            switch (challengeRating)
-            {
-                case ChallengeRatingConstants.CR1_6th: return (0, 0.5);
-                case ChallengeRatingConstants.CR1_3rd: return (0.5, 1);
-                case ChallengeRatingConstants.CR1: return (1, 3);
-                case ChallengeRatingConstants.CR2: return (3, 5);
-                case ChallengeRatingConstants.CR3: return (5, 7);
-                case ChallengeRatingConstants.CR4: return (7, 9);
-                case ChallengeRatingConstants.CR5: return (9, 11);
-                case ChallengeRatingConstants.CR6: return (11, 14);
-                case ChallengeRatingConstants.CR7: return (14, 17);
-                case ChallengeRatingConstants.CR8: return (17, 20);
-                default: throw new ArgumentException($"Skeleton challenge rating cannot be less than CR 1/6 or greater than CR 8, but was {challengeRating}");
-            }
-        }
-
         private void UpdateCreatureLevelAdjustment(Creature creature)
         {
             creature.LevelAdjustment = null;
@@ -329,7 +295,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureSkills(Creature creature)
         {
-            creature.Skills = Enumerable.Empty<Skill>();
+            creature.Skills = [];
         }
 
         private void UpdateCreatureInitiativeBonus(Creature creature)
@@ -344,11 +310,11 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureAttacks(Creature creature)
         {
-            creature.BaseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(creature.Type, creature.HitPoints);
+            //INFO: Skeletons have a Poor base attack quality because they are undead
+            creature.BaseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(BaseAttackQuality.Poor, creature.HitPoints);
 
             var skeletonAttacks = attacksGenerator.GenerateAttacks(
                 CreatureConstants.Templates.Skeleton,
-                SizeConstants.Medium,
                 creature.Size,
                 creature.BaseAttackBonus,
                 creature.Abilities,
@@ -371,7 +337,7 @@ namespace DnDGen.CreatureGen.Templates
                     oldClaw.Damages.Add(newClaw.Damages[0]);
                 }
 
-                skeletonAttacks = skeletonAttacks.Except(new[] { newClaw });
+                skeletonAttacks = skeletonAttacks.Except([newClaw]);
             }
             else
             {
@@ -379,7 +345,7 @@ namespace DnDGen.CreatureGen.Templates
 
                 if (creature.NumberOfHands == 0)
                 {
-                    skeletonAttacks = skeletonAttacks.Except(new[] { newClaw });
+                    skeletonAttacks = skeletonAttacks.Except([newClaw]);
                 }
             }
 
@@ -415,7 +381,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureAlignment(CreaturePrototype creature)
         {
-            creature.Alignments = new List<Alignment> { new Alignment(AlignmentConstants.NeutralEvil) };
+            creature.Alignments = [new Alignment(AlignmentConstants.NeutralEvil)];
         }
 
         private void UpdateCreatureMagic(Creature creature)
@@ -441,8 +407,10 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureSpecialQualitiesAndFeats(Creature creature)
         {
-            var featNamesToKeep = new List<string>();
-            featNamesToKeep.Add(FeatConstants.SpecialQualities.AttackBonus);
+            var featNamesToKeep = new List<string>
+            {
+                FeatConstants.SpecialQualities.AttackBonus
+            };
 
             var weaponProficiencies = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency);
             featNamesToKeep.AddRange(weaponProficiencies);
@@ -474,10 +442,9 @@ namespace DnDGen.CreatureGen.Templates
 
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
-            var hasSkeleton = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
-                hasSkeleton,
+                creature.HasSkeleton,
                 creature.HitPoints.HitDiceQuantity,
                 creature.Name,
                 asCharacter,
@@ -492,7 +459,7 @@ namespace DnDGen.CreatureGen.Templates
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
-                    creature.Templates.Union(new[] { CreatureConstants.Templates.Skeleton }).ToArray());
+                    [.. creature.Templates.Union([CreatureConstants.Templates.Skeleton])]);
             }
 
             var tasks = new List<Task>();
@@ -584,77 +551,42 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
-            //INFO: Since Skeletons cannot be characters (they explicitly lose their class levels), we can return an empty enumerable
-            if (asCharacter)
+            //INFO: Since Skeletons cannot be characters (they explicitly lose their class levels), we can return an empty enumerable is we are generating as character
+            if (asCharacter
+                || (!string.IsNullOrEmpty(filters?.Alignment) && filters.Alignment != AlignmentConstants.NeutralEvil)
+                || (!string.IsNullOrEmpty(filters?.Type) && invalidSubtypes.Contains(filters.Type)))
             {
-                return Enumerable.Empty<string>();
+                return [];
             }
 
-            var filteredBaseCreatures = sourceCreatures;
-            var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
-            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
-            var hasSkeleton = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
+            var templateCreatures = collectionSelector.SelectFrom(
+                Config.Name,
+                TableNameConstants.Collection.CreatureGroups,
+                CreatureConstants.Templates.Skeleton + asCharacter);
+            var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
+            if (!filteredBaseCreatures.Any())
+                return [];
 
-            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
-            {
-                var templateChallengeRatings = GetChallengeRatings();
-                if (!templateChallengeRatings.Contains(filters.ChallengeRating))
-                {
-                    return Enumerable.Empty<string>();
-                }
+            if (string.IsNullOrEmpty(filters?.ChallengeRating)
+                && string.IsNullOrEmpty(filters?.Type)
+                && string.IsNullOrEmpty(filters?.Alignment))
+                return filteredBaseCreatures;
 
-                filteredBaseCreatures = filteredBaseCreatures.Where(c => CreatureInRange(filters.ChallengeRating, allHitDice[c]));
-            }
+            var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
 
-            if (!string.IsNullOrEmpty(filters?.Type))
-            {
-                if (invalidSubtypes.Contains(filters.Type))
-                {
-                    return Enumerable.Empty<string>();
-                }
+            filteredBaseCreatures = filteredBaseCreatures
+                .Where(c => AreFiltersCompatible(
+                    allData[c].Single().Types,
+                    allData[c].Single().GetEffectiveHitDiceQuantity(asCharacter),
+                    c,
+                    filters).Compatible);
 
-                //INFO: Unless this type is added by a template, it must already exist on the base creature
-                //So first, we check to see if the template could return this type for a human
-                //If not, then we can filter the base creatures down to ones that already have this type
-                var templateTypes = GetPotentialTypes(allTypes[CreatureConstants.Human]).Except(allTypes[CreatureConstants.Human]);
-                if (!templateTypes.Contains(filters.Type))
-                {
-                    filteredBaseCreatures = filteredBaseCreatures.Where(c => allTypes[c].Contains(filters.Type));
-                }
-            }
-
-            if (!string.IsNullOrEmpty(filters?.Alignment) && filters.Alignment != AlignmentConstants.NeutralEvil)
-            {
-                return Enumerable.Empty<string>();
-            }
-
-            var templateCreatures = filteredBaseCreatures
-                .Where(c => IsCompatible(allTypes[c], hasSkeleton, allHitDice[c], c, asCharacter, filters).Compatible);
-
-            return templateCreatures;
-        }
-
-        private bool CreatureInRange(string filterChallengeRating, double creatureHitDiceQuantity)
-        {
-            var hitDiceRange = GetHitDiceRange(filterChallengeRating);
-
-            return creatureHitDiceQuantity > hitDiceRange.Lower
-                && creatureHitDiceQuantity <= hitDiceRange.Upper;
-        }
-
-        private IEnumerable<string> GetPotentialTypes(IEnumerable<string> types)
-        {
-            var creatureType = types.First();
-            var subtypes = types.Skip(1);
-
-            var adjustedTypes = UpdateCreatureType(creatureType, subtypes);
-
-            return adjustedTypes;
+            return filteredBaseCreatures;
         }
 
         private (bool Compatible, string Reason) IsCompatible(
             IEnumerable<string> types,
-            IEnumerable<string> hasSkeleton,
+            bool hasSkeleton,
             double creatureHitDiceQuantity,
             string creature,
             bool asCharacter,
@@ -664,9 +596,28 @@ namespace DnDGen.CreatureGen.Templates
             if (!compatibility.Compatible)
                 return (false, compatibility.Reason);
 
+            return AreFiltersCompatible(types, creatureHitDiceQuantity, creature, filters);
+        }
+
+        private (bool Compatible, string Reason) AreFiltersCompatible(
+            IEnumerable<string> types,
+            double creatureHitDiceQuantity,
+            string creature,
+            Filters filters)
+        {
+            if (!string.IsNullOrEmpty(filters?.Alignment) && filters.Alignment != AlignmentConstants.NeutralEvil)
+            {
+                return (false, $"Alignment filter '{filters.Alignment}' is not valid");
+            }
+
             if (!string.IsNullOrEmpty(filters?.Type))
             {
-                var updatedTypes = GetPotentialTypes(types);
+                if (invalidSubtypes.Contains(filters.Type))
+                {
+                    return (false, $"Type filter '{filters.Type}' is not valid");
+                }
+
+                var updatedTypes = UpdateCreatureType(types.First(), types.Skip(1));
                 if (!updatedTypes.Contains(filters.Type))
                     return (false, $"Type filter '{filters.Type}' is not valid");
             }
@@ -678,15 +629,15 @@ namespace DnDGen.CreatureGen.Templates
                     return (false, $"CR filter {filters.ChallengeRating} does not match updated creature CR {cr}");
             }
 
-            if (!string.IsNullOrEmpty(filters?.Alignment) && filters.Alignment != AlignmentConstants.NeutralEvil)
-            {
-                return (false, $"Alignment filter '{filters.Alignment}' is not valid");
-            }
-
             return (true, null);
         }
 
-        private (bool Compatible, string Reason) IsCompatible(bool asCharacter, IEnumerable<string> types, IEnumerable<string> hasSkeleton, string creature, double creatureHitDiceQuantity)
+        private (bool Compatible, string Reason) IsCompatible(
+            bool asCharacter,
+            IEnumerable<string> types,
+            bool hasSkeleton,
+            string creature,
+            double creatureHitDiceQuantity)
         {
             if (asCharacter)
                 return (false, "Skeletons cannot be characters");
@@ -697,7 +648,7 @@ namespace DnDGen.CreatureGen.Templates
             if (types.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
                 return (false, "Creature is Incorporeal");
 
-            if (!hasSkeleton.Contains(creature))
+            if (!hasSkeleton)
                 return (false, "Creature does not have a skeleton");
 
             if (creatureHitDiceQuantity > 20)
@@ -710,7 +661,7 @@ namespace DnDGen.CreatureGen.Templates
         {
             var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, filters);
             if (!compatibleCreatures.Any())
-                return Enumerable.Empty<CreaturePrototype>();
+                return [];
 
             var prototypes = prototypeFactory.Build(compatibleCreatures, asCharacter);
 
@@ -734,11 +685,10 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, bool asCharacter, Filters filters = null)
         {
-            var hasSkeleton = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
             var compatiblePrototypes = sourceCreatures
                 .Where(p => IsCompatible(
                     p.Type.AllTypes,
-                    hasSkeleton,
+                    p.HasSkeleton,
                     p.HitDiceQuantity,
                     p.Name,
                     asCharacter,

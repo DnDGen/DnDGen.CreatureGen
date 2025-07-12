@@ -3,1772 +3,486 @@
 <collections>
   <collection>
     <name>Ability Focus</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>True</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@True@False@False@0@0@False@Ability Focus@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Acrobatic</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Acrobatic@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Agile</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Agile@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Alertness</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Alertness@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Animal Affinity</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Animal Affinity@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Athletic</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Athletic@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Armor Proficiency (Heavy)</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>True</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@True@Armor Proficiency (Heavy)@Armor Proficiency (Light)#|Armor Proficiency (Medium)#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Armor Proficiency (Light)</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>True</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@True@Armor Proficiency (Light)@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Armor Proficiency (Medium)</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>True</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@True@Armor Proficiency (Medium)@Armor Proficiency (Light)#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Augment Summoning</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>4</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@4@0@@1@False@False@False@0@0@False@Augment Summoning@Spell Focus#Conjuration@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Awesome Blow</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Awesome Blow@Power Attack#|Improved Bull Rush#@@25@0@0@0@0@0@0@False@Large|Huge|Gargantuan|Colossal</entry>
   </collection>
   <collection>
     <name>Blind-Fight</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Blind-Fight@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Brew Potion</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>3</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>True</entry>
+    <entry>0@@0@0@@3@False@False@False@0@0@True@Brew Potion@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Cleave</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Cleave@Power Attack#@@13@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Combat Casting</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>4</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@4@0@@1@False@False@False@0@0@False@Combat Casting@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Combat Expertise</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>4</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@4@0@@0@False@False@False@0@0@False@Combat Expertise@@@0@0@0@13@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Combat Reflexes</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Combat Reflexes@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Craft Construct</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>True</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@True@Craft Construct@Craft Magic Arms and Armor#|Craft Wondrous Item#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Craft Magic Arms and Armor</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>True</entry>
+    <entry>0@@0@0@@5@False@False@False@0@0@True@Craft Magic Arms and Armor@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Craft Rod</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>9</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>True</entry>
+    <entry>0@@0@0@@9@False@False@False@0@0@True@Craft Rod@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Craft Staff</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>12</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>True</entry>
+    <entry>0@@0@0@@12@False@False@False@0@0@True@Craft Staff@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Craft Wand</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>5</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>True</entry>
+    <entry>0@@0@0@@5@False@False@False@0@0@True@Craft Wand@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Craft Wondrous Item</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>3</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>True</entry>
+    <entry>0@@0@0@@3@False@False@False@0@0@True@Craft Wondrous Item@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Deceitful</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Deceitful@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Deflect Arrows</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>1</entry>
-    <entry>Round (6 seconds)</entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@1@Round (6 seconds)@0@False@False@False@0@0@False@Deflect Arrows@Improved Unarmed Strike#@@0@0@13@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Deft Hands</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Deft Hands@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Diehard</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Diehard@Endurance#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Diligent</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Diligent@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Dodge</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@1@0@@0@False@False@False@0@0@False@Dodge@@@0@0@13@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Empower Spell</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@1@False@False@False@0@0@False@Empower Spell@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Empower Spell-Like Ability</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>3</entry>
-    <entry>Day</entry>
-    <entry>6</entry>
-    <entry>False</entry>
-    <entry>True</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@3@Day@6@False@True@False@0@0@False@Empower Spell-Like Ability@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Endurance</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>4</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@4@0@@0@False@False@False@0@0@False@Endurance@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Enlarge Spell</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@1@False@False@False@0@0@False@Enlarge Spell@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Eschew Materials</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@1@False@False@False@0@0@False@Eschew Materials@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Exotic Weapon Proficiency</name>
-    <entry>1</entry>
-    <entry>All</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>1</entry>
-    <entry>True</entry>
+    <entry>1@All@0@0@@0@False@False@False@0@1@True@Exotic Weapon Proficiency@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
+	<collection>
+		<name>Exotic Weapon ProficiencyBastard sword</name>
+		<entry>1@All@0@0@@0@False@False@False@0@1@True@Exotic Weapon Proficiency@@@0@0@0@0@0@0@0@False@</entry>
+	</collection>
+	<collection>
+		<name>Exotic Weapon ProficiencyDwarven waraxe</name>
+		<entry>1@All@0@0@@0@False@False@False@0@1@True@Exotic Weapon Proficiency@@@0@0@0@0@0@0@0@False@</entry>
+	</collection>
+	<collection>
+		<name>Martial Weapon ProficiencyDwarven waraxe</name>
+		<entry>0@All@0@0@@0@False@False@False@0@1@True@Martial Weapon Proficiency@@@0@0@0@0@0@0@0@False@</entry>
+	</collection>
   <collection>
     <name>Extend Spell</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@1@False@False@False@0@0@False@Extend Spell@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Far Shot</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Far Shot@Point Blank Shot#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Flyby Attack</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Flyby Attack@@@0@0@0@0@0@0@1@False@</entry>
   </collection>
   <collection>
     <name>Forge Ring</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>12</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>True</entry>
+    <entry>0@@0@0@@12@False@False@False@0@0@True@Forge Ring@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Great Cleave</name>
-    <entry>4</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>4@@0@0@@0@False@False@False@0@0@False@Great Cleave@Cleave#|Power Attack#@@13@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Greater Multiweapon Fighting</name>
-    <entry>15</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>3</entry>
-    <entry>True</entry>
+    <entry>15@@0@0@@0@False@False@False@0@3@True@Greater Multiweapon Fighting@Multiweapon Fighting#|Improved Multiweapon Fighting#@@0@0@19@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Greater Spell Focus</name>
-    <entry>0</entry>
-    <entry>School</entry>
-    <entry>1</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@School@1@0@@1@False@False@False@0@0@False@Greater Spell Focus@Spell Focus#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Greater Spell Penetration</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@1@False@False@False@0@0@False@Greater Spell Penetration@Spell Penetration#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Greater Two-Weapon Fighting</name>
-    <entry>11</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>2</entry>
-    <entry>True</entry>
+    <entry>11@@0@0@@0@False@False@False@0@2@True@Greater Two-Weapon Fighting@Improved Two-Weapon Fighting#|Two-Weapon Fighting#@@0@0@19@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Great Fortitude</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Great Fortitude@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Heighten Spell</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@1@False@False@False@0@0@False@Heighten Spell@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Hover</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Hover@@@0@0@0@0@0@0@1@False@</entry>
   </collection>
   <collection>
     <name>Improved Bull Rush</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>4</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@4@0@@0@False@False@False@0@0@False@Improved Bull Rush@Power Attack#@@13@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Counterspell</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@1@False@False@False@0@0@False@Improved Counterspell@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Critical</name>
-    <entry>8</entry>
-    <entry>Weapon</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>8@Weapon@0@0@@0@False@False@False@0@0@False@Improved Critical@Weapon Proficiency#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Disarm</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>4</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@4@0@@0@False@False@False@0@0@False@Improved Disarm@Combat Expertise#@@0@0@0@13@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Feint</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Improved Feint@Combat Expertise#@@0@0@0@13@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Flyby Attack</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Improved Flyby Attack@Dodge#|Mobility#|Flyby Attack#@@0@0@0@0@0@0@1@False@</entry>
   </collection>
   <collection>
     <name>Improved Grapple</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>4</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@4@0@@0@False@False@False@0@0@False@Improved Grapple@Improved Unarmed Strike#@@0@0@13@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Initiative</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>4</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@4@0@@0@False@False@False@0@0@False@Improved Initiative@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Multiattack</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>3</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@3@0@False@Improved Multiattack@Multiattack#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Multiweapon Fighting</name>
-    <entry>9</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>3</entry>
-    <entry>True</entry>
+    <entry>9@@0@0@@0@False@False@False@0@3@True@Improved Multiweapon Fighting@Multiweapon Fighting#@@0@0@15@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Natural Armor</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>True</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@1@0@@0@False@False@True@0@0@False@Improved Natural Armor@@@0@13@0@0@0@0@0@True@</entry>
   </collection>
   <collection>
     <name>Improved Natural Attack</name>
-    <entry>4</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>1</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>4@@0@0@@0@False@False@False@1@0@False@Improved Natural Attack@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Overrun</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>4</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@4@0@@0@False@False@False@0@0@False@Improved Overrun@Power Attack#@@13@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Precise Shot</name>
-    <entry>11</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>11@@0@0@@0@False@False@False@0@0@False@Improved Precise Shot@Point Blank Shot#|Precise Shot#@@0@0@19@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Shield Bash</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>1</entry>
-    <entry>True</entry>
+    <entry>0@@0@0@@0@False@False@False@0@1@True@Improved Shield Bash@Shield Proficiency#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Sunder</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>4</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@4@0@@0@False@False@False@0@0@False@Improved Sunder@Power Attack#@@13@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Trip</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>4</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@4@0@@0@False@False@False@0@0@False@Improved Trip@Combat Expertise#@@0@0@0@13@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Two-Weapon Fighting</name>
-    <entry>6</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>2</entry>
-    <entry>True</entry>
+    <entry>6@@0@0@@0@False@False@False@0@2@True@Improved Two-Weapon Fighting@Two-Weapon Fighting#@@0@0@17@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Improved Unarmed Strike</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Improved Unarmed Strike@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Investigator</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Investigator@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Iron Will</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Iron Will@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Lightning Reflexes</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Lightning Reflexes@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Magical Aptitude</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Magical Aptitude@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Manyshot</name>
-    <entry>6</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>6@@0@0@@0@False@False@False@0@0@False@Manyshot@Point Blank Shot#|Rapid Shot#@@0@0@17@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Martial Weapon Proficiency</name>
-    <entry>0</entry>
-    <entry>All</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>1</entry>
-    <entry>True</entry>
+    <entry>0@All@0@0@@0@False@False@False@0@1@True@Martial Weapon Proficiency@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Maximize Spell</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@1@False@False@False@0@0@False@Maximize Spell@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Mobility</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>4</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@4@0@@0@False@False@False@0@0@False@Mobility@Dodge#@@0@0@13@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Mounted Archery</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Mounted Archery@Mounted Combat#@Ride##1@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Mounted Combat</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Mounted Combat@@Ride##1@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Multiattack</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>3</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@3@0@False@Multiattack@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Multiweapon Fighting</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>3</entry>
-    <entry>True</entry>
+    <entry>0@@0@0@@0@False@False@False@0@3@True@Multiweapon Fighting@@@0@0@13@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Negotiator</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Negotiator@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Nimble Fingers</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Nimble Fingers@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Persuasive</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Persuasive@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Point Blank Shot</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@1@0@@0@False@False@False@0@0@False@Point Blank Shot@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Power Attack</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Power Attack@@@13@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Precise Shot</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Precise Shot@Point Blank Shot#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Quick Draw</name>
-    <entry>1</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>1@@0@0@@0@False@False@False@0@0@False@Quick Draw@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Quicken Spell</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@1@False@False@False@0@0@False@Quicken Spell@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Quicken Spell-Like Ability</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>3</entry>
-    <entry>Day</entry>
-    <entry>10</entry>
-    <entry>False</entry>
-    <entry>True</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@3@Day@10@False@True@False@0@0@False@Quicken Spell-Like Ability@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Rapid Reload</name>
-    <entry>0</entry>
-    <entry>Manual Crossbows</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>2</entry>
-    <entry>True</entry>
+    <entry>0@Manual Crossbows@0@0@@0@False@False@False@0@2@True@Rapid Reload@Weapon Proficiency#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Rapid Shot</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Rapid Shot@Point Blank Shot#@@0@0@13@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Ride-By Attack</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Ride-By Attack@Mounted Combat#@Ride##1@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Run</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Run@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Scribe Scroll</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>True</entry>
+    <entry>0@@0@0@@1@False@False@False@0@0@True@Scribe Scroll@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Self-Sufficient</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Self-Sufficient@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Shield Proficiency</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>1</entry>
-    <entry>True</entry>
+    <entry>0@@0@0@@0@False@False@False@0@1@True@Shield Proficiency@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Shot On The Run</name>
-    <entry>4</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>4@@0@0@@0@False@False@False@0@0@False@Shot On The Run@Dodge#|Mobility#|Point Blank Shot#@@0@0@13@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Silent Spell</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@1@False@False@False@0@0@False@Silent Spell@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Simple Weapon Proficiency</name>
-    <entry>0</entry>
-    <entry>All</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>1</entry>
-    <entry>True</entry>
+    <entry>0@All@0@0@@0@False@False@False@0@1@True@Simple Weapon Proficiency@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Skill Focus</name>
-    <entry>0</entry>
-    <entry>Skills</entry>
-    <entry>3</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@Skills@3@0@@0@False@False@False@0@0@False@Skill Focus@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Snatch</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Snatch@@@0@0@0@0@0@0@0@False@Huge|Gargantuan|Colossal</entry>
   </collection>
   <collection>
     <name>Snatch Arrows</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Snatch Arrows@Deflect Arrows#|Improved Unarmed Strike#@@0@0@15@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Spell Focus</name>
-    <entry>0</entry>
-    <entry>School</entry>
-    <entry>1</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@School@1@0@@1@False@False@False@0@0@False@Spell Focus@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Spell Penetration</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@1@False@False@False@0@0@False@Spell Penetration@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Spirited Charge</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Spirited Charge@Mounted Combat#|Ride-By Attack#@Ride##1@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Spring Attack</name>
-    <entry>4</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>4@@0@0@@0@False@False@False@0@0@False@Spring Attack@Dodge#|Mobility#@@0@0@13@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Stealthy</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>2</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@2@0@@0@False@False@False@0@0@False@Stealthy@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Still Spell</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@1@False@False@False@0@0@False@Still Spell@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Stunning Fist</name>
-    <entry>8</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>8@@0@0@@0@False@False@False@0@0@False@Stunning Fist@Improved Unarmed Strike#@@0@0@13@0@13@0@0@False@</entry>
   </collection>
   <collection>
     <name>Toughness</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>3</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@3@0@@0@False@False@False@0@0@False@Toughness@@@0@0@0@0@0@0@0@True@</entry>
   </collection>
   <collection>
     <name>Tower Shield Proficiency</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>1</entry>
-    <entry>True</entry>
+    <entry>0@@0@0@@0@False@False@False@0@1@True@Tower Shield Proficiency@Shield Proficiency#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Track</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Track@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Trample</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@0@False@False@False@0@0@False@Trample@Mounted Combat#@Ride##1@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Two-Weapon Defense</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>2</entry>
-    <entry>True</entry>
+    <entry>0@@0@0@@0@False@False@False@0@2@True@Two-Weapon Defense@Two-Weapon Fighting#@@0@0@15@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Two-Weapon Fighting</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>2</entry>
-    <entry>True</entry>
+    <entry>0@@0@0@@0@False@False@False@0@2@True@Two-Weapon Fighting@@@0@0@15@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Weapon Finesse</name>
-    <entry>1</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>1@@0@0@@0@False@False@False@0@0@False@Weapon Finesse@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Weapon Focus</name>
-    <entry>0</entry>
-    <entry>Weapon</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@Weapon@0@0@@0@False@False@False@0@0@False@Weapon Focus@Weapon Proficiency#@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Whirlwind Attack</name>
-    <entry>4</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>4@@0@0@@0@False@False@False@0@0@False@Whirlwind Attack@Combat Expertise#|Dodge#|Mobility#|Spring Attack#@@0@0@13@13@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Widen Spell</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>1</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@0@@1@False@False@False@0@0@False@Widen Spell@@@0@0@0@0@0@0@0@False@</entry>
   </collection>
   <collection>
     <name>Wingover</name>
-    <entry>0</entry>
-    <entry></entry>
-    <entry>0</entry>
-    <entry>1</entry>
-    <entry>Round (6 seconds)</entry>
-    <entry>0</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>False</entry>
-    <entry>0</entry>
-    <entry>0</entry>
-    <entry>False</entry>
+    <entry>0@@0@1@Round (6 seconds)@0@False@False@False@0@0@False@Wingover@@@0@0@0@0@0@0@1@False@</entry>
   </collection>
 </collections>

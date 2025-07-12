@@ -2,16 +2,17 @@
   <PropertyGroup>
     <TargetFrameworks>net8.0</TargetFrameworks>
     <IsPackable>false</IsPackable>
+	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="DnDGen.Infrastructure" Version="6.0.1" />
-    <PackageReference Include="DnDGen.TreasureGen" Version="12.0.0" />
+    <PackageReference Include="DnDGen.Infrastructure" Version="7.0.1" />
+    <PackageReference Include="DnDGen.TreasureGen" Version="12.0.1" />
     <PackageReference Include="nunit" Version="4.3.2" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.6.0">
+    <PackageReference Include="NUnit3TestAdapter" Version="5.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DnDGen.CreatureGen\DnDGen.CreatureGen.csproj" />

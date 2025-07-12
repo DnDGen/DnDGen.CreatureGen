@@ -52,7 +52,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             return timeLimit;
         }
 
-        public void AssertCreature(Creature creature, string message = null)
+        public void AssertCreature(Creature creature, bool asCharacter = false, string message = null)
         {
             message ??= creature.Summary;
 
@@ -60,7 +60,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             {
                 var verifierMessage = new StringBuilder();
                 verifierMessage.AppendLine(message);
-                verifierMessage.AppendLine($"\tAs Character: {false}");
+                verifierMessage.AppendLine($"\tAs Character: {asCharacter}");
                 verifierMessage.AppendLine($"\tCreature Type: {type}");
                 verifierMessage.AppendLine($"\tCreature Alignment: {creature.Alignment.Full}");
 
@@ -73,7 +73,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                     Alignment = creature.Alignment.Full
                 };
 
-                var isValid = creatureVerifier.VerifyCompatibility(false, creature.Name, filters);
+                var isValid = creatureVerifier.VerifyCompatibility(asCharacter, creature.Name, filters);
                 Assert.That(isValid, Is.True, verifierMessage.ToString());
             }
 
@@ -261,7 +261,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 Assert.That(weapon, Is.Not.Null, $"{message}\nAttack: {attack.Name}");
 
                 var weaponMessage = $"{message}\nWeapon: {weapon.Summary}";
-                Assert.That(weapon.DamageDescription, Is.Not.Empty, weaponMessage);
+                Assert.That(weapon.DamageSummary, Is.Not.Empty, weaponMessage);
                 Assert.That(weaponNames, Contains.Item(weapon.Name), weaponMessage);
 
                 Assert.That(attack.Damages, Is.Not.Empty.And.Count.EqualTo(weapon.Damages.Count));
@@ -270,13 +270,13 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 {
                     if (i == 0)
                     {
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Roll), weaponMessage);
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Type), weaponMessage);
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Condition), weaponMessage);
+                        Assert.That(attack.DamageSummary, Contains.Substring(weapon.Damages[i].Roll), weaponMessage);
+                        Assert.That(attack.DamageSummary, Contains.Substring(weapon.Damages[i].Type), weaponMessage);
+                        Assert.That(attack.DamageSummary, Contains.Substring(weapon.Damages[i].Condition), weaponMessage);
                     }
                     else
                     {
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Description), weaponMessage);
+                        Assert.That(attack.DamageSummary, Contains.Substring(weapon.Damages[i].Summary), weaponMessage);
                     }
                 }
 
@@ -614,7 +614,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
                 if (attack.IsNatural)
                 {
-                    Assert.That(attack.DamageDescription, Is.Not.Empty, attackMessage);
+                    Assert.That(attack.DamageSummary, Is.Not.Empty, attackMessage);
                 }
             }
 
@@ -650,19 +650,19 @@ namespace DnDGen.CreatureGen.Tests.Integration
             {
                 Assert.That(attack.Damages,
                     Is.Not.Empty.And.Count.EqualTo(weapon.Damages.Count),
-                    $"{attackMessage}\nWeapon: {weapon.Summary} ({weapon.DamageDescription})\nAttack Damage: {attack.DamageDescription}");
+                    $"{attackMessage}\nWeapon: {weapon.Summary} ({weapon.DamageSummary})\nAttack Damage: {attack.DamageSummary}");
 
                 for (var i = 0; i < weapon.Damages.Count; i++)
                 {
                     if (i == 0)
                     {
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Roll), $"{attackMessage}\nWeapon: {weapon.Summary}");
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Type), $"{attackMessage}\nWeapon: {weapon.Summary}");
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Condition), $"{attackMessage}\nWeapon: {weapon.Summary}");
+                        Assert.That(attack.DamageSummary, Contains.Substring(weapon.Damages[i].Roll), $"{attackMessage}\nWeapon: {weapon.Summary}");
+                        Assert.That(attack.DamageSummary, Contains.Substring(weapon.Damages[i].Type), $"{attackMessage}\nWeapon: {weapon.Summary}");
+                        Assert.That(attack.DamageSummary, Contains.Substring(weapon.Damages[i].Condition), $"{attackMessage}\nWeapon: {weapon.Summary}");
                     }
                     else
                     {
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Description), $"{attackMessage}\nWeapon: {weapon.Summary}");
+                        Assert.That(attack.DamageSummary, Contains.Substring(weapon.Damages[i].Summary), $"{attackMessage}\nWeapon: {weapon.Summary}");
                     }
                 }
 
@@ -691,7 +691,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                     .Or.EqualTo(AbilityConstants.Wisdom)
                     .Or.EqualTo("Negative Level")
                     .Or.EqualTo("Positive energy")
-                    .Or.EqualTo("Ability points (of ghost's choosing)"), $"{attackMessage}\nDamage: {damage.Description}");
+                    .Or.EqualTo("Ability points (of ghost's choosing)"), $"{attackMessage}\nDamage: {damage.Summary}");
             }
         }
 
@@ -720,7 +720,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
         {
             message ??= creature.Summary;
 
-            AssertCreature(creature, message);
+            AssertCreature(creature, true, message);
 
             foreach (var type in creature.Type.AllTypes)
             {
@@ -732,10 +732,12 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
                 //INFO: We are not asserting that the challenge rating is valid
                 //Since the CR can be altered by advancement and by generating as a character
-                var filters = new Filters();
-                filters.Type = type;
-                filters.Templates = creature.Templates;
-                filters.Alignment = creature.Alignment.Full;
+                var filters = new Filters
+                {
+                    Type = type,
+                    Templates = creature.Templates,
+                    Alignment = creature.Alignment.Full
+                };
 
                 var isValid = creatureVerifier.VerifyCompatibility(true, creature.Name, filters);
                 Assert.That(isValid, Is.True, verifierMessage.ToString());

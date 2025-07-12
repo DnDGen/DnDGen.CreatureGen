@@ -1,74 +1,34 @@
-﻿using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Selectors.Selections;
+﻿using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Selectors.Collections
 {
     internal class AttackSelector : IAttackSelector
     {
-        private readonly ICollectionSelector collectionSelector;
-        private readonly Dictionary<string, string> damageMaps;
+        private readonly ICollectionDataSelector<AttackDataSelection> attackDataSelector;
+        private readonly ICollectionDataSelector<DamageDataSelection> damageDataSelector;
 
-        public AttackSelector(ICollectionSelector collectionSelector)
+        public AttackSelector(ICollectionDataSelector<AttackDataSelection> attackDataSelector, ICollectionDataSelector<DamageDataSelection> damageDataSelector)
         {
-            this.collectionSelector = collectionSelector;
-
-            damageMaps = new Dictionary<string, string>();
-            damageMaps["2d8"] = "3d8";
-            damageMaps["2d6"] = "3d6";
-            damageMaps["1d10"] = "2d8";
-            damageMaps["1d8"] = "2d6";
-            damageMaps["1d6"] = "1d8";
-            damageMaps["1d4"] = "1d6";
-            damageMaps["1d3"] = "1d4";
-            damageMaps["1d2"] = "1d3";
+            this.attackDataSelector = attackDataSelector;
+            this.damageDataSelector = damageDataSelector;
         }
 
-        public IEnumerable<AttackSelection> Select(string creatureName, string originalSize, string advancedSize)
+        public IEnumerable<AttackDataSelection> Select(string creatureName, string size)
         {
-            var attackData = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, creatureName);
-            var selections = new List<AttackSelection>();
+            var attackSelections = attackDataSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, creatureName).ToArray();
 
-            foreach (var data in attackData)
+            foreach (var selection in attackSelections)
             {
-                var selection = Parse(data, originalSize, advancedSize);
-                selections.Add(selection);
+                var key = selection.BuildDamageKey(creatureName, size);
+                var damageSelections = damageDataSelector.SelectFrom(Config.Name, TableNameConstants.Collection.DamageData, key);
+                selection.Damages.AddRange(damageSelections);
             }
 
-            return selections;
-        }
-
-        private AttackSelection Parse(string input, string originalSize, string advancedSize)
-        {
-            var selection = AttackSelection.From(input);
-
-            if (selection.IsNatural && originalSize != advancedSize)
-            {
-                foreach (var damage in selection.Damages)
-                {
-                    damage.Roll = GetAdjustedDamage(damage.Roll, originalSize, advancedSize);
-                }
-            }
-
-            return selection;
-        }
-
-        private string GetAdjustedDamage(string originalDamage, string originalSize, string advancedSize)
-        {
-            var adjustedDamage = originalDamage;
-
-            var orderedSizes = SizeConstants.GetOrdered();
-            var sizeDifference = Array.IndexOf(orderedSizes, advancedSize) - Array.IndexOf(orderedSizes, originalSize);
-
-            while (sizeDifference-- > 0 && damageMaps.ContainsKey(adjustedDamage))
-            {
-                adjustedDamage = damageMaps[adjustedDamage];
-            }
-
-            return adjustedDamage;
+            return attackSelections;
         }
     }
 }
