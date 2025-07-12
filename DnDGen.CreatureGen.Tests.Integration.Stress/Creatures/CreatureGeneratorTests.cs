@@ -282,19 +282,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             if (templates.Any(t => !string.IsNullOrEmpty(t)))
                 Assert.That(creature.Templates, Is.EqualTo(templates.Where(t => t != CreatureConstants.Templates.None)), message.ToString());
 
-            if (type != null)
+            if (!string.IsNullOrEmpty(type))
                 creatureAsserter.AssertCreatureIsType(creature, type, message.ToString());
 
-            if (challengeRating != null)
+            if (!string.IsNullOrEmpty(challengeRating))
                 Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), message.ToString());
 
-            if (alignment != null)
+            if (!string.IsNullOrEmpty(alignment))
                 Assert.That(creature.Alignment.Full, Is.EqualTo(alignment), message.ToString());
 
             if (asCharacter)
                 creatureAsserter.AssertCreatureAsCharacter(creature, message.ToString());
             else
-                creatureAsserter.AssertCreature(creature, message.ToString());
+                creatureAsserter.AssertCreature(creature, asCharacter, message.ToString());
         }
 
         [Test]

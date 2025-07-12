@@ -186,13 +186,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void CanGenerateTemplate(string template)
+        public void CanGenerateBasicTemplate(string template)
         {
             var creatureName = CreatureConstants.Human;
             if (template == CreatureConstants.Templates.Lycanthrope_Rat_Afflicted
                 || template == CreatureConstants.Templates.Lycanthrope_Rat_Natural)
             {
                 creatureName = CreatureConstants.Kobold;
+            }
+            else if (template == CreatureConstants.Templates.Lich)
+            {
+                Assert.Ignore($"Template {template} must be a character");
+            }
+            else if (template == CreatureConstants.Templates.Vampire)
+            {
+                creatureName = CreatureConstants.Minotaur;
             }
 
             var creature = creatureGenerator.Generate(false, creatureName, null, template);
@@ -205,7 +213,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void CanGenerateTemplateAsCharacter(string template)
+        public void CanGenerateBasicTemplateAsCharacter(string template)
         {
             var creatureName = CreatureConstants.Human;
             if (template == CreatureConstants.Templates.Lycanthrope_Rat_Afflicted
@@ -292,13 +300,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [TestCase(true, CreatureConstants.Elf_Half, CreatureConstants.Templates.HalfCelestial)]
         [TestCase(false, CreatureConstants.Elf_Half, CreatureConstants.Templates.HalfFiend)]
         [TestCase(true, CreatureConstants.Elf_Half, CreatureConstants.Templates.HalfFiend)]
-        [TestCase(false, CreatureConstants.Elf_Half, CreatureConstants.Templates.Lich)]
         [TestCase(true, CreatureConstants.Elf_Half, CreatureConstants.Templates.Lich)]
-        [TestCase(false, CreatureConstants.Elf_Half, CreatureConstants.Templates.Vampire)]
         [TestCase(true, CreatureConstants.Elf_Half, CreatureConstants.Templates.Vampire)]
-        [TestCase(false, CreatureConstants.Elf_High, CreatureConstants.Templates.Lich)]
         [TestCase(true, CreatureConstants.Elf_High, CreatureConstants.Templates.Lich)]
-        [TestCase(false, CreatureConstants.Elf_High, CreatureConstants.Templates.Vampire)]
         [TestCase(true, CreatureConstants.Elf_High, CreatureConstants.Templates.Vampire)]
         [TestCase(false, CreatureConstants.Ettin, CreatureConstants.Templates.Skeleton)]
         [TestCase(false, CreatureConstants.FireBeetle_Giant, CreatureConstants.Templates.CelestialCreature)]
@@ -338,7 +342,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.HalfFiend)]
         [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.HalfDragon_Black, CreatureConstants.Templates.HalfFiend)]
         [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.HalfDragon_Black, CreatureConstants.Templates.HalfFiend)]
-        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lich)]
         [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lich)]
         [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted)]
         [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted)]
@@ -367,7 +370,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural)]
         [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural)]
         [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Skeleton)]
-        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Vampire)]
         [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Vampire)]
         [TestCase(false, CreatureConstants.Human,
             CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted,
@@ -524,7 +526,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             Assert.That(creature.Name, Is.EqualTo(creatureName));
             Assert.That(creature.Templates, Is.EqualTo(templates));
 
-            creatureAsserter.AssertCreature(creature);
+            creatureAsserter.AssertCreature(creature, asCharacter);
         }
 
         [TestCase(CreatureConstants.Destrachan)]
@@ -860,7 +862,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             if (asCharacter)
                 creatureAsserter.AssertCreatureAsCharacter(creature, message.ToString());
             else
-                creatureAsserter.AssertCreature(creature, message.ToString());
+                creatureAsserter.AssertCreature(creature, asCharacter, message.ToString());
 
             return creature;
         }

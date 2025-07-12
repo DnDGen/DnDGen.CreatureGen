@@ -52,7 +52,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             return timeLimit;
         }
 
-        public void AssertCreature(Creature creature, string message = null)
+        public void AssertCreature(Creature creature, bool asCharacter = false, string message = null)
         {
             message ??= creature.Summary;
 
@@ -60,7 +60,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             {
                 var verifierMessage = new StringBuilder();
                 verifierMessage.AppendLine(message);
-                verifierMessage.AppendLine($"\tAs Character: {false}");
+                verifierMessage.AppendLine($"\tAs Character: {asCharacter}");
                 verifierMessage.AppendLine($"\tCreature Type: {type}");
                 verifierMessage.AppendLine($"\tCreature Alignment: {creature.Alignment.Full}");
 
@@ -73,7 +73,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                     Alignment = creature.Alignment.Full
                 };
 
-                var isValid = creatureVerifier.VerifyCompatibility(false, creature.Name, filters);
+                var isValid = creatureVerifier.VerifyCompatibility(asCharacter, creature.Name, filters);
                 Assert.That(isValid, Is.True, verifierMessage.ToString());
             }
 
@@ -720,7 +720,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
         {
             message ??= creature.Summary;
 
-            AssertCreature(creature, message);
+            AssertCreature(creature, true, message);
 
             foreach (var type in creature.Type.AllTypes)
             {
@@ -732,10 +732,12 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
                 //INFO: We are not asserting that the challenge rating is valid
                 //Since the CR can be altered by advancement and by generating as a character
-                var filters = new Filters();
-                filters.Type = type;
-                filters.Templates = creature.Templates;
-                filters.Alignment = creature.Alignment.Full;
+                var filters = new Filters
+                {
+                    Type = type,
+                    Templates = creature.Templates,
+                    Alignment = creature.Alignment.Full
+                };
 
                 var isValid = creatureVerifier.VerifyCompatibility(true, creature.Name, filters);
                 Assert.That(isValid, Is.True, verifierMessage.ToString());

@@ -238,7 +238,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private Alignment UpdateCreatureAlignment(Alignment alignment, string presetAlignment)
         {
-            if (presetAlignment != null)
+            if (!string.IsNullOrEmpty(presetAlignment))
             {
                 return new Alignment(presetAlignment);
             }

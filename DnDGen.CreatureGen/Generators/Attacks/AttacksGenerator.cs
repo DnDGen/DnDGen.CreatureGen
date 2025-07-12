@@ -65,7 +65,7 @@ namespace DnDGen.CreatureGen.Generators.Attacks
                 .Where(s => s.RequirementsMet(gender))
                 .Select(s => Attack.From(s, abilities, hitDiceQuantity, baseAttackBonus, sizeModifier.Amount));
 
-            return attacks;
+            return [.. attacks];
         }
 
         public IEnumerable<Attack> ApplyAttackBonuses(IEnumerable<Attack> attacks, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities)

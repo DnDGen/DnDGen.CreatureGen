@@ -287,13 +287,13 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureAlignment(CreaturePrototype creature, string presetAlignment, IEnumerable<string> dragonAlignments)
         {
-            if (presetAlignment != null)
+            if (!string.IsNullOrEmpty(presetAlignment))
             {
-                creature.Alignments = new List<Alignment> { new Alignment(presetAlignment) };
+                creature.Alignments = [new(presetAlignment)];
             }
             else
             {
-                creature.Alignments = dragonAlignments.Distinct().Select(a => new Alignment(a)).ToList();
+                creature.Alignments = [.. dragonAlignments.Distinct().Select(a => new Alignment(a))];
             }
         }
 
