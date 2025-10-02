@@ -133,6 +133,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                 }
             }
 
+            foreach (var template in CreatureConstants.Templates.GetAll())
+            {
+                var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, CreatureConstants.Human);
+                var templateKeys = GetCollectionCreatureKeys();
+                var keys = genders
+                    .Select(g => template + g)
+                    .Concat([template])
+                    .Intersect(templateKeys);
+
+                foreach (var key in keys)
+                {
+                    foreach (var rarity in rarities)
+                    {
+                        var collection = new XElement("collection", new XElement("name", key + rarity.ToString()));
+
+                        foreach (var appearance in creatureAppearances[key][category][rarity])
+                        {
+                            collection.Add(new XElement("entry", appearance));
+                        }
+
+                        collections.Add(collection);
+                    }
+                }
+            }
+
             var path = Path.Combine(Environment.CurrentDirectory, $"{tableName}.xml");
             collections.Save(path);
         }
@@ -2273,12 +2298,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                 rareSkin: Combine(" on top half, bottom half is ",
                     appearances[CreatureConstants.Elf_Drow][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Rare],
                     appearances[CreatureConstants.Spider_Monstrous_Hunter_Tiny][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Common]),
+                veryRareSkin: Combine(" on top half, bottom half is ",
+                    appearances[CreatureConstants.Elf_Drow][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.VeryRare],
+                    appearances[CreatureConstants.Spider_Monstrous_Hunter_Tiny][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Common]),
                 commonHair: appearances[CreatureConstants.Elf_Drow][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Common],
                 uncommonHair: appearances[CreatureConstants.Elf_Drow][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Uncommon],
                 rareHair: appearances[CreatureConstants.Elf_Drow][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Rare],
+                veryRareHair: appearances[CreatureConstants.Elf_Drow][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.VeryRare],
                 commonEyes: appearances[CreatureConstants.Elf_Drow][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Common],
                 uncommonEyes: appearances[CreatureConstants.Elf_Drow][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Uncommon],
-                rareEyes: appearances[CreatureConstants.Elf_Drow][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Rare]
+                rareEyes: appearances[CreatureConstants.Elf_Drow][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Rare],
+                veryRareEyes: appearances[CreatureConstants.Elf_Drow][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.VeryRare]
             );
             //Source: https://forgottenrealms.fandom.com/wiki/Dryad
             appearances[CreatureConstants.Dryad][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["Delicate features seemingly made from soft wood. Hair looks as if made of leaves and foliage that changes color with the seasons."];
@@ -2375,9 +2405,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                 commonSkin: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Common],
                 uncommonSkin: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Uncommon],
                 rareSkin: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Rare],
+                veryRareSkin: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.VeryRare],
                 commonHair: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Common],
                 uncommonHair: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Uncommon],
                 rareHair: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Rare],
+                veryRareHair: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.VeryRare],
                 commonEyes: ["Red eyes"]);
             //Source: https://www.5esrd.com/database/creature/ethereal-filcher/
             appearances[CreatureConstants.EtherealFilcher][TableNameConstants.Collection.AppearanceCategories.Other][Rarity.Common] = ["One foot. Four arms ending in hands with long, spindly fingers. Looks as if it has two heads, one on a long stalk of a neck and another on its abdomen."];
@@ -2456,9 +2488,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                 commonSkin: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Common],
                 uncommonSkin: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Uncommon],
                 rareSkin: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Rare],
+                veryRareSkin: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.VeryRare],
                 commonHair: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Common],
                 uncommonHair: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Uncommon],
                 rareHair: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Rare],
+                veryRareHair: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.VeryRare],
                 commonEyes: ["Opalescent pearl eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Ghoul
             appearances[CreatureConstants.Ghoul] = GetAppearances(
@@ -2973,12 +3007,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                     .Concat(appearances[CreatureConstants.Elf_Half][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Uncommon]),
                 rareHair: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Rare]
                     .Concat(appearances[CreatureConstants.Elf_Half][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Rare]),
-                commonEyes: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Common].Select(e => $"{e} with supernatural intensity")
-                    .Concat(appearances[CreatureConstants.Elf_Half][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Common].Select(e => $"{e} with supernatural intensity")),
-                uncommonEyes: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Uncommon].Select(e => $"{e} with supernatural intensity")
-                    .Concat(appearances[CreatureConstants.Elf_Half][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Uncommon].Select(e => $"{e} with supernatural intensity")),
-                rareEyes: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Rare].Select(e => $"{e} with supernatural intensity")
-                    .Concat(appearances[CreatureConstants.Elf_Half][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Rare].Select(e => $"{e} with supernatural intensity")));
+                veryRareHair: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.VeryRare]
+                    .Concat(appearances[CreatureConstants.Elf_Half][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.VeryRare]),
+                commonEyes: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Common]
+                    .Select(e => $"{e} with supernatural intensity")
+                    .Concat(appearances[CreatureConstants.Elf_Half][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Common]
+                        .Select(e => $"{e} with supernatural intensity")),
+                uncommonEyes: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Uncommon]
+                    .Select(e => $"{e} with supernatural intensity")
+                    .Concat(appearances[CreatureConstants.Elf_Half][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Uncommon]
+                        .Select(e => $"{e} with supernatural intensity")),
+                rareEyes: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Rare]
+                    .Select(e => $"{e} with supernatural intensity")
+                    .Concat(appearances[CreatureConstants.Elf_Half][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Rare]
+                        .Select(e => $"{e} with supernatural intensity")),
+                veryRareEyes: appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.VeryRare]
+                    .Select(e => $"{e} with supernatural intensity")
+                    .Concat(appearances[CreatureConstants.Elf_Half][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.VeryRare]
+                        .Select(e => $"{e} with supernatural intensity")));
             //Source: https://forgottenrealms.fandom.com/wiki/Kobold
             appearances[CreatureConstants.Kobold] = GetAppearances(
                 commonSkin: [ "Reddish-brown scaled skin", "Rusty black scaled skin", "Rusty brown scaled skin", "Reddish-black scaled skin",
@@ -3454,13 +3500,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                     .Concat(["Green skin"]),
                 uncommonSkin: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Uncommon],
                 rareSkin: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Rare],
+                veryRareSkin: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.VeryRare],
                 commonHair: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Common]
                     .Concat(["Green hair", "Red hair"]),
                 uncommonHair: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Uncommon],
                 rareHair: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Rare],
+                veryRareHair: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.VeryRare],
                 commonEyes: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Common],
                 uncommonEyes: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Uncommon],
                 rareEyes: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Rare],
+                veryRareEyes: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.VeryRare],
                 commonOther: ["Silvery, moth-like wings"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Pixie
             appearances[CreatureConstants.Pixie] = weightedPixieAppearances;
@@ -3711,6 +3760,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                     ["red skin on the scorpion half"]),
                 rareSkin: Combine(", ",
                     appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Rare],
+                    ["red skin on the scorpion half"]),
+                veryRareSkin: Combine(", ",
+                    appearances[CreatureConstants.Human][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.VeryRare],
                     ["red skin on the scorpion half"]),
                 commonHair: new[] { "Completely hairless" },
                 commonEyes: new[] { "Red eyes" },
@@ -4349,20 +4401,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                     .Concat(["Green skin"])
                     .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Uncommon]),
                 rareSkin: appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Uncommon]
-                    .Concat(appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Rare])
                     .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Rare]),
+                veryRareSkin: appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.VeryRare]
+                    .Concat(appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Rare])
+                    .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.VeryRare]),
                 commonHair: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Common],
                 uncommonHair: appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Common]
                     .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Uncommon]),
                 rareHair: appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Uncommon]
-                    .Concat(appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Rare])
                     .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Rare]),
+                veryRareHair: appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.VeryRare]
+                    .Concat(appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Rare])
+                    .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.VeryRare]),
                 commonEyes: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Common],
                 uncommonEyes: appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Common]
                     .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Uncommon]),
                 rareEyes: appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Uncommon]
-                    .Concat(appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Rare])
                     .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Rare]),
+                veryRareEyes: appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.VeryRare]
+                    .Concat(appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Rare])
+                    .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.VeryRare]),
                 commonOther: new[] { "Wings" });
             appearances[CreatureConstants.TrumpetArchon + GenderConstants.Female] = GetAppearances(
                 commonSkin: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Common],
@@ -4370,20 +4428,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                     .Concat(["Green skin"])
                     .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Uncommon]),
                 rareSkin: appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Uncommon]
-                    .Concat(appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Rare])
                     .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Rare]),
+                veryRareSkin: appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.VeryRare]
+                    .Concat(appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Rare])
+                    .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.VeryRare]),
                 commonHair: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Common],
                 uncommonHair: appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Common]
                     .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Uncommon]),
                 rareHair: appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Uncommon]
-                    .Concat(appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Rare])
                     .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Rare]),
+                veryRareHair: appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.VeryRare]
+                    .Concat(appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.Rare])
+                    .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Hair][Rarity.VeryRare]),
                 commonEyes: appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Common],
                 uncommonEyes: appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Common]
                     .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Uncommon]),
                 rareEyes: appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Uncommon]
-                    .Concat(appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Rare])
                     .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Rare]),
+                veryRareEyes: appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.VeryRare]
+                    .Concat(appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.Rare])
+                    .Concat(appearances[CreatureConstants.Elf_High][TableNameConstants.Collection.AppearanceCategories.Eyes][Rarity.VeryRare]),
                 commonOther: new[] { "Wings" });
             //Source: https://jurassicworld-evolution.fandom.com/wiki/Tyrannosaurus
             appearances[CreatureConstants.Tyrannosaurus] = GetAppearances(

@@ -77,13 +77,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
         }
 
         [Test]
-        public void BUG_AlbinoHalfElfIsRare()
+        public void BUG_AlbinoHalfElfIsVeryRare()
         {
             Assert.That(creatureAppearances[CreatureConstants.Elf_Half][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Common],
                 Is.All.Not.Contain("albino"));
             Assert.That(creatureAppearances[CreatureConstants.Elf_Half][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Uncommon],
                 Is.All.Not.Contain("albino"));
             Assert.That(creatureAppearances[CreatureConstants.Elf_Half][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Rare],
+                Is.All.Not.Contain("albino"));
+            Assert.That(creatureAppearances[CreatureConstants.Elf_Half][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.VeryRare],
                 Has.Some.Contain("albino"));
         }
     }

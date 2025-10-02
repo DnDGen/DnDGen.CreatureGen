@@ -92,7 +92,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         }
 
         [Test]
-        public void BUG_AlbinoHalfElfIsRare()
+        public void BUG_AlbinoHalfElfIsVeryRare()
         {
             var iterations = 100;
             var albinoCount = 0;
@@ -106,7 +106,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
                 }
             }
 
-            Assert.That(albinoCount, Is.LessThan(10));
+            Assert.That(albinoCount, Is.LessThanOrEqualTo(1).Within(1));
         }
     }
 }

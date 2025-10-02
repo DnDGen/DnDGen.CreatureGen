@@ -24,6 +24,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                 names.Add(creatureKey + Rarity.Common.ToString());
                 names.Add(creatureKey + Rarity.Uncommon.ToString());
                 names.Add(creatureKey + Rarity.Rare.ToString());
+                names.Add(creatureKey + Rarity.VeryRare.ToString());
             }
 
             AssertCollectionNames(names);
@@ -49,13 +50,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
         public void TemplateEyesAppearances(string template)
         {
             var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, CreatureConstants.Human);
-            var creatureKeys = GetCollectionCreatureKeys();
+            var templateKeys = GetCollectionCreatureKeys();
             var keys = genders
                 .Select(g => template + g)
                 .Concat([template])
-                .Intersect(creatureKeys);
+                .Intersect(templateKeys);
 
-            Assert.That(creatureKeys, Contains.Item(template));
+            Assert.That(templateKeys, Contains.Item(template));
             foreach (var key in keys)
             {
                 AssertCreatureAppearance(TableNameConstants.Collection.AppearanceCategories.Eyes, key);

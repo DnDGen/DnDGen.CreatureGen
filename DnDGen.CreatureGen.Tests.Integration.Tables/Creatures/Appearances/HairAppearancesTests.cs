@@ -24,6 +24,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                 names.Add(creatureKey + Rarity.Common.ToString());
                 names.Add(creatureKey + Rarity.Uncommon.ToString());
                 names.Add(creatureKey + Rarity.Rare.ToString());
+                names.Add(creatureKey + Rarity.VeryRare.ToString());
             }
 
             AssertCollectionNames(names);
