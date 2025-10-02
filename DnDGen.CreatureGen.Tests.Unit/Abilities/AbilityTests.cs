@@ -761,5 +761,43 @@ namespace DnDGen.CreatureGen.Tests.Unit.Abilities
             Assert.That(ability.FullScore, Is.EqualTo(12 - 4));
             Assert.That(ability.Modifier, Is.EqualTo(-1));
         }
+
+        [TestCase(0, "ability name: 0 (0)")]
+        [TestCase(10, "ability name: 10 (0)")]
+        [TestCase(6, "ability name: 6 (-2)")]
+        [TestCase(18, "ability name: 18 (+4)")]
+        public void Summary_ReturnsAbilitySummary(int score, string expected)
+        {
+            ability.BaseScore = score;
+
+            var summary = ability.ToString();
+            Assert.That(summary, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void Summary_WithFullScore_ReturnsAbilitySummary()
+        {
+            ability.BaseScore = 10;
+            ability.RacialAdjustment = -1;
+            ability.AdvancementAdjustment = 2;
+            ability.AgeAdjustment = 3;
+            ability.TemplateAdjustment = 4;
+
+            var summary = ability.ToString();
+            Assert.That(summary, Is.EqualTo("ability name: 18 (+4)"));
+        }
+
+        [Test]
+        public void ToString_ReturnsSummary()
+        {
+            ability.BaseScore = 10;
+            ability.RacialAdjustment = -1;
+            ability.AdvancementAdjustment = 2;
+            ability.AgeAdjustment = 3;
+            ability.TemplateAdjustment = 4;
+
+            var summary = ability.ToString();
+            Assert.That(summary, Is.EqualTo("ability name: 18 (+4)"));
+        }
     }
 }

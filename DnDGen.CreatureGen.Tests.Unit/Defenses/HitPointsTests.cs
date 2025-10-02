@@ -1322,5 +1322,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(bonus.Condition, Is.EqualTo("other times"));
             Assert.That(bonus.Bonus, Is.EqualTo(-600 / 2 * 9266));
         }
+
+        [Test]
+        public void Summary_ReturnsSummary()
+        {
+            hitPoints.HitDice.Add(new() { Quantity = 9, HitDie = 2 });
+            hitPoints.HitDice.Add(new() { Quantity = 6, HitDie = 6 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 9 };
+            hitPoints.Bonus = 2;
+            hitPoints.DefaultTotal = 42;
+
+            Assert.That(hitPoints.Summary, Is.EqualTo("9d2+6d6-15+2 (42 hp)"));
+        }
+
+        [Test]
+        public void ToString_ReturnsSummary()
+        {
+            hitPoints.HitDice.Add(new() { Quantity = 9, HitDie = 2 });
+            hitPoints.HitDice.Add(new() { Quantity = 6, HitDie = 6 });
+            hitPoints.Constitution = new Ability(AbilityConstants.Constitution) { BaseScore = 9 };
+            hitPoints.Bonus = 2;
+            hitPoints.DefaultTotal = 42;
+
+            Assert.That(hitPoints.ToString(), Is.EqualTo("9d2+6d6-15+2 (42 hp)"));
+        }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using DnDGen.TreasureGen.Items;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace DnDGen.CreatureGen.Items
 {
@@ -13,8 +12,8 @@ namespace DnDGen.CreatureGen.Items
 
         public Equipment()
         {
-            Weapons = Enumerable.Empty<Weapon>();
-            Items = Enumerable.Empty<Item>();
+            Weapons = [];
+            Items = [];
         }
     }
 }
