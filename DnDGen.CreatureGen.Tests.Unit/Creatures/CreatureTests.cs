@@ -383,5 +383,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
 
             Assert.That(creature.Summary, Is.EqualTo($"my template my other template {creature.Name} [Advanced]"));
         }
+
+        [Test]
+        public void ToString_ReturnsCreatureSummary()
+        {
+            creature.Name = Guid.NewGuid().ToString();
+            creature.Templates.Add("my template");
+            creature.Templates.Add("my other template");
+            creature.IsAdvanced = true;
+
+            Assert.That(creature.ToString(), Is.EqualTo($"my template my other template {creature.Name} [Advanced]"));
+        }
     }
 }

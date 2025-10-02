@@ -146,5 +146,7 @@ namespace DnDGen.CreatureGen.Creatures
             Languages = [];
             Demographics = new Demographics();
         }
+
+        public override string ToString() => Summary;
     }
 }

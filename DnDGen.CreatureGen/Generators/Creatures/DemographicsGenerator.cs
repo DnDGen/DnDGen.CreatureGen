@@ -87,8 +87,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var common = collectionsSelector.SelectFrom(Config.Name, tableName, collectionName + Rarity.Common.ToString());
             var uncommon = collectionsSelector.SelectFrom(Config.Name, tableName, collectionName + Rarity.Uncommon.ToString());
             var rare = collectionsSelector.SelectFrom(Config.Name, tableName, collectionName + Rarity.Rare.ToString());
+            var veryRare = collectionsSelector.SelectFrom(Config.Name, tableName, collectionName + Rarity.VeryRare.ToString());
 
-            var appearance = collectionsSelector.SelectRandomFrom(common, uncommon, rare);
+            var appearance = collectionsSelector.SelectRandomFrom(common, uncommon, rare, veryRare);
             return appearance;
         }
 

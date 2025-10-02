@@ -5,7 +5,7 @@
     <Authors>Karl M. Speer</Authors>
     <Company>DnDGen</Company>
     <Product>CreatureGen</Product>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <Description>This generates creatures for the Dungeons and Dragons 3.5 system.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/DnDGen/CreatureGen</PackageProjectUrl>
@@ -13,7 +13,7 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/DnDGen/CreatureGen</RepositoryUrl>
     <PackageTags>creature generator dice dungeons dragons d20 dnd 3.5 gen</PackageTags>
-    <PackageReleaseNotes>Update default branch to main</PackageReleaseNotes>
+    <PackageReleaseNotes>Adjust rarity of certain appearances, such as being albino for a Half-Elf</PackageReleaseNotes>
 	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>

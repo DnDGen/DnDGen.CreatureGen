@@ -891,5 +891,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             creatureAsserter.AssertCreatureAsCharacter(creature);
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDiceQuantity), creature.Summary);
         }
+
+        [Test]
+        public void DEBUG_GenerateBetaCreature()
+        {
+            var creature = creatureGenerator.Generate(false, CreatureConstants.Lizardfolk);
+            Assert.That(creature, Is.Not.Null);
+        }
     }
 }

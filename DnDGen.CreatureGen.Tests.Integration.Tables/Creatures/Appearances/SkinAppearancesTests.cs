@@ -24,6 +24,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                 names.Add(creatureKey + Rarity.Common.ToString());
                 names.Add(creatureKey + Rarity.Uncommon.ToString());
                 names.Add(creatureKey + Rarity.Rare.ToString());
+                names.Add(creatureKey + Rarity.VeryRare.ToString());
             }
 
             AssertCollectionNames(names);
@@ -73,6 +74,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
         public void NoAppearancesIncludeTODO()
         {
             AssertNoAppearancesIncludeTODO(TableNameConstants.Collection.AppearanceCategories.Skin);
+        }
+
+        [Test]
+        public void BUG_AlbinoHalfElfIsVeryRare()
+        {
+            Assert.That(creatureAppearances[CreatureConstants.Elf_Half][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Common],
+                Is.All.Not.Contain("albino"));
+            Assert.That(creatureAppearances[CreatureConstants.Elf_Half][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Uncommon],
+                Is.All.Not.Contain("albino"));
+            Assert.That(creatureAppearances[CreatureConstants.Elf_Half][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Rare],
+                Is.All.Not.Contain("albino"));
+            Assert.That(creatureAppearances[CreatureConstants.Elf_Half][TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.VeryRare],
+                Has.Some.Contain("albino"));
         }
     }
 }

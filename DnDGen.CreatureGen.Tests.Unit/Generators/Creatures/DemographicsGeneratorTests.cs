@@ -494,6 +494,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var common = new[] { $"common {category} appearance", $"other common {category} appearance" };
             var uncommon = new[] { $"uncommon {category} appearance", $"other uncommon {category} appearance" };
             var rare = new[] { $"rare {category} appearance", $"other rare {category} appearance" };
+            var veryRare = new[] { $"very rare {category} appearance", $"other very rare {category} appearance" };
             var tableName = TableNameConstants.Collection.Appearances(category);
 
             mockCollectionsSelector
@@ -509,7 +510,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectFrom(Config.Name, tableName, creature + Rarity.Rare.ToString()))
                 .Returns(rare);
             mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(common, uncommon, rare, null))
+                .Setup(s => s.SelectFrom(Config.Name, tableName, creature + Rarity.VeryRare.ToString()))
+                .Returns(veryRare);
+            mockCollectionsSelector
+                .Setup(s => s.SelectRandomFrom(common, uncommon, rare, veryRare))
                 .Returns(appearance);
         }
 

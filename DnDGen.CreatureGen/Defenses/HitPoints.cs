@@ -52,7 +52,7 @@ namespace DnDGen.CreatureGen.Defenses
 
         public HitPoints()
         {
-            HitDice = new List<HitDice>();
+            HitDice = [];
         }
 
         private string AppendBonus(string roll, int bonus)
@@ -100,5 +100,9 @@ namespace DnDGen.CreatureGen.Defenses
 
             DefaultTotal += Bonus;
         }
+
+        public string Summary => $"{DefaultRoll} ({DefaultTotal} hp)";
+
+        public override string ToString() => Summary;
     }
 }

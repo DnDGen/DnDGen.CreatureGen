@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Creatures;
 using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -86,8 +87,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [Test]
         public void DEBUG_GenerateBetaDemographics()
         {
-            var demographics = demographicsGenerator.Generate(CreatureConstants.Shrieker);
+            var demographics = demographicsGenerator.Generate(CreatureConstants.Dwarf_Hill);
             Assert.That(demographics, Is.Not.Null);
+        }
+
+        [Test]
+        public void BUG_AlbinoHalfElfIsVeryRare()
+        {
+            var iterations = 100;
+            var albinoCount = 0;
+
+            while (iterations-- > 0)
+            {
+                var demographics = demographicsGenerator.Generate(CreatureConstants.Elf_Half);
+                if (demographics.Skin.Contains("albino", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    albinoCount++;
+                }
+            }
+
+            Assert.That(albinoCount, Is.LessThanOrEqualTo(1).Within(1));
         }
     }
 }
