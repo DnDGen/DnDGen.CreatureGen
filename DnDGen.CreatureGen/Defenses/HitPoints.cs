@@ -28,19 +28,22 @@ namespace DnDGen.CreatureGen.Defenses
                 }
 
                 var roll = string.Join("+", rolls);
-                roll = AppendBonus(roll, totalConstitutionBonus);
+                roll = AppendBonus(roll, TotalConstitutionBonus);
                 roll = AppendBonus(roll, Bonus);
 
                 return roll;
             }
         }
 
-        private int totalConstitutionBonus => Constitution.Modifier * RoundedHitDiceQuantity;
+        private int TotalConstitutionBonus => Constitution.Modifier * RoundedHitDiceQuantity;
 
         public IEnumerable<(string Condition, int Bonus)> ConditionalBonuses
         {
             get
             {
+                if (Constitution == null)
+                    return [];
+
                 var conditionalBonuses = Constitution.Bonuses.Where(b => b.IsConditional);
 
                 if (!conditionalBonuses.Any())
@@ -55,7 +58,7 @@ namespace DnDGen.CreatureGen.Defenses
             HitDice = [];
         }
 
-        private string AppendBonus(string roll, int bonus)
+        private static string AppendBonus(string roll, int bonus)
         {
             if (bonus > 0)
                 return $"{roll}+{bonus}";

@@ -1171,6 +1171,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
         }
 
         [Test]
+        public void ConditionalBonuses_NoConstitution()
+        {
+            hitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+            hitPoints.Constitution = null;
+
+            Assert.That(hitPoints.ConditionalBonuses, Is.Empty);
+        }
+
+        [Test]
         public void ConditionalBonuses_NoBonuses()
         {
             hitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
