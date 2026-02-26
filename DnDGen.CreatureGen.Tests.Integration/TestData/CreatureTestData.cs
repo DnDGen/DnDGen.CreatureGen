@@ -18,8 +18,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
 
         public static IEnumerable<(bool AsCharacter, string Creature, string[] Templates)> ProblematicCreatures =>
             [
-                (false, CreatureConstants.Chimera_White, [CreatureConstants.Templates.Skeleton]),
                 (false, CreatureConstants.Chimera_Green, [CreatureConstants.Templates.HalfCelestial]),
+                (true, CreatureConstants.Chimera_Red, [CreatureConstants.Templates.HalfFiend]),
+                (false, CreatureConstants.Chimera_White, [CreatureConstants.Templates.Skeleton]),
                 (false, CreatureConstants.Criosphinx, [CreatureConstants.Templates.Zombie]),
                 (false, CreatureConstants.DisplacerBeast_PackLord, [CreatureConstants.Templates.HalfFiend]),
                 (false, CreatureConstants.Dragon_Brass_Young, [CreatureConstants.Templates.Ghost]),

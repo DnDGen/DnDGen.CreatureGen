@@ -662,9 +662,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [TestCase(AbilityConstants.Wisdom)]
         public void Generate_HumanWithPriorityAbility(string ability)
         {
-            var randomizer = new AbilityRandomizer();
-            randomizer.PriorityAbility = ability;
-            randomizer.Roll = AbilityConstants.RandomizerRolls.Wild;
+            var randomizer = new AbilityRandomizer
+            {
+                PriorityAbility = ability,
+                Roll = AbilityConstants.RandomizerRolls.Wild
+            };
 
             var creature = creatureGenerator.Generate(false, CreatureConstants.Human, randomizer);
             creatureAsserter.AssertCreature(creature);

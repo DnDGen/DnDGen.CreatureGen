@@ -129,7 +129,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             Assert.That(creature.Name, Is.EqualTo(creatureName), creature.Summary);
 
             if (template != CreatureConstants.Templates.None)
-                Assert.That(creature.Templates, Is.EqualTo(new[] { template }), creature.Summary);
+                Assert.That(creature.Templates, Is.EqualTo([template]), creature.Summary);
 
             if (asCharacter)
                 creatureAsserter.AssertCreatureAsCharacter(creature);
@@ -267,7 +267,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var message = new StringBuilder();
             var joinedTemplates = string.Join(", ", templates);
-            var messageTemplate = templates.Any() ? (!string.IsNullOrEmpty(joinedTemplates) ? joinedTemplates : "(None)") : "Null";
+            var messageTemplate = "Null";
+
+            if (templates.Length != 0)
+            {
+                messageTemplate = !string.IsNullOrEmpty(joinedTemplates) ? joinedTemplates : "(None)";
+            }
 
             message.AppendLine($"Creature: {creature.Summary}");
             message.AppendLine($"As Character: {asCharacter}");
