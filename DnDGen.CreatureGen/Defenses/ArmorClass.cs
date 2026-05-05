@@ -96,25 +96,27 @@ namespace DnDGen.CreatureGen.Defenses
         {
             MaxDexterityBonus = int.MaxValue;
 
-            sourcesAndBonuses = new Dictionary<string, IEnumerable<Bonus>>();
-            sourcesAndBonuses[ArmorClassConstants.Armor] = Enumerable.Empty<Bonus>();
-            sourcesAndBonuses[ArmorClassConstants.Shield] = Enumerable.Empty<Bonus>();
-            sourcesAndBonuses[ArmorClassConstants.Dodge] = Enumerable.Empty<Bonus>();
-            sourcesAndBonuses[ArmorClassConstants.Deflection] = Enumerable.Empty<Bonus>();
-            sourcesAndBonuses[ArmorClassConstants.Natural] = Enumerable.Empty<Bonus>();
+            sourcesAndBonuses = new Dictionary<string, IEnumerable<Bonus>>
+            {
+                [ArmorClassConstants.Armor] = [],
+                [ArmorClassConstants.Shield] = [],
+                [ArmorClassConstants.Dodge] = [],
+                [ArmorClassConstants.Deflection] = [],
+                [ArmorClassConstants.Natural] = []
+            };
         }
 
         public void AddBonus(string source, int value, string condition = "")
         {
             var bonus = new Bonus { Value = value, Condition = condition };
-            sourcesAndBonuses[source] = sourcesAndBonuses[source].Union(new[] { bonus });
+            sourcesAndBonuses[source] = sourcesAndBonuses[source].Union([bonus]);
         }
 
         public void RemoveBonus(string source)
         {
             if (sourcesAndBonuses.ContainsKey(source))
             {
-                sourcesAndBonuses[source] = Enumerable.Empty<Bonus>();
+                sourcesAndBonuses[source] = [];
             }
         }
     }
