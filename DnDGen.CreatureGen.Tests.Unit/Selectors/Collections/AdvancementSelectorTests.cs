@@ -273,14 +273,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(advancement.Size, Is.EqualTo(SizeConstants.Large));
         }
 
-        [TestCase(0.1, 19)]
-        [TestCase(0.5, 19)]
-        [TestCase(1, 19)]
-        [TestCase(2, 18)]
-        [TestCase(10, 10)]
-        [TestCase(19, 1)]
-        [TestCase(20, 0)]
-        public void SelectRandomFor_NoValidAdvancements_ThrowsError(double creatureHitDice, int additionalHitDice)
+        [TestCase(0.1)]
+        [TestCase(0.5)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(10)]
+        [TestCase(12)]
+        [TestCase(19)]
+        [TestCase(20)]
+        public void SelectRandomFor_NoValidAdvancements_ThrowsError(double creatureHitDice)
         {
             SetUpAdvancement(SizeConstants.Medium, 42, min: 21);
             SetUpAdvancement(SizeConstants.Large, 96, min: 43);
@@ -294,13 +295,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.MaxHitDice, "other template"))
                 .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 20 });
 
-            Assert.That(() => advancementSelector.SelectRandomFor("creature", ["template", "other template"], creatureHitDice), Throws.Exception);
+            Assert.That((Func<object>)(() => advancementSelector.SelectRandomFor("creature", ["template", "other template"], creatureHitDice)), Throws.Exception);
         }
 
         [Test]
         public void SelectNoAdvancements()
         {
-            Assert.That(() => advancementSelector.SelectRandomFor("creature", ["template", "other template"], 1), Throws.Exception);
+            Assert.That((Func<object>)(() => advancementSelector.SelectRandomFor("creature", ["template", "other template"], 1)), Throws.Exception);
         }
 
         [Test]

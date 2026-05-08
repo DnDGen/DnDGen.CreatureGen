@@ -898,7 +898,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             if (alignment != null)
                 message.AppendLine($"\tAlignment: {alignment}");
 
-            Assert.That(() => creatureGenerator.GenerateRandom(asCharacter, null, filters),
+            Assert.That((Func<object>)(() => creatureGenerator.GenerateRandom(asCharacter, null, filters)),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
@@ -1045,7 +1045,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Type.Name, Is.EqualTo("type"));
             Assert.That(creature.Type.SubTypes, Is.Not.Empty);
             Assert.That(creature.Type.SubTypes, Contains.Item("subtype"));
-            Assert.That(creature.Type.SubTypes.Count, Is.EqualTo(1));
+            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(1));
         }
 
         [TestCase(true)]
@@ -1071,7 +1071,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Type.SubTypes, Is.Not.Empty);
             Assert.That(creature.Type.SubTypes, Contains.Item("subtype"));
             Assert.That(creature.Type.SubTypes, Contains.Item("other subtype"));
-            Assert.That(creature.Type.SubTypes.Count, Is.EqualTo(2));
+            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(2));
         }
 
         [TestCase(true)]

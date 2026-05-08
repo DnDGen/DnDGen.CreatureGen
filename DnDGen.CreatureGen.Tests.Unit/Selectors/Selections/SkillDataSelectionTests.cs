@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using NUnit.Framework;
+using System;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
 {
@@ -132,7 +133,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             var stat = new Ability("stat name");
             var skill = new Skill("skill", stat, 0);
 
-            Assert.That(() => selection.IsEqualTo(skill), Throws.InvalidOperationException.With.Message.EqualTo("Cannot test equality of a skill selection while random foci quantity is positive"));
+            Assert.That((Func<bool>)(() => selection.IsEqualTo(skill)),
+                Throws.InvalidOperationException.With.Message.EqualTo("Cannot test equality of a skill selection while random foci quantity is positive"));
         }
 
         [TestCase("skill", "", "skill", "", true)]
@@ -147,9 +149,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             selection.Focus = selectionFocus;
             selection.SkillName = selectionName;
 
-            var otherSelection = new SkillDataSelection();
-            otherSelection.SkillName = skillName;
-            otherSelection.Focus = skillFocus;
+            var otherSelection = new SkillDataSelection
+            {
+                SkillName = skillName,
+                Focus = skillFocus
+            };
 
             var isEqual = selection.IsEqualTo(otherSelection);
             Assert.That(isEqual, Is.EqualTo(shouldEqual));
@@ -163,11 +167,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             selection.SkillName = "skill";
             selection.RandomFociQuantity = selectionQuantity;
 
-            var otherSelection = new SkillDataSelection();
-            otherSelection.SkillName = "skill";
-            otherSelection.RandomFociQuantity = otherSelectionQuantity;
+            var otherSelection = new SkillDataSelection
+            {
+                SkillName = "skill",
+                RandomFociQuantity = otherSelectionQuantity
+            };
 
-            Assert.That(() => selection.IsEqualTo(otherSelection), Throws.InvalidOperationException.With.Message.EqualTo("Cannot test equality of a skill selection while random foci quantity is positive"));
+            Assert.That((Func<bool>)(() => selection.IsEqualTo(otherSelection)),
+                Throws.InvalidOperationException.With.Message.EqualTo("Cannot test equality of a skill selection while random foci quantity is positive"));
         }
     }
 }

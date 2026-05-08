@@ -50,7 +50,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             message.AppendLine("\tCreature: creature");
             message.AppendLine("\tTemplate: template");
 
-            Assert.That(() => creatureGenerator.Generate(asCharacter, "creature", null, "template"),
+            Assert.That((Func<object>)(() => creatureGenerator.Generate(asCharacter, "creature", null, "template")),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
@@ -207,7 +207,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Type.Name, Is.EqualTo("type"));
             Assert.That(creature.Type.SubTypes, Is.Not.Empty);
             Assert.That(creature.Type.SubTypes, Contains.Item("subtype"));
-            Assert.That(creature.Type.SubTypes.Count, Is.EqualTo(1));
+            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(1));
         }
 
         [TestCase(true)]
@@ -223,7 +223,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Type.SubTypes, Is.Not.Empty);
             Assert.That(creature.Type.SubTypes, Contains.Item("subtype"));
             Assert.That(creature.Type.SubTypes, Contains.Item("other subtype"));
-            Assert.That(creature.Type.SubTypes.Count, Is.EqualTo(2));
+            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(2));
         }
 
         [TestCase(true)]

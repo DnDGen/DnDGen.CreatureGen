@@ -97,7 +97,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             Assert.That(firstLevelSpells.Quantity, Is.EqualTo(42));
 
             Assert.That(spellsPerDay.Select(s => s.Source), Is.All.EqualTo(caster));
-            Assert.That(spellsPerDay.Count, Is.EqualTo(2));
+            Assert.That(spellsPerDay.Count(), Is.EqualTo(2));
         }
 
         [TestCase(1)]
@@ -173,7 +173,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
                 Assert.That(spells.TotalQuantity, Is.EqualTo(expectedQuantity), spellLevel.ToString());
             }
 
-            Assert.That(generatedSpellsPerDay.Count, Is.EqualTo(levelBonuses.Length));
+            Assert.That(generatedSpellsPerDay.Count(), Is.EqualTo(levelBonuses.Length));
         }
 
         [Test]
@@ -182,7 +182,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             castingAbility.BaseScore = 10;
 
             var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility);
-            Assert.That(spellsPerDay.Count, Is.EqualTo(1));
+            Assert.That(spellsPerDay.Count(), Is.EqualTo(1));
 
             var cantrips = spellsPerDay.First(s => s.Level == 0);
             Assert.That(cantrips.Quantity, Is.EqualTo(90210));
@@ -194,7 +194,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             castingAbility.BaseScore = 45;
 
             var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility);
-            Assert.That(spellsPerDay.Count, Is.EqualTo(2));
+            Assert.That(spellsPerDay.Count(), Is.EqualTo(2));
 
             var cantrips = spellsPerDay.First(s => s.Level == 0);
             Assert.That(cantrips.Quantity, Is.EqualTo(90210));
@@ -212,7 +212,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "2", AmountAsDouble = 0, });
 
             var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility);
-            Assert.That(spellsPerDay.Count, Is.EqualTo(3));
+            Assert.That(spellsPerDay.Count(), Is.EqualTo(3));
 
             var cantrips = spellsPerDay.First(s => s.Level == 0);
             Assert.That(cantrips.Quantity, Is.EqualTo(90210));
@@ -239,7 +239,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             var cantrips = spellsPerDay.First(s => s.Level == 0);
 
             Assert.That(cantrips.Quantity, Is.EqualTo(90210));
-            Assert.That(spellsPerDay.Count, Is.EqualTo(1));
+            Assert.That(spellsPerDay.Count(), Is.EqualTo(1));
         }
 
         [Test]
@@ -250,7 +250,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 0, });
 
             var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility, "specialist");
-            Assert.That(spellsPerDay.Count, Is.EqualTo(2));
+            Assert.That(spellsPerDay.Count(), Is.EqualTo(2));
 
             var cantrips = spellsPerDay.First(s => s.Level == 0);
             Assert.That(cantrips.Quantity, Is.EqualTo(90210));
@@ -269,7 +269,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
             spellsPerDayForClass.Add(new TypeAndAmountDataSelection { Type = "1", AmountAsDouble = 1, });
 
             var spellsPerDay = spellsGenerator.GeneratePerDay(caster, casterLevel, castingAbility);
-            Assert.That(spellsPerDay.Count, Is.EqualTo(2));
+            Assert.That(spellsPerDay.Count(), Is.EqualTo(2));
 
             var cantrips = spellsPerDay.First(s => s.Level == 0);
             Assert.That(cantrips.Quantity, Is.EqualTo(90210));

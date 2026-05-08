@@ -977,7 +977,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             var specialQuality = specialQualities.Single();
             Assert.That(specialQuality.RequiredSizes, Contains.Item("size"));
-            Assert.That(specialQuality.RequiredSizes.Count, Is.EqualTo(1));
+            Assert.That(specialQuality.RequiredSizes.Count(), Is.EqualTo(1));
         }
 
         //INFO: Type or Subtype special qualities might have size requirements
@@ -994,7 +994,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             var specialQuality = specialQualities.Single();
             Assert.That(specialQuality.RequiredSizes, Contains.Item("size"));
             Assert.That(specialQuality.RequiredSizes, Contains.Item("other size"));
-            Assert.That(specialQuality.RequiredSizes.Count, Is.EqualTo(2));
+            Assert.That(specialQuality.RequiredSizes.Count(), Is.EqualTo(2));
         }
 
         //INFO: Titans have different special qualities depending on alignment
@@ -1023,7 +1023,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             var specialQuality = specialQualities.Single();
             Assert.That(specialQuality.RequiredAlignments, Contains.Item("lawfulness goodness"));
-            Assert.That(specialQuality.RequiredAlignments.Count, Is.EqualTo(1));
+            Assert.That(specialQuality.RequiredAlignments.Count(), Is.EqualTo(1));
         }
 
         //INFO: Titans have different special qualities depending on alignment
@@ -1041,7 +1041,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(specialQuality.RequiredAlignments, Contains.Item("other lawfulness goodness"));
             Assert.That(specialQuality.RequiredAlignments, Contains.Item("lawfulness other goodness"));
             Assert.That(specialQuality.RequiredAlignments, Contains.Item("other lawfulness other goodness"));
-            Assert.That(specialQuality.RequiredAlignments.Count, Is.EqualTo(4));
+            Assert.That(specialQuality.RequiredAlignments.Count(), Is.EqualTo(4));
         }
 
         [Test]
@@ -1399,7 +1399,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.RequiredAbilities, Is.Empty);
             Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Not.Empty);
-            Assert.That(feat.RequiredFeats.Count, Is.EqualTo(1));
+            Assert.That(feat.RequiredFeats.Count(), Is.EqualTo(1));
             Assert.That(feat.RequiredSkills, Is.Empty);
 
             var requiredFeat = feat.RequiredFeats.Single();
@@ -1432,7 +1432,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.RequiredAbilities, Is.Empty);
             Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Not.Empty);
-            Assert.That(feat.RequiredFeats.Count, Is.EqualTo(1));
+            Assert.That(feat.RequiredFeats.Count(), Is.EqualTo(1));
             Assert.That(feat.RequiredSkills, Is.Empty);
 
             var requiredFeat = feat.RequiredFeats.Single();
@@ -1466,7 +1466,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.RequiredAbilities, Is.Empty);
             Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Not.Empty);
-            Assert.That(feat.RequiredFeats.Count, Is.EqualTo(2));
+            Assert.That(feat.RequiredFeats.Count(), Is.EqualTo(2));
             Assert.That(feat.RequiredSkills, Is.Empty);
 
             var requiredFeat = feat.RequiredFeats.First();
@@ -1504,7 +1504,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.RequiredAbilities, Is.Empty);
             Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Not.Empty);
-            Assert.That(feat.RequiredFeats.Count, Is.EqualTo(2));
+            Assert.That(feat.RequiredFeats.Count(), Is.EqualTo(2));
             Assert.That(feat.RequiredSkills, Is.Empty);
 
             var requiredFeat = feat.RequiredFeats.First();
@@ -1541,14 +1541,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.RequiredAbilities, Is.Empty);
             Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Not.Empty);
-            Assert.That(feat.RequiredFeats.Count, Is.EqualTo(1));
+            Assert.That(feat.RequiredFeats.Count(), Is.EqualTo(1));
             Assert.That(feat.RequiredSkills, Is.Empty);
 
             var requiredFeat = feat.RequiredFeats.Single();
             Assert.That(requiredFeat.Feat, Is.EqualTo("required feat"));
-            Assert.That(requiredFeat.Foci.First, Is.EqualTo("required focus"));
-            Assert.That(requiredFeat.Foci.Last, Is.EqualTo("other required focus"));
-            Assert.That(requiredFeat.Foci.Count, Is.EqualTo(2));
+            Assert.That(requiredFeat.Foci.First(), Is.EqualTo("required focus"));
+            Assert.That(requiredFeat.Foci.Last(), Is.EqualTo("other required focus"));
+            Assert.That(requiredFeat.Foci.Count(), Is.EqualTo(2));
         }
 
         [Test]
@@ -1577,7 +1577,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.RequiredAbilities, Is.Empty);
             Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Not.Empty);
-            Assert.That(feat.RequiredFeats.Count, Is.EqualTo(2));
+            Assert.That(feat.RequiredFeats.Count(), Is.EqualTo(2));
             Assert.That(feat.RequiredSkills, Is.Empty);
 
             var requiredFeat = feat.RequiredFeats.First();
@@ -1600,7 +1600,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             ];
 
             var additionalFeats = featsSelector.SelectFeats();
-            Assert.That(additionalFeats.Count, Is.EqualTo(1));
+            Assert.That(additionalFeats.Count(), Is.EqualTo(1));
 
             var featSelection = additionalFeats.Single();
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
@@ -1633,7 +1633,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             ];
 
             var additionalFeats = featsSelector.SelectFeats();
-            Assert.That(additionalFeats.Count, Is.EqualTo(1));
+            Assert.That(additionalFeats.Count(), Is.EqualTo(1));
 
             var featSelection = additionalFeats.Single();
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
@@ -1667,7 +1667,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             ];
 
             var additionalFeats = featsSelector.SelectFeats();
-            Assert.That(additionalFeats.Count, Is.EqualTo(1));
+            Assert.That(additionalFeats.Count(), Is.EqualTo(1));
 
             var featSelection = additionalFeats.Single();
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
@@ -1706,7 +1706,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             ];
 
             var additionalFeats = featsSelector.SelectFeats();
-            Assert.That(additionalFeats.Count, Is.EqualTo(1));
+            Assert.That(additionalFeats.Count(), Is.EqualTo(1));
 
             var featSelection = additionalFeats.Single();
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
@@ -1745,7 +1745,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             ];
 
             var additionalFeats = featsSelector.SelectFeats();
-            Assert.That(additionalFeats.Count, Is.EqualTo(1));
+            Assert.That(additionalFeats.Count(), Is.EqualTo(1));
 
             var featSelection = additionalFeats.Single();
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
@@ -1797,7 +1797,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.RequiredAbilities, Is.Empty);
             Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Not.Empty);
-            Assert.That(feat.RequiredFeats.Count, Is.EqualTo(1));
+            Assert.That(feat.RequiredFeats.Count(), Is.EqualTo(1));
             Assert.That(feat.RequiredSkills, Is.Empty);
 
             var requiredFeat = feat.RequiredFeats.Single();
@@ -1834,13 +1834,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(feat.RequiredAbilities, Is.Empty);
             Assert.That(feat.RequiredBaseAttack, Is.Zero);
             Assert.That(feat.RequiredFeats, Is.Not.Empty);
-            Assert.That(feat.RequiredFeats.Count, Is.EqualTo(1));
+            Assert.That(feat.RequiredFeats.Count(), Is.EqualTo(1));
             Assert.That(feat.RequiredSkills, Is.Empty);
 
             var requiredFeat = feat.RequiredFeats.Single();
             Assert.That(requiredFeat.Feat, Is.EqualTo(GroupConstants.WeaponProficiency));
             Assert.That(requiredFeat.Foci, Is.Not.Empty);
-            Assert.That(requiredFeat.Foci.Count, Is.EqualTo(3));
+            Assert.That(requiredFeat.Foci.Count(), Is.EqualTo(3));
             Assert.That(requiredFeat.Foci, Contains.Item(WeaponConstants.HandCrossbow));
             Assert.That(requiredFeat.Foci, Contains.Item(WeaponConstants.HeavyCrossbow));
             Assert.That(requiredFeat.Foci, Contains.Item(WeaponConstants.LightCrossbow));
@@ -1882,12 +1882,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             selection.RequiredSpeeds.Add("speed", 9266);
 
             var additionalFeats = featsSelector.SelectFeats();
-            Assert.That(additionalFeats.Count, Is.EqualTo(1));
+            Assert.That(additionalFeats.Count(), Is.EqualTo(1));
 
             var featSelection = additionalFeats.Single();
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
             Assert.That(featSelection.RequiredSpeeds, Is.Not.Empty);
-            Assert.That(featSelection.RequiredSpeeds.Count(), Is.EqualTo(1));
+            Assert.That(featSelection.RequiredSpeeds.Count, Is.EqualTo(1));
 
             Assert.That(featSelection.RequiredSpeeds.Keys, Contains.Item("speed"));
             Assert.That(featSelection.RequiredSpeeds["speed"], Is.EqualTo(9266));
@@ -1902,12 +1902,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             selection.RequiredSpeeds.Add("other speed", 90210);
 
             var additionalFeats = featsSelector.SelectFeats();
-            Assert.That(additionalFeats.Count, Is.EqualTo(1));
+            Assert.That(additionalFeats.Count(), Is.EqualTo(1));
 
             var featSelection = additionalFeats.Single();
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
             Assert.That(featSelection.RequiredSpeeds, Is.Not.Empty);
-            Assert.That(featSelection.RequiredSpeeds.Count(), Is.EqualTo(2));
+            Assert.That(featSelection.RequiredSpeeds.Count, Is.EqualTo(2));
 
             Assert.That(featSelection.RequiredSpeeds.Keys, Contains.Item("speed"));
             Assert.That(featSelection.RequiredSpeeds["speed"], Is.EqualTo(9266));
@@ -1924,7 +1924,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             selection.RequiredSpeeds.Clear();
 
             var additionalFeats = featsSelector.SelectFeats();
-            Assert.That(additionalFeats.Count, Is.EqualTo(1));
+            Assert.That(additionalFeats.Count(), Is.EqualTo(1));
 
             var featSelection = additionalFeats.Single();
             Assert.That(featSelection.Feat, Is.EqualTo("feat"));
@@ -2056,7 +2056,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             var feat = feats.Single();
 
             Assert.That(feat.Feat, Is.EqualTo("feat"));
-            Assert.That(feat.RequiredSizes.Count, Is.EqualTo(1));
+            Assert.That(feat.RequiredSizes.Count(), Is.EqualTo(1));
             Assert.That(feat.RequiredSizes, Contains.Item("size"));
         }
 
@@ -2073,7 +2073,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             var feat = feats.Single();
 
             Assert.That(feat.Feat, Is.EqualTo("feat"));
-            Assert.That(feat.RequiredSizes.Count, Is.EqualTo(2));
+            Assert.That(feat.RequiredSizes.Count(), Is.EqualTo(2));
             Assert.That(feat.RequiredSizes, Contains.Item("size"));
             Assert.That(feat.RequiredSizes, Contains.Item("other size"));
         }

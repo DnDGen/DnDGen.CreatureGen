@@ -35,18 +35,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [Test]
         public void CreateSubtype()
         {
-            creatureType.SubTypes = new[] { "subtype" };
+            creatureType.SubTypes = ["subtype"];
             Assert.That(creatureType.SubTypes, Contains.Item("subtype"));
-            Assert.That(creatureType.SubTypes.Count, Is.EqualTo(1));
+            Assert.That(creatureType.SubTypes.Count(), Is.EqualTo(1));
         }
 
         [Test]
         public void CreateMultipleSubtypes()
         {
-            creatureType.SubTypes = new[] { "subtype", "other subtype" };
+            creatureType.SubTypes = ["subtype", "other subtype"];
             Assert.That(creatureType.SubTypes, Contains.Item("subtype"));
             Assert.That(creatureType.SubTypes, Contains.Item("other subtype"));
-            Assert.That(creatureType.SubTypes.Count, Is.EqualTo(2));
+            Assert.That(creatureType.SubTypes.Count(), Is.EqualTo(2));
         }
 
         [Test]
@@ -62,7 +62,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         public void CreatureTypeIsViaSubType()
         {
             creatureType.Name = "creature type";
-            creatureType.SubTypes = new[] { "subtype", "other subtype" };
+            creatureType.SubTypes = ["subtype", "other subtype"];
 
             var isType = creatureType.Is("subtype");
             Assert.That(isType, Is.True);
@@ -72,7 +72,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         public void CreatureTypeIsNot()
         {
             creatureType.Name = "creature type";
-            creatureType.SubTypes = new[] { "subtype", "other subtype" };
+            creatureType.SubTypes = ["subtype", "other subtype"];
 
             var isType = creatureType.Is("wrong subtype");
             Assert.That(isType, Is.False);

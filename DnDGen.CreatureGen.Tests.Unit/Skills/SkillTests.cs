@@ -2,6 +2,7 @@
 using DnDGen.CreatureGen.Skills;
 using Newtonsoft.Json;
 using NUnit.Framework;
+using System;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Skills
@@ -102,14 +103,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Skills
         public void CannotSetRanksAboveRankCap_Add()
         {
             skill.Ranks = skill.RankCap;
-            Assert.That(() => skill.Ranks++, Throws.InvalidOperationException.With.Message.EqualTo("90211 Ranks for Skill 'skill name' cannot exceed the Rank Cap of 90210"));
+            Assert.That((Func<int>)(() => skill.Ranks++),
+                Throws.InvalidOperationException.With.Message.EqualTo("90211 Ranks for Skill 'skill name' cannot exceed the Rank Cap of 90210"));
         }
 
         [Test]
         public void CannotSetRanksAboveRankCap_Set()
         {
             skill.Ranks = skill.RankCap;
-            Assert.That(() => skill.Ranks = 600 * 1337, Throws.InvalidOperationException.With.Message.EqualTo("802200 Ranks for Skill 'skill name' cannot exceed the Rank Cap of 90210"));
+            Assert.That((Func<int>)(() => skill.Ranks = 600 * 1337),
+                Throws.InvalidOperationException.With.Message.EqualTo("802200 Ranks for Skill 'skill name' cannot exceed the Rank Cap of 90210"));
         }
 
         [Test]

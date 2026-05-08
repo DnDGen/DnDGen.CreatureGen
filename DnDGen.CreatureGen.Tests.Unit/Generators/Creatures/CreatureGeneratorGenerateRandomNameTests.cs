@@ -6,6 +6,7 @@ using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using Moq;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -849,7 +850,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             if (alignment != null)
                 message.AppendLine($"\tAlignment: {alignment}");
 
-            Assert.That(() => creatureGenerator.GenerateRandomName(asCharacter, filters),
+            Assert.That((Func<object>)(() => creatureGenerator.GenerateRandomName(asCharacter, filters)),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
     }

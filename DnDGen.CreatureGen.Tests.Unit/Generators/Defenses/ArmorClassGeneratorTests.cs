@@ -368,7 +368,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(armorClass.ShieldBonus, Is.EqualTo(expectedShield));
             Assert.That(armorClass.ShieldBonuses.Count, Is.EqualTo(expectedShieldCount));
 
-            Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
+            Assert.That(armorClass.Bonuses.Count(), Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
         }
 
         [TestCaseSource(typeof(ArmorClassGeneratorTestData), nameof(ArmorClassGeneratorTestData.CreatureBonus))]
@@ -390,7 +390,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
                 var subtype = creatureType.SubTypes.ElementAt(i);
                 var source = subtypeSources.ElementAt(i);
 
-                racialBonuses[subtype] = new List<BonusDataSelection>();
+                racialBonuses[subtype] = [];
 
                 if (!string.IsNullOrEmpty(source))
                     racialBonuses[subtype].Add(new BonusDataSelection { Target = source, Bonus = counter++ });
@@ -440,7 +440,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(armorClass.ShieldBonus, Is.EqualTo(expectedShield));
             Assert.That(armorClass.ShieldBonuses.Count, Is.EqualTo(expectedShieldCount));
 
-            Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
+            Assert.That(armorClass.Bonuses.Count(), Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
         }
 
         [TestCaseSource(typeof(ArmorClassGeneratorTestData), nameof(ArmorClassGeneratorTestData.CreatureBonus))]
@@ -462,7 +462,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
                 var subtype = creatureType.SubTypes.ElementAt(i);
                 var source = subtypeSources.ElementAt(i);
 
-                racialBonuses[subtype] = new List<BonusDataSelection>();
+                racialBonuses[subtype] = [];
 
                 if (!string.IsNullOrEmpty(source))
                     racialBonuses[subtype].Add(new BonusDataSelection { Target = source, Bonus = counter++, Condition = $"condition {counter}" });
@@ -507,7 +507,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(armorClass.ShieldBonus, Is.EqualTo(expectedShield));
             Assert.That(armorClass.ShieldBonuses.Count, Is.EqualTo(expectedShieldCount));
 
-            Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
+            Assert.That(armorClass.Bonuses.Count(), Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
         }
 
         [TestCaseSource(typeof(ArmorClassGeneratorTestData), nameof(ArmorClassGeneratorTestData.CreatureBonuses))]
@@ -557,7 +557,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(armorClass.ShieldBonus, Is.EqualTo(expectedShield));
             Assert.That(armorClass.ShieldBonuses.Count, Is.EqualTo(expectedShieldCount));
 
-            Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
+            Assert.That(armorClass.Bonuses.Count(), Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
         }
 
         [TestCaseSource(typeof(ArmorClassGeneratorTestData), nameof(ArmorClassGeneratorTestData.CreatureBonuses))]
@@ -607,7 +607,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(armorClass.ShieldBonus, Is.EqualTo(expectedShield));
             Assert.That(armorClass.ShieldBonuses.Count, Is.EqualTo(expectedShieldCount));
 
-            Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
+            Assert.That(armorClass.Bonuses.Count(), Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
         }
 
         [TestCaseSource(typeof(ArmorClassGeneratorTestData), nameof(ArmorClassGeneratorTestData.CreatureBonuses))]
@@ -615,11 +615,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         {
             var counter = 1;
 
-            creatureType.SubTypes = new[] { "subtype" };
+            creatureType.SubTypes = ["subtype"];
 
-            racialBonuses["subtype"] = new List<BonusDataSelection>();
-            racialBonuses["subtype"].Add(new BonusDataSelection { Target = source1, Bonus = counter++ });
-            racialBonuses["subtype"].Add(new BonusDataSelection { Target = source2, Bonus = counter++ });
+            racialBonuses["subtype"] =
+            [
+                new BonusDataSelection { Target = source1, Bonus = counter++ },
+                new BonusDataSelection { Target = source2, Bonus = counter++ },
+            ];
 
             var allBonuses = racialBonuses.Values.SelectMany(v => v);
             var nonConditionalBonuses = allBonuses.Where(b => string.IsNullOrEmpty(b.Condition));
@@ -660,7 +662,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(armorClass.ShieldBonus, Is.EqualTo(expectedShield));
             Assert.That(armorClass.ShieldBonuses.Count, Is.EqualTo(expectedShieldCount));
 
-            Assert.That(armorClass.Bonuses.Count, Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
+            Assert.That(armorClass.Bonuses.Count(), Is.EqualTo(expectedArmorCount + expectedDeflectionCount + expectedDodgeCount + expectedNaturalCount + expectedShieldCount));
         }
 
         [Test]
