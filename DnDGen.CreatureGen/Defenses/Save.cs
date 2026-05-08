@@ -8,7 +8,7 @@ namespace DnDGen.CreatureGen.Defenses
     {
         public Ability BaseAbility { get; set; }
         public int BaseValue { get; set; }
-        public IEnumerable<Bonus> Bonuses { get; private set; }
+        public List<Bonus> Bonuses { get; set; }
 
         public bool IsConditional => Bonuses.Any(b => b.IsConditional);
         public bool HasSave => BaseAbility != null && BaseAbility.HasScore;
@@ -19,8 +19,7 @@ namespace DnDGen.CreatureGen.Defenses
             {
                 return Bonuses
                     .Where(b => !b.IsConditional)
-                    .Select(b => b.Value)
-                    .Sum();
+                    .Sum(b => b.Value);
             }
         }
 
@@ -39,13 +38,13 @@ namespace DnDGen.CreatureGen.Defenses
 
         public Save()
         {
-            Bonuses = Enumerable.Empty<Bonus>();
+            Bonuses = [];
         }
 
         public void AddBonus(int value, string condition = "")
         {
             var bonus = new Bonus { Value = value, Condition = condition };
-            Bonuses = Bonuses.Union(new[] { bonus });
+            Bonuses.Add(bonus);
         }
     }
 }

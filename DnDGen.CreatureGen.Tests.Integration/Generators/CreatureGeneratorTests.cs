@@ -6,6 +6,7 @@ using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.TreasureGen.Items;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
 using System.Diagnostics;
@@ -899,6 +900,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         {
             var creature = creatureGenerator.Generate(false, CreatureConstants.Lizardfolk);
             Assert.That(creature, Is.Not.Null);
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
+        public void BUG_CanDeserializeCreature(string creatureName)
+        {
+            var creature = creatureGenerator.Generate(false, creatureName);
+            var serialized = JsonConvert.SerializeObject(creature);
+            var deserialized = JsonConvert.DeserializeObject<Creature>(serialized);
+            Assert.That(deserialized.Summary, Is.EqualTo(creature.Summary));
         }
     }
 }
