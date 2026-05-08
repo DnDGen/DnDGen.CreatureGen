@@ -5,7 +5,7 @@
     <Authors>Karl M. Speer</Authors>
     <Company>DnDGen</Company>
     <Product>CreatureGen</Product>
-    <Version>1.0.8</Version>
+    <Version>1.0.9</Version>
     <Description>This generates creatures for the Dungeons and Dragons 3.5 system.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/DnDGen/CreatureGen</PackageProjectUrl>
@@ -174,8 +174,8 @@
     <EmbeddedResource Include="Tables\Skills\SkillPoints.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DnDGen.Infrastructure" Version="7.0.5" />
-    <PackageReference Include="DnDGen.RollGen" Version="16.0.5" />
-    <PackageReference Include="DnDGen.TreasureGen" Version="12.0.5" />
+    <PackageReference Include="DnDGen.Infrastructure" Version="7.0.6" />
+    <PackageReference Include="DnDGen.RollGen" Version="16.0.6" />
+    <PackageReference Include="DnDGen.TreasureGen" Version="12.0.6" />
   </ItemGroup>
 </Project>
