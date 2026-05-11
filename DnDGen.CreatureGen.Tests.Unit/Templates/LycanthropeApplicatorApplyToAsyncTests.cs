@@ -943,7 +943,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             SetUpAnimal("my animal", 0);
 
-            baseCreature.ArmorClass.RemoveBonus(ArmorClassConstants.Natural);
+            baseCreature.ArmorClass.RemoveAllBonuses(ArmorClassConstants.Natural);
 
             //New for base and animal
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -964,7 +964,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             SetUpAnimal("my animal", 9266);
 
-            baseCreature.ArmorClass.RemoveBonus(ArmorClassConstants.Natural);
+            baseCreature.ArmorClass.RemoveAllBonuses(ArmorClassConstants.Natural);
 
             //New for base
             var creature = await applicator.ApplyToAsync(baseCreature, false);

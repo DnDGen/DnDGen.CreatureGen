@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
+using Newtonsoft.Json;
 using NUnit.Framework;
 using System.Collections;
 using System.Linq;
@@ -210,8 +211,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
         [TestCase(42, 16)]
         public void TotalBonus_BasedOnAbilityBaseScore(int abilityBaseScore, int expectedBonus)
         {
-            save.BaseAbility = new Ability(AbilityConstants.Charisma);
-            save.BaseAbility.BaseScore = abilityBaseScore;
+            save.BaseAbility = new Ability(AbilityConstants.Charisma)
+            {
+                BaseScore = abilityBaseScore
+            };
 
             Assert.That(save.TotalBonus, Is.EqualTo(expectedBonus));
         }
@@ -286,8 +289,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
         [Test]
         public void TotalBonus_AllFactors()
         {
-            save.BaseAbility = new Ability(AbilityConstants.Charisma);
-            save.BaseAbility.BaseScore = 9266;
+            save.BaseAbility = new Ability(AbilityConstants.Charisma)
+            {
+                BaseScore = 9266
+            };
             save.BaseValue = 90210;
             save.AddBonus(42);
             save.AddBonus(-600);
@@ -300,8 +305,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
         [Test]
         public void TotalBonus_AllFactors_WithConditions()
         {
-            save.BaseAbility = new Ability(AbilityConstants.Charisma);
-            save.BaseAbility.BaseScore = 9266;
+            save.BaseAbility = new Ability(AbilityConstants.Charisma)
+            {
+                BaseScore = 9266
+            };
             save.BaseValue = 90210;
             save.AddBonus(42);
             save.AddBonus(1336, "my other condition");
@@ -325,6 +332,42 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
                     }
                 }
             }
+        }
+
+        [Test]
+        public void BUG_CanDeserializeSave()
+        {
+            save.BaseAbility = new Ability(AbilityConstants.Charisma)
+            {
+                BaseScore = 9266
+            };
+            save.BaseValue = 90210;
+
+            var serialized = JsonConvert.SerializeObject(save);
+            var deserialized = JsonConvert.DeserializeObject<Save>(serialized);
+            Assert.That(deserialized, Is.Not.Null);
+
+            var expectedTotal = save.BaseAbility.Modifier + 90210;
+            Assert.That(deserialized.TotalBonus, Is.EqualTo(expectedTotal));
+        }
+
+        [Test]
+        public void BUG_CanDeserializeSave_WithBonuses()
+        {
+            save.BaseAbility = new Ability(AbilityConstants.Charisma)
+            {
+                BaseScore = 9266
+            };
+            save.BaseValue = 90210;
+            save.AddBonus(42);
+            save.AddBonus(-600);
+
+            var serialized = JsonConvert.SerializeObject(save);
+            var deserialized = JsonConvert.DeserializeObject<Save>(serialized);
+            Assert.That(deserialized, Is.Not.Null);
+
+            var expectedTotal = save.BaseAbility.Modifier + 90210 + 42 - 600;
+            Assert.That(deserialized.TotalBonus, Is.EqualTo(expectedTotal));
         }
     }
 }

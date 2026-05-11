@@ -1,6 +1,8 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Skills;
+using Newtonsoft.Json;
 using NUnit.Framework;
+using System;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Skills
@@ -101,14 +103,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Skills
         public void CannotSetRanksAboveRankCap_Add()
         {
             skill.Ranks = skill.RankCap;
-            Assert.That(() => skill.Ranks++, Throws.InvalidOperationException.With.Message.EqualTo("90211 Ranks for Skill 'skill name' cannot exceed the Rank Cap of 90210"));
+            Assert.That((Func<int>)(() => skill.Ranks++),
+                Throws.InvalidOperationException.With.Message.EqualTo("90211 Ranks for Skill 'skill name' cannot exceed the Rank Cap of 90210"));
         }
 
         [Test]
         public void CannotSetRanksAboveRankCap_Set()
         {
             skill.Ranks = skill.RankCap;
-            Assert.That(() => skill.Ranks = 600 * 1337, Throws.InvalidOperationException.With.Message.EqualTo("802200 Ranks for Skill 'skill name' cannot exceed the Rank Cap of 90210"));
+            Assert.That((Func<int>)(() => skill.Ranks = 600 * 1337),
+                Throws.InvalidOperationException.With.Message.EqualTo("802200 Ranks for Skill 'skill name' cannot exceed the Rank Cap of 90210"));
         }
 
         [Test]
@@ -358,10 +362,36 @@ namespace DnDGen.CreatureGen.Tests.Unit.Skills
         public void SkillIsEqualToString(string skillName, string skillFocus, string otherSkillName, string otherSkillFocus, bool shouldEqual)
         {
             skill = new Skill(skillName, baseAbility, 0, skillFocus);
-            var otherSkill = otherSkillFocus.Any() ? $"{otherSkillName}/{otherSkillFocus}" : otherSkillName;
+            var otherSkill = otherSkillFocus.Length != 0 ? $"{otherSkillName}/{otherSkillFocus}" : otherSkillName;
 
             var isEqual = skill.IsEqualTo(otherSkill);
             Assert.That(isEqual, Is.EqualTo(shouldEqual));
+        }
+
+        [Test]
+        public void BUG_CanDeserializeSkill()
+        {
+            skill.Ranks = 5;
+
+            var serialized = JsonConvert.SerializeObject(skill);
+            var deserialized = JsonConvert.DeserializeObject<Skill>(serialized);
+            Assert.That(deserialized, Is.Not.Null);
+            Assert.That(deserialized.Name, Is.EqualTo(skill.Name));
+            Assert.That(deserialized.TotalBonus, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void BUG_CanDeserializeSkill_WithBonuses()
+        {
+            skill.Ranks = 5;
+            skill.AddBonus(42);
+            skill.AddBonus(-600);
+
+            var serialized = JsonConvert.SerializeObject(skill);
+            var deserialized = JsonConvert.DeserializeObject<Skill>(serialized);
+            Assert.That(deserialized, Is.Not.Null);
+            Assert.That(deserialized.Name, Is.EqualTo(skill.Name));
+            Assert.That(deserialized.TotalBonus, Is.EqualTo(2 + 42 - 600));
         }
     }
 }

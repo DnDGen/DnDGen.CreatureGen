@@ -8,7 +8,6 @@ using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
-using DnDGen.TreasureGen.Items;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -225,7 +224,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 90210, "gender");
             Assert.That(generatedAttacks, Is.Not.Empty);
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
+            Assert.That(generatedAttacks.Count(), Is.EqualTo(attacks.Count).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
@@ -287,7 +286,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 90210, "gender");
             Assert.That(generatedAttacks, Is.Not.Empty);
-            Assert.That(generatedAttacks.Count, Is.EqualTo(1));
+            Assert.That(generatedAttacks.Count(), Is.EqualTo(1));
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("good attack"));
@@ -345,7 +344,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 90210, "required gender");
             Assert.That(generatedAttacks, Is.Not.Empty);
-            Assert.That(generatedAttacks.Count, Is.EqualTo(2));
+            Assert.That(generatedAttacks.Count(), Is.EqualTo(2));
 
             var attack = generatedAttacks.First();
             Assert.That(attack.Name, Is.EqualTo("good attack"));
@@ -413,7 +412,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 600, "gender");
             Assert.That(generatedAttacks, Is.Not.Empty);
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
+            Assert.That(generatedAttacks.Count(), Is.EqualTo(attacks.Count).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
@@ -467,7 +466,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 600, "gender");
             Assert.That(generatedAttacks, Is.Not.Empty);
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
+            Assert.That(generatedAttacks.Count(), Is.EqualTo(attacks.Count).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
@@ -524,7 +523,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 600, "gender");
             Assert.That(generatedAttacks, Is.Not.Empty);
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
+            Assert.That(generatedAttacks.Count(), Is.EqualTo(attacks.Count).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
@@ -579,7 +578,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 1337, "gender");
             Assert.That(generatedAttacks, Is.Not.Empty);
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
+            Assert.That(generatedAttacks.Count(), Is.EqualTo(attacks.Count).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
@@ -615,7 +614,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 600, "gender");
             Assert.That(generatedAttacks, Is.Not.Empty);
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(2));
+            Assert.That(generatedAttacks.Count(), Is.EqualTo(attacks.Count).And.EqualTo(2));
 
             var attack = generatedAttacks.First();
             Assert.That(attack.Name, Is.EqualTo("attack"));
@@ -770,7 +769,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             mockAttackSelector.Setup(s => s.Select("creature", "size")).Returns(attacks);
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 600, "gender");
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
+            Assert.That(generatedAttacks.Count(), Is.EqualTo(attacks.Count).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
             //1327 / 2 = 663, 663 * 1.5 = 994
@@ -803,7 +802,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             mockAttackSelector.Setup(s => s.Select("creature", "size")).Returns(attacks);
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 600, "gender");
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
+            Assert.That(generatedAttacks.Count(), Is.EqualTo(attacks.Count).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
@@ -835,7 +834,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             mockAttackSelector.Setup(s => s.Select("creature", "size")).Returns(attacks);
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 600, "gender");
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
+            Assert.That(generatedAttacks.Count(), Is.EqualTo(attacks.Count).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
@@ -900,7 +899,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             mockAttackSelector.Setup(s => s.Select("creature", "size")).Returns(attackSelections);
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 600, "gender");
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attackSelections.Count()).And.EqualTo(4));
+            Assert.That(generatedAttacks.Count(), Is.EqualTo(attackSelections.Count).And.EqualTo(4));
 
             var attacks = generatedAttacks.ToArray();
             Assert.That(attacks[0].Name, Is.EqualTo("nat melee attack"));
@@ -953,7 +952,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             mockAttackSelector.Setup(s => s.Select("creature", "size")).Returns(attackSelections);
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 600, "gender");
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attackSelections.Count()).And.EqualTo(1));
+            Assert.That(generatedAttacks.Count(), Is.EqualTo(attackSelections.Count).And.EqualTo(1));
 
             var attacks = generatedAttacks.ToArray();
             Assert.That(attacks[0].Name, Is.EqualTo("attack"));
@@ -997,7 +996,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             mockAttackSelector.Setup(s => s.Select("creature", "size")).Returns(attackSelections);
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 600, "gender");
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attackSelections.Count()).And.EqualTo(2));
+            Assert.That(generatedAttacks.Count(), Is.EqualTo(attackSelections.Count).And.EqualTo(2));
 
             var attacks = generatedAttacks.ToArray();
             Assert.That(attacks[0].Name, Is.EqualTo("primary attack"));
@@ -1043,7 +1042,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             mockAttackSelector.Setup(s => s.Select("creature", "size")).Returns(attackSelections);
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 600, "gender");
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attackSelections.Count()).And.EqualTo(2));
+            Assert.That(generatedAttacks.Count(), Is.EqualTo(attackSelections.Count).And.EqualTo(2));
 
             var attacks = generatedAttacks.ToArray();
             Assert.That(attacks[0].Name, Is.EqualTo("attack"));
@@ -1078,7 +1077,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             mockAttackSelector.Setup(s => s.Select("creature", "size")).Returns(attacks);
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 600, "gender");
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
+            Assert.That(generatedAttacks.Count(), Is.EqualTo(attacks.Count).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
@@ -1117,7 +1116,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             mockAttackSelector.Setup(s => s.Select("creature", "size")).Returns(attacks);
 
             var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "size", 9266, abilities, 600, "gender");
-            Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
+            Assert.That(generatedAttacks.Count(), Is.EqualTo(attacks.Count).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
@@ -1146,8 +1145,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void ApplyPrimaryAttackBonusesWithMultiattack()
         {
-            var attacks = new List<Attack>();
-            attacks.Add(new Attack { Name = "attack 1", IsPrimary = true });
+            var attacks = new List<Attack>
+            {
+                new() { Name = "attack 1", IsPrimary = true }
+            };
 
             var feats = new[] { new Feat { Name = FeatConstants.Monster.Multiattack } };
 
@@ -1161,8 +1162,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void ApplyPrimaryNaturalAttackBonuses()
         {
-            var attacks = new List<Attack>();
-            attacks.Add(new Attack { Name = "attack 1", IsPrimary = true, IsNatural = true });
+            var attacks = new List<Attack>
+            {
+                new() { Name = "attack 1", IsPrimary = true, IsNatural = true }
+            };
 
             var feats = new[] { new Feat { Name = "feat" } };
 
@@ -1176,8 +1179,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void ApplyPrimaryNaturalAttackBonusesWithMultiattack()
         {
-            var attacks = new List<Attack>();
-            attacks.Add(new Attack { Name = "attack 1", IsPrimary = true, IsNatural = true });
+            var attacks = new List<Attack>
+            {
+                new() { Name = "attack 1", IsPrimary = true, IsNatural = true }
+            };
 
             var feats = new[] { new Feat { Name = FeatConstants.Monster.Multiattack } };
 
@@ -1191,8 +1196,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void ApplySecondaryAttackBonuses()
         {
-            var attacks = new List<Attack>();
-            attacks.Add(new Attack { Name = "attack 1", IsPrimary = false });
+            var attacks = new List<Attack>
+            {
+                new() { Name = "attack 1", IsPrimary = false }
+            };
 
             var feats = new[] { new Feat { Name = "feat" } };
 
@@ -1206,8 +1213,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void ApplySecondaryAttackBonusesWithMultiattack()
         {
-            var attacks = new List<Attack>();
-            attacks.Add(new Attack { Name = "attack 1", IsPrimary = false, IsNatural = false });
+            var attacks = new List<Attack>
+            {
+                new() { Name = "attack 1", IsPrimary = false, IsNatural = false }
+            };
 
             var feats = new[] { new Feat { Name = FeatConstants.Monster.Multiattack } };
 
@@ -1221,8 +1230,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void ApplySecondaryNaturalAttackBonuses()
         {
-            var attacks = new List<Attack>();
-            attacks.Add(new Attack { Name = "attack 1", IsPrimary = false, IsNatural = true });
+            var attacks = new List<Attack>
+            {
+                new() { Name = "attack 1", IsPrimary = false, IsNatural = true }
+            };
 
             var feats = new[] { new Feat { Name = "feat" } };
 
@@ -1236,8 +1247,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void ApplySecondaryNaturalAttackBonusesWithMultiattack()
         {
-            var attacks = new List<Attack>();
-            attacks.Add(new Attack { Name = "attack 1", IsPrimary = false, IsNatural = true });
+            var attacks = new List<Attack>
+            {
+                new() { Name = "attack 1", IsPrimary = false, IsNatural = true }
+            };
 
             var feats = new[] { new Feat { Name = FeatConstants.Monster.Multiattack } };
 
@@ -1253,79 +1266,73 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void ApplySpecialAttackBonuses()
         {
-            var attacks = new List<Attack>();
-            attacks.Add(new Attack
+            var attacks = new List<Attack>
             {
-                Name = "attack 1",
-                Damages = new List<Damage> { new Damage { Roll = "roll 1", Type = "type 1" } },
-                IsPrimary = false,
-                IsMelee = false,
-                IsNatural = false,
-                IsSpecial = true,
-            });
-            attacks.Add(new Attack
-            {
-                Name = "attack 2",
-                Damages = new List<Damage> { new Damage { Roll = "roll 2", Type = "type 2" } },
-                IsPrimary = false,
-                IsMelee = false,
-                IsNatural = true,
-                IsSpecial = true,
-            });
-            attacks.Add(new Attack
-            {
-                Name = "attack 3",
-                Damages = new List<Damage> { new Damage { Roll = "roll 3", Type = "type 3" } },
-                IsPrimary = true,
-                IsMelee = false,
-                IsNatural = false,
-                IsSpecial = true,
-            });
-            attacks.Add(new Attack
-            {
-                Name = "attack 4",
-                Damages = new List<Damage> { new Damage { Roll = "roll 4", Type = "type 4" } },
-                IsPrimary = true,
-                IsMelee = false,
-                IsNatural = true,
-                IsSpecial = true,
-            });
-            attacks.Add(new Attack
-            {
-                Name = "attack 5",
-                Damages = new List<Damage> { new Damage { Roll = "roll 5", Type = "type 5" } },
-                IsPrimary = false,
-                IsMelee = true,
-                IsNatural = false,
-                IsSpecial = true,
-            });
-            attacks.Add(new Attack
-            {
-                Name = "attack 6",
-                Damages = new List<Damage> { new Damage { Roll = "roll 6", Type = "type 6" } },
-                IsPrimary = false,
-                IsMelee = true,
-                IsNatural = true,
-                IsSpecial = true,
-            });
-            attacks.Add(new Attack
-            {
-                Name = "attack 7",
-                Damages = new List<Damage> { new Damage { Roll = "roll 7", Type = "type 7" } },
-                IsPrimary = true,
-                IsMelee = true,
-                IsNatural = false,
-                IsSpecial = true,
-            });
-            attacks.Add(new Attack
-            {
-                Name = "attack 8",
-                Damages = new List<Damage> { new Damage { Roll = "roll 8", Type = "type 8" } },
-                IsPrimary = true,
-                IsMelee = true,
-                IsNatural = true,
-                IsSpecial = true,
-            });
+                new() {
+                    Name = "attack 1",
+                    Damages = [new() { Roll = "roll 1", Type = "type 1" }],
+                    IsPrimary = false,
+                    IsMelee = false,
+                    IsNatural = false,
+                    IsSpecial = true,
+                },
+                new() {
+                    Name = "attack 2",
+                    Damages = [new() { Roll = "roll 2", Type = "type 2" }],
+                    IsPrimary = false,
+                    IsMelee = false,
+                    IsNatural = true,
+                    IsSpecial = true,
+                },
+                new() {
+                    Name = "attack 3",
+                    Damages = [new() { Roll = "roll 3", Type = "type 3" }],
+                    IsPrimary = true,
+                    IsMelee = false,
+                    IsNatural = false,
+                    IsSpecial = true,
+                },
+                new() {
+                    Name = "attack 4",
+                    Damages = [new() { Roll = "roll 4", Type = "type 4" }],
+                    IsPrimary = true,
+                    IsMelee = false,
+                    IsNatural = true,
+                    IsSpecial = true,
+                },
+                new() {
+                    Name = "attack 5",
+                    Damages = [new() { Roll = "roll 5", Type = "type 5" }],
+                    IsPrimary = false,
+                    IsMelee = true,
+                    IsNatural = false,
+                    IsSpecial = true,
+                },
+                new() {
+                    Name = "attack 6",
+                    Damages = [new() { Roll = "roll 6", Type = "type 6" }],
+                    IsPrimary = false,
+                    IsMelee = true,
+                    IsNatural = true,
+                    IsSpecial = true,
+                },
+                new() {
+                    Name = "attack 7",
+                    Damages = [new() { Roll = "roll 7", Type = "type 7" }],
+                    IsPrimary = true,
+                    IsMelee = true,
+                    IsNatural = false,
+                    IsSpecial = true,
+                },
+                new() {
+                    Name = "attack 8",
+                    Damages = [new() { Roll = "roll 8", Type = "type 8" }],
+                    IsPrimary = true,
+                    IsMelee = true,
+                    IsNatural = true,
+                    IsSpecial = true,
+                }
+            };
 
             var feats = new[]
             {
@@ -1345,8 +1352,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void ApplyDexterityForMeleeInsteadOfStrengthForNaturalAttacksIfWeaponFinesse_IfNatural()
         {
-            var attacks = new List<Attack>();
-            attacks.Add(new Attack { Name = "attack 1", IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength], IsNatural = true });
+            var attacks = new List<Attack>
+            {
+                new() { Name = "attack 1", IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength], IsNatural = true }
+            };
 
             var feats = new[] { new Feat { Name = FeatConstants.WeaponFinesse } };
 
@@ -1359,8 +1368,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void DoNotApplyDexterityForMeleeInsteadOfStrengthForNaturalAttacksIfWeaponFinesse_Unnatural()
         {
-            var attacks = new List<Attack>();
-            attacks.Add(new Attack { Name = "attack 1", IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength], IsNatural = false });
+            var attacks = new List<Attack>
+            {
+                new() { Name = "attack 1", IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength], IsNatural = false }
+            };
 
             var feats = new[] { new Feat { Name = FeatConstants.WeaponFinesse } };
 
@@ -1373,8 +1384,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void ApplyStrengthForMeleeForNaturalAttacksIfNotWeaponFinesse()
         {
-            var attacks = new List<Attack>();
-            attacks.Add(new Attack { Name = "attack 1", IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength] });
+            var attacks = new List<Attack>
+            {
+                new() { Name = "attack 1", IsMelee = true, BaseAbility = abilities[AbilityConstants.Strength] }
+            };
 
             var feats = new[] { new Feat { Name = "not " + FeatConstants.WeaponFinesse } };
 
@@ -1387,8 +1400,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void ApplyRockThrowingBonusToRockAttack()
         {
-            var attacks = new List<Attack>();
-            attacks.Add(new Attack { Name = "Rock", IsMelee = false, IsPrimary = true, BaseAbility = abilities[AbilityConstants.Dexterity] });
+            var attacks = new List<Attack>
+            {
+                new() { Name = "Rock", IsMelee = false, IsPrimary = true, BaseAbility = abilities[AbilityConstants.Dexterity] }
+            };
 
             var feats = new[] { new Feat { Name = FeatConstants.SpecialQualities.RockThrowing, Power = 42 } };
 
@@ -1401,8 +1416,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void DoNotApplyRockThrowingBonusToRockAttack()
         {
-            var attacks = new List<Attack>();
-            attacks.Add(new Attack { Name = "Rock", IsMelee = false, IsPrimary = true, BaseAbility = abilities[AbilityConstants.Dexterity] });
+            var attacks = new List<Attack>
+            {
+                new() { Name = "Rock", IsMelee = false, IsPrimary = true, BaseAbility = abilities[AbilityConstants.Dexterity] }
+            };
 
             var feats = new[] { new Feat { Name = "not " + FeatConstants.SpecialQualities.RockThrowing, Power = 42 } };
 
@@ -1415,8 +1432,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         [Test]
         public void DoNotApplyRockThrowingBonusToNonRockAttack()
         {
-            var attacks = new List<Attack>();
-            attacks.Add(new Attack { Name = "not Rock", IsMelee = false, IsPrimary = true, BaseAbility = abilities[AbilityConstants.Dexterity] });
+            var attacks = new List<Attack>
+            {
+                new() { Name = "not Rock", IsMelee = false, IsPrimary = true, BaseAbility = abilities[AbilityConstants.Dexterity] }
+            };
 
             var feats = new[] { new Feat { Name = FeatConstants.SpecialQualities.RockThrowing, Power = 42 } };
 

@@ -5,42 +5,24 @@ using System.Linq;
 
 namespace DnDGen.CreatureGen.Skills
 {
-    public class Skill
+    public class Skill(string name, Ability baseStat, int rankCap, string focus = "")
     {
-        public string Name { get; private set; }
-        public Ability BaseAbility { get; set; }
-        public string Focus { get; private set; }
+        public string Name { get; private set; } = name;
+        public Ability BaseAbility { get; set; } = baseStat;
+        public string Focus { get; private set; } = focus;
         public bool ClassSkill { get; set; }
         public int ArmorCheckPenalty { get; set; }
-        public int RankCap { get; set; }
+        public int RankCap { get; set; } = rankCap;
         public bool HasArmorCheckPenalty { get; set; }
-        public IEnumerable<Bonus> Bonuses { get; private set; }
+        public List<Bonus> Bonuses { get; set; } = [];
 
         public bool CircumstantialBonus => Bonuses.Any(b => b.IsConditional);
 
         public string Key => SkillConstants.Build(Name, Focus);
 
-        public int Bonus
-        {
-            get
-            {
-                return Bonuses
-                    .Where(b => !b.IsConditional)
-                    .Select(b => b.Value)
-                    .Sum();
-            }
-        }
+        public int Bonus => Bonuses.Where(b => !b.IsConditional).Sum(b => b.Value);
 
-        public double EffectiveRanks
-        {
-            get
-            {
-                if (ClassSkill)
-                    return ranks;
-
-                return ranks / 2d;
-            }
-        }
+        public double EffectiveRanks => ClassSkill ? Ranks : Ranks / 2d;
 
         public bool RanksMaxedOut => Ranks == RankCap;
 
@@ -74,19 +56,7 @@ namespace DnDGen.CreatureGen.Skills
             }
         }
 
-        public Skill(string name, Ability baseStat, int rankCap, string focus = "")
-        {
-            Name = name;
-            BaseAbility = baseStat;
-            RankCap = rankCap;
-            Focus = focus;
-            Bonuses = Enumerable.Empty<Bonus>();
-        }
-
-        public bool IsEqualTo(Skill skill)
-        {
-            return IsEqualTo(skill.Name, skill.Focus);
-        }
+        public bool IsEqualTo(Skill skill) => IsEqualTo(skill.Name, skill.Focus);
 
         private bool IsEqualTo(string skill, string focus)
         {
@@ -111,7 +81,7 @@ namespace DnDGen.CreatureGen.Skills
         public void AddBonus(int value, string condition = "")
         {
             var bonus = new Bonus { Value = value, Condition = condition };
-            Bonuses = Bonuses.Union(new[] { bonus });
+            Bonuses.Add(bonus);
         }
     }
 }

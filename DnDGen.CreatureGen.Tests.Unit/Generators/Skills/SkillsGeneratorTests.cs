@@ -1086,7 +1086,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             Assert.That(skillNames, Contains.Item("skill 1"));
             Assert.That(skillNames, Contains.Item("skill 2"));
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
         }
 
         [Test]
@@ -1104,7 +1104,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             Assert.That(skillNames, Contains.Item("skill 1"));
             Assert.That(skillNames, Is.All.Not.EqualTo("skill 2"));
-            Assert.That(skills.Count, Is.EqualTo(1));
+            Assert.That(skills.Count(), Is.EqualTo(1));
         }
 
         [Test]
@@ -1141,7 +1141,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkill)).Returns(selection);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
-            Assert.That(skills.Count, Is.EqualTo(1));
+            Assert.That(skills.Count(), Is.EqualTo(1));
 
             var skill = skills.Single();
             Assert.That(skill.Name, Is.EqualTo("skill 1"));
@@ -1177,7 +1177,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[1].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Charisma]));
             Assert.That(skills[1].ClassSkill, Is.True);
 
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Length, Is.EqualTo(2));
         }
 
         [Test]
@@ -1207,7 +1207,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[1].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Charisma]));
             Assert.That(skills[1].ClassSkill, Is.True);
 
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Length, Is.EqualTo(2));
         }
 
         [Test]
@@ -1248,7 +1248,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[2].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Charisma]));
             Assert.That(skills[2].ClassSkill, Is.True);
 
-            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills.Length, Is.EqualTo(3));
         }
 
         [Test]
@@ -1289,7 +1289,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[2].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Charisma]));
             Assert.That(skills[2].ClassSkill, Is.True);
 
-            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills.Length, Is.EqualTo(3));
         }
 
         [Test]
@@ -1327,7 +1327,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[2].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Charisma]));
             Assert.That(skills[2].ClassSkill, Is.True);
 
-            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills.Length, Is.EqualTo(3));
         }
 
         [Test]
@@ -1342,24 +1342,32 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             abilities["ability 2"] = new Ability("ability 2");
             abilities["ability 3"] = new Ability("ability 3");
 
-            var professionSkillSelection = new SkillDataSelection();
-            professionSkillSelection.BaseAbilityName = AbilityConstants.Intelligence;
-            professionSkillSelection.SkillName = SkillConstants.Profession;
-            professionSkillSelection.Focus = "software developer";
+            var professionSkillSelection = new SkillDataSelection
+            {
+                BaseAbilityName = AbilityConstants.Intelligence,
+                SkillName = SkillConstants.Profession,
+                Focus = "software developer"
+            };
 
-            var professionBonusSkillSelection = new SkillDataSelection();
-            professionBonusSkillSelection.BaseAbilityName = "ability 1";
-            professionBonusSkillSelection.SkillName = "professional skill 1";
+            var professionBonusSkillSelection = new SkillDataSelection
+            {
+                BaseAbilityName = "ability 1",
+                SkillName = "professional skill 1"
+            };
 
-            var professionBonusWithSetFocusSkillSelection = new SkillDataSelection();
-            professionBonusWithSetFocusSkillSelection.BaseAbilityName = "ability 2";
-            professionBonusWithSetFocusSkillSelection.SkillName = "professional skill 2";
-            professionBonusWithSetFocusSkillSelection.Focus = "set focus";
+            var professionBonusWithSetFocusSkillSelection = new SkillDataSelection
+            {
+                BaseAbilityName = "ability 2",
+                SkillName = "professional skill 2",
+                Focus = "set focus"
+            };
 
-            var professionBonusWithRandomFocusSkillSelection = new SkillDataSelection();
-            professionBonusWithRandomFocusSkillSelection.BaseAbilityName = "ability 3";
-            professionBonusWithRandomFocusSkillSelection.SkillName = "professional skill 3";
-            professionBonusWithRandomFocusSkillSelection.RandomFociQuantity = 1;
+            var professionBonusWithRandomFocusSkillSelection = new SkillDataSelection
+            {
+                BaseAbilityName = "ability 3",
+                SkillName = "professional skill 3",
+                RandomFociQuantity = 1
+            };
 
             mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, creatureSkills[0])).Returns(professionSkillSelection);
             mockSkillSelector.Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.SkillData, "professional skill 1")).Returns(professionBonusSkillSelection);
@@ -1598,7 +1606,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(4));
+            Assert.That(skills.Count(), Is.EqualTo(4));
 
             var ranks = skills.Select(s => s.Ranks);
             Assert.That(ranks, Is.All.Zero);
@@ -1635,7 +1643,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             AddCreatureSkills(1);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
-            Assert.That(skills.Count, Is.EqualTo(1));
+            Assert.That(skills.Count(), Is.EqualTo(1));
 
             var skill = skills.Single();
             Assert.That(skill.Bonus, Is.Zero);
@@ -1654,7 +1662,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.Bonus, Is.EqualTo(9266));
@@ -1683,7 +1691,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.Bonus, Is.EqualTo(9266));
@@ -1717,7 +1725,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.Bonus, Is.EqualTo(9266 + 90210));
@@ -1751,7 +1759,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.Bonus, Is.Zero);
@@ -1780,7 +1788,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.Bonus, Is.Zero);
@@ -1815,7 +1823,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.Bonus, Is.EqualTo(90210));
@@ -1862,7 +1870,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.Bonus, Is.EqualTo(9266));
@@ -1903,7 +1911,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.Bonus, Is.Zero);
@@ -1949,7 +1957,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
-            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills.Count(), Is.EqualTo(3));
 
             Assert.That(skills[0].Bonus, Is.EqualTo(9266));
             Assert.That(skills[0].Bonuses, Is.Not.Empty);
@@ -2001,7 +2009,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
-            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills.Count(), Is.EqualTo(3));
 
             Assert.That(skills[0].Bonus, Is.Zero);
             Assert.That(skills[0].Bonuses, Is.Not.Empty);
@@ -2036,7 +2044,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.Bonus, Is.EqualTo(9266 + 9266));
@@ -2447,7 +2455,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillGroups, "other subtype")).Returns(new[] { "other subtype skill" });
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.Name, Is.EqualTo("subtype skill"));
@@ -2566,7 +2574,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "creature")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.Bonus, Is.EqualTo(9266));
@@ -2594,7 +2602,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, creatureType.Name)).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.Bonus, Is.EqualTo(9266));
@@ -2624,7 +2632,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockBonusSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SkillBonuses, "subtype")).Returns(bonuses);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.Bonus, Is.EqualTo(9266));
@@ -2650,7 +2658,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.EffectiveRanks, Is.AtLeast(5));
@@ -2677,7 +2685,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.EffectiveRanks, Is.LessThan(5));
@@ -2706,7 +2714,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.EffectiveRanks, Is.AtLeast(5));
@@ -2742,7 +2750,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.EffectiveRanks, Is.AtLeast(5));
@@ -2771,7 +2779,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.EffectiveRanks, Is.AtLeast(5));
@@ -2807,7 +2815,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.First();
             Assert.That(skill.EffectiveRanks, Is.AtLeast(5));
@@ -2834,7 +2842,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.Last();
             Assert.That(skill.Name, Is.EqualTo(creatureSkills[0]));
@@ -2869,7 +2877,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             var skill = skills.Last();
             Assert.That(skill.Name, Is.EqualTo(creatureSkills[0]));
@@ -2907,7 +2915,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(4));
+            Assert.That(skills.Count(), Is.EqualTo(4));
 
             Assert.That(skills[2].Name, Is.EqualTo(creatureSkills[0]));
             Assert.That(skills[2].EffectiveRanks, Is.AtLeast(5));
@@ -2960,7 +2968,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(4));
+            Assert.That(skills.Count(), Is.EqualTo(4));
 
             Assert.That(skills[2].Name, Is.EqualTo(creatureSkills[0]));
             Assert.That(skills[2].EffectiveRanks, Is.AtLeast(5));
@@ -3012,7 +3020,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(4));
+            Assert.That(skills.Count(), Is.EqualTo(4));
 
             Assert.That(skills[2].Name, Is.EqualTo(creatureSkills[0]));
             Assert.That(skills[2].EffectiveRanks, Is.AtLeast(5));
@@ -3077,7 +3085,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills.Count(), Is.EqualTo(3));
 
             Assert.That(skills[1].Name, Is.EqualTo("skill name"));
             Assert.That(skills[1].Focus, Is.EqualTo("focus"));
@@ -3135,7 +3143,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(4));
+            Assert.That(skills.Count(), Is.EqualTo(4));
 
             Assert.That(skills[2].Name, Is.EqualTo(creatureSkills[0]));
             Assert.That(skills[2].Focus, Is.Empty);
@@ -3202,7 +3210,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             Assert.That(skills[1].Name, Is.EqualTo("skill name"));
             Assert.That(skills[1].Focus, Is.EqualTo("focus"));
@@ -3251,7 +3259,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             Assert.That(skills[1].Name, Is.EqualTo("skill name"));
             Assert.That(skills[1].Focus, Is.EqualTo("focus"));
@@ -3300,7 +3308,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             Assert.That(skills[1].Name, Is.EqualTo("skill name"));
             Assert.That(skills[1].Focus, Is.EqualTo("focus"));
@@ -3349,7 +3357,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             Assert.That(skills[1].Name, Is.EqualTo("skill name"));
             Assert.That(skills[1].Focus, Is.EqualTo("focus"));
@@ -3383,7 +3391,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             Assert.That(skills[0].Name, Is.EqualTo(untrainedSkills[0]));
             Assert.That(skills[0].Focus, Is.Empty);
@@ -3416,7 +3424,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
 
             Assert.That(skills[0].Name, Is.EqualTo(creatureSkills[0]));
             Assert.That(skills[0].Focus, Is.Empty);
@@ -3472,7 +3480,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
 
             Assert.That(modifiedSkills, Is.EqualTo(skills));
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].HasArmorCheckPenalty, Is.False);
             Assert.That(skills[0].ArmorCheckPenalty, Is.Zero);
@@ -3503,7 +3511,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
 
             Assert.That(modifiedSkills, Is.EqualTo(skills));
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
             Assert.That(skills[0].ArmorCheckPenalty, Is.Zero);
@@ -3538,7 +3546,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
 
             Assert.That(modifiedSkills, Is.EqualTo(skills));
-            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills.Count(), Is.EqualTo(3));
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
             Assert.That(skills[0].ArmorCheckPenalty, Is.Zero);
@@ -3576,7 +3584,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             var modifiedSkills = skillsGenerator.SetArmorCheckPenalties(CreatureConstants.Giant_Storm, skills, equipment);
 
             Assert.That(modifiedSkills, Is.EqualTo(skills));
-            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills.Count(), Is.EqualTo(3));
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
             Assert.That(skills[0].ArmorCheckPenalty, Is.Zero);
@@ -3610,7 +3618,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
 
             Assert.That(modifiedSkills, Is.EqualTo(skills));
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
             Assert.That(skills[0].ArmorCheckPenalty, Is.EqualTo(-42));
@@ -3645,7 +3653,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
 
             Assert.That(modifiedSkills, Is.EqualTo(skills));
-            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills.Count(), Is.EqualTo(3));
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
             Assert.That(skills[0].ArmorCheckPenalty, Is.EqualTo(-600));
@@ -3683,7 +3691,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             var modifiedSkills = skillsGenerator.SetArmorCheckPenalties(CreatureConstants.Giant_Storm, skills, equipment);
 
             Assert.That(modifiedSkills, Is.EqualTo(skills));
-            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills.Count(), Is.EqualTo(3));
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
             Assert.That(skills[0].ArmorCheckPenalty, Is.EqualTo(-600));
@@ -3717,7 +3725,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
 
             Assert.That(modifiedSkills, Is.EqualTo(skills));
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
             Assert.That(skills[0].ArmorCheckPenalty, Is.EqualTo(-600));
@@ -3752,7 +3760,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
 
             Assert.That(modifiedSkills, Is.EqualTo(skills));
-            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills.Count(), Is.EqualTo(3));
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
             Assert.That(skills[0].ArmorCheckPenalty, Is.EqualTo(-1337));
@@ -3790,7 +3798,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             var modifiedSkills = skillsGenerator.SetArmorCheckPenalties(CreatureConstants.Giant_Storm, skills, equipment);
 
             Assert.That(modifiedSkills, Is.EqualTo(skills));
-            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills.Count(), Is.EqualTo(3));
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
             Assert.That(skills[0].ArmorCheckPenalty, Is.EqualTo(-1337));
@@ -3824,7 +3832,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
 
             Assert.That(modifiedSkills, Is.EqualTo(skills));
-            Assert.That(skills.Count, Is.EqualTo(2));
+            Assert.That(skills.Count(), Is.EqualTo(2));
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
             Assert.That(skills[0].ArmorCheckPenalty, Is.EqualTo(-642));
@@ -3859,7 +3867,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             var modifiedSkills = skillsGenerator.SetArmorCheckPenalties("creature", skills, equipment);
 
             Assert.That(modifiedSkills, Is.EqualTo(skills));
-            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills.Count(), Is.EqualTo(3));
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
             Assert.That(skills[0].ArmorCheckPenalty, Is.EqualTo(-1937));
@@ -3897,7 +3905,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             var modifiedSkills = skillsGenerator.SetArmorCheckPenalties(CreatureConstants.Giant_Storm, skills, equipment);
 
             Assert.That(modifiedSkills, Is.EqualTo(skills));
-            Assert.That(skills.Count, Is.EqualTo(3));
+            Assert.That(skills.Count(), Is.EqualTo(3));
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].HasArmorCheckPenalty, Is.True);
             Assert.That(skills[0].ArmorCheckPenalty, Is.EqualTo(-1937));
@@ -4426,7 +4434,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true);
             Assert.That(skills, Is.Not.Empty);
-            Assert.That(skills.Count, Is.EqualTo(4));
+            Assert.That(skills.Count(), Is.EqualTo(4));
 
             var ranks = skills.Select(s => s.Ranks);
             Assert.That(ranks, Is.All.Zero);

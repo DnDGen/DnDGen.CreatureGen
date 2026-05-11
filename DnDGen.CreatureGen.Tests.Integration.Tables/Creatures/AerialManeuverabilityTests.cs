@@ -748,7 +748,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             if (speeds.Any(s => s.Type == SpeedConstants.Fly))
             {
                 Assert.That(maneuverability, Is.Not.Empty, creature);
-                Assert.That(maneuverability.Count, Is.EqualTo(1), creature);
+                Assert.That(maneuverability.Count(), Is.EqualTo(1), creature);
                 Assert.That(maneuverability.Single(), Is.Not.Empty, creature);
                 Assert.That(maneuverability.Single(), Does.EndWith(" Maneuverability (Wings)")
                     .Or.EndsWith(" Maneuverability (Magic)"), creature);
@@ -768,7 +768,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             if (speeds.Any(s => s.Type == SpeedConstants.Fly))
             {
                 Assert.That(maneuverability, Is.Not.Empty, template);
-                Assert.That(maneuverability.Count, Is.EqualTo(1), template);
+                Assert.That(maneuverability.Count(), Is.EqualTo(1), template);
                 Assert.That(maneuverability.Single(), Is.Not.Empty, template);
                 Assert.That(maneuverability.Single(), Does.EndWith(" Maneuverability (Wings)")
                     .Or.EndsWith(" Maneuverability (Magic)"), template);

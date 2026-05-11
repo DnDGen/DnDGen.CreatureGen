@@ -62,7 +62,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             var attacks = attackSelector.Select("creature", "size");
             Assert.That(attacks, Is.Not.Empty);
-            Assert.That(attacks.Count, Is.EqualTo(1));
+            Assert.That(attacks.Count(), Is.EqualTo(1));
 
             var attack = attacks.Single();
             Assert.That(attack.Damages, Has.Count.EqualTo(1));
@@ -115,7 +115,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             var attacks = attackSelector.Select("creature", "size");
             Assert.That(attacks, Is.Not.Empty);
-            Assert.That(attacks.Count, Is.EqualTo(1));
+            Assert.That(attacks.Count(), Is.EqualTo(1));
 
             var attack = attacks.Single();
             Assert.That(attack.Damages, Has.Count.EqualTo(1));
@@ -137,12 +137,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(attack.SaveDcBonus, Is.Zero);
         }
 
-        private List<DamageDataSelection> GetDamageData(string roll, string type, string condition = "", string roll2 = "", string type2 = "", string condition2 = "")
+        private static List<DamageDataSelection> GetDamageData(string roll, string type, string condition = "", string roll2 = "", string type2 = "", string condition2 = "")
         {
             var selections = new List<DamageDataSelection>
             {
-                new DamageDataSelection
-                {
+                new() {
                     Roll = roll,
                     Type = type,
                     Condition = condition
@@ -162,7 +161,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             return selections;
         }
 
-        private AttackDataSelection GetData(
+        private static AttackDataSelection GetData(
             string name,
             string damageEffect,
             double damageBonusMultiplier,
@@ -210,7 +209,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             var attacks = attackSelector.Select("creature", "size");
             Assert.That(attacks, Is.Not.Empty);
-            Assert.That(attacks.Count, Is.EqualTo(1));
+            Assert.That(attacks.Count(), Is.EqualTo(1));
 
             var attack = attacks.Single();
             Assert.That(attack.Damages, Is.Empty);
@@ -245,7 +244,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             var attacks = attackSelector.Select("creature", "size");
             Assert.That(attacks, Is.Not.Empty);
-            Assert.That(attacks.Count, Is.EqualTo(1));
+            Assert.That(attacks.Count(), Is.EqualTo(1));
 
             var attack = attacks.Single();
             Assert.That(attack.Damages, Has.Count.EqualTo(2));

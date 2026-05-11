@@ -353,7 +353,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureArmorClass(Creature creature)
         {
-            creature.ArmorClass.RemoveBonus(ArmorClassConstants.Natural);
+            creature.ArmorClass.RemoveAllBonuses(ArmorClassConstants.Natural);
             var naturalArmorBonus = 0;
 
             switch (creature.Size)

@@ -18,6 +18,7 @@ using DnDGen.RollGen;
 using DnDGen.TreasureGen.Items;
 using Moq;
 using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -96,7 +97,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             message.AppendLine($"\tCreature: {baseCreature.Name}");
             message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Vampire}");
 
-            Assert.That(() => applicator.ApplyTo(baseCreature, false),
+            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, false)),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
@@ -127,7 +128,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Alignment = alignment
             };
 
-            Assert.That(() => applicator.ApplyTo(baseCreature, false, filters),
+            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, false, filters)),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 

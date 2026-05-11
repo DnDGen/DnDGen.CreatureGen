@@ -106,7 +106,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
                 }
             }
 
-            Assert.That(albinoCount, Is.LessThanOrEqualTo(1).Within(1));
+            //Since "Rare" is 10%, delta of 10% / 2 = 5
+            Assert.That(albinoCount, Is.LessThanOrEqualTo(1).Within(5));
         }
     }
 }

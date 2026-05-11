@@ -10,6 +10,7 @@ using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
 using Moq;
 using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,7 +83,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Alignment = alignment
             };
 
-            Assert.That(() => templateApplicator.ApplyTo(clone, asCharacter, filters),
+            Assert.That((Func<object>)(() => templateApplicator.ApplyTo(clone, asCharacter, filters)),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
@@ -101,10 +102,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Clone(creature)
                 .Build();
 
-            var filters = new Filters();
-            filters.Type = "subtype 1";
-            filters.ChallengeRating = ChallengeRatingConstants.CR1;
-            filters.Alignment = "original alignment";
+            var filters = new Filters
+            {
+                Type = "subtype 1",
+                ChallengeRating = ChallengeRatingConstants.CR1,
+                Alignment = "original alignment"
+            };
 
             var templatedCreature = templateApplicator.ApplyTo(clone, false, filters);
             Assert.That(templatedCreature, Is.EqualTo(clone));

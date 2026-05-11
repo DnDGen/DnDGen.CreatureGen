@@ -52,7 +52,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors
             Assert.That(item.Magic.Bonus, Is.EqualTo(9266));
             Assert.That(item.Traits, Is.Empty);
             Assert.That(item.IsMagical, Is.True);
-            Assert.That(item.Magic.SpecialAbilities.Count, Is.EqualTo(2));
+            Assert.That(item.Magic.SpecialAbilities.Count(), Is.EqualTo(2));
             Assert.That(item.Quantity, Is.EqualTo(1));
 
             var first = item.Magic.SpecialAbilities.First();
@@ -72,7 +72,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors
             Assert.That(item.Magic.Bonus, Is.EqualTo(9266));
             Assert.That(item.Traits, Is.Empty);
             Assert.That(item.IsMagical, Is.True);
-            Assert.That(item.Magic.SpecialAbilities.Count, Is.EqualTo(2));
+            Assert.That(item.Magic.SpecialAbilities.Count(), Is.EqualTo(2));
             Assert.That(item.Quantity, Is.EqualTo(1));
 
             var first = item.Magic.SpecialAbilities.First();
@@ -124,7 +124,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors
             Assert.That(item.Traits, Contains.Item("trait"));
             Assert.That(item.Traits, Contains.Item("other trait"));
             Assert.That(item.Traits.Count, Is.EqualTo(2));
-            Assert.That(item.Magic.SpecialAbilities.Count, Is.EqualTo(2));
+            Assert.That(item.Magic.SpecialAbilities.Count(), Is.EqualTo(2));
 
             var first = item.Magic.SpecialAbilities.First();
             var last = item.Magic.SpecialAbilities.Last();
@@ -215,9 +215,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors
         [Test]
         public void SelectTemplateFromItem()
         {
-            var item = new Item();
-            item.Name = "item";
-            item.ItemType = "item type";
+            var item = new Item
+            {
+                Name = "item",
+                ItemType = "item type"
+            };
 
             var template = itemSelector.SelectFrom(item);
             Assert.That(template, Is.EqualTo("item[item type]"));
@@ -226,9 +228,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors
         [Test]
         public void SelectTemplateFromItemWithMagicBonus()
         {
-            var item = new Item();
-            item.Name = "item";
-            item.ItemType = "item type";
+            var item = new Item
+            {
+                Name = "item",
+                ItemType = "item type"
+            };
             item.Magic.Bonus = 9266;
 
             var template = itemSelector.SelectFrom(item);
@@ -238,15 +242,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors
         [Test]
         public void SelectTemplateFromItemWithSpecialAbilities()
         {
-            var item = new Item();
-            item.Name = "item";
-            item.ItemType = "item type";
-            item.Magic.Bonus = 9266;
-            item.Magic.SpecialAbilities = new[]
+            var item = new Item
             {
+                Name = "item",
+                ItemType = "item type"
+            };
+            item.Magic.Bonus = 9266;
+            item.Magic.SpecialAbilities =
+            [
                 new SpecialAbility { Name = "special ability" },
                 new SpecialAbility { Name = "other special ability" },
-            };
+            ];
 
             var template = itemSelector.SelectFrom(item);
             Assert.That(template, Is.EqualTo("item[item type](9266){special ability,other special ability}@True@"));
@@ -255,15 +261,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors
         [Test]
         public void SelectTemplateFromItemWithCustomSpecialAbilities()
         {
-            var item = new Item();
-            item.Name = "item";
-            item.ItemType = "item type";
-            item.Magic.Bonus = 9266;
-            item.Magic.SpecialAbilities = new[]
+            var item = new Item
             {
+                Name = "item",
+                ItemType = "item type"
+            };
+            item.Magic.Bonus = 9266;
+            item.Magic.SpecialAbilities =
+            [
                 new SpecialAbility { Name = "special ability", BonusEquivalent = 90210 },
                 new SpecialAbility { Name = "other special ability", BonusEquivalent = 42 },
-            };
+            ];
 
             var template = itemSelector.SelectFrom(item);
             Assert.That(template, Is.EqualTo("item[item type](9266){special ability$90210$,other special ability$42$}@True@"));
@@ -272,9 +280,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors
         [Test]
         public void SelectTemplateFromItemWithTraits()
         {
-            var item = new Item();
-            item.Name = "item";
-            item.ItemType = "item type";
+            var item = new Item
+            {
+                Name = "item",
+                ItemType = "item type"
+            };
             item.Traits.Add("trait");
             item.Traits.Add("other trait");
 
@@ -285,10 +295,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors
         [Test]
         public void SelectTemplateFromItemWithMagic()
         {
-            var item = new Item();
-            item.Name = "item";
-            item.ItemType = "item type";
-            item.IsMagical = true;
+            var item = new Item
+            {
+                Name = "item",
+                ItemType = "item type",
+                IsMagical = true
+            };
 
             var template = itemSelector.SelectFrom(item);
             Assert.That(template, Is.EqualTo("item[item type]@True@"));
@@ -297,18 +309,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors
         [Test]
         public void SelectTemplateFromItemWithEverything()
         {
-            var item = new Item();
-            item.Name = "item";
-            item.ItemType = "item type";
-            item.IsMagical = true;
+            var item = new Item
+            {
+                Name = "item",
+                ItemType = "item type",
+                IsMagical = true
+            };
             item.Traits.Add("trait");
             item.Traits.Add("other trait");
             item.Magic.Bonus = 9266;
-            item.Magic.SpecialAbilities = new[]
-            {
+            item.Magic.SpecialAbilities =
+            [
                 new SpecialAbility { Name = "special ability", BonusEquivalent = 90210 },
                 new SpecialAbility { Name = "other special ability", BonusEquivalent = 42 },
-            };
+            ];
 
             var template = itemSelector.SelectFrom(item);
             Assert.That(template, Is.EqualTo("item[item type]#trait,other trait#(9266){special ability$90210$,other special ability$42$}@True@"));
@@ -317,17 +331,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors
         [Test]
         public void SelectTemplateFromItemWithEverythingExceptSetMagic()
         {
-            var item = new Item();
-            item.Name = "item";
-            item.ItemType = "item type";
+            var item = new Item
+            {
+                Name = "item",
+                ItemType = "item type"
+            };
             item.Traits.Add("trait");
             item.Traits.Add("other trait");
             item.Magic.Bonus = 9266;
-            item.Magic.SpecialAbilities = new[]
-            {
+            item.Magic.SpecialAbilities =
+            [
                 new SpecialAbility { Name = "special ability", BonusEquivalent = 90210 },
                 new SpecialAbility { Name = "other special ability", BonusEquivalent = 42 },
-            };
+            ];
 
             var template = itemSelector.SelectFrom(item);
             Assert.That(template, Is.EqualTo("item[item type]#trait,other trait#(9266){special ability$90210$,other special ability$42$}@True@"));
