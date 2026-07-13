@@ -177,6 +177,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
         ];
 
         public static IEnumerable ProblematicFiltersTestCases => ProblematicFilters
-            .Select(pf => new TestCaseData(pf.Filters.Type, pf.AsCharacter, pf.Filters.Templates.FirstOrDefault(), pf.Filters.ChallengeRating, pf.Filters.Alignment));
+            .Select(pf => new TestCaseData(pf.Filters.Type, pf.AsCharacter, pf.Filters.Templates.SingleOrDefault(), pf.Filters.ChallengeRating, pf.Filters.Alignment));
     }
 }

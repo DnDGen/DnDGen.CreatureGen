@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Generators.Creatures;
+using System.Collections;
 
 namespace DnDGen.CreatureGen.Verifiers
 {

@@ -234,6 +234,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         [TestCase(true, false, CreatureConstants.Dragon_Red_GreatWyrm)]
         [TestCase(true, false, CreatureConstants.Dragon_Red_GreatWyrm, CreatureConstants.Templates.None)]
         [TestCase(false, false, CreatureConstants.Dragon_Red_GreatWyrm, CreatureConstants.Templates.Skeleton)]
+        [TestCase(true, false, CreatureConstants.Drider, CreatureConstants.Templates.HalfDragon_Gold, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(true, false, CreatureConstants.Eagle, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(true, false, CreatureConstants.Eagle)]
         [TestCase(true, false, CreatureConstants.Eagle, CreatureConstants.Templates.None)]

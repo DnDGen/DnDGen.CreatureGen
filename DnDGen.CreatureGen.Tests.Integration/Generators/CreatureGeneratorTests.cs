@@ -8,6 +8,7 @@ using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.TreasureGen.Items;
 using Newtonsoft.Json;
 using NUnit.Framework;
+using NUnit.Framework.Internal;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -817,16 +818,34 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             GenerateAndAssertRandomCreature(asCharacter, type, challengeRating, alignment, randomizer, template);
         }
 
+        [Test]
+        [Repeat(100)]
+        public void BUG_GenerateCreatureWithProblematicFilters_HalfDragonCelestial()
+        {
+            var templates = new[] { CreatureConstants.Templates.HalfDragon_Gold, CreatureConstants.Templates.CelestialCreature };
+            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer(templates);
+            GenerateAndAssertRandomCreature(false, null, null, null, randomizer, templates);
+        }
+
+        [Test]
+        [Repeat(100)]
+        public void BUG_GenerateCreatureWithProblematicFilters_DriderHalfDragonCelestial()
+        {
+            var templates = new[] { CreatureConstants.Templates.HalfDragon_Gold, CreatureConstants.Templates.CelestialCreature };
+            var creature = creatureGenerator.Generate(false, CreatureConstants.Drider, null, templates);
+            creatureAsserter.AssertCreature(creature);
+        }
+
         private Creature GenerateAndAssertRandomCreature(
             bool asCharacter,
             string type,
             string challengeRating,
             string alignment,
             AbilityRandomizer randomizer,
-            string template)
+            params string[] templates)
         {
             var filters = new Filters();
-            filters.Templates.Add(template);
+            filters.Templates.AddRange(templates);
             filters.Type = type;
             filters.ChallengeRating = challengeRating;
             filters.Alignment = alignment;
@@ -836,7 +855,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             stopwatch.Stop();
 
             var message = new StringBuilder();
-            var messageTemplate = !string.IsNullOrEmpty(template) ? template : "(None)";
+            var messageTemplate = filters.CleanTemplates.Count > 0 ? string.Join(", ", filters.CleanTemplates) : "(None)";
 
             message.AppendLine($"Creature: {creature.Summary}");
             message.AppendLine($"As Character: {asCharacter}");
@@ -848,10 +867,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             var timeLimit = creatureAsserter.GetGenerationTimeLimitInSeconds(creature);
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(timeLimit), message.ToString());
 
-            if (!string.IsNullOrEmpty(template) && template != CreatureConstants.Templates.None)
-                Assert.That(creature.Templates, Is.EqualTo([template]), message.ToString());
-            else if (template == CreatureConstants.Templates.None)
-                Assert.That(creature.Templates, Is.Empty, message.ToString());
+            Assert.That(creature.Templates, Is.EqualTo(filters.CleanTemplates), message.ToString());
 
             if (type != null)
                 creatureAsserter.AssertCreatureIsType(creature, type, message.ToString());
