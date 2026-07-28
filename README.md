@@ -2,7 +2,7 @@
 
 Generates a random, fleshed-out creature for Dungeons and Dragons 3.X
 
-[![Build Status](https://dev.azure.com/dndgen/DnDGen/_apis/build/status/DnDGen.CreatureGen?branchName=master)](https://dev.azure.com/dndgen/DnDGen/_build/latest?definitionId=5&branchName=master)
+[![Build Status](https://dev.azure.com/dndgen/DnDGen/_apis/build/status/DnDGen.CreatureGen?branchName=main)](https://dev.azure.com/dndgen/DnDGen/_build/latest?definitionId=5&branchName=main)
 
 ### Use
 
