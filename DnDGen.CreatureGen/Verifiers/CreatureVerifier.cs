@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
@@ -9,18 +10,9 @@ using System.Linq;
 
 namespace DnDGen.CreatureGen.Verifiers
 {
-    internal class CreatureVerifier : ICreatureVerifier
+    internal class CreatureVerifier(JustInTimeFactory factory, ICollectionSelector collectionsSelector) : ICreatureVerifier
     {
-        private readonly JustInTimeFactory factory;
-        private readonly ICollectionSelector collectionsSelector;
-
-        public CreatureVerifier(JustInTimeFactory factory, ICollectionSelector collectionsSelector)
-        {
-            this.factory = factory;
-            this.collectionsSelector = collectionsSelector;
-        }
-
-        public bool VerifyCompatibility(bool asCharacter, string creature = null, Filters filters = null)
+        public bool VerifyCompatibility(bool asCharacter, string creature = null, AbilityRandomizer abilityRandomizer = null, Filters filters = null)
         {
             IEnumerable<string> baseCreatures = [creature];
             if (string.IsNullOrEmpty(creature))
@@ -38,21 +30,21 @@ namespace DnDGen.CreatureGen.Verifiers
             if (!compatible)
                 return false;
 
-            if (filters?.CleanTemplates?.Any() == true)
+            if (filters?.CleanTemplates?.Count > 0)
             {
-                compatible = TemplatesAreCompatible(filters.CleanTemplates, baseCreatures, asCharacter, filters);
+                compatible = TemplatesAreCompatible(filters.CleanTemplates, baseCreatures, asCharacter, abilityRandomizer, filters);
                 return compatible;
             }
 
             //INFO: We can cheat and use the None template applicator to verify the filters
-            compatible = TemplatesAreCompatible([CreatureConstants.Templates.None], baseCreatures, asCharacter, filters);
+            compatible = TemplatesAreCompatible([CreatureConstants.Templates.None], baseCreatures, asCharacter, abilityRandomizer, filters);
             if (compatible)
                 return true;
 
             var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All);
             foreach (var template in templates)
             {
-                compatible = TemplatesAreCompatible([template], baseCreatures, asCharacter, filters);
+                compatible = TemplatesAreCompatible([template], baseCreatures, asCharacter, abilityRandomizer, filters);
                 if (compatible)
                     return true;
             }
@@ -60,7 +52,12 @@ namespace DnDGen.CreatureGen.Verifiers
             return false;
         }
 
-        private bool TemplatesAreCompatible(List<string> templates, IEnumerable<string> creatures, bool asCharacter, Filters filters = null)
+        private bool TemplatesAreCompatible(
+            List<string> templates,
+            IEnumerable<string> creatures,
+            bool asCharacter,
+            AbilityRandomizer abilityRandomizer = null,
+            Filters filters = null)
         {
             var applicator = factory.Build<TemplateApplicator>(templates[0]);
 

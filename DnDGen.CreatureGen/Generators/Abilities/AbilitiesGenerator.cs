@@ -9,19 +9,18 @@ using System.Linq;
 
 namespace DnDGen.CreatureGen.Generators.Abilities
 {
-    internal class AbilitiesGenerator : IAbilitiesGenerator
+    internal class AbilitiesGenerator(ICollectionTypeAndAmountSelector typeAndAmountSelector, Dice dice) : IAbilitiesGenerator
     {
-        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
-        private readonly Dice dice;
-
-        public AbilitiesGenerator(ICollectionTypeAndAmountSelector typeAndAmountSelector, Dice dice)
-        {
-            this.typeAndAmountSelector = typeAndAmountSelector;
-            this.dice = dice;
-        }
-
         public Dictionary<string, Ability> GenerateFor(string creatureName, AbilityRandomizer randomizer, Demographics demographics)
         {
+            //BUG: If we are generating a creature with a template, we should make sure the rolled abilities honor the minimum requirements for the templates
+            //For examples, Ghosts must have minimum Charisma 6, or Half-Celectial/Half-Fiend must habe Intellience 4.
+            //1. Check to see if the desired template(s), if any, have minimum ability requirements
+            //2. If so, check that the ability rolls meet the minimums. Will need to account for racial adjustments (such as Choker -6 Int for a Half-Fiend Choker)
+            //3. If there is no way for the rolls to meet the minimum, throw IncompatibleRandomizerException
+            //4. If possible for rolls to meet minimums, then do BaseScore = Math.Max(roll, minimum-racial), So for Half-Fiend Choker, it's Max(9, 4-(-6)) = Max(9, 10) = 10
+            //5. Means the verifier probably needs to take in the ability randomizer for validation, so the lgoc will be centralized.the AbilitiesGenerator
+
             var abilitySelections = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, creatureName);
             var allAbilities = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, GroupConstants.All);
             var ageAbilities = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, demographics.Age.Description);
