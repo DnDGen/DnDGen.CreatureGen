@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Defenses;
@@ -20,39 +21,19 @@ using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Templates
 {
-    internal class SkeletonApplicator : TemplateApplicator
+    internal class SkeletonApplicator(
+        ICollectionSelector collectionSelector,
+        ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
+        Dice dice,
+        IAttacksGenerator attacksGenerator,
+        IFeatsGenerator featsGenerator,
+        ISavesGenerator savesGenerator,
+        ICreaturePrototypeFactory prototypeFactory,
+        IDemographicsGenerator demographicsGenerator) : TemplateApplicator
     {
-        private readonly ICollectionSelector collectionSelector;
-        private readonly Dice dice;
-        private readonly IAttacksGenerator attacksGenerator;
-        private readonly IFeatsGenerator featsGenerator;
-        private readonly ISavesGenerator savesGenerator;
-        private readonly IEnumerable<string> creatureTypes;
-        private readonly IEnumerable<string> invalidSubtypes;
-        private readonly ICreaturePrototypeFactory prototypeFactory;
-        private readonly IDemographicsGenerator demographicsGenerator;
-        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
+        public Ability MinimumAbility => null;
 
-        public SkeletonApplicator(
-            ICollectionSelector collectionSelector,
-            ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
-            Dice dice,
-            IAttacksGenerator attacksGenerator,
-            IFeatsGenerator featsGenerator,
-            ISavesGenerator savesGenerator,
-            ICreaturePrototypeFactory prototypeFactory,
-            IDemographicsGenerator demographicsGenerator)
-        {
-            this.collectionSelector = collectionSelector;
-            this.dice = dice;
-            this.attacksGenerator = attacksGenerator;
-            this.featsGenerator = featsGenerator;
-            this.savesGenerator = savesGenerator;
-            this.prototypeFactory = prototypeFactory;
-            this.demographicsGenerator = demographicsGenerator;
-            this.creatureDataSelector = creatureDataSelector;
-
-            creatureTypes =
+        private readonly IEnumerable<string> creatureTypes =
             [
                 CreatureConstants.Types.Aberration,
                 CreatureConstants.Types.Animal,
@@ -65,8 +46,7 @@ namespace DnDGen.CreatureGen.Templates
                 CreatureConstants.Types.MonstrousHumanoid,
                 CreatureConstants.Types.Vermin,
             ];
-
-            invalidSubtypes =
+        private readonly IEnumerable<string> invalidSubtypes =
             [
                 CreatureConstants.Types.Subtypes.Angel,
                 CreatureConstants.Types.Subtypes.Archon,
@@ -85,7 +65,6 @@ namespace DnDGen.CreatureGen.Templates
                 CreatureConstants.Types.Subtypes.Reptilian,
                 CreatureConstants.Types.Subtypes.Shapechanger,
             ];
-        }
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
@@ -549,7 +528,7 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
+        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null)
         {
             //INFO: Since Skeletons cannot be characters (they explicitly lose their class levels), we can return an empty enumerable is we are generating as character
             if (asCharacter
@@ -657,9 +636,13 @@ namespace DnDGen.CreatureGen.Templates
             return (true, null);
         }
 
-        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
+        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(
+            IEnumerable<string> sourceCreatures,
+            bool asCharacter,
+            AbilityRandomizer abilityRandomizer = null,
+            Filters filters = null)
         {
-            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, filters);
+            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, abilityRandomizer, filters);
             if (!compatibleCreatures.Any())
                 return [];
 

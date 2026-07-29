@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
@@ -19,42 +20,23 @@ using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Templates
 {
-    internal class VampireApplicator : TemplateApplicator
+    internal class VampireApplicator(
+        Dice dice,
+        IAttacksGenerator attacksGenerator,
+        IFeatsGenerator featsGenerator,
+        ICollectionSelector collectionSelector,
+        ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
+        ICreaturePrototypeFactory prototypeFactory,
+        IDemographicsGenerator demographicsGenerator) : TemplateApplicator
     {
-        private readonly Dice dice;
-        private readonly IAttacksGenerator attacksGenerator;
-        private readonly IFeatsGenerator featsGenerator;
-        private readonly ICollectionSelector collectionSelector;
-        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
-        private readonly IEnumerable<string> creatureTypes;
-        private readonly ICreaturePrototypeFactory prototypeFactory;
-        private readonly IDemographicsGenerator demographicsGenerator;
+        public Ability MinimumAbility => null;
 
-        private const int MinimumVampireHitDice = 5;
-
-        public VampireApplicator(
-            Dice dice,
-            IAttacksGenerator attacksGenerator,
-            IFeatsGenerator featsGenerator,
-            ICollectionSelector collectionSelector,
-            ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
-            ICreaturePrototypeFactory prototypeFactory,
-            IDemographicsGenerator demographicsGenerator)
-        {
-            this.dice = dice;
-            this.attacksGenerator = attacksGenerator;
-            this.featsGenerator = featsGenerator;
-            this.collectionSelector = collectionSelector;
-            this.creatureDataSelector = creatureDataSelector;
-            this.prototypeFactory = prototypeFactory;
-            this.demographicsGenerator = demographicsGenerator;
-
-            creatureTypes =
+        private readonly IEnumerable<string> creatureTypes =
             [
                 CreatureConstants.Types.Humanoid,
                 CreatureConstants.Types.MonstrousHumanoid,
             ];
-        }
+        private const int MinimumVampireHitDice = 5;
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
@@ -432,7 +414,7 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
+        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null)
         {
             if (!string.IsNullOrEmpty(filters?.Alignment))
             {
@@ -533,9 +515,13 @@ namespace DnDGen.CreatureGen.Templates
             return (true, null);
         }
 
-        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
+        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(
+            IEnumerable<string> sourceCreatures,
+            bool asCharacter,
+            AbilityRandomizer abilityRandomizer = null,
+            Filters filters = null)
         {
-            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, filters);
+            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, abilityRandomizer, filters);
             if (!compatibleCreatures.Any())
                 return [];
 

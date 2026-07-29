@@ -30,6 +30,8 @@ namespace DnDGen.CreatureGen.Verifiers
             if (!compatible)
                 return false;
 
+            abilityRandomizer ??= new AbilityRandomizer();
+
             if (filters?.CleanTemplates?.Count > 0)
             {
                 compatible = TemplatesAreCompatible(filters.CleanTemplates, baseCreatures, asCharacter, abilityRandomizer, filters);
@@ -56,18 +58,18 @@ namespace DnDGen.CreatureGen.Verifiers
             List<string> templates,
             IEnumerable<string> creatures,
             bool asCharacter,
-            AbilityRandomizer abilityRandomizer = null,
-            Filters filters = null)
+            AbilityRandomizer abilityRandomizer,
+            Filters filters)
         {
             var applicator = factory.Build<TemplateApplicator>(templates[0]);
 
             if (templates.Count == 1)
             {
-                var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, asCharacter, filters);
+                var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, asCharacter, abilityRandomizer, filters);
                 return compatibleCreatures.Any();
             }
 
-            var prototypes = applicator.GetCompatiblePrototypes(creatures, asCharacter);
+            var prototypes = applicator.GetCompatiblePrototypes(creatures, asCharacter, abilityRandomizer);
 
             for (var i = 1; i < templates.Count; i++)
             {

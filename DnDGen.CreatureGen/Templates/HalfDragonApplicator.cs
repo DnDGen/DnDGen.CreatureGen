@@ -2,6 +2,7 @@
 using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
+using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Alignments;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
@@ -21,49 +22,22 @@ using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Templates
 {
-    internal class HalfDragonApplicator : TemplateApplicator
+    internal class HalfDragonApplicator(
+        ICollectionSelector collectionSelector,
+        ISpeedsGenerator speedsGenerator,
+        IAttacksGenerator attacksGenerator,
+        IFeatsGenerator featsGenerator,
+        ISkillsGenerator skillsGenerator,
+        IAlignmentGenerator alignmentGenerator,
+        Dice dice,
+        IMagicGenerator magicGenerator,
+        ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
+        ICreaturePrototypeFactory prototypeFactory,
+        IDemographicsGenerator demographicsGenerator) : TemplateApplicator
     {
         public string DragonSpecies { get; set; }
 
-        private readonly ICollectionSelector collectionSelector;
-        private readonly IEnumerable<string> creatureTypes;
-        private readonly ISpeedsGenerator speedsGenerator;
-        private readonly IAttacksGenerator attacksGenerator;
-        private readonly IFeatsGenerator featsGenerator;
-        private readonly ISkillsGenerator skillsGenerator;
-        private readonly Dice dice;
-        private readonly IAlignmentGenerator alignmentGenerator;
-        private readonly IMagicGenerator magicGenerator;
-        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
-        private readonly ICreaturePrototypeFactory prototypeFactory;
-        private readonly IDemographicsGenerator demographicsGenerator;
-
-        public HalfDragonApplicator(
-            ICollectionSelector collectionSelector,
-            ISpeedsGenerator speedsGenerator,
-            IAttacksGenerator attacksGenerator,
-            IFeatsGenerator featsGenerator,
-            ISkillsGenerator skillsGenerator,
-            IAlignmentGenerator alignmentGenerator,
-            Dice dice,
-            IMagicGenerator magicGenerator,
-            ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
-            ICreaturePrototypeFactory prototypeFactory,
-            IDemographicsGenerator demographicsGenerator)
-        {
-            this.collectionSelector = collectionSelector;
-            this.speedsGenerator = speedsGenerator;
-            this.attacksGenerator = attacksGenerator;
-            this.featsGenerator = featsGenerator;
-            this.skillsGenerator = skillsGenerator;
-            this.alignmentGenerator = alignmentGenerator;
-            this.dice = dice;
-            this.magicGenerator = magicGenerator;
-            this.creatureDataSelector = creatureDataSelector;
-            this.prototypeFactory = prototypeFactory;
-            this.demographicsGenerator = demographicsGenerator;
-
-            creatureTypes =
+        private readonly IEnumerable<string> creatureTypes =
             [
                 CreatureConstants.Types.Aberration,
                 CreatureConstants.Types.Animal,
@@ -76,7 +50,8 @@ namespace DnDGen.CreatureGen.Templates
                 CreatureConstants.Types.Plant,
                 CreatureConstants.Types.Vermin,
             ];
-        }
+
+        public Ability MinimumAbility => null;
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
@@ -546,7 +521,7 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
+        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null)
         {
             var dragonAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, DragonSpecies);
 
@@ -633,9 +608,13 @@ namespace DnDGen.CreatureGen.Templates
             return (true, null);
         }
 
-        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
+        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(
+            IEnumerable<string> sourceCreatures,
+            bool asCharacter,
+            AbilityRandomizer abilityRandomizer = null,
+            Filters filters = null)
         {
-            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, filters);
+            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, abilityRandomizer, filters);
             if (!compatibleCreatures.Any())
                 return [];
 

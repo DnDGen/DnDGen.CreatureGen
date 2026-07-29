@@ -175,7 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DnDGen.Infrastructure" Version="7.0.6" />
-    <PackageReference Include="DnDGen.RollGen" Version="16.0.6" />
+    <PackageReference Include="DnDGen.RollGen" Version="16.0.7" />
     <PackageReference Include="DnDGen.TreasureGen" Version="12.0.6" />
   </ItemGroup>
 </Project>

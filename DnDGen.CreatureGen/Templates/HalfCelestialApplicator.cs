@@ -2,6 +2,7 @@
 using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
+using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
@@ -12,6 +13,7 @@ using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.RollGen;
 using DnDGen.TreasureGen.Items;
 using System;
 using System.Collections.Generic;
@@ -20,41 +22,20 @@ using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Templates
 {
-    internal class HalfCelestialApplicator : TemplateApplicator
+    internal class HalfCelestialApplicator(
+        ICollectionSelector collectionSelector,
+        ISpeedsGenerator speedsGenerator,
+        IAttacksGenerator attacksGenerator,
+        IFeatsGenerator featsGenerator,
+        ISkillsGenerator skillsGenerator,
+        IMagicGenerator magicGenerator,
+        ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
+        ICreaturePrototypeFactory prototypeFactory,
+        IDemographicsGenerator demographicsGenerator,
+        ICollectionTypeAndAmountSelector typeAndAmountSelector,
+        Dice dice) : TemplateApplicator
     {
-        private readonly ICollectionSelector collectionSelector;
-        private readonly IEnumerable<string> creatureTypes;
-        private readonly ISpeedsGenerator speedsGenerator;
-        private readonly IAttacksGenerator attacksGenerator;
-        private readonly IFeatsGenerator featsGenerator;
-        private readonly ISkillsGenerator skillsGenerator;
-        private readonly IMagicGenerator magicGenerator;
-        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
-        private readonly ICreaturePrototypeFactory prototypeFactory;
-        private readonly IDemographicsGenerator demographicsGenerator;
-
-        public HalfCelestialApplicator(
-            ICollectionSelector collectionSelector,
-            ISpeedsGenerator speedsGenerator,
-            IAttacksGenerator attacksGenerator,
-            IFeatsGenerator featsGenerator,
-            ISkillsGenerator skillsGenerator,
-            IMagicGenerator magicGenerator,
-            ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
-            ICreaturePrototypeFactory prototypeFactory,
-            IDemographicsGenerator demographicsGenerator)
-        {
-            this.collectionSelector = collectionSelector;
-            this.speedsGenerator = speedsGenerator;
-            this.attacksGenerator = attacksGenerator;
-            this.featsGenerator = featsGenerator;
-            this.skillsGenerator = skillsGenerator;
-            this.magicGenerator = magicGenerator;
-            this.creatureDataSelector = creatureDataSelector;
-            this.prototypeFactory = prototypeFactory;
-            this.demographicsGenerator = demographicsGenerator;
-
-            creatureTypes =
+        private readonly IEnumerable<string> creatureTypes =
             [
                 CreatureConstants.Types.Aberration,
                 CreatureConstants.Types.Animal,
@@ -69,7 +50,8 @@ namespace DnDGen.CreatureGen.Templates
                 CreatureConstants.Types.Plant,
                 CreatureConstants.Types.Vermin,
             ];
-        }
+
+        public Ability MinimumAbility => new(AbilityConstants.Intelligence) { BaseScore = 4 };
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
@@ -502,7 +484,7 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
+        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null)
         {
             if (!string.IsNullOrEmpty(filters?.Alignment))
             {
@@ -520,6 +502,13 @@ namespace DnDGen.CreatureGen.Templates
             var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
             if (!filteredBaseCreatures.Any())
                 return [];
+
+            abilityRandomizer ??= new AbilityRandomizer();
+            var allAbilityAdjustments = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments);
+            var maxRoll = dice.Roll(abilityRandomizer.Roll).AsPotentialMaximum();
+
+            filteredBaseCreatures = filteredBaseCreatures
+                .Where(c => allAbilityAdjustments[c].Any(a => a.Type == MinimumAbility.Name && maxRoll + a.Amount >= MinimumAbility.FullScore));
 
             if (string.IsNullOrEmpty(filters?.ChallengeRating)
                 && string.IsNullOrEmpty(filters?.Type)
@@ -548,9 +537,9 @@ namespace DnDGen.CreatureGen.Templates
             double creatureHitDiceQuantity,
             Filters filters)
         {
-            var compatibility = IsCompatible(types, alignments, intelligence);
-            if (!compatibility.Compatible)
-                return (false, compatibility.Reason);
+            var (Compatible, Reason) = IsCompatible(types, alignments, intelligence);
+            if (!Compatible)
+                return (false, Reason);
 
             return AreFiltersCompatible(types, alignments, creatureChallengeRating, creatureHitDiceQuantity, filters);
         }
@@ -611,9 +600,13 @@ namespace DnDGen.CreatureGen.Templates
             return (true, null);
         }
 
-        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
+        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(
+            IEnumerable<string> sourceCreatures,
+            bool asCharacter,
+            AbilityRandomizer abilityRandomizer = null,
+            Filters filters = null)
         {
-            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, filters);
+            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, abilityRandomizer, filters);
             if (!compatibleCreatures.Any())
                 return [];
 

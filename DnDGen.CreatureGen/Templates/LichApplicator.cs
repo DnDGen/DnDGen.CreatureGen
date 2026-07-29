@@ -2,6 +2,7 @@
 using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
+using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
@@ -19,35 +20,18 @@ using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Templates
 {
-    internal class LichApplicator : TemplateApplicator
+    internal class LichApplicator(
+        ICollectionSelector collectionSelector,
+        ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
+        Dice dice,
+        IAttacksGenerator attacksGenerator,
+        IFeatsGenerator featsGenerator,
+        ICreaturePrototypeFactory prototypeFactory,
+        IDemographicsGenerator demographicsGenerator) : TemplateApplicator
     {
-        private readonly ICollectionSelector collectionSelector;
-        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
-        private readonly Dice dice;
-        private readonly IAttacksGenerator attacksGenerator;
-        private readonly IFeatsGenerator featsGenerator;
-        private readonly ICreaturePrototypeFactory prototypeFactory;
-        private readonly IDemographicsGenerator demographicsGenerator;
-
         private const int PhylacterySpellCasterLevel = 11;
 
-        public LichApplicator(
-            ICollectionSelector collectionSelector,
-            ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
-            Dice dice,
-            IAttacksGenerator attacksGenerator,
-            IFeatsGenerator featsGenerator,
-            ICreaturePrototypeFactory prototypeFactory,
-            IDemographicsGenerator demographicsGenerator)
-        {
-            this.collectionSelector = collectionSelector;
-            this.creatureDataSelector = creatureDataSelector;
-            this.dice = dice;
-            this.attacksGenerator = attacksGenerator;
-            this.featsGenerator = featsGenerator;
-            this.prototypeFactory = prototypeFactory;
-            this.demographicsGenerator = demographicsGenerator;
-        }
+        public Ability MinimumAbility => null;
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
@@ -391,7 +375,7 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
+        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null)
         {
             if (!string.IsNullOrEmpty(filters?.Alignment))
             {
@@ -498,9 +482,13 @@ namespace DnDGen.CreatureGen.Templates
             return (false, "Creature is unable to cast spells");
         }
 
-        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
+        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(
+            IEnumerable<string> sourceCreatures,
+            bool asCharacter,
+            AbilityRandomizer abilityRandomizer = null,
+            Filters filters = null)
         {
-            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, filters);
+            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, abilityRandomizer, filters);
             if (!compatibleCreatures.Any())
                 return [];
 

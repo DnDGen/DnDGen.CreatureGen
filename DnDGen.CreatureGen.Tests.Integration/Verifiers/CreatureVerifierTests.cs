@@ -1,5 +1,7 @@
-﻿using DnDGen.CreatureGen.Alignments;
+﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.CreatureGen.Verifiers;
@@ -764,7 +766,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
             var filters = new Filters();
             filters.Templates.AddRange(templateNames);
 
-            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creatureName, filters);
+            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creatureName, null, filters);
             Assert.That(verified, Is.EqualTo(isValid));
         }
 
@@ -774,7 +776,29 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
             var filters = new Filters();
             filters.Templates.AddRange(templates);
 
-            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, filters);
+            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, null, filters);
+            Assert.That(verified, Is.True);
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
+        public void ProblematicCreaturesAreValid_WithProblematicAbilityRandomizer_Poor(bool asCharacter, string creature, params string[] templates)
+        {
+            var filters = new Filters();
+            filters.Templates.AddRange(templates);
+
+            var randomizer = new AbilityRandomizer() { Roll = AbilityConstants.RandomizerRolls.Poor };
+            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, randomizer, filters);
+            Assert.That(verified, Is.True);
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
+        public void ProblematicCreaturesAreValid_WithProblematicAbilityRandomizer_Wild(bool asCharacter, string creature, params string[] templates)
+        {
+            var filters = new Filters();
+            filters.Templates.AddRange(templates);
+
+            var randomizer = new AbilityRandomizer() { Roll = AbilityConstants.RandomizerRolls.Wild };
+            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, randomizer, filters);
             Assert.That(verified, Is.True);
         }
 
@@ -1041,7 +1065,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
             filters.Alignment = alignment;
 
             stopwatch.Restart();
-            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, filters);
+            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, null, filters);
             stopwatch.Stop();
 
             Assert.That(verified, Is.EqualTo(isValid), filters.GetDescription(asCharacter));
@@ -1199,7 +1223,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
             filters.Templates.AddRange(templates);
 
             stopwatch.Restart();
-            var verified = creatureVerifier.VerifyCompatibility(asCharacter, null, filters);
+            var verified = creatureVerifier.VerifyCompatibility(asCharacter, null, null, filters);
             stopwatch.Stop();
 
             Assert.That(verified, Is.EqualTo(isValid));
@@ -1215,7 +1239,35 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
             filters.ChallengeRating = challengeRating;
             filters.Alignment = alignment;
 
-            var verified = creatureVerifier.VerifyCompatibility(asCharacter, null, filters);
+            var verified = creatureVerifier.VerifyCompatibility(asCharacter, null, null, filters);
+            Assert.That(verified, Is.True);
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
+        public void ProblematicFiltersAreValid_WIthProblematicAbilityRandomizer_Poor(string type, bool asCharacter, string template, string challengeRating, string alignment)
+        {
+            var filters = new Filters();
+            filters.Templates.Add(template);
+            filters.Type = type;
+            filters.ChallengeRating = challengeRating;
+            filters.Alignment = alignment;
+
+            var randomizer = new AbilityRandomizer() { Roll = AbilityConstants.RandomizerRolls.Poor };
+            var verified = creatureVerifier.VerifyCompatibility(asCharacter, null, randomizer, filters);
+            Assert.That(verified, Is.True);
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
+        public void ProblematicFiltersAreValid_WIthProblematicAbilityRandomizer_Wild(string type, bool asCharacter, string template, string challengeRating, string alignment)
+        {
+            var filters = new Filters();
+            filters.Templates.Add(template);
+            filters.Type = type;
+            filters.ChallengeRating = challengeRating;
+            filters.Alignment = alignment;
+
+            var randomizer = new AbilityRandomizer() { Roll = AbilityConstants.RandomizerRolls.Wild };
+            var verified = creatureVerifier.VerifyCompatibility(asCharacter, null, randomizer, filters);
             Assert.That(verified, Is.True);
         }
     }

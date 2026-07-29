@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Defenses;
@@ -22,59 +23,31 @@ using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Templates
 {
-    internal class LycanthropeApplicator : TemplateApplicator
+    internal class LycanthropeApplicator(
+        ICollectionSelector collectionSelector,
+        ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
+        IHitPointsGenerator hitPointsGenerator,
+        Dice dice,
+        ICollectionTypeAndAmountSelector typeAndAmountSelector,
+        IFeatsGenerator featsGenerator,
+        IAttacksGenerator attacksGenerator,
+        ISavesGenerator savesGenerator,
+        ISkillsGenerator skillsGenerator,
+        ISpeedsGenerator speedsGenerator,
+        ICreaturePrototypeFactory prototypeFactory,
+        IDemographicsGenerator demographicsGenerator) : TemplateApplicator
     {
         public string LycanthropeSpecies { get; set; }
         public string AnimalSpecies { get; set; }
         public bool IsNatural { get; set; }
 
-        private readonly ICollectionSelector collectionSelector;
-        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
-        private readonly IHitPointsGenerator hitPointsGenerator;
-        private readonly Dice dice;
-        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
-        private readonly IFeatsGenerator featsGenerator;
-        private readonly IAttacksGenerator attacksGenerator;
-        private readonly ISavesGenerator savesGenerator;
-        private readonly ISkillsGenerator skillsGenerator;
-        private readonly ISpeedsGenerator speedsGenerator;
-        private readonly IEnumerable<string> creatureTypes;
-        private readonly ICreaturePrototypeFactory prototypeFactory;
-        private readonly IDemographicsGenerator demographicsGenerator;
+        public Ability MinimumAbility => null;
 
-        public LycanthropeApplicator(
-            ICollectionSelector collectionSelector,
-            ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
-            IHitPointsGenerator hitPointsGenerator,
-            Dice dice,
-            ICollectionTypeAndAmountSelector typeAndAmountSelector,
-            IFeatsGenerator featsGenerator,
-            IAttacksGenerator attacksGenerator,
-            ISavesGenerator savesGenerator,
-            ISkillsGenerator skillsGenerator,
-            ISpeedsGenerator speedsGenerator,
-            ICreaturePrototypeFactory prototypeFactory,
-            IDemographicsGenerator demographicsGenerator)
-        {
-            this.collectionSelector = collectionSelector;
-            this.creatureDataSelector = creatureDataSelector;
-            this.hitPointsGenerator = hitPointsGenerator;
-            this.dice = dice;
-            this.typeAndAmountSelector = typeAndAmountSelector;
-            this.featsGenerator = featsGenerator;
-            this.attacksGenerator = attacksGenerator;
-            this.savesGenerator = savesGenerator;
-            this.skillsGenerator = skillsGenerator;
-            this.speedsGenerator = speedsGenerator;
-            this.prototypeFactory = prototypeFactory;
-            this.demographicsGenerator = demographicsGenerator;
-
-            creatureTypes =
+        private readonly IEnumerable<string> creatureTypes =
             [
                 CreatureConstants.Types.Giant,
                 CreatureConstants.Types.Humanoid,
             ];
-        }
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
@@ -752,7 +725,7 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
+        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null)
         {
             var templateCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, LycanthropeSpecies + asCharacter);
             var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
@@ -839,9 +812,13 @@ namespace DnDGen.CreatureGen.Templates
             return (true, null);
         }
 
-        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
+        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(
+            IEnumerable<string> sourceCreatures,
+            bool asCharacter,
+            AbilityRandomizer abilityRandomizer = null,
+            Filters filters = null)
         {
-            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, filters);
+            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, abilityRandomizer, filters);
             if (!compatibleCreatures.Any())
                 return [];
 

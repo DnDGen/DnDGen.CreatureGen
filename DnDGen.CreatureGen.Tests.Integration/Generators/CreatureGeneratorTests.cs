@@ -782,7 +782,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             var creature = creatureGenerator.Generate(asCharacter, creatureName, randomizer, templates);
             stopwatch.Stop();
 
-            var timeLimit = creatureAsserter.GetGenerationTimeLimitInSeconds(creature);
+            var timeLimit = CreatureAsserter.GetGenerationTimeLimitInSeconds(creature);
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(timeLimit), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(creatureName), creature.Summary);
             Assert.That(creature.Templates, Is.EqualTo(templates.Where(t => t != CreatureConstants.Templates.None)), creature.Summary);
@@ -864,7 +864,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             message.AppendLine($"CR: {challengeRating ?? "Null"}");
             message.AppendLine($"Alignment: {alignment ?? "Null"}");
 
-            var timeLimit = creatureAsserter.GetGenerationTimeLimitInSeconds(creature);
+            var timeLimit = CreatureAsserter.GetGenerationTimeLimitInSeconds(creature);
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(timeLimit), message.ToString());
 
             Assert.That(creature.Templates, Is.EqualTo(filters.CleanTemplates), message.ToString());

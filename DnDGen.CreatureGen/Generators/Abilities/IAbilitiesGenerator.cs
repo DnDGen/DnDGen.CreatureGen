@@ -7,7 +7,7 @@ namespace DnDGen.CreatureGen.Generators.Abilities
 {
     internal interface IAbilitiesGenerator
     {
-        Dictionary<string, Ability> GenerateFor(string creatureName, AbilityRandomizer randomizer, Demographics demographics);
+        Dictionary<string, Ability> GenerateFor(string creatureName, AbilityRandomizer randomizer, Demographics demographics, string[] templates);
         Dictionary<string, Ability> SetMaxBonuses(Dictionary<string, Ability> abilities, Equipment equipment);
     }
 }

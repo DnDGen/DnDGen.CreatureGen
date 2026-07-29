@@ -25,72 +25,31 @@ using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Generators.Creatures
 {
-    internal class CreatureGenerator : ICreatureGenerator
+    internal class CreatureGenerator(IAlignmentGenerator alignmentGenerator,
+        ICreatureVerifier creatureVerifier,
+        ICollectionSelector collectionsSelector,
+        IAbilitiesGenerator abilitiesGenerator,
+        ISkillsGenerator skillsGenerator,
+        IFeatsGenerator featsGenerator,
+        ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
+        IHitPointsGenerator hitPointsGenerator,
+        IArmorClassGenerator armorClassGenerator,
+        ISavesGenerator savesGenerator,
+        JustInTimeFactory justInTimeFactory,
+        IAdvancementSelector advancementSelector,
+        IAttacksGenerator attacksGenerator,
+        ISpeedsGenerator speedsGenerator,
+        IEquipmentGenerator equipmentGenerator,
+        IMagicGenerator magicGenerator,
+        ILanguageGenerator languageGenerator,
+        IDemographicsGenerator demographicsGenerator) : ICreatureGenerator
     {
-        private readonly IAlignmentGenerator alignmentGenerator;
-        private readonly ICreatureVerifier creatureVerifier;
-        private readonly ICollectionSelector collectionsSelector;
-        private readonly IAbilitiesGenerator abilitiesGenerator;
-        private readonly ISkillsGenerator skillsGenerator;
-        private readonly IFeatsGenerator featsGenerator;
-        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
-        private readonly IHitPointsGenerator hitPointsGenerator;
-        private readonly IArmorClassGenerator armorClassGenerator;
-        private readonly ISavesGenerator savesGenerator;
-        private readonly JustInTimeFactory justInTimeFactory;
-        private readonly IAdvancementSelector advancementSelector;
-        private readonly IAttacksGenerator attacksGenerator;
-        private readonly ISpeedsGenerator speedsGenerator;
-        private readonly IEquipmentGenerator equipmentGenerator;
-        private readonly IMagicGenerator magicGenerator;
-        private readonly ILanguageGenerator languageGenerator;
-        private readonly IDemographicsGenerator demographicsGenerator;
-
-        public CreatureGenerator(IAlignmentGenerator alignmentGenerator,
-            ICreatureVerifier creatureVerifier,
-            ICollectionSelector collectionsSelector,
-            IAbilitiesGenerator abilitiesGenerator,
-            ISkillsGenerator skillsGenerator,
-            IFeatsGenerator featsGenerator,
-            ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
-            IHitPointsGenerator hitPointsGenerator,
-            IArmorClassGenerator armorClassGenerator,
-            ISavesGenerator savesGenerator,
-            JustInTimeFactory justInTimeFactory,
-            IAdvancementSelector advancementSelector,
-            IAttacksGenerator attacksGenerator,
-            ISpeedsGenerator speedsGenerator,
-            IEquipmentGenerator equipmentGenerator,
-            IMagicGenerator magicGenerator,
-            ILanguageGenerator languageGenerator,
-            IDemographicsGenerator demographicsGenerator)
-        {
-            this.alignmentGenerator = alignmentGenerator;
-            this.abilitiesGenerator = abilitiesGenerator;
-            this.skillsGenerator = skillsGenerator;
-            this.featsGenerator = featsGenerator;
-            this.creatureVerifier = creatureVerifier;
-            this.collectionsSelector = collectionsSelector;
-            this.creatureDataSelector = creatureDataSelector;
-            this.hitPointsGenerator = hitPointsGenerator;
-            this.armorClassGenerator = armorClassGenerator;
-            this.savesGenerator = savesGenerator;
-            this.justInTimeFactory = justInTimeFactory;
-            this.advancementSelector = advancementSelector;
-            this.attacksGenerator = attacksGenerator;
-            this.speedsGenerator = speedsGenerator;
-            this.equipmentGenerator = equipmentGenerator;
-            this.magicGenerator = magicGenerator;
-            this.languageGenerator = languageGenerator;
-            this.demographicsGenerator = demographicsGenerator;
-        }
-
         public Creature Generate(bool asCharacter, string creatureName, AbilityRandomizer abilityRandomizer = null, params string[] templates)
             => Generate(asCharacter, creatureName, abilityRandomizer, new Filters { Templates = [.. templates] });
 
         public (string Creature, string[] Templates) GenerateRandomName(bool asCharacter, Filters filters = null)
         {
-            var compatible = creatureVerifier.VerifyCompatibility(asCharacter, null, filters);
+            var compatible = creatureVerifier.VerifyCompatibility(asCharacter, null, null, filters);
             if (!compatible)
             {
                 throw new InvalidCreatureException(null, asCharacter, null, filters);
@@ -101,11 +60,11 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             if (filters?.CleanTemplates?.Any() != true)
             {
-                var randomValidCreature = GetRandomValidCreature(validCreatures, asCharacter, filters);
-                return (randomValidCreature.CreatureName, new[] { randomValidCreature.Template });
+                var (CreatureName, Template) = GetRandomValidCreature(validCreatures, asCharacter, new AbilityRandomizer(), filters);
+                return (CreatureName, new[] { Template });
             }
 
-            validCreatures = GetCreaturesOfTemplates(validCreatures, asCharacter, filters);
+            validCreatures = GetCreaturesOfTemplates(validCreatures, asCharacter, new AbilityRandomizer(), filters);
             if (!validCreatures.Any())
             {
                 throw new InvalidCreatureException($"No valid creatures ({group}) of template {string.Join(", ", filters.CleanTemplates)}", asCharacter, null, filters);
@@ -115,7 +74,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return (randomCreature, filters.CleanTemplates?.ToArray());
         }
 
-        private IEnumerable<string> GetCreaturesOfTemplates(IEnumerable<string> creatureGroup, bool asCharacter, Filters filters)
+        private IEnumerable<string> GetCreaturesOfTemplates(IEnumerable<string> creatureGroup, bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters)
         {
             if (filters?.CleanTemplates.Any() != true)
                 return [];
@@ -127,7 +86,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             //INFO: We only want to apply filters to the last template in the series
             if (filters.CleanTemplates.Count == 1)
             {
-                prototypes = applicator.GetCompatiblePrototypes(creatureGroup, asCharacter, filters);
+                prototypes = applicator.GetCompatiblePrototypes(creatureGroup, asCharacter, abilityRandomizer, filters);
             }
             else
             {
@@ -153,10 +112,10 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return prototypes.Select(p => p.Name);
         }
 
-        private IEnumerable<string> GetCreaturesOfTemplate(string template, IEnumerable<string> creatureGroup, bool asCharacter, Filters filters)
+        private IEnumerable<string> GetCreaturesOfTemplate(string template, IEnumerable<string> creatureGroup, bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters)
         {
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
-            var creatures = templateApplicator.GetCompatibleCreatures(creatureGroup, asCharacter, filters);
+            var creatures = templateApplicator.GetCompatibleCreatures(creatureGroup, asCharacter, abilityRandomizer, filters);
 
             return creatures;
         }
@@ -176,11 +135,11 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return creature;
         }
 
-        private IEnumerable<string> GetValidCreatures(IEnumerable<string> creatureGroup, bool asCharacter, Filters filters)
+        private IEnumerable<string> GetValidCreatures(IEnumerable<string> creatureGroup, bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters)
         {
             var validCreatures = new List<string>();
 
-            var compatibleCreatures = GetCreaturesOfTemplate(CreatureConstants.Templates.None, creatureGroup, asCharacter, filters);
+            var compatibleCreatures = GetCreaturesOfTemplate(CreatureConstants.Templates.None, creatureGroup, asCharacter, abilityRandomizer, filters);
             validCreatures.AddRange(compatibleCreatures);
 
             var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All);
@@ -189,7 +148,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             //INFO: Using this instead of the creature verifier, so that we can ensure compatiblity with the specified creature group
             foreach (var template in templates)
             {
-                compatibleCreatures = GetCreaturesOfTemplate(template, creatureGroup, asCharacter, filters);
+                compatibleCreatures = GetCreaturesOfTemplate(template, creatureGroup, asCharacter, abilityRandomizer, filters);
                 if (compatibleCreatures.Any())
                     validCreatures.Add(template);
             }
@@ -197,9 +156,13 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return validCreatures;
         }
 
-        private (string CreatureName, string Template) GetRandomValidCreature(IEnumerable<string> creatureGroup, bool asCharacter, Filters filters)
+        private (string CreatureName, string Template) GetRandomValidCreature(
+            IEnumerable<string> creatureGroup,
+            bool asCharacter,
+            AbilityRandomizer abilityRandomizer,
+            Filters filters)
         {
-            var validCreatures = GetValidCreatures(creatureGroup, asCharacter, filters);
+            var validCreatures = GetValidCreatures(creatureGroup, asCharacter, abilityRandomizer, filters);
             if (!validCreatures.Any())
             {
                 throw new ArgumentException($"No valid creatures in creature group (as character: {asCharacter}; type: {filters?.Type}; CR: {filters?.ChallengeRating})");
@@ -213,7 +176,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var template = randomCreature;
 
-            var creaturesOfTemplate = GetCreaturesOfTemplate(template, creatureGroup, asCharacter, filters);
+            var creaturesOfTemplate = GetCreaturesOfTemplate(template, creatureGroup, asCharacter, abilityRandomizer, filters);
             if (!creaturesOfTemplate.Any())
             {
                 throw new ArgumentException($"No valid creatures in creature group of template {template} (as character: {asCharacter}; type: {filters?.Type}; CR: {filters?.ChallengeRating})");
@@ -230,7 +193,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             AbilityRandomizer abilityRandomizer,
             Filters filters)
         {
-            var compatible = creatureVerifier.VerifyCompatibility(asCharacter, creatureName, filters);
+            var compatible = creatureVerifier.VerifyCompatibility(asCharacter, creatureName, abilityRandomizer, filters);
             if (!compatible)
                 throw new InvalidCreatureException(null, asCharacter, creatureName, filters);
 
@@ -276,7 +239,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             creature.Demographics = demographicsGenerator.Generate(creatureName);
 
             abilityRandomizer ??= new AbilityRandomizer();
-            creature.Abilities = abilitiesGenerator.GenerateFor(creatureName, abilityRandomizer, creature.Demographics);
+            creature.Abilities = abilitiesGenerator.GenerateFor(creatureName, abilityRandomizer, creature.Demographics, [.. templates]);
 
             var hitDiceQuantity = creatureData.GetEffectiveHitDiceQuantity(asCharacter);
 
@@ -401,7 +364,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return creature;
         }
 
-        private int ComputeInitiativeBonus(IEnumerable<Feat> feats)
+        private static int ComputeInitiativeBonus(IEnumerable<Feat> feats)
         {
             var initiativeBonus = 0;
 
@@ -412,7 +375,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return initiativeBonus;
         }
 
-        private CreatureType GetCreatureType(CreatureDataSelection data) => new(data.Types);
+        private static CreatureType GetCreatureType(CreatureDataSelection data) => new(data.Types);
 
         public async Task<Creature> GenerateAsync(bool asCharacter, string creatureName, AbilityRandomizer abilityRandomizer, params string[] templates)
             => await GenerateAsync(asCharacter, creatureName, abilityRandomizer, new Filters { Templates = [.. templates] });
@@ -433,7 +396,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         private async Task<Creature> GenerateAsync(bool asCharacter, string creatureName, AbilityRandomizer abilityRandomizer, Filters filters)
         {
-            var compatible = creatureVerifier.VerifyCompatibility(asCharacter, creatureName, filters);
+            var compatible = creatureVerifier.VerifyCompatibility(asCharacter, creatureName, abilityRandomizer, filters);
             if (!compatible)
                 throw new InvalidCreatureException(null, asCharacter, creatureName, filters);
 

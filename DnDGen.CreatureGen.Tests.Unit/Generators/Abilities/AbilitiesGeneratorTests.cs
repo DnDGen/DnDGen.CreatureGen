@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
@@ -18,6 +19,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
     {
         private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<Dice> mockDice;
+        private Mock<JustInTimeFactory> mockJustInTimeFactory;
         private IAbilitiesGenerator abilitiesGenerator;
         private List<TypeAndAmountDataSelection> abilitySelections;
         private List<TypeAndAmountDataSelection> ageAbilitySelections;
@@ -30,7 +32,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         {
             mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
             mockDice = new Mock<Dice>();
-            abilitiesGenerator = new AbilitiesGenerator(mockTypeAndAmountSelector.Object, mockDice.Object);
+            mockJustInTimeFactory = new Mock<JustInTimeFactory>();
+            abilitiesGenerator = new AbilitiesGenerator(mockTypeAndAmountSelector.Object, mockDice.Object, mockJustInTimeFactory.Object);
             randomizer = new AbilityRandomizer();
             demographics = new Demographics();
 
@@ -70,7 +73,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [Test]
         public void GenerateFor_GetAbilitiesFromSelections()
         {
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
             Assert.That(abilities["ability"].AgeAdjustment, Is.Zero);
@@ -85,7 +88,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [Test]
         public void GenerateFor_RollBaseScoresForAbilities()
         {
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -117,7 +120,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             abilitySelections.RemoveAt(1);
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -140,7 +143,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         {
             randomizer.AbilityAdvancements["other ability"] = 1336;
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
             Assert.That(abilities["ability"].AdvancementAdjustment, Is.Zero);
@@ -158,7 +161,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             randomizer.AbilityAdvancements["ability"] = 1336;
             randomizer.AbilityAdvancements["other ability"] = 96;
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
             Assert.That(abilities["ability"].AdvancementAdjustment, Is.EqualTo(1336));
@@ -175,7 +178,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         {
             randomizer.SetRolls["other ability"] = 1336;
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -199,7 +202,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             randomizer.SetRolls["ability"] = 1336;
             randomizer.SetRolls["other ability"] = 96;
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(1336));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -222,7 +225,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         {
             randomizer.PriorityAbility = "ability";
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(1337));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -245,7 +248,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         {
             randomizer.PriorityAbility = "last ability";
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -273,7 +276,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             ageAbilitySelections[1].AmountAsDouble = -2;
             ageAbilitySelections[2].AmountAsDouble = -3;
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
             Assert.That(abilities["ability"].AdvancementAdjustment, Is.Zero);
@@ -301,7 +304,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             ageAbilitySelections[1].AmountAsDouble = -2;
             ageAbilitySelections[2].AmountAsDouble = -3;
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -326,19 +329,125 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         }
 
         [Test]
+        public void GenerateFor_NoTemplates_IsValid()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GenerateFor_1Template_IsValid()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GenerateFor_1Template_IsNotValid()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GenerateFor_2Templates_IsValid()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GenerateFor_2Templates_IsNotValid()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GenerateFor_AppliesTemplateMinimums_NoTemplates()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GenerateFor_AppliesTemplateMinimums_TemplateDoesNotHaveMinimumAbility()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_WithPositiveRacialAdjustment()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_WithNegativeRacialAdjustment()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_WithPositiveAgeAdjustment()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_WithNegativeAgeAdjustment()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_WithPositiveRacialAdjustment()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_WithNegativeRacialAdjustment()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_WithPositiveAgeAdjustment()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_WithNegativeAgeAdjustment()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
         public void ApplyMaxModifier_NoEquipment()
         {
-            var abilities = new Dictionary<string, Ability>();
-            abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
-            abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
-            abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
-            abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
-            abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
-            abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
+            var abilities = new Dictionary<string, Ability>
+            {
+                [AbilityConstants.Strength] = new Ability(AbilityConstants.Strength),
+                [AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution),
+                [AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity),
+                [AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence),
+                [AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom),
+                [AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma)
+            };
 
-            var equipment = new Equipment();
-            equipment.Armor = null;
-            equipment.Shield = null;
+            var equipment = new Equipment
+            {
+                Armor = null,
+                Shield = null
+            };
 
             var modifiedAbilities = abilitiesGenerator.SetMaxBonuses(abilities, equipment);
             Assert.That(modifiedAbilities, Is.EqualTo(abilities));

@@ -2,6 +2,9 @@
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Templates;
+using DnDGen.CreatureGen.Verifiers.Exceptions;
+using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using System.Collections.Generic;
@@ -9,21 +12,43 @@ using System.Linq;
 
 namespace DnDGen.CreatureGen.Generators.Abilities
 {
-    internal class AbilitiesGenerator(ICollectionTypeAndAmountSelector typeAndAmountSelector, Dice dice) : IAbilitiesGenerator
+    internal class AbilitiesGenerator(ICollectionTypeAndAmountSelector typeAndAmountSelector, Dice dice, JustInTimeFactory factory) : IAbilitiesGenerator
     {
-        public Dictionary<string, Ability> GenerateFor(string creatureName, AbilityRandomizer randomizer, Demographics demographics)
+        public Dictionary<string, Ability> GenerateFor(string creatureName, AbilityRandomizer randomizer, Demographics demographics, string[] templates)
         {
-            //BUG: If we are generating a creature with a template, we should make sure the rolled abilities honor the minimum requirements for the templates
-            //For examples, Ghosts must have minimum Charisma 6, or Half-Celectial/Half-Fiend must habe Intellience 4.
-            //1. Check to see if the desired template(s), if any, have minimum ability requirements
-            //2. If so, check that the ability rolls meet the minimums. Will need to account for racial adjustments (such as Choker -6 Int for a Half-Fiend Choker)
-            //3. If there is no way for the rolls to meet the minimum, throw IncompatibleRandomizerException
-            //4. If possible for rolls to meet minimums, then do BaseScore = Math.Max(roll, minimum-racial), So for Half-Fiend Choker, it's Max(9, 4-(-6)) = Max(9, 10) = 10
-            //5. Means the verifier probably needs to take in the ability randomizer for validation, so the lgoc will be centralized.the AbilitiesGenerator
+            var valid = TemplatesAreCompatible(templates, creatureName, randomizer);
+            if (!valid)
+                throw new InvalidCreatureException(
+                    $"{creatureName} does not have sufficient ability for template {templates[0]} with roll {randomizer.Roll}",
+                    false,
+                    creatureName,
+                    new() { Templates = [.. templates] });
 
+            var abilities = InitializeAbilities(creatureName);
+            ApplyRandomizer(abilities, randomizer);
+            ApplyAge(abilities, demographics);
+            ApplyTemplateMinimum(abilities, templates);
+
+            return abilities;
+        }
+
+        private bool TemplatesAreCompatible(
+            string[] templates,
+            string creature,
+            AbilityRandomizer abilityRandomizer)
+        {
+            if (templates.Length == 0)
+                return true;
+
+            var applicator = factory.Build<TemplateApplicator>(templates[0]);
+            var compatibleCreatures = applicator.GetCompatibleCreatures([creature], false, abilityRandomizer);
+            return compatibleCreatures.Any();
+        }
+
+        private Dictionary<string, Ability> InitializeAbilities(string creatureName)
+        {
             var abilitySelections = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, creatureName);
             var allAbilities = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, GroupConstants.All);
-            var ageAbilities = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, demographics.Age.Description);
             var abilities = new Dictionary<string, Ability>();
 
             foreach (var selection in allAbilities)
@@ -34,30 +59,6 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             foreach (var selection in abilitySelections)
             {
                 abilities[selection.Type].RacialAdjustment = selection.Amount;
-
-                if (randomizer.AbilityAdvancements.ContainsKey(selection.Type))
-                {
-                    abilities[selection.Type].AdvancementAdjustment = randomizer.AbilityAdvancements[selection.Type];
-                }
-
-                if (randomizer.SetRolls.ContainsKey(selection.Type))
-                {
-                    abilities[selection.Type].BaseScore = randomizer.SetRolls[selection.Type];
-                }
-                else
-                {
-                    abilities[selection.Type].BaseScore = dice.Roll(randomizer.Roll).AsSum();
-                }
-            }
-
-            if (randomizer.PriorityAbility != null && abilities.ContainsKey(randomizer.PriorityAbility))
-            {
-                var maxAbilityScore = abilities.Values.Max(a => a.BaseScore);
-                var maxAbility = abilities.Values.First(a => a.BaseScore == maxAbilityScore);
-                var originalAbilityScore = abilities[randomizer.PriorityAbility].BaseScore;
-
-                abilities[randomizer.PriorityAbility].BaseScore = maxAbilityScore;
-                maxAbility.BaseScore = originalAbilityScore;
             }
 
             var missingAbilities = allAbilities.Select(a => a.Type).Except(abilitySelections.Select(a => a.Type));
@@ -67,12 +68,66 @@ namespace DnDGen.CreatureGen.Generators.Abilities
                 abilities[abilityName].BaseScore = 0;
             }
 
-            foreach (var selection in ageAbilities)
+            return abilities;
+        }
+
+        private void ApplyRandomizer(Dictionary<string, Ability> abilities, AbilityRandomizer randomizer)
+        {
+            foreach (var abilityKvp in abilities)
             {
-                abilities[selection.Type].AgeAdjustment = selection.Amount;
+                if (randomizer.AbilityAdvancements.ContainsKey(abilityKvp.Key))
+                {
+                    abilityKvp.Value.AdvancementAdjustment = randomizer.AbilityAdvancements[abilityKvp.Key];
+                }
+
+                if (randomizer.SetRolls.ContainsKey(abilityKvp.Key))
+                {
+                    abilityKvp.Value.BaseScore = randomizer.SetRolls[abilityKvp.Key];
+                }
+                else
+                {
+                    abilityKvp.Value.BaseScore = dice.Roll(randomizer.Roll).AsSum();
+                }
             }
 
-            return abilities;
+            if (randomizer.PriorityAbility != null && abilities.ContainsKey(randomizer.PriorityAbility))
+            {
+                var maxAbilityScore = abilities.Values.Max(a => a.BaseScore);
+                var sourceAbility = abilities.Values.First(a => a.BaseScore == maxAbilityScore);
+                var sourceAbilityScore = abilities[randomizer.PriorityAbility].BaseScore;
+
+                abilities[randomizer.PriorityAbility].BaseScore = maxAbilityScore;
+                sourceAbility.BaseScore = sourceAbilityScore;
+            }
+        }
+
+        private void ApplyAge(Dictionary<string, Ability> abilities, Demographics demographics)
+        {
+            var ageAbilities = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, demographics.Age.Description);
+
+            foreach (var selection in ageAbilities)
+            {
+                if (!abilities.ContainsKey(selection.Type))
+                    continue;
+
+                abilities[selection.Type].AgeAdjustment = selection.Amount;
+            }
+        }
+
+        private void ApplyTemplateMinimum(Dictionary<string, Ability> abilities, string[] templates)
+        {
+            if (templates.Length == 0)
+                return;
+
+            var applicator = factory.Build<TemplateApplicator>(templates[0]);
+            if (applicator.MinimumAbility == null)
+                return;
+
+            if (abilities[applicator.MinimumAbility.Name].FullScore >= applicator.MinimumAbility.FullScore)
+                return;
+
+            var difference = applicator.MinimumAbility.FullScore - abilities[applicator.MinimumAbility.Name].FullScore;
+            abilities[applicator.MinimumAbility.Name].BaseScore += difference;
         }
 
         public Dictionary<string, Ability> SetMaxBonuses(Dictionary<string, Ability> abilities, Equipment equipment)

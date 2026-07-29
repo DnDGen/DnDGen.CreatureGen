@@ -20,7 +20,7 @@ using System.Text;
 namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 {
     [TestFixture]
-    internal class CreatureGeneratorGenerateTests : CreatureGeneratorTests
+    internal class CreatureGeneratorGenerateTests : CreatureGeneratorTestsBase
     {
         [TestCase(true, true)]
         [TestCase(true, false)]
@@ -42,7 +42,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var filters = new Filters();
             filters.Templates.Add("template");
 
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, "creature", filters)).Returns(false);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, "creature", null, filters)).Returns(false);
 
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");

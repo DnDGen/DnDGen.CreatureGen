@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 {
     [TestFixture]
-    internal class CreatureGeneratorGenerateAsyncTests : CreatureGeneratorTests
+    internal class CreatureGeneratorGenerateAsyncTests : CreatureGeneratorTestsBase
     {
         [TestCase(true, true)]
         [TestCase(true, false)]
@@ -55,8 +55,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateAsync_InvalidCreatureTemplateComboThrowsException(bool asCharacter)
         {
+            var abilityRandomizer = new AbilityRandomizer() { Roll = "my roll" };
             mockCreatureVerifier
-                .Setup(v => v.VerifyCompatibility(asCharacter, "creature", It.Is<Filters>(f => f != null
+                .Setup(v => v.VerifyCompatibility(asCharacter, "creature", abilityRandomizer, It.Is<Filters>(f => f != null
                     && f.Templates.Single() == "template"
                     && f.ChallengeRating == null
                     && f.Type == null
@@ -69,7 +70,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             message.AppendLine("\tCreature: creature");
             message.AppendLine("\tTemplate: template");
 
-            await Assert.ThatAsync(async () => await creatureGenerator.GenerateAsync(asCharacter, "creature", null, "template"),
+            await Assert.ThatAsync(async () => await creatureGenerator.GenerateAsync(asCharacter, "creature", abilityRandomizer, "template"),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
@@ -77,8 +78,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateAsync_InvalidCreatureTemplateComboThrowsException_MultipleTemplates(bool asCharacter)
         {
+            var abilityRandomizer = new AbilityRandomizer() { Roll = "my roll" };
             mockCreatureVerifier
-                .Setup(v => v.VerifyCompatibility(asCharacter, "creature", It.Is<Filters>(f => f != null
+                .Setup(v => v.VerifyCompatibility(asCharacter, "creature", abilityRandomizer, It.Is<Filters>(f => f != null
                     && f.Templates.Count == 2
                     && f.Templates[0] == "template"
                     && f.Templates[1] == "other template"
@@ -93,7 +95,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             message.AppendLine("\tCreature: creature");
             message.AppendLine("\tTemplate: template, other template");
 
-            await Assert.ThatAsync(async () => await creatureGenerator.GenerateAsync(asCharacter, "creature", null, "template", "other template"),
+            await Assert.ThatAsync(async () => await creatureGenerator.GenerateAsync(asCharacter, "creature", abilityRandomizer, "template", "other template"),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 

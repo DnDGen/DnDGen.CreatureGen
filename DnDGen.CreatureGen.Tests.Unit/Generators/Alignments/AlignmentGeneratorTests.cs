@@ -119,7 +119,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
                 },
             };
 
-            mockMyTemplateApplicator.Setup(a => a.GetCompatiblePrototypes(It.Is<IEnumerable<string>>(n => n.IsEquivalentTo(new[] { "creature name" })), false, null)).Returns(prototypes1);
+            mockMyTemplateApplicator
+                .Setup(a => a.GetCompatiblePrototypes(It.Is<IEnumerable<string>>(n => n.IsEquivalentTo(new[] { "creature name" })), false, null, null))
+                .Returns(prototypes1);
             mockMyOtherTemplateApplicator.Setup(a => a.GetCompatiblePrototypes(prototypes1, false, null)).Returns(prototypes2);
 
             var alignment = alignmentGenerator.Generate("creature name", ["my template", "my other template"], null);
@@ -214,7 +216,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
                 },
             };
 
-            mockMyTemplateApplicator.Setup(a => a.GetCompatiblePrototypes(It.Is<IEnumerable<string>>(n => n.IsEquivalentTo(new[] { "creature name" })), false, null)).Returns(prototypes1);
+            mockMyTemplateApplicator
+                .Setup(a => a.GetCompatiblePrototypes(It.Is<IEnumerable<string>>(n => n.IsEquivalentTo(new[] { "creature name" })), false, null, null))
+                .Returns(prototypes1);
             mockMyOtherTemplateApplicator.Setup(a => a.GetCompatiblePrototypes(prototypes1, false, null)).Returns(prototypes2);
 
             var alignment = alignmentGenerator.Generate("creature name", ["my template", "my other template"], null);
@@ -364,7 +368,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
             };
 
             mockApplicator1
-                .Setup(a => a.GetCompatiblePrototypes(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "creature name" })), false, null))
+                .Setup(a => a.GetCompatiblePrototypes(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "creature name" })), false, null, null))
                 .Returns(prototypes1);
             mockApplicator2
                 .Setup(a => a.GetCompatiblePrototypes(prototypes1, false, null))

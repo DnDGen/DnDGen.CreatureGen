@@ -85,7 +85,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.Generate(asCharacter, creatureName, randomizer, templates);
             stopwatch.Stop();
 
-            var timeLimit = creatureAsserter.GetGenerationTimeLimitInSeconds(creature);
+            var timeLimit = CreatureAsserter.GetGenerationTimeLimitInSeconds(creature);
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(timeLimit), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(creatureName), creature.Summary);
             Assert.That(creature.Templates, Is.EqualTo(templates.Where(t => t != CreatureConstants.Templates.None)), creature.Summary);
@@ -124,7 +124,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateAsync(asCharacter, creatureName, randomizer, template);
             stopwatch.Stop();
 
-            var timeLimit = creatureAsserter.GetGenerationTimeLimitInSeconds(creature);
+            var timeLimit = CreatureAsserter.GetGenerationTimeLimitInSeconds(creature);
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(timeLimit), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(creatureName), creature.Summary);
 
@@ -281,7 +281,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             message.AppendLine($"CR: {challengeRating ?? "Null"}");
             message.AppendLine($"Alignment: {alignment ?? "Null"}");
 
-            var timeLimit = creatureAsserter.GetGenerationTimeLimitInSeconds(creature);
+            var timeLimit = CreatureAsserter.GetGenerationTimeLimitInSeconds(creature);
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(timeLimit), message.ToString());
 
             if (templates.Any(t => !string.IsNullOrEmpty(t)))

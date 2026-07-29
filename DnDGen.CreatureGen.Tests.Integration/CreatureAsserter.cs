@@ -17,25 +17,17 @@ using System.Text;
 
 namespace DnDGen.CreatureGen.Tests.Integration
 {
-    public class CreatureAsserter
+    public class CreatureAsserter(ICreatureVerifier creatureVerifier)
     {
-        private readonly IEnumerable<string> skillsWithFoci;
-        private readonly ICreatureVerifier creatureVerifier;
-
-        public CreatureAsserter(ICreatureVerifier creatureVerifier)
-        {
-            this.creatureVerifier = creatureVerifier;
-
-            skillsWithFoci =
+        private readonly IEnumerable<string> skillsWithFoci =
             [
                 SkillConstants.Craft,
                 SkillConstants.Knowledge,
                 SkillConstants.Perform,
                 SkillConstants.Profession,
             ];
-        }
 
-        public double GetGenerationTimeLimitInSeconds(Creature creature)
+        public static double GetGenerationTimeLimitInSeconds(Creature creature)
         {
             var timeLimit = creature.HitPoints.HitDiceQuantity * 0.1;
 
@@ -73,7 +65,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                     Alignment = creature.Alignment.Full
                 };
 
-                var isValid = creatureVerifier.VerifyCompatibility(asCharacter, creature.Name, filters);
+                var isValid = creatureVerifier.VerifyCompatibility(asCharacter, creature.Name, null, filters);
                 Assert.That(isValid, Is.True, verifierMessage.ToString());
             }
 
@@ -739,7 +731,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                     Alignment = creature.Alignment.Full
                 };
 
-                var isValid = creatureVerifier.VerifyCompatibility(true, creature.Name, filters);
+                var isValid = creatureVerifier.VerifyCompatibility(true, creature.Name, null, filters);
                 Assert.That(isValid, Is.True, verifierMessage.ToString());
             }
 
