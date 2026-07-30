@@ -51,7 +51,7 @@ namespace DnDGen.CreatureGen.Templates
             var (Compatible, Reason) = IsCompatible(
                 creature.Type.AllTypes,
                 [creature.Alignment.Full],
-                creature.Abilities[AbilityConstants.Charisma],
+                creature.Abilities[MinimumAbility.Name],
                 creature.ChallengeRating,
                 filters);
             if (!Compatible)
@@ -108,19 +108,19 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        private void UpdateCreatureType(Creature creature)
+        private static void UpdateCreatureType(Creature creature)
         {
             var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
             creature.Type = new CreatureType(adjustedTypes);
         }
 
-        private void UpdateCreatureType(CreaturePrototype creature)
+        private static void UpdateCreatureType(CreaturePrototype creature)
         {
             var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
             creature.Type = new CreatureType(adjustedTypes);
         }
 
-        private IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
+        private static IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
         {
             return new[] { CreatureConstants.Types.Undead }
                 .Union(subtypes)
@@ -136,13 +136,13 @@ namespace DnDGen.CreatureGen.Templates
             creature.Demographics.Weight.Value = 0;
         }
 
-        private void UpdateCreatureAbilities(Creature creature)
+        private static void UpdateCreatureAbilities(Creature creature)
         {
             creature.Abilities[AbilityConstants.Constitution].TemplateScore = 0;
             creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment += 4;
         }
 
-        private void UpdateCreatureAbilities(CreaturePrototype creature)
+        private static void UpdateCreatureAbilities(CreaturePrototype creature)
         {
             creature.Abilities[AbilityConstants.Constitution].TemplateScore = 0;
             creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment += 4;
@@ -168,22 +168,22 @@ namespace DnDGen.CreatureGen.Templates
             }
         }
 
-        private void UpdateCreatureChallengeRating(Creature creature)
+        private static void UpdateCreatureChallengeRating(Creature creature)
         {
             creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating);
         }
 
-        private void UpdateCreatureChallengeRating(CreaturePrototype creature)
+        private static void UpdateCreatureChallengeRating(CreaturePrototype creature)
         {
             creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating);
         }
 
-        private string UpdateCreatureChallengeRating(string challengeRating)
+        private static string UpdateCreatureChallengeRating(string challengeRating)
         {
             return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
         }
 
-        private void UpdateCreatureLevelAdjustment(Creature creature)
+        private static void UpdateCreatureLevelAdjustment(Creature creature)
         {
             if (creature.LevelAdjustment.HasValue)
             {
@@ -191,7 +191,7 @@ namespace DnDGen.CreatureGen.Templates
             }
         }
 
-        private void UpdateCreatureLevelAdjustment(CreaturePrototype creature)
+        private static void UpdateCreatureLevelAdjustment(CreaturePrototype creature)
         {
             if (creature.LevelAdjustment.HasValue)
             {
@@ -199,7 +199,7 @@ namespace DnDGen.CreatureGen.Templates
             }
         }
 
-        private void UpdateCreatureSkills(Creature creature)
+        private static void UpdateCreatureSkills(Creature creature)
         {
             var ghostSkills = new[] { SkillConstants.Hide, SkillConstants.Listen, SkillConstants.Search, SkillConstants.Spot };
             foreach (var skill in creature.Skills)
@@ -302,7 +302,7 @@ namespace DnDGen.CreatureGen.Templates
             creature.Attacks = creature.Attacks.Union(newAttacks);
         }
 
-        private void UpdateCreatureArmorClass(Creature creature)
+        private static void UpdateCreatureArmorClass(Creature creature)
         {
             foreach (var naturalArmorBonus in creature.ArmorClass.NaturalArmorBonuses)
             {
@@ -335,7 +335,7 @@ namespace DnDGen.CreatureGen.Templates
             creature.SpecialQualities = creature.SpecialQualities.Union(ghostQualities);
         }
 
-        private void UpdateCreatureTemplate(Creature creature)
+        private static void UpdateCreatureTemplate(Creature creature)
         {
             creature.Templates.Add(CreatureConstants.Templates.Ghost);
         }
@@ -345,7 +345,7 @@ namespace DnDGen.CreatureGen.Templates
             var (Compatible, Reason) = IsCompatible(
                 creature.Type.AllTypes,
                 [creature.Alignment.Full],
-                creature.Abilities[AbilityConstants.Charisma],
+                creature.Abilities[MinimumAbility.Name],
                 creature.ChallengeRating,
                 filters);
             if (!Compatible)
@@ -470,7 +470,7 @@ namespace DnDGen.CreatureGen.Templates
             return AreFiltersCompatible(types, alignments, creatureChallengeRating, filters);
         }
 
-        private (bool Compatible, string Reason) AreFiltersCompatible(
+        private static (bool Compatible, string Reason) AreFiltersCompatible(
             IEnumerable<string> types,
             IEnumerable<string> alignments,
             string creatureChallengeRating,
@@ -507,8 +507,8 @@ namespace DnDGen.CreatureGen.Templates
             if (charisma == null)
                 return (false, "Creature has no Charisma");
 
-            if (charisma.FullScore < 6)
-                return (false, $"Creature has insufficient Charisma ({charisma.FullScore}, needs 6)");
+            if (charisma.FullScore < MinimumAbility.FullScore)
+                return (false, $"Creature has insufficient Charisma ({charisma.FullScore}, needs {MinimumAbility.FullScore})");
 
             return (true, null);
         }
@@ -529,7 +529,7 @@ namespace DnDGen.CreatureGen.Templates
             return updatedPrototypes;
         }
 
-        private CreaturePrototype ApplyToPrototype(CreaturePrototype prototype, string presetAlignment)
+        private static CreaturePrototype ApplyToPrototype(CreaturePrototype prototype, string presetAlignment)
         {
             UpdateCreatureAbilities(prototype);
             UpdateCreatureChallengeRating(prototype);
@@ -553,7 +553,7 @@ namespace DnDGen.CreatureGen.Templates
                 .Where(p => IsCompatible(
                     p.Type.AllTypes,
                     p.Alignments.Select(a => a.Full),
-                    p.Abilities[AbilityConstants.Charisma],
+                    p.Abilities[MinimumAbility.Name],
                     p.ChallengeRating,
                     filters).Compatible);
             var updatedPrototypes = compatiblePrototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));

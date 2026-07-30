@@ -58,7 +58,7 @@ namespace DnDGen.CreatureGen.Templates
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
                 [creature.Alignment.Full],
-                creature.Abilities[AbilityConstants.Intelligence],
+                creature.Abilities[MinimumAbility.Name],
                 creature.ChallengeRating,
                 creature.HitPoints.RoundedHitDiceQuantity,
                 filters);
@@ -389,7 +389,7 @@ namespace DnDGen.CreatureGen.Templates
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
                 [creature.Alignment.Full],
-                creature.Abilities[AbilityConstants.Intelligence],
+                creature.Abilities[MinimumAbility.Name],
                 creature.ChallengeRating,
                 creature.HitPoints.RoundedHitDiceQuantity,
                 filters);
@@ -594,8 +594,8 @@ namespace DnDGen.CreatureGen.Templates
             if (!alignments.Any(a => !a.Contains(AlignmentConstants.Evil)))
                 return (false, "Creature has no non-evil alignments");
 
-            if (intelligence.FullScore < 4)
-                return (false, $"Creature has insufficient Intelligence ({intelligence.FullScore}, needs 4)");
+            if (intelligence.FullScore < MinimumAbility.FullScore)
+                return (false, $"Creature has insufficient Intelligence ({intelligence.FullScore}, needs {MinimumAbility.Name})");
 
             return (true, null);
         }
@@ -633,7 +633,7 @@ namespace DnDGen.CreatureGen.Templates
                 .Where(p => IsCompatible(
                     p.Type.AllTypes,
                     p.Alignments.Select(a => a.Full),
-                    p.Abilities[AbilityConstants.Intelligence],
+                    p.Abilities[MinimumAbility.Name],
                     p.ChallengeRating,
                     p.HitDiceQuantity,
                     filters).Compatible);

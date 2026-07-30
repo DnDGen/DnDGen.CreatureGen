@@ -2062,7 +2062,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = alignmentFilter };
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
         }
 
@@ -2080,7 +2080,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = AlignmentConstants.NeutralEvil };
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, null, filters);
             Assert.That(compatibleCreatures, Is.EquivalentTo(["my creature", "my other creature"]));
         }
 
@@ -2111,7 +2111,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { ChallengeRating = challengeRatingFilter };
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, null, filters);
             Assert.That(compatibleCreatures, Is.EquivalentTo(["my creature", "my other creature", "yet another creature"]));
         }
 
@@ -2122,7 +2122,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { ChallengeRating = challengeRatingFilter };
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
         }
 
@@ -2176,8 +2176,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { ChallengeRating = challengeRatingFilter };
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "yet another creature" }));
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, null, filters);
+            Assert.That(compatibleCreatures, Is.EqualTo(["my creature", "yet another creature"]));
 
             mockCreatureDataSelector.Verify(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, It.IsAny<string>()), Times.Never);
         }
@@ -2198,8 +2198,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Type = CreatureConstants.Types.Undead };
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, null, filters);
+            Assert.That(compatibleCreatures, Is.EqualTo(["my creature", "my other creature"]));
         }
 
         [TestCase(CreatureConstants.Types.Subtypes.Angel)]
@@ -2223,7 +2223,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creatures = new[] { "my creature", "my other creature", "another creature" };
             var filters = new Filters { Type = typeFilter };
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
         }
 
@@ -2263,8 +2263,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Type = typeFilter };
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, null, filters);
+            Assert.That(compatibleCreatures, Is.EqualTo(["my creature", "my other creature"]));
         }
 
         [Test]
@@ -2287,8 +2287,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Type = "subtype 2", ChallengeRating = ChallengeRatingConstants.CR1 };
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, null, filters);
+            Assert.That(compatibleCreatures, Is.EqualTo(["my creature", "my other creature"]));
         }
 
         [TestCase(CreatureConstants.Types.Aberration, true)]
@@ -2395,7 +2395,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Type = type };
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false, filters);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false, null, filters);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
@@ -2479,7 +2479,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { ChallengeRating = challengeRating };
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], false, filters);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], false, null, filters);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
@@ -2504,7 +2504,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = alignmentFilter };
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], false, filters);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], false, null, filters);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
@@ -2527,7 +2527,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = alignment, Type = type, ChallengeRating = challengeRating };
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], false, filters);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], false, null, filters);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
@@ -2704,7 +2704,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = alignmentFilter };
 
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters);
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
 
             mockPrototypeFactory.Verify(f => f.Build(It.IsAny<IEnumerable<string>>(), It.IsAny<bool>()), Times.Never);
@@ -2755,17 +2755,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = AlignmentConstants.NeutralEvil };
 
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, null, filters).ToArray();
             Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
             Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
+            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(
+            [
                 "subtype 1",
                 "subtype 2",
-            }));
+            ]));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.Zero);
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
@@ -2888,17 +2888,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { ChallengeRating = challengeRatingFilter };
 
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, null, filters).ToArray();
             Assert.That(compatibleCreatures, Has.Length.EqualTo(3));
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
             Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
+            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(
+            [
                 "subtype 1",
                 "subtype 2",
-            }));
+            ]));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.Zero);
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
@@ -2984,7 +2984,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { ChallengeRating = challengeRatingFilter };
 
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters);
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
 
             mockPrototypeFactory.Verify(f => f.Build(It.IsAny<IEnumerable<string>>(), It.IsAny<bool>()), Times.Never);
@@ -3054,17 +3054,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { ChallengeRating = challengeRatingFilter };
 
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, null, filters).ToArray();
             Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
             Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
+            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(
+            [
                 "subtype 1",
                 "subtype 2",
-            }));
+            ]));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.Zero);
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
@@ -3163,17 +3163,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Type = CreatureConstants.Types.Undead };
 
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, null, filters).ToArray();
             Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
             Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
+            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(
+            [
                 "subtype 1",
                 "subtype 2",
-            }));
+            ]));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.Zero);
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
@@ -3253,7 +3253,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Type = typeFilter };
 
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters);
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
 
             mockPrototypeFactory.Verify(f => f.Build(It.IsAny<IEnumerable<string>>(), It.IsAny<bool>()), Times.Never);
@@ -3326,7 +3326,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Type = typeFilter };
 
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, null, filters).ToArray();
             Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
@@ -3440,17 +3440,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Type = "subtype 2", ChallengeRating = ChallengeRatingConstants.CR1 };
 
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, null, filters).ToArray();
             Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
             Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
+            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(
+            [
                 "subtype 1",
                 "subtype 2",
-            }));
+            ]));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.Zero);
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
