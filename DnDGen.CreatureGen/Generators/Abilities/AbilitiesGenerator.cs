@@ -16,10 +16,12 @@ namespace DnDGen.CreatureGen.Generators.Abilities
     {
         public Dictionary<string, Ability> GenerateFor(string creatureName, AbilityRandomizer randomizer, Demographics demographics, string[] templates)
         {
+            randomizer ??= new AbilityRandomizer();
+
             var valid = TemplatesAreCompatible(templates, creatureName, randomizer);
             if (!valid)
                 throw new InvalidCreatureException(
-                    $"{creatureName} does not have sufficient ability for template {templates[0]} with roll {randomizer.Roll}",
+                    $"{creatureName} does not have sufficient ability for template {templates[0]}",
                     false,
                     creatureName,
                     new() { Templates = [.. templates] });
@@ -27,7 +29,7 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             var abilities = InitializeAbilities(creatureName);
             ApplyRandomizer(abilities, randomizer);
             ApplyAge(abilities, demographics);
-            ApplyTemplateMinimum(abilities, templates);
+            ApplyTemplateMinimum(abilities, templates, randomizer);
 
             return abilities;
         }
@@ -75,19 +77,15 @@ namespace DnDGen.CreatureGen.Generators.Abilities
         {
             foreach (var abilityKvp in abilities)
             {
+                if (!abilityKvp.Value.HasScore)
+                    continue;
+
                 if (randomizer.AbilityAdvancements.ContainsKey(abilityKvp.Key))
                 {
                     abilityKvp.Value.AdvancementAdjustment = randomizer.AbilityAdvancements[abilityKvp.Key];
                 }
 
-                if (randomizer.SetRolls.ContainsKey(abilityKvp.Key))
-                {
-                    abilityKvp.Value.BaseScore = randomizer.SetRolls[abilityKvp.Key];
-                }
-                else
-                {
-                    abilityKvp.Value.BaseScore = dice.Roll(randomizer.Roll).AsSum();
-                }
+                abilityKvp.Value.BaseScore = randomizer.Randomize(abilityKvp.Key, dice);
             }
 
             if (randomizer.PriorityAbility != null && abilities.ContainsKey(randomizer.PriorityAbility))
@@ -114,7 +112,7 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             }
         }
 
-        private void ApplyTemplateMinimum(Dictionary<string, Ability> abilities, string[] templates)
+        private void ApplyTemplateMinimum(Dictionary<string, Ability> abilities, string[] templates, AbilityRandomizer abilityRandomizer)
         {
             if (templates.Length == 0)
                 return;
@@ -123,11 +121,12 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             if (applicator.MinimumAbility == null)
                 return;
 
-            if (abilities[applicator.MinimumAbility.Name].FullScore >= applicator.MinimumAbility.FullScore)
+            var creatureAbility = abilities[applicator.MinimumAbility.Name];
+            if (creatureAbility.FullScore >= applicator.MinimumAbility.FullScore)
                 return;
 
-            var difference = applicator.MinimumAbility.FullScore - abilities[applicator.MinimumAbility.Name].FullScore;
-            abilities[applicator.MinimumAbility.Name].BaseScore += difference;
+            var adjustment = abilityRandomizer.GetAdjustment(dice, creatureAbility, applicator.MinimumAbility.FullScore);
+            abilities[applicator.MinimumAbility.Name].BaseScore += adjustment;
         }
 
         public Dictionary<string, Ability> SetMaxBonuses(Dictionary<string, Ability> abilities, Equipment equipment)

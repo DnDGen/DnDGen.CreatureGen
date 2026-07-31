@@ -1,13 +1,16 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.RollGen;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration
 {
-    public class AbilityRandomizerFactory(ICollectionSelector collectionSelector/*, Dice dice*/)
+    public class AbilityRandomizerFactory(ICollectionSelector collectionSelector, Dice dice)
     {
         public AbilityRandomizer GetAbilityRandomizer(string[] templates, string[] rolls = null)
         {
+            const string set = "Set";
             rolls ??=
             [
                 AbilityConstants.RandomizerRolls.Heroic,
@@ -19,12 +22,26 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 AbilityConstants.RandomizerRolls.Poor,
                 AbilityConstants.RandomizerRolls.Raw,
                 AbilityConstants.RandomizerRolls.Wild,
+                set
             ];
 
             var randomizer = new AbilityRandomizer
             {
                 Roll = collectionSelector.SelectRandomFrom(rolls)
             };
+
+            if (randomizer.Roll == set)
+            {
+                randomizer.Roll = string.Empty;
+                var setRoll = collectionSelector.SelectRandomFrom(rolls.Except([set]));
+
+                randomizer.SetRolls[AbilityConstants.Strength] = dice.Roll(setRoll).AsSum();
+                randomizer.SetRolls[AbilityConstants.Dexterity] = dice.Roll(setRoll).AsSum();
+                randomizer.SetRolls[AbilityConstants.Constitution] = dice.Roll(setRoll).AsSum();
+                randomizer.SetRolls[AbilityConstants.Intelligence] = dice.Roll(setRoll).AsSum();
+                randomizer.SetRolls[AbilityConstants.Wisdom] = dice.Roll(setRoll).AsSum();
+                randomizer.SetRolls[AbilityConstants.Charisma] = dice.Roll(setRoll).AsSum();
+            }
 
             ////HACK: This is just to avoid the issue when a randomly-rolled ability
             ////(especially with "Poor" or "Wild") ends up much lower than normally would be with the "Default" roll,

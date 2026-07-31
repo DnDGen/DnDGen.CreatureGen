@@ -105,6 +105,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockDemographicsGenerator
                 .Setup(s => s.UpdateByTemplate(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfCelestial, true, false))
                 .Returns(baseCreature.Demographics);
+
+            mockDice.Setup(d => d.Roll(It.IsAny<string>()).AsPotentialMaximum<int>(true)).Returns(int.MaxValue);
         }
 
         private void SetUpAttack(Attack attack, string gender = null) => SetUpAttacks([attack, new Attack { Name = "other attack" }], gender);
@@ -2284,6 +2286,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfCelestial + bool.FalseString))
                 .Returns(celestialCreatures);
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                [$"my {creatureType} creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var compatibleCreatures = applicator.GetCompatibleCreatures([$"my {creatureType} creature"], false);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
@@ -2473,6 +2481,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             SetUpCreatureData(original, hitDiceQuantity);
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var alignments = new Dictionary<string, IEnumerable<string>>
             {
                 ["my creature"] = [AlignmentConstants.LawfulGood, "other alignment"]
@@ -2579,6 +2593,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             SetUpCreatureData(original, hitDiceQuantity);
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var alignments = new Dictionary<string, IEnumerable<string>>
             {
                 ["my creature"] = [AlignmentConstants.LawfulGood, "other alignment"]
@@ -2675,6 +2695,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var data = SetUpCreatureData(original, hitDiceQuantity);
             data["my creature"].Types = [CreatureConstants.Types.Giant, "subtype 1", "subtype 2"];
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var alignments = new Dictionary<string, IEnumerable<string>>
             {
                 ["my creature"] = [AlignmentConstants.LawfulGood, "other alignment"]
@@ -2735,6 +2761,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             SetUpCreatureData(amount: 4);
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var filters = new Filters { Alignment = alignmentFilter };
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], false, null, filters);
@@ -2757,6 +2789,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(celestialCreatures);
 
             SetUpCreatureData();
+
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
             var alignments = new Dictionary<string, IEnumerable<string>>
             {

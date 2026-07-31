@@ -433,10 +433,10 @@ namespace DnDGen.CreatureGen.Templates
 
             abilityRandomizer ??= new AbilityRandomizer();
             var allAbilityAdjustments = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments);
-            var maxRoll = dice.Roll(abilityRandomizer.Roll).AsPotentialMaximum();
 
             filteredBaseCreatures = filteredBaseCreatures
-                .Where(c => allAbilityAdjustments[c].Any(a => a.Type == MinimumAbility.Name && maxRoll + a.Amount >= MinimumAbility.FullScore));
+                .Where(c => allAbilityAdjustments[c].Any(a => a.Type == MinimumAbility.Name
+                    && abilityRandomizer.Validate(MinimumAbility.Name, dice, MinimumAbility.FullScore, a.Amount)));
 
             if (string.IsNullOrEmpty(filters?.ChallengeRating)
                 && string.IsNullOrEmpty(filters?.Type)

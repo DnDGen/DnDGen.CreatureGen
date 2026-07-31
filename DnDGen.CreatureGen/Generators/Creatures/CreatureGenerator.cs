@@ -60,11 +60,11 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             if (filters?.CleanTemplates?.Any() != true)
             {
-                var (CreatureName, Template) = GetRandomValidCreature(validCreatures, asCharacter, new AbilityRandomizer(), filters);
+                var (CreatureName, Template) = GetRandomValidCreature(validCreatures, asCharacter, null, filters);
                 return (CreatureName, new[] { Template });
             }
 
-            validCreatures = GetCreaturesOfTemplates(validCreatures, asCharacter, new AbilityRandomizer(), filters);
+            validCreatures = GetCreaturesOfTemplates(validCreatures, asCharacter, null, filters);
             if (!validCreatures.Any())
             {
                 throw new InvalidCreatureException($"No valid creatures ({group}) of template {string.Join(", ", filters.CleanTemplates)}", asCharacter, null, filters);
@@ -237,8 +237,6 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             creature.Type = GetCreatureType(creatureData);
             creature.Demographics = demographicsGenerator.Generate(creatureName);
-
-            abilityRandomizer ??= new AbilityRandomizer();
             creature.Abilities = abilitiesGenerator.GenerateFor(creatureName, abilityRandomizer, creature.Demographics, [.. templates]);
 
             var hitDiceQuantity = creatureData.GetEffectiveHitDiceQuantity(asCharacter);

@@ -99,6 +99,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockDemographicsGenerator
                 .Setup(s => s.UpdateByTemplate(baseCreature.Demographics, baseCreature.Name, CreatureConstants.Templates.HalfFiend, true, false))
                 .Returns(baseCreature.Demographics);
+
+            mockDice.Setup(d => d.Roll(It.IsAny<string>()).AsPotentialMaximum<int>(true)).Returns(int.MaxValue);
         }
 
         private void SetUpAttacks(string gender = null) => SetUpAttacks(new Attack { Name = "Smite Good", IsSpecial = true }, gender);

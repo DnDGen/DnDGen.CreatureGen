@@ -11,11 +11,11 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         public string ChallengeRating { get; set; }
         public string Alignment { get; set; }
 
-        public List<string> CleanTemplates => Templates.Where(t => !string.IsNullOrEmpty(t)).ToList();
+        public List<string> CleanTemplates => [.. Templates.Where(t => !string.IsNullOrEmpty(t))];
 
         public Filters()
         {
-            Templates = new List<string>();
+            Templates = [];
         }
 
         public string GetDescription(bool asCharacter)

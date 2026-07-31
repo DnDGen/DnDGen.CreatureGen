@@ -3,6 +3,9 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Templates;
+using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
+using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -21,7 +24,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         private Mock<Dice> mockDice;
         private Mock<JustInTimeFactory> mockJustInTimeFactory;
         private IAbilitiesGenerator abilitiesGenerator;
-        private List<TypeAndAmountDataSelection> abilitySelections;
+        private List<TypeAndAmountDataSelection> creatureAbilitySelections;
         private List<TypeAndAmountDataSelection> ageAbilitySelections;
         private Mock<PartialRoll> mockPartialTotal;
         private AbilityRandomizer randomizer;
@@ -40,7 +43,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             randomizer.Roll = "my roll";
             demographics.Age.Description = "my age category";
 
-            abilitySelections =
+            creatureAbilitySelections =
             [
                 new TypeAndAmountDataSelection { Type = "ability", AmountAsDouble = 0 },
                 new TypeAndAmountDataSelection { Type = "other ability", AmountAsDouble = 9266 },
@@ -56,10 +59,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "creature name"))
-                .Returns(abilitySelections);
+                .Returns(creatureAbilitySelections);
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, GroupConstants.All))
-                .Returns(abilitySelections);
+                .Returns(creatureAbilitySelections);
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "my age category"))
                 .Returns(ageAbilitySelections);
@@ -68,6 +71,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             mockDice.Setup(d => d.Roll("my roll")).Returns(mockPartialTotal.Object);
 
             mockPartialTotal.SetupSequence(d => d.AsSum<int>()).Returns(42).Returns(600).Returns(1337);
+            mockPartialTotal.Setup(d => d.AsPotentialMaximum<int>(true)).Returns(int.MaxValue);
         }
 
         [Test]
@@ -107,6 +111,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         }
 
         [Test]
+        public void GenerateFor_RollBaseScoresForAbilities_WithDefaultRandomizer()
+        {
+            mockDice
+                .SetupSequence(d => d.Roll(AbilityConstants.RandomizerRolls.Default).AsSum<int>())
+                .Returns(96)
+                .Returns(783)
+                .Returns(8245);
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", null, demographics, []);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(96));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(96));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(783));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(783 + 9266));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(8245));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
+        }
+
+        [Test]
         public void GenerateFor_MissingAbilitiesHaveNoScore()
         {
             var allAbilities = new[]
@@ -118,7 +149,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             mockTypeAndAmountSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, GroupConstants.All)).Returns(allAbilities);
 
-            abilitySelections.RemoveAt(1);
+            creatureAbilitySelections.RemoveAt(1);
 
             var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
@@ -331,103 +362,649 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [Test]
         public void GenerateFor_NoTemplates_IsValid()
         {
-            Assert.Fail("not yet written");
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(600));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(9866));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
         }
 
         [Test]
         public void GenerateFor_1Template_IsValid()
         {
-            Assert.Fail("not yet written");
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(
+                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+                    false,
+                    randomizer,
+                    null))
+                .Returns(["creature name"]);
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(600));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(9866));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
         }
 
         [Test]
         public void GenerateFor_1Template_IsNotValid()
         {
-            Assert.Fail("not yet written");
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(
+                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+                    false,
+                    randomizer,
+                    null))
+                .Returns([]);
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+
+            var generation = () => abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            Assert.That(generation,
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.Contains("creature name does not have sufficient ability for template my template"));
         }
 
         [Test]
         public void GenerateFor_2Templates_IsValid()
         {
-            Assert.Fail("not yet written");
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(
+                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+                    false,
+                    randomizer,
+                    null))
+                .Returns(["creature name"]);
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template", "my other template"]);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(600));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(9866));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
         }
 
         [Test]
         public void GenerateFor_2Templates_IsNotValid()
         {
-            Assert.Fail("not yet written");
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(
+                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+                    false,
+                    randomizer,
+                    null))
+                .Returns([]);
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+
+            var generation = () => abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template", "my other template"]);
+            Assert.That(generation,
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.Contains("creature name does not have sufficient ability for template my template"));
         }
 
         [Test]
         public void GenerateFor_AppliesTemplateMinimums_NoTemplates()
         {
-            Assert.Fail("not yet written");
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(600));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(9866));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
         }
 
         [Test]
         public void GenerateFor_AppliesTemplateMinimums_TemplateDoesNotHaveMinimumAbility()
         {
-            Assert.Fail("not yet written");
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(
+                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+                    false,
+                    randomizer,
+                    null))
+                .Returns(["creature name"]);
+            Ability noMin = null;
+            mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(noMin);
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(600));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(9866));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
+        }
+
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(10)]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_Roll(int difference)
+        {
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(
+                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+                    false,
+                    randomizer,
+                    null))
+                .Returns(["creature name"]);
+            var minimum = new Ability("ability") { BaseScore = 42 - difference };
+            mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(600));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(9866));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
+        }
+
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(10)]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_Set(int difference)
+        {
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(
+                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+                    false,
+                    randomizer,
+                    null))
+                .Returns(["creature name"]);
+            var minimum = new Ability("ability") { BaseScore = 1336 - difference };
+            mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
+
+            randomizer.SetRolls["ability"] = 1336;
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(1336));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(1336));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(42));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(42 + 9266));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(600));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
+        }
+
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(10)]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_WithPositiveRacialAdjustment(int difference)
+        {
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(
+                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+                    false,
+                    randomizer,
+                    null))
+                .Returns(["creature name"]);
+            var minimum = new Ability("other ability") { BaseScore = 9866 - difference };
+            mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(600));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(9866));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
+        }
+
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(10)]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_WithNegativeRacialAdjustment(int difference)
+        {
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(
+                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+                    false,
+                    randomizer,
+                    null))
+                .Returns(["creature name"]);
+            var minimum = new Ability("other ability") { BaseScore = 600 - 13 - difference };
+            mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
+
+            creatureAbilitySelections[1].AmountAsDouble = -13;
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(600));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(-13));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(600 - 13));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
+        }
+
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(10)]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_WithPositiveAgeAdjustment(int difference)
+        {
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(
+                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+                    false,
+                    randomizer,
+                    null))
+                .Returns(["creature name"]);
+            var minimum = new Ability("ability") { BaseScore = 43 - difference };
+            mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
+
+            ageAbilitySelections[0].AmountAsDouble = 1;
+            ageAbilitySelections[1].AmountAsDouble = 2;
+            ageAbilitySelections[2].AmountAsDouble = 3;
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].AdvancementAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].AgeAdjustment, Is.EqualTo(1));
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(43));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(600));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].AdvancementAdjustment, Is.Zero);
+            Assert.That(abilities["other ability"].AgeAdjustment, Is.EqualTo(2));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(9868));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].AdvancementAdjustment, Is.Zero);
+            Assert.That(abilities["last ability"].AgeAdjustment, Is.EqualTo(3));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
+        }
+
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(10)]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_WithNegativeAgeAdjustment(int difference)
+        {
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(
+                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+                    false,
+                    randomizer,
+                    null))
+                .Returns(["creature name"]);
+            var minimum = new Ability("ability") { BaseScore = 41 - difference };
+            mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
+
+            ageAbilitySelections[0].AmountAsDouble = -1;
+            ageAbilitySelections[1].AmountAsDouble = -2;
+            ageAbilitySelections[2].AmountAsDouble = -3;
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].AdvancementAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].AgeAdjustment, Is.EqualTo(-1));
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(41));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(600));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].AdvancementAdjustment, Is.Zero);
+            Assert.That(abilities["other ability"].AgeAdjustment, Is.EqualTo(-2));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(9864));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].AdvancementAdjustment, Is.Zero);
+            Assert.That(abilities["last ability"].AgeAdjustment, Is.EqualTo(-3));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
+        }
+
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(10)]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_Roll(int difference)
+        {
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(
+                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+                    false,
+                    randomizer,
+                    null))
+                .Returns(["creature name"]);
+            var minimum = new Ability("ability") { BaseScore = 42 + difference };
+            mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42 + difference));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(42 + difference));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(600));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(9866));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
         }
 
         [Test]
-        public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum()
+        public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_Set()
         {
-            Assert.Fail("not yet written");
+            //INFO: We can't adjust a set ability. If a set ability won't meet the minimums, then the template applicator should say the creature is incompatible.
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(
+                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+                    false,
+                    randomizer,
+                    null))
+                .Returns([]);
+
+            randomizer.SetRolls["ability"] = 1336;
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+
+            var generation = () => abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            Assert.That(generation,
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.Contains("creature name does not have sufficient ability for template my template"));
         }
 
-        [Test]
-        public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_WithPositiveRacialAdjustment()
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(10)]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_WithPositiveRacialAdjustment(int difference)
         {
-            Assert.Fail("not yet written");
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(
+                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+                    false,
+                    randomizer,
+                    null))
+                .Returns(["creature name"]);
+            var minimum = new Ability("other ability") { BaseScore = 9866 + difference };
+            mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(600 + difference));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(9866 + difference));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
         }
 
-        [Test]
-        public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_WithNegativeRacialAdjustment()
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(10)]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_WithNegativeRacialAdjustment(int difference)
         {
-            Assert.Fail("not yet written");
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(
+                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+                    false,
+                    randomizer,
+                    null))
+                .Returns(["creature name"]);
+            var minimum = new Ability("other ability") { BaseScore = 600 - 13 + difference };
+            mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
+
+            creatureAbilitySelections[1].AmountAsDouble = -13;
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(600 + difference));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(-13));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(600 - 13 + difference));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
         }
 
-        [Test]
-        public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_WithPositiveAgeAdjustment()
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(10)]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_WithPositiveAgeAdjustment(int difference)
         {
-            Assert.Fail("not yet written");
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(
+                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+                    false,
+                    randomizer,
+                    null))
+                .Returns(["creature name"]);
+            var minimum = new Ability("ability") { BaseScore = 43 + difference };
+            mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
+
+            ageAbilitySelections[0].AmountAsDouble = 1;
+            ageAbilitySelections[1].AmountAsDouble = 2;
+            ageAbilitySelections[2].AmountAsDouble = 3;
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42 + difference));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].AdvancementAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].AgeAdjustment, Is.EqualTo(1));
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(43 + difference));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(600));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].AdvancementAdjustment, Is.Zero);
+            Assert.That(abilities["other ability"].AgeAdjustment, Is.EqualTo(2));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(9868));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].AdvancementAdjustment, Is.Zero);
+            Assert.That(abilities["last ability"].AgeAdjustment, Is.EqualTo(3));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
         }
 
-        [Test]
-        public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_WithNegativeAgeAdjustment()
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(10)]
+        public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_WithNegativeAgeAdjustment(int difference)
         {
-            Assert.Fail("not yet written");
-        }
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(
+                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+                    false,
+                    randomizer,
+                    null))
+                .Returns(["creature name"]);
+            var minimum = new Ability("ability") { BaseScore = 41 + difference };
+            mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
 
-        [Test]
-        public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum()
-        {
-            Assert.Fail("not yet written");
-        }
+            ageAbilitySelections[0].AmountAsDouble = -1;
+            ageAbilitySelections[1].AmountAsDouble = -2;
+            ageAbilitySelections[2].AmountAsDouble = -3;
 
-        [Test]
-        public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_WithPositiveRacialAdjustment()
-        {
-            Assert.Fail("not yet written");
-        }
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-        [Test]
-        public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_WithNegativeRacialAdjustment()
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [Test]
-        public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_WithPositiveAgeAdjustment()
-        {
-            Assert.Fail("not yet written");
-        }
-
-        [Test]
-        public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_WithNegativeAgeAdjustment()
-        {
-            Assert.Fail("not yet written");
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42 + difference));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].AdvancementAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].AgeAdjustment, Is.EqualTo(-1));
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(41 + difference));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(600));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].AdvancementAdjustment, Is.Zero);
+            Assert.That(abilities["other ability"].AgeAdjustment, Is.EqualTo(-2));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(9864));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].AdvancementAdjustment, Is.Zero);
+            Assert.That(abilities["last ability"].AgeAdjustment, Is.EqualTo(-3));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
         }
 
         [Test]

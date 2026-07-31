@@ -30,8 +30,6 @@ namespace DnDGen.CreatureGen.Verifiers
             if (!compatible)
                 return false;
 
-            abilityRandomizer ??= new AbilityRandomizer();
-
             if (filters?.CleanTemplates?.Count > 0)
             {
                 compatible = TemplatesAreCompatible(filters.CleanTemplates, baseCreatures, asCharacter, abilityRandomizer, filters);

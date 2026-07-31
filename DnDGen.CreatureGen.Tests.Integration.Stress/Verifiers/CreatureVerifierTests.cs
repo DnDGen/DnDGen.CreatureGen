@@ -18,6 +18,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
         private Stopwatch stopwatch;
         private TimeSpan timeLimit;
         private Dice dice;
+        private AbilityRandomizerFactory abilityRandomizerFactory;
 
         [SetUp]
         public void Setup()
@@ -25,6 +26,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
             stopwatch = new Stopwatch();
             collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             dice = GetNewInstanceOf<Dice>();
+            abilityRandomizerFactory = GetNewInstanceOf<AbilityRandomizerFactory>();
 
             timeLimit = TimeSpan.FromSeconds(1);
         }
@@ -88,10 +90,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
                 alignment = collectionSelector.SelectRandomFrom(alignments);
             }
 
-            var filters = new Filters();
-            filters.Type = type;
-            filters.ChallengeRating = cr;
-            filters.Alignment = alignment;
+            var filters = new Filters
+            {
+                Type = type,
+                ChallengeRating = cr,
+                Alignment = alignment
+            };
 
             if (template != null)
                 filters.Templates.Add(template);
@@ -106,8 +110,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
                 }
             }
 
+            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizer([.. filters.CleanTemplates]);
+
             stopwatch.Restart();
-            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, filters);
+            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer, filters);
             stopwatch.Stop();
 
             var failure = new InvalidCreatureException(null, asCharacter, creature, filters);

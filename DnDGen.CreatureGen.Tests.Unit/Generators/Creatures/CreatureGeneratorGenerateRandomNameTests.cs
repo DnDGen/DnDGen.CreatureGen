@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
@@ -58,21 +59,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var mockNoneApplicator = new Mock<TemplateApplicator>();
             mockNoneApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Intersect([creatureName]));
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None)).Returns(mockNoneApplicator.Object);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Intersect([creatureName]));
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
 
             var mockOtherTemplateApplicator = new Mock<TemplateApplicator>();
             mockOtherTemplateApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Intersect([creatureName]));
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockOtherTemplateApplicator.Object);
 
@@ -117,21 +118,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var mockNoneApplicator = new Mock<TemplateApplicator>();
             mockNoneApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Intersect([creatureName]));
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None)).Returns(mockNoneApplicator.Object);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Intersect([creatureName]));
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
 
             var mockOtherTemplateApplicator = new Mock<TemplateApplicator>();
             mockOtherTemplateApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Intersect([creatureName]));
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockOtherTemplateApplicator.Object);
 
@@ -186,7 +187,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator
                 .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc
                     .Intersect([creatureName])
                     .Select(c => new CreaturePrototype { Name = c }));
 
@@ -234,7 +235,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator
                 .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc
                     .Intersect([creatureName])
                     .Select(c => new CreaturePrototype { Name = c }));
 
@@ -284,7 +285,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var mockTemplateApplicator1 = new Mock<TemplateApplicator>();
             mockTemplateApplicator1
                 .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), asCharacter, null, null))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Select(c => new CreaturePrototype { Name = c }));
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Select(c => new CreaturePrototype { Name = c }));
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template1)).Returns(mockTemplateApplicator1.Object);
 
@@ -349,7 +350,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Intersect([creatureName]));
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
 
@@ -421,14 +422,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Intersect([creatureName]));
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
 
             var mockWrongTemplateApplicator1 = new Mock<TemplateApplicator>();
             mockWrongTemplateApplicator1
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Intersect([creatureName]));
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockWrongTemplateApplicator1.Object);
 
@@ -490,21 +491,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var mockNoneApplicator = new Mock<TemplateApplicator>();
             mockNoneApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Except(["wrong creature"]));
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Except(["wrong creature"]));
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None)).Returns(mockNoneApplicator.Object);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc);
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
 
             var mockOtherTemplateApplicator = new Mock<TemplateApplicator>();
             mockOtherTemplateApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc);
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockOtherTemplateApplicator.Object);
 
@@ -565,7 +566,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var mockNoneApplicator = new Mock<TemplateApplicator>();
             mockNoneApplicator
                 .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Select(c => new CreaturePrototype { Name = c }));
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Select(c => new CreaturePrototype { Name = c }));
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None)).Returns(mockNoneApplicator.Object);
 
@@ -619,7 +620,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator
                 .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Select(c => new CreaturePrototype { Name = c }));
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Select(c => new CreaturePrototype { Name = c }));
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
 
@@ -675,7 +676,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var mockTemplateApplicator1 = new Mock<TemplateApplicator>();
             mockTemplateApplicator1
                 .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), asCharacter, null, null))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Select(c => new CreaturePrototype { Name = c }));
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Select(c => new CreaturePrototype { Name = c }));
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template1)).Returns(mockTemplateApplicator1.Object);
 
@@ -737,21 +738,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var mockNoneApplicator = new Mock<TemplateApplicator>();
             mockNoneApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Except(["wrong creature"]));
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Except(["wrong creature"]));
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None)).Returns(mockNoneApplicator.Object);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Except(["other wrong creature"]));
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Except(["other wrong creature"]));
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
 
             var mockOtherTemplateApplicator = new Mock<TemplateApplicator>();
             mockOtherTemplateApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc);
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockOtherTemplateApplicator.Object);
 
