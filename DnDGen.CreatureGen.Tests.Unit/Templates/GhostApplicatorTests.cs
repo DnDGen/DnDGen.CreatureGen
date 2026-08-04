@@ -2870,6 +2870,62 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
+        [TestCase(-10, 9, false)]
+        [TestCase(-8, 9, false)]
+        [TestCase(-6, 9, false)]
+        [TestCase(-4, 9, false)]
+        [TestCase(-2, 9, true)]
+        [TestCase(0, 9, true)]
+        [TestCase(2, 9, true)]
+        [TestCase(4, 9, true)]
+        [TestCase(6, 9, true)]
+        [TestCase(8, 9, true)]
+        [TestCase(10, 9, true)]
+        [TestCase(42, 9, true)]
+        [TestCase(-10, 11, false)]
+        [TestCase(-8, 11, false)]
+        [TestCase(-6, 11, false)]
+        [TestCase(-4, 11, true)]
+        [TestCase(-2, 11, true)]
+        [TestCase(0, 11, true)]
+        [TestCase(2, 11, true)]
+        [TestCase(4, 11, true)]
+        [TestCase(6, 11, true)]
+        [TestCase(8, 11, true)]
+        [TestCase(10, 11, true)]
+        [TestCase(42, 11, true)]
+        [TestCase(-10, 18, true)]
+        [TestCase(-8, 18, true)]
+        [TestCase(-6, 18, true)]
+        [TestCase(-4, 18, true)]
+        [TestCase(-2, 18, true)]
+        [TestCase(0, 18, true)]
+        [TestCase(2, 18, true)]
+        [TestCase(4, 18, true)]
+        [TestCase(6, 18, true)]
+        [TestCase(8, 18, true)]
+        [TestCase(10, 18, true)]
+        [TestCase(42, 18, true)]
+        public void GetCompatibleCreatures_MustHaveCharismaOfAtLeast6_WithRandomizer_Set(int charismaAdjustment, int setCharisma, bool compatible)
+        {
+            var ghostCreatures = new[] { "my ghost creature", "my creature", "my other creature", $"my {charismaAdjustment}-rizz creature" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Ghost + bool.FalseString))
+                .Returns(ghostCreatures);
+
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                [$"my {charismaAdjustment}-rizz creature"] = [new() { Type = AbilityConstants.Charisma, AmountAsDouble = charismaAdjustment }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
+            var randomizer = new AbilityRandomizer { Roll = "my roll", SetRolls = new() { [AbilityConstants.Charisma] = setCharisma } };
+            mockDice.Setup(d => d.Roll("my roll").AsPotentialMaximum<int>(true)).Returns(1);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures([$"my {charismaAdjustment}-rizz creature"], false, randomizer);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
         [TestCase(null, true)]
         [TestCase(CreatureConstants.Types.Undead, true)]
         [TestCase(CreatureConstants.Types.Humanoid, true)]

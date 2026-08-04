@@ -2646,232 +2646,232 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
         [TestCase(true)]
         [TestCase(false)]
-        public void GetCompatibleCreatures_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumCharisma_Default(bool asCharacter)
+        public void GetCompatibleCreatures_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumIntelligence_Default(bool asCharacter)
         {
-            var creatures = new[] { "low rizz creature", "my creature", "outsider creature", "my other creature", "no rizz creature" };
+            var creatures = new[] { "low brains creature", "my creature", "outsider creature", "my other creature", "no brains creature" };
 
-            var ghostCreatures = creatures.Except(["outsider creature", "no rizz creature"]);
+            var fiendCreatures = creatures.Except(["outsider creature", "no brains creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Ghost + asCharacter))
-                .Returns(ghostCreatures);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend + asCharacter))
+                .Returns(fiendCreatures);
 
             mockDice.Setup(d => d.Roll(AbilityConstants.RandomizerRolls.Default).AsPotentialMaximum<int>(true)).Returns(11);
             var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
             {
-                ["low rizz creature"] =
+                ["low brains creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -6 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -8 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = -2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = 2 },
                 ],
                 ["my creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 4 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 4 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -2 },
                 ],
                 ["my other creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -2 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -2 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 0 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 2 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 2 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -4 },
                 ]
             };
             mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(["outsider creature", "no rizz creature"], asCharacter);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, asCharacter);
             Assert.That(compatibleCreatures, Is.EqualTo(["my creature", "my other creature"]));
         }
 
         [TestCase(true)]
         [TestCase(false)]
-        public void GetCompatibleCreatures_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumCharisma_Rolled(bool asCharacter)
+        public void GetCompatibleCreatures_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumIntelligence_Rolled(bool asCharacter)
         {
-            var creatures = new[] { "low rizz creature", "my creature", "outsider creature", "my other creature", "no rizz creature" };
+            var creatures = new[] { "low brains creature", "my creature", "outsider creature", "my other creature", "no brains creature" };
             var abilityRandomizer = new AbilityRandomizer() { Roll = "my roll" };
 
-            var ghostCreatures = creatures.Except(["outsider creature", "no rizz creature"]);
+            var fiendCreatures = creatures.Except(["outsider creature", "no brains creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Ghost + asCharacter))
-                .Returns(ghostCreatures);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend + asCharacter))
+                .Returns(fiendCreatures);
 
             mockDice.Setup(d => d.Roll("my roll").AsPotentialMaximum<int>(true)).Returns(8);
             var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
             {
-                ["low rizz creature"] =
+                ["low brains creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -4 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -6 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = -2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = 2 },
                 ],
                 ["my creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 4 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 4 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -2 },
                 ],
                 ["my other creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -2 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -2 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 0 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 2 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 2 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -4 },
                 ]
             };
             mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(["outsider creature", "no rizz creature"], asCharacter, abilityRandomizer);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, asCharacter, abilityRandomizer);
             Assert.That(compatibleCreatures, Is.EqualTo(["my creature", "my other creature"]));
         }
 
         [TestCase(true)]
         [TestCase(false)]
-        public void GetCompatibleCreatures_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumCharisma_Set(bool asCharacter)
+        public void GetCompatibleCreatures_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumIntelligence_Set(bool asCharacter)
         {
-            var creatures = new[] { "low rizz creature", "my creature", "outsider creature", "my other creature", "no rizz creature" };
+            var creatures = new[] { "low brains creature", "my creature", "outsider creature", "my other creature", "no brains creature" };
             var abilityRandomizer = new AbilityRandomizer()
             {
                 SetRolls = new()
                 {
-                    [AbilityConstants.Charisma] = 9,
+                    [AbilityConstants.Intelligence] = 9,
                     [AbilityConstants.Strength] = 8,
-                    [AbilityConstants.Intelligence] = 10,
+                    [AbilityConstants.Charisma] = 10,
                     [AbilityConstants.Wisdom] = 11,
                 }
             };
 
-            var ghostCreatures = creatures.Except(["outsider creature", "no rizz creature"]);
+            var fiendCreatures = creatures.Except(["outsider creature", "no brains creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Ghost + asCharacter))
-                .Returns(ghostCreatures);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend + asCharacter))
+                .Returns(fiendCreatures);
 
             var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
             {
-                ["low rizz creature"] =
+                ["low brains creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -4 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -6 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = -2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = 2 },
                 ],
                 ["my creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 4 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 4 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -2 },
                 ],
                 ["my other creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -2 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -2 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 0 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 2 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 2 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -4 },
                 ]
             };
             mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(["outsider creature", "no rizz creature"], asCharacter, abilityRandomizer);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, asCharacter, abilityRandomizer);
             Assert.That(compatibleCreatures, Is.EqualTo(["my creature", "my other creature"]));
         }
 
         [TestCase(true)]
         [TestCase(false)]
-        public void GetCompatibleCreatures_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumCharisma_RolledHigh(bool asCharacter)
+        public void GetCompatibleCreatures_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumIntelligence_RolledHigh(bool asCharacter)
         {
-            var creatures = new[] { "low rizz creature", "my creature", "outsider creature", "my other creature", "no rizz creature" };
+            var creatures = new[] { "low brains creature", "my creature", "outsider creature", "my other creature", "no brains creature" };
             var abilityRandomizer = new AbilityRandomizer() { Roll = "my roll" };
 
-            var ghostCreatures = creatures.Except(["outsider creature", "no rizz creature"]);
+            var fiendCreatures = creatures.Except(["outsider creature", "no brains creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Ghost + asCharacter))
-                .Returns(ghostCreatures);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend + asCharacter))
+                .Returns(fiendCreatures);
 
             mockDice.Setup(d => d.Roll("my roll").AsPotentialMaximum<int>(true)).Returns(11);
             var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
             {
-                ["low rizz creature"] =
+                ["low brains creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -4 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -6 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = -2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = 2 },
                 ],
                 ["my creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 4 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 4 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -2 },
                 ],
                 ["my other creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -2 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -2 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 0 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 2 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 2 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -4 },
                 ]
             };
             mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(["outsider creature", "no rizz creature"], asCharacter, abilityRandomizer);
-            Assert.That(compatibleCreatures, Is.EqualTo(["low rizz creature", "my creature", "my other creature"]));
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, asCharacter, abilityRandomizer);
+            Assert.That(compatibleCreatures, Is.EqualTo(["low brains creature", "my creature", "my other creature"]));
         }
 
         [TestCase(true)]
         [TestCase(false)]
-        public void GetCompatibleCreatures_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumCharisma_SetHigh(bool asCharacter)
+        public void GetCompatibleCreatures_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumIntelligence_SetHigh(bool asCharacter)
         {
-            var creatures = new[] { "low rizz creature", "my creature", "outsider creature", "my other creature", "no rizz creature" };
+            var creatures = new[] { "low brains creature", "my creature", "outsider creature", "my other creature", "no brains creature" };
             var abilityRandomizer = new AbilityRandomizer()
             {
                 SetRolls = new()
                 {
-                    [AbilityConstants.Charisma] = 10,
+                    [AbilityConstants.Intelligence] = 10,
                     [AbilityConstants.Strength] = 8,
-                    [AbilityConstants.Intelligence] = 9,
+                    [AbilityConstants.Charisma] = 9,
                     [AbilityConstants.Wisdom] = 11,
                 }
             };
 
-            var ghostCreatures = creatures.Except(["outsider creature", "no rizz creature"]);
+            var fiendCreatures = creatures.Except(["outsider creature", "no brains creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Ghost + asCharacter))
-                .Returns(ghostCreatures);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend + asCharacter))
+                .Returns(fiendCreatures);
 
             var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
             {
-                ["low rizz creature"] =
+                ["low brains creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -4 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -6 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = -2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = 2 },
                 ],
                 ["my creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 4 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 4 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -2 },
                 ],
                 ["my other creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -2 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -2 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 0 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 2 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 2 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -4 },
                 ]
             };
             mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(["outsider creature", "no rizz creature"], asCharacter, abilityRandomizer);
-            Assert.That(compatibleCreatures, Is.EqualTo(["low rizz creature", "my creature", "my other creature"]));
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, asCharacter, abilityRandomizer);
+            Assert.That(compatibleCreatures, Is.EqualTo(["low brains creature", "my creature", "my other creature"]));
         }
 
         private Dictionary<string, CreatureDataSelection> SetUpCreatureData(string cr = ChallengeRatingConstants.CR1, double hitDiceAmount = 1)
@@ -2880,6 +2880,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 ["my creature"] = new() { ChallengeRating = cr, HitDiceQuantity = hitDiceAmount, Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"] },
                 ["my other creature"] = new() { ChallengeRating = cr, HitDiceQuantity = hitDiceAmount, Types = [CreatureConstants.Types.Giant, "subtype 3"] },
+                ["low brains creature"] = new() { ChallengeRating = cr, HitDiceQuantity = hitDiceAmount, Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"] },
                 ["wrong creature 1"] = new() { ChallengeRating = cr, HitDiceQuantity = hitDiceAmount, Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"] },
                 ["wrong creature 2"] = new() { ChallengeRating = cr, HitDiceQuantity = hitDiceAmount, Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"] },
                 ["wrong creature 3"] = new() { ChallengeRating = cr, HitDiceQuantity = hitDiceAmount, Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"] },
@@ -3137,6 +3138,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend + bool.FalseString))
                 .Returns(fiendishCreatures);
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                [$"my {creatureType} creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var compatibleCreatures = applicator.GetCompatibleCreatures([$"my {creatureType} creature"], false);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
@@ -3179,16 +3186,133 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(8, true)]
         [TestCase(10, true)]
         [TestCase(42, true)]
-        public void GetCompatibleCreatures_IntelligenceMustBeAtLeast4(int intelligenceAdjustment, bool compatible)
+        public void GetCompatibleCreatures_IntelligenceMustBeAtLeast4_DefaultRandomizer(int intelligenceAdjustment, bool compatible)
         {
-            //INFO: Intelligence compatibility will be handled by the creature group
-            var fiendishIntelligence = compatible ? $"{intelligenceAdjustment}-brains" : "low-brains";
-            var fiendishCreatures = new[] { "my fiendish creature", "my creature", "my other creature", $"my {fiendishIntelligence} creature" };
+            var celestialCreatures = new[] { "my celestial creature", "my creature", "my other creature", $"my {intelligenceAdjustment}-brains creature" };
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend + bool.FalseString))
-                .Returns(fiendishCreatures);
+                .Returns(celestialCreatures);
+
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                [$"my {intelligenceAdjustment}-brains creature"] = [new() { Type = AbilityConstants.Intelligence, AmountAsDouble = intelligenceAdjustment }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+            mockDice.Setup(d => d.Roll(AbilityConstants.RandomizerRolls.Default).AsPotentialMaximum<int>(true)).Returns(11);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures([$"my {intelligenceAdjustment}-brains creature"], false);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        [TestCase(-10, 9, false)]
+        [TestCase(-8, 9, false)]
+        [TestCase(-6, 9, false)]
+        [TestCase(-4, 9, true)]
+        [TestCase(-2, 9, true)]
+        [TestCase(0, 9, true)]
+        [TestCase(2, 9, true)]
+        [TestCase(4, 9, true)]
+        [TestCase(6, 9, true)]
+        [TestCase(8, 9, true)]
+        [TestCase(10, 9, true)]
+        [TestCase(42, 9, true)]
+        [TestCase(-10, 11, false)]
+        [TestCase(-8, 11, false)]
+        [TestCase(-6, 11, true)]
+        [TestCase(-4, 11, true)]
+        [TestCase(-2, 11, true)]
+        [TestCase(0, 11, true)]
+        [TestCase(2, 11, true)]
+        [TestCase(4, 11, true)]
+        [TestCase(6, 11, true)]
+        [TestCase(8, 11, true)]
+        [TestCase(10, 11, true)]
+        [TestCase(42, 11, true)]
+        [TestCase(-10, 18, true)]
+        [TestCase(-8, 18, true)]
+        [TestCase(-6, 18, true)]
+        [TestCase(-4, 18, true)]
+        [TestCase(-2, 18, true)]
+        [TestCase(0, 18, true)]
+        [TestCase(2, 18, true)]
+        [TestCase(4, 18, true)]
+        [TestCase(6, 18, true)]
+        [TestCase(8, 18, true)]
+        [TestCase(10, 18, true)]
+        [TestCase(42, 18, true)]
+        public void GetCompatibleCreatures_IntelligenceMustBeAtLeast4_WithRandomizer_Roll(int intelligenceAdjustment, int maxRoll, bool compatible)
+        {
+            var celestialCreatures = new[] { "my celestial creature", "my creature", "my other creature", $"my {intelligenceAdjustment}-brains creature" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend + bool.FalseString))
+                .Returns(celestialCreatures);
+
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                [$"my {intelligenceAdjustment}-brains creature"] = [new() { Type = AbilityConstants.Intelligence, AmountAsDouble = intelligenceAdjustment }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
+            var randomizer = new AbilityRandomizer { Roll = "my roll" };
+            mockDice.Setup(d => d.Roll("my roll").AsPotentialMaximum<int>(true)).Returns(maxRoll);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures([$"my {intelligenceAdjustment}-brains creature"], false, randomizer);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        [TestCase(-10, 9, false)]
+        [TestCase(-8, 9, false)]
+        [TestCase(-6, 9, false)]
+        [TestCase(-4, 9, true)]
+        [TestCase(-2, 9, true)]
+        [TestCase(0, 9, true)]
+        [TestCase(2, 9, true)]
+        [TestCase(4, 9, true)]
+        [TestCase(6, 9, true)]
+        [TestCase(8, 9, true)]
+        [TestCase(10, 9, true)]
+        [TestCase(42, 9, true)]
+        [TestCase(-10, 11, false)]
+        [TestCase(-8, 11, false)]
+        [TestCase(-6, 11, true)]
+        [TestCase(-4, 11, true)]
+        [TestCase(-2, 11, true)]
+        [TestCase(0, 11, true)]
+        [TestCase(2, 11, true)]
+        [TestCase(4, 11, true)]
+        [TestCase(6, 11, true)]
+        [TestCase(8, 11, true)]
+        [TestCase(10, 11, true)]
+        [TestCase(42, 11, true)]
+        [TestCase(-10, 18, true)]
+        [TestCase(-8, 18, true)]
+        [TestCase(-6, 18, true)]
+        [TestCase(-4, 18, true)]
+        [TestCase(-2, 18, true)]
+        [TestCase(0, 18, true)]
+        [TestCase(2, 18, true)]
+        [TestCase(4, 18, true)]
+        [TestCase(6, 18, true)]
+        [TestCase(8, 18, true)]
+        [TestCase(10, 18, true)]
+        [TestCase(42, 18, true)]
+        public void GetCompatibleCreatures_IntelligenceMustBeAtLeast4_WithRandomizer_Set(int intelligenceAdjustment, int setIntelligence, bool compatible)
+        {
+            var celestialCreatures = new[] { "my celestial creature", "my creature", "my other creature", $"my {intelligenceAdjustment}-brains creature" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend + bool.FalseString))
+                .Returns(celestialCreatures);
+
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                [$"my {intelligenceAdjustment}-brains creature"] = [new() { Type = AbilityConstants.Intelligence, AmountAsDouble = intelligenceAdjustment }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
+            var randomizer = new AbilityRandomizer { Roll = "my roll", SetRolls = new() { [AbilityConstants.Intelligence] = setIntelligence } };
+            mockDice.Setup(d => d.Roll("my roll").AsPotentialMaximum<int>(true)).Returns(1);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures([$"my {intelligenceAdjustment}-brains creature"], false, randomizer);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
@@ -3330,6 +3454,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var filters = new Filters { ChallengeRating = challengeRating };
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], false, null, filters);
@@ -3431,6 +3561,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var filters = new Filters { ChallengeRating = challengeRating };
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], true, null, filters);
@@ -3527,6 +3663,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var filters = new Filters { ChallengeRating = challengeRating };
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], true, null, filters);
@@ -3578,6 +3720,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             SetUpCreatureData(hitDiceAmount: 4);
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var filters = new Filters { Alignment = alignmentFilter };
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], false, null, filters);
@@ -3609,6 +3757,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
+
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
             var filters = new Filters { Type = type, ChallengeRating = challengeRating, Alignment = alignment };
 
@@ -3751,37 +3905,37 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
         [TestCase(true)]
         [TestCase(false)]
-        public void GetCompatiblePrototypes_FromNames_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumCharisma_Default(bool asCharacter)
+        public void GetCompatiblePrototypes_FromNames_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumIntelligence_Default(bool asCharacter)
         {
-            var creatures = new[] { "low rizz creature", "my creature", "outsider creature", "my other creature", "no rizz creature" };
+            var creatures = new[] { "low brains creature", "my creature", "outsider creature", "my other creature", "no brains creature" };
 
-            var ghostCreatures = creatures.Except(["outsider creature", "no rizz creature"]);
+            var fiendCreatures = creatures.Except(["outsider creature", "no brains creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Ghost + asCharacter))
-                .Returns(ghostCreatures);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend + asCharacter))
+                .Returns(fiendCreatures);
 
             mockDice.Setup(d => d.Roll(AbilityConstants.RandomizerRolls.Default).AsPotentialMaximum<int>(true)).Returns(11);
             var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
             {
-                ["low rizz creature"] =
+                ["low brains creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -6 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -8 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = -2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = 2 },
                 ],
                 ["my creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 4 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 4 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -2 },
                 ],
                 ["my other creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -2 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -2 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 0 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 2 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 2 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -4 },
                 ]
             };
@@ -3845,38 +3999,38 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
         [TestCase(true)]
         [TestCase(false)]
-        public void GetCompatiblePrototypes_FromNames_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumCharisma_Rolled(bool asCharacter)
+        public void GetCompatiblePrototypes_FromNames_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumIntelligence_Rolled(bool asCharacter)
         {
-            var creatures = new[] { "low rizz creature", "my creature", "outsider creature", "my other creature", "no rizz creature" };
+            var creatures = new[] { "low brains creature", "my creature", "outsider creature", "my other creature", "no brains creature" };
             var abilityRandomizer = new AbilityRandomizer() { Roll = "my roll" };
 
-            var ghostCreatures = creatures.Except(["outsider creature", "no rizz creature"]);
+            var fiendCreatures = creatures.Except(["outsider creature", "no brains creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Ghost + asCharacter))
-                .Returns(ghostCreatures);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend + asCharacter))
+                .Returns(fiendCreatures);
 
             mockDice.Setup(d => d.Roll("my roll").AsPotentialMaximum<int>(true)).Returns(8);
             var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
             {
-                ["low rizz creature"] =
+                ["low brains creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -4 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -6 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = -2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = 2 },
                 ],
                 ["my creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 4 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 4 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -2 },
                 ],
                 ["my other creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -2 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -2 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 0 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 2 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 2 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -4 },
                 ]
             };
@@ -3933,53 +4087,53 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature" })), asCharacter))
                 .Returns(prototypes);
 
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, asCharacter).ToArray();
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, asCharacter, abilityRandomizer).ToArray();
             Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
             Assert.That(compatibleCreatures, Is.EquivalentTo(prototypes));
         }
 
         [TestCase(true)]
         [TestCase(false)]
-        public void GetCompatiblePrototypes_FromNames_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumCharisma_Set(bool asCharacter)
+        public void GetCompatiblePrototypes_FromNames_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumIntelligence_Set(bool asCharacter)
         {
-            var creatures = new[] { "low rizz creature", "my creature", "outsider creature", "my other creature", "no rizz creature" };
+            var creatures = new[] { "low brains creature", "my creature", "outsider creature", "my other creature", "no brains creature" };
             var abilityRandomizer = new AbilityRandomizer()
             {
                 SetRolls = new()
                 {
-                    [AbilityConstants.Charisma] = 9,
+                    [AbilityConstants.Intelligence] = 9,
                     [AbilityConstants.Strength] = 8,
-                    [AbilityConstants.Intelligence] = 10,
+                    [AbilityConstants.Charisma] = 10,
                     [AbilityConstants.Wisdom] = 11,
                 }
             };
 
-            var ghostCreatures = creatures.Except(["outsider creature", "no rizz creature"]);
+            var fiendCreatures = creatures.Except(["outsider creature", "no brains creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Ghost + asCharacter))
-                .Returns(ghostCreatures);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend + asCharacter))
+                .Returns(fiendCreatures);
 
             var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
             {
-                ["low rizz creature"] =
+                ["low brains creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -4 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -6 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = -2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = 2 },
                 ],
                 ["my creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 4 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 4 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -2 },
                 ],
                 ["my other creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -2 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -2 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 0 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 2 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 2 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -4 },
                 ]
             };
@@ -4036,45 +4190,45 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature" })), asCharacter))
                 .Returns(prototypes);
 
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, asCharacter).ToArray();
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, asCharacter, abilityRandomizer).ToArray();
             Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
             Assert.That(compatibleCreatures, Is.EquivalentTo(prototypes));
         }
 
         [TestCase(true)]
         [TestCase(false)]
-        public void GetCompatiblePrototypes_FromNames_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumCharisma_RolledHigh(bool asCharacter)
+        public void GetCompatiblePrototypes_FromNames_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumIntelligence_RolledHigh(bool asCharacter)
         {
-            var creatures = new[] { "low rizz creature", "my creature", "outsider creature", "my other creature", "no rizz creature" };
+            var creatures = new[] { "low brains creature", "my creature", "outsider creature", "my other creature", "no brains creature" };
             var abilityRandomizer = new AbilityRandomizer() { Roll = "my roll" };
 
-            var ghostCreatures = creatures.Except(["outsider creature", "no rizz creature"]);
+            var fiendCreatures = creatures.Except(["outsider creature", "no brains creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Ghost + asCharacter))
-                .Returns(ghostCreatures);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend + asCharacter))
+                .Returns(fiendCreatures);
 
             mockDice.Setup(d => d.Roll("my roll").AsPotentialMaximum<int>(true)).Returns(11);
             var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
             {
-                ["low rizz creature"] =
+                ["low brains creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -4 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -6 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = -2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = 2 },
                 ],
                 ["my creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 4 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 4 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -2 },
                 ],
                 ["my other creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -2 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -2 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 0 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 2 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 2 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -4 },
                 ]
             };
@@ -4082,6 +4236,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var alignments = new Dictionary<string, IEnumerable<string>>
             {
+                ["low brains creature"] = ["other alignment", "original alignment"],
                 ["my creature"] = ["other alignment", "original alignment"],
                 ["my other creature"] = ["other alignment", "original alignment"]
             };
@@ -4126,59 +4281,74 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithAbility(AbilityConstants.Wisdom, 0)
                     .WithAbility(AbilityConstants.Charisma, 1)
                     .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("low brains creature")
+                    .WithCreatureType([.. data["low brains creature"].Types])
+                    .WithAlignments([.. alignments["low brains creature"]])
+                    .WithChallengeRating(data["low brains creature"].GetEffectiveChallengeRating(asCharacter))
+                    .WithCasterLevel(data["low brains creature"].CasterLevel)
+                    .WithLevelAdjustment(data["low brains creature"].LevelAdjustment)
+                    .WithHitDiceQuantity(data["low brains creature"].GetEffectiveHitDiceQuantity(asCharacter))
+                    .WithAbility(AbilityConstants.Strength, 96)
+                    .WithAbility(AbilityConstants.Constitution, 783)
+                    .WithAbility(AbilityConstants.Dexterity, 8245)
+                    .WithAbility(AbilityConstants.Intelligence, -8)
+                    .WithAbility(AbilityConstants.Wisdom, 0)
+                    .WithAbility(AbilityConstants.Charisma, -6)
+                    .Build(),
             };
             mockPrototypeFactory
-                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature" })), asCharacter))
+                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "low brains creature", "my creature", "my other creature" })), asCharacter))
                 .Returns(prototypes);
 
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, asCharacter).ToArray();
-            Assert.That(compatibleCreatures, Is.EqualTo(["low rizz creature", "my creature", "my other creature"]));
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, asCharacter, abilityRandomizer).ToArray();
+            Assert.That(compatibleCreatures, Has.Length.EqualTo(3));
             Assert.That(compatibleCreatures, Is.EquivalentTo(prototypes));
         }
 
         [TestCase(true)]
         [TestCase(false)]
-        public void GetCompatiblePrototypes_FromNames_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumCharisma_SetHigh(bool asCharacter)
+        public void GetCompatiblePrototypes_FromNames_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumIntelligence_SetHigh(bool asCharacter)
         {
-            var creatures = new[] { "low rizz creature", "my creature", "outsider creature", "my other creature", "no rizz creature" };
+            var creatures = new[] { "low brains creature", "my creature", "outsider creature", "my other creature", "no brains creature" };
             var abilityRandomizer = new AbilityRandomizer()
             {
                 SetRolls = new()
                 {
-                    [AbilityConstants.Charisma] = 10,
+                    [AbilityConstants.Intelligence] = 10,
                     [AbilityConstants.Strength] = 8,
-                    [AbilityConstants.Intelligence] = 9,
+                    [AbilityConstants.Charisma] = 9,
                     [AbilityConstants.Wisdom] = 11,
                 }
             };
 
-            var ghostCreatures = creatures.Except(["outsider creature", "no rizz creature"]);
+            var fiendCreatures = creatures.Except(["outsider creature", "no brains creature"]);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Ghost + asCharacter))
-                .Returns(ghostCreatures);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend + asCharacter))
+                .Returns(fiendCreatures);
 
             var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
             {
-                ["low rizz creature"] =
+                ["low brains creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -4 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -6 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = -2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = 2 },
                 ],
                 ["my creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 4 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 4 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 2 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -2 },
                 ],
                 ["my other creature"] =
                 [
-                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = -2 },
+                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = -2 },
                     new() { Type = AbilityConstants.Strength, AmountAsDouble = 0 },
-                    new() { Type = AbilityConstants.Intelligence, AmountAsDouble = 2 },
+                    new() { Type = AbilityConstants.Charisma, AmountAsDouble = 2 },
                     new() { Type = AbilityConstants.Wisdom, AmountAsDouble = -4 },
                 ]
             };
@@ -4186,6 +4356,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var alignments = new Dictionary<string, IEnumerable<string>>
             {
+                ["low brains creature"] = ["other alignment", "original alignment"],
                 ["my creature"] = ["other alignment", "original alignment"],
                 ["my other creature"] = ["other alignment", "original alignment"]
             };
@@ -4230,14 +4401,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithAbility(AbilityConstants.Wisdom, 0)
                     .WithAbility(AbilityConstants.Charisma, 1)
                     .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("low brains creature")
+                    .WithCreatureType([.. data["low brains creature"].Types])
+                    .WithAlignments([.. alignments["low brains creature"]])
+                    .WithChallengeRating(data["low brains creature"].GetEffectiveChallengeRating(asCharacter))
+                    .WithCasterLevel(data["low brains creature"].CasterLevel)
+                    .WithLevelAdjustment(data["low brains creature"].LevelAdjustment)
+                    .WithHitDiceQuantity(data["low brains creature"].GetEffectiveHitDiceQuantity(asCharacter))
+                    .WithAbility(AbilityConstants.Strength, 96)
+                    .WithAbility(AbilityConstants.Constitution, 783)
+                    .WithAbility(AbilityConstants.Dexterity, 8245)
+                    .WithAbility(AbilityConstants.Intelligence, -8)
+                    .WithAbility(AbilityConstants.Wisdom, 0)
+                    .WithAbility(AbilityConstants.Charisma, -6)
+                    .Build(),
             };
             mockPrototypeFactory
-                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature" })), asCharacter))
+                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "low brains creature", "my creature", "my other creature" })), asCharacter))
                 .Returns(prototypes);
 
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, asCharacter).ToArray();
-            Assert.That(compatibleCreatures, Is.EqualTo(["low rizz creature", "my creature", "my other creature"]));
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, asCharacter, abilityRandomizer).ToArray();
+            Assert.That(compatibleCreatures, Has.Length.EqualTo(3));
             Assert.That(compatibleCreatures, Is.EquivalentTo(prototypes));
         }
 
