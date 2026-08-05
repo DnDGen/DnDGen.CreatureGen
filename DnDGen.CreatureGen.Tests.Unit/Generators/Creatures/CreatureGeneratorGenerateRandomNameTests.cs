@@ -1,4 +1,5 @@
-﻿using DnDGen.CreatureGen.Creatures;
+﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tables;
@@ -7,7 +8,6 @@ using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using Moq;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -863,8 +863,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             if (alignment != null)
                 message.AppendLine($"\tAlignment: {alignment}");
 
-            Assert.That((Func<object>)(() => creatureGenerator.GenerateRandomName(asCharacter, filters)),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            message.AppendLine($"\tAbility Roll: {AbilityConstants.RandomizerRolls.Default}");
+
+            var function = () => creatureGenerator.GenerateRandomName(asCharacter, filters);
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
     }
 }

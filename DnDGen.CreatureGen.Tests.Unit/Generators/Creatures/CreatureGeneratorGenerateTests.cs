@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Selectors.Selections;
@@ -49,9 +50,31 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             message.AppendLine($"\tAs Character: {asCharacter}");
             message.AppendLine("\tCreature: creature");
             message.AppendLine("\tTemplate: template");
+            message.AppendLine($"\tAbility Roll: {AbilityConstants.RandomizerRolls.Default}");
 
-            Assert.That((Func<object>)(() => creatureGenerator.Generate(asCharacter, "creature", null, "template")),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var function = () => creatureGenerator.Generate(asCharacter, "creature", null, "template");
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void Generate_InvalidCreatureTemplateComboThrowsException_WithAbilityRandomizer(bool asCharacter)
+        {
+            var randomizer = new AbilityRandomizer { Roll = "my roll" };
+            var filters = new Filters();
+            filters.Templates.Add("template");
+
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, "creature", randomizer, filters)).Returns(false);
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tAs Character: {asCharacter}");
+            message.AppendLine("\tCreature: creature");
+            message.AppendLine("\tTemplate: template");
+            message.AppendLine("\tAbility Roll: my roll");
+
+            var function = () => creatureGenerator.Generate(asCharacter, "creature", randomizer, "template");
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
         [TestCase(true)]

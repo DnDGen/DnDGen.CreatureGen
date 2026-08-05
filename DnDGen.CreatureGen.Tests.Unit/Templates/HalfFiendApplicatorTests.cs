@@ -141,9 +141,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             message.AppendLine($"\tAs Character: {false}");
             message.AppendLine($"\tCreature: {baseCreature.Name}");
             message.AppendLine($"\tTemplate: {CreatureConstants.Templates.HalfFiend}");
+            message.AppendLine($"\tAbility Roll: {baseCreature.Abilities[AbilityConstants.Intelligence].FullScore}");
 
-            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, false)),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var function = () => applicator.ApplyTo(baseCreature, false);
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
         [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.NeutralEvil, "Alignment filter 'Neutral Evil' is not valid for creature alignments")]
@@ -168,6 +169,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             message.AppendLine($"\tType: {type}");
             message.AppendLine($"\tCR: {challengeRating}");
             message.AppendLine($"\tAlignment: {alignment}");
+            message.AppendLine($"\tAbility Roll: {baseCreature.Abilities[AbilityConstants.Intelligence].FullScore}");
 
             var filters = new Filters
             {
@@ -176,8 +178,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Alignment = alignment
             };
 
-            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, asCharacter, filters)),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var function = () => applicator.ApplyTo(baseCreature, asCharacter, filters);
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
         [Test]
@@ -1510,6 +1512,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             message.AppendLine($"\tAs Character: {false}");
             message.AppendLine($"\tCreature: {baseCreature.Name}");
             message.AppendLine($"\tTemplate: {CreatureConstants.Templates.HalfFiend}");
+            message.AppendLine($"\tAbility Roll: {baseCreature.Abilities[AbilityConstants.Intelligence].FullScore}");
 
             await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, false),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
@@ -1537,6 +1540,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             message.AppendLine($"\tType: {type}");
             message.AppendLine($"\tCR: {challengeRating}");
             message.AppendLine($"\tAlignment: {alignment}");
+            message.AppendLine($"\tAbility Roll: {baseCreature.Abilities[AbilityConstants.Intelligence].FullScore}");
 
             var filters = new Filters
             {

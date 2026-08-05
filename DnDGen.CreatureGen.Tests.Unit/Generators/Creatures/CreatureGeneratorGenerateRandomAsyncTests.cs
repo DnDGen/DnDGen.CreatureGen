@@ -912,7 +912,35 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             if (alignment != null)
                 message.AppendLine($"\tAlignment: {alignment}");
 
+            message.AppendLine($"\tAbility Roll: {AbilityConstants.RandomizerRolls.Default}");
+
             await Assert.ThatAsync(async () => await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public async Task GenerateRandomAsync_ThrowException_WhenNotCompatible_WithAbilityRandomizer(bool asCharacter)
+        {
+            var randomizer = new AbilityRandomizer { Roll = "my roll" };
+            var filters = new Filters();
+            filters.Templates.Add("my template");
+            filters.Type = "my type";
+            filters.ChallengeRating = "my CR";
+            filters.Alignment = "my alignment";
+
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, randomizer, filters)).Returns(false);
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tAs Character: {asCharacter}");
+            message.AppendLine("\tTemplate: my template");
+            message.AppendLine("\tType: my type");
+            message.AppendLine("\tCR: my CR");
+            message.AppendLine("\tAlignment: my alignment");
+            message.AppendLine("\tAbility Roll: my roll");
+
+            await Assert.ThatAsync(async () => await creatureGenerator.GenerateRandomAsync(asCharacter, randomizer, filters),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
