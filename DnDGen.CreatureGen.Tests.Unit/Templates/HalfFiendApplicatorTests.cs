@@ -2611,8 +2611,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend + asCharacter))
                 .Returns(fiendishCreatures);
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, asCharacter);
-            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
+            Assert.That(compatibleCreatures, Is.EqualTo(["my creature", "my other creature"]));
         }
 
         [TestCase(true)]
@@ -2985,6 +2991,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             data["wrong creature 4"].HitDiceQuantity = hitDiceQuantity >= 11 ? 1 : 666;
             data["wrong creature 5"].ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(original, 1);
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["my other creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["wrong creature 4"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["wrong creature 5"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var filters = new Filters { ChallengeRating = challengeRating };
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, null, filters);
@@ -3334,6 +3349,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.HalfFiend + bool.FalseString))
                 .Returns(fiendishCreatures);
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                [$"my {alignment} creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var compatibleCreatures = applicator.GetCompatibleCreatures([$"my {alignment} creature"], false);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
@@ -3363,6 +3384,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(alignments);
 
             SetUpCreatureData(hitDiceAmount: 4);
+
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
             var filters = new Filters { Type = type };
 
