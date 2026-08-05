@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
@@ -25,6 +26,18 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 set
             ];
 
+            var templatesWithMinimumAbilities = new[]
+            {
+                CreatureConstants.Templates.Ghost,
+                CreatureConstants.Templates.HalfCelestial,
+                CreatureConstants.Templates.HalfFiend,
+            };
+
+            if (templates.Intersect(templatesWithMinimumAbilities).Any())
+            {
+                rolls = [.. rolls.Except([AbilityConstants.RandomizerRolls.Poor])];
+            }
+
             var randomizer = new AbilityRandomizer
             {
                 Roll = collectionSelector.SelectRandomFrom(rolls)
@@ -42,35 +55,6 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 randomizer.SetRolls[AbilityConstants.Wisdom] = dice.Roll(setRoll).AsSum();
                 randomizer.SetRolls[AbilityConstants.Charisma] = dice.Roll(setRoll).AsSum();
             }
-
-            ////HACK: This is just to avoid the issue when a randomly-rolled ability
-            ////(especially with "Poor" or "Wild") ends up much lower than normally would be with the "Default" roll,
-            ////and the template requires an ability to be a minimum value
-            //if (templates.Any(t => t != null && templateAbilityMinimums.ContainsKey(t)))
-            //{
-            //    foreach (var template in templates.Where(templateAbilityMinimums.ContainsKey))
-            //    {
-            //        if (!randomizer.AbilityAdvancements.ContainsKey(templateAbilityMinimums[template].Ability))
-            //        {
-            //            randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability] = 0;
-            //        }
-
-            //        var newMin = Math.Max(randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability], templateAbilityMinimums[template].Minimum);
-            //        randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability] = newMin;
-            //        randomizer.PriorityAbility = templateAbilityMinimums[template].Ability;
-            //    }
-            //}
-            //else if (templates.Contains(null))
-            //{
-            //    //HACK: Here, the template might be randomly selected, so we have to guard against it for the sake of stress testing
-            //    foreach (var kvp in templateAbilityMinimums)
-            //    {
-            //        if (dice.Roll(randomizer.Roll).AsPotentialMinimum() < kvp.Value.Minimum)
-            //        {
-            //            randomizer.AbilityAdvancements[kvp.Value.Ability] = kvp.Value.Minimum;
-            //        }
-            //    }
-            //}
 
             return randomizer;
         }

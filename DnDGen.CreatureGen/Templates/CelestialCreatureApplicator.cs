@@ -62,6 +62,7 @@ namespace DnDGen.CreatureGen.Templates
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
+                    null,
                     [.. creature.Templates.Union([CreatureConstants.Templates.CelestialCreature])]);
             }
 
@@ -313,6 +314,7 @@ namespace DnDGen.CreatureGen.Templates
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
+                    null,
                     [.. creature.Templates.Union([CreatureConstants.Templates.CelestialCreature])]);
             }
 

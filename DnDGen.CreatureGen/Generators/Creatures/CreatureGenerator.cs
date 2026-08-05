@@ -47,12 +47,14 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         public Creature Generate(bool asCharacter, string creatureName, AbilityRandomizer abilityRandomizer = null, params string[] templates)
             => Generate(asCharacter, creatureName, abilityRandomizer, new Filters { Templates = [.. templates] });
 
-        public (string Creature, string[] Templates) GenerateRandomName(bool asCharacter, Filters filters = null)
+        public (string Creature, string[] Templates) GenerateRandomName(bool asCharacter, Filters filters = null) => GenerateRandomName(asCharacter, null, filters);
+
+        private (string Creature, string[] Templates) GenerateRandomName(bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters)
         {
-            var compatible = creatureVerifier.VerifyCompatibility(asCharacter, null, null, filters);
+            var compatible = creatureVerifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
             if (!compatible)
             {
-                throw new InvalidCreatureException(null, asCharacter, null, filters);
+                throw new InvalidCreatureException(null, asCharacter, null, filters, abilityRandomizer ?? new());
             }
 
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
@@ -60,11 +62,11 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             if (filters?.CleanTemplates?.Any() != true)
             {
-                var (CreatureName, Template) = GetRandomValidCreature(validCreatures, asCharacter, null, filters);
+                var (CreatureName, Template) = GetRandomValidCreature(validCreatures, asCharacter, abilityRandomizer, filters);
                 return (CreatureName, new[] { Template });
             }
 
-            validCreatures = GetCreaturesOfTemplates(validCreatures, asCharacter, null, filters);
+            validCreatures = GetCreaturesOfTemplates(validCreatures, asCharacter, abilityRandomizer, filters);
             if (!validCreatures.Any())
             {
                 throw new InvalidCreatureException($"No valid creatures ({group}) of template {string.Join(", ", filters.CleanTemplates)}", asCharacter, null, filters);
@@ -122,7 +124,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public Creature GenerateRandom(bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters = null)
         {
-            var randomCreature = GenerateRandomName(asCharacter, filters);
+            var randomCreature = GenerateRandomName(asCharacter, abilityRandomizer, filters);
 
             var nonNullTemplates = randomCreature.Templates.Where(t => t != CreatureConstants.Templates.None);
             if (filters?.CleanTemplates.Any() != true && nonNullTemplates.Any())
@@ -195,7 +197,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         {
             var compatible = creatureVerifier.VerifyCompatibility(asCharacter, creatureName, abilityRandomizer, filters);
             if (!compatible)
-                throw new InvalidCreatureException(null, asCharacter, creatureName, filters);
+                throw new InvalidCreatureException(null, asCharacter, creatureName, filters, abilityRandomizer ?? new());
 
             var creature = GenerateBaseCreature(creatureName, asCharacter, abilityRandomizer, filters);
 
@@ -237,7 +239,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             creature.Type = GetCreatureType(creatureData);
             creature.Demographics = demographicsGenerator.Generate(creatureName);
-            creature.Abilities = abilitiesGenerator.GenerateFor(creatureName, abilityRandomizer, creature.Demographics, [.. templates]);
+            creature.Abilities = abilitiesGenerator.GenerateFor(creatureName, asCharacter, abilityRandomizer, creature.Demographics, [.. templates]);
 
             var hitDiceQuantity = creatureData.GetEffectiveHitDiceQuantity(asCharacter);
 
@@ -380,7 +382,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public async Task<Creature> GenerateRandomAsync(bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters = null)
         {
-            var randomCreature = GenerateRandomName(asCharacter, filters);
+            var randomCreature = GenerateRandomName(asCharacter, abilityRandomizer, filters);
 
             var nonNullTemplates = randomCreature.Templates.Where(t => t != CreatureConstants.Templates.None);
             if (filters?.CleanTemplates.Any() != true && nonNullTemplates.Any())
@@ -396,7 +398,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         {
             var compatible = creatureVerifier.VerifyCompatibility(asCharacter, creatureName, abilityRandomizer, filters);
             if (!compatible)
-                throw new InvalidCreatureException(null, asCharacter, creatureName, filters);
+                throw new InvalidCreatureException(null, asCharacter, creatureName, filters, abilityRandomizer);
 
             var creature = GenerateBaseCreature(creatureName, asCharacter, abilityRandomizer, filters);
 

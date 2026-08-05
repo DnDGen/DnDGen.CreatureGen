@@ -40,7 +40,7 @@ namespace DnDGen.CreatureGen.Templates
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
-            var compatibility = IsCompatible(
+            var (Compatible, Reason) = IsCompatible(
                 creature.Type.AllTypes,
                 [creature.Alignment.Full],
                 creature.ChallengeRating,
@@ -48,15 +48,16 @@ namespace DnDGen.CreatureGen.Templates
                 creature.LevelAdjustment,
                 creature.HitPoints.HitDiceQuantity,
                 filters);
-            if (!compatibility.Compatible)
+            if (!Compatible)
             {
                 throw new InvalidCreatureException(
-                    compatibility.Reason,
+                    Reason,
                     asCharacter,
                     creature.Name,
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
+                    null,
                     [.. creature.Templates.Union([CreatureConstants.Templates.Vampire])]);
             }
 
@@ -326,7 +327,7 @@ namespace DnDGen.CreatureGen.Templates
 
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
-            var compatibility = IsCompatible(
+            var (Compatible, Reason) = IsCompatible(
                 creature.Type.AllTypes,
                 [creature.Alignment.Full],
                 creature.ChallengeRating,
@@ -335,15 +336,16 @@ namespace DnDGen.CreatureGen.Templates
                 creature.HitPoints.HitDiceQuantity,
                 filters);
 
-            if (!compatibility.Compatible)
+            if (!Compatible)
             {
                 throw new InvalidCreatureException(
-                    compatibility.Reason,
+                    Reason,
                     asCharacter,
                     creature.Name,
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
+                    null,
                     [.. creature.Templates.Union([CreatureConstants.Templates.Vampire])]);
             }
 

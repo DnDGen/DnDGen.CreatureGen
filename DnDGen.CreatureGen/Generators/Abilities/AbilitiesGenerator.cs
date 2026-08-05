@@ -14,17 +14,18 @@ namespace DnDGen.CreatureGen.Generators.Abilities
 {
     internal class AbilitiesGenerator(ICollectionTypeAndAmountSelector typeAndAmountSelector, Dice dice, JustInTimeFactory factory) : IAbilitiesGenerator
     {
-        public Dictionary<string, Ability> GenerateFor(string creatureName, AbilityRandomizer randomizer, Demographics demographics, string[] templates)
+        public Dictionary<string, Ability> GenerateFor(string creatureName, bool asCharacter, AbilityRandomizer randomizer, Demographics demographics, string[] templates)
         {
             randomizer ??= new AbilityRandomizer();
 
-            var valid = TemplatesAreCompatible(templates, creatureName, randomizer);
+            var valid = TemplatesAreCompatible(templates, creatureName, asCharacter, randomizer);
             if (!valid)
                 throw new InvalidCreatureException(
                     $"{creatureName} does not have sufficient ability for template {templates[0]}",
                     false,
                     creatureName,
-                    new() { Templates = [.. templates] });
+                    new() { Templates = [.. templates] },
+                    randomizer);
 
             var abilities = InitializeAbilities(creatureName);
             ApplyRandomizer(abilities, randomizer);
@@ -37,13 +38,14 @@ namespace DnDGen.CreatureGen.Generators.Abilities
         private bool TemplatesAreCompatible(
             string[] templates,
             string creature,
+            bool asCharacter,
             AbilityRandomizer abilityRandomizer)
         {
             if (templates.Length == 0)
                 return true;
 
             var applicator = factory.Build<TemplateApplicator>(templates[0]);
-            var compatibleCreatures = applicator.GetCompatibleCreatures([creature], false, abilityRandomizer);
+            var compatibleCreatures = applicator.GetCompatibleCreatures([creature], asCharacter, abilityRandomizer);
             return compatibleCreatures.Any();
         }
 

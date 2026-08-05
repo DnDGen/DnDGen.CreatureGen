@@ -63,6 +63,7 @@ namespace DnDGen.CreatureGen.Templates
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
+                    creature.Abilities[MinimumAbility.Name].FullScore.ToString(),
                     [.. creature.Templates.Union([CreatureConstants.Templates.Ghost])]);
             }
 
@@ -357,6 +358,7 @@ namespace DnDGen.CreatureGen.Templates
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
+                    creature.Abilities[MinimumAbility.Name].FullScore.ToString(),
                     [.. creature.Templates.Union([CreatureConstants.Templates.Ghost])]);
             }
 

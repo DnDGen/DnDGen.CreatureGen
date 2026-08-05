@@ -384,6 +384,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockAbilitiesGenerator
                 .Setup(g => g.GenerateFor(
                     creatureName,
+                    asCharacter,
                     randomizer,
                     demographics,
                     It.Is<string[]>(tt => tt.IsEquivalentTo(cleanTemplates))))

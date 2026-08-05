@@ -46,7 +46,8 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             if (creatureAbility.FullScore >= minimum)
                 return 0;
 
-            var adjustment = minimum - creatureAbility.FullScore;
+            //INFO: Can't use FullScore, since it baselines at 1. If BaseScore is 5 and RacialAdjustment is -6 the true score is -1, not 1.
+            var adjustment = minimum - creatureAbility.RawScore;
             var maxRoll = dice.Roll(Roll).AsPotentialMaximum();
             var maxAdjustment = maxRoll - creatureAbility.BaseScore;
 

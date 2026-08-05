@@ -77,7 +77,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [Test]
         public void GenerateFor_GetAbilitiesFromSelections()
         {
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
             Assert.That(abilities["ability"].AgeAdjustment, Is.Zero);
@@ -92,7 +92,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [Test]
         public void GenerateFor_RollBaseScoresForAbilities()
         {
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -119,7 +119,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                 .Returns(783)
                 .Returns(8245);
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", null, demographics, []);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, null, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(96));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -151,7 +151,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             creatureAbilitySelections.RemoveAt(1);
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -174,7 +174,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         {
             randomizer.AbilityAdvancements["other ability"] = 1336;
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
             Assert.That(abilities["ability"].AdvancementAdjustment, Is.Zero);
@@ -192,7 +192,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             randomizer.AbilityAdvancements["ability"] = 1336;
             randomizer.AbilityAdvancements["other ability"] = 96;
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
             Assert.That(abilities["ability"].AdvancementAdjustment, Is.EqualTo(1336));
@@ -209,7 +209,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         {
             randomizer.SetRolls["other ability"] = 1336;
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -233,7 +233,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             randomizer.SetRolls["ability"] = 1336;
             randomizer.SetRolls["other ability"] = 96;
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(1336));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -256,7 +256,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         {
             randomizer.PriorityAbility = "ability";
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(1337));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -279,7 +279,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         {
             randomizer.PriorityAbility = "last ability";
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -307,7 +307,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             ageAbilitySelections[1].AmountAsDouble = -2;
             ageAbilitySelections[2].AmountAsDouble = -3;
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
             Assert.That(abilities["ability"].AdvancementAdjustment, Is.Zero);
@@ -335,7 +335,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             ageAbilitySelections[1].AmountAsDouble = -2;
             ageAbilitySelections[2].AmountAsDouble = -3;
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -359,10 +359,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             Assert.That(abilities["last ability"].HasScore, Is.True);
         }
 
-        [Test]
-        public void GenerateFor_NoTemplates_IsValid()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void GenerateFor_NoTemplates_IsValid(bool asCharacter)
         {
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", asCharacter, randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -380,21 +381,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             Assert.That(abilities["last ability"].HasScore, Is.True);
         }
 
-        [Test]
-        public void GenerateFor_1Template_IsValid()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void GenerateFor_1Template_IsValid(bool asCharacter)
         {
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator
                 .Setup(a => a.GetCompatibleCreatures(
                     It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
-                    false,
+                    asCharacter,
                     randomizer,
                     null))
                 .Returns(["creature name"]);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", asCharacter, randomizer, demographics, ["my template"]);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -412,40 +414,42 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             Assert.That(abilities["last ability"].HasScore, Is.True);
         }
 
-        [Test]
-        public void GenerateFor_1Template_IsNotValid()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void GenerateFor_1Template_IsNotValid(bool asCharacter)
         {
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator
                 .Setup(a => a.GetCompatibleCreatures(
                     It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
-                    false,
+                    asCharacter,
                     randomizer,
                     null))
                 .Returns([]);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var generation = () => abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            var generation = () => abilitiesGenerator.GenerateFor("creature name", asCharacter, randomizer, demographics, ["my template"]);
             Assert.That(generation,
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.Contains("creature name does not have sufficient ability for template my template"));
         }
 
-        [Test]
-        public void GenerateFor_2Templates_IsValid()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void GenerateFor_2Templates_IsValid(bool asCharacter)
         {
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator
                 .Setup(a => a.GetCompatibleCreatures(
                     It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
-                    false,
+                    asCharacter,
                     randomizer,
                     null))
                 .Returns(["creature name"]);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template", "my other template"]);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", asCharacter, randomizer, demographics, ["my template", "my other template"]);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -463,21 +467,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             Assert.That(abilities["last ability"].HasScore, Is.True);
         }
 
-        [Test]
-        public void GenerateFor_2Templates_IsNotValid()
+        [TestCase(true)]
+        [TestCase(false)]
+        public void GenerateFor_2Templates_IsNotValid(bool asCharacter)
         {
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator
                 .Setup(a => a.GetCompatibleCreatures(
                     It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
-                    false,
+                    asCharacter,
                     randomizer,
                     null))
                 .Returns([]);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var generation = () => abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template", "my other template"]);
+            var generation = () => abilitiesGenerator.GenerateFor("creature name", asCharacter, randomizer, demographics, ["my template", "my other template"]);
             Assert.That(generation,
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.Contains("creature name does not have sufficient ability for template my template"));
         }
@@ -485,7 +490,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [Test]
         public void GenerateFor_AppliesTemplateMinimums_NoTemplates()
         {
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, []);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -519,7 +524,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, ["my template"]);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -556,7 +561,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, ["my template"]);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -595,7 +600,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, ["my template"]);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(1336));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -632,7 +637,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, ["my template"]);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -671,7 +676,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, ["my template"]);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -712,7 +717,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, ["my template"]);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -759,7 +764,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, ["my template"]);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -801,7 +806,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, ["my template"]);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42 + difference));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -836,7 +841,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var generation = () => abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            var generation = () => abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, ["my template"]);
             Assert.That(generation,
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.Contains("creature name does not have sufficient ability for template my template"));
         }
@@ -859,7 +864,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, ["my template"]);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -897,7 +902,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, ["my template"]);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -910,6 +915,44 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             Assert.That(abilities["other ability"].HasScore, Is.True);
             Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
             Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
+        }
+
+        [Test]
+        public void BUG_GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_WithNegativeRacialAdjustment_VeryLow()
+        {
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
+            mockTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(
+                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+                    false,
+                    randomizer,
+                    null))
+                .Returns(["creature name"]);
+            var minimum = new Ability("other ability") { BaseScore = 4 };
+            mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
+
+            creatureAbilitySelections[1].AmountAsDouble = -6;
+            mockPartialTotal.SetupSequence(d => d.AsSum<int>()).Returns(4).Returns(5).Returns(13);
+            mockPartialTotal.Setup(d => d.AsPotentialMaximum<int>(true)).Returns(18);
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, ["my template"]);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(4));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(4));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(10));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(-6));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(4));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(13));
             Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
             Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
             Assert.That(abilities["last ability"].HasScore, Is.True);
@@ -937,7 +980,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, ["my template"]);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42 + difference));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -983,7 +1026,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer, demographics, ["my template"]);
+            var abilities = abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, ["my template"]);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42 + difference));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);

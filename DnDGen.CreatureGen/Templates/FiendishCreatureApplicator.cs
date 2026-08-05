@@ -63,6 +63,7 @@ namespace DnDGen.CreatureGen.Templates
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
+                    null,
                     [.. creature.Templates.Union([CreatureConstants.Templates.FiendishCreature])]);
             }
 
@@ -317,6 +318,7 @@ namespace DnDGen.CreatureGen.Templates
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
+                    null,
                     [.. creature.Templates.Union([CreatureConstants.Templates.FiendishCreature])]);
             }
 

@@ -761,14 +761,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             GenerateAndAssertCreature(creatureName, asCharacter, randomizer, templates);
         }
 
-        //INFO: Too many problematic test cases for Repeat to be time-efficient
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
         public void BUG_Generate_ProblematicCreature_DefaultAbilities(bool asCharacter, string creatureName, params string[] templates)
         {
             GenerateAndAssertCreature(creatureName, asCharacter, null, templates);
         }
 
-        //INFO: Too many problematic test cases for Repeat to be time-efficient
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
         public void BUG_Generate_ProblematicCreature_ProblematicAbilities(bool asCharacter, string creatureName, params string[] templates)
         {
@@ -795,7 +793,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             return creature;
         }
 
-        //INFO: Too many problematic test cases for Repeat to be time-efficient
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
         public void BUG_GenerateRandom_WithProblematicFilters(string type, bool asCharacter, string template, string challengeRating, string alignment)
         {
@@ -803,14 +800,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             GenerateAndAssertRandomCreature(asCharacter, type, challengeRating, alignment, randomizer, template);
         }
 
-        //INFO: Too many problematic test cases for Repeat to be time-efficient
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
         public void BUG_GenerateRandom_WithProblematicFilters_DefaultAbilities(string type, bool asCharacter, string template, string challengeRating, string alignment)
         {
             GenerateAndAssertRandomCreature(asCharacter, type, challengeRating, alignment, null, template);
         }
 
-        //INFO: Too many problematic test cases for Repeat to be time-efficient
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
         public void BUG_GenerateRandom_WithProblematicFilters_ProblematicAbilities(string type, bool asCharacter, string template, string challengeRating, string alignment)
         {
@@ -819,7 +814,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         }
 
         [Test]
-        [Repeat(100)]
         public void BUG_GenerateRandom_WithProblematicFilters_HalfDragonCelestial()
         {
             var templates = new[] { CreatureConstants.Templates.HalfDragon_Gold, CreatureConstants.Templates.CelestialCreature };
@@ -828,11 +822,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         }
 
         [Test]
-        [Repeat(100)]
         public void BUG_Generate_WithProblematicFilters_DriderHalfDragonCelestial()
         {
             var templates = new[] { CreatureConstants.Templates.HalfDragon_Gold, CreatureConstants.Templates.CelestialCreature };
             var creature = creatureGenerator.Generate(false, CreatureConstants.Drider, null, templates);
+            creatureAsserter.AssertCreature(creature);
+        }
+
+        [Test]
+        [Repeat(100)]
+        public void BUG_Generate_WithProblematicFilters_OtyughHalfCelestial()
+        {
+            var templates = new[] { CreatureConstants.Templates.HalfCelestial };
+            var randomizer = new AbilityRandomizer { Roll = AbilityConstants.RandomizerRolls.Raw };
+            var creature = creatureGenerator.Generate(false, CreatureConstants.Otyugh, randomizer, templates);
             creatureAsserter.AssertCreature(creature);
         }
 

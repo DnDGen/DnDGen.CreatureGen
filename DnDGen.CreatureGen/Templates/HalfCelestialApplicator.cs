@@ -55,22 +55,23 @@ namespace DnDGen.CreatureGen.Templates
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
-            var compatibility = IsCompatible(
+            var (Compatible, Reason) = IsCompatible(
                 creature.Type.AllTypes,
                 [creature.Alignment.Full],
                 creature.Abilities[MinimumAbility.Name],
                 creature.ChallengeRating,
                 creature.HitPoints.RoundedHitDiceQuantity,
                 filters);
-            if (!compatibility.Compatible)
+            if (!Compatible)
             {
                 throw new InvalidCreatureException(
-                    compatibility.Reason,
+                    Reason,
                     asCharacter,
                     creature.Name,
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
+                    creature.Abilities[MinimumAbility.Name].FullScore.ToString(),
                     [.. creature.Templates.Union([CreatureConstants.Templates.HalfCelestial])]);
             }
 
@@ -386,22 +387,23 @@ namespace DnDGen.CreatureGen.Templates
 
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
-            var compatibility = IsCompatible(
+            var (Compatible, Reason) = IsCompatible(
                 creature.Type.AllTypes,
                 [creature.Alignment.Full],
                 creature.Abilities[MinimumAbility.Name],
                 creature.ChallengeRating,
                 creature.HitPoints.RoundedHitDiceQuantity,
                 filters);
-            if (!compatibility.Compatible)
+            if (!Compatible)
             {
                 throw new InvalidCreatureException(
-                    compatibility.Reason,
+                    Reason,
                     asCharacter,
                     creature.Name,
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
+                    creature.Abilities[MinimumAbility.Name].FullScore.ToString(),
                     [.. creature.Templates.Union([CreatureConstants.Templates.HalfCelestial])]);
             }
 

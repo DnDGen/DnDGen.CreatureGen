@@ -260,6 +260,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         }
 
         [Test]
+        public void BUG_GetAdjustment_ReturnsAdjustment_FromRoll_VeryLow()
+        {
+            abilityRandomizer.Roll = "my roll";
+
+            var ability = new Ability("my ability") { BaseScore = 5, RacialAdjustment = -6 };
+            mockDice.Setup(d => d.Roll("my roll").AsPotentialMaximum<int>(true)).Returns(18);
+
+            var adjustment = abilityRandomizer.GetAdjustment(mockDice.Object, ability, 4);
+            Assert.That(adjustment, Is.EqualTo(5));
+        }
+
+        [Test]
         public void GetAdjustment_ReturnsAdjustment_FromSet()
         {
             abilityRandomizer.Roll = "my roll";
@@ -285,6 +297,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             var action = () => abilityRandomizer.GetAdjustment(mockDice.Object, ability, 90210);
             Assert.That(action, Throws.InvalidOperationException.With.Message.EqualTo($"Cannot increase ability my ability by {90210 - 642}, max allowed is {9266 - 600}"));
+        }
+
+        [Test]
+        public void GetAdjustment_ThrowsException_WhenAdjustmentExceedsMaximumAllowed_VeryLow()
+        {
+            abilityRandomizer.Roll = "my roll";
+
+            var ability = new Ability("my ability") { BaseScore = 3, RacialAdjustment = -6 };
+            mockDice.Setup(d => d.Roll("my roll").AsPotentialMaximum<int>(true)).Returns(9);
+
+            var action = () => abilityRandomizer.GetAdjustment(mockDice.Object, ability, 4);
+            Assert.That(action, Throws.InvalidOperationException.With.Message.EqualTo("Cannot increase ability my ability by 7, max allowed is 6"));
         }
     }
 }

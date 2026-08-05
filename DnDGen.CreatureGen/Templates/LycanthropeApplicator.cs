@@ -52,7 +52,7 @@ namespace DnDGen.CreatureGen.Templates
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
             var animalData = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, AnimalSpecies);
-            var compatibility = IsCompatible(
+            var (Compatible, Reason) = IsCompatible(
                 creature.Type.AllTypes,
                 [creature.Alignment.Full],
                 creature.Size,
@@ -61,15 +61,16 @@ namespace DnDGen.CreatureGen.Templates
                 animalData.GetEffectiveHitDiceQuantity(asCharacter),
                 filters);
 
-            if (!compatibility.Compatible)
+            if (!Compatible)
             {
                 throw new InvalidCreatureException(
-                    compatibility.Reason,
+                    Reason,
                     asCharacter,
                     creature.Name,
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
+                    null,
                     [.. creature.Templates.Union([LycanthropeSpecies])]);
             }
 
@@ -592,7 +593,7 @@ namespace DnDGen.CreatureGen.Templates
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
             var animalData = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, AnimalSpecies);
-            var compatibility = IsCompatible(
+            var (Compatible, Reason) = IsCompatible(
                 creature.Type.AllTypes,
                 [creature.Alignment.Full],
                 creature.Size,
@@ -601,15 +602,16 @@ namespace DnDGen.CreatureGen.Templates
                 animalData.GetEffectiveHitDiceQuantity(asCharacter),
                 filters);
 
-            if (!compatibility.Compatible)
+            if (!Compatible)
             {
                 throw new InvalidCreatureException(
-                    compatibility.Reason,
+                    Reason,
                     asCharacter,
                     creature.Name,
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
+                    null,
                     [.. creature.Templates.Union([LycanthropeSpecies])]);
             }
 

@@ -21,8 +21,7 @@ namespace DnDGen.CreatureGen.Generators.Alignments
                 throw new InvalidCreatureException(
                     $"Creature {creatureName} has no valid alignments for templates [{string.Join(", ", templates)}]",
                     false,
-                    creatureName,
-                    null);
+                    creatureName);
 
             var randomAlignment = collectionSelector.SelectRandomFrom(weightedAlignments);
             return new Alignment(randomAlignment);

@@ -3,11 +3,16 @@ using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
+using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.CreatureGen.Verifiers;
+using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
 {
@@ -783,12 +788,34 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
         public void ProblematicCreaturesAreValid_WithProblematicAbilityRandomizer_Poor(bool asCharacter, string creature, params string[] templates)
         {
+            var templatesWithMinimumAbilities = new[]
+            {
+                CreatureConstants.Templates.Ghost,
+                CreatureConstants.Templates.HalfCelestial,
+                CreatureConstants.Templates.HalfFiend,
+            };
+            var valid = true;
+            var intersect = templates.Intersect(templatesWithMinimumAbilities);
+
+            if (intersect.Any())
+            {
+                var applicator = GetNewInstanceOf<TemplateApplicator>(intersect.Single());
+                var selector = GetNewInstanceOf<ICollectionTypeAndAmountSelector>();
+                var dice = GetNewInstanceOf<Dice>();
+
+                var abilityAdjustments = selector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, creature);
+                var creatureAbility = abilityAdjustments.Single(a => a.Type == applicator.MinimumAbility.Name);
+                var max = dice.Roll(AbilityConstants.RandomizerRolls.Poor).AsPotentialMaximum();
+
+                valid = max + creatureAbility.Amount >= applicator.MinimumAbility.FullScore;
+            }
+
             var filters = new Filters();
             filters.Templates.AddRange(templates);
 
             var randomizer = new AbilityRandomizer() { Roll = AbilityConstants.RandomizerRolls.Poor };
             var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, randomizer, filters);
-            Assert.That(verified, Is.True);
+            Assert.That(verified, Is.EqualTo(valid));
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]

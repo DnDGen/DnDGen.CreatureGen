@@ -71,6 +71,7 @@ namespace DnDGen.CreatureGen.Templates
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
+                    creature.Abilities[MinimumAbility.Name].FullScore.ToString(),
                     [.. creature.Templates.Union([CreatureConstants.Templates.HalfFiend])]);
             }
 
@@ -430,6 +431,7 @@ namespace DnDGen.CreatureGen.Templates
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
+                    creature.Abilities[MinimumAbility.Name].FullScore.ToString(),
                     [.. creature.Templates.Union([CreatureConstants.Templates.HalfFiend])]);
             }
 

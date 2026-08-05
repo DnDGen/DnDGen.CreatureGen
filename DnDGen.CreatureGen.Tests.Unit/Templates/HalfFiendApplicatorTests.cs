@@ -2614,6 +2614,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
             {
                 ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["my other creature"] = [new() { Type = AbilityConstants.Intelligence }],
             };
             mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
@@ -2935,6 +2936,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             SetUpCreatureData();
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["my other creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var filters = new Filters { Alignment = "preset Evil" };
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, null, filters);
@@ -3037,6 +3045,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             SetUpCreatureData(hitDiceAmount: 4);
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["my other creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var filters = new Filters { Type = type };
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, null, filters);
@@ -3075,6 +3090,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var data = SetUpCreatureData(hitDiceAmount: 4);
             data["my other creature"].Types = [CreatureConstants.Types.Giant, "subtype 3", "subtype 1"];
             data["wrong creature 4"].Types = [CreatureConstants.Types.Humanoid, "subtype 2", "subtype 3"];
+
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["my other creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["wrong creature 4"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
             var filters = new Filters { Type = "subtype 1" };
 
@@ -3122,6 +3145,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             data["wrong creature 5"].HitDiceQuantity = 666;
             data["wrong creature 6"].Types = [CreatureConstants.Types.Humanoid, "subtype 1"];
             data["wrong creature 6"].ChallengeRating = ChallengeRatingConstants.CR2;
+
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["my other creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["wrong creature 4"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["wrong creature 5"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["wrong creature 6"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
             var filters = new Filters { Type = "subtype 1", ChallengeRating = ChallengeRatingConstants.CR2 };
 
@@ -3820,6 +3853,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var data = SetUpCreatureData(hitDiceAmount: 2);
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["my other creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var prototypes = new[]
             {
                 new CreaturePrototypeBuilder()
@@ -4489,6 +4529,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var data = SetUpCreatureData();
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["my other creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var prototypes = new[]
             {
                 new CreaturePrototypeBuilder()
@@ -4649,6 +4696,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             data["wrong creature 4"].HitDiceQuantity = hitDiceQuantity >= 11 ? 1 : 666;
             data["wrong creature 5"].ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(original, 1);
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["my other creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["wrong creature 4"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["wrong creature 5"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var prototypes = new[]
             {
                 new CreaturePrototypeBuilder()
@@ -4791,6 +4847,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(alignments);
 
             var data = SetUpCreatureData(hitDiceAmount: 4);
+
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["my other creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
             var prototypes = new[]
             {
@@ -4936,6 +4999,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var data = SetUpCreatureData(hitDiceAmount: 4);
             data["my other creature"].Types = [CreatureConstants.Types.Giant, "subtype 3", "subtype 1"];
             data["wrong creature 4"].Types = [CreatureConstants.Types.Humanoid, "subtype 2", "subtype 3"];
+
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["my other creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["wrong creature 4"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
             var prototypes = new[]
             {
@@ -5090,6 +5161,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             data["wrong creature 5"].HitDiceQuantity = 666;
             data["wrong creature 6"].Types = [CreatureConstants.Types.Humanoid, "subtype 1"];
             data["wrong creature 6"].ChallengeRating = ChallengeRatingConstants.CR2;
+
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["my other creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["wrong creature 4"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["wrong creature 5"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["wrong creature 6"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
             var prototypes = new[]
             {
@@ -5246,6 +5327,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             data["wrong creature 6"].Types = [CreatureConstants.Types.Humanoid, "subtype 1"];
             data["wrong creature 6"].ChallengeRating = ChallengeRatingConstants.CR2;
 
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["my other creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["wrong creature 4"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["wrong creature 5"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["wrong creature 6"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
+
             var prototypes = new[]
             {
                 new CreaturePrototypeBuilder()
@@ -5386,6 +5477,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var data = SetUpCreatureData(hitDiceAmount: 4);
             data["my other creature"].Types = [CreatureConstants.Types.Giant, "subtype 3", "subtype 1"];
+
+            var abilityAdjustments = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["my creature"] = [new() { Type = AbilityConstants.Intelligence }],
+                ["my other creature"] = [new() { Type = AbilityConstants.Intelligence }],
+            };
+            mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
             var prototypes = new[]
             {

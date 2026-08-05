@@ -1,42 +1,25 @@
-﻿using DnDGen.CreatureGen.Generators.Creatures;
+﻿using DnDGen.CreatureGen.Generators.Abilities;
+using DnDGen.CreatureGen.Generators.Creatures;
 using System;
 using System.Linq;
 using System.Text;
 
 namespace DnDGen.CreatureGen.Verifiers.Exceptions
 {
-    public class InvalidCreatureException : Exception
+    public class InvalidCreatureException(
+        string reason,
+        bool asCharacter,
+        string creature = null,
+        string type = null,
+        string challengeRating = null,
+        string alignment = null,
+        string abilityRoll = null,
+        params string[] templates) : Exception
     {
-        private readonly string creature;
-        private readonly string challengeRating;
-        private readonly bool asCharacter;
-        private readonly string[] templates;
-        private readonly string type;
-        private readonly string alignment;
-        private readonly string reason;
-
-        public InvalidCreatureException(string reason, bool asCharacter, string creature = null, Filters filters = null)
-            : this(reason, asCharacter, creature, filters?.Type, filters?.ChallengeRating, filters?.Alignment, filters?.CleanTemplates?.ToArray() ?? new string[0])
+        public InvalidCreatureException(string reason, bool asCharacter, string creature = null, Filters filters = null, AbilityRandomizer abilityRandomizer = null)
+            : this(reason, asCharacter, creature, filters?.Type, filters?.ChallengeRating, filters?.Alignment, abilityRandomizer?.Roll, filters?.CleanTemplates?.ToArray() ?? [])
         {
 
-        }
-
-        public InvalidCreatureException(
-            string reason,
-            bool asCharacter,
-            string creature = null,
-            string type = null,
-            string challengeRating = null,
-            string alignment = null,
-            params string[] templates)
-        {
-            this.reason = reason;
-            this.asCharacter = asCharacter;
-            this.creature = creature;
-            this.templates = templates;
-            this.type = type;
-            this.challengeRating = challengeRating;
-            this.alignment = alignment;
         }
 
         public override string Message
@@ -68,6 +51,9 @@ namespace DnDGen.CreatureGen.Verifiers.Exceptions
 
                 if (alignment != null)
                     message.AppendLine($"\tAlignment: {alignment}");
+
+                if (abilityRoll != null)
+                    message.AppendLine($"\tAbility Roll: {abilityRoll}");
 
                 return message.ToString();
             }

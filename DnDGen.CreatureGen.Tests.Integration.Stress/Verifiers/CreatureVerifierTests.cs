@@ -116,7 +116,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
             var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer, filters);
             stopwatch.Stop();
 
-            var failure = new InvalidCreatureException(null, asCharacter, creature, filters);
+            var failure = new InvalidCreatureException(null, asCharacter, creature, filters, abilityRandomizer);
             Assert.That(stopwatch.Elapsed, Is.LessThan(timeLimit), $"Verified: {verified}\n{failure.Message}");
         }
     }

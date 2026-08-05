@@ -56,20 +56,21 @@ namespace DnDGen.CreatureGen.Templates
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
             var dragonAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, DragonSpecies);
-            var compatibility = IsCompatible(
+            var (Compatible, Reason) = IsCompatible(
                 creature.Type.AllTypes,
                 dragonAlignments,
                 creature.ChallengeRating,
                 filters);
 
-            if (!compatibility.Compatible)
+            if (!Compatible)
                 throw new InvalidCreatureException(
-                    compatibility.Reason,
+                    Reason,
                     asCharacter,
                     creature.Name,
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
+                    null,
                     [.. creature.Templates.Union([DragonSpecies])]);
 
             // Template
@@ -417,20 +418,21 @@ namespace DnDGen.CreatureGen.Templates
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
             var dragonAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, DragonSpecies);
-            var compatibility = IsCompatible(
+            var (Compatible, Reason) = IsCompatible(
                 creature.Type.AllTypes,
                 dragonAlignments,
                 creature.ChallengeRating,
                 filters);
 
-            if (!compatibility.Compatible)
+            if (!Compatible)
                 throw new InvalidCreatureException(
-                    compatibility.Reason,
+                    Reason,
                     asCharacter,
                     creature.Name,
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
+                    null,
                     [.. creature.Templates.Union([DragonSpecies])]);
 
             var tasks = new List<Task>();

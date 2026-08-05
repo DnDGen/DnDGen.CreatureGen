@@ -68,7 +68,7 @@ namespace DnDGen.CreatureGen.Templates
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
-            var compatibility = IsCompatible(
+            var (Compatible, Reason) = IsCompatible(
                 creature.Type.AllTypes,
                 creature.HasSkeleton,
                 creature.HitPoints.HitDiceQuantity,
@@ -76,15 +76,16 @@ namespace DnDGen.CreatureGen.Templates
                 asCharacter,
                 filters);
 
-            if (!compatibility.Compatible)
+            if (!Compatible)
             {
                 throw new InvalidCreatureException(
-                    compatibility.Reason,
+                    Reason,
                     asCharacter,
                     creature.Name,
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
+                    null,
                     [.. creature.Templates.Union([CreatureConstants.Templates.Skeleton])]);
             }
 
@@ -421,7 +422,7 @@ namespace DnDGen.CreatureGen.Templates
 
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
-            var compatibility = IsCompatible(
+            var (Compatible, Reason) = IsCompatible(
                 creature.Type.AllTypes,
                 creature.HasSkeleton,
                 creature.HitPoints.HitDiceQuantity,
@@ -429,15 +430,16 @@ namespace DnDGen.CreatureGen.Templates
                 asCharacter,
                 filters);
 
-            if (!compatibility.Compatible)
+            if (!Compatible)
             {
                 throw new InvalidCreatureException(
-                    compatibility.Reason,
+                    Reason,
                     asCharacter,
                     creature.Name,
                     filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
+                    null,
                     [.. creature.Templates.Union([CreatureConstants.Templates.Skeleton])]);
             }
 
