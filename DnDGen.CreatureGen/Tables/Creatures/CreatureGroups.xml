@@ -1861,6 +1861,48 @@
 	</collection>
 	<collection>
 		<name>GhostFalse</name>
+		<entry>Weasel</entry>
+		<entry>Shrieker</entry>
+		<entry>Squid</entry>
+		<entry>Tendriculos</entry>
+		<entry>Toad</entry>
+		<entry>Viper Snake, Huge</entry>
+		<entry>Viper Snake, Large</entry>
+		<entry>Viper Snake, Medium</entry>
+		<entry>Viper Snake, Small</entry>
+		<entry>Viper Snake, Tiny</entry>
+		<entry>Warpony</entry>
+		<entry>Monitor Lizard</entry>
+		<entry>Monkey</entry>
+		<entry>Octopus</entry>
+		<entry>Owl</entry>
+		<entry>Pony</entry>
+		<entry>Rat</entry>
+		<entry>Rat Swarm</entry>
+		<entry>Rhinoceras</entry>
+		<entry>Shark, Huge</entry>
+		<entry>Shark, Large</entry>
+		<entry>Shark, Medium</entry>
+		<entry>Dire Rat</entry>
+		<entry>Donkey</entry>
+		<entry>Giant Constrictor Snake</entry>
+		<entry>Giant Crocodile</entry>
+		<entry>Giant Octopus</entry>
+		<entry>Giant Squid</entry>
+		<entry>Grick</entry>
+		<entry>Hill Giant</entry>
+		<entry>Lizard</entry>
+		<entry>Manta Ray</entry>
+		<entry>Baboon</entry>
+		<entry>Bat</entry>
+		<entry>Bat Swarm</entry>
+		<entry>Bison</entry>
+		<entry>Boar</entry>
+		<entry>Camel, Bactrian (Two-Humped)</entry>
+		<entry>Camel, Dromedary (One-Humped)</entry>
+		<entry>Chuul</entry>
+		<entry>Constrictor Snake</entry>
+		<entry>Crocodile</entry>
 		<entry>Yuan-ti Pureblood</entry>
 		<entry>Yuan-ti Halfblood (Human Head, Arms are Snakes)</entry>
 		<entry>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</entry>
@@ -2207,6 +2249,7 @@
 	</collection>
 	<collection>
 		<name>GhostTrue</name>
+		<entry>Hill Giant</entry>
 		<entry>Yuan-ti Pureblood</entry>
 		<entry>Yuan-ti Halfblood (Human Head, Arms are Snakes)</entry>
 		<entry>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</entry>
@@ -2346,6 +2389,16 @@
 	</collection>
 	<collection>
 		<name>Half-CelestialFalse</name>
+		<entry>Ankheg</entry>
+		<entry>Ape</entry>
+		<entry>Baboon</entry>
+		<entry>Badger</entry>
+		<entry>Baleen Whale</entry>
+		<entry>Basilisk</entry>
+		<entry>Bat</entry>
+		<entry>Bat Swarm</entry>
+		<entry>Bison</entry>
+		<entry>Black Bear</entry>
 		<entry>Yuan-ti Pureblood</entry>
 		<entry>Yuan-ti Halfblood (Human Head, Arms are Snakes)</entry>
 		<entry>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</entry>
@@ -2574,6 +2627,7 @@
 	</collection>
 	<collection>
 		<name>Half-CelestialTrue</name>
+		<entry>Gray Render</entry>
 		<entry>Yuan-ti Pureblood</entry>
 		<entry>Yuan-ti Halfblood (Human Head, Arms are Snakes)</entry>
 		<entry>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</entry>
@@ -7022,6 +7076,16 @@
 	</collection>
 	<collection>
 		<name>Half-FiendFalse</name>
+		<entry>Ankheg</entry>
+		<entry>Ape</entry>
+		<entry>Baboon</entry>
+		<entry>Badger</entry>
+		<entry>Baleen Whale</entry>
+		<entry>Basilisk</entry>
+		<entry>Bat</entry>
+		<entry>Bat Swarm</entry>
+		<entry>Bison</entry>
+		<entry>Black Bear</entry>
 		<entry>Will-O'-Wisp</entry>
 		<entry>Winter Wolf</entry>
 		<entry>Worg</entry>
@@ -7245,6 +7309,7 @@
 	</collection>
 	<collection>
 		<name>Half-FiendTrue</name>
+		<entry>Gray Render</entry>
 		<entry>Shambling Mound</entry>
 		<entry>Skum</entry>
 		<entry>Treant</entry>

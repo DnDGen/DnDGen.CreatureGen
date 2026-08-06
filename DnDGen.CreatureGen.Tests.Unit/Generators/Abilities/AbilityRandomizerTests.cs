@@ -321,5 +321,80 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             var action = () => abilityRandomizer.GetAdjustment(mockDice.Object, ability, 4);
             Assert.That(action, Throws.InvalidOperationException.With.Message.EqualTo("Cannot increase ability my ability by 7, max allowed is 6"));
         }
+
+        [TestCase(-9266, false)]
+        [TestCase(-2, false)]
+        [TestCase(-1, false)]
+        [TestCase(0, false)]
+        [TestCase(1, true)]
+        [TestCase(2, true)]
+        [TestCase(9, true)]
+        [TestCase(10, true)]
+        [TestCase(11, true)]
+        [TestCase(18, true)]
+        [TestCase(9266, true)]
+        public void Validate_BasedOnMaxRoll(int maxRoll, bool expected)
+        {
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(maxRoll);
+
+            var valid = abilityRandomizer.Validate(mockDice.Object);
+            Assert.That(valid, Is.EqualTo(expected));
+        }
+
+        [TestCase(-9266, false)]
+        [TestCase(-2, false)]
+        [TestCase(-1, false)]
+        [TestCase(0, false)]
+        [TestCase(1, true)]
+        [TestCase(2, true)]
+        [TestCase(9, true)]
+        [TestCase(10, true)]
+        [TestCase(11, true)]
+        [TestCase(18, true)]
+        [TestCase(9266, true)]
+        public void Validate_BasedOnSetValue(int setValue, bool expected)
+        {
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(11);
+
+            abilityRandomizer.SetRolls[AbilityConstants.Strength] = setValue;
+            abilityRandomizer.SetRolls[AbilityConstants.Constitution] = 90210;
+            abilityRandomizer.SetRolls[AbilityConstants.Dexterity] = 42;
+            abilityRandomizer.SetRolls[AbilityConstants.Intelligence] = 600;
+            abilityRandomizer.SetRolls[AbilityConstants.Wisdom] = 1337;
+            abilityRandomizer.SetRolls[AbilityConstants.Charisma] = 1336;
+
+            var valid = abilityRandomizer.Validate(mockDice.Object);
+            Assert.That(valid, Is.EqualTo(expected));
+        }
+
+        [TestCase(AbilityConstants.Strength, true)]
+        [TestCase(AbilityConstants.Strength, false)]
+        [TestCase(AbilityConstants.Constitution, true)]
+        [TestCase(AbilityConstants.Constitution, false)]
+        [TestCase(AbilityConstants.Dexterity, true)]
+        [TestCase(AbilityConstants.Dexterity, false)]
+        [TestCase(AbilityConstants.Intelligence, true)]
+        [TestCase(AbilityConstants.Intelligence, false)]
+        [TestCase(AbilityConstants.Wisdom, true)]
+        [TestCase(AbilityConstants.Wisdom, false)]
+        [TestCase(AbilityConstants.Charisma, true)]
+        [TestCase(AbilityConstants.Charisma, false)]
+        public void Validate_BasedOnAnySetValue(string ability, bool expected)
+        {
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(11);
+
+            abilityRandomizer.SetRolls[AbilityConstants.Strength] = 9266;
+            abilityRandomizer.SetRolls[AbilityConstants.Constitution] = 90210;
+            abilityRandomizer.SetRolls[AbilityConstants.Dexterity] = 42;
+            abilityRandomizer.SetRolls[AbilityConstants.Intelligence] = 600;
+            abilityRandomizer.SetRolls[AbilityConstants.Wisdom] = 1337;
+            abilityRandomizer.SetRolls[AbilityConstants.Charisma] = 1336;
+
+            if (!expected)
+                abilityRandomizer.SetRolls[ability] = -666;
+
+            var valid = abilityRandomizer.Validate(mockDice.Object);
+            Assert.That(valid, Is.EqualTo(expected));
+        }
     }
 }

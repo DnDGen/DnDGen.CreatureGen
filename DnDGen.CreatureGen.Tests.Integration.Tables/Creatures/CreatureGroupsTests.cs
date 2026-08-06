@@ -63,7 +63,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         private void AssertTemplateGroup(string template, IEnumerable<string> source, bool asCharacter)
         {
-            var sourcePrototypes = prototypeFactory.Build(source, asCharacter);
+            var sourcePrototypes = prototypeFactory.Build(source, asCharacter).ToArray();
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
 
             //INFO: Since ability compatibility with templates is based on the ability randomizer,

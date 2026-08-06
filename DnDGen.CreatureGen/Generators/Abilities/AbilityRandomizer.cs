@@ -28,6 +28,24 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             maxRoll = null;
         }
 
+        public bool Validate(Dice dice)
+        {
+            var valid = true;
+
+            if (!string.IsNullOrEmpty(Roll))
+            {
+                var max = GetMaxRoll(dice);
+                valid &= max >= 1;
+            }
+
+            if (SetRolls?.Count > 0)
+            {
+                valid &= SetRolls.Values.All(v => v >= 1);
+            }
+
+            return valid;
+        }
+
         internal int Randomize(string ability, Dice dice)
         {
             if (SetRolls.ContainsKey(ability))

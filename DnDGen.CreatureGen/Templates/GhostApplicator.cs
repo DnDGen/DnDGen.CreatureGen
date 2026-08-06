@@ -440,10 +440,27 @@ namespace DnDGen.CreatureGen.Templates
                 .Where(c => allAbilityAdjustments[c].Any(a => a.Type == MinimumAbility.Name
                     && abilityRandomizer.Validate(MinimumAbility.Name, dice, MinimumAbility.FullScore, a.Amount)));
 
+            //TODO: Get the "<MinimumAbilityName><RequiredAdjustment>" group, where RequiredAdjustment is min - maxRoll(or set) from randomizder
+            //This will be all creatures whose racial adjustment is that value or better
+            //If RequiredAdjustment is -10, that's all creatures (worst adjustment is -10, can't go lower), so if reqAdj <= -10, no intersect needed
+            //Assume worst maxRoll is 1 (since abilities should be positive), so you need groups [-9,5]
+
             if (string.IsNullOrEmpty(filters?.ChallengeRating)
                 && string.IsNullOrEmpty(filters?.Type)
                 && string.IsNullOrEmpty(filters?.Alignment))
                 return filteredBaseCreatures;
+
+            //TODO: Get the "Ghost<FilterType>", where FilterType is the Type on the Filters object
+            //This will be pre-computed to be all creatures who, when run through the Ghost template applicator, will result in the given creature type
+
+            //TODO: Get the "Ghost<FilterAlignment>", where FilterAlignment is the Alignment on the Filters object
+            //This will be pre-computed to be all creatures who, when run through the Ghost template applicator, will result in the given alignment
+
+            //TODO: Get the "Ghost<asCharacter><FilterCR>", where FilterCR is the target CR on the Filters object
+            //This will be pre-computed to be all creatures who, when run through the Ghost template applicator with the given asCharacter boolean,
+            //will result in the given challenge rating as computed by CreatureDataSelection.GetEffectiveChallengeRating(asCharacter)
+
+            //TODO: Intersect all the things, return that
 
             var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
             var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
