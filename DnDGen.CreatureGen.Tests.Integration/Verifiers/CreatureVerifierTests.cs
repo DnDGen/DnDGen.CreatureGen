@@ -813,7 +813,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
             var filters = new Filters();
             filters.Templates.AddRange(templates);
 
-            var randomizer = new AbilityRandomizer() { Roll = AbilityConstants.RandomizerRolls.Poor };
+            var randomizer = new AbilityRandomizer(AbilityConstants.RandomizerRolls.Poor);
             var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, randomizer, filters);
             Assert.That(verified, Is.EqualTo(valid));
         }
@@ -824,7 +824,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
             var filters = new Filters();
             filters.Templates.AddRange(templates);
 
-            var randomizer = new AbilityRandomizer() { Roll = AbilityConstants.RandomizerRolls.Wild };
+            var randomizer = new AbilityRandomizer(AbilityConstants.RandomizerRolls.Wild);
             var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, randomizer, filters);
             Assert.That(verified, Is.True);
         }
@@ -1279,7 +1279,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
             filters.ChallengeRating = challengeRating;
             filters.Alignment = alignment;
 
-            var randomizer = new AbilityRandomizer() { Roll = AbilityConstants.RandomizerRolls.Poor };
+            var randomizer = new AbilityRandomizer(AbilityConstants.RandomizerRolls.Poor);
             var verified = creatureVerifier.VerifyCompatibility(asCharacter, null, randomizer, filters);
             Assert.That(verified, Is.True);
         }
@@ -1293,7 +1293,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
             filters.ChallengeRating = challengeRating;
             filters.Alignment = alignment;
 
-            var randomizer = new AbilityRandomizer() { Roll = AbilityConstants.RandomizerRolls.Wild };
+            var randomizer = new AbilityRandomizer(AbilityConstants.RandomizerRolls.Wild);
             var verified = creatureVerifier.VerifyCompatibility(asCharacter, null, randomizer, filters);
             Assert.That(verified, Is.True);
         }

@@ -2322,7 +2322,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void GetCompatibleCreatures_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumCharisma_Rolled(bool asCharacter)
         {
             var creatures = new[] { "low rizz creature", "my creature", "outsider creature", "my other creature", "no rizz creature" };
-            var abilityRandomizer = new AbilityRandomizer() { Roll = "my roll" };
+            var abilityRandomizer = new AbilityRandomizer("my roll");
 
             var ghostCreatures = creatures.Except(["outsider creature", "no rizz creature"]);
             mockCollectionSelector
@@ -2416,7 +2416,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void GetCompatibleCreatures_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumCharisma_RolledHigh(bool asCharacter)
         {
             var creatures = new[] { "low rizz creature", "my creature", "outsider creature", "my other creature", "no rizz creature" };
-            var abilityRandomizer = new AbilityRandomizer() { Roll = "my roll" };
+            var abilityRandomizer = new AbilityRandomizer("my roll");
 
             var ghostCreatures = creatures.Except(["outsider creature", "no rizz creature"]);
             mockCollectionSelector
@@ -2874,7 +2874,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             };
             mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
-            var randomizer = new AbilityRandomizer { Roll = "my roll" };
+            var randomizer = new AbilityRandomizer("my roll");
             mockDice.Setup(d => d.Roll("my roll").AsPotentialMaximum<int>(true)).Returns(maxRoll);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures([$"my {charismaAdjustment}-rizz creature"], false, randomizer);
@@ -2930,7 +2930,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             };
             mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
-            var randomizer = new AbilityRandomizer { Roll = "my roll", SetRolls = new() { [AbilityConstants.Charisma] = setCharisma } };
+            var randomizer = new AbilityRandomizer("my roll") { SetRolls = new() { [AbilityConstants.Charisma] = setCharisma } };
             mockDice.Setup(d => d.Roll("my roll").AsPotentialMaximum<int>(true)).Returns(1);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures([$"my {charismaAdjustment}-rizz creature"], false, randomizer);
@@ -3466,7 +3466,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void GetCompatiblePrototypes_FromNames_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumCharisma_Rolled(bool asCharacter)
         {
             var creatures = new[] { "low rizz creature", "my creature", "outsider creature", "my other creature", "no rizz creature" };
-            var abilityRandomizer = new AbilityRandomizer() { Roll = "my roll" };
+            var abilityRandomizer = new AbilityRandomizer("my roll");
 
             var ghostCreatures = creatures.Except(["outsider creature", "no rizz creature"]);
             mockCollectionSelector
@@ -3664,7 +3664,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void GetCompatiblePrototypes_FromNames_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumCharisma_RolledHigh(bool asCharacter)
         {
             var creatures = new[] { "low rizz creature", "my creature", "outsider creature", "my other creature", "no rizz creature" };
-            var abilityRandomizer = new AbilityRandomizer() { Roll = "my roll" };
+            var abilityRandomizer = new AbilityRandomizer("my roll");
 
             var ghostCreatures = creatures.Except(["outsider creature", "no rizz creature"]);
             mockCollectionSelector

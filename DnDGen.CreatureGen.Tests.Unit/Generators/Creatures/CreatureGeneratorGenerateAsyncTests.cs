@@ -55,7 +55,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateAsync_InvalidCreatureTemplateComboThrowsException(bool asCharacter)
         {
-            var abilityRandomizer = new AbilityRandomizer() { Roll = "my roll" };
+            var abilityRandomizer = new AbilityRandomizer("my roll");
             mockCreatureVerifier
                 .Setup(v => v.VerifyCompatibility(asCharacter, "creature", abilityRandomizer, It.Is<Filters>(f => f != null
                     && f.Templates.Single() == "template"
@@ -79,7 +79,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateAsync_InvalidCreatureTemplateComboThrowsException_MultipleTemplates(bool asCharacter)
         {
-            var abilityRandomizer = new AbilityRandomizer() { Roll = "my roll" };
+            var abilityRandomizer = new AbilityRandomizer("my roll");
             mockCreatureVerifier
                 .Setup(v => v.VerifyCompatibility(asCharacter, "creature", abilityRandomizer, It.Is<Filters>(f => f != null
                     && f.Templates.Count == 2
@@ -294,10 +294,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateAsync_GenerateCreatureAbilities_WithSpecifiedRandomizer(bool asCharacter)
         {
-            var randomizer = new AbilityRandomizer
-            {
-                Roll = "my special roll"
-            };
+            var randomizer = new AbilityRandomizer("my special roll");
 
             SetUpCreature("creature", asCharacter, null, null, null, randomizer: randomizer, "template");
             var creature = await creatureGenerator.GenerateAsync(asCharacter, "creature", randomizer, "template");

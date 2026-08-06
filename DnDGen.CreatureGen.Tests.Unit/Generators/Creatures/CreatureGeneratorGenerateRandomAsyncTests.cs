@@ -922,7 +922,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_ThrowException_WhenNotCompatible_WithAbilityRandomizer(bool asCharacter)
         {
-            var randomizer = new AbilityRandomizer { Roll = "my roll" };
+            var randomizer = new AbilityRandomizer("my roll");
             var filters = new Filters();
             filters.Templates.Add("my template");
             filters.Type = "my type";
@@ -1129,10 +1129,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureAbilities_WithSpecifiedRandomizer(bool asCharacter)
         {
-            var randomizer = new AbilityRandomizer
-            {
-                Roll = "my special roll"
-            };
+            var randomizer = new AbilityRandomizer("my special roll");
 
             SetUpCreature("creature", asCharacter, randomizer: randomizer);
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, randomizer);

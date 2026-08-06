@@ -1850,7 +1850,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void GetCompatibleCreatures_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumIntelligence_Rolled(bool asCharacter)
         {
             var creatures = new[] { "low brains creature", "my creature", "outsider creature", "my other creature", "no brains creature" };
-            var abilityRandomizer = new AbilityRandomizer() { Roll = "my roll" };
+            var abilityRandomizer = new AbilityRandomizer("my roll");
 
             var celestialCreatures = creatures.Except(["outsider creature", "no brains creature"]);
             mockCollectionSelector
@@ -1944,7 +1944,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void GetCompatibleCreatures_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumIntelligence_RolledHigh(bool asCharacter)
         {
             var creatures = new[] { "low brains creature", "my creature", "outsider creature", "my other creature", "no brains creature" };
-            var abilityRandomizer = new AbilityRandomizer() { Roll = "my roll" };
+            var abilityRandomizer = new AbilityRandomizer("my roll");
 
             var celestialCreatures = creatures.Except(["outsider creature", "no brains creature"]);
             mockCollectionSelector
@@ -2458,7 +2458,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             };
             mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
-            var randomizer = new AbilityRandomizer { Roll = "my roll" };
+            var randomizer = new AbilityRandomizer("my roll");
             mockDice.Setup(d => d.Roll("my roll").AsPotentialMaximum<int>(true)).Returns(maxRoll);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures([$"my {intelligenceAdjustment}-brains creature"], false, randomizer);
@@ -2514,7 +2514,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             };
             mockTypeAndAmountSelector.Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)).Returns(abilityAdjustments);
 
-            var randomizer = new AbilityRandomizer { Roll = "my roll", SetRolls = new() { [AbilityConstants.Intelligence] = setIntelligence } };
+            var randomizer = new AbilityRandomizer("my roll") { SetRolls = new() { [AbilityConstants.Intelligence] = setIntelligence } };
             mockDice.Setup(d => d.Roll("my roll").AsPotentialMaximum<int>(true)).Returns(1);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures([$"my {intelligenceAdjustment}-brains creature"], false, randomizer);
@@ -3236,7 +3236,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void GetCompatiblePrototypes_FromNames_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumIntelligence_Rolled(bool asCharacter)
         {
             var creatures = new[] { "low brains creature", "my creature", "outsider creature", "my other creature", "no brains creature" };
-            var abilityRandomizer = new AbilityRandomizer() { Roll = "my roll" };
+            var abilityRandomizer = new AbilityRandomizer("my roll");
 
             var celestialCreatures = creatures.Except(["outsider creature", "no brains creature"]);
             mockCollectionSelector
@@ -3434,7 +3434,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void GetCompatiblePrototypes_FromNames_ReturnCompatibleCreatures_AbilityRandomizerAllowsMinimumIntelligence_RolledHigh(bool asCharacter)
         {
             var creatures = new[] { "low brains creature", "my creature", "outsider creature", "my other creature", "no brains creature" };
-            var abilityRandomizer = new AbilityRandomizer() { Roll = "my roll" };
+            var abilityRandomizer = new AbilityRandomizer("my roll");
 
             var celestialCreatures = creatures.Except(["outsider creature", "no brains creature"]);
             mockCollectionSelector

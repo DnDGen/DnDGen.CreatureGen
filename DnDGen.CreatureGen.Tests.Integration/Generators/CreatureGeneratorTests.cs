@@ -604,10 +604,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [TestCase("42d600+9266", 42 + 9266, 42 * 600 + 9266)]
         public void Generate_HumanWithAbilityRandomizer(string roll, int lower, int upper)
         {
-            var randomizer = new AbilityRandomizer
-            {
-                Roll = roll
-            };
+            var randomizer = new AbilityRandomizer(roll);
 
             var creature = creatureGenerator.Generate(false, CreatureConstants.Human, randomizer);
             creatureAsserter.AssertCreature(creature);
@@ -664,10 +661,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [TestCase(AbilityConstants.Wisdom)]
         public void Generate_HumanWithPriorityAbility(string ability)
         {
-            var randomizer = new AbilityRandomizer
+            var randomizer = new AbilityRandomizer(AbilityConstants.RandomizerRolls.Wild)
             {
                 PriorityAbility = ability,
-                Roll = AbilityConstants.RandomizerRolls.Wild
             };
 
             var creature = creatureGenerator.Generate(false, CreatureConstants.Human, randomizer);
@@ -834,7 +830,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         public void BUG_Generate_WithProblematicFilters_OtyughHalfCelestial()
         {
             var templates = new[] { CreatureConstants.Templates.HalfCelestial };
-            var randomizer = new AbilityRandomizer { Roll = AbilityConstants.RandomizerRolls.Raw };
+            var randomizer = new AbilityRandomizer(AbilityConstants.RandomizerRolls.Raw);
             var creature = creatureGenerator.Generate(false, CreatureConstants.Otyugh, randomizer, templates);
             creatureAsserter.AssertCreature(creature);
         }

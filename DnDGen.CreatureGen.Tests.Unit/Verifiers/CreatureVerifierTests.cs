@@ -28,7 +28,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             mockCollectionSelector = new Mock<ICollectionSelector>();
             verifier = new CreatureVerifier(mockJustInTimeFactory.Object, mockCollectionSelector.Object);
 
-            abilityRandomizer = new() { Roll = "my roll" };
+            abilityRandomizer = new("my roll");
         }
 
         [TestCase(true, true)]

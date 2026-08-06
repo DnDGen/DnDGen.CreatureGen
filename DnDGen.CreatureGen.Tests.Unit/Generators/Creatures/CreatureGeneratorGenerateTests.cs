@@ -60,7 +60,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public void Generate_InvalidCreatureTemplateComboThrowsException_WithAbilityRandomizer(bool asCharacter)
         {
-            var randomizer = new AbilityRandomizer { Roll = "my roll" };
+            var randomizer = new AbilityRandomizer("my roll");
             var filters = new Filters();
             filters.Templates.Add("template");
 

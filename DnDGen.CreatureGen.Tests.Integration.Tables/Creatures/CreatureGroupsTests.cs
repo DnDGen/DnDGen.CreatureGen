@@ -64,8 +64,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         private void AssertTemplateGroup(string template, IEnumerable<string> source, bool asCharacter)
         {
             var sourcePrototypes = prototypeFactory.Build(source, asCharacter);
-
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
+
+            //INFO: Since ability compatibility with templates is based on the ability randomizer,
+            //we don't want to exclude potentially-low-ability creatures if the ability randomizer allows high rolls (such as for characters)
+            if (applicator.MinimumAbility != null)
+            {
+                foreach (var prototype in sourcePrototypes)
+                {
+                    if (prototype.Abilities[applicator.MinimumAbility.Name].HasScore)
+                        prototype.Abilities[applicator.MinimumAbility.Name].BaseScore += applicator.MinimumAbility.FullScore;
+                }
+            }
+
             var templatePrototypes = applicator.GetCompatiblePrototypes(sourcePrototypes, asCharacter);
             var templateCreatures = templatePrototypes.Select(p => p.Name);
 

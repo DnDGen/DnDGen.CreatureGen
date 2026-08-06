@@ -37,10 +37,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             mockDice = new Mock<Dice>();
             mockJustInTimeFactory = new Mock<JustInTimeFactory>();
             abilitiesGenerator = new AbilitiesGenerator(mockTypeAndAmountSelector.Object, mockDice.Object, mockJustInTimeFactory.Object);
-            randomizer = new AbilityRandomizer();
+            randomizer = new AbilityRandomizer("my roll");
             demographics = new Demographics();
 
-            randomizer.Roll = "my roll";
             demographics.Age.Description = "my age category";
 
             creatureAbilitySelections =

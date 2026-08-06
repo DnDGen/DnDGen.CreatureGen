@@ -78,7 +78,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             return (randomCreatureName, template);
         }
 
-        //private Creature GenerateAndAssertCreature(string creatureName, bool asCharacter, bool useDefaultAbilities = false, params string[] templates)
         private Creature GenerateAndAssertCreature(string creatureName, bool asCharacter, AbilityRandomizer abilityRandomizer, params string[] templates)
         {
             stopwatch.Restart();

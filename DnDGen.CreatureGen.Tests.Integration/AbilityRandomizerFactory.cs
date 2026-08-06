@@ -38,14 +38,10 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 rolls = [.. rolls.Except([AbilityConstants.RandomizerRolls.Poor])];
             }
 
-            var randomizer = new AbilityRandomizer
-            {
-                Roll = collectionSelector.SelectRandomFrom(rolls)
-            };
+            var randomizer = new AbilityRandomizer(collectionSelector.SelectRandomFrom(rolls));
 
             if (randomizer.Roll == set)
             {
-                randomizer.Roll = string.Empty;
                 var setRoll = collectionSelector.SelectRandomFrom(rolls.Except([set]));
 
                 randomizer.SetRolls[AbilityConstants.Strength] = dice.Roll(setRoll).AsSum();
