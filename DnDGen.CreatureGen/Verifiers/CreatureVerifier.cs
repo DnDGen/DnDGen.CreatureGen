@@ -5,15 +5,20 @@ using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.RollGen;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Verifiers
 {
-    internal class CreatureVerifier(JustInTimeFactory factory, ICollectionSelector collectionsSelector) : ICreatureVerifier
+    internal class CreatureVerifier(JustInTimeFactory factory, ICollectionSelector collectionsSelector, Dice dice) : ICreatureVerifier
     {
         public bool VerifyCompatibility(bool asCharacter, string creature = null, AbilityRandomizer abilityRandomizer = null, Filters filters = null)
         {
+            var valid = abilityRandomizer?.Validate(dice) ?? true;
+            if (!valid)
+                return false;
+
             IEnumerable<string> baseCreatures = [creature];
             if (string.IsNullOrEmpty(creature))
             {

@@ -532,7 +532,7 @@ namespace DnDGen.CreatureGen.Templates
             if (!filteredBaseCreatures.Any())
                 return [];
 
-            abilityRandomizer ??= new AbilityRandomizer();
+            abilityRandomizer ??= new();
             var allAbilityAdjustments = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments);
 
             filteredBaseCreatures = filteredBaseCreatures

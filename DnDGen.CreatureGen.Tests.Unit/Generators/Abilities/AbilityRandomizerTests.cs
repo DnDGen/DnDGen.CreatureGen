@@ -333,9 +333,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(11, true)]
         [TestCase(18, true)]
         [TestCase(9266, true)]
-        public void Validate_BasedOnMaxRoll(int maxRoll, bool expected)
+        public void Validate_BasedOnMinimumRoll(int minRoll, bool expected)
         {
-            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(maxRoll);
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMinimum<int>()).Returns(minRoll);
 
             var valid = abilityRandomizer.Validate(mockDice.Object);
             Assert.That(valid, Is.EqualTo(expected));
@@ -354,7 +354,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(9266, true)]
         public void Validate_BasedOnSetValue(int setValue, bool expected)
         {
-            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(11);
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMinimum<int>()).Returns(10);
 
             abilityRandomizer.SetRolls[AbilityConstants.Strength] = setValue;
             abilityRandomizer.SetRolls[AbilityConstants.Constitution] = 90210;
@@ -381,7 +381,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(AbilityConstants.Charisma, false)]
         public void Validate_BasedOnAnySetValue(string ability, bool expected)
         {
-            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(11);
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMinimum<int>()).Returns(10);
 
             abilityRandomizer.SetRolls[AbilityConstants.Strength] = 9266;
             abilityRandomizer.SetRolls[AbilityConstants.Constitution] = 90210;

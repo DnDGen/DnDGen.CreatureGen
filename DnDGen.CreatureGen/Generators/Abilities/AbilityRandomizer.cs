@@ -34,8 +34,8 @@ namespace DnDGen.CreatureGen.Generators.Abilities
 
             if (!string.IsNullOrEmpty(Roll))
             {
-                var max = GetMaxRoll(dice);
-                valid &= max >= 1;
+                var min = dice.Roll(Roll).AsPotentialMinimum();
+                valid &= min >= 1;
             }
 
             if (SetRolls?.Count > 0)
@@ -57,10 +57,7 @@ namespace DnDGen.CreatureGen.Generators.Abilities
         internal bool Validate(string ability, Dice dice, int minimum, params int[] adjustments)
         {
             var adjustmentSum = adjustments.Sum();
-            if (SetRolls.ContainsKey(ability))
-                return SetRolls[ability] + adjustmentSum >= minimum;
-
-            var max = GetMaxRoll(dice);
+            var max = GetMax(dice, ability);
             return max + adjustmentSum >= minimum;
         }
 
@@ -81,6 +78,14 @@ namespace DnDGen.CreatureGen.Generators.Abilities
                 throw new InvalidOperationException($"Cannot increase ability {creatureAbility.Name} by {adjustment}, max allowed is {maxAdjustment}");
 
             return adjustment;
+        }
+
+        internal int GetMax(Dice dice, string abilityName)
+        {
+            if (SetRolls.ContainsKey(abilityName))
+                return SetRolls[abilityName];
+
+            return GetMaxRoll(dice);
         }
 
         private int GetMaxRoll(Dice dice)

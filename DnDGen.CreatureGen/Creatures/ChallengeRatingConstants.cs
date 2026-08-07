@@ -43,8 +43,8 @@ namespace DnDGen.CreatureGen.Creatures
 
         public static string[] GetOrdered()
         {
-            return new[]
-            {
+            return
+            [
                 CR0,
                 CR1_10th,
                 CR1_8th,
@@ -79,7 +79,7 @@ namespace DnDGen.CreatureGen.Creatures
                 CR25,
                 CR26,
                 CR27,
-            };
+            ];
         }
 
         public static IEnumerable<string> Fractional => GetOrdered().Skip(1).Take(6);

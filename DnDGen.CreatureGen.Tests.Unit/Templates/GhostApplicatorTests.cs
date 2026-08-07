@@ -66,10 +66,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockCollectionSelector.Object,
                 mockFeatsGenerator.Object,
                 mockItemsGenerator.Object,
-                mockCreatureDataSelector.Object,
+                //mockCreatureDataSelector.Object,
                 mockPrototypeFactory.Object,
-                mockDemographicsGenerator.Object,
-                mockTypeAndAmountSelector.Object);
+                //mockDemographicsGenerator.Object,
+                //mockTypeAndAmountSelector.Object);
+                mockDemographicsGenerator.Object);
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()

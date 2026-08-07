@@ -16,7 +16,7 @@ namespace DnDGen.CreatureGen.Generators.Abilities
     {
         public Dictionary<string, Ability> GenerateFor(string creatureName, bool asCharacter, AbilityRandomizer randomizer, Demographics demographics, string[] templates)
         {
-            randomizer ??= new AbilityRandomizer();
+            randomizer ??= new();
 
             var valid = TemplatesAreCompatible(templates, creatureName, asCharacter, randomizer);
             if (!valid)

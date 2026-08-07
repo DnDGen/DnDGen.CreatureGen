@@ -6,7 +6,6 @@ using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
@@ -27,10 +26,11 @@ namespace DnDGen.CreatureGen.Templates
         ICollectionSelector collectionSelector,
         IFeatsGenerator featsGenerator,
         IItemsGenerator itemsGenerator,
-        ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
+        //ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
         ICreaturePrototypeFactory prototypeFactory,
-        IDemographicsGenerator demographicsGenerator,
-        ICollectionTypeAndAmountSelector typeAndAmountSelector) : TemplateApplicator
+        //IDemographicsGenerator demographicsGenerator,
+        //ICollectionTypeAndAmountSelector typeAndAmountSelector) : TemplateApplicator
+        IDemographicsGenerator demographicsGenerator) : TemplateApplicator
     {
         private readonly IEnumerable<string> creatureTypes =
             [
@@ -430,47 +430,75 @@ namespace DnDGen.CreatureGen.Templates
         {
             var templateCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Ghost + asCharacter);
             var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
-            if (!filteredBaseCreatures.Any())
-                return [];
 
-            abilityRandomizer ??= new AbilityRandomizer();
-            var allAbilityAdjustments = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments);
+            // ORIGINAL
+            //var allAbilityAdjustments = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments);
 
-            filteredBaseCreatures = filteredBaseCreatures
-                .Where(c => allAbilityAdjustments[c].Any(a => a.Type == MinimumAbility.Name
-                    && abilityRandomizer.Validate(MinimumAbility.Name, dice, MinimumAbility.FullScore, a.Amount)));
+            //filteredBaseCreatures = filteredBaseCreatures
+            //    .Where(c => allAbilityAdjustments[c].Any(a => a.Type == MinimumAbility.Name
+            //        && abilityRandomizer.Validate(MinimumAbility.Name, dice, MinimumAbility.FullScore, a.Amount)));
 
             //TODO: Get the "<MinimumAbilityName><RequiredAdjustment>" group, where RequiredAdjustment is min - maxRoll(or set) from randomizder
             //This will be all creatures whose racial adjustment is that value or better
             //If RequiredAdjustment is -10, that's all creatures (worst adjustment is -10, can't go lower), so if reqAdj <= -10, no intersect needed
             //Assume worst maxRoll is 1 (since abilities should be positive), so you need groups [-9,5]
 
-            if (string.IsNullOrEmpty(filters?.ChallengeRating)
-                && string.IsNullOrEmpty(filters?.Type)
-                && string.IsNullOrEmpty(filters?.Alignment))
-                return filteredBaseCreatures;
+            abilityRandomizer ??= new();
+            var requiredAdjustment = MinimumAbility.FullScore - abilityRandomizer.GetMax(dice, MinimumAbility.Name);
+            if (requiredAdjustment > -10)
+            {
+                var groupName = MinimumAbility.Name + requiredAdjustment;
+                var abilityCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(abilityCreatures);
+            }
 
-            //TODO: Get the "Ghost<FilterType>", where FilterType is the Type on the Filters object
-            //This will be pre-computed to be all creatures who, when run through the Ghost template applicator, will result in the given creature type
+            if (!string.IsNullOrEmpty(filters?.Type))
+            {
+                //TODO: Get the "Ghost<FilterType>", where FilterType is the Type on the Filters object
+                //This will be pre-computed to be all creatures who, when run through the Ghost template applicator, will result in the given creature type
 
-            //TODO: Get the "Ghost<FilterAlignment>", where FilterAlignment is the Alignment on the Filters object
-            //This will be pre-computed to be all creatures who, when run through the Ghost template applicator, will result in the given alignment
+                var groupName = CreatureConstants.Templates.Ghost + filters.Type;
+                var typeCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(typeCreatures);
+            }
 
-            //TODO: Get the "Ghost<asCharacter><FilterCR>", where FilterCR is the target CR on the Filters object
-            //This will be pre-computed to be all creatures who, when run through the Ghost template applicator with the given asCharacter boolean,
-            //will result in the given challenge rating as computed by CreatureDataSelection.GetEffectiveChallengeRating(asCharacter)
+            if (!string.IsNullOrEmpty(filters?.Alignment))
+            {
+                //TODO: Get the "Ghost<FilterAlignment>", where FilterAlignment is the Alignment on the Filters object
+                //This will be pre-computed to be all creatures who, when run through the Ghost template applicator, will result in the given alignment
+
+                var groupName = CreatureConstants.Templates.Ghost + filters.Alignment;
+                var alignmentCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
+            }
+
+            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
+            {
+                //TODO: Get the "Ghost<asCharacter><FilterCR>", where FilterCR is the target CR on the Filters object
+                //This will be pre-computed to be all creatures who, when run through the Ghost template applicator with the given asCharacter boolean,
+                //will result in the given challenge rating as computed by CreatureDataSelection.GetEffectiveChallengeRating(asCharacter)
+
+                var groupName = CreatureConstants.Templates.Ghost + asCharacter + filters.ChallengeRating;
+                var crCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(crCreatures);
+            }
 
             //TODO: Intersect all the things, return that
 
-            var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
-            var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
+            //if (string.IsNullOrEmpty(filters?.ChallengeRating)
+            //    && string.IsNullOrEmpty(filters?.Type)
+            //    && string.IsNullOrEmpty(filters?.Alignment))
+            //    return filteredBaseCreatures;
 
-            filteredBaseCreatures = filteredBaseCreatures
-                .Where(c => AreFiltersCompatible(
-                    allData[c].Single().Types,
-                    allAlignments[c],
-                    allData[c].Single().GetEffectiveChallengeRating(asCharacter),
-                    filters).Compatible);
+            //var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
+            //var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
+
+            //filteredBaseCreatures = filteredBaseCreatures
+            //    .Where(c => AreFiltersCompatible(
+            //        allData[c].Single().Types,
+            //        allAlignments[c],
+            //        allData[c].Single().GetEffectiveChallengeRating(asCharacter),
+            //        filters).Compatible);
 
             return filteredBaseCreatures;
         }

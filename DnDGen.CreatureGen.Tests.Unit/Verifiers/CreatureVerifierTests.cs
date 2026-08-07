@@ -6,6 +6,7 @@ using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Verifiers;
 using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.RollGen;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         private ICreatureVerifier verifier;
         private Mock<JustInTimeFactory> mockJustInTimeFactory;
         private Mock<ICollectionSelector> mockCollectionSelector;
+        private Mock<Dice> mockDice;
         private AbilityRandomizer abilityRandomizer;
 
         [SetUp]
@@ -26,9 +28,63 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             mockJustInTimeFactory = new Mock<JustInTimeFactory>();
             mockCollectionSelector = new Mock<ICollectionSelector>();
-            verifier = new CreatureVerifier(mockJustInTimeFactory.Object, mockCollectionSelector.Object);
+            mockDice = new Mock<Dice>();
+            verifier = new CreatureVerifier(mockJustInTimeFactory.Object, mockCollectionSelector.Object, mockDice.Object);
 
             abilityRandomizer = new("my roll");
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMinimum<int>()).Returns(1);
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void VerifyCompatibility_AbilityRandomizer_DefaultIsValid(bool asCharacter)
+        {
+            var mockNoneApplicator = new Mock<TemplateApplicator>();
+            mockNoneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, null))
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc);
+
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(mockNoneApplicator.Object);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Returns(["character", "creature", "wrong creature"]);
+
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, "creature", null);
+            Assert.That(isCompatible, Is.True);
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void VerifyCompatibility_AbilityRandomizer_Valid(bool asCharacter)
+        {
+            var mockNoneApplicator = new Mock<TemplateApplicator>();
+            mockNoneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, abilityRandomizer, null))
+                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc);
+
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(mockNoneApplicator.Object);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Returns(["character", "creature", "wrong creature"]);
+
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, "creature", abilityRandomizer);
+            Assert.That(isCompatible, Is.True);
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void VerifyCompatibility_AbilityRandomizer_Invalid(bool asCharacter)
+        {
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMinimum<int>()).Returns(0);
+
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, "creature", abilityRandomizer);
+            Assert.That(isCompatible, Is.False);
         }
 
         [TestCase(true, true)]
