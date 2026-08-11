@@ -488,45 +488,44 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null)
         {
-            if (!string.IsNullOrEmpty(filters?.Alignment))
-            {
-                var presetAlignment = new Alignment(filters.Alignment);
-                if (presetAlignment.Goodness != AlignmentConstants.Good)
-                {
-                    return [];
-                }
-            }
-
             var templateCreatures = collectionSelector.SelectFrom(
                 Config.Name,
                 TableNameConstants.Collection.CreatureGroups,
                 CreatureConstants.Templates.HalfCelestial + asCharacter);
             var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
-            if (!filteredBaseCreatures.Any())
-                return [];
 
             abilityRandomizer ??= new();
-            var allAbilityAdjustments = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments);
+            var requiredAdjustment = MinimumAbility.FullScore - abilityRandomizer.GetMax(dice, MinimumAbility.Name);
 
-            filteredBaseCreatures = filteredBaseCreatures
-                .Where(c => allAbilityAdjustments[c].Any(a => a.Type == MinimumAbility.Name
-                    && abilityRandomizer.Validate(MinimumAbility.Name, dice, MinimumAbility.FullScore, a.Amount)));
+            //INFO: If RequiredAdjustment is -10, that's all creatures (worst adjustment is -10, can't go lower), so if reqAdj <= -10, no intersect needed
+            //Assume worst maxRoll is 1 (since abilities should be positive), so you need groups [-9,3]
+            if (requiredAdjustment > -10)
+            {
+                var groupName = MinimumAbility.Name + requiredAdjustment;
+                var abilityCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(abilityCreatures);
+            }
 
-            if (string.IsNullOrEmpty(filters?.ChallengeRating)
-                && string.IsNullOrEmpty(filters?.Type)
-                && string.IsNullOrEmpty(filters?.Alignment))
-                return filteredBaseCreatures;
+            if (!string.IsNullOrEmpty(filters?.Type))
+            {
+                var groupName = CreatureConstants.Templates.HalfCelestial + filters.Type;
+                var typeCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(typeCreatures);
+            }
 
-            var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
-            var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
+            if (!string.IsNullOrEmpty(filters?.Alignment))
+            {
+                var groupName = CreatureConstants.Templates.HalfCelestial + filters.Alignment;
+                var alignmentCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
+            }
 
-            filteredBaseCreatures = filteredBaseCreatures
-                .Where(c => AreFiltersCompatible(
-                    allData[c].Single().Types,
-                    allAlignments[c],
-                    allData[c].Single().GetEffectiveChallengeRating(asCharacter),
-                    allData[c].Single().GetEffectiveHitDiceQuantity(asCharacter),
-                    filters).Compatible);
+            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
+            {
+                var groupName = CreatureConstants.Templates.HalfCelestial + asCharacter + filters.ChallengeRating;
+                var crCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(crCreatures);
+            }
 
             return filteredBaseCreatures;
         }

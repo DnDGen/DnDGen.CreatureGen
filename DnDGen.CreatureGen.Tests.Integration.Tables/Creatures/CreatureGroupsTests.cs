@@ -186,7 +186,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertDistinctCollection(groupName, [.. templateCreatures]);
         }
 
-        private static IEnumerable ChallengeRatings => ChallengeRatingConstants.GetOrdered().Select(cr => new TestCaseData(cr));
+        private static IEnumerable ChallengeRatings => ChallengeRatingConstants.GetOrdered()
+            .Union(Enumerable.Range(1, 30).Select(cr => cr.ToString()))
+            .Select(cr => new TestCaseData(cr));
 
         [TestCaseSource(nameof(ChallengeRatings))]
         public void CreatureGroup_Template_ResultsInChallengeRating(string cr)

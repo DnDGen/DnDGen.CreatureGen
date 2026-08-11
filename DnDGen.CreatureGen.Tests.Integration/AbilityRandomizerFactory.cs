@@ -42,6 +42,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
             if (randomizer.Roll == set)
             {
+                randomizer = new AbilityRandomizer(null);
                 var setRoll = collectionSelector.SelectRandomFrom(rolls.Except([set]));
 
                 randomizer.SetRolls[AbilityConstants.Strength] = dice.Roll(setRoll).AsSum();
