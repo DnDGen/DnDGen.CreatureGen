@@ -9,7 +9,6 @@ using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Languages;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -30,10 +29,8 @@ namespace DnDGen.CreatureGen.Templates
         ISkillsGenerator skillsGenerator,
         Dice dice,
         IMagicGenerator magicGenerator,
-        ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
         ICreaturePrototypeFactory prototypeFactory,
-        IDemographicsGenerator demographicsGenerator,
-        ICollectionTypeAndAmountSelector typeAndAmountSelector) : TemplateApplicator
+        IDemographicsGenerator demographicsGenerator) : TemplateApplicator
     {
         private readonly IEnumerable<string> creatureTypes =
             [

@@ -1,32 +1,24 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.RollGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Generators.Creatures
 {
-    internal class CreaturePrototypeFactory : ICreaturePrototypeFactory
+    internal class CreaturePrototypeFactory(
+        ICollectionSelector collectionSelector,
+        ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
+        ICollectionTypeAndAmountSelector typeAndAmountSelector,
+        Dice dice) : ICreaturePrototypeFactory
     {
-        private readonly ICollectionSelector collectionSelector;
-        private readonly ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
-        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
-
-        public CreaturePrototypeFactory(
-            ICollectionSelector collectionSelector,
-            ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
-            ICollectionTypeAndAmountSelector typeAndAmountSelector)
-        {
-            this.collectionSelector = collectionSelector;
-            this.creatureDataSelector = creatureDataSelector;
-            this.typeAndAmountSelector = typeAndAmountSelector;
-        }
-
-        public IEnumerable<CreaturePrototype> Build(IEnumerable<string> creatureNames, bool asCharacter)
+        public IEnumerable<CreaturePrototype> Build(IEnumerable<string> creatureNames, bool asCharacter, AbilityRandomizer abilityRandomizer = null)
         {
             var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
             var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
@@ -34,13 +26,19 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var allCasterLevels = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters);
             var abilityNames = allAbilityAdjustments[CreatureConstants.Human].Select(s => s.Type);
 
+            abilityRandomizer ??= new AbilityRandomizer();
+
             foreach (var creature in creatureNames)
             {
                 var creatureData = allData[creature].Single();
                 var prototype = new CreaturePrototype
                 {
                     Name = creature,
-                    Abilities = allAbilityAdjustments[creature].ToDictionary(a => a.Type, a => new Ability(a.Type) { RacialAdjustment = a.Amount }),
+                    Abilities = allAbilityAdjustments[creature].ToDictionary(a => a.Type, a => new Ability(a.Type)
+                    {
+                        BaseScore = abilityRandomizer.GetMax(dice, a.Type),
+                        RacialAdjustment = a.Amount
+                    }),
                     Alignments = [.. allAlignments[creature].Select(a => new Alignment(a)).Distinct()],
                     CasterLevel = creatureData.CasterLevel,
                     Size = creatureData.Size,

@@ -7,7 +7,6 @@ using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
@@ -25,7 +24,6 @@ namespace DnDGen.CreatureGen.Templates
         IAttacksGenerator attacksGenerator,
         IFeatsGenerator featsGenerator,
         ICollectionSelector collectionSelector,
-        ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
         ICreaturePrototypeFactory prototypeFactory,
         IDemographicsGenerator demographicsGenerator) : TemplateApplicator
     {
@@ -104,19 +102,19 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        private void UpdateCreatureType(Creature creature)
+        private static void UpdateCreatureType(Creature creature)
         {
             var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
             creature.Type = new CreatureType(adjustedTypes);
         }
 
-        private void UpdateCreatureType(CreaturePrototype creature)
+        private static void UpdateCreatureType(CreaturePrototype creature)
         {
             var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
             creature.Type = new CreatureType(adjustedTypes);
         }
 
-        private IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
+        private static IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
         {
             return new[] { CreatureConstants.Types.Undead }
                 .Union(subtypes)
@@ -128,7 +126,7 @@ namespace DnDGen.CreatureGen.Templates
             creature.Demographics = demographicsGenerator.UpdateByTemplate(creature.Demographics, creature.Name, CreatureConstants.Templates.Vampire);
         }
 
-        private void UpdateCreatureInitiativeBonus(Creature creature)
+        private static void UpdateCreatureInitiativeBonus(Creature creature)
         {
             var allFeats = creature.SpecialQualities.Union(creature.Feats);
             var improvedInitiative = allFeats.FirstOrDefault(f => f.Name == FeatConstants.Initiative_Improved);
@@ -149,13 +147,13 @@ namespace DnDGen.CreatureGen.Templates
             creature.HitPoints.RollDefaultTotal(dice);
         }
 
-        private void UpdateCreatureLevelAdjustment(Creature creature)
+        private static void UpdateCreatureLevelAdjustment(Creature creature)
         {
             if (creature.LevelAdjustment.HasValue)
                 creature.LevelAdjustment += 8;
         }
 
-        private void UpdateCreatureLevelAdjustment(CreaturePrototype creature)
+        private static void UpdateCreatureLevelAdjustment(CreaturePrototype creature)
         {
             if (creature.LevelAdjustment.HasValue)
                 creature.LevelAdjustment += 8;
@@ -193,10 +191,10 @@ namespace DnDGen.CreatureGen.Templates
             return newAlignment;
         }
 
-        private void UpdateCreatureAbilities(Creature creature) => UpdateCreatureAbilities(creature.Abilities);
-        private void UpdateCreatureAbilities(CreaturePrototype creature) => UpdateCreatureAbilities(creature.Abilities);
+        private static void UpdateCreatureAbilities(Creature creature) => UpdateCreatureAbilities(creature.Abilities);
+        private static void UpdateCreatureAbilities(CreaturePrototype creature) => UpdateCreatureAbilities(creature.Abilities);
 
-        private void UpdateCreatureAbilities(Dictionary<string, Ability> abilities)
+        private static void UpdateCreatureAbilities(Dictionary<string, Ability> abilities)
         {
             abilities[AbilityConstants.Constitution].TemplateScore = 0;
 
@@ -216,7 +214,7 @@ namespace DnDGen.CreatureGen.Templates
                 abilities[AbilityConstants.Charisma].TemplateAdjustment += 4;
         }
 
-        private void UpdateCreatureSkills(Creature creature)
+        private static void UpdateCreatureSkills(Creature creature)
         {
             var vampireSkills = new[]
             {
@@ -244,20 +242,17 @@ namespace DnDGen.CreatureGen.Templates
             }
         }
 
-        private void UpdateCreatureChallengeRating(Creature creature)
+        private static void UpdateCreatureChallengeRating(Creature creature)
         {
             creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating);
         }
 
-        private void UpdateCreatureChallengeRating(CreaturePrototype creature)
+        private static void UpdateCreatureChallengeRating(CreaturePrototype creature)
         {
             creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating);
         }
 
-        private string UpdateCreatureChallengeRating(string challengeRating)
-        {
-            return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
-        }
+        private static string UpdateCreatureChallengeRating(string challengeRating) => ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
 
         private void UpdateCreatureAttacks(Creature creature)
         {
@@ -307,20 +302,20 @@ namespace DnDGen.CreatureGen.Templates
             creature.SpecialQualities = creature.SpecialQualities.Union(vampireQualities);
         }
 
-        private void UpdateCreatureArmorClass(Creature creature)
+        private static void UpdateCreatureArmorClass(Creature creature)
         {
             foreach (var bonus in creature.ArmorClass.NaturalArmorBonuses)
             {
                 bonus.Value += 6;
             }
 
-            if (!creature.ArmorClass.NaturalArmorBonuses.Any())
+            if (creature.ArmorClass.NaturalArmorBonuses.Count == 0)
             {
                 creature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 6);
             }
         }
 
-        private void UpdateCreatureTemplate(Creature creature)
+        private static void UpdateCreatureTemplate(Creature creature)
         {
             creature.Templates.Add(CreatureConstants.Templates.Vampire);
         }
@@ -418,37 +413,32 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null)
         {
-            if (!string.IsNullOrEmpty(filters?.Alignment))
-            {
-                var presetAlignment = new Alignment(filters.Alignment);
-                if (presetAlignment.Goodness != AlignmentConstants.Evil)
-                {
-                    return [];
-                }
-            }
-
             var templateCreatures = collectionSelector.SelectFrom(
                 Config.Name,
                 TableNameConstants.Collection.CreatureGroups,
                 CreatureConstants.Templates.Vampire + asCharacter);
             var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
-            if (!filteredBaseCreatures.Any())
-                return [];
 
-            if (string.IsNullOrEmpty(filters?.ChallengeRating)
-                && string.IsNullOrEmpty(filters?.Type)
-                && string.IsNullOrEmpty(filters?.Alignment))
-                return filteredBaseCreatures;
+            if (!string.IsNullOrEmpty(filters?.Type))
+            {
+                var groupName = CreatureConstants.Templates.Vampire + filters.Type;
+                var typeCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(typeCreatures);
+            }
 
-            var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
-            var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
+            if (!string.IsNullOrEmpty(filters?.Alignment))
+            {
+                var groupName = CreatureConstants.Templates.Vampire + filters.Alignment;
+                var alignmentCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
+            }
 
-            filteredBaseCreatures = filteredBaseCreatures
-                .Where(c => AreFiltersCompatible(
-                    allData[c].Single().Types,
-                    allAlignments[c],
-                    allData[c].Single().GetEffectiveChallengeRating(asCharacter),
-                    filters).Compatible);
+            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
+            {
+                var groupName = CreatureConstants.Templates.Vampire + asCharacter + filters.ChallengeRating;
+                var crCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(crCreatures);
+            }
 
             return filteredBaseCreatures;
         }
@@ -462,9 +452,9 @@ namespace DnDGen.CreatureGen.Templates
             double creatureHitDiceQuantity,
             Filters filters)
         {
-            var compatibility = IsCompatible(types, levelAdjustment, asCharacter, creatureHitDiceQuantity);
-            if (!compatibility.Compatible)
-                return (false, compatibility.Reason);
+            var (Compatible, Reason) = IsCompatible(types, levelAdjustment, asCharacter, creatureHitDiceQuantity);
+            if (!Compatible)
+                return (false, Reason);
 
             return AreFiltersCompatible(types, alignments, creatureChallengeRating, filters);
         }

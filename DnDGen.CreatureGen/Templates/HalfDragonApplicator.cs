@@ -10,7 +10,6 @@ using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Languages;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -31,7 +30,6 @@ namespace DnDGen.CreatureGen.Templates
         IAlignmentGenerator alignmentGenerator,
         Dice dice,
         IMagicGenerator magicGenerator,
-        ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
         ICreaturePrototypeFactory prototypeFactory,
         IDemographicsGenerator demographicsGenerator) : TemplateApplicator
     {
@@ -128,7 +126,7 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        private void UpdateCreatureType(Creature creature)
+        private static void UpdateCreatureType(Creature creature)
         {
             var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
             creature.Type = new CreatureType(adjustedTypes);
@@ -147,13 +145,13 @@ namespace DnDGen.CreatureGen.Templates
             }
         }
 
-        private void UpdateCreatureType(CreaturePrototype creature)
+        private static void UpdateCreatureType(CreaturePrototype creature)
         {
             var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
             creature.Type = new CreatureType(adjustedTypes);
         }
 
-        private bool IsAtLeastLarge(string size)
+        private static bool IsAtLeastLarge(string size)
         {
             var sizes = SizeConstants.GetOrdered();
             var largeIndex = Array.IndexOf(sizes, SizeConstants.Large);
@@ -161,7 +159,7 @@ namespace DnDGen.CreatureGen.Templates
             return sizeIndex >= largeIndex;
         }
 
-        private IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
+        private static IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
         {
             return new[] { CreatureConstants.Types.Dragon }
                 .Union(subtypes)
@@ -219,22 +217,22 @@ namespace DnDGen.CreatureGen.Templates
             creature.Languages = languages.Distinct();
         }
 
-        private void UpdateCreatureArmorClass(Creature creature)
+        private static void UpdateCreatureArmorClass(Creature creature)
         {
             foreach (var naturalArmorBonus in creature.ArmorClass.NaturalArmorBonuses)
             {
                 naturalArmorBonus.Value += 4;
             }
 
-            if (!creature.ArmorClass.NaturalArmorBonuses.Any())
+            if (creature.ArmorClass.NaturalArmorBonuses.Count == 0)
             {
                 creature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 4);
             }
         }
 
-        private void UpdateCreatureAbilities(Creature creature) => UpdateCreatureAbilities(creature.Abilities);
+        private static void UpdateCreatureAbilities(Creature creature) => UpdateCreatureAbilities(creature.Abilities);
 
-        private void UpdateCreatureAbilities(Dictionary<string, Ability> abilities)
+        private static void UpdateCreatureAbilities(Dictionary<string, Ability> abilities)
         {
             if (abilities[AbilityConstants.Strength].HasScore)
                 abilities[AbilityConstants.Strength].TemplateAdjustment += 8;
@@ -249,7 +247,7 @@ namespace DnDGen.CreatureGen.Templates
                 abilities[AbilityConstants.Charisma].TemplateAdjustment += 2;
         }
 
-        private void UpdateCreatureAbilities(CreaturePrototype creature) => UpdateCreatureAbilities(creature.Abilities);
+        private static void UpdateCreatureAbilities(CreaturePrototype creature) => UpdateCreatureAbilities(creature.Abilities);
 
         private void UpdateCreatureTemplate(Creature creature)
         {
@@ -261,7 +259,7 @@ namespace DnDGen.CreatureGen.Templates
             creature.Alignment = alignmentGenerator.Generate(DragonSpecies, null, presetAlignment);
         }
 
-        private void UpdateCreatureAlignment(CreaturePrototype creature, string presetAlignment, IEnumerable<string> dragonAlignments)
+        private static void UpdateCreatureAlignment(CreaturePrototype creature, string presetAlignment, IEnumerable<string> dragonAlignments)
         {
             if (!string.IsNullOrEmpty(presetAlignment))
             {
@@ -273,17 +271,17 @@ namespace DnDGen.CreatureGen.Templates
             }
         }
 
-        private void UpdateCreatureChallengeRating(Creature creature)
+        private static void UpdateCreatureChallengeRating(Creature creature)
         {
             creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating);
         }
 
-        private void UpdateCreatureChallengeRating(CreaturePrototype creature)
+        private static void UpdateCreatureChallengeRating(CreaturePrototype creature)
         {
             creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating);
         }
 
-        private string UpdateCreatureChallengeRating(string challengeRating)
+        private static string UpdateCreatureChallengeRating(string challengeRating)
         {
             var increased = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
 
@@ -295,13 +293,13 @@ namespace DnDGen.CreatureGen.Templates
             return increased;
         }
 
-        private void UpdateCreatureLevelAdjustment(Creature creature)
+        private static void UpdateCreatureLevelAdjustment(Creature creature)
         {
             if (creature.LevelAdjustment.HasValue)
                 creature.LevelAdjustment += 3;
         }
 
-        private void UpdateCreatureLevelAdjustment(CreaturePrototype creature)
+        private static void UpdateCreatureLevelAdjustment(CreaturePrototype creature)
         {
             if (creature.LevelAdjustment.HasValue)
                 creature.LevelAdjustment += 3;
@@ -395,7 +393,7 @@ namespace DnDGen.CreatureGen.Templates
 
                 if (matching == null)
                 {
-                    creature.SpecialQualities = creature.SpecialQualities.Union(new[] { sq });
+                    creature.SpecialQualities = creature.SpecialQualities.Union([sq]);
                 }
                 else if (matching.Power < sq.Power)
                 {
@@ -561,14 +559,14 @@ namespace DnDGen.CreatureGen.Templates
             string creatureChallengeRating,
             Filters filters)
         {
-            var compatibility = IsCompatible(types);
-            if (!compatibility.Compatible)
-                return (false, compatibility.Reason);
+            var (Compatible, Reason) = IsCompatible(types);
+            if (!Compatible)
+                return (false, Reason);
 
             return AreFiltersCompatible(types, dragonAlignments, creatureChallengeRating, filters);
         }
 
-        private (bool Compatible, string Reason) AreFiltersCompatible(
+        private static (bool Compatible, string Reason) AreFiltersCompatible(
             IEnumerable<string> types,
             IEnumerable<string> dragonAlignments,
             string creatureChallengeRating,

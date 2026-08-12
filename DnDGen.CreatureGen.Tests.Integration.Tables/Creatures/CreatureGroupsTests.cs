@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
@@ -32,6 +33,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void CreatureGroupNames()
         {
             var templates = CreatureConstants.Templates.GetAll();
+            var types = CreatureConstants.Types.GetAll();
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
 
             var entries = new[]
             {
@@ -41,7 +44,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             var names = entries
                 .Union(templates.Select(t => t + bool.FalseString))
-                .Union(templates.Select(t => t + bool.TrueString));
+                .Union(templates.Select(t => t + bool.TrueString))
+                .Union(Alignments.SelectMany(a => templates.Select(t => t + a)))
+                .Union(types.SelectMany(ty => templates.Select(t => t + ty)))
+                .Union(subtypes.SelectMany(sty => templates.Select(t => t + sty)))
+                .Union(ChallengeRatings.SelectMany(cr => templates.Select(t => t + bool.FalseString + cr)))
+                .Union(ChallengeRatings.SelectMany(cr => templates.Select(t => t + bool.TrueString + cr)));
+
+            const int LowestAdjustment = -9;
+            const int MinimumAbilityScore = 1;
+            foreach (var template in templates)
+            {
+                var applicator = GetNewInstanceOf<TemplateApplicator>(template);
+                if (applicator.MinimumAbility == null)
+                    continue;
+
+                var adjustmentCount = (applicator.MinimumAbility.FullScore - MinimumAbilityScore) - LowestAdjustment + 1;
+                var adjustments = Enumerable.Range(LowestAdjustment, adjustmentCount);
+                names = names.Union(adjustments.Select(adj => applicator.MinimumAbility.Name + adj));
+            }
 
             AssertCollectionNames(names);
         }
@@ -69,7 +90,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         private void AssertTemplateGroup(string template, IEnumerable<string> source, bool asCharacter)
         {
-            var sourcePrototypes = GetTemplatePrototypes(template, source, asCharacter);
+            var sourcePrototypes = GetTemplatePrototypes(source, asCharacter);
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
             var templatePrototypes = applicator.GetCompatiblePrototypes(sourcePrototypes, asCharacter);
             var templateCreatures = templatePrototypes.Select(p => p.Name);
@@ -77,22 +98,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertDistinctCollection(template + asCharacter.ToString(), [.. templateCreatures]);
         }
 
-        private CreaturePrototype[] GetTemplatePrototypes(string template, IEnumerable<string> source, bool asCharacter)
+        private CreaturePrototype[] GetTemplatePrototypes(IEnumerable<string> source, bool asCharacter)
         {
-            var prototypes = prototypeFactory.Build(source, asCharacter).ToArray();
-            var applicator = GetNewInstanceOf<TemplateApplicator>(template);
-
-            //INFO: Since ability compatibility with templates is based on the ability randomizer,
-            //we don't want to exclude potentially-low-ability creatures if the ability randomizer allows high rolls (such as for characters)
-            if (applicator.MinimumAbility != null)
-            {
-                foreach (var prototype in prototypes)
-                {
-                    if (prototype.Abilities[applicator.MinimumAbility.Name].HasScore)
-                        prototype.Abilities[applicator.MinimumAbility.Name].BaseScore += applicator.MinimumAbility.FullScore;
-                }
-            }
-
+            var randomizer = new AbilityRandomizer(AbilityConstants.RandomizerRolls.BestOfFour);
+            var prototypes = prototypeFactory.Build(source, asCharacter, randomizer).ToArray();
             return prototypes;
         }
 
@@ -131,10 +140,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(AbilityConstants.Charisma, 3)]
         [TestCase(AbilityConstants.Charisma, 4)]
         [TestCase(AbilityConstants.Charisma, 5)]
+        [TestCase(AbilityConstants.Intelligence, -9)]
+        [TestCase(AbilityConstants.Intelligence, -8)]
+        [TestCase(AbilityConstants.Intelligence, -7)]
+        [TestCase(AbilityConstants.Intelligence, -6)]
+        [TestCase(AbilityConstants.Intelligence, -5)]
+        [TestCase(AbilityConstants.Intelligence, -4)]
+        [TestCase(AbilityConstants.Intelligence, -3)]
+        [TestCase(AbilityConstants.Intelligence, -2)]
+        [TestCase(AbilityConstants.Intelligence, -1)]
+        [TestCase(AbilityConstants.Intelligence, 0)]
+        [TestCase(AbilityConstants.Intelligence, 1)]
+        [TestCase(AbilityConstants.Intelligence, 2)]
+        [TestCase(AbilityConstants.Intelligence, 3)]
         public void CreatureGroup_MinimumAbilityAdjustment(string ability, int adjustment)
         {
-            //INFO: Sticking to Charisma (for Ghost) right now for validation, but will expand to Intelligence (Half-Celestial, Half-Fiend) eventually
-
             var allCreatures = CreatureConstants.GetAll();
             var abilityAdjustments = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments)
                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToDictionary(d => d.Type, d => d.Amount));
@@ -145,14 +165,30 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertDistinctCollection(groupName, [.. abilityCreatures]);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
-        public void CreatureGroup_Template_ResultsInType(string type)
+        private static IEnumerable TemplatesWithTypeFilter
         {
-            //INFO: Sticking to Ghost right now for validation, but will expand to all templates eventually
+            get
+            {
+                var templates = CreatureConstants.Templates.GetAll();
+                var types = CreatureConstants.Types.GetAll();
+                var subtypes = CreatureConstants.Types.Subtypes.GetAll();
+
+                foreach (var template in templates)
+                {
+                    foreach (var type in types)
+                        yield return new TestCaseData(template, type);
+
+                    foreach (var subtype in subtypes)
+                        yield return new TestCaseData(template, subtype);
+                }
+            }
+        }
+
+        [TestCaseSource(nameof(TemplatesWithTypeFilter))]
+        public void CreatureGroup_Template_ResultsInType(string template, string type)
+        {
             var allCreatures = CreatureConstants.GetAll();
-            var template = CreatureConstants.Templates.Ghost;
-            var sourcePrototypes = GetTemplatePrototypes(template, allCreatures, false);
+            var sourcePrototypes = GetTemplatePrototypes(allCreatures, false);
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
 
             var templatePrototypes = applicator.GetCompatiblePrototypes(sourcePrototypes, false, new() { Type = type });
@@ -162,21 +198,39 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertDistinctCollection(groupName, [.. templateCreatures]);
         }
 
-        [TestCase(AlignmentConstants.ChaoticEvil)]
-        [TestCase(AlignmentConstants.ChaoticGood)]
-        [TestCase(AlignmentConstants.ChaoticNeutral)]
-        [TestCase(AlignmentConstants.LawfulEvil)]
-        [TestCase(AlignmentConstants.LawfulGood)]
-        [TestCase(AlignmentConstants.LawfulNeutral)]
-        [TestCase(AlignmentConstants.NeutralEvil)]
-        [TestCase(AlignmentConstants.NeutralGood)]
-        [TestCase(AlignmentConstants.TrueNeutral)]
-        public void CreatureGroup_Template_ResultsInAlignment(string alignment)
+        private static string[] Alignments =>
+        [
+            AlignmentConstants.ChaoticEvil,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.TrueNeutral,
+        ];
+
+        private static IEnumerable<string> ChallengeRatings => ChallengeRatingConstants.GetOrdered()
+                    .Union(Enumerable.Range(1, 30).Select(cr => cr.ToString()));
+
+        private static IEnumerable TemplatesWithAlignmentFilter
         {
-            //INFO: Sticking to Ghost right now for validation, but will expand to all templates eventually
+            get
+            {
+                var templates = CreatureConstants.Templates.GetAll();
+
+                foreach (var template in templates)
+                    foreach (var alignment in Alignments)
+                        yield return new TestCaseData(template, alignment);
+            }
+        }
+
+        [TestCaseSource(nameof(TemplatesWithAlignmentFilter))]
+        public void CreatureGroup_Template_ResultsInAlignment(string template, string alignment)
+        {
             var allCreatures = CreatureConstants.GetAll();
-            var template = CreatureConstants.Templates.Ghost;
-            var sourcePrototypes = GetTemplatePrototypes(template, allCreatures, false);
+            var sourcePrototypes = GetTemplatePrototypes(allCreatures, false);
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
 
             var templatePrototypes = applicator.GetCompatiblePrototypes(sourcePrototypes, false, new() { Alignment = alignment });
@@ -186,17 +240,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertDistinctCollection(groupName, [.. templateCreatures]);
         }
 
-        private static IEnumerable ChallengeRatings => ChallengeRatingConstants.GetOrdered()
-            .Union(Enumerable.Range(1, 30).Select(cr => cr.ToString()))
-            .Select(cr => new TestCaseData(cr));
-
-        [TestCaseSource(nameof(ChallengeRatings))]
-        public void CreatureGroup_Template_ResultsInChallengeRating(string cr)
+        private static IEnumerable TemplatesWithChallengeRatingFilter
         {
-            //INFO: Sticking to Ghost right now for validation, but will expand to all templates eventually
+            get
+            {
+                var templates = CreatureConstants.Templates.GetAll();
+
+                foreach (var template in templates)
+                    foreach (var cr in ChallengeRatings)
+                        yield return new TestCaseData(template, cr);
+            }
+        }
+
+        [TestCaseSource(nameof(TemplatesWithChallengeRatingFilter))]
+        public void CreatureGroup_Template_ResultsInChallengeRating(string template, string cr)
+        {
             var allCreatures = CreatureConstants.GetAll();
-            var template = CreatureConstants.Templates.Ghost;
-            var sourcePrototypes = GetTemplatePrototypes(template, allCreatures, false);
+            var sourcePrototypes = GetTemplatePrototypes(allCreatures, false);
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
 
             var templatePrototypes = applicator.GetCompatiblePrototypes(sourcePrototypes, false, new() { ChallengeRating = cr });
@@ -206,13 +266,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertDistinctCollection(groupName, [.. templateCreatures]);
         }
 
-        [TestCaseSource(nameof(ChallengeRatings))]
-        public void CreatureGroup_TemplateAsCharacter_ResultsInChallengeRating(string cr)
+        [TestCaseSource(nameof(TemplatesWithChallengeRatingFilter))]
+        public void CreatureGroup_TemplateAsCharacter_ResultsInChallengeRating(string template, string cr)
         {
-            //INFO: Sticking to Ghost right now for validation, but will expand to all templates eventually
             var allCharacters = CreatureConstants.GetAllCharacters();
-            var template = CreatureConstants.Templates.Ghost;
-            var sourcePrototypes = GetTemplatePrototypes(template, allCharacters, true);
+            var sourcePrototypes = GetTemplatePrototypes(allCharacters, true);
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
 
             var templatePrototypes = applicator.GetCompatiblePrototypes(sourcePrototypes, true, new() { ChallengeRating = cr });

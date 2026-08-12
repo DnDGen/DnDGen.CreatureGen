@@ -2,7 +2,6 @@
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -12,10 +11,7 @@ using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Templates
 {
-    internal class NoneApplicator(
-        ICollectionSelector collectionSelector,
-        ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
-        ICreaturePrototypeFactory prototypeFactory) : TemplateApplicator
+    internal class NoneApplicator(ICollectionSelector collectionSelector, ICreaturePrototypeFactory prototypeFactory) : TemplateApplicator
     {
         public Ability MinimumAbility => null;
 
@@ -65,7 +61,7 @@ namespace DnDGen.CreatureGen.Templates
             return await Task.FromResult(creature);
         }
 
-        private (bool Compatible, string Reason) AreFiltersCompatible(
+        private static (bool Compatible, string Reason) AreFiltersCompatible(
             IEnumerable<string> types,
             IEnumerable<string> alignments,
             string creatureChallengeRating,
@@ -91,20 +87,34 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null)
         {
-            if (string.IsNullOrEmpty(filters?.ChallengeRating)
-                && string.IsNullOrEmpty(filters?.Type)
-                && string.IsNullOrEmpty(filters?.Alignment))
-                return sourceCreatures;
+            var templateCreatures = collectionSelector.SelectFrom(
+                Config.Name,
+                TableNameConstants.Collection.CreatureGroups,
+                CreatureConstants.Templates.None + asCharacter);
+            var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
 
-            var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
-            var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
+            if (!string.IsNullOrEmpty(filters?.Type))
+            {
+                var groupName = CreatureConstants.Templates.None + filters.Type;
+                var typeCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(typeCreatures);
+            }
 
-            return sourceCreatures
-                .Where(c => AreFiltersCompatible(
-                    allData[c].Single().Types,
-                    allAlignments[c],
-                    allData[c].Single().GetEffectiveChallengeRating(asCharacter),
-                    filters).Compatible);
+            if (!string.IsNullOrEmpty(filters?.Alignment))
+            {
+                var groupName = CreatureConstants.Templates.None + filters.Alignment;
+                var alignmentCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
+            }
+
+            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
+            {
+                var groupName = CreatureConstants.Templates.None + asCharacter + filters.ChallengeRating;
+                var crCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(crCreatures);
+            }
+
+            return filteredBaseCreatures;
         }
 
         public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(
@@ -123,7 +133,7 @@ namespace DnDGen.CreatureGen.Templates
             return updatedPrototypes;
         }
 
-        private CreaturePrototype ApplyToPrototype(CreaturePrototype prototype, string presetAlignment)
+        private static CreaturePrototype ApplyToPrototype(CreaturePrototype prototype, string presetAlignment)
         {
             if (!string.IsNullOrEmpty(presetAlignment))
             {

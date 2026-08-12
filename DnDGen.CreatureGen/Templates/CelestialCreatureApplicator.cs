@@ -8,7 +8,6 @@ using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Languages;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -25,7 +24,6 @@ namespace DnDGen.CreatureGen.Templates
         IFeatsGenerator featGenerator,
         ICollectionSelector collectionSelector,
         IMagicGenerator magicGenerator,
-        ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
         ICreaturePrototypeFactory prototypeFactory,
         IDemographicsGenerator demographicsGenerator) : TemplateApplicator
     {

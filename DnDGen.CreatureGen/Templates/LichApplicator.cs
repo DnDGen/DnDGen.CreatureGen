@@ -7,7 +7,6 @@ using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Languages;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
@@ -22,7 +21,6 @@ namespace DnDGen.CreatureGen.Templates
 {
     internal class LichApplicator(
         ICollectionSelector collectionSelector,
-        ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
         Dice dice,
         IAttacksGenerator attacksGenerator,
         IFeatsGenerator featsGenerator,
@@ -40,7 +38,6 @@ namespace DnDGen.CreatureGen.Templates
                 [creature.Alignment.Full],
                 creature.ChallengeRating,
                 asCharacter,
-                creature.HitPoints.RoundedHitDiceQuantity,
                 creature.LevelAdjustment,
                 [creature.CasterLevel, creature.Magic.CasterLevel],
                 filters);
@@ -99,19 +96,19 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        private void UpdateCreatureType(Creature creature)
+        private static void UpdateCreatureType(Creature creature)
         {
             var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
             creature.Type = new CreatureType(adjustedTypes);
         }
 
-        private void UpdateCreatureType(CreaturePrototype creature)
+        private static void UpdateCreatureType(CreaturePrototype creature)
         {
             var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
             creature.Type = new CreatureType(adjustedTypes);
         }
 
-        private IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
+        private static IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
         {
             return new[] { CreatureConstants.Types.Undead }
                 .Union(subtypes)
@@ -149,13 +146,13 @@ namespace DnDGen.CreatureGen.Templates
             creature.Languages = creature.Languages.Union([automaticLanguage]);
         }
 
-        private void UpdateCreatureLevelAdjustment(Creature creature)
+        private static void UpdateCreatureLevelAdjustment(Creature creature)
         {
             if (creature.LevelAdjustment.HasValue)
                 creature.LevelAdjustment += 4;
         }
 
-        private void UpdateCreatureLevelAdjustment(CreaturePrototype creature)
+        private static void UpdateCreatureLevelAdjustment(CreaturePrototype creature)
         {
             if (creature.LevelAdjustment.HasValue)
                 creature.LevelAdjustment += 4;
@@ -183,18 +180,15 @@ namespace DnDGen.CreatureGen.Templates
             return UpdateCreatureAlignment(alignment.Full);
         }
 
-        private Alignment UpdateCreatureAlignment(string alignment)
+        private Alignment UpdateCreatureAlignment(string alignment) => new(alignment)
         {
-            var newAlignment = new Alignment(alignment);
-            newAlignment.Goodness = AlignmentConstants.Evil;
+            Goodness = AlignmentConstants.Evil
+        };
 
-            return newAlignment;
-        }
+        private static void UpdateCreatureAbilities(Creature creature) => UpdateCreatureAbilities(creature.Abilities);
+        private static void UpdateCreatureAbilities(CreaturePrototype creature) => UpdateCreatureAbilities(creature.Abilities);
 
-        private void UpdateCreatureAbilities(Creature creature) => UpdateCreatureAbilities(creature.Abilities);
-        private void UpdateCreatureAbilities(CreaturePrototype creature) => UpdateCreatureAbilities(creature.Abilities);
-
-        private void UpdateCreatureAbilities(Dictionary<string, Ability> abilities)
+        private static void UpdateCreatureAbilities(Dictionary<string, Ability> abilities)
         {
             abilities[AbilityConstants.Constitution].TemplateScore = 0;
 
@@ -208,7 +202,7 @@ namespace DnDGen.CreatureGen.Templates
                 abilities[AbilityConstants.Charisma].TemplateAdjustment += 2;
         }
 
-        private void UpdateCreatureSkills(Creature creature)
+        private static void UpdateCreatureSkills(Creature creature)
         {
             var lichSkills = new[]
             {
@@ -235,17 +229,17 @@ namespace DnDGen.CreatureGen.Templates
             }
         }
 
-        private void UpdateCreatureChallengeRating(Creature creature)
+        private static void UpdateCreatureChallengeRating(Creature creature)
         {
             creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating);
         }
 
-        private void UpdateCreatureChallengeRating(CreaturePrototype creature)
+        private static void UpdateCreatureChallengeRating(CreaturePrototype creature)
         {
             creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating);
         }
 
-        private string UpdateCreatureChallengeRating(string challengeRating)
+        private static string UpdateCreatureChallengeRating(string challengeRating)
         {
             return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
         }
@@ -281,12 +275,12 @@ namespace DnDGen.CreatureGen.Templates
             creature.SpecialQualities = creature.SpecialQualities.Union(lichQualities);
         }
 
-        private void UpdateCreatureArmorClass(Creature creature)
+        private static void UpdateCreatureArmorClass(Creature creature)
         {
             creature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 5);
         }
 
-        private void UpdateCreatureTemplate(Creature creature)
+        private static void UpdateCreatureTemplate(Creature creature)
         {
             creature.Templates.Add(CreatureConstants.Templates.Lich);
         }
@@ -298,7 +292,6 @@ namespace DnDGen.CreatureGen.Templates
                 [creature.Alignment.Full],
                 creature.ChallengeRating,
                 asCharacter,
-                creature.HitPoints.RoundedHitDiceQuantity,
                 creature.LevelAdjustment,
                 [creature.CasterLevel, creature.Magic.CasterLevel],
                 filters);
@@ -414,14 +407,13 @@ namespace DnDGen.CreatureGen.Templates
             IEnumerable<string> alignments,
             string creatureChallengeRating,
             bool asCharacter,
-            double creatureHitDiceQuantity,
             int? levelAdjustment,
             IEnumerable<int> casterLevels,
             Filters filters)
         {
-            var compatibility = IsCompatible(types, levelAdjustment, casterLevels, asCharacter);
-            if (!compatibility.Compatible)
-                return (false, compatibility.Reason);
+            var (Compatible, Reason) = IsCompatible(types, levelAdjustment, casterLevels, asCharacter);
+            if (!Compatible)
+                return (false, Reason);
 
             return AreFiltersCompatible(types, alignments, creatureChallengeRating, filters);
         }
@@ -462,7 +454,7 @@ namespace DnDGen.CreatureGen.Templates
             return (true, null);
         }
 
-        private (bool Compatible, string Reason) IsCompatible(IEnumerable<string> types, int? levelAdjustment, IEnumerable<int> casterLevels, bool asCharacter)
+        private static (bool Compatible, string Reason) IsCompatible(IEnumerable<string> types, int? levelAdjustment, IEnumerable<int> casterLevels, bool asCharacter)
         {
             if (types.First() != CreatureConstants.Types.Humanoid)
             {
@@ -517,7 +509,6 @@ namespace DnDGen.CreatureGen.Templates
                     p.Alignments.Select(a => a.Full),
                     p.ChallengeRating,
                     asCharacter,
-                    p.HitDiceQuantity,
                     p.LevelAdjustment,
                     [p.CasterLevel],
                     filters).Compatible);

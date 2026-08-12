@@ -26,10 +26,7 @@ namespace DnDGen.CreatureGen.Templates
         ICollectionSelector collectionSelector,
         IFeatsGenerator featsGenerator,
         IItemsGenerator itemsGenerator,
-        //ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
         ICreaturePrototypeFactory prototypeFactory,
-        //IDemographicsGenerator demographicsGenerator,
-        //ICollectionTypeAndAmountSelector typeAndAmountSelector) : TemplateApplicator
         IDemographicsGenerator demographicsGenerator) : TemplateApplicator
     {
         private readonly IEnumerable<string> creatureTypes =
@@ -534,7 +531,7 @@ namespace DnDGen.CreatureGen.Templates
             if (!compatibleCreatures.Any())
                 return [];
 
-            var prototypes = prototypeFactory.Build(compatibleCreatures, asCharacter);
+            var prototypes = prototypeFactory.Build(compatibleCreatures, asCharacter, abilityRandomizer);
             var updatedPrototypes = prototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));
 
             return updatedPrototypes;
