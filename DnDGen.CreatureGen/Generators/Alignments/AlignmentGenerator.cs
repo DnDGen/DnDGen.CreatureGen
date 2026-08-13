@@ -1,15 +1,14 @@
 ﻿using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Templates;
+using DnDGen.CreatureGen.Verifiers;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
-using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Selectors.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Generators.Alignments
 {
-    internal class AlignmentGenerator(ICollectionSelector collectionSelector, JustInTimeFactory factory) : IAlignmentGenerator
+    internal class AlignmentGenerator(ICollectionSelector collectionSelector, ICreatureVerifier creatureVerifier) : IAlignmentGenerator
     {
         public Alignment Generate(string creatureName, IEnumerable<string> templates, string presetAlignment)
         {
@@ -45,17 +44,7 @@ namespace DnDGen.CreatureGen.Generators.Alignments
                 return weightedAlignments;
             }
 
-            var applicator = factory.Build<TemplateApplicator>(templatesArray[0]);
-            var prototypes = applicator.GetCompatiblePrototypes([creatureName], false);
-
-            for (var i = 1; i < templatesArray.Length; i++)
-            {
-                applicator = factory.Build<TemplateApplicator>(templatesArray[i]);
-
-                //INFO: The only filter we would care about would be a preset alignment, which we already handle earlier
-                //So we do not need to pass filters to the applicators
-                prototypes = applicator.GetCompatiblePrototypes(prototypes, false);
-            }
+            var prototypes = creatureVerifier.GetChainedTemplates([creatureName], [.. templates], false);
 
             //INFO: At this point, after multiple templates, we are choosing to ignore weighting
             weightedAlignments = prototypes.SelectMany(p => p.Alignments).Select(a => a.Full);

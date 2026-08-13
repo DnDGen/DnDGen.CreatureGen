@@ -90,15 +90,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         private void AssertTemplateGroup(string template, IEnumerable<string> source, bool asCharacter)
         {
-            var sourcePrototypes = GetTemplatePrototypes(source, asCharacter);
+            //INFO: We explicitly do not want to use the creatureVerifier or its cached lookups, as this test is what populates those caches
+            var sourcePrototypes = GetPrototypes(source, asCharacter);
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
-            var templatePrototypes = applicator.GetCompatiblePrototypes(sourcePrototypes, asCharacter);
-            var templateCreatures = templatePrototypes.Select(p => p.Name);
+            var templateCreatures = sourcePrototypes
+                .Where(p => applicator.IsCompatible(p, asCharacter))
+                .Select(p => p.Name);
 
             AssertDistinctCollection(template + asCharacter.ToString(), [.. templateCreatures]);
         }
 
-        private CreaturePrototype[] GetTemplatePrototypes(IEnumerable<string> source, bool asCharacter)
+        private CreaturePrototype[] GetPrototypes(IEnumerable<string> source, bool asCharacter)
         {
             var randomizer = new AbilityRandomizer(AbilityConstants.RandomizerRolls.BestOfFour);
             var prototypes = prototypeFactory.Build(source, asCharacter, randomizer).ToArray();
@@ -188,11 +190,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void CreatureGroup_Template_ResultsInType(string template, string type)
         {
             var allCreatures = CreatureConstants.GetAll();
-            var sourcePrototypes = GetTemplatePrototypes(allCreatures, false);
+            var sourcePrototypes = GetPrototypes(allCreatures, false);
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
 
-            var templatePrototypes = applicator.GetCompatiblePrototypes(sourcePrototypes, false, new() { Type = type });
-            var templateCreatures = templatePrototypes.Select(p => p.Name);
+            var templateCreatures = sourcePrototypes
+                .Where(p => applicator.IsCompatible(p, false, new() { Type = type }))
+                .Select(p => p.Name);
 
             var groupName = template + type;
             AssertDistinctCollection(groupName, [.. templateCreatures]);
@@ -230,11 +233,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void CreatureGroup_Template_ResultsInAlignment(string template, string alignment)
         {
             var allCreatures = CreatureConstants.GetAll();
-            var sourcePrototypes = GetTemplatePrototypes(allCreatures, false);
+            var sourcePrototypes = GetPrototypes(allCreatures, false);
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
 
-            var templatePrototypes = applicator.GetCompatiblePrototypes(sourcePrototypes, false, new() { Alignment = alignment });
-            var templateCreatures = templatePrototypes.Select(p => p.Name);
+            var templateCreatures = sourcePrototypes
+                .Where(p => applicator.IsCompatible(p, false, new() { Alignment = alignment }))
+                .Select(p => p.Name);
 
             var groupName = template + alignment;
             AssertDistinctCollection(groupName, [.. templateCreatures]);
@@ -256,11 +260,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void CreatureGroup_Template_ResultsInChallengeRating(string template, string cr)
         {
             var allCreatures = CreatureConstants.GetAll();
-            var sourcePrototypes = GetTemplatePrototypes(allCreatures, false);
+            var sourcePrototypes = GetPrototypes(allCreatures, false);
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
 
-            var templatePrototypes = applicator.GetCompatiblePrototypes(sourcePrototypes, false, new() { ChallengeRating = cr });
-            var templateCreatures = templatePrototypes.Select(p => p.Name);
+            var templateCreatures = sourcePrototypes
+                .Where(p => applicator.IsCompatible(p, false, new() { ChallengeRating = cr }))
+                .Select(p => p.Name);
 
             var groupName = template + bool.FalseString + cr;
             AssertDistinctCollection(groupName, [.. templateCreatures]);
@@ -270,11 +275,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void CreatureGroup_TemplateAsCharacter_ResultsInChallengeRating(string template, string cr)
         {
             var allCharacters = CreatureConstants.GetAllCharacters();
-            var sourcePrototypes = GetTemplatePrototypes(allCharacters, true);
+            var sourcePrototypes = GetPrototypes(allCharacters, true);
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
 
-            var templatePrototypes = applicator.GetCompatiblePrototypes(sourcePrototypes, true, new() { ChallengeRating = cr });
-            var templateCreatures = templatePrototypes.Select(p => p.Name);
+            var templateCreatures = sourcePrototypes
+                .Where(p => applicator.IsCompatible(p, true, new() { ChallengeRating = cr }))
+                .Select(p => p.Name);
 
             var groupName = template + bool.TrueString + cr;
             AssertDistinctCollection(groupName, [.. templateCreatures]);

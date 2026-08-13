@@ -2,12 +2,10 @@
 using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
-using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Skills;
-using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
@@ -26,7 +24,6 @@ namespace DnDGen.CreatureGen.Templates
         ICollectionSelector collectionSelector,
         IFeatsGenerator featsGenerator,
         IItemsGenerator itemsGenerator,
-        ICreaturePrototypeFactory prototypeFactory,
         IDemographicsGenerator demographicsGenerator) : TemplateApplicator
     {
         private readonly IEnumerable<string> creatureTypes =
@@ -423,47 +420,6 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null)
-        {
-            var templateCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Ghost + asCharacter);
-            var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
-
-            abilityRandomizer ??= new();
-            var requiredAdjustment = MinimumAbility.FullScore - abilityRandomizer.GetMax(dice, MinimumAbility.Name);
-
-            //INFO: If RequiredAdjustment is -10, that's all creatures (worst adjustment is -10, can't go lower), so if reqAdj <= -10, no intersect needed
-            //Assume worst maxRoll is 1 (since abilities should be positive), so you need groups [-9,5]
-            if (requiredAdjustment > -10)
-            {
-                var groupName = MinimumAbility.Name + requiredAdjustment;
-                var abilityCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
-                filteredBaseCreatures = filteredBaseCreatures.Intersect(abilityCreatures);
-            }
-
-            if (!string.IsNullOrEmpty(filters?.Type))
-            {
-                var groupName = CreatureConstants.Templates.Ghost + filters.Type;
-                var typeCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
-                filteredBaseCreatures = filteredBaseCreatures.Intersect(typeCreatures);
-            }
-
-            if (!string.IsNullOrEmpty(filters?.Alignment))
-            {
-                var groupName = CreatureConstants.Templates.Ghost + filters.Alignment;
-                var alignmentCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
-                filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
-            }
-
-            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
-            {
-                var groupName = CreatureConstants.Templates.Ghost + asCharacter + filters.ChallengeRating;
-                var crCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
-                filteredBaseCreatures = filteredBaseCreatures.Intersect(crCreatures);
-            }
-
-            return filteredBaseCreatures;
-        }
-
         private (bool Compatible, string Reason) IsCompatible(
             IEnumerable<string> types,
             IEnumerable<string> alignments,
@@ -521,52 +477,31 @@ namespace DnDGen.CreatureGen.Templates
             return (true, null);
         }
 
-        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(
-            IEnumerable<string> sourceCreatures,
-            bool asCharacter,
-            AbilityRandomizer abilityRandomizer = null,
-            Filters filters = null)
+        public CreaturePrototype ApplyTo(CreaturePrototype creature, bool asCharacter, Filters filters = null)
         {
-            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, abilityRandomizer, filters);
-            if (!compatibleCreatures.Any())
-                return [];
+            UpdateCreatureAbilities(creature);
+            UpdateCreatureChallengeRating(creature);
+            UpdateCreatureLevelAdjustment(creature);
+            UpdateCreatureType(creature);
 
-            var prototypes = prototypeFactory.Build(compatibleCreatures, asCharacter, abilityRandomizer);
-            var updatedPrototypes = prototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));
-
-            return updatedPrototypes;
-        }
-
-        private static CreaturePrototype ApplyToPrototype(CreaturePrototype prototype, string presetAlignment)
-        {
-            UpdateCreatureAbilities(prototype);
-            UpdateCreatureChallengeRating(prototype);
-            UpdateCreatureLevelAdjustment(prototype);
-            UpdateCreatureType(prototype);
-
-            if (!string.IsNullOrEmpty(presetAlignment))
+            if (!string.IsNullOrEmpty(filters?.Alignment))
             {
-                prototype.Alignments = [.. prototype.Alignments.Where(adjustmentSelector => adjustmentSelector.Full == presetAlignment)];
+                creature.Alignments = [.. creature.Alignments.Where(a => a.Full == filters.Alignment)];
             }
 
-            return prototype;
+            return creature;
         }
 
-        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(
-            IEnumerable<CreaturePrototype> sourceCreatures,
-            bool asCharacter,
-            Filters filters = null)
+        public bool IsCompatible(CreaturePrototype creature, bool asCharacter, Filters filters = null)
         {
-            var compatiblePrototypes = sourceCreatures
-                .Where(p => IsCompatible(
-                    p.Type.AllTypes,
-                    p.Alignments.Select(a => a.Full),
-                    p.Abilities[MinimumAbility.Name],
-                    p.ChallengeRating,
-                    filters).Compatible);
-            var updatedPrototypes = compatiblePrototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));
+            var (Compatible, Reason) = IsCompatible(
+                creature.Type.AllTypes,
+                creature.Alignments.Select(a => a.Full),
+                creature.Abilities[MinimumAbility.Name],
+                creature.ChallengeRating,
+                filters);
 
-            return updatedPrototypes;
+            return Compatible;
         }
     }
 }

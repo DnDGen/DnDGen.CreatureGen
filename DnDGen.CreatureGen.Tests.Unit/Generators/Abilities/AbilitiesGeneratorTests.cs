@@ -1,10 +1,12 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Abilities;
+using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
+using DnDGen.CreatureGen.Verifiers;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Models;
@@ -23,6 +25,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<Dice> mockDice;
         private Mock<JustInTimeFactory> mockJustInTimeFactory;
+        private Mock<ICreatureVerifier> mockCreatureVerifier;
         private IAbilitiesGenerator abilitiesGenerator;
         private List<TypeAndAmountDataSelection> creatureAbilitySelections;
         private List<TypeAndAmountDataSelection> ageAbilitySelections;
@@ -36,7 +39,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
             mockDice = new Mock<Dice>();
             mockJustInTimeFactory = new Mock<JustInTimeFactory>();
-            abilitiesGenerator = new AbilitiesGenerator(mockTypeAndAmountSelector.Object, mockDice.Object, mockJustInTimeFactory.Object);
+            mockCreatureVerifier = new Mock<ICreatureVerifier>();
+            abilitiesGenerator = new AbilitiesGenerator(mockTypeAndAmountSelector.Object, mockDice.Object, mockJustInTimeFactory.Object, mockCreatureVerifier.Object);
             randomizer = new AbilityRandomizer("my roll");
             demographics = new Demographics();
 
@@ -362,6 +366,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(false)]
         public void GenerateFor_NoTemplates_IsValid(bool asCharacter)
         {
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
+                    asCharacter,
+                    "creature name",
+                    randomizer,
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { CreatureConstants.Templates.None }))))
+                .Returns(true);
+
             var abilities = abilitiesGenerator.GenerateFor("creature name", asCharacter, randomizer, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
@@ -384,15 +396,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(false)]
         public void GenerateFor_1Template_IsValid(bool asCharacter)
         {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(
-                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
                     asCharacter,
+                    "creature name",
                     randomizer,
-                    null))
-                .Returns(["creature name"]);
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                .Returns(true);
 
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
             var abilities = abilitiesGenerator.GenerateFor("creature name", asCharacter, randomizer, demographics, ["my template"]);
@@ -417,16 +429,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(false)]
         public void GenerateFor_1Template_IsNotValid(bool asCharacter)
         {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(
-                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
                     asCharacter,
+                    "creature name",
                     randomizer,
-                    null))
-                .Returns([]);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                .Returns(false);
 
             var generation = () => abilitiesGenerator.GenerateFor("creature name", asCharacter, randomizer, demographics, ["my template"]);
             Assert.That(generation,
@@ -437,16 +446,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(false)]
         public void GenerateFor_2Templates_IsValid(bool asCharacter)
         {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(
-                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
                     asCharacter,
+                    "creature name",
                     randomizer,
-                    null))
-                .Returns(["creature name"]);
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template", "my other template" }))))
+                .Returns(true);
 
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+            var mockTemplateApplicator1 = new Mock<TemplateApplicator>();
+            var mockTemplateApplicator2 = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator1.Object);
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my other template")).Returns(mockTemplateApplicator2.Object);
 
             var abilities = abilitiesGenerator.GenerateFor("creature name", asCharacter, randomizer, demographics, ["my template", "my other template"]);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
@@ -470,16 +481,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(false)]
         public void GenerateFor_2Templates_IsNotValid(bool asCharacter)
         {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(
-                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
                     asCharacter,
+                    "creature name",
                     randomizer,
-                    null))
-                .Returns([]);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template", "my other template" }))))
+                .Returns(false);
 
             var generation = () => abilitiesGenerator.GenerateFor("creature name", asCharacter, randomizer, demographics, ["my template", "my other template"]);
             Assert.That(generation,
@@ -510,14 +518,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [Test]
         public void GenerateFor_AppliesTemplateMinimums_TemplateDoesNotHaveMinimumAbility()
         {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(
-                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
                     false,
+                    "creature name",
                     randomizer,
-                    null))
-                .Returns(["creature name"]);
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                .Returns(true);
+
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
             Ability noMin = null;
             mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(noMin);
 
@@ -547,14 +556,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(10)]
         public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_Roll(int difference)
         {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(
-                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
                     false,
+                    "creature name",
                     randomizer,
-                    null))
-                .Returns(["creature name"]);
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                .Returns(true);
+
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
             var minimum = new Ability("ability") { BaseScore = 42 - difference };
             mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
 
@@ -584,14 +594,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(10)]
         public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_Set(int difference)
         {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(
-                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
                     false,
+                    "creature name",
                     randomizer,
-                    null))
-                .Returns(["creature name"]);
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                .Returns(true);
+
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
             var minimum = new Ability("ability") { BaseScore = 1336 - difference };
             mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
 
@@ -623,14 +634,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(10)]
         public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_WithPositiveRacialAdjustment(int difference)
         {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(
-                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
                     false,
+                    "creature name",
                     randomizer,
-                    null))
-                .Returns(["creature name"]);
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                .Returns(true);
+
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
             var minimum = new Ability("other ability") { BaseScore = 9866 - difference };
             mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
 
@@ -660,14 +672,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(10)]
         public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_WithNegativeRacialAdjustment(int difference)
         {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(
-                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
                     false,
+                    "creature name",
                     randomizer,
-                    null))
-                .Returns(["creature name"]);
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                .Returns(true);
+
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
             var minimum = new Ability("other ability") { BaseScore = 600 - 13 - difference };
             mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
 
@@ -699,14 +712,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(10)]
         public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_WithPositiveAgeAdjustment(int difference)
         {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(
-                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
                     false,
+                    "creature name",
                     randomizer,
-                    null))
-                .Returns(["creature name"]);
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                .Returns(true);
+
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
             var minimum = new Ability("ability") { BaseScore = 43 - difference };
             mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
 
@@ -746,14 +760,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(10)]
         public void GenerateFor_AppliesTemplateMinimums_AbilityMeetsTemplateMinimum_WithNegativeAgeAdjustment(int difference)
         {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(
-                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
                     false,
+                    "creature name",
                     randomizer,
-                    null))
-                .Returns(["creature name"]);
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                .Returns(true);
+
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
             var minimum = new Ability("ability") { BaseScore = 41 - difference };
             mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
 
@@ -792,14 +807,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(10)]
         public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_Roll(int difference)
         {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(
-                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
                     false,
+                    "creature name",
                     randomizer,
-                    null))
-                .Returns(["creature name"]);
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                .Returns(true);
+
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
             var minimum = new Ability("ability") { BaseScore = 42 + difference };
             mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
 
@@ -826,19 +842,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [Test]
         public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_Set()
         {
-            //INFO: We can't adjust a set ability. If a set ability won't meet the minimums, then the template applicator should say the creature is incompatible.
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(
-                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+            //INFO: We can't adjust a set ability. If a set ability won't meet the minimums, then the creature verifier should say the creature is incompatible.
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
                     false,
+                    "creature name",
                     randomizer,
-                    null))
-                .Returns([]);
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                .Returns(false);
 
             randomizer.SetRolls["ability"] = 1336;
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
             var generation = () => abilitiesGenerator.GenerateFor("creature name", false, randomizer, demographics, ["my template"]);
             Assert.That(generation,
@@ -850,14 +863,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(10)]
         public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_WithPositiveRacialAdjustment(int difference)
         {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(
-                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
                     false,
+                    "creature name",
                     randomizer,
-                    null))
-                .Returns(["creature name"]);
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                .Returns(true);
+
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
             var minimum = new Ability("other ability") { BaseScore = 9866 + difference };
             mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
 
@@ -886,14 +900,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(10)]
         public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_WithNegativeRacialAdjustment(int difference)
         {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(
-                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
                     false,
+                    "creature name",
                     randomizer,
-                    null))
-                .Returns(["creature name"]);
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                .Returns(true);
+
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
             var minimum = new Ability("other ability") { BaseScore = 600 - 13 + difference };
             mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
 
@@ -922,14 +937,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [Test]
         public void BUG_GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_WithNegativeRacialAdjustment_VeryLow()
         {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(
-                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
                     false,
+                    "creature name",
                     randomizer,
-                    null))
-                .Returns(["creature name"]);
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                .Returns(true);
+
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
             var minimum = new Ability("other ability") { BaseScore = 4 };
             mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
 
@@ -962,14 +978,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(10)]
         public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_WithPositiveAgeAdjustment(int difference)
         {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(
-                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
                     false,
+                    "creature name",
                     randomizer,
-                    null))
-                .Returns(["creature name"]);
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                .Returns(true);
+
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
             var minimum = new Ability("ability") { BaseScore = 43 + difference };
             mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
 
@@ -1008,14 +1025,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [TestCase(10)]
         public void GenerateFor_AppliesTemplateMinimums_AbilityDoesNotMeetTemplateMinimum_WithNegativeAgeAdjustment(int difference)
         {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(
-                    It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(new[] { "creature name" })),
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
                     false,
+                    "creature name",
                     randomizer,
-                    null))
-                .Returns(["creature name"]);
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                .Returns(true);
+
+            var mockTemplateApplicator = new Mock<TemplateApplicator>();
             var minimum = new Ability("ability") { BaseScore = 41 + difference };
             mockTemplateApplicator.SetupGet(a => a.MinimumAbility).Returns(minimum);
 
@@ -1081,20 +1099,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [Test]
         public void ApplyMaxModifier_ArmorOnly()
         {
-            var abilities = new Dictionary<string, Ability>();
-            abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
-            abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
-            abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
-            abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
-            abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
-            abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
-
-            var equipment = new Equipment();
-            equipment.Armor = new Armor
+            var abilities = new Dictionary<string, Ability>
             {
-                MaxDexterityBonus = 9266,
+                [AbilityConstants.Strength] = new Ability(AbilityConstants.Strength),
+                [AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution),
+                [AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity),
+                [AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence),
+                [AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom),
+                [AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma)
             };
-            equipment.Shield = null;
+
+            var equipment = new Equipment
+            {
+                Armor = new Armor
+                {
+                    MaxDexterityBonus = 9266,
+                },
+                Shield = null
+            };
 
             var modifiedAbilities = abilitiesGenerator.SetMaxBonuses(abilities, equipment);
             Assert.That(modifiedAbilities, Is.EqualTo(abilities));
@@ -1109,19 +1131,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [Test]
         public void ApplyMaxModifier_ShieldOnly_NoMax()
         {
-            var abilities = new Dictionary<string, Ability>();
-            abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
-            abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
-            abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
-            abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
-            abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
-            abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
-
-            var equipment = new Equipment();
-            equipment.Armor = null;
-            equipment.Shield = new Armor
+            var abilities = new Dictionary<string, Ability>
             {
-                MaxDexterityBonus = int.MaxValue
+                [AbilityConstants.Strength] = new Ability(AbilityConstants.Strength),
+                [AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution),
+                [AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity),
+                [AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence),
+                [AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom),
+                [AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma)
+            };
+
+            var equipment = new Equipment
+            {
+                Armor = null,
+                Shield = new Armor
+                {
+                    MaxDexterityBonus = int.MaxValue
+                }
             };
 
             var modifiedAbilities = abilitiesGenerator.SetMaxBonuses(abilities, equipment);
@@ -1137,19 +1163,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [Test]
         public void ApplyMaxModifier_ShieldOnly_WithMax()
         {
-            var abilities = new Dictionary<string, Ability>();
-            abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
-            abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
-            abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
-            abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
-            abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
-            abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
-
-            var equipment = new Equipment();
-            equipment.Armor = null;
-            equipment.Shield = new Armor
+            var abilities = new Dictionary<string, Ability>
             {
-                MaxDexterityBonus = 9266,
+                [AbilityConstants.Strength] = new Ability(AbilityConstants.Strength),
+                [AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution),
+                [AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity),
+                [AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence),
+                [AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom),
+                [AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma)
+            };
+
+            var equipment = new Equipment
+            {
+                Armor = null,
+                Shield = new Armor
+                {
+                    MaxDexterityBonus = 9266,
+                }
             };
 
             var modifiedAbilities = abilitiesGenerator.SetMaxBonuses(abilities, equipment);
@@ -1165,22 +1195,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [Test]
         public void ApplyMaxModifier_ArmorAndShield_NoShieldMax()
         {
-            var abilities = new Dictionary<string, Ability>();
-            abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
-            abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
-            abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
-            abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
-            abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
-            abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
-
-            var equipment = new Equipment();
-            equipment.Armor = new Armor
+            var abilities = new Dictionary<string, Ability>
             {
-                MaxDexterityBonus = 9266
+                [AbilityConstants.Strength] = new Ability(AbilityConstants.Strength),
+                [AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution),
+                [AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity),
+                [AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence),
+                [AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom),
+                [AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma)
             };
-            equipment.Shield = new Armor
+
+            var equipment = new Equipment
             {
-                MaxDexterityBonus = int.MaxValue
+                Armor = new Armor
+                {
+                    MaxDexterityBonus = 9266
+                },
+                Shield = new Armor
+                {
+                    MaxDexterityBonus = int.MaxValue
+                }
             };
 
             var modifiedAbilities = abilitiesGenerator.SetMaxBonuses(abilities, equipment);
@@ -1196,22 +1230,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [Test]
         public void ApplyMaxModifier_ArmorAndShield_WithShieldMax_Higher()
         {
-            var abilities = new Dictionary<string, Ability>();
-            abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
-            abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
-            abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
-            abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
-            abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
-            abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
-
-            var equipment = new Equipment();
-            equipment.Armor = new Armor
+            var abilities = new Dictionary<string, Ability>
             {
-                MaxDexterityBonus = 9266
+                [AbilityConstants.Strength] = new Ability(AbilityConstants.Strength),
+                [AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution),
+                [AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity),
+                [AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence),
+                [AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom),
+                [AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma)
             };
-            equipment.Shield = new Armor
+
+            var equipment = new Equipment
             {
-                MaxDexterityBonus = 90210
+                Armor = new Armor
+                {
+                    MaxDexterityBonus = 9266
+                },
+                Shield = new Armor
+                {
+                    MaxDexterityBonus = 90210
+                }
             };
 
             var modifiedAbilities = abilitiesGenerator.SetMaxBonuses(abilities, equipment);
@@ -1227,22 +1265,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         [Test]
         public void ApplyMaxModifier_ArmorAndShield_WithShieldMax_Lower()
         {
-            var abilities = new Dictionary<string, Ability>();
-            abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
-            abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
-            abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
-            abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
-            abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
-            abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
-
-            var equipment = new Equipment();
-            equipment.Armor = new Armor
+            var abilities = new Dictionary<string, Ability>
             {
-                MaxDexterityBonus = 9266
+                [AbilityConstants.Strength] = new Ability(AbilityConstants.Strength),
+                [AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution),
+                [AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity),
+                [AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence),
+                [AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom),
+                [AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma)
             };
-            equipment.Shield = new Armor
+
+            var equipment = new Equipment
             {
-                MaxDexterityBonus = 42
+                Armor = new Armor
+                {
+                    MaxDexterityBonus = 9266
+                },
+                Shield = new Armor
+                {
+                    MaxDexterityBonus = 42
+                }
             };
 
             var modifiedAbilities = abilitiesGenerator.SetMaxBonuses(abilities, equipment);

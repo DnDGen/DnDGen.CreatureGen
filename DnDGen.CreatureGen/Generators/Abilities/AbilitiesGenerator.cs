@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
+using DnDGen.CreatureGen.Verifiers;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -12,13 +13,21 @@ using System.Linq;
 
 namespace DnDGen.CreatureGen.Generators.Abilities
 {
-    internal class AbilitiesGenerator(ICollectionTypeAndAmountSelector typeAndAmountSelector, Dice dice, JustInTimeFactory factory) : IAbilitiesGenerator
+    internal class AbilitiesGenerator(
+        ICollectionTypeAndAmountSelector typeAndAmountSelector,
+        Dice dice,
+        JustInTimeFactory factory,
+        ICreatureVerifier creatureVerifier) : IAbilitiesGenerator
     {
         public Dictionary<string, Ability> GenerateFor(string creatureName, bool asCharacter, AbilityRandomizer randomizer, Demographics demographics, string[] templates)
         {
             randomizer ??= new();
 
-            var valid = TemplatesAreCompatible(templates, creatureName, asCharacter, randomizer);
+            //This follows advice from the summary comment on creatureVerifier.VerifyCompatibility
+            if (templates.Length == 0)
+                templates = [CreatureConstants.Templates.None];
+
+            var valid = creatureVerifier.VerifyCompatibility(asCharacter, creatureName, randomizer, new() { Templates = [.. templates] });
             if (!valid)
                 throw new InvalidCreatureException(
                     $"{creatureName} does not have sufficient ability for template {templates[0]}",
@@ -33,20 +42,6 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             ApplyTemplateMinimum(abilities, templates, randomizer);
 
             return abilities;
-        }
-
-        private bool TemplatesAreCompatible(
-            string[] templates,
-            string creature,
-            bool asCharacter,
-            AbilityRandomizer abilityRandomizer)
-        {
-            if (templates.Length == 0)
-                return true;
-
-            var applicator = factory.Build<TemplateApplicator>(templates[0]);
-            var compatibleCreatures = applicator.GetCompatibleCreatures([creature], asCharacter, abilityRandomizer);
-            return compatibleCreatures.Any();
         }
 
         private Dictionary<string, Ability> InitializeAbilities(string creatureName)
@@ -116,19 +111,16 @@ namespace DnDGen.CreatureGen.Generators.Abilities
 
         private void ApplyTemplateMinimum(Dictionary<string, Ability> abilities, string[] templates, AbilityRandomizer abilityRandomizer)
         {
-            if (templates.Length == 0)
-                return;
+            for (var i = 0; i < templates.Length; i++)
+            {
+                var applicator = factory.Build<TemplateApplicator>(templates[i]);
+                if (applicator.MinimumAbility == null)
+                    continue;
 
-            var applicator = factory.Build<TemplateApplicator>(templates[0]);
-            if (applicator.MinimumAbility == null)
-                return;
-
-            var creatureAbility = abilities[applicator.MinimumAbility.Name];
-            if (creatureAbility.FullScore >= applicator.MinimumAbility.FullScore)
-                return;
-
-            var adjustment = abilityRandomizer.GetAdjustment(dice, creatureAbility, applicator.MinimumAbility.FullScore);
-            abilities[applicator.MinimumAbility.Name].BaseScore += adjustment;
+                var creatureAbility = abilities[applicator.MinimumAbility.Name];
+                var adjustment = abilityRandomizer.GetAdjustment(dice, creatureAbility, applicator.MinimumAbility.FullScore);
+                abilities[applicator.MinimumAbility.Name].BaseScore += adjustment;
+            }
         }
 
         public Dictionary<string, Ability> SetMaxBonuses(Dictionary<string, Ability> abilities, Equipment equipment)

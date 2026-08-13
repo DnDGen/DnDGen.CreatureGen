@@ -66,7 +66,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 return (CreatureName, new[] { Template });
             }
 
-            validCreatures = GetCreaturesOfTemplates(validCreatures, asCharacter, abilityRandomizer, filters);
+            var prototypes = creatureVerifier.GetChainedTemplates(validCreatures, filters?.CleanTemplates, asCharacter, abilityRandomizer, filters);
+            validCreatures = prototypes.Select(p => p.Name);
             if (!validCreatures.Any())
             {
                 throw new InvalidCreatureException($"No valid creatures ({group}) of template {string.Join(", ", filters.CleanTemplates)}", asCharacter, null, filters);
@@ -74,52 +75,6 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var randomCreature = collectionsSelector.SelectRandomFrom(validCreatures);
             return (randomCreature, filters.CleanTemplates?.ToArray());
-        }
-
-        private IEnumerable<string> GetCreaturesOfTemplates(IEnumerable<string> creatureGroup, bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters)
-        {
-            if (filters?.CleanTemplates.Any() != true)
-                return [];
-
-            var template = filters.CleanTemplates[0] ?? string.Empty;
-            var applicator = justInTimeFactory.Build<TemplateApplicator>(template);
-            IEnumerable<CreaturePrototype> prototypes;
-
-            //INFO: We only want to apply filters to the last template in the series
-            if (filters.CleanTemplates.Count == 1)
-            {
-                prototypes = applicator.GetCompatiblePrototypes(creatureGroup, asCharacter, abilityRandomizer, filters);
-            }
-            else
-            {
-                prototypes = applicator.GetCompatiblePrototypes(creatureGroup, asCharacter);
-            }
-
-            for (var i = 1; i < filters.CleanTemplates.Count; i++)
-            {
-                template = filters.CleanTemplates[i] ?? string.Empty;
-                applicator = justInTimeFactory.Build<TemplateApplicator>(template);
-
-                //INFO: We only want to apply filters to the last template in the series
-                if (i == filters.CleanTemplates.Count - 1)
-                {
-                    prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter, filters);
-                }
-                else
-                {
-                    prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter);
-                }
-            }
-
-            return prototypes.Select(p => p.Name);
-        }
-
-        private IEnumerable<string> GetCreaturesOfTemplate(string template, IEnumerable<string> creatureGroup, bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters)
-        {
-            var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
-            var creatures = templateApplicator.GetCompatibleCreatures(creatureGroup, asCharacter, abilityRandomizer, filters);
-
-            return creatures;
         }
 
         public Creature GenerateRandom(bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters = null)
@@ -141,16 +96,15 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         {
             var validCreatures = new List<string>();
 
-            var compatibleCreatures = GetCreaturesOfTemplate(CreatureConstants.Templates.None, creatureGroup, asCharacter, abilityRandomizer, filters);
+            var compatibleCreatures = creatureVerifier.GetCompatibleCreaturesForTemplate(creatureGroup, null, asCharacter, abilityRandomizer, filters);
             validCreatures.AddRange(compatibleCreatures);
 
             var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All);
 
             //This will weight things in favor of non-templated creatures
-            //INFO: Using this instead of the creature verifier, so that we can ensure compatiblity with the specified creature group
             foreach (var template in templates)
             {
-                compatibleCreatures = GetCreaturesOfTemplate(template, creatureGroup, asCharacter, abilityRandomizer, filters);
+                compatibleCreatures = creatureVerifier.GetCompatibleCreaturesForTemplate(creatureGroup, template, asCharacter, abilityRandomizer, filters);
                 if (compatibleCreatures.Any())
                     validCreatures.Add(template);
             }
@@ -178,7 +132,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var template = randomCreature;
 
-            var creaturesOfTemplate = GetCreaturesOfTemplate(template, creatureGroup, asCharacter, abilityRandomizer, filters);
+            var creaturesOfTemplate = creatureVerifier.GetCompatibleCreaturesForTemplate(creatureGroup, template, asCharacter, abilityRandomizer, filters);
             if (!creaturesOfTemplate.Any())
             {
                 throw new ArgumentException($"No valid creatures in creature group of template {template} (as character: {asCharacter}; type: {filters?.Type}; CR: {filters?.ChallengeRating})");
@@ -203,13 +157,13 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             if (filters?.CleanTemplates?.Any() == true)
             {
-                foreach (var template in filters.CleanTemplates.Take(filters.CleanTemplates.Count - 1))
+                for (var i = 0; i < filters.CleanTemplates.Count - 1; i++)
                 {
-                    var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
+                    var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(filters.CleanTemplates[i]);
                     creature = templateApplicator.ApplyTo(creature, asCharacter, null);
                 }
 
-                var lastTemplate = filters.CleanTemplates.Last();
+                var lastTemplate = filters.CleanTemplates[^1];
                 var lastTemplateApplicator = justInTimeFactory.Build<TemplateApplicator>(lastTemplate);
                 creature = lastTemplateApplicator.ApplyTo(creature, asCharacter, filters);
             }
@@ -404,13 +358,13 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             if (filters?.CleanTemplates?.Any() == true)
             {
-                foreach (var template in filters.CleanTemplates.Take(filters.CleanTemplates.Count - 1))
+                for (var i = 0; i < filters.CleanTemplates.Count - 1; i++)
                 {
-                    var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
+                    var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(filters.CleanTemplates[i]);
                     creature = await templateApplicator.ApplyToAsync(creature, asCharacter, null);
                 }
 
-                var lastTemplate = filters.CleanTemplates.Last();
+                var lastTemplate = filters.CleanTemplates[^1];
                 var lastTemplateApplicator = justInTimeFactory.Build<TemplateApplicator>(lastTemplate);
                 creature = await lastTemplateApplicator.ApplyToAsync(creature, asCharacter, filters);
             }

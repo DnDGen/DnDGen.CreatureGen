@@ -2,7 +2,6 @@
 using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
-using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Alignments;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
@@ -30,7 +29,6 @@ namespace DnDGen.CreatureGen.Templates
         IAlignmentGenerator alignmentGenerator,
         Dice dice,
         IMagicGenerator magicGenerator,
-        ICreaturePrototypeFactory prototypeFactory,
         IDemographicsGenerator demographicsGenerator) : TemplateApplicator
     {
         public string DragonSpecies { get; set; }
@@ -521,38 +519,6 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null)
-        {
-            var templateCreatures = collectionSelector.SelectFrom(
-                Config.Name,
-                TableNameConstants.Collection.CreatureGroups,
-                DragonSpecies + asCharacter);
-            var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
-
-            if (!string.IsNullOrEmpty(filters?.Type))
-            {
-                var groupName = DragonSpecies + filters.Type;
-                var typeCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
-                filteredBaseCreatures = filteredBaseCreatures.Intersect(typeCreatures);
-            }
-
-            if (!string.IsNullOrEmpty(filters?.Alignment))
-            {
-                var groupName = DragonSpecies + filters.Alignment;
-                var alignmentCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
-                filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
-            }
-
-            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
-            {
-                var groupName = DragonSpecies + asCharacter + filters.ChallengeRating;
-                var crCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
-                filteredBaseCreatures = filteredBaseCreatures.Intersect(crCreatures);
-            }
-
-            return filteredBaseCreatures;
-        }
-
         private (bool Compatible, string Reason) IsCompatible(
             IEnumerable<string> types,
             IEnumerable<string> dragonAlignments,
@@ -607,46 +573,29 @@ namespace DnDGen.CreatureGen.Templates
             return (true, null);
         }
 
-        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(
-            IEnumerable<string> sourceCreatures,
-            bool asCharacter,
-            AbilityRandomizer abilityRandomizer = null,
-            Filters filters = null)
-        {
-            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, abilityRandomizer, filters);
-            if (!compatibleCreatures.Any())
-                return [];
-
-            var dragonAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, DragonSpecies);
-            var prototypes = prototypeFactory.Build(compatibleCreatures, asCharacter);
-            var updatedPrototypes = prototypes.Select(p => ApplyToPrototype(p, filters?.Alignment, dragonAlignments));
-
-            return updatedPrototypes;
-        }
-
-        private CreaturePrototype ApplyToPrototype(CreaturePrototype prototype, string presetAlignment, IEnumerable<string> dragonAlignments)
-        {
-            UpdateCreatureAbilities(prototype);
-            UpdateCreatureAlignment(prototype, presetAlignment, dragonAlignments);
-            UpdateCreatureChallengeRating(prototype);
-            UpdateCreatureLevelAdjustment(prototype);
-            UpdateCreatureType(prototype);
-
-            return prototype;
-        }
-
-        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, bool asCharacter, Filters filters = null)
+        public CreaturePrototype ApplyTo(CreaturePrototype creature, bool asCharacter, Filters filters = null)
         {
             var dragonAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, DragonSpecies);
-            var compatiblePrototypes = sourceCreatures
-                .Where(p => IsCompatible(
-                    p.Type.AllTypes,
-                    dragonAlignments,
-                    p.ChallengeRating,
-                    filters).Compatible);
-            var updatedPrototypes = compatiblePrototypes.Select(p => ApplyToPrototype(p, filters?.Alignment, dragonAlignments));
 
-            return updatedPrototypes;
+            UpdateCreatureAbilities(creature);
+            UpdateCreatureAlignment(creature, filters?.Alignment, dragonAlignments);
+            UpdateCreatureChallengeRating(creature);
+            UpdateCreatureLevelAdjustment(creature);
+            UpdateCreatureType(creature);
+
+            return creature;
+        }
+
+        public bool IsCompatible(CreaturePrototype creature, bool asCharacter, Filters filters = null)
+        {
+            var dragonAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, DragonSpecies);
+            var (Compatible, _) = IsCompatible(
+                creature.Type.AllTypes,
+                dragonAlignments,
+                creature.ChallengeRating,
+                filters);
+
+            return Compatible;
         }
     }
 }

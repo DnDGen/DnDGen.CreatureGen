@@ -3,7 +3,6 @@ using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
-using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Defenses;
@@ -24,7 +23,6 @@ using System.Threading.Tasks;
 namespace DnDGen.CreatureGen.Templates
 {
     internal class LycanthropeApplicator(
-        ICollectionSelector collectionSelector,
         ICollectionDataSelector<CreatureDataSelection> creatureDataSelector,
         IHitPointsGenerator hitPointsGenerator,
         Dice dice,
@@ -34,7 +32,6 @@ namespace DnDGen.CreatureGen.Templates
         ISavesGenerator savesGenerator,
         ISkillsGenerator skillsGenerator,
         ISpeedsGenerator speedsGenerator,
-        ICreaturePrototypeFactory prototypeFactory,
         IDemographicsGenerator demographicsGenerator) : TemplateApplicator
     {
         public string LycanthropeSpecies { get; set; }
@@ -729,38 +726,6 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null)
-        {
-            var templateCreatures = collectionSelector.SelectFrom(
-                Config.Name,
-                TableNameConstants.Collection.CreatureGroups,
-                LycanthropeSpecies + asCharacter);
-            var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
-
-            if (!string.IsNullOrEmpty(filters?.Type))
-            {
-                var groupName = LycanthropeSpecies + filters.Type;
-                var typeCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
-                filteredBaseCreatures = filteredBaseCreatures.Intersect(typeCreatures);
-            }
-
-            if (!string.IsNullOrEmpty(filters?.Alignment))
-            {
-                var groupName = LycanthropeSpecies + filters.Alignment;
-                var alignmentCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
-                filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
-            }
-
-            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
-            {
-                var groupName = LycanthropeSpecies + asCharacter + filters.ChallengeRating;
-                var crCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
-                filteredBaseCreatures = filteredBaseCreatures.Intersect(crCreatures);
-            }
-
-            return filteredBaseCreatures;
-        }
-
         private (bool Compatible, string Reason) IsCompatible(
             IEnumerable<string> types,
             IEnumerable<string> alignments,
@@ -822,63 +787,41 @@ namespace DnDGen.CreatureGen.Templates
             return (true, null);
         }
 
-        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(
-            IEnumerable<string> sourceCreatures,
-            bool asCharacter,
-            AbilityRandomizer abilityRandomizer = null,
-            Filters filters = null)
+        public CreaturePrototype ApplyTo(CreaturePrototype creature, bool asCharacter, Filters filters = null)
         {
-            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, abilityRandomizer, filters);
-            if (!compatibleCreatures.Any())
-                return [];
-
-            var animalAbilityAdjustments = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, AnimalSpecies);
             var animalData = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, AnimalSpecies);
-
-            var prototypes = prototypeFactory.Build(compatibleCreatures, asCharacter);
+            var animalAbilityAdjustments = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, AnimalSpecies);
             var animalHitDiceQuantity = animalData.GetEffectiveHitDiceQuantity(asCharacter);
-            var updatedPrototypes = prototypes.Select(p => ApplyToPrototype(p, filters?.Alignment, animalAbilityAdjustments, animalHitDiceQuantity));
 
-            return updatedPrototypes;
-        }
+            UpdateCreatureAbilities(creature, animalAbilityAdjustments);
+            UpdateCreatureChallengeRating(creature, animalHitDiceQuantity);
+            UpdateCreatureLevelAdjustment(creature);
+            UpdateCreatureType(creature);
 
-        private CreaturePrototype ApplyToPrototype(
-            CreaturePrototype prototype,
-            string presetAlignment,
-            IEnumerable<TypeAndAmountDataSelection> animalAbilityAdjustments,
-            double animalHitDiceQuantity)
-        {
-            UpdateCreatureAbilities(prototype, animalAbilityAdjustments);
-            UpdateCreatureChallengeRating(prototype, animalHitDiceQuantity);
-            UpdateCreatureLevelAdjustment(prototype);
-            UpdateCreatureType(prototype);
-
-            if (!string.IsNullOrEmpty(presetAlignment))
+            if (!string.IsNullOrEmpty(filters?.Alignment))
             {
-                prototype.Alignments = [.. prototype.Alignments.Where(adjustmentSelector => adjustmentSelector.Full == presetAlignment)];
+                creature.Alignments = [.. creature.Alignments.Where(adjustmentSelector => adjustmentSelector.Full == filters.Alignment)];
             }
 
-            return prototype;
+            return creature;
         }
 
-        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, bool asCharacter, Filters filters = null)
+        public bool IsCompatible(CreaturePrototype creature, bool asCharacter, Filters filters = null)
         {
             var animalData = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, AnimalSpecies);
             var animalAbilityAdjustments = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, AnimalSpecies);
             var animalHitDiceQuantity = animalData.GetEffectiveHitDiceQuantity(asCharacter);
 
-            var compatiblePrototypes = sourceCreatures
-                .Where(p => IsCompatible(
-                    p.Type.AllTypes,
-                    p.Alignments.Select(a => a.Full),
-                    p.Size,
-                    p.ChallengeRating,
-                    animalData.Size,
-                    animalHitDiceQuantity,
-                    filters).Compatible);
-            var updatedPrototypes = compatiblePrototypes.Select(p => ApplyToPrototype(p, filters?.Alignment, animalAbilityAdjustments, animalHitDiceQuantity));
+            var (Compatible, _) = IsCompatible(
+                creature.Type.AllTypes,
+                creature.Alignments.Select(a => a.Full),
+                creature.Size,
+                creature.ChallengeRating,
+                animalData.Size,
+                animalHitDiceQuantity,
+                filters);
 
-            return updatedPrototypes;
+            return Compatible;
         }
     }
 }
