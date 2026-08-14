@@ -101,7 +101,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All);
 
-            //This will weight things in favor of non-templated creatures
+            //INFO: By only adding 1 entry for each compatible template (instead of 1 per template-base pairing),
+            //odds are weighted in favor of non-templated creatures
             foreach (var template in templates)
             {
                 compatibleCreatures = creatureVerifier.GetCompatibleCreaturesForTemplate(creatureGroup, template, asCharacter, abilityRandomizer, filters);

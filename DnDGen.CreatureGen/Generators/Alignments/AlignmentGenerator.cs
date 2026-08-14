@@ -38,7 +38,7 @@ namespace DnDGen.CreatureGen.Generators.Alignments
             {
                 var templateAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, templatesArray[0] + GroupConstants.AllowedInput);
 
-                //INFO: Doing this instead of intersect in order to preserve duplicates
+                //INFO: Doing this instead of intersect in order to preserve duplicates/weighting
                 weightedAlignments = weightedAlignments.Where(templateAlignments.Contains);
 
                 return weightedAlignments;

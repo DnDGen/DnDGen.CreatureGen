@@ -19,12 +19,17 @@ namespace DnDGen.CreatureGen.Verifiers
         /// <returns></returns>
         bool VerifyCompatibility(bool asCharacter, string creature = null, AbilityRandomizer abilityRandomizer = null, Filters filters = null);
 
-        IEnumerable<string> GetCompatibleCreaturesForTemplate(IEnumerable<string> sourceCreatures, string template, bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null);
-        IEnumerable<CreaturePrototype> GetCompatiblePrototypes(
-            IEnumerable<CreaturePrototype> sourceCreatures,
+        IEnumerable<string> GetCompatibleCreaturesForTemplate(
+            IEnumerable<string> sourceCreatures,
             string template,
             bool asCharacter,
+            AbilityRandomizer abilityRandomizer = null,
             Filters filters = null);
-        IEnumerable<CreaturePrototype> GetChainedTemplates(IEnumerable<string> sourceCreatures, List<string> templates, bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null);
+        IEnumerable<CreaturePrototype> GetChainedTemplates(
+            IEnumerable<string> sourceCreatures,
+            List<string> templates,
+            bool asCharacter,
+            AbilityRandomizer abilityRandomizer = null,
+            Filters filters = null);
     }
 }

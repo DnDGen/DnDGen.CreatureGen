@@ -1,9 +1,8 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Alignments;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
-using DnDGen.Infrastructure.Factories;
+using DnDGen.CreatureGen.Verifiers;
 using DnDGen.Infrastructure.Selectors.Collections;
 using Moq;
 using NUnit.Framework;
@@ -17,15 +16,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
     {
         private IAlignmentGenerator alignmentGenerator;
         private Mock<ICollectionSelector> mockCollectionSelector;
-        private Mock<JustInTimeFactory> mockFactory;
+        private Mock<ICreatureVerifier> mockCreatureVerifier;
         private int randomIndex;
 
         [SetUp]
         public void Setup()
         {
             mockCollectionSelector = new Mock<ICollectionSelector>();
-            mockFactory = new Mock<JustInTimeFactory>();
-            alignmentGenerator = new AlignmentGenerator(mockCollectionSelector.Object, mockFactory.Object);
+            mockCreatureVerifier = new Mock<ICreatureVerifier>();
+            alignmentGenerator = new AlignmentGenerator(mockCollectionSelector.Object, mockCreatureVerifier.Object);
 
             randomIndex = 0;
             mockCollectionSelector
@@ -87,25 +86,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
                 .Returns(["lawfulness goodness", "wrong alignment"]);
 
-            var mockMyTemplateApplicator = new Mock<TemplateApplicator>();
-            var mockMyOtherTemplateApplicator = new Mock<TemplateApplicator>();
-
-            mockFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockMyTemplateApplicator.Object);
-            mockFactory.Setup(f => f.Build<TemplateApplicator>("my other template")).Returns(mockMyOtherTemplateApplicator.Object);
-
-            var prototypes1 = new[]
-            {
-                new CreaturePrototype
-                {
-                    Name = "creature name",
-                    Alignments =
-                    [
-                        new("template alignment"),
-                        new("lawfulness goodness"),
-                    ]
-                },
-            };
-            var prototypes2 = new[]
+            var prototypes = new[]
             {
                 new CreaturePrototype
                 {
@@ -119,12 +100,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
                 },
             };
 
-            mockMyTemplateApplicator
-                .Setup(a => a.GetCompatiblePrototypes(It.Is<IEnumerable<string>>(n => n.IsEquivalentTo(new[] { "creature name" })), false, null, null))
-                .Returns(prototypes1);
-            mockMyOtherTemplateApplicator.Setup(a => a.GetCompatiblePrototypes(prototypes1, false, null)).Returns(prototypes2);
+            var templates = new[] { "my template", "my other template" };
+            mockCreatureVerifier
+                .Setup(a => a.GetChainedTemplates(
+                    It.Is<IEnumerable<string>>(n => n.IsEquivalentTo("creature name")),
+                    It.Is<List<string>>(n => n.IsEquivalentTo(templates)),
+                    false,
+                    null,
+                    null))
+                .Returns(prototypes);
 
-            var alignment = alignmentGenerator.Generate("creature name", ["my template", "my other template"], null);
+            var alignment = alignmentGenerator.Generate("creature name", templates, null);
             Assert.That(alignment.Full, Is.EqualTo("lawfulness goodness"));
         }
 
@@ -181,26 +167,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
 
             randomIndex = 1;
 
-            var mockMyTemplateApplicator = new Mock<TemplateApplicator>();
-            var mockMyOtherTemplateApplicator = new Mock<TemplateApplicator>();
-
-            mockFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockMyTemplateApplicator.Object);
-            mockFactory.Setup(f => f.Build<TemplateApplicator>("my other template")).Returns(mockMyOtherTemplateApplicator.Object);
-
-            var prototypes1 = new[]
-            {
-                new CreaturePrototype
-                {
-                    Name = "creature name",
-                    Alignments =
-                    [
-                        new("template alignment"),
-                        new("lawfulness goodness"),
-                        new("other alignment"),
-                    ]
-                },
-            };
-            var prototypes2 = new[]
+            var prototypes = new[]
             {
                 new CreaturePrototype
                 {
@@ -216,12 +183,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
                 },
             };
 
-            mockMyTemplateApplicator
-                .Setup(a => a.GetCompatiblePrototypes(It.Is<IEnumerable<string>>(n => n.IsEquivalentTo(new[] { "creature name" })), false, null, null))
-                .Returns(prototypes1);
-            mockMyOtherTemplateApplicator.Setup(a => a.GetCompatiblePrototypes(prototypes1, false, null)).Returns(prototypes2);
+            var templates = new[] { "my template", "my other template" };
+            mockCreatureVerifier
+                .Setup(a => a.GetChainedTemplates(
+                    It.Is<IEnumerable<string>>(n => n.IsEquivalentTo("creature name")),
+                    It.Is<List<string>>(n => n.IsEquivalentTo(templates)),
+                    false,
+                    null,
+                    null))
+                .Returns(prototypes);
 
-            var alignment = alignmentGenerator.Generate("creature name", ["my template", "my other template"], null);
+            var alignment = alignmentGenerator.Generate("creature name", templates, null);
             Assert.That(alignment.Full, Is.EqualTo("other alignment"));
         }
 
@@ -334,24 +306,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
 
             randomIndex = 2;
 
-            var mockApplicator1 = new Mock<TemplateApplicator>();
-            var mockApplicator2 = new Mock<TemplateApplicator>();
-            var prototypes1 = new[]
-            {
-                new CreaturePrototype
-                {
-                    Name = "protoype 1",
-                    Alignments =
-                    [
-                        new("template alignment"),
-                        new("lawfulness goodness"),
-                        new("other wrong alignment"),
-                        new("wrong lawfulness goodness"),
-                        new("other alignment"),
-                    ]
-                }
-            };
-            var prototypes2 = new[]
+            var prototypes = new[]
             {
                 new CreaturePrototype
                 {
@@ -367,21 +322,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
                 }
             };
 
-            mockApplicator1
-                .Setup(a => a.GetCompatiblePrototypes(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "creature name" })), false, null, null))
-                .Returns(prototypes1);
-            mockApplicator2
-                .Setup(a => a.GetCompatiblePrototypes(prototypes1, false, null))
-                .Returns(prototypes2);
+            var templates = new[] { "my template", "my other template" };
+            mockCreatureVerifier
+                .Setup(a => a.GetChainedTemplates(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo("creature name")),
+                    It.Is<List<string>>(cc => cc.IsEquivalentTo(templates)),
+                    false,
+                    null,
+                    null))
+                .Returns(prototypes);
 
-            mockFactory
-                .Setup(f => f.Build<TemplateApplicator>("my template"))
-                .Returns(mockApplicator1.Object);
-            mockFactory
-                .Setup(f => f.Build<TemplateApplicator>("my other template"))
-                .Returns(mockApplicator2.Object);
-
-            var alignment = alignmentGenerator.Generate("creature name", ["my template", "my other template"], null);
+            var alignment = alignmentGenerator.Generate("creature name", templates, null);
             Assert.That(alignment.Full, Is.EqualTo("other alignment"));
         }
 

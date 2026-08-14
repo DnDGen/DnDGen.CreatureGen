@@ -39,7 +39,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                         BaseScore = abilityRandomizer.GetMax(dice, a.Type),
                         RacialAdjustment = a.Amount
                     }),
-                    Alignments = [.. allAlignments[creature].Select(a => new Alignment(a)).Distinct()],
+                    Alignments = [.. allAlignments[creature].Select(a => new Alignment(a))],
                     CasterLevel = creatureData.CasterLevel,
                     Size = creatureData.Size,
                     ChallengeRating = creatureData.GetEffectiveChallengeRating(asCharacter),

@@ -156,10 +156,10 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureAlignment(CreaturePrototype creature, string presetAlignment)
         {
-            creature.Alignments = [.. creature.Alignments
+            var updatedAlignments = creature.Alignments
                 .Where(a => a.Goodness != AlignmentConstants.Evil)
-                .Select(a => UpdateCreatureAlignment(a, presetAlignment))
-                .Distinct()];
+                .Select(a => UpdateCreatureAlignment(a, presetAlignment));
+            creature.Alignments = [.. updatedAlignments];
         }
 
         private Alignment UpdateCreatureAlignment(Alignment alignment, string presetAlignment)

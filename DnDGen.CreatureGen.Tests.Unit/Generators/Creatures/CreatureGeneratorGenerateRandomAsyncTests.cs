@@ -9,7 +9,6 @@ using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using Moq;
@@ -77,33 +76,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
-            var mockNoneApplicator = new Mock<TemplateApplicator>();
-            mockNoneApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None)).Returns(mockNoneApplicator.Object);
-
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
-
-            var mockOtherTemplateApplicator = new Mock<TemplateApplicator>();
-            mockOtherTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockOtherTemplateApplicator.Object);
-
-            var mockWrongTemplateApplicator = new Mock<TemplateApplicator>();
-            mockWrongTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), CreatureConstants.Templates.None, asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), template, asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "other template", asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "wrong template", asCharacter, null, filters))
                 .Returns([]);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template")).Returns(mockWrongTemplateApplicator.Object);
 
             SetUpCreature(creatureName, asCharacter, type, cr, alignment);
 
@@ -139,33 +123,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
-            var mockNoneApplicator = new Mock<TemplateApplicator>();
-            mockNoneApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None)).Returns(mockNoneApplicator.Object);
-
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
-
-            var mockOtherTemplateApplicator = new Mock<TemplateApplicator>();
-            mockOtherTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockOtherTemplateApplicator.Object);
-
-            var mockWrongTemplateApplicator = new Mock<TemplateApplicator>();
-            mockWrongTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, null, filters))
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), CreatureConstants.Templates.None, false, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), template, false, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "other template", false, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "wrong template", false, null, filters))
                 .Returns([]);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template")).Returns(mockWrongTemplateApplicator.Object);
 
             SetUpCreature(creatureName, false, "my type", "my challenge rating", "my alignment");
 
@@ -208,12 +177,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
 
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), template, asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
 
             SetUpCreature(creatureName, asCharacter, type, cr, alignment, null, template);
 
@@ -256,12 +222,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
 
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), template, asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
 
             SetUpCreature(creatureName, asCharacter, type, cr, alignment, null, template);
 
@@ -305,19 +268,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
 
-            var mockTemplateApplicator1 = new Mock<TemplateApplicator>();
-            mockTemplateApplicator1
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template1)).Returns(mockTemplateApplicator1.Object);
-
-            var mockTemplateApplicator2 = new Mock<TemplateApplicator>();
-            mockTemplateApplicator2
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template2)).Returns(mockTemplateApplicator2.Object);
+            mockCreatureVerifier
+                .Setup(v => v.GetChainedTemplates(It.IsAny<IEnumerable<string>>(), filters.CleanTemplates, asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, List<string> tt, bool asC, AbilityRandomizer r, Filters f) => cc
+                    .Intersect([creatureName])
+                    .Select(c => new CreaturePrototype { Name = c }));
 
             SetUpCreature(creatureName, asCharacter, type, cr, alignment, null, template1, template2);
 
@@ -370,33 +325,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { creatureName, "other creature name", "wrong creature name", template }))))
                 .Returns(template);
 
-            var mockNoneApplicator = new Mock<TemplateApplicator>();
-            mockNoneApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => []);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None)).Returns(mockNoneApplicator.Object);
-
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
-
-            var mockWrongTemplateApplicator1 = new Mock<TemplateApplicator>();
-            mockWrongTemplateApplicator1
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), CreatureConstants.Templates.None, asCharacter, null, filters))
                 .Returns([]);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockWrongTemplateApplicator1.Object);
-
-            var mockWrongTemplateApplicator2 = new Mock<TemplateApplicator>();
-            mockWrongTemplateApplicator2
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), template, asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "other template", asCharacter, null, filters))
                 .Returns([]);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template")).Returns(mockWrongTemplateApplicator2.Object);
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "wrong template", asCharacter, null, filters))
+                .Returns([]);
 
             SetUpCreature(creatureName, asCharacter, type, cr, alignment, null, template);
 
@@ -446,39 +386,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { creatureName, "other creature name", "wrong creature name", template, "other template" }))))
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(creatureName, "other creature name", "wrong creature name", template, "other template"))))
                 .Returns(template);
 
-            var mockNoneApplicator = new Mock<TemplateApplicator>();
-            mockNoneApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => []);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None)).Returns(mockNoneApplicator.Object);
-
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
-
-            var mockWrongTemplateApplicator1 = new Mock<TemplateApplicator>();
-            mockWrongTemplateApplicator1
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockWrongTemplateApplicator1.Object);
-
-            var mockWrongTemplateApplicator2 = new Mock<TemplateApplicator>();
-            mockWrongTemplateApplicator2
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), CreatureConstants.Templates.None, asCharacter, null, filters))
+                .Returns([]);
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), template, asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "other template", asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "wrong template", asCharacter, null, filters))
                 .Returns([]);
 
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template")).Returns(mockWrongTemplateApplicator2.Object);
-
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { template, "other template" }))))
+                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(template, "other template"))))
                 .Returns(template);
 
             SetUpCreature(creatureName, asCharacter, type, cr, alignment, null, template);
@@ -527,33 +452,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
-            var mockNoneApplicator = new Mock<TemplateApplicator>();
-            mockNoneApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Except(["wrong creature"]));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None)).Returns(mockNoneApplicator.Object);
-
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
-
-            var mockOtherTemplateApplicator = new Mock<TemplateApplicator>();
-            mockOtherTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockOtherTemplateApplicator.Object);
-
-            var mockWrongTemplateApplicator = new Mock<TemplateApplicator>();
-            mockWrongTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), CreatureConstants.Templates.None, asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Except(["wrong creature"]));
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), template, asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc);
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "other template", asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc);
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "wrong template", asCharacter, null, filters))
                 .Returns([]);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template")).Returns(mockWrongTemplateApplicator.Object);
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(creatures.Union(new[] { template, "other template" })))))
@@ -657,12 +567,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), template, asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc);
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(creatures))))
@@ -714,19 +621,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
-            var mockTemplateApplicator1 = new Mock<TemplateApplicator>();
-            mockTemplateApplicator1
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template1)).Returns(mockTemplateApplicator1.Object);
-
-            var mockTemplateApplicator2 = new Mock<TemplateApplicator>();
-            mockTemplateApplicator2
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template2)).Returns(mockTemplateApplicator2.Object);
+            mockCreatureVerifier
+                .Setup(v => v.GetChainedTemplates(It.IsAny<IEnumerable<string>>(), filters.CleanTemplates, asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, List<string> tt, bool asC, AbilityRandomizer r, Filters f) => cc.Select(c => new CreaturePrototype { Name = c }));
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(creatures))))
@@ -782,33 +679,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { creatureName, template, "other template" }))))
                 .Returns(template);
 
-            var mockNoneApplicator = new Mock<TemplateApplicator>();
-            mockNoneApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Except(["wrong creature"]));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None)).Returns(mockNoneApplicator.Object);
-
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc.Except(["other wrong creature"]));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
-
-            var mockOtherTemplateApplicator = new Mock<TemplateApplicator>();
-            mockOtherTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, bool asC, AbilityRandomizer r, Filters f) => cc);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockOtherTemplateApplicator.Object);
-
-            var mockWrongTemplateApplicator = new Mock<TemplateApplicator>();
-            mockWrongTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), CreatureConstants.Templates.None, asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Except(["wrong creature"]));
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), template, asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Except(["other wrong creature"]));
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "other template", asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc);
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "wrong template", asCharacter, null, filters))
                 .Returns([]);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template")).Returns(mockWrongTemplateApplicator.Object);
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[]
@@ -1436,7 +1318,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.GenerateAttacks("creature", "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity, demographics.Gender))
                 .Returns(advancedAttacks);
 
-            var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
+            var advancedSkills = new List<Skill>() { new("advanced skill", abilities.First().Value, 1000) };
             mockSkillsGenerator
                 .Setup(g => g.GenerateFor(
                     advancedHitPoints,
@@ -1448,7 +1330,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     true))
                 .Returns(advancedSkills);
 
-            var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
+            var advancedSpecialQualities = new List<Feat>() { new() { Name = "advanced special quality" } };
 
             mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities(
                 "creature",
@@ -1461,7 +1343,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 alignment)
             ).Returns(advancedSpecialQualities);
 
-            var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
+            var advancedFeats = new List<Feat>() { new() { Name = "advanced feat" } };
             mockFeatsGenerator.Setup(g => g.GenerateFeats(
                 advancedHitPoints,
                 999,
@@ -1546,7 +1428,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             SetUpCreature("creature", asCharacter);
             var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
 
-            var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
+            var advancedSkills = new List<Skill>() { new("advanced skill", abilities.First().Value, 1000) };
             mockSkillsGenerator
                 .Setup(g => g.GenerateFor(
                     advancedHitPoints,
@@ -1558,7 +1440,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     true))
                 .Returns(advancedSkills);
 
-            var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
+            var advancedSpecialQualities = new List<Feat>() { new() { Name = "advanced special quality" } };
 
             mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities(
                 "creature",
@@ -1629,7 +1511,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.GenerateAttacks("creature", "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity, demographics.Gender))
                 .Returns(advancedAttacks);
 
-            var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
+            var advancedSkills = new List<Skill>() { new("advanced skill", abilities.First().Value, 1000) };
             mockSkillsGenerator
                 .Setup(g => g.GenerateFor(
                     advancedHitPoints,
@@ -1641,7 +1523,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     true))
                 .Returns(advancedSkills);
 
-            var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
+            var advancedSpecialQualities = new List<Feat>() { new() { Name = "advanced special quality" } };
 
             mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities(
                 "creature",
@@ -1654,7 +1536,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 alignment)
             ).Returns(advancedSpecialQualities);
 
-            var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
+            var advancedFeats = new List<Feat>() { new() { Name = "advanced feat" } };
             mockFeatsGenerator.Setup(g => g.GenerateFeats(
                 advancedHitPoints,
                 999,
@@ -1742,7 +1624,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.GenerateAttacks("creature", "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity, demographics.Gender))
                 .Returns(advancedAttacks);
 
-            var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
+            var advancedSkills = new List<Skill>() { new("advanced skill", abilities.First().Value, 1000) };
             mockSkillsGenerator
                 .Setup(g => g.GenerateFor(
                     advancedHitPoints,
@@ -1754,7 +1636,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     true))
                 .Returns(advancedSkills);
 
-            var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
+            var advancedSpecialQualities = new List<Feat>() { new() { Name = "advanced special quality" } };
 
             mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities(
                 "creature",
@@ -1767,7 +1649,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 alignment)
             ).Returns(advancedSpecialQualities);
 
-            var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
+            var advancedFeats = new List<Feat>() { new() { Name = "advanced feat" } };
             mockFeatsGenerator.Setup(g => g.GenerateFeats(
                 advancedHitPoints,
                 999,
@@ -1820,7 +1702,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.GenerateAttacks("creature", "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity, demographics.Gender))
                 .Returns(advancedAttacks);
 
-            var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
+            var advancedSkills = new List<Skill>() { new("advanced skill", abilities.First().Value, 1000) };
             mockSkillsGenerator
                 .Setup(g => g.GenerateFor(
                     advancedHitPoints,
@@ -1832,7 +1714,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     true))
                 .Returns(advancedSkills);
 
-            var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
+            var advancedSpecialQualities = new List<Feat>() { new() { Name = "advanced special quality" } };
 
             mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities(
                 "creature",
@@ -1845,7 +1727,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 alignment)
             ).Returns(advancedSpecialQualities);
 
-            var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
+            var advancedFeats = new List<Feat>() { new() { Name = "advanced feat" } };
             mockFeatsGenerator.Setup(g => g.GenerateFeats(
                 advancedHitPoints,
                 999,
@@ -1920,7 +1802,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomAsync_GenerateCreatureSkillsUpdatedByFeats(bool asCharacter)
         {
             SetUpCreature("creature", asCharacter);
-            var updatedSkills = new List<Skill>() { new Skill("updated skill", abilities.First().Value, 1000) };
+            var updatedSkills = new List<Skill>() { new("updated skill", abilities.First().Value, 1000) };
             mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(skills, feats, abilities)).Returns(updatedSkills);
 
             mockSkillsGenerator
@@ -1946,7 +1828,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.GenerateAttacks("creature", "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity, demographics.Gender))
                 .Returns(advancedAttacks);
 
-            var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
+            var advancedSkills = new List<Skill>() { new("advanced skill", abilities.First().Value, 1000) };
             mockSkillsGenerator
                 .Setup(g => g.GenerateFor(
                     advancedHitPoints,
@@ -1958,7 +1840,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     true))
                 .Returns(advancedSkills);
 
-            var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
+            var advancedSpecialQualities = new List<Feat>() { new() { Name = "advanced special quality" } };
 
             mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities(
                 "creature",
@@ -1971,7 +1853,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 alignment)
             ).Returns(advancedSpecialQualities);
 
-            var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
+            var advancedFeats = new List<Feat>() { new() { Name = "advanced feat" } };
             mockFeatsGenerator.Setup(g => g.GenerateFeats(
                 advancedHitPoints,
                 999,
@@ -1986,7 +1868,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 "advanced size",
                 creatureData.CanUseEquipment)).Returns(advancedFeats);
 
-            var updatedSkills = new List<Skill> { new Skill("updated advanced skill", abilities.First().Value, 1000) };
+            var updatedSkills = new List<Skill> { new("updated advanced skill", abilities.First().Value, 1000) };
             mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(advancedSkills, advancedFeats, abilities)).Returns(updatedSkills);
 
             var modifiedAdvancedAttacks = new[] { new Attack() { Name = "modified advanced attack" } };
@@ -2231,7 +2113,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             SetUpCreature("creature", asCharacter);
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
 
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            SetUpCreatureAdvancement(asCharacter, "creature", null);
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
 
@@ -2262,7 +2144,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             SetUpCreature("creature", asCharacter);
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
 
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            SetUpCreatureAdvancement(asCharacter, "creature", null);
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
             feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
@@ -2386,7 +2268,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.GenerateAttacks("creature", "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity, demographics.Gender))
                 .Returns(advancedAttacks);
 
-            var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
+            var advancedSkills = new List<Skill>() { new("advanced skill", abilities.First().Value, 1000) };
             mockSkillsGenerator
                 .Setup(g => g.GenerateFor(
                     advancedHitPoints,
@@ -2398,7 +2280,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     true))
                 .Returns(advancedSkills);
 
-            var advancedSpecialQualities = new List<Feat>() { new Feat() { Name = "advanced special quality" } };
+            var advancedSpecialQualities = new List<Feat>() { new() { Name = "advanced special quality" } };
 
             mockFeatsGenerator.Setup(g => g.GenerateSpecialQualities(
                 "creature",
@@ -2411,7 +2293,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 alignment)
             ).Returns(advancedSpecialQualities);
 
-            var advancedFeats = new List<Feat>() { new Feat() { Name = "advanced feat" } };
+            var advancedFeats = new List<Feat>() { new() { Name = "advanced feat" } };
             mockFeatsGenerator.Setup(g => g.GenerateFeats(
                 advancedHitPoints,
                 999,
@@ -2484,8 +2366,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomAsync_GenerateCreatureSaves(bool asCharacter)
         {
             SetUpCreature("creature", asCharacter);
-            var saves = new Dictionary<string, Save>();
-            saves["save name"] = new Save();
+            var saves = new Dictionary<string, Save>
+            {
+                ["save name"] = new Save()
+            };
 
             mockSavesGenerator.Setup(g => g.GenerateWith("creature", It.Is<CreatureType>(c => c.Name == types[0]), hitPoints, feats, abilities)).Returns(saves);
 
@@ -2502,8 +2386,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockFeatsGenerator.Setup(g => g.GenerateFeats(advancedHitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size", creatureData.CanUseEquipment)).Returns(feats);
 
-            var saves = new Dictionary<string, Save>();
-            saves["save name"] = new Save();
+            var saves = new Dictionary<string, Save>
+            {
+                ["save name"] = new Save()
+            };
 
             mockSavesGenerator.Setup(g => g.GenerateWith("creature", It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints, feats, abilities)).Returns(saves);
 
@@ -2535,15 +2421,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "creature", "other creature name", "wrong creature name", "my template" }))))
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo("creature", "other creature name", "wrong creature name", "my template"))))
                 .Returns("my template");
 
-            var mockWrongTemplateApplicator = new Mock<TemplateApplicator>();
-            mockWrongTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, null))
+            mockCreatureVerifier
+                .Setup(a => a.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "wrong template", asCharacter, null, null))
                 .Returns([]);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template")).Returns(mockWrongTemplateApplicator.Object);
 
             var templateCreature = new Creature { Name = "Creature modified by template", Templates = ["my template"] };
             mockTemplateApplicators[0]
@@ -2575,12 +2458,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
-            var mockWrongTemplateApplicator = new Mock<TemplateApplicator>();
-            mockWrongTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, null))
+            mockCreatureVerifier
+                .Setup(a => a.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "wrong template", asCharacter, null, null))
                 .Returns([]);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template")).Returns(mockWrongTemplateApplicator.Object);
 
             var templateCreature1 = new Creature { Name = "Creature modified by template 1", Templates = ["my template"] };
             var templateCreature2 = new Creature { Name = "Creature modified by template 2", Templates = ["my template", "my other template"] };
@@ -2611,17 +2491,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "creature", "other creature name", "wrong creature name", "my template" }))))
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo("creature", "other creature name", "wrong creature name", "my template"))))
                 .Returns("my template");
 
-            var mockWrongTemplateApplicator = new Mock<TemplateApplicator>();
-            mockWrongTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
+            mockCreatureVerifier
+                .Setup(a => a.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "wrong template", asCharacter, null, null))
                 .Returns([]);
 
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template")).Returns(mockWrongTemplateApplicator.Object);
-
-            var templateCreature = new Creature { Name = "Creature modified by template", Templates = new List<string> { "my template" } };
+            var templateCreature = new Creature { Name = "Creature modified by template", Templates = ["my template"] };
             mockTemplateApplicators[0].Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, filters)).ReturnsAsync(templateCreature);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters);
@@ -2647,12 +2524,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(templates);
 
-            var mockWrongTemplateApplicator = new Mock<TemplateApplicator>();
-            mockWrongTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, filters))
+            mockCreatureVerifier
+                .Setup(a => a.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "wrong template", asCharacter, null, null))
                 .Returns([]);
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template")).Returns(mockWrongTemplateApplicator.Object);
 
             var templateCreature1 = new Creature { Name = "Creature modified by template 1", Templates = ["my template"] };
             var templateCreature2 = new Creature { Name = "Creature modified by template 2", Templates = ["my template", "my other template"] };

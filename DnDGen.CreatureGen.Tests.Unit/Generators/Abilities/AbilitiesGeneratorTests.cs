@@ -371,7 +371,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     asCharacter,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { CreatureConstants.Templates.None }))))
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(CreatureConstants.Templates.None))))
                 .Returns(true);
 
             var abilities = abilitiesGenerator.GenerateFor("creature name", asCharacter, randomizer, demographics, []);

@@ -119,20 +119,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
         public CreaturePrototypeBuilder WithAlignments(params string[] alignments)
         {
-            prototype.Alignments = alignments.Select(a => new Alignment(a)).ToList();
+            prototype.Alignments = [.. alignments.Select(a => new Alignment(a))];
 
             return this;
         }
 
         private void InitializeAbilities()
         {
-            prototype.Abilities = new Dictionary<string, Ability>();
-            prototype.Abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
-            prototype.Abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
-            prototype.Abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
-            prototype.Abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
-            prototype.Abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
-            prototype.Abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
+            prototype.Abilities = new Dictionary<string, Ability>
+            {
+                [AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma),
+                [AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution),
+                [AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity),
+                [AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence),
+                [AbilityConstants.Strength] = new Ability(AbilityConstants.Strength),
+                [AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom)
+            };
         }
 
         public CreaturePrototypeBuilder WithoutAbility(string ability)

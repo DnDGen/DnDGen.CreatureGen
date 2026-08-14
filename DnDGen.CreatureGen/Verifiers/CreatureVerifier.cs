@@ -57,25 +57,9 @@ namespace DnDGen.CreatureGen.Verifiers
             Filters filters = null)
         {
             template ??= CreatureConstants.Templates.None;
-            var applicator = factory.Build<TemplateApplicator>(template);
 
             var templateCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, template + asCharacter);
             var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
-
-            if (applicator.MinimumAbility is not null)
-            {
-                abilityRandomizer ??= new();
-                var lowestAdjustment = applicator.MinimumAbility.FullScore - abilityRandomizer.GetMax(dice, applicator.MinimumAbility.Name);
-
-                //INFO: If lowestAdjustment is -10, that's all creatures (worst adjustment is -10, can't go lower), so if <= -10, no intersect needed
-                //Worst maxRoll is 1 (since abilities should be positive), so highest adjustment is Min - 1
-                if (lowestAdjustment > -10)
-                {
-                    var groupName = applicator.MinimumAbility.Name + lowestAdjustment;
-                    var abilityCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
-                    filteredBaseCreatures = filteredBaseCreatures.Intersect(abilityCreatures);
-                }
-            }
 
             if (!string.IsNullOrEmpty(filters?.Type))
             {
@@ -98,10 +82,29 @@ namespace DnDGen.CreatureGen.Verifiers
                 filteredBaseCreatures = filteredBaseCreatures.Intersect(crCreatures);
             }
 
+            if (!filteredBaseCreatures.Any())
+                return filteredBaseCreatures;
+
+            var applicator = factory.Build<TemplateApplicator>(template);
+            if (applicator.MinimumAbility is not null)
+            {
+                abilityRandomizer ??= new();
+                var lowestAdjustment = applicator.MinimumAbility.FullScore - abilityRandomizer.GetMax(dice, applicator.MinimumAbility.Name);
+
+                //INFO: If lowestAdjustment is -10, that's all creatures (worst adjustment is -10, can't go lower), so if <= -10, no intersect needed
+                //Worst maxRoll is 1 (since abilities should be positive), so highest adjustment is Min - 1
+                if (lowestAdjustment > -10)
+                {
+                    var groupName = applicator.MinimumAbility.Name + lowestAdjustment;
+                    var abilityCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
+                    filteredBaseCreatures = filteredBaseCreatures.Intersect(abilityCreatures);
+                }
+            }
+
             return filteredBaseCreatures;
         }
 
-        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, string template, bool asCharacter, Filters filters = null)
+        private IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, string template, bool asCharacter, Filters filters = null)
         {
             var applicator = factory.Build<TemplateApplicator>(template);
             var compatiblePrototypes = sourceCreatures.Where(p => applicator.IsCompatible(p, asCharacter, filters));
