@@ -34,7 +34,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
     {
         private LycanthropeApplicator applicator;
         private Creature baseCreature;
-        private Mock<ICollectionSelector> mockCollectionSelector;
         private Mock<ICollectionDataSelector<CreatureDataSelection>> mockCreatureDataSelector;
         private Mock<IHitPointsGenerator> mockHitPointsGenerator;
         private Mock<Dice> mockDice;
@@ -44,7 +43,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<ISavesGenerator> mockSavesGenerator;
         private Mock<ISkillsGenerator> mockSkillsGenerator;
         private Mock<ISpeedsGenerator> mockSpeedsGenerator;
-        private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
         private Mock<IDemographicsGenerator> mockDemographicsGenerator;
         private HitPoints animalHitPoints;
         private Random random;
@@ -64,7 +62,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [SetUp]
         public void Setup()
         {
-            mockCollectionSelector = new Mock<ICollectionSelector>();
             mockCreatureDataSelector = new Mock<ICollectionDataSelector<CreatureDataSelection>>();
             mockHitPointsGenerator = new Mock<IHitPointsGenerator>();
             mockDice = new Mock<Dice>();
@@ -74,11 +71,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockSavesGenerator = new Mock<ISavesGenerator>();
             mockSkillsGenerator = new Mock<ISkillsGenerator>();
             mockSpeedsGenerator = new Mock<ISpeedsGenerator>();
-            mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
             mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
             applicator = new LycanthropeApplicator(
-                mockCollectionSelector.Object,
                 mockCreatureDataSelector.Object,
                 mockHitPointsGenerator.Object,
                 mockDice.Object,
@@ -88,10 +83,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockSavesGenerator.Object,
                 mockSkillsGenerator.Object,
                 mockSpeedsGenerator.Object,
-                mockPrototypeFactory.Object,
-                mockDemographicsGenerator.Object);
-            applicator.LycanthropeSpecies = "my lycanthrope";
-            applicator.AnimalSpecies = "my animal";
+                mockDemographicsGenerator.Object)
+            {
+                LycanthropeSpecies = "my lycanthrope",
+                AnimalSpecies = "my animal"
+            };
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
@@ -209,7 +205,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void ApplyTo_ReturnsCreature_WithFilters()
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
-            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
             baseCreature.HitPoints.HitDice[0].Quantity = 1;
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment("original alignment");
@@ -223,10 +219,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             SetUpAnimal("my animal", hitDiceQuantity: 1);
 
-            var filters = new Filters();
-            filters.Type = "subtype 1";
-            filters.ChallengeRating = ChallengeRatingConstants.CR3;
-            filters.Alignment = "original alignment";
+            var filters = new Filters
+            {
+                Type = "subtype 1",
+                ChallengeRating = ChallengeRatingConstants.CR3,
+                Alignment = "original alignment"
+            };
 
             var creature = applicator.ApplyTo(baseCreature, false, filters);
             Assert.That(creature.Templates.Single(), Is.EqualTo("my lycanthrope"));
@@ -235,11 +233,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_GainShapechangerSubtype()
         {
-            baseCreature.Type.SubTypes = new[]
-            {
+            baseCreature.Type.SubTypes =
+            [
                 "subtype 1",
                 "subtype 2",
-            };
+            ];
 
             SetUpAnimal("my animal");
 
@@ -479,7 +477,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             if (!rollSequences.ContainsKey(key))
                 rollSequences[key] = mockDice.SetupSequence(d => d.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsIndividualRolls<int>());
 
-            rollSequences[key] = rollSequences[key].Returns(new[] { roll });
+            rollSequences[key] = rollSequences[key].Returns([roll]);
         }
 
         private void SetUpRoll(HitDice hitDice, double average)
@@ -670,15 +668,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "my animal"))
-                .Returns(new[]
-                {
+                .Returns(
+                [
                     new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 666 },
                     new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 666 },
                     new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 8245 },
                     new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = -666 },
                     new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = -666 },
                     new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = -666 },
-                });
+                ]);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -853,7 +851,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             //New for base and animal
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count, Is.EqualTo(2));
 
             var bonuses = creature.ArmorClass.NaturalArmorBonuses.ToArray();
             Assert.That(bonuses[0].Condition, Is.EqualTo("In base or hybrid form"));
@@ -874,7 +872,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             //New for base
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count, Is.EqualTo(2));
 
             var bonuses = creature.ArmorClass.NaturalArmorBonuses.ToArray();
             Assert.That(bonuses[0].Condition, Is.EqualTo("In base or hybrid form"));
@@ -895,7 +893,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             //New for animal
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count, Is.EqualTo(2));
 
             var bonuses = creature.ArmorClass.NaturalArmorBonuses.ToArray();
             Assert.That(bonuses[0].Condition, Is.EqualTo("In base or hybrid form"));
@@ -916,7 +914,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             //Both new for base and from animal
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count, Is.EqualTo(2));
 
             var bonuses = creature.ArmorClass.NaturalArmorBonuses.ToArray();
             Assert.That(bonuses[0].Condition, Is.EqualTo("In base or hybrid form"));
@@ -1246,7 +1244,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var baseSpecialQuality = new Feat { Name = "my special quality" };
             baseCreature.SpecialQualities = baseCreature.SpecialQualities
-                .Union(new[] { baseSpecialQuality });
+                .Union([baseSpecialQuality]);
 
             SetUpAnimal("my animal");
 
@@ -1298,7 +1296,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var baseSpecialQuality = new Feat { Name = "my special quality" };
             baseCreature.SpecialQualities = baseCreature.SpecialQualities
-                .Union(new[] { baseSpecialQuality });
+                .Union([baseSpecialQuality]);
 
             SetUpAnimal("my animal");
 
@@ -1820,7 +1818,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_GainAnimalFeats_RemoveDuplicates()
         {
-            baseCreature.Feats = baseCreature.Feats.Union(new[] { new Feat { Name = "my feat" } });
+            baseCreature.Feats = baseCreature.Feats.Union([new Feat { Name = "my feat" }]);
 
             SetUpAnimal("my animal");
 
@@ -1838,7 +1836,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void ApplyTo_GainAnimalFeats_KeepDuplicates_IfCanBeTakenMultipleTimes()
         {
             var creatureFeat = new Feat { Name = "my feat", CanBeTakenMultipleTimes = true };
-            baseCreature.Feats = baseCreature.Feats.Union(new[] { creatureFeat });
+            baseCreature.Feats = baseCreature.Feats.Union([creatureFeat]);
 
             SetUpAnimal("my animal");
 
@@ -1859,10 +1857,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             SetUpAnimal("my animal");
 
-            var animalSaves = new Dictionary<string, Save>();
-            animalSaves[SaveConstants.Fortitude] = new Save { BaseValue = 600 };
-            animalSaves[SaveConstants.Reflex] = new Save { BaseValue = 1337 };
-            animalSaves[SaveConstants.Will] = new Save { BaseValue = 42 };
+            var animalSaves = new Dictionary<string, Save>
+            {
+                [SaveConstants.Fortitude] = new Save { BaseValue = 600 },
+                [SaveConstants.Reflex] = new Save { BaseValue = 1337 },
+                [SaveConstants.Will] = new Save { BaseValue = 42 }
+            };
 
             animalSaves[SaveConstants.Fortitude].AddBonus(9266);
             animalSaves[SaveConstants.Fortitude].AddBonus(1234, "with a condition");

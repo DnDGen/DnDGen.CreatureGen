@@ -2957,7 +2957,99 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void ApplyTo_ReturnsUpdatedPrototype()
+        public void IsCompatible_WithAllFilters_ReturnsTrue()
+        {
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithName("my creature")
+                .WithCreatureType(CreatureConstants.Types.Animal, "subtype 1", "subtype 2")
+                .WithAlignments("wrong Evil", AlignmentConstants.TrueNeutral, "other alignment")
+                .WithChallengeRating(ChallengeRatingConstants.CR2)
+                .WithHitDiceQuantity(8)
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignment = AlignmentConstants.NeutralGood,
+                ChallengeRating = ChallengeRatingConstants.CR4,
+                Type = CreatureConstants.Types.MagicalBeast,
+            };
+
+            var compatible = applicator.IsCompatible(creature, false, filters);
+            Assert.That(compatible, Is.True);
+        }
+
+        [Test]
+        public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseAlignment()
+        {
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithName("my creature")
+                .WithCreatureType(CreatureConstants.Types.Animal, "subtype 1", "subtype 2")
+                .WithAlignments("wrong Evil", AlignmentConstants.TrueNeutral, "other alignment")
+                .WithChallengeRating(ChallengeRatingConstants.CR2)
+                .WithHitDiceQuantity(8)
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignment = AlignmentConstants.ChaoticGood,
+                ChallengeRating = ChallengeRatingConstants.CR4,
+                Type = CreatureConstants.Types.MagicalBeast,
+            };
+
+            var compatible = applicator.IsCompatible(creature, false, filters);
+            Assert.That(compatible, Is.False);
+        }
+
+        [Test]
+        public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseChallengeRating()
+        {
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithName("my creature")
+                .WithCreatureType(CreatureConstants.Types.Animal, "subtype 1", "subtype 2")
+                .WithAlignments("wrong Evil", AlignmentConstants.TrueNeutral, "other alignment")
+                .WithChallengeRating(ChallengeRatingConstants.CR2)
+                .WithHitDiceQuantity(8)
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignment = AlignmentConstants.NeutralGood,
+                ChallengeRating = ChallengeRatingConstants.CR3,
+                Type = CreatureConstants.Types.MagicalBeast,
+            };
+
+            var compatible = applicator.IsCompatible(creature, false, filters);
+            Assert.That(compatible, Is.False);
+        }
+
+        [Test]
+        public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseType()
+        {
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithName("my creature")
+                .WithCreatureType(CreatureConstants.Types.Animal, "subtype 1", "subtype 2")
+                .WithAlignments("wrong Evil", AlignmentConstants.TrueNeutral, "other alignment")
+                .WithChallengeRating(ChallengeRatingConstants.CR2)
+                .WithHitDiceQuantity(8)
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignment = AlignmentConstants.NeutralGood,
+                ChallengeRating = ChallengeRatingConstants.CR4,
+                Type = CreatureConstants.Types.Animal,
+            };
+
+            var compatible = applicator.IsCompatible(creature, false, filters);
+            Assert.That(compatible, Is.False);
+        }
+
+        [Test]
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype()
         {
             var creature = new CreaturePrototypeBuilder()
                 .WithTestValues()
@@ -3014,7 +3106,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(0)]
         [TestCase(1)]
         [TestCase(2)]
-        public void ApplyTo_ReturnsUpdatedPrototype_WithSetIntelligence(int lowScore)
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithSetIntelligence(int lowScore)
         {
             var creature = new CreaturePrototypeBuilder()
                 .WithTestValues()
@@ -3041,7 +3133,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(18)]
         [TestCase(20)]
         [TestCase(100)]
-        public void ApplyTo_ReturnsUpdatedPrototype_WithUnalteredIntelligence(int score)
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithUnalteredIntelligence(int score)
         {
             var creature = new CreaturePrototypeBuilder()
                 .WithTestValues()
@@ -3063,7 +3155,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void ApplyTo_ReturnsUpdatedPrototype_FilteringOutEvilAlignments()
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_FilteringOutEvilAlignments()
         {
             var creature = new CreaturePrototypeBuilder()
                 .WithTestValues()
@@ -3082,7 +3174,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void ApplyTo_ReturnsUpdatedPrototype_PreserveAlignmentWeighting()
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_PreserveAlignmentWeighting()
         {
             var creature = new CreaturePrototypeBuilder()
                 .WithTestValues()
@@ -3108,7 +3200,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(AlignmentConstants.LawfulNeutral, AlignmentConstants.LawfulGood)]
         [TestCase(AlignmentConstants.TrueNeutral, AlignmentConstants.NeutralGood)]
         [TestCase(AlignmentConstants.ChaoticNeutral, AlignmentConstants.ChaoticGood)]
-        public void ApplyTo_ReturnsUpdatedPrototype_AlignmentAdjusted(string creatureAlignment, string adjustedAlignment)
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_AlignmentAdjusted(string creatureAlignment, string adjustedAlignment)
         {
             var creature = new CreaturePrototypeBuilder()
                 .WithTestValues()
@@ -3123,7 +3215,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void ApplyTo_WithAlignment_ReturnsUpdatedPrototype()
+        public void ApplyTo_PrototypeWithAlignment_ReturnsUpdatedPrototype()
         {
             var creature = new CreaturePrototypeBuilder()
                 .WithTestValues()
@@ -3144,7 +3236,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void ApplyTo_WithAlignment_ReturnsUpdatedPrototype_FilteringOutEvilAlignments()
+        public void ApplyTo_PrototypeWithAlignment_ReturnsUpdatedPrototype_FilteringOutEvilAlignments()
         {
             var creature = new CreaturePrototypeBuilder()
                 .WithTestValues()
@@ -3165,7 +3257,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void ApplyTo_WithAlignment_ReturnsUpdatedPrototype_PreserveAlignmentWeighting()
+        public void ApplyTo_PrototypeWithAlignment_ReturnsUpdatedPrototype_PreserveAlignmentWeighting()
         {
             var creature = new CreaturePrototypeBuilder()
                 .WithTestValues()
@@ -3217,7 +3309,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(false, 20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
         [TestCase(false, 20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
         [TestCase(false, 20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
-        public void ApplyTo_ReturnsUpdatedPrototype_ChallengeRatingAdjusted_Humanoid(bool asCharacter, double hitDiceQuantity, string original, string challengeRating)
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_ChallengeRatingAdjusted_Humanoid(bool asCharacter, double hitDiceQuantity, string original, string challengeRating)
         {
             var creature = new CreaturePrototypeBuilder()
                 .WithTestValues()
@@ -3263,7 +3355,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(false, 20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
         [TestCase(false, 20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
         [TestCase(false, 20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
-        public void ApplyTo_ReturnsUpdatedPrototype_ChallengeRatingAdjusted_NonHumanoid(bool asCharacter, double hitDiceQuantity, string original, string challengeRating)
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_ChallengeRatingAdjusted_NonHumanoid(bool asCharacter, double hitDiceQuantity, string original, string challengeRating)
         {
             var creature = new CreaturePrototypeBuilder()
                 .WithTestValues()
@@ -3280,7 +3372,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void ApplyTo_ReturnsUpdatedPrototype_NoLevelAdjustment()
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_NoLevelAdjustment()
         {
             var creature = new CreaturePrototypeBuilder()
                 .WithTestValues()
@@ -3295,11 +3387,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(updatedPrototype.LevelAdjustment, Is.Null);
         }
 
-        [TestCase(CreatureConstants.Types.Humanoid, CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.Aberration, CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.Types.Animal, CreatureConstants.Types.MagicalBeast)]
-        [TestCase(CreatureConstants.Types.Vermin, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Types.Dragon, CreatureConstants.Types.Dragon)]
+        [TestCase(CreatureConstants.Types.Fey, CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Types.Giant, CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Humanoid, CreatureConstants.Types.Humanoid)]
         [TestCase(CreatureConstants.Types.MagicalBeast, CreatureConstants.Types.MagicalBeast)]
-        public void ApplyTo_ReturnsUpdatedPrototype_TypeAdjusted(string originalType, string adjustedType)
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid, CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.Types.Plant, CreatureConstants.Types.Plant)]
+        [TestCase(CreatureConstants.Types.Vermin, CreatureConstants.Types.MagicalBeast)]
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_TypeAdjusted(string originalType, string adjustedType)
         {
             var creature = new CreaturePrototypeBuilder()
                 .WithTestValues()

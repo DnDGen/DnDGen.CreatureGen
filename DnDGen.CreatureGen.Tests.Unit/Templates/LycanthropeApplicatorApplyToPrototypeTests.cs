@@ -22,10 +22,9 @@ using System.Linq;
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
 {
     [TestFixture]
-    public class LycanthropeApplicatorGetCompatiblePrototypesTests
+    public class LycanthropeApplicatorApplyToPrototypeTests
     {
         private LycanthropeApplicator applicator;
-        private Mock<ICollectionSelector> mockCollectionSelector;
         private Mock<ICollectionDataSelector<CreatureDataSelection>> mockCreatureDataSelector;
         private Mock<IHitPointsGenerator> mockHitPointsGenerator;
         private Mock<Dice> mockDice;
@@ -35,13 +34,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<ISavesGenerator> mockSavesGenerator;
         private Mock<ISkillsGenerator> mockSkillsGenerator;
         private Mock<ISpeedsGenerator> mockSpeedsGenerator;
-        private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
         private Mock<IDemographicsGenerator> mockDemographicsGenerator;
 
         [SetUp]
         public void Setup()
         {
-            mockCollectionSelector = new Mock<ICollectionSelector>();
             mockCreatureDataSelector = new Mock<ICollectionDataSelector<CreatureDataSelection>>();
             mockHitPointsGenerator = new Mock<IHitPointsGenerator>();
             mockDice = new Mock<Dice>();
@@ -51,11 +48,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockSavesGenerator = new Mock<ISavesGenerator>();
             mockSkillsGenerator = new Mock<ISkillsGenerator>();
             mockSpeedsGenerator = new Mock<ISpeedsGenerator>();
-            mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
             mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
             applicator = new LycanthropeApplicator(
-                mockCollectionSelector.Object,
                 mockCreatureDataSelector.Object,
                 mockHitPointsGenerator.Object,
                 mockDice.Object,
@@ -65,10 +60,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockSavesGenerator.Object,
                 mockSkillsGenerator.Object,
                 mockSpeedsGenerator.Object,
-                mockPrototypeFactory.Object,
-                mockDemographicsGenerator.Object);
-            applicator.LycanthropeSpecies = "my lycanthrope";
-            applicator.AnimalSpecies = "my animal";
+                mockDemographicsGenerator.Object)
+            {
+                LycanthropeSpecies = "my lycanthrope",
+                AnimalSpecies = "my animal"
+            };
         }
 
         //Animal HD 0-2, +2
@@ -111,28 +107,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
         private Dictionary<string, CreatureDataSelection> SetUpCreatureData(string cr = ChallengeRatingConstants.CR1, double amount = 1)
         {
-            var types = new Dictionary<string, IEnumerable<string>>
-            {
-                ["my creature"] = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"],
-                ["my other creature"] = [CreatureConstants.Types.Humanoid, "subtype 3"]
-            };
-
             var data = new Dictionary<string, CreatureDataSelection>
             {
                 ["my animal"] = new() { ChallengeRating = cr, Size = SizeConstants.Medium, HitDiceQuantity = amount, Types = [CreatureConstants.Types.Animal] },
-                ["my creature"] = new() { ChallengeRating = cr, Size = SizeConstants.Medium, HitDiceQuantity = amount, Types = types["my creature"] },
-                ["my other creature"] = new() { ChallengeRating = cr, Size = SizeConstants.Small, HitDiceQuantity = amount, Types = types["my other creature"] },
-                ["undead creature"] = new() { ChallengeRating = cr, Size = SizeConstants.Medium, HitDiceQuantity = amount, Types = [CreatureConstants.Types.Undead] },
-                ["tiny creature"] = new() { ChallengeRating = cr, Size = SizeConstants.Tiny, HitDiceQuantity = amount, Types = types["my creature"] },
-                ["huge creature"] = new() { ChallengeRating = cr, Size = SizeConstants.Huge, HitDiceQuantity = amount, Types = types["my creature"] },
-                ["wrong creature 4"] = new() { ChallengeRating = cr, Size = SizeConstants.Medium, HitDiceQuantity = amount, Types = types["my creature"] },
-                ["wrong creature 5"] = new() { ChallengeRating = cr, Size = SizeConstants.Medium, HitDiceQuantity = amount, Types = types["my creature"] },
-                ["wrong creature 6"] = new() { ChallengeRating = cr, Size = SizeConstants.Medium, HitDiceQuantity = amount, Types = types["my creature"] },
             };
 
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData))
-                .Returns(data.ToDictionary(kvp => kvp.Key, kvp => new[] { kvp.Value } as IEnumerable<CreatureDataSelection>));
             mockCreatureDataSelector
                 .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, "my animal"))
                 .Returns(data["my animal"]);

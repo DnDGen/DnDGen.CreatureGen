@@ -19,7 +19,7 @@ using System.Linq;
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
 {
     [TestFixture]
-    public class LycanthropeApplicatorGetCompatibleCreaturesTests
+    public class LycanthropeApplicatorIsCompatibleTests
     {
         private LycanthropeApplicator applicator;
         private Mock<ICollectionSelector> mockCollectionSelector;
