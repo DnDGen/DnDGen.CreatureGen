@@ -2966,72 +2966,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
+        public void IsCompatible_WithAllFilters_ReturnsFalse_BecausePrototype()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseAlignment()
         {
-            var creature = new CreaturePrototypeBuilder()
-                .WithTestValues()
-                .WithName("my creature")
-                .WithCreatureType(CreatureConstants.Types.Animal, "subtype 1", "subtype 2")
-                .WithAlignments("wrong Evil", AlignmentConstants.TrueNeutral, "other alignment")
-                .WithChallengeRating(ChallengeRatingConstants.CR2)
-                .WithHitDiceQuantity(8)
-                .Build();
-
-            var filters = new Filters
-            {
-                Alignment = AlignmentConstants.ChaoticGood,
-                ChallengeRating = ChallengeRatingConstants.CR4,
-                Type = CreatureConstants.Types.MagicalBeast,
-            };
-
-            var compatible = applicator.IsCompatible(creature, false, filters);
-            Assert.That(compatible, Is.False);
+            Assert.Fail("not yet written");
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseChallengeRating()
         {
-            var creature = new CreaturePrototypeBuilder()
-                .WithTestValues()
-                .WithName("my creature")
-                .WithCreatureType(CreatureConstants.Types.Animal, "subtype 1", "subtype 2")
-                .WithAlignments("wrong Evil", AlignmentConstants.TrueNeutral, "other alignment")
-                .WithChallengeRating(ChallengeRatingConstants.CR2)
-                .WithHitDiceQuantity(8)
-                .Build();
-
-            var filters = new Filters
-            {
-                Alignment = AlignmentConstants.NeutralGood,
-                ChallengeRating = ChallengeRatingConstants.CR3,
-                Type = CreatureConstants.Types.MagicalBeast,
-            };
-
-            var compatible = applicator.IsCompatible(creature, false, filters);
-            Assert.That(compatible, Is.False);
+            Assert.Fail("not yet written");
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseType()
         {
-            var creature = new CreaturePrototypeBuilder()
-                .WithTestValues()
-                .WithName("my creature")
-                .WithCreatureType(CreatureConstants.Types.Animal, "subtype 1", "subtype 2")
-                .WithAlignments("wrong Evil", AlignmentConstants.TrueNeutral, "other alignment")
-                .WithChallengeRating(ChallengeRatingConstants.CR2)
-                .WithHitDiceQuantity(8)
-                .Build();
-
-            var filters = new Filters
-            {
-                Alignment = AlignmentConstants.NeutralGood,
-                ChallengeRating = ChallengeRatingConstants.CR4,
-                Type = CreatureConstants.Types.Animal,
-            };
-
-            var compatible = applicator.IsCompatible(creature, false, filters);
-            Assert.That(compatible, Is.False);
+            Assert.Fail("not yet written");
         }
 
         [Test]

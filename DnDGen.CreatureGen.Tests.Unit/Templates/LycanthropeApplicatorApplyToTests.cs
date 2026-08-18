@@ -4,25 +4,15 @@ using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
-using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
-using DnDGen.CreatureGen.Generators.Defenses;
-using DnDGen.CreatureGen.Generators.Feats;
-using DnDGen.CreatureGen.Generators.Skills;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Models;
-using DnDGen.Infrastructure.Selectors.Collections;
-using DnDGen.RollGen;
 using Moq;
-using Moq.Language;
 using NUnit.Framework;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,90 +20,27 @@ using System.Text;
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
 {
     [TestFixture]
-    public class LycanthropeApplicatorApplyToTests
+    internal class LycanthropeApplicatorApplyToTests : LycanthropeApplicatorTestsBase
     {
-        private LycanthropeApplicator applicator;
         private Creature baseCreature;
-        private Mock<ICollectionDataSelector<CreatureDataSelection>> mockCreatureDataSelector;
-        private Mock<IHitPointsGenerator> mockHitPointsGenerator;
-        private Mock<Dice> mockDice;
-        private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
-        private Mock<IFeatsGenerator> mockFeatsGenerator;
-        private Mock<IAttacksGenerator> mockAttacksGenerator;
-        private Mock<ISavesGenerator> mockSavesGenerator;
-        private Mock<ISkillsGenerator> mockSkillsGenerator;
-        private Mock<ISpeedsGenerator> mockSpeedsGenerator;
-        private Mock<IDemographicsGenerator> mockDemographicsGenerator;
-        private HitPoints animalHitPoints;
-        private Random random;
-        private CreatureDataSelection animalData;
-        private int baseRoll;
-        private double baseAverage;
-        private List<Skill> animalSkills;
-        private List<Attack> animalAttacks;
-        private List<Feat> animalSpecialQualities;
-        private List<Feat> animalFeats;
-        private int animalBaseAttack;
-        private Dictionary<string, Save> animalSaves;
-        private Dictionary<string, Measurement> animalSpeeds;
-        private Dictionary<string, ISetupSequentialResult<IEnumerable<int>>> rollSequences;
-        private Dictionary<string, ISetupSequentialResult<double>> averageSequences;
 
         [SetUp]
         public void Setup()
         {
-            mockCreatureDataSelector = new Mock<ICollectionDataSelector<CreatureDataSelection>>();
-            mockHitPointsGenerator = new Mock<IHitPointsGenerator>();
-            mockDice = new Mock<Dice>();
-            mockTypeAndAmountSelector = new Mock<ICollectionTypeAndAmountSelector>();
-            mockFeatsGenerator = new Mock<IFeatsGenerator>();
-            mockAttacksGenerator = new Mock<IAttacksGenerator>();
-            mockSavesGenerator = new Mock<ISavesGenerator>();
-            mockSkillsGenerator = new Mock<ISkillsGenerator>();
-            mockSpeedsGenerator = new Mock<ISpeedsGenerator>();
-            mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
-
-            applicator = new LycanthropeApplicator(
-                mockCreatureDataSelector.Object,
-                mockHitPointsGenerator.Object,
-                mockDice.Object,
-                mockTypeAndAmountSelector.Object,
-                mockFeatsGenerator.Object,
-                mockAttacksGenerator.Object,
-                mockSavesGenerator.Object,
-                mockSkillsGenerator.Object,
-                mockSpeedsGenerator.Object,
-                mockDemographicsGenerator.Object)
-            {
-                LycanthropeSpecies = "my lycanthrope",
-                AnimalSpecies = "my animal"
-            };
-
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
                 .WithCreatureType(CreatureConstants.Types.Humanoid)
                 .Build();
 
-            animalHitPoints = new HitPoints();
-            random = new Random();
-            animalData = new CreatureDataSelection();
-            animalSkills = [];
-            animalAttacks = [];
-            animalSpecialQualities = [];
-            animalFeats = [];
-            animalSaves = [];
-            animalSpeeds = [];
-            rollSequences = [];
-            averageSequences = [];
-
             mockHitPointsGenerator
                 .Setup(g => g.RegenerateWith(baseCreature.HitPoints, It.IsAny<IEnumerable<Feat>>()))
                 .Returns(baseCreature.HitPoints);
 
-            baseRoll = random.Next(baseCreature.HitPoints.HitDice[0].RoundedQuantity * baseCreature.HitPoints.HitDice[0].HitDie) + baseCreature.HitPoints.HitDice[0].RoundedQuantity;
+            var rounded = baseCreature.HitPoints.HitDice[0].RoundedQuantity;
+            baseRoll = random.Next(rounded * baseCreature.HitPoints.HitDice[0].HitDie) + rounded;
             SetUpRoll(baseCreature.HitPoints.HitDice[0], baseRoll);
 
-            baseAverage = baseCreature.HitPoints.HitDice[0].RoundedQuantity * baseCreature.HitPoints.HitDice[0].HitDie / 2d + baseCreature.HitPoints.HitDice[0].RoundedQuantity;
+            baseAverage = rounded * baseCreature.HitPoints.HitDice[0].HitDie / 2d + rounded;
             SetUpRoll(baseCreature.HitPoints.HitDice[0], baseAverage);
 
             mockDemographicsGenerator
@@ -126,7 +53,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Type.Name = CreatureConstants.Types.Outsider;
 
-            SetUpAnimal("my animal", hitDiceQuantity: 1);
+            SetUpAnimal("my animal", baseCreature, hitDiceQuantity: 1);
 
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
@@ -153,7 +80,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment("original alignment");
 
-            SetUpAnimal("my animal", hitDiceQuantity: 1);
+            SetUpAnimal("my animal", baseCreature, hitDiceQuantity: 1);
 
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
@@ -172,20 +99,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Alignment = alignment
             };
 
-            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, asCharacter, filters)),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
-        }
-
-        private static IEnumerable IncompatibleFilters
-        {
-            get
-            {
-                yield return new TestCaseData(false, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment", "Alignment filter 'wrong alignment' is not valid");
-                yield return new TestCaseData(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment", "CR filter 2 does not match updated creature CR 3 (from CR 1)");
-                yield return new TestCaseData(false, "wrong subtype", ChallengeRatingConstants.CR3, "original alignment", "Type filter 'wrong subtype' is not valid");
-                //INFO: This test case isn't valid, since As Character doesn't affect already-generated creature compatibility
-                //yield return new TestCaseData(true, "subtype 1", ChallengeRatingConstants.CR3, "original alignment");
-            }
+            var func = () => applicator.ApplyTo(baseCreature, asCharacter, filters);
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
         [Test]
@@ -193,7 +108,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Templates.Add("my other template");
 
-            SetUpAnimal("my animal", hitDiceQuantity: 1);
+            SetUpAnimal("my animal", baseCreature, hitDiceQuantity: 1);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.Templates, Has.Count.EqualTo(2));
@@ -217,7 +132,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             SetUpRoll(baseCreature.HitPoints.HitDice[0], baseRoll);
             SetUpRoll(baseCreature.HitPoints.HitDice[0], baseAverage);
 
-            SetUpAnimal("my animal", hitDiceQuantity: 1);
+            SetUpAnimal("my animal", baseCreature, hitDiceQuantity: 1);
 
             var filters = new Filters
             {
@@ -239,7 +154,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "subtype 2",
             ];
 
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -261,7 +176,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.UpdateByTemplate(baseCreature.Demographics, baseCreature.Name, applicator.LycanthropeSpecies, false, false))
                 .Returns(templateDemographics);
 
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var hitDie = animalHitPoints.HitDice.Last();
             mockAttacksGenerator
@@ -286,7 +201,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
 
-            SetUpAnimal("my animal", roll: 9266, average: 90210.42);
+            SetUpAnimal("my animal", baseCreature, roll: 9266, average: 90210.42);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -300,196 +215,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.HitPoints.Total, Is.EqualTo(baseRoll + 9266));
         }
 
-        private void SetUpAnimal(
-            string animal,
-            int naturalArmor = -1,
-            string size = null,
-            double hitDiceQuantity = -1,
-            int hitDiceDie = 0,
-            int roll = 0,
-            double average = 0)
-        {
-            //Data
-            animalData.Size = size ?? "animal size";
-            animalData.CasterLevel = 0;
-            animalData.NumberOfHands = random.Next(3);
-            animalData.CanUseEquipment = false;
-            animalData.HitDiceQuantity = hitDiceQuantity > -1 ? hitDiceQuantity : random.Next(30) + 1;
-            animalData.HitDie = hitDiceDie > 0 ? hitDiceDie : random.Next(7) + 6;
-            animalData.BaseAttackQuality = BaseAttackQuality.Average;
-            animalData.NaturalArmor = naturalArmor > -1 ? naturalArmor : random.Next(20);
-            animalData.Types = [CreatureConstants.Types.Animal];
-
-            mockCreatureDataSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, animal))
-                .Returns(animalData);
-
-            //Hit points
-            var hitDie = new HitDice
-            {
-                Quantity = animalData.GetEffectiveHitDiceQuantity(false),
-                HitDie = animalData.HitDie,
-            };
-            animalHitPoints.HitDice.Add(hitDie);
-
-            mockHitPointsGenerator
-                .Setup(g => g.GenerateFor(
-                    hitDie.Quantity,
-                    hitDie.HitDie,
-                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Animal),
-                    baseCreature.Abilities[AbilityConstants.Constitution],
-                    animalData.Size,
-                    0))
-                .Returns(animalHitPoints);
-
-            if (roll == 0)
-                roll = random.Next(hitDie.RoundedQuantity * hitDie.HitDie) + hitDie.RoundedQuantity;
-
-            SetUpRoll(hitDie, roll);
-
-            if (average == 0)
-                average = hitDie.RoundedQuantity * hitDie.HitDie / 2d + hitDie.RoundedQuantity;
-
-            SetUpRoll(hitDie, average);
-
-            //Skills
-            animalSkills.Add(new Skill("animal skill 1", baseCreature.Abilities[AbilityConstants.Strength], hitDie.RoundedQuantity + 3)
-            {
-                ClassSkill = true,
-                Ranks = random.Next(hitDie.RoundedQuantity)
-            });
-            animalSkills.Add(new Skill("animal skill 2", baseCreature.Abilities[AbilityConstants.Strength], hitDie.RoundedQuantity + 3)
-            {
-                ClassSkill = true,
-                Ranks = random.Next(hitDie.RoundedQuantity)
-            });
-
-            mockSkillsGenerator
-                .Setup(g => g.GenerateFor(
-                    animalHitPoints,
-                    animal,
-                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
-                    baseCreature.Abilities,
-                    baseCreature.CanUseEquipment,
-                    animalData.Size,
-                    false))
-                .Returns(animalSkills);
-
-            mockSkillsGenerator
-                .Setup(g => g.ApplySkillPointsAsRanks(
-                    It.IsAny<IEnumerable<Skill>>(),
-                    animalHitPoints,
-                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
-                    baseCreature.Abilities,
-                    false))
-                .Returns(animalSkills);
-
-            //Special Qualities
-            animalSpecialQualities.Add(new Feat { Name = "animal special quality 1" });
-            animalSpecialQualities.Add(new Feat { Name = "animal special quality 2" });
-
-            mockFeatsGenerator
-                .Setup(g => g.GenerateSpecialQualities(
-                    animal,
-                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
-                    animalHitPoints,
-                    baseCreature.Abilities,
-                    animalSkills,
-                    animalData.CanUseEquipment,
-                    animalData.Size,
-                    baseCreature.Alignment))
-                .Returns(animalSpecialQualities);
-
-            //Attacks
-            animalBaseAttack = random.Next(100);
-
-            mockAttacksGenerator
-                .Setup(g => g.GenerateBaseAttackBonus(
-                    animalData.BaseAttackQuality,
-                    animalHitPoints))
-                .Returns(animalBaseAttack);
-
-            animalAttacks.Add(new Attack { Name = "animal attack 1" });
-            animalAttacks.Add(new Attack { Name = "animal attack 2" });
-
-            mockAttacksGenerator
-                .Setup(g => g.GenerateAttacks(
-                    animal,
-                    animalData.Size,
-                    baseCreature.BaseAttackBonus + animalBaseAttack,
-                    baseCreature.Abilities,
-                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + hitDie.RoundedQuantity, baseCreature.Demographics.Gender))
-                .Returns(animalAttacks);
-
-            mockAttacksGenerator
-                .Setup(g => g.ApplyAttackBonuses(
-                    animalAttacks,
-                    It.IsAny<IEnumerable<Feat>>(),
-                    baseCreature.Abilities))
-                .Returns(animalAttacks);
-
-            //Feats
-            animalFeats.Add(new Feat { Name = "animal feat 1" });
-            animalFeats.Add(new Feat { Name = "animal feat 2" });
-
-            mockFeatsGenerator
-                .Setup(g => g.GenerateFeats(
-                    animalHitPoints,
-                    animalBaseAttack,
-                    baseCreature.Abilities,
-                    animalSkills,
-                    animalAttacks,
-                    animalSpecialQualities,
-                    animalData.CasterLevel,
-                    baseCreature.Speeds,
-                    animalData.NaturalArmor,
-                    animalData.NumberOfHands,
-                    animalData.Size,
-                    animalData.CanUseEquipment))
-                .Returns(animalFeats);
-
-            //Saves
-            animalSaves[SaveConstants.Fortitude] = new Save { BaseValue = random.Next(20) + 1 };
-            animalSaves[SaveConstants.Reflex] = new Save { BaseValue = random.Next(20) + 1 };
-            animalSaves[SaveConstants.Will] = new Save { BaseValue = random.Next(20) + 1 };
-
-            mockSavesGenerator
-                .Setup(g => g.GenerateWith(
-                    animal,
-                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
-                    animalHitPoints,
-                    It.Is<IEnumerable<Feat>>(ff => ff.IsEquivalentTo(animalSpecialQualities.Union(animalFeats))),
-                    baseCreature.Abilities))
-                .Returns(animalSaves);
-
-            //Speeds
-            animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = random.Next(100) + 1 };
-
-            mockSpeedsGenerator
-                .Setup(g => g.Generate(animal))
-                .Returns(animalSpeeds);
-        }
-
-        private void SetUpRoll(HitDice hitDice, int roll)
-        {
-            var key = $"{hitDice.RoundedQuantity}d{hitDice.HitDie}";
-
-            if (!rollSequences.ContainsKey(key))
-                rollSequences[key] = mockDice.SetupSequence(d => d.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsIndividualRolls<int>());
-
-            rollSequences[key] = rollSequences[key].Returns([roll]);
-        }
-
-        private void SetUpRoll(HitDice hitDice, double average)
-        {
-            var key = $"{hitDice.RoundedQuantity}d{hitDice.HitDie}";
-
-            if (!averageSequences.ContainsKey(key))
-                averageSequences[key] = mockDice.SetupSequence(d => d.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsPotentialAverage());
-
-            averageSequences[key] = averageSequences[key].Returns(average);
-        }
-
         [Test]
         public void ApplyTo_AddAnimalHitPoints_WithConstitutionBonus()
         {
@@ -497,7 +222,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
 
-            SetUpAnimal("my animal", roll: 9266, average: 90210.42);
+            SetUpAnimal("my animal", baseCreature, roll: 9266, average: 90210.42);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -526,7 +251,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
 
-            SetUpAnimal("my animal", roll: 9266, average: 90210.42);
+            SetUpAnimal("my animal", baseCreature, roll: 9266, average: 90210.42);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -571,7 +296,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
 
-            SetUpAnimal("my animal", hitDiceQuantity: aQ, hitDiceDie: aD, roll: 9266, average: 90210.42);
+            SetUpAnimal("my animal", baseCreature, hitDiceQuantity: aQ, hitDiceDie: aD, roll: 9266, average: 90210.42);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -596,25 +321,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 $"Base roll: {creature.HitPoints.HitDice[0].DefaultRoll}; Base Roll: {baseRoll}; Animal Roll: {animalHitPoints.HitDice[0].DefaultRoll}, Bonus: {bonus}");
         }
 
-        private static IEnumerable BUG_HitPointTotals
-        {
-            get
-            {
-                yield return new TestCaseData(1, 4, 1, 3, 76, 10);
-                yield return new TestCaseData(1, 4, 2, 3, 76, 10);
-                yield return new TestCaseData(1, 4, 3, 3, 76, 10);
-                yield return new TestCaseData(1, 5, 1, 3.5, 4, 10);
-                yield return new TestCaseData(1, 5, 2, 3.5, 4, 10);
-                yield return new TestCaseData(1, 5, 3, 3.5, 4, 10);
-                yield return new TestCaseData(1, 9, 1, 5.5, 44, 4);
-                yield return new TestCaseData(1, 9, 2, 5.5, 44, 4);
-                yield return new TestCaseData(1, 9, 5, 5.5, 44, 4);
-                yield return new TestCaseData(1, 10, 6, 6, 7, 9);
-                yield return new TestCaseData(2, 6, 8, 8, 71, 10);
-                yield return new TestCaseData(8, 11, 52, 52, 8, 11);
-            }
-        }
-
         [TestCaseSource(nameof(BUG_HitPointTotals))]
         public void BUG_ApplyTo_AddAnimalHitPoints_WithConstitutionBonus(int bQ, int bD, int bR, double bA, int aQ, int aD)
         {
@@ -635,7 +341,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
 
-            SetUpAnimal("my animal", hitDiceQuantity: aQ, hitDiceDie: aD, roll: 9266, average: 90210.42);
+            SetUpAnimal("my animal", baseCreature, hitDiceQuantity: aQ, hitDiceDie: aD, roll: 9266, average: 90210.42);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -664,7 +370,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
 
-            SetUpAnimal("my animal", roll: 9266, average: 90210.42);
+            SetUpAnimal("my animal", baseCreature, roll: 9266, average: 90210.42);
 
             mockTypeAndAmountSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "my animal"))
@@ -698,7 +404,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_AddAnimalHitPoints_WithFeats()
         {
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var regeneratedHitPoints = new HitPoints();
             mockHitPointsGenerator
@@ -717,7 +423,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Land].Description = string.Empty;
             baseCreature.Speeds[SpeedConstants.Climb] = new Measurement("feet per round") { Value = 1337 };
 
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 9266 };
             animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
@@ -749,7 +455,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Land].Description = string.Empty;
             baseCreature.Speeds[SpeedConstants.Climb] = new Measurement("feet per round") { Value = 1337 };
 
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 42 };
             animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
@@ -781,7 +487,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Land].Description = string.Empty;
             baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 1337, Description = "Decent Maneuverability" };
 
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 9266 };
             animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
@@ -815,7 +521,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Land].Value = 600;
             baseCreature.Speeds[SpeedConstants.Land].Description = string.Empty;
 
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 9266 };
             animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
@@ -844,7 +550,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_GainNaturalArmor()
         {
-            SetUpAnimal("my animal", 0);
+            SetUpAnimal("my animal", baseCreature, 0);
 
             baseCreature.ArmorClass.RemoveAllBonuses(ArmorClassConstants.Natural);
 
@@ -865,7 +571,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_GainBaseNaturalArmor()
         {
-            SetUpAnimal("my animal", 9266);
+            SetUpAnimal("my animal", baseCreature, 9266);
 
             baseCreature.ArmorClass.RemoveAllBonuses(ArmorClassConstants.Natural);
 
@@ -886,7 +592,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_GainAnimalNaturalArmor()
         {
-            SetUpAnimal("my animal", 0);
+            SetUpAnimal("my animal", baseCreature, 0);
 
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 90210);
 
@@ -907,7 +613,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_ImproveNaturalArmor()
         {
-            SetUpAnimal("my animal", 9266);
+            SetUpAnimal("my animal", baseCreature, 9266);
 
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 90210);
 
@@ -928,7 +634,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_AddAnimalBaseAttack()
         {
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var baseAttack = baseCreature.BaseAttackBonus;
 
@@ -940,7 +646,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_RecomputeGrappleBonus()
         {
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var baseAttack = baseCreature.BaseAttackBonus;
 
@@ -961,7 +667,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_AddAnimalAttacks()
         {
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -973,7 +679,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_AddAnimalAttacks_WithBonuses()
         {
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             mockAttacksGenerator
                 .Setup(g => g.ApplyAttackBonuses(
@@ -997,7 +703,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Size = biggerSize;
 
-            SetUpAnimal("my animal", size: smallerSize);
+            SetUpAnimal("my animal", baseCreature, size: smallerSize);
 
             var lycanthropeAttacks = new[]
             {
@@ -1024,25 +730,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(lycanthropeAttacks[1].Name, Is.EqualTo("lycanthrope attack 2"));
         }
 
-        private static IEnumerable SizeComparisons
-        {
-            get
-            {
-                var sizes = SizeConstants.GetOrdered();
-
-                for (var i = 1; i < sizes.Length; i++)
-                {
-                    yield return new TestCaseData(sizes[i - 1], sizes[i]);
-                }
-            }
-        }
-
         [TestCaseSource(nameof(SizeComparisons))]
         public void ApplyTo_AddLycanthropeAttacks_AnimalIsBigger(string smallerSize, string biggerSize)
         {
             baseCreature.Size = smallerSize;
 
-            SetUpAnimal("my animal", size: biggerSize);
+            SetUpAnimal("my animal", baseCreature, size: biggerSize);
 
             var lycanthropeAttacks = new[]
             {
@@ -1074,7 +767,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Size = size;
 
-            SetUpAnimal("my animal", size: size);
+            SetUpAnimal("my animal", baseCreature, size: size);
 
             var lycanthropeAttacks = new[]
             {
@@ -1101,14 +794,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(lycanthropeAttacks[1].Name, Is.EqualTo("lycanthrope attack 2"));
         }
 
-        private static IEnumerable Sizes => SizeConstants.GetOrdered().Select(s => new TestCaseData(s));
-
         [TestCaseSource(nameof(Sizes))]
         public void ApplyTo_AddLycanthropeAttacks_WithBonuses(string size)
         {
             baseCreature.Size = size;
 
-            SetUpAnimal("my animal", size: size);
+            SetUpAnimal("my animal", baseCreature, size: size);
 
             var lycanthropeAttacks = new[]
             {
@@ -1144,7 +835,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_AddAnimalAttacks_WithLycanthropy()
         {
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var lycanthropeAttacks = new[]
             {
@@ -1184,7 +875,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_ModifyBaseCreatureAttacks_Humanoid()
         {
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var baseAttacks = new[]
             {
@@ -1207,7 +898,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_ModifyBaseCreatureAttacks_Giant()
         {
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             baseCreature.Type.Name = CreatureConstants.Types.Giant;
 
@@ -1232,7 +923,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_AddAnimalSpecialQualities()
         {
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1246,7 +937,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.SpecialQualities = baseCreature.SpecialQualities
                 .Union([baseSpecialQuality]);
 
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             animalSpecialQualities.Add(new Feat { Name = "my special quality" });
 
@@ -1262,7 +953,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_AddLycanthropeSpecialQualities()
         {
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
             var lycanthropeSpecialQualities = new[]
@@ -1298,7 +989,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.SpecialQualities = baseCreature.SpecialQualities
                 .Union([baseSpecialQuality]);
 
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
             var lycanthropeSpecialQualities = new[]
@@ -1339,7 +1030,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Saves[SaveConstants.Reflex].BaseValue = 96;
             baseCreature.Saves[SaveConstants.Will].BaseValue = 783;
 
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             animalSaves[SaveConstants.Fortitude] = new Save { BaseValue = 600 };
             animalSaves[SaveConstants.Reflex] = new Save { BaseValue = 1337 };
@@ -1355,7 +1046,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_WisdomIncreasesBy2()
         {
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1365,7 +1056,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_ConditionalBonusesForHybridAndAnimalForms_FromAnimalBonuses()
         {
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var animalAbilityAdjustments = new[]
             {
@@ -1403,7 +1094,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_GainAnimalSkills()
         {
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1426,7 +1117,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             };
             baseCreature.Skills = baseSkills;
 
-            SetUpAnimal("my animal", hitDiceQuantity: 11);
+            SetUpAnimal("my animal", baseCreature, hitDiceQuantity: 11);
 
             animalSkills.Add(new Skill("skill 2", baseCreature.Abilities[AbilityConstants.Dexterity], 666) { ClassSkill = true, Ranks = 6 });
             animalSkills.Add(new Skill("untrained skill 2", baseCreature.Abilities[AbilityConstants.Wisdom], 666) { ClassSkill = false, Ranks = 7 });
@@ -1586,7 +1277,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             };
             baseCreature.Skills = baseSkills;
 
-            SetUpAnimal("my animal", hitDiceQuantity: 11);
+            SetUpAnimal("my animal", baseCreature, hitDiceQuantity: 11);
 
             var animalCap = animalHitPoints.HitDice[0].RoundedQuantity;
             animalSkills.Add(new Skill("skill 2", baseCreature.Abilities[AbilityConstants.Dexterity], animalCap) { ClassSkill = true, Ranks = animalCap - 2 });
@@ -1735,7 +1426,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             applicator.IsNatural = false;
 
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var rankedSkills = new[]
             {
@@ -1795,7 +1486,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             applicator.IsNatural = true;
 
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1808,7 +1499,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_GainAnimalFeats()
         {
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1820,7 +1511,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Feats = baseCreature.Feats.Union([new Feat { Name = "my feat" }]);
 
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             animalFeats.Add(new Feat { Name = "my feat" });
 
@@ -1838,7 +1529,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creatureFeat = new Feat { Name = "my feat", CanBeTakenMultipleTimes = true };
             baseCreature.Feats = baseCreature.Feats.Union([creatureFeat]);
 
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             animalFeats.Add(new Feat { Name = "my feat", CanBeTakenMultipleTimes = true });
 
@@ -1855,7 +1546,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Saves[SaveConstants.Reflex].BaseValue = 96;
             baseCreature.Saves[SaveConstants.Will].BaseValue = 783;
 
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var animalSaves = new Dictionary<string, Save>
             {
@@ -1898,49 +1589,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.ChallengeRating = originalChallengeRating;
 
-            SetUpAnimal("my animal", hitDiceQuantity: animalHitDiceQuantity);
+            SetUpAnimal("my animal", baseCreature, hitDiceQuantity: animalHitDiceQuantity);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ChallengeRating, Is.EqualTo(updatedChallengeRating));
-        }
-
-        //Animal HD 0-2, +2
-        //Animal HD 3-5, +3
-        //Animal HD 6-10, +4
-        //Animal HD 11-20, +5
-        //Animal HD 21+, +6
-        private static IEnumerable ChallengeRatings
-        {
-            get
-            {
-                //INFO: Don't need to test every CR, since it is the basic Increase functionality, which is tested separately
-                //So, we only need to test the amount it is increased, not every CR permutation
-                var challengeRating = ChallengeRatingConstants.CR1;
-                var hitDiceQuantities = new[]
-                {
-                    0.5, 1, 2, 3, 4, 5, 6, 9, 10, 11, 19, 20, 21
-                };
-
-                foreach (var hitDiceQuantity in hitDiceQuantities)
-                {
-                    var increase = 0;
-
-                    if (hitDiceQuantity <= 2)
-                        increase = 2;
-                    else if (hitDiceQuantity <= 5)
-                        increase = 3;
-                    else if (hitDiceQuantity <= 10)
-                        increase = 4;
-                    else if (hitDiceQuantity <= 20)
-                        increase = 5;
-                    else if (hitDiceQuantity > 20)
-                        increase = 6;
-
-                    var newCr = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, increase);
-                    yield return new TestCaseData(challengeRating, hitDiceQuantity, newCr);
-                }
-            }
         }
 
         [TestCaseSource(nameof(LevelAdjustments))]
@@ -1949,48 +1602,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             applicator.IsNatural = isNatural;
             baseCreature.LevelAdjustment = oldLevelAdjustment;
 
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.LevelAdjustment, Is.EqualTo(newLevelAdjustment));
         }
 
-        //Afflicted, +2
-        //Natural, +3
-        private static IEnumerable LevelAdjustments
-        {
-            get
-            {
-                var levelAdjustments = new int?[]
-                {
-                    null,
-                    0,
-                    1,
-                    2,
-                    10,
-                };
-
-                foreach (var levelAdjustment in levelAdjustments)
-                {
-                    if (levelAdjustment == null)
-                    {
-                        yield return new TestCaseData(null, null, true);
-                        yield return new TestCaseData(null, null, false);
-                    }
-                    else
-                    {
-                        yield return new TestCaseData(levelAdjustment, levelAdjustment + 3, true);
-                        yield return new TestCaseData(levelAdjustment, levelAdjustment + 2, false);
-                    }
-                }
-            }
-        }
-
         [Test]
         public void ApplyTo_SetsTemplate()
         {
-            SetUpAnimal("my animal");
+            SetUpAnimal("my animal", baseCreature);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));

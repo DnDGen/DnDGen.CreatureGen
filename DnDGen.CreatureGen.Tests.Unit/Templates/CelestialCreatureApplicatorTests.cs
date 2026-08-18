@@ -2980,6 +2980,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
+        public void IsCompatible_WithAllFilters_ReturnsFalse_BecausePrototype()
+        {
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithName("my creature")
+                .WithCreatureType(CreatureConstants.Types.Outsider, "subtype 1", "subtype 2")
+                .WithAlignments("wrong Evil", AlignmentConstants.TrueNeutral, "other alignment")
+                .WithChallengeRating(ChallengeRatingConstants.CR2)
+                .WithHitDiceQuantity(8)
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignment = AlignmentConstants.NeutralGood,
+                ChallengeRating = ChallengeRatingConstants.CR4,
+                Type = "subtype 1",
+            };
+
+            var compatible = applicator.IsCompatible(creature, false, filters);
+            Assert.That(compatible, Is.False);
+        }
+
+        [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseAlignment()
         {
             var creature = new CreaturePrototypeBuilder()

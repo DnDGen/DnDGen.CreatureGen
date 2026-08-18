@@ -13,7 +13,6 @@ using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
-using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using DnDGen.TreasureGen.Items;
 using Moq;
@@ -32,32 +31,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
     {
         private TemplateApplicator applicator;
         private Creature baseCreature;
-        private Mock<ICollectionSelector> mockCollectionSelector;
-        private Mock<ICollectionDataSelector<CreatureDataSelection>> mockCreatureDataSelector;
         private Mock<Dice> mockDice;
         private Mock<IAttacksGenerator> mockAttacksGenerator;
         private Mock<IFeatsGenerator> mockFeatsGenerator;
-        private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
         private Mock<IDemographicsGenerator> mockDemographicsGenerator;
 
         [SetUp]
         public void Setup()
         {
-            mockCollectionSelector = new Mock<ICollectionSelector>();
-            mockCreatureDataSelector = new Mock<ICollectionDataSelector<CreatureDataSelection>>();
             mockDice = new Mock<Dice>();
             mockAttacksGenerator = new Mock<IAttacksGenerator>();
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
-            mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
             mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
             applicator = new VampireApplicator(
                 mockDice.Object,
                 mockAttacksGenerator.Object,
                 mockFeatsGenerator.Object,
-                mockCollectionSelector.Object,
-                mockCreatureDataSelector.Object,
-                mockPrototypeFactory.Object,
                 mockDemographicsGenerator.Object);
 
             baseCreature = new CreatureBuilder()
@@ -97,8 +87,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             message.AppendLine($"\tCreature: {baseCreature.Name}");
             message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Vampire}");
 
-            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, false)),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var func = () => applicator.ApplyTo(baseCreature, false);
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
         [TestCase("subtype 1", ChallengeRatingConstants.CR3, "original Neutral", "Alignment filter 'original Neutral' is not valid")]
@@ -128,8 +118,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Alignment = alignment
             };
 
-            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, false, filters)),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var func = () => applicator.ApplyTo(baseCreature, false, filters)
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
         [Test]
@@ -224,7 +214,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 9266, 90210 });
+                .Returns([9266, 90210]);
             mockDice
                 .Setup(d => d
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
@@ -250,7 +240,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 9266, 90210 });
+                .Returns([9266, 90210]);
             mockDice
                 .Setup(d => d
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
@@ -269,7 +259,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(6));
-            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count, Is.EqualTo(1));
 
             var bonus = creature.ArmorClass.NaturalArmorBonuses.First();
             Assert.That(bonus.Value, Is.EqualTo(6));
@@ -283,7 +273,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = applicator.ApplyTo(baseCreature, true);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(9272));
-            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count, Is.EqualTo(1));
 
             var bonus = creature.ArmorClass.NaturalArmorBonuses.First();
             Assert.That(bonus.Value, Is.EqualTo(9272));
@@ -300,7 +290,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    Damages = [new() { Roll = "vampire slam roll", Type = "vampire slam type" }],
                     IsSpecial = false,
                     IsMelee = true
                 },
@@ -339,7 +329,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    Damages = [new() { Roll = "vampire slam roll", Type = "vampire slam type" }],
                     IsSpecial = false,
                     IsMelee = true
                 },
@@ -385,10 +375,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    Damages = [new() { Roll = "vampire slam roll", Type = "vampire slam type" }],
                     IsSpecial = false,
                     IsMelee = true,
-                    AttackBonuses = new List<int> { 92 },
+                    AttackBonuses = [92],
                 },
             };
 
@@ -412,16 +402,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_AlreadyHasSlamAttack_VampireBetterDamage()
         {
-            baseCreature.Attacks = baseCreature.Attacks.Union(new[]
-            {
+            baseCreature.Attacks = baseCreature.Attacks.Union(
+            [
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage> { new Damage { Roll = "base slam roll", Type = "base slam type" } },
+                    Damages = [new() { Roll = "base slam roll", Type = "base slam type" }],
                     IsSpecial = false,
                     IsMelee = true
                 },
-            });
+            ]);
 
             var newAttacks = new[]
             {
@@ -430,7 +420,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    Damages = [new() { Roll = "vampire slam roll", Type = "vampire slam type" }],
                     IsSpecial = false,
                     IsMelee = true
                 },
@@ -472,16 +462,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_AlreadyHasSlamAttack_BaseCreatureBetterDamage()
         {
-            baseCreature.Attacks = baseCreature.Attacks.Union(new[]
-            {
+            baseCreature.Attacks = baseCreature.Attacks.Union(
+            [
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage> { new Damage { Roll = "base slam roll", Type = "base slam type" } },
+                    Damages = [new() { Roll = "base slam roll", Type = "base slam type" }],
                     IsSpecial = false,
                     IsMelee = true
                 },
-            });
+            ]);
 
             var newAttacks = new[]
             {
@@ -490,7 +480,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    Damages = [new() { Roll = "vampire slam roll", Type = "vampire slam type" }],
                     IsSpecial = false,
                     IsMelee = true
                 },
@@ -603,7 +593,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    Damages = [new() { Roll = "vampire slam roll", Type = "vampire slam type" }],
                     IsSpecial = false,
                     IsMelee = true
                 },
@@ -650,10 +640,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    Damages = [new() { Roll = "vampire slam roll", Type = "vampire slam type" }],
                     IsSpecial = false,
                     IsMelee = true,
-                    AttackBonuses = new List<int> { 92 },
+                    AttackBonuses = [92],
                 },
             };
 
@@ -683,7 +673,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    Damages = [new() { Roll = "vampire slam roll", Type = "vampire slam type" }],
                     IsSpecial = false,
                     IsMelee = true
                 },
@@ -730,10 +720,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    Damages = [new() { Roll = "vampire slam roll", Type = "vampire slam type" }],
                     IsSpecial = false,
                     IsMelee = true,
-                    AttackBonuses = new List<int> { 92 },
+                    AttackBonuses = [92],
                 },
             };
 
@@ -820,52 +810,52 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Skills, Is.SupersetOf(skills));
             Assert.That(skills[0].Name, Is.EqualTo("other skill 1"));
             Assert.That(skills[0].Bonus, Is.EqualTo(600));
-            Assert.That(skills[0].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[0].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[1].Name, Is.EqualTo(SkillConstants.Bluff));
             Assert.That(skills[1].Bonus, Is.EqualTo(608));
-            Assert.That(skills[1].Bonuses.Count(), Is.EqualTo(3));
+            Assert.That(skills[1].Bonuses.Count, Is.EqualTo(3));
             Assert.That(skills[2].Name, Is.EqualTo(SkillConstants.Hide));
             Assert.That(skills[2].Bonus, Is.EqualTo(608));
-            Assert.That(skills[2].Bonuses.Count(), Is.EqualTo(3));
+            Assert.That(skills[2].Bonuses.Count, Is.EqualTo(3));
             Assert.That(skills[3].Name, Is.EqualTo("other skill 2"));
             Assert.That(skills[3].Bonus, Is.EqualTo(600));
-            Assert.That(skills[3].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[3].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[4].Name, Is.EqualTo(SkillConstants.Listen));
             Assert.That(skills[4].Bonus, Is.EqualTo(608));
-            Assert.That(skills[4].Bonuses.Count(), Is.EqualTo(3));
+            Assert.That(skills[4].Bonuses.Count, Is.EqualTo(3));
             Assert.That(skills[5].Name, Is.EqualTo("other skill 3"));
             Assert.That(skills[5].Bonus, Is.EqualTo(600));
-            Assert.That(skills[5].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[5].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[6].Name, Is.EqualTo(SkillConstants.Search));
             Assert.That(skills[6].Bonus, Is.EqualTo(608));
-            Assert.That(skills[6].Bonuses.Count(), Is.EqualTo(3));
+            Assert.That(skills[6].Bonuses.Count, Is.EqualTo(3));
             Assert.That(skills[7].Name, Is.EqualTo("other skill 4"));
             Assert.That(skills[7].Bonus, Is.EqualTo(600));
-            Assert.That(skills[7].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[7].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[8].Name, Is.EqualTo(SkillConstants.Spot));
             Assert.That(skills[8].Bonus, Is.EqualTo(608));
-            Assert.That(skills[8].Bonuses.Count(), Is.EqualTo(3));
+            Assert.That(skills[8].Bonuses.Count, Is.EqualTo(3));
             Assert.That(skills[9].Name, Is.EqualTo("other skill 5"));
             Assert.That(skills[9].Bonus, Is.EqualTo(600));
-            Assert.That(skills[9].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[9].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[10].Name, Is.EqualTo(SkillConstants.MoveSilently));
             Assert.That(skills[10].Bonus, Is.EqualTo(608));
-            Assert.That(skills[10].Bonuses.Count(), Is.EqualTo(3));
+            Assert.That(skills[10].Bonuses.Count, Is.EqualTo(3));
             Assert.That(skills[11].Name, Is.EqualTo("other skill 6"));
             Assert.That(skills[11].Bonus, Is.EqualTo(600));
-            Assert.That(skills[11].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[11].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[12].Name, Is.EqualTo(SkillConstants.SenseMotive));
             Assert.That(skills[12].Bonus, Is.EqualTo(608));
-            Assert.That(skills[12].Bonuses.Count(), Is.EqualTo(3));
+            Assert.That(skills[12].Bonuses.Count, Is.EqualTo(3));
             Assert.That(skills[13].Name, Is.EqualTo("other skill 7"));
             Assert.That(skills[13].Bonus, Is.EqualTo(600));
-            Assert.That(skills[13].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[13].Bonuses.Count, Is.EqualTo(2));
         }
 
         [Test]
         public void ApplyTo_CreatureSkills_GainRacialBonuses_NoSkills()
         {
-            baseCreature.Skills = new List<Skill>();
+            baseCreature.Skills = [];
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.Skills, Is.Empty);
@@ -895,26 +885,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Skills, Is.SupersetOf(skills));
             Assert.That(skills[0].Name, Is.EqualTo("other skill 1"));
             Assert.That(skills[0].Bonus, Is.EqualTo(600));
-            Assert.That(skills[0].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[0].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[1].Name, Is.EqualTo("other skill 2"));
             Assert.That(skills[1].Bonus, Is.EqualTo(600));
-            Assert.That(skills[1].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[1].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[2].Name, Is.EqualTo("other skill 3"));
             Assert.That(skills[2].Bonus, Is.EqualTo(600));
-            Assert.That(skills[2].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[2].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[3].Name, Is.EqualTo("other skill 4"));
             Assert.That(skills[3].Bonus, Is.EqualTo(600));
-            Assert.That(skills[3].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[3].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[4].Name, Is.EqualTo("other skill 5"));
             Assert.That(skills[4].Bonus, Is.EqualTo(600));
-            Assert.That(skills[4].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[4].Bonuses.Count, Is.EqualTo(2));
         }
 
         [Test]
         public void ApplyTo_SwapConsitutionForCharismaForConcentration()
         {
             var concentration = new Skill(SkillConstants.Concentration, baseCreature.Abilities[AbilityConstants.Constitution], 42);
-            baseCreature.Skills = baseCreature.Skills.Union(new[] { concentration });
+            baseCreature.Skills = baseCreature.Skills.Union([concentration]);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.Skills, Contains.Item(concentration));
@@ -1016,7 +1006,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 9266 });
+                .Returns([9266]);
             mockDice
                 .Setup(d => d
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
@@ -1070,10 +1060,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             message.AppendLine($"\tCR: {challengeRating}");
             message.AppendLine($"\tAlignment: {alignment}");
 
-            var filters = new Filters();
-            filters.Type = type;
-            filters.ChallengeRating = challengeRating;
-            filters.Alignment = alignment;
+            var filters = new Filters
+            {
+                Type = type,
+                ChallengeRating = challengeRating,
+                Alignment = alignment
+            };
 
             await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, false, filters),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
@@ -1171,7 +1163,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 9266, 90210 });
+                .Returns([9266, 90210]);
             mockDice
                 .Setup(d => d
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
@@ -1197,7 +1189,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 9266, 90210 });
+                .Returns([9266, 90210]);
             mockDice
                 .Setup(d => d
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
@@ -1216,7 +1208,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(6));
-            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count, Is.EqualTo(1));
 
             var bonus = creature.ArmorClass.NaturalArmorBonuses.First();
             Assert.That(bonus.Value, Is.EqualTo(6));
@@ -1230,7 +1222,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(9272));
-            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count, Is.EqualTo(1));
 
             var bonus = creature.ArmorClass.NaturalArmorBonuses.First();
             Assert.That(bonus.Value, Is.EqualTo(9272));
@@ -1247,7 +1239,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    Damages = [new() { Roll = "vampire slam roll", Type = "vampire slam type" }],
                     IsSpecial = false,
                     IsMelee = true
                 },
@@ -1286,7 +1278,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    Damages = [new() { Roll = "vampire slam roll", Type = "vampire slam type" }],
                     IsSpecial = false,
                     IsMelee = true
                 },
@@ -1332,10 +1324,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    Damages = [new() { Roll = "vampire slam roll", Type = "vampire slam type" }],
                     IsSpecial = false,
                     IsMelee = true,
-                    AttackBonuses = new List<int> { 92 },
+                    AttackBonuses = [92],
                 },
             };
 
@@ -1359,16 +1351,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_AlreadyHasSlamAttack_VampireBetterDamage()
         {
-            baseCreature.Attacks = baseCreature.Attacks.Union(new[]
-            {
+            baseCreature.Attacks = baseCreature.Attacks.Union(
+            [
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage> { new Damage { Roll = "base slam roll", Type = "base slam type" } },
+                    Damages = [new() { Roll = "base slam roll", Type = "base slam type" }],
                     IsSpecial = false,
                     IsMelee = true
                 },
-            });
+            ]);
 
             var newAttacks = new[]
             {
@@ -1377,7 +1369,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    Damages = [new() { Roll = "vampire slam roll", Type = "vampire slam type" }],
                     IsSpecial = false,
                     IsMelee = true
                 },
@@ -1419,16 +1411,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_AlreadyHasSlamAttack_BaseCreatureBetterDamage()
         {
-            baseCreature.Attacks = baseCreature.Attacks.Union(new[]
-            {
+            baseCreature.Attacks = baseCreature.Attacks.Union(
+            [
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage> { new Damage { Roll = "base slam roll", Type = "base slam type" } },
+                    Damages = [new() { Roll = "base slam roll", Type = "base slam type" }],
                     IsSpecial = false,
                     IsMelee = true
                 },
-            });
+            ]);
 
             var newAttacks = new[]
             {
@@ -1437,7 +1429,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    Damages = [new() { Roll = "vampire slam roll", Type = "vampire slam type" }],
                     IsSpecial = false,
                     IsMelee = true
                 },
@@ -1606,52 +1598,52 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Skills, Is.SupersetOf(skills));
             Assert.That(skills[0].Name, Is.EqualTo("other skill 1"));
             Assert.That(skills[0].Bonus, Is.EqualTo(600));
-            Assert.That(skills[0].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[0].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[1].Name, Is.EqualTo(SkillConstants.Bluff));
             Assert.That(skills[1].Bonus, Is.EqualTo(608));
-            Assert.That(skills[1].Bonuses.Count(), Is.EqualTo(3));
+            Assert.That(skills[1].Bonuses.Count, Is.EqualTo(3));
             Assert.That(skills[2].Name, Is.EqualTo(SkillConstants.Hide));
             Assert.That(skills[2].Bonus, Is.EqualTo(608));
-            Assert.That(skills[2].Bonuses.Count(), Is.EqualTo(3));
+            Assert.That(skills[2].Bonuses.Count, Is.EqualTo(3));
             Assert.That(skills[3].Name, Is.EqualTo("other skill 2"));
             Assert.That(skills[3].Bonus, Is.EqualTo(600));
-            Assert.That(skills[3].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[3].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[4].Name, Is.EqualTo(SkillConstants.Listen));
             Assert.That(skills[4].Bonus, Is.EqualTo(608));
-            Assert.That(skills[4].Bonuses.Count(), Is.EqualTo(3));
+            Assert.That(skills[4].Bonuses.Count, Is.EqualTo(3));
             Assert.That(skills[5].Name, Is.EqualTo("other skill 3"));
             Assert.That(skills[5].Bonus, Is.EqualTo(600));
-            Assert.That(skills[5].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[5].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[6].Name, Is.EqualTo(SkillConstants.Search));
             Assert.That(skills[6].Bonus, Is.EqualTo(608));
-            Assert.That(skills[6].Bonuses.Count(), Is.EqualTo(3));
+            Assert.That(skills[6].Bonuses.Count, Is.EqualTo(3));
             Assert.That(skills[7].Name, Is.EqualTo("other skill 4"));
             Assert.That(skills[7].Bonus, Is.EqualTo(600));
-            Assert.That(skills[7].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[7].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[8].Name, Is.EqualTo(SkillConstants.Spot));
             Assert.That(skills[8].Bonus, Is.EqualTo(608));
-            Assert.That(skills[8].Bonuses.Count(), Is.EqualTo(3));
+            Assert.That(skills[8].Bonuses.Count, Is.EqualTo(3));
             Assert.That(skills[9].Name, Is.EqualTo("other skill 5"));
             Assert.That(skills[9].Bonus, Is.EqualTo(600));
-            Assert.That(skills[9].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[9].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[10].Name, Is.EqualTo(SkillConstants.MoveSilently));
             Assert.That(skills[10].Bonus, Is.EqualTo(608));
-            Assert.That(skills[10].Bonuses.Count(), Is.EqualTo(3));
+            Assert.That(skills[10].Bonuses.Count, Is.EqualTo(3));
             Assert.That(skills[11].Name, Is.EqualTo("other skill 6"));
             Assert.That(skills[11].Bonus, Is.EqualTo(600));
-            Assert.That(skills[11].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[11].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[12].Name, Is.EqualTo(SkillConstants.SenseMotive));
             Assert.That(skills[12].Bonus, Is.EqualTo(608));
-            Assert.That(skills[12].Bonuses.Count(), Is.EqualTo(3));
+            Assert.That(skills[12].Bonuses.Count, Is.EqualTo(3));
             Assert.That(skills[13].Name, Is.EqualTo("other skill 7"));
             Assert.That(skills[13].Bonus, Is.EqualTo(600));
-            Assert.That(skills[13].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[13].Bonuses.Count, Is.EqualTo(2));
         }
 
         [Test]
         public async Task ApplyToAsync_CreatureSkills_GainRacialBonuses_NoSkills()
         {
-            baseCreature.Skills = new List<Skill>();
+            baseCreature.Skills = [];
 
             var creature = await applicator.ApplyToAsync(baseCreature, true);
             Assert.That(creature.Skills, Is.Empty);
@@ -1681,26 +1673,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Skills, Is.SupersetOf(skills));
             Assert.That(skills[0].Name, Is.EqualTo("other skill 1"));
             Assert.That(skills[0].Bonus, Is.EqualTo(600));
-            Assert.That(skills[0].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[0].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[1].Name, Is.EqualTo("other skill 2"));
             Assert.That(skills[1].Bonus, Is.EqualTo(600));
-            Assert.That(skills[1].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[1].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[2].Name, Is.EqualTo("other skill 3"));
             Assert.That(skills[2].Bonus, Is.EqualTo(600));
-            Assert.That(skills[2].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[2].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[3].Name, Is.EqualTo("other skill 4"));
             Assert.That(skills[3].Bonus, Is.EqualTo(600));
-            Assert.That(skills[3].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[3].Bonuses.Count, Is.EqualTo(2));
             Assert.That(skills[4].Name, Is.EqualTo("other skill 5"));
             Assert.That(skills[4].Bonus, Is.EqualTo(600));
-            Assert.That(skills[4].Bonuses.Count(), Is.EqualTo(2));
+            Assert.That(skills[4].Bonuses.Count, Is.EqualTo(2));
         }
 
         [Test]
         public async Task ApplyToAsync_SwapConsitutionForCharismaForConcentration()
         {
             var concentration = new Skill(SkillConstants.Concentration, baseCreature.Abilities[AbilityConstants.Constitution], 42);
-            baseCreature.Skills = baseCreature.Skills.Union(new[] { concentration });
+            baseCreature.Skills = baseCreature.Skills.Union([concentration]);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.Skills, Contains.Item(concentration));
@@ -1751,8 +1743,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Alignment.Lawfulness = "preset";
             baseCreature.Alignment.Goodness = "alignment";
 
-            var filters = new Filters();
-            filters.Alignment = "preset Evil";
+            var filters = new Filters
+            {
+                Alignment = "preset Evil"
+            };
 
             var creature = await applicator.ApplyToAsync(baseCreature, false, filters);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1776,7 +1770,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 9266 });
+                .Returns([9266]);
             mockDice
                 .Setup(d => d
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
@@ -1804,6 +1798,272 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Templates.Single(), Is.EqualTo(CreatureConstants.Templates.Vampire));
         }
+
+        [Test]
+        public void IsCompatible_ReturnsTrue()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void IsCompatible_ReturnsCompatibility_BasedOnCreatureType()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void IsCompatible_ReturnsTrue_WhenLevelAdjustmentAndAsCharacter()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void IsCompatible_ReturnsTrue_WhenLevelAdjustmentAndAsCharacter_WithZeroHitDice()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void IsCompatible_ReturnsCompatibility_WhenNotAsCharacter_BasedOnHitDiceQuantity()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCase(AlignmentConstants.ChaoticGood)]
+        [TestCase(AlignmentConstants.ChaoticNeutral)]
+        [TestCase(AlignmentConstants.LawfulGood)]
+        [TestCase(AlignmentConstants.LawfulNeutral)]
+        [TestCase(AlignmentConstants.NeutralGood)]
+        [TestCase(AlignmentConstants.TrueNeutral)]
+        public void IsCompatible_WithAlignment_ReturnsFalse_WhenAlignmentFilterInvalid(string alignment)
+        {
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithName("my creature")
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithAlignments(AllAlignments)
+                .WithLevelAdjustment(0)
+                .Build();
+
+            var filters = new Filters { Alignment = alignment };
+
+            var compatible = applicator.IsCompatible(creature, true, filters);
+            Assert.That(compatible, Is.False);
+        }
+
+        [TestCase(AlignmentConstants.ChaoticEvil)]
+        [TestCase(AlignmentConstants.LawfulEvil)]
+        [TestCase(AlignmentConstants.NeutralEvil)]
+        public void IsCompatible_WithAlignment_ReturnsTrue_WhenAlignmentFilterValid(string alignment)
+        {
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithName("my creature")
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithAlignments(AllAlignments)
+                .WithLevelAdjustment(0)
+                .Build();
+
+            var filters = new Filters { Alignment = alignment };
+
+            var compatible = applicator.IsCompatible(creature, true, filters);
+            Assert.That(compatible, Is.True);
+        }
+
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.LawfulGood, true)]
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.NeutralGood, false)]
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.ChaoticGood, false)]
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.LawfulNeutral, true)]
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.TrueNeutral, false)]
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.ChaoticNeutral, false)]
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.LawfulEvil, true)]
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.NeutralEvil, false)]
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.ChaoticEvil, false)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.LawfulGood, false)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.NeutralGood, true)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.ChaoticGood, false)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.LawfulNeutral, false)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.TrueNeutral, true)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.ChaoticNeutral, false)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.LawfulEvil, false)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.NeutralEvil, true)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.ChaoticEvil, false)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.LawfulGood, false)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.NeutralGood, false)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.ChaoticGood, true)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.LawfulNeutral, false)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.TrueNeutral, false)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.ChaoticNeutral, true)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.LawfulEvil, false)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.NeutralEvil, false)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.ChaoticEvil, true)]
+        public void IsCompatible_WithAlignment_ReturnsCompatibility_AdjustedAlignmentMustMatch(string alignmentFilter, string creatureAlignment, bool expected)
+        {
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithName("my creature")
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithAlignments("other Good", creatureAlignment)
+                .Build();
+
+            var filters = new Filters { Alignment = alignmentFilter };
+
+            var compatible = applicator.IsCompatible(creature, false, filters);
+            Assert.That(compatible, Is.EqualTo(expected));
+        }
+
+        [TestCase(ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, true)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
+        [TestCase(ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, true)]
+        [TestCase(ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false)]
+        [TestCase(ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, true)]
+        [TestCase(ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        public void IsCompatible_WithChallengeRating_ReturnsCompatibility(string original, string filter, bool expected)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [TestCase(0.5, ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR1_3rd, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR2, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR0, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR0, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR1, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR1_3rd, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR2, true)]
+        [TestCase(1, ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, true)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR0, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, true)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR0, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR1, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, true)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        [TestCase(2, ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR1_3rd, false)]
+        [TestCase(2, ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(2, ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR1, true)]
+        [TestCase(2, ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR2, false)]
+        [TestCase(2, ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(2, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(2, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(2, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, true)]
+        [TestCase(2, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(2, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
+        [TestCase(2, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(2, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, true)]
+        [TestCase(2, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(2, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false)]
+        [TestCase(2, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(2, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, true)]
+        [TestCase(2, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        public void IsCompatible_WithChallengeRating_ReturnsCompatibility_HumanoidCharacter(double hitDiceQuantity, string original, string challengeRating, bool expected)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        [Ignore("Liches must be humanoid, so testing for non-humanoid characters isn't needed")]
+        public void IsCompatible_WithChallengeRating_ReturnsCompatibility_NonHumanoidCharacter(string original, string challengeRating, bool expected)
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestCase(CreatureConstants.Types.Humanoid, true)]
+        [TestCase(CreatureConstants.Types.Undead, true)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid, false)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented, true)]
+        [TestCase(CreatureConstants.Types.Subtypes.Incorporeal, false)]
+        [TestCase(CreatureConstants.Types.Subtypes.Elf, true)]
+        [TestCase(CreatureConstants.Types.Subtypes.Dwarf, false)]
+        [TestCase("subtype 1", true)]
+        [TestCase("subtype 2", true)]
+        [TestCase("subtype 3", false)]
+        public void IsCompatible_WithType_ReturnsCompatibility(string filter, bool expected)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void IsCompatible_WithAllFilters_ReturnsTrue()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void IsCompatible_WithAllFilters_ReturnsFalse_BecausePrototype()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseAlignment()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseChallengeRating()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseType()
+        {
+            Assert.Fail("not yet written");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // OLD
 
         private Dictionary<string, CreatureDataSelection> SetUpCreatureData(string cr = ChallengeRatingConstants.CR1, double amount = 5)
         {
