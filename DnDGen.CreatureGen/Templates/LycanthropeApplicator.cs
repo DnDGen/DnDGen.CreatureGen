@@ -787,11 +787,11 @@ namespace DnDGen.CreatureGen.Templates
             return (true, null);
         }
 
-        public CreaturePrototype ApplyTo(CreaturePrototype creature, bool asCharacter, Filters filters = null)
+        public CreaturePrototype ApplyTo(CreaturePrototype creature, Filters filters = null)
         {
-            var animalData = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, AnimalSpecies);
             var animalAbilityAdjustments = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, AnimalSpecies);
-            var animalHitDiceQuantity = animalData.GetEffectiveHitDiceQuantity(asCharacter);
+            var animalData = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, AnimalSpecies);
+            var animalHitDiceQuantity = animalData.GetEffectiveHitDiceQuantity(creature.AsCharacter);
 
             UpdateCreatureAbilities(creature, animalAbilityAdjustments);
             UpdateCreatureChallengeRating(creature, animalHitDiceQuantity);
@@ -806,11 +806,10 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public bool IsCompatible(CreaturePrototype creature, bool asCharacter, Filters filters = null)
+        public bool IsCompatible(CreaturePrototype creature, Filters filters = null)
         {
             var animalData = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, AnimalSpecies);
-            var animalAbilityAdjustments = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, AnimalSpecies);
-            var animalHitDiceQuantity = animalData.GetEffectiveHitDiceQuantity(asCharacter);
+            var animalHitDiceQuantity = animalData.GetEffectiveHitDiceQuantity(creature.AsCharacter);
 
             var (Compatible, _) = IsCompatible(
                 creature.Type.AllTypes,

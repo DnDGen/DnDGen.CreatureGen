@@ -41,7 +41,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAbility(AbilityConstants.Charisma, 1336, 2022)
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, false);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Abilities, Has.Count.EqualTo(6));
             Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(96 + Ability.DefaultScore + 4 + 783));

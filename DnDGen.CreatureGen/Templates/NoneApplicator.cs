@@ -82,7 +82,7 @@ namespace DnDGen.CreatureGen.Templates
             return (true, null);
         }
 
-        public CreaturePrototype ApplyTo(CreaturePrototype creature, bool asCharacter, Filters filters = null)
+        public CreaturePrototype ApplyTo(CreaturePrototype creature, Filters filters = null)
         {
             if (!string.IsNullOrEmpty(filters?.Alignment))
             {
@@ -92,7 +92,7 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public bool IsCompatible(CreaturePrototype creature, bool asCharacter, Filters filters = null)
+        public bool IsCompatible(CreaturePrototype creature, Filters filters = null)
         {
             var (Compatible, _) = AreFiltersCompatible(
                 creature.Type.AllTypes,

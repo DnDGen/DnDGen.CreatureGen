@@ -70,7 +70,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockMagicGenerator.Object,
                 mockDemographicsGenerator.Object)
             {
-                DragonSpecies = "my dragon species"
+                DragonSpecies = "my-dragon-species"
             };
 
             baseCreature = new CreatureBuilder()
@@ -114,7 +114,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string a, string t, string c) => [$"other alignment", $"{c}y scaley", "preset alignment"]);
+                .Returns((string a, string t, string c) => ["other alignment", $"{c}y scaley", "preset alignment"]);
 
             mockDemographicsGenerator
                 .Setup(s => s.UpdateByTemplate(baseCreature.Demographics, baseCreature.Name, applicator.DragonSpecies, false, false))
@@ -131,7 +131,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             message.AppendLine("\tReason: Type 'Outsider' is not valid");
             message.AppendLine($"\tAs Character: {false}");
             message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine("\tTemplate: my dragon species");
+            message.AppendLine("\tTemplate: my-dragon-species");
 
             Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, false)),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
@@ -156,7 +156,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             message.AppendLine($"\tReason: {reason}");
             message.AppendLine($"\tAs Character: {false}");
             message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: my dragon species");
+            message.AppendLine($"\tTemplate: my-dragon-species");
             message.AppendLine($"\tType: {type}");
             message.AppendLine($"\tCR: {challengeRating}");
             message.AppendLine($"\tAlignment: {alignment}");
@@ -177,10 +177,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             get
             {
                 yield return new TestCaseData(false, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment", "Alignment filter 'wrong alignment' is not valid");
-                yield return new TestCaseData(false, "subtype 1", ChallengeRatingConstants.CR2, "my dragon speciesy scaley", "CR filter 2 does not match updated creature CR 3 (from CR 1)");
-                yield return new TestCaseData(false, "wrong subtype", ChallengeRatingConstants.CR3, "my dragon speciesy scaley", "Type filter 'wrong subtype' is not valid");
+                yield return new TestCaseData(false, "subtype 1", ChallengeRatingConstants.CR2, "my-dragon-speciesy scaley", "CR filter 2 does not match updated creature CR 3 (from CR 1)");
+                yield return new TestCaseData(false, "wrong subtype", ChallengeRatingConstants.CR3, "my-dragon-speciesy scaley", "Type filter 'wrong subtype' is not valid");
                 //INFO: This test case isn't valid, since As Character doesn't affect already-generated creature compatibility
-                //yield return new TestCaseData(true, "subtype 1", ChallengeRatingConstants.CR3, $"my dragon speciesy scaley");
+                //yield return new TestCaseData(true, "subtype 1", ChallengeRatingConstants.CR3, $"my-dragon-speciesy scaley");
             }
         }
 
@@ -210,11 +210,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 Type = "subtype 1",
                 ChallengeRating = ChallengeRatingConstants.CR3,
-                Alignment = $"my dragon speciesy scaley"
+                Alignment = $"my-dragon-speciesy scaley"
             };
 
             var creature = applicator.ApplyTo(baseCreature, false, filters);
-            Assert.That(creature.Templates.Single(), Is.EqualTo("my dragon species"));
+            Assert.That(creature.Templates.Single(), Is.EqualTo(applicator.DragonSpecies));
         }
 
         [Test]
@@ -222,7 +222,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Templates.Single(), Is.EqualTo("my dragon species"));
+            Assert.That(creature.Templates.Single(), Is.EqualTo(applicator.DragonSpecies));
         }
 
         [Test]
@@ -230,7 +230,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Templates.Single(), Is.EqualTo("my dragon species"));
+            Assert.That(creature.Templates.Single(), Is.EqualTo(applicator.DragonSpecies));
         }
 
         [Test]
@@ -242,7 +242,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Templates, Has.Count.EqualTo(2));
             Assert.That(creature.Templates[0], Is.EqualTo("my other template"));
-            Assert.That(creature.Templates[1], Is.EqualTo("my dragon species"));
+            Assert.That(creature.Templates[1], Is.EqualTo(applicator.DragonSpecies));
         }
 
         [Test]
@@ -254,7 +254,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Templates, Has.Count.EqualTo(2));
             Assert.That(creature.Templates[0], Is.EqualTo("my other template"));
-            Assert.That(creature.Templates[1], Is.EqualTo("my dragon species"));
+            Assert.That(creature.Templates[1], Is.EqualTo(applicator.DragonSpecies));
         }
 
         [TestCaseSource(nameof(CreatureTypeAdjusted))]
@@ -587,7 +587,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .And.ContainKey(SpeedConstants.Land));
             Assert.That(creature.Speeds[SpeedConstants.Land].Value, Is.EqualTo(landSpeed));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
-            Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo($"my dragon species furlongs"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo($"my-dragon-species furlongs"));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(flySpeed));
         }
 
@@ -897,7 +897,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
-                    "my dragon species",
+                    applicator.DragonSpecies,
                     baseCreature.Size,
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
@@ -960,7 +960,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    "my dragon species",
+                    applicator.DragonSpecies,
                     It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Dragon
                         && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
                         {
@@ -972,7 +972,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     newSkills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    new Alignment { Lawfulness = $"my dragon speciesy", Goodness = "scaley" }))
+                    new Alignment { Lawfulness = $"my-dragon-speciesy", Goodness = "scaley" }))
                 .Returns(newQualities);
 
             var attacksWithBonuses = new[]
@@ -1250,7 +1250,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    "my dragon species",
+                    applicator.DragonSpecies,
                     It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Dragon
                         && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
                         {
@@ -1262,7 +1262,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     newSkills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    new Alignment { Lawfulness = $"my dragon speciesy", Goodness = "scaley" }))
+                    new Alignment { Lawfulness = $"my-dragon-speciesy", Goodness = "scaley" }))
                 .Returns(newQualities);
 
             var originalCount = baseCreature.SpecialQualities.Count();
@@ -1366,7 +1366,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void ApplyTo_GetNewAlignment()
         {
             var creature = applicator.ApplyTo(baseCreature, false);
-            Assert.That(creature.Alignment.Lawfulness, Is.EqualTo($"my dragon speciesy"));
+            Assert.That(creature.Alignment.Lawfulness, Is.EqualTo($"my-dragon-speciesy"));
             Assert.That(creature.Alignment.Goodness, Is.EqualTo($"scaley"));
         }
 
@@ -1374,11 +1374,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void ApplyTo_GetPresetAlignment()
         {
             mockAlignmentGenerator
-                .Setup(g => g.Generate("my dragon species", null, "preset alignment"))
+                .Setup(g => g.Generate(applicator.DragonSpecies, null, "preset alignment"))
                 .Returns((string c, string t, string p) => new Alignment(p));
 
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "my dragon species"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, applicator.DragonSpecies))
                 .Returns((string a, string t, string c) => [$"other alignment", $"preset alignment"]);
 
             var filters = new Filters { Alignment = "preset alignment" };
@@ -1429,7 +1429,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             message.AppendLine("\tReason: Type 'Outsider' is not valid");
             message.AppendLine($"\tAs Character: {false}");
             message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: my dragon species");
+            message.AppendLine($"\tTemplate: my-dragon-species");
 
             await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, false),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
@@ -1454,7 +1454,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             message.AppendLine($"\tReason: {reason}");
             message.AppendLine($"\tAs Character: {false}");
             message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: my dragon species");
+            message.AppendLine($"\tTemplate: my-dragon-species");
             message.AppendLine($"\tType: {type}");
             message.AppendLine($"\tCR: {challengeRating}");
             message.AppendLine($"\tAlignment: {alignment}");
@@ -1496,11 +1496,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 Type = "subtype 1",
                 ChallengeRating = ChallengeRatingConstants.CR3,
-                Alignment = $"my dragon speciesy scaley"
+                Alignment = $"my-dragon-speciesy scaley"
             };
 
             var creature = await applicator.ApplyToAsync(baseCreature, false, filters);
-            Assert.That(creature.Templates.Single(), Is.EqualTo("my dragon species"));
+            Assert.That(creature.Templates.Single(), Is.EqualTo(applicator.DragonSpecies));
         }
 
         [TestCaseSource(nameof(CreatureTypeAdjusted))]
@@ -1597,7 +1597,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
-            Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo($"my dragon species furlongs"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo($"my-dragon-species furlongs"));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(flySpeed));
         }
 
@@ -1759,7 +1759,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    "my dragon species",
+                    applicator.DragonSpecies,
                     It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Dragon
                         && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
                         {
@@ -1771,7 +1771,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     newSkills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    new Alignment { Lawfulness = $"my dragon speciesy", Goodness = "scaley" }))
+                    new Alignment { Lawfulness = $"my-dragon-speciesy", Goodness = "scaley" }))
                 .Returns(newQualities);
 
             var attacksWithBonuses = new[]
@@ -2005,7 +2005,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
-                    "my dragon species",
+                    applicator.DragonSpecies,
                     It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Dragon
                         && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
                         {
@@ -2017,7 +2017,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     newSkills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    new Alignment { Lawfulness = $"my dragon speciesy", Goodness = "scaley" }))
+                    new Alignment { Lawfulness = $"my-dragon-speciesy", Goodness = "scaley" }))
                 .Returns(newQualities);
 
             var originalCount = baseCreature.SpecialQualities.Count();
@@ -2103,7 +2103,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Alignment.Lawfulness, Is.EqualTo($"my dragon speciesy"));
+            Assert.That(creature.Alignment.Lawfulness, Is.EqualTo($"my-dragon-speciesy"));
             Assert.That(creature.Alignment.Goodness, Is.EqualTo("scaley"));
         }
 
@@ -2111,7 +2111,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public async Task ApplyToAsync_GetPresetAlignment()
         {
             mockAlignmentGenerator
-                .Setup(g => g.Generate("my dragon species", null, "preset alignment"))
+                .Setup(g => g.Generate(applicator.DragonSpecies, null, "preset alignment"))
                 .Returns((string c, string t, string p) => new Alignment(p));
 
             var filters = new Filters { Alignment = "preset alignment" };
@@ -2141,14 +2141,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Automatic))
-                .Returns($"my dragon speciesish");
+                    applicator.DragonSpecies + LanguageConstants.Groups.Automatic))
+                .Returns($"my-dragon-speciesish");
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
-                .And.Contains($"my dragon speciesish"));
+                .And.Contains($"my-dragon-speciesish"));
         }
 
         [Test]
@@ -2160,8 +2160,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Automatic))
-                .Returns($"my dragon speciesish");
+                    applicator.DragonSpecies + LanguageConstants.Groups.Automatic))
+                .Returns($"my-dragon-speciesish");
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -2171,21 +2171,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_GainDraconicAsLanguage_AlreadyHasDraconic()
         {
-            baseCreature.Languages = baseCreature.Languages.Union([$"my dragon speciesish"]);
+            baseCreature.Languages = baseCreature.Languages.Union([$"my-dragon-speciesish"]);
             var originalLanguages = baseCreature.Languages.ToArray();
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Automatic))
-                .Returns($"my dragon speciesish");
+                    applicator.DragonSpecies + LanguageConstants.Groups.Automatic))
+                .Returns($"my-dragon-speciesish");
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
-                .And.Contains($"my dragon speciesish"));
+                .And.Contains($"my-dragon-speciesish"));
         }
 
         [Test]
@@ -2201,15 +2201,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Automatic))
-                .Returns($"my dragon speciesish");
+                    applicator.DragonSpecies + LanguageConstants.Groups.Automatic))
+                .Returns($"my-dragon-speciesish");
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Bonus))
-                .Returns(["Drachensprach", $"my dragon speciesish", "Lizard", "Latin"]);
+                    applicator.DragonSpecies + LanguageConstants.Groups.Bonus))
+                .Returns(["Drachensprach", $"my-dragon-speciesish", "Lizard", "Latin"]);
 
             var count = 0;
             mockCollectionSelector
@@ -2220,7 +2220,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
-                .And.Contains($"my dragon speciesish")
+                .And.Contains($"my-dragon-speciesish")
                 .And.Contains("Drachensprach"));
         }
 
@@ -2237,15 +2237,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Automatic))
-                .Returns($"my dragon speciesish");
+                    applicator.DragonSpecies + LanguageConstants.Groups.Automatic))
+                .Returns($"my-dragon-speciesish");
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Bonus))
-                .Returns(["Drachensprach", $"my dragon speciesish", "Lizard", "Latin"]);
+                    applicator.DragonSpecies + LanguageConstants.Groups.Bonus))
+                .Returns(["Drachensprach", $"my-dragon-speciesish", "Lizard", "Latin"]);
 
             var count = 0;
             mockCollectionSelector
@@ -2256,7 +2256,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
-                .And.Contains($"my dragon speciesish")
+                .And.Contains($"my-dragon-speciesish")
                 .And.Contains("Drachensprach"));
         }
 
@@ -2273,15 +2273,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Automatic))
-                .Returns($"my dragon speciesish");
+                    applicator.DragonSpecies + LanguageConstants.Groups.Automatic))
+                .Returns($"my-dragon-speciesish");
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Bonus))
-                .Returns(["Drachensprach", $"my dragon speciesish", "Lizard", "Latin"]);
+                    applicator.DragonSpecies + LanguageConstants.Groups.Bonus))
+                .Returns(["Drachensprach", $"my-dragon-speciesish", "Lizard", "Latin"]);
 
             var count = 0;
             mockCollectionSelector
@@ -2292,7 +2292,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
-                .And.Contains($"my dragon speciesish"));
+                .And.Contains($"my-dragon-speciesish"));
         }
 
         [Test]
@@ -2302,22 +2302,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
 
-            baseCreature.Languages = baseCreature.Languages.Union([$"my dragon speciesish", "Lizard", "Latin"]);
+            baseCreature.Languages = baseCreature.Languages.Union([$"my-dragon-speciesish", "Lizard", "Latin"]);
             var originalLanguages = baseCreature.Languages.ToArray();
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Automatic))
-                .Returns($"my dragon speciesish");
+                    applicator.DragonSpecies + LanguageConstants.Groups.Automatic))
+                .Returns($"my-dragon-speciesish");
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Bonus))
-                .Returns(["Drachensprach", $"my dragon speciesish", "Lizard", "Latin"]);
+                    applicator.DragonSpecies + LanguageConstants.Groups.Bonus))
+                .Returns(["Drachensprach", $"my-dragon-speciesish", "Lizard", "Latin"]);
 
             var count = 0;
             mockCollectionSelector
@@ -2328,7 +2328,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
-                .And.Contains($"my dragon speciesish")
+                .And.Contains($"my-dragon-speciesish")
                 .And.Contains("Drachensprach")
                 .And.Contains("Latin"));
         }
@@ -2342,14 +2342,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Automatic))
-                .Returns($"my dragon speciesish");
+                    applicator.DragonSpecies + LanguageConstants.Groups.Automatic))
+                .Returns($"my-dragon-speciesish");
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
-                .And.Contains($"my dragon speciesish"));
+                .And.Contains($"my-dragon-speciesish"));
         }
 
         [Test]
@@ -2361,8 +2361,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Automatic))
-                .Returns($"my dragon speciesish");
+                    applicator.DragonSpecies + LanguageConstants.Groups.Automatic))
+                .Returns($"my-dragon-speciesish");
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -2372,21 +2372,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_GainDraconicAsLanguage_AlreadyHasDraconic()
         {
-            baseCreature.Languages = baseCreature.Languages.Union([$"my dragon speciesish"]);
+            baseCreature.Languages = baseCreature.Languages.Union([$"my-dragon-speciesish"]);
             var originalLanguages = baseCreature.Languages.ToArray();
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Automatic))
-                .Returns($"my dragon speciesish");
+                    applicator.DragonSpecies + LanguageConstants.Groups.Automatic))
+                .Returns($"my-dragon-speciesish");
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
-                .And.Contains($"my dragon speciesish"));
+                .And.Contains($"my-dragon-speciesish"));
         }
 
         [Test]
@@ -2402,15 +2402,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Automatic))
-                .Returns($"my dragon speciesish");
+                    applicator.DragonSpecies + LanguageConstants.Groups.Automatic))
+                .Returns($"my-dragon-speciesish");
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Bonus))
-                .Returns(["Drachensprach", $"my dragon speciesish", "Lizard", "Latin"]);
+                    applicator.DragonSpecies + LanguageConstants.Groups.Bonus))
+                .Returns(["Drachensprach", $"my-dragon-speciesish", "Lizard", "Latin"]);
 
             var count = 0;
             mockCollectionSelector
@@ -2421,7 +2421,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
-                .And.Contains($"my dragon speciesish")
+                .And.Contains($"my-dragon-speciesish")
                 .And.Contains("Drachensprach"));
         }
 
@@ -2438,15 +2438,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Automatic))
-                .Returns($"my dragon speciesish");
+                    applicator.DragonSpecies + LanguageConstants.Groups.Automatic))
+                .Returns($"my-dragon-speciesish");
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Bonus))
-                .Returns(["Drachensprach", $"my dragon speciesish", "Lizard", "Latin"]);
+                    applicator.DragonSpecies + LanguageConstants.Groups.Bonus))
+                .Returns(["Drachensprach", $"my-dragon-speciesish", "Lizard", "Latin"]);
 
             var count = 0;
             mockCollectionSelector
@@ -2457,7 +2457,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
-                .And.Contains($"my dragon speciesish")
+                .And.Contains($"my-dragon-speciesish")
                 .And.Contains("Drachensprach"));
         }
 
@@ -2474,15 +2474,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Automatic))
-                .Returns($"my dragon speciesish");
+                    applicator.DragonSpecies + LanguageConstants.Groups.Automatic))
+                .Returns($"my-dragon-speciesish");
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Bonus))
-                .Returns(["Drachensprach", $"my dragon speciesish", "Lizard", "Latin"]);
+                    applicator.DragonSpecies + LanguageConstants.Groups.Bonus))
+                .Returns(["Drachensprach", $"my-dragon-speciesish", "Lizard", "Latin"]);
 
             var count = 0;
             mockCollectionSelector
@@ -2493,7 +2493,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
-                .And.Contains($"my dragon speciesish"));
+                .And.Contains($"my-dragon-speciesish"));
         }
 
         [Test]
@@ -2503,22 +2503,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Abilities[AbilityConstants.Intelligence].RacialAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = 0;
 
-            baseCreature.Languages = baseCreature.Languages.Union([$"my dragon speciesish", "Lizard", "Latin"]);
+            baseCreature.Languages = baseCreature.Languages.Union([$"my-dragon-speciesish", "Lizard", "Latin"]);
             var originalLanguages = baseCreature.Languages.ToArray();
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Automatic))
-                .Returns("my dragon speciesish");
+                    applicator.DragonSpecies + LanguageConstants.Groups.Automatic))
+                .Returns("my-dragon-speciesish");
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(
                     Config.Name,
                     TableNameConstants.Collection.LanguageGroups,
-                    "my dragon species" + LanguageConstants.Groups.Bonus))
-                .Returns(["Drachensprach", "my dragon speciesish", "Lizard", "Latin"]);
+                    applicator.DragonSpecies + LanguageConstants.Groups.Bonus))
+                .Returns(["Drachensprach", "my-dragon-speciesish", "Lizard", "Latin"]);
 
             var count = 0;
             mockCollectionSelector
@@ -2529,7 +2529,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
-                .And.Contains($"my dragon speciesish")
+                .And.Contains($"my-dragon-speciesish")
                 .And.Contains("Drachensprach")
                 .And.Contains("Latin"));
         }
@@ -2541,7 +2541,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockMagicGenerator
                 .Setup(g => g.GenerateWith(
                     baseCreature.Name,
-                    new Alignment { Lawfulness = $"my dragon speciesy", Goodness = "scaley" },
+                    new Alignment { Lawfulness = $"my-dragon-speciesy", Goodness = "scaley" },
                     baseCreature.Abilities,
                     baseCreature.Equipment))
                 .Returns(dragonMagic);
@@ -2558,7 +2558,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockMagicGenerator
                 .Setup(g => g.GenerateWith(
                     baseCreature.Name,
-                    new Alignment { Lawfulness = $"my dragon speciesy", Goodness = "scaley" },
+                    new Alignment { Lawfulness = $"my-dragon-speciesy", Goodness = "scaley" },
                     baseCreature.Abilities,
                     baseCreature.Equipment))
                 .Returns(dragonMagic);
@@ -2571,7 +2571,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void IsCompatible_ReturnsTrue()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithName("my creature")
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .Build();
+
+            var compatible = applicator.IsCompatible(creature);
+            Assert.That(compatible, Is.True);
         }
 
         [TestCase(CreatureConstants.Types.Aberration)]
@@ -2597,7 +2604,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithCreatureType(creatureType, "subtype 1", CreatureConstants.Types.Subtypes.Incorporeal, "subtype 2")
                 .Build();
 
-            var compatible = applicator.IsCompatible(creature, false);
+            var compatible = applicator.IsCompatible(creature);
             Assert.That(compatible, Is.False);
         }
 
@@ -2610,7 +2617,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithCreatureType(creatureType, "subtype 1", "subtype 2")
                 .Build();
 
-            var compatible = applicator.IsCompatible(creature, false);
+            var compatible = applicator.IsCompatible(creature);
             Assert.That(compatible, Is.EqualTo(expected));
         }
 
@@ -2629,7 +2636,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = "my dragon alignment" };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.True);
         }
 
@@ -2648,7 +2655,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = "different alignment" };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.True);
         }
 
@@ -2667,7 +2674,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = "wrong alignment" };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.False);
         }
 
@@ -2683,7 +2690,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { ChallengeRating = filter };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.True);
         }
 
@@ -2699,7 +2706,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(filter, -1) };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.False);
         }
 
@@ -2715,122 +2722,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(filter, 1) };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.False);
-        }
-
-        [TestCaseSource(nameof(ChallengeRatingAdjustments_Filtered_HumanoidCharacter))]
-        public void IsCompatible_WithChallengeRating_ReturnsCompatibility_ChallengeRatingMustMatch_HumanoidAsCharacter(
-            double hitDiceQuantity,
-            string original,
-            string filter,
-            bool expected)
-        {
-            var creature = new CreaturePrototypeBuilder()
-                .WithTestValues()
-                .WithName("my creature")
-                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                .WithChallengeRating(original)
-                .WithHitDiceQuantity(hitDiceQuantity)
-                .Build();
-
-            var filters = new Filters { ChallengeRating = filter };
-
-            var compatible = applicator.IsCompatible(creature, true, filters);
-            Assert.That(compatible, Is.EqualTo(expected));
-        }
-
-        private static IEnumerable ChallengeRatingAdjustments_Filtered_HumanoidCharacter
-        {
-            get
-            {
-                //INFO: We will only deal with the first 12 (up to CR 5), as anything after that is basic Increase functionality
-                var challengeRatings = ChallengeRatingConstants.GetOrdered().Take(12);
-                var hitDice = new[] { 0.5, 1, 2 };
-
-                foreach (var quantity in hitDice)
-                {
-                    foreach (var cr in challengeRatings)
-                    {
-                        var increase = ChallengeRatingConstants.IncreaseChallengeRating(cr, 2);
-
-                        if (quantity <= 1)
-                        {
-                            yield return new TestCaseData(quantity, cr, ChallengeRatingConstants.CR2, false);
-                            yield return new TestCaseData(quantity, cr, ChallengeRatingConstants.CR3, true);
-                            yield return new TestCaseData(quantity, cr, ChallengeRatingConstants.CR4, false);
-                        }
-                        else if (ChallengeRatingConstants.IsGreaterThan(ChallengeRatingConstants.CR3, increase))
-                        {
-                            yield return new TestCaseData(quantity, cr, cr, false);
-                            yield return new TestCaseData(quantity, cr, ChallengeRatingConstants.CR2, false);
-                            yield return new TestCaseData(quantity, cr, ChallengeRatingConstants.CR3, true);
-                            yield return new TestCaseData(quantity, cr, ChallengeRatingConstants.CR4, false);
-                        }
-                        else
-                        {
-                            var low1 = ChallengeRatingConstants.IncreaseChallengeRating(cr, 1);
-                            var high1 = ChallengeRatingConstants.IncreaseChallengeRating(increase, 1);
-
-                            yield return new TestCaseData(quantity, cr, cr, false);
-                            yield return new TestCaseData(quantity, cr, low1, false);
-                            yield return new TestCaseData(quantity, cr, increase, true);
-                            yield return new TestCaseData(quantity, cr, high1, false);
-                        }
-                    }
-                }
-            }
-        }
-
-        [TestCaseSource(nameof(ChallengeRatingAdjustments_Filtered))]
-        public void IsCompatible_WithChallengeRating_ReturnsCompatibility_ChallengeRatingMustMatch_NonHumanoidAsCharacter(
-            string original,
-            string filter,
-            bool expected)
-        {
-            var creature = new CreaturePrototypeBuilder()
-                .WithTestValues()
-                .WithName("my creature")
-                .WithCreatureType(CreatureConstants.Types.Giant, "subtype 1", "subtype 2")
-                .WithChallengeRating(original)
-                .Build();
-
-            var filters = new Filters { ChallengeRating = filter };
-
-            var compatible = applicator.IsCompatible(creature, true, filters);
-            Assert.That(compatible, Is.EqualTo(expected));
-        }
-
-        private static IEnumerable ChallengeRatingAdjustments_Filtered
-        {
-            get
-            {
-                //INFO: We will only deal with the first 12 (up to CR 5), as anything after that is basic Increase functionality
-                var challengeRatings = ChallengeRatingConstants.GetOrdered().Take(12);
-
-                foreach (var cr in challengeRatings)
-                {
-                    var increase = ChallengeRatingConstants.IncreaseChallengeRating(cr, 2);
-
-                    if (ChallengeRatingConstants.IsGreaterThan(ChallengeRatingConstants.CR3, increase))
-                    {
-                        yield return new TestCaseData(cr, cr, false);
-                        yield return new TestCaseData(cr, ChallengeRatingConstants.CR2, false);
-                        yield return new TestCaseData(cr, ChallengeRatingConstants.CR3, true);
-                        yield return new TestCaseData(cr, ChallengeRatingConstants.CR4, false);
-                    }
-                    else
-                    {
-                        var low1 = ChallengeRatingConstants.IncreaseChallengeRating(cr, 1);
-                        var high1 = ChallengeRatingConstants.IncreaseChallengeRating(increase, 1);
-
-                        yield return new TestCaseData(cr, cr, false);
-                        yield return new TestCaseData(cr, low1, false);
-                        yield return new TestCaseData(cr, increase, true);
-                        yield return new TestCaseData(cr, high1, false);
-                    }
-                }
-            }
         }
 
         [TestCase(CreatureConstants.Types.Dragon)]
@@ -2846,7 +2739,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Type = type };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.True);
         }
 
@@ -2900,7 +2793,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Type = filterType };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.EqualTo(expected));
         }
 
@@ -2911,44 +2804,107 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithTestValues()
                 .WithName("my creature")
                 .WithCreatureType(CreatureConstants.Types.Animal, "subtype 1", "subtype 2")
-                .WithAlignments("wrong Evil", AlignmentConstants.TrueNeutral, "other alignment")
                 .WithChallengeRating(ChallengeRatingConstants.CR2)
                 .WithHitDiceQuantity(8)
                 .Build();
 
             var filters = new Filters
             {
-                Alignment = AlignmentConstants.NeutralGood,
+                Alignment = "preset alignment",
                 ChallengeRating = ChallengeRatingConstants.CR4,
-                Type = CreatureConstants.Types.MagicalBeast,
+                Type = CreatureConstants.Types.Animal,
             };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.True);
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecausePrototype()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithName("my creature")
+                .WithCreatureType(CreatureConstants.Types.Animal, "subtype 1", CreatureConstants.Types.Subtypes.Incorporeal, "subtype 2")
+                .WithChallengeRating(ChallengeRatingConstants.CR2)
+                .WithHitDiceQuantity(8)
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignment = "preset alignment",
+                ChallengeRating = ChallengeRatingConstants.CR4,
+                Type = CreatureConstants.Types.Animal,
+            };
+
+            var compatible = applicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseAlignment()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithName("my creature")
+                .WithCreatureType(CreatureConstants.Types.Animal, "subtype 1", "subtype 2")
+                .WithChallengeRating(ChallengeRatingConstants.CR2)
+                .WithHitDiceQuantity(8)
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignment = "wrong alignment",
+                ChallengeRating = ChallengeRatingConstants.CR4,
+                Type = CreatureConstants.Types.Animal,
+            };
+
+            var compatible = applicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseChallengeRating()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithName("my creature")
+                .WithCreatureType(CreatureConstants.Types.Animal, "subtype 1", "subtype 2")
+                .WithChallengeRating(ChallengeRatingConstants.CR2)
+                .WithHitDiceQuantity(8)
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignment = "preset alignment",
+                ChallengeRating = ChallengeRatingConstants.CR3,
+                Type = CreatureConstants.Types.Animal,
+            };
+
+            var compatible = applicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseType()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithName("my creature")
+                .WithCreatureType(CreatureConstants.Types.Animal, "subtype 1", "subtype 2")
+                .WithChallengeRating(ChallengeRatingConstants.CR2)
+                .WithHitDiceQuantity(8)
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignment = "preset alignment",
+                ChallengeRating = ChallengeRatingConstants.CR4,
+                Type = "subtype 666",
+            };
+
+            var compatible = applicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.False);
         }
 
         private static IEnumerable CreatureTypeCompatible
@@ -2993,52 +2949,50 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithLevelAdjustment(90210)
                 .WithHitDiceQuantity(9)
                 .WithAbility(AbilityConstants.Strength, 96)
-                .WithAbility(AbilityConstants.Constitution, 90210)
+                .WithAbility(AbilityConstants.Constitution, 22)
                 .WithAbility(AbilityConstants.Dexterity, 42)
                 .WithAbility(AbilityConstants.Intelligence, 600)
                 .WithAbility(AbilityConstants.Wisdom, 1337)
                 .WithAbility(AbilityConstants.Charisma, 1336)
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, false);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Type, Is.Not.Null);
-            Assert.That(updatedPrototype.Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
-            Assert.That(updatedPrototype.Type.SubTypes, Is.EqualTo(
+            Assert.That(updatedPrototype.Type.Name, Is.EqualTo(CreatureConstants.Types.Dragon));
+            Assert.That(updatedPrototype.Type.SubTypes, Is.EquivalentTo(
             [
                 "subtype 1",
                 "subtype 2",
                 CreatureConstants.Types.Humanoid,
-                CreatureConstants.Types.Subtypes.Native,
                 CreatureConstants.Types.Subtypes.Augmented
             ]));
             Assert.That(updatedPrototype.Abilities, Has.Count.EqualTo(6));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(96 + Ability.DefaultScore + 4));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(96 + Ability.DefaultScore + 8));
             Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.EqualTo(4));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1336 + Ability.DefaultScore + 4));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.EqualTo(8));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1336 + Ability.DefaultScore + 2));
             Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(4));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(600 + Ability.DefaultScore + 4));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(2));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(600 + Ability.DefaultScore + 2));
             Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.EqualTo(4));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(1337 + Ability.DefaultScore + 4));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.EqualTo(2));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(1337 + Ability.DefaultScore + 0));
             Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].TemplateAdjustment, Is.EqualTo(4));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(42 + Ability.DefaultScore + 4));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].TemplateAdjustment, Is.EqualTo(0));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(42 + Ability.DefaultScore + 0));
             Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].TemplateAdjustment, Is.EqualTo(4));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(90210 + Ability.DefaultScore + 4));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].TemplateAdjustment, Is.EqualTo(0));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(22 + Ability.DefaultScore + 2));
             Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(4));
-            Assert.That(updatedPrototype.Alignments, Is.EqualTo(
-            [
-                new Alignment(AlignmentConstants.LawfulGood),
-                new Alignment("other Good"),
-            ]));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(2));
+            Assert.That(updatedPrototype.Alignments, Is.EquivalentTo(
+                [new Alignment("other alignment"),
+                new Alignment($"{applicator.DragonSpecies}y scaley"),
+                new Alignment("preset alignment")]));
             Assert.That(updatedPrototype.CasterLevel, Is.EqualTo(9266 + 0));
             Assert.That(updatedPrototype.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR3));
-            Assert.That(updatedPrototype.LevelAdjustment, Is.EqualTo(90210 + 2));
+            Assert.That(updatedPrototype.LevelAdjustment, Is.EqualTo(90210 + 3));
             Assert.That(updatedPrototype.HitDiceQuantity, Is.EqualTo(9 + 0));
         }
 
@@ -3061,7 +3015,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithoutAbility(ability)
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, false);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Abilities, Has.Count.EqualTo(6));
             Assert.That(updatedPrototype.Abilities[ability].FullScore, Is.Zero);
@@ -3084,27 +3038,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAbility(AbilityConstants.Charisma, 1336, 2022)
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, false);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Abilities, Has.Count.EqualTo(6));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(96 + Ability.DefaultScore + 4 + 783));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(96 + Ability.DefaultScore + 8 + 783));
             Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.EqualTo(4));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1336 + Ability.DefaultScore + 4 + 22));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.EqualTo(8 + 783));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1336 + Ability.DefaultScore + 2 + 2022));
             Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(4));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(600 + Ability.DefaultScore + 4 + 2015));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(2 + 2022));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(600 + Ability.DefaultScore + 2 + 9));
             Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.EqualTo(4));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(1337 + Ability.DefaultScore + 4 + 9));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.EqualTo(2 + 9));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(1337 + Ability.DefaultScore + 0 + 22));
             Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].TemplateAdjustment, Is.EqualTo(4));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(42 + Ability.DefaultScore + 4 + 2022));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].TemplateAdjustment, Is.EqualTo(0 + 22));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(42 + Ability.DefaultScore + 0 + 2015));
             Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].TemplateAdjustment, Is.EqualTo(4));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(90210 + Ability.DefaultScore + 4 + 8245));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].TemplateAdjustment, Is.EqualTo(0 + 2015));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(90210 + Ability.DefaultScore + 2 + 8245));
             Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(4));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(2 + 8245));
         }
 
         [Test]
@@ -3119,7 +3073,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, false);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Alignments, Is.EqualTo(
             [
@@ -3142,7 +3096,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, false);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Alignments, Is.EqualTo(
             [
@@ -3167,7 +3121,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = "my-dragon alignment" };
 
-            var updatedPrototype = applicator.ApplyTo(creature, false, filters);
+            var updatedPrototype = applicator.ApplyTo(creature, filters);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Alignments, Is.EqualTo(
             [
@@ -3189,10 +3143,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = "my-dragon alignment" };
 
-            var updatedPrototype = applicator.ApplyTo(creature, false, filters);
+            var updatedPrototype = applicator.ApplyTo(creature, filters);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Alignments, Is.EqualTo(
             [
+                new Alignment("my-dragon alignment"),
                 new Alignment("my-dragon alignment"),
             ]));
         }
@@ -3207,7 +3162,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithChallengeRating(original)
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, false);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.ChallengeRating, Is.EqualTo(challengeRating));
         }
@@ -3222,7 +3177,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithChallengeRating(original)
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, true);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.ChallengeRating, Is.EqualTo(challengeRating));
         }
@@ -3237,7 +3192,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithChallengeRating(original)
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, true);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.ChallengeRating, Is.EqualTo(challengeRating));
         }
@@ -3252,19 +3207,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithLevelAdjustment(null)
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, false);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.LevelAdjustment, Is.Null);
         }
 
         [TestCase(CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.Types.Animal)]
-        [TestCase(CreatureConstants.Types.Dragon)]
         [TestCase(CreatureConstants.Types.Fey)]
         [TestCase(CreatureConstants.Types.Giant)]
         [TestCase(CreatureConstants.Types.Humanoid)]
         [TestCase(CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.Types.Ooze)]
         [TestCase(CreatureConstants.Types.Plant)]
         [TestCase(CreatureConstants.Types.Vermin)]
         public void ApplyTo_Prototype_ReturnsUpdatedPrototype_TypeAdjusted(string originalType)
@@ -3276,7 +3231,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, false);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Type.Name, Is.EqualTo(CreatureConstants.Types.Dragon));
             Assert.That(updatedPrototype.Type.SubTypes,

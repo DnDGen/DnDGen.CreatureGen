@@ -36,6 +36,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                     Name = creature,
                     Abilities = allAbilityAdjustments[creature].ToDictionary(a => a.Type, a => new Ability(a.Type)
                     {
+                        //INFO: Since prototypes are for Template validation, we only want the Maximum ability roll for a given ability
+                        //This allows for potentially-high-roll randomizers to have creatures with low abilities to still meet Template Minimum Ability requirements
                         BaseScore = abilityRandomizer.GetMax(dice, a.Type),
                         RacialAdjustment = a.Amount
                     }),
@@ -47,6 +49,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                     LevelAdjustment = creatureData.LevelAdjustment,
                     Type = new CreatureType(creatureData.Types),
                     HasSkeleton = creatureData.HasSkeleton,
+                    AsCharacter = asCharacter,
                 };
 
                 var missingAbilityNames = abilityNames.Except(prototype.Abilities.Keys).ToArray();

@@ -439,7 +439,7 @@ namespace DnDGen.CreatureGen.Templates
             return (true, null);
         }
 
-        public CreaturePrototype ApplyTo(CreaturePrototype creature, bool asCharacter, Filters filters = null)
+        public CreaturePrototype ApplyTo(CreaturePrototype creature, Filters filters = null)
         {
             UpdateCreatureAbilities(creature);
             UpdateCreatureAlignment(creature, filters?.Alignment);
@@ -450,7 +450,7 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public bool IsCompatible(CreaturePrototype creature, bool asCharacter, Filters filters = null)
+        public bool IsCompatible(CreaturePrototype creature, Filters filters = null)
         {
             var (Compatible, Reason) = IsCompatible(
                 creature.Type.AllTypes,

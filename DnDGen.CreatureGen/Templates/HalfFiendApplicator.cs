@@ -201,8 +201,7 @@ namespace DnDGen.CreatureGen.Templates
         {
             creature.Alignments = [.. creature.Alignments
                 .Where(a => a.Goodness != AlignmentConstants.Good)
-                .Select(a => UpdateCreatureAlignment(a, presetAlignment))
-                .Distinct()];
+                .Select(a => UpdateCreatureAlignment(a, presetAlignment))];
         }
 
         private Alignment UpdateCreatureAlignment(Alignment alignment, string presetAlignment)
@@ -579,7 +578,7 @@ namespace DnDGen.CreatureGen.Templates
             return (true, null);
         }
 
-        public CreaturePrototype ApplyTo(CreaturePrototype creature, bool asCharacter, Filters filters = null)
+        public CreaturePrototype ApplyTo(CreaturePrototype creature, Filters filters = null)
         {
             UpdateCreatureAbilities(creature);
             UpdateCreatureAlignment(creature, filters?.Alignment);
@@ -590,7 +589,7 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public bool IsCompatible(CreaturePrototype creature, bool asCharacter, Filters filters = null)
+        public bool IsCompatible(CreaturePrototype creature, Filters filters = null)
         {
             var (Compatible, _) = IsCompatible(
                 creature.Type.AllTypes,

@@ -29,14 +29,13 @@ namespace DnDGen.CreatureGen.Verifiers
                 if (!string.IsNullOrEmpty(firstTemplate))
                 {
                     var applicator = factory.Build<TemplateApplicator>(firstTemplate);
-                    prototypes = prototypes.Select(p => applicator.ApplyTo(p, asCharacter, filters));
+                    prototypes = prototypes.Select(p => applicator.ApplyTo(p, filters));
                 }
 
                 return prototypes;
             }
 
-            var firstTemplateCreatures = GetCompatibleCreaturesForTemplate(sourceCreatures, templates[0], asCharacter, abilityRandomizer);
-            var protoypes = prototypeFactory.Build(firstTemplateCreatures, asCharacter, abilityRandomizer);
+            var protoypes = prototypeFactory.Build(sourceCreatures, asCharacter, abilityRandomizer);
 
             //INFO: We only want to apply filters to the last creature in a series of chained templates
             for (var i = 0; i < templates.Count - 1; i++)
@@ -107,8 +106,8 @@ namespace DnDGen.CreatureGen.Verifiers
         private IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, string template, bool asCharacter, Filters filters = null)
         {
             var applicator = factory.Build<TemplateApplicator>(template);
-            var compatiblePrototypes = sourceCreatures.Where(p => applicator.IsCompatible(p, asCharacter, filters));
-            var updatedPrototypes = compatiblePrototypes.Select(p => applicator.ApplyTo(p, asCharacter, filters));
+            var compatiblePrototypes = sourceCreatures.Where(p => applicator.IsCompatible(p, filters));
+            var updatedPrototypes = compatiblePrototypes.Select(p => applicator.ApplyTo(p, filters));
 
             //INFO: Trigger immediate execution, so it won't re-apply templates or re-compute validity.
             return [.. updatedPrototypes];

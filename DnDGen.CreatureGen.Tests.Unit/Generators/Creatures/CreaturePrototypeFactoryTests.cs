@@ -23,6 +23,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         private Mock<ICollectionDataSelector<CreatureDataSelection>> mockCreatureDataSelector;
         private Mock<ICollectionTypeAndAmountSelector> mockTypeAndAmountSelector;
         private Mock<Dice> mockDice;
+        private const int DefaultMax = 11;
 
         [SetUp]
         public void Setup()
@@ -38,7 +39,84 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 mockTypeAndAmountSelector.Object,
                 mockDice.Object);
 
-            mockDice.Setup(d => d.Roll(AbilityConstants.RandomizerRolls.Default).AsPotentialMaximum<int>(true)).Returns(11);
+            mockDice.Setup(d => d.Roll(AbilityConstants.RandomizerRolls.Default).AsPotentialMaximum<int>(true)).Returns(DefaultMax);
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void Build_ReturnsPrototype_WithAsCharacterSet(bool asCharacter)
+        {
+            var data = new Dictionary<string, IEnumerable<CreatureDataSelection>>
+            {
+                ["creature 1"] = [new()
+                {
+                    CasterLevel = 0,
+                    ChallengeRating = ChallengeRatingConstants.CR2,
+                    LevelAdjustment = null,
+                    Size = SizeConstants.Diminutive,
+                    HitDiceQuantity = 0.5,
+                    Types = ["my creature type"],
+                    HasSkeleton = true,
+                }],
+            };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData))
+                .Returns(data);
+
+            var alignments = new Dictionary<string, IEnumerable<string>>
+            {
+                ["creature 1"] = [AlignmentConstants.ChaoticEvil],
+            };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+
+            var abilities = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                [CreatureConstants.Human] =
+                [
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
+                ],
+                ["creature 1"] =
+                [
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = 0 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = 0 },
+                ],
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments))
+                .Returns(abilities);
+
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountDataSelection>>
+            {
+                ["creature 1"] = [],
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+
+            var creatures = new[]
+            {
+                "creature 1",
+            };
+
+            var prototypes = prototypeFactory.Build(creatures, asCharacter).ToArray();
+            Assert.That(prototypes, Has.Length.EqualTo(1));
+            Assert.That(prototypes[0].Name, Is.EqualTo("creature 1"));
+            Assert.That(prototypes[0].AsCharacter, Is.EqualTo(asCharacter));
         }
 
         [TestCase(true)]
@@ -88,6 +166,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 ],
                 ["creature 1"] =
                 [
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 0 },
                     new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 0 },
                     new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 0 },
                     new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
@@ -114,7 +193,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 "creature 1",
             };
 
-            var prototypes = prototypeFactory.Build(creatures, asCharacter).ToArray();
+            var prototypes = prototypeFactory.Build(creatures, asCharacter, randomizer).ToArray();
             Assert.That(prototypes, Has.Length.EqualTo(1));
             Assert.That(prototypes[0].Name, Is.EqualTo("creature 1"));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Strength].BaseScore, Is.EqualTo(9266));
@@ -177,6 +256,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 ],
                 ["creature 1"] =
                 [
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 0 },
                     new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 0 },
                     new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 0 },
                     new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = 0 },
@@ -203,7 +283,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 "creature 1",
             };
 
-            var prototypes = prototypeFactory.Build(creatures, asCharacter).ToArray();
+            var prototypes = prototypeFactory.Build(creatures, asCharacter, randomizer).ToArray();
             Assert.That(prototypes, Has.Length.EqualTo(1));
             Assert.That(prototypes[0].Name, Is.EqualTo("creature 1"));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Strength].BaseScore, Is.EqualTo(9266));
@@ -504,7 +584,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var prototypes = prototypeFactory.Build(creatures, false).ToArray();
             Assert.That(prototypes, Has.Length.EqualTo(7));
             Assert.That(prototypes[0].Name, Is.EqualTo("creature 1"));
-            Assert.That(prototypes[0].Alignments, Is.EqualTo(alignments["creature 1"].Select(a => new Alignment(a)).Distinct()));
+            Assert.That(prototypes[0].Alignments, Is.EqualTo(alignments["creature 1"].Select(a => new Alignment(a))));
             Assert.That(prototypes[0].Abilities, Has.Count.EqualTo(6)
                 .And.ContainKey(AbilityConstants.Strength)
                 .And.ContainKey(AbilityConstants.Constitution)
@@ -515,15 +595,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[0].Abilities[AbilityConstants.Strength].Name, Is.EqualTo(AbilityConstants.Strength));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(0));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Constitution].Name, Is.EqualTo(AbilityConstants.Constitution));
-            Assert.That(prototypes[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(11));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(DefaultMax));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Dexterity].Name, Is.EqualTo(AbilityConstants.Dexterity));
-            Assert.That(prototypes[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(11));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(DefaultMax));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Intelligence].Name, Is.EqualTo(AbilityConstants.Intelligence));
-            Assert.That(prototypes[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(11));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(DefaultMax));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Wisdom].Name, Is.EqualTo(AbilityConstants.Wisdom));
-            Assert.That(prototypes[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(11));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(DefaultMax));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
-            Assert.That(prototypes[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(11));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(DefaultMax));
             Assert.That(prototypes[0].CasterLevel, Is.EqualTo(data["creature 1"].Single().CasterLevel));
             Assert.That(prototypes[0].Size, Is.EqualTo(data["creature 1"].Single().Size));
             Assert.That(prototypes[0].ChallengeRating, Is.EqualTo(data["creature 1"].Single().GetEffectiveChallengeRating(false)));
@@ -532,7 +612,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[0].Type.AllTypes, Is.EqualTo(data["creature 1"].Single().Types));
 
             Assert.That(prototypes[1].Name, Is.EqualTo("creature 6"));
-            Assert.That(prototypes[1].Alignments, Is.EqualTo(alignments["creature 6"].Select(a => new Alignment(a)).Distinct()));
+            Assert.That(prototypes[1].Alignments, Is.EqualTo(alignments["creature 6"].Select(a => new Alignment(a))));
             Assert.That(prototypes[1].Abilities, Has.Count.EqualTo(6)
                 .And.ContainKey(AbilityConstants.Strength)
                 .And.ContainKey(AbilityConstants.Constitution)
@@ -541,15 +621,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .And.ContainKey(AbilityConstants.Wisdom)
                 .And.ContainKey(AbilityConstants.Charisma));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Strength].Name, Is.EqualTo(AbilityConstants.Strength));
-            Assert.That(prototypes[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(11 + 12));
+            Assert.That(prototypes[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(DefaultMax + 12));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Constitution].Name, Is.EqualTo(AbilityConstants.Constitution));
-            Assert.That(prototypes[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(11 + 13));
+            Assert.That(prototypes[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(DefaultMax + 13));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Dexterity].Name, Is.EqualTo(AbilityConstants.Dexterity));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(1));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Intelligence].Name, Is.EqualTo(AbilityConstants.Intelligence));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(1));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Wisdom].Name, Is.EqualTo(AbilityConstants.Wisdom));
-            Assert.That(prototypes[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(11 + 16));
+            Assert.That(prototypes[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(DefaultMax + 16));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(0));
             Assert.That(prototypes[1].CasterLevel, Is.EqualTo(data["creature 6"].Single().CasterLevel));
@@ -560,7 +640,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[1].Type.AllTypes, Is.EqualTo(data["creature 6"].Single().Types));
 
             Assert.That(prototypes[2].Name, Is.EqualTo("creature 2"));
-            Assert.That(prototypes[2].Alignments, Is.EqualTo(alignments["creature 2"].Select(a => new Alignment(a)).Distinct()));
+            Assert.That(prototypes[2].Alignments, Is.EqualTo(alignments["creature 2"].Select(a => new Alignment(a))));
             Assert.That(prototypes[2].Abilities, Has.Count.EqualTo(6)
                 .And.ContainKey(AbilityConstants.Strength)
                 .And.ContainKey(AbilityConstants.Constitution)
@@ -569,17 +649,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .And.ContainKey(AbilityConstants.Wisdom)
                 .And.ContainKey(AbilityConstants.Charisma));
             Assert.That(prototypes[2].Abilities[AbilityConstants.Strength].Name, Is.EqualTo(AbilityConstants.Strength));
-            Assert.That(prototypes[2].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(11));
+            Assert.That(prototypes[2].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(DefaultMax + 1));
             Assert.That(prototypes[2].Abilities[AbilityConstants.Constitution].Name, Is.EqualTo(AbilityConstants.Constitution));
             Assert.That(prototypes[2].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
             Assert.That(prototypes[2].Abilities[AbilityConstants.Dexterity].Name, Is.EqualTo(AbilityConstants.Dexterity));
-            Assert.That(prototypes[2].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(12));
+            Assert.That(prototypes[2].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(DefaultMax + 2));
             Assert.That(prototypes[2].Abilities[AbilityConstants.Intelligence].Name, Is.EqualTo(AbilityConstants.Intelligence));
-            Assert.That(prototypes[2].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(8));
+            Assert.That(prototypes[2].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(DefaultMax - 2));
             Assert.That(prototypes[2].Abilities[AbilityConstants.Wisdom].Name, Is.EqualTo(AbilityConstants.Wisdom));
-            Assert.That(prototypes[2].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(13));
+            Assert.That(prototypes[2].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(DefaultMax + 3));
             Assert.That(prototypes[2].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
-            Assert.That(prototypes[2].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(7));
+            Assert.That(prototypes[2].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(DefaultMax - 3));
             Assert.That(prototypes[2].CasterLevel, Is.EqualTo(data["creature 2"].Single().CasterLevel));
             Assert.That(prototypes[2].Size, Is.EqualTo(data["creature 2"].Single().Size));
             Assert.That(prototypes[2].ChallengeRating, Is.EqualTo(data["creature 2"].Single().GetEffectiveChallengeRating(false)));
@@ -588,7 +668,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[2].Type.AllTypes, Is.EqualTo(data["creature 2"].Single().Types));
 
             Assert.That(prototypes[3].Name, Is.EqualTo("creature 5"));
-            Assert.That(prototypes[3].Alignments, Is.EqualTo(alignments["creature 5"].Select(a => new Alignment(a)).Distinct()));
+            Assert.That(prototypes[3].Alignments, Is.EqualTo(alignments["creature 5"].Select(a => new Alignment(a))));
             Assert.That(prototypes[3].Abilities, Has.Count.EqualTo(6)
                 .And.ContainKey(AbilityConstants.Strength)
                 .And.ContainKey(AbilityConstants.Constitution)
@@ -597,13 +677,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .And.ContainKey(AbilityConstants.Wisdom)
                 .And.ContainKey(AbilityConstants.Charisma));
             Assert.That(prototypes[3].Abilities[AbilityConstants.Strength].Name, Is.EqualTo(AbilityConstants.Strength));
-            Assert.That(prototypes[3].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(4));
+            Assert.That(prototypes[3].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(DefaultMax - 6));
             Assert.That(prototypes[3].Abilities[AbilityConstants.Constitution].Name, Is.EqualTo(AbilityConstants.Constitution));
-            Assert.That(prototypes[3].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(3));
+            Assert.That(prototypes[3].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(DefaultMax - 7));
             Assert.That(prototypes[3].Abilities[AbilityConstants.Dexterity].Name, Is.EqualTo(AbilityConstants.Dexterity));
-            Assert.That(prototypes[3].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(18));
+            Assert.That(prototypes[3].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(DefaultMax + 8));
             Assert.That(prototypes[3].Abilities[AbilityConstants.Intelligence].Name, Is.EqualTo(AbilityConstants.Intelligence));
-            Assert.That(prototypes[3].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(19));
+            Assert.That(prototypes[3].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(DefaultMax + 9));
             Assert.That(prototypes[3].Abilities[AbilityConstants.Wisdom].Name, Is.EqualTo(AbilityConstants.Wisdom));
             Assert.That(prototypes[3].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(0));
             Assert.That(prototypes[3].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
@@ -616,7 +696,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[3].Type.AllTypes, Is.EqualTo(data["creature 5"].Single().Types));
 
             Assert.That(prototypes[4].Name, Is.EqualTo("creature 3"));
-            Assert.That(prototypes[4].Alignments, Is.EqualTo(alignments["creature 3"].Select(a => new Alignment(a)).Distinct()));
+            Assert.That(prototypes[4].Alignments, Is.EqualTo(alignments["creature 3"].Select(a => new Alignment(a))));
             Assert.That(prototypes[4].Abilities, Has.Count.EqualTo(6)
                 .And.ContainKey(AbilityConstants.Strength)
                 .And.ContainKey(AbilityConstants.Constitution)
@@ -625,17 +705,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .And.ContainKey(AbilityConstants.Wisdom)
                 .And.ContainKey(AbilityConstants.Charisma));
             Assert.That(prototypes[4].Abilities[AbilityConstants.Strength].Name, Is.EqualTo(AbilityConstants.Strength));
-            Assert.That(prototypes[4].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(6));
+            Assert.That(prototypes[4].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(DefaultMax - 4));
             Assert.That(prototypes[4].Abilities[AbilityConstants.Constitution].Name, Is.EqualTo(AbilityConstants.Constitution));
-            Assert.That(prototypes[4].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(5));
+            Assert.That(prototypes[4].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(DefaultMax - 5));
             Assert.That(prototypes[4].Abilities[AbilityConstants.Dexterity].Name, Is.EqualTo(AbilityConstants.Dexterity));
             Assert.That(prototypes[4].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(0));
             Assert.That(prototypes[4].Abilities[AbilityConstants.Intelligence].Name, Is.EqualTo(AbilityConstants.Intelligence));
-            Assert.That(prototypes[4].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(3));
+            Assert.That(prototypes[4].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(DefaultMax - 7));
             Assert.That(prototypes[4].Abilities[AbilityConstants.Wisdom].Name, Is.EqualTo(AbilityConstants.Wisdom));
-            Assert.That(prototypes[4].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(2));
+            Assert.That(prototypes[4].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(DefaultMax - 8));
             Assert.That(prototypes[4].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
-            Assert.That(prototypes[4].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
+            Assert.That(prototypes[4].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(DefaultMax - 9));
             Assert.That(prototypes[4].CasterLevel, Is.EqualTo(data["creature 3"].Single().CasterLevel));
             Assert.That(prototypes[4].Size, Is.EqualTo(data["creature 3"].Single().Size));
             Assert.That(prototypes[4].ChallengeRating, Is.EqualTo(data["creature 3"].Single().GetEffectiveChallengeRating(false)));
@@ -644,7 +724,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[4].Type.AllTypes, Is.EqualTo(data["creature 3"].Single().Types));
 
             Assert.That(prototypes[5].Name, Is.EqualTo("creature 4"));
-            Assert.That(prototypes[5].Alignments, Is.EqualTo(alignments["creature 4"].Select(a => new Alignment(a)).Distinct()));
+            Assert.That(prototypes[5].Alignments, Is.EqualTo(alignments["creature 4"].Select(a => new Alignment(a))));
             Assert.That(prototypes[5].Abilities, Has.Count.EqualTo(6)
                 .And.ContainKey(AbilityConstants.Strength)
                 .And.ContainKey(AbilityConstants.Constitution)
@@ -653,17 +733,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .And.ContainKey(AbilityConstants.Wisdom)
                 .And.ContainKey(AbilityConstants.Charisma));
             Assert.That(prototypes[5].Abilities[AbilityConstants.Strength].Name, Is.EqualTo(AbilityConstants.Strength));
-            Assert.That(prototypes[5].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(prototypes[5].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(DefaultMax + 0));
             Assert.That(prototypes[5].Abilities[AbilityConstants.Constitution].Name, Is.EqualTo(AbilityConstants.Constitution));
-            Assert.That(prototypes[5].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(11));
+            Assert.That(prototypes[5].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(DefaultMax + 1));
             Assert.That(prototypes[5].Abilities[AbilityConstants.Dexterity].Name, Is.EqualTo(AbilityConstants.Dexterity));
-            Assert.That(prototypes[5].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(12));
+            Assert.That(prototypes[5].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(DefaultMax + 2));
             Assert.That(prototypes[5].Abilities[AbilityConstants.Intelligence].Name, Is.EqualTo(AbilityConstants.Intelligence));
             Assert.That(prototypes[5].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
             Assert.That(prototypes[5].Abilities[AbilityConstants.Wisdom].Name, Is.EqualTo(AbilityConstants.Wisdom));
-            Assert.That(prototypes[5].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(14));
+            Assert.That(prototypes[5].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(DefaultMax + 4));
             Assert.That(prototypes[5].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
-            Assert.That(prototypes[5].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(15));
+            Assert.That(prototypes[5].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(DefaultMax + 5));
             Assert.That(prototypes[5].CasterLevel, Is.EqualTo(data["creature 4"].Single().CasterLevel));
             Assert.That(prototypes[5].Size, Is.EqualTo(data["creature 4"].Single().Size));
             Assert.That(prototypes[5].ChallengeRating, Is.EqualTo(data["creature 4"].Single().GetEffectiveChallengeRating(false)));
@@ -672,7 +752,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[5].Type.AllTypes, Is.EqualTo(data["creature 4"].Single().Types));
 
             Assert.That(prototypes[6].Name, Is.EqualTo("creature 7"));
-            Assert.That(prototypes[6].Alignments, Is.EqualTo(alignments["creature 7"].Select(a => new Alignment(a)).Distinct()));
+            Assert.That(prototypes[6].Alignments, Is.EqualTo(alignments["creature 7"].Select(a => new Alignment(a))));
             Assert.That(prototypes[6].Abilities, Has.Count.EqualTo(6)
                 .And.ContainKey(AbilityConstants.Strength)
                 .And.ContainKey(AbilityConstants.Constitution)
@@ -681,17 +761,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .And.ContainKey(AbilityConstants.Wisdom)
                 .And.ContainKey(AbilityConstants.Charisma));
             Assert.That(prototypes[6].Abilities[AbilityConstants.Strength].Name, Is.EqualTo(AbilityConstants.Strength));
-            Assert.That(prototypes[6].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(22));
+            Assert.That(prototypes[6].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(DefaultMax + 12));
             Assert.That(prototypes[6].Abilities[AbilityConstants.Constitution].Name, Is.EqualTo(AbilityConstants.Constitution));
-            Assert.That(prototypes[6].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(23));
+            Assert.That(prototypes[6].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(DefaultMax + 13));
             Assert.That(prototypes[6].Abilities[AbilityConstants.Dexterity].Name, Is.EqualTo(AbilityConstants.Dexterity));
             Assert.That(prototypes[6].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(1));
             Assert.That(prototypes[6].Abilities[AbilityConstants.Intelligence].Name, Is.EqualTo(AbilityConstants.Intelligence));
             Assert.That(prototypes[6].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(1));
             Assert.That(prototypes[6].Abilities[AbilityConstants.Wisdom].Name, Is.EqualTo(AbilityConstants.Wisdom));
-            Assert.That(prototypes[6].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(26));
+            Assert.That(prototypes[6].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(DefaultMax + 16));
             Assert.That(prototypes[6].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
-            Assert.That(prototypes[6].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(27));
+            Assert.That(prototypes[6].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(DefaultMax + 17));
             Assert.That(prototypes[6].CasterLevel, Is.EqualTo(data["creature 7"].Single().CasterLevel));
             Assert.That(prototypes[6].Size, Is.EqualTo(data["creature 7"].Single().Size));
             Assert.That(prototypes[6].ChallengeRating, Is.EqualTo(data["creature 7"].Single().GetEffectiveChallengeRating(false)));
@@ -912,7 +992,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var prototypes = prototypeFactory.Build(creatures, true).ToArray();
             Assert.That(prototypes, Has.Length.EqualTo(7));
             Assert.That(prototypes[0].Name, Is.EqualTo("creature 1"));
-            Assert.That(prototypes[0].Alignments, Is.EqualTo(alignments["creature 1"].Select(a => new Alignment(a)).Distinct()));
+            Assert.That(prototypes[0].Alignments, Is.EqualTo(alignments["creature 1"].Select(a => new Alignment(a))));
             Assert.That(prototypes[0].Abilities, Has.Count.EqualTo(6)
                 .And.ContainKey(AbilityConstants.Strength)
                 .And.ContainKey(AbilityConstants.Constitution)
@@ -923,15 +1003,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[0].Abilities[AbilityConstants.Strength].Name, Is.EqualTo(AbilityConstants.Strength));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(0));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Constitution].Name, Is.EqualTo(AbilityConstants.Constitution));
-            Assert.That(prototypes[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(DefaultMax));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Dexterity].Name, Is.EqualTo(AbilityConstants.Dexterity));
-            Assert.That(prototypes[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(DefaultMax));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Intelligence].Name, Is.EqualTo(AbilityConstants.Intelligence));
-            Assert.That(prototypes[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(DefaultMax));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Wisdom].Name, Is.EqualTo(AbilityConstants.Wisdom));
-            Assert.That(prototypes[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(DefaultMax));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
-            Assert.That(prototypes[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(DefaultMax));
             Assert.That(prototypes[0].CasterLevel, Is.EqualTo(data["creature 1"].Single().CasterLevel));
             Assert.That(prototypes[0].ChallengeRating, Is.EqualTo(data["creature 1"].Single().GetEffectiveChallengeRating(true)));
             Assert.That(prototypes[0].HitDiceQuantity, Is.EqualTo(data["creature 1"].Single().GetEffectiveHitDiceQuantity(true)));
@@ -939,7 +1019,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[0].Type.AllTypes, Is.EqualTo(data["creature 1"].Single().Types));
 
             Assert.That(prototypes[1].Name, Is.EqualTo("creature 6"));
-            Assert.That(prototypes[1].Alignments, Is.EqualTo(alignments["creature 6"].Select(a => new Alignment(a)).Distinct()));
+            Assert.That(prototypes[1].Alignments, Is.EqualTo(alignments["creature 6"].Select(a => new Alignment(a))));
             Assert.That(prototypes[1].Abilities, Has.Count.EqualTo(6)
                 .And.ContainKey(AbilityConstants.Strength)
                 .And.ContainKey(AbilityConstants.Constitution)
@@ -948,15 +1028,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .And.ContainKey(AbilityConstants.Wisdom)
                 .And.ContainKey(AbilityConstants.Charisma));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Strength].Name, Is.EqualTo(AbilityConstants.Strength));
-            Assert.That(prototypes[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(22));
+            Assert.That(prototypes[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(DefaultMax + 12));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Constitution].Name, Is.EqualTo(AbilityConstants.Constitution));
-            Assert.That(prototypes[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(23));
+            Assert.That(prototypes[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(DefaultMax + 13));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Dexterity].Name, Is.EqualTo(AbilityConstants.Dexterity));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(1));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Intelligence].Name, Is.EqualTo(AbilityConstants.Intelligence));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(1));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Wisdom].Name, Is.EqualTo(AbilityConstants.Wisdom));
-            Assert.That(prototypes[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(26));
+            Assert.That(prototypes[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(DefaultMax + 16));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(0));
             Assert.That(prototypes[1].CasterLevel, Is.EqualTo(data["creature 6"].Single().CasterLevel));
@@ -966,7 +1046,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[1].Type.AllTypes, Is.EqualTo(data["creature 6"].Single().Types));
 
             Assert.That(prototypes[2].Name, Is.EqualTo("creature 2"));
-            Assert.That(prototypes[2].Alignments, Is.EqualTo(alignments["creature 2"].Select(a => new Alignment(a)).Distinct()));
+            Assert.That(prototypes[2].Alignments, Is.EqualTo(alignments["creature 2"].Select(a => new Alignment(a))));
             Assert.That(prototypes[2].Abilities, Has.Count.EqualTo(6)
                 .And.ContainKey(AbilityConstants.Strength)
                 .And.ContainKey(AbilityConstants.Constitution)
@@ -975,17 +1055,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .And.ContainKey(AbilityConstants.Wisdom)
                 .And.ContainKey(AbilityConstants.Charisma));
             Assert.That(prototypes[2].Abilities[AbilityConstants.Strength].Name, Is.EqualTo(AbilityConstants.Strength));
-            Assert.That(prototypes[2].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(11));
+            Assert.That(prototypes[2].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(DefaultMax + 1));
             Assert.That(prototypes[2].Abilities[AbilityConstants.Constitution].Name, Is.EqualTo(AbilityConstants.Constitution));
             Assert.That(prototypes[2].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
             Assert.That(prototypes[2].Abilities[AbilityConstants.Dexterity].Name, Is.EqualTo(AbilityConstants.Dexterity));
-            Assert.That(prototypes[2].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(12));
+            Assert.That(prototypes[2].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(DefaultMax + 2));
             Assert.That(prototypes[2].Abilities[AbilityConstants.Intelligence].Name, Is.EqualTo(AbilityConstants.Intelligence));
-            Assert.That(prototypes[2].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(8));
+            Assert.That(prototypes[2].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(DefaultMax - 2));
             Assert.That(prototypes[2].Abilities[AbilityConstants.Wisdom].Name, Is.EqualTo(AbilityConstants.Wisdom));
-            Assert.That(prototypes[2].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(13));
+            Assert.That(prototypes[2].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(DefaultMax + 3));
             Assert.That(prototypes[2].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
-            Assert.That(prototypes[2].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(7));
+            Assert.That(prototypes[2].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(DefaultMax - 3));
             Assert.That(prototypes[2].CasterLevel, Is.EqualTo(data["creature 2"].Single().CasterLevel));
             Assert.That(prototypes[2].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR0));
             Assert.That(prototypes[2].HitDiceQuantity, Is.EqualTo(data["creature 2"].Single().GetEffectiveHitDiceQuantity(true)));
@@ -993,7 +1073,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[2].Type.AllTypes, Is.EqualTo(data["creature 2"].Single().Types));
 
             Assert.That(prototypes[3].Name, Is.EqualTo("creature 5"));
-            Assert.That(prototypes[3].Alignments, Is.EqualTo(alignments["creature 5"].Select(a => new Alignment(a)).Distinct()));
+            Assert.That(prototypes[3].Alignments, Is.EqualTo(alignments["creature 5"].Select(a => new Alignment(a))));
             Assert.That(prototypes[3].Abilities, Has.Count.EqualTo(6)
                 .And.ContainKey(AbilityConstants.Strength)
                 .And.ContainKey(AbilityConstants.Constitution)
@@ -1002,13 +1082,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .And.ContainKey(AbilityConstants.Wisdom)
                 .And.ContainKey(AbilityConstants.Charisma));
             Assert.That(prototypes[3].Abilities[AbilityConstants.Strength].Name, Is.EqualTo(AbilityConstants.Strength));
-            Assert.That(prototypes[3].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(4));
+            Assert.That(prototypes[3].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(DefaultMax - 6));
             Assert.That(prototypes[3].Abilities[AbilityConstants.Constitution].Name, Is.EqualTo(AbilityConstants.Constitution));
-            Assert.That(prototypes[3].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(3));
+            Assert.That(prototypes[3].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(DefaultMax - 7));
             Assert.That(prototypes[3].Abilities[AbilityConstants.Dexterity].Name, Is.EqualTo(AbilityConstants.Dexterity));
-            Assert.That(prototypes[3].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(18));
+            Assert.That(prototypes[3].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(DefaultMax + 8));
             Assert.That(prototypes[3].Abilities[AbilityConstants.Intelligence].Name, Is.EqualTo(AbilityConstants.Intelligence));
-            Assert.That(prototypes[3].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(19));
+            Assert.That(prototypes[3].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(DefaultMax + 9));
             Assert.That(prototypes[3].Abilities[AbilityConstants.Wisdom].Name, Is.EqualTo(AbilityConstants.Wisdom));
             Assert.That(prototypes[3].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(0));
             Assert.That(prototypes[3].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
@@ -1020,7 +1100,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[3].Type.AllTypes, Is.EqualTo(data["creature 5"].Single().Types));
 
             Assert.That(prototypes[4].Name, Is.EqualTo("creature 3"));
-            Assert.That(prototypes[4].Alignments, Is.EqualTo(alignments["creature 3"].Select(a => new Alignment(a)).Distinct()));
+            Assert.That(prototypes[4].Alignments, Is.EqualTo(alignments["creature 3"].Select(a => new Alignment(a))));
             Assert.That(prototypes[4].Abilities, Has.Count.EqualTo(6)
                 .And.ContainKey(AbilityConstants.Strength)
                 .And.ContainKey(AbilityConstants.Constitution)
@@ -1029,17 +1109,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .And.ContainKey(AbilityConstants.Wisdom)
                 .And.ContainKey(AbilityConstants.Charisma));
             Assert.That(prototypes[4].Abilities[AbilityConstants.Strength].Name, Is.EqualTo(AbilityConstants.Strength));
-            Assert.That(prototypes[4].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(6));
+            Assert.That(prototypes[4].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(DefaultMax - 4));
             Assert.That(prototypes[4].Abilities[AbilityConstants.Constitution].Name, Is.EqualTo(AbilityConstants.Constitution));
-            Assert.That(prototypes[4].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(5));
+            Assert.That(prototypes[4].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(DefaultMax - 5));
             Assert.That(prototypes[4].Abilities[AbilityConstants.Dexterity].Name, Is.EqualTo(AbilityConstants.Dexterity));
             Assert.That(prototypes[4].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(0));
             Assert.That(prototypes[4].Abilities[AbilityConstants.Intelligence].Name, Is.EqualTo(AbilityConstants.Intelligence));
-            Assert.That(prototypes[4].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(3));
+            Assert.That(prototypes[4].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(DefaultMax - 7));
             Assert.That(prototypes[4].Abilities[AbilityConstants.Wisdom].Name, Is.EqualTo(AbilityConstants.Wisdom));
-            Assert.That(prototypes[4].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(2));
+            Assert.That(prototypes[4].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(DefaultMax - 8));
             Assert.That(prototypes[4].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
-            Assert.That(prototypes[4].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
+            Assert.That(prototypes[4].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(DefaultMax - 9));
             Assert.That(prototypes[4].CasterLevel, Is.EqualTo(data["creature 3"].Single().CasterLevel));
             Assert.That(prototypes[4].ChallengeRating, Is.EqualTo(data["creature 3"].Single().GetEffectiveChallengeRating(true)));
             Assert.That(prototypes[4].HitDiceQuantity, Is.EqualTo(data["creature 3"].Single().GetEffectiveHitDiceQuantity(true)));
@@ -1047,7 +1127,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[4].Type.AllTypes, Is.EqualTo(data["creature 3"].Single().Types));
 
             Assert.That(prototypes[5].Name, Is.EqualTo("creature 4"));
-            Assert.That(prototypes[5].Alignments, Is.EqualTo(alignments["creature 4"].Select(a => new Alignment(a)).Distinct()));
+            Assert.That(prototypes[5].Alignments, Is.EqualTo(alignments["creature 4"].Select(a => new Alignment(a))));
             Assert.That(prototypes[5].Abilities, Has.Count.EqualTo(6)
                 .And.ContainKey(AbilityConstants.Strength)
                 .And.ContainKey(AbilityConstants.Constitution)
@@ -1056,17 +1136,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .And.ContainKey(AbilityConstants.Wisdom)
                 .And.ContainKey(AbilityConstants.Charisma));
             Assert.That(prototypes[5].Abilities[AbilityConstants.Strength].Name, Is.EqualTo(AbilityConstants.Strength));
-            Assert.That(prototypes[5].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(prototypes[5].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(DefaultMax + 0));
             Assert.That(prototypes[5].Abilities[AbilityConstants.Constitution].Name, Is.EqualTo(AbilityConstants.Constitution));
-            Assert.That(prototypes[5].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(11));
+            Assert.That(prototypes[5].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(DefaultMax + 1));
             Assert.That(prototypes[5].Abilities[AbilityConstants.Dexterity].Name, Is.EqualTo(AbilityConstants.Dexterity));
-            Assert.That(prototypes[5].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(12));
+            Assert.That(prototypes[5].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(DefaultMax + 2));
             Assert.That(prototypes[5].Abilities[AbilityConstants.Intelligence].Name, Is.EqualTo(AbilityConstants.Intelligence));
             Assert.That(prototypes[5].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
             Assert.That(prototypes[5].Abilities[AbilityConstants.Wisdom].Name, Is.EqualTo(AbilityConstants.Wisdom));
-            Assert.That(prototypes[5].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(14));
+            Assert.That(prototypes[5].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(DefaultMax + 4));
             Assert.That(prototypes[5].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
-            Assert.That(prototypes[5].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(15));
+            Assert.That(prototypes[5].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(DefaultMax + 5));
             Assert.That(prototypes[5].CasterLevel, Is.EqualTo(data["creature 4"].Single().CasterLevel));
             Assert.That(prototypes[5].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR0));
             Assert.That(prototypes[5].HitDiceQuantity, Is.EqualTo(data["creature 4"].Single().GetEffectiveHitDiceQuantity(true)));
@@ -1074,7 +1154,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[5].Type.AllTypes, Is.EqualTo(data["creature 4"].Single().Types));
 
             Assert.That(prototypes[6].Name, Is.EqualTo("creature 7"));
-            Assert.That(prototypes[6].Alignments, Is.EqualTo(alignments["creature 7"].Select(a => new Alignment(a)).Distinct()));
+            Assert.That(prototypes[6].Alignments, Is.EqualTo(alignments["creature 7"].Select(a => new Alignment(a))));
             Assert.That(prototypes[6].Abilities, Has.Count.EqualTo(6)
                 .And.ContainKey(AbilityConstants.Strength)
                 .And.ContainKey(AbilityConstants.Constitution)
@@ -1083,17 +1163,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .And.ContainKey(AbilityConstants.Wisdom)
                 .And.ContainKey(AbilityConstants.Charisma));
             Assert.That(prototypes[6].Abilities[AbilityConstants.Strength].Name, Is.EqualTo(AbilityConstants.Strength));
-            Assert.That(prototypes[6].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(22));
+            Assert.That(prototypes[6].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(DefaultMax + 12));
             Assert.That(prototypes[6].Abilities[AbilityConstants.Constitution].Name, Is.EqualTo(AbilityConstants.Constitution));
-            Assert.That(prototypes[6].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(23));
+            Assert.That(prototypes[6].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(DefaultMax + 13));
             Assert.That(prototypes[6].Abilities[AbilityConstants.Dexterity].Name, Is.EqualTo(AbilityConstants.Dexterity));
             Assert.That(prototypes[6].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(1));
             Assert.That(prototypes[6].Abilities[AbilityConstants.Intelligence].Name, Is.EqualTo(AbilityConstants.Intelligence));
             Assert.That(prototypes[6].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(1));
             Assert.That(prototypes[6].Abilities[AbilityConstants.Wisdom].Name, Is.EqualTo(AbilityConstants.Wisdom));
-            Assert.That(prototypes[6].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(26));
+            Assert.That(prototypes[6].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(DefaultMax + 16));
             Assert.That(prototypes[6].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
-            Assert.That(prototypes[6].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(27));
+            Assert.That(prototypes[6].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(DefaultMax + 17));
             Assert.That(prototypes[6].CasterLevel, Is.EqualTo(data["creature 7"].Single().CasterLevel));
             Assert.That(prototypes[6].ChallengeRating, Is.EqualTo(data["creature 7"].Single().GetEffectiveChallengeRating(true)));
             Assert.That(prototypes[6].HitDiceQuantity, Is.EqualTo(data["creature 7"].Single().GetEffectiveHitDiceQuantity(true)));
@@ -1191,7 +1271,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var prototypes = prototypeFactory.Build(creatures, false).ToArray();
             Assert.That(prototypes, Has.Length.EqualTo(1));
             Assert.That(prototypes[0].Name, Is.EqualTo("creature 1"));
-            Assert.That(prototypes[0].Alignments, Is.EqualTo(alignments["creature 1"].Select(a => new Alignment(a)).Distinct()));
+            Assert.That(prototypes[0].Alignments, Is.EqualTo(alignments["creature 1"].Select(a => new Alignment(a))));
             Assert.That(prototypes[0].Abilities, Has.Count.EqualTo(6)
                 .And.ContainKey(AbilityConstants.Strength)
                 .And.ContainKey(AbilityConstants.Constitution)
@@ -1202,15 +1282,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[0].Abilities[AbilityConstants.Strength].Name, Is.EqualTo(AbilityConstants.Strength));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(0));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Constitution].Name, Is.EqualTo(AbilityConstants.Constitution));
-            Assert.That(prototypes[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(DefaultMax));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Dexterity].Name, Is.EqualTo(AbilityConstants.Dexterity));
-            Assert.That(prototypes[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(DefaultMax));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Intelligence].Name, Is.EqualTo(AbilityConstants.Intelligence));
-            Assert.That(prototypes[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(DefaultMax));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Wisdom].Name, Is.EqualTo(AbilityConstants.Wisdom));
-            Assert.That(prototypes[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(DefaultMax));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
-            Assert.That(prototypes[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(DefaultMax));
             Assert.That(prototypes[0].CasterLevel, Is.EqualTo(expected));
             Assert.That(prototypes[0].ChallengeRating, Is.EqualTo(data["creature 1"].Single().GetEffectiveChallengeRating(false)));
             Assert.That(prototypes[0].HitDiceQuantity, Is.EqualTo(data["creature 1"].Single().GetEffectiveHitDiceQuantity(false)));

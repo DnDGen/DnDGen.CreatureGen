@@ -1885,7 +1885,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = alignment };
 
-            var compatible = applicator.IsCompatible(creature, true, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.False);
         }
 
@@ -1904,7 +1904,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = alignment };
 
-            var compatible = applicator.IsCompatible(creature, true, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.True);
         }
 
@@ -1946,7 +1946,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = alignmentFilter };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.EqualTo(expected));
         }
 
@@ -2115,7 +2115,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithoutAbility(ability)
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, true);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Abilities, Has.Count.EqualTo(6));
             Assert.That(updatedPrototype.Abilities[ability].FullScore, Is.Zero);
@@ -2138,7 +2138,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAbility(AbilityConstants.Charisma, 1336, 2022)
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, false);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Abilities, Has.Count.EqualTo(6));
             Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(96 + Ability.DefaultScore + 4 + 783));

@@ -121,8 +121,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Alignment = alignment
             };
 
-            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, asCharacter, filters)),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var func = () => applicator.ApplyTo(baseCreature, asCharacter, filters);
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
         private void SetUpAttack(Attack attack, string gender = null)
@@ -2409,7 +2409,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
                 .Build();
 
-            var compatible = applicator.IsCompatible(creature, false);
+            var compatible = applicator.IsCompatible(creature);
             Assert.That(compatible, Is.True);
         }
 
@@ -2437,7 +2437,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
                 .Build();
 
-            var compatible = applicator.IsCompatible(creature, false);
+            var compatible = applicator.IsCompatible(creature);
             Assert.That(compatible, Is.False);
         }
 
@@ -2465,7 +2465,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
                 .Build();
 
-            var compatible = applicator.IsCompatible(creature, false);
+            var compatible = applicator.IsCompatible(creature);
             Assert.That(compatible, Is.EqualTo(expected));
         }
 
@@ -2487,7 +2487,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments(alignment, "other Evil")
                 .Build();
 
-            var compatible = applicator.IsCompatible(creature, false);
+            var compatible = applicator.IsCompatible(creature);
             Assert.That(compatible, Is.EqualTo(expected));
         }
 
@@ -2509,7 +2509,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments("other Evil", alignment)
                 .Build();
 
-            var compatible = applicator.IsCompatible(creature, false);
+            var compatible = applicator.IsCompatible(creature);
             Assert.That(compatible, Is.EqualTo(expected));
         }
 
@@ -2530,7 +2530,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = alignment };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.False);
         }
 
@@ -2548,7 +2548,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = alignment };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.True);
         }
 
@@ -2590,55 +2590,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = alignmentFilter };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.EqualTo(expected));
-        }
-
-        [TestCase(true, 0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR0)]
-        [TestCase(true, 0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR0)]
-        [TestCase(true, 0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR0)]
-        [TestCase(true, 1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR0)]
-        [TestCase(true, 1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR0)]
-        [TestCase(true, 1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR0)]
-        [TestCase(true, 4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1)]
-        [TestCase(true, 4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2)]
-        [TestCase(true, 4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3)]
-        [TestCase(true, 8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
-        [TestCase(true, 8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
-        [TestCase(true, 8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
-        [TestCase(true, 20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
-        [TestCase(true, 20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
-        [TestCase(true, 20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
-        [TestCase(false, 0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd)]
-        [TestCase(false, 0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1)]
-        [TestCase(false, 0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2)]
-        [TestCase(false, 1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd)]
-        [TestCase(false, 1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1)]
-        [TestCase(false, 1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2)]
-        [TestCase(false, 4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1)]
-        [TestCase(false, 4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2)]
-        [TestCase(false, 4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3)]
-        [TestCase(false, 8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
-        [TestCase(false, 8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
-        [TestCase(false, 8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
-        [TestCase(false, 20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
-        [TestCase(false, 20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
-        [TestCase(false, 20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
-        public void IsCompatible_WithChallengeRating_ReturnsTrue(bool asCharacter, double hitDiceQuantity, string original, string challengeRating)
-        {
-            var creature = new CreaturePrototypeBuilder()
-                .WithTestValues()
-                .WithName("my creature")
-                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
-                .WithChallengeRating(asCharacter && hitDiceQuantity <= 1 ? ChallengeRatingConstants.CR0 : original)
-                .WithHitDiceQuantity(hitDiceQuantity)
-                .Build();
-
-            var filters = new Filters { ChallengeRating = challengeRating };
-
-            var compatible = applicator.IsCompatible(creature, asCharacter, filters);
-            Assert.That(compatible, Is.True);
         }
 
         [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, true)]
@@ -2718,7 +2671,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { ChallengeRating = challengeRating };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.EqualTo(expected));
         }
 
@@ -2735,7 +2688,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Type = type };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.True);
         }
 
@@ -2782,7 +2735,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Type = filterType };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.EqualTo(expected));
         }
 
@@ -2805,7 +2758,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Type = CreatureConstants.Types.MagicalBeast,
             };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.True);
         }
 
@@ -2828,7 +2781,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Type = "subtype 1",
             };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.False);
         }
 
@@ -2851,7 +2804,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Type = CreatureConstants.Types.MagicalBeast,
             };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.False);
         }
 
@@ -2874,7 +2827,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Type = CreatureConstants.Types.MagicalBeast,
             };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.False);
         }
 
@@ -2897,7 +2850,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Type = "wrong subtype",
             };
 
-            var compatible = applicator.IsCompatible(creature, false, filters);
+            var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.False);
         }
 
@@ -2921,7 +2874,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAbility(AbilityConstants.Charisma, 1336)
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, false);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Type, Is.Not.Null);
             Assert.That(updatedPrototype.Type.Name, Is.EqualTo(CreatureConstants.Types.Humanoid));
@@ -2973,7 +2926,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAbility(AbilityConstants.Intelligence, lowScore - 10)
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, false);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Abilities, Has.Count.EqualTo(6));
             Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(3));
@@ -3000,7 +2953,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAbility(AbilityConstants.Intelligence, score - 10)
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, false);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Abilities, Has.Count.EqualTo(6));
             Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(score));
@@ -3017,7 +2970,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments(AlignmentConstants.LawfulGood, "other Evil", "other alignment", AlignmentConstants.NeutralEvil)
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, false);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Alignments, Is.EqualTo(
             [
@@ -3036,7 +2989,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments(AlignmentConstants.LawfulGood, AlignmentConstants.LawfulGood, AlignmentConstants.LawfulNeutral, AlignmentConstants.NeutralGood)
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, false);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Alignments, Is.EqualTo(
             [
@@ -3062,7 +3015,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments("other Evil", creatureAlignment)
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, false);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Alignments, Is.EqualTo([new Alignment(adjustedAlignment)]));
         }
@@ -3079,7 +3032,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = "my Good" };
 
-            var updatedPrototype = applicator.ApplyTo(creature, false, filters);
+            var updatedPrototype = applicator.ApplyTo(creature, filters);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Alignments, Is.EqualTo(
             [
@@ -3100,7 +3053,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = "my Good" };
 
-            var updatedPrototype = applicator.ApplyTo(creature, false, filters);
+            var updatedPrototype = applicator.ApplyTo(creature, filters);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Alignments, Is.EqualTo(
             [
@@ -3121,7 +3074,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = "my Good" };
 
-            var updatedPrototype = applicator.ApplyTo(creature, false, filters);
+            var updatedPrototype = applicator.ApplyTo(creature, filters);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Alignments, Is.EqualTo(
             [
@@ -3132,94 +3085,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             ]));
         }
 
-        [TestCase(true, 0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR0)]
-        [TestCase(true, 0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR0)]
-        [TestCase(true, 0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR0)]
-        [TestCase(true, 1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR0)]
-        [TestCase(true, 1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR0)]
-        [TestCase(true, 1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR0)]
-        [TestCase(true, 4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1)]
-        [TestCase(true, 4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2)]
-        [TestCase(true, 4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3)]
-        [TestCase(true, 8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
-        [TestCase(true, 8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
-        [TestCase(true, 8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
-        [TestCase(true, 20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
-        [TestCase(true, 20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
-        [TestCase(true, 20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
-        [TestCase(false, 0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd)]
-        [TestCase(false, 0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1)]
-        [TestCase(false, 0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2)]
-        [TestCase(false, 1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd)]
-        [TestCase(false, 1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1)]
-        [TestCase(false, 1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2)]
-        [TestCase(false, 4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1)]
-        [TestCase(false, 4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2)]
-        [TestCase(false, 4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3)]
-        [TestCase(false, 8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
-        [TestCase(false, 8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
-        [TestCase(false, 8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
-        [TestCase(false, 20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
-        [TestCase(false, 20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
-        [TestCase(false, 20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
-        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_ChallengeRatingAdjusted_Humanoid(bool asCharacter, double hitDiceQuantity, string original, string challengeRating)
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2)]
+        [TestCase(4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1)]
+        [TestCase(4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2)]
+        [TestCase(4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3)]
+        [TestCase(8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
+        [TestCase(8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
+        [TestCase(8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
+        [TestCase(20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
+        [TestCase(20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
+        [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_ChallengeRatingAdjusted(double hitDiceQuantity, string original, string challengeRating)
         {
             var creature = new CreaturePrototypeBuilder()
                 .WithTestValues()
                 .WithName("my creature")
                 .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
                 .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
-                .WithChallengeRating(asCharacter && hitDiceQuantity <= 1 ? ChallengeRatingConstants.CR0 : original)
-                .WithHitDiceQuantity(hitDiceQuantity)
-                .Build();
-
-            var updatedPrototype = applicator.ApplyTo(creature, asCharacter);
-            Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
-            Assert.That(updatedPrototype.ChallengeRating, Is.EqualTo(challengeRating));
-        }
-
-        [TestCase(true, 0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd)]
-        [TestCase(true, 0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1)]
-        [TestCase(true, 0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2)]
-        [TestCase(true, 1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd)]
-        [TestCase(true, 1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1)]
-        [TestCase(true, 1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2)]
-        [TestCase(true, 4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1)]
-        [TestCase(true, 4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2)]
-        [TestCase(true, 4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3)]
-        [TestCase(true, 8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
-        [TestCase(true, 8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
-        [TestCase(true, 8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
-        [TestCase(true, 20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
-        [TestCase(true, 20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
-        [TestCase(true, 20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
-        [TestCase(false, 0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd)]
-        [TestCase(false, 0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1)]
-        [TestCase(false, 0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2)]
-        [TestCase(false, 1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd)]
-        [TestCase(false, 1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1)]
-        [TestCase(false, 1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2)]
-        [TestCase(false, 4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1)]
-        [TestCase(false, 4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2)]
-        [TestCase(false, 4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3)]
-        [TestCase(false, 8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
-        [TestCase(false, 8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
-        [TestCase(false, 8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
-        [TestCase(false, 20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
-        [TestCase(false, 20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
-        [TestCase(false, 20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
-        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_ChallengeRatingAdjusted_NonHumanoid(bool asCharacter, double hitDiceQuantity, string original, string challengeRating)
-        {
-            var creature = new CreaturePrototypeBuilder()
-                .WithTestValues()
-                .WithName("my creature")
-                .WithCreatureType(CreatureConstants.Types.Giant, "subtype 1", "subtype 2")
-                .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
                 .WithChallengeRating(original)
                 .WithHitDiceQuantity(hitDiceQuantity)
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, asCharacter);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.ChallengeRating, Is.EqualTo(challengeRating));
         }
@@ -3235,7 +3127,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithLevelAdjustment(null)
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, false);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.LevelAdjustment, Is.Null);
         }
@@ -3259,7 +3151,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
                 .Build();
 
-            var updatedPrototype = applicator.ApplyTo(creature, false);
+            var updatedPrototype = applicator.ApplyTo(creature);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Type.Name, Is.EqualTo(adjustedType));
             Assert.That(updatedPrototype.Type.SubTypes,

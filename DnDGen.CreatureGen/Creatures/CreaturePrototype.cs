@@ -17,6 +17,7 @@ namespace DnDGen.CreatureGen.Creatures
         public int CasterLevel { get; set; }
         public double HitDiceQuantity { get; set; }
         public bool HasSkeleton { get; set; }
+        public bool AsCharacter { get; set; }
 
         public CreaturePrototype()
         {

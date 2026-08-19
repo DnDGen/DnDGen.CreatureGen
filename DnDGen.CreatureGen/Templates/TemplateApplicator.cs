@@ -11,8 +11,8 @@ namespace DnDGen.CreatureGen.Templates
 
         Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null);
         Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null);
-        CreaturePrototype ApplyTo(CreaturePrototype creature, bool asCharacter, Filters filters = null);
+        CreaturePrototype ApplyTo(CreaturePrototype creature, Filters filters = null);
 
-        bool IsCompatible(CreaturePrototype creature, bool asCharacter, Filters filters = null);
+        bool IsCompatible(CreaturePrototype creature, Filters filters = null);
     }
 }

@@ -594,7 +594,7 @@ namespace DnDGen.CreatureGen.Templates
             return (true, null);
         }
 
-        public CreaturePrototype ApplyTo(CreaturePrototype creature, bool asCharacter, Filters filters = null)
+        public CreaturePrototype ApplyTo(CreaturePrototype creature, Filters filters = null)
         {
             UpdateCreatureAbilities(creature);
             UpdateCreatureHitPoints(creature);
@@ -607,14 +607,14 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public bool IsCompatible(CreaturePrototype creature, bool asCharacter, Filters filters = null)
+        public bool IsCompatible(CreaturePrototype creature, Filters filters = null)
         {
             var (Compatible, _) = IsCompatible(
                 creature.Type.AllTypes,
                 creature.HasSkeleton,
                 creature.HitDiceQuantity,
                 creature.Name,
-                asCharacter,
+                creature.AsCharacter,
                 filters);
 
             return Compatible;

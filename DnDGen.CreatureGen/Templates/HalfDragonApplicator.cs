@@ -261,11 +261,13 @@ namespace DnDGen.CreatureGen.Templates
         {
             if (!string.IsNullOrEmpty(presetAlignment))
             {
-                creature.Alignments = [new(presetAlignment)];
+                creature.Alignments = [.. dragonAlignments
+                    .Where(a => a == presetAlignment)
+                    .Select(a => new Alignment(a))];
             }
             else
             {
-                creature.Alignments = [.. dragonAlignments.Distinct().Select(a => new Alignment(a))];
+                creature.Alignments = [.. dragonAlignments.Select(a => new Alignment(a))];
             }
         }
 
@@ -573,7 +575,7 @@ namespace DnDGen.CreatureGen.Templates
             return (true, null);
         }
 
-        public CreaturePrototype ApplyTo(CreaturePrototype creature, bool asCharacter, Filters filters = null)
+        public CreaturePrototype ApplyTo(CreaturePrototype creature, Filters filters = null)
         {
             var dragonAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, DragonSpecies);
 
@@ -586,7 +588,7 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public bool IsCompatible(CreaturePrototype creature, bool asCharacter, Filters filters = null)
+        public bool IsCompatible(CreaturePrototype creature, Filters filters = null)
         {
             var dragonAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, DragonSpecies);
             var (Compatible, _) = IsCompatible(

@@ -94,7 +94,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var sourcePrototypes = GetPrototypes(source, asCharacter);
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
             var templateCreatures = sourcePrototypes
-                .Where(p => applicator.IsCompatible(p, asCharacter))
+                .Where(p => applicator.IsCompatible(p))
                 .Select(p => p.Name);
 
             AssertDistinctCollection(template + asCharacter.ToString(), [.. templateCreatures]);
@@ -194,7 +194,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
 
             var templateCreatures = sourcePrototypes
-                .Where(p => applicator.IsCompatible(p, false, new() { Type = type }))
+                .Where(p => applicator.IsCompatible(p, new() { Type = type }))
                 .Select(p => p.Name);
 
             var groupName = template + type;
@@ -237,7 +237,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
 
             var templateCreatures = sourcePrototypes
-                .Where(p => applicator.IsCompatible(p, false, new() { Alignment = alignment }))
+                .Where(p => applicator.IsCompatible(p, new() { Alignment = alignment }))
                 .Select(p => p.Name);
 
             var groupName = template + alignment;
@@ -264,7 +264,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
 
             var templateCreatures = sourcePrototypes
-                .Where(p => applicator.IsCompatible(p, false, new() { ChallengeRating = cr }))
+                .Where(p => applicator.IsCompatible(p, new() { ChallengeRating = cr }))
                 .Select(p => p.Name);
 
             var groupName = template + bool.FalseString + cr;
@@ -279,7 +279,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
 
             var templateCreatures = sourcePrototypes
-                .Where(p => applicator.IsCompatible(p, true, new() { ChallengeRating = cr }))
+                .Where(p => applicator.IsCompatible(p, new() { ChallengeRating = cr }))
                 .Select(p => p.Name);
 
             var groupName = template + bool.TrueString + cr;
