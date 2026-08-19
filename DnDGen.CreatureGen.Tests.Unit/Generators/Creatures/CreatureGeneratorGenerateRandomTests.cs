@@ -391,16 +391,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(template);
 
             mockCreatureVerifier
-                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), CreatureConstants.Templates.None, false, null, filters))
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), CreatureConstants.Templates.None, asCharacter, null, filters))
                 .Returns([]);
             mockCreatureVerifier
-                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), template, false, null, filters))
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), template, asCharacter, null, filters))
                 .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
             mockCreatureVerifier
-                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "other template", false, null, filters))
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "other template", asCharacter, null, filters))
                 .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
             mockCreatureVerifier
-                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "wrong template", false, null, filters))
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "wrong template", asCharacter, null, filters))
                 .Returns([]);
 
             mockCollectionSelector
@@ -681,16 +681,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(templates);
 
             mockCreatureVerifier
-                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), CreatureConstants.Templates.None, false, null, filters))
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), CreatureConstants.Templates.None, asCharacter, null, filters))
                 .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Except(["wrong creature"]));
             mockCreatureVerifier
-                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), template, false, null, filters))
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), template, asCharacter, null, filters))
                 .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Except(["other wrong creature"]));
             mockCreatureVerifier
-                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "other template", false, null, filters))
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "other template", asCharacter, null, filters))
                 .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc);
             mockCreatureVerifier
-                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "wrong template", false, null, filters))
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "wrong template", asCharacter, null, filters))
                 .Returns([]);
 
             mockCollectionSelector

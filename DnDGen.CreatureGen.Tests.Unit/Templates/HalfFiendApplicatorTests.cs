@@ -3386,33 +3386,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithTestValues()
                 .WithName("my creature")
                 .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                .WithAlignments(AlignmentConstants.LawfulGood, AlignmentConstants.LawfulGood, AlignmentConstants.LawfulNeutral, AlignmentConstants.NeutralGood)
+                .WithAlignments(AlignmentConstants.LawfulEvil, AlignmentConstants.LawfulEvil, AlignmentConstants.LawfulNeutral, AlignmentConstants.NeutralEvil)
                 .Build();
 
             var updatedPrototype = applicator.ApplyTo(creature, false);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Alignments, Is.EqualTo(
             [
-                new Alignment(AlignmentConstants.LawfulGood),
-                new Alignment(AlignmentConstants.LawfulGood),
-                new Alignment(AlignmentConstants.LawfulGood),
-                new Alignment(AlignmentConstants.NeutralGood),
+                new Alignment(AlignmentConstants.LawfulEvil),
+                new Alignment(AlignmentConstants.LawfulEvil),
+                new Alignment(AlignmentConstants.LawfulEvil),
+                new Alignment(AlignmentConstants.NeutralEvil),
             ]));
         }
 
-        [TestCase(AlignmentConstants.LawfulGood, AlignmentConstants.LawfulGood)]
-        [TestCase(AlignmentConstants.NeutralGood, AlignmentConstants.NeutralGood)]
-        [TestCase(AlignmentConstants.ChaoticGood, AlignmentConstants.ChaoticGood)]
-        [TestCase(AlignmentConstants.LawfulNeutral, AlignmentConstants.LawfulGood)]
-        [TestCase(AlignmentConstants.TrueNeutral, AlignmentConstants.NeutralGood)]
-        [TestCase(AlignmentConstants.ChaoticNeutral, AlignmentConstants.ChaoticGood)]
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.LawfulEvil)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.NeutralEvil)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.ChaoticEvil)]
+        [TestCase(AlignmentConstants.LawfulNeutral, AlignmentConstants.LawfulEvil)]
+        [TestCase(AlignmentConstants.TrueNeutral, AlignmentConstants.NeutralEvil)]
+        [TestCase(AlignmentConstants.ChaoticNeutral, AlignmentConstants.ChaoticEvil)]
         public void ApplyTo_Prototype_ReturnsUpdatedPrototype_AlignmentAdjusted(string creatureAlignment, string adjustedAlignment)
         {
             var creature = new CreaturePrototypeBuilder()
                 .WithTestValues()
                 .WithName("my creature")
                 .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                .WithAlignments("other Evil", creatureAlignment)
+                .WithAlignments("other Good", creatureAlignment)
                 .Build();
 
             var updatedPrototype = applicator.ApplyTo(creature, false);

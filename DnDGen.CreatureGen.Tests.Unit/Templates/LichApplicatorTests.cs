@@ -1989,6 +1989,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_PreserveAlignmentWeighting()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
         public void ApplyTo_PrototypeWithoutLevelAdjustment_ReturnsUpdatedPrototype_WithUnchangedLevelAdjustment()
         {
             Assert.Fail("not yet written");

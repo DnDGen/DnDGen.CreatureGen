@@ -75,6 +75,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             mockPartialTotal.SetupSequence(d => d.AsSum<int>()).Returns(42).Returns(600).Returns(1337);
             mockPartialTotal.Setup(d => d.AsPotentialMaximum<int>(true)).Returns(int.MaxValue);
+
+            var mockNoneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None)).Returns(mockNoneApplicator.Object);
+
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
+                    It.IsAny<bool>(),
+                    It.IsAny<string>(),
+                    randomizer,
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(CreatureConstants.Templates.None))))
+                .Returns(true);
         }
 
         [Test]
@@ -121,6 +132,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                 .Returns(96)
                 .Returns(783)
                 .Returns(8245);
+
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
+                    It.IsAny<bool>(),
+                    It.IsAny<string>(),
+                    It.Is<AbilityRandomizer>(r => r.Roll == AbilityConstants.RandomizerRolls.Default),
+                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(CreatureConstants.Templates.None))))
+                .Returns(true);
 
             var abilities = abilitiesGenerator.GenerateFor("creature name", false, null, demographics, []);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
