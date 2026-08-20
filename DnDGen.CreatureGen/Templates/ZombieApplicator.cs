@@ -596,6 +596,26 @@ namespace DnDGen.CreatureGen.Templates
 
         public CreaturePrototype ApplyTo(CreaturePrototype creature, Filters filters = null)
         {
+            var (Compatible, Reason) = IsCompatible(
+                creature.Type.AllTypes,
+                creature.HasSkeleton,
+                creature.HitDiceQuantity,
+                creature.Name,
+                creature.AsCharacter,
+                filters);
+            if (!Compatible)
+            {
+                throw new InvalidCreatureException(
+                    Reason,
+                    creature.AsCharacter,
+                    creature.Name,
+                    filters?.Type,
+                    filters?.ChallengeRating,
+                    filters?.Alignment,
+                    null,
+                    [.. creature.Templates.Concat([CreatureConstants.Templates.Zombie])]);
+            }
+
             UpdateCreatureAbilities(creature);
             UpdateCreatureHitPoints(creature);
             UpdateCreatureChallengeRating(creature);

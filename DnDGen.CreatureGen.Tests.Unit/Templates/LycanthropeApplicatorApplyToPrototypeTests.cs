@@ -1,12 +1,71 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Creatures;
 using NUnit.Framework;
+using System.Text;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
 {
     [TestFixture]
     internal class LycanthropeApplicatorApplyToPrototypeTests : LycanthropeApplicatorTestsBase
     {
+        [Test]
+        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible()
+        {
+            Assert.Fail("update for prototype");
+            //baseCreature.Type.Name = CreatureConstants.Types.Outsider;
+
+            //SetUpAnimal("my animal", baseCreature, hitDiceQuantity: 1);
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine("\tReason: Type 'Outsider' is not valid");
+            message.AppendLine($"\tAs Character: {false}");
+            //message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: my lycanthrope");
+
+            //Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, false)),
+            //    Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        [TestCaseSource(nameof(IncompatibleFilters))]
+        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(
+            bool asCharacter,
+            string type,
+            string challengeRating,
+            string alignment,
+            string reason)
+        {
+            Assert.Fail("update for prototype");
+            //baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            //baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
+            //baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            //baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            //baseCreature.Alignment = new Alignment("original alignment");
+
+            //SetUpAnimal("my animal", baseCreature, hitDiceQuantity: 1);
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tReason: {reason}");
+            message.AppendLine($"\tAs Character: {false}");
+            //message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: my lycanthrope");
+            message.AppendLine($"\tType: {type}");
+            message.AppendLine($"\tCR: {challengeRating}");
+            message.AppendLine($"\tAlignment: {alignment}");
+
+            var filters = new Filters
+            {
+                Type = type,
+                ChallengeRating = challengeRating,
+                Alignment = alignment
+            };
+
+            //var func = () => applicator.ApplyTo(baseCreature, asCharacter, filters);
+            //Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
         [Test]
         public void ApplyTo_Prototype_ReturnsUpdatedPrototype()
         {
@@ -18,6 +77,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.Fail("Assert CR increase (+2 as default for low hit dice");
             Assert.Fail("Assert level adjustment +2 (afflicted)");
             Assert.Fail("Assert shapechanger subtype added");
+            Assert.Fail("assert prototype template updated");
         }
 
         [Test]
@@ -87,6 +147,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
         [Test]
         public void ApplyTo_PrototypeWithAlignment_ReturnsUpdatedPrototype_WithFilteredAlignment()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithAdditionalTemplates()
         {
             Assert.Fail("not yet written");
         }

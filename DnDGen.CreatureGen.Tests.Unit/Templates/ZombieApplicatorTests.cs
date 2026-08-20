@@ -2497,6 +2497,57 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
+        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible()
+        {
+            Assert.Fail("update for prototype");
+            baseCreature.Type.Name = CreatureConstants.Types.Outsider;
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine("\tReason: Type 'Outsider' is not valid");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Zombie}");
+
+            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, false)),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.TrueNeutral, "Alignment filter 'True Neutral' is not valid")]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil, "CR filter 1 does not match updated creature CR 1/2")]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.NeutralEvil, "Type filter 'wrong subtype' is not valid")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.NeutralEvil, "Zombies cannot be characters")]
+        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
+        {
+            Assert.Fail("update for prototype");
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment("original alignment");
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tReason: {reason}");
+            message.AppendLine($"\tAs Character: {asCharacter}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Zombie}");
+            message.AppendLine($"\tType: {type}");
+            message.AppendLine($"\tCR: {challengeRating}");
+            message.AppendLine($"\tAlignment: {alignment}");
+
+            var filters = new Filters
+            {
+                Type = type,
+                ChallengeRating = challengeRating,
+                Alignment = alignment
+            };
+
+            var func = () => applicator.ApplyTo(baseCreature, asCharacter, filters);
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        [Test]
         public void ApplyTo_Prototype_ReturnsUpdatedPrototype()
         {
             Assert.Fail("not yet written");
@@ -2507,6 +2558,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.Fail("Assert updated creature type");
             Assert.Fail("Assert updated alignment");
             Assert.Fail("Assert caster level is 0");
+            Assert.Fail("assert prototype template updated");
         }
 
         [TestCase(0, 0)]
@@ -2582,6 +2634,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Subtypes.Reptilian)]
         [TestCase(CreatureConstants.Types.Subtypes.Shapechanger)]
         public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithUpdatedCreatureTypes_RemovesInvalidType(string subtype)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithAdditionalTemplates()
         {
             Assert.Fail("not yet written");
         }

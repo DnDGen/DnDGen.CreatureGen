@@ -472,6 +472,27 @@ namespace DnDGen.CreatureGen.Templates
 
         public CreaturePrototype ApplyTo(CreaturePrototype creature, Filters filters = null)
         {
+            var (Compatible, Reason) = IsCompatible(
+                creature.Type.AllTypes,
+                creature.Alignments.Select(a => a.Full),
+                creature.ChallengeRating,
+                creature.AsCharacter,
+                creature.LevelAdjustment,
+                creature.HitDiceQuantity,
+                filters);
+            if (!Compatible)
+            {
+                throw new InvalidCreatureException(
+                    Reason,
+                    creature.AsCharacter,
+                    creature.Name,
+                    filters?.Type,
+                    filters?.ChallengeRating,
+                    filters?.Alignment,
+                    null,
+                    [.. creature.Templates.Concat([CreatureConstants.Templates.Vampire])]);
+            }
+
             UpdateCreatureAbilities(creature);
             UpdateCreatureChallengeRating(creature);
             UpdateCreatureLevelAdjustment(creature);

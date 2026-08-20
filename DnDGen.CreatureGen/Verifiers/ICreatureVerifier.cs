@@ -16,8 +16,9 @@ namespace DnDGen.CreatureGen.Verifiers
         /// <param name="creature"></param>
         /// <param name="abilityRandomizer"></param>
         /// <param name="filters"></param>
+        /// <param name="templates"></param>
         /// <returns></returns>
-        bool VerifyCompatibility(bool asCharacter, string creature = null, AbilityRandomizer abilityRandomizer = null, Filters filters = null);
+        bool VerifyCompatibility(bool asCharacter, string creature = null, AbilityRandomizer abilityRandomizer = null, Filters filters = null, params string[] templates);
 
         IEnumerable<string> GetCompatibleCreaturesForTemplate(
             IEnumerable<string> sourceCreatures,
@@ -27,7 +28,7 @@ namespace DnDGen.CreatureGen.Verifiers
             Filters filters = null);
         IEnumerable<CreaturePrototype> GetChainedTemplates(
             IEnumerable<string> sourceCreatures,
-            List<string> templates,
+            string[] templates,
             bool asCharacter,
             AbilityRandomizer abilityRandomizer = null,
             Filters filters = null);

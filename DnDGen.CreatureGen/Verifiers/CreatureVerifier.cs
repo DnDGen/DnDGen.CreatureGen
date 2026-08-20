@@ -11,16 +11,20 @@ using System.Linq;
 
 namespace DnDGen.CreatureGen.Verifiers
 {
-    internal class CreatureVerifier(JustInTimeFactory factory, ICollectionSelector collectionSelector, Dice dice, ICreaturePrototypeFactory prototypeFactory) : ICreatureVerifier
+    internal class CreatureVerifier(
+        JustInTimeFactory factory,
+        ICollectionSelector collectionSelector,
+        Dice dice,
+        ICreaturePrototypeFactory prototypeFactory) : ICreatureVerifier
     {
         public IEnumerable<CreaturePrototype> GetChainedTemplates(
             IEnumerable<string> sourceCreatures,
-            List<string> templates,
+            string[] templates,
             bool asCharacter,
             AbilityRandomizer abilityRandomizer = null,
             Filters filters = null)
         {
-            if (templates.Count < 2)
+            if (templates.Length < 2)
             {
                 var firstTemplate = templates.FirstOrDefault();
                 var creatureNames = GetCompatibleCreaturesForTemplate(sourceCreatures, firstTemplate, asCharacter, abilityRandomizer, filters);
@@ -38,12 +42,12 @@ namespace DnDGen.CreatureGen.Verifiers
             var protoypes = prototypeFactory.Build(sourceCreatures, asCharacter, abilityRandomizer);
 
             //INFO: We only want to apply filters to the last creature in a series of chained templates
-            for (var i = 0; i < templates.Count - 1; i++)
+            for (var i = 0; i < templates.Length - 1; i++)
             {
-                protoypes = GetCompatiblePrototypes(protoypes, templates[i], asCharacter);
+                protoypes = GetCompatiblePrototypes(protoypes, templates[i]);
             }
 
-            protoypes = GetCompatiblePrototypes(protoypes, templates[^1], asCharacter, filters);
+            protoypes = GetCompatiblePrototypes(protoypes, templates[^1], filters);
 
             return protoypes;
         }
@@ -60,17 +64,15 @@ namespace DnDGen.CreatureGen.Verifiers
             var templateCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, template + asCharacter);
             var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
 
-            if (!string.IsNullOrEmpty(filters?.Type))
+            if (filters.Types.Count > 0)
             {
-                var groupName = template + filters.Type;
-                var typeCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
+                var typeCreatures = GetUnifiedCreatureGroups(template, filters.Types);
                 filteredBaseCreatures = filteredBaseCreatures.Intersect(typeCreatures);
             }
 
-            if (!string.IsNullOrEmpty(filters?.Alignment))
+            if (filters.Alignments.Count > 0)
             {
-                var groupName = template + filters.Alignment;
-                var alignmentCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
+                var alignmentCreatures = GetUnifiedCreatureGroups(template, filters.Alignments);
                 filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
             }
 
@@ -103,7 +105,20 @@ namespace DnDGen.CreatureGen.Verifiers
             return filteredBaseCreatures;
         }
 
-        private IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, string template, bool asCharacter, Filters filters = null)
+        private IEnumerable<string> GetUnifiedCreatureGroups(string prefix, IEnumerable<string> groupNames)
+        {
+            var group = Enumerable.Empty<string>();
+
+            foreach (var groupName in groupNames)
+            {
+                var creatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, prefix + groupName);
+                group = group.Union(creatures);
+            }
+
+            return group;
+        }
+
+        private IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, string template, Filters filters = null)
         {
             var applicator = factory.Build<TemplateApplicator>(template);
             var compatiblePrototypes = sourceCreatures.Where(p => applicator.IsCompatible(p, filters));
@@ -135,13 +150,13 @@ namespace DnDGen.CreatureGen.Verifiers
             if (!compatible)
                 return false;
 
-            if (filters?.CleanTemplates?.Count == 1)
+            if (filters?.CleanTemplates?.Length == 1)
             {
                 var compatibleCreatures = GetCompatibleCreaturesForTemplate(baseCreatures, filters.CleanTemplates[0], asCharacter, abilityRandomizer, filters);
                 return compatibleCreatures.Any();
             }
 
-            if (filters?.CleanTemplates?.Count > 1)
+            if (filters?.CleanTemplates?.Length > 1)
             {
                 var compatibleCreatures = GetChainedTemplates(baseCreatures, filters.CleanTemplates, asCharacter, abilityRandomizer, filters);
                 return compatibleCreatures.Any();

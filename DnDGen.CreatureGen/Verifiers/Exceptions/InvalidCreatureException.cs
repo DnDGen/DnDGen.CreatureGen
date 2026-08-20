@@ -1,7 +1,6 @@
 ﻿using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
 using System;
-using System.Linq;
 using System.Text;
 
 namespace DnDGen.CreatureGen.Verifiers.Exceptions
@@ -10,14 +9,18 @@ namespace DnDGen.CreatureGen.Verifiers.Exceptions
         string reason,
         bool asCharacter,
         string creature = null,
-        string type = null,
-        string challengeRating = null,
-        string alignment = null,
-        string abilityRoll = null,
+        Filters filters = null,
+        AbilityRandomizer abilityRandomizer = null,
         params string[] templates) : Exception
     {
-        public InvalidCreatureException(string reason, bool asCharacter, string creature = null, Filters filters = null, AbilityRandomizer abilityRandomizer = null)
-            : this(reason, asCharacter, creature, filters?.Type, filters?.ChallengeRating, filters?.Alignment, abilityRandomizer?.Roll, filters?.CleanTemplates?.ToArray() ?? [])
+        public InvalidCreatureException(
+            string reason,
+            bool asCharacter,
+            string creature,
+            Filters filters,
+            string abilityRoll,
+            params string[] templates) :
+            this(reason, asCharacter, creature, filters, new AbilityRandomizer(abilityRoll), templates)
         {
 
         }
@@ -29,31 +32,25 @@ namespace DnDGen.CreatureGen.Verifiers.Exceptions
                 var message = new StringBuilder();
                 message.AppendLine("Invalid creature:");
 
-                if (reason != null)
+                if (reason is not null)
                     message.AppendLine($"\tReason: {reason}");
 
                 message.AppendLine($"\tAs Character: {asCharacter}");
 
-                if (creature != null)
+                if (creature is not null)
                     message.AppendLine($"\tCreature: {creature}");
 
-                var nonEmptyTemplates = templates.Where(t => !string.IsNullOrEmpty(t));
-                var joinedTemplates = string.Join(", ", nonEmptyTemplates);
+                if (templates.Length > 0)
+                    message.AppendLine($"\tTemplates: {string.Join(", ", templates)}");
 
-                if (nonEmptyTemplates.Any())
-                    message.AppendLine($"\tTemplate: {joinedTemplates}");
+                if (filters is not null)
+                {
+                    var description = filters.GetDescription(asCharacter);
+                    message.AppendLine($"Filters: {description}");
+                }
 
-                if (type != null)
-                    message.AppendLine($"\tType: {type}");
-
-                if (challengeRating != null)
-                    message.AppendLine($"\tCR: {challengeRating}");
-
-                if (alignment != null)
-                    message.AppendLine($"\tAlignment: {alignment}");
-
-                if (abilityRoll != null)
-                    message.AppendLine($"\tAbility Roll: {abilityRoll}");
+                if (abilityRandomizer != null)
+                    message.AppendLine($"\tAbility Roll: {abilityRandomizer.Roll}");
 
                 return message.ToString();
             }

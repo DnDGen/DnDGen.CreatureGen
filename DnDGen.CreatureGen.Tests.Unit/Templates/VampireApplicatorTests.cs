@@ -2082,6 +2082,55 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
+        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible()
+        {
+            Assert.Fail("update for prototype");
+            baseCreature.Type.Name = CreatureConstants.Types.Outsider;
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine("\tReason: Type 'Outsider' is not valid");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Vampire}");
+
+            var func = () => applicator.ApplyTo(baseCreature, false);
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        [TestCase("subtype 1", ChallengeRatingConstants.CR3, "original Neutral", "Alignment filter 'original Neutral' is not valid")]
+        [TestCase("subtype 1", ChallengeRatingConstants.CR2, "original Evil", "CR filter 2 does not match updated creature CR 3 (from CR 1)")]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR3, "original Evil", "Type filter 'wrong subtype' is not valid")]
+        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible_WithFilters(string type, string challengeRating, string alignment, string reason)
+        {
+            Assert.Fail("update for prototype");
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment("original alignment");
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tReason: {reason}");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Vampire}");
+            message.AppendLine($"\tType: {type}");
+            message.AppendLine($"\tCR: {challengeRating}");
+            message.AppendLine($"\tAlignment: {alignment}");
+
+            var filters = new Filters
+            {
+                Type = type,
+                ChallengeRating = challengeRating,
+                Alignment = alignment
+            };
+
+            var func = () => applicator.ApplyTo(baseCreature, false, filters);
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        [Test]
         public void ApplyTo_Prototype_ReturnsUpdatedPrototype()
         {
             Assert.Fail("not yet written");
@@ -2095,6 +2144,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.Fail("Assert level adjustment +8");
             Assert.Fail("Assert updated creature types");
             Assert.Fail("Assert alignment is evil");
+            Assert.Fail("assert prototype template updated");
         }
 
         [TestCase(AbilityConstants.Strength)]
@@ -2198,6 +2248,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
         [Test]
         public void ApplyTo_PrototypeWithAlignment_ReturnsUpdatedPrototype_WithFilteredAlignment()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithAdditionalTemplates()
         {
             Assert.Fail("not yet written");
         }

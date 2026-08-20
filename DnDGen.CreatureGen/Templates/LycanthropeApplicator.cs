@@ -64,11 +64,8 @@ namespace DnDGen.CreatureGen.Templates
                     Reason,
                     asCharacter,
                     creature.Name,
-                    filters?.Type,
-                    filters?.ChallengeRating,
-                    filters?.Alignment,
-                    null,
-                    [.. creature.Templates.Union([LycanthropeSpecies])]);
+                    filters,
+                    templates: [.. creature.Templates.Union([LycanthropeSpecies])]);
             }
 
             // Template
@@ -607,11 +604,8 @@ namespace DnDGen.CreatureGen.Templates
                     Reason,
                     asCharacter,
                     creature.Name,
-                    filters?.Type,
-                    filters?.ChallengeRating,
-                    filters?.Alignment,
-                    null,
-                    [.. creature.Templates.Union([LycanthropeSpecies])]);
+                    filters,
+                    templates: [.. creature.Templates.Union([LycanthropeSpecies])]);
             }
 
             var tasks = new List<Task>();
@@ -749,24 +743,24 @@ namespace DnDGen.CreatureGen.Templates
             double animalHitDiceQuantity,
             Filters filters)
         {
-            if (!string.IsNullOrEmpty(filters?.Type))
+            if (filters?.Alignments?.Count > 0)
+            {
+                if (!alignments.Intersect(filters.Alignments).Any())
+                    return (false, $"Alignment filter is not valid for creature alignments. Filters: {filters.GetDescription(false)}");
+            }
+
+            if (filters?.Types?.Count > 0)
             {
                 var updatedTypes = UpdateCreatureType(types.First(), types.Skip(1));
-                if (!updatedTypes.Contains(filters.Type))
-                    return (false, $"Type filter '{filters.Type}' is not valid");
+                if (!updatedTypes.Intersect(filters.Types).Any())
+                    return (false, $"Type filter is not valid. Filters: {filters.GetDescription(false)}");
             }
 
-            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
+            if (filters?.ChallengeRatings?.Count > 0)
             {
                 var cr = UpdateCreatureChallengeRating(creatureChallengeRating, animalHitDiceQuantity);
-                if (cr != filters.ChallengeRating)
-                    return (false, $"CR filter {filters.ChallengeRating} does not match updated creature CR {cr} (from CR {creatureChallengeRating})");
-            }
-
-            if (!string.IsNullOrEmpty(filters?.Alignment))
-            {
-                if (!alignments.Contains(filters.Alignment))
-                    return (false, $"Alignment filter '{filters.Alignment}' is not valid");
+                if (!filters.ChallengeRatings.Contains(cr))
+                    return (false, $"CR filter does not match updated creature CR {cr} (from CR {creatureChallengeRating}). Filters: {filters.GetDescription(false)}");
             }
 
             return (true, null);
@@ -789,18 +783,37 @@ namespace DnDGen.CreatureGen.Templates
 
         public CreaturePrototype ApplyTo(CreaturePrototype creature, Filters filters = null)
         {
-            var animalAbilityAdjustments = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, AnimalSpecies);
             var animalData = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, AnimalSpecies);
             var animalHitDiceQuantity = animalData.GetEffectiveHitDiceQuantity(creature.AsCharacter);
+
+            var (Compatible, Reason) = IsCompatible(
+                creature.Type.AllTypes,
+                creature.Alignments.Select(a => a.Full),
+                creature.Size,
+                creature.ChallengeRating,
+                animalData.Size,
+                animalHitDiceQuantity,
+                filters);
+            if (!Compatible)
+            {
+                throw new InvalidCreatureException(
+                    Reason,
+                    creature.AsCharacter,
+                    creature.Name,
+                    filters,
+                    templates: [.. creature.Templates.Concat([LycanthropeSpecies])]);
+            }
+
+            var animalAbilityAdjustments = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, AnimalSpecies);
 
             UpdateCreatureAbilities(creature, animalAbilityAdjustments);
             UpdateCreatureChallengeRating(creature, animalHitDiceQuantity);
             UpdateCreatureLevelAdjustment(creature);
             UpdateCreatureType(creature);
 
-            if (!string.IsNullOrEmpty(filters?.Alignment))
+            if (filters?.Alignments?.Count > 0)
             {
-                creature.Alignments = [.. creature.Alignments.Where(adjustmentSelector => adjustmentSelector.Full == filters.Alignment)];
+                creature.Alignments = [.. creature.Alignments.Where(a => filters.Alignments.Contains(a.Full))];
             }
 
             return creature;

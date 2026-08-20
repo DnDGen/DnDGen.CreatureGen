@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Alignments;
+using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Verifiers;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
@@ -10,15 +11,19 @@ namespace DnDGen.CreatureGen.Generators.Alignments
 {
     internal class AlignmentGenerator(ICollectionSelector collectionSelector, ICreatureVerifier creatureVerifier) : IAlignmentGenerator
     {
-        public Alignment Generate(string creatureName, IEnumerable<string> templates, string presetAlignment)
+        public Alignment Generate(string creatureName, IEnumerable<string> templates, Filters filters)
         {
-            if (!string.IsNullOrEmpty(presetAlignment))
-                return new Alignment(presetAlignment);
-
             var weightedAlignments = GetWeightedAlignments(creatureName, templates);
+
+            if (filters?.Alignments?.Count > 0)
+            {
+                //INFO: Doing Where instead of Intersect in order to preserve weighting
+                weightedAlignments = weightedAlignments.Where(filters.Alignments.Contains);
+            }
+
             if (!weightedAlignments.Any())
                 throw new InvalidCreatureException(
-                    $"Creature {creatureName} has no valid alignments for templates [{string.Join(", ", templates)}]",
+                    $"Creature {creatureName} has no valid alignments for templates [{string.Join(", ", templates)}]. Filters: {filters.GetDescription(false)}",
                     false,
                     creatureName);
 
@@ -44,10 +49,8 @@ namespace DnDGen.CreatureGen.Generators.Alignments
                 return weightedAlignments;
             }
 
-            var prototypes = creatureVerifier.GetChainedTemplates([creatureName], [.. templates], false);
-
-            //INFO: At this point, after multiple templates, we are choosing to ignore weighting
-            weightedAlignments = prototypes.SelectMany(p => p.Alignments).Select(a => a.Full);
+            var prototype = creatureVerifier.GetChainedTemplates([creatureName], [.. templates], false).Single();
+            weightedAlignments = prototype.Alignments.Select(a => a.Full);
 
             return weightedAlignments;
         }

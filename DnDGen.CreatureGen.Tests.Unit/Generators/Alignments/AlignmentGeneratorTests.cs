@@ -239,10 +239,49 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         }
 
         [Test]
-        [Ignore("We explicitly do not honor weighting when multiple templates are applied")]
         public void Generate_RandomWeightedAlignment_WithMultipleTemplates()
         {
-            Assert.Fail("this is not a valid usecase");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Returns(
+                [
+                    "lawfulness goodness",
+                    "wrong alignment",
+                    "lawfulness goodness",
+                    "other alignment"
+                ]);
+
+            randomIndex = 1;
+
+            var prototypes = new[]
+            {
+                new CreaturePrototype
+                {
+                    Name = "creature name",
+                    Alignments =
+                    [
+                        new("lawfulness goodness"),
+                        new("lawfulness goodness"),
+                        new("other alignment"),
+                        new("other-template alignment"),
+                        new("other-wrong alignment"),
+                        new("chaotic evilness"),
+                    ]
+                },
+            };
+
+            var templates = new[] { "my template", "my other template" };
+            mockCreatureVerifier
+                .Setup(a => a.GetChainedTemplates(
+                    It.Is<IEnumerable<string>>(n => n.IsEquivalentTo("creature name")),
+                    It.Is<List<string>>(n => n.IsEquivalentTo(templates)),
+                    false,
+                    null,
+                    null))
+                .Returns(prototypes);
+
+            var alignment = alignmentGenerator.Generate("creature name", templates, null);
+            Assert.That(alignment.Full, Is.EqualTo("lawfulness goodness"));
         }
 
         [Test]

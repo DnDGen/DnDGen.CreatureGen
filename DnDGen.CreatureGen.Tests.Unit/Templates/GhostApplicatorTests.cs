@@ -2547,6 +2547,64 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.False);
         }
+        [Test]
+        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible()
+        {
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithAbility(AbilityConstants.Charisma, 9266)
+                .WithCreatureType(CreatureConstants.Types.Outsider, "subtype 1", "subtype 2")
+                .Build();
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine("\tReason: Type 'Outsider' is not valid");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {prototype.Name}");
+            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Ghost}");
+            message.AppendLine($"\tAbility Roll: {prototype.Abilities[AbilityConstants.Charisma].FullScore}");
+
+            var function = () => applicator.ApplyTo(prototype);
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment", "Alignment filter 'wrong alignment' is not valid")]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment", "CR filter 2 does not match updated creature CR 3 (from CR 1)")]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR3, "original alignment", "Type filter 'wrong subtype' is not valid")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR3, "original alignment", "",
+            Ignore = "As Character doesn't affect already-generated creature compatiblity")]
+        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
+        {
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithAbility(AbilityConstants.Charisma, 9266)
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .WithChallengeRating(ChallengeRatingConstants.CR1)
+                .WithAlignments("original alignment")
+                .Build();
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tReason: {reason}");
+            message.AppendLine($"\tAs Character: {asCharacter}");
+            message.AppendLine($"\tCreature: {prototype.Name}");
+            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Ghost}");
+            message.AppendLine($"\tType: {type}");
+            message.AppendLine($"\tCR: {challengeRating}");
+            message.AppendLine($"\tAlignment: {alignment}");
+            message.AppendLine($"\tAbility Roll: {prototype.Abilities[AbilityConstants.Charisma].FullScore}");
+
+            var filters = new Filters
+            {
+                Type = type,
+                ChallengeRating = challengeRating,
+                Alignment = alignment
+            };
+
+            var function = () => applicator.ApplyTo(prototype, filters);
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
 
         [Test]
         public void ApplyTo_Prototype_ReturnsUpdatedPrototype()
@@ -2583,6 +2641,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Alignment(AlignmentConstants.TrueNeutral),
                 new Alignment(AlignmentConstants.TrueNeutral),
                 new Alignment(AlignmentConstants.ChaoticEvil)]));
+
+            Assert.That(updatedPrototype.Templates, Is.EqualTo([CreatureConstants.Templates.Ghost]));
         }
 
         [TestCase(ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR1)]
@@ -2630,6 +2690,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var updatedPrototype = applicator.ApplyTo(prototype, filters);
             Assert.That(updatedPrototype, Is.EqualTo(prototype));
             Assert.That(updatedPrototype.Alignments, Is.EquivalentTo([new Alignment(AlignmentConstants.TrueNeutral), new Alignment(AlignmentConstants.TrueNeutral)]));
+        }
+
+
+        [Test]
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithAdditionalTemplates()
+        {
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithAbility(AbilityConstants.Charisma, 9266)
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .Build();
+            prototype.Templates.Add("my template");
+
+            var updatedPrototype = applicator.ApplyTo(prototype);
+            Assert.That(updatedPrototype, Is.EqualTo(prototype));
+            Assert.That(updatedPrototype.Templates, Is.EqualTo(["my template", CreatureConstants.Templates.Ghost]));
         }
     }
 }

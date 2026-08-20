@@ -166,6 +166,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockHitPointsGenerator.Setup(g => g.RegenerateWith(hitPoints, It.IsAny<IEnumerable<Feat>>())).Returns(hitPoints);
 
             mockCollectionSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> c) => c.First());
+            mockCollectionSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<CreaturePrototype>>())).Returns((IEnumerable<CreaturePrototype> c) => c.First());
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<TypeAndAmountDataSelection>>()))
                 .Returns((IEnumerable<TypeAndAmountDataSelection> c) => c.First());
@@ -294,10 +295,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockAbilitiesGenerator
                 .Setup(g => g.GenerateFor(
                     creatureName,
+                    It.Is<string[]>(tt => tt.IsEquivalentTo(cleanTemplates)),
                     asCharacter,
                     randomizer,
-                    demographics,
-                    It.Is<string[]>(tt => tt.IsEquivalentTo(cleanTemplates))))
+                    demographics))
                 .Returns(abilities);
 
             mockAbilitiesGenerator.Setup(g => g.SetMaxBonuses(abilities, equipment)).Returns(abilities);

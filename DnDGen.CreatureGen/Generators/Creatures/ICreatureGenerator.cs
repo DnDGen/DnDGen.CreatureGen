@@ -9,8 +9,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         Creature Generate(bool asCharacter, string creatureName, AbilityRandomizer abilityRandomizer = null, params string[] templates);
         Task<Creature> GenerateAsync(bool asCharacter, string creatureName, AbilityRandomizer abilityRandomizer = null, params string[] templates);
 
-        (string Creature, string[] Templates) GenerateRandomName(bool asCharacter, Filters filters = null);
-        Creature GenerateRandom(bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null);
-        Task<Creature> GenerateRandomAsync(bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null);
+        (string Creature, string[] Templates) GenerateRandomName(bool asCharacter, Filters filters = null, params string[] templates);
+        Creature GenerateRandom(bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null, params string[] templates);
+        Task<Creature> GenerateRandomAsync(bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null, params string[] templates);
     }
 }

@@ -19,7 +19,7 @@ namespace DnDGen.CreatureGen.Generators.Abilities
         JustInTimeFactory factory,
         ICreatureVerifier creatureVerifier) : IAbilitiesGenerator
     {
-        public Dictionary<string, Ability> GenerateFor(string creatureName, bool asCharacter, AbilityRandomizer randomizer, Demographics demographics, string[] templates)
+        public Dictionary<string, Ability> GenerateFor(string creatureName, string[] templates, bool asCharacter, AbilityRandomizer randomizer, Demographics demographics)
         {
             randomizer ??= new();
 
@@ -27,14 +27,15 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             if (templates.Length == 0)
                 templates = [CreatureConstants.Templates.None];
 
-            var valid = creatureVerifier.VerifyCompatibility(asCharacter, creatureName, randomizer, new() { Templates = [.. templates] });
+            var valid = creatureVerifier.VerifyCompatibility(asCharacter, creatureName, randomizer, null, templates);
             if (!valid)
                 throw new InvalidCreatureException(
                     $"{creatureName} does not have sufficient ability for template {templates[0]}",
                     false,
                     creatureName,
-                    new() { Templates = [.. templates] },
-                    randomizer);
+                    null,
+                    randomizer,
+                    templates);
 
             var abilities = InitializeAbilities(creatureName);
             ApplyRandomizer(abilities, randomizer);

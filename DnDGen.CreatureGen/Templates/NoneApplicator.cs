@@ -25,11 +25,8 @@ namespace DnDGen.CreatureGen.Templates
                     Reason,
                     asCharacter,
                     creature.Name,
-                    filters?.Type,
-                    filters?.ChallengeRating,
-                    filters?.Alignment,
-                    null,
-                    [.. creature.Templates.Union([CreatureConstants.Templates.None])]);
+                    filters,
+                    templates: [.. creature.Templates.Concat([CreatureConstants.Templates.None])]);
             }
 
             return creature;
@@ -48,11 +45,8 @@ namespace DnDGen.CreatureGen.Templates
                     Reason,
                     asCharacter,
                     creature.Name,
-                    filters?.Type,
-                    filters?.ChallengeRating,
-                    filters?.Alignment,
-                    null,
-                    [.. creature.Templates.Union([CreatureConstants.Templates.None])]);
+                    filters,
+                    templates: [.. creature.Templates.Concat([CreatureConstants.Templates.None])]);
             }
 
             return await Task.FromResult(creature);
@@ -64,19 +58,19 @@ namespace DnDGen.CreatureGen.Templates
             string creatureChallengeRating,
             Filters filters)
         {
-            if (!string.IsNullOrEmpty(filters?.Type) && !types.Contains(filters.Type))
+            if (filters?.Types?.Count > 0 && !filters.Types.Intersect(types).Any())
             {
-                return (false, $"Type filter '{filters.Type}' is not valid");
+                return (false, $"Type filter is not valid. Filters: {filters.GetDescription(false)}");
             }
 
-            if (!string.IsNullOrEmpty(filters?.ChallengeRating) && creatureChallengeRating != filters.ChallengeRating)
+            if (filters?.ChallengeRatings?.Count > 0 && !filters.ChallengeRatings.Contains(creatureChallengeRating))
             {
-                return (false, $"CR filter {filters.ChallengeRating} does not match creature CR {creatureChallengeRating}");
+                return (false, $"CR filter is not valid. Filters: {filters.GetDescription(false)}");
             }
 
-            if (!string.IsNullOrEmpty(filters?.Alignment) && !alignments.Contains(filters.Alignment))
+            if (filters?.Alignments?.Count > 0 && !filters.Alignments.Intersect(alignments).Any())
             {
-                return (false, $"Alignment filter '{filters.Alignment}' is not valid");
+                return (false, $"Alignment filter is not valid. Filters: {filters.GetDescription(false)}");
             }
 
             return (true, null);
@@ -84,9 +78,24 @@ namespace DnDGen.CreatureGen.Templates
 
         public CreaturePrototype ApplyTo(CreaturePrototype creature, Filters filters = null)
         {
-            if (!string.IsNullOrEmpty(filters?.Alignment))
+            var (Compatible, Reason) = AreFiltersCompatible(
+                creature.Type.AllTypes,
+                creature.Alignments.Select(a => a.Full),
+                creature.ChallengeRating,
+                filters);
+            if (!Compatible)
             {
-                creature.Alignments = [.. creature.Alignments.Where(adjustmentSelector => adjustmentSelector.Full == filters.Alignment)];
+                throw new InvalidCreatureException(
+                    Reason,
+                    creature.AsCharacter,
+                    creature.Name,
+                    filters,
+                    templates: [.. creature.Templates.Concat([CreatureConstants.Templates.None])]);
+            }
+
+            if (filters?.Alignments?.Count > 0)
+            {
+                creature.Alignments = [.. creature.Alignments.Where(a => filters.Alignments.Contains(a.Full))];
             }
 
             return creature;

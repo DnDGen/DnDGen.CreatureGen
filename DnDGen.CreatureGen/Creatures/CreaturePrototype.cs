@@ -8,6 +8,7 @@ namespace DnDGen.CreatureGen.Creatures
     public class CreaturePrototype
     {
         public string Name { get; set; }
+        public List<string> Templates { get; set; }
         public CreatureType Type { get; set; }
         public Dictionary<string, Ability> Abilities { get; set; }
         public string Size { get; set; }
@@ -26,6 +27,7 @@ namespace DnDGen.CreatureGen.Creatures
             Size = string.Empty;
             ChallengeRating = string.Empty;
             Name = string.Empty;
+            Templates = [];
             Type = new CreatureType();
         }
 

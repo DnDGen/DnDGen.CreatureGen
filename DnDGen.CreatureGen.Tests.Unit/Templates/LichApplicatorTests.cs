@@ -1890,17 +1890,103 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
+        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible()
+        {
+            Assert.Fail("update for prototype");
+            baseCreature.Type.Name = CreatureConstants.Types.Outsider;
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine("\tReason: Type 'Outsider' is not valid");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Lich}");
+
+            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, false)),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        [TestCase("subtype 1", ChallengeRatingConstants.CR3, "original Neutral", "Alignment filter 'original Neutral' is not valid")]
+        [TestCase("subtype 1", ChallengeRatingConstants.CR2, "original Evil", "CR filter 2 does not match updated creature CR 3 (from CR 1)")]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR3, "original Evil", "Type filter 'wrong subtype' is not valid")]
+        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible_WithFilters(string type, string challengeRating, string alignment, string reason)
+        {
+            Assert.Fail("update for prototype");
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment("original alignment");
+            baseCreature.CasterLevel = 11;
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tReason: {reason}");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Lich}");
+            message.AppendLine($"\tType: {type}");
+            message.AppendLine($"\tCR: {challengeRating}");
+            message.AppendLine($"\tAlignment: {alignment}");
+
+            var filters = new Filters
+            {
+                Type = type,
+                ChallengeRating = challengeRating,
+                Alignment = alignment
+            };
+
+            var func = () => applicator.ApplyTo(baseCreature, false, filters);
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        [Test]
         public void ApplyTo_Prototype_ReturnsUpdatedPrototype()
         {
-            Assert.Fail("not yet written");
-            Assert.Fail("Assert Con is 0");
-            Assert.Fail("Assert Wis template adj is +2, full score 2 better");
-            Assert.Fail("Assert Int template adj is +2, full score 2 better");
-            Assert.Fail("Assert Cha template adj is +2, full score 2 better");
-            Assert.Fail("Assert CR +2");
-            Assert.Fail("Assert level adjustment +4");
-            Assert.Fail("Assert updated creature types");
-            Assert.Fail("Assert alignment is evil");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithName("my creature")
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithAbility(AbilityConstants.Constitution, 9266)
+                .WithAbility(AbilityConstants.Wisdom, 90210)
+                .WithAbility(AbilityConstants.Intelligence, 42)
+                .WithAbility(AbilityConstants.Charisma, 600)
+                .WithAbility(AbilityConstants.Strength, 1337)
+                .WithAbility(AbilityConstants.Dexterity, 1336)
+                .WithChallengeRating(ChallengeRatingConstants.CR0)
+                .WithLevelAdjustment(96)
+                .WithAlignments(AlignmentConstants.LawfulGood, AlignmentConstants.TrueNeutral, AlignmentConstants.ChaoticEvil)
+                .Build();
+
+            var updatedPrototype = applicator.ApplyTo(prototype);
+            Assert.That(updatedPrototype, Is.EqualTo(prototype));
+            Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].TemplateScore, Is.Zero);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].FullScore, Is.Zero);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].HasScore, Is.False);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].TemplateAdjustment, Is.EqualTo(2));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(90210 + Ability.DefaultScore + 2));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].HasScore, Is.True);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.EqualTo(2));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(42 + Ability.DefaultScore + 2));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].HasScore, Is.True);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(2));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(600 + Ability.DefaultScore + 2));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].HasScore, Is.True);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.Zero);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(1337 + Ability.DefaultScore));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].HasScore, Is.True);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].TemplateAdjustment, Is.Zero);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(1336 + Ability.DefaultScore));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].HasScore, Is.True);
+            Assert.That(updatedPrototype.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
+            Assert.That(updatedPrototype.LevelAdjustment, Is.EqualTo(96 + 4));
+            Assert.That(updatedPrototype.Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
+            Assert.That(updatedPrototype.Type.SubTypes,
+                Is.EquivalentTo(["subtype 1", "subtype 2", CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Augmented]));
+            Assert.That(updatedPrototype.Alignments,
+                Is.EquivalentTo([new Alignment(AlignmentConstants.LawfulEvil), new Alignment(AlignmentConstants.NeutralEvil), new Alignment(AlignmentConstants.ChaoticEvil)]));
+            Assert.Fail("assert prototype template updated");
         }
 
         [TestCase(AbilityConstants.Intelligence)]
@@ -1912,10 +1998,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithTestValues()
                 .WithName("my creature")
                 .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                .WithChallengeRating(ChallengeRatingConstants.CR1)
-                .WithCasterLevel(9266)
-                .WithLevelAdjustment(90210)
-                .WithHitDiceQuantity(9)
                 .WithoutAbility(ability)
                 .Build();
 
@@ -1994,6 +2076,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.Fail("not yet written");
         }
 
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(10)]
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithUpdatedLevelAdjustment(int levelAdjustment)
+        {
+            Assert.Fail("not yet written");
+        }
+
         [Test]
         public void ApplyTo_PrototypeWithoutLevelAdjustment_ReturnsUpdatedPrototype_WithUnchangedLevelAdjustment()
         {
@@ -2002,6 +2093,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
         [Test]
         public void ApplyTo_PrototypeWithAlignment_ReturnsUpdatedPrototype_WithFilteredAlignment()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithAdditionalTemplates()
         {
             Assert.Fail("not yet written");
         }

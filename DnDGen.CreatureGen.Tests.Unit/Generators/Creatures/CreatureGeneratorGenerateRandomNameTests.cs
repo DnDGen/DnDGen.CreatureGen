@@ -163,7 +163,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(v => v.GetChainedTemplates(It.IsAny<IEnumerable<string>>(), filters.CleanTemplates, asCharacter, null, filters))
                 .Returns((IEnumerable<string> cc, List<string> tt, bool asC, AbilityRandomizer r, Filters f) => cc
                     .Intersect([creatureName])
-                    .Select(c => new CreaturePrototype { Name = c }));
+                    .Select(c => new CreaturePrototype { Name = c, Templates = filters.CleanTemplates }));
 
             var name = creatureGenerator.GenerateRandomName(asCharacter, filters);
             Assert.That(name.Creature, Is.EqualTo(creatureName));
@@ -208,7 +208,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(v => v.GetChainedTemplates(It.IsAny<IEnumerable<string>>(), filters.CleanTemplates, asCharacter, null, filters))
                 .Returns((IEnumerable<string> cc, List<string> tt, bool asC, AbilityRandomizer r, Filters f) => cc
                     .Intersect([creatureName])
-                    .Select(c => new CreaturePrototype { Name = c }));
+                    .Select(c => new CreaturePrototype { Name = c, Templates = filters.CleanTemplates }));
 
             var name = creatureGenerator.GenerateRandomName(asCharacter, filters);
             Assert.That(name.Creature, Is.EqualTo(creatureName));
@@ -255,7 +255,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(v => v.GetChainedTemplates(It.IsAny<IEnumerable<string>>(), filters.CleanTemplates, asCharacter, null, filters))
                 .Returns((IEnumerable<string> cc, List<string> tt, bool asC, AbilityRandomizer r, Filters f) => cc
                     .Intersect([creatureName])
-                    .Select(c => new CreaturePrototype { Name = c }));
+                    .Select(c => new CreaturePrototype { Name = c, Templates = filters.CleanTemplates }));
 
             var name = creatureGenerator.GenerateRandomName(asCharacter, filters);
             Assert.That(name.Creature, Is.EqualTo(creatureName));
@@ -487,11 +487,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockCreatureVerifier
                 .Setup(v => v.GetChainedTemplates(It.IsAny<IEnumerable<string>>(), filters.CleanTemplates, asCharacter, null, filters))
                 .Returns((IEnumerable<string> cc, List<string> tt, bool asC, AbilityRandomizer r, Filters f) => cc
-                    .Select(c => new CreaturePrototype { Name = c }));
+                    .Select(c => new CreaturePrototype { Name = c, Templates = filters.CleanTemplates }));
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(creatures))))
-                .Returns(creatureName);
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<CreaturePrototype>>()))
+                .Returns((IEnumerable<CreaturePrototype> cc) => cc.Single(c => c.Name == creatureName));
 
             var name = creatureGenerator.GenerateRandomName(asCharacter, filters);
             Assert.That(name.Creature, Is.EqualTo(creatureName));
@@ -539,11 +539,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockCreatureVerifier
                 .Setup(v => v.GetChainedTemplates(It.IsAny<IEnumerable<string>>(), filters.CleanTemplates, asCharacter, null, filters))
                 .Returns((IEnumerable<string> cc, List<string> tt, bool asC, AbilityRandomizer r, Filters f) => cc
-                    .Select(c => new CreaturePrototype { Name = c }));
+                    .Select(c => new CreaturePrototype { Name = c, Templates = filters.CleanTemplates }));
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(creatures))))
-                .Returns(creatureName);
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<CreaturePrototype>>()))
+                .Returns((IEnumerable<CreaturePrototype> cc) => cc.Single(c => c.Name == creatureName));
 
             var name = creatureGenerator.GenerateRandomName(asCharacter, filters);
             Assert.That(name.Creature, Is.EqualTo(creatureName));
@@ -593,11 +593,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockCreatureVerifier
                 .Setup(v => v.GetChainedTemplates(It.IsAny<IEnumerable<string>>(), filters.CleanTemplates, asCharacter, null, filters))
                 .Returns((IEnumerable<string> cc, List<string> tt, bool asC, AbilityRandomizer r, Filters f) => cc
-                    .Select(c => new CreaturePrototype { Name = c }));
+                    .Select(c => new CreaturePrototype { Name = c, Templates = filters.CleanTemplates }));
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(creatures))))
-                .Returns(creatureName);
+                .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<CreaturePrototype>>()))
+                .Returns((IEnumerable<CreaturePrototype> cc) => cc.Single(c => c.Name == creatureName));
 
             var name = creatureGenerator.GenerateRandomName(asCharacter, filters);
             Assert.That(name.Creature, Is.EqualTo(creatureName));

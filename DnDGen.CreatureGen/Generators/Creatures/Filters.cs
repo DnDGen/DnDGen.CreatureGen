@@ -6,31 +6,58 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 {
     public class Filters
     {
-        public List<string> Templates { get; set; }
-        public string Type { get; set; }
-        public string ChallengeRating { get; set; }
-        public string Alignment { get; set; }
+        /// <summary>
+        /// Templates are all applied, and in order.
+        /// </summary>
+        //public List<string> Templates { get; set; }
 
-        public List<string> CleanTemplates => [.. Templates.Where(t => !string.IsNullOrEmpty(t))];
+        /// <summary>
+        /// A creature that matches any of these types, after templates are applied, will satisfy the filters
+        /// </summary>
+        public List<string> Types { get; set; }
+
+        /// <summary>
+        /// A creature that matches any of these challenge ratings, after templates are applied, will satisfy the filters
+        /// </summary>
+        public List<string> ChallengeRatings { get; set; }
+
+        /// <summary>
+        /// A creature that matches any of these alignments, after templates are applied, will satisfy the filters
+        /// </summary>
+        public List<string> Alignments { get; set; }
+
+        //public string[] CleanTemplates => [.. Templates.Where(t => !string.IsNullOrEmpty(t))];
 
         public Filters()
         {
-            Templates = [];
+            //Templates = [];
+            Types = [];
+            ChallengeRatings = [];
+            Alignments = [];
         }
 
         public string GetDescription(bool asCharacter)
         {
             var description = new StringBuilder();
-            var joinedTemplates = string.Join(", ", CleanTemplates);
-            var messageTemplate = CleanTemplates.Count > 0 ? (!string.IsNullOrEmpty(joinedTemplates) ? joinedTemplates : "(None)") : "Null";
-
             description.AppendLine($"As Character: {asCharacter}");
-            description.AppendLine($"Template: {messageTemplate}");
-            description.AppendLine($"Type: {Type ?? "Null"}");
-            description.AppendLine($"CR: {ChallengeRating ?? "Null"}");
-            description.AppendLine($"Alignment: {Alignment ?? "Null"}");
+            //description.AppendLine($"Templates: {GetMessage(CleanTemplates)}");
+            description.AppendLine($"Types: {GetMessage(Types)}");
+            description.AppendLine($"CR: {GetMessage(ChallengeRatings)}");
+            description.AppendLine($"Alignments: {GetMessage(Alignments)}");
 
             return description.ToString();
+        }
+
+        private static string GetMessage(IEnumerable<string> collection)
+        {
+            if (collection is null)
+                return "<Null>";
+
+            if (!collection.Any())
+                return "[]";
+
+            var joined = string.Join(", ", collection);
+            return $"[{joined}]";
         }
     }
 }

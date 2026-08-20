@@ -79,11 +79,8 @@ namespace DnDGen.CreatureGen.Templates
                     Reason,
                     asCharacter,
                     creature.Name,
-                    filters?.Type,
-                    filters?.ChallengeRating,
-                    filters?.Alignment,
-                    null,
-                    [.. creature.Templates.Union([CreatureConstants.Templates.Skeleton])]);
+                    filters,
+                    templates: [.. creature.Templates.Concat([CreatureConstants.Templates.Skeleton])]);
             }
 
             // Template
@@ -433,11 +430,8 @@ namespace DnDGen.CreatureGen.Templates
                     Reason,
                     asCharacter,
                     creature.Name,
-                    filters?.Type,
-                    filters?.ChallengeRating,
-                    filters?.Alignment,
-                    null,
-                    [.. creature.Templates.Union([CreatureConstants.Templates.Skeleton])]);
+                    filters,
+                    templates: [.. creature.Templates.Concat([CreatureConstants.Templates.Skeleton])]);
             }
 
             var tasks = new List<Task>();
@@ -548,28 +542,24 @@ namespace DnDGen.CreatureGen.Templates
             string creature,
             Filters filters)
         {
-            if (!string.IsNullOrEmpty(filters?.Alignment) && filters.Alignment != AlignmentConstants.NeutralEvil)
+            if (filters?.Alignments?.Count > 0 && !filters.Alignments.Contains(AlignmentConstants.NeutralEvil))
             {
-                return (false, $"Alignment filter '{filters.Alignment}' is not valid");
+                return (false, $"Alignment filter is not valid. Filters: {filters.GetDescription(false)}");
             }
 
-            if (!string.IsNullOrEmpty(filters?.Type))
+            if (filters?.Types?.Count > 0)
             {
-                if (invalidSubtypeFilters.Contains(filters.Type))
-                {
-                    return (false, $"Type filter '{filters.Type}' is not valid");
-                }
-
+                var validFilters = filters.Types.Except(invalidSubtypeFilters);
                 var updatedTypes = UpdateCreatureType(types.Skip(1));
-                if (!updatedTypes.Contains(filters.Type))
-                    return (false, $"Type filter '{filters.Type}' is not valid");
+                if (!updatedTypes.Intersect(validFilters).Any())
+                    return (false, $"Type filter is not valid. Filters: {filters.GetDescription(false)}");
             }
 
-            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
+            if (filters?.ChallengeRatings?.Count > 0)
             {
                 var cr = UpdateCreatureChallengeRating(creatureHitDiceQuantity, creature);
-                if (cr != filters.ChallengeRating)
-                    return (false, $"CR filter {filters.ChallengeRating} does not match updated creature CR {cr}");
+                if (!filters.ChallengeRatings.Contains(cr))
+                    return (false, $"CR filter does not match updated creature CR {cr}. Filters: {filters.GetDescription(false)}");
             }
 
             return (true, null);
@@ -601,6 +591,23 @@ namespace DnDGen.CreatureGen.Templates
 
         public CreaturePrototype ApplyTo(CreaturePrototype creature, Filters filters = null)
         {
+            var (Compatible, Reason) = IsCompatible(
+                creature.Type.AllTypes,
+                creature.HasSkeleton,
+                creature.HitDiceQuantity,
+                creature.Name,
+                creature.AsCharacter,
+                filters);
+            if (!Compatible)
+            {
+                throw new InvalidCreatureException(
+                    Reason,
+                    creature.AsCharacter,
+                    creature.Name,
+                    filters,
+                    templates: [.. creature.Templates.Concat([CreatureConstants.Templates.Skeleton])]);
+            }
+
             UpdateCreatureAbilities(creature);
             UpdateCreatureChallengeRating(creature);
             UpdateCreatureLevelAdjustment(creature);

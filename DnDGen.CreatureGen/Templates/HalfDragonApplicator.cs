@@ -63,11 +63,8 @@ namespace DnDGen.CreatureGen.Templates
                     Reason,
                     asCharacter,
                     creature.Name,
-                    filters?.Type,
-                    filters?.ChallengeRating,
-                    filters?.Alignment,
-                    null,
-                    [.. creature.Templates.Union([DragonSpecies])]);
+                    filters,
+                    templates: [.. creature.Templates.Union([DragonSpecies])]);
 
             // Template
             UpdateCreatureTemplate(creature);
@@ -88,7 +85,7 @@ namespace DnDGen.CreatureGen.Templates
             UpdateCreatureLevelAdjustment(creature);
 
             // Alignment
-            UpdateCreatureAlignment(creature, filters?.Alignment);
+            UpdateCreatureAlignment(creature, filters);
 
             //Armor Class
             UpdateCreatureArmorClass(creature);
@@ -247,28 +244,22 @@ namespace DnDGen.CreatureGen.Templates
 
         private static void UpdateCreatureAbilities(CreaturePrototype creature) => UpdateCreatureAbilities(creature.Abilities);
 
-        private void UpdateCreatureTemplate(Creature creature)
+        private void UpdateCreatureTemplate(Creature creature) => creature.Templates.Add(DragonSpecies);
+        private void UpdateCreatureTemplate(CreaturePrototype creature) => creature.Templates.Add(DragonSpecies);
+
+        private void UpdateCreatureAlignment(Creature creature, Filters filters)
         {
-            creature.Templates.Add(DragonSpecies);
+            creature.Alignment = alignmentGenerator.Generate(DragonSpecies, null, filters);
         }
 
-        private void UpdateCreatureAlignment(Creature creature, string presetAlignment)
+        private static void UpdateCreatureAlignment(CreaturePrototype creature, Filters filters, IEnumerable<string> dragonAlignments)
         {
-            creature.Alignment = alignmentGenerator.Generate(DragonSpecies, null, presetAlignment);
-        }
+            var alignments = dragonAlignments;
 
-        private static void UpdateCreatureAlignment(CreaturePrototype creature, string presetAlignment, IEnumerable<string> dragonAlignments)
-        {
-            if (!string.IsNullOrEmpty(presetAlignment))
-            {
-                creature.Alignments = [.. dragonAlignments
-                    .Where(a => a == presetAlignment)
-                    .Select(a => new Alignment(a))];
-            }
-            else
-            {
-                creature.Alignments = [.. dragonAlignments.Select(a => new Alignment(a))];
-            }
+            if (filters?.Alignments?.Count > 0)
+                alignments = alignments.Where(filters.Alignments.Contains);
+
+            creature.Alignments = [.. alignments.Select(a => new Alignment(a))];
         }
 
         private static void UpdateCreatureChallengeRating(Creature creature)
@@ -427,11 +418,8 @@ namespace DnDGen.CreatureGen.Templates
                     Reason,
                     asCharacter,
                     creature.Name,
-                    filters?.Type,
-                    filters?.ChallengeRating,
-                    filters?.Alignment,
-                    null,
-                    [.. creature.Templates.Union([DragonSpecies])]);
+                    filters,
+                    templates: [.. creature.Templates.Union([DragonSpecies])]);
 
             var tasks = new List<Task>();
 
@@ -460,7 +448,7 @@ namespace DnDGen.CreatureGen.Templates
             tasks.Add(levelAdjustmentTask);
 
             // Alignment
-            var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature, filters?.Alignment));
+            var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature, filters));
 
             tasks.Add(alignmentTask);
 
@@ -540,25 +528,24 @@ namespace DnDGen.CreatureGen.Templates
             string creatureChallengeRating,
             Filters filters)
         {
-            if (!string.IsNullOrEmpty(filters?.Alignment))
+            if (filters?.Alignments?.Count > 0)
             {
-                //INFO: For Half-Dragons, alignments are purely based on Dragon Species, not Base Creature
-                if (!dragonAlignments.Contains(filters.Alignment))
-                    return (false, $"Alignment filter '{filters.Alignment}' is not valid");
+                if (!dragonAlignments.Intersect(filters.Alignments).Any())
+                    return (false, $"Alignment filter is not valid for creature alignments. Filters: {filters.GetDescription(false)}");
             }
 
-            if (!string.IsNullOrEmpty(filters?.Type))
+            if (filters?.Types?.Count > 0)
             {
                 var updatedTypes = UpdateCreatureType(types.First(), types.Skip(1));
-                if (!updatedTypes.Contains(filters.Type))
-                    return (false, $"Type filter '{filters.Type}' is not valid");
+                if (!updatedTypes.Intersect(filters.Types).Any())
+                    return (false, $"Type filter is not valid. Filters: {filters.GetDescription(false)}");
             }
 
-            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
+            if (filters?.ChallengeRatings?.Count > 0)
             {
                 var cr = UpdateCreatureChallengeRating(creatureChallengeRating);
-                if (cr != filters.ChallengeRating)
-                    return (false, $"CR filter {filters.ChallengeRating} does not match updated creature CR {cr} (from CR {creatureChallengeRating})");
+                if (!filters.ChallengeRatings.Contains(cr))
+                    return (false, $"CR filter does not match updated creature CR {cr} (from CR {creatureChallengeRating}). Filters: {filters.GetDescription(false)}");
             }
 
             return (true, null);
@@ -579,11 +566,27 @@ namespace DnDGen.CreatureGen.Templates
         {
             var dragonAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, DragonSpecies);
 
+            var (Compatible, Reason) = IsCompatible(
+                creature.Type.AllTypes,
+                dragonAlignments,
+                creature.ChallengeRating,
+                filters);
+            if (!Compatible)
+            {
+                throw new InvalidCreatureException(
+                    Reason,
+                    creature.AsCharacter,
+                    creature.Name,
+                    filters,
+                    templates: [.. creature.Templates.Concat([DragonSpecies])]);
+            }
+
             UpdateCreatureAbilities(creature);
-            UpdateCreatureAlignment(creature, filters?.Alignment, dragonAlignments);
+            UpdateCreatureAlignment(creature, filters, dragonAlignments);
             UpdateCreatureChallengeRating(creature);
             UpdateCreatureLevelAdjustment(creature);
             UpdateCreatureType(creature);
+            UpdateCreatureTemplate(creature);
 
             return creature;
         }
