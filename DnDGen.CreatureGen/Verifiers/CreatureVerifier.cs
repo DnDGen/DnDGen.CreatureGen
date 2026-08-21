@@ -64,25 +64,25 @@ namespace DnDGen.CreatureGen.Verifiers
             var templateCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, template + asCharacter);
             var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
 
-            if (filters.Types.Count > 0)
+            if (filters?.Types?.Count > 0)
             {
                 var typeCreatures = GetUnifiedCreatureGroups(template, filters.Types);
                 filteredBaseCreatures = filteredBaseCreatures.Intersect(typeCreatures);
             }
 
-            if (filters.Alignments.Count > 0)
+            if (filters?.Alignments?.Count > 0)
             {
                 var alignmentCreatures = GetUnifiedCreatureGroups(template, filters.Alignments);
                 filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
             }
 
-            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
+            if (filters?.ChallengeRatings?.Count > 0)
             {
-                var groupName = template + asCharacter + filters.ChallengeRating;
-                var crCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
+                var crCreatures = GetUnifiedCreatureGroups(template + asCharacter, filters.ChallengeRatings);
                 filteredBaseCreatures = filteredBaseCreatures.Intersect(crCreatures);
             }
 
+            //INFO: Exit early, so we only construct template applicators when necessary
             if (!filteredBaseCreatures.Any())
                 return filteredBaseCreatures;
 
@@ -128,7 +128,7 @@ namespace DnDGen.CreatureGen.Verifiers
             return [.. updatedPrototypes];
         }
 
-        public bool VerifyCompatibility(bool asCharacter, string creature = null, AbilityRandomizer abilityRandomizer = null, Filters filters = null)
+        public bool VerifyCompatibility(bool asCharacter, string creature = null, AbilityRandomizer abilityRandomizer = null, Filters filters = null, params string[] templates)
         {
             var valid = abilityRandomizer?.Validate(dice) ?? true;
             if (!valid)
@@ -150,15 +150,15 @@ namespace DnDGen.CreatureGen.Verifiers
             if (!compatible)
                 return false;
 
-            if (filters?.CleanTemplates?.Length == 1)
+            if (templates.Length == 1)
             {
-                var compatibleCreatures = GetCompatibleCreaturesForTemplate(baseCreatures, filters.CleanTemplates[0], asCharacter, abilityRandomizer, filters);
+                var compatibleCreatures = GetCompatibleCreaturesForTemplate(baseCreatures, templates[0], asCharacter, abilityRandomizer, filters);
                 return compatibleCreatures.Any();
             }
 
-            if (filters?.CleanTemplates?.Length > 1)
+            if (templates.Length > 1)
             {
-                var compatibleCreatures = GetChainedTemplates(baseCreatures, filters.CleanTemplates, asCharacter, abilityRandomizer, filters);
+                var compatibleCreatures = GetChainedTemplates(baseCreatures, templates, asCharacter, abilityRandomizer, filters);
                 return compatibleCreatures.Any();
             }
 
@@ -170,8 +170,8 @@ namespace DnDGen.CreatureGen.Verifiers
 
             //INFO: This means that the filters aren't valid for non-templated base creatures.
             //We need to check the templates to see if any of them are valid
-            var templates = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All);
-            foreach (var template in templates)
+            var allTemplates = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All);
+            foreach (var template in allTemplates)
             {
                 filteredCreatures = GetCompatibleCreaturesForTemplate(baseCreatures, template, asCharacter, abilityRandomizer, filters);
                 if (filteredCreatures.Any())

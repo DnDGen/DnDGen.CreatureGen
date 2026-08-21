@@ -1,7 +1,6 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Abilities;
-using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
@@ -84,7 +83,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     It.IsAny<bool>(),
                     It.IsAny<string>(),
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(CreatureConstants.Templates.None))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo(CreatureConstants.Templates.None))))
                 .Returns(true);
         }
 
@@ -138,7 +138,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     It.IsAny<bool>(),
                     It.IsAny<string>(),
                     It.Is<AbilityRandomizer>(r => r.Roll == AbilityConstants.RandomizerRolls.Default),
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(CreatureConstants.Templates.None))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo(CreatureConstants.Templates.None))))
                 .Returns(true);
 
             var abilities = abilitiesGenerator.GenerateFor("creature name", [], false, null, demographics);
@@ -390,7 +391,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     asCharacter,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(CreatureConstants.Templates.None))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo(CreatureConstants.Templates.None))))
                 .Returns(true);
 
             var abilities = abilitiesGenerator.GenerateFor("creature name", [], asCharacter, randomizer, demographics);
@@ -420,7 +422,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     asCharacter,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo("my template"))))
                 .Returns(true);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -453,7 +456,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     asCharacter,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo("my template"))))
                 .Returns(false);
 
             var generation = () => abilitiesGenerator.GenerateFor("creature name", ["my template"], asCharacter, randomizer, demographics);
@@ -470,7 +474,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     asCharacter,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template", "my other template" }))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo("my template", "my other template"))))
                 .Returns(true);
 
             var mockTemplateApplicator1 = new Mock<TemplateApplicator>();
@@ -505,7 +510,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     asCharacter,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template", "my other template" }))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo("my template", "my other template"))))
                 .Returns(false);
 
             var generation = () => abilitiesGenerator.GenerateFor("creature name", ["my template", "my other template"], asCharacter, randomizer, demographics);
@@ -542,7 +548,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     false,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo("my template"))))
                 .Returns(true);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -580,7 +587,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     false,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo("my template"))))
                 .Returns(true);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -618,7 +626,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     false,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo("my template"))))
                 .Returns(true);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -658,7 +667,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     false,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo("my template"))))
                 .Returns(true);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -696,7 +706,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     false,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo("my template"))))
                 .Returns(true);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -736,7 +747,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     false,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo("my template"))))
                 .Returns(true);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -784,7 +796,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     false,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo("my template"))))
                 .Returns(true);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -831,7 +844,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     false,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo("my template"))))
                 .Returns(true);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -867,7 +881,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     false,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo("my template"))))
                 .Returns(false);
 
             randomizer.SetRolls["ability"] = 1336;
@@ -887,7 +902,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     false,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo("my template"))))
                 .Returns(true);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -924,7 +940,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     false,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo("my template"))))
                 .Returns(true);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -961,7 +978,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     false,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo("my template"))))
                 .Returns(true);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -1002,7 +1020,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     false,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo("my template"))))
                 .Returns(true);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -1049,7 +1068,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
                     false,
                     "creature name",
                     randomizer,
-                    It.Is<Filters>(f => f.Templates.IsEquivalentTo(new[] { "my template" }))))
+                    null,
+                    It.Is<string[]>(t => t.IsEquivalentTo("my template"))))
                 .Returns(true);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();

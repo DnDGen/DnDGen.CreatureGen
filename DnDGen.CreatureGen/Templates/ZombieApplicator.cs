@@ -44,7 +44,7 @@ namespace DnDGen.CreatureGen.Templates
                 CreatureConstants.Types.MonstrousHumanoid,
                 CreatureConstants.Types.Vermin,
             ];
-        private readonly IEnumerable<string> invalidSubtypes =
+        private readonly IEnumerable<string> invalidSubtypeFilters =
             [
                 CreatureConstants.Types.Subtypes.Angel,
                 CreatureConstants.Types.Subtypes.Archon,
@@ -80,11 +80,8 @@ namespace DnDGen.CreatureGen.Templates
                     Reason,
                     asCharacter,
                     creature.Name,
-                    filters?.Type,
-                    filters?.ChallengeRating,
-                    filters?.Alignment,
-                    null,
-                    [.. creature.Templates.Union([CreatureConstants.Templates.Zombie])]);
+                    filters,
+                    templates: [.. creature.Templates.Concat([CreatureConstants.Templates.Zombie])]);
             }
 
             // Template
@@ -158,7 +155,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private IEnumerable<string> UpdateCreatureType(IEnumerable<string> subtypes) => new[] { CreatureConstants.Types.Undead }
                 .Union(subtypes)
-                .Except(invalidSubtypes);
+                .Except(invalidSubtypeFilters);
 
         private void UpdateCreatureDemographics(Creature creature)
         {
@@ -425,11 +422,8 @@ namespace DnDGen.CreatureGen.Templates
                     Reason,
                     asCharacter,
                     creature.Name,
-                    filters?.Type,
-                    filters?.ChallengeRating,
-                    filters?.Alignment,
-                    null,
-                    [.. creature.Templates.Union([CreatureConstants.Templates.Zombie])]);
+                    filters,
+                    templates: [.. creature.Templates.Concat([CreatureConstants.Templates.Zombie])]);
             }
 
             var tasks = new List<Task>();
@@ -543,28 +537,24 @@ namespace DnDGen.CreatureGen.Templates
             string creature,
             Filters filters)
         {
-            if (!string.IsNullOrEmpty(filters?.Alignment) && filters.Alignment != AlignmentConstants.NeutralEvil)
+            if (filters?.Alignments?.Count > 0 && !filters.Alignments.Contains(AlignmentConstants.NeutralEvil))
             {
-                return (false, $"Alignment filter '{filters.Alignment}' is not valid");
+                return (false, $"Alignment filter is not valid. Filters: {filters.GetDescription(false)}");
             }
 
-            if (!string.IsNullOrEmpty(filters?.Type))
+            if (filters?.Types?.Count > 0)
             {
-                if (invalidSubtypes.Contains(filters.Type))
-                {
-                    return (false, $"Type filter '{filters.Type}' is not valid");
-                }
-
+                var validFilters = filters.Types.Except(invalidSubtypeFilters);
                 var updatedTypes = UpdateCreatureType(types.Skip(1));
-                if (!updatedTypes.Contains(filters.Type))
-                    return (false, $"Type filter '{filters.Type}' is not valid");
+                if (!updatedTypes.Intersect(validFilters).Any())
+                    return (false, $"Type filter is not valid. Filters: {filters.GetDescription(false)}");
             }
 
-            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
+            if (filters?.ChallengeRatings?.Count > 0)
             {
                 var cr = UpdateCreatureChallengeRating(creatureHitDiceQuantity * 2, creature);
-                if (cr != filters.ChallengeRating)
-                    return (false, $"CR filter {filters.ChallengeRating} does not match updated creature CR {cr}");
+                if (!filters.ChallengeRatings.Contains(cr))
+                    return (false, $"CR filter does not match updated creature CR {cr}. Filters: {filters.GetDescription(false)}");
             }
 
             return (true, null);
@@ -609,11 +599,8 @@ namespace DnDGen.CreatureGen.Templates
                     Reason,
                     creature.AsCharacter,
                     creature.Name,
-                    filters?.Type,
-                    filters?.ChallengeRating,
-                    filters?.Alignment,
-                    null,
-                    [.. creature.Templates.Concat([CreatureConstants.Templates.Zombie])]);
+                    filters,
+                    templates: [.. creature.Templates.Concat([CreatureConstants.Templates.Zombie])]);
             }
 
             UpdateCreatureAbilities(creature);
