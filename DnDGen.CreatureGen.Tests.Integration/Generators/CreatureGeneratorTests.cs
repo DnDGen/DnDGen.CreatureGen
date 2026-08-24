@@ -79,7 +79,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
 
             Assert.That(creature.Magic, Is.Not.Null);
             Assert.That(creature.Magic.Caster, Is.Not.Empty);
-            creatureAsserter.AssertMagic(creature, creature.Summary);
+            CreatureAsserter.AssertMagic(creature, creature.Summary);
         }
 
         [TestCase(CreatureConstants.Human)]
@@ -790,23 +790,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
-        public void BUG_GenerateRandom_WithProblematicFilters(string type, bool asCharacter, string template, string challengeRating, string alignment)
+        public void BUG_GenerateRandom_WithProblematicFilters(bool asCharacter, string[] templates, Filters filters)
         {
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer([template]);
-            GenerateAndAssertRandomCreature(asCharacter, type, challengeRating, alignment, randomizer, template);
+            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer(templates);
+            GenerateAndAssertRandomCreature(asCharacter, filters, randomizer, templates);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
-        public void BUG_GenerateRandom_WithProblematicFilters_DefaultAbilities(string type, bool asCharacter, string template, string challengeRating, string alignment)
+        public void BUG_GenerateRandom_WithProblematicFilters_DefaultAbilities(bool asCharacter, string[] templates, Filters filters)
         {
-            GenerateAndAssertRandomCreature(asCharacter, type, challengeRating, alignment, null, template);
+            GenerateAndAssertRandomCreature(asCharacter, filters, null, templates);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
-        public void BUG_GenerateRandom_WithProblematicFilters_ProblematicAbilities(string type, bool asCharacter, string template, string challengeRating, string alignment)
+        public void BUG_GenerateRandom_WithProblematicFilters_ProblematicAbilities(bool asCharacter, string[] templates, Filters filters)
         {
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer([template], [AbilityConstants.RandomizerRolls.Poor, AbilityConstants.RandomizerRolls.Wild]);
-            GenerateAndAssertRandomCreature(asCharacter, type, challengeRating, alignment, randomizer, template);
+            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer(templates, [AbilityConstants.RandomizerRolls.Poor, AbilityConstants.RandomizerRolls.Wild]);
+            GenerateAndAssertRandomCreature(asCharacter, filters, randomizer, templates);
         }
 
         [Test]
@@ -814,7 +814,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         {
             var templates = new[] { CreatureConstants.Templates.HalfDragon_Gold, CreatureConstants.Templates.CelestialCreature };
             var randomizer = abilityRandomizerFactory.GetAbilityRandomizer(templates);
-            GenerateAndAssertRandomCreature(false, null, null, null, randomizer, templates);
+            GenerateAndAssertRandomCreature(false, null, randomizer, templates);
         }
 
         [Test]
@@ -837,45 +837,35 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
 
         private Creature GenerateAndAssertRandomCreature(
             bool asCharacter,
-            string type,
-            string challengeRating,
-            string alignment,
+            Filters filters,
             AbilityRandomizer randomizer,
             params string[] templates)
         {
-            var filters = new Filters();
-            filters.Templates.AddRange(templates);
-            filters.Type = type;
-            filters.ChallengeRating = challengeRating;
-            filters.Alignment = alignment;
-
             stopwatch.Restart();
             var creature = creatureGenerator.GenerateRandom(asCharacter, randomizer, filters);
             stopwatch.Stop();
 
             var message = new StringBuilder();
-            var messageTemplate = filters.CleanTemplates.Count > 0 ? string.Join(", ", filters.CleanTemplates) : "(None)";
+            var filtersDescription = filters.GetDescription();
 
             message.AppendLine($"Creature: {creature.Summary}");
-            message.AppendLine($"As Character: {asCharacter}");
-            message.AppendLine($"Template: {messageTemplate}");
-            message.AppendLine($"Type: {type ?? "Null"}");
-            message.AppendLine($"CR: {challengeRating ?? "Null"}");
-            message.AppendLine($"Alignment: {alignment ?? "Null"}");
+            message.AppendLine($"Filters: {filtersDescription}");
 
             var timeLimit = CreatureAsserter.GetGenerationTimeLimitInSeconds(creature);
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(timeLimit), message.ToString());
 
-            Assert.That(creature.Templates, Is.EqualTo(filters.CleanTemplates), message.ToString());
+            Assert.That(creature.Templates, Is.EqualTo(templates), message.ToString());
 
-            if (type != null)
-                creatureAsserter.AssertCreatureIsType(creature, type, message.ToString());
+            //INFO: While we support multiple filters (acting as an OR), our current test cases only use 1 filter each.
+            //if we ever add multiple filter values as abilityRandomizerFactory test case, these assertions should fail and should be updated to handle the or correctly
+            if (filters?.Types?.Count > 0)
+                CreatureAsserter.AssertCreatureIsType(creature, filters.Types.Single(), message.ToString());
 
-            if (challengeRating != null)
-                Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), message.ToString());
+            if (filters?.ChallengeRatings?.Count > 0)
+                Assert.That(creature.ChallengeRating, Is.EqualTo(filters.ChallengeRatings.Single()), message.ToString());
 
-            if (alignment != null)
-                Assert.That(creature.Alignment.Full, Is.EqualTo(alignment), message.ToString());
+            if (filters?.Alignments?.Count > 0)
+                Assert.That(creature.Alignment.Full, Is.EqualTo(filters.Alignments.Single()), message.ToString());
 
             if (asCharacter)
                 creatureAsserter.AssertCreatureAsCharacter(creature, message.ToString());

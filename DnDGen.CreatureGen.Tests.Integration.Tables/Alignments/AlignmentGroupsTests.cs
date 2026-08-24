@@ -822,7 +822,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AssertCollection(name, [.. alignments]);
         }
 
-        private (string modifier, string alignment) ParseGroup(string group)
+        private static (string modifier, string alignment) ParseGroup(string group)
         {
             var sections = group.Split('|');
             var modifier = sections[0];

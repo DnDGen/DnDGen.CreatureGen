@@ -1,4 +1,4 @@
-﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Templates;
@@ -59,9 +59,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = challengeRating,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [challengeRating],
+                Alignments = [alignment]
             };
 
             var func = () => templateApplicator.ApplyTo(clone, asCharacter, filters);
@@ -85,9 +85,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters
             {
-                Type = "subtype 1",
-                ChallengeRating = ChallengeRatingConstants.CR1,
-                Alignment = "original alignment"
+                Types = ["subtype 1"],
+                ChallengeRatings = [ChallengeRatingConstants.CR1],
+                Alignments = ["original alignment"]
             };
 
             var templatedCreature = templateApplicator.ApplyTo(clone, false, filters);
@@ -336,9 +336,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = challengeRating,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [challengeRating],
+                Alignments = [alignment]
             };
 
             await Assert.ThatAsync(async () => await templateApplicator.ApplyToAsync(clone, asCharacter, filters),
@@ -362,9 +362,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters
             {
-                Type = "subtype 1",
-                ChallengeRating = ChallengeRatingConstants.CR1,
-                Alignment = "original alignment"
+                Types = ["subtype 1"],
+                ChallengeRatings = [ChallengeRatingConstants.CR1],
+                Alignments = ["original alignment"]
             };
 
             var templatedCreature = await templateApplicator.ApplyToAsync(clone, false, filters);
@@ -497,9 +497,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = challengeRating,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [challengeRating],
+                Alignments = [alignment]
             };
 
             var func = () => templateApplicator.ApplyTo(clone, asCharacter, filters);

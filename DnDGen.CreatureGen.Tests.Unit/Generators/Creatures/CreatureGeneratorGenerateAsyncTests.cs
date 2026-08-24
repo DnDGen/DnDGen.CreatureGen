@@ -4,7 +4,6 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Abilities;
-using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
@@ -1603,11 +1602,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var templateCreature = new Creature();
             mockTemplateApplicator
-                .Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f => f != null
-                    && f.Templates.Single() == "template"
-                    && f.ChallengeRating == null
-                    && f.Type == null
-                    && f.Alignment == null)))
+                .Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, null))
                 .ReturnsAsync(templateCreature);
 
             var creature = await creatureGenerator.GenerateAsync(asCharacter, "creature", null, "template");
@@ -1633,13 +1628,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var templateCreature2 = new Creature();
             mockTemplateApplicator2
-                .Setup(a => a.ApplyToAsync(templateCreature1, asCharacter, It.Is<Filters>(f => f != null
-                    && f.Templates.Count == 2
-                    && f.Templates[0] == "template 1"
-                    && f.Templates[1] == "template 2"
-                    && f.ChallengeRating == null
-                    && f.Type == null
-                    && f.Alignment == null)))
+                .Setup(a => a.ApplyToAsync(templateCreature1, asCharacter, null))
                 .ReturnsAsync(templateCreature2);
 
             var creature = await creatureGenerator.GenerateAsync(asCharacter, "creature", null, "template 1", "template 2");

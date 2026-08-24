@@ -1,4 +1,4 @@
-﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
@@ -104,14 +104,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         [TestCase(false, false)]
         public void VerifyCompatibility_CreatureAnd1Template_Compatible(bool asCharacter, bool compatible)
         {
-            var filters = new Filters();
-            filters.Templates.Add("template");
-
             SetUpCreatureGroup("template" + asCharacter, compatible ? ["character", creature, "wrong creature"] : ["character", "wrong creature"]);
 
             SetupApplicator("template");
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer, null, "template");
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
@@ -121,10 +118,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         [TestCase(false, false)]
         public void VerifyCompatibility_CreatureAnd2Templates_Compatible(bool asCharacter, bool compatible)
         {
-            var filters = new Filters();
-            filters.Templates.Add("template 1");
-            filters.Templates.Add("template 2");
-
             SetUpCreatureGroup("template 1", ["character", creature, "wrong creature"]);
 
             mockCreaturePrototypeFactory
@@ -140,13 +133,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
                 .Returns((CreaturePrototype cp, Filters _) => cp);
             mockApplicator2
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), filters))
+                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
                 .Returns((CreaturePrototype cp, Filters _) => compatible && cp.Name == creature);
             mockApplicator2
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), filters))
+                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
                 .Returns((CreaturePrototype cp, Filters _) => cp);
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer, null, "template 1", "template 2");
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
@@ -156,11 +149,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         [TestCase(false, false)]
         public void VerifyCompatibility_CreatureAnd3Templates_Compatible(bool asCharacter, bool compatible)
         {
-            var filters = new Filters();
-            filters.Templates.Add("template 1");
-            filters.Templates.Add("template 2");
-            filters.Templates.Add("template 3");
-
             SetUpCreatureGroup("template 1", ["character", creature, "wrong creature"]);
 
             mockCreaturePrototypeFactory
@@ -183,13 +171,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
                 .Returns((CreaturePrototype cp, Filters _) => cp);
             mockApplicator3
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), filters))
+                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
                 .Returns((CreaturePrototype cp, Filters _) => compatible && cp.Name == creature);
             mockApplicator3
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), filters))
+                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
                 .Returns((CreaturePrototype cp, Filters _) => cp);
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer, null, "template 1", "template 2", "template 3");
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
@@ -199,13 +187,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         [TestCase(false, false)]
         public void BUG_VerifyCompatibility_CreatureAndNoneTemplate_Compatible(bool asCharacter, bool compatible)
         {
-            var filters = new Filters();
-            filters.Templates.Add(CreatureConstants.Templates.None);
-
             if (!compatible)
                 SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter, ["character", "wrong creature"]);
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer, null, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
@@ -213,14 +198,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         [TestCase(false)]
         public void VerifyCompatiblity_CreatureAndTemplateAsCharacter_Compatible(bool compatible)
         {
-            var filters = new Filters();
-            filters.Templates.Add("template");
-
             SetUpCreatureGroup("template" + true, compatible ? ["character", creature, "wrong creature"] : ["character", "wrong creature"]);
 
             SetupApplicator("template");
 
-            var isCompatible = verifier.VerifyCompatibility(true, creature, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(true, creature, abilityRandomizer, null, "template");
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
@@ -228,63 +210,48 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         [TestCase(false)]
         public void BUG_VerifyCompatiblity_CreatureAndNoneTemplateAsCharacter_Compatible(bool compatible)
         {
-            var filters = new Filters();
-            filters.Templates.Add(CreatureConstants.Templates.None);
-
             if (!compatible)
                 SetUpCreatureGroup(CreatureConstants.Templates.None + true, ["character", "wrong character"]);
 
-            var isCompatible = verifier.VerifyCompatibility(true, creature, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(true, creature, abilityRandomizer, null, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
         [Test]
         public void VerifyCompatiblity_CreatureAndTemplateAsCharacter_NotCompatible_IfNotCharacter()
         {
-            var filters = new Filters();
-            filters.Templates.Add("template");
-
             SetUpCreatureGroup(GroupConstants.Characters, allCharacters.Except([creature]));
             SetUpCreatureGroup("template" + true, ["character", creature, "wrong creature"]);
 
             SetupApplicator("template");
 
-            var isCompatible = verifier.VerifyCompatibility(true, creature, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(true, creature, abilityRandomizer, null, "template");
             Assert.That(isCompatible, Is.False);
         }
 
         [Test]
         public void BUG_VerifyCompatiblity_CreatureAndNoneTemplateAsCharacter_NotCompatible_IfNotCharacter()
         {
-            var filters = new Filters();
-            filters.Templates.Add(CreatureConstants.Templates.None);
-
             SetUpCreatureGroup(GroupConstants.Characters, allCharacters.Except([creature]));
 
-            var isCompatible = verifier.VerifyCompatibility(true, creature, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(true, creature, abilityRandomizer, null, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.False);
         }
 
         [Test]
         public void VerifyCompatiblity_Template_Compatible_IfTemplate()
         {
-            var filters = new Filters();
-            filters.Templates.Add("template");
-
             SetUpCreatureGroup("template" + false, ["character", creature, "template creature"]);
 
             SetupApplicator("template");
 
-            var isCompatible = verifier.VerifyCompatibility(false, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(false, null, abilityRandomizer, null, "template");
             Assert.That(isCompatible, Is.True);
         }
 
         [Test]
         public void VerifyCompatiblity_TemplateWithMinimumAbility_Compatible()
         {
-            var filters = new Filters();
-            filters.Templates.Add("template");
-
             SetUpCreatureGroup("template" + false, ["template character", creature, "wrong template creature"]);
             SetUpCreatureGroup("my ability-3", ["ability character", creature, "wrong ability creature"]);
 
@@ -294,17 +261,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(9);
 
-            var isCompatible = verifier.VerifyCompatibility(false, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(false, null, abilityRandomizer, null, "template");
             Assert.That(isCompatible, Is.True);
         }
 
         [Test]
         public void BUG_VerifyCompatiblity_NoneTemplate_Compatible()
         {
-            var filters = new Filters();
-            filters.Templates.Add(CreatureConstants.Templates.None);
-
-            var isCompatible = verifier.VerifyCompatibility(false, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(false, null, abilityRandomizer, null, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.True);
         }
 
@@ -312,14 +276,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         [TestCase(false)]
         public void VerifyCompatiblity_Template_NotCompatible_IfNotTemplate(bool asCharacter)
         {
-            var filters = new Filters();
-            filters.Templates.Add("template");
-
             SetUpCreatureGroup("template" + asCharacter, ["template creature", "wrong template creature"]);
 
             SetupApplicator("template");
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, null, "template");
             Assert.That(isCompatible, Is.False);
         }
 
@@ -327,9 +288,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         [TestCase(false)]
         public void VerifyCompatiblity_Template_NotCompatible_IfNotMinimumAbility(bool asCharacter)
         {
-            var filters = new Filters();
-            filters.Templates.Add("template");
-
             SetUpCreatureGroup("template" + asCharacter, ["template creature", creature, "wrong template creature"]);
             SetUpCreatureGroup("my ability-3", ["ability character", "wrong ability creature"]);
 
@@ -339,7 +297,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(9);
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, null, "template");
             Assert.That(isCompatible, Is.False);
         }
 
@@ -347,36 +305,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         [TestCase(false)]
         public void BUG_VerifyCompatiblity_NoneTemplate_NotCompatible_IfNotTemplate(bool asCharacter)
         {
-            var filters = new Filters();
-            filters.Templates.Add(CreatureConstants.Templates.None);
-
             SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter, ["none creature", "other wrong creature"]);
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, null, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.False);
         }
 
         [Test]
         public void VerifyCompatiblity_TemplateAsCharacter_NotCompatible_IfNotCharacter()
         {
-            var filters = new Filters();
-            filters.Templates.Add("template");
-
             SetUpCreatureGroup(GroupConstants.Characters, ["character", "wrong character"]);
             SetUpCreatureGroup("template" + true, [creature, "wrong creature"]);
 
             SetupApplicator("template");
 
-            var isCompatible = verifier.VerifyCompatibility(true, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(true, null, abilityRandomizer, null, "template");
             Assert.That(isCompatible, Is.False);
         }
 
         [Test]
         public void VerifyCompatiblity_TemplateWithMinimumAbilityAsCharacter_NotCompatible_IfNotCharacter()
         {
-            var filters = new Filters();
-            filters.Templates.Add("template");
-
             SetUpCreatureGroup(GroupConstants.Characters, ["character", "wrong character"]);
             SetUpCreatureGroup("template" + true, [creature, "wrong creature"]);
             SetUpCreatureGroup("my ability-3", ["ability character", "character", creature, "wrong ability creature"]);
@@ -387,7 +336,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(9);
 
-            var isCompatible = verifier.VerifyCompatibility(true, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(true, null, abilityRandomizer, null, "template");
             Assert.That(isCompatible, Is.False);
         }
 
@@ -411,11 +360,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
-            filters.Templates.Add("template");
 
             SetUpCreatureGroup("template" + asCharacter, ["template character", creature, "wrong template creature"]);
 
@@ -430,7 +378,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             SetupApplicator("template");
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, "template");
             Assert.That(isCompatible, Is.True);
         }
 
@@ -454,11 +402,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
-            filters.Templates.Add("template");
 
             SetUpCreatureGroup("template" + asCharacter, ["template character", creature, "wrong template creature"]);
             SetUpCreatureGroup("my ability-3", ["ability character", creature, "wrong ability creature"]);
@@ -478,7 +425,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(9);
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, "template");
             Assert.That(isCompatible, Is.True);
         }
 
@@ -502,11 +449,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
-            filters.Templates.Add(CreatureConstants.Templates.None);
 
             SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter, ["template character", creature, "wrong template creature"]);
 
@@ -519,7 +465,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             if (alignment != null)
                 SetUpCreatureGroup(CreatureConstants.Templates.None + alignment, ["template alignment character", creature, "wrong alignment creature"]);
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.True);
         }
 
@@ -543,11 +489,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
-            filters.Templates.Add("template");
 
             SetUpCreatureGroup("template" + asCharacter, ["template character", "wrong template creature"]);
 
@@ -562,7 +507,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             SetupApplicator("template");
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, "template");
             Assert.That(isCompatible, Is.False);
         }
 
@@ -578,11 +523,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
-            filters.Templates.Add("template");
 
             SetUpCreatureGroup("template" + asCharacter, ["template character", creature, "wrong template creature"]);
 
@@ -597,7 +541,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             SetupApplicator("template");
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, "template");
             Assert.That(isCompatible, Is.False);
         }
 
@@ -613,11 +557,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
-            filters.Templates.Add("template");
 
             SetUpCreatureGroup("template" + asCharacter, ["template character", creature, "wrong template creature"]);
 
@@ -632,7 +575,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             SetupApplicator("template");
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, "template");
             Assert.That(isCompatible, Is.False);
         }
 
@@ -648,11 +591,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
-            filters.Templates.Add("template");
 
             SetUpCreatureGroup("template" + asCharacter, ["template character", creature, "wrong template creature"]);
 
@@ -667,7 +609,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             SetupApplicator("template");
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, "template");
             Assert.That(isCompatible, Is.False);
         }
 
@@ -691,11 +633,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
-            filters.Templates.Add("template");
 
             SetUpCreatureGroup("template" + asCharacter, ["template character", creature, "wrong template creature"]);
             SetUpCreatureGroup("my ability-3", ["ability character", "wrong ability creature"]);
@@ -715,7 +656,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(9);
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, "template");
             Assert.That(isCompatible, Is.False);
         }
 
@@ -739,11 +680,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
-            filters.Templates.Add(CreatureConstants.Templates.None);
 
             SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter, ["template character", "wrong template creature"]);
 
@@ -756,7 +696,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             if (alignment != null)
                 SetUpCreatureGroup(CreatureConstants.Templates.None + alignment, ["template alignment character", creature, "wrong alignment creature"]);
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.False);
         }
 
@@ -772,11 +712,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
-            filters.Templates.Add(CreatureConstants.Templates.None);
 
             SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter, ["template character", creature, "wrong template creature"]);
 
@@ -789,7 +728,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             if (alignment != null)
                 SetUpCreatureGroup(CreatureConstants.Templates.None + alignment, ["template alignment character", creature, "wrong alignment creature"]);
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.False);
         }
 
@@ -805,11 +744,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
-            filters.Templates.Add(CreatureConstants.Templates.None);
 
             SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter, ["template character", creature, "wrong template creature"]);
 
@@ -822,7 +760,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             if (alignment != null)
                 SetUpCreatureGroup(CreatureConstants.Templates.None + alignment, ["template alignment character", creature, "wrong alignment creature"]);
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.False);
         }
 
@@ -838,11 +776,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
-            filters.Templates.Add(CreatureConstants.Templates.None);
 
             SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter, ["template character", creature, "wrong template creature"]);
 
@@ -855,7 +792,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             if (alignment != null)
                 SetUpCreatureGroup(CreatureConstants.Templates.None + alignment, ["template alignment character", "wrong alignment creature"]);
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.False);
         }
 
@@ -871,11 +808,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
-            filters.Templates.Add("template");
 
             SetUpCreatureGroup(GroupConstants.Characters, ["character", "wrong character"]);
             SetUpCreatureGroup("template" + true, ["template character", creature, "wrong template creature"]);
@@ -891,7 +827,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             SetupApplicator("template");
 
-            var isCompatible = verifier.VerifyCompatibility(true, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(true, null, abilityRandomizer, filters, "template");
             Assert.That(isCompatible, Is.False);
         }
 
@@ -907,11 +843,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
-            filters.Templates.Add("template");
 
             SetUpCreatureGroup(GroupConstants.Characters, ["character", "wrong character"]);
             SetUpCreatureGroup("template" + true, ["template character", creature, "wrong template creature"]);
@@ -932,7 +867,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(9);
 
-            var isCompatible = verifier.VerifyCompatibility(true, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(true, null, abilityRandomizer, filters, "template");
             Assert.That(isCompatible, Is.False);
         }
 
@@ -948,11 +883,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
-            filters.Templates.Add(CreatureConstants.Templates.None);
 
             SetUpCreatureGroup(GroupConstants.Characters, ["character", "wrong character"]);
             SetUpCreatureGroup(CreatureConstants.Templates.None + true, ["template character", creature, "wrong template creature"]);
@@ -966,7 +900,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             if (alignment != null)
                 SetUpCreatureGroup(CreatureConstants.Templates.None + alignment, ["template alignment character", creature, "wrong alignment creature"]);
 
-            var isCompatible = verifier.VerifyCompatibility(true, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(true, null, abilityRandomizer, filters, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.False);
         }
 
@@ -990,9 +924,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
 
             SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter, ["template creature", creature, "wrong template creature"]);
@@ -1042,9 +976,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
 
             SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter, ["template creature", creature, "wrong template creature"]);
@@ -1106,9 +1040,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
 
             SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter, ["template creature", creature, "wrong template creature"]);
@@ -1150,22 +1084,76 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             Assert.That(isCompatible, Is.True);
         }
 
+        [TestCase(true, null, null, null)]
+        [TestCase(true, null, null, "my alignment")]
+        [TestCase(true, null, "my type", null)]
+        [TestCase(true, null, "my type", "my alignment")]
+        [TestCase(true, "my challenge rating", null, null)]
+        [TestCase(true, "my challenge rating", null, "my alignment")]
+        [TestCase(true, "my challenge rating", "my type", null)]
+        [TestCase(true, "my challenge rating", "my type", "my alignment")]
+        [TestCase(false, null, null, null)]
+        [TestCase(false, null, null, "my alignment")]
+        [TestCase(false, null, "my type", null)]
+        [TestCase(false, null, "my type", "my alignment")]
+        [TestCase(false, "my challenge rating", null, null)]
+        [TestCase(false, "my challenge rating", null, "my alignment")]
+        [TestCase(false, "my challenge rating", "my type", null)]
+        [TestCase(false, "my challenge rating", "my type", "my alignment")]
+        public void VerifyCompatiblity_WithFilters_Compatible_BaseCreature_MultipleFilters(bool asCharacter, string cr, string type, string alignment)
+        {
+            var filters = new Filters
+            {
+                Types = ["other type", type],
+                ChallengeRatings = ["other cr", cr],
+                Alignments = ["other alignment", alignment]
+            };
+
+            SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter, ["template creature", creature, "wrong template creature"]);
+            SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter + "other cr", ["other template cr creature", "wrong cr creature"]);
+            SetUpCreatureGroup(CreatureConstants.Templates.None + "other type", ["other type creature", "wrong type creature"]);
+            SetUpCreatureGroup(CreatureConstants.Templates.None + "other alignment", ["other alignment creature", "wrong alignment creature"]);
+
+            if (cr != null)
+                SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter + cr, ["template cr creature", creature, "wrong cr creature"]);
+
+            if (type != null)
+                SetUpCreatureGroup(CreatureConstants.Templates.None + type, ["template type creature", creature, "wrong type creature"]);
+
+            if (alignment != null)
+                SetUpCreatureGroup(CreatureConstants.Templates.None + alignment, ["template alignment creature", creature, "wrong alignment creature"]);
+
+            var templates = new[] { "template", "other template" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
+                .Returns(templates);
+
+            foreach (var template in templates)
+            {
+                SetupApplicator(template);
+            }
+
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
+            Assert.That(isCompatible, Is.True);
+
+            mockCollectionSelector.Verify(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All), Times.Never);
+        }
+
         [TestCase(null)]
         [TestCase("")]
         public void VerifyCompatiblity_WithFilters_Compatible_Template_IgnoreEmptyTemplates(string empty)
         {
             var filters = new Filters
             {
-                Type = "my type",
-                ChallengeRating = "my challenge rating",
-                Alignment = "my alignment"
+                Types = ["my type"],
+                ChallengeRatings = ["my challenge rating"],
+                Alignments = ["my alignment"]
             };
-            filters.Templates.Add(empty);
 
             SetUpCreatureGroup(CreatureConstants.Templates.None + false, ["template creature", creature, "wrong template creature"]);
-            SetUpCreatureGroup(CreatureConstants.Templates.None + false + filters.ChallengeRating, ["template cr creature", "wrong cr creature"]);
-            SetUpCreatureGroup(CreatureConstants.Templates.None + filters.Type, ["template type creature", "wrong type creature"]);
-            SetUpCreatureGroup(CreatureConstants.Templates.None + filters.Alignment, ["template alignment creature", "wrong alignment creature"]);
+            SetUpCreatureGroup(CreatureConstants.Templates.None + false + filters.ChallengeRatings[0], ["template cr creature", "wrong cr creature"]);
+            SetUpCreatureGroup(CreatureConstants.Templates.None + filters.Types[0], ["template type creature", "wrong type creature"]);
+            SetUpCreatureGroup(CreatureConstants.Templates.None + filters.Alignments[0], ["template alignment creature", "wrong alignment creature"]);
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -1181,12 +1169,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                     template + false,
                     isTemplate ? ["template character", creature, "wrong template creature"] : ["template character", "wrong template creature"]);
 
-                SetUpCreatureGroup(template + false + filters.ChallengeRating, ["template cr creature", creature, "wrong cr creature"]);
-                SetUpCreatureGroup(template + filters.Type, ["template type creature", creature, "wrong type creature"]);
-                SetUpCreatureGroup(template + filters.Alignment, ["template alignment creature", creature, "wrong alignment creature"]);
+                SetUpCreatureGroup(template + false + filters.ChallengeRatings[0], ["template cr creature", creature, "wrong cr creature"]);
+                SetUpCreatureGroup(template + filters.Types[0], ["template type creature", creature, "wrong type creature"]);
+                SetUpCreatureGroup(template + filters.Alignments[0], ["template alignment creature", creature, "wrong alignment creature"]);
             }
 
-            var isCompatible = verifier.VerifyCompatibility(false, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(false, null, abilityRandomizer, filters, empty);
             Assert.That(isCompatible, Is.True);
         }
 
@@ -1210,16 +1198,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
-            filters.Templates.Add(CreatureConstants.Templates.None);
 
             SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter, ["template creature", creature, "wrong template creature"]);
-            SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter + filters.ChallengeRating, ["template cr creature", "wrong cr creature"]);
-            SetUpCreatureGroup(CreatureConstants.Templates.None + filters.Type, ["template type creature", "wrong type creature"]);
-            SetUpCreatureGroup(CreatureConstants.Templates.None + filters.Alignment, ["template alignment creature", "wrong alignment creature"]);
+            SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter + filters.ChallengeRatings[0], ["template cr creature", "wrong cr creature"]);
+            SetUpCreatureGroup(CreatureConstants.Templates.None + filters.Types[0], ["template type creature", "wrong type creature"]);
+            SetUpCreatureGroup(CreatureConstants.Templates.None + filters.Alignments[0], ["template alignment creature", "wrong alignment creature"]);
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -1230,12 +1217,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             {
                 SetupApplicator(template);
                 SetUpCreatureGroup(template + asCharacter, ["template character", creature, "wrong template creature"]);
-                SetUpCreatureGroup(template + asCharacter + filters.ChallengeRating, ["template cr creature", creature, "wrong cr creature"]);
-                SetUpCreatureGroup(template + filters.Type, ["template type creature", creature, "wrong type creature"]);
-                SetUpCreatureGroup(template + filters.Alignment, ["template alignment creature", creature, "wrong alignment creature"]);
+                SetUpCreatureGroup(template + asCharacter + filters.ChallengeRatings[0], ["template cr creature", creature, "wrong cr creature"]);
+                SetUpCreatureGroup(template + filters.Types[0], ["template type creature", creature, "wrong type creature"]);
+                SetUpCreatureGroup(template + filters.Alignments[0], ["template alignment creature", creature, "wrong alignment creature"]);
             }
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.False);
 
             mockCollectionSelector.Verify(c => c.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All), Times.Never);
@@ -1253,17 +1240,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = cr,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [cr],
+                Alignments = [alignment]
             };
 
             SetUpCreatureGroup(GroupConstants.Characters, ["character", "wrong character"]);
 
             SetUpCreatureGroup(CreatureConstants.Templates.None + true, ["template creature", creature, "wrong template creature"]);
-            SetUpCreatureGroup(CreatureConstants.Templates.None + true + filters.ChallengeRating, ["template cr creature", creature, "wrong cr creature"]);
-            SetUpCreatureGroup(CreatureConstants.Templates.None + filters.Type, ["template type creature", creature, "wrong type creature"]);
-            SetUpCreatureGroup(CreatureConstants.Templates.None + filters.Alignment, ["template alignment creature", creature, "wrong alignment creature"]);
+            SetUpCreatureGroup(CreatureConstants.Templates.None + true + filters.ChallengeRatings[0], ["template cr creature", creature, "wrong cr creature"]);
+            SetUpCreatureGroup(CreatureConstants.Templates.None + filters.Types[0], ["template type creature", creature, "wrong type creature"]);
+            SetUpCreatureGroup(CreatureConstants.Templates.None + filters.Alignments[0], ["template alignment creature", creature, "wrong alignment creature"]);
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -1274,9 +1261,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             {
                 SetupApplicator(template);
                 SetUpCreatureGroup(template + true, ["template character", creature, "wrong template creature"]);
-                SetUpCreatureGroup(template + true + filters.ChallengeRating, ["template cr creature", creature, "wrong cr creature"]);
-                SetUpCreatureGroup(template + filters.Type, ["template type creature", creature, "wrong type creature"]);
-                SetUpCreatureGroup(template + filters.Alignment, ["template alignment creature", creature, "wrong alignment creature"]);
+                SetUpCreatureGroup(template + true + filters.ChallengeRatings[0], ["template cr creature", creature, "wrong cr creature"]);
+                SetUpCreatureGroup(template + filters.Types[0], ["template type creature", creature, "wrong type creature"]);
+                SetUpCreatureGroup(template + filters.Alignments[0], ["template alignment creature", creature, "wrong alignment creature"]);
             }
 
             var isCompatible = verifier.VerifyCompatibility(true, null, abilityRandomizer, filters);
@@ -1654,7 +1641,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             SetupApplicator("my template");
 
-            var filters = new Filters { Alignment = "preset alignment" };
+            var filters = new Filters { Alignments = ["preset alignment"] };
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.EqualTo([creature, "my other creature"]));
@@ -1671,7 +1658,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             SetupApplicator("my template");
 
-            var filters = new Filters { Alignment = "preset alignment" };
+            var filters = new Filters { Alignments = ["preset alignment"] };
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
@@ -1688,7 +1675,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             SetupApplicator("my template");
 
-            var filters = new Filters { Alignment = "preset alignment" };
+            var filters = new Filters { Alignments = ["preset alignment"] };
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
@@ -1705,7 +1692,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             SetupApplicator("my template");
 
-            var filters = new Filters { Alignment = "preset alignment" };
+            var filters = new Filters { Alignments = ["preset alignment"] };
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
@@ -1722,7 +1709,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             SetupApplicator("my template");
 
-            var filters = new Filters { ChallengeRating = "my CR" };
+            var filters = new Filters { ChallengeRatings = ["my CR"] };
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.EquivalentTo([creature, "my other creature"]));
@@ -1739,7 +1726,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             SetupApplicator("my template");
 
-            var filters = new Filters { ChallengeRating = "my CR" };
+            var filters = new Filters { ChallengeRatings = ["my CR"] };
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
@@ -1756,7 +1743,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             SetupApplicator("my template");
 
-            var filters = new Filters { ChallengeRating = "my CR" };
+            var filters = new Filters { ChallengeRatings = ["my CR"] };
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
@@ -1773,7 +1760,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             SetupApplicator("my template");
 
-            var filters = new Filters { ChallengeRating = "my CR" };
+            var filters = new Filters { ChallengeRatings = ["my CR"] };
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
@@ -1790,7 +1777,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             SetupApplicator("my template");
 
-            var filters = new Filters { Type = "my type" };
+            var filters = new Filters { Types = ["my type"] };
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.EquivalentTo([creature, "my other creature"]));
@@ -1807,7 +1794,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             SetupApplicator("my template");
 
-            var filters = new Filters { Type = "my type" };
+            var filters = new Filters { Types = ["my type"] };
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
@@ -1824,7 +1811,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             SetupApplicator("my template");
 
-            var filters = new Filters { Type = "my type" };
+            var filters = new Filters { Types = ["my type"] };
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
@@ -1841,7 +1828,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             SetupApplicator("my template");
 
-            var filters = new Filters { Type = "my type" };
+            var filters = new Filters { Types = ["my type"] };
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
@@ -1864,7 +1851,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             var minAbility = new Ability("my ability") { BaseScore = 6 };
             mockApplicator.SetupGet(a => a.MinimumAbility).Returns(minAbility);
 
-            var filters = new Filters { Alignment = "my alignment", ChallengeRating = "my CR", Type = "my type" };
+            var filters = new Filters { Alignments = ["my alignment"], ChallengeRatings = ["my CR"], Types = ["my type"] };
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, abilityRandomizer, filters);
             Assert.That(compatibleCreatures, Is.EquivalentTo([creature, "my other creature"]));
@@ -1898,7 +1885,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             var minAbility = new Ability("my ability") { BaseScore = 6 };
             mockApplicator.SetupGet(a => a.MinimumAbility).Returns(minAbility);
 
-            var filters = new Filters { Alignment = "my alignment", ChallengeRating = "my CR", Type = "my type" };
+            var filters = new Filters { Alignments = ["my alignment"], ChallengeRatings = ["my CR"], Types = ["my type"] };
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, abilityRandomizer, filters);
             Assert.That(compatibleCreatures, Is.Empty);
@@ -1941,9 +1928,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             var creatures = new[] { "some creature", creature, "a different creature", "character", "wrong creature" };
             var filters = new Filters
             {
-                Alignment = "my alignment",
-                ChallengeRating = "my challenge rating",
-                Type = "my type"
+                Alignments = ["my alignment"],
+                ChallengeRatings = ["my challenge rating"],
+                Types = ["my type"]
             };
 
             SetUpCreatureGroup(CreatureConstants.Templates.None + "my alignment", ["character", "alignment creature", creature, "another creature"]);
@@ -1966,9 +1953,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             var creatures = new[] { "some creature", creature, "a different creature", "character", "wrong creature" };
             var filters = new Filters
             {
-                Alignment = "my alignment",
-                ChallengeRating = "my challenge rating",
-                Type = "my type"
+                Alignments = ["my alignment"],
+                ChallengeRatings = ["my challenge rating"],
+                Types = ["my type"]
             };
 
             SetUpCreatureGroup(CreatureConstants.Templates.None + "my alignment", ["character", "alignment creature", creature, "another creature"]);
@@ -2051,9 +2038,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             var creatures = new[] { "some creature", creature, "a different creature", "character", "wrong creature" };
             var filters = new Filters
             {
-                Alignment = "my alignment",
-                ChallengeRating = "my challenge rating",
-                Type = "my type"
+                Alignments = ["my alignment"],
+                ChallengeRatings = ["my challenge rating"],
+                Types = ["my type"]
             };
 
             mockDice.Setup(d => d.Roll(AbilityConstants.RandomizerRolls.Default).AsPotentialMaximum<int>(true)).Returns(11);
@@ -2087,9 +2074,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             var creatures = new[] { "some creature", creature, "a different creature", "character", "wrong creature" };
             var filters = new Filters
             {
-                Alignment = "my alignment",
-                ChallengeRating = "my challenge rating",
-                Type = "my type"
+                Alignments = ["my alignment"],
+                ChallengeRatings = ["my challenge rating"],
+                Types = ["my type"]
             };
 
             mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(9);
@@ -2185,9 +2172,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             var creatures = new[] { "some creature", creature, "a different creature", "character" };
             var filters = new Filters
             {
-                Alignment = "my alignment",
-                ChallengeRating = "my challenge rating",
-                Type = "my type"
+                Alignments = ["my alignment"],
+                ChallengeRatings = ["my challenge rating"],
+                Types = ["my type"]
             };
 
             mockCreaturePrototypeFactory
@@ -2222,9 +2209,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             var creatures = new[] { "some creature", creature, "a different creature", "character" };
             var filters = new Filters
             {
-                Alignment = "my alignment",
-                ChallengeRating = "my challenge rating",
-                Type = "my type"
+                Alignments = ["my alignment"],
+                ChallengeRatings = ["my challenge rating"],
+                Types = ["my type"]
             };
 
             mockCreaturePrototypeFactory
@@ -2337,9 +2324,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             var creatures = new[] { "some creature", creature, "a different creature", "character", "wrong creature" };
             var filters = new Filters
             {
-                Alignment = "my alignment",
-                ChallengeRating = "my challenge rating",
-                Type = "my type"
+                Alignments = ["my alignment"],
+                ChallengeRatings = ["my challenge rating"],
+                Types = ["my type"]
             };
 
             mockCreaturePrototypeFactory
@@ -2382,9 +2369,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             var creatures = new[] { "some creature", creature, "a different creature", "character", "wrong creature" };
             var filters = new Filters
             {
-                Alignment = "my alignment",
-                ChallengeRating = "my challenge rating",
-                Type = "my type"
+                Alignments = ["my alignment"],
+                ChallengeRatings = ["my challenge rating"],
+                Types = ["my type"]
             };
 
             mockCreaturePrototypeFactory

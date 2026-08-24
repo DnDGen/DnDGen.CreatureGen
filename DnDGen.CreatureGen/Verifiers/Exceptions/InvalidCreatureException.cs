@@ -45,7 +45,7 @@ namespace DnDGen.CreatureGen.Verifiers.Exceptions
 
                 if (filters is not null)
                 {
-                    var description = filters.GetDescription(asCharacter);
+                    var description = filters.GetDescription();
                     message.AppendLine($"Filters: {description}");
                 }
 

@@ -7,11 +7,6 @@ namespace DnDGen.CreatureGen.Generators.Creatures
     public class Filters
     {
         /// <summary>
-        /// Templates are all applied, and in order.
-        /// </summary>
-        //public List<string> Templates { get; set; }
-
-        /// <summary>
         /// A creature that matches any of these types, after templates are applied, will satisfy the filters
         /// </summary>
         public List<string> Types { get; set; }
@@ -26,27 +21,24 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         /// </summary>
         public List<string> Alignments { get; set; }
 
-        //public string[] CleanTemplates => [.. Templates.Where(t => !string.IsNullOrEmpty(t))];
-
         public Filters()
         {
-            //Templates = [];
             Types = [];
             ChallengeRatings = [];
             Alignments = [];
         }
 
-        public string GetDescription(bool asCharacter)
+        public string GetDescription()
         {
             var description = new StringBuilder();
-            description.AppendLine($"As Character: {asCharacter}");
-            //description.AppendLine($"Templates: {GetMessage(CleanTemplates)}");
             description.AppendLine($"Types: {GetMessage(Types)}");
             description.AppendLine($"CR: {GetMessage(ChallengeRatings)}");
             description.AppendLine($"Alignments: {GetMessage(Alignments)}");
 
             return description.ToString();
         }
+
+        public override string ToString() => GetDescription();
 
         private static string GetMessage(IEnumerable<string> collection)
         {
@@ -58,6 +50,29 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var joined = string.Join(", ", collection);
             return $"[{joined}]";
+        }
+
+        public (bool Compatible, string Reason) AreCompatible(IEnumerable<string> alignments, IEnumerable<string> challengeRatings, IEnumerable<string> types)
+        {
+            if (Alignments?.Count > 0)
+            {
+                if (!Alignments.Intersect(alignments).Any())
+                    return (false, $"Alignment filter is not compatible with {GetMessage(alignments)}. Filters: {GetDescription()}");
+            }
+
+            if (ChallengeRatings?.Count > 0)
+            {
+                if (!ChallengeRatings.Intersect(challengeRatings).Any())
+                    return (false, $"CR filter is not compatible with {GetMessage(challengeRatings)}. Filters: {GetDescription()}");
+            }
+
+            if (Types?.Count > 0)
+            {
+                if (!Types.Intersect(types).Any())
+                    return (false, $"Type filter is not compatible with {GetMessage(types)}. Filters: {GetDescription()}");
+            }
+
+            return (true, null);
         }
     }
 }

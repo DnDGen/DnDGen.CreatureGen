@@ -113,7 +113,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var validCreatures = GetValidCreatures(creatureGroup, asCharacter, abilityRandomizer, filters);
             if (!validCreatures.Any())
             {
-                var filtersDescription = filters.GetDescription(asCharacter);
+                var filtersDescription = filters.GetDescription();
                 throw new ArgumentException($"No valid creatures in creature group (filters: {filtersDescription})");
             }
 
@@ -128,7 +128,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var creaturesOfTemplate = creatureVerifier.GetCompatibleCreaturesForTemplate(creatureGroup, template, asCharacter, abilityRandomizer, filters);
             if (!creaturesOfTemplate.Any())
             {
-                var filtersDescription = filters.GetDescription(asCharacter);
+                var filtersDescription = filters.GetDescription();
                 throw new ArgumentException($"No valid creatures in creature group of template {template} (filters: {filtersDescription})");
             }
 

@@ -75,12 +75,11 @@ namespace DnDGen.CreatureGen.Selectors.Selections
 
         public bool AdvancementIsValid(Dice dice, int max, Filters filters)
         {
-            var valid = true;
+            MaxHitDice = max;
+            var valid = dice.Roll(AdditionalHitDiceRoll).AsPotentialMinimum() <= MaxHitDice;
+
             if (filters?.ChallengeRatings?.Count > 0)
                 valid &= filters.ChallengeRatings.Contains(AdjustedChallengeRating);
-
-            MaxHitDice = max;
-            valid &= dice.Roll(AdditionalHitDiceRoll).AsPotentialMinimum() <= MaxHitDice;
 
             return valid;
         }

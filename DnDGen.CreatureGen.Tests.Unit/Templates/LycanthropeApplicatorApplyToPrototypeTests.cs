@@ -1,4 +1,4 @@
-﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Creatures;
 using NUnit.Framework;
@@ -57,9 +57,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = challengeRating,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [challengeRating],
+                Alignments = [alignment]
             };
 
             //var func = () => applicator.ApplyTo(baseCreature, asCharacter, filters);

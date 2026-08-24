@@ -164,23 +164,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment("original alignment");
 
+            var filters = new Filters
+            {
+                Types = [type],
+                ChallengeRatings = [challengeRating],
+                Alignments = [alignment]
+            };
+
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
             message.AppendLine($"\tReason: {reason}");
             message.AppendLine($"\tAs Character: {asCharacter}");
             message.AppendLine($"\tCreature: {baseCreature.Name}");
             message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Ghost}");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
+            message.AppendLine($"\tFilters: {filters.GetDescription()}");
             message.AppendLine($"\tAbility Roll: {baseCreature.Abilities[AbilityConstants.Charisma].FullScore}");
-
-            var filters = new Filters
-            {
-                Type = type,
-                ChallengeRating = challengeRating,
-                Alignment = alignment
-            };
 
             var function = () => applicator.ApplyTo(baseCreature, asCharacter, filters);
             Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
@@ -213,9 +211,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters
             {
-                Type = "subtype 1",
-                ChallengeRating = ChallengeRatingConstants.CR3,
-                Alignment = "original alignment"
+                Types = ["subtype 1"],
+                ChallengeRatings = [ChallengeRatingConstants.CR3],
+                Alignments = ["original alignment"]
             };
 
             var creature = applicator.ApplyTo(baseCreature, false, filters);
@@ -250,9 +248,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters
             {
-                Type = "subtype 1",
-                ChallengeRating = ChallengeRatingConstants.CR3,
-                Alignment = "original alignment"
+                Types = ["subtype 1"],
+                ChallengeRatings = [ChallengeRatingConstants.CR3],
+                Alignments = ["original alignment"]
             };
 
             var creature = applicator.ApplyTo(baseCreature, false, filters);
@@ -1289,9 +1287,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = challengeRating,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [challengeRating],
+                Alignments = [alignment]
             };
 
             await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, asCharacter, filters),
@@ -1325,9 +1323,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters
             {
-                Type = "subtype 1",
-                ChallengeRating = ChallengeRatingConstants.CR3,
-                Alignment = "original alignment"
+                Types = ["subtype 1"],
+                ChallengeRatings = [ChallengeRatingConstants.CR3],
+                Alignments = ["original alignment"]
             };
 
             var creature = await applicator.ApplyToAsync(baseCreature, false, filters);
@@ -1362,9 +1360,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters
             {
-                Type = "subtype 1",
-                ChallengeRating = ChallengeRatingConstants.CR3,
-                Alignment = "original alignment"
+                Types = ["subtype 1"],
+                ChallengeRatings = [ChallengeRatingConstants.CR3],
+                Alignments = ["original alignment"]
             };
 
             var creature = await applicator.ApplyToAsync(baseCreature, false, filters);
@@ -2360,7 +2358,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments("my other alignment", "my alignment")
                 .Build();
 
-            var filters = new Filters { Alignment = "my alignment" };
+            var filters = new Filters { Alignments = ["my alignment"] };
 
             var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.True);
@@ -2376,7 +2374,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments("my other alignment", "wrong alignment")
                 .Build();
 
-            var filters = new Filters { Alignment = "my alignment" };
+            var filters = new Filters { Alignments = ["my alignment"] };
 
             var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.False);
@@ -2403,7 +2401,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithChallengeRating(original)
                 .Build();
 
-            var filters = new Filters { ChallengeRating = filter };
+            var filters = new Filters { ChallengeRatings = [filter] };
 
             var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.EqualTo(expected));
@@ -2427,7 +2425,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", CreatureConstants.Types.Subtypes.Elf, "subtype 2")
                 .Build();
 
-            var filters = new Filters { Type = filter };
+            var filters = new Filters { Types = [filter] };
 
             var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.EqualTo(expected));
@@ -2447,9 +2445,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters
             {
-                Alignment = "my alignment",
-                ChallengeRating = ChallengeRatingConstants.CR15,
-                Type = "my type",
+                Alignments = ["my alignment"],
+                ChallengeRatings = [ChallengeRatingConstants.CR15],
+                Types = ["my type"],
             };
 
             var compatible = applicator.IsCompatible(creature, filters);
@@ -2470,9 +2468,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters
             {
-                Alignment = "my alignment",
-                ChallengeRating = ChallengeRatingConstants.CR15,
-                Type = "my type",
+                Alignments = ["my alignment"],
+                ChallengeRatings = [ChallengeRatingConstants.CR15],
+                Types = ["my type"],
             };
 
             var compatible = applicator.IsCompatible(creature, filters);
@@ -2493,9 +2491,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters
             {
-                Alignment = "wrong alignment",
-                ChallengeRating = ChallengeRatingConstants.CR15,
-                Type = "my type",
+                Alignments = ["wrong alignment"],
+                ChallengeRatings = [ChallengeRatingConstants.CR15],
+                Types = ["my type"],
             };
 
             var compatible = applicator.IsCompatible(creature, filters);
@@ -2516,9 +2514,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters
             {
-                Alignment = "my alignment",
-                ChallengeRating = ChallengeRatingConstants.CR16,
-                Type = "my type",
+                Alignments = ["my alignment"],
+                ChallengeRatings = [ChallengeRatingConstants.CR16],
+                Types = ["my type"],
             };
 
             var compatible = applicator.IsCompatible(creature, filters);
@@ -2539,9 +2537,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters
             {
-                Alignment = "my alignment",
-                ChallengeRating = ChallengeRatingConstants.CR15,
-                Type = "wrong type",
+                Alignments = ["my alignment"],
+                ChallengeRatings = [ChallengeRatingConstants.CR15],
+                Types = ["wrong type"],
             };
 
             var compatible = applicator.IsCompatible(creature, filters);
@@ -2584,23 +2582,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments("original alignment")
                 .Build();
 
+            var filters = new Filters
+            {
+                Types = [type],
+                ChallengeRatings = [challengeRating],
+                Alignments = [alignment]
+            };
+
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
             message.AppendLine($"\tReason: {reason}");
             message.AppendLine($"\tAs Character: {asCharacter}");
             message.AppendLine($"\tCreature: {prototype.Name}");
             message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Ghost}");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
+            message.AppendLine($"\tFilters: {filters.GetDescription()}");
             message.AppendLine($"\tAbility Roll: {prototype.Abilities[AbilityConstants.Charisma].FullScore}");
-
-            var filters = new Filters
-            {
-                Type = type,
-                ChallengeRating = challengeRating,
-                Alignment = alignment
-            };
 
             var function = () => applicator.ApplyTo(prototype, filters);
             Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
@@ -2685,7 +2681,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments([AlignmentConstants.LawfulGood, AlignmentConstants.TrueNeutral, AlignmentConstants.TrueNeutral, AlignmentConstants.ChaoticEvil])
                 .Build();
 
-            var filters = new Filters { Alignment = AlignmentConstants.TrueNeutral };
+            var filters = new Filters { Alignments = [AlignmentConstants.TrueNeutral] };
 
             var updatedPrototype = applicator.ApplyTo(prototype, filters);
             Assert.That(updatedPrototype, Is.EqualTo(prototype));

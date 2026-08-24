@@ -82,10 +82,6 @@ namespace DnDGen.CreatureGen.Verifiers
                 filteredBaseCreatures = filteredBaseCreatures.Intersect(crCreatures);
             }
 
-            //INFO: Exit early, so we only construct template applicators when necessary
-            if (!filteredBaseCreatures.Any())
-                return filteredBaseCreatures;
-
             var applicator = factory.Build<TemplateApplicator>(template);
             if (applicator.MinimumAbility is not null)
             {

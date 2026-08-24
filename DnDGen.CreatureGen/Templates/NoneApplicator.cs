@@ -58,22 +58,10 @@ namespace DnDGen.CreatureGen.Templates
             string creatureChallengeRating,
             Filters filters)
         {
-            if (filters?.Types?.Count > 0 && !filters.Types.Intersect(types).Any())
-            {
-                return (false, $"Type filter is not valid. Filters: {filters.GetDescription(false)}");
-            }
+            if (filters is null)
+                return (true, null);
 
-            if (filters?.ChallengeRatings?.Count > 0 && !filters.ChallengeRatings.Contains(creatureChallengeRating))
-            {
-                return (false, $"CR filter is not valid. Filters: {filters.GetDescription(false)}");
-            }
-
-            if (filters?.Alignments?.Count > 0 && !filters.Alignments.Intersect(alignments).Any())
-            {
-                return (false, $"Alignment filter is not valid. Filters: {filters.GetDescription(false)}");
-            }
-
-            return (true, null);
+            return filters.AreCompatible(alignments, types, [creatureChallengeRating]);
         }
 
         public CreaturePrototype ApplyTo(CreaturePrototype creature, Filters filters = null)

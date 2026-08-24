@@ -11,9 +11,10 @@ namespace DnDGen.CreatureGen.Generators.Alignments
 {
     internal class AlignmentGenerator(ICollectionSelector collectionSelector, ICreatureVerifier creatureVerifier) : IAlignmentGenerator
     {
-        public Alignment Generate(string creatureName, IEnumerable<string> templates, Filters filters)
+        public Alignment Generate(string creatureName, string[] templates, Filters filters)
         {
-            var weightedAlignments = GetWeightedAlignments(creatureName, templates);
+            templates ??= [];
+            var weightedAlignments = GetWeightedAlignments(creatureName, templates, filters);
 
             if (filters?.Alignments?.Count > 0)
             {
@@ -23,25 +24,25 @@ namespace DnDGen.CreatureGen.Generators.Alignments
 
             if (!weightedAlignments.Any())
                 throw new InvalidCreatureException(
-                    $"Creature {creatureName} has no valid alignments for templates [{string.Join(", ", templates)}]. Filters: {filters.GetDescription(false)}",
+                    $"Creature {creatureName} has no valid alignments for templates [{string.Join(", ", templates)}]",
                     false,
-                    creatureName);
+                    creatureName,
+                    filters);
 
             var randomAlignment = collectionSelector.SelectRandomFrom(weightedAlignments);
             return new Alignment(randomAlignment);
         }
 
-        private IEnumerable<string> GetWeightedAlignments(string creatureName, IEnumerable<string> templates)
+        private IEnumerable<string> GetWeightedAlignments(string creatureName, string[] templates, Filters filters)
         {
             var weightedAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, creatureName);
-            var templatesArray = templates?.ToArray() ?? [];
 
-            if (templatesArray.Length == 0)
+            if (templates.Length == 0)
                 return weightedAlignments;
 
-            if (templatesArray.Length == 1)
+            if (templates.Length == 1)
             {
-                var templateAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, templatesArray[0] + GroupConstants.AllowedInput);
+                var templateAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, templates[0] + GroupConstants.AllowedInput);
 
                 //INFO: Doing this instead of intersect in order to preserve duplicates/weighting
                 weightedAlignments = weightedAlignments.Where(templateAlignments.Contains);
@@ -49,8 +50,15 @@ namespace DnDGen.CreatureGen.Generators.Alignments
                 return weightedAlignments;
             }
 
-            var prototype = creatureVerifier.GetChainedTemplates([creatureName], [.. templates], false).Single();
-            weightedAlignments = prototype.Alignments.Select(a => a.Full);
+            //INFO: When multiple templates are applied, the following is true for alignments:
+            //1. Lycanthrope and Ghost allow all inputs, make no alterations
+            //2. Celestial Creature and Half-Celestial only allow non-Evil inputs, outputs always Good
+            //3. Fiendish Creature and Half-Fiend only allow non-Good inputs, outputs always Evil
+            //4. Lich and Vampire allow all inputs, outsputs always Evil
+            //5. Skeleton and Zombie allow all inputs, outputs always Neutral Evil
+            //6. Half-Dragons allow all inputs, output is always the dragon's alignmnt (Lawful Good, Chaotic Good, Lawful Evil, or Chaotic Evil)
+
+            var prototype = creatureVerifier.GetChainedTemplates([creatureName], templates, false, null, filters).Single();
 
             return weightedAlignments;
         }

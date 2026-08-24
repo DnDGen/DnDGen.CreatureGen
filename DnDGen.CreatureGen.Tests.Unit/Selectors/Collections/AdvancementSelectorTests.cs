@@ -60,7 +60,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         {
             SetUpAdvancement(SizeConstants.Large, 42);
 
-            var advancement = advancementSelector.SelectRandomFor("creature", ["template", "other template"], 1);
+            var advancement = advancementSelector.SelectRandomFor("creature", ["template", "other template"], 1, null);
             Assert.That(advancement.AdditionalHitDice, Is.EqualTo(42));
             Assert.That(advancement.Size, Is.EqualTo(SizeConstants.Large));
             Assert.That(advancement.Space, Is.EqualTo(1.9));
@@ -83,7 +83,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.MaxHitDice, "template"))
                 .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 610 });
 
-            var advancement = advancementSelector.SelectRandomFor("creature", null, 550);
+            var advancement = advancementSelector.SelectRandomFor("creature", null, 550, null);
             Assert.That(advancement.AdditionalHitDice, Is.EqualTo(600));
             Assert.That(advancement.Size, Is.EqualTo(SizeConstants.Huge));
         }
@@ -98,7 +98,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.MaxHitDice, "template"))
                 .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 610 });
 
-            var advancement = advancementSelector.SelectRandomFor("creature", ["template"], 550);
+            var advancement = advancementSelector.SelectRandomFor("creature", ["template"], 550, null);
             Assert.That(advancement.Size, Is.EqualTo(SizeConstants.Large));
             Assert.That(advancement.AdditionalHitDice, Is.EqualTo(42));
         }
@@ -116,7 +116,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.MaxHitDice, "other template"))
                 .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 600 });
 
-            var advancement = advancementSelector.SelectRandomFor("creature", ["template", "other template"], 550);
+            var advancement = advancementSelector.SelectRandomFor("creature", ["template", "other template"], 550, null);
             Assert.That(advancement.Size, Is.EqualTo(SizeConstants.Large));
             Assert.That(advancement.AdditionalHitDice, Is.EqualTo(42));
         }
@@ -157,7 +157,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<AdvancementDataSelection>>()))
                 .Returns((IEnumerable<AdvancementDataSelection> c) => c.ElementAt(1));
 
-            var advancement = advancementSelector.SelectRandomFor("creature", ["template", "other template"], 1);
+            var advancement = advancementSelector.SelectRandomFor("creature", ["template", "other template"], 1, null);
             Assert.That(advancement.AdditionalHitDice, Is.EqualTo(9266));
             Assert.That(advancement.Size, Is.EqualTo(SizeConstants.Huge));
         }
@@ -178,7 +178,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.MaxHitDice, "template"))
                 .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 700 });
 
-            var advancement = advancementSelector.SelectRandomFor("creature", ["template", "other template"], 550);
+            var advancement = advancementSelector.SelectRandomFor("creature", ["template", "other template"], 550, null);
             Assert.That(advancement.AdditionalHitDice, Is.EqualTo(96));
             Assert.That(advancement.Size, Is.EqualTo(SizeConstants.Large));
         }
@@ -201,7 +201,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.MaxHitDice, "template"))
                 .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 20 });
 
-            var advancement = advancementSelector.SelectRandomFor("creature", ["template"], creatureHitDice);
+            var advancement = advancementSelector.SelectRandomFor("creature", ["template"], creatureHitDice, null);
             Assert.That(advancement.AdditionalHitDice, Is.EqualTo(additionalHitDice));
             Assert.That(advancement.Size, Is.EqualTo(SizeConstants.Medium));
         }
@@ -223,7 +223,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.MaxHitDice, "template"))
                 .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 20 });
 
-            var advancement = advancementSelector.SelectRandomFor("creature", ["template"], creatureHitDice);
+            var advancement = advancementSelector.SelectRandomFor("creature", ["template"], creatureHitDice, null);
             Assert.That(advancement.AdditionalHitDice, Is.EqualTo(2));
             Assert.That(advancement.Size, Is.EqualTo(SizeConstants.Medium));
         }
@@ -246,7 +246,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.MaxHitDice, "template"))
                 .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 20 });
 
-            var advancement = advancementSelector.SelectRandomFor("creature", ["template"], creatureHitDice);
+            var advancement = advancementSelector.SelectRandomFor("creature", ["template"], creatureHitDice, null);
             Assert.That(advancement.AdditionalHitDice, Is.EqualTo(additionalHitDice));
             Assert.That(advancement.Size, Is.EqualTo(size));
         }
@@ -268,7 +268,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.MaxHitDice, "template"))
                 .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 20 });
 
-            var advancement = advancementSelector.SelectRandomFor("creature", ["template"], creatureHitDice);
+            var advancement = advancementSelector.SelectRandomFor("creature", ["template"], creatureHitDice, null);
             Assert.That(advancement.AdditionalHitDice, Is.EqualTo(8));
             Assert.That(advancement.Size, Is.EqualTo(SizeConstants.Large));
         }
@@ -295,13 +295,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.TypeAndAmount.MaxHitDice, "other template"))
                 .Returns(new TypeAndAmountDataSelection { AmountAsDouble = 20 });
 
-            Assert.That((Func<object>)(() => advancementSelector.SelectRandomFor("creature", ["template", "other template"], creatureHitDice)), Throws.Exception);
+            var function = () => advancementSelector.SelectRandomFor("creature", ["template", "other template"], creatureHitDice, null);
+            Assert.That(function, Throws.Exception);
         }
 
         [Test]
         public void SelectNoAdvancements()
         {
-            Assert.That((Func<object>)(() => advancementSelector.SelectRandomFor("creature", ["template", "other template"], 1)), Throws.Exception);
+            var function = () => advancementSelector.SelectRandomFor("creature", ["template", "other template"], 1, null);
+            Assert.That(function, Throws.Exception);
         }
 
         [Test]
@@ -342,7 +344,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             mockPercentileSelector.Setup(s => s.SelectFrom(.9)).Returns(true);
 
-            var isAdvanced = advancementSelector.IsAdvanced("creature", [], 1, "my challenge rating");
+            var isAdvanced = advancementSelector.IsAdvanced("creature", [], 1, new() { ChallengeRatings = ["my challenge rating"] });
             Assert.That(isAdvanced, Is.False);
         }
 
@@ -370,7 +372,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             mockAdvancementSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.Advancements, CreatureConstants.Barghest)).Returns(advancements);
             SetUpAdvancement(SizeConstants.Large, 42);
 
-            var advancement = advancementSelector.SelectRandomFor(CreatureConstants.Barghest, ["template", "other template"], 1);
+            var advancement = advancementSelector.SelectRandomFor(CreatureConstants.Barghest, ["template", "other template"], 1, null);
             Assert.That(advancement.AdditionalHitDice, Is.EqualTo(42));
             Assert.That(advancement.Size, Is.EqualTo(SizeConstants.Large));
             Assert.That(advancement.StrengthAdjustment, Is.EqualTo(42));
@@ -387,7 +389,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 .Returns(advancements);
             SetUpAdvancement(SizeConstants.Large, 42);
 
-            var advancement = advancementSelector.SelectRandomFor(CreatureConstants.Barghest_Greater, ["template", "other template"], 1);
+            var advancement = advancementSelector.SelectRandomFor(CreatureConstants.Barghest_Greater, ["template", "other template"], 1, null);
             Assert.That(advancement.AdditionalHitDice, Is.EqualTo(42));
             Assert.That(advancement.Size, Is.EqualTo(SizeConstants.Large));
             Assert.That(advancement.StrengthAdjustment, Is.EqualTo(42));

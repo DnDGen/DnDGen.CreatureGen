@@ -112,9 +112,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
             ValidateRandomCreatureWithFilters(
                 asCharacter,
                 creature,
-                type,
-                cr,
-                alignment,
+                new() { Types = [type], ChallengeRatings = [cr], Alignments = [alignment] },
                 abilityRandomizer,
                 [.. templates]);
         }
@@ -132,35 +130,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
             ValidateRandomCreatureWithFilters(
                 randomFilters.AsCharacter,
                 null,
-                randomFilters.Filters.Type,
-                randomFilters.Filters.ChallengeRating,
-                randomFilters.Filters.Alignment,
+                randomFilters.Filters,
                 abilityRandomizer,
-                [.. randomFilters.Filters.Templates]);
+                [.. randomFilters.Templates]);
         }
 
         private void ValidateRandomCreatureWithFilters(
             bool asCharacter,
             string creature,
-            string type,
-            string challengeRating,
-            string alignment,
+            Filters filters,
             AbilityRandomizer abilityRandomizer,
             params string[] templates)
         {
-            var filters = new Filters
-            {
-                Type = type,
-                ChallengeRating = challengeRating,
-                Alignment = alignment,
-                Templates = [.. templates],
-            };
-
             stopwatch.Restart();
-            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer, filters);
+            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer, filters, templates);
             stopwatch.Stop();
 
-            var failure = new InvalidCreatureException(null, asCharacter, creature, filters, abilityRandomizer);
+            var failure = new InvalidCreatureException(null, asCharacter, creature, filters, abilityRandomizer, templates);
             Assert.That(stopwatch.Elapsed, Is.LessThan(timeLimit), $"Verified: {verified}\n{failure.Message}");
         }
 
@@ -177,9 +163,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
             ValidateRandomCreatureWithFilters(
                 randomFilters.AsCharacter,
                 null,
-                randomFilters.Filters.Type,
-                randomFilters.Filters.ChallengeRating,
-                randomFilters.Filters.Alignment,
+                randomFilters.Filters,
                 abilityRandomizer,
                 CreatureConstants.Templates.Ghost);
         }

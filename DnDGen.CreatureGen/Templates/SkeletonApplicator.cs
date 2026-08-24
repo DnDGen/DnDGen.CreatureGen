@@ -542,27 +542,13 @@ namespace DnDGen.CreatureGen.Templates
             string creature,
             Filters filters)
         {
-            if (filters?.Alignments?.Count > 0 && !filters.Alignments.Contains(AlignmentConstants.NeutralEvil))
-            {
-                return (false, $"Alignment filter is not valid. Filters: {filters.GetDescription(false)}");
-            }
+            if (filters is null)
+                return (true, null);
 
-            if (filters?.Types?.Count > 0)
-            {
-                var validFilters = filters.Types.Except(invalidSubtypeFilters);
-                var updatedTypes = UpdateCreatureType(types.Skip(1));
-                if (!updatedTypes.Intersect(validFilters).Any())
-                    return (false, $"Type filter is not valid. Filters: {filters.GetDescription(false)}");
-            }
+            var updatedTypes = UpdateCreatureType(types.Skip(1));
+            var cr = UpdateCreatureChallengeRating(creatureHitDiceQuantity, creature);
 
-            if (filters?.ChallengeRatings?.Count > 0)
-            {
-                var cr = UpdateCreatureChallengeRating(creatureHitDiceQuantity, creature);
-                if (!filters.ChallengeRatings.Contains(cr))
-                    return (false, $"CR filter does not match updated creature CR {cr}. Filters: {filters.GetDescription(false)}");
-            }
-
-            return (true, null);
+            return filters.AreCompatible([AlignmentConstants.Neutral], updatedTypes, [cr]);
         }
 
         private (bool Compatible, string Reason) IsCompatible(

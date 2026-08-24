@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.RollGen;
@@ -170,7 +171,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             selection.AdditionalHitDiceRoll = "roll 9266";
             mockDice.Setup(d => d.Roll("roll 9266").AsPotentialMinimum<int>()).Returns(9266);
 
-            var isValid = selection.AdvancementIsValid(mockDice.Object, 90210);
+            var isValid = selection.AdvancementIsValid(mockDice.Object, 90210, null);
             Assert.That(selection.MaxHitDice, Is.EqualTo(90210));
         }
 
@@ -199,9 +200,77 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             selection.AdditionalHitDiceRoll = "roll 9266";
             mockDice.Setup(d => d.Roll("roll 9266").AsPotentialMinimum<int>()).Returns(minRoll);
 
-            var isValid = selection.AdvancementIsValid(mockDice.Object, max);
+            var isValid = selection.AdvancementIsValid(mockDice.Object, max, null);
             Assert.That(selection.MaxHitDice, Is.EqualTo(max));
             Assert.That(isValid, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void AdvancementIsValid_ReturnsTrue_WhenNoChallengeRatingFilters_Null()
+        {
+            selection.AdditionalHitDiceRoll = "roll 9266";
+            selection.AdjustedChallengeRating = "advanced cr";
+
+            mockDice.Setup(d => d.Roll("roll 9266").AsPotentialMinimum<int>()).Returns(9266);
+
+            var isValid = selection.AdvancementIsValid(mockDice.Object, 90210, null);
+            Assert.That(isValid, Is.True);
+        }
+
+        [Test]
+        public void AdvancementIsValid_ReturnsTrue_WhenNoChallengeRatingFilters_Empty()
+        {
+            selection.AdditionalHitDiceRoll = "roll 9266";
+            selection.AdjustedChallengeRating = "advanced cr";
+
+            mockDice.Setup(d => d.Roll("roll 9266").AsPotentialMinimum<int>()).Returns(9266);
+
+            var filters = new Filters { ChallengeRatings = [] };
+
+            var isValid = selection.AdvancementIsValid(mockDice.Object, 90210, filters);
+            Assert.That(isValid, Is.True);
+        }
+
+        [Test]
+        public void AdvancementIsValid_ReturnsTrue_WhenFiltersContainChallengeRating()
+        {
+            selection.AdditionalHitDiceRoll = "roll 9266";
+            selection.AdjustedChallengeRating = "advanced cr";
+
+            mockDice.Setup(d => d.Roll("roll 9266").AsPotentialMinimum<int>()).Returns(9266);
+
+            var filters = new Filters { ChallengeRatings = ["advanced cr"] };
+
+            var isValid = selection.AdvancementIsValid(mockDice.Object, 90210, filters);
+            Assert.That(isValid, Is.True);
+        }
+
+        [Test]
+        public void AdvancementIsValid_ReturnsTrue_WhenFiltersContainAnyChallengeRating()
+        {
+            selection.AdditionalHitDiceRoll = "roll 9266";
+            selection.AdjustedChallengeRating = "advanced cr";
+
+            mockDice.Setup(d => d.Roll("roll 9266").AsPotentialMinimum<int>()).Returns(9266);
+
+            var filters = new Filters { ChallengeRatings = ["wrong cr", "advanced cr"] };
+
+            var isValid = selection.AdvancementIsValid(mockDice.Object, 90210, filters);
+            Assert.That(isValid, Is.True);
+        }
+
+        [Test]
+        public void AdvancementIsValid_ReturnsFalse_WhenFiltersDoNotContainChallengeRating()
+        {
+            selection.AdditionalHitDiceRoll = "roll 9266";
+            selection.AdjustedChallengeRating = "advanced cr";
+
+            mockDice.Setup(d => d.Roll("roll 9266").AsPotentialMinimum<int>()).Returns(9266);
+
+            var filters = new Filters { ChallengeRatings = ["wrong cr"] };
+
+            var isValid = selection.AdvancementIsValid(mockDice.Object, 90210, filters);
+            Assert.That(isValid, Is.False);
         }
 
         [Test]
@@ -227,7 +296,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             mockDice.Setup(d => d.Roll("roll 9266").AsPotentialMinimum<int>()).Returns(42);
             mockDice.Setup(d => d.Roll("roll 9266").AsSum<int>()).Returns(9266);
 
-            var isValid = selection.AdvancementIsValid(mockDice.Object, 90210);
+            var isValid = selection.AdvancementIsValid(mockDice.Object, 90210, null);
             Assert.That(selection.MaxHitDice, Is.EqualTo(90210));
             Assert.That(isValid, Is.True);
 
@@ -245,7 +314,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             mockDice.Setup(d => d.Roll("roll 9266").AsPotentialMinimum<int>()).Returns(42);
             mockDice.Setup(d => d.Roll("roll 9266").AsSum<int>()).Returns(90210);
 
-            var isValid = selection.AdvancementIsValid(mockDice.Object, 9266);
+            var isValid = selection.AdvancementIsValid(mockDice.Object, 9266, null);
             Assert.That(selection.MaxHitDice, Is.EqualTo(9266));
             Assert.That(isValid, Is.True);
 
@@ -308,7 +377,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             mockDice.Setup(d => d.Roll("roll 9266").AsPotentialMinimum<int>()).Returns(2);
             mockDice.Setup(d => d.Roll("roll 9266").AsSum<int>()).Returns(9266);
 
-            var isValid = selection.AdvancementIsValid(mockDice.Object, 42);
+            var isValid = selection.AdvancementIsValid(mockDice.Object, 42, null);
             Assert.That(selection.MaxHitDice, Is.EqualTo(42));
             Assert.That(isValid, Is.True);
 

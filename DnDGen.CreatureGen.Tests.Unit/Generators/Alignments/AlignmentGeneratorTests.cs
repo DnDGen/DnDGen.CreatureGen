@@ -1,5 +1,6 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Alignments;
+using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.CreatureGen.Verifiers;
@@ -33,24 +34,77 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         }
 
         [Test]
-        public void Generate_PresetAlignment()
+        public void Generate_WithAlignmentFilter()
         {
-            var alignment = alignmentGenerator.Generate("creature name", null, "lawfulness goodness");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Returns(["wrong alignment", "lawfulness goodness"]);
+
+            var filters = new Filters { Alignments = ["lawfulness goodness"] };
+            var alignment = alignmentGenerator.Generate("creature name", null, filters);
             Assert.That(alignment.Full, Is.EqualTo("lawfulness goodness"));
         }
 
         [Test]
-        public void Generate_PresetAlignment_WithTemplate()
+        public void Generate_WithMultipleAlignmentFilters()
         {
-            var alignment = alignmentGenerator.Generate("creature name", ["my template"], "lawfulness goodness");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Returns(["wrong alignment", "lawfulness goodness", "other alignment"]);
+
+            randomIndex = 1;
+
+            var filters = new Filters { Alignments = ["lawfulness goodness", "other alignment"] };
+            var alignment = alignmentGenerator.Generate("creature name", null, filters);
+            Assert.That(alignment.Full, Is.EqualTo("other alignment"));
+        }
+
+        [Test]
+        public void Generate_WithAlignmentFilterAndTemplate()
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Returns(["wrong alignment", "lawfulness goodness"]);
+
+            var filters = new Filters { Alignments = ["lawfulness goodness"] };
+            var alignment = alignmentGenerator.Generate("creature name", ["my template"], filters);
             Assert.That(alignment.Full, Is.EqualTo("lawfulness goodness"));
         }
 
         [Test]
-        public void Generate_PresetAlignment_WithMultipleTemplates()
+        public void Generate_WithMultipleAlignmentFiltersAndTemplate()
         {
-            var alignment = alignmentGenerator.Generate("creature name", ["my template", "my other template"], "lawfulness goodness");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Returns(["wrong alignment", "lawfulness goodness"]);
+
+            var filters = new Filters { Alignments = ["lawfulness goodness", "other alignment"] };
+            var alignment = alignmentGenerator.Generate("creature name", ["my template"], filters);
+            Assert.That(alignment.Full, Is.EqualTo("other alignment"));
+        }
+
+        [Test]
+        public void Generate_WithAlignmentFilterAndMultipleTemplates()
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Returns(["wrong alignment", "lawfulness goodness"]);
+
+            var filters = new Filters { Alignments = ["lawfulness goodness"] };
+            var alignment = alignmentGenerator.Generate("creature name", ["my template", "my other template"], filters);
             Assert.That(alignment.Full, Is.EqualTo("lawfulness goodness"));
+        }
+
+        [Test]
+        public void Generate_WithMultipleAlignmentFiltersAndMultipleTemplates()
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Returns(["wrong alignment", "lawfulness goodness"]);
+
+            var filters = new Filters { Alignments = ["lawfulness goodness", "other alignment"] };
+            var alignment = alignmentGenerator.Generate("creature name", ["my template", "my other template"], filters);
+            Assert.That(alignment.Full, Is.EqualTo("other alignment"));
         }
 
         [Test]
@@ -104,7 +158,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
             mockCreatureVerifier
                 .Setup(a => a.GetChainedTemplates(
                     It.Is<IEnumerable<string>>(n => n.IsEquivalentTo("creature name")),
-                    It.Is<List<string>>(n => n.IsEquivalentTo(templates)),
+                    It.Is<string[]>(n => n.IsEquivalentTo(templates)),
                     false,
                     null,
                     null))
@@ -187,7 +241,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
             mockCreatureVerifier
                 .Setup(a => a.GetChainedTemplates(
                     It.Is<IEnumerable<string>>(n => n.IsEquivalentTo("creature name")),
-                    It.Is<List<string>>(n => n.IsEquivalentTo(templates)),
+                    It.Is<string[]>(n => n.IsEquivalentTo(templates)),
                     false,
                     null,
                     null))
@@ -274,7 +328,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
             mockCreatureVerifier
                 .Setup(a => a.GetChainedTemplates(
                     It.Is<IEnumerable<string>>(n => n.IsEquivalentTo("creature name")),
-                    It.Is<List<string>>(n => n.IsEquivalentTo(templates)),
+                    It.Is<string[]>(n => n.IsEquivalentTo(templates)),
                     false,
                     null,
                     null))
@@ -365,7 +419,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
             mockCreatureVerifier
                 .Setup(a => a.GetChainedTemplates(
                     It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo("creature name")),
-                    It.Is<List<string>>(cc => cc.IsEquivalentTo(templates)),
+                    It.Is<string[]>(cc => cc.IsEquivalentTo(templates)),
                     false,
                     null,
                     null))

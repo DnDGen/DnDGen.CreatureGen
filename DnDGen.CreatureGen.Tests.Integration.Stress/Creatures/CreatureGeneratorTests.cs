@@ -63,7 +63,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                     asCharacter,
                     null,
                     abilityRandomizer,
-                    new Filters { Templates = [t] }));
+                    null,
+                    [t]));
 
                 template = collectionSelector.SelectRandomFrom(validTemplates);
             }
@@ -72,7 +73,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 asCharacter,
                 c,
                 abilityRandomizer,
-                new Filters { Templates = [template] }));
+                null,
+                [template]));
             var randomCreatureName = collectionSelector.SelectRandomFrom(validCreatures);
 
             return (randomCreatureName, template);
@@ -149,10 +151,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizer([]);
             var filters = GetRandomFilters(abilityRandomizer);
-            GenerateAndAssertRandomCreature(filters.AsCharacter, filters.Type, filters.ChallengeRating, filters.Alignment, abilityRandomizer, filters.Template);
+            GenerateAndAssertRandomCreature(filters.AsCharacter, filters.Filters, abilityRandomizer, filters.Template);
         }
 
-        private (bool AsCharacter, string Template, string Type, string ChallengeRating, string Alignment) GetRandomFilters(AbilityRandomizer abilityRandomizer)
+        private (bool AsCharacter, string Template, Filters Filters) GetRandomFilters(AbilityRandomizer abilityRandomizer)
         {
             var asCharacter = dice.Roll().d2().AsTrueOrFalse();
             var setTemplate = dice.Roll().d2().AsTrueOrFalse();
@@ -161,10 +163,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var setAlignment = dice.Roll().d2().AsTrueOrFalse();
 
             var filters = GetRandomFilters(asCharacter, setTemplate, setType, setCr, setAlignment, abilityRandomizer);
-            return (asCharacter, filters.Template, filters.Type, filters.ChallengeRating, filters.Alignment);
+            return (asCharacter, filters.Template, filters.Filters);
         }
 
-        private (string Template, string Type, string ChallengeRating, string Alignment) GetRandomFilters(
+        private (string Template, Filters Filters) GetRandomFilters(
             bool asCharacter,
             bool setTemplate,
             bool setType,
@@ -183,7 +185,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                     asCharacter,
                     null,
                     abilityRandomizer,
-                    new Filters { Templates = [t] }));
+                    null,
+                    [t]));
 
                 template = collectionSelector.SelectRandomFrom(validTemplates);
             }
@@ -197,7 +200,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                     asCharacter,
                     null,
                     abilityRandomizer,
-                    new Filters { Templates = [template], Type = t }));
+                    new Filters { Types = [t] },
+                    [template]));
 
                 type = collectionSelector.SelectRandomFrom(validTypes);
             }
@@ -210,7 +214,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                         asCharacter,
                         null,
                         abilityRandomizer,
-                        new Filters { Templates = [template], Type = type, ChallengeRating = c }));
+                        new Filters { Types = [type], ChallengeRatings = [c] },
+                        [template]));
 
                 cr = collectionSelector.SelectRandomFrom(validChallengeRatings);
             }
@@ -234,38 +239,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                         asCharacter,
                         null,
                         abilityRandomizer,
-                        new Filters { Templates = [template], Type = type, ChallengeRating = cr, Alignment = a }));
+                        new Filters { Types = [type], ChallengeRatings = [cr], Alignments = [a] },
+                        [template]));
 
                 alignment = collectionSelector.SelectRandomFrom(validAlignments);
             }
 
-            return (template, type, cr, alignment);
+            return (template, new Filters { Types = [type], ChallengeRatings = [cr], Alignments = [alignment] });
         }
 
         private Creature GenerateAndAssertRandomCreature(
             bool asCharacter,
-            string type,
-            string challengeRating,
-            string alignment,
+            Filters filters,
             AbilityRandomizer abilityRandomizer,
             params string[] templates)
         {
-            var filters = new Filters();
-            filters.Templates.AddRange(templates);
-            filters.Type = type;
-            filters.ChallengeRating = challengeRating;
-            filters.Alignment = alignment;
-
             stopwatch.Restart();
-            var creature = creatureGenerator.GenerateRandom(asCharacter, abilityRandomizer, filters);
+            var creature = creatureGenerator.GenerateRandom(asCharacter, abilityRandomizer, filters, templates);
             stopwatch.Stop();
 
-            AssertRandomCreature(creature, asCharacter, type, challengeRating, alignment, templates);
+            AssertRandomCreature(creature, asCharacter, filters, templates);
 
             return creature;
         }
 
-        private void AssertRandomCreature(Creature creature, bool asCharacter, string type, string challengeRating, string alignment, params string[] templates)
+        private void AssertRandomCreature(Creature creature, bool asCharacter, Filters filters, params string[] templates)
         {
             var message = new StringBuilder();
             var joinedTemplates = string.Join(", ", templates);
@@ -279,9 +277,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             message.AppendLine($"Creature: {creature.Summary}");
             message.AppendLine($"As Character: {asCharacter}");
             message.AppendLine($"Template: {messageTemplate}");
-            message.AppendLine($"Type: {type ?? "Null"}");
-            message.AppendLine($"CR: {challengeRating ?? "Null"}");
-            message.AppendLine($"Alignment: {alignment ?? "Null"}");
+            message.AppendLine($"Filters: {filters.GetDescription()}");
 
             var timeLimit = CreatureAsserter.GetGenerationTimeLimitInSeconds(creature);
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(timeLimit), message.ToString());
@@ -289,14 +285,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             if (templates.Any(t => !string.IsNullOrEmpty(t)))
                 Assert.That(creature.Templates, Is.EqualTo(templates.Where(t => t != CreatureConstants.Templates.None)), message.ToString());
 
-            if (!string.IsNullOrEmpty(type))
-                creatureAsserter.AssertCreatureIsType(creature, type, message.ToString());
+            //INFO: While we support multiple filters (acting as an OR), our current test cases only use 1 filter each.
+            //if we ever add multiple filter values as abilityRandomizerFactory test case, these assertions should fail and should be updated to handle the OR correctly
+            if (filters?.Types?.Count > 0)
+                CreatureAsserter.AssertCreatureIsType(creature, filters.Types.Single(), message.ToString());
 
-            if (!string.IsNullOrEmpty(challengeRating))
-                Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), message.ToString());
+            if (filters?.ChallengeRatings?.Count > 0)
+                Assert.That(creature.ChallengeRating, Is.EqualTo(filters.ChallengeRatings.Single()), message.ToString());
 
-            if (!string.IsNullOrEmpty(alignment))
-                Assert.That(creature.Alignment.Full, Is.EqualTo(alignment), message.ToString());
+            if (filters?.Alignments?.Count > 0)
+                Assert.That(creature.Alignment.Full, Is.EqualTo(filters.Alignments.Single()), message.ToString());
 
             if (asCharacter)
                 creatureAsserter.AssertCreatureAsCharacter(creature, message.ToString());
@@ -314,32 +312,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizer([]);
             var filters = GetRandomFilters(abilityRandomizer);
-            await GenerateAndAssertRandomCreatureAsync(filters.AsCharacter, filters.Template, filters.Type, filters.ChallengeRating, filters.Alignment, abilityRandomizer);
+            await GenerateAndAssertRandomCreatureAsync(filters.AsCharacter, filters.Template, filters.Filters, abilityRandomizer);
         }
 
         private async Task<Creature> GenerateAndAssertRandomCreatureAsync(
             bool asCharacter,
             string template,
-            string type,
-            string challengeRating,
-            string alignment,
+            Filters filters,
             AbilityRandomizer abilityRandomizer)
         {
-            var filters = new Filters
-            {
-                Type = type,
-                ChallengeRating = challengeRating,
-                Alignment = alignment
-            };
-
-            if (template != null)
-                filters.Templates.Add(template);
-
             stopwatch.Restart();
-            var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, abilityRandomizer, filters);
+            var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, abilityRandomizer, filters, template);
             stopwatch.Stop();
 
-            AssertRandomCreature(creature, asCharacter, type, challengeRating, alignment, template);
+            AssertRandomCreature(creature, asCharacter, filters, template);
 
             return creature;
         }
@@ -369,11 +355,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var randomFilters = collectionSelector.SelectRandomFrom(CreatureTestData.ProblematicFilters);
             GenerateAndAssertRandomCreature(
                 randomFilters.AsCharacter,
-                randomFilters.Filters.Type,
-                randomFilters.Filters.ChallengeRating,
-                randomFilters.Filters.Alignment,
+                randomFilters.Filters,
                 abilityRandomizer,
-                [.. randomFilters.Filters.Templates]);
+                [.. randomFilters.Templates]);
         }
 
         [TestCase(ChallengeRatingConstants.CR10)]
@@ -388,8 +372,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var minIndex = Array.IndexOf(crs, minimumCr);
             var randomCr = collectionSelector.SelectRandomFrom(crs.Skip(minIndex));
             var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizer([]);
+            var filters = new Filters { ChallengeRatings = [randomCr] };
 
-            GenerateAndAssertRandomCreature(false, string.Empty, randomCr, string.Empty, abilityRandomizer);
+            GenerateAndAssertRandomCreature(false, filters, abilityRandomizer);
         }
     }
 }

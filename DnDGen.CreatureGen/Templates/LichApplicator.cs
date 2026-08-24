@@ -389,32 +389,16 @@ namespace DnDGen.CreatureGen.Templates
             string creatureChallengeRating,
             Filters filters)
         {
-            if (filters?.Alignments?.Count > 0)
-            {
-                var validFilters = filters.Alignments.Where(a => a.Contains(AlignmentConstants.Evil));
-                var newAlignments = alignments
+            if (filters is null)
+                return (true, null);
+
+            var updatedAlignments = alignments
                     .Select(UpdateCreatureAlignment)
-                    .Select(a => a.Full)
-                    .Intersect(validFilters);
-                if (!newAlignments.Any())
-                    return (false, $"Alignment filter is not valid for creature alignments. Filters: {filters.GetDescription(false)}");
-            }
+                    .Select(a => a.Full);
+            var updatedTypes = UpdateCreatureType(types.First(), types.Skip(1));
+            var cr = UpdateCreatureChallengeRating(creatureChallengeRating);
 
-            if (filters?.Types?.Count > 0)
-            {
-                var updatedTypes = UpdateCreatureType(types.First(), types.Skip(1));
-                if (!updatedTypes.Intersect(filters.Types).Any())
-                    return (false, $"Type filter is not valid. Filters: {filters.GetDescription(false)}");
-            }
-
-            if (filters?.ChallengeRatings?.Count > 0)
-            {
-                var cr = UpdateCreatureChallengeRating(creatureChallengeRating);
-                if (!filters.ChallengeRatings.Contains(cr))
-                    return (false, $"CR filter does not match updated creature CR {cr} (from CR {creatureChallengeRating}). Filters: {filters.GetDescription(false)}");
-            }
-
-            return (true, null);
+            return filters.AreCompatible(updatedAlignments, updatedTypes, [cr]);
         }
 
         private static (bool Compatible, string Reason) IsCompatible(IEnumerable<string> types, int? levelAdjustment, IEnumerable<int> casterLevels, bool asCharacter)
