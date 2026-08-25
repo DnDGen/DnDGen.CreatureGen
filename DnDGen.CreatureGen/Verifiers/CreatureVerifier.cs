@@ -24,32 +24,14 @@ namespace DnDGen.CreatureGen.Verifiers
             AbilityRandomizer abilityRandomizer = null,
             Filters filters = null)
         {
-            if (templates.Length < 2)
-            {
-                var firstTemplate = templates.FirstOrDefault();
-                var creatureNames = GetCompatibleCreaturesForTemplate(sourceCreatures, firstTemplate, asCharacter, abilityRandomizer, filters);
-                var prototypes = prototypeFactory.Build(creatureNames, asCharacter, abilityRandomizer);
+            var firstTemplate = templates.FirstOrDefault();
+            var compatibleCreatures = GetCompatibleCreaturesForTemplate(sourceCreatures, firstTemplate, asCharacter, abilityRandomizer, filters);
+            var prototypes = prototypeFactory.Build(compatibleCreatures, asCharacter, abilityRandomizer);
 
-                if (!string.IsNullOrEmpty(firstTemplate))
-                {
-                    var applicator = factory.Build<TemplateApplicator>(firstTemplate);
-                    prototypes = prototypes.Select(p => applicator.ApplyTo(p, filters));
-                }
-
+            if (templates.Length == 0)
                 return prototypes;
-            }
 
-            var protoypes = prototypeFactory.Build(sourceCreatures, asCharacter, abilityRandomizer);
-
-            //INFO: We only want to apply filters to the last creature in a series of chained templates
-            for (var i = 0; i < templates.Length - 1; i++)
-            {
-                protoypes = GetCompatiblePrototypes(protoypes, templates[i]);
-            }
-
-            protoypes = GetCompatiblePrototypes(protoypes, templates[^1], filters);
-
-            return protoypes;
+            return GetChainedTemplates(prototypes, templates, filters);
         }
 
         public IEnumerable<string> GetCompatibleCreaturesForTemplate(
@@ -64,23 +46,9 @@ namespace DnDGen.CreatureGen.Verifiers
             var templateCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, template + asCharacter);
             var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
 
-            if (filters?.Types?.Count > 0)
-            {
-                var typeCreatures = GetUnifiedCreatureGroups(template, filters.Types);
-                filteredBaseCreatures = filteredBaseCreatures.Intersect(typeCreatures);
-            }
-
-            if (filters?.Alignments?.Count > 0)
-            {
-                var alignmentCreatures = GetUnifiedCreatureGroups(template, filters.Alignments);
-                filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
-            }
-
-            if (filters?.ChallengeRatings?.Count > 0)
-            {
-                var crCreatures = GetUnifiedCreatureGroups(template + asCharacter, filters.ChallengeRatings);
-                filteredBaseCreatures = filteredBaseCreatures.Intersect(crCreatures);
-            }
+            filteredBaseCreatures = ApplyFilterTo(filteredBaseCreatures, filters?.Alignments, template);
+            filteredBaseCreatures = ApplyFilterTo(filteredBaseCreatures, filters?.ChallengeRatings, template + asCharacter);
+            filteredBaseCreatures = ApplyFilterTo(filteredBaseCreatures, filters?.Types, template);
 
             var applicator = factory.Build<TemplateApplicator>(template);
             if (applicator.MinimumAbility is not null)
@@ -92,20 +60,29 @@ namespace DnDGen.CreatureGen.Verifiers
                 //Worst maxRoll is 1 (since abilities should be positive), so highest adjustment is Min - 1
                 if (lowestAdjustment > -10)
                 {
-                    var groupName = applicator.MinimumAbility.Name + lowestAdjustment;
-                    var abilityCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName);
-                    filteredBaseCreatures = filteredBaseCreatures.Intersect(abilityCreatures);
+                    filteredBaseCreatures = ApplyFilterTo(filteredBaseCreatures, [applicator.MinimumAbility.Name + lowestAdjustment], string.Empty);
                 }
             }
 
             return filteredBaseCreatures;
         }
 
+        private IEnumerable<string> ApplyFilterTo(IEnumerable<string> source, List<string> filter, string prefix)
+        {
+            if (filter?.Count > 0 && filter.Any(g => !string.IsNullOrEmpty(g)))
+            {
+                var groupCreatures = GetUnifiedCreatureGroups(prefix, filter);
+                source = source.Intersect(groupCreatures);
+            }
+
+            return source;
+        }
+
         private IEnumerable<string> GetUnifiedCreatureGroups(string prefix, IEnumerable<string> groupNames)
         {
             var group = Enumerable.Empty<string>();
 
-            foreach (var groupName in groupNames)
+            foreach (var groupName in groupNames.Where(g => !string.IsNullOrEmpty(g)))
             {
                 var creatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, prefix + groupName);
                 group = group.Union(creatures);
@@ -142,8 +119,7 @@ namespace DnDGen.CreatureGen.Verifiers
                 baseCreatures = baseCreatures.Intersect(characters);
             }
 
-            var compatible = baseCreatures.Any();
-            if (!compatible)
+            if (!baseCreatures.Any())
                 return false;
 
             if (templates.Length == 1)
@@ -175,6 +151,22 @@ namespace DnDGen.CreatureGen.Verifiers
             }
 
             return false;
+        }
+
+        public IEnumerable<CreaturePrototype> GetChainedTemplates(IEnumerable<CreaturePrototype> prototypes, string[] templates, Filters filters = null)
+        {
+            if (templates.Length == 0)
+                return GetCompatiblePrototypes(prototypes, CreatureConstants.Templates.None, filters);
+
+            //INFO: We only want to apply filters to the last creature in a series of chained templates
+            for (var i = 0; i < templates.Length - 1; i++)
+            {
+                prototypes = GetCompatiblePrototypes(prototypes, templates[i]);
+            }
+
+            prototypes = GetCompatiblePrototypes(prototypes, templates[^1], filters);
+
+            return prototypes;
         }
     }
 }

@@ -7,15 +7,13 @@ using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
 {
-    public class CreaturePrototypeBuilder
+    internal class CreaturePrototypeBuilder
     {
         private readonly CreaturePrototype prototype;
-        private readonly Random random;
 
         public CreaturePrototypeBuilder()
         {
             prototype = new CreaturePrototype();
-            random = new Random();
         }
 
         public CreaturePrototype Build()

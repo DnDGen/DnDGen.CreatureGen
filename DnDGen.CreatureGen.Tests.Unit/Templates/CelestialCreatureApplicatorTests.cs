@@ -2865,7 +2865,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             message.AppendLine("\tReason: Type 'Outsider' is not valid");
             message.AppendLine($"\tAs Character: {false}");
             message.AppendLine($"\tCreature: {creature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.CelestialCreature}");
+            message.AppendLine($"\tTemplates: {CreatureConstants.Templates.CelestialCreature}");
 
             var func = () => applicator.ApplyTo(creature);
             Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
@@ -3094,7 +3094,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(updatedPrototype.Alignments, Is.EqualTo(
             [
                 new Alignment("my Good"),
-                new Alignment("my Good"),
             ]));
         }
 
@@ -3115,7 +3114,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(updatedPrototype.Alignments, Is.EqualTo(
             [
                 new Alignment("my Good"),
-                new Alignment("my Good"),
             ]));
         }
 
@@ -3126,7 +3124,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithTestValues()
                 .WithName("my creature")
                 .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                .WithAlignments(AlignmentConstants.LawfulGood, "my alignment", "my alignment", AlignmentConstants.NeutralGood)
+                .WithAlignments(AlignmentConstants.LawfulGood, "my alignment", "my other-alignment", "my Evil", AlignmentConstants.NeutralGood)
                 .Build();
 
             var filters = new Filters { Alignments = ["my Good"] };
@@ -3135,8 +3133,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Alignments, Is.EqualTo(
             [
-                new Alignment("my Good"),
-                new Alignment("my Good"),
                 new Alignment("my Good"),
                 new Alignment("my Good"),
             ]));

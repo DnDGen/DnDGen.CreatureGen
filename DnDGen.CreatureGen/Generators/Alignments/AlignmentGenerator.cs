@@ -9,18 +9,12 @@ using System.Linq;
 
 namespace DnDGen.CreatureGen.Generators.Alignments
 {
-    internal class AlignmentGenerator(ICollectionSelector collectionSelector, ICreatureVerifier creatureVerifier) : IAlignmentGenerator
+    internal class AlignmentGenerator(ICollectionSelector collectionSelector, ICreatureVerifier creatureVerifier, ICreaturePrototypeFactory prototypeFactory) : IAlignmentGenerator
     {
         public Alignment Generate(string creatureName, string[] templates, Filters filters)
         {
             templates ??= [];
             var weightedAlignments = GetWeightedAlignments(creatureName, templates, filters);
-
-            if (filters?.Alignments?.Count > 0)
-            {
-                //INFO: Doing Where instead of Intersect in order to preserve weighting
-                weightedAlignments = weightedAlignments.Where(filters.Alignments.Contains);
-            }
 
             if (!weightedAlignments.Any())
                 throw new InvalidCreatureException(
@@ -37,28 +31,39 @@ namespace DnDGen.CreatureGen.Generators.Alignments
         {
             var weightedAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, creatureName);
 
-            if (templates.Length == 0)
-                return weightedAlignments;
-
             if (templates.Length == 1)
             {
                 var templateAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, templates[0] + GroupConstants.AllowedInput);
 
                 //INFO: Doing this instead of intersect in order to preserve duplicates/weighting
                 weightedAlignments = weightedAlignments.Where(templateAlignments.Contains);
-
-                return weightedAlignments;
             }
 
-            //INFO: When multiple templates are applied, the following is true for alignments:
-            //1. Lycanthrope and Ghost allow all inputs, make no alterations
-            //2. Celestial Creature and Half-Celestial only allow non-Evil inputs, outputs always Good
-            //3. Fiendish Creature and Half-Fiend only allow non-Good inputs, outputs always Evil
-            //4. Lich and Vampire allow all inputs, outsputs always Evil
-            //5. Skeleton and Zombie allow all inputs, outputs always Neutral Evil
-            //6. Half-Dragons allow all inputs, output is always the dragon's alignmnt (Lawful Good, Chaotic Good, Lawful Evil, or Chaotic Evil)
+            if (!(filters?.Alignments?.Count > 0) && templates.Length < 2)
+                return weightedAlignments;
 
-            var prototype = creatureVerifier.GetChainedTemplates([creatureName], templates, false, null, filters).Single();
+            if (templates.Length == 0)
+                return weightedAlignments.Where(filters.Alignments.Contains);
+
+            var creaturePrototype = prototypeFactory.Build([creatureName], false).Single();
+
+            //HACK: This is very inefficient, but:
+            //1. This usecase will only occur when an alignment filter is set AND templates are specified, OR more than 1 template is specified
+            //2. Only builds the prototype once and then re-clones base values (avoiding multiple "SelectAll" calls in the factory)
+            //3. Only applies the templates to the single prototype
+            //4. Only calls .Any() - so since we only have 1 prototype, will basically be 1 or 0
+            //5. Even if all alignments allowed, that's N = 9, which for an edge case, feels manageable.
+            //We can't pre-cache it because of the combinatorials of the template chaining
+            bool BaseAlignmentMatchesTemplatesAndFilters(string alignment)
+            {
+                var prototype = prototypeFactory.Clone(creaturePrototype);
+                prototype.Alignments = [new(alignment)];
+
+                var prototypes = creatureVerifier.GetChainedTemplates([prototype], templates, filters: filters);
+                return prototypes.Any();
+            }
+
+            weightedAlignments = weightedAlignments.Where(BaseAlignmentMatchesTemplatesAndFilters);
 
             return weightedAlignments;
         }

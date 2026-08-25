@@ -32,7 +32,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         {
             var description = new StringBuilder();
             description.AppendLine($"Types: {GetMessage(Types)}");
-            description.AppendLine($"CR: {GetMessage(ChallengeRatings)}");
+            description.AppendLine($"CRs: {GetMessage(ChallengeRatings)}");
             description.AppendLine($"Alignments: {GetMessage(Alignments)}");
 
             return description.ToString();

@@ -69,5 +69,27 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 yield return prototype;
             }
         }
+
+        public CreaturePrototype Clone(CreaturePrototype source)
+        {
+            var clone = new CreaturePrototype
+            {
+                Name = source.Name,
+                Abilities = source.Abilities.ToDictionary(
+                    kvp => kvp.Key,
+                    kvp => new Ability(kvp.Value.Name) { BaseScore = kvp.Value.BaseScore, RacialAdjustment = kvp.Value.RacialAdjustment }),
+                Alignments = [.. source.Alignments.Select(a => new Alignment(a.Full))],
+                AsCharacter = source.AsCharacter,
+                CasterLevel = source.CasterLevel,
+                ChallengeRating = source.ChallengeRating,
+                HasSkeleton = source.HasSkeleton,
+                HitDiceQuantity = source.HitDiceQuantity,
+                LevelAdjustment = source.LevelAdjustment,
+                Size = source.Size,
+                Type = new CreatureType(source.Type.AllTypes)
+            };
+
+            return clone;
+        }
     }
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DnDGen.CreatureGen.Creatures
 {
-    public class CreaturePrototype
+    internal class CreaturePrototype
     {
         public string Name { get; set; }
         public List<string> Templates { get; set; }

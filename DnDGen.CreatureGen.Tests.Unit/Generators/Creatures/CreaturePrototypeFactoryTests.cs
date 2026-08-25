@@ -1297,5 +1297,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[0].LevelAdjustment, Is.EqualTo(data["creature 1"].Single().LevelAdjustment));
             Assert.That(prototypes[0].Type.AllTypes, Is.EqualTo(data["creature 1"].Single().Types));
         }
+
+        [Test]
+        public void Clone_ReturnsCloneOfPrototype()
+        {
+            Assert.Fail("not yet written");
+            Assert.Fail("assert object reference differs");
+            Assert.Fail("assert all cloned properties");
+            Assert.Fail("assert selectors never called");
+            Assert.Fail("assert dice never called");
+        }
+
+        [Test]
+        public void Clone_ReturnsCloneOfPrototype_WithoutTemplates()
+        {
+            Assert.Fail("not yet written");
+            Assert.Fail("Assert templates array is emptied");
+            Assert.Fail("Assert templates ability adjustments are unset");
+        }
     }
 }

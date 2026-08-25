@@ -150,16 +150,6 @@ namespace DnDGen.CreatureGen.Templates
         private void UpdateCreatureAlignment(Creature creature, Filters filters)
         {
             creature.Alignment = UpdateCreatureAlignment(creature.Alignment);
-
-            if (filters.Alignments.Count > 0 && !filters.Alignments.Contains(creature.Alignment.Full))
-            {
-                throw new InvalidCreatureException(
-                    $"Alignment {creature.Alignment} is not valid for filters",
-                    false,
-                    creature.Name,
-                    filters,
-                    templates: [.. creature.Templates.Concat([CreatureConstants.Templates.CelestialCreature])]);
-            }
         }
 
         private void UpdateCreatureAlignment(CreaturePrototype creature, Filters filters)
@@ -170,9 +160,8 @@ namespace DnDGen.CreatureGen.Templates
 
             if (filters?.Alignments?.Count > 0)
             {
-                var validFilters = filters.Alignments.Where(a => a.Contains(AlignmentConstants.Good));
                 //INFO: Using Where instead of Intersect to maintain alignment weighting
-                updatedAlignments = updatedAlignments.Where(a => validFilters.Contains(a.Full));
+                updatedAlignments = updatedAlignments.Where(a => filters.Alignments.Contains(a.Full));
             }
 
             creature.Alignments = [.. updatedAlignments];
