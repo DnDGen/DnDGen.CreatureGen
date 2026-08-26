@@ -5,6 +5,7 @@ using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Unit.Templates;
 using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
@@ -1298,22 +1299,147 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[0].Type.AllTypes, Is.EqualTo(data["creature 1"].Single().Types));
         }
 
-        [Test]
-        public void Clone_ReturnsCloneOfPrototype()
+        [TestCase(true, true)]
+        [TestCase(true, false)]
+        [TestCase(false, true)]
+        [TestCase(false, false)]
+        public void Clone_ReturnsCloneOfPrototype(bool asCharacter, bool skeleton)
         {
-            Assert.Fail("not yet written");
-            Assert.Fail("assert object reference differs");
-            Assert.Fail("assert all cloned properties");
-            Assert.Fail("assert selectors never called");
-            Assert.Fail("assert dice never called");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithAsCharacter(asCharacter)
+                .WithAbility(AbilityConstants.Strength, 9266, baseScore: 29)
+                .WithAbility(AbilityConstants.Dexterity, 90210, baseScore: 1989)
+                .WithAbility(AbilityConstants.Constitution, 42, baseScore: 7)
+                .WithAbility(AbilityConstants.Intelligence, 600, baseScore: 17)
+                .WithAbility(AbilityConstants.Wisdom, 1337, baseScore: 1991)
+                .WithAbility(AbilityConstants.Charisma, 1336, baseScore: 2015)
+                .WithCasterLevel(96)
+                .WithChallengeRating("my cr")
+                .WithSkeleton(skeleton)
+                .WithLevelAdjustment(783)
+                .WithSize("my size")
+                .WithHitDiceQuantity(82.45)
+                .Build();
+
+            var clone = prototypeFactory.Clone(prototype);
+            Assert.That(clone, Is.Not.EqualTo(prototype));
+            Assert.That(clone.Abilities, Is.Not.EqualTo(prototype.Abilities));
+            Assert.That(clone.Abilities, Is.EquivalentTo(prototype.Abilities));
+            Assert.That(clone.Alignments, Is.Not.EqualTo(prototype.Alignments));
+            Assert.That(clone.Alignments, Is.EquivalentTo(prototype.Alignments));
+            Assert.That(clone.AsCharacter, Is.EqualTo(asCharacter).And.EqualTo(prototype.AsCharacter));
+            Assert.That(clone.CasterLevel, Is.EqualTo(96).And.EqualTo(prototype.CasterLevel));
+            Assert.That(clone.ChallengeRating, Is.EqualTo("my cr").And.EqualTo(prototype.ChallengeRating));
+            Assert.That(clone.HasSkeleton, Is.EqualTo(skeleton).And.EqualTo(prototype.HasSkeleton));
+            Assert.That(clone.HitDiceQuantity, Is.EqualTo(82.45).And.EqualTo(prototype.HitDiceQuantity));
+            Assert.That(clone.LevelAdjustment, Is.EqualTo(783).And.EqualTo(prototype.LevelAdjustment));
+            Assert.That(clone.Name, Is.EqualTo(prototype.Name));
+            Assert.That(clone.Size, Is.EqualTo("my size").And.EqualTo(prototype.Size));
+            Assert.That(clone.Type, Is.Not.EqualTo(prototype.Type));
+            Assert.That(clone.Type.Name, Is.EqualTo(prototype.Type.Name));
+            Assert.That(clone.Type.SubTypes, Is.Not.EqualTo(prototype.Type.SubTypes));
+            Assert.That(clone.Type.SubTypes, Is.EquivalentTo(prototype.Type.SubTypes));
+        }
+
+        [Test]
+        public void Clone_ReturnsCloneOfPrototype_CanManipulateIndependently()
+        {
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithAsCharacter(true)
+                .WithAbility(AbilityConstants.Strength, 9266, baseScore: 29)
+                .WithAbility(AbilityConstants.Dexterity, 90210, baseScore: 1989)
+                .WithAbility(AbilityConstants.Constitution, 42, baseScore: 7)
+                .WithAbility(AbilityConstants.Intelligence, 600, baseScore: 17)
+                .WithAbility(AbilityConstants.Wisdom, 1337, baseScore: 1991)
+                .WithAbility(AbilityConstants.Charisma, 1336, baseScore: 2015)
+                .WithCasterLevel(96)
+                .WithChallengeRating("my cr")
+                .WithSkeleton(true)
+                .WithLevelAdjustment(783)
+                .WithSize("my size")
+                .WithHitDiceQuantity(82.45)
+                .Build();
+
+            var clone = prototypeFactory.Clone(prototype);
+            clone.Name = "new name";
+            Assert.That(prototype.Name, Is.Not.EqualTo(clone.Name));
+
+            clone.AsCharacter = false;
+            Assert.That(prototype.AsCharacter, Is.True);
+
+            clone.Abilities[AbilityConstants.Strength].BaseScore = 9;
+            clone.Abilities[AbilityConstants.Dexterity].BaseScore = 22;
+            clone.Abilities[AbilityConstants.Constitution].BaseScore = 2022;
+            clone.Abilities[AbilityConstants.Intelligence].BaseScore = 227;
+            clone.Abilities[AbilityConstants.Wisdom].BaseScore = 2;
+            clone.Abilities[AbilityConstants.Charisma].BaseScore = 12;
+            Assert.That(prototype.Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(29 + 9266));
+            Assert.That(prototype.Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(1989 + 90210));
+            Assert.That(prototype.Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(7 + 42));
+            Assert.That(prototype.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(17 + 600));
+            Assert.That(prototype.Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(1991 + 1337));
+            Assert.That(prototype.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(2015 + 1336));
+
+            clone.CasterLevel = 2025;
+            Assert.That(prototype.CasterLevel, Is.EqualTo(96));
+
+            clone.ChallengeRating = "my other cr";
+            Assert.That(prototype.ChallengeRating, Is.EqualTo("my cr"));
+
+            clone.HasSkeleton = false;
+            Assert.That(prototype.HasSkeleton, Is.True);
+
+            clone.LevelAdjustment = null;
+            Assert.That(prototype.LevelAdjustment, Is.EqualTo(783));
+
+            clone.Size = "my other size";
+            Assert.That(prototype.Size, Is.EqualTo("my size"));
+
+            clone.HitDiceQuantity = 11.23;
+            Assert.That(prototype.HitDiceQuantity, Is.EqualTo(82.45));
+
+            clone.Alignments[0].Goodness = "newgood";
+            clone.Alignments[1] = new("clone alignment");
+            Assert.That(prototype.Alignments[0].Goodness, Is.Not.EqualTo("newgood"));
+            Assert.That(prototype.Alignments[1].Full, Is.Not.EqualTo("clone alignment"));
+
+            clone.Type.Name = "new type";
+            clone.Type.SubTypes = ["new subtype", "newer subtype"];
+            Assert.That(prototype.Type.Name, Is.Not.EqualTo("new type"));
+            Assert.That(prototype.Type.SubTypes, Is.Not.EquivalentTo(new[] { "new subtype", "newer subtype" }));
         }
 
         [Test]
         public void Clone_ReturnsCloneOfPrototype_WithoutTemplates()
         {
-            Assert.Fail("not yet written");
-            Assert.Fail("Assert templates array is emptied");
-            Assert.Fail("Assert templates ability adjustments are unset");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithAsCharacter(true)
+                .WithAbility(AbilityConstants.Strength, 9266, 1, baseScore: 29)
+                .WithAbility(AbilityConstants.Dexterity, 90210, -2, baseScore: 1989)
+                .WithAbility(AbilityConstants.Constitution, 42, 3, baseScore: 7)
+                .WithAbility(AbilityConstants.Intelligence, 600, -4, baseScore: 17)
+                .WithAbility(AbilityConstants.Wisdom, 1337, 5, baseScore: 1991)
+                .WithAbility(AbilityConstants.Charisma, 1336, -6, baseScore: 2015)
+                .WithCasterLevel(96)
+                .WithChallengeRating("my cr")
+                .WithSkeleton(true)
+                .WithLevelAdjustment(783)
+                .WithSize("my size")
+                .WithHitDiceQuantity(82.45)
+                .Build();
+            prototype.Templates = ["my template", "my other template"];
+
+            var clone = prototypeFactory.Clone(prototype);
+            Assert.That(clone.Templates, Is.Empty);
+            Assert.That(clone.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.Zero);
+            Assert.That(clone.Abilities[AbilityConstants.Dexterity].TemplateAdjustment, Is.Zero);
+            Assert.That(clone.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.Zero);
+            Assert.That(clone.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.Zero);
+            Assert.That(clone.Abilities[AbilityConstants.Wisdom].TemplateAdjustment, Is.Zero);
+            Assert.That(clone.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.Zero);
         }
     }
 }

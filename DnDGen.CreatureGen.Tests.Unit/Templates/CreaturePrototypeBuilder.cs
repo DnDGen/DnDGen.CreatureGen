@@ -56,6 +56,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             return this;
         }
 
+        public CreaturePrototypeBuilder WithAsCharacter(bool asCharacter)
+        {
+            prototype.AsCharacter = asCharacter;
+
+            return this;
+        }
+
         public CreaturePrototypeBuilder WithMinimumAbility(string ability, int minValue)
         {
             while (prototype.Abilities[ability].FullScore < minValue)
@@ -142,8 +149,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             return this;
         }
 
-        public CreaturePrototypeBuilder WithAbility(string ability, int racial, int template = 0)
+        public CreaturePrototypeBuilder WithAbility(string ability, int racial, int template = 0, int baseScore = Ability.DefaultScore)
         {
+            prototype.Abilities[ability].BaseScore = baseScore;
             prototype.Abilities[ability].RacialAdjustment = racial;
             prototype.Abilities[ability].TemplateAdjustment = template;
 

@@ -79,17 +79,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
         private Mock<TemplateApplicator> SetupStepInApplicatorChain(string template, Filters filters, Func<CreaturePrototype, Filters, bool> compatible = null)
         {
+            var mockApplicator = SetupApplicator(template);
+            SetupStepInApplicatorChain(mockApplicator, template, filters, compatible);
+
+            return mockApplicator;
+        }
+
+        private static void SetupStepInApplicatorChain(
+            Mock<TemplateApplicator> mockApplicator,
+            string template,
+            Filters filters,
+            Func<CreaturePrototype, Filters, bool> compatible = null)
+        {
             compatible ??= (CreaturePrototype p, Filters _) => true;
 
-            var mockApplicator = SetupApplicator(template);
             mockApplicator
                 .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), filters))
                 .Returns(compatible);
             mockApplicator
                 .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), filters))
                 .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, template));
-
-            return mockApplicator;
         }
 
         [TestCase(true)]
@@ -1453,7 +1462,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             var templateCreatures = new[] { "my template creature", "my other creature", "something else", creature, "whatever" };
             SetUpCreatureGroup("my template" + asCharacter, templateCreatures);
 
-            var mockApplicator = SetupApplicatorWithMinAbility("my template", minScore);
+            SetupApplicatorWithMinAbility("my template", minScore);
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, abilityRandomizer);
             Assert.That(compatibleCreatures, Is.EquivalentTo([creature, "my other creature"]));
@@ -1950,12 +1959,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             SetUpCreatureGroup("my ability-5", ["low-ability creature", "character", "my other creature", "high-ability creature", creature]);
 
             var mockApplicator = SetupApplicatorWithMinAbility("my template");
-            mockApplicator
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
-            mockApplicator
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "my template"));
+            SetupStepInApplicatorChain(mockApplicator, "my template", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
 
             mockCreaturePrototypeFactory
                 .Setup(f => f.Build(It.IsAny<IEnumerable<string>>(), asCharacter, null))
@@ -1968,7 +1972,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
         private static CreaturePrototype ApplyTemplate(CreaturePrototype prototype, string template)
         {
-            prototype.Name += " " + template;
+            if (template != CreatureConstants.Templates.None)
+                prototype.Name += " " + template;
+
             return prototype;
         }
 
@@ -1984,12 +1990,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             SetUpCreatureGroup("my ability-3", ["low-ability creature", "character", "my other creature", "high-ability creature", creature]);
 
             var mockApplicator = SetupApplicatorWithMinAbility("my template");
-            mockApplicator
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
-            mockApplicator
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "my template"));
+            SetupStepInApplicatorChain(mockApplicator, "my template", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
 
             mockCreaturePrototypeFactory
                 .Setup(f => f.Build(It.IsAny<IEnumerable<string>>(), asCharacter, abilityRandomizer))
@@ -2021,9 +2022,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             SetUpCreatureGroup("my template" + "my type", ["my other creature", "type creature", "character", creature, "another creature"]);
 
             var mockApplicator = SetupApplicatorWithMinAbility("my template");
-            mockApplicator
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), filters))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "my template"));
+            SetupStepInApplicatorChain(mockApplicator, "my template", filters);
 
             mockCreaturePrototypeFactory
                 .Setup(f => f.Build(It.IsAny<IEnumerable<string>>(), asCharacter, null))
@@ -2055,12 +2054,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             SetUpCreatureGroup("my template" + "my type", ["my other creature", "type creature", "character", creature, "another creature"]);
 
             var mockApplicator = SetupApplicatorWithMinAbility("my template");
-            mockApplicator
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
-            mockApplicator
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), filters))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "my template"));
+            SetupStepInApplicatorChain(mockApplicator, "my template", filters, (CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
 
             mockCreaturePrototypeFactory
                 .Setup(f => f.Build(It.IsAny<IEnumerable<string>>(), asCharacter, abilityRandomizer))
@@ -2081,6 +2075,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(f => f.Build(It.IsAny<IEnumerable<string>>(), asCharacter, null))
                 .Returns((IEnumerable<string> cc, bool _, AbilityRandomizer _) => BuildPrototypes(cc));
 
+            mockDice.Setup(d => d.Roll(AbilityConstants.RandomizerRolls.Default).AsPotentialMaximum<int>(true)).Returns(11);
+
+            SetUpCreatureGroup("my template" + asCharacter, [creature, "template creature", "my other creature", "character", "another creature"]);
+            SetUpCreatureGroup("my ability-5", ["low-ability creature", "character", "my other creature", "high-ability creature", creature]);
+
             var mockApplicator1 = SetupStepInApplicatorChain("my template", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
             var mockApplicator2 = SetupStepInApplicatorChain("my other template", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("a different creature"));
 
@@ -2098,6 +2097,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             mockCreaturePrototypeFactory
                 .Setup(f => f.Build(It.IsAny<IEnumerable<string>>(), asCharacter, abilityRandomizer))
                 .Returns((IEnumerable<string> cc, bool _, AbilityRandomizer _) => BuildPrototypes(cc));
+
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(9);
+
+            SetUpCreatureGroup("my template" + asCharacter, [creature, "template creature", "my other creature", "character", "another creature"]);
+            SetUpCreatureGroup("my ability-5", ["low-ability creature", "character", "my other creature", "high-ability creature", creature]);
 
             var mockApplicator1 = SetupStepInApplicatorChain("my template", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
             var mockApplicator2 = SetupStepInApplicatorChain("my other template", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("a different creature"));
@@ -2123,6 +2127,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(f => f.Build(It.IsAny<IEnumerable<string>>(), asCharacter, null))
                 .Returns((IEnumerable<string> cc, bool _, AbilityRandomizer _) => BuildPrototypes(cc));
 
+            mockDice.Setup(d => d.Roll(AbilityConstants.RandomizerRolls.Default).AsPotentialMaximum<int>(true)).Returns(11);
+
+            SetUpCreatureGroup("my template" + asCharacter, [creature, "template creature", "my other creature", "character", "another creature"]);
+            SetUpCreatureGroup("my ability-5", ["low-ability creature", "character", "my other creature", "high-ability creature", creature]);
+            SetUpCreatureGroup("my template" + "my alignment", ["character", "alignment creature", creature, "another creature"]);
+            SetUpCreatureGroup("my template" + asCharacter + "my challenge rating", ["my other creature", "character", "CR creature", creature]);
+            SetUpCreatureGroup("my template" + "my type", ["my other creature", "type creature", "character", creature, "another creature"]);
+
             var mockApplicator1 = SetupStepInApplicatorChain("my template", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
             var mockApplicator2 = SetupStepInApplicatorChain("my other template", filters, (CreaturePrototype p, Filters _) => !p.Name.Contains("a different creature"));
 
@@ -2147,6 +2159,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(f => f.Build(It.IsAny<IEnumerable<string>>(), asCharacter, abilityRandomizer))
                 .Returns((IEnumerable<string> cc, bool _, AbilityRandomizer _) => BuildPrototypes(cc));
 
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(9);
+
+            SetUpCreatureGroup("my template" + asCharacter, [creature, "template creature", "my other creature", "character", "another creature"]);
+            SetUpCreatureGroup("my ability-5", ["low-ability creature", "character", "my other creature", "high-ability creature", creature]);
+            SetUpCreatureGroup("my template" + "my alignment", ["character", "alignment creature", creature, "another creature"]);
+            SetUpCreatureGroup("my template" + asCharacter + "my challenge rating", ["my other creature", "character", "CR creature", creature]);
+            SetUpCreatureGroup("my template" + "my type", ["my other creature", "type creature", "character", creature, "another creature"]);
+
             var mockApplicator1 = SetupStepInApplicatorChain("my template", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
             var mockApplicator2 = SetupStepInApplicatorChain("my other template", filters, (CreaturePrototype p, Filters _) => !p.Name.Contains("a different creature"));
 
@@ -2164,6 +2184,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             mockCreaturePrototypeFactory
                 .Setup(f => f.Build(It.IsAny<IEnumerable<string>>(), asCharacter, null))
                 .Returns((IEnumerable<string> cc, bool _, AbilityRandomizer _) => BuildPrototypes(cc));
+
+            mockDice.Setup(d => d.Roll(AbilityConstants.RandomizerRolls.Default).AsPotentialMaximum<int>(true)).Returns(11);
+
+            SetUpCreatureGroup("t1" + asCharacter, [creature, "template creature", "my other creature", "character", "another creature"]);
+            SetUpCreatureGroup("my ability-5", ["low-ability creature", "character", "my other creature", "high-ability creature", creature]);
 
             var mockApplicator1 = SetupStepInApplicatorChain("t1", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("wrong creature"));
             var mockApplicator2 = SetupStepInApplicatorChain("t2", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
@@ -2184,29 +2209,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(f => f.Build(It.IsAny<IEnumerable<string>>(), asCharacter, abilityRandomizer))
                 .Returns((IEnumerable<string> cc, bool _, AbilityRandomizer _) => BuildPrototypes(cc));
 
-            var mockApplicator1 = SetupStepInApplicatorChain("t1");
-            mockApplicator1
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("wrong creature"));
-            mockApplicator1
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "t1"));
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(9);
 
-            var mockApplicator2 = SetupStepInApplicatorChain("t2");
-            mockApplicator2
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
-            mockApplicator2
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "t2"));
+            SetUpCreatureGroup("t1" + asCharacter, [creature, "template creature", "my other creature", "character", "another creature"]);
+            SetUpCreatureGroup("my ability-5", ["low-ability creature", "character", "my other creature", "high-ability creature", creature]);
 
-            var mockApplicator3 = SetupStepInApplicatorChain("t3");
-            mockApplicator3
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("a different creature"));
-            mockApplicator3
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "t3"));
+            var mockApplicator1 = SetupStepInApplicatorChain("t1", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("wrong creature"));
+            var mockApplicator2 = SetupStepInApplicatorChain("t2", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
+            var mockApplicator3 = SetupStepInApplicatorChain("t3", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("a different creature"));
 
             var prototypes = verifier.GetChainedTemplates(creatures, ["t1", "t2", "t3"], asCharacter, abilityRandomizer);
             Assert.That(prototypes.Count(), Is.EqualTo(2));
@@ -2229,29 +2239,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(f => f.Build(It.IsAny<IEnumerable<string>>(), asCharacter, null))
                 .Returns((IEnumerable<string> cc, bool _, AbilityRandomizer _) => BuildPrototypes(cc));
 
-            var mockApplicator1 = SetupStepInApplicatorChain("t1");
-            mockApplicator1
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("wrong creature"));
-            mockApplicator1
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "t1"));
+            mockDice.Setup(d => d.Roll(AbilityConstants.RandomizerRolls.Default).AsPotentialMaximum<int>(true)).Returns(11);
 
-            var mockApplicator2 = SetupStepInApplicatorChain("t2");
-            mockApplicator2
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
-            mockApplicator2
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "t2"));
+            SetUpCreatureGroup("t1" + asCharacter, [creature, "template creature", "my other creature", "character", "another creature"]);
+            SetUpCreatureGroup("my ability-5", ["low-ability creature", "character", "my other creature", "high-ability creature", creature]);
+            SetUpCreatureGroup("t1" + "my alignment", ["character", "alignment creature", creature, "another creature"]);
+            SetUpCreatureGroup("t1" + asCharacter + "my challenge rating", ["my other creature", "character", "CR creature", creature]);
+            SetUpCreatureGroup("t1" + "my type", ["my other creature", "type creature", "character", creature, "another creature"]);
 
-            var mockApplicator3 = SetupStepInApplicatorChain("t3");
-            mockApplicator3
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), filters))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("a different creature"));
-            mockApplicator3
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), filters))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "t3"));
+            var mockApplicator1 = SetupStepInApplicatorChain("t1", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("wrong creature"));
+            var mockApplicator2 = SetupStepInApplicatorChain("t2", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
+            var mockApplicator3 = SetupStepInApplicatorChain("t3", filters, (CreaturePrototype p, Filters _) => !p.Name.Contains("a different creature"));
 
             var prototypes = verifier.GetChainedTemplates(creatures, ["t1", "t2", "t3"], asCharacter, null, filters);
             Assert.That(prototypes.Count(), Is.EqualTo(2));
@@ -2274,29 +2272,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(f => f.Build(It.IsAny<IEnumerable<string>>(), asCharacter, abilityRandomizer))
                 .Returns((IEnumerable<string> cc, bool _, AbilityRandomizer _) => BuildPrototypes(cc));
 
-            var mockApplicator1 = SetupStepInApplicatorChain("t1");
-            mockApplicator1
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("wrong creature"));
-            mockApplicator1
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "t1"));
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(9);
 
-            var mockApplicator2 = SetupStepInApplicatorChain("t2");
-            mockApplicator2
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
-            mockApplicator2
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "t2"));
+            SetUpCreatureGroup("t1" + asCharacter, [creature, "template creature", "my other creature", "character", "another creature"]);
+            SetUpCreatureGroup("my ability-5", ["low-ability creature", "character", "my other creature", "high-ability creature", creature]);
+            SetUpCreatureGroup("t1" + "my alignment", ["character", "alignment creature", creature, "another creature"]);
+            SetUpCreatureGroup("t1" + asCharacter + "my challenge rating", ["my other creature", "character", "CR creature", creature]);
+            SetUpCreatureGroup("t1" + "my type", ["my other creature", "type creature", "character", creature, "another creature"]);
 
-            var mockApplicator3 = SetupStepInApplicatorChain("t3");
-            mockApplicator3
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), filters))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("a different creature"));
-            mockApplicator3
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), filters))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "t3"));
+            var mockApplicator1 = SetupStepInApplicatorChain("t1", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("wrong creature"));
+            var mockApplicator2 = SetupStepInApplicatorChain("t2", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
+            var mockApplicator3 = SetupStepInApplicatorChain("t3", filters, (CreaturePrototype p, Filters _) => !p.Name.Contains("a different creature"));
 
             var prototypes = verifier.GetChainedTemplates(creatures, ["t1", "t2", "t3"], asCharacter, abilityRandomizer, filters);
             Assert.That(prototypes.Count(), Is.EqualTo(2));
@@ -2307,7 +2293,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         [TestCase(false)]
         public void GetChainedTemplates_FromPrototypes_0Templates_ReturnsPrototypes(bool asCharacter)
         {
-            var creatures = BuildPrototypes(["some creature", creature, "a different creature", "character"]);
+            var creatures = BuildPrototypes([creature, "character"]);
+
+            SetupStepInApplicatorChain(CreatureConstants.Templates.None, null);
 
             var prototypes = verifier.GetChainedTemplates(creatures, []);
             Assert.That(prototypes.Count(), Is.EqualTo(2));
@@ -2329,6 +2317,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 Types = ["my type"]
             };
 
+            SetupStepInApplicatorChain(CreatureConstants.Templates.None, filters, (CreaturePrototype p, Filters _) => p.Name == creature || p.Name == "character");
+
             var prototypes = verifier.GetChainedTemplates(creatures, [], filters);
             Assert.That(prototypes.Count(), Is.EqualTo(2));
             Assert.That(prototypes.Select(p => p.Name), Is.EquivalentTo([creature, "character"]));
@@ -2341,9 +2331,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             var creatures = BuildPrototypes(["some creature", creature, "a different creature", "character"]);
 
             var mockApplicator = SetupApplicatorWithMinAbility("my template");
-            mockApplicator
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "my template"));
+            SetupStepInApplicatorChain(mockApplicator, "my template", null, (CreaturePrototype p, Filters _) => p.Name == creature || p.Name == "character");
 
             var prototypes = verifier.GetChainedTemplates(creatures, ["my template"]);
             Assert.That(prototypes.Count(), Is.EqualTo(2));
@@ -2363,9 +2351,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             };
 
             var mockApplicator = SetupApplicatorWithMinAbility("my template");
-            mockApplicator
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), filters))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "my template"));
+            SetupStepInApplicatorChain(mockApplicator, "my template", filters, (CreaturePrototype p, Filters _) => p.Name == creature || p.Name == "character");
 
             var prototypes = verifier.GetChainedTemplates(creatures, ["my template"], filters);
             Assert.That(prototypes.Count(), Is.EqualTo(2));
@@ -2378,21 +2364,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var creatures = BuildPrototypes(["some creature", creature, "a different creature", "character"]);
 
-            var mockApplicator1 = SetupStepInApplicatorChain("my template");
-            mockApplicator1
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
-            mockApplicator1
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "my template"));
-
-            var mockApplicator2 = SetupStepInApplicatorChain("my other template");
-            mockApplicator2
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("a different creature"));
-            mockApplicator2
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "my other template"));
+            var mockApplicator1 = SetupStepInApplicatorChain("my template", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
+            var mockApplicator2 = SetupStepInApplicatorChain("my other template", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("a different creature"));
 
             var prototypes = verifier.GetChainedTemplates(creatures, ["my template", "my other template"]);
             Assert.That(prototypes.Count(), Is.EqualTo(2));
@@ -2411,21 +2384,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 Types = ["my type"]
             };
 
-            var mockApplicator1 = SetupStepInApplicatorChain("my template");
-            mockApplicator1
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
-            mockApplicator1
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "my template"));
-
-            var mockApplicator2 = SetupStepInApplicatorChain("my other template");
-            mockApplicator2
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), filters))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("a different creature"));
-            mockApplicator2
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), filters))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "my other template"));
+            var mockApplicator1 = SetupStepInApplicatorChain("my template", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
+            var mockApplicator2 = SetupStepInApplicatorChain("my other template", filters, (CreaturePrototype p, Filters _) => !p.Name.Contains("a different creature"));
 
             var prototypes = verifier.GetChainedTemplates(creatures, ["my template", "my other template"], filters);
             Assert.That(prototypes.Count(), Is.EqualTo(2));
@@ -2438,29 +2398,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var creatures = BuildPrototypes(["some creature", creature, "a different creature", "character", "wrong creature"]);
 
-            var mockApplicator1 = SetupStepInApplicatorChain("t1");
-            mockApplicator1
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("wrong creature"));
-            mockApplicator1
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "t1"));
-
-            var mockApplicator2 = SetupStepInApplicatorChain("t2");
-            mockApplicator2
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
-            mockApplicator2
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "t2"));
-
-            var mockApplicator3 = SetupStepInApplicatorChain("t3");
-            mockApplicator3
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("a different creature"));
-            mockApplicator3
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "t3"));
+            var mockApplicator1 = SetupStepInApplicatorChain("t1", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("wrong creature"));
+            var mockApplicator2 = SetupStepInApplicatorChain("t2", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
+            var mockApplicator3 = SetupStepInApplicatorChain("t3", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("a different creature"));
 
             var prototypes = verifier.GetChainedTemplates(creatures, ["t1", "t2", "t3"]);
             Assert.That(prototypes.Count(), Is.EqualTo(2));
@@ -2479,29 +2419,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 Types = ["my type"]
             };
 
-            var mockApplicator1 = SetupStepInApplicatorChain("t1");
-            mockApplicator1
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("wrong creature"));
-            mockApplicator1
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "t1"));
-
-            var mockApplicator2 = SetupStepInApplicatorChain("t2");
-            mockApplicator2
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
-            mockApplicator2
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), null))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "t2"));
-
-            var mockApplicator3 = SetupStepInApplicatorChain("t3");
-            mockApplicator3
-                .Setup(a => a.IsCompatible(It.IsAny<CreaturePrototype>(), filters))
-                .Returns((CreaturePrototype p, Filters _) => !p.Name.Contains("a different creature"));
-            mockApplicator3
-                .Setup(a => a.ApplyTo(It.IsAny<CreaturePrototype>(), filters))
-                .Returns((CreaturePrototype p, Filters _) => ApplyTemplate(p, "t3"));
+            var mockApplicator1 = SetupStepInApplicatorChain("t1", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("wrong creature"));
+            var mockApplicator2 = SetupStepInApplicatorChain("t2", null, (CreaturePrototype p, Filters _) => !p.Name.Contains("some creature"));
+            var mockApplicator3 = SetupStepInApplicatorChain("t3", filters, (CreaturePrototype p, Filters _) => !p.Name.Contains("a different creature"));
 
             var prototypes = verifier.GetChainedTemplates(creatures, ["t1", "t2", "t3"], filters);
             Assert.That(prototypes.Count(), Is.EqualTo(2));
