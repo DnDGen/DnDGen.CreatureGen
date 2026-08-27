@@ -1,6 +1,7 @@
 using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Creatures;
+using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using NUnit.Framework;
 using System.Text;
 
@@ -28,7 +29,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             //    Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
-        [TestCaseSource(nameof(IncompatibleFilters))]
+        [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.IncompatibleFilters))]
         public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(
             bool asCharacter,
             string type,
@@ -124,7 +125,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(4));
         }
 
-        [TestCaseSource(nameof(ChallengeRatings))]
+        [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.ChallengeRatings))]
         public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithUpdatedChallengeRating(
             string originalChallengeRating,
             double animalHitDiceQuantity,
@@ -139,7 +140,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.Fail("not yet written");
         }
 
-        [TestCaseSource(nameof(LevelAdjustments))]
+        [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.LevelAdjustments))]
         public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithUpdatedLevelAdjustment(int? oldLevelAdjustment, int? newLevelAdjustment, bool isNatural)
         {
             Assert.Fail("not yet written");

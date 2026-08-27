@@ -66,7 +66,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
-        [TestCaseSource(nameof(IncompatibleFilters))]
+        [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.IncompatibleFilters))]
         public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(
             bool asCharacter,
             string type,
@@ -276,7 +276,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 $"Base roll: {creature.HitPoints.HitDice[0].DefaultRoll}; Base Roll: {baseRoll}; Animal Roll: {animalHitPoints.HitDice[0].DefaultRoll}, Bonus: {bonus}");
         }
 
-        [TestCaseSource(nameof(BUG_HitPointTotals))]
+        [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.BUG_HitPointTotals))]
         public void BUG_ApplyTo_AddAnimalHitPoints_NegativeConstitutionBonus(int bQ, int bD, int bR, double bA, int aQ, int aD)
         {
             baseCreature.HitPoints.HitDice[0].Quantity = bQ;
@@ -321,7 +321,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 $"Base roll: {creature.HitPoints.HitDice[0].DefaultRoll}; Base Roll: {baseRoll}; Animal Roll: {animalHitPoints.HitDice[0].DefaultRoll}, Bonus: {bonus}");
         }
 
-        [TestCaseSource(nameof(BUG_HitPointTotals))]
+        [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.BUG_HitPointTotals))]
         public void BUG_ApplyTo_AddAnimalHitPoints_WithConstitutionBonus(int bQ, int bD, int bR, double bA, int aQ, int aD)
         {
             baseCreature.HitPoints.HitDice[0].Quantity = bQ;
@@ -698,7 +698,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(animalAttacks[1].Name, Is.EqualTo("animal attack 2 (in Animal form)"));
         }
 
-        [TestCaseSource(nameof(SizeComparisons))]
+        [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.SizeComparisons))]
         public void ApplyTo_AddLycanthropeAttacks_BaseIsBigger(string smallerSize, string biggerSize)
         {
             baseCreature.Size = biggerSize;
@@ -730,7 +730,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(lycanthropeAttacks[1].Name, Is.EqualTo("lycanthrope attack 2"));
         }
 
-        [TestCaseSource(nameof(SizeComparisons))]
+        [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.SizeComparisons))]
         public void ApplyTo_AddLycanthropeAttacks_AnimalIsBigger(string smallerSize, string biggerSize)
         {
             baseCreature.Size = smallerSize;
@@ -762,7 +762,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(lycanthropeAttacks[1].Name, Is.EqualTo("lycanthrope attack 2"));
         }
 
-        [TestCaseSource(nameof(Sizes))]
+        [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.Sizes))]
         public void ApplyTo_AddLycanthropeAttacks_AnimalAndBaseAreSameSize(string size)
         {
             baseCreature.Size = size;
@@ -794,7 +794,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(lycanthropeAttacks[1].Name, Is.EqualTo("lycanthrope attack 2"));
         }
 
-        [TestCaseSource(nameof(Sizes))]
+        [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.Sizes))]
         public void ApplyTo_AddLycanthropeAttacks_WithBonuses(string size)
         {
             baseCreature.Size = size;
@@ -1584,7 +1584,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Saves[SaveConstants.Will].IsConditional, Is.True);
         }
 
-        [TestCaseSource(nameof(ChallengeRatings))]
+        [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.ChallengeRatings))]
         public void ApplyTo_IncreaseChallengeRating(string originalChallengeRating, double animalHitDiceQuantity, string updatedChallengeRating)
         {
             baseCreature.ChallengeRating = originalChallengeRating;
@@ -1596,7 +1596,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.ChallengeRating, Is.EqualTo(updatedChallengeRating));
         }
 
-        [TestCaseSource(nameof(LevelAdjustments))]
+        [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.LevelAdjustments))]
         public void ApplyTo_IncreaseLevelAdjustment(int? oldLevelAdjustment, int? newLevelAdjustment, bool isNatural)
         {
             applicator.IsNatural = isNatural;

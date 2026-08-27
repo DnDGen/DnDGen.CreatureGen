@@ -122,15 +122,16 @@ namespace DnDGen.CreatureGen.Verifiers
             if (!baseCreatures.Any())
                 return false;
 
-            if (templates.Length == 1)
+            var cleanTemplates = templates.Where(t => !string.IsNullOrEmpty(t)).ToArray();
+            if (cleanTemplates.Length == 1)
             {
-                var compatibleCreatures = GetCompatibleCreaturesForTemplate(baseCreatures, templates[0], asCharacter, abilityRandomizer, filters);
+                var compatibleCreatures = GetCompatibleCreaturesForTemplate(baseCreatures, cleanTemplates[0], asCharacter, abilityRandomizer, filters);
                 return compatibleCreatures.Any();
             }
 
-            if (templates.Length > 1)
+            if (cleanTemplates.Length > 1)
             {
-                var compatibleCreatures = GetChainedTemplates(baseCreatures, templates, asCharacter, abilityRandomizer, filters);
+                var compatibleCreatures = GetChainedTemplates(baseCreatures, cleanTemplates, asCharacter, abilityRandomizer, filters);
                 return compatibleCreatures.Any();
             }
 

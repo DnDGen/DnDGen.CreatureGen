@@ -348,13 +348,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     It.Is<Filters>(f => f == null || f == filters),
                     It.Is<string[]>(t => t.IsEquivalentTo(templateNames))))
                 .Returns(true);
-            //mockCreatureVerifier
-            //    .Setup(v => v.VerifyCompatibility(
-            //        asCharacter,
-            //        creatureName,
-            //        randomizer,
-            //        It.Is<Filters>(f => f != null && !f.Templates.Except(cleanTemplates).Any())))
-            //    .Returns(true);
             mockCreatureVerifier
                 .Setup(v => v.GetChainedTemplates(
                     It.IsAny<IEnumerable<string>>(),

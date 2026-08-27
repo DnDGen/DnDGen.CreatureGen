@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,13 +15,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.Fail("not yet written");
         }
 
-        [TestCaseSource(nameof(CreatureTypeCompatible))]
+        [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.CreatureTypeCompatible))]
         public void IsCompatible_ReturnsCompatibility_BasedOnCreatureType(string creatureType, bool expected)
         {
             Assert.Fail("not yet written");
         }
 
-        [TestCaseSource(nameof(SizeCompatible))]
+        [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.SizeCompatible))]
         public void IsCompatible_ReturnsCompatibility_BasedOnSize(string creatureSize, string animalSize, bool expected)
         {
             Assert.Fail("not yet written");
@@ -38,7 +39,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.Fail("not yet written");
         }
 
-        [TestCaseSource(nameof(ChallengeRatings))]
+        [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.ChallengeRatings))]
         public void IsCompatible_WithChallengeRating_ReturnsTrue_BasedOnUpdatedChallengeRating(
             string originalChallengeRating,
             double animalHitDiceQuantity,

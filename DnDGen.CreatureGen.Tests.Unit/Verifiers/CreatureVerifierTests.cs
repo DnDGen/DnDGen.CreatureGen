@@ -152,14 +152,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         [TestCase(false, false)]
         public void VerifyCompatibility_CreatureAnd2Templates_Compatible(bool asCharacter, bool compatible)
         {
-            SetUpCreatureGroup("template 1", ["character", creature, "wrong creature"]);
+            SetUpCreatureGroup("template 1" + asCharacter, ["character", creature, "wrong creature"]);
 
             mockCreaturePrototypeFactory
                 .Setup(f => f.Build(It.IsAny<IEnumerable<string>>(), asCharacter, abilityRandomizer))
                 .Returns((IEnumerable<string> cc, bool _, AbilityRandomizer _) => BuildPrototypes(cc));
 
             var mockApplicator1 = SetupStepInApplicatorChain("template 1", null);
-            var mockApplicator2 = SetupStepInApplicatorChain("template 2", null, (CreaturePrototype cp, Filters _) => compatible && cp.Name == creature);
+            var mockApplicator2 = SetupStepInApplicatorChain("template 2", null, (CreaturePrototype cp, Filters _) => compatible && cp.Name.Contains(creature));
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer, null, "template 1", "template 2");
             Assert.That(isCompatible, Is.EqualTo(compatible));
@@ -171,7 +171,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         [TestCase(false, false)]
         public void VerifyCompatibility_CreatureAnd3Templates_Compatible(bool asCharacter, bool compatible)
         {
-            SetUpCreatureGroup("template 1", ["character", creature, "wrong creature"]);
+            SetUpCreatureGroup("template 1" + asCharacter, ["character", creature, "wrong creature"]);
 
             mockCreaturePrototypeFactory
                 .Setup(f => f.Build(It.IsAny<IEnumerable<string>>(), asCharacter, abilityRandomizer))
@@ -179,7 +179,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var mockApplicator1 = SetupStepInApplicatorChain("template 1", null);
             var mockApplicator2 = SetupStepInApplicatorChain("template 2", null);
-            var mockApplicator3 = SetupStepInApplicatorChain("template 3", null, (CreaturePrototype cp, Filters _) => compatible && cp.Name == creature);
+            var mockApplicator3 = SetupStepInApplicatorChain("template 3", null, (CreaturePrototype cp, Filters _) => compatible && cp.Name.Contains(creature));
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer, null, "template 1", "template 2", "template 3");
             Assert.That(isCompatible, Is.EqualTo(compatible));
@@ -1096,24 +1096,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var filters = new Filters
             {
-                Types = ["other type", type],
-                ChallengeRatings = ["other cr", cr],
-                Alignments = ["other alignment", alignment]
+                Types = [type, "other type"],
+                ChallengeRatings = [cr, "other cr"],
+                Alignments = [alignment, "other alignment"]
             };
 
             SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter, ["template creature", creature, "wrong template creature"]);
-            SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter + "other cr", ["other template cr creature", "wrong cr creature"]);
-            SetUpCreatureGroup(CreatureConstants.Templates.None + "other type", ["other type creature", "wrong type creature"]);
-            SetUpCreatureGroup(CreatureConstants.Templates.None + "other alignment", ["other alignment creature", "wrong alignment creature"]);
+            SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter + "other cr", ["other template cr creature", creature, "wrong cr creature"]);
+            SetUpCreatureGroup(CreatureConstants.Templates.None + "other type", ["other type creature", creature, "wrong type creature"]);
+            SetUpCreatureGroup(CreatureConstants.Templates.None + "other alignment", ["other alignment creature", creature, "wrong alignment creature"]);
 
             if (cr != null)
-                SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter + cr, ["template cr creature", creature, "wrong cr creature"]);
+                SetUpCreatureGroup(CreatureConstants.Templates.None + asCharacter + cr, ["template cr creature", "wrong cr creature"]);
 
             if (type != null)
-                SetUpCreatureGroup(CreatureConstants.Templates.None + type, ["template type creature", creature, "wrong type creature"]);
+                SetUpCreatureGroup(CreatureConstants.Templates.None + type, ["template type creature", "wrong type creature"]);
 
             if (alignment != null)
-                SetUpCreatureGroup(CreatureConstants.Templates.None + alignment, ["template alignment creature", creature, "wrong alignment creature"]);
+                SetUpCreatureGroup(CreatureConstants.Templates.None + alignment, ["template alignment creature", "wrong alignment creature"]);
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector

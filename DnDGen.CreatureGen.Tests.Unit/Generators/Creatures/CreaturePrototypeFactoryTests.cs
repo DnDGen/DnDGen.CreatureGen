@@ -1324,9 +1324,31 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var clone = prototypeFactory.Clone(prototype);
             Assert.That(clone, Is.Not.EqualTo(prototype));
-            Assert.That(clone.Abilities, Is.Not.EqualTo(prototype.Abilities));
-            Assert.That(clone.Abilities, Is.EquivalentTo(prototype.Abilities));
-            Assert.That(clone.Alignments, Is.Not.EqualTo(prototype.Alignments));
+            Assert.That(clone.Abilities, Is.Not.SameAs(prototype.Abilities).And.Count.EqualTo(prototype.Abilities.Count).And.Count.EqualTo(6));
+
+            foreach (var expected in prototype.Abilities)
+            {
+                Assert.That(clone.Abilities, Contains.Key(expected.Key));
+                Assert.That(clone.Abilities[expected.Key], Is.Not.SameAs(expected.Value));
+                Assert.That(clone.Abilities[expected.Key].Name, Is.EqualTo(expected.Value.Name).And.EqualTo(expected.Key));
+                Assert.That(clone.Abilities[expected.Key].BaseScore, Is.EqualTo(expected.Value.BaseScore));
+                Assert.That(clone.Abilities[expected.Key].RacialAdjustment, Is.EqualTo(expected.Value.RacialAdjustment));
+            }
+
+            Assert.That(clone.Abilities[AbilityConstants.Strength].BaseScore, Is.EqualTo(29));
+            Assert.That(clone.Abilities[AbilityConstants.Strength].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(clone.Abilities[AbilityConstants.Dexterity].BaseScore, Is.EqualTo(1989));
+            Assert.That(clone.Abilities[AbilityConstants.Dexterity].RacialAdjustment, Is.EqualTo(90210));
+            Assert.That(clone.Abilities[AbilityConstants.Constitution].BaseScore, Is.EqualTo(7));
+            Assert.That(clone.Abilities[AbilityConstants.Constitution].RacialAdjustment, Is.EqualTo(42));
+            Assert.That(clone.Abilities[AbilityConstants.Intelligence].BaseScore, Is.EqualTo(17));
+            Assert.That(clone.Abilities[AbilityConstants.Intelligence].RacialAdjustment, Is.EqualTo(600));
+            Assert.That(clone.Abilities[AbilityConstants.Wisdom].BaseScore, Is.EqualTo(1991));
+            Assert.That(clone.Abilities[AbilityConstants.Wisdom].RacialAdjustment, Is.EqualTo(1337));
+            Assert.That(clone.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(2015));
+            Assert.That(clone.Abilities[AbilityConstants.Charisma].RacialAdjustment, Is.EqualTo(1336));
+
+            Assert.That(clone.Alignments, Is.Not.SameAs(prototype.Alignments));
             Assert.That(clone.Alignments, Is.EquivalentTo(prototype.Alignments));
             Assert.That(clone.AsCharacter, Is.EqualTo(asCharacter).And.EqualTo(prototype.AsCharacter));
             Assert.That(clone.CasterLevel, Is.EqualTo(96).And.EqualTo(prototype.CasterLevel));
@@ -1338,7 +1360,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(clone.Size, Is.EqualTo("my size").And.EqualTo(prototype.Size));
             Assert.That(clone.Type, Is.Not.EqualTo(prototype.Type));
             Assert.That(clone.Type.Name, Is.EqualTo(prototype.Type.Name));
-            Assert.That(clone.Type.SubTypes, Is.Not.EqualTo(prototype.Type.SubTypes));
+            Assert.That(clone.Type.SubTypes, Is.Not.SameAs(prototype.Type.SubTypes));
             Assert.That(clone.Type.SubTypes, Is.EquivalentTo(prototype.Type.SubTypes));
         }
 
