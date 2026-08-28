@@ -16,7 +16,6 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
@@ -30,7 +29,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false, false)]
         public async Task GenerateRandomAsync_ReturnsHasSkeleton(bool asCharacter, bool hasSkeleton)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             creatureData.HasSkeleton = hasSkeleton;
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
@@ -89,7 +88,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "wrong template", asCharacter, null, filters))
                 .Returns([]);
 
-            SetUpCreature(creatureName, asCharacter, filters);
+            SetupCreature(creatureName, asCharacter, filters);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters);
             Assert.That(creature.Name, Is.EqualTo(creatureName));
@@ -135,7 +134,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "wrong template", false, null, filters))
                 .Returns([]);
 
-            SetUpCreature(creatureName, false, filters);
+            SetupCreature(creatureName, false, filters);
 
             var creature = await creatureGenerator.GenerateRandomAsync(false, null, filters, empty);
             Assert.That(creature.Name, Is.EqualTo(creatureName));
@@ -181,7 +180,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), template, asCharacter, null, filters))
                 .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
 
-            SetUpCreature(creatureName, asCharacter, filters, null, template);
+            SetupCreature(creatureName, asCharacter, filters, null, template);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters, template);
             Assert.That(creature.Name, Is.EqualTo(creatureName));
@@ -227,7 +226,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), template, asCharacter, null, filters))
                 .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
 
-            SetUpCreature(creatureName, asCharacter, filters, null, template);
+            SetupCreature(creatureName, asCharacter, filters, null, template);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters, template);
             Assert.That(creature.Name, Is.EqualTo(creatureName));
@@ -277,7 +276,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     .Intersect([creatureName])
                     .Select(c => new CreaturePrototype { Name = c }));
 
-            SetUpCreature(creatureName, asCharacter, filters, null, templates);
+            SetupCreature(creatureName, asCharacter, filters, null, templates);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters, templates);
             Assert.That(creature.Name, Is.EqualTo(creatureName));
@@ -311,6 +310,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Alignments = [alignment]
             };
 
+            SetupCreature(creatureName, asCharacter, filters, null, template);
+
             var creatures = new[] { "wrong creature", creatureName, "other creature" };
             var templates = new[] { "wrong template", template, "other template" };
             mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, null, filters)).Returns(true);
@@ -325,12 +326,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { creatureName, "other creature name", "wrong creature name", template }))))
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(creatureName, "other creature", "wrong creature", template))))
                 .Returns(template);
 
             mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), null, asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect(creatures));
+            mockCreatureVerifier
                 .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), CreatureConstants.Templates.None, asCharacter, null, filters))
-                .Returns([]);
+                .Returns(creatures);
             mockCreatureVerifier
                 .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), template, asCharacter, null, filters))
                 .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
@@ -340,8 +344,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockCreatureVerifier
                 .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), "wrong template", asCharacter, null, filters))
                 .Returns([]);
-
-            SetUpCreature(creatureName, asCharacter, filters, null, template);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters);
             Assert.That(creature.Name, Is.EqualTo(creatureName));
@@ -375,6 +377,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Alignments = [alignment]
             };
 
+            SetupCreature(creatureName, asCharacter, filters, null, template);
+
             var creatures = new[] { "wrong creature name", creatureName, "other creature" };
             var templates = new[] { "wrong template", template, "other template" };
             mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, null, filters)).Returns(true);
@@ -389,9 +393,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(
-                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(creatureName, "other creature name", "wrong creature name", template, "other template"))))
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(creatureName, "other creature", "wrong creature name", template, "other template"))))
                 .Returns(template);
 
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), null, asCharacter, null, filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect(creatures));
             mockCreatureVerifier
                 .Setup(v => v.GetCompatibleCreaturesForTemplate(It.IsAny<IEnumerable<string>>(), CreatureConstants.Templates.None, asCharacter, null, filters))
                 .Returns([]);
@@ -408,8 +415,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(template, "other template"))))
                 .Returns(template);
-
-            SetUpCreature(creatureName, asCharacter, filters, null, template);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters);
             Assert.That(creature.Name, Is.EqualTo(creatureName));
@@ -472,7 +477,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(creatures.Union(new[] { template, "other template" })))))
                 .Returns(creatureName);
 
-            SetUpCreature(creatureName, asCharacter, filters);
+            SetupCreature(creatureName, asCharacter, filters);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters);
             Assert.That(creature.Name, Is.EqualTo(creatureName));
@@ -526,7 +531,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(creatures))))
                 .Returns(creatureName);
 
-            SetUpCreature(creatureName, asCharacter, filters, null, template);
+            SetupCreature(creatureName, asCharacter, filters, null, template);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters, template);
             Assert.That(creature.Name, Is.EqualTo(creatureName));
@@ -580,7 +585,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(creatures))))
                 .Returns(creatureName);
 
-            SetUpCreature(creatureName, asCharacter, filters, null, template);
+            SetupCreature(creatureName, asCharacter, filters, null, template);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters, template);
             Assert.That(creature.Name, Is.EqualTo(creatureName));
@@ -608,12 +613,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creatureName = "my creature";
             var template1 = "my template 1";
             var template2 = "my template 2";
+            var templates = new[] { template1, template2 };
             var filters = new Filters
             {
                 Types = [type],
                 ChallengeRatings = [cr],
                 Alignments = [alignment]
             };
+
+            SetupCreature(creatureName, asCharacter, filters, null, templates);
 
             var creatures = new[] { "wrong creature", creatureName, "other creature" };
             var allTemplates = new[] { "wrong template", template1, "other template", template2, "other wrong template" };
@@ -627,18 +635,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
                 .Returns(allTemplates);
 
-            var templates = new[] { template1, template2 };
-            mockCreatureVerifier
-                .Setup(v => v.GetChainedTemplates(It.IsAny<IEnumerable<string>>(), templates, asCharacter, null, filters))
-                .Returns((IEnumerable<string> cc, string[] tt, bool asC, AbilityRandomizer r, Filters f) => cc.Select(c => new CreaturePrototype { Name = c }));
-
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(creatures))))
                 .Returns(creatureName);
 
-            SetUpCreature(creatureName, asCharacter, filters, null, templates);
-
-            var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters);
+            var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters, templates);
             Assert.That(creature.Name, Is.EqualTo(creatureName));
             Assert.That(creature.Templates, Is.EqualTo([template1, template2]));
         }
@@ -718,7 +719,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 }))))
                 .Returns(creatureName);
 
-            SetUpCreature(creatureName, asCharacter, filters, null, template);
+            SetupCreature(creatureName, asCharacter, filters, null, template);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters);
             Assert.That(creature.Name, Is.EqualTo(creatureName));
@@ -784,19 +785,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, null, filters, template)).Returns(false);
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-
-            if (template != null)
-                message.AppendLine($"\tTemplate: {template}");
-
-            var filtersDescription = filters.GetDescription();
-            message.AppendLine($"\tFilters: {filtersDescription}");
-            message.AppendLine($"\tAbility Roll: {AbilityConstants.RandomizerRolls.Default}");
-
+            var expectedException = new InvalidCreatureException(null, asCharacter, null, AbilityConstants.RandomizerRolls.Default, filters, template == null ? [] : [template]);
             await Assert.ThatAsync(async () => await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters, template),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expectedException.Message));
         }
 
         [TestCase(true)]
@@ -813,23 +804,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, randomizer, filters, "my template")).Returns(false);
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine("\tTemplate: my template");
-            var filtersDescription = filters.GetDescription();
-            message.AppendLine($"\tFilters: {filtersDescription}");
-            message.AppendLine("\tAbility Roll: my roll");
-
+            var expectedException = new InvalidCreatureException(null, asCharacter, null, filters, randomizer, "my template");
             await Assert.ThatAsync(async () => await creatureGenerator.GenerateRandomAsync(asCharacter, randomizer, filters, "my template"),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expectedException.Message));
         }
 
         [TestCase(true)]
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureSize(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.Size, Is.EqualTo("size"));
         }
@@ -838,7 +822,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureSpace(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.Space.Value, Is.EqualTo(56.78));
         }
@@ -847,7 +831,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureReach(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.Reach.Value, Is.EqualTo(67.89));
         }
@@ -856,7 +840,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureCanUseEquipment(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             creatureData.CanUseEquipment = true;
 
             mockEquipmentGenerator
@@ -877,7 +861,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureCannotUseEquipment(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             creatureData.CanUseEquipment = false;
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
@@ -888,7 +872,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureChallengeRating(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             creatureData.ChallengeRating = "challenge rating";
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
@@ -899,7 +883,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureLevelAdjustment(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             creatureData.LevelAdjustment = 1234;
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
@@ -910,7 +894,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateNoCreatureLevelAdjustment(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             creatureData.LevelAdjustment = null;
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
@@ -921,7 +905,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureLevelAdjustmentOf0(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             creatureData.LevelAdjustment = 0;
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
@@ -932,7 +916,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureCasterLevel(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.CasterLevel, Is.EqualTo(1029));
         }
@@ -941,7 +925,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureNumberOfHands(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.NumberOfHands, Is.EqualTo(96));
         }
@@ -950,7 +934,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureType(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.Type.Name, Is.EqualTo("type"));
@@ -961,7 +945,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureTypeWithSubtype(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             types.Add("subtype");
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
@@ -975,7 +959,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureTypeWithMultipleSubtypes(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             types.Add("subtype");
             types.Add("other subtype");
 
@@ -991,7 +975,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateDemographics(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.Demographics, Is.Not.Null.And.EqualTo(demographics));
@@ -1001,7 +985,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureAbilities(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.Abilities, Is.EqualTo(abilities));
         }
@@ -1012,7 +996,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var randomizer = new AbilityRandomizer("my special roll");
 
-            SetUpCreature("creature", asCharacter, randomizer: randomizer);
+            SetupCreature("creature", asCharacter, randomizer: randomizer);
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, randomizer);
             Assert.That(creature.Abilities, Is.EqualTo(abilities));
         }
@@ -1021,7 +1005,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureHitPoints(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
@@ -1037,7 +1021,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureEquipment(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.Equipment, Is.EqualTo(equipment));
         }
@@ -1046,7 +1030,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureMagic(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.Magic, Is.EqualTo(magic));
         }
@@ -1055,7 +1039,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureLanguages(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.Languages, Is.EqualTo(languages));
         }
@@ -1117,10 +1101,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Alignments = [alignment]
             };
 
-            SetUpCreature("creature", asCharacter, filters, null, template);
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", filters, 1337, null, template);
+            SetupCreature("creature", asCharacter, filters, null, template);
+            var advancedHitPoints = SetupCreatureAdvancement(asCharacter, "creature", filters, 1337, null, template);
 
-            var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters);
+            var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters, template);
 
             Assert.That(creature.HitPoints, Is.EqualTo(advancedHitPoints));
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(681));
@@ -1144,8 +1128,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_DoNotGenerateAdvancedCreature_IfSelectorSaysNo(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            SetupCreature("creature", asCharacter);
+            var advancedHitPoints = SetupCreatureAdvancement(asCharacter, "creature", null);
             mockAdvancementSelector
                 .Setup(s => s.IsAdvanced("creature", It.Is<IEnumerable<string>>(t => !t.Any()), creatureData.GetEffectiveHitDiceQuantity(asCharacter), null))
                 .Returns(false);
@@ -1173,8 +1157,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateAdvancedCreature(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            SetupCreature("creature", asCharacter);
+            var advancedHitPoints = SetupCreatureAdvancement(asCharacter, "creature", null);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.HitPoints, Is.EqualTo(advancedHitPoints));
@@ -1198,8 +1182,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public async Task GenerateRandomAsync_GenerateAdvancedCreature_AdjustDemographics()
         {
-            SetUpCreature("creature", false);
-            var advancedHitPoints = SetUpCreatureAdvancement(false, "creature", null, 1337, "my advanced size");
+            SetupCreature("creature", false);
+            var advancedHitPoints = SetupCreatureAdvancement(false, "creature", null, 1337, "my advanced size");
 
             var advancedDemographics = new Demographics();
             mockDemographicsGenerator
@@ -1231,12 +1215,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateAdvancedCreatureWithExistingRacialAdjustments(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             abilities[AbilityConstants.Strength].RacialAdjustment = 38;
             abilities[AbilityConstants.Dexterity].RacialAdjustment = 47;
             abilities[AbilityConstants.Constitution].RacialAdjustment = 56;
 
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            var advancedHitPoints = SetupCreatureAdvancement(asCharacter, "creature", null);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.HitPoints, Is.EqualTo(advancedHitPoints));
@@ -1264,12 +1248,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateAdvancedCreatureWithMissingAbilities(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             abilities[AbilityConstants.Strength].BaseScore = 0;
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Constitution].BaseScore = 0;
 
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            var advancedHitPoints = SetupCreatureAdvancement(asCharacter, "creature", null);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.HitPoints, Is.EqualTo(advancedHitPoints));
@@ -1297,7 +1281,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureSkills(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.Skills, Is.EqualTo(skills));
         }
@@ -1306,8 +1290,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateAdvancedCreatureSkills(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            SetupCreature("creature", asCharacter);
+            var advancedHitPoints = SetupCreatureAdvancement(asCharacter, "creature", null);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator
@@ -1412,7 +1396,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureSpecialQualities(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.SpecialQualities, Is.EqualTo(specialQualities));
         }
@@ -1421,8 +1405,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateAdvancedCreatureSpecialQualities(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            SetupCreature("creature", asCharacter);
+            var advancedHitPoints = SetupCreatureAdvancement(asCharacter, "creature", null);
 
             var advancedSkills = new List<Skill>() { new("advanced skill", abilities.First().Value, 1000) };
             mockSkillsGenerator
@@ -1462,7 +1446,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomAsync_GenerateCreatureBaseAttackBonus(bool asCharacter, BaseAttackQuality baseAttackQuality)
         {
             creatureData.BaseAttackQuality = baseAttackQuality;
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.BaseAttackBonus, Is.EqualTo(753));
@@ -1477,9 +1461,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomAsync_GenerateAdvancedCreatureBaseAttackBonus(bool asCharacter, BaseAttackQuality baseAttackQuality)
         {
             creatureData.BaseAttackQuality = baseAttackQuality;
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            var advancedHitPoints = SetupCreatureAdvancement(asCharacter, "creature", null);
             mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(baseAttackQuality, advancedHitPoints)).Returns(951);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
@@ -1490,7 +1474,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureAttacks(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.Attacks, Is.EqualTo(attacks));
         }
@@ -1499,8 +1483,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateAdvancedCreatureAttacks(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            SetupCreature("creature", asCharacter);
+            var advancedHitPoints = SetupCreatureAdvancement(asCharacter, "creature", null);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator
@@ -1603,7 +1587,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureFeats(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.Feats, Is.EqualTo(feats));
         }
@@ -1612,8 +1596,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateAdvancedCreatureFeats(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            SetupCreature("creature", asCharacter);
+            var advancedHitPoints = SetupCreatureAdvancement(asCharacter, "creature", null);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator
@@ -1668,7 +1652,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureHitPointsWithFeats(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             var updatedHitPoints = new HitPoints();
             mockHitPointsGenerator.Setup(g => g.RegenerateWith(hitPoints, feats)).Returns(updatedHitPoints);
 
@@ -1690,8 +1674,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateAdvancedCreatureHitPointsWithFeats(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            SetupCreature("creature", asCharacter);
+            var advancedHitPoints = SetupCreatureAdvancement(asCharacter, "creature", null);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator
@@ -1797,7 +1781,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureSkillsUpdatedByFeats(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             var updatedSkills = new List<Skill>() { new("updated skill", abilities.First().Value, 1000) };
             mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(skills, feats, abilities)).Returns(updatedSkills);
 
@@ -1816,8 +1800,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateAdvancedCreatureSkillsUpdatedByFeats(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            SetupCreature("creature", asCharacter);
+            var advancedHitPoints = SetupCreatureAdvancement(asCharacter, "creature", null);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator
@@ -1923,7 +1907,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureGrappleBonus(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus("creature", "size", 753, abilities[AbilityConstants.Strength])).Returns(2345);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
@@ -1934,8 +1918,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateAdvancedCreatureGrappleBonus(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            SetupCreature("creature", asCharacter);
+            var advancedHitPoints = SetupCreatureAdvancement(asCharacter, "creature", null);
 
             mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus("creature", "advanced size", 999, abilities[AbilityConstants.Strength])).Returns(2345);
 
@@ -1947,7 +1931,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateNoGrappleBonus(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             int? noBonus = null;
             mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus("creature", "size", 753, abilities[AbilityConstants.Strength])).Returns(noBonus);
 
@@ -1959,7 +1943,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_ApplyAttackBonuses(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             var modifiedAttacks = new[] { new Attack() { Name = "modified attack" } };
             mockAttacksGenerator.Setup(g => g.ApplyAttackBonuses(attacks, feats, abilities)).Returns(modifiedAttacks);
 
@@ -1985,8 +1969,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_ApplyAdvancedAttackBonuses(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            SetupCreature("creature", asCharacter);
+            var advancedHitPoints = SetupCreatureAdvancement(asCharacter, "creature", null);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator
@@ -2092,7 +2076,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureInitiativeBonus(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
@@ -2106,10 +2090,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateAdvancedCreatureInitiativeBonus(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
 
-            SetUpCreatureAdvancement(asCharacter, "creature", null);
+            SetupCreatureAdvancement(asCharacter, "creature", null);
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
 
@@ -2122,7 +2106,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureInitiativeBonusWithImprovedInitiative(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
@@ -2137,10 +2121,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateAdvancedCreatureInitiativeBonusWithImprovedInitiative(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
 
-            SetUpCreatureAdvancement(asCharacter, "creature", null);
+            SetupCreatureAdvancement(asCharacter, "creature", null);
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
             feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
@@ -2154,7 +2138,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureInitiativeBonusWithoutDexterity(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
 
@@ -2169,11 +2153,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateAdvancedCreatureInitiativeBonusWithoutDexterity(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
 
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            var advancedHitPoints = SetupCreatureAdvancement(asCharacter, "creature", null);
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
             mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size", creatureData.CanUseEquipment)).Returns(feats);
@@ -2187,7 +2171,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureInitiativeBonusWithImprovedInitiativeWithoutDexterity(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
 
@@ -2203,11 +2187,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateAdvancedCreatureInitiativeBonusWithImprovedInitiativeWithoutDexterity(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
 
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            var advancedHitPoints = SetupCreatureAdvancement(asCharacter, "creature", null);
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
             feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
@@ -2222,7 +2206,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureSpeeds(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             speeds["on foot"] = new Measurement("feet per round");
             speeds["in a car"] = new Measurement("feet per round");
 
@@ -2234,7 +2218,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureArmorClass(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             var armorClass = new ArmorClass();
             mockArmorClassGenerator
                 .Setup(g => g.GenerateWith(
@@ -2256,8 +2240,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateAdvancedCreatureArmorClass(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            SetupCreature("creature", asCharacter);
+            var advancedHitPoints = SetupCreatureAdvancement(asCharacter, "creature", null);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator
@@ -2361,7 +2345,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureSaves(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             var saves = new Dictionary<string, Save>
             {
                 ["save name"] = new Save()
@@ -2377,8 +2361,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateAdvancedCreatureSaves(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", null);
+            SetupCreature("creature", asCharacter);
+            var advancedHitPoints = SetupCreatureAdvancement(asCharacter, "creature", null);
 
             mockFeatsGenerator.Setup(g => g.GenerateFeats(advancedHitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size", creatureData.CanUseEquipment)).Returns(feats);
 
@@ -2397,7 +2381,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureAlignment(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.Alignment, Is.EqualTo(alignment));
@@ -2408,7 +2392,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_GenerateCreatureModifiedByTemplate(bool asCharacter)
         {
-            var mockTemplateApplicators = SetUpCreature("creature", asCharacter, null, null, "my template");
+            var mockTemplateApplicators = SetupCreature("creature", asCharacter, null, null, "my template");
 
             var templates = new[] { "wrong template", "my template" };
             mockCollectionSelector
@@ -2444,7 +2428,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 Types = ["my type"],
             };
 
-            var mockTemplateApplicators = SetUpCreature("creature", asCharacter, filters, null, "my template");
+            var mockTemplateApplicators = SetupCreature("creature", asCharacter, filters, null, "my template");
 
             var templates = new[] { "wrong template", "my template" };
             mockCollectionSelector
@@ -2462,7 +2446,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var templateCreature = new Creature { Name = "Creature modified by template", Templates = ["my template"] };
             mockTemplateApplicators[0]
-                .Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, null))
+                .Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, filters))
                 .ReturnsAsync(templateCreature);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters, "my template");
@@ -2476,7 +2460,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomAsync_GenerateCreatureModifiedByMultipleTemplates(bool asCharacter)
         {
             var templates = new[] { "my template", "my other template" };
-            var mockTemplateApplicators = SetUpCreature("creature", asCharacter, null, null, templates);
+            var mockTemplateApplicators = SetupCreature("creature", asCharacter, null, null, templates);
 
             var allTemplates = new[] { "wrong template", "my template", "my other template" };
             mockCollectionSelector
@@ -2510,7 +2494,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             };
 
             var templates = new[] { "my template", "my other template" };
-            var mockTemplateApplicators = SetUpCreature("creature", asCharacter, filters, null, templates);
+            var mockTemplateApplicators = SetupCreature("creature", asCharacter, filters, null, templates);
 
             var allTemplates = new[] { "wrong template", "my template", "my other template" };
             mockCollectionSelector
@@ -2534,12 +2518,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateRandomAsync_IfCreatureHasNotHitDice_ChallengeRatingIsZero(bool asCharacter)
         {
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
             hitPoints.HitDice.Clear();
             hitPoints.DefaultTotal = 0;
             hitPoints.Total = 0;
 
-            SetUpCreature("creature", asCharacter);
+            SetupCreature("creature", asCharacter);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.Zero);

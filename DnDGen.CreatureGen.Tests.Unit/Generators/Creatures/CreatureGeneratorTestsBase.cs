@@ -173,7 +173,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockCollectionSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<(string, string)>>())).Returns((IEnumerable<(string, string)> c) => c.First());
         }
 
-        protected List<Mock<TemplateApplicator>> SetUpCreature(
+        protected List<Mock<TemplateApplicator>> SetupCreature(
             string creatureName,
             bool asCharacter,
             Filters filters = null,
@@ -182,6 +182,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
+            templateNames = [.. templateNames.Where(t => !string.IsNullOrEmpty(t))];
 
             SetupCreatureValidity(creatureName, asCharacter, filters, randomizer, templateNames);
 
@@ -326,6 +327,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             return templateApplicators;
         }
 
+        protected void SetupFilterValidity(
+            bool asCharacter,
+            Filters filters,
+            AbilityRandomizer randomizer,
+            params string[] templateNames)
+        {
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
+                    asCharacter,
+                    null,
+                    randomizer,
+                    filters,
+                    It.Is<string[]>(t => t.IsEquivalentTo(templateNames))))
+                .Returns(true);
+
+            foreach (var templateName in templateNames.Union([CreatureConstants.Templates.None, null]))
+            {
+                SetupIndividualTemplateValidity(templateName, asCharacter, null, randomizer, filters);
+            }
+        }
+
         protected void SetupCreatureValidity(
             string creatureName,
             bool asCharacter,
@@ -333,6 +355,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             AbilityRandomizer randomizer = null,
             params string[] templateNames)
         {
+            SetupFilterValidity(asCharacter, filters, randomizer, templateNames);
+
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
 
@@ -343,44 +367,84 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockCreatureVerifier
                 .Setup(v => v.VerifyCompatibility(
                     asCharacter,
-                    It.Is<string>(c => c == null || c == creatureName),
+                    creatureName,
                     It.Is<AbilityRandomizer>(r => r == null || r == randomizer),
-                    It.Is<Filters>(f => f == null || f == filters),
+                    filters,
                     It.Is<string[]>(t => t.IsEquivalentTo(templateNames))))
                 .Returns(true);
             mockCreatureVerifier
                 .Setup(v => v.GetChainedTemplates(
                     It.IsAny<IEnumerable<string>>(),
-                    templateNames,
+                    It.Is<string[]>(t => t.IsEquivalentTo(templateNames)),
                     asCharacter,
                     It.Is<AbilityRandomizer>(r => r == null || r == randomizer),
-                    It.Is<Filters>(f => f == null || f == filters)))
-                .Returns((IEnumerable<string> cc, List<string> tt, bool asC, AbilityRandomizer r, Filters f) => cc
+                    filters))
+                .Returns((IEnumerable<string> cc, string[] tt, bool asC, AbilityRandomizer r, Filters f) => cc
                     .Intersect([creatureName])
-                    .Select(c => new CreaturePrototype { Name = c }));
+                    .Select(c => new CreaturePrototype { Name = c, Templates = [.. templateNames] }));
 
-            foreach (var templateName in templateNames.Union([CreatureConstants.Templates.None]))
+            SetupDefaultTemplateValidity(asCharacter, creatureName, randomizer, filters);
+
+            foreach (var templateName in templateNames)
             {
-                mockCreatureVerifier
-                    .Setup(v => v.VerifyCompatibility(
-                        asCharacter,
-                        It.Is<string>(c => c == null || c == creatureName),
-                        It.Is<AbilityRandomizer>(r => r == null || r == randomizer),
-                        It.Is<Filters>(f => f == null || f == filters),
-                        It.Is<string[]>(t => t.IsEquivalentTo(templateName))))
-                    .Returns(true);
-                mockCreatureVerifier
-                    .Setup(v => v.GetCompatibleCreaturesForTemplate(
-                        It.IsAny<IEnumerable<string>>(),
-                        templateName,
-                        asCharacter,
-                        It.Is<AbilityRandomizer>(r => r == null || r == randomizer),
-                        It.Is<Filters>(f => f == null || f == filters)))
-                    .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect([creatureName]));
+                SetupIndividualTemplateValidity(templateName, asCharacter, creatureName, randomizer, filters);
             }
         }
 
-        protected HitPoints SetUpCreatureAdvancement(
+        protected void SetupDefaultTemplateValidity(bool asCharacter, string creatureName, AbilityRandomizer randomizer, Filters filters)
+            => SetupDefaultTemplateValidity(asCharacter, creatureName, randomizer, filters, [creatureName]);
+
+        protected void SetupDefaultTemplateValidity(bool asCharacter, string creatureName, AbilityRandomizer randomizer, Filters filters, string[] compatible)
+        {
+            SetupIndividualTemplateValidity(null, asCharacter, creatureName, randomizer, filters, compatible);
+            SetupIndividualTemplateValidity(CreatureConstants.Templates.None, asCharacter, creatureName, randomizer, filters, compatible);
+        }
+
+        protected void SetupIndividualTemplateValidity(string templateName, bool asCharacter, string creatureName, AbilityRandomizer randomizer, Filters filters)
+            => SetupIndividualTemplateValidity(templateName, asCharacter, creatureName, randomizer, filters, [creatureName]);
+
+        protected void SetupIndividualTemplateValidity(
+            string templateName,
+            bool asCharacter,
+            string creatureName,
+            AbilityRandomizer randomizer,
+            Filters filters,
+            string[] compatible)
+        {
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
+                    asCharacter,
+                    creatureName,
+                    It.Is<AbilityRandomizer>(r => r == null || r == randomizer),
+                    filters,
+                    It.Is<string[]>(t => t.IsEquivalentTo(templateName))))
+                .Returns(() => compatible.Length > 0);
+            mockCreatureVerifier
+                .Setup(v => v.GetCompatibleCreaturesForTemplate(
+                    It.IsAny<IEnumerable<string>>(),
+                    templateName,
+                    asCharacter,
+                    It.Is<AbilityRandomizer>(r => r == null || r == randomizer),
+                    filters))
+                .Returns((IEnumerable<string> cc, string t, bool asC, AbilityRandomizer r, Filters f) => cc.Intersect(compatible));
+        }
+
+        protected void SetupAllCreatureGroup(bool asCharacter, IEnumerable<string> group)
+        {
+            var groupName = asCharacter ? GroupConstants.Characters : GroupConstants.All;
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, groupName))
+                .Returns(group);
+        }
+
+        protected void SetupAllTemplateGroup(IEnumerable<string> group)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All))
+                .Returns(group);
+        }
+
+        protected HitPoints SetupCreatureAdvancement(
             bool asCharacter,
             string creatureName,
             Filters filters = null,

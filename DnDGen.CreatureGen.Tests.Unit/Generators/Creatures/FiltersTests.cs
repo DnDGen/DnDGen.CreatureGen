@@ -305,7 +305,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var (Compatible, Reason) = filters.AreCompatible(["my alignment", "other alignment"], ["my cr", "other cr"], ["my type", "other type"]);
             Assert.That(Compatible, Is.False);
-            Assert.That(Reason, Is.EqualTo($"Alignment filter is not compatible with [my alignment, other alignment]. Filters: {filters.GetDescription()}"));
+            Assert.That(Reason, Is.EqualTo("Alignment filter [wrong alignment, nope alignment] is not compatible with [my alignment, other alignment]"));
         }
 
         [Test]
@@ -341,7 +341,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var (Compatible, Reason) = filters.AreCompatible(["my alignment", "other alignment"], ["my cr", "other cr"], ["my type", "other type"]);
             Assert.That(Compatible, Is.False);
-            Assert.That(Reason, Is.EqualTo($"CR filter is not compatible with [my cr, other cr]. Filters: {filters.GetDescription()}"));
+            Assert.That(Reason, Is.EqualTo($"CR filter [wrong cr, nope cr] is not compatible with [my cr, other cr]"));
         }
 
         [Test]
@@ -377,7 +377,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var (Compatible, Reason) = filters.AreCompatible(["my alignment", "other alignment"], ["my cr", "other cr"], ["my type", "other type"]);
             Assert.That(Compatible, Is.False);
-            Assert.That(Reason, Is.EqualTo($"Type filter is not compatible with [my type, other type]. Filters: {filters.GetDescription()}"));
+            Assert.That(Reason, Is.EqualTo($"Type filter [wrong type, nope type] is not compatible with [my type, other type]"));
         }
 
         [Test]
@@ -401,7 +401,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var (Compatible, Reason) = filters.AreCompatible(["my alignment", "other alignment"], ["my cr", "other cr"], ["my type", "other type"]);
             Assert.That(Compatible, Is.False);
-            Assert.That(Reason, Is.EqualTo($"Alignment filter is not compatible with [my alignment, other alignment]. Filters: {filters.GetDescription()}"));
+            Assert.That(Reason, Is.EqualTo("Alignment filter [some alignment, wrong alignment] is not compatible with [my alignment, other alignment]"));
         }
 
         [Test]
@@ -413,7 +413,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var (Compatible, Reason) = filters.AreCompatible(["my alignment", "other alignment"], ["my cr", "other cr"], ["my type", "other type"]);
             Assert.That(Compatible, Is.False);
-            Assert.That(Reason, Is.EqualTo($"CR filter is not compatible with [my cr, other cr]. Filters: {filters.GetDescription()}"));
+            Assert.That(Reason, Is.EqualTo("CR filter [nope cr, wrong cr] is not compatible with [my cr, other cr]"));
         }
 
         [Test]
@@ -425,7 +425,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var (Compatible, Reason) = filters.AreCompatible(["my alignment", "other alignment"], ["my cr", "other cr"], ["my type", "other type"]);
             Assert.That(Compatible, Is.False);
-            Assert.That(Reason, Is.EqualTo($"Type filter is not compatible with [my type, other type]. Filters: {filters.GetDescription()}"));
+            Assert.That(Reason, Is.EqualTo("Type filter [this type, that type, wrong type] is not compatible with [my type, other type]"));
         }
     }
 }

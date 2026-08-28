@@ -4,6 +4,7 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using System;
@@ -20,6 +21,13 @@ namespace DnDGen.CreatureGen.Generators.Creatures
     {
         public IEnumerable<CreaturePrototype> Build(IEnumerable<string> creatureNames, bool asCharacter, AbilityRandomizer abilityRandomizer = null)
         {
+            //If we only have 1 creature, avoid the SelectAll calls
+            if (creatureNames.Count() == 1)
+            {
+                yield return Build(creatureNames.Single(), asCharacter, abilityRandomizer);
+                yield break;
+            }
+
             var allData = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData);
             var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
             var allAbilityAdjustments = typeAndAmountSelector.SelectAllFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments);
@@ -31,43 +39,77 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             foreach (var creature in creatureNames)
             {
                 var creatureData = allData[creature].Single();
-                var prototype = new CreaturePrototype
-                {
-                    Name = creature,
-                    Abilities = allAbilityAdjustments[creature].ToDictionary(a => a.Type, a => new Ability(a.Type)
-                    {
-                        //INFO: Since prototypes are for Template validation, we only want the Maximum ability roll for a given ability
-                        //This allows for potentially-high-roll randomizers to have creatures with low abilities to still meet Template Minimum Ability requirements
-                        BaseScore = abilityRandomizer.GetMax(dice, a.Type),
-                        RacialAdjustment = a.Amount
-                    }),
-                    Alignments = [.. allAlignments[creature].Select(a => new Alignment(a))],
-                    CasterLevel = creatureData.CasterLevel,
-                    Size = creatureData.Size,
-                    ChallengeRating = creatureData.GetEffectiveChallengeRating(asCharacter),
-                    HitDiceQuantity = creatureData.GetEffectiveHitDiceQuantity(asCharacter),
-                    LevelAdjustment = creatureData.LevelAdjustment,
-                    Type = new CreatureType(creatureData.Types),
-                    HasSkeleton = creatureData.HasSkeleton,
-                    AsCharacter = asCharacter,
-                };
-
-                var missingAbilityNames = abilityNames.Except(prototype.Abilities.Keys).ToArray();
-                foreach (var missingAbility in missingAbilityNames)
-                {
-                    prototype.Abilities[missingAbility] = new Ability(missingAbility) { BaseScore = 0 };
-                }
-
-                //INFO: Since prototypes are for Template validation, we only want the Maximum caster level between spellcasting and at-will abilities
-                //The caster type/amount is equivalent to the Magic caster level, as opposed to the caster level on the creature data
-                if (allCasterLevels[creature].Any())
-                {
-                    var maxLevel = allCasterLevels[creature].Max(c => c.Amount);
-                    prototype.CasterLevel = Math.Max(maxLevel, creatureData.CasterLevel);
-                }
-
-                yield return prototype;
+                yield return Build(
+                    creature,
+                    asCharacter,
+                    abilityRandomizer,
+                    allAbilityAdjustments[creature],
+                    abilityNames,
+                    allAlignments[creature],
+                    creatureData,
+                    allCasterLevels[creature]);
             }
+        }
+
+        public CreaturePrototype Build(string creatureName, bool asCharacter, AbilityRandomizer abilityRandomizer = null)
+        {
+            var creatureData = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, creatureName);
+            var alignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, creatureName);
+            var abilityAdjustments = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, creatureName);
+            var casterLevels = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, creatureName);
+            var abilityNames = typeAndAmountSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, CreatureConstants.Human).Select(s => s.Type);
+
+            abilityRandomizer ??= new AbilityRandomizer();
+
+            return Build(creatureName, asCharacter, abilityRandomizer, abilityAdjustments, abilityNames, alignments, creatureData, casterLevels);
+        }
+
+        private CreaturePrototype Build(
+            string creatureName,
+            bool asCharacter,
+            AbilityRandomizer abilityRandomizer,
+            IEnumerable<TypeAndAmountDataSelection> abilityAdjustments,
+            IEnumerable<string> allAbilityNames,
+            IEnumerable<string> alignments,
+            CreatureDataSelection creatureData,
+            IEnumerable<TypeAndAmountDataSelection> casterLevels)
+        {
+            var prototype = new CreaturePrototype
+            {
+                Name = creatureName,
+                Abilities = abilityAdjustments.ToDictionary(a => a.Type, a => new Ability(a.Type)
+                {
+                    //INFO: Since prototypes are for Template validation, we only want the Maximum ability roll for a given ability
+                    //This allows for potentially-high-roll randomizers to have creatures with low abilities to still meet Template Minimum Ability requirements
+                    BaseScore = abilityRandomizer.GetMax(dice, a.Type),
+                    RacialAdjustment = a.Amount
+                }),
+                Alignments = [.. alignments.Select(a => new Alignment(a))],
+                AsCharacter = asCharacter,
+                CasterLevel = creatureData.CasterLevel,
+                ChallengeRating = creatureData.GetEffectiveChallengeRating(asCharacter),
+                HasSkeleton = creatureData.HasSkeleton,
+                HitDiceQuantity = creatureData.GetEffectiveHitDiceQuantity(asCharacter),
+                LevelAdjustment = creatureData.LevelAdjustment,
+                Size = creatureData.Size,
+                Type = new CreatureType(creatureData.Types),
+            };
+
+            var missingAbilityNames = allAbilityNames.Except(prototype.Abilities.Keys);
+            foreach (var missingAbility in missingAbilityNames)
+            {
+                prototype.Abilities[missingAbility] = new Ability(missingAbility) { BaseScore = 0 };
+            }
+
+            //INFO: Since prototypes are for Template validation, we only want the Maximum caster level between spellcasting and at-will abilities
+            //The caster type/amount is equivalent to the Magic caster level, as opposed to the caster level on the creature data
+            if (casterLevels.Any())
+            {
+                var maxLevel = casterLevels.Max(c => c.Amount);
+                prototype.CasterLevel = Math.Max(maxLevel, creatureData.CasterLevel);
+            }
+
+            return prototype;
         }
 
         public CreaturePrototype Clone(CreaturePrototype source)

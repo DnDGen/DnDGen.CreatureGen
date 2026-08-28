@@ -17,8 +17,8 @@ namespace DnDGen.CreatureGen.Verifiers.Exceptions
             string reason,
             bool asCharacter,
             string creature,
-            Filters filters,
             string abilityRoll,
+            Filters filters,
             params string[] templates) :
             this(reason, asCharacter, creature, filters, new AbilityRandomizer(abilityRoll), templates)
         {
@@ -46,7 +46,7 @@ namespace DnDGen.CreatureGen.Verifiers.Exceptions
                 if (filters is not null)
                 {
                     var description = filters.GetDescription();
-                    message.AppendLine($"Filters: {description}");
+                    message.AppendLine($"\tFilters: {description}");
                 }
 
                 if (abilityRandomizer != null)

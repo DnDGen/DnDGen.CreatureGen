@@ -57,19 +57,19 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             if (Alignments?.Count > 0)
             {
                 if (!Alignments.Intersect(alignments).Any())
-                    return (false, $"Alignment filter is not compatible with {GetMessage(alignments)}. Filters: {GetDescription()}");
+                    return (false, $"Alignment filter {GetMessage(Alignments)} is not compatible with {GetMessage(alignments)}");
             }
 
             if (ChallengeRatings?.Count > 0)
             {
                 if (!ChallengeRatings.Intersect(challengeRatings).Any())
-                    return (false, $"CR filter is not compatible with {GetMessage(challengeRatings)}. Filters: {GetDescription()}");
+                    return (false, $"CR filter {GetMessage(ChallengeRatings)} is not compatible with {GetMessage(challengeRatings)}");
             }
 
             if (Types?.Count > 0)
             {
                 if (!Types.Intersect(types).Any())
-                    return (false, $"Type filter is not compatible with {GetMessage(types)}. Filters: {GetDescription()}");
+                    return (false, $"Type filter {GetMessage(Types)} is not compatible with {GetMessage(types)}");
             }
 
             return (true, null);

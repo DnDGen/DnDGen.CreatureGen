@@ -45,7 +45,7 @@ namespace DnDGen.CreatureGen.Generators.Alignments
             if (templates.Length == 0)
                 return weightedAlignments.Where(filters.Alignments.Contains);
 
-            var creaturePrototype = prototypeFactory.Build([creatureName], false).Single();
+            var creaturePrototype = prototypeFactory.Build(creatureName, false);
 
             //HACK: This is very inefficient, but:
             //1. This usecase will only occur when an alignment filter is set AND templates are specified, OR more than 1 template is specified

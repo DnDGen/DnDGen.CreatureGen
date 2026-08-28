@@ -61,8 +61,8 @@ namespace DnDGen.CreatureGen.Templates
                     Reason,
                     asCharacter,
                     creature.Name,
-                    filters,
                     creature.Abilities[MinimumAbility.Name].FullScore.ToString(),
+                    filters,
                     [.. creature.Templates.Union([CreatureConstants.Templates.HalfCelestial])]);
             }
 
@@ -389,8 +389,8 @@ namespace DnDGen.CreatureGen.Templates
                     Reason,
                     asCharacter,
                     creature.Name,
-                    filters,
                     creature.Abilities[MinimumAbility.Name].FullScore.ToString(),
+                    filters,
                     [.. creature.Templates.Union([CreatureConstants.Templates.HalfCelestial])]);
             }
 
@@ -540,8 +540,8 @@ namespace DnDGen.CreatureGen.Templates
                     Reason,
                     creature.AsCharacter,
                     creature.Name,
-                    filters,
                     creature.Abilities[MinimumAbility.Name].FullScore.ToString(),
+                    filters,
                     [.. creature.Templates.Concat([CreatureConstants.Templates.HalfCelestial])]);
             }
 

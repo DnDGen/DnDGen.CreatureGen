@@ -85,8 +85,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         {
             var prototype = new CreaturePrototype { Name = "creature name", Alignments = [.. creatureAlignments.Select(a => new Alignment(a))] };
             mockPrototypeFactory
-                .Setup(f => f.Build(It.Is<IEnumerable<string>>(c => c.IsEquivalentTo("creature name")), false, null))
-                .Returns([prototype]);
+                .Setup(f => f.Build("creature name", false, null))
+                .Returns(prototype);
             mockPrototypeFactory
                 .Setup(f => f.Clone(prototype))
                 .Returns(() => new CreaturePrototype { Name = "creature name", Alignments = [.. prototype.Alignments] });

@@ -45,17 +45,19 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         IDemographicsGenerator demographicsGenerator) : ICreatureGenerator
     {
         public Creature Generate(bool asCharacter, string creatureName, AbilityRandomizer abilityRandomizer = null, params string[] templates)
-            => Generate(asCharacter, creatureName, templates, abilityRandomizer, null);
+            => Generate(asCharacter, creatureName, [.. templates.Where(TemplateValid)], abilityRandomizer, null);
+
+        private static bool TemplateValid(string template) => !string.IsNullOrEmpty(template);
 
         public (string Creature, string[] Templates) GenerateRandomName(bool asCharacter, Filters filters = null, params string[] templates)
-            => GenerateRandomName(asCharacter, templates, null, filters);
+            => GenerateRandomName(asCharacter, [.. templates.Where(TemplateValid)], null, filters);
 
         private (string Creature, string[] Templates) GenerateRandomName(bool asCharacter, string[] templates, AbilityRandomizer abilityRandomizer, Filters filters)
         {
-            var compatible = creatureVerifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
+            var compatible = creatureVerifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, templates);
             if (!compatible)
             {
-                throw new InvalidCreatureException(null, asCharacter, null, filters, abilityRandomizer ?? new());
+                throw new InvalidCreatureException(null, asCharacter, null, filters, abilityRandomizer ?? new(), templates);
             }
 
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
@@ -63,8 +65,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             if (templates.Length == 0)
             {
-                var (CreatureName, Template) = GetRandomValidCreature(validCreatures, asCharacter, abilityRandomizer, filters);
-                return (CreatureName, new[] { Template });
+                return GetRandomValidCreature(validCreatures, asCharacter, abilityRandomizer, filters);
             }
 
             var prototypes = creatureVerifier.GetChainedTemplates(validCreatures, templates, asCharacter, abilityRandomizer, filters);
@@ -79,7 +80,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public Creature GenerateRandom(bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters = null, params string[] templates)
         {
-            var randomCreature = GenerateRandomName(asCharacter, templates, abilityRandomizer, filters);
+            var randomCreature = GenerateRandomName(asCharacter, [.. templates.Where(TemplateValid)], abilityRandomizer, filters);
             var creature = Generate(asCharacter, randomCreature.Creature, randomCreature.Templates, abilityRandomizer, filters);
 
             return creature;
@@ -104,7 +105,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             }
         }
 
-        private (string CreatureName, string Template) GetRandomValidCreature(
+        private (string Creature, string[] Templates) GetRandomValidCreature(
             IEnumerable<string> creatureGroup,
             bool asCharacter,
             AbilityRandomizer abilityRandomizer,
@@ -113,15 +114,19 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var validCreatures = GetValidCreatures(creatureGroup, asCharacter, abilityRandomizer, filters);
             if (!validCreatures.Any())
             {
-                var filtersDescription = filters.GetDescription();
-                throw new ArgumentException($"No valid creatures in creature group (filters: {filtersDescription})");
+                throw new InvalidCreatureException(
+                    $"No valid creatures in creature group [{string.Join(", ", creatureGroup)}]",
+                    asCharacter,
+                    null,
+                    filters,
+                    abilityRandomizer);
             }
 
             var randomCreature = collectionsSelector.SelectRandomFrom(validCreatures);
 
             var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All);
             if (!templates.Contains(randomCreature))
-                return (randomCreature, CreatureConstants.Templates.None);
+                return (randomCreature, []);
 
             var template = randomCreature;
 
@@ -134,7 +139,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             randomCreature = collectionsSelector.SelectRandomFrom(creaturesOfTemplate);
 
-            return (randomCreature, template);
+            return (randomCreature, [template]);
         }
 
         private Creature Generate(
@@ -144,24 +149,24 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             AbilityRandomizer abilityRandomizer,
             Filters filters)
         {
-            var compatible = creatureVerifier.VerifyCompatibility(asCharacter, creatureName, abilityRandomizer, filters);
+            var compatible = creatureVerifier.VerifyCompatibility(asCharacter, creatureName, abilityRandomizer, filters, templates);
             if (!compatible)
-                throw new InvalidCreatureException(null, asCharacter, creatureName, filters, abilityRandomizer ?? new());
+                throw new InvalidCreatureException(null, asCharacter, creatureName, filters, abilityRandomizer ?? new(), templates);
 
             var creature = GenerateBaseCreature(creatureName, templates, asCharacter, abilityRandomizer, filters);
 
-            if (templates.Length > 0)
-            {
-                for (var i = 0; i < templates.Length - 1; i++)
-                {
-                    var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(templates[i]);
-                    creature = templateApplicator.ApplyTo(creature, asCharacter, null);
-                }
+            if (templates.Length == 0)
+                return creature;
 
-                var lastTemplate = templates[^1];
-                var lastTemplateApplicator = justInTimeFactory.Build<TemplateApplicator>(lastTemplate);
-                creature = lastTemplateApplicator.ApplyTo(creature, asCharacter, filters);
+            for (var i = 0; i < templates.Length - 1; i++)
+            {
+                var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(templates[i]);
+                creature = templateApplicator.ApplyTo(creature, asCharacter, null);
             }
+
+            var lastTemplate = templates[^1];
+            var lastTemplateApplicator = justInTimeFactory.Build<TemplateApplicator>(lastTemplate);
+            creature = lastTemplateApplicator.ApplyTo(creature, asCharacter, filters);
 
             return creature;
         }
@@ -188,7 +193,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             creature.Type = GetCreatureType(creatureData);
             creature.Demographics = demographicsGenerator.Generate(creatureName);
-            creature.Abilities = abilitiesGenerator.GenerateFor(creatureName, [.. templates], asCharacter, abilityRandomizer, creature.Demographics);
+            creature.Abilities = abilitiesGenerator.GenerateFor(creatureName, templates, asCharacter, abilityRandomizer, creature.Demographics);
 
             var hitDiceQuantity = creatureData.GetEffectiveHitDiceQuantity(asCharacter);
 
@@ -327,34 +332,34 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private static CreatureType GetCreatureType(CreatureDataSelection data) => new(data.Types);
 
         public async Task<Creature> GenerateAsync(bool asCharacter, string creatureName, AbilityRandomizer abilityRandomizer, params string[] templates)
-            => await GenerateAsync(asCharacter, creatureName, templates, abilityRandomizer, null);
+            => await GenerateAsync(asCharacter, creatureName, [.. templates.Where(TemplateValid)], abilityRandomizer, null);
 
         public async Task<Creature> GenerateRandomAsync(bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters = null, params string[] templates)
         {
-            var randomCreature = GenerateRandomName(asCharacter, templates, abilityRandomizer, filters);
+            var randomCreature = GenerateRandomName(asCharacter, [.. templates.Where(TemplateValid)], abilityRandomizer, filters);
             return await GenerateAsync(asCharacter, randomCreature.Creature, randomCreature.Templates, abilityRandomizer, filters);
         }
 
         private async Task<Creature> GenerateAsync(bool asCharacter, string creatureName, string[] templates, AbilityRandomizer abilityRandomizer, Filters filters)
         {
-            var compatible = creatureVerifier.VerifyCompatibility(asCharacter, creatureName, abilityRandomizer, filters);
+            var compatible = creatureVerifier.VerifyCompatibility(asCharacter, creatureName, abilityRandomizer, filters, templates);
             if (!compatible)
-                throw new InvalidCreatureException(null, asCharacter, creatureName, filters, abilityRandomizer);
+                throw new InvalidCreatureException(null, asCharacter, creatureName, filters, abilityRandomizer, templates);
 
             var creature = GenerateBaseCreature(creatureName, templates, asCharacter, abilityRandomizer, filters);
 
-            if (templates.Length > 0)
-            {
-                for (var i = 0; i < templates.Length - 1; i++)
-                {
-                    var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(templates[i]);
-                    creature = await templateApplicator.ApplyToAsync(creature, asCharacter, null);
-                }
+            if (templates.Length == 0)
+                return creature;
 
-                var lastTemplate = templates[^1];
-                var lastTemplateApplicator = justInTimeFactory.Build<TemplateApplicator>(lastTemplate);
-                creature = await lastTemplateApplicator.ApplyToAsync(creature, asCharacter, filters);
+            for (var i = 0; i < templates.Length - 1; i++)
+            {
+                var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(templates[i]);
+                creature = await templateApplicator.ApplyToAsync(creature, asCharacter, null);
             }
+
+            var lastTemplate = templates[^1];
+            var lastTemplateApplicator = justInTimeFactory.Build<TemplateApplicator>(lastTemplate);
+            creature = await lastTemplateApplicator.ApplyToAsync(creature, asCharacter, filters);
 
             return creature;
         }
