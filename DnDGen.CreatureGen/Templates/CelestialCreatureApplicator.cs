@@ -78,7 +78,7 @@ namespace DnDGen.CreatureGen.Templates
             UpdateCreatureLevelAdjustment(creature);
 
             // Alignment
-            UpdateCreatureAlignment(creature, filters);
+            UpdateCreatureAlignment(creature);
 
             // Languages
             UpdateCreatureLanguages(creature);
@@ -147,7 +147,7 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Abilities[AbilityConstants.Intelligence].TemplateScore = 3;
         }
 
-        private void UpdateCreatureAlignment(Creature creature, Filters filters)
+        private void UpdateCreatureAlignment(Creature creature)
         {
             creature.Alignment = UpdateCreatureAlignment(creature.Alignment);
         }
@@ -326,7 +326,7 @@ namespace DnDGen.CreatureGen.Templates
             tasks.Add(levelAdjustmentTask);
 
             // Alignment
-            var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature, filters));
+            var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature));
             tasks.Add(alignmentTask);
 
             // Languages

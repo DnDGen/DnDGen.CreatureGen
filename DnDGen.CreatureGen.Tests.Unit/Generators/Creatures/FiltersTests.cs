@@ -29,9 +29,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var description = filters.GetDescription();
 
             var expected = new StringBuilder();
-            expected.AppendLine("Types: []");
-            expected.AppendLine("CRs: []");
             expected.AppendLine("Alignments: []");
+            expected.AppendLine("CRs: []");
+            expected.AppendLine("Types: []");
 
             Assert.That(description, Is.EqualTo(expected.ToString()));
         }
@@ -44,9 +44,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var description = filters.GetDescription();
 
             var expected = new StringBuilder();
-            expected.AppendLine("Types: <Null>");
-            expected.AppendLine("CRs: []");
             expected.AppendLine("Alignments: []");
+            expected.AppendLine("CRs: []");
+            expected.AppendLine("Types: <Null>");
 
             Assert.That(description, Is.EqualTo(expected.ToString()));
         }
@@ -59,9 +59,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var description = filters.GetDescription();
 
             var expected = new StringBuilder();
-            expected.AppendLine("Types: []");
-            expected.AppendLine("CRs: []");
             expected.AppendLine("Alignments: []");
+            expected.AppendLine("CRs: []");
+            expected.AppendLine("Types: []");
 
             Assert.That(description, Is.EqualTo(expected.ToString()));
         }
@@ -74,9 +74,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var description = filters.GetDescription();
 
             var expected = new StringBuilder();
-            expected.AppendLine("Types: [my type]");
-            expected.AppendLine("CRs: []");
             expected.AppendLine("Alignments: []");
+            expected.AppendLine("CRs: []");
+            expected.AppendLine("Types: [my type]");
+
+            Assert.That(description, Is.EqualTo(expected.ToString()));
+        }
+
+        [TestCase(null)]
+        [TestCase("")]
+        public void GetDescription_ReturnsDescription_With1Types_Empty(string empty)
+        {
+            filters.Types = [empty];
+
+            var description = filters.GetDescription();
+
+            var expected = new StringBuilder();
+            expected.AppendLine("Alignments: []");
+            expected.AppendLine("CRs: []");
+            expected.AppendLine("Types: []");
 
             Assert.That(description, Is.EqualTo(expected.ToString()));
         }
@@ -89,9 +105,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var description = filters.GetDescription();
 
             var expected = new StringBuilder();
-            expected.AppendLine("Types: [my type, my other type]");
-            expected.AppendLine("CRs: []");
             expected.AppendLine("Alignments: []");
+            expected.AppendLine("CRs: []");
+            expected.AppendLine("Types: [my type, my other type]");
 
             Assert.That(description, Is.EqualTo(expected.ToString()));
         }
@@ -104,9 +120,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var description = filters.GetDescription();
 
             var expected = new StringBuilder();
-            expected.AppendLine("Types: []");
-            expected.AppendLine("CRs: <Null>");
             expected.AppendLine("Alignments: []");
+            expected.AppendLine("CRs: <Null>");
+            expected.AppendLine("Types: []");
 
             Assert.That(description, Is.EqualTo(expected.ToString()));
         }
@@ -119,9 +135,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var description = filters.GetDescription();
 
             var expected = new StringBuilder();
-            expected.AppendLine("Types: []");
-            expected.AppendLine("CRs: []");
             expected.AppendLine("Alignments: []");
+            expected.AppendLine("CRs: []");
+            expected.AppendLine("Types: []");
 
             Assert.That(description, Is.EqualTo(expected.ToString()));
         }
@@ -134,9 +150,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var description = filters.GetDescription();
 
             var expected = new StringBuilder();
-            expected.AppendLine("Types: []");
-            expected.AppendLine("CRs: [my challenge rating]");
             expected.AppendLine("Alignments: []");
+            expected.AppendLine("CRs: [my challenge rating]");
+            expected.AppendLine("Types: []");
+
+            Assert.That(description, Is.EqualTo(expected.ToString()));
+        }
+
+        [TestCase(null)]
+        [TestCase("")]
+        public void GetDescription_ReturnsDescription_With1ChallengeRatings_Empty(string empty)
+        {
+            filters.ChallengeRatings = [empty];
+
+            var description = filters.GetDescription();
+
+            var expected = new StringBuilder();
+            expected.AppendLine("Alignments: []");
+            expected.AppendLine("CRs: []");
+            expected.AppendLine("Types: []");
 
             Assert.That(description, Is.EqualTo(expected.ToString()));
         }
@@ -149,9 +181,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var description = filters.GetDescription();
 
             var expected = new StringBuilder();
-            expected.AppendLine("Types: []");
-            expected.AppendLine("CRs: [my challenge rating, my other CR]");
             expected.AppendLine("Alignments: []");
+            expected.AppendLine("CRs: [my challenge rating, my other CR]");
+            expected.AppendLine("Types: []");
 
             Assert.That(description, Is.EqualTo(expected.ToString()));
         }
@@ -164,9 +196,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var description = filters.GetDescription();
 
             var expected = new StringBuilder();
-            expected.AppendLine("Types: []");
-            expected.AppendLine("CRs: []");
             expected.AppendLine("Alignments: <Null>");
+            expected.AppendLine("CRs: []");
+            expected.AppendLine("Types: []");
 
             Assert.That(description, Is.EqualTo(expected.ToString()));
         }
@@ -179,9 +211,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var description = filters.GetDescription();
 
             var expected = new StringBuilder();
-            expected.AppendLine("Types: []");
-            expected.AppendLine("CRs: []");
             expected.AppendLine("Alignments: []");
+            expected.AppendLine("CRs: []");
+            expected.AppendLine("Types: []");
 
             Assert.That(description, Is.EqualTo(expected.ToString()));
         }
@@ -194,9 +226,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var description = filters.GetDescription();
 
             var expected = new StringBuilder();
-            expected.AppendLine("Types: []");
-            expected.AppendLine("CRs: []");
             expected.AppendLine("Alignments: [my alignment]");
+            expected.AppendLine("CRs: []");
+            expected.AppendLine("Types: []");
+
+            Assert.That(description, Is.EqualTo(expected.ToString()));
+        }
+
+        [TestCase(null)]
+        [TestCase("")]
+        public void GetDescription_ReturnsDescription_With1Alignments_Empty(string empty)
+        {
+            filters.Alignments = [empty];
+
+            var description = filters.GetDescription();
+
+            var expected = new StringBuilder();
+            expected.AppendLine("Alignments: []");
+            expected.AppendLine("CRs: []");
+            expected.AppendLine("Types: []");
 
             Assert.That(description, Is.EqualTo(expected.ToString()));
         }
@@ -209,9 +257,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var description = filters.GetDescription();
 
             var expected = new StringBuilder();
-            expected.AppendLine("Types: []");
-            expected.AppendLine("CRs: []");
             expected.AppendLine("Alignments: [my alignment, my other alignment]");
+            expected.AppendLine("CRs: []");
+            expected.AppendLine("Types: []");
 
             Assert.That(description, Is.EqualTo(expected.ToString()));
         }
@@ -219,16 +267,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GetDescription_ReturnsDescription_WithAllProperties()
         {
-            filters.Types = ["my type", "my other type"];
-            filters.ChallengeRatings = ["my challenge rating", "my CR", "another CR", "additional CR"];
-            filters.Alignments = ["my alignment", "other alignment", "alignment 3"];
+            filters.Types = ["my type", null, "my other type"];
+            filters.ChallengeRatings = ["my challenge rating", "my CR", string.Empty, "another CR", "additional CR"];
+            filters.Alignments = ["my alignment", string.Empty, "other alignment", null, "alignment 3"];
 
             var description = filters.GetDescription();
 
             var expected = new StringBuilder();
-            expected.AppendLine("Types: [my type, my other type]");
-            expected.AppendLine("CRs: [my challenge rating, my CR, another CR, additional CR]");
             expected.AppendLine("Alignments: [my alignment, other alignment, alignment 3]");
+            expected.AppendLine("CRs: [my challenge rating, my CR, another CR, additional CR]");
+            expected.AppendLine("Types: [my type, my other type]");
 
             Assert.That(description, Is.EqualTo(expected.ToString()));
         }
@@ -241,9 +289,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             filters.Alignments = ["my alignment", "other alignment", "alignment 3"];
 
             var expected = new StringBuilder();
-            expected.AppendLine("Types: [my type, my other type]");
-            expected.AppendLine("CRs: [my challenge rating, my CR, another CR, additional CR]");
             expected.AppendLine("Alignments: [my alignment, other alignment, alignment 3]");
+            expected.AppendLine("CRs: [my challenge rating, my CR, another CR, additional CR]");
+            expected.AppendLine("Types: [my type, my other type]");
 
             Assert.That(filters.ToString(), Is.EqualTo(expected.ToString()));
         }
@@ -284,10 +332,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(Reason, Is.Null);
         }
 
+        [TestCase(null)]
+        [TestCase("")]
+        public void AreCompatible_ReturnsTrue_WhenAlignmentEmpty(string empty)
+        {
+            filters.Alignments = [empty];
+            filters.ChallengeRatings = [];
+            filters.Types = [];
+
+            var (Compatible, Reason) = filters.AreCompatible(["my alignment", "other alignment"], ["my cr", "other cr"], ["my type", "other type"]);
+            Assert.That(Compatible, Is.True);
+            Assert.That(Reason, Is.Null);
+        }
+
         [Test]
         public void AreCompatible_ReturnsTrue_WhenAnyAlignmentMatches()
         {
-            filters.Alignments = ["wrong alignment", "nope alignment", "other alignment"];
+            filters.Alignments = ["wrong alignment", null, string.Empty, "nope alignment", "other alignment"];
             filters.ChallengeRatings = [];
             filters.Types = [];
 
@@ -299,7 +360,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void AreCompatible_ReturnsFalse_WhenNoAlignmentMatches()
         {
-            filters.Alignments = ["wrong alignment", "nope alignment"];
+            filters.Alignments = ["wrong alignment", null, string.Empty, "nope alignment"];
             filters.ChallengeRatings = [];
             filters.Types = [];
 
@@ -320,11 +381,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(Reason, Is.Null);
         }
 
+        [TestCase(null)]
+        [TestCase("")]
+        public void AreCompatible_ReturnsTrue_WhenChallengeRatingEmpty(string empty)
+        {
+            filters.Alignments = [];
+            filters.ChallengeRatings = [empty];
+            filters.Types = [];
+
+            var (Compatible, Reason) = filters.AreCompatible(["my alignment", "other alignment"], ["my cr", "other cr"], ["my type", "other type"]);
+            Assert.That(Compatible, Is.True);
+            Assert.That(Reason, Is.Null);
+        }
+
         [Test]
         public void AreCompatible_ReturnsTrue_WhenAnyChallengeRatingMatches()
         {
             filters.Alignments = [];
-            filters.ChallengeRatings = ["wrong cr", "nope cr", "other cr"];
+            filters.ChallengeRatings = ["wrong cr", null, string.Empty, "nope cr", "other cr"];
             filters.Types = [];
 
             var (Compatible, Reason) = filters.AreCompatible(["my alignment", "other alignment"], ["my cr", "other cr"], ["my type", "other type"]);
@@ -336,7 +410,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void AreCompatible_ReturnsFalse_WhenNoChallengeRatingMatches()
         {
             filters.Alignments = [];
-            filters.ChallengeRatings = ["wrong cr", "nope cr"];
+            filters.ChallengeRatings = ["wrong cr", null, string.Empty, "nope cr"];
             filters.Types = [];
 
             var (Compatible, Reason) = filters.AreCompatible(["my alignment", "other alignment"], ["my cr", "other cr"], ["my type", "other type"]);
@@ -356,12 +430,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(Reason, Is.Null);
         }
 
+        [TestCase(null)]
+        [TestCase("")]
+        public void AreCompatible_ReturnsTrue_WhenTypeEmpty(string empty)
+        {
+            filters.Alignments = [];
+            filters.ChallengeRatings = [];
+            filters.Types = [empty];
+
+            var (Compatible, Reason) = filters.AreCompatible(["my alignment", "other alignment"], ["my cr", "other cr"], ["my type", "other type"]);
+            Assert.That(Compatible, Is.True);
+            Assert.That(Reason, Is.Null);
+        }
+
         [Test]
         public void AreCompatible_ReturnsTrue_WhenAnyTypeMatches()
         {
             filters.Alignments = [];
             filters.ChallengeRatings = [];
-            filters.Types = ["wrong type", "nope type", "other type"];
+            filters.Types = ["wrong type", null, string.Empty, "nope type", "other type"];
 
             var (Compatible, Reason) = filters.AreCompatible(["my alignment", "other alignment"], ["my cr", "other cr"], ["my type", "other type"]);
             Assert.That(Compatible, Is.True);
@@ -373,7 +460,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             filters.Alignments = [];
             filters.ChallengeRatings = [];
-            filters.Types = ["wrong type", "nope type"];
+            filters.Types = ["wrong type", null, string.Empty, "nope type"];
 
             var (Compatible, Reason) = filters.AreCompatible(["my alignment", "other alignment"], ["my cr", "other cr"], ["my type", "other type"]);
             Assert.That(Compatible, Is.False);
@@ -383,9 +470,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void AreCompatible_ReturnsTrue_WhenAllFiltersMatches()
         {
-            filters.Alignments = ["some alignment", "other alignment"];
-            filters.ChallengeRatings = ["my cr", "wrong cr"];
-            filters.Types = ["this type", "that type", "my type"];
+            filters.Alignments = ["some alignment", null, "other alignment"];
+            filters.ChallengeRatings = ["my cr", string.Empty, "wrong cr"];
+            filters.Types = ["this type", string.Empty, "that type", null, "my type"];
 
             var (Compatible, Reason) = filters.AreCompatible(["my alignment", "other alignment"], ["my cr", "other cr"], ["my type", "other type"]);
             Assert.That(Compatible, Is.True);
@@ -395,9 +482,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void AreCompatible_ReturnsFalse_WhenJustAlignmentHasNoMatches()
         {
-            filters.Alignments = ["some alignment", "wrong alignment"];
-            filters.ChallengeRatings = ["my cr", "wrong cr"];
-            filters.Types = ["this type", "that type", "my type"];
+            filters.Alignments = ["some alignment", null, "wrong alignment"];
+            filters.ChallengeRatings = ["my cr", string.Empty, "wrong cr"];
+            filters.Types = ["this type", string.Empty, "that type", null, "my type"];
 
             var (Compatible, Reason) = filters.AreCompatible(["my alignment", "other alignment"], ["my cr", "other cr"], ["my type", "other type"]);
             Assert.That(Compatible, Is.False);
@@ -407,9 +494,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void AreCompatible_ReturnsFalse_WhenJustChallengeRatingHasNoMatches()
         {
-            filters.Alignments = ["some alignment", "other alignment"];
-            filters.ChallengeRatings = ["nope cr", "wrong cr"];
-            filters.Types = ["this type", "that type", "my type"];
+            filters.Alignments = ["some alignment", null, "other alignment"];
+            filters.ChallengeRatings = ["nope cr", string.Empty, "wrong cr"];
+            filters.Types = ["this type", string.Empty, "that type", null, "my type"];
 
             var (Compatible, Reason) = filters.AreCompatible(["my alignment", "other alignment"], ["my cr", "other cr"], ["my type", "other type"]);
             Assert.That(Compatible, Is.False);
@@ -419,9 +506,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void AreCompatible_ReturnsFalse_WhenJustTypeHasNoMatches()
         {
-            filters.Alignments = ["some alignment", "other alignment"];
-            filters.ChallengeRatings = ["my cr", "wrong cr"];
-            filters.Types = ["this type", "that type", "wrong type"];
+            filters.Alignments = ["some alignment", null, "other alignment"];
+            filters.ChallengeRatings = ["my cr", string.Empty, "wrong cr"];
+            filters.Types = ["this type", string.Empty, "that type", null, "wrong type"];
 
             var (Compatible, Reason) = filters.AreCompatible(["my alignment", "other alignment"], ["my cr", "other cr"], ["my type", "other type"]);
             Assert.That(Compatible, Is.False);

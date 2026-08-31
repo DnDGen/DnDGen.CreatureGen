@@ -543,7 +543,7 @@ namespace DnDGen.CreatureGen.Templates
             var updatedTypes = UpdateCreatureType(types.Skip(1));
             var cr = UpdateCreatureChallengeRating(creatureHitDiceQuantity * 2, creature);
 
-            return filters.AreCompatible([AlignmentConstants.Neutral], updatedTypes, [cr]);
+            return filters.AreCompatible([AlignmentConstants.Neutral], [cr], updatedTypes);
         }
 
         private (bool Compatible, string Reason) IsCompatible(

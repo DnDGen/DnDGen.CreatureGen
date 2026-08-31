@@ -79,7 +79,7 @@ namespace DnDGen.CreatureGen.Templates
             UpdateCreatureLevelAdjustment(creature);
 
             // Alignment
-            UpdateCreatureAlignment(creature, filters);
+            UpdateCreatureAlignment(creature);
 
             // Languages
             UpdateCreatureLanguages(creature);
@@ -150,19 +150,9 @@ namespace DnDGen.CreatureGen.Templates
                 creature.Abilities[AbilityConstants.Intelligence].TemplateScore = 3;
         }
 
-        private void UpdateCreatureAlignment(Creature creature, Filters filters)
+        private void UpdateCreatureAlignment(Creature creature)
         {
             creature.Alignment = UpdateCreatureAlignment(creature.Alignment);
-
-            if (filters.Alignments.Count > 0 && !filters.Alignments.Contains(creature.Alignment.Full))
-            {
-                throw new InvalidCreatureException(
-                    $"Alignment {creature.Alignment} is not valid for filters",
-                    false,
-                    creature.Name,
-                    filters,
-                    templates: [.. creature.Templates.Concat([CreatureConstants.Templates.FiendishCreature])]);
-            }
         }
 
         private void UpdateCreatureAlignment(CreaturePrototype creature, Filters filters)
@@ -173,9 +163,8 @@ namespace DnDGen.CreatureGen.Templates
 
             if (filters?.Alignments?.Count > 0)
             {
-                var validFilters = filters.Alignments.Where(a => a.Contains(AlignmentConstants.Evil));
                 //INFO: Using Where instead of Intersect to maintain alignment weighting
-                updatedAlignments = updatedAlignments.Where(a => validFilters.Contains(a.Full));
+                updatedAlignments = updatedAlignments.Where(a => filters.Alignments.Contains(a.Full));
             }
 
             creature.Alignments = [.. updatedAlignments];
@@ -338,7 +327,7 @@ namespace DnDGen.CreatureGen.Templates
             tasks.Add(levelAdjustmentTask);
 
             // Alignment
-            var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature, filters));
+            var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature));
             tasks.Add(alignmentTask);
 
             // Languages
@@ -400,7 +389,7 @@ namespace DnDGen.CreatureGen.Templates
             var updatedTypes = UpdateCreatureType(types.First(), types.Skip(1));
             var cr = UpdateCreatureChallengeRating(creatureChallengeRating, creatureHitDiceQuantity);
 
-            return filters.AreCompatible(updatedAlignments, updatedTypes, [cr]);
+            return filters.AreCompatible(updatedAlignments, [cr], updatedTypes);
         }
 
         internal (bool Compatible, string Reason) IsCompatible(IEnumerable<string> types, IEnumerable<string> alignments)

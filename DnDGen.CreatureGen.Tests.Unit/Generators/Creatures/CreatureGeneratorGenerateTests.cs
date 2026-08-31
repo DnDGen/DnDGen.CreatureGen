@@ -15,7 +15,6 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 {
@@ -41,15 +40,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, "creature", null, null)).Returns(false);
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine("\tCreature: creature");
-            message.AppendLine("\tTemplate: template");
-            message.AppendLine($"\tAbility Roll: {AbilityConstants.RandomizerRolls.Default}");
-
+            var expected = new InvalidCreatureException(null, asCharacter, "creature", AbilityConstants.RandomizerRolls.Default, null, "template");
             var function = () => creatureGenerator.Generate(asCharacter, "creature", null, "template");
-            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [TestCase(true)]
@@ -60,15 +53,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, "creature", randomizer, null)).Returns(false);
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine("\tCreature: creature");
-            message.AppendLine("\tTemplate: template");
-            message.AppendLine("\tAbility Roll: my roll");
-
+            var expected = new InvalidCreatureException(null, asCharacter, "creature", null, randomizer, "template");
             var function = () => creatureGenerator.Generate(asCharacter, "creature", randomizer, "template");
-            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [TestCase(true)]

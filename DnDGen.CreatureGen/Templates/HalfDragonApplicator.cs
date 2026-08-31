@@ -534,7 +534,7 @@ namespace DnDGen.CreatureGen.Templates
             var updatedTypes = UpdateCreatureType(types.First(), types.Skip(1));
             var cr = UpdateCreatureChallengeRating(creatureChallengeRating);
 
-            return filters.AreCompatible(dragonAlignments, updatedTypes, [cr]);
+            return filters.AreCompatible(dragonAlignments, [cr], updatedTypes);
         }
 
         private (bool Compatible, string Reason) IsCompatible(IEnumerable<string> types)

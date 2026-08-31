@@ -86,12 +86,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return creature;
         }
 
-        private IEnumerable<string> GetValidCreatures(IEnumerable<string> creatureGroup, bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters)
+        private List<string> GetValidCreatures(IEnumerable<string> creatureGroup, bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters)
         {
-            var compatibleCreatures = creatureVerifier.GetCompatibleCreaturesForTemplate(creatureGroup, null, asCharacter, abilityRandomizer, filters);
-
-            foreach (var creature in compatibleCreatures)
-                yield return creature;
+            var compatibleCreatures = creatureVerifier.GetCompatibleCreaturesForTemplate(creatureGroup, null, asCharacter, abilityRandomizer, filters).ToList();
 
             var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All);
 
@@ -99,10 +96,12 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             //odds are weighted in favor of non-templated creatures
             foreach (var template in templates)
             {
-                compatibleCreatures = creatureVerifier.GetCompatibleCreaturesForTemplate(creatureGroup, template, asCharacter, abilityRandomizer, filters);
-                if (compatibleCreatures.Any())
-                    yield return template;
+                var templateCreatues = creatureVerifier.GetCompatibleCreaturesForTemplate(creatureGroup, template, asCharacter, abilityRandomizer, filters);
+                if (templateCreatues.Any())
+                    compatibleCreatures.Add(template);
             }
+
+            return compatibleCreatures;
         }
 
         private (string Creature, string[] Templates) GetRandomValidCreature(
@@ -112,7 +111,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             Filters filters)
         {
             var validCreatures = GetValidCreatures(creatureGroup, asCharacter, abilityRandomizer, filters);
-            if (!validCreatures.Any())
+            if (validCreatures.Count == 0)
             {
                 throw new InvalidCreatureException(
                     $"No valid creatures in creature group [{string.Join(", ", creatureGroup)}]",

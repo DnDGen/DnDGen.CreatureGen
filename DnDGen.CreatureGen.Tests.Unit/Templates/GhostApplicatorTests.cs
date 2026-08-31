@@ -20,7 +20,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
@@ -139,24 +138,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Type.Name = CreatureConstants.Types.Outsider;
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Ghost}");
-            message.AppendLine($"\tAbility Roll: {baseCreature.Abilities[AbilityConstants.Charisma].FullScore}");
-
+            var expected = new InvalidCreatureException(
+                "Type 'Outsider' is not valid",
+                false,
+                baseCreature.Name,
+                baseCreature.Abilities[AbilityConstants.Charisma].FullScore.ToString(),
+                null,
+                CreatureConstants.Templates.Ghost);
             var function = () => applicator.ApplyTo(baseCreature, false);
-            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment", "Alignment filter 'wrong alignment' is not valid")]
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment", "CR filter 2 does not match updated creature CR 3 (from CR 1)")]
-        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR3, "original alignment", "Type filter 'wrong subtype' is not valid")]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR3, "original alignment", "",
-            Ignore = "As Character doesn't affect already-generated creature compatiblity")]
-        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment")]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment")]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR3, "original alignment")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR2, "original alignment")]
+        [TestCase(true, "wrong subtype", ChallengeRatingConstants.CR3, "original alignment")]
+        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
             baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
@@ -170,18 +169,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 ChallengeRatings = [challengeRating],
                 Alignments = [alignment]
             };
+            var (Compatible, Reason) = filters.AreCompatible(
+                ["original alignment"],
+                [ChallengeRatingConstants.CR3],
+                [CreatureConstants.Types.Undead, "subtype 1", "subtype 2",
+                    CreatureConstants.Types.Subtypes.Incorporeal, CreatureConstants.Types.Subtypes.Augmented, CreatureConstants.Types.Humanoid]);
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Ghost}");
-            message.AppendLine($"\tFilters: {filters.GetDescription()}");
-            message.AppendLine($"\tAbility Roll: {baseCreature.Abilities[AbilityConstants.Charisma].FullScore}");
-
+            var expected = new InvalidCreatureException(
+                Reason,
+                asCharacter,
+                baseCreature.Name,
+                baseCreature.Abilities[AbilityConstants.Charisma].FullScore.ToString(),
+                filters,
+                CreatureConstants.Templates.Ghost);
             var function = () => applicator.ApplyTo(baseCreature, asCharacter, filters);
-            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [Test]
@@ -1244,29 +1246,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Type.Name = CreatureConstants.Types.Outsider;
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Ghost}");
-            message.AppendLine($"\tAbility Roll: {baseCreature.Abilities[AbilityConstants.Charisma].FullScore}");
-
+            var expected = new InvalidCreatureException(
+                "Type 'Outsider' is not valid",
+                false,
+                baseCreature.Name,
+                baseCreature.Abilities[AbilityConstants.Charisma].FullScore.ToString(),
+                null,
+                CreatureConstants.Templates.Ghost);
             await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, false),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment", "Alignment filter 'wrong alignment' is not valid")]
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment", "CR filter 2 does not match updated creature CR 3 (from CR 1)")]
-        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR3, "original alignment", "Type filter 'wrong subtype' is not valid")]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR3, "original alignment", "",
-            Ignore = "As Character doesn't affect already-generated creature compatiblity")]
-        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(
-            bool asCharacter,
-            string type,
-            string challengeRating,
-            string alignment,
-            string reason)
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment")]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment")]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR3, "original alignment")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR2, "original alignment")]
+        [TestCase(true, "wrong subtype", ChallengeRatingConstants.CR3, "original alignment")]
+        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
             baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
@@ -1274,26 +1271,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment("original alignment");
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Ghost}");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
-            message.AppendLine($"\tAbility Roll: {baseCreature.Abilities[AbilityConstants.Charisma].FullScore}");
-
             var filters = new Filters
             {
                 Types = [type],
                 ChallengeRatings = [challengeRating],
                 Alignments = [alignment]
             };
+            var (Compatible, Reason) = filters.AreCompatible(
+                ["original alignment"],
+                [ChallengeRatingConstants.CR3],
+                [CreatureConstants.Types.Undead, "subtype 1", "subtype 2",
+                    CreatureConstants.Types.Subtypes.Incorporeal, CreatureConstants.Types.Subtypes.Augmented, CreatureConstants.Types.Humanoid]);
+
+            var expected = new InvalidCreatureException(
+                Reason,
+                asCharacter,
+                baseCreature.Name,
+                baseCreature.Abilities[AbilityConstants.Charisma].FullScore.ToString(),
+                filters,
+                CreatureConstants.Templates.Ghost);
 
             await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, asCharacter, filters),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [Test]
@@ -2545,6 +2544,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.False);
         }
+
         [Test]
         public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible()
         {
@@ -2554,24 +2554,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithCreatureType(CreatureConstants.Types.Outsider, "subtype 1", "subtype 2")
                 .Build();
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {prototype.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Ghost}");
-            message.AppendLine($"\tAbility Roll: {prototype.Abilities[AbilityConstants.Charisma].FullScore}");
-
+            var expected = new InvalidCreatureException(
+                "Type 'Outsider' is not valid",
+                false,
+                prototype.Name,
+                prototype.Abilities[AbilityConstants.Charisma].FullScore.ToString(),
+                null,
+                CreatureConstants.Templates.Ghost);
             var function = () => applicator.ApplyTo(prototype);
-            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment", "Alignment filter 'wrong alignment' is not valid")]
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment", "CR filter 2 does not match updated creature CR 3 (from CR 1)")]
-        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR3, "original alignment", "Type filter 'wrong subtype' is not valid")]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR3, "original alignment", "",
-            Ignore = "As Character doesn't affect already-generated creature compatiblity")]
-        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment")]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment")]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR3, "original alignment")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR2, "original alignment")]
+        [TestCase(true, "wrong subtype", ChallengeRatingConstants.CR3, "original alignment")]
+        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
         {
             var prototype = new CreaturePrototypeBuilder()
                 .WithTestValues()
@@ -2580,6 +2580,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithHitDiceQuantity(1)
                 .WithChallengeRating(ChallengeRatingConstants.CR1)
                 .WithAlignments("original alignment")
+                .WithAsCharacter(asCharacter)
                 .Build();
 
             var filters = new Filters
@@ -2588,18 +2589,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 ChallengeRatings = [challengeRating],
                 Alignments = [alignment]
             };
+            var (Compatible, Reason) = filters.AreCompatible(
+                ["original alignment"],
+                [ChallengeRatingConstants.CR3],
+                [CreatureConstants.Types.Undead, "subtype 1", "subtype 2",
+                    CreatureConstants.Types.Subtypes.Incorporeal, CreatureConstants.Types.Subtypes.Augmented, CreatureConstants.Types.Humanoid]);
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine($"\tCreature: {prototype.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Ghost}");
-            message.AppendLine($"\tFilters: {filters.GetDescription()}");
-            message.AppendLine($"\tAbility Roll: {prototype.Abilities[AbilityConstants.Charisma].FullScore}");
-
+            var expected = new InvalidCreatureException(
+                Reason,
+                asCharacter,
+                prototype.Name,
+                prototype.Abilities[AbilityConstants.Charisma].FullScore.ToString(),
+                filters,
+                CreatureConstants.Templates.Ghost);
             var function = () => applicator.ApplyTo(prototype, filters);
-            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [Test]

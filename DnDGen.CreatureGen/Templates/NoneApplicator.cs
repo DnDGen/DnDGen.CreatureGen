@@ -61,7 +61,7 @@ namespace DnDGen.CreatureGen.Templates
             if (filters is null)
                 return (true, null);
 
-            return filters.AreCompatible(alignments, types, [creatureChallengeRating]);
+            return filters.AreCompatible(alignments, [creatureChallengeRating], types);
         }
 
         public CreaturePrototype ApplyTo(CreaturePrototype creature, Filters filters = null)

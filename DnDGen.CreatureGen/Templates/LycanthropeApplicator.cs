@@ -749,7 +749,7 @@ namespace DnDGen.CreatureGen.Templates
             var updatedTypes = UpdateCreatureType(types.First(), types.Skip(1));
             var cr = UpdateCreatureChallengeRating(creatureChallengeRating, animalHitDiceQuantity);
 
-            return filters.AreCompatible(alignments, updatedTypes, [cr]);
+            return filters.AreCompatible(alignments, [cr], updatedTypes);
         }
 
         private (bool Compatible, string Reason) IsCompatible(IEnumerable<string> types, string creatureSize, string animalSize)
