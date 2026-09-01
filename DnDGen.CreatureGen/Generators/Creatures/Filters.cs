@@ -60,7 +60,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private static bool IsNotEmpty(string v) => !string.IsNullOrEmpty(v);
         private static bool ShouldApplyFilter(IEnumerable<string> collection) => GetClean(collection ?? []).Any();
 
-        public (bool Compatible, string Reason) AreCompatible(IEnumerable<string> alignments, IEnumerable<string> challengeRatings, IEnumerable<string> types)
+        internal (bool Compatible, string Reason) AreCompatible(IEnumerable<string> alignments, IEnumerable<string> challengeRatings, IEnumerable<string> types)
         {
             if (ShouldApplyFilter(Alignments))
             {

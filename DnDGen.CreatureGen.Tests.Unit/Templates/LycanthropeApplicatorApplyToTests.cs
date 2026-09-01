@@ -6,16 +6,13 @@ using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Skills;
-using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
-using DnDGen.Infrastructure.Models;
 using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
 {
@@ -55,24 +52,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             SetUpAnimal("my animal", baseCreature, hitDiceQuantity: 1);
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: my lycanthrope");
-
-            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, false)),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var expected = new InvalidCreatureException("Type 'Outsider' is not valid", false, baseCreature.Name, templates: ["my lycanthrope"]);
+            var function = () => applicator.ApplyTo(baseCreature, false);
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.IncompatibleFilters))]
-        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(
-            bool asCharacter,
-            string type,
-            string challengeRating,
-            string alignment,
-            string reason)
+        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
             baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
@@ -82,25 +68,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             SetUpAnimal("my animal", baseCreature, hitDiceQuantity: 1);
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: my lycanthrope");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
-
             var filters = new Filters
             {
                 Types = [type],
                 ChallengeRatings = [challengeRating],
                 Alignments = [alignment]
             };
+            var (Compatible, Reason) = filters.AreCompatible(
+                ["original alignment"],
+                [ChallengeRatingConstants.CR3],
+                [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2", CreatureConstants.Types.Subtypes.Shapechanger]);
+            var expected = new InvalidCreatureException(Reason, asCharacter, baseCreature.Name, filters, templates: ["my lycanthrope"]);
 
             var func = () => applicator.ApplyTo(baseCreature, asCharacter, filters);
-            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [Test]
@@ -371,18 +352,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
 
             SetUpAnimal("my animal", baseCreature, roll: 9266, average: 90210.42);
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "my animal"))
-                .Returns(
-                [
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 666 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 666 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 8245 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = -666 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = -666 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = -666 },
-                ]);
+            SetAnimalAbilityAdjustments("my animal", 666, 666, 8245);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1057,20 +1027,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void ApplyTo_ConditionalBonusesForHybridAndAnimalForms_FromAnimalBonuses()
         {
             SetUpAnimal("my animal", baseCreature);
-
-            var animalAbilityAdjustments = new[]
-            {
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = 666 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 9266 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 90210 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = 666 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 42 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = 666 },
-            };
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "my animal"))
-                .Returns(animalAbilityAdjustments);
+            SetAnimalAbilityAdjustments("my animal", 42, 90210, 9266);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));

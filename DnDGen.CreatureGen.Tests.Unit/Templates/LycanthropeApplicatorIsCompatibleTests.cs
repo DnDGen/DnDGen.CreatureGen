@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using NUnit.Framework;
 using System.Collections;
@@ -12,31 +13,78 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void IsCompatible_ReturnsTrue()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .Build();
+
+            SetUpAnimalBasics("my animal", size: SizeConstants.Medium, hitDiceQuantity: 1);
+
+            var compatible = applicator.IsCompatible(creature);
+            Assert.That(compatible, Is.True);
         }
 
         [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.CreatureTypeCompatible))]
         public void IsCompatible_ReturnsCompatibility_BasedOnCreatureType(string creatureType, bool expected)
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(creatureType, "subtype 1", "subtype 2")
+                .Build();
+
+            SetUpAnimalBasics("my animal", size: SizeConstants.Medium, hitDiceQuantity: 1);
+
+            var compatible = applicator.IsCompatible(creature);
+            Assert.That(compatible, Is.EqualTo(expected));
         }
 
         [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.SizeCompatible))]
         public void IsCompatible_ReturnsCompatibility_BasedOnSize(string creatureSize, string animalSize, bool expected)
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithSize(creatureSize)
+                .Build();
+
+            SetUpAnimalBasics("my animal", size: animalSize, hitDiceQuantity: 1);
+
+            var compatible = applicator.IsCompatible(creature);
+            Assert.That(compatible, Is.EqualTo(expected));
         }
 
         [Test]
         public void IsCompatible_WithAlignment_ReturnsTrue_IfPrototypeContainsAlignmentFilter()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithAlignments("original alignment", "different alignment")
+                .Build();
+
+            SetUpAnimalBasics("my animal", size: SizeConstants.Medium, hitDiceQuantity: 1);
+
+            var filters = new Filters { Alignments = ["other alignment", "original alignment"] };
+
+            var compatible = applicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.True);
         }
 
         [Test]
         public void IsCompatible_WithAlignment_ReturnsFalse_IfPrototypeDoesNotContainAlignmentFilter()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithAlignments("original alignment", "different alignment")
+                .Build();
+
+            SetUpAnimalBasics("my animal", size: SizeConstants.Medium, hitDiceQuantity: 1);
+
+            var filters = new Filters { Alignments = ["other alignment", "wrong alignment"] };
+
+            var compatible = applicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.ChallengeRatings))]
@@ -45,7 +93,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             double animalHitDiceQuantity,
             string updatedChallengeRating)
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithChallengeRating(originalChallengeRating)
+                .Build();
+
+            SetUpAnimalBasics("my animal", size: SizeConstants.Medium, hitDiceQuantity: animalHitDiceQuantity);
+
+            var filters = new Filters { ChallengeRatings = [updatedChallengeRating] };
+
+            var compatible = applicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.True);
         }
 
         [TestCaseSource(nameof(ChallengeRatingAdjustments_Filtered))]
@@ -55,7 +114,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             string challengeRating,
             bool expected)
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithChallengeRating(original)
+                .WithAsCharacter(false)
+                .Build();
+
+            SetUpAnimalBasics("my animal", size: SizeConstants.Medium, hitDiceQuantity: animalHitDiceQuantity);
+
+            var filters = new Filters { ChallengeRatings = [challengeRating] };
+
+            var compatible = applicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.EqualTo(expected));
         }
 
         [TestCaseSource(nameof(ChallengeRatingAdjustments_Filtered_HumanoidCharacter))]
@@ -66,7 +137,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             string challengeRating,
             bool expected)
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithChallengeRating(original)
+                .WithHitDiceQuantity(creatureHitDiceQuantity)
+                .WithAsCharacter(true)
+                .Build();
+
+            SetUpAnimalBasics("my animal", size: SizeConstants.Medium, hitDiceQuantity: animalHitDiceQuantity);
+
+            var filters = new Filters { ChallengeRatings = [challengeRating] };
+
+            var compatible = applicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.EqualTo(expected));
         }
 
         [TestCaseSource(nameof(ChallengeRatingAdjustments_Filtered))]
@@ -76,7 +160,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             string challengeRating,
             bool expected)
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Giant, "subtype 1", "subtype 2")
+                .WithChallengeRating(original)
+                .WithAsCharacter(true)
+                .Build();
+
+            SetUpAnimalBasics("my animal", size: SizeConstants.Medium, hitDiceQuantity: animalHitDiceQuantity);
+
+            var filters = new Filters { ChallengeRatings = [challengeRating] };
+
+            var compatible = applicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.EqualTo(expected));
         }
 
         [TestCase(null, true)]
@@ -89,37 +185,112 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase("wrong type", false)]
         public void IsCompatible_WithType_ReturnsCompatibility_BasedOnUpdatedTypes(string type, bool expected)
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .Build();
+
+            SetUpAnimalBasics("my animal", size: SizeConstants.Medium, hitDiceQuantity: 1);
+
+            var filters = new Filters { Types = [type] };
+
+            var compatible = applicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.EqualTo(expected));
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsTrue()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithAlignments("original alignment", "different alignment")
+                .WithChallengeRating(ChallengeRatingConstants.CR1)
+                .WithSize(SizeConstants.Large)
+                .Build();
+
+            SetUpAnimalBasics("my animal", size: SizeConstants.Medium, hitDiceQuantity: 1);
+
+            var filters = new Filters { Alignments = ["other alignment", "original alignment"], ChallengeRatings = [ChallengeRatingConstants.CR3], Types = ["subtype 1"] };
+
+            var compatible = applicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.True);
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecausePrototype()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithAlignments("original alignment", "different alignment")
+                .WithChallengeRating(ChallengeRatingConstants.CR1)
+                .WithSize(SizeConstants.Huge)
+                .Build();
+
+            SetUpAnimalBasics("my animal", size: SizeConstants.Medium, hitDiceQuantity: 1);
+
+            var filters = new Filters { Alignments = ["other alignment", "original alignment"], ChallengeRatings = [ChallengeRatingConstants.CR3], Types = ["subtype 1"] };
+
+            var compatible = applicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseAlignment()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithAlignments("original alignment", "different alignment")
+                .WithChallengeRating(ChallengeRatingConstants.CR1)
+                .WithSize(SizeConstants.Large)
+                .Build();
+
+            SetUpAnimalBasics("my animal", size: SizeConstants.Medium, hitDiceQuantity: 1);
+
+            var filters = new Filters { Alignments = ["other alignment", "wrong alignment"], ChallengeRatings = [ChallengeRatingConstants.CR3], Types = ["subtype 1"] };
+
+            var compatible = applicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseChallengeRating()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithAlignments("original alignment", "different alignment")
+                .WithChallengeRating(ChallengeRatingConstants.CR1)
+                .WithSize(SizeConstants.Large)
+                .Build();
+
+            SetUpAnimalBasics("my animal", size: SizeConstants.Medium, hitDiceQuantity: 1);
+
+            var filters = new Filters { Alignments = ["other alignment", "original alignment"], ChallengeRatings = [ChallengeRatingConstants.CR4], Types = ["subtype 1"] };
+
+            var compatible = applicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseType()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithAlignments("original alignment", "different alignment")
+                .WithChallengeRating(ChallengeRatingConstants.CR1)
+                .WithSize(SizeConstants.Large)
+                .Build();
+
+            SetUpAnimalBasics("my animal", size: SizeConstants.Medium, hitDiceQuantity: 1);
+
+            var filters = new Filters { Alignments = ["other alignment", "original alignment"], ChallengeRatings = [ChallengeRatingConstants.CR3], Types = ["subtype 3"] };
+
+            var compatible = applicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.False);
         }
 
         //Animal HD 0-2, +2

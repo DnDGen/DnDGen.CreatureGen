@@ -157,5 +157,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             return this;
         }
+
+        public CreaturePrototypeBuilder Clone(CreaturePrototype source)
+        {
+            prototype.Name = source.Name;
+            prototype.Abilities = source.Abilities.ToDictionary(
+                kvp => kvp.Key,
+                kvp => new Ability(kvp.Value.Name) { BaseScore = kvp.Value.BaseScore, RacialAdjustment = kvp.Value.RacialAdjustment });
+            prototype.Alignments = [.. source.Alignments.Select(a => new Alignment(a.Full))];
+            prototype.AsCharacter = source.AsCharacter;
+            prototype.CasterLevel = source.CasterLevel;
+            prototype.ChallengeRating = source.ChallengeRating;
+            prototype.HasSkeleton = source.HasSkeleton;
+            prototype.HitDiceQuantity = source.HitDiceQuantity;
+            prototype.LevelAdjustment = source.LevelAdjustment;
+            prototype.Size = source.Size;
+            prototype.Type = new CreatureType(source.Type.AllTypes);
+            prototype.Templates = [.. source.Templates];
+
+            return this;
+        }
     }
 }

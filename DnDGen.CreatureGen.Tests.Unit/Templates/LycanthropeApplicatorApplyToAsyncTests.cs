@@ -6,16 +6,13 @@ using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Skills;
-using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
-using DnDGen.Infrastructure.Models;
 using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
@@ -143,42 +140,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             SetUpAnimal("my animal", baseCreature, hitDiceQuantity: 1);
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: my lycanthrope");
-
+            var expected = new InvalidCreatureException("Type 'Outsider' is not valid", false, baseCreature.Name, templates: ["my lycanthrope"]);
             await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, false),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [TestCaseSource(typeof(LycanthropeTestData), nameof(LycanthropeTestData.IncompatibleFilters))]
-        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(
-            bool asCharacter,
-            string type,
-            string challengeRating,
-            string alignment,
-            string reason)
+        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
             baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
             baseCreature.HitPoints.HitDice[0].Quantity = 1;
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
-            baseCreature.Alignment = new Alignment($"original alignment");
+            baseCreature.Alignment = new Alignment("original alignment");
 
             SetUpAnimal("my animal", baseCreature, hitDiceQuantity: 1);
-
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: my lycanthrope");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
 
             var filters = new Filters
             {
@@ -186,9 +162,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 ChallengeRatings = [challengeRating],
                 Alignments = [alignment]
             };
+            var (Compatible, Reason) = filters.AreCompatible(
+                ["original alignment"],
+                [ChallengeRatingConstants.CR3],
+                [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2", CreatureConstants.Types.Subtypes.Shapechanger]);
+            var expected = new InvalidCreatureException(Reason, asCharacter, baseCreature.Name, filters, templates: ["my lycanthrope"]);
 
             await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, asCharacter, filters),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [Test]
@@ -372,18 +353,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
 
             SetUpAnimal("my animal", baseCreature, roll: 9266, average: 90210.42);
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "my animal"))
-                .Returns(
-                [
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 666 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 666 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 8245 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = -666 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = -666 },
-                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = -666 },
-                ]);
+            SetAnimalAbilityAdjustments("my animal", 666, 666, 8245);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1059,20 +1029,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public async Task ApplyToAsync_ConditionalBonusesForHybridAndAnimalForms_FromAnimalBonuses()
         {
             SetUpAnimal("my animal", baseCreature);
-
-            var animalAbilityAdjustments = new[]
-            {
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = 666 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = 9266 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = 90210 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = 666 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = 42 },
-                new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = 666 },
-            };
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, "my animal"))
-                .Returns(animalAbilityAdjustments);
+            SetAnimalAbilityAdjustments("my animal", 42, 90210, 9266);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));

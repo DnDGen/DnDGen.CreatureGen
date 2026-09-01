@@ -414,6 +414,11 @@ namespace DnDGen.CreatureGen.Templates
             creature.Templates.Add(CreatureConstants.Templates.Skeleton);
         }
 
+        private static void UpdateCreatureTemplate(CreaturePrototype creature)
+        {
+            creature.Templates.Add(CreatureConstants.Templates.Skeleton);
+        }
+
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
             var (Compatible, Reason) = IsCompatible(
@@ -548,7 +553,7 @@ namespace DnDGen.CreatureGen.Templates
             var updatedTypes = UpdateCreatureType(types.Skip(1));
             var cr = UpdateCreatureChallengeRating(creatureHitDiceQuantity, creature);
 
-            return filters.AreCompatible([AlignmentConstants.Neutral], [cr], updatedTypes);
+            return filters.AreCompatible([AlignmentConstants.NeutralEvil], [cr], updatedTypes);
         }
 
         private (bool Compatible, string Reason) IsCompatible(
@@ -600,6 +605,7 @@ namespace DnDGen.CreatureGen.Templates
             UpdateCreatureType(creature);
             UpdateCreatureAlignment(creature);
             UpdateCreatureMagic(creature);
+            UpdateCreatureTemplate(creature);
 
             return creature;
         }

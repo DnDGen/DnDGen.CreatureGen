@@ -15,7 +15,6 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
@@ -60,15 +59,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(v => v.VerifyCompatibility(asCharacter, "creature", abilityRandomizer, null, It.Is<string[]>(t => t.IsEquivalentTo("template"))))
                 .Returns(false);
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine("\tCreature: creature");
-            message.AppendLine("\tTemplates: template");
-            message.AppendLine("\tAbility Roll: my roll");
-
+            var expected = new InvalidCreatureException(null, asCharacter, "creature", null, abilityRandomizer, "template");
             await Assert.ThatAsync(async () => await creatureGenerator.GenerateAsync(asCharacter, "creature", abilityRandomizer, "template"),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [TestCase(true)]
@@ -80,15 +73,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(v => v.VerifyCompatibility(asCharacter, "creature", abilityRandomizer, null, It.Is<string[]>(t => t.IsEquivalentTo("template", "other template"))))
                 .Returns(false);
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine("\tCreature: creature");
-            message.AppendLine("\tTemplates: template, other template");
-            message.AppendLine("\tAbility Roll: my roll");
-
+            var expected = new InvalidCreatureException(null, asCharacter, "creature", null, abilityRandomizer, "template", "other template");
             await Assert.ThatAsync(async () => await creatureGenerator.GenerateAsync(asCharacter, "creature", abilityRandomizer, "template", "other template"),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [TestCase(true)]

@@ -21,7 +21,6 @@ using NUnit.Framework.Internal;
 using System;
 using System.Collections;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
@@ -81,15 +80,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Type.Name = CreatureConstants.Types.Outsider;
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplates: {CreatureConstants.Templates.CelestialCreature}");
-
+            var expected = new InvalidCreatureException("Type 'Outsider' is not valid", false, baseCreature.Name, templates: [CreatureConstants.Templates.CelestialCreature]);
             var func = () => applicator.ApplyTo(baseCreature, false);
-            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralGood)]
@@ -1167,15 +1160,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Type.Name = CreatureConstants.Types.Outsider;
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplates: {CreatureConstants.Templates.CelestialCreature}");
-
+            var expected = new InvalidCreatureException("Type 'Outsider' is not valid", false, baseCreature.Name, templates: [CreatureConstants.Templates.CelestialCreature]);
             await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, false),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralGood)]
@@ -2857,15 +2844,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
                 .Build();
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {creature.Name}");
-            message.AppendLine($"\tTemplates: {CreatureConstants.Templates.CelestialCreature}");
-
+            var expected = new InvalidCreatureException("Type 'Outsider' is not valid", false, creature.Name, templates: [CreatureConstants.Templates.CelestialCreature]);
             var func = () => applicator.ApplyTo(creature);
-            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralGood)]

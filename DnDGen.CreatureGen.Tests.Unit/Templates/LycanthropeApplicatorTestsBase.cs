@@ -13,6 +13,7 @@ using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
+using DnDGen.Infrastructure.Models;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using Moq;
@@ -105,28 +106,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             int roll = 0,
             double average = 0)
         {
-            //Data
-            animalData.Size = size ?? "animal size";
-            animalData.CasterLevel = 0;
-            animalData.NumberOfHands = random.Next(3);
-            animalData.CanUseEquipment = false;
-            animalData.NaturalArmor = naturalArmor > -1 ? naturalArmor : random.Next(20);
-            animalData.HitDiceQuantity = hitDiceQuantity > -1 ? hitDiceQuantity : random.Next(30) + 1;
-            animalData.HitDie = hitDiceDie > 0 ? hitDiceDie : random.Next(7) + 6;
-            animalData.BaseAttackQuality = BaseAttackQuality.Average;
-            animalData.Types = [CreatureConstants.Types.Animal];
-
-            mockCreatureDataSelector
-                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, animal))
-                .Returns(animalData);
+            SetUpAnimalBasics(animal, naturalArmor, size, hitDiceQuantity, hitDiceDie);
 
             //Hit points
-            var hitDie = new HitDice
-            {
-                Quantity = animalData.GetEffectiveHitDiceQuantity(false),
-                HitDie = animalData.HitDie,
-            };
-            animalHitPoints.HitDice.Add(hitDie);
+            var hitDie = animalHitPoints.HitDice[^1];
 
             mockHitPointsGenerator
                 .Setup(g => g.GenerateFor(
@@ -265,6 +248,52 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockSpeedsGenerator
                 .Setup(g => g.Generate(animal))
                 .Returns(animalSpeeds);
+        }
+
+        protected void SetUpAnimalBasics(
+            string animal,
+            int naturalArmor = -1,
+            string size = null,
+            double hitDiceQuantity = -1,
+            int hitDiceDie = 0)
+        {
+            //Data
+            animalData.Size = size ?? "animal size";
+            animalData.CasterLevel = 0;
+            animalData.NumberOfHands = random.Next(3);
+            animalData.CanUseEquipment = false;
+            animalData.NaturalArmor = naturalArmor > -1 ? naturalArmor : random.Next(20);
+            animalData.HitDiceQuantity = hitDiceQuantity > -1 ? hitDiceQuantity : random.Next(30) + 1;
+            animalData.HitDie = hitDiceDie > 0 ? hitDiceDie : random.Next(7) + 6;
+            animalData.BaseAttackQuality = BaseAttackQuality.Average;
+            animalData.Types = [CreatureConstants.Types.Animal];
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, animal))
+                .Returns(animalData);
+
+            //Hit points
+            var hitDie = new HitDice
+            {
+                Quantity = animalData.GetEffectiveHitDiceQuantity(false),
+                HitDie = animalData.HitDie,
+            };
+            animalHitPoints.HitDice.Add(hitDie);
+        }
+
+        protected void SetAnimalAbilityAdjustments(string animal, int str = 0, int dex = 0, int con = 0)
+        {
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.AbilityAdjustments, animal))
+                .Returns(
+                [
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Strength, AmountAsDouble = str },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Dexterity, AmountAsDouble = dex },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Constitution, AmountAsDouble = con },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Intelligence, AmountAsDouble = -666 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Wisdom, AmountAsDouble = -666 },
+                    new TypeAndAmountDataSelection { Type = AbilityConstants.Charisma, AmountAsDouble = -666 },
+                ]);
         }
 
         protected void SetUpRoll(HitDice hitDice, int roll)

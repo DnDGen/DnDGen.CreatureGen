@@ -26,7 +26,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
@@ -136,24 +135,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Type.Name = CreatureConstants.Types.Outsider;
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.HalfFiend}");
-            message.AppendLine($"\tAbility Roll: {baseCreature.Abilities[AbilityConstants.Intelligence].FullScore}");
-
+            var expected = new InvalidCreatureException(
+                "Type 'Outsider' is not valid",
+                false,
+                baseCreature.Name,
+                baseCreature.Abilities[AbilityConstants.Intelligence].FullScore.ToString(),
+                null,
+                CreatureConstants.Templates.HalfFiend);
             var function = () => applicator.ApplyTo(baseCreature, false);
-            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.NeutralEvil, "Alignment filter 'Neutral Evil' is not valid for creature alignments")]
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR3, AlignmentConstants.LawfulEvil, "CR filter 3 does not match updated creature CR 2 (from CR 1)")]
-        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil, "Type filter 'wrong subtype' is not valid")]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil, "",
-            Ignore = "As Character doesn't affect already-generated creature compatiblity")]
-        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.NeutralEvil)]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR3, AlignmentConstants.LawfulEvil)]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil)]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.NeutralEvil)]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR3, AlignmentConstants.LawfulEvil)]
+        [TestCase(true, "wrong subtype", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil)]
+        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
             baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
@@ -161,26 +160,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment(AlignmentConstants.LawfulNeutral);
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.HalfFiend}");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
-            message.AppendLine($"\tAbility Roll: {baseCreature.Abilities[AbilityConstants.Intelligence].FullScore}");
-
             var filters = new Filters
             {
                 Types = [type],
                 ChallengeRatings = [challengeRating],
                 Alignments = [alignment]
             };
+            var (Compatible, Reason) = filters.AreCompatible(
+                [AlignmentConstants.LawfulEvil],
+                [ChallengeRatingConstants.CR2],
+                [CreatureConstants.Types.Outsider, "subtype 1", "subtype 2",
+                    CreatureConstants.Types.Subtypes.Native, CreatureConstants.Types.Subtypes.Augmented, CreatureConstants.Types.Humanoid]);
+
+            var expected = new InvalidCreatureException(
+                Reason,
+                asCharacter,
+                baseCreature.Name,
+                baseCreature.Abilities[AbilityConstants.Intelligence].FullScore.ToString(),
+                filters,
+                CreatureConstants.Templates.HalfFiend);
 
             var function = () => applicator.ApplyTo(baseCreature, asCharacter, filters);
-            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [Test]
@@ -1490,7 +1491,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Alignment.Lawfulness = "preset";
             baseCreature.Alignment.Goodness = "alignment";
 
-            var filters = new Filters { Alignments = ["preset Evil"]};
+            var filters = new Filters { Alignments = ["preset Evil"] };
 
             var creature = applicator.ApplyTo(baseCreature, false, filters);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1517,24 +1518,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Type.Name = CreatureConstants.Types.Outsider;
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.HalfFiend}");
-            message.AppendLine($"\tAbility Roll: {baseCreature.Abilities[AbilityConstants.Intelligence].FullScore}");
-
+            var expected = new InvalidCreatureException(
+                "Type 'Outsider' is not valid",
+                false,
+                baseCreature.Name,
+                baseCreature.Abilities[AbilityConstants.Intelligence].FullScore.ToString(),
+                null,
+                CreatureConstants.Templates.HalfFiend);
             await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, false),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.NeutralEvil, "Alignment filter 'Neutral Evil' is not valid for creature alignments")]
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR3, AlignmentConstants.LawfulEvil, "CR filter 3 does not match updated creature CR 2 (from CR 1)")]
-        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil, "Type filter 'wrong subtype' is not valid")]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil, "",
-            Ignore = "As Character doesn't affect already-generated creature compatiblity")]
-        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.NeutralEvil)]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR3, AlignmentConstants.LawfulEvil)]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil)]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.NeutralEvil)]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR3, AlignmentConstants.LawfulEvil)]
+        [TestCase(true, "wrong subtype", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil)]
+        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
             baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
@@ -1542,26 +1543,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment(AlignmentConstants.LawfulNeutral);
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.HalfFiend}");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
-            message.AppendLine($"\tAbility Roll: {baseCreature.Abilities[AbilityConstants.Intelligence].FullScore}");
-
             var filters = new Filters
             {
                 Types = [type],
                 ChallengeRatings = [challengeRating],
                 Alignments = [alignment]
             };
+            var (Compatible, Reason) = filters.AreCompatible(
+                [AlignmentConstants.LawfulEvil],
+                [ChallengeRatingConstants.CR2],
+                [CreatureConstants.Types.Outsider, "subtype 1", "subtype 2",
+                    CreatureConstants.Types.Subtypes.Native, CreatureConstants.Types.Subtypes.Augmented, CreatureConstants.Types.Humanoid]);
+
+            var expected = new InvalidCreatureException(
+                Reason,
+                asCharacter,
+                baseCreature.Name,
+                baseCreature.Abilities[AbilityConstants.Intelligence].FullScore.ToString(),
+                filters,
+                CreatureConstants.Templates.HalfFiend);
 
             await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, asCharacter, filters),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [Test]
@@ -2071,7 +2074,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Alignment.Lawfulness = "preset";
             baseCreature.Alignment.Goodness = "alignment";
 
-            var filters = new Filters { Alignments = ["preset Evil"]};
+            var filters = new Filters { Alignments = ["preset Evil"] };
 
             var creature = await applicator.ApplyToAsync(baseCreature, false, filters);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -2799,7 +2802,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments(AllAlignments)
                 .Build();
 
-            var filters = new Filters { Alignments = [alignment]};
+            var filters = new Filters { Alignments = [alignment] };
 
             var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.False);
@@ -2817,7 +2820,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments(AllAlignments)
                 .Build();
 
-            var filters = new Filters { Alignments = [alignment]};
+            var filters = new Filters { Alignments = [alignment] };
 
             var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.True);
@@ -2859,7 +2862,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments("other Evil", creatureAlignment)
                 .Build();
 
-            var filters = new Filters { Alignments = [alignmentFilter]};
+            var filters = new Filters { Alignments = [alignmentFilter] };
 
             var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.EqualTo(expected));
@@ -2951,7 +2954,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithHitDiceQuantity(hitDiceQuantity)
                 .Build();
 
-            var filters = new Filters { ChallengeRatings = [challengeRating]};
+            var filters = new Filters { ChallengeRatings = [challengeRating] };
 
             var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.EqualTo(expected));
@@ -2968,7 +2971,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments(AlignmentConstants.LawfulEvil, "other alignment")
                 .Build();
 
-            var filters = new Filters { Types = [type]};
+            var filters = new Filters { Types = [type] };
 
             var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.True);
@@ -3019,7 +3022,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments(AlignmentConstants.LawfulEvil, "other alignment")
                 .Build();
 
-            var filters = new Filters { Types = [filterType]};
+            var filters = new Filters { Types = [filterType] };
 
             var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.EqualTo(expected));
@@ -3150,24 +3153,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments(AlignmentConstants.LawfulEvil, "other alignment")
                 .Build();
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {creature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.HalfFiend}");
-            message.AppendLine($"\tAbility Roll: {creature.Abilities[AbilityConstants.Intelligence].FullScore}");
-
+            var expected = new InvalidCreatureException(
+                "Type 'Outsider' is not valid",
+                false,
+                creature.Name,
+                creature.Abilities[AbilityConstants.Intelligence].FullScore.ToString(),
+                null,
+                CreatureConstants.Templates.HalfFiend);
             var function = () => applicator.ApplyTo(creature);
-            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.NeutralEvil, "Alignment filter 'Neutral Evil' is not valid for creature alignments")]
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR3, AlignmentConstants.LawfulEvil, "CR filter 3 does not match updated creature CR 2 (from CR 1)")]
-        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil, "Type filter 'wrong subtype' is not valid")]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil, "",
-            Ignore = "As Character doesn't affect already-generated creature compatiblity")]
-        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.NeutralEvil)]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR3, AlignmentConstants.LawfulEvil)]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil)]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.NeutralEvil)]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR3, AlignmentConstants.LawfulEvil)]
+        [TestCase(true, "wrong subtype", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil)]
+        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
         {
             var creature = new CreaturePrototypeBuilder()
                 .WithTestValues()
@@ -3177,18 +3180,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithChallengeRating(ChallengeRatingConstants.CR1)
                 .WithHitDiceQuantity(1)
                 .WithAlignments(AlignmentConstants.LawfulNeutral)
+                .WithAsCharacter(asCharacter)
                 .Build();
-
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine($"\tCreature: {creature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.HalfFiend}");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
-            message.AppendLine($"\tAbility Roll: {creature.Abilities[AbilityConstants.Intelligence].FullScore}");
 
             var filters = new Filters
             {
@@ -3196,9 +3189,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 ChallengeRatings = [challengeRating],
                 Alignments = [alignment]
             };
+            var (Compatible, Reason) = filters.AreCompatible(
+                [AlignmentConstants.LawfulEvil],
+                [ChallengeRatingConstants.CR2],
+                [CreatureConstants.Types.Outsider, "subtype 1", "subtype 2",
+                    CreatureConstants.Types.Subtypes.Native, CreatureConstants.Types.Subtypes.Augmented, CreatureConstants.Types.Humanoid]);
+
+            var expected = new InvalidCreatureException(
+                Reason,
+                asCharacter,
+                creature.Name,
+                creature.Abilities[AbilityConstants.Intelligence].FullScore.ToString(),
+                filters,
+                CreatureConstants.Templates.HalfFiend);
 
             var function = () => applicator.ApplyTo(creature, filters);
-            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [Test]
@@ -3401,13 +3407,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments(AlignmentConstants.LawfulEvil, "my alignment")
                 .Build();
 
-            var filters = new Filters { Alignments = ["my Evil"]};
+            var filters = new Filters { Alignments = ["my Evil"] };
 
             var updatedPrototype = applicator.ApplyTo(creature, filters);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Alignments, Is.EqualTo(
             [
-                new Alignment("my Evil"),
                 new Alignment("my Evil"),
             ]));
         }
@@ -3419,16 +3424,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithTestValues()
                 .WithName("my creature")
                 .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                .WithAlignments(AlignmentConstants.LawfulEvil, "other Good", "my alignment", AlignmentConstants.NeutralGood)
+                .WithAlignments(AlignmentConstants.LawfulEvil, "my Good", "my alignment", AlignmentConstants.NeutralGood)
                 .Build();
 
-            var filters = new Filters { Alignments = ["my Evil"]};
+            var filters = new Filters { Alignments = ["my Evil"] };
 
             var updatedPrototype = applicator.ApplyTo(creature, filters);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Alignments, Is.EqualTo(
             [
-                new Alignment("my Evil"),
                 new Alignment("my Evil"),
             ]));
         }
@@ -3440,16 +3444,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithTestValues()
                 .WithName("my creature")
                 .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                .WithAlignments(AlignmentConstants.LawfulEvil, "my alignment", "my alignment", AlignmentConstants.NeutralEvil)
+                .WithAlignments(AlignmentConstants.LawfulEvil, "my alignment", "my other-alignment", "my alignment", AlignmentConstants.NeutralEvil)
                 .Build();
 
-            var filters = new Filters { Alignments = ["my Evil"]};
+            var filters = new Filters { Alignments = ["my Evil"] };
 
             var updatedPrototype = applicator.ApplyTo(creature, filters);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
             Assert.That(updatedPrototype.Alignments, Is.EqualTo(
             [
-                new Alignment("my Evil"),
                 new Alignment("my Evil"),
                 new Alignment("my Evil"),
                 new Alignment("my Evil"),

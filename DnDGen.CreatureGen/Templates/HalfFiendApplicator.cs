@@ -90,7 +90,7 @@ namespace DnDGen.CreatureGen.Templates
             UpdateCreatureLevelAdjustment(creature);
 
             // Alignment
-            UpdateCreatureAlignment(creature, filters);
+            UpdateCreatureAlignment(creature);
 
             //Armor Class
             UpdateCreatureArmorClass(creature);
@@ -190,19 +190,9 @@ namespace DnDGen.CreatureGen.Templates
 
         private static void UpdateCreatureAbilities(CreaturePrototype creature) => UpdateCreatureAbilities(creature.Abilities);
 
-        private void UpdateCreatureAlignment(Creature creature, Filters filters)
+        private void UpdateCreatureAlignment(Creature creature)
         {
             creature.Alignment = UpdateCreatureAlignment(creature.Alignment);
-
-            if (filters.Alignments.Count > 0 && !filters.Alignments.Contains(creature.Alignment.Full))
-            {
-                throw new InvalidCreatureException(
-                    $"Alignment {creature.Alignment} is not valid for filters",
-                    false,
-                    creature.Name,
-                    filters,
-                    templates: [.. creature.Templates.Concat([CreatureConstants.Templates.HalfFiend])]);
-            }
         }
 
         private void UpdateCreatureAlignment(CreaturePrototype creature, Filters filters)
@@ -213,9 +203,7 @@ namespace DnDGen.CreatureGen.Templates
 
             if (filters?.Alignments?.Count > 0)
             {
-                var validFilters = filters.Alignments.Where(a => a.Contains(AlignmentConstants.Evil));
-                //INFO: Using Where instead of Intersect to maintain alignment weighting
-                updatedAlignments = updatedAlignments.Where(a => validFilters.Contains(a.Full));
+                updatedAlignments = updatedAlignments.Where(a => filters.Alignments.Contains(a.Full));
             }
 
             creature.Alignments = [.. updatedAlignments];
@@ -456,7 +444,7 @@ namespace DnDGen.CreatureGen.Templates
             tasks.Add(levelAdjustmentTask);
 
             // Alignment
-            var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature, filters));
+            var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature));
             tasks.Add(alignmentTask);
 
             //Armor Class

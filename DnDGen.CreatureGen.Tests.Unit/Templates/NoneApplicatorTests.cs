@@ -1,4 +1,5 @@
 using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Templates;
@@ -6,7 +7,6 @@ using DnDGen.CreatureGen.Verifiers.Exceptions;
 using NUnit.Framework;
 using System;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
@@ -28,12 +28,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.Pass("Creatures with no filters are always compatible for None template");
         }
 
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, "wrong alignment", "Alignment filter 'wrong alignment' is not valid")]
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment", "CR filter 2 does not match creature CR 1")]
-        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1, "original alignment", "Type filter 'wrong subtype' is not valid")]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1, "original alignment", "",
-            Ignore = "As Character doesn't affect already-generated creature compatiblity")]
-        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, "wrong alignment")]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment")]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1, "original alignment")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1, "wrong alignment")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR2, "original alignment")]
+        [TestCase(true, "wrong subtype", ChallengeRatingConstants.CR1, "original alignment")]
+        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
         {
             var creature = new CreatureBuilder()
                 .WithTestValues()
@@ -47,25 +48,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Clone(creature)
                 .Build();
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine($"\tCreature: {creature.Name}");
-            message.AppendLine($"\tTemplate: None");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
-
             var filters = new Filters
             {
                 Types = [type],
                 ChallengeRatings = [challengeRating],
                 Alignments = [alignment]
             };
+            var (Compatible, Reason) = filters.AreCompatible(
+                ["original alignment"],
+                [ChallengeRatingConstants.CR1],
+                creature.Type.AllTypes);
+            var expected = new InvalidCreatureException(Reason, asCharacter, creature.Name, filters, templates: [CreatureConstants.Templates.None]);
 
             var func = () => templateApplicator.ApplyTo(clone, asCharacter, filters);
-            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [Test]
@@ -91,7 +87,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             };
 
             var templatedCreature = templateApplicator.ApplyTo(clone, false, filters);
-            Assert.That(templatedCreature, Is.EqualTo(clone));
+            Assert.That(templatedCreature, Is.SameAs(clone));
         }
 
         [Test]
@@ -106,7 +102,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Build();
 
             var templatedCreature = templateApplicator.ApplyTo(clone, false);
-            Assert.That(templatedCreature, Is.EqualTo(clone));
+            Assert.That(templatedCreature, Is.SameAs(clone));
             AssertCreatureUnchanged(templatedCreature, creature);
         }
 
@@ -300,17 +296,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             await Task.Run(() => Assert.Pass("Creatures with no filters are always compatible for None template"));
         }
 
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, "wrong alignment", "Alignment filter 'wrong alignment' is not valid")]
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment", "CR filter 2 does not match creature CR 1")]
-        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1, "original alignment", "Type filter 'wrong subtype' is not valid")]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1, "original alignment", "",
-            Ignore = "As Character doesn't affect already-generated creature compatiblity")]
-        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(
-            bool asCharacter,
-            string type,
-            string challengeRating,
-            string alignment,
-            string reason)
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, "wrong alignment")]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment")]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1, "original alignment")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1, "wrong alignment")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR2, "original alignment")]
+        [TestCase(true, "wrong subtype", ChallengeRatingConstants.CR1, "original alignment")]
+        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
         {
             var creature = new CreatureBuilder()
                 .WithTestValues()
@@ -324,25 +316,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Clone(creature)
                 .Build();
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine($"\tCreature: {creature.Name}");
-            message.AppendLine($"\tTemplate: None");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
-
             var filters = new Filters
             {
                 Types = [type],
                 ChallengeRatings = [challengeRating],
                 Alignments = [alignment]
             };
+            var (Compatible, Reason) = filters.AreCompatible(
+                ["original alignment"],
+                [ChallengeRatingConstants.CR1],
+                creature.Type.AllTypes);
+            var expected = new InvalidCreatureException(Reason, asCharacter, creature.Name, filters, templates: [CreatureConstants.Templates.None]);
 
             await Assert.ThatAsync(async () => await templateApplicator.ApplyToAsync(clone, asCharacter, filters),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [Test]
@@ -390,49 +377,117 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void IsCompatible_ReturnsTrue()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .Build();
+
+            var compatible = templateApplicator.IsCompatible(creature);
+            Assert.That(compatible, Is.True);
         }
 
         [Test]
         public void IsCompatible_WithAlignment_ReturnsTrue_WhenPrototypeContainsAlignmentFilter()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithAlignments("my alignment", "other alignment")
+                .Build();
+
+            var filters = new Filters { Alignments = ["different alignment", "my alignment"] };
+
+            var compatible = templateApplicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.True);
         }
 
         [Test]
         public void IsCompatible_WithAlignment_ReturnsFalse_WhenPrototypeDoesNotContainAlignmentFilter()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithAlignments("my alignment", "other alignment")
+                .Build();
+
+            var filters = new Filters { Alignments = ["different alignment", "wrong alignment"] };
+
+            var compatible = templateApplicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
         public void IsCompatible_WithChallengeRating_ReturnsTrue_WhenChallengeRatingMatches()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithChallengeRating("my cr")
+                .Build();
+
+            var filters = new Filters { ChallengeRatings = ["different cr", "my cr"] };
+
+            var compatible = templateApplicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.True);
         }
 
         [Test]
         public void IsCompatible_WithChallengeRating_ReturnsFalse_WhenChallengeRatingDoesNotMatch()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithChallengeRating("my cr")
+                .Build();
+
+            var filters = new Filters { ChallengeRatings = ["different cr", "wrong cr"] };
+
+            var compatible = templateApplicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
         public void IsCompatible_WithType_ReturnsTrue_WhenPrototypeContainsTypeFilter()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType("my type", "other type")
+                .Build();
+
+            var filters = new Filters { Types = ["different type", "my type"] };
+
+            var compatible = templateApplicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.True);
         }
 
         [Test]
         public void IsCompatible_WithType_ReturnsFalse_WhenPrototypeDoesNotContainTypeFilter()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType("my type", "other type")
+                .Build();
+
+            var filters = new Filters { Types = ["different type", "wrong type"] };
+
+            var compatible = templateApplicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsTrue()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithAlignments("my alignment", "other alignment")
+                .WithChallengeRating("my cr")
+                .WithCreatureType("my type", "other type")
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignments = ["different alignment", "my alignment"],
+                ChallengeRatings = ["different cr", "my cr"],
+                Types = ["different type", "my type"]
+            };
+
+            var compatible = templateApplicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.True);
         }
 
         [Test]
@@ -444,19 +499,64 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseAlignment()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithAlignments("my alignment", "other alignment")
+                .WithCreatureType("my type", "other type")
+                .WithCreatureType("my type", "other type")
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignments = ["different alignment", "wrong alignment"],
+                ChallengeRatings = ["different cr", "my cr"],
+                Types = ["different type", "my type"]
+            };
+
+            var compatible = templateApplicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseChallengeRating()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithAlignments("my alignment", "other alignment")
+                .WithCreatureType("my type", "other type")
+                .WithCreatureType("my type", "other type")
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignments = ["different alignment", "my alignment"],
+                ChallengeRatings = ["different cr", "wrong cr"],
+                Types = ["different type", "my type"]
+            };
+
+            var compatible = templateApplicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseType()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithAlignments("my alignment", "other alignment")
+                .WithCreatureType("my type", "other type")
+                .WithCreatureType("my type", "other type")
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignments = ["different alignment", "my alignment"],
+                ChallengeRatings = ["different cr", "my cr"],
+                Types = ["different type", "wrong type"]
+            };
+
+            var compatible = templateApplicator.IsCompatible(creature, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
@@ -465,35 +565,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.Pass("Creature prototypes with no filters are always compatible for None template");
         }
 
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, "wrong alignment", "Alignment filter 'wrong alignment' is not valid")]
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment", "CR filter 2 does not match creature CR 1")]
-        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1, "original alignment", "Type filter 'wrong subtype' is not valid")]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1, "original alignment", "",
-            Ignore = "As Character doesn't affect already-generated creature compatiblity")]
-        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, "wrong alignment")]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment")]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1, "original alignment")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1, "wrong alignment")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR2, "original alignment")]
+        [TestCase(true, "wrong subtype", ChallengeRatingConstants.CR1, "original alignment")]
+        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
         {
-            Assert.Fail("update for prototype");
-            var creature = new CreatureBuilder()
+            var creature = new CreaturePrototypeBuilder()
                 .WithTestValues()
-                .WithCreatureType(CreatureConstants.Types.Humanoid)
-                .AddSubtype("subtype 1")
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
                 .WithChallengeRating(ChallengeRatingConstants.CR1)
-                .WithAlignment("original alignment")
+                .WithAlignments("original alignment", "other alignment")
+                .WithAsCharacter(asCharacter)
                 .Build();
-
-            var clone = new CreatureBuilder()
-                .Clone(creature)
-                .Build();
-
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine($"\tCreature: {creature.Name}");
-            message.AppendLine($"\tTemplate: None");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
 
             var filters = new Filters
             {
@@ -501,27 +587,95 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 ChallengeRatings = [challengeRating],
                 Alignments = [alignment]
             };
+            var (Compatible, Reason) = filters.AreCompatible(
+                ["original alignment", "other alignment"],
+                [ChallengeRatingConstants.CR1],
+                creature.Type.AllTypes);
+            var expected = new InvalidCreatureException(Reason, asCharacter, creature.Name, filters, templates: [CreatureConstants.Templates.None]);
 
-            var func = () => templateApplicator.ApplyTo(clone, asCharacter, filters);
-            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var func = () => templateApplicator.ApplyTo(creature, filters);
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [Test]
         public void ApplyTo_Prototype_ReturnsPrototype()
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .Build();
+
+            var clone = new CreaturePrototypeBuilder()
+                .Clone(prototype)
+                .Build();
+
+            var updatedPrototype = templateApplicator.ApplyTo(clone);
+            Assert.That(updatedPrototype, Is.SameAs(clone).And.Not.SameAs(prototype));
+            AssertCreatureUnchanged(updatedPrototype, prototype);
+        }
+
+        private static void AssertCreatureUnchanged(CreaturePrototype actual, CreaturePrototype expected)
+        {
+            Assert.That(actual.Abilities, Has.Count.EqualTo(expected.Abilities.Count));
+            Assert.That(actual.Abilities.Keys, Is.EquivalentTo(expected.Abilities.Keys));
+
+            foreach (var kvp in expected.Abilities)
+            {
+                Assert.That(actual.Abilities[kvp.Key].AdvancementAdjustment, Is.EqualTo(kvp.Value.AdvancementAdjustment));
+                Assert.That(actual.Abilities[kvp.Key].BaseScore, Is.EqualTo(kvp.Value.BaseScore));
+                Assert.That(actual.Abilities[kvp.Key].FullScore, Is.EqualTo(kvp.Value.FullScore));
+                Assert.That(actual.Abilities[kvp.Key].HasScore, Is.EqualTo(kvp.Value.HasScore));
+                Assert.That(actual.Abilities[kvp.Key].Modifier, Is.EqualTo(kvp.Value.Modifier));
+                Assert.That(actual.Abilities[kvp.Key].Name, Is.EqualTo(kvp.Value.Name).And.EqualTo(kvp.Key));
+                Assert.That(actual.Abilities[kvp.Key].RacialAdjustment, Is.EqualTo(kvp.Value.RacialAdjustment));
+            }
+
+            Assert.That(actual.Alignments, Is.EquivalentTo(expected.Alignments));
+
+            Assert.That(actual.CasterLevel, Is.EqualTo(expected.CasterLevel));
+            Assert.That(actual.ChallengeRating, Is.EqualTo(expected.ChallengeRating));
+            Assert.That(actual.HitDiceQuantity, Is.EqualTo(expected.HitDiceQuantity));
+
+            Assert.That(actual.LevelAdjustment, Is.EqualTo(expected.LevelAdjustment));
+            Assert.That(actual.Name, Is.EqualTo(expected.Name));
+            Assert.That(actual.Templates, Is.Empty);
+            Assert.That(actual.Type.Name, Is.EqualTo(expected.Type.Name));
+            Assert.That(actual.Type.SubTypes, Is.EquivalentTo(expected.Type.SubTypes));
         }
 
         [Test]
-        public void ApplyTo_PrototypeWithAlignment_ReturnsPrototype_WithUpdatedAlignment()
+        public void ApplyTo_PrototypeWithAlignment_ReturnsPrototype_WithUpdatedAlignments()
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithAlignments("my alignment", "other alignment", "wrong alignment")
+                .Build();
+
+            var clone = new CreaturePrototypeBuilder()
+                .Clone(prototype)
+                .Build();
+
+            var filters = new Filters { Alignments = ["other alignment", "different alignment", "my alignment"] };
+
+            var updatedPrototype = templateApplicator.ApplyTo(clone, filters);
+            Assert.That(updatedPrototype, Is.SameAs(clone).And.Not.SameAs(prototype));
+            Assert.That(updatedPrototype.Alignments, Is.EquivalentTo([new Alignment("my alignment"), new Alignment("other alignment")]));
         }
 
         [Test]
         public void ApplyTo_Prototype_ReturnsPrototype_WithAdditionalTemplates()
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .Build();
+            prototype.Templates.Add("my template");
+
+            var clone = new CreaturePrototypeBuilder()
+                .Clone(prototype)
+                .Build();
+
+            var updatedPrototype = templateApplicator.ApplyTo(clone);
+            Assert.That(updatedPrototype, Is.SameAs(clone).And.Not.SameAs(prototype));
+            Assert.That(updatedPrototype.Templates, Is.EqualTo(["my template"]));
         }
     }
 }

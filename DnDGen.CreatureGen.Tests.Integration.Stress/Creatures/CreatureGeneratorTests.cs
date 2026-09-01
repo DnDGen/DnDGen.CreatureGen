@@ -3,13 +3,13 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
+using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
@@ -265,41 +265,29 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private void AssertRandomCreature(Creature creature, bool asCharacter, Filters filters, params string[] templates)
         {
-            var message = new StringBuilder();
-            var joinedTemplates = string.Join(", ", templates);
-            var messageTemplate = "Null";
-
-            if (templates.Length != 0)
-            {
-                messageTemplate = !string.IsNullOrEmpty(joinedTemplates) ? joinedTemplates : "(None)";
-            }
-
-            message.AppendLine($"Creature: {creature.Summary}");
-            message.AppendLine($"As Character: {asCharacter}");
-            message.AppendLine($"Template: {messageTemplate}");
-            message.AppendLine($"Filters: {filters.GetDescription()}");
+            var failure = new InvalidCreatureException(null, asCharacter, creature.Summary, filters, null, templates);
 
             var timeLimit = CreatureAsserter.GetGenerationTimeLimitInSeconds(creature);
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(timeLimit), message.ToString());
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(timeLimit), failure.Message);
 
             if (templates.Any(t => !string.IsNullOrEmpty(t)))
-                Assert.That(creature.Templates, Is.EqualTo(templates.Where(t => t != CreatureConstants.Templates.None)), message.ToString());
+                Assert.That(creature.Templates, Is.EqualTo(templates.Where(t => t != CreatureConstants.Templates.None)), failure.Message);
 
             //INFO: While we support multiple filters (acting as an OR), our current test cases only use 1 filter each.
             //if we ever add multiple filter values as abilityRandomizerFactory test case, these assertions should fail and should be updated to handle the OR correctly
             if (filters?.Types?.Count > 0)
-                CreatureAsserter.AssertCreatureIsType(creature, filters.Types.Single(), message.ToString());
+                CreatureAsserter.AssertCreatureIsType(creature, filters.Types.Single(), failure.Message);
 
             if (filters?.ChallengeRatings?.Count > 0)
-                Assert.That(creature.ChallengeRating, Is.EqualTo(filters.ChallengeRatings.Single()), message.ToString());
+                Assert.That(creature.ChallengeRating, Is.EqualTo(filters.ChallengeRatings.Single()), failure.Message);
 
             if (filters?.Alignments?.Count > 0)
-                Assert.That(creature.Alignment.Full, Is.EqualTo(filters.Alignments.Single()), message.ToString());
+                Assert.That(creature.Alignment.Full, Is.EqualTo(filters.Alignments.Single()), failure.Message);
 
             if (asCharacter)
-                creatureAsserter.AssertCreatureAsCharacter(creature, message.ToString());
+                creatureAsserter.AssertCreatureAsCharacter(creature, failure.Message);
             else
-                creatureAsserter.AssertCreature(creature, asCharacter, message.ToString());
+                creatureAsserter.AssertCreature(creature, asCharacter, failure.Message);
         }
 
         [Test]

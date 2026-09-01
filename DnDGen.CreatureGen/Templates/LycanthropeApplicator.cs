@@ -586,6 +586,11 @@ namespace DnDGen.CreatureGen.Templates
             creature.Templates.Add(LycanthropeSpecies);
         }
 
+        private void UpdateCreatureTemplate(CreaturePrototype creature)
+        {
+            creature.Templates.Add(LycanthropeSpecies);
+        }
+
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
             var animalData = creatureDataSelector.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, AnimalSpecies);
@@ -796,6 +801,7 @@ namespace DnDGen.CreatureGen.Templates
             UpdateCreatureChallengeRating(creature, animalHitDiceQuantity);
             UpdateCreatureLevelAdjustment(creature);
             UpdateCreatureType(creature);
+            UpdateCreatureTemplate(creature);
 
             if (filters?.Alignments?.Count > 0)
             {

@@ -12,11 +12,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.TestCaseSources
         {
             get
             {
-                yield return new TestCaseData(false, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment", "Alignment filter 'wrong alignment' is not valid");
-                yield return new TestCaseData(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment", "CR filter 2 does not match updated creature CR 3 (from CR 1)");
-                yield return new TestCaseData(false, "wrong subtype", ChallengeRatingConstants.CR3, "original alignment", "Type filter 'wrong subtype' is not valid");
-                //INFO: This test case isn't valid, since As Character doesn't affect already-generated creature compatibility
-                //yield return new TestCaseData(true, "subtype 1", ChallengeRatingConstants.CR3, "original alignment");
+                yield return new TestCaseData(false, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment");
+                yield return new TestCaseData(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment");
+                yield return new TestCaseData(false, "wrong subtype", ChallengeRatingConstants.CR3, "original alignment");
+                yield return new TestCaseData(true, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment");
+                yield return new TestCaseData(true, "subtype 1", ChallengeRatingConstants.CR2, "original alignment");
+                yield return new TestCaseData(true, "wrong subtype", ChallengeRatingConstants.CR3, "original alignment");
             }
         }
 

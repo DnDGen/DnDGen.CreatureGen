@@ -26,7 +26,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
@@ -126,15 +125,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Type.Name = CreatureConstants.Types.Outsider;
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine("\tTemplate: my-dragon-species");
-
-            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, false)),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var expected = new InvalidCreatureException("Type 'Outsider' is not valid", false, baseCreature.Name, templates: ["my-dragon-species"]);
+            var func = () => applicator.ApplyTo(baseCreature, false);
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [TestCaseSource(nameof(IncompatibleFilters))]
@@ -142,24 +135,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             bool asCharacter,
             string type,
             string challengeRating,
-            string alignment,
-            string reason)
+            string alignment)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
             baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
             baseCreature.HitPoints.HitDice[0].Quantity = 1;
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
-            baseCreature.Alignment = new Alignment($"original alignment");
-
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: my-dragon-species");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
+            baseCreature.Alignment = new Alignment("original alignment");
 
             var filters = new Filters
             {
@@ -167,20 +149,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 ChallengeRatings = [challengeRating],
                 Alignments = [alignment]
             };
+            var (Compatible, Reason) = filters.AreCompatible(
+                ["other alignment", "my-dragon-speciesy scaley", "preset alignment"],
+                [ChallengeRatingConstants.CR3],
+                [CreatureConstants.Types.Dragon, "subtype 1", "subtype 2", CreatureConstants.Types.Subtypes.Augmented, CreatureConstants.Types.Humanoid]);
+            var expected = new InvalidCreatureException(Reason, asCharacter, baseCreature.Name, filters, templates: ["my-dragon-species"]);
 
-            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, asCharacter, filters)),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var func = () => applicator.ApplyTo(baseCreature, asCharacter, filters);
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         private static IEnumerable IncompatibleFilters
         {
             get
             {
-                yield return new TestCaseData(false, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment", "Alignment filter 'wrong alignment' is not valid");
-                yield return new TestCaseData(false, "subtype 1", ChallengeRatingConstants.CR2, "my-dragon-speciesy scaley", "CR filter 2 does not match updated creature CR 3 (from CR 1)");
-                yield return new TestCaseData(false, "wrong subtype", ChallengeRatingConstants.CR3, "my-dragon-speciesy scaley", "Type filter 'wrong subtype' is not valid");
-                //INFO: This test case isn't valid, since As Character doesn't affect already-generated creature compatibility
-                //yield return new TestCaseData(true, "subtype 1", ChallengeRatingConstants.CR3, $"my-dragon-speciesy scaley");
+                yield return new TestCaseData(false, "subtype 1", ChallengeRatingConstants.CR3, "wrong-dragon-speciesy scaley");
+                yield return new TestCaseData(false, "subtype 1", ChallengeRatingConstants.CR2, "my-dragon-speciesy scaley");
+                yield return new TestCaseData(false, "wrong subtype", ChallengeRatingConstants.CR3, "my-dragon-speciesy scaley");
+                yield return new TestCaseData(true, "subtype 1", ChallengeRatingConstants.CR3, "wrong-dragon-speciesy scaley");
+                yield return new TestCaseData(true, "subtype 1", ChallengeRatingConstants.CR2, "my-dragon-speciesy scaley");
+                yield return new TestCaseData(true, "wrong subtype", ChallengeRatingConstants.CR3, "my-dragon-speciesy scaley");
             }
         }
 
@@ -1381,7 +1369,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, applicator.DragonSpecies))
                 .Returns((string a, string t, string c) => [$"other alignment", $"preset alignment"]);
 
-            var filters = new Filters { Alignments = ["preset alignment"]};
+            var filters = new Filters { Alignments = ["preset alignment"] };
 
             var creature = applicator.ApplyTo(baseCreature, false, filters);
             Assert.That(creature.Alignment.Lawfulness, Is.EqualTo("preset"));
@@ -1424,15 +1412,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Type.Name = CreatureConstants.Types.Outsider;
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: my-dragon-species");
-
+            var expected = new InvalidCreatureException("Type 'Outsider' is not valid", false, baseCreature.Name, templates: ["my-dragon-species"]);
             await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, false),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [TestCaseSource(nameof(IncompatibleFilters))]
@@ -1440,24 +1422,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             bool asCharacter,
             string type,
             string challengeRating,
-            string alignment,
-            string reason)
+            string alignment)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
             baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
             baseCreature.HitPoints.HitDice[0].Quantity = 1;
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
-            baseCreature.Alignment = new Alignment($"original alignment");
-
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: my-dragon-species");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
+            baseCreature.Alignment = new Alignment("original alignment");
 
             var filters = new Filters
             {
@@ -1465,9 +1436,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 ChallengeRatings = [challengeRating],
                 Alignments = [alignment]
             };
+            var (Compatible, Reason) = filters.AreCompatible(
+                ["other alignment", "my-dragon-speciesy scaley", "preset alignment"],
+                [ChallengeRatingConstants.CR3],
+                [CreatureConstants.Types.Dragon, "subtype 1", "subtype 2", CreatureConstants.Types.Subtypes.Augmented, CreatureConstants.Types.Humanoid]);
+            var expected = new InvalidCreatureException(Reason, asCharacter, baseCreature.Name, filters, templates: ["my-dragon-species"]);
 
             await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, asCharacter, filters),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [Test]
@@ -2114,7 +2090,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(g => g.Generate(applicator.DragonSpecies, null, It.IsAny<Filters>()))
                 .Returns((string c, string t, Filters f) => new Alignment(f.Alignments.Single()));
 
-            var filters = new Filters { Alignments = ["preset alignment"]};
+            var filters = new Filters { Alignments = ["preset alignment"] };
 
             var creature = await applicator.ApplyToAsync(baseCreature, false, filters);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -2634,7 +2610,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, applicator.DragonSpecies))
                 .Returns(["different alignment", "my dragon alignment"]);
 
-            var filters = new Filters { Alignments = ["my dragon alignment"]};
+            var filters = new Filters { Alignments = ["my dragon alignment"] };
 
             var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.True);
@@ -2653,7 +2629,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, applicator.DragonSpecies))
                 .Returns(["different alignment", "my dragon alignment"]);
 
-            var filters = new Filters { Alignments = ["different alignment"]};
+            var filters = new Filters { Alignments = ["different alignment"] };
 
             var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.True);
@@ -2672,7 +2648,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, applicator.DragonSpecies))
                 .Returns(["different alignment", "my dragon alignment"]);
 
-            var filters = new Filters { Alignments = ["wrong alignment"]};
+            var filters = new Filters { Alignments = ["wrong alignment"] };
 
             var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.False);
@@ -2688,7 +2664,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithChallengeRating(original)
                 .Build();
 
-            var filters = new Filters { ChallengeRatings = [filter]};
+            var filters = new Filters { ChallengeRatings = [filter] };
 
             var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.True);
@@ -2737,7 +2713,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
                 .Build();
 
-            var filters = new Filters { Types = [type]};
+            var filters = new Filters { Types = [type] };
 
             var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.True);
@@ -2791,7 +2767,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithCreatureType(originalType, "subtype 1", "subtype 2")
                 .Build();
 
-            var filters = new Filters { Types = [filterType]};
+            var filters = new Filters { Types = [filterType] };
 
             var compatible = applicator.IsCompatible(creature, filters);
             Assert.That(compatible, Is.EqualTo(expected));
@@ -2946,15 +2922,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithCreatureType(CreatureConstants.Types.Outsider, "subtype 1", "subtype 2")
                 .Build();
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {creature.Name}");
-            message.AppendLine("\tTemplate: my-dragon-species");
-
+            var expected = new InvalidCreatureException("Type 'Outsider' is not valid", false, creature.Name, templates: ["my-dragon-species"]);
             var func = () => applicator.ApplyTo(creature);
-            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [TestCaseSource(nameof(IncompatibleFilters))]
@@ -2962,8 +2932,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             bool asCharacter,
             string type,
             string challengeRating,
-            string alignment,
-            string reason)
+            string alignment)
         {
             var creature = new CreaturePrototypeBuilder()
                 .WithTestValues()
@@ -2972,18 +2941,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithChallengeRating(ChallengeRatingConstants.CR1)
                 .WithHitDiceQuantity(1)
                 .WithAlignments("original alignment")
+                .WithAsCharacter(asCharacter)
                 .Build();
-            creature.AsCharacter = asCharacter;
-
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {creature.Name}");
-            message.AppendLine($"\tTemplate: my-dragon-species");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
 
             var filters = new Filters
             {
@@ -2991,9 +2950,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 ChallengeRatings = [challengeRating],
                 Alignments = [alignment]
             };
+            var (Compatible, Reason) = filters.AreCompatible(
+                ["other alignment", "my-dragon-speciesy scaley", "preset alignment"],
+                [ChallengeRatingConstants.CR3],
+                [CreatureConstants.Types.Dragon, "subtype 1", "subtype 2", CreatureConstants.Types.Subtypes.Augmented, CreatureConstants.Types.Humanoid]);
+            var expected = new InvalidCreatureException(Reason, asCharacter, creature.Name, filters, templates: ["my-dragon-species"]);
 
             var func = () => applicator.ApplyTo(creature, filters);
-            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [Test]
@@ -3179,7 +3143,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
                 .Build();
 
-            var filters = new Filters { Alignments = ["my-dragon alignment"]};
+            var filters = new Filters { Alignments = ["my-dragon alignment"] };
 
             var updatedPrototype = applicator.ApplyTo(creature, filters);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
@@ -3201,7 +3165,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
                 .Build();
 
-            var filters = new Filters { Alignments = ["my-dragon alignment"]};
+            var filters = new Filters { Alignments = ["my-dragon alignment"] };
 
             var updatedPrototype = applicator.ApplyTo(creature, filters);
             Assert.That(updatedPrototype.Name, Is.EqualTo("my creature"));
