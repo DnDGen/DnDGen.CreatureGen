@@ -166,22 +166,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Type.Name = CreatureConstants.Types.Outsider;
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Zombie}");
-
-            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, false)),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var expected = new InvalidCreatureException("Type 'Outsider' is not valid", false, baseCreature.Name, templates: [CreatureConstants.Templates.Zombie]);
+            var function = () => applicator.ApplyTo(baseCreature, false);
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.TrueNeutral, "Alignment filter 'True Neutral' is not valid")]
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil, "CR filter 1 does not match updated creature CR 1/2")]
-        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.NeutralEvil, "Type filter 'wrong subtype' is not valid")]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.NeutralEvil, "Zombies cannot be characters")]
-        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
+        [TestCase("subtype 1", ChallengeRatingConstants.CR1_3rd, AlignmentConstants.TrueNeutral)]
+        [TestCase("subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR1_3rd, AlignmentConstants.NeutralEvil)]
+        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(string type, string challengeRating, string alignment)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
             baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
@@ -189,25 +182,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment("original alignment");
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Zombie}");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
-
             var filters = new Filters
             {
                 Types = [type],
                 ChallengeRatings = [challengeRating],
                 Alignments = [alignment]
             };
+            var (Compatible, Reason) = filters.AreCompatible(
+                [AlignmentConstants.NeutralEvil],
+                [ChallengeRatingConstants.CR1_3rd],
+                [CreatureConstants.Types.Undead, "subtype 1", "subtype 2"]);
 
-            var func = () => applicator.ApplyTo(baseCreature, asCharacter, filters);
-            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var expected = new InvalidCreatureException(
+                Reason,
+                false,
+                baseCreature.Name,
+                filters,
+                null,
+                CreatureConstants.Templates.Zombie);
+
+            var func = () => applicator.ApplyTo(baseCreature, false, filters);
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [Test]
@@ -249,7 +244,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     zombieBaseAttack,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2, baseCreature.Demographics.Gender))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2,
+                    baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
             var filters = new Filters
@@ -1225,15 +1221,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Type.Name = CreatureConstants.Types.Outsider;
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Zombie}");
-
+            var expected = new InvalidCreatureException(
+                "Type 'Outsider' is not valid",
+                false,
+                baseCreature.Name,
+                templates: [CreatureConstants.Templates.Zombie]);
             await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, false),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.TrueNeutral, "Alignment filter 'True Neutral' is not valid")]
@@ -2499,18 +2493,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible()
         {
-            Assert.Fail("update for prototype");
-            baseCreature.Type.Name = CreatureConstants.Types.Outsider;
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Outsider, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .WithChallengeRating(ChallengeRatingConstants.CR1)
+                .WithAlignments("original alignment")
+                .Build();
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Zombie}");
+            var expected = new InvalidCreatureException(
+                "Type 'Outsider' is not valid",
+                false,
+                prototype.Name,
+                templates: [CreatureConstants.Templates.Zombie]);
 
-            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, false)),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var function = () => applicator.ApplyTo(prototype);
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.TrueNeutral, "Alignment filter 'True Neutral' is not valid")]
@@ -2550,15 +2548,50 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_Prototype_ReturnsUpdatedPrototype()
         {
-            Assert.Fail("not yet written");
-            Assert.Fail("Assert updated abilities");
-            Assert.Fail("Assert updated hit points");
-            Assert.Fail("Assert updated CR");
-            Assert.Fail("Assert level adjustment is null");
-            Assert.Fail("Assert updated creature type");
-            Assert.Fail("Assert updated alignment");
-            Assert.Fail("Assert caster level is 0");
-            Assert.Fail("assert prototype template updated");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithAbility(AbilityConstants.Constitution, 9266)
+                .WithAbility(AbilityConstants.Wisdom, 90210)
+                .WithAbility(AbilityConstants.Intelligence, 42)
+                .WithAbility(AbilityConstants.Charisma, 600)
+                .WithAbility(AbilityConstants.Strength, 1337)
+                .WithAbility(AbilityConstants.Dexterity, 1336)
+                .WithHitDiceQuantity(1)
+                .WithChallengeRating("my cr")
+                .WithLevelAdjustment(96)
+                .WithAlignments("my alignment", "my other alignment")
+                .WithCasterLevel(783)
+                .Build();
+
+            var updatedPrototype = applicator.ApplyTo(prototype);
+            Assert.That(updatedPrototype, Is.SameAs(prototype));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].TemplateScore, Is.Zero);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].FullScore, Is.Zero);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].HasScore, Is.False);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].HasScore, Is.True);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].TemplateScore, Is.Zero);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].FullScore, Is.Zero);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].HasScore, Is.False);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].HasScore, Is.True);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.EqualTo(2));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(1337 + Ability.DefaultScore + 2));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].HasScore, Is.True);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].TemplateAdjustment, Is.EqualTo(-2));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(1336 + Ability.DefaultScore - 2));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].HasScore, Is.True);
+            Assert.That(updatedPrototype.HitDiceQuantity, Is.EqualTo(2));
+            Assert.That(updatedPrototype.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1_2nd));
+            Assert.That(updatedPrototype.LevelAdjustment, Is.Null);
+            Assert.That(updatedPrototype.Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
+            Assert.That(updatedPrototype.Type.SubTypes, Is.EquivalentTo(["subtype 1", "subtype 2"]));
+            Assert.That(updatedPrototype.Alignments, Is.EquivalentTo([new Alignment(AlignmentConstants.NeutralEvil)]));
+            Assert.That(updatedPrototype.CasterLevel, Is.Zero);
+            Assert.That(updatedPrototype.Templates, Is.EqualTo([CreatureConstants.Templates.Zombie]));
         }
 
         [TestCase(0, 0)]
@@ -2586,35 +2619,45 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [TestCase(ChallengeRatingConstants.CR1_8th, 0)]
-        [TestCase(ChallengeRatingConstants.CR1_8th, 0.1)]
-        [TestCase(ChallengeRatingConstants.CR1_8th, 0.24)]
-        [TestCase(ChallengeRatingConstants.CR1_8th, 0.25)]
-        [TestCase(ChallengeRatingConstants.CR1_4th, 0.25)]
-        [TestCase(ChallengeRatingConstants.CR1_4th, 0.26)]
-        [TestCase(ChallengeRatingConstants.CR1_4th, 0.4)]
-        [TestCase(ChallengeRatingConstants.CR1_4th, 0.5)]
-        [TestCase(ChallengeRatingConstants.CR1_2nd, 0.5)]
-        [TestCase(ChallengeRatingConstants.CR1_2nd, 0.6)]
-        [TestCase(ChallengeRatingConstants.CR1_2nd, 0.9)]
-        [TestCase(ChallengeRatingConstants.CR1_2nd, 1)]
-        [TestCase(ChallengeRatingConstants.CR1, 1)]
-        [TestCase(ChallengeRatingConstants.CR1, 2)]
-        [TestCase(ChallengeRatingConstants.CR2, 2)]
-        [TestCase(ChallengeRatingConstants.CR2, 3)]
-        [TestCase(ChallengeRatingConstants.CR3, 3)]
-        [TestCase(ChallengeRatingConstants.CR3, 4)]
-        [TestCase(ChallengeRatingConstants.CR3, 5)]
-        [TestCase(ChallengeRatingConstants.CR4, 5)]
-        [TestCase(ChallengeRatingConstants.CR4, 6)]
-        [TestCase(ChallengeRatingConstants.CR4, 7)]
-        [TestCase(ChallengeRatingConstants.CR5, 7)]
-        [TestCase(ChallengeRatingConstants.CR5, 8)]
-        [TestCase(ChallengeRatingConstants.CR6, 8)]
-        [TestCase(ChallengeRatingConstants.CR6, 9)]
-        [TestCase(ChallengeRatingConstants.CR6, 10)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 0.01)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 0.5 / 2d - .01)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 0.5 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, 0.5 / 2d + 0.01)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, 1 / 2d - 0.01)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, 1 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, 1 / 2d + 0.01)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, 2 / 2d - 0.01)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, 2 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR1, 3 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR1, 4 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR2, 5 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR2, 6 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR3, 7 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR3, 8 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR3, 9 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR3, 10 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR4, 11 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR4, 12 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR4, 13 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR4, 14 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR5, 15 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR5, 16 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR6, 17 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR6, 18 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR6, 19 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR6, 20 / 2d)]
         public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithUpdatedChallengeRating(string expected, double hitDiceQuantity)
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(hitDiceQuantity)
+                .WithChallengeRating("my cr")
+                .Build();
+
+            var updatedPrototype = applicator.ApplyTo(prototype);
+            Assert.That(updatedPrototype, Is.SameAs(prototype));
+            Assert.That(updatedPrototype.ChallengeRating, Is.EqualTo(expected));
         }
 
         [TestCase(CreatureConstants.Types.Subtypes.Angel)]
@@ -2635,13 +2678,31 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Subtypes.Shapechanger)]
         public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithUpdatedCreatureTypes_RemovesInvalidType(string subtype)
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", subtype, "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var updatedPrototype = applicator.ApplyTo(prototype);
+            Assert.That(updatedPrototype, Is.SameAs(prototype));
+            Assert.That(updatedPrototype.Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
+            Assert.That(updatedPrototype.Type.SubTypes, Is.EquivalentTo(["subtype 1", "subtype 2"]));
         }
 
         [Test]
         public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithAdditionalTemplates()
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+            prototype.Templates.Add("my template");
+
+            var updatedPrototype = applicator.ApplyTo(prototype);
+            Assert.That(updatedPrototype, Is.SameAs(prototype));
+            Assert.That(updatedPrototype.Templates, Is.EqualTo(["my template", CreatureConstants.Templates.Zombie]));
         }
     }
 }

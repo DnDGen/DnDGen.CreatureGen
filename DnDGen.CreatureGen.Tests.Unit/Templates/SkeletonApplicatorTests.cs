@@ -232,7 +232,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     42,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity, baseCreature.Demographics.Gender))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity,
+                    baseCreature.Demographics.Gender))
                 .Returns(skeletonAttacks);
 
             var filters = new Filters
