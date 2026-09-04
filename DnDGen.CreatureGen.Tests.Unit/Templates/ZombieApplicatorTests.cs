@@ -20,10 +20,8 @@ using DnDGen.RollGen;
 using Moq;
 using NUnit.Framework;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
@@ -190,7 +188,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             };
             var (Compatible, Reason) = filters.AreCompatible(
                 [AlignmentConstants.NeutralEvil],
-                [ChallengeRatingConstants.CR1_3rd],
+                [ChallengeRatingConstants.CR1_2nd],
                 [CreatureConstants.Types.Undead, "subtype 1", "subtype 2"]);
 
             var expected = new InvalidCreatureException(
@@ -1176,15 +1174,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     20, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: Creature has too many hit dice ({hitDice} > 10)");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Zombie}");
+            var expected = new InvalidCreatureException(
+                $"Creature has too many hit dice ({hitDice} > 10)",
+                false,
+                baseCreature.Name,
+                templates: [CreatureConstants.Templates.Zombie]);
 
-            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, false)),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var function = () => applicator.ApplyTo(baseCreature, false);
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Good)]
@@ -1230,11 +1227,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.TrueNeutral, "Alignment filter 'True Neutral' is not valid")]
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil, "CR filter 1 does not match updated creature CR 1/2")]
-        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.NeutralEvil, "Type filter 'wrong subtype' is not valid")]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.NeutralEvil, "Zombies cannot be characters")]
-        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
+        [TestCase("subtype 1", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.TrueNeutral)]
+        [TestCase("subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.NeutralEvil)]
+        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(string type, string challengeRating, string alignment)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
             baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
@@ -1242,25 +1238,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment("original alignment");
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Zombie}");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
-
             var filters = new Filters
             {
                 Types = [type],
                 ChallengeRatings = [challengeRating],
                 Alignments = [alignment]
             };
+            var (Compatible, Reason) = filters.AreCompatible(
+                [AlignmentConstants.NeutralEvil],
+                [ChallengeRatingConstants.CR1_2nd],
+                [CreatureConstants.Types.Undead, "subtype 1", "subtype 2"]);
 
-            await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, asCharacter, filters),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var expected = new InvalidCreatureException(
+                Reason,
+                false,
+                baseCreature.Name,
+                filters,
+                null,
+                CreatureConstants.Templates.Zombie);
+
+            await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, false, filters),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [Test]
@@ -2054,15 +2052,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     20, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: Creature has too many hit dice ({hitDice} > 10)");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Zombie}");
+            var expected = new InvalidCreatureException(
+                $"Creature has too many hit dice ({hitDice} > 10)",
+                false,
+                baseCreature.Name,
+                templates: [CreatureConstants.Templates.Zombie]);
 
             await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, false),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Good)]
@@ -2217,13 +2214,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void IsCompatible_ReturnsTrue()
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var compatible = applicator.IsCompatible(prototype);
+            Assert.That(compatible, Is.True);
         }
 
         [Test]
         public void IsCompatible_AsCharacter_ReturnsFalse()
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .WithAsCharacter(true)
+                .Build();
+
+            var compatible = applicator.IsCompatible(prototype);
+            Assert.That(compatible, Is.False);
         }
 
         [TestCase(CreatureConstants.Types.Aberration, true)]
@@ -2243,19 +2255,41 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Vermin, true)]
         public void IsCompatible_ReturnsCompatibility_BasedOnCreatureType(string creatureType, bool expected)
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(creatureType, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var compatible = applicator.IsCompatible(prototype);
+            Assert.That(compatible, Is.EqualTo(expected));
         }
 
         [Test]
         public void IsCompatible_ReturnsFalse_IfIncorporeal()
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", CreatureConstants.Types.Subtypes.Incorporeal, "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var compatible = applicator.IsCompatible(prototype);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
         public void IsCompatible_ReturnsFalse_IfCreatureDoesNotHaveSkeleton()
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .WithSkeleton(false)
+                .Build();
+
+            var compatible = applicator.IsCompatible(prototype);
+            Assert.That(compatible, Is.False);
         }
 
         [TestCase(0.1, true)]
@@ -2273,7 +2307,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(96, false)]
         public void IsCompatible_ReturnsCompatibility_BasedOnHitDiceQuantity(double hitDiceQuantity, bool expected)
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(hitDiceQuantity)
+                .Build();
+
+            var compatible = applicator.IsCompatible(prototype);
+            Assert.That(compatible, Is.EqualTo(expected));
         }
 
         [TestCase(AlignmentConstants.ChaoticEvil, false)]
@@ -2288,9 +2329,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase("wrong alignment", false)]
         public void IsCompatible_WithAlignment_ReturnsCompatibility_BasedOnAlignmentFilter(string alignment, bool expected)
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var filters = new Filters { Alignments = ["wrong alignment", alignment] };
+
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.EqualTo(expected));
         }
 
+        [TestCase(ChallengeRatingConstants.CR1_10th, 0, false)]
+        [TestCase(ChallengeRatingConstants.CR1_10th, 0.1, false)]
+        [TestCase(ChallengeRatingConstants.CR1_10th, 0.24, false)]
+        [TestCase(ChallengeRatingConstants.CR1_10th, 0.25, false)]
         [TestCase(ChallengeRatingConstants.CR1_8th, 0, true)]
         [TestCase(ChallengeRatingConstants.CR1_8th, 0.1, true)]
         [TestCase(ChallengeRatingConstants.CR1_8th, 0.24, true)]
@@ -2298,97 +2352,129 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(ChallengeRatingConstants.CR1_8th, 0.26, false)]
         [TestCase(ChallengeRatingConstants.CR1_8th, 0.33, false)]
         [TestCase(ChallengeRatingConstants.CR1_8th, 1, false)]
+        [TestCase(ChallengeRatingConstants.CR1_6th, 0, false)]
+        [TestCase(ChallengeRatingConstants.CR1_6th, 0.1, false)]
+        [TestCase(ChallengeRatingConstants.CR1_6th, 0.24, false)]
+        [TestCase(ChallengeRatingConstants.CR1_6th, 0.25, false)]
+        [TestCase(ChallengeRatingConstants.CR1_6th, 0.26, false)]
+        [TestCase(ChallengeRatingConstants.CR1_6th, 0.4, false)]
+        [TestCase(ChallengeRatingConstants.CR1_6th, 0.5, false)]
         [TestCase(ChallengeRatingConstants.CR1_4th, 0, false)]
-        [TestCase(ChallengeRatingConstants.CR1_4th, 0.1, false)]
         [TestCase(ChallengeRatingConstants.CR1_4th, 0.24, false)]
-        [TestCase(ChallengeRatingConstants.CR1_4th, 0.25, true)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, 0.25, false)]
         [TestCase(ChallengeRatingConstants.CR1_4th, 0.26, true)]
         [TestCase(ChallengeRatingConstants.CR1_4th, 0.4, true)]
         [TestCase(ChallengeRatingConstants.CR1_4th, 0.5, true)]
         [TestCase(ChallengeRatingConstants.CR1_4th, 0.6, false)]
         [TestCase(ChallengeRatingConstants.CR1_4th, 1, false)]
-        [TestCase(ChallengeRatingConstants.CR1_2nd, 0.1, false)]
+        [TestCase(ChallengeRatingConstants.CR1_3rd, 0.26, false)]
+        [TestCase(ChallengeRatingConstants.CR1_3rd, 0.4, false)]
+        [TestCase(ChallengeRatingConstants.CR1_3rd, 0.5, false)]
+        [TestCase(ChallengeRatingConstants.CR1_3rd, 0.6, false)]
+        [TestCase(ChallengeRatingConstants.CR1_3rd, 0.9, false)]
+        [TestCase(ChallengeRatingConstants.CR1_3rd, 1, false)]
         [TestCase(ChallengeRatingConstants.CR1_2nd, 0.4, false)]
-        [TestCase(ChallengeRatingConstants.CR1_2nd, 0.5, true)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, 0.5, false)]
         [TestCase(ChallengeRatingConstants.CR1_2nd, 0.6, true)]
         [TestCase(ChallengeRatingConstants.CR1_2nd, 0.9, true)]
         [TestCase(ChallengeRatingConstants.CR1_2nd, 1, true)]
         [TestCase(ChallengeRatingConstants.CR1_2nd, 2, false)]
         [TestCase(ChallengeRatingConstants.CR1_2nd, 3, false)]
-        [TestCase(ChallengeRatingConstants.CR1, 0.5, false)]
         [TestCase(ChallengeRatingConstants.CR1, 0.9, false)]
-        [TestCase(ChallengeRatingConstants.CR1, 1, true)]
+        [TestCase(ChallengeRatingConstants.CR1, 1, false)]
         [TestCase(ChallengeRatingConstants.CR1, 2, true)]
         [TestCase(ChallengeRatingConstants.CR1, 3, false)]
         [TestCase(ChallengeRatingConstants.CR1, 4, false)]
-        [TestCase(ChallengeRatingConstants.CR2, 0.5, false)]
         [TestCase(ChallengeRatingConstants.CR2, 1, false)]
-        [TestCase(ChallengeRatingConstants.CR2, 2, true)]
+        [TestCase(ChallengeRatingConstants.CR2, 2, false)]
         [TestCase(ChallengeRatingConstants.CR2, 3, true)]
         [TestCase(ChallengeRatingConstants.CR2, 4, false)]
         [TestCase(ChallengeRatingConstants.CR2, 5, false)]
-        [TestCase(ChallengeRatingConstants.CR3, 1, false)]
         [TestCase(ChallengeRatingConstants.CR3, 2, false)]
-        [TestCase(ChallengeRatingConstants.CR3, 3, true)]
+        [TestCase(ChallengeRatingConstants.CR3, 3, false)]
         [TestCase(ChallengeRatingConstants.CR3, 4, true)]
         [TestCase(ChallengeRatingConstants.CR3, 5, true)]
         [TestCase(ChallengeRatingConstants.CR3, 6, false)]
         [TestCase(ChallengeRatingConstants.CR3, 7, false)]
-        [TestCase(ChallengeRatingConstants.CR4, 3, false)]
         [TestCase(ChallengeRatingConstants.CR4, 4, false)]
-        [TestCase(ChallengeRatingConstants.CR4, 5, true)]
+        [TestCase(ChallengeRatingConstants.CR4, 5, false)]
         [TestCase(ChallengeRatingConstants.CR4, 6, true)]
         [TestCase(ChallengeRatingConstants.CR4, 7, true)]
         [TestCase(ChallengeRatingConstants.CR4, 8, false)]
         [TestCase(ChallengeRatingConstants.CR4, 9, false)]
-        [TestCase(ChallengeRatingConstants.CR5, 5, false)]
         [TestCase(ChallengeRatingConstants.CR5, 6, false)]
-        [TestCase(ChallengeRatingConstants.CR5, 7, true)]
+        [TestCase(ChallengeRatingConstants.CR5, 7, false)]
         [TestCase(ChallengeRatingConstants.CR5, 8, true)]
         [TestCase(ChallengeRatingConstants.CR5, 9, false)]
         [TestCase(ChallengeRatingConstants.CR5, 10, false)]
-        [TestCase(ChallengeRatingConstants.CR6, 6, false)]
         [TestCase(ChallengeRatingConstants.CR6, 7, false)]
-        [TestCase(ChallengeRatingConstants.CR6, 8, true)]
+        [TestCase(ChallengeRatingConstants.CR6, 8, false)]
         [TestCase(ChallengeRatingConstants.CR6, 9, true)]
         [TestCase(ChallengeRatingConstants.CR6, 10, true)]
+        [TestCase(ChallengeRatingConstants.CR7, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR8, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR9, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR10, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR11, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR12, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR13, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR14, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR15, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR16, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR17, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR18, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR19, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR20, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR21, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR22, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR23, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR24, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR25, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR26, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR27, 10, false)]
+        [TestCase("9266", 10, false)]
         public void IsCompatible_WithChallengeRating_ReturnsCompatibility_BasedOnUpdatedChallengeRating(string challengeRatingFilter, double hitDiceQuantity, bool expected)
         {
-            Assert.Fail("not yet written");
-        }
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(hitDiceQuantity)
+                .Build();
 
-        [TestCaseSource(nameof(InvalidChallengeRatings))]
-        public void IsCompatible_WithChallengeRating_ReturnsFalse_WhenChallengeRatingFilterInvalid(string challengeRatingFilter)
-        {
-            Assert.Fail("not yet written");
-        }
+            var filters = new Filters { ChallengeRatings = ["wrong cr", challengeRatingFilter] };
 
-        private static IEnumerable InvalidChallengeRatings => ChallengeRatingConstants.GetOrdered()
-            .Except(
-            [
-                ChallengeRatingConstants.CR1_8th,
-                ChallengeRatingConstants.CR1_4th,
-                ChallengeRatingConstants.CR1_2nd,
-                ChallengeRatingConstants.CR1,
-                ChallengeRatingConstants.CR2,
-                ChallengeRatingConstants.CR3,
-                ChallengeRatingConstants.CR4,
-                ChallengeRatingConstants.CR5,
-                ChallengeRatingConstants.CR6,
-            ])
-            .Union(["9266", "my challenge rating"])
-            .Select(t => new TestCaseData(t));
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.EqualTo(expected));
+        }
 
         [Test]
         public void IsCompatible_WithType_ReturnsTrue()
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var filters = new Filters { Types = ["wrong type", "subtype 1"] };
+
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.True);
         }
 
-        [TestCase(CreatureConstants.Types.Undead)]
-        public void IsCompatible_WithType_ReturnsTrue_WhenFilterMatchesSkeleton(string typeFilter)
+        [Test]
+        public void IsCompatible_WithType_ReturnsTrue_WhenFilterIsUndead()
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var filters = new Filters { Types = ["wrong type", CreatureConstants.Types.Undead] };
+
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.True);
         }
 
         [TestCase(CreatureConstants.Types.Subtypes.Angel)]
@@ -2409,7 +2495,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Subtypes.Shapechanger)]
         public void IsCompatible_WithType_ReturnsFalse_WhenFilterIsInvalid(string typeFilter)
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", typeFilter, "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var filters = new Filters { Types = ["wrong type", typeFilter] };
+
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [TestCase(CreatureConstants.Types.Aberration)]
@@ -2422,6 +2517,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
         [TestCase(CreatureConstants.Types.Vermin)]
+        public void IsCompatible_WithType_ReturnsFalse_WhenOriginalType(string typeFilter)
+        {
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(typeFilter, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var filters = new Filters { Types = ["wrong type", typeFilter] };
+
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.False);
+        }
+
         [TestCase(CreatureConstants.Types.Subtypes.Air)]
         [TestCase(CreatureConstants.Types.Subtypes.Aquatic)]
         [TestCase(CreatureConstants.Types.Subtypes.Augmented)]
@@ -2431,9 +2540,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Subtypes.Fire)]
         [TestCase(CreatureConstants.Types.Subtypes.Swarm)]
         [TestCase(CreatureConstants.Types.Subtypes.Water)]
-        public void IsCompatible_WithType_ReturnsTrue_WhenFilterMatches(string typeFilter)
+        public void IsCompatible_WithType_ReturnsTrue_WhenFilterMatchesSubtype(string typeFilter)
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", typeFilter, "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var filters = new Filters { Types = ["wrong type", typeFilter] };
+
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.True);
         }
 
         [TestCase(CreatureConstants.Types.Aberration)]
@@ -2457,37 +2575,121 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Subtypes.Water)]
         public void IsCompatible_WithType_ReturnsFalse_WhenFilterDoesNotMatch(string typeFilter)
         {
-            Assert.Fail("not yet written");
+            var creatureType = CreatureConstants.Types.Humanoid;
+            if (creatureType == typeFilter)
+                creatureType = CreatureConstants.Types.MagicalBeast;
+
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(creatureType, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var filters = new Filters { Types = ["wrong type", typeFilter] };
+
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsTrue()
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignments = ["wrong alignment", AlignmentConstants.NeutralEvil],
+                ChallengeRatings = ["wrong cr", ChallengeRatingConstants.CR1_2nd],
+                Types = ["wrong type", "subtype 2"]
+            };
+
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.True);
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecausePrototype()
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .WithSkeleton(false)
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignments = ["wrong alignment", AlignmentConstants.NeutralEvil],
+                ChallengeRatings = ["wrong cr", ChallengeRatingConstants.CR1_2nd],
+                Types = ["wrong type", "subtype 2"]
+            };
+
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseAlignment()
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignments = ["wrong alignment", AlignmentConstants.ChaoticEvil],
+                ChallengeRatings = ["wrong cr", ChallengeRatingConstants.CR1_2nd],
+                Types = ["wrong type", "subtype 2"]
+            };
+
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseChallengeRating()
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignments = ["wrong alignment", AlignmentConstants.NeutralEvil],
+                ChallengeRatings = ["wrong cr", ChallengeRatingConstants.CR1_3rd],
+                Types = ["wrong type", "subtype 2"]
+            };
+
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
         public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseType()
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignments = ["wrong alignment", AlignmentConstants.NeutralEvil],
+                ChallengeRatings = ["wrong cr", ChallengeRatingConstants.CR1_2nd],
+                Types = ["wrong type", "subtype 3"]
+            };
+
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
@@ -2511,28 +2713,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.TrueNeutral, "Alignment filter 'True Neutral' is not valid")]
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil, "CR filter 1 does not match updated creature CR 1/2")]
-        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.NeutralEvil, "Type filter 'wrong subtype' is not valid")]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.NeutralEvil, "Zombies cannot be characters")]
-        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
+        [TestCase("subtype 1", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.TrueNeutral)]
+        [TestCase("subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.NeutralEvil)]
+        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible_WithFilters(string type, string challengeRating, string alignment)
         {
-            Assert.Fail("update for prototype");
-            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
-            baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
-            baseCreature.HitPoints.HitDice[0].Quantity = 1;
-            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
-            baseCreature.Alignment = new Alignment("original alignment");
-
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Zombie}");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .WithChallengeRating(ChallengeRatingConstants.CR1)
+                .WithAlignments("original alignment")
+                .Build();
 
             var filters = new Filters
             {
@@ -2540,9 +2732,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 ChallengeRatings = [challengeRating],
                 Alignments = [alignment]
             };
+            var (Compatible, Reason) = filters.AreCompatible(
+                [AlignmentConstants.NeutralEvil],
+                [ChallengeRatingConstants.CR1_2nd],
+                [CreatureConstants.Types.Undead, "subtype 1", "subtype 2"]);
 
-            var func = () => applicator.ApplyTo(baseCreature, asCharacter, filters);
-            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var expected = new InvalidCreatureException(
+                Reason,
+                false,
+                prototype.Name,
+                filters,
+                null,
+                CreatureConstants.Templates.Zombie);
+
+            var func = () => applicator.ApplyTo(prototype, filters);
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [Test]
@@ -2595,14 +2799,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [TestCase(0, 0)]
-        [TestCase(0.1, 0.2)]
-        [TestCase(0.24, 0.48)]
-        [TestCase(0.25, 0.50)]
-        [TestCase(0.26, 0.52)]
-        [TestCase(0.4, 0.8)]
-        [TestCase(0.5, 1)]
-        [TestCase(0.6, 1.2)]
-        [TestCase(0.9, 1.8)]
+        [TestCase(1 / 10d, 2 / 10d)]
+        [TestCase(1 / 8d, 2 / 8d)]
+        [TestCase(1 / 6d, 2 / 6d)]
+        [TestCase(1 / 4d, 2 / 4d)]
+        [TestCase(1 / 3d, 2 / 3d)]
+        [TestCase(1 / 2d, 2 / 2d)]
         [TestCase(1, 2)]
         [TestCase(2, 4)]
         [TestCase(3, 6)]
@@ -2615,14 +2817,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(10, 20)]
         public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithUpdatedHitDiceQuantity(double hitDiceQuantity, double expected)
         {
-            Assert.Fail("not yet written");
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(hitDiceQuantity)
+                .Build();
+
+            var updatedPrototype = applicator.ApplyTo(prototype);
+            Assert.That(updatedPrototype, Is.SameAs(prototype));
+            Assert.That(updatedPrototype.HitDiceQuantity, Is.EqualTo(expected));
         }
 
         [TestCase(ChallengeRatingConstants.CR1_8th, 0)]
         [TestCase(ChallengeRatingConstants.CR1_8th, 0.01)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 1 / 10d)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 1 / 8d)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 1 / 6d)]
         [TestCase(ChallengeRatingConstants.CR1_8th, 0.5 / 2d - .01)]
         [TestCase(ChallengeRatingConstants.CR1_8th, 0.5 / 2d)]
         [TestCase(ChallengeRatingConstants.CR1_4th, 0.5 / 2d + 0.01)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, 1 / 3d)]
         [TestCase(ChallengeRatingConstants.CR1_4th, 1 / 2d - 0.01)]
         [TestCase(ChallengeRatingConstants.CR1_4th, 1 / 2d)]
         [TestCase(ChallengeRatingConstants.CR1_2nd, 1 / 2d + 0.01)]
