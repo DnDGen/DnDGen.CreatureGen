@@ -301,6 +301,11 @@ namespace DnDGen.CreatureGen.Templates
             creature.Templates.Add(CreatureConstants.Templates.Vampire);
         }
 
+        private static void UpdateCreatureTemplate(CreaturePrototype creature)
+        {
+            creature.Templates.Add(CreatureConstants.Templates.Vampire);
+        }
+
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
             var (Compatible, Reason) = IsCompatible(
@@ -462,6 +467,7 @@ namespace DnDGen.CreatureGen.Templates
             UpdateCreatureLevelAdjustment(creature);
             UpdateCreatureType(creature);
             UpdateCreatureAlignment(creature, filters);
+            UpdateCreatureTemplate(creature);
 
             return creature;
         }
