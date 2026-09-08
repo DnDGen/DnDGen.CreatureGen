@@ -6,6 +6,7 @@ using DnDGen.CreatureGen.Templates;
 using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -56,12 +57,10 @@ namespace DnDGen.CreatureGen.Verifiers
                 abilityRandomizer ??= new();
                 var lowestAdjustment = applicator.MinimumAbility.FullScore - abilityRandomizer.GetMax(dice, applicator.MinimumAbility.Name);
 
-                //INFO: If lowestAdjustment is -10, that's all creatures (worst adjustment is -10, can't go lower), so if <= -10, no intersect needed
-                //Worst maxRoll is 1 (since abilities should be positive), so highest adjustment is Min - 1
-                if (lowestAdjustment > -10)
-                {
-                    filteredBaseCreatures = ApplyFilterTo(filteredBaseCreatures, [applicator.MinimumAbility.Name + lowestAdjustment], string.Empty);
-                }
+                //INFO: Lowest possible ability adjustment is -10
+                //We still want to filter for this, as it will remove creatures that don't have the ability at all
+                lowestAdjustment = Math.Max(-10, lowestAdjustment);
+                filteredBaseCreatures = ApplyFilterTo(filteredBaseCreatures, [applicator.MinimumAbility.Name + lowestAdjustment], string.Empty);
             }
 
             return filteredBaseCreatures;

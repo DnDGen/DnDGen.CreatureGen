@@ -127,6 +127,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(allVariations, Is.Not.Empty);
         }
 
+        //INFO: Can't construct this programmatically, because to know the minimum abilities requires getting all template aplicators, which requires non-static construction
+        //-10 is lowest adjustment
+        //Valid ability randomizer must have minimum roll of 1
+        //Ghost has Minimum Charisma 6, so biggest required adjustment is 6 - 1 = 5
+        //Half-Celestial and Half-Fiend have Minimum Intelligence 4, so biggest required adjustment is 4 - 1 = 3
+        [TestCase(AbilityConstants.Charisma, -10)]
         [TestCase(AbilityConstants.Charisma, -9)]
         [TestCase(AbilityConstants.Charisma, -8)]
         [TestCase(AbilityConstants.Charisma, -7)]
@@ -142,6 +148,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(AbilityConstants.Charisma, 3)]
         [TestCase(AbilityConstants.Charisma, 4)]
         [TestCase(AbilityConstants.Charisma, 5)]
+        [TestCase(AbilityConstants.Intelligence, -10)]
         [TestCase(AbilityConstants.Intelligence, -9)]
         [TestCase(AbilityConstants.Intelligence, -8)]
         [TestCase(AbilityConstants.Intelligence, -7)]

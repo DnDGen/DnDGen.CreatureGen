@@ -1419,6 +1419,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var templateCreatures = new[] { "my template creature", "my other creature", "something else", creature, "whatever" };
             SetUpCreatureGroup("my template" + asCharacter, templateCreatures);
+            SetUpCreatureGroup("my ability-10", ["my other creature", "low-ability creature", "my wrong creature", "high-ability creature", creature]);
 
             var mockApplicator = SetupApplicatorWithMinAbility("my template", minScore);
 
@@ -1461,6 +1462,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var templateCreatures = new[] { "my template creature", "my other creature", "something else", creature, "whatever" };
             SetUpCreatureGroup("my template" + asCharacter, templateCreatures);
+            SetUpCreatureGroup("my ability-10", ["my other creature", "low-ability creature", "my wrong creature", "high-ability creature", creature]);
 
             SetupApplicatorWithMinAbility("my template", minScore);
 
