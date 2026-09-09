@@ -11519,6 +11519,7 @@
 		<entry>Red Dragon, Very Old</entry>
 		<entry>Red Dragon, Ancient</entry>
 		<entry>Red Dragon, Wyrm</entry>
+		<entry>Red Dragon, Wyrm</entry>
 		<entry>Red Dragon, Great Wyrm</entry>
 		<entry>White Dragon, Wyrmling</entry>
 		<entry>White Dragon, Very Young</entry>
@@ -26025,6 +26026,16 @@
 	</collection>
 	<collection>
 		<name>Celestial CreatureChaotic Good</name>
+		<entry>Ethereal Filcher</entry>
+		<entry>Ettin</entry>
+		<entry>Forest Gnome</entry>
+		<entry>Frost Giant</entry>
+		<entry>Frost Worm</entry>
+		<entry>Gargoyle</entry>
+		<entry>Giant Eagle</entry>
+		<entry>Giant Owl</entry>
+		<entry>Gibbering Mouther</entry>
+		<entry>Githyanki</entry>
 		<entry>Deep Dwarf</entry>
 		<entry>Deep Halfling</entry>
 		<entry>Delver</entry>
@@ -26108,6 +26119,16 @@
 	</collection>
 	<collection>
 		<name>Celestial CreatureLawful Good</name>
+		<entry>Grimlock</entry>
+		<entry>Guardian Naga</entry>
+		<entry>Half-Elf</entry>
+		<entry>Half-Orc</entry>
+		<entry>Hill Dwarf</entry>
+		<entry>Hobgoblin</entry>
+		<entry>Human</entry>
+		<entry>Kobold</entry>
+		<entry>Krenshar</entry>
+		<entry>Kuo-toa</entry>
 		<entry>Forest Gnome</entry>
 		<entry>Frost Worm</entry>
 		<entry>Gauth (Lesser Beholder)</entry>
