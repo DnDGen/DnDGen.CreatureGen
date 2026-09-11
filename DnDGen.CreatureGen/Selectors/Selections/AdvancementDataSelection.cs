@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Models;
 using DnDGen.RollGen;
@@ -72,10 +73,15 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             MaxHitDice = int.MaxValue;
         }
 
-        public bool AdvancementIsValid(Dice dice, int max)
+        public bool AdvancementIsValid(Dice dice, int max, Filters filters)
         {
             MaxHitDice = max;
-            return dice.Roll(AdditionalHitDiceRoll).AsPotentialMinimum() <= MaxHitDice;
+            var valid = dice.Roll(AdditionalHitDiceRoll).AsPotentialMinimum() <= MaxHitDice;
+
+            if (filters?.ChallengeRatings?.Count > 0)
+                valid &= filters.ChallengeRatings.Contains(AdjustedChallengeRating);
+
+            return valid;
         }
 
         public void SetAdditionalProperties(Dice dice)

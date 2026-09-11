@@ -1,11 +1,14 @@
 ﻿using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
+using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -18,6 +21,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
         private Stopwatch stopwatch;
         private TimeSpan timeLimit;
         private Dice dice;
+        private AbilityRandomizerFactory abilityRandomizerFactory;
 
         [SetUp]
         public void Setup()
@@ -25,6 +29,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
             stopwatch = new Stopwatch();
             collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             dice = GetNewInstanceOf<Dice>();
+            abilityRandomizerFactory = GetNewInstanceOf<AbilityRandomizerFactory>();
 
             timeLimit = TimeSpan.FromSeconds(1);
         }
@@ -40,7 +45,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
             var asCharacter = dice.Roll().d2().AsTrueOrFalse();
             var withCreature = dice.Roll().d2().AsTrueOrFalse();
             var withTemplate = dice.Roll().d2().AsTrueOrFalse();
-            var withMultipleTemplates = dice.Roll().d2().AsTrueOrFalse();
+            var withMultipleTemplates = withTemplate && dice.Roll().d2().AsTrueOrFalse();
             var withType = dice.Roll().d2().AsTrueOrFalse();
             var withCr = dice.Roll().d2().AsTrueOrFalse();
             var withAlignment = dice.Roll().d2().AsTrueOrFalse();
@@ -50,6 +55,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
             string type = null;
             string cr = null;
             string alignment = null;
+            List<string> templates = [];
 
             if (withCreature)
                 creature = collectionSelector.SelectRandomFrom(allCreatures);
@@ -88,30 +94,78 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
                 alignment = collectionSelector.SelectRandomFrom(alignments);
             }
 
-            var filters = new Filters();
-            filters.Type = type;
-            filters.ChallengeRating = cr;
-            filters.Alignment = alignment;
-
             if (template != null)
-                filters.Templates.Add(template);
+                templates.Add(template);
 
-            if (withTemplate && withMultipleTemplates)
+            if (withMultipleTemplates)
             {
                 var quantity = dice.Roll().d2().AsSum();
                 while (quantity-- > 0)
                 {
                     var additionalTemplate = collectionSelector.SelectRandomFrom(allTemplates);
-                    filters.Templates.Add(additionalTemplate);
+                    templates.Add(additionalTemplate);
                 }
             }
 
+            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizer([.. templates]);
+
+            ValidateRandomCreatureWithFilters(
+                asCharacter,
+                creature,
+                new() { Types = [type], ChallengeRatings = [cr], Alignments = [alignment] },
+                abilityRandomizer,
+                [.. templates]);
+        }
+
+        [Test]
+        public void BUG_StressProblematicFiltersValidation()
+        {
+            stressor.Stress(ValidateAndAssertProblematicFilters);
+        }
+
+        private void ValidateAndAssertProblematicFilters()
+        {
+            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizer([]);
+            var randomFilters = collectionSelector.SelectRandomFrom(CreatureTestData.ProblematicFilters);
+            ValidateRandomCreatureWithFilters(
+                randomFilters.AsCharacter,
+                null,
+                randomFilters.Filters,
+                abilityRandomizer,
+                [.. randomFilters.Templates]);
+        }
+
+        private void ValidateRandomCreatureWithFilters(
+            bool asCharacter,
+            string creature,
+            Filters filters,
+            AbilityRandomizer abilityRandomizer,
+            params string[] templates)
+        {
             stopwatch.Restart();
-            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, filters);
+            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer, filters, templates);
             stopwatch.Stop();
 
-            var failure = new InvalidCreatureException(null, asCharacter, creature, filters);
+            var failure = new InvalidCreatureException(null, asCharacter, creature, filters, abilityRandomizer, templates);
             Assert.That(stopwatch.Elapsed, Is.LessThan(timeLimit), $"Verified: {verified}\n{failure.Message}");
+        }
+
+        [Test]
+        public void BUG_StressGhostFiltersValidation()
+        {
+            stressor.Stress(ValidateAndAssertGhostFilters);
+        }
+
+        private void ValidateAndAssertGhostFilters()
+        {
+            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizer([CreatureConstants.Templates.Ghost]);
+            var randomFilters = collectionSelector.SelectRandomFrom(CreatureTestData.ProblematicFilters);
+            ValidateRandomCreatureWithFilters(
+                randomFilters.AsCharacter,
+                null,
+                randomFilters.Filters,
+                abilityRandomizer,
+                CreatureConstants.Templates.Ghost);
         }
     }
 }

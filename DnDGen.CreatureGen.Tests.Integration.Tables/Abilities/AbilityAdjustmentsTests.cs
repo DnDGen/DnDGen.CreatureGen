@@ -39,6 +39,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             AssertCollectionNames(names);
         }
 
+        //INFO: Certain Verifier logic depends on this being true.
+        //If this test fails, there is either a bug in the system, or the CreatureVerifier must update its logic
+        [Test]
+        public void LowestAbilityAdjustmentIsMinus10()
+        {
+            var data = AbilityAdjustmentsTestData;
+            var min = data.Values.SelectMany(v => v.Values).Min();
+            Assert.That(min, Is.EqualTo(-10));
+        }
+
         [TestCaseSource(nameof(AbilityAdjustmentsTestCases))]
         public void AbilityAdjustment(string name, Dictionary<string, int> typesAndAmounts)
         {

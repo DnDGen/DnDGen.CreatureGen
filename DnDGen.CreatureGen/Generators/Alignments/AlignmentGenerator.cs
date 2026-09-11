@@ -1,65 +1,69 @@
 ﻿using DnDGen.CreatureGen.Alignments;
+using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Templates;
+using DnDGen.CreatureGen.Verifiers;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
-using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Selectors.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Generators.Alignments
 {
-    internal class AlignmentGenerator(ICollectionSelector collectionSelector, JustInTimeFactory factory) : IAlignmentGenerator
+    internal class AlignmentGenerator(ICollectionSelector collectionSelector, ICreatureVerifier creatureVerifier, ICreaturePrototypeFactory prototypeFactory) : IAlignmentGenerator
     {
-        public Alignment Generate(string creatureName, IEnumerable<string> templates, string presetAlignment)
+        public Alignment Generate(string creatureName, string[] templates, Filters filters)
         {
-            if (!string.IsNullOrEmpty(presetAlignment))
-                return new Alignment(presetAlignment);
+            templates ??= [];
+            var weightedAlignments = GetWeightedAlignments(creatureName, templates, filters);
 
-            var weightedAlignments = GetWeightedAlignments(creatureName, templates);
             if (!weightedAlignments.Any())
                 throw new InvalidCreatureException(
                     $"Creature {creatureName} has no valid alignments for templates [{string.Join(", ", templates)}]",
                     false,
                     creatureName,
-                    null);
+                    filters);
 
             var randomAlignment = collectionSelector.SelectRandomFrom(weightedAlignments);
             return new Alignment(randomAlignment);
         }
 
-        private IEnumerable<string> GetWeightedAlignments(string creatureName, IEnumerable<string> templates)
+        private IEnumerable<string> GetWeightedAlignments(string creatureName, string[] templates, Filters filters)
         {
             var weightedAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, creatureName);
-            var templatesArray = templates?.ToArray() ?? [];
 
-            if (templatesArray.Length == 0)
-                return weightedAlignments;
-
-            if (templatesArray.Length == 1)
+            if (templates.Length == 1)
             {
-                var templateAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, templatesArray[0] + GroupConstants.AllowedInput);
+                var templateAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, templates[0] + GroupConstants.AllowedInput);
 
-                //INFO: Doing this instead of intersect in order to preserve duplicates
+                //INFO: Doing this instead of intersect in order to preserve duplicates/weighting
                 weightedAlignments = weightedAlignments.Where(templateAlignments.Contains);
+            }
 
+            if (!(filters?.Alignments?.Count > 0) && templates.Length < 2)
                 return weightedAlignments;
-            }
 
-            var applicator = factory.Build<TemplateApplicator>(templatesArray[0]);
-            var prototypes = applicator.GetCompatiblePrototypes([creatureName], false);
+            if (templates.Length == 0)
+                return weightedAlignments.Where(filters.Alignments.Contains);
 
-            for (var i = 1; i < templatesArray.Length; i++)
+            var creaturePrototype = prototypeFactory.Build(creatureName, false);
+
+            //HACK: This is very inefficient, but:
+            //1. This usecase will only occur when an alignment filter is set AND templates are specified, OR more than 1 template is specified
+            //2. Only builds the prototype once and then re-clones base values (avoiding multiple "SelectAll" calls in the factory)
+            //3. Only applies the templates to the single prototype
+            //4. Only calls .Any() - so since we only have 1 prototype, will basically be 1 or 0
+            //5. Even if all alignments allowed, that's N = 9, which for an edge case, feels manageable.
+            //We can't pre-cache it because of the combinatorials of the template chaining
+            bool BaseAlignmentMatchesTemplatesAndFilters(string alignment)
             {
-                applicator = factory.Build<TemplateApplicator>(templatesArray[i]);
+                var prototype = prototypeFactory.Clone(creaturePrototype);
+                prototype.Alignments = [new(alignment)];
 
-                //INFO: The only filter we would care about would be a preset alignment, which we already handle earlier
-                //So we do not need to pass filters to the applicators
-                prototypes = applicator.GetCompatiblePrototypes(prototypes, false);
+                var prototypes = creatureVerifier.GetChainedTemplates([prototype], templates, filters: filters);
+                return prototypes.Any();
             }
 
-            //INFO: At this point, after multiple templates, we are choosing to ignore weighting
-            weightedAlignments = prototypes.SelectMany(p => p.Alignments).Select(a => a.Full);
+            weightedAlignments = weightedAlignments.Where(BaseAlignmentMatchesTemplatesAndFilters);
 
             return weightedAlignments;
         }

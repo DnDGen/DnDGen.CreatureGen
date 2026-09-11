@@ -13,29 +13,20 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace DnDGen.CreatureGen.Tests.Integration
 {
-    public class CreatureAsserter
+    public class CreatureAsserter(ICreatureVerifier creatureVerifier)
     {
-        private readonly IEnumerable<string> skillsWithFoci;
-        private readonly ICreatureVerifier creatureVerifier;
-
-        public CreatureAsserter(ICreatureVerifier creatureVerifier)
-        {
-            this.creatureVerifier = creatureVerifier;
-
-            skillsWithFoci =
+        private readonly IEnumerable<string> skillsWithFoci =
             [
                 SkillConstants.Craft,
                 SkillConstants.Knowledge,
                 SkillConstants.Perform,
                 SkillConstants.Profession,
             ];
-        }
 
-        public double GetGenerationTimeLimitInSeconds(Creature creature)
+        public static double GetGenerationTimeLimitInSeconds(Creature creature)
         {
             var timeLimit = creature.HitPoints.HitDiceQuantity * 0.1;
 
@@ -56,26 +47,24 @@ namespace DnDGen.CreatureGen.Tests.Integration
         {
             message ??= creature.Summary;
 
-            foreach (var type in creature.Type.AllTypes)
+            var filters = new Filters
             {
-                var verifierMessage = new StringBuilder();
-                verifierMessage.AppendLine(message);
-                verifierMessage.AppendLine($"\tAs Character: {asCharacter}");
-                verifierMessage.AppendLine($"\tCreature Type: {type}");
-                verifierMessage.AppendLine($"\tCreature Alignment: {creature.Alignment.Full}");
+                Types = [.. creature.Type.AllTypes],
+                Alignments = [creature.Alignment.Full],
+                ChallengeRatings = [creature.ChallengeRating],
+            };
 
-                //INFO: We are not asserting that the challenge rating matches the filter
-                //Since the CR can be altered by advancement and by generating as a character
-                var filters = new Filters
-                {
-                    Type = type,
-                    Templates = creature.Templates,
-                    Alignment = creature.Alignment.Full
-                };
+            if (asCharacter)
+                filters.ChallengeRatings.Add(ChallengeRatingConstants.CR0);
 
-                var isValid = creatureVerifier.VerifyCompatibility(asCharacter, creature.Name, filters);
-                Assert.That(isValid, Is.True, verifierMessage.ToString());
-            }
+            //INFO: Advancement can alter CR and retroactively make it seem "incompatible"
+            if (creature.IsAdvanced)
+                filters.ChallengeRatings = [];
+
+            var verifierMessage = filters.GetDescription();
+
+            var isValid = creatureVerifier.VerifyCompatibility(asCharacter, creature.Name, null, filters, [.. creature.Templates]);
+            Assert.That(isValid, Is.True, verifierMessage.ToString());
 
             AssertSummary(creature, message);
             AssertDemographics(creature, message);
@@ -95,7 +84,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(creature.Languages, Is.Empty.Or.Unique, message);
         }
 
-        public void AssertMagic(Creature creature, string message)
+        public static void AssertMagic(Creature creature, string message)
         {
             Assert.That(creature.Magic, Is.Not.Null, message);
 
@@ -209,7 +198,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void AssertEquipment(Creature creature, string message)
+        private static void AssertEquipment(Creature creature, string message)
         {
             Assert.That(creature.Equipment, Is.Not.Null, message);
 
@@ -291,7 +280,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void AssertSummary(Creature creature, string message)
+        private static void AssertSummary(Creature creature, string message)
         {
             Assert.That(creature.Name, Is.Not.Empty, message);
             Assert.That(creature.Templates, Is.Not.Null, message);
@@ -304,7 +293,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void AssertDemographics(Creature creature, string message)
+        private static void AssertDemographics(Creature creature, string message)
         {
             Assert.That(creature.Demographics, Is.Not.Null, message);
             Assert.That(creature.Demographics.Age, Is.Not.Null, message);
@@ -342,7 +331,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(appearance, Is.Not.Empty, message);
         }
 
-        private void AssertAlignment(Creature creature, string message)
+        private static void AssertAlignment(Creature creature, string message)
         {
             Assert.That(creature.Alignment, Is.Not.Null, message);
 
@@ -357,7 +346,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void AssertChallengeRating(Creature creature, string message)
+        private static void AssertChallengeRating(Creature creature, string message)
         {
             var ordered = ChallengeRatingConstants.GetOrdered();
             var numbers = Enumerable.Range(1, 100).Select(i => i.ToString());
@@ -367,7 +356,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(creature.ChallengeRating, Is.Not.Empty, message);
         }
 
-        private void AssertSize(Creature creature, string message)
+        private static void AssertSize(Creature creature, string message)
         {
             Assert.That(creature.Size, Is.EqualTo(SizeConstants.Large)
                 .Or.EqualTo(SizeConstants.Colossal)
@@ -379,7 +368,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 .Or.EqualTo(SizeConstants.Small), message);
         }
 
-        private void AssertSpeeds(Creature creature, string message)
+        private static void AssertSpeeds(Creature creature, string message)
         {
             foreach (var speedKVP in creature.Speeds)
             {
@@ -387,7 +376,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void AssertSpeed(Measurement speed, string creatureSummary, string name)
+        private static void AssertSpeed(Measurement speed, string creatureSummary, string name)
         {
             var message = $"{creatureSummary}\nSpeed: {name}";
             Assert.That(speed.Value, Is.Not.Negative, message);
@@ -408,7 +397,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void AssertAbilities(Creature creature, string message)
+        private static void AssertAbilities(Creature creature, string message)
         {
             Assert.That(creature.Abilities.Keys, Contains.Item(AbilityConstants.Charisma), message);
             Assert.That(creature.Abilities.Keys, Contains.Item(AbilityConstants.Constitution), message);
@@ -458,7 +447,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(skillNamesAndFoci, Is.Unique, message);
         }
 
-        private void AssertFeats(Creature creature, string message)
+        private static void AssertFeats(Creature creature, string message)
         {
             Assert.That(creature.Feats, Is.Not.Null, message);
             Assert.That(creature.SpecialQualities, Is.Not.Null, message);
@@ -498,7 +487,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        private void AssertCombat(Creature creature, string message)
+        private static void AssertCombat(Creature creature, string message)
         {
             Assert.That(creature.BaseAttackBonus, Is.Not.Negative, message);
 
@@ -564,7 +553,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(creature.Saves[SaveConstants.Fortitude].TotalBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Constitution].Modifier), message);
         }
 
-        private void AssertAttack(Attack attack, Creature creature, string message)
+        private static void AssertAttack(Attack attack, Creature creature, string message)
         {
             var attackMessage = $"{message}\nAttack: {attack.Name}";
             var meleeEquipmentAttacks = creature.Attacks.Where(a => a.IsMelee
@@ -695,7 +684,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
         }
 
-        public void AssertCreatureIsType(Creature creature, string type, string message = null)
+        public static void AssertCreatureIsType(Creature creature, string type, string message = null)
         {
             message ??= creature.Summary;
 
@@ -706,7 +695,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 return;
             }
 
-            if (!creature.Templates.Any())
+            if (creature.Templates.Count == 0)
             {
                 Assert.That(creature.Type.Name, Is.EqualTo(type), message);
                 return;
@@ -721,27 +710,6 @@ namespace DnDGen.CreatureGen.Tests.Integration
             message ??= creature.Summary;
 
             AssertCreature(creature, true, message);
-
-            foreach (var type in creature.Type.AllTypes)
-            {
-                var verifierMessage = new StringBuilder();
-                verifierMessage.AppendLine(message);
-                verifierMessage.AppendLine($"\tAs Character: {true}");
-                verifierMessage.AppendLine($"\tCreature Type: {type}");
-                verifierMessage.AppendLine($"\tCreature Alignment: {creature.Alignment.Full}");
-
-                //INFO: We are not asserting that the challenge rating is valid
-                //Since the CR can be altered by advancement and by generating as a character
-                var filters = new Filters
-                {
-                    Type = type,
-                    Templates = creature.Templates,
-                    Alignment = creature.Alignment.Full
-                };
-
-                var isValid = creatureVerifier.VerifyCompatibility(true, creature.Name, filters);
-                Assert.That(isValid, Is.True, verifierMessage.ToString());
-            }
 
             var multiHitDieHumanoids = new[]
             {

@@ -1,5 +1,6 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
+using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -11,36 +12,21 @@ using System.Linq;
 
 namespace DnDGen.CreatureGen.Selectors.Collections
 {
-    internal class AdvancementSelector : IAdvancementSelector
+    internal class AdvancementSelector(
+        IPercentileSelector percentileSelector,
+        ICollectionSelector collectionSelector,
+        ICollectionDataSelector<AdvancementDataSelection> advancementDataSelector,
+        ICollectionTypeAndAmountSelector typeAndAmountSelector,
+        Dice dice) : IAdvancementSelector
     {
-        private readonly IPercentileSelector percentileSelector;
-        private readonly ICollectionSelector collectionSelector;
-        private readonly ICollectionTypeAndAmountSelector typeAndAmountSelector;
-        private readonly ICollectionDataSelector<AdvancementDataSelection> advancementDataSelector;
-        private readonly Dice dice;
-
-        public AdvancementSelector(
-            IPercentileSelector percentileSelector,
-            ICollectionSelector collectionSelector,
-            ICollectionDataSelector<AdvancementDataSelection> advancementDataSelector,
-            ICollectionTypeAndAmountSelector typeAndAmountSelector,
-            Dice dice)
+        public bool IsAdvanced(string creature, IEnumerable<string> templates, double hitDiceQuantity, Filters filters)
         {
-            this.percentileSelector = percentileSelector;
-            this.collectionSelector = collectionSelector;
-            this.advancementDataSelector = advancementDataSelector;
-            this.typeAndAmountSelector = typeAndAmountSelector;
-            this.dice = dice;
-        }
-
-        public bool IsAdvanced(string creature, IEnumerable<string> templates, double hitDiceQuantity, string challengeRatingFilter)
-        {
-            if (challengeRatingFilter != null)
+            if (filters?.ChallengeRatings?.Count > 0)
                 return false;
 
             templates ??= [];
 
-            var advancements = GetValidAdvancements(creature, templates, hitDiceQuantity);
+            var advancements = GetValidAdvancements(creature, templates, hitDiceQuantity, filters);
             if (!advancements.Any())
                 return false;
 
@@ -48,7 +34,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             return isAdvanced;
         }
 
-        private IEnumerable<AdvancementDataSelection> GetValidAdvancements(string creature, IEnumerable<string> templates, double hitDiceQuantity)
+        private IEnumerable<AdvancementDataSelection> GetValidAdvancements(string creature, IEnumerable<string> templates, double hitDiceQuantity, Filters filters)
         {
             var advancements = advancementDataSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Advancements, creature);
             var maxHitDice = int.MaxValue;
@@ -60,16 +46,19 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             }
 
             var roundedhitDice = HitDice.GetRoundedQuantity(hitDiceQuantity);
-            var validAdvancements = advancements.Where(a => a.AdvancementIsValid(dice, maxHitDice - roundedhitDice));
+            var validAdvancements = advancements.Where(a => a.AdvancementIsValid(dice, maxHitDice - roundedhitDice, filters));
 
             return validAdvancements;
         }
 
-        public AdvancementDataSelection SelectRandomFor(string creature, IEnumerable<string> templates, double hitDiceQuantity)
+        public AdvancementDataSelection SelectRandomFor(string creature, IEnumerable<string> templates, double hitDiceQuantity, Filters filters)
         {
             templates ??= [];
 
-            var advancements = GetValidAdvancements(creature, templates, hitDiceQuantity);
+            var advancements = GetValidAdvancements(creature, templates, hitDiceQuantity, filters);
+            if (!advancements.Any())
+                throw new InvalidOperationException($"No valid advancements for {creature}");
+
             var randomAdvancement = collectionSelector.SelectRandomFrom(advancements);
             var selection = GetAdvancementSelection(creature, randomAdvancement);
 
@@ -91,6 +80,6 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             return selection;
         }
 
-        private bool IsBarghest(string creatureName) => creatureName == CreatureConstants.Barghest || creatureName == CreatureConstants.Barghest_Greater;
+        private static bool IsBarghest(string creatureName) => creatureName == CreatureConstants.Barghest || creatureName == CreatureConstants.Barghest_Greater;
     }
 }

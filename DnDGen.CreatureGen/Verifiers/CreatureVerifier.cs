@@ -1,93 +1,172 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.RollGen;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Verifiers
 {
-    internal class CreatureVerifier : ICreatureVerifier
+    internal class CreatureVerifier(
+        JustInTimeFactory factory,
+        ICollectionSelector collectionSelector,
+        Dice dice,
+        ICreaturePrototypeFactory prototypeFactory) : ICreatureVerifier
     {
-        private readonly JustInTimeFactory factory;
-        private readonly ICollectionSelector collectionsSelector;
-
-        public CreatureVerifier(JustInTimeFactory factory, ICollectionSelector collectionsSelector)
+        public IEnumerable<CreaturePrototype> GetChainedTemplates(
+            IEnumerable<string> sourceCreatures,
+            string[] templates,
+            bool asCharacter,
+            AbilityRandomizer abilityRandomizer = null,
+            Filters filters = null)
         {
-            this.factory = factory;
-            this.collectionsSelector = collectionsSelector;
+            var firstTemplate = templates.FirstOrDefault();
+            var compatibleCreatures = GetCompatibleCreaturesForTemplate(sourceCreatures, firstTemplate, asCharacter, abilityRandomizer, filters);
+            var prototypes = prototypeFactory.Build(compatibleCreatures, asCharacter, abilityRandomizer);
+
+            if (templates.Length == 0)
+                return prototypes;
+
+            return GetChainedTemplates(prototypes, templates, filters);
         }
 
-        public bool VerifyCompatibility(bool asCharacter, string creature = null, Filters filters = null)
+        public IEnumerable<string> GetCompatibleCreaturesForTemplate(
+            IEnumerable<string> sourceCreatures,
+            string template,
+            bool asCharacter,
+            AbilityRandomizer abilityRandomizer = null,
+            Filters filters = null)
         {
+            template ??= CreatureConstants.Templates.None;
+
+            var templateCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, template + asCharacter);
+            var filteredBaseCreatures = sourceCreatures.Intersect(templateCreatures);
+
+            filteredBaseCreatures = ApplyFilterTo(filteredBaseCreatures, filters?.Alignments, template);
+            filteredBaseCreatures = ApplyFilterTo(filteredBaseCreatures, filters?.ChallengeRatings, template + asCharacter);
+            filteredBaseCreatures = ApplyFilterTo(filteredBaseCreatures, filters?.Types, template);
+
+            var applicator = factory.Build<TemplateApplicator>(template);
+            if (applicator.MinimumAbility is not null)
+            {
+                abilityRandomizer ??= new();
+                var lowestAdjustment = applicator.MinimumAbility.FullScore - abilityRandomizer.GetMax(dice, applicator.MinimumAbility.Name);
+
+                //INFO: Lowest possible ability adjustment is -10
+                //We still want to filter for this, as it will remove creatures that don't have the ability at all
+                lowestAdjustment = Math.Max(-10, lowestAdjustment);
+                filteredBaseCreatures = ApplyFilterTo(filteredBaseCreatures, [applicator.MinimumAbility.Name + lowestAdjustment], string.Empty);
+            }
+
+            return filteredBaseCreatures;
+        }
+
+        private IEnumerable<string> ApplyFilterTo(IEnumerable<string> source, List<string> filter, string prefix)
+        {
+            if (filter?.Count > 0 && filter.Any(g => !string.IsNullOrEmpty(g)))
+            {
+                var groupCreatures = GetUnifiedCreatureGroups(prefix, filter);
+                source = source.Intersect(groupCreatures);
+            }
+
+            return source;
+        }
+
+        private IEnumerable<string> GetUnifiedCreatureGroups(string prefix, IEnumerable<string> groupNames)
+        {
+            var group = Enumerable.Empty<string>();
+
+            foreach (var groupName in groupNames.Where(g => !string.IsNullOrEmpty(g)))
+            {
+                var creatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, prefix + groupName);
+                group = group.Union(creatures);
+            }
+
+            return group;
+        }
+
+        private IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, string template, Filters filters = null)
+        {
+            var applicator = factory.Build<TemplateApplicator>(template);
+            var compatiblePrototypes = sourceCreatures.Where(p => applicator.IsCompatible(p, filters));
+            var updatedPrototypes = compatiblePrototypes.Select(p => applicator.ApplyTo(p, filters));
+
+            //INFO: Trigger immediate execution, so it won't re-apply templates or re-compute validity.
+            return [.. updatedPrototypes];
+        }
+
+        public bool VerifyCompatibility(bool asCharacter, string creature = null, AbilityRandomizer abilityRandomizer = null, Filters filters = null, params string[] templates)
+        {
+            var valid = abilityRandomizer?.Validate(dice) ?? true;
+            if (!valid)
+                return false;
+
             IEnumerable<string> baseCreatures = [creature];
             if (string.IsNullOrEmpty(creature))
             {
-                baseCreatures = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
+                baseCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
             }
 
             if (asCharacter)
             {
-                var characters = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
+                var characters = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
                 baseCreatures = baseCreatures.Intersect(characters);
             }
 
-            var compatible = baseCreatures.Any();
-            if (!compatible)
+            if (!baseCreatures.Any())
                 return false;
 
-            if (filters?.CleanTemplates?.Any() == true)
+            var cleanTemplates = templates.Where(t => !string.IsNullOrEmpty(t)).ToArray();
+            if (cleanTemplates.Length == 1)
             {
-                compatible = TemplatesAreCompatible(filters.CleanTemplates, baseCreatures, asCharacter, filters);
-                return compatible;
+                var compatibleCreatures = GetCompatibleCreaturesForTemplate(baseCreatures, cleanTemplates[0], asCharacter, abilityRandomizer, filters);
+                return compatibleCreatures.Any();
             }
 
-            //INFO: We can cheat and use the None template applicator to verify the filters
-            compatible = TemplatesAreCompatible([CreatureConstants.Templates.None], baseCreatures, asCharacter, filters);
-            if (compatible)
+            if (cleanTemplates.Length > 1)
+            {
+                var compatibleCreatures = GetChainedTemplates(baseCreatures, cleanTemplates, asCharacter, abilityRandomizer, filters);
+                return compatibleCreatures.Any();
+            }
+
+            //INFO: We can use the None template to verify the filters
+            //If there are any of the base creatures in this group, then the filters are valid
+            var filteredCreatures = GetCompatibleCreaturesForTemplate(baseCreatures, null, asCharacter, abilityRandomizer, filters);
+            if (filteredCreatures.Any())
                 return true;
 
-            var templates = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All);
-            foreach (var template in templates)
+            //INFO: This means that the filters aren't valid for non-templated base creatures.
+            //We need to check the templates to see if any of them are valid
+            var allTemplates = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All);
+            foreach (var template in allTemplates)
             {
-                compatible = TemplatesAreCompatible([template], baseCreatures, asCharacter, filters);
-                if (compatible)
+                filteredCreatures = GetCompatibleCreaturesForTemplate(baseCreatures, template, asCharacter, abilityRandomizer, filters);
+                if (filteredCreatures.Any())
                     return true;
             }
 
             return false;
         }
 
-        private bool TemplatesAreCompatible(List<string> templates, IEnumerable<string> creatures, bool asCharacter, Filters filters = null)
+        public IEnumerable<CreaturePrototype> GetChainedTemplates(IEnumerable<CreaturePrototype> prototypes, string[] templates, Filters filters = null)
         {
-            var applicator = factory.Build<TemplateApplicator>(templates[0]);
+            if (templates.Length == 0)
+                return GetCompatiblePrototypes(prototypes, CreatureConstants.Templates.None, filters);
 
-            if (templates.Count == 1)
+            //INFO: We only want to apply filters to the last creature in a series of chained templates
+            for (var i = 0; i < templates.Length - 1; i++)
             {
-                var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, asCharacter, filters);
-                return compatibleCreatures.Any();
+                prototypes = GetCompatiblePrototypes(prototypes, templates[i]);
             }
 
-            var prototypes = applicator.GetCompatiblePrototypes(creatures, asCharacter);
+            prototypes = GetCompatiblePrototypes(prototypes, templates[^1], filters);
 
-            for (var i = 1; i < templates.Count; i++)
-            {
-                applicator = factory.Build<TemplateApplicator>(templates[i]);
-
-                //INFO: We only want to apply filters on the last template, once all other templates have been applied
-                if (i == filters.CleanTemplates.Count - 1)
-                {
-                    prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter, filters);
-                }
-                else
-                {
-                    prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter);
-                }
-            }
-
-            return prototypes.Any();
+            return prototypes;
         }
     }
 }

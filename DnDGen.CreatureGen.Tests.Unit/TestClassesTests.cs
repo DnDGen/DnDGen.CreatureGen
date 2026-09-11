@@ -27,9 +27,11 @@ namespace DnDGen.CreatureGen.Tests.Unit
                 if (!activeTests.Any())
                     continue;
 
+                int GetTestCaseSourceCount(TestCaseSourceAttribute tcs) => TestClassesTests.GetTestCaseSourceCount(tcs, testClass);
+
                 var testsCount = activeTests.Sum(m => m.GetCustomAttributes<TestAttribute>(true).Count());
                 var testCasesCount = activeTests.Sum(m => m.GetCustomAttributes<TestCaseAttribute>().Count(TestCaseIsActive));
-                var testCaseSourcesCount = activeTests.Sum(m => m.GetCustomAttributes<TestCaseSourceAttribute>().Sum(tcs => GetTestCaseSourceCount(tcs, testClass)));
+                var testCaseSourcesCount = activeTests.Sum(m => m.GetCustomAttributes<TestCaseSourceAttribute>().Sum(GetTestCaseSourceCount));
                 var testsTotal = testsCount + testCasesCount + testCaseSourcesCount;
 
                 if (testsTotal > TestLimit)
@@ -76,7 +78,7 @@ namespace DnDGen.CreatureGen.Tests.Unit
                 return false;
 
             return method.GetCustomAttributes<TestAttribute>(true).Any()
-                || method.GetCustomAttributes<TestCaseAttribute>(true).Any(tc => TestCaseIsActive(tc))
+                || method.GetCustomAttributes<TestCaseAttribute>(true).Any(TestCaseIsActive)
                 || method.GetCustomAttributes<TestCaseSourceAttribute>(true).Any(tcs => TestCaseSourceIsActive(tcs, testClass));
         }
 
@@ -89,7 +91,7 @@ namespace DnDGen.CreatureGen.Tests.Unit
         {
             var testCases = GetFromSource(testCaseSource, testClass);
 
-            foreach (var testCase in testCases)
+            foreach (var _ in testCases)
                 return true;
 
             return false;
@@ -126,7 +128,7 @@ namespace DnDGen.CreatureGen.Tests.Unit
                 throw new InvalidOperationException($"Type '{sourceClass}' lacks a method or property '{testCaseSource.SourceName}'");
 
             var instance = Activator.CreateInstance(sourceClass);
-            var testCases = (IEnumerable)method.Invoke(instance, new object[0]);
+            var testCases = (IEnumerable)method.Invoke(instance, []);
 
             return testCases;
         }

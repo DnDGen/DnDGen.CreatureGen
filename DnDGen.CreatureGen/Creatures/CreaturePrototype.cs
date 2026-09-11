@@ -5,9 +5,10 @@ using System.Collections.Generic;
 
 namespace DnDGen.CreatureGen.Creatures
 {
-    public class CreaturePrototype
+    internal class CreaturePrototype
     {
         public string Name { get; set; }
+        public List<string> Templates { get; set; }
         public CreatureType Type { get; set; }
         public Dictionary<string, Ability> Abilities { get; set; }
         public string Size { get; set; }
@@ -17,6 +18,7 @@ namespace DnDGen.CreatureGen.Creatures
         public int CasterLevel { get; set; }
         public double HitDiceQuantity { get; set; }
         public bool HasSkeleton { get; set; }
+        public bool AsCharacter { get; set; }
 
         public CreaturePrototype()
         {
@@ -25,6 +27,7 @@ namespace DnDGen.CreatureGen.Creatures
             Size = string.Empty;
             ChallengeRating = string.Empty;
             Name = string.Empty;
+            Templates = [];
             Type = new CreatureType();
         }
 

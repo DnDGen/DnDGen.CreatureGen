@@ -21,6 +21,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
                 (false, CreatureConstants.Chimera_Green, [CreatureConstants.Templates.HalfCelestial]),
                 (true, CreatureConstants.Chimera_Red, [CreatureConstants.Templates.HalfFiend]),
                 (false, CreatureConstants.Chimera_White, [CreatureConstants.Templates.Skeleton]),
+                (false, CreatureConstants.Choker, [CreatureConstants.Templates.HalfFiend]),
                 (false, CreatureConstants.Criosphinx, [CreatureConstants.Templates.Zombie]),
                 (false, CreatureConstants.DisplacerBeast_PackLord, [CreatureConstants.Templates.HalfFiend]),
                 (false, CreatureConstants.Dragon_Brass_Young, [CreatureConstants.Templates.Ghost]),
@@ -57,126 +58,90 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
 
         public static IEnumerable ProblematicCreaturesTestCases => ProblematicCreatures.Select(pc => new TestCaseData(pc.AsCharacter, pc.Creature, pc.Templates));
 
-        public static IEnumerable<(bool AsCharacter, Filters Filters)> ProblematicFilters =>
+        public static IEnumerable<(bool AsCharacter, string[] Templates, Filters Filters)> ProblematicFilters =>
         [
-            (true, new Filters()),
-            (false, new Filters { ChallengeRating = ChallengeRatingConstants.CR15 }),
-            (false, new Filters { Type = CreatureConstants.Types.Aberration, ChallengeRating = ChallengeRatingConstants.CR6 }),
-            (false, new Filters { Type = CreatureConstants.Types.Dragon }),
-            (false, new Filters { Type = CreatureConstants.Types.Giant }),
-            (false, new Filters { Type = CreatureConstants.Types.Humanoid }),
-            (false, new Filters { Type = CreatureConstants.Types.MagicalBeast }),
-            (false, new Filters { Type = CreatureConstants.Types.Outsider }),
-            (true, new Filters { Type = CreatureConstants.Types.Plant, Alignment = AlignmentConstants.LawfulEvil }),
-            (false, new Filters { Type = CreatureConstants.Types.Undead }),
-            (false, new Filters { Type = CreatureConstants.Types.Subtypes.Augmented }),
-            (true, new Filters { Type = CreatureConstants.Types.Subtypes.Earth, ChallengeRating = ChallengeRatingConstants.CR5 }),
-            (false, new Filters { Type = CreatureConstants.Types.Subtypes.Incorporeal }),
-            (false, new Filters { Type = CreatureConstants.Types.Subtypes.Native }),
-            (true, new Filters { Type = CreatureConstants.Types.Subtypes.Reptilian, ChallengeRating = ChallengeRatingConstants.CR0 }),
-            (false, new Filters { Type = CreatureConstants.Types.Subtypes.Reptilian, ChallengeRating = ChallengeRatingConstants.CR1_4th }),
-            (false, new Filters { Type = CreatureConstants.Types.Subtypes.Reptilian, ChallengeRating = ChallengeRatingConstants.CR1_3rd }),
-            (false, new Filters { Type = CreatureConstants.Types.Subtypes.Reptilian, ChallengeRating = ChallengeRatingConstants.CR1 }),
-            (false, new Filters { Type = CreatureConstants.Types.Subtypes.Reptilian, ChallengeRating = ChallengeRatingConstants.CR2 }),
-            (false, new Filters { Type = CreatureConstants.Types.Subtypes.Shapechanger }),
-            (false, new Filters
-                {
-                    Templates = [CreatureConstants.Templates.Ghost],
-                    Alignment = AlignmentConstants.ChaoticNeutral
-                }),
-            (true, new Filters
-                {
-                    Templates = [CreatureConstants.Templates.Ghost],
-                    Alignment = AlignmentConstants.LawfulEvil
-                }),
-            (false, new Filters
-                {
-                    Templates = [CreatureConstants.Templates.Ghost],
-                    Type = CreatureConstants.Types.Undead
-                }),
-            (true, new Filters
-                {
-                    Templates = [CreatureConstants.Templates.Ghost],
-                    Type = CreatureConstants.Types.Subtypes.Gnoll
-                }),
-            (false, new Filters
-                {
-                    Templates = [CreatureConstants.Templates.Ghost],
-                    Type = CreatureConstants.Types.Aberration,
-                    ChallengeRating = ChallengeRatingConstants.CR6
-                }),
-            (false, new Filters
-                {
-                    Templates = [CreatureConstants.Templates.HalfCelestial],
-                    Type = CreatureConstants.Types.Aberration
-                }),
-            (false, new Filters
-                {
-                    Templates = [CreatureConstants.Templates.HalfCelestial],
-                    Type = CreatureConstants.Types.Subtypes.Native
-                }),
-            (true, new Filters
-                {
-                    Templates = [CreatureConstants.Templates.HalfCelestial],
-                    Type = CreatureConstants.Types.Subtypes.Earth,
-                    ChallengeRating = ChallengeRatingConstants.CR5
-                }),
-            (false, new Filters
-                {
-                    Templates = [CreatureConstants.Templates.HalfCelestial],
-                    Type = CreatureConstants.Types.Subtypes.Reptilian,
-                    ChallengeRating = ChallengeRatingConstants.CR2
-                }),
-            (false, new Filters
-                {
-                    Templates = [CreatureConstants.Templates.HalfFiend],
-                    Type = CreatureConstants.Types.Aberration
-                }),
-            (true, new Filters
-                {
-                    Templates = [CreatureConstants.Templates.HalfFiend],
-                    Type = CreatureConstants.Types.Plant,
-                    Alignment = AlignmentConstants.LawfulEvil
-                }),
-            (false, new Filters
-                {
-                    Templates = [CreatureConstants.Templates.HalfFiend],
-                    Type = CreatureConstants.Types.Subtypes.Native
-                }),
-            (true, new Filters
-                {
-                    Templates = [CreatureConstants.Templates.HalfFiend],
-                    Type = CreatureConstants.Types.Subtypes.Earth,
-                    ChallengeRating = ChallengeRatingConstants.CR5
-                }),
-            (false, new Filters
-                {
-                    Templates = [CreatureConstants.Templates.HalfFiend],
-                    Type = CreatureConstants.Types.Subtypes.Reptilian,
-                    ChallengeRating = ChallengeRatingConstants.CR2
-                }),
-            (false, new Filters
-                {
-                    Templates = [CreatureConstants.Templates.HalfFiend],
-                    Type = CreatureConstants.Types.Subtypes.Reptilian,
-                    ChallengeRating = ChallengeRatingConstants.CR1_3rd
-                }),
-            (false, new Filters
-                {
-                    Templates = [CreatureConstants.Templates.HalfFiend],
-                    ChallengeRating = ChallengeRatingConstants.CR15
-                }),
-            (false, new Filters
-                {
-                    Templates = [CreatureConstants.Templates.Skeleton]
-                }),
-            (false, new Filters
-                {
-                    Templates = [CreatureConstants.Templates.Zombie]
-                }),
+            (true, [], new Filters()),
+            (true, [], new Filters { Alignments = [AlignmentConstants.LawfulEvil], Types = [CreatureConstants.Types.Plant] }),
+            (true, [], new Filters { ChallengeRatings = [ChallengeRatingConstants.CR0], Types = [CreatureConstants.Types.Subtypes.Reptilian], }),
+            (true, [], new Filters { ChallengeRatings = [ChallengeRatingConstants.CR5], Types = [CreatureConstants.Types.Subtypes.Earth], }),
+            (true, [CreatureConstants.Templates.Ghost], new Filters { Alignments = [AlignmentConstants.LawfulEvil] }),
+            (true, [CreatureConstants.Templates.Ghost], new Filters { Types = [CreatureConstants.Types.Subtypes.Gnoll] }),
+            (true, [CreatureConstants.Templates.HalfCelestial], new Filters
+            {
+                ChallengeRatings = [ChallengeRatingConstants.CR5],
+                Types = [CreatureConstants.Types.Subtypes.Earth],
+            }),
+            (true, [CreatureConstants.Templates.HalfFiend], new Filters
+            {
+                Alignments = [AlignmentConstants.LawfulEvil],
+                Types = [CreatureConstants.Types.Plant],
+            }),
+            (true, [CreatureConstants.Templates.HalfFiend], new Filters
+            {
+                ChallengeRatings = [ChallengeRatingConstants.CR5],
+                Types = [CreatureConstants.Types.Subtypes.Earth],
+            }),
+            (false, [], new Filters { ChallengeRatings = [ChallengeRatingConstants.CR1_4th], Types = [CreatureConstants.Types.Subtypes.Reptilian], }),
+            (false, [], new Filters { ChallengeRatings = [ChallengeRatingConstants.CR1_3rd], Types = [CreatureConstants.Types.Subtypes.Reptilian], }),
+            (false, [], new Filters { ChallengeRatings = [ChallengeRatingConstants.CR1], Types = [CreatureConstants.Types.Subtypes.Reptilian], }),
+            (false, [], new Filters { ChallengeRatings = [ChallengeRatingConstants.CR2], Types = [CreatureConstants.Types.Subtypes.Reptilian], }),
+            (false, [], new Filters { ChallengeRatings = [ChallengeRatingConstants.CR3], Types = [CreatureConstants.Types.Aberration], }),
+            (false, [], new Filters { ChallengeRatings = [ChallengeRatingConstants.CR6], Types = [CreatureConstants.Types.Aberration], }),
+            (false, [], new Filters { ChallengeRatings = [ChallengeRatingConstants.CR15] }),
+            (false, [], new Filters { Types = [CreatureConstants.Types.Dragon] }),
+            (false, [], new Filters { Types = [CreatureConstants.Types.Giant] }),
+            (false, [], new Filters { Types = [CreatureConstants.Types.Humanoid] }),
+            (false, [], new Filters { Types = [CreatureConstants.Types.MagicalBeast] }),
+            (false, [], new Filters { Types = [CreatureConstants.Types.Outsider] }),
+            (false, [], new Filters { Types = [CreatureConstants.Types.Undead] }),
+            (false, [], new Filters { Types = [CreatureConstants.Types.Subtypes.Augmented] }),
+            (false, [], new Filters { Types = [CreatureConstants.Types.Subtypes.Incorporeal] }),
+            (false, [], new Filters { Types = [CreatureConstants.Types.Subtypes.Native] }),
+            (false, [], new Filters { Types = [CreatureConstants.Types.Subtypes.Shapechanger] }),
+            (false, [CreatureConstants.Templates.Ghost], new Filters { Alignments = [AlignmentConstants.ChaoticNeutral] }),
+            (false, [CreatureConstants.Templates.Ghost], new Filters { ChallengeRatings = [ChallengeRatingConstants.CR6], Types = [CreatureConstants.Types.Aberration], }),
+            (false, [CreatureConstants.Templates.Ghost], new Filters { Types = [CreatureConstants.Types.Undead] }),
+            (false, [CreatureConstants.Templates.HalfCelestial], new Filters
+            {
+                ChallengeRatings = [ChallengeRatingConstants.CR2],
+                Types = [CreatureConstants.Types.Subtypes.Reptilian]
+            }),
+            (false, [CreatureConstants.Templates.HalfCelestial], new Filters { Types = [CreatureConstants.Types.Aberration] }),
+            (false, [CreatureConstants.Templates.HalfCelestial], new Filters { Types = [CreatureConstants.Types.Subtypes.Native] }),
+            (false, [CreatureConstants.Templates.HalfFiend], new Filters
+            {
+                ChallengeRatings = [ChallengeRatingConstants.CR1_3rd],
+                Types = [CreatureConstants.Types.Subtypes.Reptilian]
+            }),
+            (false, [CreatureConstants.Templates.HalfFiend], new Filters
+            {
+                ChallengeRatings = [ChallengeRatingConstants.CR2],
+                Types = [CreatureConstants.Types.Subtypes.Reptilian]
+            }),
+            (false, [CreatureConstants.Templates.HalfFiend], new Filters
+            {
+                ChallengeRatings = [ChallengeRatingConstants.CR3],
+                Types = [CreatureConstants.Types.Aberration]
+            }),
+            (false, [CreatureConstants.Templates.HalfFiend], new Filters { ChallengeRatings = [ChallengeRatingConstants.CR15] }),
+            (false, [CreatureConstants.Templates.HalfFiend], new Filters { Types = [CreatureConstants.Types.Aberration] }),
+            (false, [CreatureConstants.Templates.HalfFiend], new Filters { Types = [CreatureConstants.Types.Subtypes.Native] }),
+            (false, [CreatureConstants.Templates.Skeleton], null),
+            (false, [CreatureConstants.Templates.Zombie], null),
         ];
 
-        public static IEnumerable ProblematicFiltersTestCases => ProblematicFilters
-            .Select(pf => new TestCaseData(pf.Filters.Type, pf.AsCharacter, pf.Filters.Templates.SingleOrDefault(), pf.Filters.ChallengeRating, pf.Filters.Alignment));
+        public static IEnumerable ProblematicFiltersTestCases
+        {
+            get
+            {
+                foreach (var pf in ProblematicFilters)
+                {
+                    var testCase = new TestCaseData(pf.AsCharacter, pf.Templates, pf.Filters);
+                    testCase.SetArgDisplayNames([pf.AsCharacter.ToString(), string.Join(",", pf.Templates), pf.Filters.GetDescription()]);
+
+                    yield return testCase;
+                }
+            }
+        }
     }
 }

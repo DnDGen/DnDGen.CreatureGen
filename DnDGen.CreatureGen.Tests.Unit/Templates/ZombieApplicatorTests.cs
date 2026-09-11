@@ -1,4 +1,4 @@
-﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Creatures;
@@ -17,14 +17,11 @@ using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
-using DnDGen.TreasureGen.Items;
 using Moq;
 using NUnit.Framework;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
@@ -35,7 +32,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private TemplateApplicator applicator;
         private Creature baseCreature;
         private Mock<ICollectionSelector> mockCollectionSelector;
-        private Mock<ICollectionDataSelector<CreatureDataSelection>> mockCreatureDataSelector;
         private Mock<Dice> mockDice;
         private Mock<IAttacksGenerator> mockAttacksGenerator;
         private Mock<IFeatsGenerator> mockFeatsGenerator;
@@ -44,31 +40,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private IEnumerable<Feat> zombieQualities;
         private int zombieBaseAttack;
         private Mock<IHitPointsGenerator> mockHitPointsGenerator;
-        private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
         private Mock<IDemographicsGenerator> mockDemographicsGenerator;
 
         [SetUp]
         public void Setup()
         {
             mockCollectionSelector = new Mock<ICollectionSelector>();
-            mockCreatureDataSelector = new Mock<ICollectionDataSelector<CreatureDataSelection>>();
             mockDice = new Mock<Dice>();
             mockAttacksGenerator = new Mock<IAttacksGenerator>();
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockSavesGenerator = new Mock<ISavesGenerator>();
             mockHitPointsGenerator = new Mock<IHitPointsGenerator>();
-            mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
             mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
             applicator = new ZombieApplicator(
                 mockCollectionSelector.Object,
-                mockCreatureDataSelector.Object,
                 mockDice.Object,
                 mockAttacksGenerator.Object,
                 mockFeatsGenerator.Object,
                 mockSavesGenerator.Object,
                 mockHitPointsGenerator.Object,
-                mockPrototypeFactory.Object,
                 mockDemographicsGenerator.Object);
 
             baseCreature = new CreatureBuilder()
@@ -117,22 +108,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints))
                 .Returns(zombieBaseAttack);
 
-            zombieAttacks = new[]
-            {
+            zombieAttacks =
+            [
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage>
-                    {
-                        new Damage { Roll = "zombie damage roll", Type = "zombie damage type" }
-                    },
+                    Damages =
+                    [
+                        new() { Roll = "zombie damage roll", Type = "zombie damage type" }
+                    ],
                     Frequency = new Frequency
                     {
                         Quantity = 1,
                         TimePeriod = FeatConstants.Frequencies.Round,
                     }
                 }
-            };
+            ];
 
             mockAttacksGenerator
                 .Setup(g => g.GenerateAttacks(
@@ -173,22 +164,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Type.Name = CreatureConstants.Types.Outsider;
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Zombie}");
-
-            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, false)),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var expected = new InvalidCreatureException("Type 'Outsider' is not valid", false, baseCreature.Name, templates: [CreatureConstants.Templates.Zombie]);
+            var function = () => applicator.ApplyTo(baseCreature, false);
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.TrueNeutral, "Alignment filter 'True Neutral' is not valid")]
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil, "CR filter 1 does not match updated creature CR 1/2")]
-        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.NeutralEvil, "Type filter 'wrong subtype' is not valid")]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.NeutralEvil, "Zombies cannot be characters")]
-        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
+        [TestCase("subtype 1", ChallengeRatingConstants.CR1_3rd, AlignmentConstants.TrueNeutral)]
+        [TestCase("subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR1_3rd, AlignmentConstants.NeutralEvil)]
+        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(string type, string challengeRating, string alignment)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
             baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
@@ -196,25 +180,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment("original alignment");
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Zombie}");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
-
             var filters = new Filters
             {
-                Type = type,
-                ChallengeRating = challengeRating,
-                Alignment = alignment
+                Types = [type],
+                ChallengeRatings = [challengeRating],
+                Alignments = [alignment]
             };
+            var (Compatible, Reason) = filters.AreCompatible(
+                [AlignmentConstants.NeutralEvil],
+                [ChallengeRatingConstants.CR1_2nd],
+                [CreatureConstants.Types.Undead, "subtype 1", "subtype 2"]);
 
-            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, asCharacter, filters)),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var expected = new InvalidCreatureException(
+                Reason,
+                false,
+                baseCreature.Name,
+                filters,
+                null,
+                CreatureConstants.Templates.Zombie);
+
+            var func = () => applicator.ApplyTo(baseCreature, false, filters);
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [Test]
@@ -232,7 +218,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void ApplyTo_ReturnsCreature_WithFilters()
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
-            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
             baseCreature.HitPoints.HitDice[0].Quantity = 1;
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment("original alignment");
@@ -242,7 +228,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 9266 });
+                .Returns([9266]);
             mockDice
                 .Setup(d => d
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
@@ -256,13 +242,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Size,
                     zombieBaseAttack,
                     baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2, baseCreature.Demographics.Gender))
+                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2,
+                    baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
-            var filters = new Filters();
-            filters.Type = "subtype 1";
-            filters.ChallengeRating = ChallengeRatingConstants.CR1_2nd;
-            filters.Alignment = AlignmentConstants.NeutralEvil;
+            var filters = new Filters
+            {
+                Types = ["subtype 1"],
+                ChallengeRatings = [ChallengeRatingConstants.CR1_2nd],
+                Alignments = [AlignmentConstants.NeutralEvil]
+            };
 
             var creature = applicator.ApplyTo(baseCreature, false, filters);
             Assert.That(creature.Templates.Single(), Is.EqualTo(CreatureConstants.Templates.Zombie));
@@ -355,7 +344,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Type.SubTypes.ToArray(), Is.EqualTo(subtypes.Except(new[] { subtype }))
+            Assert.That(creature.Type.SubTypes.ToArray(), Is.EqualTo(subtypes.Except([subtype]))
                 .And.Not.Contains(subtype)
                 .And.Length.EqualTo(2));
         }
@@ -403,7 +392,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .Roll(newQuantity)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 600, 1337 });
+                .Returns([600, 1337]);
             mockDice
                 .Setup(d => d
                     .Roll(newQuantity)
@@ -441,7 +430,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .Roll(newRounded)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 96, 1337 });
+                .Returns([96, 1337]);
             mockDice
                 .Setup(d => d
                     .Roll(newRounded)
@@ -482,7 +471,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .Roll(newRounded)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 96, 1337 });
+                .Returns([96, 1337]);
             mockDice
                 .Setup(d => d
                     .Roll(newRounded)
@@ -532,7 +521,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .Roll(newRounded)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 96, 1337 });
+                .Returns([96, 1337]);
             mockDice
                 .Setup(d => d
                     .Roll(newRounded)
@@ -573,7 +562,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .Roll(newRounded)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 96, 1337 });
+                .Returns([96, 1337]);
             mockDice
                 .Setup(d => d
                     .Roll(newRounded)
@@ -657,7 +646,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(bonus));
-            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count, Is.EqualTo(1));
 
             var naturalArmor = creature.ArmorClass.NaturalArmorBonuses.Single();
             Assert.That(naturalArmor.Condition, Is.Empty);
@@ -703,7 +692,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(bonus));
-            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count, Is.EqualTo(1));
 
             var naturalArmor = creature.ArmorClass.NaturalArmorBonuses.Single();
             Assert.That(naturalArmor.Condition, Is.Empty);
@@ -731,22 +720,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void ApplyTo_ReplacesSlamAttack_DamageBasedOnSize(string size, string damage)
         {
             baseCreature.Size = size;
-            baseCreature.Attacks = baseCreature.Attacks.Union(new[]
-            {
+            baseCreature.Attacks = baseCreature.Attacks.Union(
+            [
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage>
-                    {
-                        new Damage { Roll = "damage roll", Type = "damage type" }
-                    },
+                    Damages =
+                    [
+                        new() { Roll = "damage roll", Type = "damage type" }
+                    ],
                     Frequency = new Frequency
                     {
                         Quantity = 2,
                         TimePeriod = FeatConstants.Frequencies.Round,
                     }
                 }
-            });
+            ]);
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
@@ -820,14 +809,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage>
-                    {
-                        new Damage { Roll = "zombie slam roll", Type = "zombie slam type" }
-                    },
+                    Damages =
+                    [
+                        new() { Roll = "zombie slam roll", Type = "zombie slam type" }
+                    ],
                     Frequency = new Frequency { Quantity = 1, TimePeriod = FeatConstants.Frequencies.Round },
                     IsSpecial = false,
                     IsMelee = true,
-                    AttackBonuses = new List<int> { 92 }
+                    AttackBonuses = [92]
                 },
             };
 
@@ -876,22 +865,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void ApplyTo_ReplacesSlamAttack_KeepOriginalSlamDamage(string size, string damage)
         {
             baseCreature.Size = size;
-            baseCreature.Attacks = baseCreature.Attacks.Union(new[]
-            {
+            baseCreature.Attacks = baseCreature.Attacks.Union(
+            [
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage>
-                    {
-                        new Damage { Roll = "damage roll", Type = "damage type" }
-                    },
+                    Damages =
+                    [
+                        new() { Roll = "damage roll", Type = "damage type" }
+                    ],
                     Frequency = new Frequency
                     {
                         Quantity = 2,
                         TimePeriod = FeatConstants.Frequencies.Round,
                     }
                 }
-            });
+            ]);
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
@@ -941,11 +930,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Name = "my special attack",
                 IsSpecial = true,
             };
-            baseCreature.Attacks = baseCreature.Attacks.Union(new[]
-            {
+            baseCreature.Attacks = baseCreature.Attacks.Union(
+            [
                 specialAttack,
                 new Attack { Name = "my normal attack", IsSpecial = false },
-            });
+            ]);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -965,11 +954,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_ReplaceSpecialQualities_KeepAttackBonuses()
         {
-            var attackBonus = new Feat { Name = FeatConstants.SpecialQualities.AttackBonus, Power = 1337, Foci = new[] { "losers" } };
-            baseCreature.SpecialQualities = baseCreature.SpecialQualities.Union(new[]
-            {
+            var attackBonus = new Feat { Name = FeatConstants.SpecialQualities.AttackBonus, Power = 1337, Foci = ["losers"] };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities.Union(
+            [
                 attackBonus
-            });
+            ]);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -981,15 +970,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_ReplaceSpecialQualities_KeepWeaponProficiencies()
         {
-            var proficiency = new Feat { Name = "weapon proficiency", Foci = new[] { "guns" } };
-            baseCreature.SpecialQualities = baseCreature.SpecialQualities.Union(new[]
-            {
+            var proficiency = new Feat { Name = "weapon proficiency", Foci = ["guns"] };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities.Union(
+            [
                 proficiency
-            });
+            ]);
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency))
-                .Returns(new[] { "weapon proficiency", "other weapon proficiency" });
+                .Returns(["weapon proficiency", "other weapon proficiency"]);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1002,14 +991,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void ApplyTo_ReplaceSpecialQualities_KeepArmorProficiencies()
         {
             var proficiency = new Feat { Name = "armor proficiency" };
-            baseCreature.SpecialQualities = baseCreature.SpecialQualities.Union(new[]
-            {
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities.Union(
+            [
                 proficiency
-            });
+            ]);
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.ArmorProficiency))
-                .Returns(new[] { "armor proficiency", "other armor proficiency" });
+                .Returns(["armor proficiency", "other armor proficiency"]);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1021,21 +1010,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_SetSavingThrows()
         {
-            var zombieSaves = new Dictionary<string, Save>();
-            zombieSaves[SaveConstants.Fortitude] = new Save
+            var zombieSaves = new Dictionary<string, Save>
             {
-                BaseAbility = baseCreature.Abilities[AbilityConstants.Constitution],
-                BaseValue = 96,
-            };
-            zombieSaves[SaveConstants.Reflex] = new Save
-            {
-                BaseAbility = baseCreature.Abilities[AbilityConstants.Dexterity],
-                BaseValue = 1337,
-            };
-            zombieSaves[SaveConstants.Will] = new Save
-            {
-                BaseAbility = baseCreature.Abilities[AbilityConstants.Wisdom],
-                BaseValue = 1336,
+                [SaveConstants.Fortitude] = new Save
+                {
+                    BaseAbility = baseCreature.Abilities[AbilityConstants.Constitution],
+                    BaseValue = 96,
+                },
+                [SaveConstants.Reflex] = new Save
+                {
+                    BaseAbility = baseCreature.Abilities[AbilityConstants.Dexterity],
+                    BaseValue = 1337,
+                },
+                [SaveConstants.Will] = new Save
+                {
+                    BaseAbility = baseCreature.Abilities[AbilityConstants.Wisdom],
+                    BaseValue = 1336,
+                }
             };
 
             mockSavesGenerator
@@ -1128,7 +1119,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .Roll(newRounded)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 9266 });
+                .Returns([9266]);
             mockDice
                 .Setup(d => d
                     .Roll(newRounded)
@@ -1183,15 +1174,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     20, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: Creature has too many hit dice ({hitDice} > 10)");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Zombie}");
+            var expected = new InvalidCreatureException(
+                $"Creature has too many hit dice ({hitDice} > 10)",
+                false,
+                baseCreature.Name,
+                templates: [CreatureConstants.Templates.Zombie]);
 
-            Assert.That((Func<object>)(() => applicator.ApplyTo(baseCreature, false)),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            var function = () => applicator.ApplyTo(baseCreature, false);
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Good)]
@@ -1228,46 +1218,47 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Type.Name = CreatureConstants.Types.Outsider;
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine("\tReason: Type 'Outsider' is not valid");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Zombie}");
-
+            var expected = new InvalidCreatureException(
+                "Type 'Outsider' is not valid",
+                false,
+                baseCreature.Name,
+                templates: [CreatureConstants.Templates.Zombie]);
             await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, false),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.TrueNeutral, "Alignment filter 'True Neutral' is not valid")]
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil, "CR filter 1 does not match updated creature CR 1/2")]
-        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.NeutralEvil, "Type filter 'wrong subtype' is not valid")]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.NeutralEvil, "Zombies cannot be characters")]
-        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
+        [TestCase("subtype 1", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.TrueNeutral)]
+        [TestCase("subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.NeutralEvil)]
+        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(string type, string challengeRating, string alignment)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
-            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
             baseCreature.HitPoints.HitDice[0].Quantity = 1;
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment("original alignment");
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: {reason}");
-            message.AppendLine($"\tAs Character: {asCharacter}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Zombie}");
-            message.AppendLine($"\tType: {type}");
-            message.AppendLine($"\tCR: {challengeRating}");
-            message.AppendLine($"\tAlignment: {alignment}");
+            var filters = new Filters
+            {
+                Types = [type],
+                ChallengeRatings = [challengeRating],
+                Alignments = [alignment]
+            };
+            var (Compatible, Reason) = filters.AreCompatible(
+                [AlignmentConstants.NeutralEvil],
+                [ChallengeRatingConstants.CR1_2nd],
+                [CreatureConstants.Types.Undead, "subtype 1", "subtype 2"]);
 
-            var filters = new Filters();
-            filters.Type = type;
-            filters.ChallengeRating = challengeRating;
-            filters.Alignment = alignment;
+            var expected = new InvalidCreatureException(
+                Reason,
+                false,
+                baseCreature.Name,
+                filters,
+                null,
+                CreatureConstants.Templates.Zombie);
 
-            await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, asCharacter, filters),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+            await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, false, filters),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [Test]
@@ -1285,7 +1276,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public async Task ApplyToAsync_ReturnsCreature_WithFilters()
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
-            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.Type.SubTypes = ["subtype 1", "subtype 2"];
             baseCreature.HitPoints.HitDice[0].Quantity = 1;
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment(AlignmentConstants.NeutralEvil);
@@ -1295,7 +1286,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 9266 });
+                .Returns([9266]);
             mockDice
                 .Setup(d => d
                     .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
@@ -1312,10 +1303,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity * 2, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
-            var filters = new Filters();
-            filters.Type = "subtype 1";
-            filters.ChallengeRating = ChallengeRatingConstants.CR1_2nd;
-            filters.Alignment = AlignmentConstants.NeutralEvil;
+            var filters = new Filters
+            {
+                Types = ["subtype 1"],
+                ChallengeRatings = [ChallengeRatingConstants.CR1_2nd],
+                Alignments = [AlignmentConstants.NeutralEvil]
+            };
 
             var creature = await applicator.ApplyToAsync(baseCreature, false, filters);
             Assert.That(creature.Templates.Single(), Is.EqualTo(CreatureConstants.Templates.Zombie));
@@ -1408,7 +1401,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Type.SubTypes.ToArray(), Is.EqualTo(subtypes.Except(new[] { subtype }))
+            Assert.That(creature.Type.SubTypes.ToArray(), Is.EqualTo(subtypes.Except([subtype]))
                 .And.Not.Contains(subtype)
                 .And.Length.EqualTo(2));
         }
@@ -1457,7 +1450,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .Roll(newRounded)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 96, 1337 });
+                .Returns([96, 1337]);
             mockDice
                 .Setup(d => d
                     .Roll(newRounded)
@@ -1478,9 +1471,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_AerialManeuverability_BecomesClumsy()
         {
-            baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("furlongs");
-            baseCreature.Speeds[SpeedConstants.Fly].Value = 1337;
-            baseCreature.Speeds[SpeedConstants.Fly].Description = "Superb Maneuverability (hoverboard)";
+            baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("furlongs")
+            {
+                Value = 1337,
+                Description = "Superb Maneuverability (hoverboard)"
+            };
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1528,7 +1523,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(bonus));
-            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count, Is.EqualTo(1));
 
             var naturalArmor = creature.ArmorClass.NaturalArmorBonuses.Single();
             Assert.That(naturalArmor.Condition, Is.Empty);
@@ -1574,7 +1569,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(bonus));
-            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count, Is.EqualTo(1));
 
             var naturalArmor = creature.ArmorClass.NaturalArmorBonuses.Single();
             Assert.That(naturalArmor.Condition, Is.Empty);
@@ -1602,22 +1597,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public async Task ApplyToAsync_ReplacesSlamAttack_DamageBasedOnSize(string size, string damage)
         {
             baseCreature.Size = size;
-            baseCreature.Attacks = baseCreature.Attacks.Union(new[]
-            {
+            baseCreature.Attacks = baseCreature.Attacks.Union(
+            [
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage>
-                    {
-                        new Damage { Roll = "damage roll", Type = "damage type" }
-                    },
+                    Damages =
+                    [
+                        new() { Roll = "damage roll", Type = "damage type" }
+                    ],
                     Frequency = new Frequency
                     {
                         Quantity = 2,
                         TimePeriod = FeatConstants.Frequencies.Round,
                     }
                 }
-            });
+            ]);
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
@@ -1691,14 +1686,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage>
-                    {
-                        new Damage { Roll = "zombie slam roll", Type = "zombie slam type" }
-                    },
+                    Damages =
+                    [
+                        new() { Roll = "zombie slam roll", Type = "zombie slam type" }
+                    ],
                     Frequency = new Frequency { Quantity = 1, TimePeriod = FeatConstants.Frequencies.Round },
                     IsSpecial = false,
                     IsMelee = true,
-                    AttackBonuses = new List<int> { 92 }
+                    AttackBonuses = [92]
                 },
             };
 
@@ -1747,22 +1742,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public async Task ApplyToAsync_ReplacesSlamAttack_KeepOriginalSlamDamage(string size, string damage)
         {
             baseCreature.Size = size;
-            baseCreature.Attacks = baseCreature.Attacks.Union(new[]
-            {
+            baseCreature.Attacks = baseCreature.Attacks.Union(
+            [
                 new Attack
                 {
                     Name = "Slam",
-                    Damages = new List<Damage>
-                    {
-                        new Damage { Roll = "damage roll", Type = "damage type" }
-                    },
+                    Damages =
+                    [
+                        new() { Roll = "damage roll", Type = "damage type" }
+                    ],
                     Frequency = new Frequency
                     {
                         Quantity = 2,
                         TimePeriod = FeatConstants.Frequencies.Round,
                     }
                 }
-            });
+            ]);
 
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
@@ -1812,11 +1807,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Name = "my special attack",
                 IsSpecial = true,
             };
-            baseCreature.Attacks = baseCreature.Attacks.Union(new[]
-            {
+            baseCreature.Attacks = baseCreature.Attacks.Union(
+            [
                 specialAttack,
                 new Attack { Name = "my normal attack", IsSpecial = false },
-            });
+            ]);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1836,11 +1831,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_ReplaceSpecialQualities_KeepAttackBonuses()
         {
-            var attackBonus = new Feat { Name = FeatConstants.SpecialQualities.AttackBonus, Power = 1337, Foci = new[] { "losers" } };
-            baseCreature.SpecialQualities = baseCreature.SpecialQualities.Union(new[]
-            {
+            var attackBonus = new Feat { Name = FeatConstants.SpecialQualities.AttackBonus, Power = 1337, Foci = ["losers"] };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities.Union(
+            [
                 attackBonus
-            });
+            ]);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1852,15 +1847,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_ReplaceSpecialQualities_KeepWeaponProficiencies()
         {
-            var proficiency = new Feat { Name = "weapon proficiency", Foci = new[] { "guns" } };
-            baseCreature.SpecialQualities = baseCreature.SpecialQualities.Union(new[]
-            {
+            var proficiency = new Feat { Name = "weapon proficiency", Foci = ["guns"] };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities.Union(
+            [
                 proficiency
-            });
+            ]);
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency))
-                .Returns(new[] { "weapon proficiency", "other weapon proficiency" });
+                .Returns(["weapon proficiency", "other weapon proficiency"]);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1873,14 +1868,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public async Task ApplyToAsync_ReplaceSpecialQualities_KeepArmorProficiencies()
         {
             var proficiency = new Feat { Name = "armor proficiency" };
-            baseCreature.SpecialQualities = baseCreature.SpecialQualities.Union(new[]
-            {
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities.Union(
+            [
                 proficiency
-            });
+            ]);
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.ArmorProficiency))
-                .Returns(new[] { "armor proficiency", "other armor proficiency" });
+                .Returns(["armor proficiency", "other armor proficiency"]);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1892,21 +1887,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_SetSavingThrows()
         {
-            var zombieSaves = new Dictionary<string, Save>();
-            zombieSaves[SaveConstants.Fortitude] = new Save
+            var zombieSaves = new Dictionary<string, Save>
             {
-                BaseAbility = baseCreature.Abilities[AbilityConstants.Constitution],
-                BaseValue = 96,
-            };
-            zombieSaves[SaveConstants.Reflex] = new Save
-            {
-                BaseAbility = baseCreature.Abilities[AbilityConstants.Dexterity],
-                BaseValue = 1337,
-            };
-            zombieSaves[SaveConstants.Will] = new Save
-            {
-                BaseAbility = baseCreature.Abilities[AbilityConstants.Wisdom],
-                BaseValue = 1336,
+                [SaveConstants.Fortitude] = new Save
+                {
+                    BaseAbility = baseCreature.Abilities[AbilityConstants.Constitution],
+                    BaseValue = 96,
+                },
+                [SaveConstants.Reflex] = new Save
+                {
+                    BaseAbility = baseCreature.Abilities[AbilityConstants.Dexterity],
+                    BaseValue = 1337,
+                },
+                [SaveConstants.Will] = new Save
+                {
+                    BaseAbility = baseCreature.Abilities[AbilityConstants.Wisdom],
+                    BaseValue = 1336,
+                }
             };
 
             mockSavesGenerator
@@ -1999,7 +1996,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .Roll(newRounded)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 9266 });
+                .Returns([9266]);
             mockDice
                 .Setup(d => d
                     .Roll(newRounded)
@@ -2038,7 +2035,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .Roll(20)
                     .d(12)
                     .AsIndividualRolls<int>())
-                .Returns(new[] { 9266 });
+                .Returns([9266]);
             mockDice
                 .Setup(d => d
                     .Roll(20)
@@ -2055,15 +2052,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     20, baseCreature.Demographics.Gender))
                 .Returns(zombieAttacks);
 
-            var message = new StringBuilder();
-            message.AppendLine("Invalid creature:");
-            message.AppendLine($"\tReason: Creature has too many hit dice ({hitDice} > 10)");
-            message.AppendLine($"\tAs Character: {false}");
-            message.AppendLine($"\tCreature: {baseCreature.Name}");
-            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Zombie}");
+            var expected = new InvalidCreatureException(
+                $"Creature has too many hit dice ({hitDice} > 10)",
+                false,
+                baseCreature.Name,
+                templates: [CreatureConstants.Templates.Zombie]);
 
             await Assert.ThatAsync(async () => await applicator.ApplyToAsync(baseCreature, false),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
         }
 
         [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Good)]
@@ -2102,10 +2098,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Magic.Caster = "my caster";
             baseCreature.Magic.CasterLevel = 90210;
             baseCreature.Magic.CastingAbility = baseCreature.Abilities[AbilityConstants.Wisdom];
-            baseCreature.Magic.Domains = new[] { "domain 1", "domain 2" };
-            baseCreature.Magic.KnownSpells = new[] { new Spell { Level = 42, Name = "my spell", Source = "my source" } };
-            baseCreature.Magic.PreparedSpells = new[] { new Spell { Level = 783, Name = "my prepared spell", Source = "my prepared source" } };
-            baseCreature.Magic.SpellsPerDay = new[] { new SpellQuantity { BonusSpells = 1337, Level = 1336, Quantity = 96, Source = "my per day source" } };
+            baseCreature.Magic.Domains = ["domain 1", "domain 2"];
+            baseCreature.Magic.KnownSpells = [new Spell { Level = 42, Name = "my spell", Source = "my source" }];
+            baseCreature.Magic.PreparedSpells = [new Spell { Level = 783, Name = "my prepared spell", Source = "my prepared source" }];
+            baseCreature.Magic.SpellsPerDay = [new SpellQuantity { BonusSpells = 1337, Level = 1336, Quantity = 96, Source = "my per day source" }];
             baseCreature.CasterLevel = 783;
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -2128,10 +2124,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Magic.Caster = "my caster";
             baseCreature.Magic.CasterLevel = 90210;
             baseCreature.Magic.CastingAbility = baseCreature.Abilities[AbilityConstants.Wisdom];
-            baseCreature.Magic.Domains = new[] { "domain 1", "domain 2" };
-            baseCreature.Magic.KnownSpells = new[] { new Spell { Level = 42, Name = "my spell", Source = "my source" } };
-            baseCreature.Magic.PreparedSpells = new[] { new Spell { Level = 783, Name = "my prepared spell", Source = "my prepared source" } };
-            baseCreature.Magic.SpellsPerDay = new[] { new SpellQuantity { BonusSpells = 1337, Level = 1336, Quantity = 96, Source = "my per day source" } };
+            baseCreature.Magic.Domains = ["domain 1", "domain 2"];
+            baseCreature.Magic.KnownSpells = [new Spell { Level = 42, Name = "my spell", Source = "my source" }];
+            baseCreature.Magic.PreparedSpells = [new Spell { Level = 783, Name = "my prepared spell", Source = "my prepared source" }];
+            baseCreature.Magic.SpellsPerDay = [new SpellQuantity { BonusSpells = 1337, Level = 1336, Quantity = 96, Source = "my per day source" }];
             baseCreature.CasterLevel = 783;
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -2177,9 +2173,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_HitDiceQuantity_RerollWithQualities()
         {
-            var updatedHitPoints = new HitPoints();
-            updatedHitPoints.Bonus = 600;
-            updatedHitPoints.Constitution = baseCreature.HitPoints.Constitution;
+            var updatedHitPoints = new HitPoints
+            {
+                Bonus = 600,
+                Constitution = baseCreature.HitPoints.Constitution
+            };
             updatedHitPoints.HitDice.AddRange(baseCreature.HitPoints.HitDice);
 
             mockHitPointsGenerator
@@ -2214,321 +2212,30 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void GetCompatibleCreatures_ReturnsEmpty_IfAsCharacter()
+        public void IsCompatible_ReturnsTrue()
         {
-            var creatures = new[] { "my creature", "my other creature" };
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, true);
-            Assert.That(compatibleCreatures, Is.Empty);
+            var compatible = applicator.IsCompatible(prototype);
+            Assert.That(compatible, Is.True);
         }
 
         [Test]
-        public void GetCompatibleCreatures_ReturnsCompatibleCreatures()
+        public void IsCompatible_AsCharacter_ReturnsFalse()
         {
-            var creatures = new[] { "my creature", "my other creature", "boneless creature" };
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .WithAsCharacter(true)
+                .Build();
 
-            var zombieCreatures = creatures.Except(["boneless creature"]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false);
-            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
-        }
-
-        private Dictionary<string, CreatureDataSelection> SetUpCreatureData(double amount = 1)
-        {
-            var data = new Dictionary<string, CreatureDataSelection>
-            {
-                ["my creature"] = new() { HitDiceQuantity = amount, HasSkeleton = true, Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"] },
-                ["my other creature"] = new() { HitDiceQuantity = amount, HasSkeleton = true, Types = [CreatureConstants.Types.Giant, "subtype 3"] },
-                ["another creature"] = new() { HitDiceQuantity = amount, HasSkeleton = true, Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"] },
-                ["yet another creature"] = new() { HitDiceQuantity = amount, HasSkeleton = true, Types = [CreatureConstants.Types.Giant] },
-                ["outsider creature"] = new() { HitDiceQuantity = amount, HasSkeleton = true, Types = [CreatureConstants.Types.Outsider, "subtype 2"] },
-                ["boneless creature"] = new() { HitDiceQuantity = amount, HasSkeleton = false, Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"] },
-                ["strong creature"] = new() { HitDiceQuantity = 11, HasSkeleton = true, Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"] },
-                ["wrong creature 1"] = new() { HitDiceQuantity = amount, HasSkeleton = true, Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"] },
-                ["wrong creature 2"] = new() { HitDiceQuantity = amount, HasSkeleton = true, Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"] },
-                ["wrong creature 3"] = new() { HitDiceQuantity = amount, HasSkeleton = true, Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"] },
-                ["wrong creature 4"] = new() { HitDiceQuantity = amount, HasSkeleton = true, Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"] },
-                ["wrong creature 5"] = new() { HitDiceQuantity = amount, HasSkeleton = true, Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"] },
-                ["wrong creature 6"] = new() { HitDiceQuantity = amount, HasSkeleton = true, Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2"] },
-            };
-
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData))
-                .Returns(data.ToDictionary(kvp => kvp.Key, kvp => new[] { kvp.Value } as IEnumerable<CreatureDataSelection>));
-
-            return data;
-        }
-
-        [TestCase(AlignmentConstants.LawfulGood)]
-        [TestCase(AlignmentConstants.NeutralGood)]
-        [TestCase(AlignmentConstants.ChaoticGood)]
-        [TestCase(AlignmentConstants.LawfulNeutral)]
-        [TestCase(AlignmentConstants.TrueNeutral)]
-        [TestCase(AlignmentConstants.ChaoticNeutral)]
-        [TestCase(AlignmentConstants.LawfulEvil)]
-        [TestCase(AlignmentConstants.ChaoticEvil)]
-        [TestCase("wrong alignment")]
-        public void GetCompatibleCreatures_ReturnEmpty_WhenAlignmentFilterInvalid(string alignmentFilter)
-        {
-            var creatures = new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" };
-
-            var filters = new Filters
-            {
-                Alignment = alignmentFilter
-            };
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.Empty);
-        }
-
-        [Test]
-        public void GetCompatibleCreatures_ReturnCompatibleCreatures_WhenAlignmentFilterValid()
-        {
-            var creatures = new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" };
-
-            var zombieCreatures = creatures.Except(["wrong creature 1", "wrong creature 2", "wrong creature 3", "wrong creature 4"]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
-
-            SetUpCreatureData();
-
-            var filters = new Filters
-            {
-                Alignment = AlignmentConstants.NeutralEvil
-            };
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.EquivalentTo(["my creature", "my other creature"]));
-        }
-
-        [TestCase(ChallengeRatingConstants.CR1_8th, 0, 0.25)]
-        [TestCase(ChallengeRatingConstants.CR1_4th, 0.25, 0.5)]
-        [TestCase(ChallengeRatingConstants.CR1_2nd, 0.5, 1)]
-        [TestCase(ChallengeRatingConstants.CR1, 1, 2)]
-        [TestCase(ChallengeRatingConstants.CR2, 2, 3)]
-        [TestCase(ChallengeRatingConstants.CR3, 3, 5)]
-        [TestCase(ChallengeRatingConstants.CR4, 5, 7)]
-        [TestCase(ChallengeRatingConstants.CR5, 7, 8)]
-        [TestCase(ChallengeRatingConstants.CR6, 8, 10)]
-        public void GetCompatibleCreatures_WithChallengeRating_ReturnsCompatibleCreatures(string challengeRatingFilter, double lower, double upper)
-        {
-            var creatures = new[] { "my creature", "my other creature", "boneless creature", "yet another creature" };
-
-            var zombieCreatures = creatures.Except(["boneless creature"]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
-
-            var data = SetUpCreatureData();
-            data["my creature"].HitDiceQuantity = lower + 0.01;
-            data["my other creature"].Types = [CreatureConstants.Types.Animal, "subtype 3"];
-            data["my other creature"].HitDiceQuantity = upper;
-            data["yet another creature"].HitDiceQuantity = (lower + upper) / 2;
-
-            var filters = new Filters
-            {
-                ChallengeRating = challengeRatingFilter
-            };
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature", "yet another creature" }));
-        }
-
-        [TestCaseSource(nameof(InvalidChallengeRatings))]
-        public void GetCompatibleCreatures_WithChallengeRating_ReturnsEmpty_IfChallengeRatingNotValidForTemplate(string challengeRatingFilter)
-        {
-            var creatures = new[] { "my creature", "my other creature", "another creature", "yet another creature" };
-
-            var filters = new Filters
-            {
-                ChallengeRating = challengeRatingFilter
-            };
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.Empty);
-        }
-
-        private static IEnumerable InvalidChallengeRatings => ChallengeRatingConstants.GetOrdered()
-            .Except(
-            [
-                ChallengeRatingConstants.CR1_8th,
-                ChallengeRatingConstants.CR1_4th,
-                ChallengeRatingConstants.CR1_2nd,
-                ChallengeRatingConstants.CR1,
-                ChallengeRatingConstants.CR2,
-                ChallengeRatingConstants.CR3,
-                ChallengeRatingConstants.CR4,
-                ChallengeRatingConstants.CR5,
-                ChallengeRatingConstants.CR6,
-            ])
-            .Union(["9266", "my challenge rating"])
-            .Select(t => new TestCaseData(t));
-
-        [TestCase(ChallengeRatingConstants.CR1_8th, 0, 0.25)]
-        [TestCase(ChallengeRatingConstants.CR1_4th, 0.25, 0.5)]
-        [TestCase(ChallengeRatingConstants.CR1_2nd, 0.5, 1)]
-        [TestCase(ChallengeRatingConstants.CR1, 1, 2)]
-        [TestCase(ChallengeRatingConstants.CR2, 2, 3)]
-        [TestCase(ChallengeRatingConstants.CR3, 3, 5)]
-        [TestCase(ChallengeRatingConstants.CR4, 5, 7)]
-        [TestCase(ChallengeRatingConstants.CR5, 7, 8)]
-        [TestCase(ChallengeRatingConstants.CR6, 8, 10)]
-        public void GetCompatibleCreatures_WithChallengeRating_ReturnsCompatibleCreatures_FilterOutCreaturesOutOfHitDiceRange(
-            string challengeRatingFilter,
-            double lower,
-            double upper)
-        {
-            var creatures = new[] { "my creature", "my other creature", "another creature", "yet another creature" };
-
-            var zombieCreatures = creatures
-                .Except(upper >= 10 ? ["my other creature"] : [])
-                .Except(lower <= 0 ? ["another creature"] : []);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
-
-            var data = SetUpCreatureData();
-            data["my creature"].HitDiceQuantity = lower + 0.01;
-            data["my other creature"].Types = [CreatureConstants.Types.Animal, "subtype 3"];
-            data["my other creature"].HitDiceQuantity = upper + 0.01;
-            data["another creature"].HitDiceQuantity = lower;
-            data["yet another creature"].HitDiceQuantity = upper;
-
-            var filters = new Filters
-            {
-                ChallengeRating = challengeRatingFilter
-            };
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "yet another creature" }));
-
-            mockCreatureDataSelector.Verify(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, It.IsAny<string>()), Times.Never);
-        }
-
-        [Test]
-        public void GetCompatibleCreatures_WithType_ReturnsCompatibleCreatures()
-        {
-            var creatures = new[] { "my creature", "my other creature", "boneless creature" };
-
-            var zombieCreatures = creatures.Except(["boneless creature"]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
-
-            var data = SetUpCreatureData();
-            data["my other creature"].Types = [CreatureConstants.Types.Animal, "subtype 3"];
-            data["my other creature"].HitDiceQuantity = 2;
-
-            var filters = new Filters
-            {
-                Type = CreatureConstants.Types.Undead
-            };
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
-        }
-
-        [TestCase(CreatureConstants.Types.Subtypes.Angel)]
-        [TestCase(CreatureConstants.Types.Subtypes.Archon)]
-        [TestCase(CreatureConstants.Types.Subtypes.Chaotic)]
-        [TestCase(CreatureConstants.Types.Subtypes.Dwarf)]
-        [TestCase(CreatureConstants.Types.Subtypes.Elf)]
-        [TestCase(CreatureConstants.Types.Subtypes.Evil)]
-        [TestCase(CreatureConstants.Types.Subtypes.Gnoll)]
-        [TestCase(CreatureConstants.Types.Subtypes.Gnome)]
-        [TestCase(CreatureConstants.Types.Subtypes.Goblinoid)]
-        [TestCase(CreatureConstants.Types.Subtypes.Good)]
-        [TestCase(CreatureConstants.Types.Subtypes.Halfling)]
-        [TestCase(CreatureConstants.Types.Subtypes.Human)]
-        [TestCase(CreatureConstants.Types.Subtypes.Lawful)]
-        [TestCase(CreatureConstants.Types.Subtypes.Orc)]
-        [TestCase(CreatureConstants.Types.Subtypes.Reptilian)]
-        [TestCase(CreatureConstants.Types.Subtypes.Shapechanger)]
-        public void GetCompatibleCreatures_WithType_ReturnsEmpty_WhenTypeFilterNotValid(string typeFilter)
-        {
-            var creatures = new[] { "my creature", "my other creature", "another creature" };
-
-            var filters = new Filters
-            {
-                Type = typeFilter
-            };
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.Empty);
-        }
-
-        [TestCase(CreatureConstants.Types.Aberration)]
-        [TestCase(CreatureConstants.Types.Animal)]
-        [TestCase(CreatureConstants.Types.Dragon)]
-        [TestCase(CreatureConstants.Types.Elemental)]
-        [TestCase(CreatureConstants.Types.Fey)]
-        [TestCase(CreatureConstants.Types.Giant)]
-        [TestCase(CreatureConstants.Types.Humanoid)]
-        [TestCase(CreatureConstants.Types.MagicalBeast)]
-        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
-        [TestCase(CreatureConstants.Types.Vermin)]
-        [TestCase(CreatureConstants.Types.Subtypes.Air)]
-        [TestCase(CreatureConstants.Types.Subtypes.Aquatic)]
-        [TestCase(CreatureConstants.Types.Subtypes.Augmented)]
-        [TestCase(CreatureConstants.Types.Subtypes.Cold)]
-        [TestCase(CreatureConstants.Types.Subtypes.Earth)]
-        [TestCase(CreatureConstants.Types.Subtypes.Extraplanar)]
-        [TestCase(CreatureConstants.Types.Subtypes.Fire)]
-        [TestCase(CreatureConstants.Types.Subtypes.Swarm)]
-        [TestCase(CreatureConstants.Types.Subtypes.Water)]
-        public void GetCompatibleCreatures_WithType_ReturnsCompatibleCreatures_FilterOutCreaturesWithWrongSubtype(string typeFilter)
-        {
-            var creatures = new[] { "my creature", "my other creature", "another creature" };
-
-            var zombieCreatures = creatures.Except(["wrong creature 1", "wrong creature 2", "wrong creature 3", "wrong creature 4"]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
-
-            var data = SetUpCreatureData();
-            data["my creature"].Types = [CreatureConstants.Types.Humanoid, "subtype 1", typeFilter];
-            data["my other creature"].Types = [CreatureConstants.Types.Animal, typeFilter];
-            data["my other creature"].HitDiceQuantity = 2;
-            data["another creature"].Types = [CreatureConstants.Types.Humanoid, "wrong subtype"];
-
-            var filters = new Filters
-            {
-                Type = typeFilter
-            };
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
-        }
-
-        [Test]
-        public void GetCompatibleCreatures_WithChallengeRatingAndType_ReturnsCompatibleCreatures()
-        {
-            var creatures = new[] { "my creature", "my other creature", "boneless creature", "yet another creature" };
-
-            var zombieCreatures = creatures.Except(["boneless creature"]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
-
-            var data = SetUpCreatureData();
-            data["my creature"].HitDiceQuantity = 1.01;
-            data["my other creature"].HitDiceQuantity = 2;
-            data["my other creature"].Types = [CreatureConstants.Types.Animal, "subtype 2"];
-            data["yet another creature"].HitDiceQuantity = 1.5;
-            data["yet another creature"].Types = [CreatureConstants.Types.Humanoid, "wrong subtype"];
-
-            var filters = new Filters
-            {
-                Type = "subtype 2",
-                ChallengeRating = ChallengeRatingConstants.CR1
-            };
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
+            var compatible = applicator.IsCompatible(prototype);
+            Assert.That(compatible, Is.False);
         }
 
         [TestCase(CreatureConstants.Types.Aberration, true)]
@@ -2546,50 +2253,43 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Plant, false)]
         [TestCase(CreatureConstants.Types.Undead, false)]
         [TestCase(CreatureConstants.Types.Vermin, true)]
-        public void GetCompatibleCreatures_ByCreatureType(string creatureType, bool compatible)
+        public void IsCompatible_ReturnsCompatibility_BasedOnCreatureType(string creatureType, bool expected)
         {
-            //INFO: creature type compatibility handled by the creature group
-            var zombieType = compatible ? creatureType : "wrong";
-            var zombieCreatures = new[] { "my zombie creature", "my creature", "my other creature", $"my {zombieType} creature" };
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(creatureType, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures([$"my {creatureType} creature"], false);
-            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+            var compatible = applicator.IsCompatible(prototype);
+            Assert.That(compatible, Is.EqualTo(expected));
         }
 
         [Test]
-        public void GetCompatibleCreatures_CannotBeIncorporeal()
+        public void IsCompatible_ReturnsFalse_IfIncorporeal()
         {
-            //INFO: creature type compatibility handled by the creature group
-            var zombieCreatures = new[] { "my zombie creature", "my creature", "my other creature", "my corporeal creature" };
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", CreatureConstants.Types.Subtypes.Incorporeal, "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(["my incorporeal creature"], false);
-            Assert.That(compatibleCreatures, Is.Empty);
+            var compatible = applicator.IsCompatible(prototype);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
-        public void GetCompatibleCreatures_MustHaveSkeleton()
+        public void IsCompatible_ReturnsFalse_IfCreatureDoesNotHaveSkeleton()
         {
-            //INFO: Skeleton compatibility handled by the creature group
-            var zombieCreatures = new[] { "my zombie creature", "my creature", "my other creature", "my bony creature" };
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .WithSkeleton(false)
+                .Build();
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(["my boneless creature"], false);
-            Assert.That(compatibleCreatures, Is.Empty);
-        }
-
-        [Test]
-        public void GetCompatibleCreatures_CannotBeCharacter()
-        {
-            var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], true);
-            Assert.That(compatibleCreatures, Is.Empty);
+            var compatible = applicator.IsCompatible(prototype);
+            Assert.That(compatible, Is.False);
         }
 
         [TestCase(0.1, true)]
@@ -2605,824 +2305,176 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(21, false)]
         [TestCase(22, false)]
         [TestCase(96, false)]
-        public void GetCompatibleCreatures_FewerThan10HitDice(double hitDiceQuantity, bool compatible)
+        public void IsCompatible_ReturnsCompatibility_BasedOnHitDiceQuantity(double hitDiceQuantity, bool expected)
         {
-            //INFO: Hit dice compatibility handled by the greature group
-            var zombieHitDice = compatible ? hitDiceQuantity : 666;
-            var zombieCreatures = new[] { "my zombie creature", "my creature", "my other creature", $"my {zombieHitDice} HD creature" };
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(hitDiceQuantity)
+                .Build();
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures([$"my {hitDiceQuantity} HD creature"], false);
-            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+            var compatible = applicator.IsCompatible(prototype);
+            Assert.That(compatible, Is.EqualTo(expected));
         }
 
-        [TestCase(null, true)]
-        [TestCase(CreatureConstants.Types.Humanoid, false)]
-        [TestCase(CreatureConstants.Types.Undead, true)]
-        [TestCase("subtype 1", true)]
-        [TestCase("subtype 2", true)]
-        [TestCase(CreatureConstants.Types.Subtypes.Extraplanar, false)]
-        [TestCase(CreatureConstants.Types.Subtypes.Augmented, false)]
-        [TestCase("wrong type", false)]
-        public void GetCompatibleCreatures_TypeMustMatch(string type, bool compatible)
-        {
-            var zombieCreatures = new[] { "my zombie creature", "my creature", "my other creature" };
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
-
-            SetUpCreatureData();
-
-            var filters = new Filters
-            {
-                Type = type
-            };
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false, filters);
-            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
-        }
-
-        [TestCase(.1, ChallengeRatingConstants.CR1_10th, false)]
-        [TestCase(.1, ChallengeRatingConstants.CR1_8th, true)]
-        [TestCase(.1, ChallengeRatingConstants.CR1_6th, false)]
-        [TestCase(.25, ChallengeRatingConstants.CR1_10th, false)]
-        [TestCase(.25, ChallengeRatingConstants.CR1_8th, true)]
-        [TestCase(.25, ChallengeRatingConstants.CR1_6th, false)]
-        [TestCase(.5, ChallengeRatingConstants.CR1_6th, false)]
-        [TestCase(.5, ChallengeRatingConstants.CR1_4th, true)]
-        [TestCase(.5, ChallengeRatingConstants.CR1_3rd, false)]
-        [TestCase(1, ChallengeRatingConstants.CR1_3rd, false)]
-        [TestCase(1, ChallengeRatingConstants.CR1_2nd, true)]
-        [TestCase(1, ChallengeRatingConstants.CR1, false)]
-        [TestCase(2, ChallengeRatingConstants.CR1_2nd, false)]
-        [TestCase(2, ChallengeRatingConstants.CR1, true)]
-        [TestCase(2, ChallengeRatingConstants.CR2, false)]
-        [TestCase(3, ChallengeRatingConstants.CR1_2nd, false)]
-        [TestCase(3, ChallengeRatingConstants.CR2, true)]
-        [TestCase(3, ChallengeRatingConstants.CR3, false)]
-        [TestCase(4, ChallengeRatingConstants.CR2, false)]
-        [TestCase(4, ChallengeRatingConstants.CR3, true)]
-        [TestCase(4, ChallengeRatingConstants.CR4, false)]
-        [TestCase(5, ChallengeRatingConstants.CR2, false)]
-        [TestCase(5, ChallengeRatingConstants.CR3, true)]
-        [TestCase(5, ChallengeRatingConstants.CR4, false)]
-        [TestCase(6, ChallengeRatingConstants.CR3, false)]
-        [TestCase(6, ChallengeRatingConstants.CR4, true)]
-        [TestCase(6, ChallengeRatingConstants.CR5, false)]
-        [TestCase(7, ChallengeRatingConstants.CR3, false)]
-        [TestCase(7, ChallengeRatingConstants.CR4, true)]
-        [TestCase(7, ChallengeRatingConstants.CR5, false)]
-        [TestCase(8, ChallengeRatingConstants.CR4, false)]
-        [TestCase(8, ChallengeRatingConstants.CR5, true)]
-        [TestCase(8, ChallengeRatingConstants.CR6, false)]
-        [TestCase(9, ChallengeRatingConstants.CR5, false)]
-        [TestCase(9, ChallengeRatingConstants.CR6, true)]
-        [TestCase(9, ChallengeRatingConstants.CR7, false)]
-        [TestCase(10, ChallengeRatingConstants.CR5, false)]
-        [TestCase(10, ChallengeRatingConstants.CR6, true)]
-        [TestCase(10, ChallengeRatingConstants.CR7, false)]
-        public void GetCompatibleCreatures_ChallengeRatingMustMatch(double hitDiceQuantity, string challengeRating, bool compatible)
-        {
-            var zombieCreatures = new[] { "my zombie creature", "my creature", "my other creature" };
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
-
-            SetUpCreatureData(hitDiceQuantity);
-
-            var filters = new Filters
-            {
-                ChallengeRating = challengeRating
-            };
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(["my creature"], false, filters);
-            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
-        }
-
-        [TestCase(AlignmentConstants.LawfulGood, false)]
-        [TestCase(AlignmentConstants.NeutralGood, false)]
-        [TestCase(AlignmentConstants.ChaoticGood, false)]
-        [TestCase(AlignmentConstants.LawfulNeutral, false)]
-        [TestCase(AlignmentConstants.TrueNeutral, false)]
-        [TestCase(AlignmentConstants.ChaoticNeutral, false)]
-        [TestCase(AlignmentConstants.LawfulEvil, false)]
-        [TestCase(AlignmentConstants.NeutralEvil, true)]
         [TestCase(AlignmentConstants.ChaoticEvil, false)]
+        [TestCase(AlignmentConstants.ChaoticNeutral, false)]
+        [TestCase(AlignmentConstants.ChaoticGood, false)]
+        [TestCase(AlignmentConstants.LawfulEvil, false)]
+        [TestCase(AlignmentConstants.LawfulGood, false)]
+        [TestCase(AlignmentConstants.LawfulNeutral, false)]
+        [TestCase(AlignmentConstants.NeutralEvil, true)]
+        [TestCase(AlignmentConstants.NeutralGood, false)]
+        [TestCase(AlignmentConstants.TrueNeutral, false)]
         [TestCase("wrong alignment", false)]
-        public void GetCompatibleCreatures_AlignmentMustMatch(string alignmentFilter, bool compatible)
+        public void IsCompatible_WithAlignment_ReturnsCompatibility_BasedOnAlignmentFilter(string alignment, bool expected)
         {
-            var zombieCreatures = new[] { "my zombie creature", "my creature", "my other creature" };
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
 
-            SetUpCreatureData(4);
+            var filters = new Filters { Alignments = ["wrong alignment", alignment] };
 
-            var filters = new Filters
-            {
-                Alignment = alignmentFilter
-            };
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false, filters);
-            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.EqualTo(expected));
         }
 
-        [TestCase(CreatureConstants.Types.Undead, ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil, false)]
-        [TestCase(CreatureConstants.Types.Undead, ChallengeRatingConstants.CR2, AlignmentConstants.NeutralEvil, true)]
-        [TestCase(CreatureConstants.Types.Undead, ChallengeRatingConstants.CR1, AlignmentConstants.LawfulEvil, false)]
-        [TestCase(CreatureConstants.Types.Undead, ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil, false)]
-        [TestCase("wrong subtype", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil, false)]
-        [TestCase("wrong subtype", ChallengeRatingConstants.CR2, AlignmentConstants.NeutralEvil, false)]
-        [TestCase("wrong subtype", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulEvil, false)]
-        [TestCase("wrong subtype", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil, false)]
-        public void GetCompatibleCreatures_TypeAndChallengeRatingMustMatch(string type, string challengeRating, string alignment, bool compatible)
+        [TestCase(ChallengeRatingConstants.CR1_10th, 0, false)]
+        [TestCase(ChallengeRatingConstants.CR1_10th, 0.1, false)]
+        [TestCase(ChallengeRatingConstants.CR1_10th, 0.24, false)]
+        [TestCase(ChallengeRatingConstants.CR1_10th, 0.25, false)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 0, true)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 0.1, true)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 0.24, true)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 0.25, true)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 0.26, false)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 0.33, false)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 1, false)]
+        [TestCase(ChallengeRatingConstants.CR1_6th, 0, false)]
+        [TestCase(ChallengeRatingConstants.CR1_6th, 0.1, false)]
+        [TestCase(ChallengeRatingConstants.CR1_6th, 0.24, false)]
+        [TestCase(ChallengeRatingConstants.CR1_6th, 0.25, false)]
+        [TestCase(ChallengeRatingConstants.CR1_6th, 0.26, false)]
+        [TestCase(ChallengeRatingConstants.CR1_6th, 0.4, false)]
+        [TestCase(ChallengeRatingConstants.CR1_6th, 0.5, false)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, 0, false)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, 0.24, false)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, 0.25, false)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, 0.26, true)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, 0.4, true)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, 0.5, true)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, 0.6, false)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, 1, false)]
+        [TestCase(ChallengeRatingConstants.CR1_3rd, 0.26, false)]
+        [TestCase(ChallengeRatingConstants.CR1_3rd, 0.4, false)]
+        [TestCase(ChallengeRatingConstants.CR1_3rd, 0.5, false)]
+        [TestCase(ChallengeRatingConstants.CR1_3rd, 0.6, false)]
+        [TestCase(ChallengeRatingConstants.CR1_3rd, 0.9, false)]
+        [TestCase(ChallengeRatingConstants.CR1_3rd, 1, false)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, 0.4, false)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, 0.5, false)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, 0.6, true)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, 0.9, true)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, 1, true)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, 2, false)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, 3, false)]
+        [TestCase(ChallengeRatingConstants.CR1, 0.9, false)]
+        [TestCase(ChallengeRatingConstants.CR1, 1, false)]
+        [TestCase(ChallengeRatingConstants.CR1, 2, true)]
+        [TestCase(ChallengeRatingConstants.CR1, 3, false)]
+        [TestCase(ChallengeRatingConstants.CR1, 4, false)]
+        [TestCase(ChallengeRatingConstants.CR2, 1, false)]
+        [TestCase(ChallengeRatingConstants.CR2, 2, false)]
+        [TestCase(ChallengeRatingConstants.CR2, 3, true)]
+        [TestCase(ChallengeRatingConstants.CR2, 4, false)]
+        [TestCase(ChallengeRatingConstants.CR2, 5, false)]
+        [TestCase(ChallengeRatingConstants.CR3, 2, false)]
+        [TestCase(ChallengeRatingConstants.CR3, 3, false)]
+        [TestCase(ChallengeRatingConstants.CR3, 4, true)]
+        [TestCase(ChallengeRatingConstants.CR3, 5, true)]
+        [TestCase(ChallengeRatingConstants.CR3, 6, false)]
+        [TestCase(ChallengeRatingConstants.CR3, 7, false)]
+        [TestCase(ChallengeRatingConstants.CR4, 4, false)]
+        [TestCase(ChallengeRatingConstants.CR4, 5, false)]
+        [TestCase(ChallengeRatingConstants.CR4, 6, true)]
+        [TestCase(ChallengeRatingConstants.CR4, 7, true)]
+        [TestCase(ChallengeRatingConstants.CR4, 8, false)]
+        [TestCase(ChallengeRatingConstants.CR4, 9, false)]
+        [TestCase(ChallengeRatingConstants.CR5, 6, false)]
+        [TestCase(ChallengeRatingConstants.CR5, 7, false)]
+        [TestCase(ChallengeRatingConstants.CR5, 8, true)]
+        [TestCase(ChallengeRatingConstants.CR5, 9, false)]
+        [TestCase(ChallengeRatingConstants.CR5, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR6, 7, false)]
+        [TestCase(ChallengeRatingConstants.CR6, 8, false)]
+        [TestCase(ChallengeRatingConstants.CR6, 9, true)]
+        [TestCase(ChallengeRatingConstants.CR6, 10, true)]
+        [TestCase(ChallengeRatingConstants.CR7, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR8, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR9, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR10, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR11, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR12, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR13, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR14, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR15, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR16, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR17, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR18, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR19, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR20, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR21, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR22, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR23, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR24, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR25, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR26, 10, false)]
+        [TestCase(ChallengeRatingConstants.CR27, 10, false)]
+        [TestCase("9266", 10, false)]
+        public void IsCompatible_WithChallengeRating_ReturnsCompatibility_BasedOnUpdatedChallengeRating(string challengeRatingFilter, double hitDiceQuantity, bool expected)
         {
-            var zombieCreatures = new[] { "my zombie creature", "my creature", "my other creature" };
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(hitDiceQuantity)
+                .Build();
 
-            SetUpCreatureData(3);
+            var filters = new Filters { ChallengeRatings = ["wrong cr", challengeRatingFilter] };
 
-            var filters = new Filters
-            {
-                Type = type,
-                ChallengeRating = challengeRating,
-                Alignment = alignment
-            };
-
-            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false, filters);
-            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
-        }
-
-        [Test]
-        public void GetCompatiblePrototypes_FromNames_ReturnsEmpty_IfAsCharacter()
-        {
-            var creatures = new[] { "my creature", "my other creature" };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, true);
-            Assert.That(compatibleCreatures, Is.Empty);
-
-            mockPrototypeFactory.Verify(f => f.Build(It.IsAny<IEnumerable<string>>(), It.IsAny<bool>()), Times.Never);
-        }
-
-        [Test]
-        public void GetCompatiblePrototypes_FromNames_ReturnsCompatibleCreatures()
-        {
-            var creatures = new[] { "my creature", "my other creature", "boneless creature" };
-
-            var zombieCreatures = creatures.Except(["boneless creature"]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
-
-            var data = SetUpCreatureData();
-            data["my other creature"].Types = [CreatureConstants.Types.Animal, "subtype 3"];
-            data["my other creature"].HitDiceQuantity = 2;
-
-            var prototypes = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType([.. data["my creature"].Types])
-                    .WithHitDiceQuantity(data["my creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithoutAbility(AbilityConstants.Strength)
-                    .WithAbility(AbilityConstants.Constitution, 90210)
-                    .WithAbility(AbilityConstants.Dexterity, 42)
-                    .WithAbility(AbilityConstants.Intelligence, 600)
-                    .WithAbility(AbilityConstants.Wisdom, 1337)
-                    .WithAbility(AbilityConstants.Charisma, 1336)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithCreatureType([.. data["my other creature"].Types])
-                    .WithHitDiceQuantity(data["my other creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithAbility(AbilityConstants.Strength, 96)
-                    .WithAbility(AbilityConstants.Constitution, 783)
-                    .WithAbility(AbilityConstants.Dexterity, 8245)
-                    .WithAbility(AbilityConstants.Intelligence, -8)
-                    .WithAbility(AbilityConstants.Wisdom, 0)
-                    .WithAbility(AbilityConstants.Charisma, 1)
-                    .Build(),
-            };
-            mockPrototypeFactory
-                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature" })), false))
-                .Returns(prototypes);
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.Zero);
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1_2nd));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(2));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 3",
-            }));
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 8245 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 96 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
-        }
-
-        [TestCase(AlignmentConstants.LawfulGood)]
-        [TestCase(AlignmentConstants.NeutralGood)]
-        [TestCase(AlignmentConstants.ChaoticGood)]
-        [TestCase(AlignmentConstants.LawfulNeutral)]
-        [TestCase(AlignmentConstants.TrueNeutral)]
-        [TestCase(AlignmentConstants.ChaoticNeutral)]
-        [TestCase(AlignmentConstants.LawfulEvil)]
-        [TestCase(AlignmentConstants.ChaoticEvil)]
-        [TestCase("wrong alignment")]
-        public void GetCompatiblePrototypes_FromNames_ReturnEmpty_WhenAlignmentFilterInvalid(string alignmentFilter)
-        {
-            var creatures = new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" };
-
-            var filters = new Filters
-            {
-                Alignment = alignmentFilter
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.Empty);
-
-            mockPrototypeFactory.Verify(f => f.Build(It.IsAny<IEnumerable<string>>(), It.IsAny<bool>()), Times.Never);
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.EqualTo(expected));
         }
 
         [Test]
-        public void GetCompatiblePrototypes_FromNames_ReturnCompatibleCreatures_WhenAlignmentFilterValid()
+        public void IsCompatible_WithType_ReturnsTrue()
         {
-            var creatures = new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" };
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
 
-            var zombieCreatures = creatures.Except(["wrong creature 1", "wrong creature 2", "wrong creature 3", "wrong creature 4"]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
+            var filters = new Filters { Types = ["wrong type", "subtype 1"] };
 
-            var data = SetUpCreatureData();
-
-            var prototypes = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType([.. data["my creature"].Types])
-                    .WithHitDiceQuantity(data["my creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithoutAbility(AbilityConstants.Strength)
-                    .WithAbility(AbilityConstants.Constitution, 90210)
-                    .WithAbility(AbilityConstants.Dexterity, 42)
-                    .WithAbility(AbilityConstants.Intelligence, 600)
-                    .WithAbility(AbilityConstants.Wisdom, 1337)
-                    .WithAbility(AbilityConstants.Charisma, 1336)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithCreatureType([.. data["my other creature"].Types])
-                    .WithHitDiceQuantity(data["my other creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithAbility(AbilityConstants.Strength, 96)
-                    .WithAbility(AbilityConstants.Constitution, 783)
-                    .WithAbility(AbilityConstants.Dexterity, 8245)
-                    .WithAbility(AbilityConstants.Intelligence, -8)
-                    .WithAbility(AbilityConstants.Wisdom, 0)
-                    .WithAbility(AbilityConstants.Charisma, 1)
-                    .Build(),
-            };
-            mockPrototypeFactory
-                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature" })), false))
-                .Returns(prototypes);
-
-            var filters = new Filters();
-            filters.Alignment = AlignmentConstants.NeutralEvil;
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.Zero);
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1_2nd));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(2));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 3",
-            }));
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 8245 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 96 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1_2nd));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(2));
-        }
-
-        [TestCase(ChallengeRatingConstants.CR1_8th, 0, 0.25)]
-        [TestCase(ChallengeRatingConstants.CR1_4th, 0.25, 0.5)]
-        [TestCase(ChallengeRatingConstants.CR1_2nd, 0.5, 1)]
-        [TestCase(ChallengeRatingConstants.CR1, 1, 2)]
-        [TestCase(ChallengeRatingConstants.CR2, 2, 3)]
-        [TestCase(ChallengeRatingConstants.CR3, 3, 5)]
-        [TestCase(ChallengeRatingConstants.CR4, 5, 7)]
-        [TestCase(ChallengeRatingConstants.CR5, 7, 8)]
-        [TestCase(ChallengeRatingConstants.CR6, 8, 10)]
-        public void GetCompatiblePrototypes_FromNames_WithChallengeRating_ReturnsCompatibleCreatures(string challengeRatingFilter, double lower, double upper)
-        {
-            var creatures = new[] { "my creature", "my other creature", "boneless creature", "yet another creature" };
-
-            var zombieCreatures = creatures.Except(["boneless creature"]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
-
-            var data = SetUpCreatureData();
-            data["my creature"].HitDiceQuantity = lower + 0.01;
-            data["my other creature"].Types = [CreatureConstants.Types.Animal, "subtype 3"];
-            data["my other creature"].HitDiceQuantity = upper;
-            data["yet another creature"].HitDiceQuantity = (lower + upper) / 2;
-
-            var prototypes = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType([.. data["my creature"].Types])
-                    .WithHitDiceQuantity(data["my creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithoutAbility(AbilityConstants.Strength)
-                    .WithAbility(AbilityConstants.Constitution, 90210)
-                    .WithAbility(AbilityConstants.Dexterity, 42)
-                    .WithAbility(AbilityConstants.Intelligence, 600)
-                    .WithAbility(AbilityConstants.Wisdom, 1337)
-                    .WithAbility(AbilityConstants.Charisma, 1336)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithCreatureType([.. data["my other creature"].Types])
-                    .WithHitDiceQuantity(data["my other creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithAbility(AbilityConstants.Strength, 96)
-                    .WithAbility(AbilityConstants.Constitution, 783)
-                    .WithAbility(AbilityConstants.Dexterity, 8245)
-                    .WithAbility(AbilityConstants.Intelligence, -8)
-                    .WithAbility(AbilityConstants.Wisdom, 0)
-                    .WithAbility(AbilityConstants.Charisma, 1)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("yet another creature")
-                    .WithCreatureType([.. data["yet another creature"].Types])
-                    .WithHitDiceQuantity(data["yet another creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithAbility(AbilityConstants.Strength, -2)
-                    .WithAbility(AbilityConstants.Constitution, 3)
-                    .WithAbility(AbilityConstants.Dexterity, -4)
-                    .WithAbility(AbilityConstants.Intelligence, 5)
-                    .WithAbility(AbilityConstants.Wisdom, 6)
-                    .WithAbility(AbilityConstants.Charisma, 7)
-                    .Build(),
-            };
-            mockPrototypeFactory
-                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature", "yet another creature" })), false))
-                .Returns(prototypes);
-
-            var filters = new Filters();
-            filters.ChallengeRating = challengeRatingFilter;
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(3));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.Zero);
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(challengeRatingFilter));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo((lower + 0.01) * 2));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 3",
-            }));
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 8245 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 96 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(challengeRatingFilter));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(upper * 2));
-
-            Assert.That(compatibleCreatures[2].Name, Is.EqualTo("yet another creature"));
-            Assert.That(compatibleCreatures[2].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[2].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[2].Type.SubTypes, Is.Empty);
-            Assert.That(compatibleCreatures[2].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 4 - 2));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 - 2 + 2));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[2].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[2].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[2].ChallengeRating, Is.EqualTo(challengeRatingFilter));
-            Assert.That(compatibleCreatures[2].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[2].HitDiceQuantity, Is.EqualTo(lower + upper));
-        }
-
-        [TestCaseSource(nameof(InvalidChallengeRatings))]
-        public void GetCompatiblePrototypes_FromNames_WithChallengeRating_ReturnsEmpty_IfChallengeRatingNotValidForTemplate(string challengeRatingFilter)
-        {
-            var creatures = new[] { "my creature", "my other creature", "another creature", "yet another creature" };
-
-            var filters = new Filters
-            {
-                ChallengeRating = challengeRatingFilter
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.Empty);
-
-            mockPrototypeFactory.Verify(f => f.Build(It.IsAny<IEnumerable<string>>(), It.IsAny<bool>()), Times.Never);
-        }
-
-        [TestCase(ChallengeRatingConstants.CR1_8th, 0, 0.25)]
-        [TestCase(ChallengeRatingConstants.CR1_4th, 0.25, 0.5)]
-        [TestCase(ChallengeRatingConstants.CR1_2nd, 0.5, 1)]
-        [TestCase(ChallengeRatingConstants.CR1, 1, 2)]
-        [TestCase(ChallengeRatingConstants.CR2, 2, 3)]
-        [TestCase(ChallengeRatingConstants.CR3, 3, 5)]
-        [TestCase(ChallengeRatingConstants.CR4, 5, 7)]
-        [TestCase(ChallengeRatingConstants.CR5, 7, 8)]
-        [TestCase(ChallengeRatingConstants.CR6, 8, 10)]
-        public void GetCompatiblePrototypes_FromNames_WithChallengeRating_ReturnsCompatibleCreatures_FilterOutCreaturesOutOfHitDiceRange(
-            string challengeRatingFilter,
-            double lower,
-            double upper)
-        {
-            var creatures = new[] { "my creature", "my other creature", "another creature", "yet another creature" };
-
-            var zombieCreatures = creatures
-                .Except(upper >= 10 ? ["my other creature"] : [])
-                .Except(lower <= 0 ? ["another creature"] : []);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
-
-            var data = SetUpCreatureData();
-            data["my creature"].HitDiceQuantity = lower + 0.01;
-            data["my other creature"].Types = [CreatureConstants.Types.Animal, "subtype 3"];
-            data["my other creature"].HitDiceQuantity = upper + 0.01;
-            data["another creature"].HitDiceQuantity = lower;
-            data["yet another creature"].HitDiceQuantity = upper;
-
-            var prototypes = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType([.. data["my creature"].Types])
-                    .WithHitDiceQuantity(data["my creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithoutAbility(AbilityConstants.Strength)
-                    .WithAbility(AbilityConstants.Constitution, 90210)
-                    .WithAbility(AbilityConstants.Dexterity, 42)
-                    .WithAbility(AbilityConstants.Intelligence, 600)
-                    .WithAbility(AbilityConstants.Wisdom, 1337)
-                    .WithAbility(AbilityConstants.Charisma, 1336)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("yet another creature")
-                    .WithCreatureType([.. data["yet another creature"].Types])
-                    .WithHitDiceQuantity(data["yet another creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithAbility(AbilityConstants.Strength, -2)
-                    .WithAbility(AbilityConstants.Constitution, 3)
-                    .WithAbility(AbilityConstants.Dexterity, -4)
-                    .WithAbility(AbilityConstants.Intelligence, 5)
-                    .WithAbility(AbilityConstants.Wisdom, 6)
-                    .WithAbility(AbilityConstants.Charisma, 7)
-                    .Build(),
-            };
-            mockPrototypeFactory
-                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "yet another creature" })), false))
-                .Returns(prototypes);
-
-            var filters = new Filters
-            {
-                ChallengeRating = challengeRatingFilter
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.Zero);
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(challengeRatingFilter));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo((lower + 0.01) * 2));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("yet another creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.Empty);
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 4 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 - 2 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(challengeRatingFilter));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(upper * 2));
-
-            mockCreatureDataSelector.Verify(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, It.IsAny<string>()), Times.Never);
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.True);
         }
 
         [Test]
-        public void GetCompatiblePrototypes_FromNames_WithType_ReturnsCompatibleCreatures()
+        public void IsCompatible_WithType_ReturnsTrue_WhenFilterIsUndead()
         {
-            var creatures = new[] { "my creature", "my other creature", "boneless creature" };
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
 
-            var zombieCreatures = creatures.Except(["boneless creature"]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
+            var filters = new Filters { Types = ["wrong type", CreatureConstants.Types.Undead] };
 
-            var data = SetUpCreatureData();
-            data["my other creature"].Types = [CreatureConstants.Types.Animal, "subtype 3"];
-            data["my other creature"].HitDiceQuantity = 2;
-
-            var prototypes = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType([.. data["my creature"].Types])
-                    .WithHitDiceQuantity(data["my creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithoutAbility(AbilityConstants.Strength)
-                    .WithAbility(AbilityConstants.Constitution, 90210)
-                    .WithAbility(AbilityConstants.Dexterity, 42)
-                    .WithAbility(AbilityConstants.Intelligence, 600)
-                    .WithAbility(AbilityConstants.Wisdom, 1337)
-                    .WithAbility(AbilityConstants.Charisma, 1336)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithCreatureType([.. data["my other creature"].Types])
-                    .WithHitDiceQuantity(data["my other creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithAbility(AbilityConstants.Strength, 96)
-                    .WithAbility(AbilityConstants.Constitution, 783)
-                    .WithAbility(AbilityConstants.Dexterity, 8245)
-                    .WithAbility(AbilityConstants.Intelligence, -8)
-                    .WithAbility(AbilityConstants.Wisdom, 0)
-                    .WithAbility(AbilityConstants.Charisma, 1)
-                    .Build(),
-            };
-            mockPrototypeFactory
-                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature" })), false))
-                .Returns(prototypes);
-
-            var filters = new Filters
-            {
-                Type = CreatureConstants.Types.Undead
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.Zero);
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1_2nd));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(2));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 3",
-            }));
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 8245 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 96 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.True);
         }
 
         [TestCase(CreatureConstants.Types.Subtypes.Angel)]
@@ -3441,19 +2493,65 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Subtypes.Orc)]
         [TestCase(CreatureConstants.Types.Subtypes.Reptilian)]
         [TestCase(CreatureConstants.Types.Subtypes.Shapechanger)]
-        public void GetCompatiblePrototypes_FromNames_WithType_ReturnsEmpty_WhenTypeFilterNotValid(string typeFilter)
+        public void IsCompatible_WithType_ReturnsFalse_WhenFilterIsInvalid(string typeFilter)
         {
-            var creatures = new[] { "my creature", "my other creature", "another creature" };
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", typeFilter, "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
 
-            var filters = new Filters
-            {
-                Type = typeFilter
-            };
+            var filters = new Filters { Types = ["wrong type", typeFilter] };
 
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.Empty);
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.False);
+        }
 
-            mockPrototypeFactory.Verify(f => f.Build(It.IsAny<IEnumerable<string>>(), It.IsAny<bool>()), Times.Never);
+        [TestCase(CreatureConstants.Types.Aberration)]
+        [TestCase(CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Types.Dragon)]
+        [TestCase(CreatureConstants.Types.Elemental)]
+        [TestCase(CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.Types.Vermin)]
+        public void IsCompatible_WithType_ReturnsFalse_WhenOriginalType(string typeFilter)
+        {
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(typeFilter, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var filters = new Filters { Types = ["wrong type", typeFilter] };
+
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.False);
+        }
+
+        [TestCase(CreatureConstants.Types.Subtypes.Air)]
+        [TestCase(CreatureConstants.Types.Subtypes.Aquatic)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented)]
+        [TestCase(CreatureConstants.Types.Subtypes.Cold)]
+        [TestCase(CreatureConstants.Types.Subtypes.Earth)]
+        [TestCase(CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.Types.Subtypes.Fire)]
+        [TestCase(CreatureConstants.Types.Subtypes.Swarm)]
+        [TestCase(CreatureConstants.Types.Subtypes.Water)]
+        public void IsCompatible_WithType_ReturnsTrue_WhenFilterMatchesSubtype(string typeFilter)
+        {
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", typeFilter, "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var filters = new Filters { Types = ["wrong type", typeFilter] };
+
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.True);
         }
 
         [TestCase(CreatureConstants.Types.Aberration)]
@@ -3475,235 +2573,305 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Subtypes.Fire)]
         [TestCase(CreatureConstants.Types.Subtypes.Swarm)]
         [TestCase(CreatureConstants.Types.Subtypes.Water)]
-        public void GetCompatiblePrototypes_FromNames_WithType_ReturnsCompatibleCreatures_FilterOutCreaturesWithWrongSubtype(string typeFilter)
+        public void IsCompatible_WithType_ReturnsFalse_WhenFilterDoesNotMatch(string typeFilter)
         {
-            var creatures = new[] { "my creature", "my other creature", "another creature" };
+            var creatureType = CreatureConstants.Types.Humanoid;
+            if (creatureType == typeFilter)
+                creatureType = CreatureConstants.Types.MagicalBeast;
 
-            var zombieCreatures = creatures.Except(["wrong creature 1", "wrong creature 2", "wrong creature 3", "wrong creature 4"]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(creatureType, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
 
-            var data = SetUpCreatureData();
-            data["my creature"].Types = [CreatureConstants.Types.Humanoid, "subtype 1", typeFilter];
-            data["my other creature"].Types = [CreatureConstants.Types.Animal, typeFilter];
-            data["my other creature"].HitDiceQuantity = 2;
-            data["another creature"].Types = [CreatureConstants.Types.Humanoid, "wrong subtype"];
+            var filters = new Filters { Types = ["wrong type", typeFilter] };
 
-            var prototypes = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType([.. data["my creature"].Types])
-                    .WithHitDiceQuantity(data["my creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithoutAbility(AbilityConstants.Strength)
-                    .WithAbility(AbilityConstants.Constitution, 90210)
-                    .WithAbility(AbilityConstants.Dexterity, 42)
-                    .WithAbility(AbilityConstants.Intelligence, 600)
-                    .WithAbility(AbilityConstants.Wisdom, 1337)
-                    .WithAbility(AbilityConstants.Charisma, 1336)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithCreatureType([.. data["my other creature"].Types])
-                    .WithHitDiceQuantity(data["my other creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithAbility(AbilityConstants.Strength, 96)
-                    .WithAbility(AbilityConstants.Constitution, 783)
-                    .WithAbility(AbilityConstants.Dexterity, 8245)
-                    .WithAbility(AbilityConstants.Intelligence, -8)
-                    .WithAbility(AbilityConstants.Wisdom, 0)
-                    .WithAbility(AbilityConstants.Charisma, 1)
-                    .Build(),
-            };
-            mockPrototypeFactory
-                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature" })), false))
-                .Returns(prototypes);
-
-            var filters = new Filters
-            {
-                Type = typeFilter
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                typeFilter,
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.Zero);
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1_2nd));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(2));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
-            {
-                typeFilter,
-            }));
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 8245 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 96 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.False);
         }
 
         [Test]
-        public void GetCompatiblePrototypes_FromNames_WithChallengeRatingAndType_ReturnsCompatibleCreatures()
+        public void IsCompatible_WithAllFilters_ReturnsTrue()
         {
-            var creatures = new[] { "my creature", "my other creature", "another creature", "yet another creature" };
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
 
-            var zombieCreatures = creatures.Except(["wrong creature 1", "wrong creature 2", "wrong creature 3", "wrong creature 4"]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
-
-            var data = SetUpCreatureData();
-            data["my creature"].HitDiceQuantity = 1.01;
-            data["my other creature"].HitDiceQuantity = 2;
-            data["my other creature"].Types = new[] { CreatureConstants.Types.Animal, "subtype 2" };
-            data["another creature"].HitDiceQuantity = 1;
-            data["another creature"].Types = new[] { CreatureConstants.Types.Humanoid, "subtype 2" };
-            data["yet another creature"].HitDiceQuantity = 1.5;
-            data["yet another creature"].Types = new[] { CreatureConstants.Types.Humanoid, "wrong subtype" };
-
-            var prototypes = new[]
+            var filters = new Filters
             {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType([.. data["my creature"].Types])
-                    .WithHitDiceQuantity(data["my creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithoutAbility(AbilityConstants.Strength)
-                    .WithAbility(AbilityConstants.Constitution, 90210)
-                    .WithAbility(AbilityConstants.Dexterity, 42)
-                    .WithAbility(AbilityConstants.Intelligence, 600)
-                    .WithAbility(AbilityConstants.Wisdom, 1337)
-                    .WithAbility(AbilityConstants.Charisma, 1336)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithCreatureType([.. data["my other creature"].Types])
-                    .WithHitDiceQuantity(data["my other creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithAbility(AbilityConstants.Strength, 96)
-                    .WithAbility(AbilityConstants.Constitution, 783)
-                    .WithAbility(AbilityConstants.Dexterity, 8245)
-                    .WithAbility(AbilityConstants.Intelligence, -8)
-                    .WithAbility(AbilityConstants.Wisdom, 0)
-                    .WithAbility(AbilityConstants.Charisma, 1)
-                    .Build(),
+                Alignments = ["wrong alignment", AlignmentConstants.NeutralEvil],
+                ChallengeRatings = ["wrong cr", ChallengeRatingConstants.CR1_2nd],
+                Types = ["wrong type", "subtype 2"]
             };
-            mockPrototypeFactory
-                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature" })), false))
-                .Returns(prototypes);
 
-            var filters = new Filters();
-            filters.Type = "subtype 2";
-            filters.ChallengeRating = ChallengeRatingConstants.CR1;
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.True);
+        }
 
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
+        [Test]
+        public void IsCompatible_WithAllFilters_ReturnsFalse_BecausePrototype()
+        {
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .WithSkeleton(false)
+                .Build();
 
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
+            var filters = new Filters
             {
-                "subtype 1",
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.Zero);
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(2.02));
+                Alignments = ["wrong alignment", AlignmentConstants.NeutralEvil],
+                ChallengeRatings = ["wrong cr", ChallengeRatingConstants.CR1_2nd],
+                Types = ["wrong type", "subtype 2"]
+            };
 
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.False);
+        }
+
+        [Test]
+        public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseAlignment()
+        {
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var filters = new Filters
             {
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 8245 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 96 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
+                Alignments = ["wrong alignment", AlignmentConstants.ChaoticEvil],
+                ChallengeRatings = ["wrong cr", ChallengeRatingConstants.CR1_2nd],
+                Types = ["wrong type", "subtype 2"]
+            };
+
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.False);
+        }
+
+        [Test]
+        public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseChallengeRating()
+        {
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var filters = new Filters
             {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
+                Alignments = ["wrong alignment", AlignmentConstants.NeutralEvil],
+                ChallengeRatings = ["wrong cr", ChallengeRatingConstants.CR1_3rd],
+                Types = ["wrong type", "subtype 2"]
+            };
+
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.False);
+        }
+
+        [Test]
+        public void IsCompatible_WithAllFilters_ReturnsFalse_BecauseType()
+        {
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+
+            var filters = new Filters
+            {
+                Alignments = ["wrong alignment", AlignmentConstants.NeutralEvil],
+                ChallengeRatings = ["wrong cr", ChallengeRatingConstants.CR1_2nd],
+                Types = ["wrong type", "subtype 3"]
+            };
+
+            var compatible = applicator.IsCompatible(prototype, filters);
+            Assert.That(compatible, Is.False);
+        }
+
+        [Test]
+        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible()
+        {
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Outsider, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .WithChallengeRating(ChallengeRatingConstants.CR1)
+                .WithAlignments("original alignment")
+                .Build();
+
+            var expected = new InvalidCreatureException(
+                "Type 'Outsider' is not valid",
+                false,
+                prototype.Name,
+                templates: [CreatureConstants.Templates.Zombie]);
+
+            var function = () => applicator.ApplyTo(prototype);
+            Assert.That(function, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
+        }
+
+        [TestCase("subtype 1", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.TrueNeutral)]
+        [TestCase("subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR1_2nd, AlignmentConstants.NeutralEvil)]
+        public void ApplyTo_Prototype_ThrowsException_WhenCreatureNotCompatible_WithFilters(string type, string challengeRating, string alignment)
+        {
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .WithChallengeRating(ChallengeRatingConstants.CR1)
+                .WithAlignments("original alignment")
+                .Build();
+
+            var filters = new Filters
+            {
+                Types = [type],
+                ChallengeRatings = [challengeRating],
+                Alignments = [alignment]
+            };
+            var (Compatible, Reason) = filters.AreCompatible(
+                [AlignmentConstants.NeutralEvil],
+                [ChallengeRatingConstants.CR1_2nd],
+                [CreatureConstants.Types.Undead, "subtype 1", "subtype 2"]);
+
+            var expected = new InvalidCreatureException(
+                Reason,
+                false,
+                prototype.Name,
+                filters,
+                null,
+                CreatureConstants.Templates.Zombie);
+
+            var func = () => applicator.ApplyTo(prototype, filters);
+            Assert.That(func, Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(expected.Message));
+        }
+
+        [Test]
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype()
+        {
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithAbility(AbilityConstants.Constitution, 9266)
+                .WithAbility(AbilityConstants.Wisdom, 90210)
+                .WithAbility(AbilityConstants.Intelligence, 42)
+                .WithAbility(AbilityConstants.Charisma, 600)
+                .WithAbility(AbilityConstants.Strength, 1337)
+                .WithAbility(AbilityConstants.Dexterity, 1336)
+                .WithHitDiceQuantity(1)
+                .WithChallengeRating("my cr")
+                .WithLevelAdjustment(96)
+                .WithAlignments("my alignment", "my other alignment")
+                .WithCasterLevel(783)
+                .Build();
+
+            var updatedPrototype = applicator.ApplyTo(prototype);
+            Assert.That(updatedPrototype, Is.SameAs(prototype));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].TemplateScore, Is.Zero);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].FullScore, Is.Zero);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Constitution].HasScore, Is.False);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Wisdom].HasScore, Is.True);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].TemplateScore, Is.Zero);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].FullScore, Is.Zero);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Intelligence].HasScore, Is.False);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Charisma].HasScore, Is.True);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.EqualTo(2));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(1337 + Ability.DefaultScore + 2));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Strength].HasScore, Is.True);
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].TemplateAdjustment, Is.EqualTo(-2));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(1336 + Ability.DefaultScore - 2));
+            Assert.That(updatedPrototype.Abilities[AbilityConstants.Dexterity].HasScore, Is.True);
+            Assert.That(updatedPrototype.HitDiceQuantity, Is.EqualTo(2));
+            Assert.That(updatedPrototype.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1_2nd));
+            Assert.That(updatedPrototype.LevelAdjustment, Is.Null);
+            Assert.That(updatedPrototype.Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
+            Assert.That(updatedPrototype.Type.SubTypes, Is.EquivalentTo(["subtype 1", "subtype 2"]));
+            Assert.That(updatedPrototype.Alignments, Is.EquivalentTo([new Alignment(AlignmentConstants.NeutralEvil)]));
+            Assert.That(updatedPrototype.CasterLevel, Is.Zero);
+            Assert.That(updatedPrototype.Templates, Is.EqualTo([CreatureConstants.Templates.Zombie]));
+        }
+
+        [TestCase(0, 0)]
+        [TestCase(1 / 10d, 2 / 10d)]
+        [TestCase(1 / 8d, 2 / 8d)]
+        [TestCase(1 / 6d, 2 / 6d)]
+        [TestCase(1 / 4d, 2 / 4d)]
+        [TestCase(1 / 3d, 2 / 3d)]
+        [TestCase(1 / 2d, 2 / 2d)]
+        [TestCase(1, 2)]
+        [TestCase(2, 4)]
+        [TestCase(3, 6)]
+        [TestCase(4, 8)]
+        [TestCase(5, 10)]
+        [TestCase(6, 12)]
+        [TestCase(7, 14)]
+        [TestCase(8, 16)]
+        [TestCase(9, 18)]
+        [TestCase(10, 20)]
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithUpdatedHitDiceQuantity(double hitDiceQuantity, double expected)
+        {
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(hitDiceQuantity)
+                .Build();
+
+            var updatedPrototype = applicator.ApplyTo(prototype);
+            Assert.That(updatedPrototype, Is.SameAs(prototype));
+            Assert.That(updatedPrototype.HitDiceQuantity, Is.EqualTo(expected));
+        }
+
+        [TestCase(ChallengeRatingConstants.CR1_8th, 0)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 0.01)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 1 / 10d)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 1 / 8d)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 1 / 6d)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 0.5 / 2d - .01)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, 0.5 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, 0.5 / 2d + 0.01)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, 1 / 3d)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, 1 / 2d - 0.01)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, 1 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, 1 / 2d + 0.01)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, 2 / 2d - 0.01)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, 2 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR1, 3 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR1, 4 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR2, 5 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR2, 6 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR3, 7 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR3, 8 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR3, 9 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR3, 10 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR4, 11 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR4, 12 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR4, 13 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR4, 14 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR5, 15 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR5, 16 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR6, 17 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR6, 18 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR6, 19 / 2d)]
+        [TestCase(ChallengeRatingConstants.CR6, 20 / 2d)]
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithUpdatedChallengeRating(string expected, double hitDiceQuantity)
+        {
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(hitDiceQuantity)
+                .WithChallengeRating("my cr")
+                .Build();
+
+            var updatedPrototype = applicator.ApplyTo(prototype);
+            Assert.That(updatedPrototype, Is.SameAs(prototype));
+            Assert.That(updatedPrototype.ChallengeRating, Is.EqualTo(expected));
         }
 
         [TestCase(CreatureConstants.Types.Subtypes.Angel)]
@@ -3722,1711 +2890,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Subtypes.Orc)]
         [TestCase(CreatureConstants.Types.Subtypes.Reptilian)]
         [TestCase(CreatureConstants.Types.Subtypes.Shapechanger)]
-        public void GetCompatiblePrototypes_FromNames_ReturnsCompatibleCreatures_WithValidTypes(string invalidType)
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithUpdatedCreatureTypes_RemovesInvalidType(string subtype)
         {
-            var creatures = new[] { "my creature", "my other creature", "boneless creature" };
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", subtype, "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
 
-            var zombieCreatures = creatures.Except(["boneless creature"]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
-
-            var data = SetUpCreatureData();
-            data["my creature"].HitDiceQuantity = 1.01;
-            data["my creature"].Types = [CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2", invalidType];
-            data["my other creature"].HitDiceQuantity = 2;
-            data["my other creature"].Types = [CreatureConstants.Types.Animal, invalidType, "subtype 2"];
-
-            var prototypes = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType([.. data["my creature"].Types])
-                    .WithHitDiceQuantity(data["my creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithoutAbility(AbilityConstants.Strength)
-                    .WithAbility(AbilityConstants.Constitution, 90210)
-                    .WithAbility(AbilityConstants.Dexterity, 42)
-                    .WithAbility(AbilityConstants.Intelligence, 600)
-                    .WithAbility(AbilityConstants.Wisdom, 1337)
-                    .WithAbility(AbilityConstants.Charisma, 1336)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithCreatureType([.. data["my other creature"].Types])
-                    .WithHitDiceQuantity(data["my other creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithAbility(AbilityConstants.Strength, 96)
-                    .WithAbility(AbilityConstants.Constitution, 783)
-                    .WithAbility(AbilityConstants.Dexterity, 8245)
-                    .WithAbility(AbilityConstants.Intelligence, -8)
-                    .WithAbility(AbilityConstants.Wisdom, 0)
-                    .WithAbility(AbilityConstants.Charisma, 1)
-                    .Build(),
-            };
-            mockPrototypeFactory
-                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature" })), false))
-                .Returns(prototypes);
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.Zero);
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(2.02));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 8245 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 96 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
+            var updatedPrototype = applicator.ApplyTo(prototype);
+            Assert.That(updatedPrototype, Is.SameAs(prototype));
+            Assert.That(updatedPrototype.Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
+            Assert.That(updatedPrototype.Type.SubTypes, Is.EquivalentTo(["subtype 1", "subtype 2"]));
         }
 
         [Test]
-        public void GetCompatiblePrototypes_FromNames_ReturnsCompatibleCreatures_WithLevelAdjustments()
+        public void ApplyTo_Prototype_ReturnsUpdatedPrototype_WithAdditionalTemplates()
         {
-            var creatures = new[] { "my creature", "my other creature" };
-
-            var zombieCreatures = creatures.Except(["wrong creature 1", "wrong creature 2", "wrong creature 3", "wrong creature 4"]);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Templates.Zombie + bool.FalseString))
-                .Returns(zombieCreatures);
-
-            var data = SetUpCreatureData();
-            data["my creature"].HitDiceQuantity = 1.01;
-            data["my other creature"].HitDiceQuantity = 2;
-            data["my other creature"].Types = [CreatureConstants.Types.Animal, "subtype 2"];
-            data["another creature"].HitDiceQuantity = 1;
-            data["another creature"].Types = [CreatureConstants.Types.Humanoid];
-
-            var prototypes = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType([.. data["my creature"].Types])
-                    .WithHitDiceQuantity(data["my creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithoutAbility(AbilityConstants.Strength)
-                    .WithAbility(AbilityConstants.Constitution, 90210)
-                    .WithAbility(AbilityConstants.Dexterity, 42)
-                    .WithAbility(AbilityConstants.Intelligence, 600)
-                    .WithAbility(AbilityConstants.Wisdom, 1337)
-                    .WithAbility(AbilityConstants.Charisma, 1336)
-                    .WithLevelAdjustment(0)
-                    .WithCasterLevel(3)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithCreatureType([.. data["my other creature"].Types])
-                    .WithHitDiceQuantity(data["my other creature"].GetEffectiveHitDiceQuantity(false))
-                    .WithAbility(AbilityConstants.Strength, 96)
-                    .WithAbility(AbilityConstants.Constitution, 783)
-                    .WithAbility(AbilityConstants.Dexterity, 8245)
-                    .WithAbility(AbilityConstants.Intelligence, -8)
-                    .WithAbility(AbilityConstants.Wisdom, 0)
-                    .WithAbility(AbilityConstants.Charisma, 1)
-                    .WithLevelAdjustment(2)
-                    .WithCasterLevel(4)
-                    .Build(),
-            };
-            mockPrototypeFactory
-                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature" })), false))
-                .Returns(prototypes);
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.Zero);
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(2.02));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 8245 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 96 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
-        }
-
-        [Test]
-        public void GetCompatiblePrototypes_FromPrototypes_ReturnsEmpty_IfAsCharacter()
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .Build(),
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, true);
-            Assert.That(compatibleCreatures, Is.Empty);
-        }
-
-        [Test]
-        public void GetCompatiblePrototypes_FromPrototypes_ReturnsCompatibleCreatures()
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithCreatureType(CreatureConstants.Types.Animal, "subtype 3")
-                    .WithHitDiceQuantity(2)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("another creature")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .WithHitDiceQuantity(3)
-                    .WithSkeleton(false)
-                    .Build(),
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1_2nd));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(2));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 3",
-            }));
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
-        }
-
-        [TestCase(CreatureConstants.Types.Aberration, true)]
-        [TestCase(CreatureConstants.Types.Animal, true)]
-        [TestCase(CreatureConstants.Types.Construct, false)]
-        [TestCase(CreatureConstants.Types.Dragon, true)]
-        [TestCase(CreatureConstants.Types.Elemental, true)]
-        [TestCase(CreatureConstants.Types.Fey, true)]
-        [TestCase(CreatureConstants.Types.Giant, true)]
-        [TestCase(CreatureConstants.Types.Humanoid, true)]
-        [TestCase(CreatureConstants.Types.MagicalBeast, true)]
-        [TestCase(CreatureConstants.Types.MonstrousHumanoid, true)]
-        [TestCase(CreatureConstants.Types.Ooze, false)]
-        [TestCase(CreatureConstants.Types.Outsider, false)]
-        [TestCase(CreatureConstants.Types.Plant, false)]
-        [TestCase(CreatureConstants.Types.Undead, false)]
-        [TestCase(CreatureConstants.Types.Vermin, true)]
-        public void GetCompatiblePrototypes_FromPrototypes_ByCreatureType(string creatureType, bool compatible)
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType(creatureType, "subtype 1", "subtype 2")
-                    .Build(),
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false);
-            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
-        }
-
-        [Test]
-        public void GetCompatiblePrototypes_FromPrototypes_CannotBeIncorporeal()
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", CreatureConstants.Types.Subtypes.Incorporeal, "subtype 2")
-                    .Build(),
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false);
-            Assert.That(compatibleCreatures, Is.Empty);
-        }
-
-        [Test]
-        public void GetCompatiblePrototypes_FromPrototypes_MustHaveSkeleton()
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .WithSkeleton(false)
-                    .Build(),
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false);
-            Assert.That(compatibleCreatures, Is.Empty);
-        }
-
-        [Test]
-        public void GetCompatiblePrototypes_FromPrototypes_CannotBeCharacter()
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .Build(),
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, true);
-            Assert.That(compatibleCreatures, Is.Empty);
-        }
-
-        [TestCase(0.1, true)]
-        [TestCase(0.25, true)]
-        [TestCase(0.5, true)]
-        [TestCase(1, true)]
-        [TestCase(2, true)]
-        [TestCase(9, true)]
-        [TestCase(10, true)]
-        [TestCase(11, false)]
-        [TestCase(19, false)]
-        [TestCase(20, false)]
-        [TestCase(21, false)]
-        [TestCase(22, false)]
-        [TestCase(96, false)]
-        public void GetCompatiblePrototypes_FromPrototypes_FewerThan10HitDice(double hitDiceQuantity, bool compatible)
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .WithHitDiceQuantity(hitDiceQuantity)
-                    .Build(),
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false);
-            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
-        }
-
-        [TestCase(null, true)]
-        [TestCase(CreatureConstants.Types.Humanoid, false)]
-        [TestCase(CreatureConstants.Types.Undead, true)]
-        [TestCase("subtype 1", true)]
-        [TestCase("subtype 2", true)]
-        [TestCase(CreatureConstants.Types.Subtypes.Extraplanar, false)]
-        [TestCase(CreatureConstants.Types.Subtypes.Augmented, false)]
-        [TestCase("wrong type", false)]
-        public void GetCompatiblePrototypes_FromPrototypes_TypeMustMatch(string type, bool compatible)
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .Build(),
-            };
-
-            var filters = new Filters
-            {
-                Type = type
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters);
-            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
-        }
-
-        [TestCase(.1, ChallengeRatingConstants.CR1_10th, false)]
-        [TestCase(.1, ChallengeRatingConstants.CR1_8th, true)]
-        [TestCase(.1, ChallengeRatingConstants.CR1_6th, false)]
-        [TestCase(.25, ChallengeRatingConstants.CR1_10th, false)]
-        [TestCase(.25, ChallengeRatingConstants.CR1_8th, true)]
-        [TestCase(.25, ChallengeRatingConstants.CR1_6th, false)]
-        [TestCase(.5, ChallengeRatingConstants.CR1_6th, false)]
-        [TestCase(.5, ChallengeRatingConstants.CR1_4th, true)]
-        [TestCase(.5, ChallengeRatingConstants.CR1_3rd, false)]
-        [TestCase(1, ChallengeRatingConstants.CR1_3rd, false)]
-        [TestCase(1, ChallengeRatingConstants.CR1_2nd, true)]
-        [TestCase(1, ChallengeRatingConstants.CR1, false)]
-        [TestCase(2, ChallengeRatingConstants.CR1_2nd, false)]
-        [TestCase(2, ChallengeRatingConstants.CR1, true)]
-        [TestCase(2, ChallengeRatingConstants.CR2, false)]
-        [TestCase(3, ChallengeRatingConstants.CR1_2nd, false)]
-        [TestCase(3, ChallengeRatingConstants.CR2, true)]
-        [TestCase(3, ChallengeRatingConstants.CR3, false)]
-        [TestCase(4, ChallengeRatingConstants.CR2, false)]
-        [TestCase(4, ChallengeRatingConstants.CR3, true)]
-        [TestCase(4, ChallengeRatingConstants.CR4, false)]
-        [TestCase(5, ChallengeRatingConstants.CR2, false)]
-        [TestCase(5, ChallengeRatingConstants.CR3, true)]
-        [TestCase(5, ChallengeRatingConstants.CR4, false)]
-        [TestCase(6, ChallengeRatingConstants.CR3, false)]
-        [TestCase(6, ChallengeRatingConstants.CR4, true)]
-        [TestCase(6, ChallengeRatingConstants.CR5, false)]
-        [TestCase(7, ChallengeRatingConstants.CR3, false)]
-        [TestCase(7, ChallengeRatingConstants.CR4, true)]
-        [TestCase(7, ChallengeRatingConstants.CR5, false)]
-        [TestCase(8, ChallengeRatingConstants.CR4, false)]
-        [TestCase(8, ChallengeRatingConstants.CR5, true)]
-        [TestCase(8, ChallengeRatingConstants.CR6, false)]
-        [TestCase(9, ChallengeRatingConstants.CR5, false)]
-        [TestCase(9, ChallengeRatingConstants.CR6, true)]
-        [TestCase(9, ChallengeRatingConstants.CR7, false)]
-        [TestCase(10, ChallengeRatingConstants.CR5, false)]
-        [TestCase(10, ChallengeRatingConstants.CR6, true)]
-        [TestCase(10, ChallengeRatingConstants.CR7, false)]
-        public void GetCompatiblePrototypes_FromPrototypes_ChallengeRatingMustMatch(double hitDiceQuantity, string challengeRating, bool compatible)
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .WithHitDiceQuantity(hitDiceQuantity)
-                    .Build(),
-            };
-
-            var filters = new Filters
-            {
-                ChallengeRating = challengeRating
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters);
-            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
-        }
-
-        [TestCase(AlignmentConstants.LawfulGood, false)]
-        [TestCase(AlignmentConstants.NeutralGood, false)]
-        [TestCase(AlignmentConstants.ChaoticGood, false)]
-        [TestCase(AlignmentConstants.LawfulNeutral, false)]
-        [TestCase(AlignmentConstants.TrueNeutral, false)]
-        [TestCase(AlignmentConstants.ChaoticNeutral, false)]
-        [TestCase(AlignmentConstants.LawfulEvil, false)]
-        [TestCase(AlignmentConstants.NeutralEvil, true)]
-        [TestCase(AlignmentConstants.ChaoticEvil, false)]
-        [TestCase("wrong alignment", false)]
-        public void GetCompatiblePrototypes_FromPrototypes_AlignmentMustMatch(string alignmentFilter, bool compatible)
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .WithHitDiceQuantity(4)
-                    .Build(),
-            };
-
-            var filters = new Filters
-            {
-                Alignment = alignmentFilter
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters);
-            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
-        }
-
-        [TestCase(CreatureConstants.Types.Undead, ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil, false)]
-        [TestCase(CreatureConstants.Types.Undead, ChallengeRatingConstants.CR2, AlignmentConstants.NeutralEvil, true)]
-        [TestCase(CreatureConstants.Types.Undead, ChallengeRatingConstants.CR1, AlignmentConstants.LawfulEvil, false)]
-        [TestCase(CreatureConstants.Types.Undead, ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil, false)]
-        [TestCase("wrong subtype", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil, false)]
-        [TestCase("wrong subtype", ChallengeRatingConstants.CR2, AlignmentConstants.NeutralEvil, false)]
-        [TestCase("wrong subtype", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulEvil, false)]
-        [TestCase("wrong subtype", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil, false)]
-        public void GetCompatiblePrototypes_FromPrototypes_TypeAndChallengeRatingMustMatch(string type, string challengeRating, string alignment, bool compatible)
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .WithHitDiceQuantity(3)
-                    .Build(),
-            };
-
-            var filters = new Filters
-            {
-                Type = type,
-                ChallengeRating = challengeRating,
-                Alignment = alignment
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters);
-            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
-        }
-
-        [TestCase(AlignmentConstants.LawfulGood)]
-        [TestCase(AlignmentConstants.NeutralGood)]
-        [TestCase(AlignmentConstants.ChaoticGood)]
-        [TestCase(AlignmentConstants.LawfulNeutral)]
-        [TestCase(AlignmentConstants.TrueNeutral)]
-        [TestCase(AlignmentConstants.ChaoticNeutral)]
-        [TestCase(AlignmentConstants.LawfulEvil)]
-        [TestCase(AlignmentConstants.ChaoticEvil)]
-        [TestCase("wrong alignment")]
-        public void GetCompatiblePrototypes_FromPrototypes_ReturnEmpty_WhenAlignmentFilterInvalid(string alignmentFilter)
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .WithName("wrong creature 2")
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithCreatureType(CreatureConstants.Types.Giant, "subtype 3")
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("wrong creature 1")
-                    .WithCreatureType(CreatureConstants.Types.Outsider, "subtype 2")
-                    .Build(),
-            };
-
-            var filters = new Filters
-            {
-                Alignment = alignmentFilter
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.Empty);
-        }
-
-        [Test]
-        public void GetCompatiblePrototypes_FromPrototypes_ReturnCompatibleCreatures_WhenAlignmentFilterValid()
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .WithName("wrong creature 2")
-                    .WithSkeleton(false)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithCreatureType(CreatureConstants.Types.Giant, "subtype 3")
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("wrong creature 1")
-                    .WithCreatureType(CreatureConstants.Types.Outsider, "subtype 2")
-                    .Build(),
-            };
-
-            var filters = new Filters
-            {
-                Alignment = AlignmentConstants.NeutralEvil
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1_2nd));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(2));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 3",
-            }));
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1_2nd));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(2));
-        }
-
-        [TestCase(ChallengeRatingConstants.CR1_8th, 0, 0.25)]
-        [TestCase(ChallengeRatingConstants.CR1_4th, 0.25, 0.5)]
-        [TestCase(ChallengeRatingConstants.CR1_2nd, 0.5, 1)]
-        [TestCase(ChallengeRatingConstants.CR1, 1, 2)]
-        [TestCase(ChallengeRatingConstants.CR2, 2, 3)]
-        [TestCase(ChallengeRatingConstants.CR3, 3, 5)]
-        [TestCase(ChallengeRatingConstants.CR4, 5, 7)]
-        [TestCase(ChallengeRatingConstants.CR5, 7, 8)]
-        [TestCase(ChallengeRatingConstants.CR6, 8, 10)]
-        public void GetCompatiblePrototypes_FromPrototypes_WithChallengeRating_ReturnsCompatibleCreatures(string challengeRatingFilter, double lower, double upper)
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .WithHitDiceQuantity(lower + 0.01)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithCreatureType(CreatureConstants.Types.Animal, "subtype 3")
-                    .WithHitDiceQuantity(upper)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("another creature")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .WithHitDiceQuantity((lower + upper) / 2)
-                    .WithSkeleton(false)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("yet another creature")
-                    .WithCreatureType(CreatureConstants.Types.Giant)
-                    .WithHitDiceQuantity((lower + upper) / 2)
-                    .Build(),
-            };
-
-            var filters = new Filters
-            {
-                ChallengeRating = challengeRatingFilter
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(3));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(challengeRatingFilter));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo((lower + 0.01) * 2));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 3",
-            }));
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(challengeRatingFilter));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(upper * 2));
-
-            Assert.That(compatibleCreatures[2].Name, Is.EqualTo("yet another creature"));
-            Assert.That(compatibleCreatures[2].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[2].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[2].Type.SubTypes, Is.Empty);
-            Assert.That(compatibleCreatures[2].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[2].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[2].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[2].ChallengeRating, Is.EqualTo(challengeRatingFilter));
-            Assert.That(compatibleCreatures[2].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[2].HitDiceQuantity, Is.EqualTo(lower + upper));
-        }
-
-        [TestCaseSource(nameof(InvalidChallengeRatings))]
-        public void GetCompatiblePrototypes_FromPrototypes_WithChallengeRating_ReturnsEmpty_IfChallengeRatingNotValidForTemplate(string challengeRatingFilter)
-        {
-            var creatures = new[] { "my creature", "my other creature", "another creature", "yet another creature" };
-
-            var filters = new Filters
-            {
-                ChallengeRating = challengeRatingFilter
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.Empty);
-        }
-
-        [TestCase(ChallengeRatingConstants.CR1_8th, 0, 0.25)]
-        [TestCase(ChallengeRatingConstants.CR1_4th, 0.25, 0.5)]
-        [TestCase(ChallengeRatingConstants.CR1_2nd, 0.5, 1)]
-        [TestCase(ChallengeRatingConstants.CR1, 1, 2)]
-        [TestCase(ChallengeRatingConstants.CR2, 2, 3)]
-        [TestCase(ChallengeRatingConstants.CR3, 3, 5)]
-        [TestCase(ChallengeRatingConstants.CR4, 5, 7)]
-        [TestCase(ChallengeRatingConstants.CR5, 7, 8)]
-        [TestCase(ChallengeRatingConstants.CR6, 8, 10)]
-        public void GetCompatiblePrototypes_FromPrototypes_WithChallengeRating_ReturnsCompatibleCreatures_FilterOutCreaturesOutOfHitDiceRange(
-            string challengeRatingFilter,
-            double lower,
-            double upper)
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .WithHitDiceQuantity(lower + 0.01)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithCreatureType(CreatureConstants.Types.Animal, "subtype 3")
-                    .WithHitDiceQuantity(upper + 0.01)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("another creature")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .WithHitDiceQuantity(lower)
-                    .WithSkeleton(false)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("yet another creature")
-                    .WithCreatureType(CreatureConstants.Types.Giant)
-                    .WithHitDiceQuantity(upper)
-                    .Build(),
-            };
-
-            var filters = new Filters
-            {
-                ChallengeRating = challengeRatingFilter
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(challengeRatingFilter));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo((lower + 0.01) * 2));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("yet another creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.Empty);
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(challengeRatingFilter));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(upper * 2));
-
-            mockCreatureDataSelector.Verify(s => s.SelectOneFrom(Config.Name, TableNameConstants.Collection.CreatureData, It.IsAny<string>()), Times.Never);
-        }
-
-        [Test]
-        public void GetCompatiblePrototypes_FromPrototypes_WithType_ReturnsCompatibleCreatures()
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithCreatureType(CreatureConstants.Types.Animal, "subtype 3")
-                    .WithHitDiceQuantity(2)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("another creature")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .WithSkeleton(false)
-                    .Build(),
-            };
-
-            var filters = new Filters
-            {
-                Type = CreatureConstants.Types.Undead
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1_2nd));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(2));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 3",
-            }));
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
-        }
-
-        [TestCase(CreatureConstants.Types.Subtypes.Chaotic)]
-        [TestCase(CreatureConstants.Types.Subtypes.Evil)]
-        [TestCase(CreatureConstants.Types.Subtypes.Good)]
-        [TestCase(CreatureConstants.Types.Subtypes.Lawful)]
-        [TestCase(CreatureConstants.Types.Subtypes.Shapechanger)]
-        [TestCase(CreatureConstants.Types.Subtypes.Dwarf)]
-        [TestCase(CreatureConstants.Types.Subtypes.Elf)]
-        [TestCase(CreatureConstants.Types.Subtypes.Gnoll)]
-        [TestCase(CreatureConstants.Types.Subtypes.Gnome)]
-        [TestCase(CreatureConstants.Types.Subtypes.Goblinoid)]
-        [TestCase(CreatureConstants.Types.Subtypes.Halfling)]
-        [TestCase(CreatureConstants.Types.Subtypes.Orc)]
-        [TestCase(CreatureConstants.Types.Subtypes.Reptilian)]
-        public void GetCompatiblePrototypes_FromPrototypes_WithType_ReturnsEmpty_WhenTypeFilterNotValid(string typeFilter)
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("another creature")
-                    .Build(),
-            };
-
-            var filters = new Filters
-            {
-                Type = typeFilter
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters);
-            Assert.That(compatibleCreatures, Is.Empty);
-        }
-
-        [TestCase(CreatureConstants.Types.Aberration)]
-        [TestCase(CreatureConstants.Types.Animal)]
-        [TestCase(CreatureConstants.Types.Dragon)]
-        [TestCase(CreatureConstants.Types.Elemental)]
-        [TestCase(CreatureConstants.Types.Fey)]
-        [TestCase(CreatureConstants.Types.Giant)]
-        [TestCase(CreatureConstants.Types.Humanoid)]
-        [TestCase(CreatureConstants.Types.MagicalBeast)]
-        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
-        [TestCase(CreatureConstants.Types.Vermin)]
-        [TestCase(CreatureConstants.Types.Subtypes.Air)]
-        [TestCase(CreatureConstants.Types.Subtypes.Aquatic)]
-        [TestCase(CreatureConstants.Types.Subtypes.Augmented)]
-        [TestCase(CreatureConstants.Types.Subtypes.Cold)]
-        [TestCase(CreatureConstants.Types.Subtypes.Earth)]
-        [TestCase(CreatureConstants.Types.Subtypes.Extraplanar)]
-        [TestCase(CreatureConstants.Types.Subtypes.Fire)]
-        [TestCase(CreatureConstants.Types.Subtypes.Swarm)]
-        [TestCase(CreatureConstants.Types.Subtypes.Water)]
-        public void GetCompatiblePrototypes_FromPrototypes_WithType_ReturnsCompatibleCreatures_FilterOutCreaturesWithWrongSubtype(string typeFilter)
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithCreatureType(
-                        typeFilter == CreatureConstants.Types.Humanoid ? CreatureConstants.Types.Animal : CreatureConstants.Types.Humanoid,
-                        "subtype 1",
-                        typeFilter)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithCreatureType(
-                        typeFilter == CreatureConstants.Types.Animal ? CreatureConstants.Types.Humanoid : CreatureConstants.Types.Animal,
-                        typeFilter)
-                    .WithHitDiceQuantity(2)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("another creature")
-                    .WithCreatureType(
-                        typeFilter == CreatureConstants.Types.Humanoid ? CreatureConstants.Types.Animal : CreatureConstants.Types.Humanoid,
-                        "wrong subtype")
-                    .Build(),
-            };
-
-            var filters = new Filters
-            {
-                Type = typeFilter
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                typeFilter,
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1_2nd));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(2));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
-            {
-                typeFilter,
-            }));
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
-        }
-
-        [Test]
-        public void GetCompatiblePrototypes_FromPrototypes_WithChallengeRatingAndType_ReturnsCompatibleCreatures()
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithHitDiceQuantity(1.01)
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithHitDiceQuantity(2)
-                    .WithCreatureType(CreatureConstants.Types.Animal, "subtype 2")
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("another creature")
-                    .WithHitDiceQuantity(1)
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 2")
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("yet another creature")
-                    .WithHitDiceQuantity(1.5)
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "wrong subtype")
-                    .Build(),
-            };
-
-            var filters = new Filters
-            {
-                Type = "subtype 2",
-                ChallengeRating = ChallengeRatingConstants.CR1
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(2.02));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
-        }
-
-        [TestCase(CreatureConstants.Types.Subtypes.Angel)]
-        [TestCase(CreatureConstants.Types.Subtypes.Archon)]
-        [TestCase(CreatureConstants.Types.Subtypes.Chaotic)]
-        [TestCase(CreatureConstants.Types.Subtypes.Dwarf)]
-        [TestCase(CreatureConstants.Types.Subtypes.Elf)]
-        [TestCase(CreatureConstants.Types.Subtypes.Evil)]
-        [TestCase(CreatureConstants.Types.Subtypes.Gnoll)]
-        [TestCase(CreatureConstants.Types.Subtypes.Gnome)]
-        [TestCase(CreatureConstants.Types.Subtypes.Goblinoid)]
-        [TestCase(CreatureConstants.Types.Subtypes.Good)]
-        [TestCase(CreatureConstants.Types.Subtypes.Halfling)]
-        [TestCase(CreatureConstants.Types.Subtypes.Human)]
-        [TestCase(CreatureConstants.Types.Subtypes.Lawful)]
-        [TestCase(CreatureConstants.Types.Subtypes.Orc)]
-        [TestCase(CreatureConstants.Types.Subtypes.Reptilian)]
-        [TestCase(CreatureConstants.Types.Subtypes.Shapechanger)]
-        public void GetCompatiblePrototypes_FromPrototypes_ReturnsCompatibleCreatures_WithValidTypes(string invalidType)
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithHitDiceQuantity(1.01)
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2", invalidType)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithHitDiceQuantity(2)
-                    .WithCreatureType(CreatureConstants.Types.Animal, invalidType, "subtype 2")
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("another creature")
-                    .WithHitDiceQuantity(1)
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, invalidType)
-                    .Build(),
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(3));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(2.02));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
-
-            Assert.That(compatibleCreatures[2].Name, Is.EqualTo("another creature"));
-            Assert.That(compatibleCreatures[2].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[2].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[2].Type.SubTypes, Is.Empty);
-            Assert.That(compatibleCreatures[2].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[2].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[2].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[2].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1_2nd));
-            Assert.That(compatibleCreatures[2].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[2].HitDiceQuantity, Is.EqualTo(2));
-        }
-
-        [Test]
-        public void GetCompatiblePrototypes_FromPrototypes_ReturnsCompatibleCreatures_WithLevelAdjustments()
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithHitDiceQuantity(1.01)
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .WithLevelAdjustment(0)
-                    .WithCasterLevel(3)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithHitDiceQuantity(2)
-                    .WithCreatureType(CreatureConstants.Types.Animal, "subtype 2")
-                    .WithLevelAdjustment(2)
-                    .WithCasterLevel(4)
-                    .Build(),
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(2.02));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
-        }
-
-        [Test]
-        public void GetCompatiblePrototypes_FromPrototypes_ReturnsCompatibleCreatures_WithImprovedTemplateAdjustments()
-        {
-            var creatures = new[]
-            {
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my creature")
-                    .WithHitDiceQuantity(1.01)
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
-                    .WithAbility(AbilityConstants.Dexterity, 9266, 90210)
-                    .WithAbility(AbilityConstants.Strength, 42, 600)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("my other creature")
-                    .WithHitDiceQuantity(2)
-                    .WithCreatureType(CreatureConstants.Types.Animal, "subtype 2")
-                    .WithAbility(AbilityConstants.Dexterity, 1337, 1336)
-                    .WithAbility(AbilityConstants.Strength, 96, 783)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("another creature")
-                    .WithHitDiceQuantity(1)
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 2")
-                    .WithAbility(AbilityConstants.Dexterity, 8245, 69)
-                    .WithAbility(AbilityConstants.Strength, 420, 1)
-                    .Build(),
-                new CreaturePrototypeBuilder()
-                    .WithTestValues()
-                    .WithName("yet another creature")
-                    .WithHitDiceQuantity(1.5)
-                    .WithCreatureType(CreatureConstants.Types.Humanoid)
-                    .WithAbility(AbilityConstants.Dexterity, -2, 3)
-                    .WithAbility(AbilityConstants.Strength, 4, -5)
-                    .Build(),
-            };
-
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(4));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 42 + 600 + 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 9266 + 90210 - 2));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(2.02));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 1337 + 1336 - 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 96 + 783 + 2));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
-
-            Assert.That(compatibleCreatures[2].Name, Is.EqualTo("another creature"));
-            Assert.That(compatibleCreatures[2].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[2].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[2].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 2",
-            }));
-            Assert.That(compatibleCreatures[2].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 8245 + 69 - 2));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 420 + 1 + 2));
-            Assert.That(compatibleCreatures[2].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[2].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[2].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[2].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1_2nd));
-            Assert.That(compatibleCreatures[2].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[2].HitDiceQuantity, Is.EqualTo(2));
-
-            Assert.That(compatibleCreatures[3].Name, Is.EqualTo("yet another creature"));
-            Assert.That(compatibleCreatures[3].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[3].Type.Name, Is.EqualTo(CreatureConstants.Types.Undead));
-            Assert.That(compatibleCreatures[3].Type.SubTypes, Is.Empty);
-            Assert.That(compatibleCreatures[3].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[3].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[3].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(1));
-            Assert.That(compatibleCreatures[3].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[3].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[3].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[3].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[3].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 - 2 + 3 - 2));
-            Assert.That(compatibleCreatures[3].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[3].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[3].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(0));
-            Assert.That(compatibleCreatures[3].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 4 - 5 + 2));
-            Assert.That(compatibleCreatures[3].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[3].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralEvil),
-            }));
-            Assert.That(compatibleCreatures[3].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[3].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR1));
-            Assert.That(compatibleCreatures[3].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[3].HitDiceQuantity, Is.EqualTo(3));
+            var prototype = new CreaturePrototypeBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                .WithHitDiceQuantity(1)
+                .Build();
+            prototype.Templates.Add("my template");
+
+            var updatedPrototype = applicator.ApplyTo(prototype);
+            Assert.That(updatedPrototype, Is.SameAs(prototype));
+            Assert.That(updatedPrototype.Templates, Is.EqualTo(["my template", CreatureConstants.Templates.Zombie]));
         }
     }
 }

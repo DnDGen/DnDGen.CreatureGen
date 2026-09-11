@@ -1,10 +1,10 @@
 ﻿using DnDGen.CreatureGen.Alignments;
-using System.Collections.Generic;
+using DnDGen.CreatureGen.Generators.Creatures;
 
 namespace DnDGen.CreatureGen.Generators.Alignments
 {
     internal interface IAlignmentGenerator
     {
-        Alignment Generate(string creatureName, IEnumerable<string> templates, string presetAlignment);
+        Alignment Generate(string creatureName, string[] templates, Filters filters);
     }
 }
