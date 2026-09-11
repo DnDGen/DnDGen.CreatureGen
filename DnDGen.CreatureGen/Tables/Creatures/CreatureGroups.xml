@@ -11519,7 +11519,6 @@
 		<entry>Red Dragon, Very Old</entry>
 		<entry>Red Dragon, Ancient</entry>
 		<entry>Red Dragon, Wyrm</entry>
-		<entry>Red Dragon, Wyrm</entry>
 		<entry>Red Dragon, Great Wyrm</entry>
 		<entry>White Dragon, Wyrmling</entry>
 		<entry>White Dragon, Very Young</entry>
@@ -26026,6 +26025,47 @@
 	</collection>
 	<collection>
 		<name>Celestial CreatureChaotic Good</name>
+		<entry>Pegasus</entry>
+		<entry>Phasm</entry>
+		<entry>Remorhaz</entry>
+		<entry>Rock Gnome</entry>
+		<entry>Roper</entry>
+		<entry>Satyr</entry>
+		<entry>Satyr with pipes</entry>
+		<entry>Scrag</entry>
+		<entry>Troll</entry>
+		<entry>Sea Hag</entry>
+		<entry>Shambling Mound</entry>
+		<entry>Locathah</entry>
+		<entry>Merfolk</entry>
+		<entry>Merrow</entry>
+		<entry>Mimic</entry>
+		<entry>Minotaur</entry>
+		<entry>Mountain Dwarf</entry>
+		<entry>Nymph</entry>
+		<entry>Ogre</entry>
+		<entry>Orc</entry>
+		<entry>Otyugh</entry>
+		<entry>High Elf</entry>
+		<entry>Hill Dwarf</entry>
+		<entry>Hill Giant</entry>
+		<entry>Human</entry>
+		<entry>Kapoacinth</entry>
+		<entry>Krenshar</entry>
+		<entry>Kuo-toa</entry>
+		<entry>Lamia</entry>
+		<entry>Lightfoot Halfling</entry>
+		<entry>Lizardfolk</entry>
+		<entry>Githzerai</entry>
+		<entry>Gnoll</entry>
+		<entry>Gray Elf</entry>
+		<entry>Gray Render</entry>
+		<entry>Green Hag</entry>
+		<entry>Grick</entry>
+		<entry>Grimlock</entry>
+		<entry>Half-Elf</entry>
+		<entry>Half-Orc</entry>
+		<entry>Harpy</entry>
 		<entry>Ethereal Filcher</entry>
 		<entry>Ettin</entry>
 		<entry>Forest Gnome</entry>
@@ -26119,6 +26159,36 @@
 	</collection>
 	<collection>
 		<name>Celestial CreatureLawful Good</name>
+		<entry>Yrthak</entry>
+		<entry>Skum</entry>
+		<entry>Stone Giant</entry>
+		<entry>Stone Giant Elder</entry>
+		<entry>Storm Giant</entry>
+		<entry>Svirfneblin</entry>
+		<entry>Tallfellow Halfling</entry>
+		<entry>Treant</entry>
+		<entry>Water Naga</entry>
+		<entry>Wood Elf</entry>
+		<entry>Wyvern</entry>
+		<entry>Mountain Dwarf</entry>
+		<entry>Ogre Mage</entry>
+		<entry>Otyugh</entry>
+		<entry>Remorhaz</entry>
+		<entry>Rock Gnome</entry>
+		<entry>Sahuagin</entry>
+		<entry>Sahuagin Mutant</entry>
+		<entry>Scorpionfolk</entry>
+		<entry>Shambling Mound</entry>
+		<entry>Lammasu</entry>
+		<entry>Lightfoot Halfling</entry>
+		<entry>Lizardfolk</entry>
+		<entry>Locathah</entry>
+		<entry>Malenti</entry>
+		<entry>Manticore</entry>
+		<entry>Medusa</entry>
+		<entry>Merfolk</entry>
+		<entry>Mimic</entry>
+		<entry>Mind Flayer (Illithid)</entry>
 		<entry>Grimlock</entry>
 		<entry>Guardian Naga</entry>
 		<entry>Half-Elf</entry>
@@ -26206,6 +26276,18 @@
 		<entry>Gold Dragon, Ancient</entry>
 		<entry>Gold Dragon, Wyrm</entry>
 		<entry>Gold Dragon, Great Wyrm</entry>
+		<entry>Silver Dragon, Wyrmling</entry>
+		<entry>Silver Dragon, Very Young</entry>
+		<entry>Silver Dragon, Young</entry>
+		<entry>Silver Dragon, Juvenile</entry>
+		<entry>Silver Dragon, Young Adult</entry>
+		<entry>Silver Dragon, Adult</entry>
+		<entry>Silver Dragon, Mature Adult</entry>
+		<entry>Silver Dragon, Old</entry>
+		<entry>Silver Dragon, Very Old</entry>
+		<entry>Silver Dragon, Ancient</entry>
+		<entry>Silver Dragon, Wyrm</entry>
+		<entry>Silver Dragon, Great Wyrm</entry>
 	</collection>
 	<collection>
 		<name>Celestial CreatureLawful Neutral</name>
@@ -26215,6 +26297,64 @@
 	</collection>
 	<collection>
 		<name>Celestial CreatureNeutral Good</name>
+		<entry>Goblin</entry>
+		<entry>Gorgon</entry>
+		<entry>Gray Elf</entry>
+		<entry>Gray Render</entry>
+		<entry>Grick</entry>
+		<entry>Griffon</entry>
+		<entry>Grig</entry>
+		<entry>Grig with fiddle</entry>
+		<entry>Grimlock</entry>
+		<entry>Guardian Naga</entry>
+		<entry>Giant Eagle</entry>
+		<entry>Giant Fire Beetle</entry>
+		<entry>Giant Owl</entry>
+		<entry>Giant Praying Mantis</entry>
+		<entry>Giant Stag Beetle</entry>
+		<entry>Giant Wasp</entry>
+		<entry>Gibbering Mouther</entry>
+		<entry>Girallon</entry>
+		<entry>Githyanki</entry>
+		<entry>Githzerai</entry>
+		<entry>Ettercap</entry>
+		<entry>Fire Giant</entry>
+		<entry>Forest Gnome</entry>
+		<entry>Frost Giant</entry>
+		<entry>Frost Worm</entry>
+		<entry>Giant Ant, Queen</entry>
+		<entry>Giant Ant, Soldier</entry>
+		<entry>Giant Ant, Worker</entry>
+		<entry>Giant Bee</entry>
+		<entry>Giant Bombardier Beetle</entry>
+		<entry>Ethereal Filcher</entry>
+		<entry>Ethereal Marauder</entry>
+		<entry>Dryad</entry>
+		<entry>Duergar</entry>
+		<entry>Five-Headed Cryohydra</entry>
+		<entry>Five-Headed Hydra</entry>
+		<entry>Five-Headed Pyrohydra</entry>
+		<entry>Six-Headed Cryohydra</entry>
+		<entry>Six-Headed Hydra</entry>
+		<entry>Six-Headed Pyrohydra</entry>
+		<entry>Seven-Headed Cryohydra</entry>
+		<entry>Seven-Headed Hydra</entry>
+		<entry>Seven-Headed Pyrohydra</entry>
+		<entry>Eight-Headed Cryohydra</entry>
+		<entry>Eight-Headed Hydra</entry>
+		<entry>Eight-Headed Pyrohydra</entry>
+		<entry>Nine-Headed Cryohydra</entry>
+		<entry>Nine-Headed Hydra</entry>
+		<entry>Nine-Headed Pyrohydra</entry>
+		<entry>Ten-Headed Cryohydra</entry>
+		<entry>Ten-Headed Hydra</entry>
+		<entry>Ten-Headed Pyrohydra</entry>
+		<entry>Eleven-Headed Cryohydra</entry>
+		<entry>Eleven-Headed Hydra</entry>
+		<entry>Eleven-Headed Pyrohydra</entry>
+		<entry>Twelve-Headed Cryohydra</entry>
+		<entry>Twelve-Headed Hydra</entry>
+		<entry>Twelve-Headed Pyrohydra</entry>
 		<entry>Deep Halfling</entry>
 		<entry>Delver</entry>
 		<entry>Destrachan</entry>
@@ -26356,6 +26496,46 @@
 	</collection>
 	<collection>
 		<name>Fiendish CreatureChaotic Evil</name>
+		<entry>Locathah</entry>
+		<entry>Merfolk</entry>
+		<entry>Merrow</entry>
+		<entry>Mimic</entry>
+		<entry>Minotaur</entry>
+		<entry>Nymph</entry>
+		<entry>Ogre</entry>
+		<entry>Orc</entry>
+		<entry>Otyugh</entry>
+		<entry>Pegasus</entry>
+		<entry>High Elf</entry>
+		<entry>Hill Giant</entry>
+		<entry>Human</entry>
+		<entry>Kapoacinth</entry>
+		<entry>Kraken</entry>
+		<entry>Krenshar</entry>
+		<entry>Kuo-toa</entry>
+		<entry>Lamia</entry>
+		<entry>Lightfoot Halfling</entry>
+		<entry>Lizardfolk</entry>
+		<entry>Goblin</entry>
+		<entry>Gray Elf</entry>
+		<entry>Gray Render</entry>
+		<entry>Green Hag</entry>
+		<entry>Grick</entry>
+		<entry>Grimlock</entry>
+		<entry>Half-Elf</entry>
+		<entry>Half-Orc</entry>
+		<entry>Harpy</entry>
+		<entry>Hieracosphinx</entry>
+		<entry>Ettercap</entry>
+		<entry>Ettin</entry>
+		<entry>Fire Giant</entry>
+		<entry>Frost Giant</entry>
+		<entry>Frost Worm</entry>
+		<entry>Gargoyle</entry>
+		<entry>Gibbering Mouther</entry>
+		<entry>Githyanki</entry>
+		<entry>Githzerai</entry>
+		<entry>Gnoll</entry>
 		<entry>Ethereal Filcher</entry>
 		<entry>Drow</entry>
 		<entry>Dryad</entry>
@@ -26454,6 +26634,46 @@
 	</collection>
 	<collection>
 		<name>Fiendish CreatureLawful Evil</name>
+		<entry>Shambling Mound</entry>
+		<entry>Skum</entry>
+		<entry>Stone Giant</entry>
+		<entry>Stone Giant Elder</entry>
+		<entry>Svirfneblin</entry>
+		<entry>Tallfellow Halfling</entry>
+		<entry>Water Naga</entry>
+		<entry>Winter Wolf</entry>
+		<entry>Wood Elf</entry>
+		<entry>Worg</entry>
+		<entry>Mimic</entry>
+		<entry>Mind Flayer (Illithid)</entry>
+		<entry>Mountain Dwarf</entry>
+		<entry>Ogre Mage</entry>
+		<entry>Orc</entry>
+		<entry>Otyugh</entry>
+		<entry>Remorhaz</entry>
+		<entry>Sahuagin</entry>
+		<entry>Sahuagin Mutant</entry>
+		<entry>Scorpionfolk</entry>
+		<entry>Kraken</entry>
+		<entry>Krenshar</entry>
+		<entry>Kuo-toa</entry>
+		<entry>Lightfoot Halfling</entry>
+		<entry>Lizardfolk</entry>
+		<entry>Locathah</entry>
+		<entry>Malenti</entry>
+		<entry>Manticore</entry>
+		<entry>Medusa</entry>
+		<entry>Merfolk</entry>
+		<entry>Grick</entry>
+		<entry>Grimlock</entry>
+		<entry>Guardian Naga</entry>
+		<entry>Half-Orc</entry>
+		<entry>Hellwasp Swarm</entry>
+		<entry>Hill Dwarf</entry>
+		<entry>Hill Giant</entry>
+		<entry>Hobgoblin</entry>
+		<entry>Human</entry>
+		<entry>Kobold</entry>
 		<entry>Ettercap</entry>
 		<entry>Fire Giant</entry>
 		<entry>Frost Giant</entry>
@@ -26541,6 +26761,70 @@
 	</collection>
 	<collection>
 		<name>Fiendish CreatureNeutral Evil</name>
+		<entry>Gnoll</entry>
+		<entry>Goblin</entry>
+		<entry>Gorgon</entry>
+		<entry>Gray Render</entry>
+		<entry>Green Hag</entry>
+		<entry>Grick</entry>
+		<entry>Griffon</entry>
+		<entry>Grimlock</entry>
+		<entry>Gynosphinx</entry>
+		<entry>Half-Elf</entry>
+		<entry>Giant Eagle</entry>
+		<entry>Giant Fire Beetle</entry>
+		<entry>Giant Owl</entry>
+		<entry>Giant Praying Mantis</entry>
+		<entry>Giant Stag Beetle</entry>
+		<entry>Giant Wasp</entry>
+		<entry>Gibbering Mouther</entry>
+		<entry>Girallon</entry>
+		<entry>Githyanki</entry>
+		<entry>Githzerai</entry>
+		<entry>Giant Ant, Queen</entry>
+		<entry>Giant Ant, Soldier</entry>
+		<entry>Giant Ant, Worker</entry>
+		<entry>Giant Bee</entry>
+		<entry>Giant Bombardier Beetle</entry>
+		<entry>Ethereal Filcher</entry>
+		<entry>Ethereal Marauder</entry>
+		<entry>Ettercap</entry>
+		<entry>Ettin</entry>
+		<entry>Fire Giant</entry>
+		<entry>Forest Gnome</entry>
+		<entry>Frost Giant</entry>
+		<entry>Frost Worm</entry>
+		<entry>Gargoyle</entry>
+		<entry>Gauth (Lesser Beholder)</entry>
+		<entry>Five-Headed Cryohydra</entry>
+		<entry>Five-Headed Hydra</entry>
+		<entry>Five-Headed Pyrohydra</entry>
+		<entry>Six-Headed Cryohydra</entry>
+		<entry>Six-Headed Hydra</entry>
+		<entry>Six-Headed Pyrohydra</entry>
+		<entry>Seven-Headed Cryohydra</entry>
+		<entry>Seven-Headed Hydra</entry>
+		<entry>Seven-Headed Pyrohydra</entry>
+		<entry>Eight-Headed Cryohydra</entry>
+		<entry>Eight-Headed Hydra</entry>
+		<entry>Eight-Headed Pyrohydra</entry>
+		<entry>Nine-Headed Cryohydra</entry>
+		<entry>Nine-Headed Hydra</entry>
+		<entry>Nine-Headed Pyrohydra</entry>
+		<entry>Ten-Headed Cryohydra</entry>
+		<entry>Ten-Headed Hydra</entry>
+		<entry>Ten-Headed Pyrohydra</entry>
+		<entry>Eleven-Headed Cryohydra</entry>
+		<entry>Eleven-Headed Hydra</entry>
+		<entry>Eleven-Headed Pyrohydra</entry>
+		<entry>Twelve-Headed Cryohydra</entry>
+		<entry>Twelve-Headed Hydra</entry>
+		<entry>Twelve-Headed Pyrohydra</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragon Turtle</entry>
+		<entry>Dragonne</entry>
+		<entry>Drow</entry>
+		<entry>Duergar</entry>
 		<entry>Dark Naga</entry>
 		<entry>Deep Halfling</entry>
 		<entry>Delver</entry>
@@ -26703,6 +26987,46 @@
 	</collection>
 	<collection>
 		<name>Half-CelestialChaotic Good</name>
+		<entry>Lizardfolk</entry>
+		<entry>Locathah</entry>
+		<entry>Magmin</entry>
+		<entry>Merfolk</entry>
+		<entry>Merrow</entry>
+		<entry>Mimic</entry>
+		<entry>Minotaur</entry>
+		<entry>Mountain Dwarf</entry>
+		<entry>Nymph</entry>
+		<entry>Ogre</entry>
+		<entry>High Elf</entry>
+		<entry>Hill Dwarf</entry>
+		<entry>Hill Giant</entry>
+		<entry>Human</entry>
+		<entry>Invisible Stalker</entry>
+		<entry>Kapoacinth</entry>
+		<entry>Krenshar</entry>
+		<entry>Kuo-toa</entry>
+		<entry>Lamia</entry>
+		<entry>Lightfoot Halfling</entry>
+		<entry>Githzerai</entry>
+		<entry>Gnoll</entry>
+		<entry>Gray Elf</entry>
+		<entry>Gray Render</entry>
+		<entry>Green Hag</entry>
+		<entry>Grick</entry>
+		<entry>Grimlock</entry>
+		<entry>Half-Elf</entry>
+		<entry>Half-Orc</entry>
+		<entry>Harpy</entry>
+		<entry>Ethereal Filcher</entry>
+		<entry>Ettin</entry>
+		<entry>Forest Gnome</entry>
+		<entry>Frost Giant</entry>
+		<entry>Frost Worm</entry>
+		<entry>Gargoyle</entry>
+		<entry>Giant Eagle</entry>
+		<entry>Giant Owl</entry>
+		<entry>Gibbering Mouther</entry>
+		<entry>Githyanki</entry>
 		<entry>Deep Dwarf</entry>
 		<entry>Deep Halfling</entry>
 		<entry>Delver</entry>
@@ -26810,6 +27134,36 @@
 	</collection>
 	<collection>
 		<name>Half-CelestialLawful Good</name>
+		<entry>Merfolk</entry>
+		<entry>Mimic</entry>
+		<entry>Mind Flayer (Illithid)</entry>
+		<entry>Mountain Dwarf</entry>
+		<entry>Ogre Mage</entry>
+		<entry>Otyugh</entry>
+		<entry>Remorhaz</entry>
+		<entry>Rock Gnome</entry>
+		<entry>Sahuagin</entry>
+		<entry>Sahuagin Mutant</entry>
+		<entry>Kobold</entry>
+		<entry>Krenshar</entry>
+		<entry>Kuo-toa</entry>
+		<entry>Lammasu</entry>
+		<entry>Lightfoot Halfling</entry>
+		<entry>Lizardfolk</entry>
+		<entry>Locathah</entry>
+		<entry>Malenti</entry>
+		<entry>Manticore</entry>
+		<entry>Medusa</entry>
+		<entry>Gray Render</entry>
+		<entry>Grick</entry>
+		<entry>Grimlock</entry>
+		<entry>Guardian Naga</entry>
+		<entry>Half-Elf</entry>
+		<entry>Half-Orc</entry>
+		<entry>Hill Dwarf</entry>
+		<entry>Hobgoblin</entry>
+		<entry>Human</entry>
+		<entry>Invisible Stalker</entry>
 		<entry>Ethereal Filcher</entry>
 		<entry>Fire Giant</entry>
 		<entry>Forest Gnome</entry>
@@ -26909,6 +27263,18 @@
 		<entry>Gold Dragon, Ancient</entry>
 		<entry>Gold Dragon, Wyrm</entry>
 		<entry>Gold Dragon, Great Wyrm</entry>
+		<entry>Silver Dragon, Wyrmling</entry>
+		<entry>Silver Dragon, Very Young</entry>
+		<entry>Silver Dragon, Young</entry>
+		<entry>Silver Dragon, Juvenile</entry>
+		<entry>Silver Dragon, Young Adult</entry>
+		<entry>Silver Dragon, Adult</entry>
+		<entry>Silver Dragon, Mature Adult</entry>
+		<entry>Silver Dragon, Old</entry>
+		<entry>Silver Dragon, Very Old</entry>
+		<entry>Silver Dragon, Ancient</entry>
+		<entry>Silver Dragon, Wyrm</entry>
+		<entry>Silver Dragon, Great Wyrm</entry>
 	</collection>
 	<collection>
 		<name>Half-CelestialLawful Neutral</name>
@@ -26918,6 +27284,66 @@
 	</collection>
 	<collection>
 		<name>Half-CelestialNeutral Good</name>
+		<entry>Girallon</entry>
+		<entry>Githyanki</entry>
+		<entry>Githzerai</entry>
+		<entry>Goblin</entry>
+		<entry>Gorgon</entry>
+		<entry>Gray Elf</entry>
+		<entry>Gray Render</entry>
+		<entry>Grick</entry>
+		<entry>Griffon</entry>
+		<entry>Grig</entry>
+		<entry>Ethereal Filcher</entry>
+		<entry>Ethereal Marauder</entry>
+		<entry>Ettercap</entry>
+		<entry>Fire Giant</entry>
+		<entry>Forest Gnome</entry>
+		<entry>Frost Giant</entry>
+		<entry>Frost Worm</entry>
+		<entry>Giant Eagle</entry>
+		<entry>Giant Owl</entry>
+		<entry>Gibbering Mouther</entry>
+		<entry>Dire Shark</entry>
+		<entry>Shark, Huge</entry>
+		<entry>Shark, Large</entry>
+		<entry>Shark, Medium</entry>
+		<entry>Octopus</entry>
+		<entry>Giant Octopus</entry>
+		<entry>Squid</entry>
+		<entry>Giant Squid</entry>
+		<entry>Manta Ray</entry>
+		<entry>Porpoise</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragon Turtle</entry>
+		<entry>Dragonne</entry>
+		<entry>Drow</entry>
+		<entry>Dryad</entry>
+		<entry>Duergar</entry>
+		<entry>Five-Headed Cryohydra</entry>
+		<entry>Five-Headed Hydra</entry>
+		<entry>Five-Headed Pyrohydra</entry>
+		<entry>Six-Headed Cryohydra</entry>
+		<entry>Six-Headed Hydra</entry>
+		<entry>Six-Headed Pyrohydra</entry>
+		<entry>Seven-Headed Cryohydra</entry>
+		<entry>Seven-Headed Hydra</entry>
+		<entry>Seven-Headed Pyrohydra</entry>
+		<entry>Eight-Headed Cryohydra</entry>
+		<entry>Eight-Headed Hydra</entry>
+		<entry>Eight-Headed Pyrohydra</entry>
+		<entry>Nine-Headed Cryohydra</entry>
+		<entry>Nine-Headed Hydra</entry>
+		<entry>Nine-Headed Pyrohydra</entry>
+		<entry>Ten-Headed Cryohydra</entry>
+		<entry>Ten-Headed Hydra</entry>
+		<entry>Ten-Headed Pyrohydra</entry>
+		<entry>Eleven-Headed Cryohydra</entry>
+		<entry>Eleven-Headed Hydra</entry>
+		<entry>Eleven-Headed Pyrohydra</entry>
+		<entry>Twelve-Headed Cryohydra</entry>
+		<entry>Twelve-Headed Hydra</entry>
+		<entry>Twelve-Headed Pyrohydra</entry>
 		<entry>Constrictor Snake</entry>
 		<entry>Giant Constrictor Snake</entry>
 		<entry>Viper Snake, Huge</entry>
@@ -27039,6 +27465,57 @@
 	</collection>
 	<collection>
 		<name>Half-FiendChaotic Evil</name>
+		<entry>Gnoll</entry>
+		<entry>Goblin</entry>
+		<entry>Gray Elf</entry>
+		<entry>Gray Render</entry>
+		<entry>Green Hag</entry>
+		<entry>Grick</entry>
+		<entry>Grimlock</entry>
+		<entry>Half-Elf</entry>
+		<entry>Half-Orc</entry>
+		<entry>Harpy</entry>
+		<entry>Ethereal Filcher</entry>
+		<entry>Ettercap</entry>
+		<entry>Ettin</entry>
+		<entry>Fire Giant</entry>
+		<entry>Frost Giant</entry>
+		<entry>Frost Worm</entry>
+		<entry>Gargoyle</entry>
+		<entry>Gibbering Mouther</entry>
+		<entry>Githyanki</entry>
+		<entry>Githzerai</entry>
+		<entry>Doppelganger</entry>
+		<entry>Dragon Turtle</entry>
+		<entry>Dragonne</entry>
+		<entry>Drider</entry>
+		<entry>Drow</entry>
+		<entry>Dryad</entry>
+		<entry>Duergar</entry>
+		<entry>Five-Headed Cryohydra</entry>
+		<entry>Five-Headed Hydra</entry>
+		<entry>Five-Headed Pyrohydra</entry>
+		<entry>Six-Headed Cryohydra</entry>
+		<entry>Six-Headed Hydra</entry>
+		<entry>Six-Headed Pyrohydra</entry>
+		<entry>Seven-Headed Cryohydra</entry>
+		<entry>Seven-Headed Hydra</entry>
+		<entry>Seven-Headed Pyrohydra</entry>
+		<entry>Eight-Headed Cryohydra</entry>
+		<entry>Eight-Headed Hydra</entry>
+		<entry>Eight-Headed Pyrohydra</entry>
+		<entry>Nine-Headed Cryohydra</entry>
+		<entry>Nine-Headed Hydra</entry>
+		<entry>Nine-Headed Pyrohydra</entry>
+		<entry>Ten-Headed Cryohydra</entry>
+		<entry>Ten-Headed Hydra</entry>
+		<entry>Ten-Headed Pyrohydra</entry>
+		<entry>Eleven-Headed Cryohydra</entry>
+		<entry>Eleven-Headed Hydra</entry>
+		<entry>Eleven-Headed Pyrohydra</entry>
+		<entry>Twelve-Headed Cryohydra</entry>
+		<entry>Twelve-Headed Hydra</entry>
+		<entry>Twelve-Headed Pyrohydra</entry>
 		<entry>Choker</entry>
 		<entry>Chuul</entry>
 		<entry>Cloaker</entry>
@@ -27130,6 +27607,54 @@
 	</collection>
 	<collection>
 		<name>Half-FiendLawful Evil</name>
+		<entry>Guardian Naga</entry>
+		<entry>Half-Orc</entry>
+		<entry>Hellwasp Swarm</entry>
+		<entry>Hill Dwarf</entry>
+		<entry>Hill Giant</entry>
+		<entry>Hobgoblin</entry>
+		<entry>Human</entry>
+		<entry>Invisible Stalker</entry>
+		<entry>Kobold</entry>
+		<entry>Kraken</entry>
+		<entry>Frost Giant</entry>
+		<entry>Frost Worm</entry>
+		<entry>Gauth (Lesser Beholder)</entry>
+		<entry>Gibbering Mouther</entry>
+		<entry>Githyanki</entry>
+		<entry>Githzerai</entry>
+		<entry>Goblin</entry>
+		<entry>Gray Render</entry>
+		<entry>Grick</entry>
+		<entry>Grimlock</entry>
+		<entry>Ethereal Filcher</entry>
+		<entry>Ettercap</entry>
+		<entry>Fire Giant</entry>
+		<entry>Duergar</entry>
+		<entry>Five-Headed Cryohydra</entry>
+		<entry>Five-Headed Hydra</entry>
+		<entry>Five-Headed Pyrohydra</entry>
+		<entry>Six-Headed Cryohydra</entry>
+		<entry>Six-Headed Hydra</entry>
+		<entry>Six-Headed Pyrohydra</entry>
+		<entry>Seven-Headed Cryohydra</entry>
+		<entry>Seven-Headed Hydra</entry>
+		<entry>Seven-Headed Pyrohydra</entry>
+		<entry>Eight-Headed Cryohydra</entry>
+		<entry>Eight-Headed Hydra</entry>
+		<entry>Eight-Headed Pyrohydra</entry>
+		<entry>Nine-Headed Cryohydra</entry>
+		<entry>Nine-Headed Hydra</entry>
+		<entry>Nine-Headed Pyrohydra</entry>
+		<entry>Ten-Headed Cryohydra</entry>
+		<entry>Ten-Headed Hydra</entry>
+		<entry>Ten-Headed Pyrohydra</entry>
+		<entry>Eleven-Headed Cryohydra</entry>
+		<entry>Eleven-Headed Hydra</entry>
+		<entry>Eleven-Headed Pyrohydra</entry>
+		<entry>Twelve-Headed Cryohydra</entry>
+		<entry>Twelve-Headed Hydra</entry>
+		<entry>Twelve-Headed Pyrohydra</entry>
 		<entry>Belker</entry>
 		<entry>Deep Halfling</entry>
 		<entry>Delver</entry>
@@ -27206,6 +27731,76 @@
 	</collection>
 	<collection>
 		<name>Half-FiendNeutral Evil</name>
+		<entry>Doppelganger</entry>
+		<entry>Dragon Turtle</entry>
+		<entry>Dragonne</entry>
+		<entry>Drow</entry>
+		<entry>Duergar</entry>
+		<entry>Ethereal Filcher</entry>
+		<entry>Ethereal Marauder</entry>
+		<entry>Ettercap</entry>
+		<entry>Ettin</entry>
+		<entry>Fire Giant</entry>
+		<entry>Deep Dwarf</entry>
+		<entry>Deep Halfling</entry>
+		<entry>Delver</entry>
+		<entry>Derro</entry>
+		<entry>Derro (Sane)</entry>
+		<entry>Destrachan</entry>
+		<entry>Digester</entry>
+		<entry>Dire Shark</entry>
+		<entry>Shark, Huge</entry>
+		<entry>Shark, Large</entry>
+		<entry>Shark, Medium</entry>
+		<entry>Octopus</entry>
+		<entry>Giant Octopus</entry>
+		<entry>Squid</entry>
+		<entry>Giant Squid</entry>
+		<entry>Manta Ray</entry>
+		<entry>Porpoise</entry>
+		<entry>Displacer Beast</entry>
+		<entry>Displacer Beast Pack Lord</entry>
+		<entry>Choker</entry>
+		<entry>Chuul</entry>
+		<entry>Cloaker</entry>
+		<entry>Cloud Giant</entry>
+		<entry>Cockatrice</entry>
+		<entry>Viper Snake, Huge</entry>
+		<entry>Viper Snake, Large</entry>
+		<entry>Viper Snake, Medium</entry>
+		<entry>Viper Snake, Small</entry>
+		<entry>Viper Snake, Tiny</entry>
+		<entry>Constrictor Snake</entry>
+		<entry>Giant Constrictor Snake</entry>
+		<entry>Criosphinx</entry>
+		<entry>Crocodile</entry>
+		<entry>Giant Crocodile</entry>
+		<entry>Dark Naga</entry>
+		<entry>Darkmantle</entry>
+		<entry>Five-Headed Cryohydra</entry>
+		<entry>Five-Headed Hydra</entry>
+		<entry>Five-Headed Pyrohydra</entry>
+		<entry>Six-Headed Cryohydra</entry>
+		<entry>Six-Headed Hydra</entry>
+		<entry>Six-Headed Pyrohydra</entry>
+		<entry>Seven-Headed Cryohydra</entry>
+		<entry>Seven-Headed Hydra</entry>
+		<entry>Seven-Headed Pyrohydra</entry>
+		<entry>Eight-Headed Cryohydra</entry>
+		<entry>Eight-Headed Hydra</entry>
+		<entry>Eight-Headed Pyrohydra</entry>
+		<entry>Nine-Headed Cryohydra</entry>
+		<entry>Nine-Headed Hydra</entry>
+		<entry>Nine-Headed Pyrohydra</entry>
+		<entry>Ten-Headed Cryohydra</entry>
+		<entry>Ten-Headed Hydra</entry>
+		<entry>Ten-Headed Pyrohydra</entry>
+		<entry>Eleven-Headed Cryohydra</entry>
+		<entry>Eleven-Headed Hydra</entry>
+		<entry>Eleven-Headed Pyrohydra</entry>
+		<entry>Twelve-Headed Cryohydra</entry>
+		<entry>Twelve-Headed Hydra</entry>
+		<entry>Twelve-Headed Pyrohydra</entry>
 		<entry>Chimera (Black Dragon head)</entry>
 		<entry>Chimera (Blue Dragon head)</entry>
 		<entry>Chimera (Green Dragon head)</entry>
@@ -31394,15 +31989,84 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Chaotic Evil</name>
+		<entry>Half-Orc</entry>
+		<entry>Hill Giant</entry>
+		<entry>Human</entry>
+		<entry>Merrow</entry>
+		<entry>Ogre</entry>
+		<entry>Orc</entry>
+		<entry>Scrag</entry>
+		<entry>Troglodyte</entry>
+		<entry>Troll</entry>
+		<entry>Bugbear</entry>
+		<entry>Drow</entry>
+		<entry>Duergar</entry>
+		<entry>Ettin</entry>
+		<entry>Fire Giant</entry>
+		<entry>Frost Giant</entry>
+		<entry>Githyanki</entry>
+		<entry>Gnoll</entry>
+		<entry>Goblin</entry>
+		<entry>Half-Elf</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Chaotic Good</name>
+		<entry>Mountain Dwarf</entry>
+		<entry>Orc</entry>
+		<entry>Rock Gnome</entry>
+		<entry>Wild Elf</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>Forest Gnome</entry>
+		<entry>Frost Giant</entry>
+		<entry>Gray Elf</entry>
+		<entry>Half-Elf</entry>
+		<entry>Half-Orc</entry>
+		<entry>High Elf</entry>
+		<entry>Hill Dwarf</entry>
+		<entry>Hill Giant</entry>
+		<entry>Human</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Chaotic Neutral</name>
+		<entry>Half-Elf</entry>
+		<entry>Half-Orc</entry>
+		<entry>High Elf</entry>
+		<entry>Hill Giant</entry>
+		<entry>Human</entry>
+		<entry>Lightfoot Halfling</entry>
+		<entry>Lizardfolk</entry>
+		<entry>Locathah</entry>
+		<entry>Merfolk</entry>
+		<entry>Merrow</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>Bugbear</entry>
+		<entry>Deep Dwarf</entry>
+		<entry>Deep Halfling</entry>
+		<entry>Ettin</entry>
+		<entry>Frost Giant</entry>
+		<entry>Githyanki</entry>
+		<entry>Githzerai</entry>
+		<entry>Gnoll</entry>
+		<entry>Gray Elf</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Lawful Evil</name>
+		<entry>Hobgoblin</entry>
+		<entry>Human</entry>
+		<entry>Kobold</entry>
+		<entry>Mountain Dwarf</entry>
+		<entry>Ogre Mage</entry>
+		<entry>Orc</entry>
+		<entry>Deep Dwarf</entry>
+		<entry>Drow</entry>
+		<entry>Duergar</entry>
+		<entry>Fire Giant</entry>
+		<entry>Frost Giant</entry>
+		<entry>Githyanki</entry>
+		<entry>Goblin</entry>
+		<entry>Half-Orc</entry>
+		<entry>Hill Dwarf</entry>
+		<entry>Hill Giant</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Lawful Good</name>
@@ -31421,15 +32085,84 @@
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Natural)Chaotic Evil</name>
+		<entry>Half-Orc</entry>
+		<entry>Hill Giant</entry>
+		<entry>Human</entry>
+		<entry>Merrow</entry>
+		<entry>Ogre</entry>
+		<entry>Orc</entry>
+		<entry>Scrag</entry>
+		<entry>Troglodyte</entry>
+		<entry>Troll</entry>
+		<entry>Bugbear</entry>
+		<entry>Drow</entry>
+		<entry>Duergar</entry>
+		<entry>Ettin</entry>
+		<entry>Fire Giant</entry>
+		<entry>Frost Giant</entry>
+		<entry>Githyanki</entry>
+		<entry>Gnoll</entry>
+		<entry>Goblin</entry>
+		<entry>Half-Elf</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Natural)Chaotic Good</name>
+		<entry>Mountain Dwarf</entry>
+		<entry>Orc</entry>
+		<entry>Rock Gnome</entry>
+		<entry>Wild Elf</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>Forest Gnome</entry>
+		<entry>Frost Giant</entry>
+		<entry>Gray Elf</entry>
+		<entry>Half-Elf</entry>
+		<entry>Half-Orc</entry>
+		<entry>High Elf</entry>
+		<entry>Hill Dwarf</entry>
+		<entry>Hill Giant</entry>
+		<entry>Human</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Natural)Chaotic Neutral</name>
+		<entry>Half-Elf</entry>
+		<entry>Half-Orc</entry>
+		<entry>High Elf</entry>
+		<entry>Hill Giant</entry>
+		<entry>Human</entry>
+		<entry>Lightfoot Halfling</entry>
+		<entry>Lizardfolk</entry>
+		<entry>Locathah</entry>
+		<entry>Merfolk</entry>
+		<entry>Merrow</entry>
+		<entry>Aquatic Elf</entry>
+		<entry>Bugbear</entry>
+		<entry>Deep Dwarf</entry>
+		<entry>Deep Halfling</entry>
+		<entry>Ettin</entry>
+		<entry>Frost Giant</entry>
+		<entry>Githyanki</entry>
+		<entry>Githzerai</entry>
+		<entry>Gnoll</entry>
+		<entry>Gray Elf</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Natural)Lawful Evil</name>
+		<entry>Hobgoblin</entry>
+		<entry>Human</entry>
+		<entry>Kobold</entry>
+		<entry>Mountain Dwarf</entry>
+		<entry>Ogre Mage</entry>
+		<entry>Orc</entry>
+		<entry>Deep Dwarf</entry>
+		<entry>Drow</entry>
+		<entry>Duergar</entry>
+		<entry>Fire Giant</entry>
+		<entry>Frost Giant</entry>
+		<entry>Githyanki</entry>
+		<entry>Goblin</entry>
+		<entry>Half-Orc</entry>
+		<entry>Hill Dwarf</entry>
+		<entry>Hill Giant</entry>
 	</collection>
 	<collection>
 		<name>Lycanthrope, Black Bear (Werebear, Natural)Lawful Good</name>
