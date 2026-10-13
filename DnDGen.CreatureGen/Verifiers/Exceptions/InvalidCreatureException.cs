@@ -50,7 +50,7 @@ namespace DnDGen.CreatureGen.Verifiers.Exceptions
                 }
 
                 if (abilityRandomizer != null)
-                    message.AppendLine($"\tAbility Roll: {abilityRandomizer.Roll}");
+                    message.AppendLine($"\tAbility Randomizer: {abilityRandomizer}");
 
                 return message.ToString();
             }

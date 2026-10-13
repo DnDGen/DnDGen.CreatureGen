@@ -93,5 +93,14 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             maxRoll ??= dice.Roll(Roll).AsPotentialMaximum();
             return maxRoll.Value;
         }
+
+        public override string ToString()
+        {
+            if (!string.IsNullOrEmpty(Roll))
+                return Roll;
+
+            var pairs = SetRolls.Select(kvp => $"{kvp.Key}: {kvp.Value}");
+            return string.Join("; ", pairs);
+        }
     }
 }
