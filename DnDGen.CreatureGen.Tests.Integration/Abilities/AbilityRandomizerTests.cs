@@ -38,5 +38,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Abilities
             var valid = randomizer.Validate(dice);
             Assert.That(valid, Is.True);
         }
+
+        [TestCase(AbilityConstants.RandomizerRolls.Average, 10, 13)]
+        [TestCase(AbilityConstants.RandomizerRolls.BestOfFour, 3, 18)]
+        [TestCase(AbilityConstants.RandomizerRolls.Default, 10, 11)]
+        [TestCase(AbilityConstants.RandomizerRolls.Good, 13, 16)]
+        [TestCase(AbilityConstants.RandomizerRolls.Heroic, 15, 18)]
+        [TestCase(AbilityConstants.RandomizerRolls.OnesAsSixes, 6, 18)]
+        [TestCase(AbilityConstants.RandomizerRolls.Poor, 3, 9)]
+        [TestCase(AbilityConstants.RandomizerRolls.Raw, 3, 18)]
+        [TestCase(AbilityConstants.RandomizerRolls.Wild, 2, 20)]
+        public void AbililityRandomizerRangeIsCorrect(string roll, int expectedMin, int expectedMax)
+        {
+            var randomizer = new AbilityRandomizer(roll);
+            var (min, max) = randomizer.GetRange(dice, string.Empty);
+            Assert.That(min, Is.EqualTo(expectedMin));
+            Assert.That(max, Is.EqualTo(expectedMax));
+        }
     }
 }

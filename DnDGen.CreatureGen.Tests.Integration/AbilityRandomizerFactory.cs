@@ -1,17 +1,20 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Abilities;
+using DnDGen.CreatureGen.Verifiers;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration
 {
-    public class AbilityRandomizerFactory(ICollectionSelector collectionSelector, Dice dice)
+    public class AbilityRandomizerFactory(ICollectionSelector collectionSelector, Dice dice, ICreatureVerifier creatureVerifier)
     {
-        public AbilityRandomizer GetAbilityRandomizer(string[] templates, string[] rolls = null)
+        private const string Set = "Set";
+
+        public AbilityRandomizer GetAbilityRandomizer(string[] rolls = null)
         {
-            const string set = "Set";
             rolls ??=
             [
                 AbilityConstants.RandomizerRolls.Heroic,
@@ -23,27 +26,15 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 AbilityConstants.RandomizerRolls.Poor,
                 AbilityConstants.RandomizerRolls.Raw,
                 AbilityConstants.RandomizerRolls.Wild,
-                set
+                Set
             ];
-
-            var templatesWithMinimumAbilities = new[]
-            {
-                CreatureConstants.Templates.Ghost,
-                CreatureConstants.Templates.HalfCelestial,
-                CreatureConstants.Templates.HalfFiend,
-            };
-
-            if (templates.Intersect(templatesWithMinimumAbilities).Any())
-            {
-                rolls = [.. rolls.Except([AbilityConstants.RandomizerRolls.Poor])];
-            }
 
             var randomizer = new AbilityRandomizer(collectionSelector.SelectRandomFrom(rolls));
 
-            if (randomizer.Roll == set)
+            if (randomizer.Roll == Set)
             {
                 randomizer = new AbilityRandomizer(null);
-                var setRoll = collectionSelector.SelectRandomFrom(rolls.Except([set]));
+                var setRoll = collectionSelector.SelectRandomFrom(rolls.Except([Set]));
 
                 randomizer.SetRolls[AbilityConstants.Strength] = dice.Roll(setRoll).AsSum();
                 randomizer.SetRolls[AbilityConstants.Dexterity] = dice.Roll(setRoll).AsSum();
@@ -54,6 +45,70 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
 
             return randomizer;
+        }
+
+        public AbilityRandomizer GetAbilityRandomizerForTemplates(string[] templates, string[] rolls = null)
+        {
+            rolls ??=
+            [
+                AbilityConstants.RandomizerRolls.Heroic,
+                AbilityConstants.RandomizerRolls.BestOfFour,
+                AbilityConstants.RandomizerRolls.Default,
+                AbilityConstants.RandomizerRolls.Average,
+                AbilityConstants.RandomizerRolls.Good,
+                AbilityConstants.RandomizerRolls.OnesAsSixes,
+                AbilityConstants.RandomizerRolls.Poor,
+                AbilityConstants.RandomizerRolls.Raw,
+                AbilityConstants.RandomizerRolls.Wild,
+            ];
+
+            rolls = rolls
+                .Where(r => creatureVerifier.VerifyCompatibility(false, null, new(r), null, templates))
+                .Concat([Set])
+                .ToArray();
+
+            var randomizer = GetAbilityRandomizer(rolls);
+
+            var templatesWithMinimumAbilities = new Dictionary<string, (string a, int min)>
+            {
+                [CreatureConstants.Templates.Ghost] = (AbilityConstants.Charisma, 6),
+                [CreatureConstants.Templates.HalfCelestial] = (AbilityConstants.Intelligence, 4),
+                [CreatureConstants.Templates.HalfFiend] = (AbilityConstants.Intelligence, 4),
+            };
+
+            foreach (var template in templates)
+            {
+                //HACK: If we are using set rolls AND have templates that require minimum abilities, we need to make sure we match those minimums
+                //In the real world, the validator would catch it before trying to generate, so this is a test-specific circumstance
+                if (templatesWithMinimumAbilities.ContainsKey(template) && randomizer.SetRolls.ContainsKey(templatesWithMinimumAbilities[template].a))
+                {
+                    randomizer.SetRolls[templatesWithMinimumAbilities[template].a] = Ability.DefaultScore + templatesWithMinimumAbilities[template].min;
+                }
+            }
+
+            return randomizer;
+        }
+
+        public AbilityRandomizer GetAbilityRandomizerForCreatureAndTemplates(string creature, string[] templates, string[] rolls = null)
+        {
+            rolls ??=
+            [
+                AbilityConstants.RandomizerRolls.Heroic,
+                AbilityConstants.RandomizerRolls.BestOfFour,
+                AbilityConstants.RandomizerRolls.Default,
+                AbilityConstants.RandomizerRolls.Average,
+                AbilityConstants.RandomizerRolls.Good,
+                AbilityConstants.RandomizerRolls.OnesAsSixes,
+                AbilityConstants.RandomizerRolls.Poor,
+                AbilityConstants.RandomizerRolls.Raw,
+                AbilityConstants.RandomizerRolls.Wild,
+            ];
+
+            rolls = rolls
+                .Where(r => creatureVerifier.VerifyCompatibility(false, creature, new(r), null, templates))
+                .ToArray();
+
+            return GetAbilityRandomizerForTemplates(templates, rolls);
         }
     }
 }

@@ -93,26 +93,42 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers.Exceptions
 
         [TestCase(true)]
         [TestCase(false)]
-        public void ExceptionMessage_ShowsAbilityRoll_FromRoll(bool asCharacter)
+        public void ExceptionMessage_ShowsAbilityRandomizer_FromRoll(bool asCharacter)
         {
             var exception = new InvalidCreatureException(null, asCharacter, null, "my ability roll", null);
             var expected = GetExpectedMessage(
                 "Invalid creature:",
                 $"As Character: {asCharacter}",
-                "Ability Roll: my ability roll");
+                "Ability Randomizer: my ability roll");
             Assert.That(exception.Message, Is.EqualTo(expected));
         }
 
         [TestCase(true)]
         [TestCase(false)]
-        public void ExceptionMessage_ShowsAbilityRoll_FromRandomizer(bool asCharacter)
+        public void ExceptionMessage_ShowsAbilityRandomizer(bool asCharacter)
         {
             var randomizer = new AbilityRandomizer("my ability roll");
             var exception = new InvalidCreatureException(null, asCharacter, abilityRandomizer: randomizer);
             var expected = GetExpectedMessage(
                 "Invalid creature:",
                 $"As Character: {asCharacter}",
-                "Ability Roll: my ability roll");
+                "Ability Randomizer: my ability roll");
+            Assert.That(exception.Message, Is.EqualTo(expected));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void ExceptionMessage_ShowsAbilityRandomizer_WithSetAbilities(bool asCharacter)
+        {
+            var randomizer = new AbilityRandomizer(null);
+            randomizer.SetRolls["my ability"] = 9266;
+            randomizer.SetRolls["my other ability"] = 90210;
+
+            var exception = new InvalidCreatureException(null, asCharacter, abilityRandomizer: randomizer);
+            var expected = GetExpectedMessage(
+                "Invalid creature:",
+                $"As Character: {asCharacter}",
+                "Ability Randomizer: my ability: 9266; my other ability: 90210");
             Assert.That(exception.Message, Is.EqualTo(expected));
         }
 
@@ -130,7 +146,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers.Exceptions
                 "Creature: my creature",
                 "Templates: some template, another template",
                 $"Filters: {filters.GetDescription()}",
-                "Ability Roll: my ability roll");
+                $"Ability Randomizer: {randomizer}");
             Assert.That(exception.Message, Is.EqualTo(expected));
         }
     }

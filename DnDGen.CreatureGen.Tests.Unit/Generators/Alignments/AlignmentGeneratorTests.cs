@@ -1,5 +1,7 @@
-﻿using DnDGen.CreatureGen.Alignments;
+﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Alignments;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tables;
@@ -85,7 +87,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         {
             var prototype = new CreaturePrototype { Name = "creature name", Alignments = [.. creatureAlignments.Select(a => new Alignment(a))] };
             mockPrototypeFactory
-                .Setup(f => f.Build("creature name", false, null))
+                .Setup(f => f.Build("creature name", false, It.Is<AbilityRandomizer>(r => r.Roll == AbilityConstants.RandomizerRolls.BestOfFour)))
                 .Returns(prototype);
             mockPrototypeFactory
                 .Setup(f => f.Clone(prototype))

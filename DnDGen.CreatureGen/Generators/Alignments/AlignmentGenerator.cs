@@ -1,4 +1,5 @@
-﻿using DnDGen.CreatureGen.Alignments;
+﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Verifiers;
@@ -21,7 +22,9 @@ namespace DnDGen.CreatureGen.Generators.Alignments
                     $"Creature {creatureName} has no valid alignments for templates [{string.Join(", ", templates)}]",
                     false,
                     creatureName,
-                    filters);
+                    filters,
+                    null,
+                    templates);
 
             var randomAlignment = collectionSelector.SelectRandomFrom(weightedAlignments);
             return new Alignment(randomAlignment);
@@ -45,7 +48,9 @@ namespace DnDGen.CreatureGen.Generators.Alignments
                 return weightedAlignments.Where(templateAlignments.Contains);
             }
 
-            var creaturePrototype = prototypeFactory.Build(creatureName, false);
+            //INFO: We don't care about how the abilities validate, since that gets handled in the AbilityGenerator
+            //So, we will use an arbitrary roll that has a high max to eliminate that confounding variable.
+            var creaturePrototype = prototypeFactory.Build(creatureName, false, new(AbilityConstants.RandomizerRolls.BestOfFour));
 
             //HACK: This is very inefficient, but:
             //1. This usecase will only occur when an alignment filter is set AND templates are specified, OR more than 1 template is specified

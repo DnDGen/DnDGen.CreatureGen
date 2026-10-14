@@ -396,5 +396,142 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             var valid = abilityRandomizer.Validate(mockDice.Object);
             Assert.That(valid, Is.EqualTo(expected));
         }
+
+        [Test]
+        public void GetMax_ReturnsMaxRoll()
+        {
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(9266);
+
+            var max = abilityRandomizer.GetMax(mockDice.Object, "my ability");
+            Assert.That(max, Is.EqualTo(9266));
+
+            mockDice.Verify(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true), Times.Once);
+        }
+
+        [Test]
+        public void GetMax_ReturnsCachedMaxRoll()
+        {
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(9266);
+
+            var max = abilityRandomizer.GetMax(mockDice.Object, "my ability");
+            Assert.That(max, Is.EqualTo(9266));
+
+            max = abilityRandomizer.GetMax(mockDice.Object, "my ability");
+            Assert.That(max, Is.EqualTo(9266));
+
+            mockDice.Verify(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true), Times.Once);
+        }
+
+        [Test]
+        public void GetMax_ReturnsSetMaxRoll()
+        {
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(666);
+            abilityRandomizer.SetRolls["my wrong ability"] = 666_666;
+            abilityRandomizer.SetRolls["my ability"] = 90210;
+
+            var max = abilityRandomizer.GetMax(mockDice.Object, "my ability");
+            Assert.That(max, Is.EqualTo(90210));
+
+            mockDice.Verify(d => d.Roll(It.IsAny<string>()), Times.Never);
+        }
+
+        [Test]
+        public void GetMin_ReturnsMinRoll()
+        {
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMinimum<int>()).Returns(42);
+
+            var min = abilityRandomizer.GetMin(mockDice.Object, "my ability");
+            Assert.That(min, Is.EqualTo(42));
+
+            mockDice.Verify(d => d.Roll(abilityRandomizer.Roll).AsPotentialMinimum<int>(), Times.Once);
+        }
+
+        [Test]
+        public void GetMin_ReturnsCachedMinRoll()
+        {
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMinimum<int>()).Returns(42);
+
+            var min = abilityRandomizer.GetMin(mockDice.Object, "my ability");
+            Assert.That(min, Is.EqualTo(42));
+
+            min = abilityRandomizer.GetMin(mockDice.Object, "my ability");
+            Assert.That(min, Is.EqualTo(42));
+
+            mockDice.Verify(d => d.Roll(abilityRandomizer.Roll).AsPotentialMinimum<int>(), Times.Once);
+        }
+
+        [Test]
+        public void GetMin_ReturnsSetMinRoll()
+        {
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMinimum<int>()).Returns(666);
+            abilityRandomizer.SetRolls["my wrong ability"] = 666_666;
+            abilityRandomizer.SetRolls["my ability"] = 600;
+
+            var min = abilityRandomizer.GetMin(mockDice.Object, "my ability");
+            Assert.That(min, Is.EqualTo(600));
+
+            mockDice.Verify(d => d.Roll(It.IsAny<string>()), Times.Never);
+        }
+
+        [Test]
+        public void GetRange_ReturnsRange()
+        {
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMinimum<int>()).Returns(42);
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(9266);
+
+            var (min, max) = abilityRandomizer.GetRange(mockDice.Object, "my ability");
+            Assert.That(min, Is.EqualTo(42));
+            Assert.That(max, Is.EqualTo(9266));
+
+            mockDice.Verify(d => d.Roll(abilityRandomizer.Roll).AsPotentialMinimum<int>(), Times.Once);
+            mockDice.Verify(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true), Times.Once);
+        }
+
+        [Test]
+        public void GetRange_ReturnsCachedRange()
+        {
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMinimum<int>()).Returns(42);
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(9266);
+
+            var (min, max) = abilityRandomizer.GetRange(mockDice.Object, "my ability");
+            Assert.That(min, Is.EqualTo(42));
+            Assert.That(max, Is.EqualTo(9266));
+
+            (min, max) = abilityRandomizer.GetRange(mockDice.Object, "my ability");
+            Assert.That(min, Is.EqualTo(42));
+            Assert.That(max, Is.EqualTo(9266));
+
+            mockDice.Verify(d => d.Roll(abilityRandomizer.Roll).AsPotentialMinimum<int>(), Times.Once);
+            mockDice.Verify(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true), Times.Once);
+        }
+
+        [Test]
+        public void GetRange_ReturnsSetRange()
+        {
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMinimum<int>()).Returns(42);
+            mockDice.Setup(d => d.Roll(abilityRandomizer.Roll).AsPotentialMaximum<int>(true)).Returns(9266);
+            abilityRandomizer.SetRolls["my wrong ability"] = 666_666;
+            abilityRandomizer.SetRolls["my ability"] = 600;
+
+            var (min, max) = abilityRandomizer.GetRange(mockDice.Object, "my ability");
+            Assert.That(min, Is.EqualTo(600));
+            Assert.That(max, Is.EqualTo(600));
+
+            mockDice.Verify(d => d.Roll(It.IsAny<string>()), Times.Never);
+        }
+
+        [Test]
+        public void ToString_ReturnsRoll()
+        {
+            Assert.That(abilityRandomizer.ToString(), Is.EqualTo("my roll"));
+        }
+
+        [Test]
+        public void ToString_ReturnsSetRolls()
+        {
+            abilityRandomizer.SetRolls["my ability"] = 9266;
+            abilityRandomizer.SetRolls["my other ability"] = 90210;
+            Assert.That(abilityRandomizer.ToString(), Is.EqualTo("my ability: 9266; my other ability: 90210"));
+        }
     }
 }

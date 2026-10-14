@@ -14,6 +14,7 @@ namespace DnDGen.CreatureGen.Generators.Abilities
         public Dictionary<string, int> AbilityAdvancements { get; set; }
 
         private int? maxRoll;
+        private int? minRoll;
 
         public AbilityRandomizer(string roll) : this()
         {
@@ -26,6 +27,7 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             SetRolls = [];
             AbilityAdvancements = [];
             maxRoll = null;
+            minRoll = null;
         }
 
         public bool Validate(Dice dice)
@@ -34,7 +36,7 @@ namespace DnDGen.CreatureGen.Generators.Abilities
 
             if (!string.IsNullOrEmpty(Roll))
             {
-                var min = dice.Roll(Roll).AsPotentialMinimum();
+                var min = GetMinRoll(dice);
                 valid &= min >= 1;
             }
 
@@ -80,6 +82,22 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             return adjustment;
         }
 
+        internal (int min, int max) GetRange(Dice dice, string abilityName) => (GetMin(dice, abilityName), GetMax(dice, abilityName));
+
+        internal int GetMin(Dice dice, string abilityName)
+        {
+            if (SetRolls.ContainsKey(abilityName))
+                return SetRolls[abilityName];
+
+            return GetMinRoll(dice);
+        }
+
+        private int GetMinRoll(Dice dice)
+        {
+            minRoll ??= dice.Roll(Roll).AsPotentialMinimum();
+            return minRoll.Value;
+        }
+
         internal int GetMax(Dice dice, string abilityName)
         {
             if (SetRolls.ContainsKey(abilityName))
@@ -96,7 +114,7 @@ namespace DnDGen.CreatureGen.Generators.Abilities
 
         public override string ToString()
         {
-            if (!string.IsNullOrEmpty(Roll))
+            if (SetRolls.Count == 0)
                 return Roll;
 
             var pairs = SetRolls.Select(kvp => $"{kvp.Key}: {kvp.Value}");

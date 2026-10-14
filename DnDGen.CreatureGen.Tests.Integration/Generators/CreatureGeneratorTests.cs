@@ -530,7 +530,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             Assert.That(creature.Name, Is.EqualTo(creatureName));
             Assert.That(creature.Templates, Is.EqualTo(templates));
 
-            creatureAsserter.AssertCreature(creature, asCharacter);
+            creatureAsserter.AssertCreature(creature, null, null, asCharacter);
         }
 
         [TestCase(CreatureConstants.Destrachan)]
@@ -609,7 +609,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             var randomizer = new AbilityRandomizer(roll);
 
             var creature = creatureGenerator.Generate(false, CreatureConstants.Human, randomizer);
-            creatureAsserter.AssertCreature(creature);
+            creatureAsserter.AssertCreature(creature, randomizer);
             Assert.That(creature.Abilities.Values.Select(v => v.BaseScore), Is.All.InRange(lower, upper));
         }
 
@@ -625,7 +625,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             randomizer.SetRolls[AbilityConstants.Wisdom] = 1336;
 
             var creature = creatureGenerator.Generate(false, CreatureConstants.Human, randomizer);
-            creatureAsserter.AssertCreature(creature);
+            creatureAsserter.AssertCreature(creature, randomizer);
             Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(9266));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].BaseScore, Is.EqualTo(90210));
             Assert.That(creature.Abilities[AbilityConstants.Dexterity].BaseScore, Is.EqualTo(42));
@@ -646,7 +646,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             randomizer.AbilityAdvancements[AbilityConstants.Wisdom] = 1336;
 
             var creature = creatureGenerator.Generate(false, CreatureConstants.Human, randomizer);
-            creatureAsserter.AssertCreature(creature);
+            creatureAsserter.AssertCreature(creature, randomizer);
             Assert.That(creature.Abilities[AbilityConstants.Charisma].AdvancementAdjustment, Is.EqualTo(9266));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.EqualTo(90210));
             Assert.That(creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment, Is.EqualTo(42));
@@ -669,7 +669,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             };
 
             var creature = creatureGenerator.Generate(false, CreatureConstants.Human, randomizer);
-            creatureAsserter.AssertCreature(creature);
+            creatureAsserter.AssertCreature(creature, randomizer);
             Assert.That(creature.Abilities.Values.Max(v => v.BaseScore), Is.EqualTo(creature.Abilities[ability].BaseScore));
         }
 
@@ -755,7 +755,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
         public void BUG_Generate_ProblematicCreature(bool asCharacter, string creatureName, params string[] templates)
         {
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer(templates);
+            var randomizer = abilityRandomizerFactory.GetAbilityRandomizerForCreatureAndTemplates(creatureName, templates);
             GenerateAndAssertCreature(creatureName, asCharacter, randomizer, templates);
         }
 
@@ -768,7 +768,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
         public void BUG_Generate_ProblematicCreature_ProblematicAbilities(bool asCharacter, string creatureName, params string[] templates)
         {
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer(templates, [AbilityConstants.RandomizerRolls.Poor, AbilityConstants.RandomizerRolls.Wild]);
+            var randomizer = abilityRandomizerFactory.GetAbilityRandomizerForCreatureAndTemplates(
+                creatureName,
+                templates,
+                [AbilityConstants.RandomizerRolls.Poor, AbilityConstants.RandomizerRolls.Wild]);
             GenerateAndAssertCreature(creatureName, asCharacter, randomizer, templates);
         }
 
@@ -784,9 +787,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             Assert.That(creature.Templates, Is.EqualTo(templates.Where(t => t != CreatureConstants.Templates.None)), creature.Summary);
 
             if (asCharacter)
-                creatureAsserter.AssertCreatureAsCharacter(creature);
+                creatureAsserter.AssertCreatureAsCharacter(creature, randomizer);
             else
-                creatureAsserter.AssertCreature(creature);
+                creatureAsserter.AssertCreature(creature, randomizer);
 
             return creature;
         }
@@ -794,7 +797,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
         public void BUG_GenerateRandom_WithProblematicFilters(bool asCharacter, string[] templates, Filters filters)
         {
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer(templates);
+            var randomizer = abilityRandomizerFactory.GetAbilityRandomizerForTemplates(templates);
             GenerateAndAssertRandomCreature(asCharacter, filters, randomizer, templates);
         }
 
@@ -807,7 +810,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
         public void BUG_GenerateRandom_WithProblematicFilters_ProblematicAbilities(bool asCharacter, string[] templates, Filters filters)
         {
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer(templates, [AbilityConstants.RandomizerRolls.Poor, AbilityConstants.RandomizerRolls.Wild]);
+            var randomizer = abilityRandomizerFactory.GetAbilityRandomizerForTemplates(templates, [AbilityConstants.RandomizerRolls.Poor, AbilityConstants.RandomizerRolls.Wild]);
             GenerateAndAssertRandomCreature(asCharacter, filters, randomizer, templates);
         }
 
@@ -815,7 +818,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         public void BUG_GenerateRandom_WithProblematicFilters_HalfDragonCelestial()
         {
             var templates = new[] { CreatureConstants.Templates.HalfDragon_Gold, CreatureConstants.Templates.CelestialCreature };
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer(templates);
+            var randomizer = abilityRandomizerFactory.GetAbilityRandomizerForTemplates(templates);
             GenerateAndAssertRandomCreature(false, null, randomizer, templates);
         }
 
@@ -834,7 +837,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             var templates = new[] { CreatureConstants.Templates.HalfCelestial };
             var randomizer = new AbilityRandomizer(AbilityConstants.RandomizerRolls.Raw);
             var creature = creatureGenerator.Generate(false, CreatureConstants.Otyugh, randomizer, templates);
-            creatureAsserter.AssertCreature(creature);
+            creatureAsserter.AssertCreature(creature, randomizer);
         }
 
         private Creature GenerateAndAssertRandomCreature(
@@ -867,9 +870,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
                 Assert.That(creature.Alignment.Full, Is.EqualTo(filters.Alignments.Single()), failure.Message);
 
             if (asCharacter)
-                creatureAsserter.AssertCreatureAsCharacter(creature, failure.Message);
+                creatureAsserter.AssertCreatureAsCharacter(creature, randomizer, filters, failure.Message);
             else
-                creatureAsserter.AssertCreature(creature, asCharacter, failure.Message);
+                creatureAsserter.AssertCreature(creature, randomizer, filters, asCharacter, failure.Message);
 
             return creature;
         }
@@ -879,7 +882,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         {
             var iterations = 100;
             var advancedHappened = false;
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer([]);
+            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer();
 
             while (iterations-- > 0 && !advancedHappened)
             {
