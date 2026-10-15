@@ -19,7 +19,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-            ageRolls = GetCreatureAgeRollData();
+            ageRolls = GetAgeRollData();
         }
 
         [SetUp]
@@ -95,7 +95,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertTypesAndAmounts(name, ageRolls[name]);
         }
 
-        private static Dictionary<string, Dictionary<string, string>> GetCreatureAgeRollData()
+        private static Dictionary<string, Dictionary<string, string>> GetAgeRollData()
         {
             var oneKRoll = GetRoll(1, 1_000);
             var constructAgeRoll = oneKRoll;
