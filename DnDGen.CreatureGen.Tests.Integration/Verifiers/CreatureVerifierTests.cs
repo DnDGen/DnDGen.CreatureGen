@@ -31,7 +31,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
 
             creatureVerifier = GetNewInstanceOf<ICreatureVerifier>();
 
-            timeLimit = TimeSpan.FromSeconds(0.2);
+            //HACK: Ideally, this would be 0.1, but on the build server, test runs show 0.20-0.25 as pretty normal.
+            timeLimit = TimeSpan.FromSeconds(0.3);
         }
 
         [TestCase(true, false, CreatureConstants.Ape, CreatureConstants.Templates.FiendishCreature)]
