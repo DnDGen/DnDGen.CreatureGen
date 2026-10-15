@@ -726,8 +726,9 @@ namespace DnDGen.CreatureGen.Tests.Integration
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
             if (creature.Type.SubTypes.Contains(CreatureConstants.Types.Subtypes.Augmented))
             {
+                Assert.That(creature.Templates, Has.Count.Positive);
                 Assert.That(creature.Type.SubTypes.Except(types), Is.SubsetOf(subtypes), message);
-                Assert.That(creature.Type.SubTypes.Intersect(types).Count(), Is.EqualTo(1), message);
+                Assert.That(creature.Type.SubTypes.Intersect(types).Count(), Is.InRange(1, creature.Templates.Count), message);
             }
             else
             {
