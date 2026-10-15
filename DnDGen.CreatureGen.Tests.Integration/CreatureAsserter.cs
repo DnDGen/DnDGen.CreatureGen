@@ -692,28 +692,35 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
             AssertCreatureType(creature, new(), message);
 
-            var types = CreatureConstants.Types.GetAll();
-            if (!types.Contains(type))
+            var types = CreatureConstants.Types.GetAll().ToArray();
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll().ToArray();
+            Assert.That(type, Is.AnyOf(types).Or.AnyOf(subtypes), message);
+            Assert.That(creature.Type.Is(type), Is.True, message);
+
+            if (subtypes.Contains(type))
             {
+                Assert.That(type, Is.AnyOf(subtypes), message);
                 Assert.That(creature.Type.SubTypes, Contains.Item(type), message);
-                return;
             }
-
-            if (creature.Templates.Count == 0)
+            else if (!creature.Type.SubTypes.Contains(CreatureConstants.Types.Subtypes.Augmented))
             {
+                Assert.That(type, Is.AnyOf(types), message);
                 Assert.That(creature.Type.Name, Is.EqualTo(type), message);
-                return;
             }
-
-            var allTypes = creature.Type.SubTypes.Union([creature.Type.Name]).ToArray();
-            Assert.That(type, Is.AnyOf(allTypes), message);
+            else
+            {
+                //INFO: Since the creature has been augmented, and the filter type is not a subtype,
+                //it might be the main type (from template) or a subtype (from base creature)
+                Assert.That(type, Is.AnyOf(types), message);
+                Assert.That(creature.Type.AllTypes, Contains.Item(type), message);
+            }
         }
 
         public static void AssertCreatureType(Creature creature, Filters filters, string message = null)
         {
             message ??= creature.Summary;
 
-            var types = CreatureConstants.Types.GetAll();
+            var types = CreatureConstants.Types.GetAll().ToArray();
             Assert.That(creature.Type.Name, Is.AnyOf(types), message);
 
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();

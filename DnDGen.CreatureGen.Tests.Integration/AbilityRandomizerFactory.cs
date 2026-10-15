@@ -4,6 +4,7 @@ using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Verifiers;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -28,6 +29,9 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 AbilityConstants.RandomizerRolls.Wild,
                 Set
             ];
+
+            if (!rolls.Except([Set]).Any())
+                throw new ArgumentException("Only Set was provided, so no other roll could be uswed to generate set abilities", nameof(rolls));
 
             var randomizer = new AbilityRandomizer(collectionSelector.SelectRandomFrom(rolls));
 
@@ -62,12 +66,14 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 AbilityConstants.RandomizerRolls.Wild,
             ];
 
-            rolls = rolls
-                .Where(r => creatureVerifier.VerifyCompatibility(false, null, new(r), null, templates))
-                .Concat([Set])
-                .ToArray();
+            var validRolls = rolls.Where(r => creatureVerifier.VerifyCompatibility(false, null, new(r), null, templates));
+            if (!validRolls.Any())
+            {
+                //INFO: This means the templates themselves are not compatible. This sometimes happens in randomly-generated verifier test cases.
+                return new();
+            }
 
-            var randomizer = GetAbilityRandomizer(rolls);
+            var randomizer = GetAbilityRandomizer([.. validRolls.Concat([Set])]);
 
             var templatesWithMinimumAbilities = new Dictionary<string, (string a, int min)>
             {

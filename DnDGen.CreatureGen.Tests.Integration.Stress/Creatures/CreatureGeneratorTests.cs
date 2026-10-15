@@ -133,9 +133,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 Assert.That(creature.Templates, Is.EqualTo([template]), creature.Summary);
 
             if (asCharacter)
-                creatureAsserter.AssertCreatureAsCharacter(creature);
+                creatureAsserter.AssertCreatureAsCharacter(creature, randomizer);
             else
-                creatureAsserter.AssertCreature(creature);
+                creatureAsserter.AssertCreature(creature, randomizer);
 
             return creature;
         }
@@ -268,7 +268,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private void AssertRandomCreature(Creature creature, bool asCharacter, AbilityRandomizer randomizer, Filters filters, params string[] templates)
         {
-            var failure = new InvalidCreatureException(null, asCharacter, creature.Summary, filters, null, templates);
+            var failure = new InvalidCreatureException(creature.Summary, asCharacter, creature.Name, filters, null, templates);
 
             var timeLimit = CreatureAsserter.GetGenerationTimeLimitInSeconds(creature);
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(timeLimit), failure.Message);
@@ -329,8 +329,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private void GenerateAndAssertProblematicCreature()
         {
-            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizer();
             var randomCreature = collectionSelector.SelectRandomFrom(CreatureTestData.ProblematicCreatures);
+            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizerForCreatureAndTemplates(randomCreature.Creature, randomCreature.Templates);
             GenerateAndAssertCreature(randomCreature.Creature, randomCreature.AsCharacter, abilityRandomizer, randomCreature.Templates);
         }
 
@@ -342,8 +342,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private void GenerateAndAssertProblematicFilters()
         {
-            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizer();
             var randomFilters = collectionSelector.SelectRandomFrom(CreatureTestData.ProblematicFilters);
+            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizerForTemplates(randomFilters.Templates);
             GenerateAndAssertRandomCreature(
                 randomFilters.AsCharacter,
                 randomFilters.Filters,
