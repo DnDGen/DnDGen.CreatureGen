@@ -846,6 +846,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             AbilityRandomizer randomizer,
             params string[] templates)
         {
+            var valid = creatureVerifier.VerifyCompatibility(asCharacter, null, randomizer, filters, templates);
+            Assert.That(valid, Is.True, new InvalidCreatureException(null, asCharacter, null, filters, randomizer, templates).Message);
+
             stopwatch.Restart();
             var creature = creatureGenerator.GenerateRandom(asCharacter, randomizer, filters, templates);
             stopwatch.Stop();

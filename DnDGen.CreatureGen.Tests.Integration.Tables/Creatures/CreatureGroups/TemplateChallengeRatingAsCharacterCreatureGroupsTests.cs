@@ -1,4 +1,4 @@
-﻿using DnDGen.CreatureGen.Creatures;
+﻿using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Templates;
 using NUnit.Framework;
 using System.Linq;
@@ -20,12 +20,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         [TestCaseSource(typeof(CreatureGroupsTestBase), nameof(TemplatesWithChallengeRatingFilter))]
         public void CreatureGroup_TemplateAsCharacter_ResultsInChallengeRating(string template, string cr)
         {
-            var allCharacters = CreatureConstants.GetAllCharacters();
-            var sourcePrototypes = GetPrototypes(allCharacters, true);
+            var sourcePrototypes = GetTemplatePrototypes(template, true);
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
+            var filters = new Filters { ChallengeRatings = [cr] };
 
             var templateCreatures = sourcePrototypes
-                .Where(p => applicator.IsCompatible(p, new() { ChallengeRatings = [cr] }))
+                .Where(p => applicator.IsCompatible(p, filters))
                 .Select(p => p.Name);
 
             var groupName = template + bool.TrueString + cr;

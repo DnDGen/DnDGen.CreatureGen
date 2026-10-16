@@ -29,13 +29,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             AssertCollectionNames(names);
         }
 
-        [TestCaseSource(nameof(All))]
+        [TestCaseSource(nameof(AllNames))]
         public void KnownSpells(string name)
         {
+            Assert.That(knownSpells, Contains.Key(name));
             AssertTypesAndAmounts(name, knownSpells[name]);
         }
 
-        public static IEnumerable All => GetNames().Select(name => new TestCaseData(name).SetName(name));
+        public static IEnumerable AllNames => GetNames().Select(name => new TestCaseData(name));
 
         public static IEnumerable<string> GetNames()
         {

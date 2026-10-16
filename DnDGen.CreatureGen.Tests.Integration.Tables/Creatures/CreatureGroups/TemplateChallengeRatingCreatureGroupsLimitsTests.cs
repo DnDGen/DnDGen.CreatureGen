@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using NUnit.Framework;
@@ -34,13 +35,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 ChallengeRatingConstants.IncreaseChallengeRating(lastCr, 1),
                 ChallengeRatingConstants.IncreaseChallengeRating(lastCr, 2)
             };
+            var filters = new Filters { ChallengeRatings = overages };
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
-            var allCreatures = CreatureConstants.GetAll();
-
-            var sourcePrototypes = GetPrototypes(allCreatures, asCharacter);
+            var sourcePrototypes = GetTemplatePrototypes(template, asCharacter);
 
             var templateCreatures = sourcePrototypes
-                .Where(p => applicator.IsCompatible(p, new() { ChallengeRatings = overages }))
+                .Where(p => applicator.IsCompatible(p, filters))
                 .Select(p => p.Name);
             Assert.That(templateCreatures, Is.Empty);
         }

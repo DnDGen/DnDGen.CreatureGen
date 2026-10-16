@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Templates;
 using NUnit.Framework;
 using System.Collections;
@@ -36,11 +37,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         [TestCaseSource(nameof(TemplatesWithAlignmentFilter))]
         public void CreatureGroup_Template_ResultsInAlignment(string template, string alignment)
         {
-            var sourcePrototypes = GetAllPrototypes();
+            var sourcePrototypes = GetTemplatePrototypes(template);
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
+            var filters = new Filters { Alignments = [alignment] };
 
             var templateCreatures = sourcePrototypes
-                .Where(p => applicator.IsCompatible(p, new() { Alignments = [alignment] }))
+                .Where(p => applicator.IsCompatible(p, filters))
                 .Select(p => p.Name)
                 .Distinct();
 

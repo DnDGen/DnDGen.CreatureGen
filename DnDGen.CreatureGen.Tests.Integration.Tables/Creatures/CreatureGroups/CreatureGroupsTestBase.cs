@@ -104,20 +104,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         internal CreaturePrototype[] GetPrototypes(IEnumerable<string> source, bool asCharacter)
         {
             var randomizer = new AbilityRandomizer(AbilityConstants.RandomizerRolls.BestOfFour);
-            var prototypes = prototypeFactory.Build(source, asCharacter, randomizer).ToArray();
-            return prototypes;
+            var prototypes = prototypeFactory.Build(source, asCharacter, randomizer);
+
+            return [.. prototypes];
         }
 
-        internal IEnumerable<CreaturePrototype> GetAllPrototypes()
+        internal IEnumerable<CreaturePrototype> GetTemplatePrototypes(string template)
         {
-            var allCreatures = CreatureConstants.GetAll();
-            var prototypes = GetPrototypes(allCreatures, false);
-
-            var allCharacters = CreatureConstants.GetAllCharacters();
-            var characters = GetPrototypes(allCharacters, true);
+            var prototypes = GetTemplatePrototypes(template, false);
+            var characters = GetTemplatePrototypes(template, true);
 
             return prototypes.Concat(characters);
         }
+
+        internal IEnumerable<CreaturePrototype> GetTemplatePrototypes(string template, bool asCharacter) => GetPrototypes(table[template + asCharacter], asCharacter);
 
         protected static IEnumerable<string[]> TemplateChallengeRatingPairs
         {

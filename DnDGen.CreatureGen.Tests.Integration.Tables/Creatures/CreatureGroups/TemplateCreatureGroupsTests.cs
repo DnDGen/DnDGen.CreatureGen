@@ -14,8 +14,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         [Test]
         public void TemplateCreatureGroupNames()
         {
-            AssertSubsetCreatureGroupNames(CreatureConstants.Templates.GetAll().Select(t => t + bool.FalseString));
-            AssertSubsetCreatureGroupNames(CreatureConstants.Templates.GetAll().Select(t => t + bool.TrueString));
+            var templates = CreatureConstants.Templates.GetAll();
+            AssertSubsetCreatureGroupNames(templates.Select(t => t + bool.FalseString));
+            AssertSubsetCreatureGroupNames(templates.Select(t => t + bool.TrueString));
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]

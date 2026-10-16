@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Templates;
 using NUnit.Framework;
 using System.Collections;
@@ -43,11 +44,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         [TestCaseSource(nameof(TemplatesWithTypeFilter))]
         public void CreatureGroup_Template_ResultsInType(string template, string type)
         {
-            var sourcePrototypes = GetAllPrototypes();
+            var sourcePrototypes = GetTemplatePrototypes(template);
             var applicator = GetNewInstanceOf<TemplateApplicator>(template);
+            var filters = new Filters { Types = [type] };
 
             var templateCreatures = sourcePrototypes
-                .Where(p => applicator.IsCompatible(p, new() { Types = [type] }))
+                .Where(p => applicator.IsCompatible(p, filters))
                 .Select(p => p.Name)
                 .Distinct();
 
