@@ -56,27 +56,26 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return $"[{joined}]";
         }
 
-        private static IEnumerable<string> GetClean(IEnumerable<string> collection) => collection.Where(IsNotEmpty);
-        private static bool IsNotEmpty(string v) => !string.IsNullOrEmpty(v);
+        private static IEnumerable<string> GetClean(IEnumerable<string> collection) => collection.Where(c => !string.IsNullOrEmpty(c));
         private static bool ShouldApplyFilter(IEnumerable<string> collection) => GetClean(collection ?? []).Any();
 
         internal (bool Compatible, string Reason) AreCompatible(IEnumerable<string> alignments, IEnumerable<string> challengeRatings, IEnumerable<string> types)
         {
             if (ShouldApplyFilter(Alignments))
             {
-                if (!Alignments.Where(IsNotEmpty).Intersect(alignments).Any())
+                if (!GetClean(Alignments).Intersect(alignments).Any())
                     return (false, $"Alignment filter {GetMessage(Alignments)} is not compatible with {GetMessage(alignments)}");
             }
 
             if (ShouldApplyFilter(ChallengeRatings))
             {
-                if (!ChallengeRatings.Where(IsNotEmpty).Intersect(challengeRatings).Any())
+                if (!GetClean(ChallengeRatings).Intersect(challengeRatings).Any())
                     return (false, $"CR filter {GetMessage(ChallengeRatings)} is not compatible with {GetMessage(challengeRatings)}");
             }
 
             if (ShouldApplyFilter(Types))
             {
-                if (!Types.Where(IsNotEmpty).Intersect(types).Any())
+                if (!GetClean(Types).Intersect(types).Any())
                     return (false, $"Type filter {GetMessage(Types)} is not compatible with {GetMessage(types)}");
             }
 

@@ -93,11 +93,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
                 .Setup(f => f.Clone(prototype))
                 .Returns(() => new CreaturePrototype { Name = "creature name", Alignments = [.. prototype.Alignments] });
 
+            var alignmentFilters = new Filters();
+
+            if (filters is not null)
+            {
+                alignmentFilters.Alignments = filters.Alignments;
+            }
+
             mockCreatureVerifier
                 .Setup(v => v.GetChainedTemplates(
                     It.Is<IEnumerable<CreaturePrototype>>(p => p.Count() == 1 && p.Single().Name == "creature name"),
                     It.Is<string[]>(t => t.IsEquivalentTo(templates)),
-                    filters))
+                    It.Is<Filters>(f => f.ToString() == alignmentFilters.ToString())))
                 .Returns([]);
 
             foreach (var alignment in goodAlignments)
@@ -108,9 +115,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
                             && p.Single().Name == "creature name"
                             && p.Single().Alignments.IsEquivalentTo(new Alignment(alignment))),
                         It.Is<string[]>(t => t.IsEquivalentTo(templates)),
-                        filters))
+                        It.Is<Filters>(f => f.ToString() == alignmentFilters.ToString())))
                     .Returns([prototype]);
             }
+        }
+
+        [Test]
+        public void BUG_Generate_WithAlignmentFilterAndTemplate_AndOtherFilters()
+        {
+            var creatureAlignments = new[] { "wrong alignment", "lawfulness goodness" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Returns(creatureAlignments);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, "my template" + GroupConstants.AllowedInput))
+                .Returns(["template alignment", "lawfulness goodness", "other alignment"]);
+
+            var filters = new Filters { Alignments = ["lawfulness goodness"], ChallengeRatings = ["my cr"], Types = ["my type"] };
+            SetupChainedTemplates(["my template"], creatureAlignments, ["lawfulness goodness"], filters);
+
+            var alignment = alignmentGenerator.Generate("creature name", ["my template"], filters);
+            Assert.That(alignment.Full, Is.EqualTo("lawfulness goodness"));
         }
 
         [Test]

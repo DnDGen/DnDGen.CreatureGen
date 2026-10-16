@@ -51,20 +51,21 @@ namespace DnDGen.CreatureGen.Generators.Alignments
             //INFO: We don't care about how the abilities validate, since that gets handled in the AbilityGenerator
             //So, we will use an arbitrary roll that has a high max to eliminate that confounding variable.
             var creaturePrototype = prototypeFactory.Build(creatureName, false, new(AbilityConstants.RandomizerRolls.BestOfFour));
+            var alignmentFilters = new Filters { Alignments = filters?.Alignments ?? [] };
 
             //HACK: This is very inefficient, but:
             //1. This usecase will only occur when an alignment filter is set AND templates are specified, OR more than 1 template is specified
             //2. Only builds the prototype once and then re-clones base values (avoiding multiple "SelectAll" calls in the factory)
-            //3. Only applies the templates to the single prototype
-            //4. Only calls .Any() - so since we only have 1 prototype, will basically be 1 or 0
-            //5. Even if all alignments allowed, that's N = 9, which for an edge case, feels manageable.
+            //3. Only applies the templates to 2 prototypes
+            //4. Only calls .Any() - so won't enumerate whole collection (which was only 2 anyway)
+            //5. Even if all alignments allowed, that's N = 9 * 2 = 18, which for an edge case, feels manageable.
             //We can't pre-cache it because of the combinatorials of the template chaining
             bool BaseAlignmentMatchesTemplatesAndFilters(string alignment)
             {
-                var prototype = prototypeFactory.Clone(creaturePrototype);
-                prototype.Alignments = [new(alignment)];
+                var creatureClone = prototypeFactory.Clone(creaturePrototype);
+                creatureClone.Alignments = [new(alignment)];
 
-                var prototypes = creatureVerifier.GetChainedTemplates([prototype], templates, filters: filters);
+                var prototypes = creatureVerifier.GetChainedTemplates([creatureClone], templates, filters: alignmentFilters);
                 return prototypes.Any();
             }
 
