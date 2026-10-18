@@ -24,6 +24,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
                 (false, CreatureConstants.Chimera_White, [CreatureConstants.Templates.Skeleton]),
                 (false, CreatureConstants.Choker, [CreatureConstants.Templates.HalfFiend]),
                 (false, CreatureConstants.Criosphinx, [CreatureConstants.Templates.Zombie]),
+                (true, CreatureConstants.Derro_Sane, [CreatureConstants.Templates.Vampire]),
                 (false, CreatureConstants.DisplacerBeast_PackLord, [CreatureConstants.Templates.HalfFiend]),
                 (false, CreatureConstants.Dragon_Brass_Young, [CreatureConstants.Templates.Ghost]),
                 (false, CreatureConstants.Dragon_Brass_Young, [CreatureConstants.Templates.HalfCelestial]),
@@ -41,6 +42,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
                 (false, CreatureConstants.GibberingMouther, [CreatureConstants.Templates.HalfFiend]),
                 (true, CreatureConstants.Gnoll, [CreatureConstants.Templates.Ghost]),
                 (true, CreatureConstants.GrayRender, []),
+                (true, CreatureConstants.Halfling_Tallfellow, [CreatureConstants.Templates.Vampire]),
                 (false, CreatureConstants.Hieracosphinx, [CreatureConstants.Templates.Skeleton]),
                 (false, CreatureConstants.Human, [CreatureConstants.Templates.Ghost]),
                 (false, CreatureConstants.Kobold, [CreatureConstants.Templates.HalfFiend]),
@@ -50,6 +52,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
                 (false, CreatureConstants.Otyugh, [CreatureConstants.Templates.Ghost]),
                 (false, CreatureConstants.Otyugh, [CreatureConstants.Templates.Zombie]),
                 (false, CreatureConstants.RazorBoar, [CreatureConstants.Templates.Ghost]),
+                (true, CreatureConstants.Sahuagin_Malenti, [CreatureConstants.Templates.Vampire]),
                 (true, CreatureConstants.ShamblingMound, [CreatureConstants.Templates.HalfFiend]),
                 (true, CreatureConstants.Skum, [CreatureConstants.Templates.Ghost]),
                 (false, CreatureConstants.Troglodyte, [CreatureConstants.Templates.HalfCelestial]),
@@ -62,6 +65,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
         public static IEnumerable<(bool AsCharacter, string[] Templates, Filters Filters)> ProblematicFilters =>
         [
             (true, [], new Filters()),
+            (true, [], new Filters { Alignments = [AlignmentConstants.NeutralEvil] }),
             (true, [], new Filters { Alignments = [AlignmentConstants.LawfulEvil], Types = [CreatureConstants.Types.Plant] }),
             (true, [], new Filters { ChallengeRatings = [ChallengeRatingConstants.CR0], Types = [CreatureConstants.Types.Subtypes.Reptilian], }),
             (true, [], new Filters { ChallengeRatings = [ChallengeRatingConstants.CR5], Types = [CreatureConstants.Types.Subtypes.Earth], }),
@@ -82,6 +86,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
                 ChallengeRatings = [ChallengeRatingConstants.CR5],
                 Types = [CreatureConstants.Types.Subtypes.Earth],
             }),
+            (true, [CreatureConstants.Templates.Vampire], new Filters { Alignments = [AlignmentConstants.NeutralEvil] }),
+            (false, [], new Filters { Alignments = [AlignmentConstants.NeutralEvil] }),
             (false, [], new Filters { ChallengeRatings = [ChallengeRatingConstants.CR1_4th], Types = [CreatureConstants.Types.Subtypes.Reptilian], }),
             (false, [], new Filters { ChallengeRatings = [ChallengeRatingConstants.CR1_3rd], Types = [CreatureConstants.Types.Subtypes.Reptilian], }),
             (false, [], new Filters { ChallengeRatings = [ChallengeRatingConstants.CR1], Types = [CreatureConstants.Types.Subtypes.Reptilian], }),
@@ -128,6 +134,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
             (false, [CreatureConstants.Templates.HalfFiend], new Filters { Types = [CreatureConstants.Types.Aberration] }),
             (false, [CreatureConstants.Templates.HalfFiend], new Filters { Types = [CreatureConstants.Types.Subtypes.Native] }),
             (false, [CreatureConstants.Templates.Skeleton], null),
+            (false, [CreatureConstants.Templates.Vampire], new Filters { Alignments = [AlignmentConstants.NeutralEvil] }),
             (false, [CreatureConstants.Templates.Zombie], null),
         ];
 

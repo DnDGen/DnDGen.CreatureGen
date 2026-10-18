@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Abilities;
+using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Verifiers;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
@@ -51,7 +52,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             return randomizer;
         }
 
-        public AbilityRandomizer GetAbilityRandomizerForTemplates(string[] templates, string[] rolls = null)
+        public AbilityRandomizer GetAbilityRandomizerForTemplates(bool asCharacter, string[] templates, Filters filters, string[] rolls = null)
         {
             rolls ??=
             [
@@ -66,7 +67,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 AbilityConstants.RandomizerRolls.Wild,
             ];
 
-            var validRolls = rolls.Where(r => creatureVerifier.VerifyCompatibility(false, null, new(r), null, templates));
+            var validRolls = rolls.Where(r => creatureVerifier.VerifyCompatibility(asCharacter, null, new(r), filters, templates));
             if (!validRolls.Any())
             {
                 //INFO: This means the templates themselves are not compatible. This sometimes happens in randomly-generated verifier test cases.
@@ -95,7 +96,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             return randomizer;
         }
 
-        public AbilityRandomizer GetAbilityRandomizerForCreatureAndTemplates(string creature, string[] templates, string[] rolls = null)
+        public AbilityRandomizer GetAbilityRandomizerForCreatureAndTemplates(bool asCharacter, string creature, string[] templates, string[] rolls = null)
         {
             rolls ??=
             [
@@ -111,10 +112,10 @@ namespace DnDGen.CreatureGen.Tests.Integration
             ];
 
             rolls = rolls
-                .Where(r => creatureVerifier.VerifyCompatibility(false, creature, new(r), null, templates))
+                .Where(r => creatureVerifier.VerifyCompatibility(asCharacter, creature, new(r), null, templates))
                 .ToArray();
 
-            return GetAbilityRandomizerForTemplates(templates, rolls);
+            return GetAbilityRandomizerForTemplates(asCharacter, templates, null, rolls);
         }
     }
 }

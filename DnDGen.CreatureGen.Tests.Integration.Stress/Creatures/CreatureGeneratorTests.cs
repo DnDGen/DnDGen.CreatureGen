@@ -330,7 +330,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private void GenerateAndAssertProblematicCreature()
         {
             var randomCreature = collectionSelector.SelectRandomFrom(CreatureTestData.ProblematicCreatures);
-            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizerForCreatureAndTemplates(randomCreature.Creature, randomCreature.Templates);
+            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizerForCreatureAndTemplates(
+                randomCreature.AsCharacter,
+                randomCreature.Creature,
+                randomCreature.Templates);
             GenerateAndAssertCreature(randomCreature.Creature, randomCreature.AsCharacter, abilityRandomizer, randomCreature.Templates);
         }
 
@@ -343,7 +346,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private void GenerateAndAssertProblematicFilters()
         {
             var randomFilters = collectionSelector.SelectRandomFrom(CreatureTestData.ProblematicFilters);
-            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizerForTemplates(randomFilters.Templates);
+            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizerForTemplates(randomFilters.AsCharacter, randomFilters.Templates, randomFilters.Filters);
             GenerateAndAssertRandomCreature(
                 randomFilters.AsCharacter,
                 randomFilters.Filters,

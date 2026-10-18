@@ -77,21 +77,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
                 .Returns(["template alignment", "lawfulness goodness", "other alignment"]);
 
             var filters = new Filters { Alignments = ["lawfulness goodness"] };
-            SetupChainedTemplates(["my template"], creatureAlignments, ["lawfulness goodness"], filters);
+            var clones = SetupChainedTemplates(["my template"], creatureAlignments, ["lawfulness goodness"], filters);
 
             var alignment = alignmentGenerator.Generate("creature name", ["my template"], filters);
+            AssertClones(clones, creatureAlignments);
             Assert.That(alignment.Full, Is.EqualTo("lawfulness goodness"));
         }
 
-        private void SetupChainedTemplates(string[] templates, string[] creatureAlignments, string[] goodAlignments, Filters filters)
+        private List<CreaturePrototype> SetupChainedTemplates(string[] templates, string[] creatureAlignments, string[] goodAlignments, Filters filters)
         {
-            var prototype = new CreaturePrototype { Name = "creature name", Alignments = [.. creatureAlignments.Select(a => new Alignment(a))] };
+            var creaturePrototype = new CreaturePrototype { Name = "creature name", AsCharacter = false, Alignments = [.. creatureAlignments.Select(a => new Alignment(a))] };
+            var characterPrototype = new CreaturePrototype { Name = "creature name", AsCharacter = true, Alignments = [.. creatureAlignments.Select(a => new Alignment(a))] };
+            var clones = new List<CreaturePrototype>();
             mockPrototypeFactory
                 .Setup(f => f.Build("creature name", false, It.Is<AbilityRandomizer>(r => r.Roll == AbilityConstants.RandomizerRolls.BestOfFour)))
-                .Returns(prototype);
+                .Returns(creaturePrototype);
             mockPrototypeFactory
-                .Setup(f => f.Clone(prototype))
-                .Returns(() => new CreaturePrototype { Name = "creature name", Alignments = [.. prototype.Alignments] });
+                .Setup(f => f.Build("creature name", true, It.Is<AbilityRandomizer>(r => r.Roll == AbilityConstants.RandomizerRolls.BestOfFour)))
+                .Returns(characterPrototype);
+            mockPrototypeFactory
+                .Setup(f => f.Clone(It.IsAny<CreaturePrototype>()))
+                .Callback((CreaturePrototype c) => clones.Add(new() { Name = c.Name, AsCharacter = c.AsCharacter, Alignments = [.. c.Alignments] }))
+                .Returns((CreaturePrototype c) => clones[^1]);
 
             var alignmentFilters = new Filters();
 
@@ -102,21 +109,38 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
 
             mockCreatureVerifier
                 .Setup(v => v.GetChainedTemplates(
-                    It.Is<IEnumerable<CreaturePrototype>>(p => p.Count() == 1 && p.Single().Name == "creature name"),
-                    It.Is<string[]>(t => t.IsEquivalentTo(templates)),
-                    It.Is<Filters>(f => f.ToString() == alignmentFilters.ToString())))
+                    It.IsAny<IEnumerable<CreaturePrototype>>(),
+                    templates,
+                    It.IsAny<Filters>()))
                 .Returns([]);
 
-            foreach (var alignment in goodAlignments)
+            foreach (var goodAlignment in goodAlignments)
             {
                 mockCreatureVerifier
                     .Setup(v => v.GetChainedTemplates(
-                        It.Is<IEnumerable<CreaturePrototype>>(p => p.Count() == 1
-                            && p.Single().Name == "creature name"
-                            && p.Single().Alignments.IsEquivalentTo(new Alignment(alignment))),
-                        It.Is<string[]>(t => t.IsEquivalentTo(templates)),
+                        It.Is<IEnumerable<CreaturePrototype>>(p => p.IsEquivalentTo(clones.TakeLast(2))
+                            && clones.Last().Alignments.IsEquivalentTo(new Alignment(goodAlignment))),
+                        templates,
                         It.Is<Filters>(f => f.ToString() == alignmentFilters.ToString())))
-                    .Returns([prototype]);
+                    .Returns(() => [clones[^1]]);
+            }
+
+            return clones;
+        }
+
+        private static void AssertClones(List<CreaturePrototype> clones, string[] creatureAlignments)
+        {
+            Assert.That(clones, Has.Count.EqualTo(creatureAlignments.Length * 2));
+
+            for (var i = 0; i < creatureAlignments.Length; i++)
+            {
+                var j = i * 2;
+                Assert.That(clones[j].Name, Is.EqualTo("creature name"));
+                Assert.That(clones[j].AsCharacter, Is.False);
+                Assert.That(clones[j].Alignments, Is.EqualTo([new Alignment(creatureAlignments[i])]));
+                Assert.That(clones[j + 1].Name, Is.EqualTo("creature name"));
+                Assert.That(clones[j + 1].AsCharacter, Is.True);
+                Assert.That(clones[j + 1].Alignments, Is.EqualTo([new Alignment(creatureAlignments[i])]));
             }
         }
 
@@ -133,9 +157,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
                 .Returns(["template alignment", "lawfulness goodness", "other alignment"]);
 
             var filters = new Filters { Alignments = ["lawfulness goodness"], ChallengeRatings = ["my cr"], Types = ["my type"] };
-            SetupChainedTemplates(["my template"], creatureAlignments, ["lawfulness goodness"], filters);
+            var clones = SetupChainedTemplates(["my template"], creatureAlignments, ["lawfulness goodness"], filters);
 
             var alignment = alignmentGenerator.Generate("creature name", ["my template"], filters);
+            AssertClones(clones, creatureAlignments);
             Assert.That(alignment.Full, Is.EqualTo("lawfulness goodness"));
         }
 
@@ -154,9 +179,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
             randomIndex = 1;
 
             var filters = new Filters { Alignments = ["lawfulness goodness", "other alignment"] };
-            SetupChainedTemplates(["my template"], creatureAlignments, ["lawfulness goodness", "other alignment"], filters);
+            var clones = SetupChainedTemplates(["my template"], creatureAlignments, ["lawfulness goodness", "other alignment"], filters);
 
             var alignment = alignmentGenerator.Generate("creature name", ["my template"], filters);
+            AssertClones(clones, creatureAlignments);
             Assert.That(alignment.Full, Is.EqualTo("other alignment"));
         }
 
@@ -170,9 +196,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
 
             var filters = new Filters { Alignments = ["lawfulness goodness"] };
             var templates = new[] { "my template", "my other template" };
-            SetupChainedTemplates(templates, creatureAlignments, ["lawfulness goodness"], filters);
+            var clones = SetupChainedTemplates(templates, creatureAlignments, ["lawfulness goodness"], filters);
 
             var alignment = alignmentGenerator.Generate("creature name", templates, filters);
+            AssertClones(clones, creatureAlignments);
             Assert.That(alignment.Full, Is.EqualTo("lawfulness goodness"));
         }
 
@@ -188,9 +215,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
 
             var filters = new Filters { Alignments = ["lawfulness goodness", "other alignment"] };
             var templates = new[] { "my template", "my other template" };
-            SetupChainedTemplates(templates, creatureAlignments, ["lawfulness goodness", "other alignment"], filters);
+            var clones = SetupChainedTemplates(templates, creatureAlignments, ["lawfulness goodness", "other alignment"], filters);
 
             var alignment = alignmentGenerator.Generate("creature name", templates, filters);
+            AssertClones(clones, creatureAlignments);
             Assert.That(alignment.Full, Is.EqualTo("other alignment"));
         }
 
@@ -204,9 +232,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
 
             var filters = new Filters { Alignments = ["template alignment"] };
             var templates = new[] { "my template", "my other template" };
-            SetupChainedTemplates(templates, creatureAlignments, ["base alignment"], filters);
+            var clones = SetupChainedTemplates(templates, creatureAlignments, ["base alignment"], filters);
 
             var alignment = alignmentGenerator.Generate("creature name", templates, filters);
+            AssertClones(clones, creatureAlignments);
             Assert.That(alignment.Full, Is.EqualTo("base alignment"));
         }
 
@@ -245,9 +274,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
                 .Returns(creatureAlignments);
 
             var templates = new[] { "my template", "my other template" };
-            SetupChainedTemplates(templates, creatureAlignments, ["lawfulness goodness"], null);
+            var clones = SetupChainedTemplates(templates, creatureAlignments, ["lawfulness goodness"], null);
 
             var alignment = alignmentGenerator.Generate("creature name", templates, null);
+            AssertClones(clones, creatureAlignments);
             Assert.That(alignment.Full, Is.EqualTo("lawfulness goodness"));
         }
 
@@ -301,9 +331,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
             randomIndex = 1;
 
             var templates = new[] { "my template", "my other template" };
-            SetupChainedTemplates(templates, creatureAlignments, ["lawfulness goodness", "other alignment"], null);
+            var clones = SetupChainedTemplates(templates, creatureAlignments, ["lawfulness goodness", "other alignment"], null);
 
             var alignment = alignmentGenerator.Generate("creature name", templates, null);
+            AssertClones(clones, creatureAlignments);
             Assert.That(alignment.Full, Is.EqualTo("other alignment"));
         }
 
@@ -365,9 +396,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
             randomIndex = 1;
 
             var templates = new[] { "my template", "my other template" };
-            SetupChainedTemplates(templates, creatureAlignments, ["lawfulness goodness", "other alignment"], null);
+            var clones = SetupChainedTemplates(templates, creatureAlignments, ["lawfulness goodness", "other alignment"], null);
 
             var alignment = alignmentGenerator.Generate("creature name", templates, null);
+            AssertClones(clones, creatureAlignments);
             Assert.That(alignment.Full, Is.EqualTo("lawfulness goodness"));
         }
 
@@ -434,9 +466,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
             randomIndex = 2;
 
             var templates = new[] { "my template", "my other template" };
-            SetupChainedTemplates(templates, creatureAlignments, ["lawfulness goodness", "other alignment"], null);
+            var clones = SetupChainedTemplates(templates, creatureAlignments, ["lawfulness goodness", "other alignment"], null);
 
             var alignment = alignmentGenerator.Generate("creature name", templates, null);
+            AssertClones(clones, creatureAlignments);
             Assert.That(alignment.Full, Is.EqualTo("other alignment"));
         }
 
@@ -515,9 +548,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
             randomIndex = 4;
 
             var templates = new[] { "my template", "my other template" };
-            SetupChainedTemplates(templates, creatureAlignments, ["lawfulness goodness", "other alignment"], null);
+            var clones = SetupChainedTemplates(templates, creatureAlignments, ["lawfulness goodness", "other alignment"], null);
 
             var alignment = alignmentGenerator.Generate("creature name", templates, null);
+            AssertClones(clones, creatureAlignments);
             Assert.That(alignment.Full, Is.EqualTo("other alignment"));
         }
     }
