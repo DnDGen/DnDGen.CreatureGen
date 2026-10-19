@@ -18,11 +18,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         protected override string TableName => TableNameConstants.Collection.CreatureGroups;
 
         private ICreaturePrototypeFactory prototypeFactory;
+        private CreaturePrototype[] creaturePrototypeSource;
+        private CreaturePrototype[] characterPrototypeSource;
 
-        [SetUp]
-        public void CreatureGroupsSetup()
+        [OneTimeSetUp]
+        public void OneTimeSetup()
         {
+            var creatures = CreatureConstants.GetAll();
+            var characters = CreatureConstants.GetAllCharacters();
+            var randomizer = new AbilityRandomizer(AbilityConstants.RandomizerRolls.BestOfFour);
+
             prototypeFactory = GetNewInstanceOf<ICreaturePrototypeFactory>();
+            creaturePrototypeSource = prototypeFactory.Build(creatures, false, randomizer).ToArray();
+            characterPrototypeSource = prototypeFactory.Build(characters, true, randomizer).ToArray();
         }
 
         protected void AssertAllCreatureGroupNames()
@@ -103,10 +111,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
 
         internal CreaturePrototype[] GetPrototypes(IEnumerable<string> source, bool asCharacter)
         {
-            var randomizer = new AbilityRandomizer(AbilityConstants.RandomizerRolls.BestOfFour);
-            var prototypes = prototypeFactory.Build(source, asCharacter, randomizer);
-
-            return [.. prototypes];
+            var prototypeSource = asCharacter ? characterPrototypeSource : creaturePrototypeSource;
+            return prototypeSource
+                .Where(p => source.Contains(p.Name))
+                .Select(prototypeFactory.Clone)
+                .ToArray();
         }
 
         internal IEnumerable<CreaturePrototype> GetTemplatePrototypes(string template)
