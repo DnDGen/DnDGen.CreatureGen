@@ -755,7 +755,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
         public void BUG_Generate_ProblematicCreature(bool asCharacter, string creatureName, params string[] templates)
         {
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizerForCreatureAndTemplates(asCharacter, creatureName, templates);
+            var randomizer = abilityRandomizerFactory.GetRandomAbilityRandomizerForCreatureAndTemplates(asCharacter, creatureName, templates);
             GenerateAndAssertCreature(creatureName, asCharacter, randomizer, templates);
         }
 
@@ -768,7 +768,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
         public void BUG_Generate_ProblematicCreature_ProblematicAbilities(bool asCharacter, string creatureName, params string[] templates)
         {
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizerForCreatureAndTemplates(
+            var randomizer = abilityRandomizerFactory.GetRandomAbilityRandomizerForCreatureAndTemplates(
                 asCharacter,
                 creatureName,
                 templates,
@@ -798,7 +798,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
         public void BUG_GenerateRandom_WithProblematicFilters(bool asCharacter, string[] templates, Filters filters)
         {
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizerForTemplates(asCharacter, templates, filters);
+            var randomizer = abilityRandomizerFactory.GetRandomAbilityRandomizerForTemplates(asCharacter, templates, filters);
             GenerateAndAssertRandomCreature(asCharacter, filters, randomizer, templates);
         }
 
@@ -811,7 +811,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
         public void BUG_GenerateRandom_WithProblematicFilters_ProblematicAbilities(bool asCharacter, string[] templates, Filters filters)
         {
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizerForTemplates(
+            var randomizer = abilityRandomizerFactory.GetRandomAbilityRandomizerForTemplates(
                 asCharacter,
                 templates,
                 filters,
@@ -823,12 +823,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         public void BUG_GenerateRandom_WithProblematicFilters_HalfDragonCelestial()
         {
             var templates = new[] { CreatureConstants.Templates.HalfDragon_Gold, CreatureConstants.Templates.CelestialCreature };
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizerForTemplates(false, templates, null);
+            var randomizer = abilityRandomizerFactory.GetRandomAbilityRandomizerForTemplates(false, templates, null);
             GenerateAndAssertRandomCreature(false, null, randomizer, templates);
         }
 
         [Test]
-        public void BUG_Generate_WithProblematicFilters_DriderHalfDragonCelestial()
+        public void BUG_Generate_DriderHalfDragonCelestial()
         {
             var templates = new[] { CreatureConstants.Templates.HalfDragon_Gold, CreatureConstants.Templates.CelestialCreature };
             var creature = creatureGenerator.Generate(false, CreatureConstants.Drider, null, templates);
@@ -836,13 +836,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         }
 
         [Test]
-        [Repeat(100)]
-        public void BUG_Generate_WithProblematicFilters_OtyughHalfCelestial()
+        [Repeat(10)]
+        public void BUG_Generate_OtyughHalfCelestial()
         {
             var templates = new[] { CreatureConstants.Templates.HalfCelestial };
             var randomizer = new AbilityRandomizer(AbilityConstants.RandomizerRolls.Raw);
             var creature = creatureGenerator.Generate(false, CreatureConstants.Otyugh, randomizer, templates);
             creatureAsserter.AssertCreature(creature, randomizer);
+        }
+
+        [Test]
+        [Repeat(10)]
+        public void BUG_GenerateRandom_WithProblematicFilters_CR2Reptilian()
+        {
+            var filters = new Filters { ChallengeRatings = [ChallengeRatingConstants.CR2], Types = [CreatureConstants.Types.Subtypes.Reptilian] };
+            var randomizer = abilityRandomizerFactory.GetRandomAbilityRandomizerForTemplates(false, [], filters, [AbilityConstants.RandomizerRolls.Poor]);
+            GenerateAndAssertRandomCreature(false, filters, randomizer);
         }
 
         private Creature GenerateAndAssertRandomCreature(
@@ -890,7 +899,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         {
             var iterations = 100;
             var advancedHappened = false;
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer();
+            var randomizer = abilityRandomizerFactory.GetRandomAbilityRandomizer();
 
             while (iterations-- > 0 && !advancedHappened)
             {

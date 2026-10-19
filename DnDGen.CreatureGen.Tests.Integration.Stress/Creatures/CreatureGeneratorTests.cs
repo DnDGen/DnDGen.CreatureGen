@@ -50,7 +50,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private void GenerateAndAssertCreature(bool asCharacter, bool withTemplate)
         {
-            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizer();
+            var abilityRandomizer = abilityRandomizerFactory.GetRandomAbilityRandomizer();
             var randomCreature = GetCreatureAndTemplate(asCharacter, withTemplate, abilityRandomizer);
             GenerateAndAssertCreature(randomCreature.Creature, asCharacter, abilityRandomizer, randomCreature.Template);
         }
@@ -114,7 +114,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private async Task GenerateAndAssertCreatureAsync(bool asCharacter, bool withTemplate)
         {
-            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizer();
+            var abilityRandomizer = abilityRandomizerFactory.GetRandomAbilityRandomizer();
             var randomCreature = GetCreatureAndTemplate(asCharacter, withTemplate, abilityRandomizer);
             await GenerateAndAssertCreatureAsync(randomCreature.Creature, randomCreature.Template, asCharacter, abilityRandomizer);
         }
@@ -148,7 +148,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private void GenerateAndAssertRandomCreature()
         {
-            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizer();
+            var abilityRandomizer = abilityRandomizerFactory.GetRandomAbilityRandomizer();
             var filters = GetRandomFilters(abilityRandomizer);
             GenerateAndAssertRandomCreature(filters.AsCharacter, filters.Filters, abilityRandomizer, filters.Template);
         }
@@ -301,7 +301,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private async Task GenerateAndAssertRandomCreatureAsync()
         {
-            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizer();
+            var abilityRandomizer = abilityRandomizerFactory.GetRandomAbilityRandomizer();
             var filters = GetRandomFilters(abilityRandomizer);
             await GenerateAndAssertRandomCreatureAsync(filters.AsCharacter, filters.Template, filters.Filters, abilityRandomizer);
         }
@@ -330,7 +330,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private void GenerateAndAssertProblematicCreature()
         {
             var randomCreature = collectionSelector.SelectRandomFrom(CreatureTestData.ProblematicCreatures);
-            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizerForCreatureAndTemplates(
+            var abilityRandomizer = abilityRandomizerFactory.GetRandomAbilityRandomizerForCreatureAndTemplates(
                 randomCreature.AsCharacter,
                 randomCreature.Creature,
                 randomCreature.Templates);
@@ -346,7 +346,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private void GenerateAndAssertProblematicFilters()
         {
             var randomFilters = collectionSelector.SelectRandomFrom(CreatureTestData.ProblematicFilters);
-            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizerForTemplates(randomFilters.AsCharacter, randomFilters.Templates, randomFilters.Filters);
+            var abilityRandomizer = abilityRandomizerFactory.GetRandomAbilityRandomizerForTemplates(randomFilters.AsCharacter, randomFilters.Templates, randomFilters.Filters);
             GenerateAndAssertRandomCreature(
                 randomFilters.AsCharacter,
                 randomFilters.Filters,
@@ -365,7 +365,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var crs = ChallengeRatingConstants.GetOrdered();
             var minIndex = Array.IndexOf(crs, minimumCr);
             var randomCr = collectionSelector.SelectRandomFrom(crs.Skip(minIndex));
-            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizer();
+            var abilityRandomizer = abilityRandomizerFactory.GetRandomAbilityRandomizer();
             var filters = new Filters { ChallengeRatings = [randomCr] };
 
             GenerateAndAssertRandomCreature(false, filters, abilityRandomizer);

@@ -108,7 +108,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
             }
 
             var filters = new Filters { Types = [type], ChallengeRatings = [cr], Alignments = [alignment] };
-            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizerForTemplates(asCharacter, [.. templates], filters);
+            var abilityRandomizer = abilityRandomizerFactory.GetRandomAbilityRandomizerForTemplates(asCharacter, [.. templates], filters);
 
             ValidateRandomCreatureWithFilters(
                 asCharacter,
@@ -126,7 +126,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
 
         private void ValidateAndAssertProblematicFilters()
         {
-            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizer();
+            var abilityRandomizer = abilityRandomizerFactory.GetRandomAbilityRandomizer();
             var randomFilters = collectionSelector.SelectRandomFrom(CreatureTestData.ProblematicFilters);
             ValidateRandomCreatureWithFilters(
                 randomFilters.AsCharacter,
@@ -160,7 +160,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
         private void ValidateAndAssertGhostFilters()
         {
             var randomFilters = collectionSelector.SelectRandomFrom(CreatureTestData.ProblematicFilters);
-            var abilityRandomizer = abilityRandomizerFactory.GetAbilityRandomizerForTemplates(
+            var abilityRandomizer = abilityRandomizerFactory.GetRandomAbilityRandomizerForTemplates(
                 randomFilters.AsCharacter,
                 [CreatureConstants.Templates.Ghost],
                 randomFilters.Filters);

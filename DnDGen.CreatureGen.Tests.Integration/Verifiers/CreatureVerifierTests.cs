@@ -1259,7 +1259,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
-        public void ProblematicFiltersAreValid_WIthProblematicAbilityRandomizer_Poor(bool asCharacter, string[] templates, Filters filters)
+        public void ProblematicFiltersAreValid_WithProblematicAbilityRandomizer_Poor(bool asCharacter, string[] templates, Filters filters)
         {
             var randomizer = new AbilityRandomizer(AbilityConstants.RandomizerRolls.Poor);
             var verified = creatureVerifier.VerifyCompatibility(asCharacter, null, randomizer, filters, templates);
@@ -1267,7 +1267,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
-        public void ProblematicFiltersAreValid_WIthProblematicAbilityRandomizer_Wild(bool asCharacter, string[] templates, Filters filters)
+        public void ProblematicFiltersAreValid_WithProblematicAbilityRandomizer_Wild(bool asCharacter, string[] templates, Filters filters)
         {
             var randomizer = new AbilityRandomizer(AbilityConstants.RandomizerRolls.Wild);
             var verified = creatureVerifier.VerifyCompatibility(asCharacter, null, randomizer, filters, templates);

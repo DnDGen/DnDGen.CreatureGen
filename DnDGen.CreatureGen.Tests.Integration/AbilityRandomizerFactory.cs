@@ -1,12 +1,9 @@
 ﻿using DnDGen.CreatureGen.Abilities;
-using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Verifiers;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration
@@ -15,7 +12,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
     {
         private const string Set = "Set";
 
-        public AbilityRandomizer GetAbilityRandomizer(string[] rolls = null)
+        public AbilityRandomizer GetRandomAbilityRandomizer(string[] rolls = null)
         {
             rolls ??=
             [
@@ -31,28 +28,23 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 Set
             ];
 
-            if (!rolls.Except([Set]).Any())
-                throw new ArgumentException("Only Set was provided, so no other roll could be uswed to generate set abilities", nameof(rolls));
-
             var randomizer = new AbilityRandomizer(collectionSelector.SelectRandomFrom(rolls));
 
             if (randomizer.Roll == Set)
             {
                 randomizer = new AbilityRandomizer(null);
-                var setRoll = collectionSelector.SelectRandomFrom(rolls.Except([Set]));
-
-                randomizer.SetRolls[AbilityConstants.Strength] = dice.Roll(setRoll).AsSum();
-                randomizer.SetRolls[AbilityConstants.Dexterity] = dice.Roll(setRoll).AsSum();
-                randomizer.SetRolls[AbilityConstants.Constitution] = dice.Roll(setRoll).AsSum();
-                randomizer.SetRolls[AbilityConstants.Intelligence] = dice.Roll(setRoll).AsSum();
-                randomizer.SetRolls[AbilityConstants.Wisdom] = dice.Roll(setRoll).AsSum();
-                randomizer.SetRolls[AbilityConstants.Charisma] = dice.Roll(setRoll).AsSum();
+                randomizer.SetRolls[AbilityConstants.Strength] = dice.Roll(AbilityConstants.RandomizerRolls.Raw).AsSum();
+                randomizer.SetRolls[AbilityConstants.Dexterity] = dice.Roll(AbilityConstants.RandomizerRolls.Raw).AsSum();
+                randomizer.SetRolls[AbilityConstants.Constitution] = dice.Roll(AbilityConstants.RandomizerRolls.Raw).AsSum();
+                randomizer.SetRolls[AbilityConstants.Intelligence] = dice.Roll(AbilityConstants.RandomizerRolls.Raw).AsSum();
+                randomizer.SetRolls[AbilityConstants.Wisdom] = dice.Roll(AbilityConstants.RandomizerRolls.Raw).AsSum();
+                randomizer.SetRolls[AbilityConstants.Charisma] = dice.Roll(AbilityConstants.RandomizerRolls.Raw).AsSum();
             }
 
             return randomizer;
         }
 
-        public AbilityRandomizer GetAbilityRandomizerForTemplates(bool asCharacter, string[] templates, Filters filters, string[] rolls = null)
+        public AbilityRandomizer GetRandomAbilityRandomizerForTemplates(bool asCharacter, string[] templates, Filters filters, string[] rolls = null)
         {
             rolls ??=
             [
@@ -74,29 +66,22 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 return new();
             }
 
-            var randomizer = GetAbilityRandomizer([.. validRolls.Concat([Set])]);
+            var randomizer = GetRandomAbilityRandomizer([.. validRolls.Concat([Set])]);
+            var valid = creatureVerifier.VerifyCompatibility(asCharacter, null, randomizer, filters, templates);
 
-            var templatesWithMinimumAbilities = new Dictionary<string, (string a, int min)>
+            //HACK: For some filters, they are only valid with ability-dependent templates
+            //Since this method assumes it will return a randomizer valid for the given inputs,
+            //We need to adjust the set values to make this work
+            if (!valid && randomizer.SetRolls.Count > 0)
             {
-                [CreatureConstants.Templates.Ghost] = (AbilityConstants.Charisma, 6),
-                [CreatureConstants.Templates.HalfCelestial] = (AbilityConstants.Intelligence, 4),
-                [CreatureConstants.Templates.HalfFiend] = (AbilityConstants.Intelligence, 4),
-            };
-
-            foreach (var template in templates)
-            {
-                //HACK: If we are using set rolls AND have templates that require minimum abilities, we need to make sure we match those minimums
-                //In the real world, the validator would catch it before trying to generate, so this is a test-specific circumstance
-                if (templatesWithMinimumAbilities.ContainsKey(template) && randomizer.SetRolls.ContainsKey(templatesWithMinimumAbilities[template].a))
-                {
-                    randomizer.SetRolls[templatesWithMinimumAbilities[template].a] = Ability.DefaultScore + templatesWithMinimumAbilities[template].min;
-                }
+                randomizer.SetRolls[AbilityConstants.Charisma] = Ability.DefaultScore + 6;
+                randomizer.SetRolls[AbilityConstants.Intelligence] = Ability.DefaultScore + 4;
             }
 
             return randomizer;
         }
 
-        public AbilityRandomizer GetAbilityRandomizerForCreatureAndTemplates(bool asCharacter, string creature, string[] templates, string[] rolls = null)
+        public AbilityRandomizer GetRandomAbilityRandomizerForCreatureAndTemplates(bool asCharacter, string creature, string[] templates, string[] rolls = null)
         {
             rolls ??=
             [
@@ -115,7 +100,19 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 .Where(r => creatureVerifier.VerifyCompatibility(asCharacter, creature, new(r), null, templates))
                 .ToArray();
 
-            return GetAbilityRandomizerForTemplates(asCharacter, templates, null, rolls);
+            var randomizer = GetRandomAbilityRandomizerForTemplates(asCharacter, templates, null, rolls);
+            var valid = creatureVerifier.VerifyCompatibility(asCharacter, creature, randomizer, null, templates);
+
+            //HACK: The creature might be paired with an ability-dependent template
+            //Since this method assumes it will return a randomizer valid for the given inputs,
+            //We need to adjust the set values to make this work
+            if (!valid && randomizer.SetRolls.Count > 0)
+            {
+                randomizer.SetRolls[AbilityConstants.Charisma] = Ability.DefaultScore + 6;
+                randomizer.SetRolls[AbilityConstants.Intelligence] = Ability.DefaultScore + 4;
+            }
+
+            return randomizer;
         }
     }
 }
