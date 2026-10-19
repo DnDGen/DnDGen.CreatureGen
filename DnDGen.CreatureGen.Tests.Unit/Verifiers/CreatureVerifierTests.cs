@@ -47,6 +47,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             SetUpCreatureGroup(CreatureConstants.Templates.None + true, allCharacters);
             SetUpCreatureGroup(CreatureConstants.Templates.None + false, allCreatures);
 
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.HasMinimumAbility))
+                .Returns(["wrong min ability template", "other wrong min ability template"]);
+
             SetupApplicator(CreatureConstants.Templates.None);
         }
 
@@ -56,6 +60,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var isCompatible = verifier.VerifyCompatibility(asCharacter, creature, null);
             Assert.That(isCompatible, Is.True);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         private Mock<TemplateApplicator> SetupApplicator(string template)
@@ -73,6 +79,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             var mockApplicator = SetupApplicator(template);
             var minAbility = new Ability("my ability") { BaseScore = minScore };
             mockApplicator.SetupGet(a => a.MinimumAbility).Returns(minAbility);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.HasMinimumAbility))
+                .Returns(["other min ability template", template]);
 
             return mockApplicator;
         }
@@ -107,6 +116,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var isCompatible = verifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer);
             Assert.That(isCompatible, Is.True);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -117,6 +128,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer);
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true, true)]
@@ -130,6 +143,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, creature);
             Assert.That(isCompatible, Is.EqualTo(compatible));
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true, true)]
@@ -144,6 +159,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer, null, "template");
             Assert.That(isCompatible, Is.EqualTo(compatible));
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true, true)]
@@ -196,6 +213,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, creature, abilityRandomizer, null, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.EqualTo(compatible));
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -208,6 +227,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(true, creature, abilityRandomizer, null, "template");
             Assert.That(isCompatible, Is.EqualTo(compatible));
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -219,6 +240,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(true, creature, abilityRandomizer, null, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.EqualTo(compatible));
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [Test]
@@ -231,6 +254,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(true, creature, abilityRandomizer, null, "template");
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [Test]
@@ -240,6 +265,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(true, creature, abilityRandomizer, null, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [Test]
@@ -251,6 +278,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(false, null, abilityRandomizer, null, "template");
             Assert.That(isCompatible, Is.True);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [Test]
@@ -265,6 +294,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(false, null, abilityRandomizer, null, "template");
             Assert.That(isCompatible, Is.True);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Once);
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>("template"), Times.Once);
         }
 
         [Test]
@@ -272,6 +304,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         {
             var isCompatible = verifier.VerifyCompatibility(false, null, abilityRandomizer, null, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.True);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -284,6 +318,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, null, "template");
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -299,6 +335,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, null, "template");
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Once);
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>("template"), Times.Once);
         }
 
         [TestCase(true)]
@@ -309,6 +348,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, null, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [Test]
@@ -321,6 +362,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(true, null, abilityRandomizer, null, "template");
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [Test]
@@ -336,6 +379,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(true, null, abilityRandomizer, null, "template");
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true, null, null, null)]
@@ -378,6 +423,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, "template");
             Assert.That(isCompatible, Is.True);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true, null, null, null)]
@@ -423,6 +470,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, "template");
             Assert.That(isCompatible, Is.True);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Once);
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>("template"), Times.Once);
         }
 
         [TestCase(true, null, null, null)]
@@ -463,6 +513,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.True);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true, null, null, null)]
@@ -505,6 +557,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, "template");
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true, "my challenge rating", null, null)]
@@ -539,6 +593,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, "template");
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true, null, "my type", null)]
@@ -573,6 +629,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, "template");
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true, null, null, "my alignment")]
@@ -607,6 +665,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, "template");
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true, null, null, null)]
@@ -652,6 +712,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, "template");
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Once);
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>("template"), Times.Once);
         }
 
         [TestCase(true, null, null, null)]
@@ -692,6 +755,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true, "my challenge rating", null, null)]
@@ -724,6 +789,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true, null, "my type", null)]
@@ -756,6 +823,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true, null, null, "my alignment")]
@@ -788,6 +857,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(null, null, null)]
@@ -823,6 +894,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(true, null, abilityRandomizer, filters, "template");
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(null, null, null)]
@@ -861,6 +934,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(true, null, abilityRandomizer, filters, "template");
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(null, null, null)]
@@ -894,6 +969,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(true, null, abilityRandomizer, filters, CreatureConstants.Templates.None);
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true, null, null, null)]
@@ -946,6 +1023,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             Assert.That(isCompatible, Is.True);
 
             mockCollectionSelector.Verify(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All), Times.Never);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true, null, null, null)]
@@ -1010,6 +1089,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
             Assert.That(isCompatible, Is.True);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true, null, null, null)]
@@ -1074,6 +1155,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(asCharacter, null, abilityRandomizer, filters);
             Assert.That(isCompatible, Is.True);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true, null, null, null)]
@@ -1129,6 +1212,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             Assert.That(isCompatible, Is.True);
 
             mockCollectionSelector.Verify(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All), Times.Never);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(null)]
@@ -1168,6 +1253,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(false, null, abilityRandomizer, filters, empty);
             Assert.That(isCompatible, Is.True);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true, null, null, null)]
@@ -1218,6 +1305,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             Assert.That(isCompatible, Is.False);
 
             mockCollectionSelector.Verify(c => c.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.All), Times.Never);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(null, null, null)]
@@ -1260,6 +1349,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(true, null, abilityRandomizer, filters);
             Assert.That(isCompatible, Is.False);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -1275,6 +1366,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter);
             Assert.That(compatibleCreatures, Is.EqualTo([creature, "my other creature"]));
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -1290,6 +1383,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter);
             Assert.That(compatibleCreatures, Is.Empty);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -1304,6 +1399,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter);
             Assert.That(compatibleCreatures, Is.Empty);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         private void SetUpCreatureGroup(string groupName, IEnumerable<string> group)
@@ -1327,12 +1424,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             SetUpCreatureGroup("my template" + asCharacter, templateCreatures);
             SetUpCreatureGroup("my ability-5", ["low-ability creature", "my other creature", "high-ability creature", creature]);
 
-            var mockApplicator = SetupApplicator("my template");
-            var minAbility = new Ability("my ability") { BaseScore = 6 };
-            mockApplicator.SetupGet(a => a.MinimumAbility).Returns(minAbility);
+            var mockApplicator = SetupApplicatorWithMinAbility("my template");
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter);
             Assert.That(compatibleCreatures, Is.EqualTo([creature, "my other creature"]));
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Once);
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>("my template"), Times.Once);
         }
 
         [TestCase(true)]
@@ -1349,6 +1447,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter);
             Assert.That(compatibleCreatures, Is.Empty);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -1362,12 +1462,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             SetUpCreatureGroup("my template" + asCharacter, templateCreatures);
             SetUpCreatureGroup("my ability-5", []);
 
-            var mockApplicator = SetupApplicator("my template");
-            var minAbility = new Ability("my ability") { BaseScore = 6 };
-            mockApplicator.SetupGet(a => a.MinimumAbility).Returns(minAbility);
+            var mockApplicator = SetupApplicatorWithMinAbility("my template");
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter);
             Assert.That(compatibleCreatures, Is.Empty);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Once);
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>("my template"), Times.Once);
         }
 
         [TestCase(true)]
@@ -1385,6 +1486,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter);
             Assert.That(compatibleCreatures, Is.Empty);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Once);
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>("my template"), Times.Once);
         }
 
         [TestCase(true, 4, 14)]
@@ -1428,6 +1532,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, abilityRandomizer);
             Assert.That(compatibleCreatures, Is.EqualTo([creature, "my other creature"]));
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Once);
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>("my template"), Times.Once);
         }
 
         [TestCase(true, 4, 14)]
@@ -1471,6 +1578,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, abilityRandomizer);
             Assert.That(compatibleCreatures, Is.EquivalentTo([creature, "my other creature"]));
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Once);
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>("my template"), Times.Once);
         }
 
         [TestCase(true, 4, 1)]
@@ -1542,6 +1652,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, abilityRandomizer);
             Assert.That(compatibleCreatures, Is.EqualTo([creature, "my other creature"]));
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Once);
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>("my template"), Times.Once);
         }
 
         [TestCase(true, 4, 1)]
@@ -1613,6 +1726,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, abilityRandomizer);
             Assert.That(compatibleCreatures, Is.EquivalentTo([creature, "my other creature"]));
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Once);
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>("my template"), Times.Once);
         }
 
         [TestCase(true)]
@@ -1630,6 +1746,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.EqualTo([creature, "my other creature"]));
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -1647,6 +1765,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -1664,6 +1784,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -1681,6 +1803,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -1698,6 +1822,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.EquivalentTo([creature, "my other creature"]));
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -1715,6 +1841,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -1732,6 +1860,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -1749,6 +1879,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -1766,6 +1898,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.EquivalentTo([creature, "my other creature"]));
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -1783,6 +1917,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -1800,6 +1936,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -1817,6 +1955,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, null, filters);
             Assert.That(compatibleCreatures, Is.Empty);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Never);
         }
 
         [TestCase(true)]
@@ -1838,6 +1978,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, abilityRandomizer, filters);
             Assert.That(compatibleCreatures, Is.EquivalentTo([creature, "my other creature"]));
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Once);
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>("my template"), Times.Once);
         }
 
         [TestCase(true)]
@@ -1870,6 +2013,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var compatibleCreatures = verifier.GetCompatibleCreaturesForTemplate(creatures, "my template", asCharacter, abilityRandomizer, filters);
             Assert.That(compatibleCreatures, Is.Empty);
+
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>(It.IsAny<string>()), Times.Once);
+            mockJustInTimeFactory.Verify(f => f.Build<TemplateApplicator>("my template"), Times.Once);
         }
 
         [TestCase(true)]

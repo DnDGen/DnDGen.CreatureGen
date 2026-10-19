@@ -57,17 +57,21 @@ namespace DnDGen.CreatureGen.Verifiers
             filteredBaseCreatures = ApplyFilterTo(filteredBaseCreatures, filters?.ChallengeRatings, template + asCharacter);
             filteredBaseCreatures = ApplyFilterTo(filteredBaseCreatures, filters?.Types, template);
 
-            var applicator = factory.Build<TemplateApplicator>(template);
-            if (applicator.MinimumAbility is not null)
-            {
-                abilityRandomizer ??= new();
-                var lowestAdjustment = applicator.MinimumAbility.FullScore - abilityRandomizer.GetMax(dice, applicator.MinimumAbility.Name);
+            if (!filteredBaseCreatures.Any())
+                return filteredBaseCreatures;
 
-                //INFO: Lowest possible ability adjustment is -10
-                //We still want to filter for this, as it will remove creatures that don't have the ability at all
-                lowestAdjustment = Math.Max(-10, lowestAdjustment);
-                filteredBaseCreatures = ApplyFilterTo(filteredBaseCreatures, [applicator.MinimumAbility.Name + lowestAdjustment], string.Empty);
-            }
+            var minimumAbilityTemplates = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.TemplateGroups, GroupConstants.HasMinimumAbility);
+            if (!minimumAbilityTemplates.Contains(template))
+                return filteredBaseCreatures;
+
+            var applicator = factory.Build<TemplateApplicator>(template);
+            abilityRandomizer ??= new();
+            var lowestAdjustment = applicator.MinimumAbility.FullScore - abilityRandomizer.GetMax(dice, applicator.MinimumAbility.Name);
+
+            //INFO: Lowest possible ability adjustment is -10
+            //We still want to filter for this, as it will remove creatures that don't have the ability at all
+            lowestAdjustment = Math.Max(-10, lowestAdjustment);
+            filteredBaseCreatures = ApplyFilterTo(filteredBaseCreatures, [applicator.MinimumAbility.Name + lowestAdjustment], string.Empty);
 
             return filteredBaseCreatures;
         }

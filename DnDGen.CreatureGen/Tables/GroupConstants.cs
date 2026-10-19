@@ -11,6 +11,7 @@
         public const string Characters = "Characters";
         public const string Deflection = "Deflection";
         public const string DodgeBonus = "Dodge Bonus";
+        public const string HasMinimumAbility = "Has Minimum Ability";
         public const string Initiative = "Initiative";
         public const string ManualCrossbows = "Manual Crossbows";
         public const string NaturalArmor = "Natural Armor";

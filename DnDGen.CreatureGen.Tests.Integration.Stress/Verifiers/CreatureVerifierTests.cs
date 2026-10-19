@@ -31,7 +31,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
             dice = GetNewInstanceOf<Dice>();
             abilityRandomizerFactory = GetNewInstanceOf<AbilityRandomizerFactory>();
 
-            timeLimit = TimeSpan.FromSeconds(1);
+            timeLimit = TimeSpan.FromSeconds(0.5);
         }
 
         [Test]
