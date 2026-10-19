@@ -21,9 +21,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress
             var options = new StressorOptions();
             options.RunningAssembly = Assembly.GetExecutingAssembly();
 
-            //INFO: Non-stress operations take up to 27 minutes, or ~45% of the total runtime.
-            //Adding in another 5% of buffer
-            options.TimeLimitPercentage = .50;
+            //INFO: Non-stress operations take ~500s, or ~14% of the total runtime.
+            //Adding in another 6% of buffer
+            options.TimeLimitPercentage = .80;
 
             //INFO: When the tests run in parallel, and with parallel batches, the overhead of multithread switching severely impacts execution time
             //Better to let it only one 1 at a time.

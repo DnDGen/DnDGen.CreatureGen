@@ -27,8 +27,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         public void Setup()
         {
             stopwatch = new Stopwatch();
-            stopwatch.Reset();
-
             creatureVerifier = GetNewInstanceOf<ICreatureVerifier>();
 
             //HACK: Ideally, this would be 0.1, but on the build server, test runs show 0.20-0.35 as pretty normal.
