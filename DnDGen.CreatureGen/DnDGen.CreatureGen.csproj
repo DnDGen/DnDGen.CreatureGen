@@ -8,12 +8,21 @@
     <Version>2.0.0</Version>
     <Description>This generates creatures for the Dungeons and Dragons 3.5 system.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/DnDGen/CreatureGen</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/DnDGen/DnDGen.CreatureGen</PackageProjectUrl>
     <PackageIcon>18531-twenty-sided-dice-vector-thumb.png</PackageIcon>
     <PackageIconUrl />
-    <RepositoryUrl>https://github.com/DnDGen/CreatureGen</RepositoryUrl>
+    <RepositoryUrl>https://github.com/DnDGen/DnDGen.CreatureGen</RepositoryUrl>
     <PackageTags>creature generator dice dungeons dragons d20 dnd 3.5 gen</PackageTags>
-    <PackageReleaseNotes>Fix alignment generation validity when generating with multiple templates</PackageReleaseNotes>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReleaseNotes>2.0.0 contains breaking changes. See "Upgrading from 1.x" in the README.
+- Templates are passed as trailing params arguments instead of through Filters.Templates
+- Filters.Type, ChallengeRating, and Alignment are now the lists Types, ChallengeRatings, and Alignments, matching any value in each list
+- AbilityRandomizer.Roll is set through the constructor
+- ICreatureVerifier.VerifyCompatibility takes the ability randomizer and templates
+- Fixed alignment generation when chaining multiple templates or filtering by alignment
+- Template minimum ability scores (Ghost, Half-Celestial, Half-Fiend) are honored for the given ability randomizer, and rolled abilities are raised to meet them
+- Template compatibility checks use precomputed creature groups, making verification and random generation much faster
+- Added challenge ratings 28 through 30</PackageReleaseNotes>
 	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
@@ -66,6 +75,10 @@
       <Pack>True</Pack>
       <PackagePath>
       </PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
   <ItemGroup>
