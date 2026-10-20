@@ -1055,6 +1055,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector.Verify(s => s.SelectAllFrom(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
         }
 
+        [TestCase(true)]
+        [TestCase(false)]
+        public void Build_ReturnsCreaturePrototypes_NoCreaturesIsNoPrototypes(bool asCharacter)
+        {
+            var prototypes = prototypeFactory.Build([], asCharacter);
+            Assert.That(prototypes, Is.Empty);
+
+            mockCreatureDataSelector.Verify(s => s.SelectAllFrom(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+            mockCollectionSelector.Verify(s => s.SelectAllFrom(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+            mockTypeAndAmountSelector.Verify(s => s.SelectAllFrom(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+        }
+
         [Test]
         public void Build_ReturnsCreaturePrototypes()
         {

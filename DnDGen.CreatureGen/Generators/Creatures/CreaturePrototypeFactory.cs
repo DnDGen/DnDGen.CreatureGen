@@ -21,6 +21,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
     {
         public IEnumerable<CreaturePrototype> Build(IEnumerable<string> creatureNames, bool asCharacter, AbilityRandomizer abilityRandomizer = null)
         {
+            if (!creatureNames.Any())
+                yield break;
+
             //If we only have 1 creature, avoid the SelectAll calls
             if (creatureNames.Count() == 1)
             {
