@@ -27,7 +27,8 @@ namespace DnDGen.CreatureGen.Verifiers
         {
             if (templates.Length >= 2)
             {
-                var prototypes = prototypeFactory.Build(sourceCreatures, asCharacter, abilityRandomizer);
+                var firstTemplateCreatures = GetCompatibleCreaturesForTemplate(sourceCreatures, templates[0], asCharacter, abilityRandomizer);
+                var prototypes = prototypeFactory.Build(firstTemplateCreatures, asCharacter, abilityRandomizer);
                 return GetChainedTemplates(prototypes, templates, filters);
             }
 
