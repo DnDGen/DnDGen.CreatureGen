@@ -1,6 +1,7 @@
-﻿using DnDGen.CreatureGen.Magics;
+using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Tables;
 using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,180 +11,157 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
     [TestFixture]
     public class SpellsPerDayTests : TypesAndAmountsTests
     {
-        protected override string tableName => TableNameConstants.TypeAndAmount.SpellsPerDay;
+        protected override string TableName => TableNameConstants.TypeAndAmount.SpellsPerDay;
+
+        private Dictionary<string, Dictionary<string, int>> spellsPerDay;
+
+        [OneTimeSetUp]
+        public void OneTimeSetup()
+        {
+            spellsPerDay = GetSpellsPerDayData();
+        }
 
         [Test]
         public void SpellsPerDayContainsAllCastersAndLevels()
         {
-            var names = SpellsPerDayData.GetNames();
+            var names = GetNames();
+            Assert.That(spellsPerDay.Keys, Is.EquivalentTo(names));
 
             AssertCollectionNames(names);
         }
 
-        [TestCaseSource(typeof(SpellsPerDayData), nameof(SpellsPerDayData.All))]
-        public void SpellsPerDay(string name, Dictionary<string, int> spellsPerDay)
+        [TestCaseSource(nameof(AllNames))]
+        public void SpellsPerDay(string name)
         {
-            AssertTypesAndAmounts(name, spellsPerDay);
+            Assert.That(spellsPerDay, Contains.Key(name));
+            AssertTypesAndAmounts(name, spellsPerDay[name]);
         }
 
-        public class SpellsPerDayData
+        public static IEnumerable AllNames => GetNames().Select(name => new TestCaseData(name));
+
+        public static IEnumerable<string> GetNames()
         {
-            public static IEnumerable All
+            var casters = new[]
             {
-                get
+                SpellConstants.Casters.Bard,
+                SpellConstants.Casters.Cleric,
+                SpellConstants.Casters.Druid,
+                SpellConstants.Casters.Sorcerer,
+            };
+
+            var levels = Enumerable.Range(1, 20);
+            var names = new List<string>();
+
+            foreach (var level in levels)
+            {
+                foreach (var caster in casters)
                 {
-                    var names = GetNames();
-                    var testCases = new Dictionary<string, Dictionary<string, int>>();
-
-                    foreach (var name in names)
-                    {
-                        testCases[name] = new Dictionary<string, int>();
-                    }
-
-                    var bard = new[]
-                    {
-                        new[] { 2 },
-                        new[] { 3, 0 },
-                        new[] { 3, 1 },
-                        new[] { 3, 2, 0 },
-                        new[] { 3, 3, 1 },
-                        new[] { 3, 3, 2 },
-                        new[] { 3, 3, 2, 0 },
-                        new[] { 3, 3, 3, 1 },
-                        new[] { 3, 3, 3, 2 },
-                        new[] { 3, 3, 3, 2, 0 },
-                        new[] { 3, 3, 3, 3, 1 },
-                        new[] { 3, 3, 3, 3, 2 },
-                        new[] { 3, 3, 3, 3, 2, 0 },
-                        new[] { 4, 3, 3, 3, 3, 1 },
-                        new[] { 4, 4, 3, 3, 3, 2 },
-                        new[] { 4, 4, 4, 3, 3, 2, 0 },
-                        new[] { 4, 4, 4, 4, 3, 3, 1 },
-                        new[] { 4, 4, 4, 4, 4, 3, 2 },
-                        new[] { 4, 4, 4, 4, 4, 4, 3 },
-                        new[] { 4, 4, 4, 4, 4, 4, 4 },
-                    };
-
-                    for (var i = 0; i < bard.Length; i++)
-                    {
-                        var level = i + 1;
-
-                        for (var j = 0; j < bard[i].Length; j++)
-                        {
-                            var spellLevel = j.ToString();
-                            testCases[$"{SpellConstants.Casters.Bard}:{level}"][spellLevel] = bard[i][j];
-                        }
-                    }
-
-                    var clericDruid = new[]
-                    {
-                        new[] { 3, 1 },
-                        new[] { 4, 2 },
-                        new[] { 4, 2, 1 },
-                        new[] { 5, 3, 2 },
-                        new[] { 5, 3, 2, 1 },
-                        new[] { 5, 3, 3, 2 },
-                        new[] { 6, 4, 3, 2, 1 },
-                        new[] { 6, 4, 3, 3, 2 },
-                        new[] { 6, 4, 4, 3, 2, 1 },
-                        new[] { 6, 4, 4, 3, 3, 2 },
-                        new[] { 6, 5, 4, 4, 3, 2, 1 },
-                        new[] { 6, 5, 4, 4, 3, 3, 2 },
-                        new[] { 6, 5, 5, 4, 4, 3, 2, 1 },
-                        new[] { 6, 5, 5, 4, 4, 3, 3, 2 },
-                        new[] { 6, 5, 5, 5, 4, 4, 3, 2, 1 },
-                        new[] { 6, 5, 5, 5, 4, 4, 3, 3, 2 },
-                        new[] { 6, 5, 5, 5, 5, 4, 4, 3, 2, 1 },
-                        new[] { 6, 5, 5, 5, 5, 4, 4, 3, 3, 2 },
-                        new[] { 6, 5, 5, 5, 5, 5, 4, 4, 3, 3 },
-                        new[] { 6, 5, 5, 5, 5, 5, 4, 4, 4, 4 },
-                    };
-
-                    for (var i = 0; i < clericDruid.Length; i++)
-                    {
-                        var level = i + 1;
-
-                        for (var j = 0; j < clericDruid[i].Length; j++)
-                        {
-                            var spellLevel = j.ToString();
-                            testCases[$"{SpellConstants.Casters.Cleric}:{level}"][spellLevel] = clericDruid[i][j];
-                            testCases[$"{SpellConstants.Casters.Druid}:{level}"][spellLevel] = clericDruid[i][j];
-                        }
-                    }
-
-                    var sorcerer = new[]
-                    {
-                        new[] { 5, 3 },
-                        new[] { 6, 4 },
-                        new[] { 6, 5 },
-                        new[] { 6, 6, 3 },
-                        new[] { 6, 6, 4 },
-                        new[] { 6, 6, 5, 3 },
-                        new[] { 6, 6, 6, 4 },
-                        new[] { 6, 6, 6, 5, 3 },
-                        new[] { 6, 6, 6, 6, 4 },
-                        new[] { 6, 6, 6, 6, 5, 3 },
-                        new[] { 6, 6, 6, 6, 6, 4 },
-                        new[] { 6, 6, 6, 6, 6, 5, 3 },
-                        new[] { 6, 6, 6, 6, 6, 6, 4 },
-                        new[] { 6, 6, 6, 6, 6, 6, 5, 3 },
-                        new[] { 6, 6, 6, 6, 6, 6, 6, 4 },
-                        new[] { 6, 6, 6, 6, 6, 6, 6, 5, 3 },
-                        new[] { 6, 6, 6, 6, 6, 6, 6, 6, 4 },
-                        new[] { 6, 6, 6, 6, 6, 6, 6, 6, 5, 3 },
-                        new[] { 6, 6, 6, 6, 6, 6, 6, 6, 6, 4 },
-                        new[] { 6, 6, 6, 6, 6, 6, 6, 6, 6, 6 },
-                    };
-
-                    for (var i = 0; i < sorcerer.Length; i++)
-                    {
-                        var level = i + 1;
-
-                        for (var j = 0; j < sorcerer[i].Length; j++)
-                        {
-                            var spellLevel = j.ToString();
-                            testCases[$"{SpellConstants.Casters.Sorcerer}:{level}"][spellLevel] = sorcerer[i][j];
-                        }
-                    }
-
-                    return TestDataHelper.EnumerateTestCases(testCases);
+                    names.Add($"{caster}:{level}");
                 }
             }
 
-            private static class TestDataHelper
+            return names;
+        }
+
+        private static readonly int[][] BardSpellsPerDay =
+        [
+            [2],
+            [3, 0],
+            [3, 1],
+            [3, 2, 0],
+            [3, 3, 1],
+            [3, 3, 2],
+            [3, 3, 2, 0],
+            [3, 3, 3, 1],
+            [3, 3, 3, 2],
+            [3, 3, 3, 2, 0],
+            [3, 3, 3, 3, 1],
+            [3, 3, 3, 3, 2],
+            [3, 3, 3, 3, 2, 0],
+            [4, 3, 3, 3, 3, 1],
+            [4, 4, 3, 3, 3, 2],
+            [4, 4, 4, 3, 3, 2, 0],
+            [4, 4, 4, 4, 3, 3, 1],
+            [4, 4, 4, 4, 4, 3, 2],
+            [4, 4, 4, 4, 4, 4, 3],
+            [4, 4, 4, 4, 4, 4, 4],
+        ];
+
+        private static readonly int[][] ClericDruidSpellsPerDay =
+        [
+            [3, 1],
+            [4, 2],
+            [4, 2, 1],
+            [5, 3, 2],
+            [5, 3, 2, 1],
+            [5, 3, 3, 2],
+            [6, 4, 3, 2, 1],
+            [6, 4, 3, 3, 2],
+            [6, 4, 4, 3, 2, 1],
+            [6, 4, 4, 3, 3, 2],
+            [6, 5, 4, 4, 3, 2, 1],
+            [6, 5, 4, 4, 3, 3, 2],
+            [6, 5, 5, 4, 4, 3, 2, 1],
+            [6, 5, 5, 4, 4, 3, 3, 2],
+            [6, 5, 5, 5, 4, 4, 3, 2, 1],
+            [6, 5, 5, 5, 4, 4, 3, 3, 2],
+            [6, 5, 5, 5, 5, 4, 4, 3, 2, 1],
+            [6, 5, 5, 5, 5, 4, 4, 3, 3, 2],
+            [6, 5, 5, 5, 5, 5, 4, 4, 3, 3],
+            [6, 5, 5, 5, 5, 5, 4, 4, 4, 4],
+        ];
+
+        private static readonly int[][] SorcererSpellsPerDay =
+        [
+            [5, 3],
+            [6, 4],
+            [6, 5],
+            [6, 6, 3],
+            [6, 6, 4],
+            [6, 6, 5, 3],
+            [6, 6, 6, 4],
+            [6, 6, 6, 5, 3],
+            [6, 6, 6, 6, 4],
+            [6, 6, 6, 6, 5, 3],
+            [6, 6, 6, 6, 6, 4],
+            [6, 6, 6, 6, 6, 5, 3],
+            [6, 6, 6, 6, 6, 6, 4],
+            [6, 6, 6, 6, 6, 6, 5, 3],
+            [6, 6, 6, 6, 6, 6, 6, 4],
+            [6, 6, 6, 6, 6, 6, 6, 5, 3],
+            [6, 6, 6, 6, 6, 6, 6, 6, 4],
+            [6, 6, 6, 6, 6, 6, 6, 6, 5, 3],
+            [6, 6, 6, 6, 6, 6, 6, 6, 6, 4],
+            [6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
+        ];
+
+        private static Dictionary<string, Dictionary<string, int>> GetSpellsPerDayData()
+        {
+            var testCases = GetNames().ToDictionary(n => n, n => new Dictionary<string, int>());
+
+            var casterMappings = new Dictionary<string, int[][]>
             {
-                public static IEnumerable EnumerateTestCases<T>(Dictionary<string, T> testCases)
+                [SpellConstants.Casters.Bard] = BardSpellsPerDay,
+                [SpellConstants.Casters.Cleric] = ClericDruidSpellsPerDay,
+                [SpellConstants.Casters.Druid] = ClericDruidSpellsPerDay,
+                [SpellConstants.Casters.Sorcerer] = SorcererSpellsPerDay,
+            };
+
+            foreach (var kvp in testCases)
+            {
+                var keySections = kvp.Key.Split(':');
+                var className = keySections[0];
+                var classLevel = Convert.ToInt32(keySections[1]);
+
+                var classSpellsPerDay = casterMappings[className];
+
+                for (var spellLevel = 0; spellLevel < classSpellsPerDay[classLevel - 1].Length; spellLevel++)
                 {
-                    foreach (var testCase in testCases)
-                    {
-                        yield return new TestCaseData(testCase.Key, testCase.Value);
-                    }
+                    testCases[kvp.Key][spellLevel.ToString()] = classSpellsPerDay[classLevel - 1][spellLevel];
                 }
             }
 
-            public static IEnumerable<string> GetNames()
-            {
-                var casters = new[]
-                {
-                    SpellConstants.Casters.Bard,
-                    SpellConstants.Casters.Cleric,
-                    SpellConstants.Casters.Druid,
-                    SpellConstants.Casters.Sorcerer,
-                };
-
-                var levels = Enumerable.Range(1, 20);
-                var names = new List<string>();
-
-                foreach (var level in levels)
-                {
-                    foreach (var caster in casters)
-                    {
-                        names.Add($"{caster}:{level}");
-                    }
-                }
-
-                return names;
-            }
+            return testCases;
         }
     }
 }

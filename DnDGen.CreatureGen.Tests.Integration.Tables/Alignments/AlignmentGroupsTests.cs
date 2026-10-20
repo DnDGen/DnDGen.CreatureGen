@@ -13,7 +13,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
     [TestFixture]
     public class AlignmentGroupsTests : CollectionTests
     {
-        protected override string tableName => TableNameConstants.Collection.AlignmentGroups;
+        protected override string TableName => TableNameConstants.Collection.AlignmentGroups;
 
         private string[][] alignmentGrid;
         private string[] partialAlignmentsStarts;
@@ -822,7 +822,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AssertCollection(name, [.. alignments]);
         }
 
-        private (string modifier, string alignment) ParseGroup(string group)
+        private static (string modifier, string alignment) ParseGroup(string group)
         {
             var sections = group.Split('|');
             var modifier = sections[0];

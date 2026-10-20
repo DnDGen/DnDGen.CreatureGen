@@ -5,14 +5,14 @@ using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
+using DnDGen.CreatureGen.Verifiers;
+using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.TreasureGen.Items;
-using Newtonsoft.Json;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Generators
 {
@@ -23,12 +23,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         private ICreatureGenerator creatureGenerator;
         private Stopwatch stopwatch;
         private AbilityRandomizerFactory abilityRandomizerFactory;
+        private ICreatureVerifier creatureVerifier;
 
         [SetUp]
         public void Setup()
         {
             creatureAsserter = GetNewInstanceOf<CreatureAsserter>();
             creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
+            creatureVerifier = GetNewInstanceOf<ICreatureVerifier>();
             stopwatch = new Stopwatch();
             abilityRandomizerFactory = GetNewInstanceOf<AbilityRandomizerFactory>();
         }
@@ -79,7 +81,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
 
             Assert.That(creature.Magic, Is.Not.Null);
             Assert.That(creature.Magic.Caster, Is.Not.Empty);
-            creatureAsserter.AssertMagic(creature, creature.Summary);
+            CreatureAsserter.AssertMagic(creature, creature.Summary);
         }
 
         [TestCase(CreatureConstants.Human)]
@@ -528,7 +530,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             Assert.That(creature.Name, Is.EqualTo(creatureName));
             Assert.That(creature.Templates, Is.EqualTo(templates));
 
-            creatureAsserter.AssertCreature(creature, asCharacter);
+            creatureAsserter.AssertCreature(creature, null, null, asCharacter);
         }
 
         [TestCase(CreatureConstants.Destrachan)]
@@ -604,13 +606,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [TestCase("42d600+9266", 42 + 9266, 42 * 600 + 9266)]
         public void Generate_HumanWithAbilityRandomizer(string roll, int lower, int upper)
         {
-            var randomizer = new AbilityRandomizer
-            {
-                Roll = roll
-            };
+            var randomizer = new AbilityRandomizer(roll);
 
             var creature = creatureGenerator.Generate(false, CreatureConstants.Human, randomizer);
-            creatureAsserter.AssertCreature(creature);
+            creatureAsserter.AssertCreature(creature, randomizer);
             Assert.That(creature.Abilities.Values.Select(v => v.BaseScore), Is.All.InRange(lower, upper));
         }
 
@@ -626,7 +625,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             randomizer.SetRolls[AbilityConstants.Wisdom] = 1336;
 
             var creature = creatureGenerator.Generate(false, CreatureConstants.Human, randomizer);
-            creatureAsserter.AssertCreature(creature);
+            creatureAsserter.AssertCreature(creature, randomizer);
             Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(9266));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].BaseScore, Is.EqualTo(90210));
             Assert.That(creature.Abilities[AbilityConstants.Dexterity].BaseScore, Is.EqualTo(42));
@@ -647,7 +646,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             randomizer.AbilityAdvancements[AbilityConstants.Wisdom] = 1336;
 
             var creature = creatureGenerator.Generate(false, CreatureConstants.Human, randomizer);
-            creatureAsserter.AssertCreature(creature);
+            creatureAsserter.AssertCreature(creature, randomizer);
             Assert.That(creature.Abilities[AbilityConstants.Charisma].AdvancementAdjustment, Is.EqualTo(9266));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.EqualTo(90210));
             Assert.That(creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment, Is.EqualTo(42));
@@ -664,14 +663,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [TestCase(AbilityConstants.Wisdom)]
         public void Generate_HumanWithPriorityAbility(string ability)
         {
-            var randomizer = new AbilityRandomizer
+            var randomizer = new AbilityRandomizer(AbilityConstants.RandomizerRolls.Wild)
             {
                 PriorityAbility = ability,
-                Roll = AbilityConstants.RandomizerRolls.Wild
             };
 
             var creature = creatureGenerator.Generate(false, CreatureConstants.Human, randomizer);
-            creatureAsserter.AssertCreature(creature);
+            creatureAsserter.AssertCreature(creature, randomizer);
             Assert.That(creature.Abilities.Values.Max(v => v.BaseScore), Is.EqualTo(creature.Abilities[ability].BaseScore));
         }
 
@@ -757,22 +755,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
         public void BUG_Generate_ProblematicCreature(bool asCharacter, string creatureName, params string[] templates)
         {
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer(templates);
+            var randomizer = abilityRandomizerFactory.GetRandomAbilityRandomizerForCreatureAndTemplates(asCharacter, creatureName, templates);
             GenerateAndAssertCreature(creatureName, asCharacter, randomizer, templates);
         }
 
-        //INFO: Too many problematic test cases for Repeat to be time-efficient
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
         public void BUG_Generate_ProblematicCreature_DefaultAbilities(bool asCharacter, string creatureName, params string[] templates)
         {
             GenerateAndAssertCreature(creatureName, asCharacter, null, templates);
         }
 
-        //INFO: Too many problematic test cases for Repeat to be time-efficient
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
         public void BUG_Generate_ProblematicCreature_ProblematicAbilities(bool asCharacter, string creatureName, params string[] templates)
         {
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer(templates, [AbilityConstants.RandomizerRolls.Poor, AbilityConstants.RandomizerRolls.Wild]);
+            var randomizer = abilityRandomizerFactory.GetRandomAbilityRandomizerForCreatureAndTemplates(
+                asCharacter,
+                creatureName,
+                templates,
+                [AbilityConstants.RandomizerRolls.Poor, AbilityConstants.RandomizerRolls.Wild]);
             GenerateAndAssertCreature(creatureName, asCharacter, randomizer, templates);
         }
 
@@ -782,106 +782,114 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             var creature = creatureGenerator.Generate(asCharacter, creatureName, randomizer, templates);
             stopwatch.Stop();
 
-            var timeLimit = creatureAsserter.GetGenerationTimeLimitInSeconds(creature);
+            var timeLimit = CreatureAsserter.GetGenerationTimeLimitInSeconds(creature);
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(timeLimit), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(creatureName), creature.Summary);
             Assert.That(creature.Templates, Is.EqualTo(templates.Where(t => t != CreatureConstants.Templates.None)), creature.Summary);
 
             if (asCharacter)
-                creatureAsserter.AssertCreatureAsCharacter(creature);
+                creatureAsserter.AssertCreatureAsCharacter(creature, randomizer);
             else
-                creatureAsserter.AssertCreature(creature);
+                creatureAsserter.AssertCreature(creature, randomizer);
 
             return creature;
         }
 
-        //INFO: Too many problematic test cases for Repeat to be time-efficient
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
-        public void BUG_GenerateRandom_WithProblematicFilters(string type, bool asCharacter, string template, string challengeRating, string alignment)
+        public void BUG_GenerateRandom_WithProblematicFilters(bool asCharacter, string[] templates, Filters filters)
         {
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer([template]);
-            GenerateAndAssertRandomCreature(asCharacter, type, challengeRating, alignment, randomizer, template);
+            var randomizer = abilityRandomizerFactory.GetRandomAbilityRandomizerForTemplates(asCharacter, templates, filters);
+            GenerateAndAssertRandomCreature(asCharacter, filters, randomizer, templates);
         }
 
-        //INFO: Too many problematic test cases for Repeat to be time-efficient
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
-        public void BUG_GenerateRandom_WithProblematicFilters_DefaultAbilities(string type, bool asCharacter, string template, string challengeRating, string alignment)
+        public void BUG_GenerateRandom_WithProblematicFilters_DefaultAbilities(bool asCharacter, string[] templates, Filters filters)
         {
-            GenerateAndAssertRandomCreature(asCharacter, type, challengeRating, alignment, null, template);
+            GenerateAndAssertRandomCreature(asCharacter, filters, null, templates);
         }
 
-        //INFO: Too many problematic test cases for Repeat to be time-efficient
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
-        public void BUG_GenerateRandom_WithProblematicFilters_ProblematicAbilities(string type, bool asCharacter, string template, string challengeRating, string alignment)
+        public void BUG_GenerateRandom_WithProblematicFilters_ProblematicAbilities(bool asCharacter, string[] templates, Filters filters)
         {
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer([template], [AbilityConstants.RandomizerRolls.Poor, AbilityConstants.RandomizerRolls.Wild]);
-            GenerateAndAssertRandomCreature(asCharacter, type, challengeRating, alignment, randomizer, template);
+            var randomizer = abilityRandomizerFactory.GetRandomAbilityRandomizerForTemplates(
+                asCharacter,
+                templates,
+                filters,
+                [AbilityConstants.RandomizerRolls.Poor, AbilityConstants.RandomizerRolls.Wild]);
+            GenerateAndAssertRandomCreature(asCharacter, filters, randomizer, templates);
         }
 
         [Test]
-        [Repeat(100)]
         public void BUG_GenerateRandom_WithProblematicFilters_HalfDragonCelestial()
         {
             var templates = new[] { CreatureConstants.Templates.HalfDragon_Gold, CreatureConstants.Templates.CelestialCreature };
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer(templates);
-            GenerateAndAssertRandomCreature(false, null, null, null, randomizer, templates);
+            var randomizer = abilityRandomizerFactory.GetRandomAbilityRandomizerForTemplates(false, templates, null);
+            GenerateAndAssertRandomCreature(false, null, randomizer, templates);
         }
 
         [Test]
-        [Repeat(100)]
-        public void BUG_Generate_WithProblematicFilters_DriderHalfDragonCelestial()
+        public void BUG_Generate_DriderHalfDragonCelestial()
         {
             var templates = new[] { CreatureConstants.Templates.HalfDragon_Gold, CreatureConstants.Templates.CelestialCreature };
             var creature = creatureGenerator.Generate(false, CreatureConstants.Drider, null, templates);
             creatureAsserter.AssertCreature(creature);
         }
 
+        [Test]
+        [Repeat(10)]
+        public void BUG_Generate_OtyughHalfCelestial()
+        {
+            var templates = new[] { CreatureConstants.Templates.HalfCelestial };
+            var randomizer = new AbilityRandomizer(AbilityConstants.RandomizerRolls.Raw);
+            var creature = creatureGenerator.Generate(false, CreatureConstants.Otyugh, randomizer, templates);
+            creatureAsserter.AssertCreature(creature, randomizer);
+        }
+
+        [Test]
+        [Repeat(10)]
+        public void BUG_GenerateRandom_WithProblematicFilters_CR2Reptilian()
+        {
+            var filters = new Filters { ChallengeRatings = [ChallengeRatingConstants.CR2], Types = [CreatureConstants.Types.Subtypes.Reptilian] };
+            var randomizer = abilityRandomizerFactory.GetRandomAbilityRandomizerForTemplates(false, [], filters, [AbilityConstants.RandomizerRolls.Poor]);
+            GenerateAndAssertRandomCreature(false, filters, randomizer);
+        }
+
         private Creature GenerateAndAssertRandomCreature(
             bool asCharacter,
-            string type,
-            string challengeRating,
-            string alignment,
+            Filters filters,
             AbilityRandomizer randomizer,
             params string[] templates)
         {
-            var filters = new Filters();
-            filters.Templates.AddRange(templates);
-            filters.Type = type;
-            filters.ChallengeRating = challengeRating;
-            filters.Alignment = alignment;
+            var valid = creatureVerifier.VerifyCompatibility(asCharacter, null, randomizer, filters, templates);
+            Assert.That(valid, Is.True, new InvalidCreatureException(null, asCharacter, null, filters, randomizer, templates).Message);
 
             stopwatch.Restart();
-            var creature = creatureGenerator.GenerateRandom(asCharacter, randomizer, filters);
+            var creature = creatureGenerator.GenerateRandom(asCharacter, randomizer, filters, templates);
             stopwatch.Stop();
 
-            var message = new StringBuilder();
-            var messageTemplate = filters.CleanTemplates.Count > 0 ? string.Join(", ", filters.CleanTemplates) : "(None)";
+            var failure = new InvalidCreatureException(null, asCharacter, creature.Summary, filters, randomizer, templates);
 
-            message.AppendLine($"Creature: {creature.Summary}");
-            message.AppendLine($"As Character: {asCharacter}");
-            message.AppendLine($"Template: {messageTemplate}");
-            message.AppendLine($"Type: {type ?? "Null"}");
-            message.AppendLine($"CR: {challengeRating ?? "Null"}");
-            message.AppendLine($"Alignment: {alignment ?? "Null"}");
+            var timeLimit = CreatureAsserter.GetGenerationTimeLimitInSeconds(creature);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(timeLimit), failure.Message);
 
-            var timeLimit = creatureAsserter.GetGenerationTimeLimitInSeconds(creature);
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(timeLimit), message.ToString());
+            if (templates.Length > 0)
+                Assert.That(creature.Templates, Is.EqualTo(templates), failure.Message);
 
-            Assert.That(creature.Templates, Is.EqualTo(filters.CleanTemplates), message.ToString());
+            //INFO: While we support multiple filters (acting as an OR), our current test cases only use 1 filter each.
+            //if we ever add multiple filter values as abilityRandomizerFactory test case, these assertions should fail and should be updated to handle the OR correctly
+            if (filters?.Types?.Count > 0)
+                CreatureAsserter.AssertCreatureIsType(creature, filters.Types.Single(), failure.Message);
 
-            if (type != null)
-                creatureAsserter.AssertCreatureIsType(creature, type, message.ToString());
+            if (filters?.ChallengeRatings?.Count > 0)
+                Assert.That(creature.ChallengeRating, Is.EqualTo(filters.ChallengeRatings.Single()), failure.Message);
 
-            if (challengeRating != null)
-                Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), message.ToString());
-
-            if (alignment != null)
-                Assert.That(creature.Alignment.Full, Is.EqualTo(alignment), message.ToString());
+            if (filters?.Alignments?.Count > 0)
+                Assert.That(creature.Alignment.Full, Is.EqualTo(filters.Alignments.Single()), failure.Message);
 
             if (asCharacter)
-                creatureAsserter.AssertCreatureAsCharacter(creature, message.ToString());
+                creatureAsserter.AssertCreatureAsCharacter(creature, randomizer, filters, failure.Message);
             else
-                creatureAsserter.AssertCreature(creature, asCharacter, message.ToString());
+                creatureAsserter.AssertCreature(creature, randomizer, filters, asCharacter, failure.Message);
 
             return creature;
         }
@@ -891,7 +899,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
         {
             var iterations = 100;
             var advancedHappened = false;
-            var randomizer = abilityRandomizerFactory.GetAbilityRandomizer([]);
+            var randomizer = abilityRandomizerFactory.GetRandomAbilityRandomizer();
 
             while (iterations-- > 0 && !advancedHappened)
             {
@@ -911,20 +919,61 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDiceQuantity), creature.Summary);
         }
 
-        [Test]
-        public void DEBUG_Generate_GenerateBetaCreature()
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
+        public void BUG_Generate_TemplateOnlyAddsAugmentedIfCreatureTypeChanged(string template)
         {
-            var creature = creatureGenerator.Generate(false, CreatureConstants.Lizardfolk);
-            Assert.That(creature, Is.Not.Null);
-        }
+            var creatureNames = new[] { CreatureConstants.Human, CreatureConstants.Halfling_Lightfoot, CreatureConstants.Dog_Riding };
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void BUG_Generate_CanDeserializeCreature(string creatureName)
-        {
-            var creature = creatureGenerator.Generate(false, creatureName);
-            var serialized = JsonConvert.SerializeObject(creature);
-            var deserialized = JsonConvert.DeserializeObject<Creature>(serialized);
-            Assert.That(deserialized.Summary, Is.EqualTo(creature.Summary));
+            foreach (var asCharacter in new[] { true, false })
+            {
+                foreach (var creatureName in creatureNames)
+                {
+                    var valid = creatureVerifier.VerifyCompatibility(asCharacter, creatureName);
+                    valid &= creatureVerifier.VerifyCompatibility(asCharacter, creatureName, null, null, template);
+                    if (!valid)
+                        continue;
+
+                    var creature = creatureGenerator.Generate(asCharacter, creatureName);
+                    var templatedCreature = creatureGenerator.Generate(asCharacter, creatureName, null, template);
+
+                    if (asCharacter)
+                    {
+                        creatureAsserter.AssertCreatureAsCharacter(creature);
+                        creatureAsserter.AssertCreatureAsCharacter(templatedCreature);
+                    }
+                    else
+                    {
+                        creatureAsserter.AssertCreature(creature);
+                        creatureAsserter.AssertCreature(templatedCreature);
+                    }
+                    Assert.That(creature.Templates, Is.Empty);
+
+                    if (template == CreatureConstants.Templates.None)
+                    {
+                        Assert.That(templatedCreature.Templates, Is.Empty);
+                    }
+                    else
+                    {
+                        Assert.That(templatedCreature.Templates, Is.EqualTo([template]));
+                    }
+
+                    if (template == CreatureConstants.Templates.Skeleton || template == CreatureConstants.Templates.Zombie)
+                    {
+                        Assert.That(templatedCreature.Type.Name, Is.EqualTo(CreatureConstants.Types.Undead), templatedCreature.Summary);
+                        Assert.That(templatedCreature.Type.SubTypes, Does.Not.Contain(creature.Type.Name), templatedCreature.Summary);
+                        Assert.That(templatedCreature.Type.SubTypes, Does.Not.Contain(CreatureConstants.Types.Subtypes.Augmented), templatedCreature.Summary);
+                    }
+                    else if (creature.Type.Name != templatedCreature.Type.Name)
+                    {
+                        Assert.That(templatedCreature.Type.SubTypes, Is.SupersetOf([creature.Type.Name, CreatureConstants.Types.Subtypes.Augmented]), templatedCreature.Summary);
+                    }
+                    else
+                    {
+                        Assert.That(templatedCreature.Type.SubTypes, Does.Not.Contain(creature.Type.Name), templatedCreature.Summary);
+                        Assert.That(templatedCreature.Type.SubTypes, Does.Not.Contain(CreatureConstants.Types.Subtypes.Augmented), templatedCreature.Summary);
+                    }
+                }
+            }
         }
     }
 }

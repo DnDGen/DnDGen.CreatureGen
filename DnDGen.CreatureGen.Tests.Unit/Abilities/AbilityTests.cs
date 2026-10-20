@@ -467,9 +467,62 @@ namespace DnDGen.CreatureGen.Tests.Unit.Abilities
         }
 
         [Test]
+        public void RawScore_AddRacialAdjustment()
+        {
+            ability.RacialAdjustment = 9266;
+            Assert.That(ability.RawScore, Is.EqualTo(9276));
+            Assert.That(ability.Modifier, Is.EqualTo(4633));
+        }
+
+        [Test]
+        public void RawScore_AddNegativeRacialAdjustment()
+        {
+            ability.RacialAdjustment = -6;
+            Assert.That(ability.RawScore, Is.EqualTo(4));
+            Assert.That(ability.Modifier, Is.EqualTo(-3));
+        }
+
+        [Test]
+        public void RawScore_AddAgeAdjustment()
+        {
+            ability.AgeAdjustment = -2;
+            Assert.That(ability.RawScore, Is.EqualTo(8));
+            Assert.That(ability.Modifier, Is.EqualTo(-1));
+        }
+
+        [Test]
+        public void RawScore_AddAdvancementAdjustment()
+        {
+            ability.AdvancementAdjustment = 9266;
+            Assert.That(ability.RawScore, Is.EqualTo(9276));
+            Assert.That(ability.Modifier, Is.EqualTo(4633));
+        }
+
+        [Test]
+        public void RawScore_AddTemplateAdjustment()
+        {
+            ability.TemplateAdjustment = 9266;
+            Assert.That(ability.RawScore, Is.EqualTo(9276));
+            Assert.That(ability.Modifier, Is.EqualTo(4633));
+        }
+
+        [Test]
+        public void RawScore_AddAllAdjustments()
+        {
+            ability.AdvancementAdjustment = 9266;
+            ability.RacialAdjustment = 90210;
+            ability.TemplateAdjustment = 42;
+            ability.AgeAdjustment = -2;
+
+            Assert.That(ability.RawScore, Is.EqualTo(Ability.DefaultScore + 9266 + 90210 + 42 - 2));
+            Assert.That(ability.Modifier, Is.EqualTo(49758));
+        }
+
+        [Test]
         public void AbilityCannotHaveFullScoreLessThan1_FromRacial()
         {
             ability.RacialAdjustment = -9266;
+            Assert.That(ability.RawScore, Is.EqualTo(-9256));
             Assert.That(ability.FullScore, Is.EqualTo(1));
             Assert.That(ability.Modifier, Is.EqualTo(-5));
         }
@@ -478,6 +531,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Abilities
         public void AbilityCannotHaveFullScoreLessThan1_FromAge()
         {
             ability.AgeAdjustment = -9266;
+            Assert.That(ability.RawScore, Is.EqualTo(-9256));
             Assert.That(ability.FullScore, Is.EqualTo(1));
             Assert.That(ability.Modifier, Is.EqualTo(-5));
         }

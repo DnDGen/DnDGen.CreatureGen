@@ -1,34 +1,50 @@
 ﻿using DnDGen.CreatureGen.Abilities;
-using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Abilities;
+using DnDGen.CreatureGen.Generators.Creatures;
+using DnDGen.CreatureGen.Verifiers;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration
 {
-    public class AbilityRandomizerFactory
+    public class AbilityRandomizerFactory(ICollectionSelector collectionSelector, Dice dice, ICreatureVerifier creatureVerifier)
     {
-        private readonly ICollectionSelector collectionSelector;
-        private readonly Dictionary<string, (string Ability, int Minimum)> templateAbilityMinimums;
-        private readonly Dice dice;
+        private const string Set = "Set";
 
-        public AbilityRandomizerFactory(ICollectionSelector collectionSelector, Dice dice)
+        public AbilityRandomizer GetRandomAbilityRandomizer(string[] rolls = null)
         {
-            this.collectionSelector = collectionSelector;
-            this.dice = dice;
+            rolls ??=
+            [
+                AbilityConstants.RandomizerRolls.Heroic,
+                AbilityConstants.RandomizerRolls.BestOfFour,
+                AbilityConstants.RandomizerRolls.Default,
+                AbilityConstants.RandomizerRolls.Average,
+                AbilityConstants.RandomizerRolls.Good,
+                AbilityConstants.RandomizerRolls.OnesAsSixes,
+                AbilityConstants.RandomizerRolls.Poor,
+                AbilityConstants.RandomizerRolls.Raw,
+                AbilityConstants.RandomizerRolls.Wild,
+                Set
+            ];
 
-            templateAbilityMinimums = new Dictionary<string, (string Ability, int Minimum)>
+            var randomizer = new AbilityRandomizer(collectionSelector.SelectRandomFrom(rolls));
+
+            if (randomizer.Roll == Set)
             {
-                [CreatureConstants.Templates.Ghost] = (AbilityConstants.Charisma, 6),
-                [CreatureConstants.Templates.HalfCelestial] = (AbilityConstants.Intelligence, 4),
-                [CreatureConstants.Templates.HalfFiend] = (AbilityConstants.Intelligence, 4)
-            };
+                randomizer = new AbilityRandomizer(null);
+                randomizer.SetRolls[AbilityConstants.Strength] = dice.Roll(AbilityConstants.RandomizerRolls.Raw).AsSum();
+                randomizer.SetRolls[AbilityConstants.Dexterity] = dice.Roll(AbilityConstants.RandomizerRolls.Raw).AsSum();
+                randomizer.SetRolls[AbilityConstants.Constitution] = dice.Roll(AbilityConstants.RandomizerRolls.Raw).AsSum();
+                randomizer.SetRolls[AbilityConstants.Intelligence] = dice.Roll(AbilityConstants.RandomizerRolls.Raw).AsSum();
+                randomizer.SetRolls[AbilityConstants.Wisdom] = dice.Roll(AbilityConstants.RandomizerRolls.Raw).AsSum();
+                randomizer.SetRolls[AbilityConstants.Charisma] = dice.Roll(AbilityConstants.RandomizerRolls.Raw).AsSum();
+            }
+
+            return randomizer;
         }
 
-        public AbilityRandomizer GetAbilityRandomizer(string[] templates, string[] rolls = null)
+        public AbilityRandomizer GetRandomAbilityRandomizerForTemplates(bool asCharacter, string[] templates, Filters filters, string[] rolls = null)
         {
             rolls ??=
             [
@@ -43,38 +59,57 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 AbilityConstants.RandomizerRolls.Wild,
             ];
 
-            var randomizer = new AbilityRandomizer
+            var validRolls = rolls.Where(r => creatureVerifier.VerifyCompatibility(asCharacter, null, new(r), filters, templates));
+            if (!validRolls.Any())
             {
-                Roll = collectionSelector.SelectRandomFrom(rolls)
-            };
-
-            //HACK: This is just to avoid the issue when a randomly-rolled ability
-            //(especially with "Poor" or "Wild") ends up much lower than normally would be with the "Default" roll,
-            //and the template requires an ability to be a minimum value
-            if (templates.Any(t => t != null && templateAbilityMinimums.ContainsKey(t)))
-            {
-                foreach (var template in templates.Where(templateAbilityMinimums.ContainsKey))
-                {
-                    if (!randomizer.AbilityAdvancements.ContainsKey(templateAbilityMinimums[template].Ability))
-                    {
-                        randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability] = 0;
-                    }
-
-                    var newMin = Math.Max(randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability], templateAbilityMinimums[template].Minimum);
-                    randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability] = newMin;
-                    randomizer.PriorityAbility = templateAbilityMinimums[template].Ability;
-                }
+                //INFO: This means the templates themselves are not compatible. This sometimes happens in randomly-generated verifier test cases.
+                return new();
             }
-            else if (templates.Contains(null))
+
+            var randomizer = GetRandomAbilityRandomizer([.. validRolls.Concat([Set])]);
+            var valid = creatureVerifier.VerifyCompatibility(asCharacter, null, randomizer, filters, templates);
+
+            //HACK: For some filters, they are only valid with ability-dependent templates
+            //Since this method assumes it will return a randomizer valid for the given inputs,
+            //We need to adjust the set values to make this work
+            if (!valid && randomizer.SetRolls.Count > 0)
             {
-                //HACK: Here, the template might be randomly selected, so we have to guard against it for the sake of stress testing
-                foreach (var kvp in templateAbilityMinimums)
-                {
-                    if (dice.Roll(randomizer.Roll).AsPotentialMinimum() < kvp.Value.Minimum)
-                    {
-                        randomizer.AbilityAdvancements[kvp.Value.Ability] = kvp.Value.Minimum;
-                    }
-                }
+                randomizer.SetRolls[AbilityConstants.Charisma] = Ability.DefaultScore + 6;
+                randomizer.SetRolls[AbilityConstants.Intelligence] = Ability.DefaultScore + 4;
+            }
+
+            return randomizer;
+        }
+
+        public AbilityRandomizer GetRandomAbilityRandomizerForCreatureAndTemplates(bool asCharacter, string creature, string[] templates, string[] rolls = null)
+        {
+            rolls ??=
+            [
+                AbilityConstants.RandomizerRolls.Heroic,
+                AbilityConstants.RandomizerRolls.BestOfFour,
+                AbilityConstants.RandomizerRolls.Default,
+                AbilityConstants.RandomizerRolls.Average,
+                AbilityConstants.RandomizerRolls.Good,
+                AbilityConstants.RandomizerRolls.OnesAsSixes,
+                AbilityConstants.RandomizerRolls.Poor,
+                AbilityConstants.RandomizerRolls.Raw,
+                AbilityConstants.RandomizerRolls.Wild,
+            ];
+
+            rolls = rolls
+                .Where(r => creatureVerifier.VerifyCompatibility(asCharacter, creature, new(r), null, templates))
+                .ToArray();
+
+            var randomizer = GetRandomAbilityRandomizerForTemplates(asCharacter, templates, null, rolls);
+            var valid = creatureVerifier.VerifyCompatibility(asCharacter, creature, randomizer, null, templates);
+
+            //HACK: The creature might be paired with an ability-dependent template
+            //Since this method assumes it will return a randomizer valid for the given inputs,
+            //We need to adjust the set values to make this work
+            if (!valid && randomizer.SetRolls.Count > 0)
+            {
+                randomizer.SetRolls[AbilityConstants.Charisma] = Ability.DefaultScore + 6;
+                randomizer.SetRolls[AbilityConstants.Intelligence] = Ability.DefaultScore + 4;
             }
 
             return randomizer;

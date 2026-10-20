@@ -1,6 +1,8 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Templates;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
@@ -8,7 +10,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     [TestFixture]
     public class TemplateGroupsTests : CollectionTests
     {
-        protected override string tableName => TableNameConstants.Collection.TemplateGroups;
+        protected override string TableName => TableNameConstants.Collection.TemplateGroups;
 
         [Test]
         public void TemplateGroupNames()
@@ -16,6 +18,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var entries = new[]
             {
                 GroupConstants.All,
+                GroupConstants.HasMinimumAbility,
             };
 
             AssertCollectionNames(entries);
@@ -26,6 +29,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             var allTemplates = CreatureConstants.Templates.GetAll().Except([CreatureConstants.Templates.None]);
             AssertDistinctCollection(GroupConstants.All, [.. allTemplates]);
+        }
+
+        [Test]
+        public void HasMinimumAbilityGroup()
+        {
+            var templates = CreatureConstants.Templates.GetAll();
+            var minimumAbilityTemplates = new List<string>();
+
+            foreach (var template in templates)
+            {
+                var applicator = GetNewInstanceOf<TemplateApplicator>(template);
+                if (applicator.MinimumAbility is not null)
+                    minimumAbilityTemplates.Add(template);
+            }
+
+            AssertDistinctCollection(GroupConstants.HasMinimumAbility, [.. minimumAbilityTemplates]);
         }
     }
 }

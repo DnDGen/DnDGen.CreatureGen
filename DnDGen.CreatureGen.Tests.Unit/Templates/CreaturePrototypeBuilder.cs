@@ -7,15 +7,13 @@ using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
 {
-    public class CreaturePrototypeBuilder
+    internal class CreaturePrototypeBuilder
     {
         private readonly CreaturePrototype prototype;
-        private readonly Random random;
 
         public CreaturePrototypeBuilder()
         {
             prototype = new CreaturePrototype();
-            random = new Random();
         }
 
         public CreaturePrototype Build()
@@ -54,6 +52,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public CreaturePrototypeBuilder WithSkeleton(bool hasSkeleton)
         {
             prototype.HasSkeleton = hasSkeleton;
+
+            return this;
+        }
+
+        public CreaturePrototypeBuilder WithAsCharacter(bool asCharacter)
+        {
+            prototype.AsCharacter = asCharacter;
 
             return this;
         }
@@ -119,20 +124,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
         public CreaturePrototypeBuilder WithAlignments(params string[] alignments)
         {
-            prototype.Alignments = alignments.Select(a => new Alignment(a)).ToList();
+            prototype.Alignments = [.. alignments.Select(a => new Alignment(a))];
 
             return this;
         }
 
         private void InitializeAbilities()
         {
-            prototype.Abilities = new Dictionary<string, Ability>();
-            prototype.Abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
-            prototype.Abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
-            prototype.Abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
-            prototype.Abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
-            prototype.Abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
-            prototype.Abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
+            prototype.Abilities = new Dictionary<string, Ability>
+            {
+                [AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma),
+                [AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution),
+                [AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity),
+                [AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence),
+                [AbilityConstants.Strength] = new Ability(AbilityConstants.Strength),
+                [AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom)
+            };
         }
 
         public CreaturePrototypeBuilder WithoutAbility(string ability)
@@ -142,10 +149,31 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             return this;
         }
 
-        public CreaturePrototypeBuilder WithAbility(string ability, int racial, int template = 0)
+        public CreaturePrototypeBuilder WithAbility(string ability, int racial, int template = 0, int baseScore = Ability.DefaultScore)
         {
+            prototype.Abilities[ability].BaseScore = baseScore;
             prototype.Abilities[ability].RacialAdjustment = racial;
             prototype.Abilities[ability].TemplateAdjustment = template;
+
+            return this;
+        }
+
+        public CreaturePrototypeBuilder Clone(CreaturePrototype source)
+        {
+            prototype.Name = source.Name;
+            prototype.Abilities = source.Abilities.ToDictionary(
+                kvp => kvp.Key,
+                kvp => new Ability(kvp.Value.Name) { BaseScore = kvp.Value.BaseScore, RacialAdjustment = kvp.Value.RacialAdjustment });
+            prototype.Alignments = [.. source.Alignments.Select(a => new Alignment(a.Full))];
+            prototype.AsCharacter = source.AsCharacter;
+            prototype.CasterLevel = source.CasterLevel;
+            prototype.ChallengeRating = source.ChallengeRating;
+            prototype.HasSkeleton = source.HasSkeleton;
+            prototype.HitDiceQuantity = source.HitDiceQuantity;
+            prototype.LevelAdjustment = source.LevelAdjustment;
+            prototype.Size = source.Size;
+            prototype.Type = new CreatureType(source.Type.AllTypes);
+            prototype.Templates = [.. source.Templates];
 
             return this;
         }

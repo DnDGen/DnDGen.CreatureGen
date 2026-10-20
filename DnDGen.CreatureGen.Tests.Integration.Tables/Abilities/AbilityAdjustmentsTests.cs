@@ -16,7 +16,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         private ICollectionTypeAndAmountSelector typesAndAmountsSelector;
         private ICollectionDataSelector<CreatureDataSelection> creatureDataSelector;
 
-        protected override string tableName => TableNameConstants.TypeAndAmount.AbilityAdjustments;
+        protected override string TableName => TableNameConstants.TypeAndAmount.AbilityAdjustments;
 
         [SetUp]
         public void Setup()
@@ -37,6 +37,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
 
             Assert.That(AbilityAdjustmentsTestData.Keys, Is.EquivalentTo(names), "TEST DATA");
             AssertCollectionNames(names);
+        }
+
+        //INFO: Certain Verifier logic depends on this being true.
+        //If this test fails, there is either a bug in the system, or the CreatureVerifier must update its logic
+        [Test]
+        public void LowestAbilityAdjustmentIsMinus10()
+        {
+            var data = AbilityAdjustmentsTestData;
+            var min = data.Values.SelectMany(v => v.Values).Min();
+            Assert.That(min, Is.EqualTo(-10));
         }
 
         [TestCaseSource(nameof(AbilityAdjustmentsTestCases))]
@@ -3902,7 +3912,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             var creatures = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
                 .Where(kvp => kvp.Value.Single().Types.Contains(creatureType))
                 .Select(kvp => kvp.Key);
-            var abilities = typesAndAmountsSelector.SelectAllFrom(Config.Name, tableName);
+            var abilities = typesAndAmountsSelector.SelectAllFrom(Config.Name, TableName);
 
             foreach (var creature in creatures)
             {
@@ -3927,7 +3937,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             var creatures = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
                 .Where(kvp => kvp.Value.Single().Types.Contains(creatureType))
                 .Select(kvp => kvp.Key);
-            var abilities = typesAndAmountsSelector.SelectAllFrom(Config.Name, tableName);
+            var abilities = typesAndAmountsSelector.SelectAllFrom(Config.Name, TableName);
             var templates = CreatureConstants.Templates.GetAll();
 
             //INFO: Templates handle typing differently, so we want to ignore those for this test
@@ -3948,7 +3958,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             var animals = creatureDataSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureData)
                 .Where(kvp => kvp.Value.Single().Types.Contains(CreatureConstants.Types.Animal))
                 .Select(kvp => kvp.Key);
-            var abilities = typesAndAmountsSelector.SelectAllFrom(Config.Name, tableName);
+            var abilities = typesAndAmountsSelector.SelectAllFrom(Config.Name, TableName);
 
             foreach (var animal in animals)
             {

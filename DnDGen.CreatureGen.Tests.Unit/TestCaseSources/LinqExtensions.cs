@@ -15,5 +15,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.TestCaseSources
             return source.Count() == target.Count()
                 && !source.Except(target).Any();
         }
+
+        public static bool IsEquivalentTo<T>(this IEnumerable<T> source, params T[] target)
+        {
+            if (source == null || target == null)
+            {
+                return source == target;
+            }
+
+            return source.Count() == target.Count()
+                && !source.Except(target).Any();
+        }
     }
 }

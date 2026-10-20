@@ -1,67 +1,77 @@
-﻿using DnDGen.CreatureGen.Alignments;
+﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Alignments;
+using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Templates;
+using DnDGen.CreatureGen.Verifiers;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
-using DnDGen.Infrastructure.Factories;
 using DnDGen.Infrastructure.Selectors.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Generators.Alignments
 {
-    internal class AlignmentGenerator(ICollectionSelector collectionSelector, JustInTimeFactory factory) : IAlignmentGenerator
+    internal class AlignmentGenerator(ICollectionSelector collectionSelector, ICreatureVerifier creatureVerifier, ICreaturePrototypeFactory prototypeFactory) : IAlignmentGenerator
     {
-        public Alignment Generate(string creatureName, IEnumerable<string> templates, string presetAlignment)
+        public Alignment Generate(string creatureName, string[] templates, Filters filters)
         {
-            if (!string.IsNullOrEmpty(presetAlignment))
-                return new Alignment(presetAlignment);
+            templates ??= [];
+            var weightedAlignments = GetWeightedAlignments(creatureName, templates, filters);
 
-            var weightedAlignments = GetWeightedAlignments(creatureName, templates);
             if (!weightedAlignments.Any())
                 throw new InvalidCreatureException(
                     $"Creature {creatureName} has no valid alignments for templates [{string.Join(", ", templates)}]",
                     false,
                     creatureName,
-                    null);
+                    filters,
+                    null,
+                    templates);
 
             var randomAlignment = collectionSelector.SelectRandomFrom(weightedAlignments);
             return new Alignment(randomAlignment);
         }
 
-        private IEnumerable<string> GetWeightedAlignments(string creatureName, IEnumerable<string> templates)
+        private IEnumerable<string> GetWeightedAlignments(string creatureName, string[] templates, Filters filters)
         {
             var weightedAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, creatureName);
-            var templatesArray = templates?.ToArray() ?? [];
+            var hasAlignmentFilter = filters?.Alignments?.Any() == true;
 
-            if (templatesArray.Length == 0)
+            if (templates.Length == 0 && hasAlignmentFilter)
+                return weightedAlignments.Where(filters.Alignments.Contains);
+            else if (templates.Length == 0)
                 return weightedAlignments;
 
-            if (templatesArray.Length == 1)
+            if (templates.Length == 1 && !hasAlignmentFilter)
             {
-                var templateAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, templatesArray[0] + GroupConstants.AllowedInput);
+                var templateAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, templates[0] + GroupConstants.AllowedInput);
 
-                //INFO: Doing this instead of intersect in order to preserve duplicates
-                weightedAlignments = weightedAlignments.Where(templateAlignments.Contains);
-
-                return weightedAlignments;
+                //INFO: Doing this instead of intersect in order to preserve duplicates/weighting
+                return weightedAlignments.Where(templateAlignments.Contains);
             }
 
-            var applicator = factory.Build<TemplateApplicator>(templatesArray[0]);
-            var prototypes = applicator.GetCompatiblePrototypes([creatureName], false);
+            //INFO: We don't care about how the abilities validate, since that gets handled in the AbilityGenerator
+            //So, we will use an arbitrary roll that has a high max to eliminate that confounding variable.
+            var creaturePrototype = prototypeFactory.Build(creatureName, false, new(AbilityConstants.RandomizerRolls.BestOfFour));
+            var characterPrototype = prototypeFactory.Build(creatureName, true, new(AbilityConstants.RandomizerRolls.BestOfFour));
+            var alignmentFilters = new Filters { Alignments = filters?.Alignments ?? [] };
 
-            for (var i = 1; i < templatesArray.Length; i++)
+            //HACK: This is very inefficient, but this is an edge case
+            //And only applies to a small set of prototypes (as opposed to all possible creatures)
+            //We can't pre-cache it because of the combinatorials of the template chaining
+            bool BaseAlignmentMatchesTemplatesAndFilters(string alignment)
             {
-                applicator = factory.Build<TemplateApplicator>(templatesArray[i]);
+                var creatureClone = prototypeFactory.Clone(creaturePrototype);
+                var characterClone = prototypeFactory.Clone(characterPrototype);
+                creatureClone.Alignments = [new(alignment)];
+                characterClone.Alignments = [new(alignment)];
 
-                //INFO: The only filter we would care about would be a preset alignment, which we already handle earlier
-                //So we do not need to pass filters to the applicators
-                prototypes = applicator.GetCompatiblePrototypes(prototypes, false);
+                var prototypes = creatureVerifier.GetChainedTemplates([creatureClone, characterClone], templates, filters: alignmentFilters);
+                return prototypes.Any();
             }
 
-            //INFO: At this point, after multiple templates, we are choosing to ignore weighting
-            weightedAlignments = prototypes.SelectMany(p => p.Alignments).Select(a => a.Full);
+            weightedAlignments = weightedAlignments.Where(BaseAlignmentMatchesTemplatesAndFilters);
 
-            return weightedAlignments;
+            //INFO: Want immediate execution, so chained templates don't recompute
+            return [.. weightedAlignments];
         }
     }
 }

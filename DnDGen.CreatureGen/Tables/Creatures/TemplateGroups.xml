@@ -47,4 +47,10 @@
 	  <entry>Half-Fiend</entry>
 	  <entry>Vampire</entry>
   </collection>
+  <collection>
+    <name>Has Minimum Ability</name>
+	  <entry>Ghost</entry>
+	  <entry>Half-Celestial</entry>
+	  <entry>Half-Fiend</entry>
+  </collection>
 </collections>
