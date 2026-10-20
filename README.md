@@ -6,7 +6,7 @@ Generates a random, fleshed-out creature for Dungeons and Dragons 3.5
 
 ## Installing CreatureGen
 
-The project is on [NuGet](https://www.nuget.org/packages/DnDGen.CreatureGen).
+The project is on [NuGet](https://www.nuget.org/packages/DnDGen.CreatureGen). It targets .NET 10.
 
     dotnet add package DnDGen.CreatureGen
 
@@ -147,6 +147,7 @@ Include `CreatureConstants.Templates.None` to only check creatures without a tem
 
 Version 2.0.0 has breaking changes to the public API:
 
+- **Targets .NET 10.** Version 1.x targeted .NET 8, which reaches end of support on November 10, 2026.
 - **Templates moved out of `Filters`.** Pass templates as the trailing `params string[] templates` argument of `GenerateRandomName`, `GenerateRandom`, and `GenerateRandomAsync` instead of `Filters.Templates`.
 - **Filters are now lists.** `Filters.Type`, `Filters.ChallengeRating`, and `Filters.Alignment` are replaced by `Filters.Types`, `Filters.ChallengeRatings`, and `Filters.Alignments`. A creature matches if it matches any value in a list.
 - **`Filters.GetDescription(bool asCharacter)`** is now `Filters.GetDescription()`.

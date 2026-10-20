@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net8.0</TargetFrameworks>
+    <TargetFrameworks>net10.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Karl M. Speer</Authors>
     <Company>DnDGen</Company>
@@ -15,6 +15,7 @@
     <PackageTags>creature generator dice dungeons dragons d20 dnd 3.5 gen</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>2.0.0 contains breaking changes. See "Upgrading from 1.x" in the README.
+- Targets .NET 10 (previously .NET 8)
 - Templates are passed as trailing params arguments instead of through Filters.Templates
 - Filters.Type, ChallengeRating, and Alignment are now the lists Types, ChallengeRatings, and Alignments, matching any value in each list
 - AbilityRandomizer.Roll is set through the constructor
