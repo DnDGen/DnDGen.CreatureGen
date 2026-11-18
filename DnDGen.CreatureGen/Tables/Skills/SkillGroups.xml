@@ -5535,7 +5535,7 @@
   <collection>
     <name>Viper Snake, Large</name>
     <entry>Balance</entry>
-    <entry>Climb</entry>
+    <entry>ClimbDexterity</entry>
     <entry>Hide</entry>
     <entry>Listen</entry>
     <entry>Spot</entry>
@@ -5544,7 +5544,7 @@
   <collection>
     <name>Viper Snake, Medium</name>
     <entry>Balance</entry>
-    <entry>Climb</entry>
+    <entry>ClimbDexterity</entry>
     <entry>Hide</entry>
     <entry>Listen</entry>
     <entry>Spot</entry>
@@ -5553,7 +5553,7 @@
   <collection>
     <name>Viper Snake, Small</name>
     <entry>Balance</entry>
-    <entry>Climb</entry>
+    <entry>ClimbDexterity</entry>
     <entry>Hide</entry>
     <entry>Listen</entry>
     <entry>Spot</entry>
@@ -5562,7 +5562,7 @@
   <collection>
     <name>Viper Snake, Tiny</name>
     <entry>Balance</entry>
-    <entry>Climb</entry>
+    <entry>ClimbDexterity</entry>
     <entry>Hide</entry>
     <entry>Listen</entry>
     <entry>Spot</entry>

@@ -695,6 +695,14 @@
   </collection>
   <collection>
     <name>Constrictor Snake</name>
+	  <entry>Balance@8@</entry>
+	  <entry>Climb@8@</entry>
+	  <entry>Hide@4@</entry>
+	  <entry>Listen@4@</entry>
+	  <entry>Spot@4@</entry>
+	  <entry>Climb@10@can always take 10</entry>
+	  <entry>Swim@10@can always take 10</entry>
+	  <entry>Swim@8@special action or avoid a hazard</entry>
   </collection>
   <collection>
     <name>Construct</name>
@@ -1210,6 +1218,14 @@
   </collection>
   <collection>
     <name>Giant Constrictor Snake</name>
+	  <entry>Balance@8@</entry>
+	  <entry>Climb@8@</entry>
+	  <entry>Hide@4@</entry>
+	  <entry>Listen@4@</entry>
+	  <entry>Spot@4@</entry>
+	  <entry>Climb@10@can always take 10</entry>
+	  <entry>Swim@10@can always take 10</entry>
+	  <entry>Swim@8@special action or avoid a hazard</entry>
   </collection>
   <collection>
     <name>Giant Crocodile</name>
@@ -2646,18 +2662,58 @@
   </collection>
   <collection>
     <name>Viper Snake, Huge</name>
+	  <entry>Balance@8@</entry>
+	  <entry>Climb@8@</entry>
+	  <entry>Hide@4@</entry>
+	  <entry>Listen@4@</entry>
+	  <entry>Spot@4@</entry>
+	  <entry>Climb@10@can always take 10</entry>
+	  <entry>Swim@10@can always take 10</entry>
+	  <entry>Swim@8@special action or avoid a hazard</entry>
   </collection>
   <collection>
     <name>Viper Snake, Large</name>
+	  <entry>Balance@8@</entry>
+	  <entry>Climb@8@</entry>
+	  <entry>Hide@4@</entry>
+	  <entry>Listen@4@</entry>
+	  <entry>Spot@4@</entry>
+	  <entry>Climb@10@can always take 10</entry>
+	  <entry>Swim@10@can always take 10</entry>
+	  <entry>Swim@8@special action or avoid a hazard</entry>
   </collection>
   <collection>
     <name>Viper Snake, Medium</name>
+	  <entry>Balance@8@</entry>
+	  <entry>Climb@8@</entry>
+	  <entry>Hide@4@</entry>
+	  <entry>Listen@4@</entry>
+	  <entry>Spot@4@</entry>
+	  <entry>Climb@10@can always take 10</entry>
+	  <entry>Swim@10@can always take 10</entry>
+	  <entry>Swim@8@special action or avoid a hazard</entry>
   </collection>
   <collection>
-    <name>Viper Snake, Small</name>
+	  <name>Viper Snake, Small</name>
+	  <entry>Balance@8@</entry>
+	  <entry>Climb@8@</entry>
+	  <entry>Hide@4@</entry>
+	  <entry>Listen@4@</entry>
+	  <entry>Spot@4@</entry>
+	  <entry>Climb@10@can always take 10</entry>
+	  <entry>Swim@10@can always take 10</entry>
+	  <entry>Swim@8@special action or avoid a hazard</entry>
   </collection>
   <collection>
     <name>Viper Snake, Tiny</name>
+	  <entry>Balance@8@</entry>
+	  <entry>Climb@8@</entry>
+	  <entry>Hide@4@</entry>
+	  <entry>Listen@4@</entry>
+	  <entry>Spot@4@</entry>
+	  <entry>Climb@10@can always take 10</entry>
+	  <entry>Swim@10@can always take 10</entry>
+	  <entry>Swim@8@special action or avoid a hazard</entry>
   </collection>
   <collection>
     <name>Vrock</name>
