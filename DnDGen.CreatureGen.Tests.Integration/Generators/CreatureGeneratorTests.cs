@@ -975,5 +975,101 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators
                 }
             }
         }
+
+        [TestCase(CreatureConstants.Snake_Constrictor)]
+        [TestCase(CreatureConstants.Snake_Constrictor_Giant)]
+        [TestCase(CreatureConstants.Snake_Viper_Huge)]
+        [TestCase(CreatureConstants.Snake_Viper_Large)]
+        [TestCase(CreatureConstants.Snake_Viper_Medium)]
+        [TestCase(CreatureConstants.Snake_Viper_Small)]
+        [TestCase(CreatureConstants.Snake_Viper_Tiny)]
+        public void BUG_Generate_SnakeHasSkillBonuses(string creatureName)
+        {
+            var creature = creatureGenerator.Generate(false, creatureName);
+            creatureAsserter.AssertCreature(creature);
+
+            var hide = creature.Skills.First(s => s.Name == SkillConstants.Hide);
+            Assert.That(hide.Bonuses, Has.Count.AtLeast(1));
+            Assert.That(hide.Bonuses[0].Value, Is.EqualTo(4));
+            Assert.That(hide.Bonuses[0].IsConditional, Is.False);
+
+            var listen = creature.Skills.First(s => s.Name == SkillConstants.Listen);
+            Assert.That(listen.Bonuses, Has.Count.AtLeast(1));
+            Assert.That(listen.Bonuses[0].Value, Is.EqualTo(4));
+            Assert.That(listen.Bonuses[0].IsConditional, Is.False);
+
+            var spot = creature.Skills.First(s => s.Name == SkillConstants.Spot);
+            Assert.That(spot.Bonuses, Has.Count.AtLeast(1));
+            Assert.That(spot.Bonuses[0].Value, Is.EqualTo(4));
+            Assert.That(spot.Bonuses[0].IsConditional, Is.False);
+
+            var balance = creature.Skills.First(s => s.Name == SkillConstants.Balance);
+            Assert.That(balance.Bonuses, Has.Count.AtLeast(1));
+            Assert.That(balance.Bonuses[0].Value, Is.EqualTo(8));
+            Assert.That(balance.Bonuses[0].IsConditional, Is.False);
+
+            var climb = creature.Skills.First(s => s.Name == SkillConstants.Climb);
+            Assert.That(climb.Bonuses, Has.Count.AtLeast(2));
+            Assert.That(climb.Bonuses[0].Value, Is.EqualTo(8));
+            Assert.That(climb.Bonuses[0].IsConditional, Is.False);
+            Assert.That(climb.Bonuses[1].Value, Is.EqualTo(10));
+            Assert.That(climb.Bonuses[1].IsConditional, Is.True);
+            Assert.That(climb.Bonuses[1].Condition, Is.EqualTo("can always take 10"));
+
+            var swim = creature.Skills.First(s => s.Name == SkillConstants.Swim);
+            Assert.That(swim.Bonuses, Has.Count.AtLeast(2));
+            Assert.That(swim.Bonuses[0].Value, Is.EqualTo(10));
+            Assert.That(swim.Bonuses[0].IsConditional, Is.True);
+            Assert.That(swim.Bonuses[0].Condition, Is.EqualTo("can always take 10"));
+            Assert.That(swim.Bonuses[1].Value, Is.EqualTo(8));
+            Assert.That(swim.Bonuses[1].IsConditional, Is.True);
+            Assert.That(swim.Bonuses[1].Condition, Is.EqualTo("special action or avoid a hazard"));
+        }
+
+        [TestCase(CreatureConstants.Cat, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Cat, SkillConstants.Jump, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Colossal, SkillConstants.Climb, AbilityConstants.Strength)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Gargantuan, SkillConstants.Climb, AbilityConstants.Strength)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Huge, SkillConstants.Climb, AbilityConstants.Strength)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Large, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Medium, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Small, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Centipede_Monstrous_Tiny, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Centipede_Swarm, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Lizard, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Monkey, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Rat_Swarm, SkillConstants.Swim, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.ShockerLizard, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.ShockerLizard, SkillConstants.Jump, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Snake_Constrictor, SkillConstants.Climb, AbilityConstants.Strength)]
+        [TestCase(CreatureConstants.Snake_Constrictor_Giant, SkillConstants.Climb, AbilityConstants.Strength)]
+        [TestCase(CreatureConstants.Snake_Viper_Huge, SkillConstants.Climb, AbilityConstants.Strength)]
+        [TestCase(CreatureConstants.Snake_Viper_Large, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Snake_Viper_Medium, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Snake_Viper_Small, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Snake_Viper_Tiny, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Colossal, SkillConstants.Climb, AbilityConstants.Strength)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Gargantuan, SkillConstants.Climb, AbilityConstants.Strength)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Huge, SkillConstants.Climb, AbilityConstants.Strength)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Large, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Medium, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Small, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Tiny, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Colossal, SkillConstants.Climb, AbilityConstants.Strength)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan, SkillConstants.Climb, AbilityConstants.Strength)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Huge, SkillConstants.Climb, AbilityConstants.Strength)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Large, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Medium, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Small, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Tiny, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        [TestCase(CreatureConstants.Spider_Swarm, SkillConstants.Climb, AbilityConstants.Dexterity)]
+        public void BUG_Generate_CreatureUsesAbilityForSkill(string creatureName, string skillName, string abilityName)
+        {
+            var creature = creatureGenerator.Generate(false, creatureName);
+            creatureAsserter.AssertCreature(creature);
+
+            var skill = creature.Skills.First(s => s.Name == skillName);
+            Assert.That(skill.BaseAbility.Name, Is.EqualTo(abilityName));
+        }
     }
 }

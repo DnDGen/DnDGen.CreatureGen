@@ -1517,19 +1517,75 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 [CreatureConstants.Slaad_Death] = [],
 
-                [CreatureConstants.Snake_Constrictor] = [],
+                [CreatureConstants.Snake_Constrictor] =
+                [GetData(SkillConstants.Hide, 4),
+                    GetData(SkillConstants.Listen, 4),
+                    GetData(SkillConstants.Spot, 4),
+                    GetData(SkillConstants.Balance, 8),
+                    GetData(SkillConstants.Climb, 8),
+                    GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
+                    GetData(SkillConstants.Swim, 8, condition: "special action or avoid a hazard"),
+                    GetData(SkillConstants.Swim, 10, condition: "can always take 10")],
 
-                [CreatureConstants.Snake_Constrictor_Giant] = [],
+                [CreatureConstants.Snake_Constrictor_Giant] =
+                [GetData(SkillConstants.Hide, 4),
+                    GetData(SkillConstants.Listen, 4),
+                    GetData(SkillConstants.Spot, 4),
+                    GetData(SkillConstants.Balance, 8),
+                    GetData(SkillConstants.Climb, 8),
+                    GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
+                    GetData(SkillConstants.Swim, 8, condition: "special action or avoid a hazard"),
+                    GetData(SkillConstants.Swim, 10, condition: "can always take 10")],
 
-                [CreatureConstants.Snake_Viper_Tiny] = [],
+                [CreatureConstants.Snake_Viper_Tiny] =
+                [GetData(SkillConstants.Hide, 4),
+                    GetData(SkillConstants.Listen, 4),
+                    GetData(SkillConstants.Spot, 4),
+                    GetData(SkillConstants.Balance, 8),
+                    GetData(SkillConstants.Climb, 8),
+                    GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
+                    GetData(SkillConstants.Swim, 8, condition: "special action or avoid a hazard"),
+                    GetData(SkillConstants.Swim, 10, condition: "can always take 10")],
 
-                [CreatureConstants.Snake_Viper_Small] = [],
+                [CreatureConstants.Snake_Viper_Small] =
+                [GetData(SkillConstants.Hide, 4),
+                    GetData(SkillConstants.Listen, 4),
+                    GetData(SkillConstants.Spot, 4),
+                    GetData(SkillConstants.Balance, 8),
+                    GetData(SkillConstants.Climb, 8),
+                    GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
+                    GetData(SkillConstants.Swim, 8, condition: "special action or avoid a hazard"),
+                    GetData(SkillConstants.Swim, 10, condition: "can always take 10")],
 
-                [CreatureConstants.Snake_Viper_Medium] = [],
+                [CreatureConstants.Snake_Viper_Medium] =
+                [GetData(SkillConstants.Hide, 4),
+                    GetData(SkillConstants.Listen, 4),
+                    GetData(SkillConstants.Spot, 4),
+                    GetData(SkillConstants.Balance, 8),
+                    GetData(SkillConstants.Climb, 8),
+                    GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
+                    GetData(SkillConstants.Swim, 8, condition: "special action or avoid a hazard"),
+                    GetData(SkillConstants.Swim, 10, condition: "can always take 10")],
 
-                [CreatureConstants.Snake_Viper_Large] = [],
+                [CreatureConstants.Snake_Viper_Large] =
+                [GetData(SkillConstants.Hide, 4),
+                    GetData(SkillConstants.Listen, 4),
+                    GetData(SkillConstants.Spot, 4),
+                    GetData(SkillConstants.Balance, 8),
+                    GetData(SkillConstants.Climb, 8),
+                    GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
+                    GetData(SkillConstants.Swim, 8, condition: "special action or avoid a hazard"),
+                    GetData(SkillConstants.Swim, 10, condition: "can always take 10")],
 
-                [CreatureConstants.Snake_Viper_Huge] = [],
+                [CreatureConstants.Snake_Viper_Huge] =
+                [GetData(SkillConstants.Hide, 4),
+                    GetData(SkillConstants.Listen, 4),
+                    GetData(SkillConstants.Spot, 4),
+                    GetData(SkillConstants.Balance, 8),
+                    GetData(SkillConstants.Climb, 8),
+                    GetData(SkillConstants.Climb, 10, condition: "can always take 10"),
+                    GetData(SkillConstants.Swim, 8, condition: "special action or avoid a hazard"),
+                    GetData(SkillConstants.Swim, 10, condition: "can always take 10")],
 
                 [CreatureConstants.Spectre] = [],
 
