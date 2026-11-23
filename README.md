@@ -839,3 +839,9 @@ Version 2.0.0 has breaking changes to the public API:
 - **`InvalidCreatureException`** constructors now take `Filters`, an `AbilityRandomizer`, and templates, and the message includes all of them.
 - **`CreaturePrototype` is now internal.**
 - **New challenge ratings** `ChallengeRatingConstants.CR28`, `CR29`, and `CR30`.
+
+## Theme Song
+
+DnDGen.CreatureGen has its own theme song: Wake the Bestiary -DnDGen.CreatureGen Theme-, dark Nordic folk for the bestiary.
+It follows this README, so a change here may need the song updated too.
+See the song's [lyrics, notes, and update procedure](https://github.com/DnDGen/DnDGen.CreatureGen/blob/main/docs/theme-song/README.md).
