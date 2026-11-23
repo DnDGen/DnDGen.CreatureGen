@@ -168,16 +168,6 @@ Generates creatures. Throws an `InvalidCreatureException` when the creature, tem
 | --- | --- |
 | `VerifyCompatibility(bool asCharacter, string creature = null, AbilityRandomizer abilityRandomizer = null, Filters filters = null, params string[] templates)` | Whether a valid creature can be generated with these arguments. A null creature means any creature, and no templates means any template or none |
 
-#### IDemographicsGenerator
-
-Generates the demographics of a creature. `ICreatureGenerator` uses it for every creature it generates.
-
-| Method | Returns |
-| --- | --- |
-| `Generate(string creatureName)` | The `Demographics` of the named creature |
-| `UpdateByTemplate(Demographics source, string creature, string template, bool addWingspan = false, bool overwriteAppearance = false)` | The demographics after the template is applied to the creature |
-| `AdjustDemographicsBySize(Demographics demographics, string originalSize, string advancedSize)` | The demographics scaled from the original size to the advanced size |
-
 #### CreatureGenModuleLoader
 
 Loads CreatureGen, and its dependencies, into a Ninject kernel.

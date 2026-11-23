@@ -14,7 +14,7 @@
     <RepositoryUrl>https://github.com/DnDGen/DnDGen.CreatureGen</RepositoryUrl>
     <PackageTags>creature generator dice dungeons dragons d20 dnd 3.5 gen</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>Document the public API in the README, and add the theme song. No code changes.</PackageReleaseNotes>
+    <PackageReleaseNotes>Document the public API in the README, and add the theme song. IDemographicsGenerator is now internal: it was public by mistake, and nothing outside CreatureGen uses it.</PackageReleaseNotes>
 	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>

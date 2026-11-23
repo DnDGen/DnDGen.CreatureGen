@@ -27,12 +27,12 @@ its samples into a test. The helpers are DnDGen.TreasureGen's `ReadmeTests`, wit
 | II | Tests are written first and seen to fail against today's README (T004) before the README changes (T005). | Pass |
 | II.1.c | Constructors, methods, properties, constants classes, and each sample have their own case. | Pass |
 | II.2.a | The whole public API is checked, not a sample. | Pass |
-| II.2.c (CreatureGen) | No package code changes. | Pass |
+| II.2.c (CreatureGen) | One interface becomes internal; no behaviour changes. | Pass |
 | II.3.a | Each test compares whole lists, so a failure shows every missing and extra item. | Pass |
 | II.3.c | The tests read only the build output. | Pass |
 | III.1.c | The README gains what it was missing. | Pass |
 | README as contract | This feature is the contract's test. | Pass |
-| Versioning | PATCH: README, tests, Spec Kit. | Pass |
+| Versioning | PATCH: README, tests, Spec Kit, and `IDemographicsGenerator` made internal (a public-by-mistake type the maintainer guarantees has no outside consumers). | Pass |
 
 ## Decisions
 
