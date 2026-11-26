@@ -40,18 +40,19 @@ Wake the Bestiary -DnDGen.CreatureGen Theme-
 ## Style
 
 ```
-Dark Nordic folk, a slow, hypnotic, ritual pulse in a minor mode, Frame drum and deep war drums, a bowed tagelharpa drone, nyckelharpa, kantele, bone flute and a low jaw harp, with wind and a crackling fire beneath, A calm, deep, unhurried male voice, a regal king and storyteller speaking of himself, steady and clear, every word plain, shaped like a story told by the fire, The king sings the verses and the bridge alone; in the intro, the choruses and the outro a small circle of low male and female voices answers him with the Latin name, right after he names himself or calls, A quiet bridge, the king counselling plainly, Slow, steady tempo throughout, Cold, wide, earthy, live-in-the-forest production, Ancient, patient and ominous
+Dark Nordic folk, a slow, hypnotic, ritual pulse in a minor mode, Frame drum and deep war drums, a bowed tagelharpa drone, nyckelharpa, kantele, bone flute and a low jaw harp, with wind and a crackling fire beneath, A calm, deep, unhurried male voice, a regal king and storyteller speaking of himself, steady and clear, every word plain, shaped like a story told by the fire, The king sings the verses and the bridge alone; in the intro, the choruses and the outro a small circle of low male and female voices answers him with the Latin name, right after the king is named in the first line and again after the last, A quiet bridge, the king counselling plainly, Slow, steady tempo throughout, Cold, wide, earthy, live-in-the-forest production, Ancient, patient and ominous
 ```
 
 ## Lyrics
 
 ```
-[Intro - the Centaur King sings the English, speaking of himself, and the circle of low voices sings the Latin name straight after he names himself, slow drone and frame drum]
+[Intro - the Centaur King sings the English, speaking of himself, and the circle of low voices sings the Latin name straight after he names himself and again after the last line, slow drone and frame drum]
 I am the Centaur King; keeper of the creatures
 — Centaur Rege
 Hoof and hand; half horse and half man
 I wake each beast; the brood and the breed
 Hail the king's call; hearken and heed
+— Centaur Rege
 
 [Verse 1 - the king alone, slow and spare]
 Ask for an ogre; its eyes awaken
@@ -59,12 +60,13 @@ Hit dice and hit points; held in its hide
 Skills and feats; spells and strikes
 All that it carries; equipment in keeping
 
-[Chorus - the king sings the English, and the circle of low voices sings the Latin name straight after the first line]
+[Chorus - the king sings the English, and the circle of low voices sings the Latin name straight after the first line and again after the last]
 Wake the bestiary; called by the king
 — Centaur Rege
 Each creature crafted; flesh and fur and fang
 Hero or horror; as you will it
-The regal ruler; he fulfills your fancy
+The regal ruler; he rouses all you name
+— Centaur Rege
 
 [Verse 2 - the king alone, slow and spare]
 Playable peoples; they take class levels
@@ -72,12 +74,13 @@ Monsters keep their might; their hit dice stay
 Templates chained; taken in turn
 Each must fit; the form the first has fashioned
 
-[Chorus - the king sings the English, and the circle of low voices sings the Latin name straight after the first line]
+[Chorus - the king sings the English, and the circle of low voices sings the Latin name straight after the first line and again after the last]
 Wake the bestiary; called by the king
 — Centaur Rege
 Each creature crafted; flesh and fur and fang
 Hero or horror; as you will it
-The regal ruler; he fulfills your fancy
+The regal ruler; he rouses all you name
+— Centaur Rege
 
 [Verse 3 - the king alone, slow and spare]
 Dice decide; the default scores are set
@@ -87,12 +90,13 @@ Short of the mark; the score is raised to meet it
 If the roll can never reach; the minimum is missed
 Not compatible; the creature cannot come
 
-[Chorus - the king sings the English, and the circle of low voices sings the Latin name straight after the first line]
+[Chorus - the king sings the English, and the circle of low voices sings the Latin name straight after the first line and again after the last]
 Wake the bestiary; called by the king
 — Centaur Rege
 Each creature crafted; flesh and fur and fang
 Hero or horror; as you will it
-The regal ruler; he fulfills your fancy
+The regal ruler; he rouses all you name
+— Centaur Rege
 
 [Bridge - quiet and plain, the king alone, counselling his listener]
 Ask before you beckon; whether beasts can wake
@@ -108,12 +112,13 @@ Match any one of the marks; and it may pass
 Choose a challenge; the creature will hold
 Never advanced; naught is altered
 
-[Chorus - the king sings the English, and the circle of low voices sings the Latin name straight after the first line]
+[Chorus - the king sings the English, and the circle of low voices sings the Latin name straight after the first line and again after the last]
 Wake the bestiary; called by the king
 — Centaur Rege
 Each creature crafted; flesh and fur and fang
 Hero or horror; as you will it
-The regal ruler; he fulfills your fancy
+The regal ruler; he rouses all you name
+— Centaur Rege
 
 [Verse 5 - the king alone, slow and spare]
 Version two brings breaking changes; beware
@@ -121,12 +126,13 @@ Dot net ten; the need of the new
 Let the Module Loader lead; the rest will follow
 RollGen and Infrastructure and TreasureGen; three that travel with it
 
-[Final Chorus - the king sings the English, and the circle of low voices sings the Latin name straight after the first line]
+[Final Chorus - the king sings the English, and the circle of low voices sings the Latin name straight after the first line and again after the last]
 Wake the bestiary; called by the king
 — Centaur Rege
 Each creature crafted; flesh and fur and fang
 Hero or horror; as you will it
-The regal ruler; he fulfills your fancy
+The regal ruler; he rouses all you name
+— Centaur Rege
 
 [Outro - the king sings the English, then the circle of low voices sings the Latin name as the refrain, the drums fade and the drone remains]
 The bestiary sleeps; till you summon it again
@@ -148,7 +154,7 @@ The lines are unrhymed alliterative verse: each line has two or three stressed w
 | Wake the bestiary; called by the king | Not from the README: the refrain and the song's title |
 | Each creature crafted; flesh and fur and fang | Introduction: "fleshed-out creature" |
 | Hero or horror; as you will it | Use: "generated as a character" and "or as a monster" |
-| The regal ruler; he fulfills your fancy | Not from the README: the Centaur King grants what the caller asks |
+| The regal ruler; he rouses all you name | Not from the README: the Centaur King rouses whatever the caller names |
 | Playable peoples; they take class levels<br>Monsters keep their might; their hit dice stay | Use: "a playable race that will take class levels", "has its racial Hit Die replaced by class levels", and "or as a monster" |
 | Templates chained; taken in turn<br>Each must fit; the form the first has fashioned | Use: "Chaining templates", "applied in the order given", "Each template must be compatible with the creature", and "as it is after the templates before it have been applied" |
 | Dice decide; the default scores are set<br>Pick from the nine; or play any valid roll | Use, Ability scores: "abilities are rolled with the default roll", "The available rolls are in", and "any other valid roll" |
@@ -176,12 +182,12 @@ Nothing has been generated yet, so everything here is a guess to test:
   the song to explain it. Now the Centaur King introduces himself in the first person, with centaur
   and king imagery (half horse and half man; "the king's call"; "called by the king"), and the
   circle sings his name. The Latin is still two words, and whether Suno sings them as Latin is untested.
-- **The circle answers only after the king names himself or calls.** v0.1 to v0.4 had an echo after every pair of lines in
+- **The circle answers twice in the intro and each chorus: after the first line, where the king is named, and after the last.** v0.1 to v0.4 had an echo after every pair of lines in
   the verses and the bridge. That came from the shanty and chant songs, not from Nordic folk: the
   Nordic form is a leader singing the stanza and the group singing the refrain, as in the Faroese
   chain-dance ballads and the Scandinavian ballads. Each song's genre, style, and lyrics stand on
   their own; consistency is for practices, like this record and its tests, not for a song's
-  structure or tropes. The answer, "Centaur Rege", is an ordinary line after an em dash, not parentheses, sung straight after the king names himself in the intro and after "called by the king" in each chorus (and closing the outro). The answer is one line each time, so the chorus gained a fourth line (the regal ruler who grants the caller's fancy) to give it more to sing. The answers have the
+  structure or tropes. The answer, "Centaur Rege", is an ordinary line after an em dash, not parentheses, sung straight after the king is named in the first line ("I am the Centaur King", "called by the king") and again after the last line, and it closes the outro. The chorus has a fourth line (the regal ruler who rouses all you name) so the second answer follows the king again. "He fulfills your fancy" was dropped: too twee for a song this stark. The answers have the
   voices assigned in the section's tag and the Style and no inline voice tags, which is what got the
   second voice sung in Infrastructure's v0.5 and v0.6 and TreasureGen's drafts. The verses, with no
   answers, are the king alone.
