@@ -246,10 +246,12 @@ msedge --headless --hide-scrollbars --allow-file-access-from-files --window-size
 
 If Edge reads `cover.html` as a web address, pass it as a full `file:///` URL instead.
 
-- It is a scene, drawn after the main theme's [cover](https://github.com/DnDGen/.github/blob/main/theme-song/cover.html), like the other songs' covers. The d20 wears the Centaur King's crown,
-  gold with an emerald and two ember jewels, above a close pine forest and a green aurora, and pairs of eyes in
-  amber, teal, green, and red shine between the trees: the bestiary, waking. The ghost copies behind the d20 are
-  its spin. The title is the song's, *Wake the Bestiary*. v0.1's cover was only the recoloured d20, too plain
-  next to the others, and v0.2's had a centaur silhouette lifting the d20, which didn't read well.
+- It is a scene, drawn after the main theme's [cover](https://github.com/DnDGen/.github/blob/main/theme-song/cover.html), like the other songs' covers. The d20 is the head of the Centaur King, large and centred
+  as on the main theme's cover, and his crown encircles it: a gold ring with a fan of spikes along the top and
+  emerald and ember jewels. Behind it stand close green pines on brown trunks with darkness between them, under a green
+  aurora, and in the dark five pairs of small glowing d20s look out like the eyes of the bestiary, waking. The title is
+  the song's, *Wake the Bestiary*. v0.1's cover was only the recoloured d20, too plain next to the others; v0.2 had a
+  centaur silhouette lifting the d20, which didn't read well; v0.3 put a small crown on the d20's top edge, over a
+  forest of shadowed trees and ordinary glowing eyes, with ghost copies behind the d20.
 - The d20 is the dndgen.com loading spinner, from [DnDGen.Web](https://github.com/DnDGen/DnDGen.Web/blob/main/dndgen-web/src/assets/loadingDice.svg), originally from [a gist by hperantunes](https://gist.github.com/hperantunes/f4c2fd407c2ea74c6c9d).
 - The title is set in [Cinzel](https://github.com/NDISCOVER/Cinzel), included as [Cinzel.ttf](Cinzel.ttf) under the [SIL Open Font License](Cinzel-OFL.txt).
