@@ -125,6 +125,17 @@ namespace DnDGen.CreatureGen.Tests.Integration
         }
 
         [Test]
+        public void AbilityScores_AnyValidRoll()
+        {
+            var creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
+            var abilityRandomizer = new AbilityRandomizer("2d6+6");
+
+            var dwarf = creatureGenerator.Generate(true, CreatureConstants.Dwarf_Hill, abilityRandomizer);
+
+            Assert.That(dwarf.Abilities.Values.Select(a => a.BaseScore), Has.All.InRange(8, 18));
+        }
+
+        [Test]
         public void RandomCreatures()
         {
             var creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();

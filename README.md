@@ -86,6 +86,8 @@ The available rolls are in `AbilityConstants.RandomizerRolls`:
 | `Raw` | 3d6 | 3-18 |
 | `Wild` | 2d10 | 2-20 |
 
+You can also pass any other valid roll, such as `2d6+6`, to the constructor: `new AbilityRandomizer("2d6+6")`.
+
 Some templates require a minimum ability score: a Ghost needs Charisma 6, and a Half-Celestial or Half-Fiend needs Intelligence 4.
 When you generate one of these, any rolled score that would fall short is raised to meet the minimum.
 If the randomizer can never reach the minimum (for example, a set roll that is too low), the creature is not compatible and an `InvalidCreatureException` is thrown.
