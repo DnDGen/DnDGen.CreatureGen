@@ -2,7 +2,7 @@
 
 Generates a random, fleshed-out creature for Dungeons and Dragons 3.5
 
-[![Build Status](https://dev.azure.com/dndgen/DnDGen/_apis/build/status/DnDGen.CreatureGen?branchName=main)](https://dev.azure.com/dndgen/DnDGen/_build/latest?definitionId=5&branchName=main) [![Theme Song](https://img.shields.io/badge/theme_song-Suno-ff69b4)](https://suno.com/s/idhKDWtBG8g26Ar3)
+[![Build Status](https://github.com/DnDGen/DnDGen.CreatureGen/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/DnDGen/DnDGen.CreatureGen/actions/workflows/release.yml?query=branch%3Amain) [![Theme Song](https://img.shields.io/badge/theme_song-Suno-ff69b4)](https://suno.com/s/idhKDWtBG8g26Ar3)
 
 ## Installing CreatureGen
 

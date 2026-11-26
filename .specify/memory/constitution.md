@@ -20,7 +20,8 @@ No additions.
 ### II. Tests Are the Spec
 
 **II.2.c (CreatureGen)** Coverage is the line and branch coverage of `DnDGen.CreatureGen.dll`,
-combined across the unit, IoC, tables, integration, and stress test projects. It never decreases.
+combined across the unit, IoC, tables, integration, and stress test projects, excluding generated
+code (`*.g.cs`). It never decreases.
 
 ### III. Leave It Better Than You Found It
 
@@ -37,12 +38,16 @@ No additions.
   describes. MAJOR also covers changing a table so that a creature, template, feat, or skill can no
   longer be generated or has a different value, and raising the minimum .NET, Ninject,
   DnDGen.Infrastructure, DnDGen.RollGen, or DnDGen.TreasureGen major version. Ninject and the
-  DnDGen dependencies are MAJOR because consumers load CreatureGen into their own kernel. The
-  Azure Pipelines in `cicd` build the package: `cicd/build.yml` builds and runs the unit, IoC,
-  tables, integration, and stress tests (the stress tests in the `Stress` configuration) with code
-  coverage on every pull request, and `cicd/release.yml` publishes the package from `main` to
-  NuGet.org and creates the GitHub release. Neither pipeline checks that `<Version>` has increased
-  or that coverage has not dropped, so the pull request author and reviewer do.
+  DnDGen dependencies are MAJOR because consumers load CreatureGen into their own kernel.
+  `.github/workflows/build.yml` checks every pull request with the DnDGen organisation's shared
+  `nuget-build.yml`: it builds and runs the unit, IoC, tables, integration, and stress tests in
+  that order (the stress tests in the `Stress` configuration) with code coverage, merges their
+  coverage reports into one, and fails if `<Version>` isn't greater than the latest release's, or
+  if the merged coverage is lower than the latest release's coverage report. On every push to
+  `main`, `.github/workflows/release.yml` runs the same check, publishes to NuGet.org with Trusted
+  Publishing using the shared `nuget-publish` action, then the shared `nuget-release.yml` creates a
+  GitHub release, tagged with `<Version>`, with the package and merged coverage report attached.
+  The package icon is the DnDGen avatar, `avatar-128.png`, from DnDGen/.github.
 - **README as contract**: The README documents every public type of `DnDGen.CreatureGen.dll`:
   every public member of the generators, the verifier, `CreatureGenModuleLoader`, `Filters`,
   `AbilityRandomizer`, `InvalidCreatureException`, and the models (`Creature` and the types it is
@@ -58,4 +63,4 @@ No additions.
 This repository follows the DnDGen constitution's Governance. The additions in this file are
 amended by pull request to this repository and versioned the same way.
 
-**Version**: 1.0.0 | **Ratified**: 2026-11-23 | **Last Amended**: 2026-11-23
+**Version**: 1.0.1 | **Ratified**: 2026-11-23 | **Last Amended**: 2026-11-27
