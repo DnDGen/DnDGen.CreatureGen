@@ -5,7 +5,7 @@
     <Authors>Karl M. Speer</Authors>
     <Company>DnDGen</Company>
     <Product>CreatureGen</Product>
-    <Version>2.0.3</Version>
+    <Version>2.0.2</Version>
     <Description>This generates creatures for the Dungeons and Dragons 3.5 system.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/DnDGen/DnDGen.CreatureGen</PackageProjectUrl>
@@ -14,7 +14,7 @@
     <RepositoryUrl>https://github.com/DnDGen/DnDGen.CreatureGen</RepositoryUrl>
     <PackageTags>creature generator dice dungeons dragons d20 dnd 3.5 gen</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>Move the build and release to GitHub Actions, and use the DnDGen avatar as the package icon. No code changes.</PackageReleaseNotes>
+    <PackageReleaseNotes>Document the public API in the README, add the theme song, build and release on GitHub Actions, and use the DnDGen avatar as the package icon. IDemographicsGenerator is now internal: it was public by mistake, and nothing outside CreatureGen uses it.</PackageReleaseNotes>
 	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>

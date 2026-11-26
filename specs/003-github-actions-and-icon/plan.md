@@ -1,6 +1,6 @@
 # Implementation Plan: Build and Release on GitHub Actions, with the DnDGen Icon
 
-**Branch**: `github-actions-and-icon` | **Date**: 2026-11-27 | **Spec**: [spec.md](spec.md)
+**Branch**: `speckit-readme-theme-song` | **Date**: 2026-11-27 | **Spec**: [spec.md](spec.md)
 
 ## Summary
 
@@ -27,12 +27,11 @@ settings. The workflows themselves can only be verified by running on GitHub.
 
 ## Decisions
 
-- **D1: Stacked on spec 001 and 002.** This branch starts from `speckit-readme-theme-song`, since
-  the constitution it amends is there. It targets that branch until it merges, then `main`.
+- **D1: Same branch and pull request as spec 001 and 002.** None of it has been released since 2.0.1, so it all ships as one release, 2.0.2. A separate branch was made first and folded back in.
 - **D2: Runsettings regex.** The template's `DnDGen\.YourGen` is replaced with
   `DnDGen\.CreatureGen`; a first `sed` left it unchanged and the local run reported no coverage,
   which is how it was caught (T005).
-- **D3: Version 2.0.3.** Spec 001 and 002's pull request is 2.0.2; this follows it.
+- **D3: Version 2.0.2.** The one release since 2.0.1, so the notes cover the README, theme song, pipeline, icon, and the internal interface.
 
 ## Project Structure
 
@@ -41,7 +40,7 @@ settings. The workflows themselves can only be verified by running on GitHub.
 CodeCoverage.runsettings                                       # new, from the template
 cicd/                                                          # removed
 DnDGen.CreatureGen/avatar-128.png                              # new package icon
-DnDGen.CreatureGen/DnDGen.CreatureGen.csproj                   # icon, version 2.0.3, release notes
+DnDGen.CreatureGen/DnDGen.CreatureGen.csproj                   # icon, version 2.0.2, release notes
 README.md                                                      # build badge
 .specify/memory/constitution.md                                # Versioning, 1.0.1
 ```

@@ -1,6 +1,6 @@
 # Feature Specification: Build and Release on GitHub Actions, with the DnDGen Icon
 
-**Feature Branch**: `github-actions-and-icon`
+**Feature Branch**: `speckit-readme-theme-song`
 
 **Created**: 2026-11-27
 
@@ -25,7 +25,7 @@ the DnDGen avatar (DnDGen constitution, Technology & Release Constraints).
   icon, as in the other libraries. The old `18531-twenty-sided-dice-vector-thumb.png` is removed.
 - Q: What does coverage measure? → A: `CodeCoverage.runsettings`, from the template, includes only
   `DnDGen.CreatureGen.dll` and excludes `*.g.cs`, which matches CreatureGen's constitution.
-- Q: Does it need a MAJOR? → A: No. The package's code and public API don't change: PATCH (2.0.3).
+- Q: Does it need a MAJOR? → A: No. The package's code and public API don't change: PATCH, released as 2.0.2 with specs 001 and 002, since nothing has been released since 2.0.1.
 - Q: What can't this change do? → A: The repository and nuget.org settings (see tasks T006 to T009)
   are the maintainer's, so the first runs of the workflows aren't verified here.
 
@@ -74,7 +74,7 @@ report the GitHub Actions workflow.
 - **FR-004**: The package icon MUST be `avatar-128.png`, packed into the package.
 - **FR-005**: The README's build badge MUST report the GitHub Actions `release.yml` workflow, and
   the constitution MUST describe the new pipeline.
-- **FR-006**: `<Version>` MUST be 2.0.3 with release notes for this release only.
+- **FR-006**: `<Version>` MUST be 2.0.2, the one release this branch makes, with release notes for all of it.
 
 ## Success Criteria *(mandatory)*
 

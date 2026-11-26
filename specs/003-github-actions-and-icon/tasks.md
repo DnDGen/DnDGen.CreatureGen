@@ -15,7 +15,7 @@ description: "Task list for the GitHub Actions and icon move"
   `DnDGen.CreatureGen`
 - [X] T002 Add `CodeCoverage.runsettings` from the template, with `DnDGen\.CreatureGen\.dll`
 - [X] T003 Remove `cicd`
-- [X] T004 Replace the package icon with `avatar-128.png`; version 2.0.3 and its release notes
+- [X] T004 Replace the package icon with `avatar-128.png`; version 2.0.2 and the release notes of the whole release
 - [X] T005 Build the package and confirm the icon is in it; run a unit test with the coverage
   settings and confirm it reports `DnDGen.CreatureGen.dll`. (The first run reported none, because
   the project name in the runsettings hadn't been replaced; fixed.)
