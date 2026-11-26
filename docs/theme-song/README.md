@@ -40,117 +40,117 @@ Wake the Bestiary -DnDGen.CreatureGen Theme-
 ## Style
 
 ```
-Dark Nordic folk, a slow, hypnotic, ritual pulse in a minor mode, Frame drum and deep war drums, a bowed tagelharpa drone, nyckelharpa, kantele, bone flute and a low jaw harp, with wind and a crackling fire beneath, A calm, deep, unhurried male voice, a regal king and storyteller speaking of himself, steady and clear, every word plain, shaped like a story told by the fire, Call and response throughout: the king sings each pair of lines, and a small circle of low male and female voices answers after every pair, with the Latin name in the choruses and a short echo in the verses, A hushed bridge, whispered and conspiratorial, Slow, steady tempo throughout, Cold, wide, earthy, live-in-the-forest production, Ancient, patient and ominous
+Dark Nordic folk, a slow, hypnotic, ritual pulse in a minor mode, Frame drum and deep war drums, a bowed tagelharpa drone, nyckelharpa, kantele, bone flute and a low jaw harp, with wind and a crackling fire beneath, A calm, deep, unhurried male voice, a regal king and storyteller speaking of himself, steady and clear, every word plain, shaped like a story told by the fire, Call and response throughout: the king sings each pair of lines, and a small circle of low male and female voices answers after every pair, with the Latin name in the choruses and a short echo in the verses, A quiet bridge, the king counselling plainly and the circle echoing softly, Slow, steady tempo throughout, Cold, wide, earthy, live-in-the-forest production, Ancient, patient and ominous
 ```
 
 ## Lyrics
 
 ```
 [Intro - the Centaur King sings the English, speaking of himself, the circle of low voices answers with the Latin name, slow drone and frame drum]
-I am the Centaur King, keeper of the creatures
-Hoof and hand, half horse, half man
+I am the Centaur King; keeper of the creatures
+Hoof and hand; half horse and half man
 — Centaur Rege
-I wake each beast, the brood and the breed
-Hear the king call, hearken and heed
+I wake each beast; the brood and the breed
+Hail the king's call; hearken and heed
 — Centaur Rege
 
 [Verse 1 - the king sings the English, the circle of low voices answers with a short echo, slow and spare]
-Ask for an ogre and an ogre awakens
-Hit dice and hit points, held in its hide
-— Held in its hide!
-Skills and feats, spells and strikes
-All that it carries, kept in its keeping
-— Kept in its keeping!
+Ask for an ogre; its eyes awaken
+Hit dice and hit points; held in its hide
+— Held in its hide
+Skills and feats; spells and strikes
+All that it carries; equipment in keeping
+— Equipment in keeping
 
 [Chorus - the king sings the English, the circle of low voices answers with the Latin name]
-Wake the bestiary, woken by the king
+Wake the bestiary; called by the king
 — Centaur Rege
-Each creature fleshed out, flesh, fur, and fang
+Each creature crafted; flesh and fur and fang
 — Centaur Rege
-Hero or horror, as you will it
+Hero or horror; as you will it
 — Centaur Rege
 
 [Verse 2 - the king sings the English, the circle of low voices answers with a short echo, slow and spare]
-Playable peoples who take class levels
-Templates chained, taken in turn
-— Taken in turn!
-Each must suit what stands before it
-Fit the form the first has fashioned
-— Fit the form!
+Playable peoples; they take class levels
+Templates chained; taken in turn
+— Taken in turn
+Each must suit; what stands before it
+Fit the form; the first has fashioned
+— Fit the form
 
 [Chorus - the king sings the English, the circle of low voices answers with the Latin name]
-Wake the bestiary, woken by the king
+Wake the bestiary; called by the king
 — Centaur Rege
-Each creature fleshed out, flesh, fur, and fang
+Each creature crafted; flesh and fur and fang
 — Centaur Rege
-Hero or horror, as you will it
+Hero or horror; as you will it
 — Centaur Rege
 
 [Verse 3 - the king sings the English, the circle of low voices answers with a short echo, slow and spare]
-Rolled by the default roll, the scores are set
-Or four dice fall, the fairest three keep
-— The fairest three!
-A ghost needs Charisma, six at the least
-Short of the mark, the score is raised to meet it
-— Raised to meet it!
-If the roll can never reach the number
-Not compatible, the creature cannot come
-— It cannot come!
+Dice decide; the default scores are set
+Or four dice fall; the fairest three keep
+— The fairest three
+Ghosts need Charisma; grace of six at the least
+Short of the mark; the score is raised to meet it
+— Raised to meet it
+If the roll can never reach; the minimum is missed
+Not compatible; the creature cannot come
+— It cannot come
 
 [Chorus - the king sings the English, the circle of low voices answers with the Latin name]
-Wake the bestiary, woken by the king
+Wake the bestiary; called by the king
 — Centaur Rege
-Each creature fleshed out, flesh, fur, and fang
+Each creature crafted; flesh and fur and fang
 — Centaur Rege
-Hero or horror, as you will it
+Hero or horror; as you will it
 — Centaur Rege
 
-[Bridge - hushed, whispered and conspiratorial, the king almost speaking, the circle echoing under his breath]
-Ask before you wake it, whether it can wake
-Valid, says the verifier, a creature can be woken
-— Can be woken!
-Where none can wake, the generator throws
-The warning wails through the whole bestiary
-— The warning wails!
+[Bridge - quiet and plain, the king counselling his listener, the circle echoing softly under him]
+Ask before you beckon; whether beasts can wake
+The verifier says; valid creatures can be made
+— Can be made
+Where none can come; the generator throws
+The warning wails; through the whole bestiary
+— The warning wails
 
 [Verse 4 - the king sings the English, the circle of low voices answers with a short echo, slow and spare]
-Or let the dice decide, and the dice will choose
-Weighted heavily to the creature that wears no template
-— Weighted heavily!
-Filters narrow the field of the fray
-Match any one of the marks and it may pass
-— It may pass!
-Choose a challenge, and the creature will hold
-Never advanced, never altered, never more
-— Never more!
+Or let chance rule; the random roll decides
+Weighted heavily; to the creature that wears no template
+— Weighted heavily
+Filters narrow the field; the fray grows fewer
+Match any one of the marks; and it may pass
+— It may pass
+Choose a challenge; the creature will hold
+Never advanced; naught is altered
+— Naught is altered
 
 [Chorus - the king sings the English, the circle of low voices answers with the Latin name]
-Wake the bestiary, woken by the king
+Wake the bestiary; called by the king
 — Centaur Rege
-Each creature fleshed out, flesh, fur, and fang
+Each creature crafted; flesh and fur and fang
 — Centaur Rege
-Hero or horror, as you will it
+Hero or horror; as you will it
 — Centaur Rege
 
 [Verse 5 - the king sings the English, the circle of low voices answers with a short echo, slow and spare]
-Version two has broken with the old ways
-Dot net ten, the need of the new
-— The need of the new!
-Load it with the module loader, and let it lead
-RollGen and Infrastructure and TreasureGen, three that travel with it
-— Three that travel!
+Version two brings breaking changes; beware
+Dot net ten; the need of the new
+— The need of the new
+Let the Module Loader lead; the rest will follow
+RollGen and Infrastructure and TreasureGen; three that travel with it
+— Three that travel
 
 [Final Chorus - the king sings the English, the circle of low voices answers with the Latin name]
-Wake the bestiary, woken by the king
+Wake the bestiary; called by the king
 — Centaur Rege
-Each creature fleshed out, flesh, fur, and fang
+Each creature crafted; flesh and fur and fang
 — Centaur Rege
-Hero or horror, as you will it
+Hero or horror; as you will it
 — Centaur Rege
 
 [Outro - the king sings the English, the circle of low voices answers with the Latin name, the drums fade and the drone remains]
-The bestiary sleeps till you summon it again
-Keeper, king, I keep the watch
+The bestiary sleeps; till you summon it again
+King and Keeper; I await your command
 — Centaur Rege
 ```
 
@@ -162,25 +162,25 @@ The lines are unrhymed alliterative verse: each line has two or three stressed w
 
 | Lyric | From the README |
 | --- | --- |
-| I am the Centaur King, keeper of the creatures<br>Hoof and hand, half horse, half man<br>— Centaur Rege<br>I wake each beast, the brood and the breed<br>Hear the king call, hearken and heed | Not from the README: the Centaur King introduces himself, and the circle sings his name, CreatureGen's leitmotif from the main theme |
-| Ask for an ogre and an ogre awakens<br>Hit dice and hit points, held in its hide<br>— Held in its hide! | Use: "Generating a specific creature"; Reference, Creature: "Its hit dice and hit points" |
-| Skills and feats, spells and strikes<br>All that it carries, kept in its keeping<br>— Kept in its keeping! | Reference, Creature: "Its skills", "Its feats", "All of its attacks", "Its spells and casting", and "What it carries" |
-| Wake the bestiary, woken by the king | Not from the README: the refrain and the song's title |
-| Each creature fleshed out, flesh, fur, and fang | Introduction: "fleshed-out creature" |
-| Hero or horror, as you will it | Use: "generated as a character" and "or as a monster" |
-| Playable peoples who take class levels<br>Templates chained, taken in turn<br>— Taken in turn! | Use: "a playable race that will take class levels", "Chaining templates", and "applied in the order given" |
-| Each must suit what stands before it<br>Fit the form the first has fashioned<br>— Fit the form! | Use: "Each template must be compatible with the creature" and "as it is after the templates before it have been applied" |
-| Rolled by the default roll, the scores are set<br>Or four dice fall, the fairest three keep<br>— The fairest three! | Use, Ability scores: "abilities are rolled with the default roll" and "keep the highest 3" |
-| A ghost needs Charisma, six at the least<br>Short of the mark, the score is raised to meet it<br>— Raised to meet it! | Use, Ability scores: "Some templates require a minimum ability score", "a Ghost needs Charisma 6", and "any rolled score that would fall short is raised to meet the minimum" |
-| If the roll can never reach the number<br>Not compatible, the creature cannot come<br>— It cannot come! | Use, Ability scores: "If the randomizer can never reach the minimum" and "the creature is not compatible" |
-| Ask before you wake it, whether it can wake<br>Valid, says the verifier, a creature can be woken<br>— Can be woken! | Use, Checking compatibility: "To check ahead of time", "ICreatureVerifier", and "gives a valid creature" |
-| Where none can wake, the generator throws<br>The warning wails through the whole bestiary<br>— The warning wails! | Use, Checking compatibility: "the generator throws" |
-| Or let the dice decide, and the dice will choose<br>Weighted heavily to the creature that wears no template<br>— Weighted heavily! | Use: "Random creatures"; Use, Random creatures: "weighted heavily in favor of creatures without a template" |
-| Filters narrow the field of the fray<br>Match any one of the marks and it may pass<br>— It may pass! | Use, Filters: "Filters narrow down which random creatures are valid" and "A creature satisfies a filter if it matches" |
-| Choose a challenge, and the creature will hold<br>Never advanced, never altered, never more<br>— Never more! | Use, Filters: "challenge rating filter" and "are never advanced" |
-| Version two has broken with the old ways<br>Dot net ten, the need of the new<br>— The need of the new! | Upgrading from 1.x: "Version 2.0.0 has breaking changes"; Installing: "It targets .NET 10." |
-| Load it with the module loader, and let it lead<br>RollGen and Infrastructure and TreasureGen, three that travel with it<br>— Three that travel! | Getting the Generators: "use the Module Loader" and "including RollGen, Infrastructure, and TreasureGen" |
-| The bestiary sleeps till you summon it again<br>Keeper, king, I keep the watch | Not from the README: the Centaur King signs off, and the circle sings his name once more |
+| I am the Centaur King; keeper of the creatures<br>Hoof and hand; half horse and half man<br>— Centaur Rege<br>I wake each beast; the brood and the breed<br>Hail the king's call; hearken and heed | Not from the README: the Centaur King introduces himself, and the circle sings his name, CreatureGen's leitmotif from the main theme |
+| Ask for an ogre; its eyes awaken<br>Hit dice and hit points; held in its hide<br>— Held in its hide | Use: "Generating a specific creature"; Reference, Creature: "Its hit dice and hit points" |
+| Skills and feats; spells and strikes<br>All that it carries; equipment in keeping<br>— Equipment in keeping | Reference, Creature: "Its skills", "Its feats", "All of its attacks", "Its spells and casting", and "What it carries" |
+| Wake the bestiary; called by the king | Not from the README: the refrain and the song's title |
+| Each creature crafted; flesh and fur and fang | Introduction: "fleshed-out creature" |
+| Hero or horror; as you will it | Use: "generated as a character" and "or as a monster" |
+| Playable peoples; they take class levels<br>Templates chained; taken in turn<br>— Taken in turn | Use: "a playable race that will take class levels", "Chaining templates", and "applied in the order given" |
+| Each must suit; what stands before it<br>Fit the form; the first has fashioned<br>— Fit the form | Use: "Each template must be compatible with the creature" and "as it is after the templates before it have been applied" |
+| Dice decide; the default scores are set<br>Or four dice fall; the fairest three keep<br>— The fairest three | Use, Ability scores: "abilities are rolled with the default roll" and "keep the highest 3" |
+| Ghosts need Charisma; grace of six at the least<br>Short of the mark; the score is raised to meet it<br>— Raised to meet it | Use, Ability scores: "Some templates require a minimum ability score", "a Ghost needs Charisma 6", and "any rolled score that would fall short is raised to meet the minimum" |
+| If the roll can never reach; the minimum is missed<br>Not compatible; the creature cannot come<br>— It cannot come | Use, Ability scores: "If the randomizer can never reach the minimum" and "the creature is not compatible" |
+| Ask before you beckon; whether beasts can wake<br>The verifier says; valid creatures can be made<br>— Can be made | Use, Checking compatibility: "To check ahead of time", "ICreatureVerifier", and "gives a valid creature" |
+| Where none can come; the generator throws<br>The warning wails; through the whole bestiary<br>— The warning wails | Use, Checking compatibility: "the generator throws" |
+| Or let chance rule; the random roll decides<br>Weighted heavily; to the creature that wears no template<br>— Weighted heavily | Use: "Random creatures"; Use, Random creatures: "weighted heavily in favor of creatures without a template" |
+| Filters narrow the field; the fray grows fewer<br>Match any one of the marks; and it may pass<br>— It may pass | Use, Filters: "Filters narrow down which random creatures are valid" and "A creature satisfies a filter if it matches" |
+| Choose a challenge; the creature will hold<br>Never advanced; naught is altered<br>— Naught is altered | Use, Filters: "challenge rating filter" and "are never advanced" |
+| Version two brings breaking changes; beware<br>Dot net ten; the need of the new<br>— The need of the new | Upgrading from 1.x: "Version 2.0.0 has breaking changes"; Installing: "It targets .NET 10." |
+| Let the Module Loader lead; the rest will follow<br>RollGen and Infrastructure and TreasureGen; three that travel with it<br>— Three that travel | Getting the Generators: "use the Module Loader" and "including RollGen, Infrastructure, and TreasureGen" |
+| The bestiary sleeps; till you summon it again<br>King and Keeper; I await your command | Not from the README: the Centaur King signs off, and the circle sings his name once more |
 
 ## Suno Notes
 
@@ -205,12 +205,30 @@ Nothing has been generated yet, so everything here is a guess to test:
 - **No rhyme, by design.** The old Nordic poems don't end-rhyme: Eddic verse is alliterative and
   skaldic verse rhymes inside the line. Dark Nordic folk draws on them, and Credo of the Tables
   doesn't rhyme either, because the genre doesn't. v0.2 rhymed every couplet to match the other
-  songs; v0.3 drops that for alliteration, the Nordic way: two or three stressed words in a line
+  songs; v0.3 dropped that for alliteration, the Nordic way: two or three stressed words in a line
   start alike, and each line is a long line with a pause in the middle. It follows the alliterative
   form loosely, since the lines must also be true of the README. Whether Suno's melody still lands
   without rhyme to lean on is untested.
 - **Five choruses, one after each of verses 1 to 4, and a final one.** v0.1 skipped the chorus after
   verse 3, and v0.2 the one after verse 4.
+- **Alliteration means different words that start alike, not the same word again.** The old
+  Nordic poems link stressed words such as *beast*, *brood*, and *breed*, and they do repeat
+  ideas in near-synonyms (*brood and breed*, *hearken and heed*), but a word repeated, or the
+  same root in two forms (*wake*, *woken*; *keeper*, *keep*, *keeping*; *roll*, *rolled*;
+  *load*, *loader*; *never*, *never*, *never*), is repetition, and made lines circular. v0.3 had many
+  of those; v0.4 replaces them, so each line's alliterating words are different words. The
+  chorus's *called by the king* and *crafted* (not *created*, which shares *creature*'s root) follow it.
+- **The answers carry no exclamation marks.** "Short echo, slow and spare" is the intent, and
+  Suno tends to shout a line that ends in "!". The echoes are plain lines after an em dash.
+- **The pause in the middle of a line is a semicolon.** Every long line has one, and no other comma, so
+  the pause is the only punctuation inside the line. Whether Suno gives a semicolon more weight than
+  a comma is untested, and a semicolon doesn't always join two full clauses. If it doesn't, the
+  surer way is a line break, with each half-line sung on its own line, which is also how the
+  old poems are often printed. That would double the line count and change the pairs.
+- **The bridge is quiet, not secret.** v0.1 called it "hushed, whispered and conspiratorial", a tone
+  borrowed from Web's cabaret bridge. Nothing about verifying is secret: the verifier is encouraged,
+  so you know a creature can be generated before you try. The bridge is now "quiet and plain, the
+  king counselling his listener", which keeps the drop in dynamics without the plotting.
 - **The singer is a guess.** "A calm, deep, unhurried male voice, a regal king and storyteller"
   names the singer, as RollGen's lesson says, and avoids "raspy" and "gravelly", which came out
   growly there. A dark Nordic folk take may still pull toward a throat-sung or growled voice.
