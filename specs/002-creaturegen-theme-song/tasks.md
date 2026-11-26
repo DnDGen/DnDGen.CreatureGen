@@ -35,7 +35,7 @@ description: "Task list for the DnDGen.CreatureGen theme song"
 - [ ] T007 (maintainer) Review the draft lyrics and style, and confirm the genre and English
 - [X] T007a Redraw the album art as a scene (the first cover was too plain)
 - [X] T008 Draw the album art, recoloured from the main theme's cover, and render it
-- [ ] T009 (maintainer) Approve the album art
+- [X] T009 (maintainer) Approve the album art (approved 2026-11-27)
 - [ ] T010 (maintainer) Generate drafts in Suno, each Sampling the main theme's "Rogante
   Marendor" snippet (3:00.0 to 3:17.1) with Variety all the way down; pick and publish the take
 - [ ] T011 (maintainer) Add the Suno link to the record (`TODO_SUNO_LINK`, twice) and the README
