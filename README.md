@@ -2,7 +2,7 @@
 
 Generates a random, fleshed-out creature for Dungeons and Dragons 3.5
 
-[![Build Status](https://dev.azure.com/dndgen/DnDGen/_apis/build/status/DnDGen.CreatureGen?branchName=main)](https://dev.azure.com/dndgen/DnDGen/_build/latest?definitionId=5&branchName=main)
+[![Build Status](https://dev.azure.com/dndgen/DnDGen/_apis/build/status/DnDGen.CreatureGen?branchName=main)](https://dev.azure.com/dndgen/DnDGen/_build/latest?definitionId=5&branchName=main) [![Theme Song](https://img.shields.io/badge/theme_song-Suno-ff69b4)](https://suno.com/s/idhKDWtBG8g26Ar3)
 
 ## Installing CreatureGen
 
@@ -834,6 +834,6 @@ Version 2.0.0 has breaking changes to the public API:
 
 ## Theme Song
 
-DnDGen.CreatureGen has its own theme song: Wake the Bestiary -DnDGen.CreatureGen Theme-, dark Nordic folk for the bestiary.
+DnDGen.CreatureGen has its own theme song: [Wake the Bestiary -DnDGen.CreatureGen Theme-](https://suno.com/s/idhKDWtBG8g26Ar3), dark Nordic folk for the bestiary.
 It follows this README, so a change here may need the song updated too.
 See the song's [lyrics, notes, and update procedure](https://github.com/DnDGen/DnDGen.CreatureGen/blob/main/docs/theme-song/README.md).

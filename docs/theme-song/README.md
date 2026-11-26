@@ -1,12 +1,12 @@
 # Wake the Bestiary -DnDGen.CreatureGen Theme-
 
-[![Wake the Bestiary album art](cover.png)](TODO_SUNO_LINK)
+[![Wake the Bestiary album art](cover.png)](https://suno.com/s/idhKDWtBG8g26Ar3)
 
 The DnDGen.CreatureGen theme song: dark Nordic folk for the bestiary, sung in the first person by the Centaur King, keeper of every creature, while a circle of low voices answers him in the refrain.
 Its lyrics come from the [DnDGen.CreatureGen README](https://github.com/DnDGen/DnDGen.CreatureGen/blob/main/README.md), sung in plain English as unrhymed alliterative verse, after the old Nordic poems,
 and the circle answers with *Centaur Rege*, the king's name in Latin and CreatureGen's leitmotif from the [DnDGen main theme](https://github.com/DnDGen/.github/blob/main/theme-song/README.md).
 
-**Listen on [Suno](TODO_SUNO_LINK).**
+**Listen on [Suno](https://suno.com/s/idhKDWtBG8g26Ar3).**
 
 ## Updating
 
@@ -171,7 +171,7 @@ The lines are unrhymed alliterative verse: each line has two or three stressed w
 
 ## Suno Notes
 
-Nothing has been generated yet, so everything here is a guess to test:
+The first generation (v1) was a good take on the first try, so the Style and lyrics worked as written, and the song is published. The rest of this list is what each choice was meant to do; only the length is still unrecorded:
 
 - **Drafts and the Sample.** Every draft before this song first merges is a fresh generation that
   Samples the main theme's "Rogante Marendor" snippet (3:00.0 to 3:17.1) with Variety all the way
