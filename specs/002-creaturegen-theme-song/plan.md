@@ -35,16 +35,12 @@ also `docs/**/*.md` and `docs/**/*.png`, to its output.
 
 - **D1: Title.** *Wake the Bestiary*, the refrain: the skald wakes each creature, as the library
   generates one.
-- **D2: Voices.** The verses are the skald alone. In the chorus the skald sings the English line
-  and the circle of low voices answers with the leitmotif, as an ordinary line, never in
-  parentheses (Suno dropped parenthesized non-English in Infrastructure's drafts). Parentheses are
-  for English echoes in the intro, bridge, and outro.
+- **D2: Voices.** The Centaur King (the skald, in the first person) sings every English line, and a circle of low voices answers after each pair of lines, as an ordinary line with an em dash, never in parentheses (Suno dropped parenthesized answers in Infrastructure's drafts). The choruses are answered with the leitmotif, the verses and bridge with a short English echo.
 - **D3: Sources.** Every sung line quotes the README's prose or table text, not its code samples,
-  so lines are sung as words. The leitmotif and the refrain are the two lines not from the README.
+  so lines are sung as words. The Centaur King's introduction and sign-off, and the refrain, are the lines not from the README.
 - **D4: Suno link.** Until the maintainer has one, the record says `TODO_SUNO_LINK` and the README
   has no badge, so the link tests fail. The patch's `SUNO_LINK` is replaced at the same time.
-- **D5: Album art.** The main theme's cover, recoloured: a bone-pale d20 in the cold light of a
-  northern forest, with the song's title.
+- **D5: Album art.** To be redone: the first cover (a bare recoloured d20) was too plain next to the other songs' covers, each of which draws a scene from its song. Proposal waits until the song settles.
 
 ## Project Structure
 

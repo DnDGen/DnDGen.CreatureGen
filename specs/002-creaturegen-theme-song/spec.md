@@ -21,7 +21,7 @@ the same questions. The maintainer hasn't reviewed them yet.
 - Q: Which language? → A: English, plain words, like Stress, RollGen, TreasureGen, and Web, with
   the leitmotif the only Latin. **Also the maintainer's to confirm.** A Norse-flavoured alternative
   is Old Norse echoes in the chorus; it is not drafted.
-- Q: Does it carry a leitmotif? → A: Yes. CreatureGen is a generator, so its song brings back its
+- Q: Does it carry a leitmotif? → A: Yes, as the narrator. CreatureGen is a generator, so its song brings back its leitmotif from the main theme, *Centaur Rege*. A bare Latin answer meant nothing in the song, so the Centaur King is the skald, speaking in the first person, and the circle answers with his name.
   leitmotif from the main theme, *Centaur Rege*: Latin for a centaur, by the king. The circle of
   voices answers every English line of the chorus with it.
 - Q: Where do the lyrics come from? → A: CreatureGen's README as it is after spec 001, sung as
