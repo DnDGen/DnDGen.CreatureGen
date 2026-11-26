@@ -246,14 +246,15 @@ msedge --headless --hide-scrollbars --allow-file-access-from-files --window-size
 
 If Edge reads `cover.html` as a web address, pass it as a full `file:///` URL instead.
 
-- It is a scene, drawn after the main theme's [cover](https://github.com/DnDGen/.github/blob/main/theme-song/cover.html), like the other songs' covers. The d20 is the head of the Centaur King, large and centred
-  as on the main theme's cover, and it wears his crown, seated across the top the way a crown sits on a head: gold, with a
-  row of beads, emerald, ruby, and magenta jewels on the points, and the band curving a little lower at the front.
-  Two pines stand in shadow, one on each side, of different widths and depths, in very dark greens and browns so the
-  leaves and trunks are faintly different. Five pairs of glowing circles, the eyes of the bestiary, look out of the dark
-  under a green aurora. The title is the song's, *Wake the Bestiary*. Earlier covers: v0.1 was only the recoloured d20,
-  too plain; v0.2 had a centaur silhouette lifting the d20, which didn't read well; v0.3 had a small crown on the edge, with
-  ghost copies of the d20; v0.4 ringed the d20 with a circular crown, over a close forest, with small d20s for eyes,
-  none of which was what was meant.
+- It is a scene, drawn after the main theme's [cover](https://github.com/DnDGen/.github/blob/main/theme-song/cover.html), like the other songs' covers. The d20 is the head of the Centaur King, large, centred,
+  and a little low in the frame, and it wears his crown level on its brow, as a crown sits on a head in a portrait: gold, with a
+  row of beads, emerald, ruby, and magenta jewels on the points, and the band curving slightly at the front. Around it is a
+  forest of tall straight trunks at night, in very dark browns and greens: two near trunks at the edges, of different widths,
+  sharp and dark, then thinner trunks behind them, blurred more and lighter with distance, with faint leaf masses at the corners
+  and a few pale shafts of light from above. Five pairs of glowing circles, the eyes of the bestiary, look out of the dark
+  under the aurora. The title is the song's, *Wake the Bestiary*. Earlier covers: v0.1 was only the recoloured d20, too plain;
+  v0.2 had a centaur silhouette lifting the d20, which didn't read well; v0.3 had a small crown on the d20's edge, askew;
+  v0.4 ringed the d20 with a circular crown over a close forest, with small d20s for eyes; v0.5 had a tilted crown between
+  two pines. None was what was meant.
 - The d20 is the dndgen.com loading spinner, from [DnDGen.Web](https://github.com/DnDGen/DnDGen.Web/blob/main/dndgen-web/src/assets/loadingDice.svg), originally from [a gist by hperantunes](https://gist.github.com/hperantunes/f4c2fd407c2ea74c6c9d).
 - The title is set in [Cinzel](https://github.com/NDISCOVER/Cinzel), included as [Cinzel.ttf](Cinzel.ttf) under the [SIL Open Font License](Cinzel-OFL.txt).
