@@ -84,7 +84,7 @@ For dungeons and dragons; the regal ruler delivers
 
 [Verse 3 - the king alone, slow and spare]
 Dice decide; the default scores are set
-Pick from the nine; or play any valid roll
+Pick from the nine; or play any real roll
 Ghosts need Charisma; grace of six at the least
 Short of the mark; the score is raised to meet it
 If the roll can never reach; the minimum is missed
@@ -157,7 +157,7 @@ The lines are unrhymed alliterative verse: each line has two or three stressed w
 | For dungeons and dragons; the regal ruler delivers | Introduction: "Generates a random, fleshed-out creature for Dungeons and Dragons 3.5" |
 | Playable peoples; they take class levels<br>Monsters keep their might; their hit dice stay | Use: "a playable race that will take class levels", "has its racial Hit Die replaced by class levels", and "or as a monster" |
 | Templates chained; taken in turn<br>Each must fit; the form the first has fashioned | Use: "Chaining templates", "applied in the order given", "Each template must be compatible with the creature", and "as it is after the templates before it have been applied" |
-| Dice decide; the default scores are set<br>Pick from the nine; or play any valid roll | Use, Ability scores: "abilities are rolled with the default roll", "The available rolls are in", and "any other valid roll" |
+| Dice decide; the default scores are set<br>Pick from the nine; or play any real roll | Use, Ability scores: "abilities are rolled with the default roll", "The available rolls are in", and "any other valid roll" |
 | Ghosts need Charisma; grace of six at the least<br>Short of the mark; the score is raised to meet it | Use, Ability scores: "Some templates require a minimum ability score", "a Ghost needs Charisma 6", and "any rolled score that would fall short is raised to meet the minimum" |
 | If the roll can never reach; the minimum is missed<br>Not compatible; the creature cannot come | Use, Ability scores: "If the randomizer can never reach the minimum" and "the creature is not compatible" |
 | Ask before you beckon; whether beasts can wake<br>The verifier vets; valid creatures confirmed | Use, Checking compatibility: "To check ahead of time" and "ICreatureVerifier" |
@@ -219,7 +219,7 @@ Nothing has been generated yet, so everything here is a guess to test:
   the generator throws, which is an implementation detail and not a warning.
 - **The roll line names no roll.** v0.4 sang "four dice fall; the fairest three keep", which read as
   if the default and four dice keeping three were the only rolls. A roll can be any valid roll, so the
-  line is now "Pick from the nine; or play any valid roll", and the README says so.
+  line is now "Pick from the nine; or play any real roll", and the README says so.
 - **The singer is a guess.** "A calm, deep, unhurried male voice, a regal king and storyteller"
   names the singer, as RollGen's lesson says, and avoids "raspy" and "gravelly", which came out
   growly there. A dark Nordic folk take may still pull toward a throat-sung or growled voice.
@@ -246,8 +246,10 @@ msedge --headless --hide-scrollbars --allow-file-access-from-files --window-size
 
 If Edge reads `cover.html` as a web address, pass it as a full `file:///` URL instead.
 
-- It is the main theme's [cover](https://github.com/DnDGen/.github/blob/main/theme-song/cover.html), recoloured for the bestiary.
-  The d20 is bone-pale in the cold light of a northern forest, and the ghost copies behind it are the
-  spruce-green shadows of every beast it has woken. The title is the song's, *Wake the Bestiary*.
+- It is a scene, drawn after the main theme's [cover](https://github.com/DnDGen/.github/blob/main/theme-song/cover.html), like the other songs' covers. The Centaur King, antlered and crowned,
+  stands on a ridge and lifts the d20 like a moon above a pine forest and an aurora, and eyes of amber,
+  teal, and red shine in the trees: the bestiary, waking. The ghost copies behind the d20 are its spin.
+  The title is the song's, *Wake the Bestiary*. The first cover was only the recoloured d20, which was
+  too plain next to the others.
 - The d20 is the dndgen.com loading spinner, from [DnDGen.Web](https://github.com/DnDGen/DnDGen.Web/blob/main/dndgen-web/src/assets/loadingDice.svg), originally from [a gist by hperantunes](https://gist.github.com/hperantunes/f4c2fd407c2ea74c6c9d).
 - The title is set in [Cinzel](https://github.com/NDISCOVER/Cinzel), included as [Cinzel.ttf](Cinzel.ttf) under the [SIL Open Font License](Cinzel-OFL.txt).
