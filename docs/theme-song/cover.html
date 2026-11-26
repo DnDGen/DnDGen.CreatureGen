@@ -7,8 +7,7 @@
   originally from https://gist.github.com/hperantunes/f4c2fd407c2ea74c6c9d
   Title font: Cinzel (Cinzel.ttf, SIL Open Font License - see Cinzel-OFL.txt).
   Based on the main theme's cover in DnDGen/.github theme-song/cover.html, redrawn as a scene for the bestiary: the d20 is
-  the head of the Centaur King, ringed by his crown, over a close forest of green pines and brown trunks, where small
-  d20s glow in the dark between the trees like the eyes of the bestiary.
+  the head of the Centaur King and wears his crown, between two pines in shadow, with pairs of eyes shining in the dark.
 -->
 <html>
 <head>
@@ -25,11 +24,6 @@
     <stop offset="0.82" stop-color="#10292a"/>
     <stop offset="1" stop-color="#061211"/>
   </linearGradient>
-  <linearGradient id="dark" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="#010504" stop-opacity="0"/>
-    <stop offset="0.35" stop-color="#010504" stop-opacity="0.78"/>
-    <stop offset="1" stop-color="#010504" stop-opacity="0.96"/>
-  </linearGradient>
   <linearGradient id="aur1" x1="0" y1="0" x2="1" y2="0">
     <stop offset="0" stop-color="#3fd9a0" stop-opacity="0"/>
     <stop offset="0.3" stop-color="#5fe8b4" stop-opacity="0.75"/>
@@ -42,7 +36,7 @@
     <stop offset="1" stop-color="#3fd9a0" stop-opacity="0"/>
   </linearGradient>
   <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="#f6e3a0"/>
+    <stop offset="0" stop-color="#f8e7a6"/>
     <stop offset="1" stop-color="#c79a3c"/>
   </linearGradient>
   <radialGradient id="halo" cx="50%" cy="50%" r="50%">
@@ -55,18 +49,14 @@
     <feGaussianBlur in="SourceGraphic" stdDeviation="0.6" result="b2"/>
     <feMerge><feMergeNode in="b1"/><feMergeNode in="b1"/><feMergeNode in="b2"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
-  <filter id="eyeglow" x="-80%" y="-80%" width="260%" height="260%">
-    <feGaussianBlur stdDeviation="3" result="b"/>
-    <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-  </filter>
+  <filter id="eye" x="-300%" y="-300%" width="700%" height="700%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
   <filter id="tglow" x="-10%" y="-50%" width="120%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
   <filter id="blur30" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="30"/></filter>
-  <filter id="blur14" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="14"/></filter>
   <g id="tree">
-    <rect x="-9" y="0" width="18" height="96" fill="#4b3323"/>
-    <rect x="1" y="0" width="8" height="96" fill="#2c1d12" opacity="0.55"/>
+    <rect x="-9" y="0" width="18" height="96" fill="#1c140d"/>
+    <rect x="1" y="0" width="8" height="96" fill="#0c0805" opacity="0.6"/>
     <polygon points="0,-210 34,-132 17,-132 50,-62 25,-62 62,0 -62,0 -25,-62 -50,-62 -17,-132 -34,-132"/>
-    <polygon points="0,-210 34,-132 17,-132 50,-62 25,-62 62,0 0,0" fill="#000" opacity="0.3"/>
+    <polygon points="0,-210 34,-132 17,-132 50,-62 25,-62 62,0 0,0" fill="#000" opacity="0.35"/>
   </g>
   <path id="d20" d="M80.644,87.982l16.592-41.483c0.054-0.128,0.088-0.26,0.108-0.394c0.006-0.039,0.007-0.077,0.011-0.116  c0.007-0.087,0.008-0.174,0.002-0.26c-0.003-0.046-0.007-0.091-0.014-0.137c-0.014-0.089-0.036-0.176-0.063-0.262  c-0.012-0.034-0.019-0.069-0.031-0.103c-0.047-0.118-0.106-0.229-0.178-0.335c-0.004-0.006-0.006-0.012-0.01-0.018L67.999,3.358  c-0.01-0.013-0.003-0.026-0.013-0.04L68,3.315V4c0,0-0.033,0-0.037,0c-0.403-1-1.094-1.124-1.752-0.976  c0,0.004-0.004-0.012-0.007-0.012C66.201,3.016,66.194,3,66.194,3H66.19h-0.003h-0.003h-0.004h-0.003c0,0-0.004,0-0.007,0  s-0.003-0.151-0.007-0.151L20.495,15.227c-0.025,0.007-0.046-0.019-0.071-0.011c-0.087,0.028-0.172,0.041-0.253,0.083  c-0.054,0.027-0.102,0.053-0.152,0.085c-0.051,0.033-0.101,0.061-0.147,0.099c-0.044,0.036-0.084,0.073-0.124,0.113  c-0.048,0.048-0.093,0.098-0.136,0.152c-0.03,0.039-0.059,0.076-0.085,0.117c-0.046,0.07-0.084,0.145-0.12,0.223  c-0.011,0.023-0.027,0.042-0.036,0.066L2.911,57.664C2.891,57.715,3,57.768,3,57.82v0.002c0,0.186,0,0.375,0,0.562  c0,0.004,0,0.004,0,0.008c0,0,0,0,0,0.002c0,0,0,0,0,0.004v0.004v0.002c0,0.074-0.002,0.15,0.012,0.223  C3.015,58.631,3,58.631,3,58.633c0,0.004,0,0.004,0,0.008c0,0,0,0,0,0.002c0,0,0,0,0,0.004v0.004c0,0,0,0,0,0.002v0.004  c0,0.191-0.046,0.377,0.06,0.545c0-0.002-0.03,0.004-0.03,0.004c0,0.004-0.03,0.004-0.03,0.004c0,0.002,0,0.002,0,0.002  l-0.045,0.004c0.03,0.047,0.036,0.09,0.068,0.133l29.049,37.359c0.002,0.004,0,0.006,0.002,0.01c0.002,0.002,0,0.004,0.002,0.008  c0.006,0.008,0.014,0.014,0.021,0.021c0.024,0.029,0.052,0.051,0.078,0.078c0.027,0.029,0.053,0.057,0.082,0.082  c0.03,0.027,0.055,0.062,0.086,0.088c0.026,0.02,0.057,0.033,0.084,0.053c0.04,0.027,0.081,0.053,0.123,0.076  c0.005,0.004,0.01,0.008,0.016,0.01c0.087,0.051,0.176,0.09,0.269,0.123c0.042,0.014,0.082,0.031,0.125,0.043  c0.021,0.006,0.041,0.018,0.062,0.021c0.123,0.027,0.249,0.043,0.375,0.043c0.099,0,0.202-0.012,0.304-0.027l45.669-8.303  c0.057-0.01,0.108-0.021,0.163-0.037C79.547,88.992,79.562,89,79.575,89c0.004,0,0.004,0,0.004,0c0.021,0,0.039-0.027,0.06-0.035  c0.041-0.014,0.08-0.034,0.12-0.052c0.021-0.01,0.044-0.019,0.064-0.03c0.017-0.01,0.026-0.015,0.033-0.017  c0.014-0.008,0.023-0.021,0.037-0.028c0.14-0.078,0.269-0.174,0.38-0.285c0.014-0.016,0.024-0.034,0.038-0.048  c0.109-0.119,0.201-0.252,0.271-0.398c0.006-0.01,0.016-0.018,0.021-0.029c0.004-0.008,0.008-0.017,0.011-0.026  c0.002-0.004,0.003-0.006,0.005-0.01C80.627,88.021,80.635,88.002,80.644,87.982z M77.611,84.461L48.805,66.453l32.407-25.202  L77.611,84.461z M46.817,63.709L35.863,23.542l43.818,14.608L46.817,63.709z M84.668,40.542l8.926,5.952l-11.902,29.75  L84.668,40.542z M89.128,39.446L84.53,36.38l-6.129-12.257L89.128,39.446z M79.876,34.645L37.807,20.622L65.854,6.599L79.876,34.645  z M33.268,19.107l-6.485-2.162l23.781-6.487L33.268,19.107z M21.92,18.895l8.67,2.891L10.357,47.798L21.92,18.895z M32.652,24.649  l10.845,39.757L7.351,57.178L32.652,24.649z M43.472,67.857L32.969,92.363L8.462,60.855L43.472,67.857z M46.631,69.09l27.826,17.393  l-38.263,6.959L46.631,69.09z"/>
 </defs>
@@ -121,58 +111,44 @@
   <path d="M-80 250 C 220 90, 520 340, 820 170 S 1320 50, 1580 220" stroke="url(#aur1)" stroke-width="110" opacity="0.5" filter="url(#blur30)"/>
   <path d="M-80 380 C 260 260, 560 490, 900 330 S 1300 260, 1580 400" stroke="url(#aur2)" stroke-width="80" opacity="0.45" filter="url(#blur30)"/>
 </g>
-<g>
-  <use href="#tree" transform="translate(120 1040) scale(2.0)" fill="#1c3d2c"/>
-  <use href="#tree" transform="translate(340 1020) scale(2.3)" fill="#1e4230"/>
-  <use href="#tree" transform="translate(600 1050) scale(1.9)" fill="#1c3d2c"/>
-  <use href="#tree" transform="translate(900 1046) scale(2.0)" fill="#1c3d2c"/>
-  <use href="#tree" transform="translate(1160 1016) scale(2.4)" fill="#1e4230"/>
-  <use href="#tree" transform="translate(1400 1040) scale(2.0)" fill="#1c3d2c"/>
-</g>
-<rect x="0" y="640" width="1500" height="660" fill="url(#dark)"/>
-<g>
-  <use href="#tree" transform="translate(-10 940) scale(3.6)" fill="#2a5c3a"/>
-  <use href="#tree" transform="translate(228 984) scale(3.0)" fill="#2d6340"/>
-  <use href="#tree" transform="translate(476 1000) scale(2.6)" fill="#285838"/>
-  <use href="#tree" transform="translate(1030 992) scale(2.8)" fill="#285838"/>
-  <use href="#tree" transform="translate(1282 960) scale(3.3)" fill="#2d6340"/>
-  <use href="#tree" transform="translate(1512 930) scale(3.8)" fill="#2a5c3a"/>
-</g>
+<use href="#tree" transform="translate(1330 1009) scale(2.4)" fill="#12291f"/>
+<rect x="0" y="1230" width="1500" height="270" fill="#020706"/>
+<use href="#tree" transform="translate(170 933) scale(3.2)" fill="#0b1c13"/>
 <circle cx="750" cy="640" r="640" fill="url(#halo)"/>
-<g transform="translate(750 640)">
-  <circle r="420" fill="none" stroke="url(#gold)" stroke-width="30"/>
-  <circle r="404" fill="none" stroke="#fbf0c0" stroke-width="3" opacity="0.8"/>
-  <g transform="rotate(190)"><polygon points="410,-26 410,26 500,0" fill="url(#gold)" stroke="#fbf0c0" stroke-width="3" stroke-linejoin="round"/><circle cx="500" cy="0" r="11" fill="#fbf0c0"/></g>
-  <g transform="rotate(210)"><polygon points="410,-26 410,26 515,0" fill="url(#gold)" stroke="#fbf0c0" stroke-width="3" stroke-linejoin="round"/><circle cx="515" cy="0" r="11" fill="#fbf0c0"/></g>
-  <g transform="rotate(230)"><polygon points="410,-26 410,26 530,0" fill="url(#gold)" stroke="#fbf0c0" stroke-width="3" stroke-linejoin="round"/><circle cx="530" cy="0" r="11" fill="#fbf0c0"/></g>
-  <g transform="rotate(250)"><polygon points="410,-26 410,26 545,0" fill="url(#gold)" stroke="#fbf0c0" stroke-width="3" stroke-linejoin="round"/><circle cx="545" cy="0" r="11" fill="#fbf0c0"/></g>
-  <g transform="rotate(270)"><polygon points="410,-26 410,26 560,0" fill="url(#gold)" stroke="#fbf0c0" stroke-width="3" stroke-linejoin="round"/><circle cx="560" cy="0" r="11" fill="#fbf0c0"/></g>
-  <g transform="rotate(290)"><polygon points="410,-26 410,26 545,0" fill="url(#gold)" stroke="#fbf0c0" stroke-width="3" stroke-linejoin="round"/><circle cx="545" cy="0" r="11" fill="#fbf0c0"/></g>
-  <g transform="rotate(310)"><polygon points="410,-26 410,26 530,0" fill="url(#gold)" stroke="#fbf0c0" stroke-width="3" stroke-linejoin="round"/><circle cx="530" cy="0" r="11" fill="#fbf0c0"/></g>
-  <g transform="rotate(330)"><polygon points="410,-26 410,26 515,0" fill="url(#gold)" stroke="#fbf0c0" stroke-width="3" stroke-linejoin="round"/><circle cx="515" cy="0" r="11" fill="#fbf0c0"/></g>
-  <g transform="rotate(350)"><polygon points="410,-26 410,26 500,0" fill="url(#gold)" stroke="#fbf0c0" stroke-width="3" stroke-linejoin="round"/><circle cx="500" cy="0" r="11" fill="#fbf0c0"/></g>
-  <circle cx="420" cy="0" r="17" fill="#7fe8d0" stroke="#e8fff8" stroke-width="3"/>
-  <circle cx="-420" cy="0" r="17" fill="#7fe8d0" stroke="#e8fff8" stroke-width="3"/>
-  <circle cx="0" cy="420" r="19" fill="#e8734a" stroke="#ffe0d0" stroke-width="3"/>
-  <circle cx="297" cy="297" r="13" fill="#e8734a" stroke="#ffe0d0" stroke-width="2"/>
-  <circle cx="-297" cy="297" r="13" fill="#e8734a" stroke="#ffe0d0" stroke-width="2"/>
-</g>
 <g transform="translate(750 640) scale(0.8)">
   <use href="#d20" transform="scale(10) translate(-50 -50)" fill="#dcebe6" filter="url(#glow)"/>
 </g>
-<g filter="url(#eyeglow)">
-<use href="#d20" transform="translate(60 1170) scale(0.75) translate(-50 -50)" fill="#7fe0d0" stroke="#7fe0d0" stroke-width="2.2" stroke-linejoin="round"/>
-<use href="#d20" transform="translate(160 1170) scale(0.75) translate(-50 -50)" fill="#7fe0d0" stroke="#7fe0d0" stroke-width="2.2" stroke-linejoin="round"/>
-<use href="#d20" transform="translate(302 1120) scale(0.75) translate(-50 -50)" fill="#f2c14e" stroke="#f2c14e" stroke-width="2.2" stroke-linejoin="round"/>
-<use href="#d20" transform="translate(402 1120) scale(0.75) translate(-50 -50)" fill="#f2c14e" stroke="#f2c14e" stroke-width="2.2" stroke-linejoin="round"/>
-<use href="#d20" transform="translate(560 1180) scale(0.75) translate(-50 -50)" fill="#7fe0d0" stroke="#7fe0d0" stroke-width="2.2" stroke-linejoin="round"/>
-<use href="#d20" transform="translate(660 1180) scale(0.75) translate(-50 -50)" fill="#7fe0d0" stroke="#7fe0d0" stroke-width="2.2" stroke-linejoin="round"/>
-<use href="#d20" transform="translate(830 1150) scale(0.75) translate(-50 -50)" fill="#e8734a" stroke="#e8734a" stroke-width="2.2" stroke-linejoin="round"/>
-<use href="#d20" transform="translate(930 1150) scale(0.75) translate(-50 -50)" fill="#e8734a" stroke="#e8734a" stroke-width="2.2" stroke-linejoin="round"/>
-<use href="#d20" transform="translate(1106 1110) scale(0.75) translate(-50 -50)" fill="#9fe86f" stroke="#9fe86f" stroke-width="2.2" stroke-linejoin="round"/>
-<use href="#d20" transform="translate(1206 1110) scale(0.75) translate(-50 -50)" fill="#9fe86f" stroke="#9fe86f" stroke-width="2.2" stroke-linejoin="round"/>
+<g transform="translate(704 338) rotate(-12)" filter="url(#glow)">
+  <polygon points="-250.0,-170.0 -208.3,-66.7 -166.7,-142.2 -125.0,-44.5 -83.3,-125.6 -41.7,-33.4 0.0,-120.0 41.7,-33.4 83.3,-125.6 125.0,-44.5 166.7,-142.2 208.3,-66.7 250.0,-170.0 250.0,75.0 208.3,90.3 166.7,102.8 125.0,112.5 83.3,119.4 41.7,123.6 0.0,125.0 -41.7,123.6 -83.3,119.4 -125.0,112.5 -166.7,102.8 -208.3,90.3 -250.0,75.0 " fill="url(#gold)" stroke="#fbf0c0" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M-250.0 -14.0 L-208.3 1.3 L-166.7 13.8 L-125.0 23.5 L-83.3 30.4 L-41.7 34.6 L0.0 36.0 L41.7 34.6 L83.3 30.4 L125.0 23.5 L166.7 13.8 L208.3 1.3 L250.0 -14.0" fill="none" stroke="#9a7425" stroke-width="4" opacity="0.8"/>
+  <path d="M-250.0 67.0 L-208.3 82.3 L-166.7 94.8 L-125.0 104.5 L-83.3 111.4 L-41.7 115.6 L0.0 117.0 L41.7 115.6 L83.3 111.4 L125.0 104.5 L166.7 94.8 L208.3 82.3 L250.0 67.0" fill="none" stroke="#9a7425" stroke-width="4" opacity="0.8"/>
+  <circle cx="-208.3" cy="45.3" r="8" fill="#fff3c4" stroke="#9a7425" stroke-width="2"/>
+  <circle cx="-166.7" cy="57.8" r="8" fill="#fff3c4" stroke="#9a7425" stroke-width="2"/>
+  <circle cx="-125.0" cy="67.5" r="8" fill="#fff3c4" stroke="#9a7425" stroke-width="2"/>
+  <circle cx="-83.3" cy="74.4" r="8" fill="#fff3c4" stroke="#9a7425" stroke-width="2"/>
+  <circle cx="-41.7" cy="78.6" r="8" fill="#fff3c4" stroke="#9a7425" stroke-width="2"/>
+  <circle cx="0.0" cy="80.0" r="8" fill="#fff3c4" stroke="#9a7425" stroke-width="2"/>
+  <circle cx="41.7" cy="78.6" r="8" fill="#fff3c4" stroke="#9a7425" stroke-width="2"/>
+  <circle cx="83.3" cy="74.4" r="8" fill="#fff3c4" stroke="#9a7425" stroke-width="2"/>
+  <circle cx="125.0" cy="67.5" r="8" fill="#fff3c4" stroke="#9a7425" stroke-width="2"/>
+  <circle cx="166.7" cy="57.8" r="8" fill="#fff3c4" stroke="#9a7425" stroke-width="2"/>
+  <circle cx="208.3" cy="45.3" r="8" fill="#fff3c4" stroke="#9a7425" stroke-width="2"/>
+  <circle cx="-250.0" cy="-170.0" r="17" fill="#3fd6a0" stroke="#fff3c4" stroke-width="3"/>
+  <circle cx="-166.7" cy="-142.2" r="17" fill="#e0364c" stroke="#fff3c4" stroke-width="3"/>
+  <circle cx="-83.3" cy="-125.6" r="17" fill="#d94fa8" stroke="#fff3c4" stroke-width="3"/>
+  <circle cx="0.0" cy="-120.0" r="17" fill="#3fd6a0" stroke="#fff3c4" stroke-width="3"/>
+  <circle cx="83.3" cy="-125.6" r="17" fill="#e0364c" stroke="#fff3c4" stroke-width="3"/>
+  <circle cx="166.7" cy="-142.2" r="17" fill="#d94fa8" stroke="#fff3c4" stroke-width="3"/>
+  <circle cx="250.0" cy="-170.0" r="17" fill="#3fd6a0" stroke="#fff3c4" stroke-width="3"/>
+  <circle cx="0" cy="80.0" r="26" fill="#3fd6a0" stroke="#fff3c4" stroke-width="4"/>
 </g>
-<rect x="0" y="1230" width="1500" height="270" fill="#020706"/>
+<g filter="url(#eye)">
+<circle cx="96" cy="1170" r="11" fill="#f2c14e"/><circle cx="143" cy="1170" r="11" fill="#f2c14e"/>
+<circle cx="352" cy="1110" r="13" fill="#7fe0d0"/><circle cx="407" cy="1110" r="13" fill="#7fe0d0"/>
+<circle cx="591" cy="1165" r="9" fill="#e8734a"/><circle cx="628" cy="1165" r="9" fill="#e8734a"/>
+<circle cx="881" cy="1135" r="11" fill="#9fe86f"/><circle cx="928" cy="1135" r="11" fill="#9fe86f"/>
+<circle cx="1102" cy="1100" r="13" fill="#f2c14e"/><circle cx="1157" cy="1100" r="13" fill="#f2c14e"/>
+</g>
 <rect x="38" y="38" width="1424" height="1424" fill="none" stroke="#7fb5b8" stroke-width="3" opacity="0.45"/>
 <rect x="56" y="56" width="1388" height="1388" fill="none" stroke="#7fb5b8" stroke-width="1.5" opacity="0.3"/>
 <text x="750" y="1360" text-anchor="middle" font-family="Cinzel" font-weight="600" font-size="88" letter-spacing="14" fill="#dcebe6" filter="url(#tglow)">WAKE THE BESTIARY</text>

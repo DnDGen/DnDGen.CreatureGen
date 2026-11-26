@@ -41,7 +41,7 @@ also `docs/**/*.md` and `docs/**/*.png`, to its output.
   so lines are sung as words. The Centaur King's introduction and sign-off, and the refrain, are the lines not from the README.
 - **D4: Suno link.** Until the maintainer has one, the record says `TODO_SUNO_LINK` and the README
   has no badge, so the link tests fail. The patch's `SUNO_LINK` is replaced at the same time.
-- **D5: Album art.** A scene, like the other songs' covers: the d20, large and centred, is the Centaur King's head and his crown rings it, in front of close green pines and brown trunks with darkness between, and small glowing d20s look out of the dark as eyes. Earlier covers (a bare recoloured d20, a centaur silhouette, a small crown with shadowed trees) were too plain or did not read well.
+- **D5: Album art.** A scene, like the other songs' covers: the large, centred d20 is the Centaur King's head and wears his crown seated across the top, between two pines in shadow of different widths and depths, with pairs of glowing circles for eyes in the dark. Four earlier covers did not work (see the record's Album Art).
 
 ## Project Structure
 
