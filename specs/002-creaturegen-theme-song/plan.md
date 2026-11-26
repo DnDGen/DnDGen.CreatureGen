@@ -36,6 +36,7 @@ also `docs/**/*.md` and `docs/**/*.png`, to its output.
 - **D1: Title.** *Wake the Bestiary*, the refrain: the skald wakes each creature, as the library
   generates one.
 - **D2: Voices.** The Centaur King (the skald, in the first person) sings every English line, and a circle of low voices answers after each pair of lines, as an ordinary line with an em dash, never in parentheses (Suno dropped parenthesized answers in Infrastructure's drafts). The choruses are answered with the leitmotif, the verses and bridge with a short English echo.
+- **D6: Verse form.** Unrhymed alliterative verse, after the old Nordic poems: two or three stressed words in a line start alike, and the genre does not end-rhyme (the maintainer's decision, as with Infrastructure's chant). Choruses follow verses 1 to 4, and a final one closes the song.
 - **D3: Sources.** Every sung line quotes the README's prose or table text, not its code samples,
   so lines are sung as words. The Centaur King's introduction and sign-off, and the refrain, are the lines not from the README.
 - **D4: Suno link.** Until the maintainer has one, the record says `TODO_SUNO_LINK` and the README
