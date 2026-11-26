@@ -72,11 +72,11 @@ Hero or horror; as you will it
 
 [Verse 2 - the king sings the English, the circle of low voices answers with a short echo, slow and spare]
 Playable peoples; they take class levels
+Monsters keep their might; their hit dice stay
+— Their hit dice stay
 Templates chained; taken in turn
-— Taken in turn
-Each must suit; what stands before it
-Fit the form; the first has fashioned
-— Fit the form
+Each must fit; the form the first has fashioned
+— The first has fashioned
 
 [Chorus - the king sings the English, the circle of low voices answers with the Latin name]
 Wake the bestiary; called by the king
@@ -107,11 +107,11 @@ Hero or horror; as you will it
 
 [Bridge - quiet and plain, the king counselling his listener, the circle echoing softly under him]
 Ask before you beckon; whether beasts can wake
-The verifier says; valid creatures can be made
-— Can be made
-Where none can come; the generator throws
-The warning wails; through the whole bestiary
-— The warning wails
+The verifier vets; valid creatures confirmed
+— Creatures confirmed
+Name a beast; or none, and any may answer
+Filtered or free; a valid one is found
+— A valid one is found
 
 [Verse 4 - the king sings the English, the circle of low voices answers with a short echo, slow and spare]
 Or let chance rule; the random roll decides
@@ -168,13 +168,13 @@ The lines are unrhymed alliterative verse: each line has two or three stressed w
 | Wake the bestiary; called by the king | Not from the README: the refrain and the song's title |
 | Each creature crafted; flesh and fur and fang | Introduction: "fleshed-out creature" |
 | Hero or horror; as you will it | Use: "generated as a character" and "or as a monster" |
-| Playable peoples; they take class levels<br>Templates chained; taken in turn<br>— Taken in turn | Use: "a playable race that will take class levels", "Chaining templates", and "applied in the order given" |
-| Each must suit; what stands before it<br>Fit the form; the first has fashioned<br>— Fit the form | Use: "Each template must be compatible with the creature" and "as it is after the templates before it have been applied" |
+| Playable peoples; they take class levels<br>Monsters keep their might; their hit dice stay<br>— Their hit dice stay | Use: "a playable race that will take class levels", "has its racial Hit Die replaced by class levels", and "or as a monster" |
+| Templates chained; taken in turn<br>Each must fit; the form the first has fashioned<br>— The first has fashioned | Use: "Chaining templates", "applied in the order given", "Each template must be compatible with the creature", and "as it is after the templates before it have been applied" |
 | Dice decide; the default scores are set<br>Or four dice fall; the fairest three keep<br>— The fairest three | Use, Ability scores: "abilities are rolled with the default roll" and "keep the highest 3" |
 | Ghosts need Charisma; grace of six at the least<br>Short of the mark; the score is raised to meet it<br>— Raised to meet it | Use, Ability scores: "Some templates require a minimum ability score", "a Ghost needs Charisma 6", and "any rolled score that would fall short is raised to meet the minimum" |
 | If the roll can never reach; the minimum is missed<br>Not compatible; the creature cannot come<br>— It cannot come | Use, Ability scores: "If the randomizer can never reach the minimum" and "the creature is not compatible" |
-| Ask before you beckon; whether beasts can wake<br>The verifier says; valid creatures can be made<br>— Can be made | Use, Checking compatibility: "To check ahead of time", "ICreatureVerifier", and "gives a valid creature" |
-| Where none can come; the generator throws<br>The warning wails; through the whole bestiary<br>— The warning wails | Use, Checking compatibility: "the generator throws" |
+| Ask before you beckon; whether beasts can wake<br>The verifier vets; valid creatures confirmed<br>— Creatures confirmed | Use, Checking compatibility: "To check ahead of time" and "ICreatureVerifier" |
+| Name a beast; or none, and any may answer<br>Filtered or free; a valid one is found<br>— A valid one is found | Use, Checking compatibility: "gives a valid creature" and "A null creature means any creature" |
 | Or let chance rule; the random roll decides<br>Weighted heavily; to the creature that wears no template<br>— Weighted heavily | Use: "Random creatures"; Use, Random creatures: "weighted heavily in favor of creatures without a template" |
 | Filters narrow the field; the fray grows fewer<br>Match any one of the marks; and it may pass<br>— It may pass | Use, Filters: "Filters narrow down which random creatures are valid" and "A creature satisfies a filter if it matches" |
 | Choose a challenge; the creature will hold<br>Never advanced; naught is altered<br>— Naught is altered | Use, Filters: "challenge rating filter" and "are never advanced" |
