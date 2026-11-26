@@ -65,7 +65,7 @@ Wake the bestiary; called by the king
 — Centaur Rege
 Each creature crafted; flesh and fur and fang
 Hero or horror; as you will it
-The regal ruler; he rouses all you name
+For dungeons and dragons; the regal ruler delivers
 — Centaur Rege
 
 [Verse 2 - the king alone, slow and spare]
@@ -79,7 +79,7 @@ Wake the bestiary; called by the king
 — Centaur Rege
 Each creature crafted; flesh and fur and fang
 Hero or horror; as you will it
-The regal ruler; he rouses all you name
+For dungeons and dragons; the regal ruler delivers
 — Centaur Rege
 
 [Verse 3 - the king alone, slow and spare]
@@ -95,7 +95,7 @@ Wake the bestiary; called by the king
 — Centaur Rege
 Each creature crafted; flesh and fur and fang
 Hero or horror; as you will it
-The regal ruler; he rouses all you name
+For dungeons and dragons; the regal ruler delivers
 — Centaur Rege
 
 [Bridge - quiet and plain, the king alone, counselling his listener]
@@ -117,7 +117,7 @@ Wake the bestiary; called by the king
 — Centaur Rege
 Each creature crafted; flesh and fur and fang
 Hero or horror; as you will it
-The regal ruler; he rouses all you name
+For dungeons and dragons; the regal ruler delivers
 — Centaur Rege
 
 [Verse 5 - the king alone, slow and spare]
@@ -131,7 +131,7 @@ Wake the bestiary; called by the king
 — Centaur Rege
 Each creature crafted; flesh and fur and fang
 Hero or horror; as you will it
-The regal ruler; he rouses all you name
+For dungeons and dragons; the regal ruler delivers
 — Centaur Rege
 
 [Outro - the king sings the English, then the circle of low voices sings the Latin name as the refrain, the drums fade and the drone remains]
@@ -154,7 +154,7 @@ The lines are unrhymed alliterative verse: each line has two or three stressed w
 | Wake the bestiary; called by the king | Not from the README: the refrain and the song's title |
 | Each creature crafted; flesh and fur and fang | Introduction: "fleshed-out creature" |
 | Hero or horror; as you will it | Use: "generated as a character" and "or as a monster" |
-| The regal ruler; he rouses all you name | Not from the README: the Centaur King rouses whatever the caller names |
+| For dungeons and dragons; the regal ruler delivers | Introduction: "Generates a random, fleshed-out creature for Dungeons and Dragons 3.5" |
 | Playable peoples; they take class levels<br>Monsters keep their might; their hit dice stay | Use: "a playable race that will take class levels", "has its racial Hit Die replaced by class levels", and "or as a monster" |
 | Templates chained; taken in turn<br>Each must fit; the form the first has fashioned | Use: "Chaining templates", "applied in the order given", "Each template must be compatible with the creature", and "as it is after the templates before it have been applied" |
 | Dice decide; the default scores are set<br>Pick from the nine; or play any valid roll | Use, Ability scores: "abilities are rolled with the default roll", "The available rolls are in", and "any other valid roll" |
@@ -187,7 +187,7 @@ Nothing has been generated yet, so everything here is a guess to test:
   Nordic form is a leader singing the stanza and the group singing the refrain, as in the Faroese
   chain-dance ballads and the Scandinavian ballads. Each song's genre, style, and lyrics stand on
   their own; consistency is for practices, like this record and its tests, not for a song's
-  structure or tropes. The answer, "Centaur Rege", is an ordinary line after an em dash, not parentheses, sung straight after the king is named in the first line ("I am the Centaur King", "called by the king") and again after the last line, and it closes the outro. The chorus has a fourth line (the regal ruler who rouses all you name) so the second answer follows the king again. "He fulfills your fancy" was dropped: too twee for a song this stark. The answers have the
+  structure or tropes. The answer, "Centaur Rege", is an ordinary line after an em dash, not parentheses, sung straight after the king is named in the first line ("I am the Centaur King", "called by the king") and again after the last line, and it closes the outro. The chorus has a fourth line (for dungeons and dragons, the regal ruler delivers, so the king can do whatever you ask, which is the README's one-line promise) so the second answer follows the king again. "He fulfills your fancy" was dropped: too twee for a song this stark. The answers have the
   voices assigned in the section's tag and the Style and no inline voice tags, which is what got the
   second voice sung in Infrastructure's v0.5 and v0.6 and TreasureGen's drafts. The verses, with no
   answers, are the king alone.
