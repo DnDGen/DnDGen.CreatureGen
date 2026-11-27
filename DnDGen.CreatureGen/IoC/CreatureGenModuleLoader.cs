@@ -9,17 +9,14 @@ namespace DnDGen.CreatureGen.IoC
 {
     public class CreatureGenModuleLoader
     {
-        public void LoadModules(IKernel kernel)
+        public static void LoadModules(IKernel kernel)
         {
             //Dependencies
             var rollGenLoader = new RollGenModuleLoader();
             rollGenLoader.LoadModules(kernel);
 
-            var infrastructureLoader = new InfrastructureModuleLoader();
-            infrastructureLoader.LoadModules(kernel);
-
-            var treasureGenLoader = new TreasureGenModuleLoader();
-            treasureGenLoader.LoadModules(kernel);
+            InfrastructureModuleLoader.LoadModules(kernel);
+            TreasureGenModuleLoader.LoadModules(kernel);
 
             //CreatureGen
             var modules = kernel.GetModules();

@@ -5,16 +5,16 @@
     <Authors>Karl M. Speer</Authors>
     <Company>DnDGen</Company>
     <Product>CreatureGen</Product>
-    <Version>2.0.1</Version>
+    <Version>2.0.2</Version>
     <Description>This generates creatures for the Dungeons and Dragons 3.5 system.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/DnDGen/DnDGen.CreatureGen</PackageProjectUrl>
-    <PackageIcon>18531-twenty-sided-dice-vector-thumb.png</PackageIcon>
+    <PackageIcon>avatar-128.png</PackageIcon>
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/DnDGen/DnDGen.CreatureGen</RepositoryUrl>
     <PackageTags>creature generator dice dungeons dragons d20 dnd 3.5 gen</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>Fix bug whre snakes had no racial skill bonuses</PackageReleaseNotes>
+    <PackageReleaseNotes>Document the public API in the README, add the theme song, build and release on GitHub Actions, and use the DnDGen avatar as the package icon. IDemographicsGenerator is now internal: it was public by mistake, and nothing outside CreatureGen uses it.</PackageReleaseNotes>
 	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
@@ -63,7 +63,7 @@
     <None Remove="Tables\Skills\SkillData.xml" />
     <None Remove="Tables\Skills\SkillGroups.xml" />
     <None Remove="Tables\Skills\SkillPoints.xml" />
-    <None Include="18531-twenty-sided-dice-vector-thumb.png">
+    <None Include="avatar-128.png">
       <Pack>True</Pack>
       <PackagePath>
       </PackagePath>
@@ -179,8 +179,8 @@
     <EmbeddedResource Include="Tables\Skills\SkillPoints.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DnDGen.Infrastructure" Version="7.0.6" />
-    <PackageReference Include="DnDGen.RollGen" Version="16.0.7" />
-    <PackageReference Include="DnDGen.TreasureGen" Version="12.0.6" />
+    <PackageReference Include="DnDGen.Infrastructure" Version="8.0.1" />
+    <PackageReference Include="DnDGen.RollGen" Version="18.0.3" />
+    <PackageReference Include="DnDGen.TreasureGen" Version="13.0.2" />
   </ItemGroup>
 </Project>

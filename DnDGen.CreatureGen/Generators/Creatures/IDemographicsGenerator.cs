@@ -2,7 +2,7 @@
 
 namespace DnDGen.CreatureGen.Generators.Creatures
 {
-    public interface IDemographicsGenerator
+    internal interface IDemographicsGenerator
     {
         Demographics Generate(string creatureName);
         Demographics UpdateByTemplate(Demographics source, string creature, string template, bool addWingspan = false, bool overwriteAppearance = false);

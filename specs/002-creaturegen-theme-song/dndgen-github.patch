@@ -1,0 +1,22 @@
+diff --git a/profile/README.md b/profile/README.md
+index 93797d9..70e8c3f 100644
+--- a/profile/README.md
++++ b/profile/README.md
+@@ -36,3 +36,4 @@ So DnDGen tests heavily: over 100,000 tests, plus stress tests that run each gen
+ | <a href="https://github.com/DnDGen/DnDGen.RollGen/blob/main/docs/theme-song/README.md"><img src="https://github.com/DnDGen/DnDGen.RollGen/raw/main/docs/theme-song/cover.png" alt="Grollen album art" width="80"></a> | **Grollen** -DnDGen.RollGen Theme- | *Grollen* | [Listen](https://suno.com/s/RvnVPcPR4ZTGIEt7) · [Lyrics and notes](https://github.com/DnDGen/DnDGen.RollGen/blob/main/docs/theme-song/README.md) |
+ | <a href="https://github.com/DnDGen/DnDGen.Infrastructure/blob/main/docs/theme-song/README.md"><img src="https://github.com/DnDGen/DnDGen.Infrastructure/raw/main/docs/theme-song/cover.png" alt="Credo of the Tables album art" width="80"></a> | **Credo of the Tables** -DnDGen.Infrastructure Theme- | | [Listen](https://suno.com/s/xemh9NeqXMYfCxrq) · [Lyrics and notes](https://github.com/DnDGen/DnDGen.Infrastructure/blob/main/docs/theme-song/README.md) |
+ | <a href="https://github.com/DnDGen/DnDGen.Web/blob/main/docs/theme-song/README.md"><img src="https://github.com/DnDGen/DnDGen.Web/raw/main/docs/theme-song/cover.png" alt="Generate! album art" width="80"></a> | **Generate!** -DnDGen.Web Theme- | | [Listen](https://suno.com/s/ragoh4wenmvNWsgv) · [Lyrics and notes](https://github.com/DnDGen/DnDGen.Web/blob/main/docs/theme-song/README.md) |
++| <a href="https://github.com/DnDGen/DnDGen.CreatureGen/blob/main/docs/theme-song/README.md"><img src="https://github.com/DnDGen/DnDGen.CreatureGen/raw/main/docs/theme-song/cover.png" alt="Wake the Bestiary album art" width="80"></a> | **Wake the Bestiary** -DnDGen.CreatureGen Theme- | *Centaur Rege* | [Listen](https://suno.com/s/idhKDWtBG8g26Ar3) · [Lyrics and notes](https://github.com/DnDGen/DnDGen.CreatureGen/blob/main/docs/theme-song/README.md) |
+diff --git a/theme-song/README.md b/theme-song/README.md
+index bc191c4..29df588 100644
+--- a/theme-song/README.md
++++ b/theme-song/README.md
+@@ -137,7 +137,7 @@ These genres are proposals until each song is written; a written song's row link
+ | [RollGen](https://github.com/DnDGen/DnDGen.RollGen) | Tavern gambling and drinking song: [listen](https://suno.com/s/RvnVPcPR4ZTGIEt7) · [lyrics and notes](https://github.com/DnDGen/DnDGen.RollGen/blob/main/docs/theme-song/README.md) | The tavern |
+ | [Infrastructure](https://github.com/DnDGen/DnDGen.Infrastructure) | Gregorian chant: [listen](https://suno.com/s/xemh9NeqXMYfCxrq) · [lyrics and notes](https://github.com/DnDGen/DnDGen.Infrastructure/blob/main/docs/theme-song/README.md) | The scripture everything is built on |
+ | [TreasureGen](https://github.com/DnDGen/DnDGen.TreasureGen) | Pirate shanty | The treasure hunt |
+-| [CreatureGen](https://github.com/DnDGen/DnDGen.CreatureGen) | Dark Nordic folk | The bestiary |
++| [CreatureGen](https://github.com/DnDGen/DnDGen.CreatureGen) | Dark Nordic folk: [listen](https://suno.com/s/idhKDWtBG8g26Ar3) · [lyrics and notes](https://github.com/DnDGen/DnDGen.CreatureGen/blob/main/docs/theme-song/README.md) | The bestiary |
+ | [CharacterGen](https://github.com/DnDGen/DnDGen.CharacterGen) | Troubadour ballad | One hero's story |
+ | [EncounterGen](https://github.com/DnDGen/DnDGen.EncounterGen) | Epic battle theme | Combat |
+ | [DungeonGen](https://github.com/DnDGen/DnDGen.DungeonGen) | Dungeon synth | The dungeon crawl |
