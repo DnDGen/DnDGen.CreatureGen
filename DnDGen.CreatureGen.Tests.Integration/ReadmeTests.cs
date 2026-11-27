@@ -51,9 +51,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
         public void GettingTheGenerators()
         {
             var newKernel = new StandardKernel();
-            var creatureGenModuleLoader = new CreatureGenModuleLoader();
-
-            creatureGenModuleLoader.LoadModules(newKernel);
+            CreatureGenModuleLoader.LoadModules(newKernel);
 
             Assert.That(newKernel.Get<ICreatureGenerator>(), Is.Not.Null);
             Assert.That(newKernel.Get<ICreatureVerifier>(), Is.Not.Null);
@@ -70,7 +68,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(ogre.Name, Is.EqualTo(CreatureConstants.Ogre));
             Assert.That(ogre.Templates, Is.Empty);
             Assert.That(zombieOgre.Name, Is.EqualTo(CreatureConstants.Ogre));
-            Assert.That(zombieOgre.Templates, Is.EqualTo(new[] { CreatureConstants.Templates.Zombie }));
+            Assert.That(zombieOgre.Templates, Is.EqualTo([CreatureConstants.Templates.Zombie]));
         }
 
         [Test]
@@ -95,11 +93,11 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 CreatureConstants.Templates.HalfDragon_Black,
                 CreatureConstants.Templates.HalfFiend);
 
-            Assert.That(halfDragonHalfFiend.Templates, Is.EqualTo(new[]
-            {
+            Assert.That(halfDragonHalfFiend.Templates, Is.EqualTo(
+            [
                 CreatureConstants.Templates.HalfDragon_Black,
                 CreatureConstants.Templates.HalfFiend,
-            }));
+            ]));
         }
 
         [Test]
@@ -120,7 +118,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
             var strongDwarf = creatureGenerator.Generate(true, CreatureConstants.Dwarf_Hill, setRandomizer);
 
-            Assert.That(elfLich.Templates, Is.EqualTo(new[] { CreatureConstants.Templates.Lich }));
+            Assert.That(elfLich.Templates, Is.EqualTo([CreatureConstants.Templates.Lich]));
             Assert.That(strongDwarf.Abilities[AbilityConstants.Strength].BaseScore, Is.EqualTo(18));
         }
 
@@ -150,7 +148,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(templates, Is.Not.Null);
             Assert.That(randomCreature, Is.Not.Null);
             Assert.That(randomCharacter, Is.Not.Null);
-            Assert.That(randomGhost.Templates, Is.EqualTo(new[] { CreatureConstants.Templates.Ghost }));
+            Assert.That(randomGhost.Templates, Is.EqualTo([CreatureConstants.Templates.Ghost]));
             Assert.That(randomNonTemplated.Templates, Is.Empty);
         }
 
@@ -173,7 +171,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
             Assert.That(creatureName, Is.Not.Empty);
             Assert.That(randomWithFilters.Type.AllTypes, Contains.Item(CreatureConstants.Types.Humanoid));
-            Assert.That(randomHalfFiend.Templates, Is.EqualTo(new[] { CreatureConstants.Templates.HalfFiend }));
+            Assert.That(randomHalfFiend.Templates, Is.EqualTo([CreatureConstants.Templates.HalfFiend]));
         }
 
         [Test]

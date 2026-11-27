@@ -19,7 +19,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC
         {
             //INFO: First time was in the IntegrationTest one-time setup
             var creatureGenLoader = new CreatureGenModuleLoader();
-            creatureGenLoader.LoadModules(kernel);
+            CreatureGenModuleLoader.LoadModules(kernel);
 
             var creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
             Assert.That(creatureGenerator, Is.Not.Null);

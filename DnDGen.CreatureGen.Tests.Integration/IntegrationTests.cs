@@ -13,9 +13,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
         public void IntegrationTestsFixtureSetup()
         {
             kernel = new StandardKernel();
-
-            var creatureGenLoader = new CreatureGenModuleLoader();
-            creatureGenLoader.LoadModules(kernel);
+            CreatureGenModuleLoader.LoadModules(kernel);
         }
 
         protected T GetNewInstanceOf<T>()

@@ -16,9 +16,7 @@ You can obtain generators from the IoC namespace within the domain project. Beca
 
 ```C#
 var kernel = new StandardKernel();
-var creatureGenModuleLoader = new CreatureGenModuleLoader();
-
-creatureGenModuleLoader.LoadModules(kernel);
+CreatureGenModuleLoader.LoadModules(kernel);
 
 var creatureGenerator = kernel.Get<ICreatureGenerator>();
 var creatureVerifier = kernel.Get<ICreatureVerifier>();
